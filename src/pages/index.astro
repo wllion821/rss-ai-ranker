@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+
+// 获取当天的文章数据
+// 在实际运行中，这应该根据日期动态加载，这里为了 Phase 1 固定加载 mock 数据
+const date = "2026-05-05";
+const articles = await import(`../../data/articles-${date}.json`).then(m => m.default);
+
+// 按得分排序
+const sortedArticles = articles.sort((a, b) => b.recommendationScore - a.recommendationScore);
+---
+
+<BaseLayout title="今日推荐">
+	<div class="mb-8">
+		<h1 class="text-3xl font-extrabold text-gray-900 mb-2">今日 AI 强推</h1>
+		<p class="text-gray-500">{date} · 自动扫描 100+ 科技源，AI 深度评分</p>
+	</div>
+
+	<div class="grid gap-6">
+		{sortedArticles.map(article => (
+			<ArticleCard article={article} />
+		))}
+	</div>
+</BaseLayout>

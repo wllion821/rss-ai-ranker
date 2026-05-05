@@ -1,0 +1,37 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="RSS AI Ranker - 个人科技博客推荐" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title} | RSS AI Ranker</title>
+	</head>
+	<body class="bg-gray-50 text-gray-900 min-h-screen">
+		<header class="bg-white border-b border-gray-200 sticky top-0 z-10">
+			<div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+				<a href="/" class="text-xl font-bold text-indigo-600">RSS AI Ranker</a>
+				<nav>
+					<a href="/archive" class="text-gray-600 hover:text-indigo-600 transition">归档</a>
+				</nav>
+			</div>
+		</header>
+		<main class="max-w-5xl mx-auto px-4 py-8">
+			<slot />
+		</main>
+		<footer class="border-t border-gray-200 mt-12 py-8 bg-white">
+			<div class="max-w-5xl mx-auto px-4 text-center text-gray-500 text-sm">
+				<p>© 2026 RSS AI Ranker. Powered by AI & Astro.</p>
+			</div>
+		</footer>
+	</body>
+</html>
