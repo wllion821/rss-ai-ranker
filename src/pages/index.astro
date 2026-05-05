@@ -2,13 +2,32 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ArticleCard from '../components/ArticleCard.astro';
 
-// 获取当天的文章数据
-const date = "2026-05-05";
+import fs from 'node:fs';
+import path from 'node:path';
+
+// 获取最新的文章数据
 let articles = [];
+let displayDate = "";
+
 try {
-	const data = await import(`../../data/articles-${date}.json`);
-	articles = data.default || [];
+	const dataDir = path.join(process.cwd(), 'data');
+	if (fs.existsSync(dataDir)) {
+		const files = fs.readdirSync(dataDir)
+			.filter(f => f.startsWith('articles-') && f.endsWith('.json'))
+			.sort()
+			.reverse();
+		
+		if (files.length > 0) {
+			const latestFile = files[0];
+			displayDate = latestFile.replace('articles-', '').replace('.json', '');
+			const filePath = path.join(dataDir, latestFile);
+			const content = fs.readFileSync(filePath, 'utf-8');
+			articles = JSON.parse(content);
+			if (!Array.isArray(articles)) articles = [];
+		}
+	}
 } catch (e) {
+	console.error("Error loading articles:", e);
 	articles = [];
 }
 
@@ -21,7 +40,7 @@ const sortedArticles = articles.length > 0
 <BaseLayout title="今日推荐">
 	<div class="mb-8">
 		<h1 class="text-3xl font-extrabold text-gray-900 mb-2">今日 AI 强推</h1>
-		<p class="text-gray-500">{date} · 自动扫描 100+ 科技源，AI 深度评分</p>
+		<p class="text-gray-500">{displayDate || "今日"} · 自动扫描 100+ 科技源，AI 深度评分</p>
 	</div>
 
 	{sortedArticles.length > 0 ? (
