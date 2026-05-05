@@ -2,19 +2,755 @@
   {
     "name": "Hacker News",
     "url": "https://hnrss.org/frontpage",
-    "category": ["Tech", "Startup"],
-    "priority": 10
-  },
-  {
-    "name": "Simon Willison",
-    "url": "https://simonwillison.net/atom/everything/",
-    "category": ["AI", "Tools"],
+    "category": [
+      "Tech",
+      "Startup"
+    ],
     "priority": 10
   },
   {
     "name": "MIT Technology Review",
     "url": "https://www.technologyreview.com/feed/",
-    "category": ["AI", "Science"],
+    "category": [
+      "AI",
+      "Science"
+    ],
     "priority": 8
+  },
+  {
+    "name": "simonwillison.net",
+    "url": "https://simonwillison.net/atom/everything/",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "jeffgeerling.com",
+    "url": "https://www.jeffgeerling.com/blog.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "seangoedecke.com",
+    "url": "https://www.seangoedecke.com/rss.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "krebsonsecurity.com",
+    "url": "https://krebsonsecurity.com/feed/",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "daringfireball.net",
+    "url": "https://daringfireball.net/feeds/main",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "ericmigi.com",
+    "url": "https://ericmigi.com/rss.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "antirez.com",
+    "url": "http://antirez.com/rss",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "idiallo.com",
+    "url": "https://idiallo.com/feed.rss",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "maurycyz.com",
+    "url": "https://maurycyz.com/index.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "pluralistic.net",
+    "url": "https://pluralistic.net/feed/",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "shkspr.mobi",
+    "url": "https://shkspr.mobi/blog/feed/",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "lcamtuf.substack.com",
+    "url": "https://lcamtuf.substack.com/feed",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "mitchellh.com",
+    "url": "https://mitchellh.com/feed.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "dynomight.net",
+    "url": "https://dynomight.net/feed.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "utcc.utoronto.ca/~cks",
+    "url": "https://utcc.utoronto.ca/~cks/space/blog/?atom",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "xeiaso.net",
+    "url": "https://xeiaso.net/blog.rss",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "devblogs.microsoft.com/oldnewthing",
+    "url": "https://devblogs.microsoft.com/oldnewthing/feed",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "righto.com",
+    "url": "https://www.righto.com/feeds/posts/default",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "lucumr.pocoo.org",
+    "url": "https://lucumr.pocoo.org/feed.atom",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "skyfall.dev",
+    "url": "https://skyfall.dev/rss.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "garymarcus.substack.com",
+    "url": "https://garymarcus.substack.com/feed",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "rachelbythebay.com",
+    "url": "https://rachelbythebay.com/w/atom.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "overreacted.io",
+    "url": "https://overreacted.io/rss.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "timsh.org",
+    "url": "https://timsh.org/rss/",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "johndcook.com",
+    "url": "https://www.johndcook.com/blog/feed/",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "gilesthomas.com",
+    "url": "https://gilesthomas.com/feed/rss.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "matklad.github.io",
+    "url": "https://matklad.github.io/feed.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "derekthompson.org",
+    "url": "https://www.theatlantic.com/feed/author/derek-thompson/",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "evanhahn.com",
+    "url": "https://evanhahn.com/feed.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "terriblesoftware.org",
+    "url": "https://terriblesoftware.org/feed/",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "rakhim.exotext.com",
+    "url": "https://rakhim.exotext.com/rss.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "joanwestenberg.com",
+    "url": "https://joanwestenberg.com/rss",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "xania.org",
+    "url": "https://xania.org/feed",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "micahflee.com",
+    "url": "https://micahflee.com/feed/",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "nesbitt.io",
+    "url": "https://nesbitt.io/feed.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "construction-physics.com",
+    "url": "https://www.construction-physics.com/feed",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "tedium.co",
+    "url": "https://feed.tedium.co/",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "susam.net",
+    "url": "https://susam.net/feed.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "entropicthoughts.com",
+    "url": "https://entropicthoughts.com/feed.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "buttondown.com/hillelwayne",
+    "url": "https://buttondown.com/hillelwayne/rss",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "dwarkesh.com",
+    "url": "https://www.dwarkeshpatel.com/feed",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "borretti.me",
+    "url": "https://borretti.me/feed.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "wheresyoured.at",
+    "url": "https://www.wheresyoured.at/rss/",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "jayd.ml",
+    "url": "https://jayd.ml/feed.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "minimaxir.com",
+    "url": "https://minimaxir.com/index.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "geohot.github.io",
+    "url": "https://geohot.github.io/blog/feed.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "paulgraham.com",
+    "url": "http://www.aaronsw.com/2002/feeds/pgessays.rss",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "filfre.net",
+    "url": "https://www.filfre.net/feed/",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "blog.jim-nielsen.com",
+    "url": "https://blog.jim-nielsen.com/feed.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "dfarq.homeip.net",
+    "url": "https://dfarq.homeip.net/feed/",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "jyn.dev",
+    "url": "https://jyn.dev/atom.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "geoffreylitt.com",
+    "url": "https://www.geoffreylitt.com/feed.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "downtowndougbrown.com",
+    "url": "https://www.downtowndougbrown.com/feed/",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "brutecat.com",
+    "url": "https://brutecat.com/rss.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "eli.thegreenplace.net",
+    "url": "https://eli.thegreenplace.net/feeds/all.atom.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "abortretry.fail",
+    "url": "https://www.abortretry.fail/feed",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "fabiensanglard.net",
+    "url": "https://fabiensanglard.net/rss.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "oldvcr.blogspot.com",
+    "url": "https://oldvcr.blogspot.com/feeds/posts/default",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "bogdanthegeek.github.io",
+    "url": "https://bogdanthegeek.github.io/blog/index.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "hugotunius.se",
+    "url": "https://hugotunius.se/feed.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "gwern.net",
+    "url": "https://gwern.substack.com/feed",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "berthub.eu",
+    "url": "https://berthub.eu/articles/index.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "chadnauseam.com",
+    "url": "https://chadnauseam.com/rss.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "simone.org",
+    "url": "https://simone.org/feed/",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "it-notes.dragas.net",
+    "url": "https://it-notes.dragas.net/feed/",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "beej.us",
+    "url": "https://beej.us/blog/rss.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "hey.paris",
+    "url": "https://hey.paris/index.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "danielwirtz.com",
+    "url": "https://danielwirtz.com/rss.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "matduggan.com",
+    "url": "https://matduggan.com/rss/",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "refactoringenglish.com",
+    "url": "https://refactoringenglish.com/index.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "worksonmymachine.substack.com",
+    "url": "https://worksonmymachine.substack.com/feed",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "philiplaine.com",
+    "url": "https://philiplaine.com/index.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "steveblank.com",
+    "url": "https://steveblank.com/feed/",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "bernsteinbear.com",
+    "url": "https://bernsteinbear.com/feed.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "danieldelaney.net",
+    "url": "https://danieldelaney.net/feed",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "troyhunt.com",
+    "url": "https://www.troyhunt.com/rss/",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "herman.bearblog.dev",
+    "url": "https://herman.bearblog.dev/feed/",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "tomrenner.com",
+    "url": "https://tomrenner.com/index.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "blog.pixelmelt.dev",
+    "url": "https://blog.pixelmelt.dev/rss/",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "martinalderson.com",
+    "url": "https://martinalderson.com/feed.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "danielchasehooper.com",
+    "url": "https://danielchasehooper.com/feed.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "chiark.greenend.org.uk/~sgtatham",
+    "url": "https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/feed.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "grantslatton.com",
+    "url": "https://grantslatton.com/rss.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "experimental-history.com",
+    "url": "https://www.experimental-history.com/feed",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "anildash.com",
+    "url": "https://anildash.com/feed.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "aresluna.org",
+    "url": "https://aresluna.org/main.rss",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "michael.stapelberg.ch",
+    "url": "https://michael.stapelberg.ch/feed.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "miguelgrinberg.com",
+    "url": "https://blog.miguelgrinberg.com/feed",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "keygen.sh",
+    "url": "https://keygen.sh/blog/feed.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "mjg59.dreamwidth.org",
+    "url": "https://mjg59.dreamwidth.org/data/rss",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "computer.rip",
+    "url": "https://computer.rip/rss.xml",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
+  },
+  {
+    "name": "tedunangst.com",
+    "url": "https://www.tedunangst.com/flak/rss",
+    "category": [
+      "Tech"
+    ],
+    "priority": 5
   }
 ]
