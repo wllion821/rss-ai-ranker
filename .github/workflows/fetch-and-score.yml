@@ -1,19 +1,32 @@
-name: Fetch and Score RSS
+name: Fetch, Score and Deploy
 
 on:
   schedule:
     - cron: '0 16 * * *' # 每天北京时间 00:00 (UTC 16:00) 运行
+  push:
+    branches:
+      - main
+    paths:
+      - 'data/**'
+      - 'src/**'
+      - 'public/**'
+      - 'package.json'
+      - 'astro.config.mjs'
   workflow_dispatch: # 支持手动触发
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 jobs:
-  fetch-and-score:
+  fetch-score-build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -25,11 +38,13 @@ jobs:
         run: npm ci
 
       - name: Run Fetch and Score
+        if: github.event_name != 'push'
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: npx tsx scripts/main.ts
 
       - name: Commit and Push changes
+        if: github.event_name != 'push'
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
@@ -37,6 +52,25 @@ jobs:
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "chore: update daily articles [trigger deploy]"
+            git commit -m "chore: update daily articles [skip ci]"
             git push
           fi
+
+      - name: Build Astro
+        run: npm run build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+  deploy:
+    needs: fetch-score-build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

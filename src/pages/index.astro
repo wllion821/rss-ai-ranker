@@ -3,12 +3,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ArticleCard from '../components/ArticleCard.astro';
 
 // 获取当天的文章数据
-// 在实际运行中，这应该根据日期动态加载，这里为了 Phase 1 固定加载 mock 数据
 const date = "2026-05-05";
-const articles = await import(`../../data/articles-${date}.json`).then(m => m.default);
+let articles = [];
+try {
+	const data = await import(`../../data/articles-${date}.json`);
+	articles = data.default || [];
+} catch (e) {
+	articles = [];
+}
 
 // 按得分排序
-const sortedArticles = articles.sort((a, b) => b.recommendationScore - a.recommendationScore);
+const sortedArticles = articles.length > 0 
+	? [...articles].sort((a, b) => b.recommendationScore - a.recommendationScore) 
+	: [];
 ---
 
 <BaseLayout title="今日推荐">
@@ -17,9 +24,16 @@ const sortedArticles = articles.sort((a, b) => b.recommendationScore - a.recomme
 		<p class="text-gray-500">{date} · 自动扫描 100+ 科技源，AI 深度评分</p>
 	</div>
 
-	<div class="grid gap-6">
-		{sortedArticles.map(article => (
-			<ArticleCard article={article} />
-		))}
-	</div>
+	{sortedArticles.length > 0 ? (
+		<div class="grid gap-6">
+			{sortedArticles.map(article => (
+				<ArticleCard article={article} />
+			))}
+		</div>
+	) : (
+		<div class="py-20 text-center text-gray-500">
+			<p class="text-xl">暂无今日推荐文章</p>
+			<p class="mt-2">请稍后再来查看</p>
+		</div>
+	)}
 </BaseLayout>
