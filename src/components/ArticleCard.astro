@@ -1,54 +1,60 @@
 ---
 import ScoreBadge from './ScoreBadge.astro';
 
-interface Props {
-  article: {
-    title: string;
-    link: string;
-    source: string;
-    publishedAt: string;
-    summary: string;
-    recommendationScore: number;
-    comment: string;
-    reason: string;
-    tags: string[];
-  };
-}
-
 const { article } = Astro.props;
-const formattedDate = new Date(article.publishedAt).toLocaleDateString('zh-CN', {
-  month: 'short',
-  day: 'numeric',
-  hour: '2-digit',
-  minute: '2-digit'
-});
+
+const tags = Array.isArray(article?.tags) ? article.tags : [];
+const score = article?.recommendationScore || 0;
+const comment = article?.comment || '';
+const source = article?.source || '';
+const title = article?.title || 'No Title';
+const link = article?.link || '#';
+const summary = article?.summary || '';
+
+let formattedDate = '';
+try {
+  if (article?.publishedAt) {
+    formattedDate = new Date(article.publishedAt).toLocaleDateString('zh-CN', {
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+  }
+} catch (e) {
+  formattedDate = '';
+}
 ---
 
 <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow">
   <div class="flex justify-between items-start gap-4">
     <div class="flex-1">
       <div class="flex items-center gap-2 mb-2">
-        <span class="text-xs font-medium px-2 py-1 bg-indigo-50 text-indigo-600 rounded-full">{article.source}</span>
+        <span class="text-xs font-medium px-2 py-1 bg-indigo-50 text-indigo-600 rounded-full">{source}</span>
         <span class="text-xs text-gray-400">{formattedDate}</span>
       </div>
       <h3 class="text-xl font-bold mb-2">
-        <a href={article.link} target="_blank" rel="noopener noreferrer" class="hover:text-indigo-600 transition">
-          {article.title}
+        <a href={link} target="_blank" rel="noopener noreferrer" class="hover:text-indigo-600 transition">
+          {title}
         </a>
       </h3>
-      <p class="text-gray-600 text-sm line-clamp-2 mb-4">{article.summary}</p>
+      <p class="text-gray-600 text-sm line-clamp-2 mb-4">{summary}</p>
     </div>
-    <ScoreBadge score={article.recommendationScore} />
+    <ScoreBadge score={score} />
   </div>
 
-  <div class="bg-gray-50 rounded-lg p-4 mb-4">
-    <p class="text-sm font-medium text-gray-800 mb-1">AI 点评：</p>
-    <p class="text-sm text-gray-600 italic">"{article.comment}"</p>
-  </div>
+  {comment && (
+    <div class="bg-gray-50 rounded-lg p-4 mb-4">
+      <p class="text-sm font-medium text-gray-800 mb-1">AI 点评：</p>
+      <p class="text-sm text-gray-600 italic">"{comment}"</p>
+    </div>
+  )}
 
-  <div class="flex flex-wrap gap-2">
-    {article.tags.map(tag => (
-      <span class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">#{tag}</span>
-    ))}
-  </div>
+  {tags.length > 0 && (
+    <div class="flex flex-wrap gap-2">
+      {tags.map((tag: string) => (
+        <span class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">#{tag}</span>
+      ))}
+    </div>
+  )}
 </div>
