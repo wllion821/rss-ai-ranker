@@ -1,58 +1,48 @@
 ---
+import fs from 'node:fs';
+import path from 'node:path';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ArticleCard from '../components/ArticleCard.astro';
 
-import fs from 'node:fs';
-import path from 'node:path';
-
-// 获取最新的文章数据
-let articles = [];
-let displayDate = "";
+let articles: any[] = [];
+let dateLabel = '今日';
 
 try {
-	const dataDir = path.join(process.cwd(), 'data');
-	if (fs.existsSync(dataDir)) {
-		const files = fs.readdirSync(dataDir)
-			.filter(f => f.startsWith('articles-') && f.endsWith('.json'))
-			.sort()
-			.reverse();
-		
-		if (files.length > 0) {
-			const latestFile = files[0];
-			displayDate = latestFile.replace('articles-', '').replace('.json', '');
-			const filePath = path.join(dataDir, latestFile);
-			const content = fs.readFileSync(filePath, 'utf-8');
-			articles = JSON.parse(content);
-			if (!Array.isArray(articles)) articles = [];
-		}
-	}
+  const dataDir = path.join(process.cwd(), 'data');
+  if (fs.existsSync(dataDir)) {
+    const files = fs.readdirSync(dataDir)
+      .filter((f: string) => f.startsWith('articles-') && f.endsWith('.json'))
+      .sort()
+      .reverse();
+    if (files.length > 0) {
+      const raw = fs.readFileSync(path.join(dataDir, files[0]), 'utf-8');
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed)) {
+        articles = parsed;
+      }
+      dateLabel = files[0].replace('articles-', '').replace('.json', '');
+    }
+  }
 } catch (e) {
-	console.error("Error loading articles:", e);
-	articles = [];
+  articles = [];
 }
 
-// 按得分排序
-const sortedArticles = articles.length > 0 
-	? [...articles].sort((a, b) => b.recommendationScore - a.recommendationScore) 
-	: [];
+const sorted = articles
+  .filter((a: any) => a && typeof a === 'object')
+  .sort((a: any, b: any) => (b.recommendationScore || 0) - (a.recommendationScore || 0));
 ---
 
-<BaseLayout title="今日推荐">
-	<div class="mb-8">
-		<h1 class="text-3xl font-extrabold text-gray-900 mb-2">今日 AI 强推</h1>
-		<p class="text-gray-500">{displayDate || "今日"} · 自动扫描 100+ 科技源，AI 深度评分</p>
-	</div>
+<BaseLayout title="RSS AI 评分网站">
+  <h1>今日推荐 ({dateLabel})</h1>
+  <p>共 {sorted.length} 篇文章</p>
 
-	{sortedArticles.length > 0 ? (
-		<div class="grid gap-6">
-			{sortedArticles.map(article => (
-				<ArticleCard article={article} />
-			))}
-		</div>
-	) : (
-		<div class="py-20 text-center text-gray-500">
-			<p class="text-xl">暂无今日推荐文章</p>
-			<p class="mt-2">请稍后再来查看</p>
-		</div>
-	)}
+  {sorted.length === 0 ? (
+    <p>暂无文章数据</p>
+  ) : (
+    <div>
+      {sorted.map((article: any) => (
+        <ArticleCard article={article} />
+      ))}
+    </div>
+  )}
 </BaseLayout>
