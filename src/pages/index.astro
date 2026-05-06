@@ -36,6 +36,16 @@ const recommendedArticles = validArticles
   .filter((a: any) => (a.recommendationScore || 0) >= 70)
   .sort((a: any, b: any) => (b.recommendationScore || 0) - (a.recommendationScore || 0));
 
+const averageScore = recommendedArticles.length > 0
+  ? Number((recommendedArticles.reduce((sum: number, a: any) => sum + (a.recommendationScore || 0), 0) / recommendedArticles.length).toFixed(1))
+  : 0;
+
+const highScoreCount = recommendedArticles.filter((a: any) => (a.recommendationScore || 0) >= 90).length;
+
+const activeSourceCount = new Set(validArticles
+  .map((a: any) => (typeof a?.source === 'string' ? a.source : ''))
+  .filter(Boolean)).size;
+
 const tagCounts = new Map<string, number>();
 validArticles.forEach((article: any) => {
   const tags = Array.isArray(article?.tags) ? article.tags : [];
@@ -57,12 +67,39 @@ const recommendedCount = recommendedArticles.length;
 <BaseLayout title="RSS AI 评分网站">
   <style>
     #page-title { margin: 0 0 8px; font-size: 2rem; color: #ffffff; }
+    #stats-panel { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:16px; }
+    .stat-card { background:#1e293b; border-radius:8px; padding:12px; }
+    .stat-number { font-size:24px; font-weight:700; color:#ffffff; margin:0 0 4px; }
+    .stat-label { font-size:12px; color:#94a3b8; margin:0; }
+    #search-box { width:100%; border-radius:8px; background:#1e293b; color:#ffffff; border:1px solid #334155; padding:10px 12px; font-size:0.95rem; margin-bottom:16px; }
     @media (max-width: 640px) {
       #page-title { font-size: 1.4rem; }
+      #stats-panel { grid-template-columns:repeat(2,1fr); }
     }
   </style>
   <h1 id="page-title">今日推荐 ({dateLabel})</h1>
   <p style="margin:0 0 16px;color:#cbd5e1;">共 {recommendedCount} 篇推荐（总计 {totalArticles} 篇文章中筛选）</p>
+
+  <div id="stats-panel">
+    <div class="stat-card" style="background:#1e293b;border-radius:8px;padding:12px;">
+      <p class="stat-number" style="font-size:24px;font-weight:700;color:#ffffff;margin:0 0 4px;">{recommendedCount}</p>
+      <p class="stat-label" style="font-size:12px;color:#94a3b8;margin:0;">今日新增</p>
+    </div>
+    <div class="stat-card" style="background:#1e293b;border-radius:8px;padding:12px;">
+      <p class="stat-number" style="font-size:24px;font-weight:700;color:#ffffff;margin:0 0 4px;">{averageScore}</p>
+      <p class="stat-label" style="font-size:12px;color:#94a3b8;margin:0;">平均分</p>
+    </div>
+    <div class="stat-card" style="background:#1e293b;border-radius:8px;padding:12px;">
+      <p class="stat-number" style="font-size:24px;font-weight:700;color:#ffffff;margin:0 0 4px;">{highScoreCount}</p>
+      <p class="stat-label" style="font-size:12px;color:#94a3b8;margin:0;">高分文章</p>
+    </div>
+    <div class="stat-card" style="background:#1e293b;border-radius:8px;padding:12px;">
+      <p class="stat-number" style="font-size:24px;font-weight:700;color:#ffffff;margin:0 0 4px;">{activeSourceCount}</p>
+      <p class="stat-label" style="font-size:12px;color:#94a3b8;margin:0;">活跃源</p>
+    </div>
+  </div>
+
+  <input id="search-box" type="text" placeholder="搜索文章标题..." />
 
   <div style="overflow-x:auto;padding-bottom:8px;margin-bottom:16px;">
     <div style="display:inline-flex;flex-wrap:nowrap;gap:8px;white-space:nowrap;">
@@ -78,7 +115,7 @@ const recommendedCount = recommendedArticles.length;
   ) : (
     <div>
       {recommendedArticles.map((article: any, index: number) => (
-        <div data-article-tags={JSON.stringify(Array.isArray(article?.tags) ? article.tags : [])} style="margin-bottom:16px;">
+        <div data-article-tags={JSON.stringify(Array.isArray(article?.tags) ? article.tags : [])} data-article-title={typeof article?.title === 'string' ? article.title : ''} style="margin-bottom:16px;">
           <ArticleCard article={article} />
         </div>
       ))}
@@ -89,8 +126,24 @@ const recommendedCount = recommendedArticles.length;
     (function () {
       const buttons = Array.from(document.querySelectorAll('[data-tag-button]'));
       const articleCards = Array.from(document.querySelectorAll('[data-article-tags]'));
+      const searchBox = document.getElementById('search-box');
+      let selectedTag = '全部';
+      let searchQuery = '';
 
-      const updateSelection = (selectedTag) => {
+      const updateVisibility = () => {
+        const normalizedQuery = searchQuery.trim().toLowerCase();
+
+        articleCards.forEach((card) => {
+          const tags = JSON.parse(card.getAttribute('data-article-tags') || '[]');
+          const title = (card.getAttribute('data-article-title') || '').toLowerCase();
+          const matchesTag = selectedTag === '全部' || tags.includes(selectedTag);
+          const matchesSearch = normalizedQuery === '' || title.includes(normalizedQuery);
+          card.style.display = matchesTag && matchesSearch ? 'block' : 'none';
+        });
+      };
+
+      const updateSelection = (newTag) => {
+        selectedTag = newTag;
         buttons.forEach((button) => {
           const tag = button.getAttribute('data-tag-button');
           if (tag === selectedTag) {
@@ -101,12 +154,7 @@ const recommendedCount = recommendedArticles.length;
             button.style.color = '#94a3b8';
           }
         });
-
-        articleCards.forEach((card) => {
-          const tags = JSON.parse(card.getAttribute('data-article-tags') || '[]');
-          const visible = selectedTag === '全部' || tags.includes(selectedTag);
-          card.style.display = visible ? 'block' : 'none';
-        });
+        updateVisibility();
       };
 
       buttons.forEach((button) => {
@@ -114,6 +162,13 @@ const recommendedCount = recommendedArticles.length;
           updateSelection(this.getAttribute('data-tag-button'));
         });
       });
+
+      if (searchBox) {
+        searchBox.addEventListener('input', function () {
+          searchQuery = this.value || '';
+          updateVisibility();
+        });
+      }
 
       updateSelection('全部');
     })();
