@@ -55,11 +55,17 @@ const recommendedCount = recommendedArticles.length;
 ---
 
 <BaseLayout title="RSS AI 评分网站">
-  <h1 style="margin:0 0 8px;font-size:2rem;color:#ffffff;">今日推荐 ({dateLabel})</h1>
+  <style>
+    #page-title { margin: 0 0 8px; font-size: 2rem; color: #ffffff; }
+    @media (max-width: 640px) {
+      #page-title { font-size: 1.4rem; }
+    }
+  </style>
+  <h1 id="page-title">今日推荐 ({dateLabel})</h1>
   <p style="margin:0 0 16px;color:#cbd5e1;">共 {recommendedCount} 篇推荐（总计 {totalArticles} 篇文章中筛选）</p>
 
   <div style="overflow-x:auto;padding-bottom:8px;margin-bottom:16px;">
-    <div style="display:inline-flex;gap:8px;">
+    <div style="display:inline-flex;flex-wrap:nowrap;gap:8px;white-space:nowrap;">
       <button type="button" data-tag-button="全部" style="border:none;outline:none;cursor:pointer;border-radius:20px;background:#22c55e;color:#ffffff;padding:6px 14px;font-size:0.95rem;white-space:nowrap;">全部</button>
       {popularTags.map((tag: string) => (
         <button type="button" data-tag-button={tag} style="border:none;outline:none;cursor:pointer;border-radius:20px;background:#1e293b;color:#94a3b8;padding:6px 14px;font-size:0.95rem;white-space:nowrap;">{tag}</button>

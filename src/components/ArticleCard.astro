@@ -28,15 +28,29 @@ try {
 } catch (e) { formattedDate = ''; }
 const scoreColor = score >= 80 ? '#22c55e' : score >= 60 ? '#eab308' : '#9ca3af';
 ---
-<div style="background:#fff; border-radius:12px; padding:20px; margin-bottom:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); position:relative;">
-  <div style={`position:absolute; top:16px; right:16px; width:52px; height:52px; border-radius:50%; background:${scoreColor}20; display:flex; align-items:center; justify-content:center;`}>
-    <span style={`font-size:22px; font-weight:bold; color:${scoreColor};`}>{score}</span>
+<style>
+  [data-article-card] { background:#fff; border-radius:12px; padding:20px; margin-bottom:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); position:relative; }
+  [data-score-circle] { width:52px; height:52px; }
+  [data-score-value] { font-size:22px; }
+  [data-article-title] { font-size:17px; }
+  [data-tag-chip] { font-size:11px; }
+  @media (max-width: 640px) {
+    [data-article-card] { padding:14px; }
+    [data-score-circle] { width:40px; height:40px; }
+    [data-score-value] { font-size:18px; }
+    [data-article-title] { font-size:15px; }
+    [data-tag-chip] { font-size:10px; }
+  }
+</style>
+<div data-article-card>
+  <div data-score-circle style={`position:absolute; top:16px; right:16px; border-radius:50%; background:${scoreColor}20; display:flex; align-items:center; justify-content:center;`}>
+    <span data-score-value style={`font-weight:bold; color:${scoreColor};`}>{score}</span>
   </div>
   <div style="margin-bottom:6px;">
     <span style="font-size:12px; background:#eef2ff; color:#4338ca; padding:2px 10px; border-radius:20px;">{source}</span>
     <span style="font-size:12px; color:#999; margin-left:8px;">{formattedDate}</span>
   </div>
-  <h3 style="font-size:17px; font-weight:bold; margin:8px 0; padding-right:70px; line-height:1.4;">
+  <h3 data-article-title style="font-weight:bold; margin:8px 0; padding-right:70px; line-height:1.4;">
     <a href={link} target="_blank" rel="noopener noreferrer" style="color:#1e40af; text-decoration:none;">{title}</a>
   </h3>
   {displaySummary && <p style="color:#666; font-size:13px; margin-bottom:12px; line-height:1.6;">{displaySummary}</p>}
@@ -48,7 +62,7 @@ const scoreColor = score >= 80 ? '#22c55e' : score >= 60 ? '#eab308' : '#9ca3af'
   {tags.length > 0 && (
     <div style="display:flex; flex-wrap:wrap; gap:6px;">
       {tags.map((tag: string) => (
-        <span style="font-size:11px; color:#64748b; background:#f1f5f9; padding:3px 10px; border-radius:20px;">#{tag}</span>
+        <span data-tag-chip style="color:#64748b; background:#f1f5f9; padding:3px 10px; border-radius:20px;">#{tag}</span>
       ))}
     </div>
   )}

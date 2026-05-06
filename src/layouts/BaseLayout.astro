@@ -11,10 +11,16 @@ const { title } = Astro.props;
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="RSS AI Ranker - 个人科技博客推荐" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title} | RSS AI Ranker</title>
+		<style>
+			#page-main { padding: 32px 16px; }
+			@media (max-width: 640px) {
+				#page-main { padding: 12px !important; }
+			}
+		</style>
 	</head>
 	<body style="margin:0;padding:0;background:#0f172a;color:#ffffff;min-height:100vh;font-family:system-ui, sans-serif;">
 		<header style="background:#111827;border-bottom:1px solid #1f2937;position:sticky;top:0;z-index:10;">
@@ -25,7 +31,7 @@ const { title } = Astro.props;
 				</nav>
 			</div>
 		</header>
-		<main style="max-width:800px;margin:0 auto;padding:32px 16px;">
+		<main id="page-main" style="max-width:800px;margin:0 auto;padding:32px 16px;">
 			<slot />
 		</main>
 		<footer style="border-top:1px solid #1f2937;margin-top:48px;padding:24px 16px;background:#111827;">
