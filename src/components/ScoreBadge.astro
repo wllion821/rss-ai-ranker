@@ -5,13 +5,19 @@ interface Props {
 
 const { score } = Astro.props;
 
-const getColor = (s: number) => {
-  if (s > 80) return 'bg-green-100 text-green-700 border-green-200';
-  if (s >= 60) return 'bg-yellow-100 text-yellow-700 border-yellow-200';
-  return 'bg-gray-100 text-gray-700 border-gray-200';
+const getBadgeStyle = (s: number) => {
+  if (s > 80) {
+    return 'background:#ecfdf5;color:#166534;';
+  }
+  if (s >= 60) {
+    return 'background:#fef3c7;color:#b45309;';
+  }
+  return 'background:#e2e8f0;color:#6b7280;';
 };
+
+const badgeStyle = getBadgeStyle(score);
 ---
 
-<div class={`inline-flex items-center justify-center w-12 h-12 rounded-full border-2 font-bold text-lg ${getColor(score)}`}>
+<div style={`display:inline-flex;align-items:center;justify-content:center;width:72px;height:72px;border-radius:9999px;border:2px solid rgba(148,163,184,0.32);font-weight:700;font-size:1.5rem;${badgeStyle}`}>
   {score}
 </div>
