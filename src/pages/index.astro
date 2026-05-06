@@ -61,17 +61,33 @@ const popularTags = Array.from(tagCounts.entries())
   .sort((a, b) => b[1] - a[1])
   .map(([tag]) => tag);
 
+const sourceFile = path.join(process.cwd(), 'data', 'sources.json');
+let sourceCount = 0;
+try {
+  const sourceRaw = fs.readFileSync(sourceFile, 'utf-8');
+  const sourceParsed = JSON.parse(sourceRaw);
+  if (Array.isArray(sourceParsed)) {
+    sourceCount = sourceParsed.length;
+  }
+} catch (e) {
+  sourceCount = 0;
+}
+
+const averageScoreColor = averageScore >= 80 ? '#22c55e' : '#eab308';
 const recommendedCount = recommendedArticles.length;
 ---
 
-<BaseLayout title="RSS AI 评分网站">
+<BaseLayout title="RSS AI 评分网站" footerText={`Powered by GitHub Actions + Gemini AI | ${sourceCount} 个 RSS 源 | 数据日期 ${dateLabel}`}>
   <style>
     #page-title { margin: 0 0 8px; font-size: 2rem; color: #ffffff; }
     #stats-panel { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:16px; }
-    .stat-card { background:#1e293b; border-radius:8px; padding:12px; }
-    .stat-number { font-size:24px; font-weight:700; color:#ffffff; margin:0 0 4px; }
-    .stat-label { font-size:12px; color:#94a3b8; margin:0; }
-    #search-box { width:100%; border-radius:8px; background:#1e293b; color:#ffffff; border:1px solid #334155; padding:10px 12px; font-size:0.95rem; margin-bottom:16px; }
+    [data-stat-card] { background:#1e293b; border-radius:8px; padding:12px; }
+    [data-stat-number] { font-size:24px; font-weight:700; color:#ffffff; margin:0 0 4px; }
+    [data-stat-label] { font-size:12px; color:#94a3b8; margin:0; }
+    #search-box { width:100%; border-radius:8px; background:#1e293b; color:#ffffff; border:1px solid #334155; padding:10px 12px 10px 30px; font-size:0.95rem; margin-bottom:16px; }
+    #search-box:focus { outline:none; border-color:#22c55e; }
+    #search-wrapper { position:relative; margin-bottom:16px; }
+    #search-icon { position:absolute; left:10px; top:50%; transform:translateY(-50%); pointer-events:none; }
     @media (max-width: 640px) {
       #page-title { font-size: 1.4rem; }
       #stats-panel { grid-template-columns:repeat(2,1fr); }
@@ -81,27 +97,30 @@ const recommendedCount = recommendedArticles.length;
   <p style="margin:0 0 16px;color:#cbd5e1;">共 {recommendedCount} 篇推荐（总计 {totalArticles} 篇文章中筛选）</p>
 
   <div id="stats-panel">
-    <div class="stat-card" style="background:#1e293b;border-radius:8px;padding:12px;">
-      <p class="stat-number" style="font-size:24px;font-weight:700;color:#ffffff;margin:0 0 4px;">{recommendedCount}</p>
-      <p class="stat-label" style="font-size:12px;color:#94a3b8;margin:0;">今日新增</p>
+    <div data-stat-card style="background:#1e293b;border-radius:8px;padding:12px;">
+      <p data-stat-number style="font-size:24px;font-weight:700;color:#ffffff;margin:0 0 4px;">{recommendedCount}</p>
+      <p data-stat-label style="font-size:12px;color:#94a3b8;margin:0;">今日新增</p>
     </div>
-    <div class="stat-card" style="background:#1e293b;border-radius:8px;padding:12px;">
-      <p class="stat-number" style="font-size:24px;font-weight:700;color:#ffffff;margin:0 0 4px;">{averageScore}</p>
-      <p class="stat-label" style="font-size:12px;color:#94a3b8;margin:0;">平均分</p>
+    <div data-stat-card style="background:#1e293b;border-radius:8px;padding:12px;">
+      <p data-stat-number style={`font-size:24px;font-weight:700;margin:0 0 4px;color:${averageScoreColor};`}>{averageScore}</p>
+      <p data-stat-label style="font-size:12px;color:#94a3b8;margin:0;">平均分</p>
     </div>
-    <div class="stat-card" style="background:#1e293b;border-radius:8px;padding:12px;">
-      <p class="stat-number" style="font-size:24px;font-weight:700;color:#ffffff;margin:0 0 4px;">{highScoreCount}</p>
-      <p class="stat-label" style="font-size:12px;color:#94a3b8;margin:0;">高分文章</p>
+    <div data-stat-card style="background:#1e293b;border-radius:8px;padding:12px;">
+      <p data-stat-number style="font-size:24px;font-weight:700;color:#22c55e;margin:0 0 4px;">{highScoreCount}</p>
+      <p data-stat-label style="font-size:12px;color:#94a3b8;margin:0;">高分文章</p>
     </div>
-    <div class="stat-card" style="background:#1e293b;border-radius:8px;padding:12px;">
-      <p class="stat-number" style="font-size:24px;font-weight:700;color:#ffffff;margin:0 0 4px;">{activeSourceCount}</p>
-      <p class="stat-label" style="font-size:12px;color:#94a3b8;margin:0;">活跃源</p>
+    <div data-stat-card style="background:#1e293b;border-radius:8px;padding:12px;">
+      <p data-stat-number style="font-size:24px;font-weight:700;color:#ffffff;margin:0 0 4px;">{activeSourceCount}</p>
+      <p data-stat-label style="font-size:12px;color:#94a3b8;margin:0;">活跃源</p>
     </div>
   </div>
 
-  <input id="search-box" type="text" placeholder="搜索文章标题..." />
+  <div id="search-wrapper" style="position:relative;">
+    <span id="search-icon" style="color:#94a3b8;font-size:1rem;">🔍</span>
+    <input id="search-box" type="text" placeholder="搜索文章标题..." />
+  </div>
 
-  <div style="overflow-x:auto;padding-bottom:8px;margin-bottom:16px;">
+  <div class="hide-scrollbar" style="overflow-x:auto;padding-bottom:8px;margin-bottom:16px;">
     <div style="display:inline-flex;flex-wrap:nowrap;gap:8px;white-space:nowrap;">
       <button type="button" data-tag-button="全部" style="border:none;outline:none;cursor:pointer;border-radius:20px;background:#22c55e;color:#ffffff;padding:6px 14px;font-size:0.95rem;white-space:nowrap;">全部</button>
       {popularTags.map((tag: string) => (
