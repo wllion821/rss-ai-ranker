@@ -120,7 +120,7 @@ const recommendedCount = recommendedArticles.length;
     <input id="search-box" type="text" placeholder="搜索文章标题..." />
   </div>
 
-  <div class="hide-scrollbar" style="overflow-x:auto;padding-bottom:8px;margin-bottom:16px;">
+  <div class="hide-scrollbar" style="overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;padding-bottom:8px;margin-bottom:16px;">
     <div style="display:inline-flex;flex-wrap:nowrap;gap:8px;white-space:nowrap;">
       <button type="button" data-tag-button="全部" style="border:none;outline:none;cursor:pointer;border-radius:20px;background:#22c55e;color:#ffffff;padding:6px 14px;font-size:0.95rem;white-space:nowrap;">全部</button>
       {popularTags.map((tag: string) => (
