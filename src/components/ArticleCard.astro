@@ -13,11 +13,12 @@ const rawSummary = typeof article?.summary === 'string' ? article.summary : '';
 
 const cleanSummary = (summary: string) => {
   summary = summary.replace(/https?:\/\/[^\s]+/gi, '');
-  summary = summary.replace(/Article URL:/gi, '');
-  summary = summary.replace(/Comments URL:/gi, '');
-  summary = summary.replace(/Points:/gi, '');
-  summary = summary.replace(/# Comments:/gi, '');
+  summary = summary.replace(/Article URL:\s*[^\s]+/gi, '');
+  summary = summary.replace(/Comments URL:\s*[^\s]+/gi, '');
+  summary = summary.replace(/Points:\s*\d+/gi, '');
+  summary = summary.replace(/# Comments:\s*\d+/gi, '');
   summary = summary.replace(/\n+/g, ' ');
+  summary = summary.replace(/\s{2,}/g, ' ');
   summary = summary.trim();
   if (summary.length > 200) {
     return summary.substring(0, 200) + '...';
