@@ -36,20 +36,80 @@ const recommendedArticles = validArticles
   .filter((a: any) => (a.recommendationScore || 0) >= 70)
   .sort((a: any, b: any) => (b.recommendationScore || 0) - (a.recommendationScore || 0));
 
+const tagCounts = new Map<string, number>();
+validArticles.forEach((article: any) => {
+  const tags = Array.isArray(article?.tags) ? article.tags : [];
+  tags.forEach((tag: any) => {
+    if (typeof tag !== 'string' || !tag.trim()) return;
+    const key = tag.trim();
+    tagCounts.set(key, (tagCounts.get(key) || 0) + 1);
+  });
+});
+
+const popularTags = Array.from(tagCounts.entries())
+  .filter(([, count]) => count >= 3)
+  .sort((a, b) => b[1] - a[1])
+  .map(([tag]) => tag);
+
 const recommendedCount = recommendedArticles.length;
 ---
 
 <BaseLayout title="RSS AI 评分网站">
-  <h1>今日推荐 ({dateLabel})</h1>
-  <p>共 {recommendedCount} 篇推荐（总计 {totalArticles} 篇文章中筛选）</p>
+  <h1 style="margin:0 0 8px;font-size:2rem;color:#ffffff;">今日推荐 ({dateLabel})</h1>
+  <p style="margin:0 0 16px;color:#cbd5e1;">共 {recommendedCount} 篇推荐（总计 {totalArticles} 篇文章中筛选）</p>
+
+  <div style="overflow-x:auto;padding-bottom:8px;margin-bottom:16px;">
+    <div style="display:inline-flex;gap:8px;">
+      <button type="button" data-tag-button="全部" style="border:none;outline:none;cursor:pointer;border-radius:20px;background:#22c55e;color:#ffffff;padding:6px 14px;font-size:0.95rem;white-space:nowrap;">全部</button>
+      {popularTags.map((tag: string) => (
+        <button type="button" data-tag-button={tag} style="border:none;outline:none;cursor:pointer;border-radius:20px;background:#1e293b;color:#94a3b8;padding:6px 14px;font-size:0.95rem;white-space:nowrap;">{tag}</button>
+      ))}
+    </div>
+  </div>
 
   {recommendedCount === 0 ? (
-    <p>今日暂无高分推荐</p>
+    <p style="color:#cbd5e1;">今日暂无高分推荐</p>
   ) : (
     <div>
-      {recommendedArticles.map((article: any) => (
-        <ArticleCard article={article} />
+      {recommendedArticles.map((article: any, index: number) => (
+        <div data-article-tags={JSON.stringify(Array.isArray(article?.tags) ? article.tags : [])} style="margin-bottom:16px;">
+          <ArticleCard article={article} />
+        </div>
       ))}
     </div>
   )}
+
+  <script type="text/javascript">
+    (function () {
+      const buttons = Array.from(document.querySelectorAll('[data-tag-button]'));
+      const articleCards = Array.from(document.querySelectorAll('[data-article-tags]'));
+
+      const updateSelection = (selectedTag) => {
+        buttons.forEach((button) => {
+          const tag = button.getAttribute('data-tag-button');
+          if (tag === selectedTag) {
+            button.style.background = '#22c55e';
+            button.style.color = '#ffffff';
+          } else {
+            button.style.background = '#1e293b';
+            button.style.color = '#94a3b8';
+          }
+        });
+
+        articleCards.forEach((card) => {
+          const tags = JSON.parse(card.getAttribute('data-article-tags') || '[]');
+          const visible = selectedTag === '全部' || tags.includes(selectedTag);
+          card.style.display = visible ? 'block' : 'none';
+        });
+      };
+
+      buttons.forEach((button) => {
+        button.addEventListener('click', function () {
+          updateSelection(this.getAttribute('data-tag-button'));
+        });
+      });
+
+      updateSelection('全部');
+    })();
+  </script>
 </BaseLayout>
