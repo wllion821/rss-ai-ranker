@@ -27,11 +27,14 @@ const { title, footerText } = Astro.props;
 	</head>
 	<body style="margin:0;padding:0;background:#0f172a;color:#ffffff;min-height:100vh;font-family:system-ui, sans-serif;">
 		<header style="background:#111827;border-bottom:1px solid #1f2937;position:sticky;top:0;z-index:10;">
-			<div style="max-width:800px;margin:0 auto;padding:0 16px;height:64px;display:flex;align-items:center;justify-content:space-between;">
-				<a href="/" style="color:#ffffff;text-decoration:none;font-size:1.125rem;font-weight:700;">RSS AI Ranker</a>
-				<nav>
-					<a href="/archive" style="color:#d1d5db;text-decoration:none;font-size:0.95rem;">归档</a>
-				</nav>
+			<div style="max-width:800px;margin:0 auto;padding:0 16px;height:64px;display:flex;align-items:center;justify-content:flex-start;gap:10px;">
+				<a href="/" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+					<img src="/rss-ai-ranker/logo.jpg" alt="Logo" style="width:40px;height:40px;border-radius:50%;border:2px solid #22d3ee;object-fit:cover;flex-shrink:0;" />
+					<div style="display:flex;flex-direction:column;gap:2px;">
+						<div style="color:#ffffff;font-size:18px;font-weight:700;">W先生备忘录</div>
+						<div style="color:#22d3ee;font-size:14px;">· AI 科技日报</div>
+					</div>
+				</a>
 			</div>
 		</header>
 		<main id="page-main" style="max-width:800px;margin:0 auto;padding:32px 16px;">
