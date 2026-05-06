@@ -27,20 +27,27 @@ try {
   articles = [];
 }
 
-const sorted = articles
-  .filter((a: any) => a && typeof a === 'object')
+const validArticles = articles
+  .filter((a: any) => a && typeof a === 'object');
+
+const totalArticles = validArticles.length;
+
+const recommendedArticles = validArticles
+  .filter((a: any) => (a.recommendationScore || 0) >= 70)
   .sort((a: any, b: any) => (b.recommendationScore || 0) - (a.recommendationScore || 0));
+
+const recommendedCount = recommendedArticles.length;
 ---
 
 <BaseLayout title="RSS AI 评分网站">
   <h1>今日推荐 ({dateLabel})</h1>
-  <p>共 {sorted.length} 篇文章</p>
+  <p>共 {recommendedCount} 篇推荐（总计 {totalArticles} 篇文章中筛选）</p>
 
-  {sorted.length === 0 ? (
-    <p>暂无文章数据</p>
+  {recommendedCount === 0 ? (
+    <p>今日暂无高分推荐</p>
   ) : (
     <div>
-      {sorted.map((article: any) => (
+      {recommendedArticles.map((article: any) => (
         <ArticleCard article={article} />
       ))}
     </div>
