@@ -7,12 +7,12 @@ const { score } = Astro.props;
 
 const getBadgeStyle = (s: number) => {
   if (s > 80) {
-    return 'background:#ecfdf5;color:#166534;';
+    return 'background:#ecfdf5;color:#22c55e;';
   }
   if (s >= 60) {
-    return 'background:#fef3c7;color:#b45309;';
+    return 'background:#fef3c7;color:#eab308;';
   }
-  return 'background:#e2e8f0;color:#6b7280;';
+  return 'background:#f3f4f6;color:#9ca3af;';
 };
 
 const badgeStyle = getBadgeStyle(score);
