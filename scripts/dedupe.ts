@@ -31,7 +31,18 @@ export async function getExistingIds(): Promise<Set<string>> {
 export async function filterNewArticles(articles: any[]): Promise<any[]> {
   const existingIds = await getExistingIds();
   return articles.filter(article => {
-    const id = generateId(article.link);
+    const link = (article?.link || '').trim();
+    const title = (article?.title || '').trim();
+    const source = (article?.source || '').trim();
+
+    if (!link && !title) {
+      return false;
+    }
+
+    const id = link
+      ? generateId(link)
+      : generateId(`${title}::${source}`);
+
     article.id = id; // Inject ID
     return !existingIds.has(id);
   });

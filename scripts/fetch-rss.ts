@@ -11,6 +11,7 @@ export interface RawArticle {
   source: string;
   publishedAt: string;
   summary: string;
+  dateEstimated?: boolean;
 }
 
 export async function fetchWithRetry(url: string, retries = 3): Promise<any> {
@@ -40,13 +41,13 @@ export async function fetchAllRss(sources: any[]): Promise<RawArticle[]> {
         title: item.title || 'No Title',
         link: item.link || item.enclosure?.url || '',
         source: source.name,
-        publishedAt: item.isoDate || item.pubDate || '', // Keep empty if not found
+        publishedAt: item.isoDate || item.pubDate || new Date().toISOString(),
         summary: item.contentSnippet || item.content || '',
+        ...(item.isoDate || item.pubDate ? {} : { dateEstimated: true }),
       }));
 
       // Filter by time: Only last 24h OR missing publishedAt
       return items.filter((item: any) => {
-        if (!item.publishedAt) return true;
         const pubDate = new Date(item.publishedAt);
         return pubDate >= twentyFourHoursAgo;
       });

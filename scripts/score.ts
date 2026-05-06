@@ -1,5 +1,4 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import pLimit from 'p-limit';
 
 const apiKey = process.env.GEMINI_API_KEY || '';
 const genAI = new GoogleGenerativeAI(apiKey);
@@ -42,12 +41,31 @@ function cleanContent(text: string): string {
 
 function extractJsonArray(text: string): any[] {
   try {
-    const match = text.match(/```json\s*([\s\S]*?)\s*```/) || text.match(/\[[\s\S]*\]/);
-    const jsonStr = match ? (match[1] || match[0]) : text;
-    return JSON.parse(jsonStr.trim());
+    const fencedMatch = text.match(/```json\s*([\s\S]*?)\s*```/i);
+    if (fencedMatch?.[1]) {
+      try {
+        const parsed = JSON.parse(fencedMatch[1].trim());
+        return Array.isArray(parsed) ? parsed : [];
+      } catch {
+        return [];
+      }
+    }
+
+    const startIndex = text.indexOf('[');
+    const endIndex = text.lastIndexOf(']');
+    if (startIndex !== -1 && endIndex !== -1 && endIndex > startIndex) {
+      try {
+        const parsed = JSON.parse(text.slice(startIndex, endIndex + 1).trim());
+        return Array.isArray(parsed) ? parsed : [];
+      } catch {
+        return [];
+      }
+    }
+
+    return [];
   } catch (e) {
     console.error('JSON Parse Error. Raw response snippet:', text.slice(0, 200));
-    throw new Error('Failed to parse AI response as JSON array');
+    return [];
   }
 }
 
@@ -97,7 +115,6 @@ async function scoreBatch(batch: any[], retries = 3): Promise<any[]> {
 }
 
 export async function scoreAllArticles(articles: any[]): Promise<any[]> {
-  const limit = pLimit(3); // 并发上限 3
   const batchSize = 5;
   const batches = [];
   
@@ -106,22 +123,23 @@ export async function scoreAllArticles(articles: any[]): Promise<any[]> {
   }
 
   console.log(`Processing ${articles.length} articles in ${batches.length} batches using Gemini Native SDK...`);
+  const results: any[] = [];
 
-  const tasks = batches.map((batch, index) => limit(async () => {
-    // 每次请求前增加 1 秒延迟
+  for (let index = 0; index < batches.length; index++) {
     if (index > 0) {
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await new Promise(resolve => setTimeout(resolve, 1500));
     }
-    
+
+    const batch = batches[index];
     try {
       console.log(`Scoring batch ${index + 1}/${batches.length}...`);
-      return await scoreBatch(batch);
+      const scoredBatch = await scoreBatch(batch);
+      results.push(...scoredBatch);
     } catch (error: any) {
       console.error(`Batch ${index + 1} failed:`, error?.message || error);
-      return batch.map(a => ({ ...a, status: 'score_failed', recommendationScore: 0 }));
+      results.push(...batch.map(a => ({ ...a, status: 'score_failed', recommendationScore: 0 })));
     }
-  }));
+  }
 
-  const results = await Promise.all(tasks);
-  return results.flat();
+  return results;
 }

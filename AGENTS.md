@@ -78,3 +78,4 @@ https://wllion821.github.io/rss-ai-ranker/
 - 不要自作主张引入新依赖或改变架构
 - 改文件前说明要改什么、为什么改
 - 遇到错误立即停止，汇报问题并提供建议
+- 每次修改完成后，自动执行 git add . && git commit -m "简要描述" && git push
