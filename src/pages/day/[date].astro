@@ -1,30 +1,47 @@
 ---
 import fs from 'node:fs';
 import path from 'node:path';
-import BaseLayout from '../layouts/BaseLayout.astro';
-import ArticleCard from '../components/ArticleCard.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+
+export async function getStaticPaths() {
+  const dataDir = path.join(process.cwd(), 'data');
+  const paths = [];
+
+  try {
+    if (fs.existsSync(dataDir)) {
+      const files = fs.readdirSync(dataDir)
+        .filter((f: string) => f.startsWith('articles-') && f.endsWith('.json'));
+
+      for (const file of files) {
+        const date = file.replace('articles-', '').replace('.json', '');
+        paths.push({ params: { date } });
+      }
+    }
+  } catch (e) {
+    // Ignore errors
+  }
+
+  return paths;
+}
+
+const { date } = Astro.params;
 
 let articles: any[] = [];
 let dailySummary = '';
-let dateLabel = '今日';
+let dateLabel = date || '未知日期';
 
 try {
   const dataDir = path.join(process.cwd(), 'data');
-  if (fs.existsSync(dataDir)) {
-    const files = fs.readdirSync(dataDir)
-      .filter((f: string) => f.startsWith('articles-') && f.endsWith('.json'))
-      .sort()
-      .reverse();
-    if (files.length > 0) {
-      const raw = fs.readFileSync(path.join(dataDir, files[0]), 'utf-8');
-      const parsed = JSON.parse(raw);
-      if (parsed.articles && Array.isArray(parsed.articles)) {
-        articles = parsed.articles;
-        dailySummary = parsed.dailySummary || '';
-      } else if (Array.isArray(parsed)) {
-        articles = parsed; // 兼容旧格式
-      }
-      dateLabel = files[0].replace('articles-', '').replace('.json', '');
+  const filePath = path.join(dataDir, `articles-${date}.json`);
+  if (fs.existsSync(filePath)) {
+    const raw = fs.readFileSync(filePath, 'utf-8');
+    const parsed = JSON.parse(raw);
+    if (parsed.articles && Array.isArray(parsed.articles)) {
+      articles = parsed.articles;
+      dailySummary = parsed.dailySummary || '';
+    } else if (Array.isArray(parsed)) {
+      articles = parsed; // 兼容旧格式
     }
   }
 } catch (e) {
@@ -65,23 +82,11 @@ const popularTags = Array.from(tagCounts.entries())
   .sort((a, b) => b[1] - a[1])
   .map(([tag]) => tag);
 
-const sourceFile = path.join(process.cwd(), 'data', 'sources.json');
-let sourceCount = 0;
-try {
-  const sourceRaw = fs.readFileSync(sourceFile, 'utf-8');
-  const sourceParsed = JSON.parse(sourceRaw);
-  if (Array.isArray(sourceParsed)) {
-    sourceCount = sourceParsed.length;
-  }
-} catch (e) {
-  sourceCount = 0;
-}
-
 const averageScoreColor = averageScore >= 80 ? '#22c55e' : '#eab308';
 const recommendedCount = recommendedArticles.length;
 ---
 
-<BaseLayout title="RSS AI 评分网站" footerText={`Powered by GitHub Actions + Gemini AI | ${sourceCount} 个 RSS 源 | 数据日期 ${dateLabel}`}>
+<BaseLayout title={`${dateLabel} 科技速递`}>
   <style>
     #page-title { margin: 0 0 8px; font-size: 2rem; color: #ffffff; }
     #stats-panel { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:16px; }
@@ -92,12 +97,16 @@ const recommendedCount = recommendedArticles.length;
     #search-box:focus { outline:none; border-color:#22c55e; }
     #search-wrapper { position:relative; margin-bottom:16px; }
     #search-icon { position:absolute; left:10px; top:50%; transform:translateY(-50%); pointer-events:none; }
+    .back-link { color: #22d3ee; text-decoration: none; margin-bottom: 16px; display: inline-block; }
+    .back-link:hover { text-decoration: underline; }
     @media (max-width: 640px) {
       #page-title { font-size: 1.4rem; }
       #stats-panel { grid-template-columns:repeat(2,1fr); }
     }
   </style>
-  <h1 id="page-title">📡 今日科技速递 ({dateLabel})</h1>
+
+  <a class="back-link" href="/rss-ai-ranker/archive">← 返回归档</a>
+  <h1 id="page-title">📡 {dateLabel} 科技速递</h1>
   <p style="margin:0 0 16px;color:#cbd5e1;">共 {recommendedCount} 篇推荐（总计 {totalArticles} 篇文章中筛选）</p>
 
   {dailySummary && (
@@ -110,7 +119,7 @@ const recommendedCount = recommendedArticles.length;
   <div id="stats-panel">
     <div data-stat-card style="background:#1e293b;border-radius:8px;padding:12px;">
       <p data-stat-number style="font-size:24px;font-weight:700;color:#ffffff;margin:0 0 4px;">{recommendedCount}</p>
-      <p data-stat-label style="font-size:12px;color:#94a3b8;margin:0;">今日新增</p>
+      <p data-stat-label style="font-size:12px;color:#94a3b8;margin:0;">推荐文章</p>
     </div>
     <div data-stat-card style="background:#1e293b;border-radius:8px;padding:12px;">
       <p data-stat-number style={`font-size:24px;font-weight:700;margin:0 0 4px;color:${averageScoreColor};`}>{averageScore}</p>
@@ -141,7 +150,7 @@ const recommendedCount = recommendedArticles.length;
   </div>
 
   {recommendedCount === 0 ? (
-    <p style="color:#cbd5e1;">今日暂无高分推荐</p>
+    <p style="color:#cbd5e1;">该日期暂无高分推荐</p>
   ) : (
     <div>
       {recommendedArticles.map((article: any, index: number) => (
@@ -160,47 +169,35 @@ const recommendedCount = recommendedArticles.length;
       let selectedTag = '全部';
       let searchQuery = '';
 
-      const updateVisibility = () => {
-        const normalizedQuery = searchQuery.trim().toLowerCase();
-
-        articleCards.forEach((card) => {
+      function filterArticles() {
+        articleCards.forEach(card => {
+          const title = card.getAttribute('data-article-title') || '';
           const tags = JSON.parse(card.getAttribute('data-article-tags') || '[]');
-          const title = (card.getAttribute('data-article-title') || '').toLowerCase();
           const matchesTag = selectedTag === '全部' || tags.includes(selectedTag);
-          const matchesSearch = normalizedQuery === '' || title.includes(normalizedQuery);
+          const matchesSearch = !searchQuery || title.toLowerCase().includes(searchQuery.toLowerCase());
           card.style.display = matchesTag && matchesSearch ? 'block' : 'none';
-        });
-      };
-
-      const updateSelection = (newTag) => {
-        selectedTag = newTag;
-        buttons.forEach((button) => {
-          const tag = button.getAttribute('data-tag-button');
-          if (tag === selectedTag) {
-            button.style.background = '#22c55e';
-            button.style.color = '#ffffff';
-          } else {
-            button.style.background = '#1e293b';
-            button.style.color = '#94a3b8';
-          }
-        });
-        updateVisibility();
-      };
-
-      buttons.forEach((button) => {
-        button.addEventListener('click', function () {
-          updateSelection(this.getAttribute('data-tag-button'));
-        });
-      });
-
-      if (searchBox) {
-        searchBox.addEventListener('input', function () {
-          searchQuery = this.value || '';
-          updateVisibility();
         });
       }
 
-      updateSelection('全部');
+      buttons.forEach(button => {
+        button.addEventListener('click', () => {
+          buttons.forEach(b => {
+            b.style.background = '#1e293b';
+            b.style.color = '#94a3b8';
+          });
+          button.style.background = '#22c55e';
+          button.style.color = '#ffffff';
+          selectedTag = button.getAttribute('data-tag-button') || '全部';
+          filterArticles();
+        });
+      });
+
+      searchBox?.addEventListener('input', (e) => {
+        searchQuery = (e.target as HTMLInputElement).value;
+        filterArticles();
+      });
+
+      filterArticles();
     })();
   </script>
 </BaseLayout>

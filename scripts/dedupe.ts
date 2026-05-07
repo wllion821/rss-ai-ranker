@@ -16,7 +16,8 @@ export async function getExistingIds(): Promise<Set<string>> {
   for (const file of articleFiles) {
     try {
       const content = await fs.readFile(path.join(dataDir, file), 'utf-8');
-      const articles = JSON.parse(content);
+      const data = JSON.parse(content);
+      const articles = data.articles || data; // 支持新旧格式
       articles.forEach((a: any) => {
         if (a.id) existingIds.add(a.id);
       });

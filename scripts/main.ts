@@ -3,6 +3,7 @@ import path from 'path';
 import { fetchAllRss } from './fetch-rss.ts';
 import { filterNewArticles } from './dedupe.ts';
 import { scoreAllArticles } from './score.ts';
+import { generateDailySummary } from './summary.ts';
 import { saveArticles } from './generate-json.ts';
 
 async function main() {
@@ -31,8 +32,12 @@ async function main() {
     console.log('Starting AI scoring (this may take a while)...');
     const scoredArticles = await scoreAllArticles(newArticles);
 
-    // 5. Generate JSON
-    await saveArticles(scoredArticles);
+    // 5. Generate Daily Summary
+    console.log('Generating daily summary...');
+    const dailySummary = await generateDailySummary(scoredArticles);
+
+    // 6. Generate JSON
+    await saveArticles(scoredArticles, dailySummary);
 
     console.log('--- Workflow Complete ---');
   } catch (error) {

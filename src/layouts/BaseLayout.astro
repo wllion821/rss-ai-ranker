@@ -20,6 +20,7 @@ const { title, footerText } = Astro.props;
 			#page-main { padding: 32px 16px; }
 			.hide-scrollbar::-webkit-scrollbar { display: none; }
 			.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+			nav a:hover { color: #22d3ee !important; background: rgba(34, 211, 238, 0.1) !important; }
 			@media (max-width: 640px) {
 				#page-main { padding: 12px !important; }
 			}
@@ -27,14 +28,18 @@ const { title, footerText } = Astro.props;
 	</head>
 	<body style="margin:0;padding:0;background:#0f172a;color:#ffffff;min-height:100vh;font-family:system-ui, sans-serif;">
 		<header style="background:#111827;border-bottom:1px solid #1f2937;position:sticky;top:0;z-index:10;">
-			<div style="max-width:800px;margin:0 auto;padding:0 16px;height:64px;display:flex;align-items:center;justify-content:flex-start;gap:10px;">
-				<a href="/" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+			<div style="max-width:800px;margin:0 auto;padding:0 16px;height:64px;display:flex;align-items:center;justify-content:space-between;">
+				<a href="/rss-ai-ranker/" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
 					<img src="/rss-ai-ranker/logo.jpg" alt="Logo" style="width:40px;height:40px;border-radius:50%;border:2px solid #22d3ee;object-fit:cover;flex-shrink:0;" />
 					<div style="display:flex;flex-direction:column;gap:2px;">
 						<div style="color:#ffffff;font-size:18px;font-weight:700;">W先生备忘录</div>
 						<div style="color:#22d3ee;font-size:14px;">· AI 科技日报</div>
 					</div>
 				</a>
+				<nav style="display:flex;gap:16px;">
+					<a href="/rss-ai-ranker/" style="color:#cbd5e1;text-decoration:none;padding:8px 12px;border-radius:6px;transition:color 0.2s;">首页</a>
+					<a href="/rss-ai-ranker/archive" style="color:#cbd5e1;text-decoration:none;padding:8px 12px;border-radius:6px;transition:color 0.2s;">归档</a>
+				</nav>
 			</div>
 		</header>
 		<main id="page-main" style="max-width:800px;margin:0 auto;padding:32px 16px;">
