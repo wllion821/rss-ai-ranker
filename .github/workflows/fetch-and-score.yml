@@ -22,6 +22,7 @@ permissions:
 jobs:
   fetch-score-build:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -39,6 +40,7 @@ jobs:
 
       - name: Run Fetch and Score
         if: github.event_name != 'push'
+        timeout-minutes: 15
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: npx tsx scripts/main.ts

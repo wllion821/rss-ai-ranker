@@ -12,29 +12,34 @@ const SUMMARY_PROMPT = `你是科技博客编辑，请用中文写一段 100 字
 请直接输出摘要文字，不要添加任何其他内容。`;
 
 export async function generateDailySummary(scoredArticles: any[]): Promise<string> {
-  if (!apiKey) {
-    console.error('GEMINI_API_KEY is not set');
-    return '';
-  }
-
-  if (scoredArticles.length === 0) {
-    return '';
-  }
-
-  // 取前 10 篇文章
-  const topArticles = scoredArticles
-    .sort((a, b) => (b.recommendationScore || 0) - (a.recommendationScore || 0))
-    .slice(0, 10);
-
-  const articlesInput = topArticles.map(a => ({
-    title: a.title,
-    summary: a.summary || a.content || ''
-  }));
-
-  const prompt = SUMMARY_PROMPT.replace('{{articles_json}}', JSON.stringify(articlesInput, null, 2));
-
   try {
-    const result = await model.generateContent(prompt);
+    if (!apiKey) {
+      console.error('GEMINI_API_KEY is not set');
+      return '';
+    }
+
+    if (scoredArticles.length === 0) {
+      return '';
+    }
+
+    // 取前 10 篇文章
+    const topArticles = scoredArticles
+      .sort((a, b) => (b.recommendationScore || 0) - (a.recommendationScore || 0))
+      .slice(0, 10);
+
+    const articlesInput = topArticles.map(a => ({
+      title: a.title,
+      summary: a.summary || a.content || ''
+    }));
+
+    const prompt = SUMMARY_PROMPT.replace('{{articles_json}}', JSON.stringify(articlesInput, null, 2));
+
+    // 添加 30 秒超时
+    const timeoutPromise = new Promise<never>((_, reject) =>
+      setTimeout(() => reject(new Error('Summary generation timed out')), 30000)
+    );
+
+    const result = await Promise.race([model.generateContent(prompt), timeoutPromise]);
     const response = await result.response;
     const content = response.text();
 

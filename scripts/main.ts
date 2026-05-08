@@ -8,7 +8,13 @@ import { saveArticles } from './generate-json.ts';
 
 async function main() {
   console.log('--- Starting RSS AI Ranker Daily Run ---');
-  
+
+  // 设置 10 分钟超时
+  const timeout = setTimeout(() => {
+    console.error('Script timed out after 10 minutes');
+    process.exit(1);
+  }, 10 * 60 * 1000);
+
   try {
     // 1. Load Sources
     const sourcesPath = path.join(process.cwd(), 'data/sources.json');
@@ -34,7 +40,12 @@ async function main() {
 
     // 5. Generate Daily Summary
     console.log('Generating daily summary...');
-    const dailySummary = await generateDailySummary(scoredArticles);
+    let dailySummary = '';
+    try {
+      dailySummary = await generateDailySummary(scoredArticles);
+    } catch (error) {
+      console.error('Summary generation failed, proceeding with empty summary:', error);
+    }
 
     // 6. Generate JSON
     await saveArticles(scoredArticles, dailySummary);
@@ -43,6 +54,8 @@ async function main() {
   } catch (error) {
     console.error('Workflow failed:', error);
     process.exit(1);
+  } finally {
+    clearTimeout(timeout);
   }
 }
 
