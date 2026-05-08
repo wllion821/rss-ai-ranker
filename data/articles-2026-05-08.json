@@ -1,0 +1,828 @@
+{
+  "dailySummary": "今日科技速递：AI前沿涌动，DeepSeek 4 Flash推出Metal本地推理引擎，Anthropic探索Claude模型“思想”解码，同时业界呼吁AI Agent需控制流而非更多Prompt，G...",
+  "articles": [
+    {
+      "title": "DeepSeek 4 Flash local inference engine for Metal",
+      "link": "https://github.com/antirez/ds4",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-07T15:40:24.000Z",
+      "summary": "Article URL: https://github.com/antirez/ds4\nComments URL: https://news.ycombinator.com/item?id=48050751\nPoints: 367\n# Comments: 101",
+      "id": "3eacb4655aba2497a6458cd6446030fffbe7e04ed2e5a7df811429759d5f520d",
+      "ref_id": "3",
+      "recommendationScore": 100,
+      "popularityScore": 45,
+      "priority": "high",
+      "comment": "在Apple Metal上实现DeepSeek 4 Flash本地推理引擎，技术前沿且对Apple AI开发者极其实用。",
+      "reason": "文章结合AI大模型、Apple生态和编程工具等多个高优先级主题，技术深度、新颖性和实用性均达到顶级，是AI领域在特定硬件平台上的重要进展。",
+      "tags": [
+        "AI",
+        "大模型",
+        "本地推理",
+        "Metal",
+        "Apple生态",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "GNU IFUNC is the real culprit behind CVE-2024-3094",
+      "link": "https://github.com/robertdfrench/ifuncd-up",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-08T00:03:38.000Z",
+      "summary": "Article URL: https://github.com/robertdfrench/ifuncd-up\nComments URL: https://news.ycombinator.com/item?id=48056749\nPoints: 70\n# Comments: 32",
+      "id": "44e22930a6d64715fed85f22f3d1f7560bec377a6bc2c11507b125b6f2cefe27",
+      "ref_id": "4",
+      "recommendationScore": 98,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "详细揭示了GNU IFUNC在近期CVE-2024-3094（xz backdoor）漏洞中的关键作用。",
+      "reason": "文章提供了对一个重要安全漏洞的深层技术分析，对系统安全、底层编程和GNU工具链有极高技术深度和实际指导意义。",
+      "tags": [
+        "安全",
+        "漏洞",
+        "CVE",
+        "GNU",
+        "IFUNC",
+        "系统编程",
+        "底层技术"
+      ]
+    },
+    {
+      "title": "Agents need control flow, not more prompts",
+      "link": "https://bsuh.bearblog.dev/agents-need-control-flow/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-07T16:43:35.000Z",
+      "summary": "Article URL: https://bsuh.bearblog.dev/agents-need-control-flow/\nComments URL: https://news.ycombinator.com/item?id=48051562\nPoints: 446\n# Comments: 215",
+      "id": "6a70e6e2bae9d42d07c515c682709414cafd6a97dfa8920ea19883c7de20ec60",
+      "ref_id": "1",
+      "recommendationScore": 96,
+      "popularityScore": 64,
+      "priority": "high",
+      "comment": "深入探讨AI Agent核心瓶颈及解决方案，对AI开发有深远指导意义。",
+      "reason": "文章深入分析AI Agent发展痛点，提出控制流而非更多Prompt是关键，技术深度、新颖性和实用性极高，完全符合AI主题优先级。",
+      "tags": [
+        "AI",
+        "Agent",
+        "大模型",
+        "控制流",
+        "技术趋势"
+      ]
+    },
+    {
+      "title": "Natural Language Autoencoders: Turning Claude's Thoughts into Text",
+      "link": "https://www.anthropic.com/research/natural-language-autoencoders",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-07T17:54:02.000Z",
+      "summary": "Article URL: https://www.anthropic.com/research/natural-language-autoencoders\nComments URL: https://news.ycombinator.com/item?id=48052537\nPoints: 259\n# Comments: 87",
+      "id": "2bbe148f9157c8493acc52637a74cc34d7688bfa992b908cd41d4b194f5ce0ca",
+      "ref_id": "4",
+      "recommendationScore": 92,
+      "popularityScore": 60,
+      "priority": "high",
+      "comment": "Anthropic关于自然语言自动编码器的前沿研究，旨在提高大型语言模型的解释性。",
+      "reason": "技术深度和新颖性极高，是AI领域的核心研究进展，对理解LLM内部工作原理和未来发展有重要启发。",
+      "tags": [
+        "AI",
+        "LLM",
+        "Research",
+        "Anthropic",
+        "Interpretability"
+      ]
+    },
+    {
+      "title": "Monitor your devices with LibreNMS on FreeBSD",
+      "link": "https://it-notes.dragas.net/2026/05/07/monitor-your-services-with-librenms-on-freebsd/",
+      "source": "it-notes.dragas.net",
+      "publishedAt": "2026-05-07T10:45:00.000Z",
+      "summary": "LibreNMS has been a faithful companion for years now. It quietly handles the monitoring of my servers, devices, and services without demanding much in return - exactly what you want from a tool whose job is to watch over everything else. It's a solid alternative to heavier solutions like Zabbix, and it gives you alerts, data, and graphs on virtually anything reachable over SNMP.\nI usually install it on a host that is not reachable from the outside, then let it poll all the devices through a VPN: a single observation point, clean perimeter. The ability to create multiple dashboards - and to filter them by user - has also let me give clients a transparent window onto their own servers. Transparency, in my experience, is always the better long-term bet.\nTogether with Uptime-Kuma (and the good old Nagios/Munin pair), LibreNMS lives in a FreeBSD jail on my monitoring servers and just does its job.\nThis post walks through a plain installation of LibreNMS on FreeBSD: package-based, no reverse proxy, no HTTPS, no fancy hardening. The goal is to get to a working setup you can build on top of.\nAssumptions\nFreeBSD 15.0-RELEASE, in a jail or on a dedicated VM/host\nnginx + php-fpm + MySQL 8.4\nLibreNMS installed from the official package — not via git clone\nOne note before we start: in this guide I use plain HTTP just to reach the first-time setup. If your LibreNMS instance won't stay confined to a private network or behind a VPN, configuring HTTPS is mandatory, not optional.\nInstallation\npkg install librenms mysql84-server python3 nginx\n\nLibreNMS currently depends on PHP 8.4. If you want to speed PHP up, install OPcache too:\npkg install php84-opcache\n\nMySQL\nTwo settings need to be in place before MySQL starts for the first time. After the first start they cannot be changed without reinitializing the data directory, so it's worth getting them right now.\ncd /usr/local/etc/mysql\ncp my.cnf.sample my.cnf\n\nIn the [mysqld] section, add:\ninnodb_file_per_table=1\nlower_case_table_names=0\n\nNow start MySQL:\nservice mysql-server enable\nservice mysql-server start\n\nOn a fresh FreeBSD install, the local root user can connect to MySQL without a password from the command line. Connect and create the database and user. I'm using password here as a placeholder - don't.\nmysql\n\nCREATE DATABASE librenms CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;\nCREATE USER 'librenms'@'localhost' IDENTIFIED BY 'password';\nGRANT ALL PRIVILEGES ON librenms.* TO 'librenms'@'localhost';\nexit\n\nphp-fpm\nEdit /usr/local/etc/php-fpm.d/www.conf and adjust the listen directives:\nlisten = /var/run/php-fpm-librenms.sock\nlisten.owner = www\nlisten.group = www\nlisten.mode = 0660\n\nThen create php.ini from the production sample:\ncd /usr/local/etc\ncp php.ini-production php.ini\n\nAnd set the timezone in php.ini:\ndate.timezone = Europe/Rome\n\nnginx\nSince this jail (or host) is dedicated to LibreNMS, we can rewrite the server block in /usr/local/etc/nginx/nginx.conf directly:\nserver {\n    listen      80;\n    #server_name yourServerName\n    root        /usr/local/www/librenms/html;\n    index       index.php;\n\n    charset utf-8;\n    gzip on;\n    gzip_types text/css application/javascript text/javascript application/x-javascript image/svg+xml text/plain text/xsd text/xsl text/xml image/x-icon;\n\n    location / {\n        try_files $uri $uri/ /index.php?$query_string;\n    }\n\n    location /api/v0 {\n        try_files $uri $uri/ /api_v0.php?$query_string;\n    }\n\n    location ~ \\.php$ {\n        fastcgi_split_path_info ^(.+\\.php)(/.*)$;\n        set $path_info $fastcgi_path_info;\n        try_files $fastcgi_script_name =404;\n        include fastcgi_params;\n        fastcgi_param SERVER_SOFTWARE \"\";\n        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;\n        fastcgi_param PATH_INFO $path_info;\n        fastcgi_index index.php;\n        fastcgi_pass unix:/var/run/php-fpm-librenms.sock;\n        fastcgi_buffers 256 4k;\n        fastcgi_intercept_errors on;\n        fastcgi_read_timeout 14400;\n    }\n\n    location ~ /\\.(?!well-known).* {\n        deny all;\n    }\n}\n\nNow start nginx and php-fpm:\nservice nginx enable\nservice nginx start\n\nservice php_fpm enable\nservice php_fpm start\n\nLibreNMS configuration\nCopy the default config:\ncp /usr/local/www/librenms/config.php.default /usr/local/www/librenms/config.php\n\nBecause we installed from the package, this file already has the right commands and paths for FreeBSD - no need to hunt down mtr, fping, snmpwalk and friends one by one.\nCreate the directory for RRD graphs and set ownership:\nmkdir -p /var/db/librenms/rrd\nchown -R www:www /var/db/librenms\nchmod 775 /var/db/librenms/rrd\n\nThen the .env file:\ncd /usr/local/www/librenms\ncp .env.example .env\nchown www .env\n\nEdit .env and set at least:\nDB_DATABASE - librenms\nDB_USERNAME - librenms\nDB_PASSWORD - the one you actually used (not password, please)\nThen add this line, which tells LibreNMS we still need to run the web installer:\nINSTALL=true\n\nA note on permissions. The official LibreNMS documentation suggests chown -R www:www over the entire application tree, but on FreeBSD the package already lays down sane ownership, with storage/ and bootstrap/cache/ writable by www. There's no reason to widen the rest of the codebase. If validate.php complains later about something write-related, the first place to check is:\nls -la /usr/local/www/librenms/storage /usr/local/www/librenms/bootstrap/cache\n\nNow generate the app key as www, since the file is owned by www:\nsu -m www -c \"php artisan key:generate\"\n\nAnd tighten .env:\nchmod 600 .env\n\nRefresh the configuration cache:\nsu -m www -c \"lnms config:clear\"\nsu -m www -c \"lnms config:cache\"\n\nWeb installer\nOpen http://host/install and follow the steps. The validation process may fail. Refreshing the cache picks up the values written to config.php during the install:\nsu -m www -c \"lnms config:clear\"\nsu -m www -c \"lnms config:cache\"\n\nWhen the web installer is done, edit .env again and remove the INSTALL=true line if it's still there. Leaving it in place re-exposes the installer to anyone who can reach the URL.\nPolling service\nLibreNMS needs something to actually run the polls. On FreeBSD, the package ships an rc service that runs the LibreNMS dispatcher, so there's no need to manage cron entries by hand the way most Linux guides assume.\nservice librenms enable\nservice librenms start\n\nValidate\ncd /usr/local/www/librenms\nsu -m www -c './validate.php'\n\nYou may see a couple of complaints right after starting the service - usually scheduler-related and self-resolving within a few minutes. Re-run validate.php once the dispatcher has had time to settle. Anything still red after that is worth investigating.\nNext steps\nAt this point you can log into the web interface and start adding devices, configuring SNMP, and building dashboards. For that, the official LibreNMS documentation is excellent, and there's no point in me paraphrasing it here.",
+      "id": "b7832e901b96abd881759b044b58ab16b083a137bbdba65e70b29d9e0fafa335",
+      "ref_id": "4",
+      "recommendationScore": 92,
+      "popularityScore": 78,
+      "priority": "high",
+      "comment": "一篇关于在FreeBSD上部署LibreNMS进行设备监控的详尽实用指南。",
+      "reason": "技术深度高，实用性极强，详细讲解了自动化监控工具的配置，对相关领域读者价值巨大，符合自动化主题。",
+      "tags": [
+        "自动化",
+        "系统监控",
+        "FreeBSD",
+        "LibreNMS",
+        "DevOps",
+        "运维工具",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "GPT-5.5 Price Increase: What It Costs",
+      "link": "https://openrouter.ai/announcements/gpt55-cost-analysis",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-08T01:02:28.000Z",
+      "summary": "Article URL: https://openrouter.ai/announcements/gpt55-cost-analysis\nComments URL: https://news.ycombinator.com/item?id=48057209\nPoints: 29\n# Comments: 1",
+      "id": "92f7516383fe5a212e4ac769c5c7b8a278304121e12a0f9d15bc0a183162abde",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 50,
+      "priority": "high",
+      "comment": "分析了GPT-5.5模型的价格上涨及其对开发者和企业成本的影响。",
+      "reason": "直接关联AI（优先级最高）前沿技术，对使用或计划使用GPT模型的开发者和产品经理具有高度实用性和时效性。",
+      "tags": [
+        "AI",
+        "GPT",
+        "大型语言模型",
+        "定价",
+        "API经济"
+      ]
+    },
+    {
+      "title": "llm-gemini 0.31",
+      "link": "https://simonwillison.net/2026/May/7/llm-gemini/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-05-07T19:57:06.000Z",
+      "summary": "",
+      "id": "8179ec5fd21c4cf77c07f9354c4aef65942a32162811557952d0df3e78913626",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "一篇关于llm-gemini工具或库0.31版本更新的专业技术文章，对AI开发者极具价值。",
+      "reason": "文章主题直接契合最高优先级（AI），且很可能提供了关于LLM和Gemini模型工具的实用技术细节，对目标受众非常有帮助。",
+      "tags": [
+        "AI",
+        "LLM",
+        "Gemini",
+        "编程工具",
+        "API",
+        "开发"
+      ]
+    },
+    {
+      "title": "When you upgrade your resource strings to Unicode, don’t forget to specify the L prefix",
+      "link": "https://devblogs.microsoft.com/oldnewthing/20260507-00/?p=112307",
+      "source": "devblogs.microsoft.com/oldnewthing",
+      "publishedAt": "2026-05-07T14:00:00.000Z",
+      "summary": "Otherwise, it'll get mapped back down to the 8-bit code page.\nThe post When you upgrade your resource strings to Unicode, don’t forget to specify the L prefix appeared first on The Old New Thing.",
+      "id": "d8b8c46b24ca6c468bb85be95926946e6120c127c102105dbfe156767424c5da",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 60,
+      "priority": "high",
+      "comment": "简短但极其实用的Unicode字符串处理编程技巧，避免常见错误。",
+      "reason": "直接解决了编程实践中的具体问题，技术深度适中且实用性极高，符合编程工具主题。",
+      "tags": [
+        "编程",
+        "Unicode",
+        "C++",
+        "国际化",
+        "开发技巧"
+      ]
+    },
+    {
+      "title": "Dirtyfrag: Universal Linux LPE",
+      "link": "https://www.openwall.com/lists/oss-security/2026/05/07/8",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-07T19:21:32.000Z",
+      "summary": "Article URL: https://www.openwall.com/lists/oss-security/2026/05/07/8\nComments URL: https://news.ycombinator.com/item?id=48053623\nPoints: 604\n# Comments: 246",
+      "id": "bb874699eef456a03627aa9b02d069b5b910314d814f3511b30e4db1741c798e",
+      "ref_id": "2",
+      "recommendationScore": 88,
+      "popularityScore": 85,
+      "priority": "medium",
+      "comment": "关于Linux本地提权漏洞Dirtyfrag的详细披露，对系统安全至关重要。",
+      "reason": "技术深度高，新颖且实用，对Linux系统管理员、安全研究员和开发者具有极高价值。",
+      "tags": [
+        "Linux",
+        "Security",
+        "Exploit",
+        "LPE"
+      ]
+    },
+    {
+      "title": "Blaise – A modern self-hosting zero-legacy Object Pascal compiler targeting QBE",
+      "link": "https://github.com/graemeg/blaise",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-08T04:44:02.000Z",
+      "summary": "Article URL: https://github.com/graemeg/blaise\nComments URL: https://news.ycombinator.com/item?id=48058644\nPoints: 36\n# Comments: 7",
+      "id": "75e26f071260d9d2745e5259e83404a8e4c9cc8975d5342f78733331041a535c",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 60,
+      "priority": "high",
+      "comment": "深入探讨了一个现代、自宿主且目标QBE后端的Object Pascal编译器Blaise。",
+      "reason": "文章涉及编程语言设计和编译器实现，技术深度高，对编程工具爱好者和系统级开发者极具吸引力。",
+      "tags": [
+        "编译器",
+        "编程语言",
+        "Object Pascal",
+        "QBE",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "Canvas is down as ShinyHunters threatens to leak schools’ data",
+      "link": "https://www.theverge.com/tech/926458/canvas-shinyhunters-breach",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-07T22:22:21.000Z",
+      "summary": "https://thetech.com/2026/05/07/canvas-breach-26\nhttps://techcrunch.com/2026/05/07/hackers-deface-school-logi...\nComments URL: https://news.ycombinator.com/item?id=48055913\nPoints: 574\n# Comments: 352",
+      "id": "bbfe7c8eee5083852c62ce683bcdfd0de8a8fdc65fbcebe0384a0bbe03797302",
+      "ref_id": "4",
+      "recommendationScore": 85,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "报道Canvas平台遭遇黑客攻击，ShinyHunters威胁泄露学校数据的重大网络安全事件。",
+      "reason": "这是一起具有高度时效性和重要性的网络安全事件，对数据安全和教育科技领域有直接影响，警示作用强，且关注度极高。",
+      "tags": [
+        "网络安全",
+        "数据泄露",
+        "黑客攻击",
+        "教育科技",
+        "事件分析"
+      ]
+    },
+    {
+      "title": "AI slop is killing online communities",
+      "link": "https://rmoff.net/2026/05/06/ai-slop-is-killing-online-communities/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-07T18:46:25.000Z",
+      "summary": "Article URL: https://rmoff.net/2026/05/06/ai-slop-is-killing-online-communities/\nComments URL: https://news.ycombinator.com/item?id=48053203\nPoints: 613\n# Comments: 541",
+      "id": "23e9accbda461b44c3455792d37f729aece45de9cc3274542e82e1c666155a5f",
+      "ref_id": "3",
+      "recommendationScore": 82,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "探讨AI生成内容泛滥如何损害在线社区，引发广泛共鸣和讨论。",
+      "reason": "高度关注AI对用户体验和社区生态的负面影响，实用性强，对内容创作者和平台管理者有警示作用。",
+      "tags": [
+        "AI",
+        "Content Quality",
+        "Community",
+        "Ethics",
+        "Opinion"
+      ]
+    },
+    {
+      "title": "Smoothed polygons",
+      "link": "https://www.johndcook.com/blog/2026/05/07/smoothed-polygons/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-05-07T18:19:24.000Z",
+      "summary": "The previous post constructed a triangular analog of the squircle, the unit circle in the p-norm where p is typically around 4. The case p = 2 is a Euclidean circle and the limit as p → ∞ is a Euclidean square. The previous post introduced three functions Li(x, y) such the level set of each function forms a […]\nSmoothed polygons first appeared on John D. Cook.",
+      "id": "9a06e28c9d388b2e72bafb7db179cad9f739253ad20bbf541aac8cd4a56242c4",
+      "ref_id": "4",
+      "recommendationScore": 80,
+      "popularityScore": 45,
+      "priority": "medium",
+      "comment": "一篇关于计算几何和p-norm数学概念的深入探讨。",
+      "reason": "技术深度很高，为高级图形学或算法开发提供了数学基础，但受众相对专业。",
+      "tags": [
+        "数学",
+        "计算几何",
+        "图形学",
+        "算法"
+      ]
+    },
+    {
+      "title": "Maybe you shouldn't install new software for a bit",
+      "link": "https://xeiaso.net/blog/2026/abstain-from-install/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-07T23:02:11.000Z",
+      "summary": "Article URL: https://xeiaso.net/blog/2026/abstain-from-install/\nComments URL: https://news.ycombinator.com/item?id=48056227\nPoints: 439\n# Comments: 229",
+      "id": "5290c504d1f50709ed3ff150f3135e27dd138df52e616c60aba3c2381f815944",
+      "ref_id": "2",
+      "recommendationScore": 75,
+      "popularityScore": 85,
+      "priority": "medium",
+      "comment": "一篇关于避免频繁安装新软件以维护系统稳定性的实用性博客文章。",
+      "reason": "尽管技术深度不高，但对所有软件用户和开发者都具有高实用性和普遍意义，且关注度极高。",
+      "tags": [
+        "软件管理",
+        "系统稳定性",
+        "IT实践",
+        "开发工具"
+      ]
+    },
+    {
+      "title": "Two Home Affairs officials suspended after AI 'hallucinations' found",
+      "link": "https://www.citizen.co.za/news/home-affairs-officials-suspended-ai-hallucinations/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-07T19:38:36.000Z",
+      "summary": "Article URL: https://www.citizen.co.za/news/home-affairs-officials-suspended-ai-hallucinations/\nComments URL: https://news.ycombinator.com/item?id=48053842\nPoints: 82\n# Comments: 19",
+      "id": "8cddca4b6cd3d399561a703e74b8f82f588a617a0c3d7312892639c2cf3ee9be",
+      "ref_id": "1",
+      "recommendationScore": 75,
+      "popularityScore": 40,
+      "priority": "high",
+      "comment": "AI幻觉导致政府官员被停职，揭示AI实际应用风险的真实案例。",
+      "reason": "直接触及AI的实际应用问题和潜在风险，对理解AI落地挑战、伦理和政策制定有重要意义。",
+      "tags": [
+        "AI",
+        "Hallucinations",
+        "Policy",
+        "Ethics"
+      ]
+    },
+    {
+      "title": "What’s next for IVF",
+      "link": "https://www.technologyreview.com/2026/05/07/1136946/whats-next-for-ivf-ai-robot-pgt-gene-editing/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-05-07T09:04:50.000Z",
+      "summary": "MIT Technology Review’s What’s Next series looks across industries, trends, and technologies to give you a first look at the future. You can read the rest of them here. Forty-eight years ago this July, Louise Joy Brown became the world’s first person born with the help of in vitro fertilization. Millions more IVF babies have entered…",
+      "id": "0b81f41893a45b8ab64770c51857659537cd33d1092cfe731da03d1b1667b93b",
+      "ref_id": "2",
+      "recommendationScore": 72,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "审视了体外受精（IVF）技术的历史背景、当前进展和未来发展方向。",
+      "reason": "作为MIT Technology Review的系列文章，它对医学和生物技术领域的重要进展进行了深入的分析和展望。",
+      "tags": [
+        "健康科技",
+        "生物技术",
+        "未来科技",
+        "医疗创新"
+      ]
+    },
+    {
+      "title": "The balcony solar boom is coming to the US",
+      "link": "https://www.technologyreview.com/2026/05/07/1136933/balcony-solar-boom/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-05-07T10:00:00.000Z",
+      "summary": "Dozens of US states are considering legislation to allow people to install plug-in solar systems, often called balcony solar. These small arrays require little to no setup and could help cut emissions and power bills. Balcony solar is already popular in Europe, and proponents say that the systems could make solar power more accessible for…",
+      "id": "1058157c251f39aeb6ff535d204faeeb6c8ca9fe252364cde903e61731bc3319",
+      "ref_id": "1",
+      "recommendationScore": 70,
+      "popularityScore": 75,
+      "priority": "low",
+      "comment": "深入探讨了阳台太阳能在美国的兴起及其对个人能源使用的潜在影响。",
+      "reason": "文章关注了可负担的清洁能源解决方案，对关心能源独立和环保的读者具有较高实用性。",
+      "tags": [
+        "可再生能源",
+        "可持续发展",
+        "绿色科技",
+        "能源政策"
+      ]
+    },
+    {
+      "title": "Prolost Watches 1.0",
+      "link": "https://prolost.com/blog/prolostwatches",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-07T21:27:27.000Z",
+      "summary": "Stu Maschwitz:\nProlost Watches is an iPhone app for managing your watch\ncollection. It’s part database, part journal; designed for the\ndetail-obsessed mind of the watch fanatic. As you log each day’s\nchoice of watch, insights are revealed. Wear logs trace a path on\nthe map. Events from the past are resurfaced at opportune times.\nFinances mange themselves as you buy and sell. Your entire\ncollection lives in your pocket, and you get to enjoy all your\nwatches, even the ones you’re not wearing. [...]\nProlost Watches is a one-time purchase. There’s no subscription,\nno ads, no account, and no server. Your data is secure and\nprivate, and never leaves your device. Pre-order now for\nUS$14.99, with expected release on June 16 at US$19.99.\nI’m friends with Stu, I have my own little obsessively curated watch collection, and, for some of my interests in life, I love keeping a log of activity. So I jumped at the chance to beta test Prolost Watches. And it turns out, my watches are not one of those things I want to track in a log or database. I just want to continue doing what I’ve been doing ever since I went from owning only one watch to two: I pick the one I’m in the mood for that morning and I wear it for the day.\nI feel the same way about sleep tracking. I’m fortunate in that I sleep great every night. I’ve been sleeping better this past year than I have in my entire life. So while I have my Apple Watch(es) set to track my sleep overnight — because why not collect the data? — I don’t look at it or worry about it most days because all it tends to do is add a little stress to my mind over something I ought not have even an iota of stress regarding. (I like wearing an Apple Watch while I sleep not for the sleep tracking but because it’s easy to read in the middle of the night in the dark.)\nBut, that’s me. I obsessively track other things that most of you would think are a bit nutty to track. You don’t get to pick your obsessions, but you know what they are. If you’ve got a few watches and you think you’d be interested in tracking how often you wear each one, you should already have the above link to Prolost Watches open in a tab.\nInteresting too, is how Maschwitz made Prolost Watches:\nBitrig has changed a lot since I used the iPhone version to\ncreate the ill-fated version of Drinking Buddy. It’s now\na native Mac app that allows prompt-base creation of native\nSwiftUI apps for iPhone, as well as iPad, Mac, and Apple Watch. It\nhas a built-in simulator, and can preview your apps on your device\nas well. If Lovable (which I used to create the shipping\nversion of Drinking Buddy) is at one end of the spectrum — easy\nfor anyone to use with little experience, and Claude Code\nrunning in the terminal is at the other, Bitrig is in a sweet spot\nright in the middle: a little nerdy, but with some well-considered\ncreature comforts that, in my case, made it mostly a delight to\ncraft and refine a complex app.\nThe iPhone version of Bitrig got swept up in Apple’s infuriating but unsurprising crackdown on iOS vibe-coding apps a few months ago. It’s still in the App Store, but hasn’t been updated in over five months. The Mac app is in active development. It’s kind of bananas that the iPhone is a nearly 20-year-old platform and you still can’t use an iPhone app to make iPhone apps. And when developers, like Bitrig, found ways to build atop LLM capabilities to make iPhone apps that can make iPhone apps, Apple put the kibosh on it.\n ★",
+      "id": "e10f8bf3ae4da3ceff16e803c53e5b12f7a369319f27818fb42a9a556184e1bf",
+      "ref_id": "4",
+      "recommendationScore": 70,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "详细介绍了为钟表爱好者打造的iPhone独立应用，设计理念独特，强调用户隐私。",
+      "reason": "文章深度解读了Apple生态中的独立开发应用，产品设计精良且突出隐私保护，对特定用户群体实用性强。",
+      "tags": [
+        "Apple生态",
+        "独立开发",
+        "产品设计",
+        "应用评测",
+        "隐私"
+      ]
+    },
+    {
+      "title": "Pluralistic: Bubbles are REALLY evil (07 May 2026)",
+      "link": "https://pluralistic.net/2026/05/07/dump-the-pumpers/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-05-07T08:08:49.000Z",
+      "summary": "Today's links Bubbles are REALLY evil: Bernie Ebbers got what was coming to him. Hey look at this: Delights to delectate. Object permanence: Mozilla v DHS wiretaps; Judge v FCC's internet wiretaps; Foxconn workers must promise not to kill themselves; \"Shannon's Law\"; How to password; Stimmies killed the McJob; \"Little Bosses Everywhere.\" Upcoming appearances: Guelph, Barcelona, Berlin, Hay-on-Wye, London, NYC, Edinburgh. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. Bubbles are REALLY evil (permalink) I am on record as saying that every economic bubble is terrible, but some bubbles do at least leave behind a salvageable productive residue while others leave behind nothing but ashes; indeed, this is the thesis of my next book, The Reverse Centaur's Guide to Life After AI: https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/ Here's a historical comparison that's illuminating: Enron vs Worldcom. Both were monumental frauds, the CEOs of both companies died shortly after the frauds were discovered, but they have very different legacies. Enron – a scam that pretended to secure billions of dollars' worth of new efficiencies through \"energy trading\" but was actually just engineering rolling blackouts in order to jack up energy prices – left behind nothing. Well, not quite nothing. Enron did leave behind a little useful residue after it burned to the ground: a giant repository of emails. You see, after Enron went bust, it was sued by its creditors, who demanded access to relevant emails from the company's Outlook server. But the company execs decided they didn't want to spend the money to weed out the irrelevant emails before the court-mandated disclosure, so instead they published all the emails ever sent or received by anyone at Enron, including tons of extremely private, personal, sensitive information relating to Enron's employees and customers: https://en.wikipedia.org/wiki/Enron_Corpus This became the \"Enron Corpus\" and it was the first large tranche of emails that were in the public domain and available to researchers. As a result, it became the gold standard dataset for researchers investigating social graphs, natural language, and many other subjects that subsequently became very important computer science fields and commercial applications. As legacies go, the Enron Corpus is pretty small ball, and even so, it is decidedly mixed, both because the Enron Corpus constitutes a gross, ongoing privacy violation for a huge number of people; and because a lot of that social graph and natural language work that it jumpstarted has been put to deeply shitty purposes. Then there's Worldcom: also a gigantic fraud, Worldcom falsified billions of dollars' worth of orders for new fiber optic lines, which it then dug up streets all over the world and installed. When Worldcom went bankrupt, all that fiber stayed in the ground, and many people are still using it today. My home in Burbank has a 2GB symmetrical fiber connection through AT&T that runs on old Worldcom fiber that AT&T bought up for pennies on the dollar. So while you have to squint really hard to find any benefit that can be salvaged from Enron, it's really easy to point at Worldcom's productive residue – it's a ton of fiber and conduit running under the streets of major cities around the world, ready to be lit up and bring the people nearby into the 21st century. Fiber, after all, is amazing, literally thousands of times better than copper or 5G or Starlink: https://pluralistic.net/2026/04/07/swisscom/#stacked Even though Enron's CEO Ken Lay and Worldcom's CEO Bernie Ebbers both received prison sentences after their fraud was revealed, the bubbles never stopped, and indeed, they only got worse. AI is the biggest bubble in human history, worse even than the South Sea Bubble: https://en.wikipedia.org/wiki/South_Sea_Company And like those earlier bubbles, some of our modern bubbles will leave behind nothing, while others will leave behind some productive residue. Take the cryptocurrency bubble. Crypto will go to zero, and when it does, all it will leave behind is shitty monkey JPEGs and even worse Austrian economics: https://www.web3isgoinggreat.com/ As with Enron, you can find some productive residue from cryptocurrency if you look hard enough. A lot of programmers have had a heavily subsidized education in Rust programming and cryptographic fundamentals, both of which are unalloyed goods in our otherwise very insecure digital world. Some of the underlying mechanisms from the crypto are useful, even without blockchains. Take Metalabel, a system that lets collaborators on creative projects automate how they handle revenues from those projects by plugging DAO-like logic into traditional, dollar-based bank accounts. They're recycling some of the tooling from the crypto bubble to create a very useful utility, without the crypto: https://www.metalabel.com/ But, as with the Enron Corpus, this is pretty small ball. The world has flushed away hundreds of billions to get paltry millions' worth of value out of crypto – the rest of that value disappeared into the pockets of crooked insiders who defrauded the public into parting with their savings. If crypto will be Enron-like in its post-bubble life, what about AI? I think AI is more like Worldcom: there's a bunch of useful stuff that AI can do, after all. Take away the bubble and we'd call the things AI can do \"plug-ins\" and some people would use them, and others wouldn't, and some of those uses would be productive, and others would be foolish, but we wouldn't bet the world's economy on them, nor would we squander our last dribbles of potable water to cool their data centers. After the AI bubble pops, there will be a lot of durable residue. The data centers will still stand. The GPUs will still be there, and if we don't \"sweat the assets\" by running them as hot and hard as they can tolerate, they won't burn out in 2-3 years. There will be lots of applied statisticians, skilled data-labelers, etc, looking for work. And there will be lots of open source models that have barely been optimized (why make an open source model more efficient when you're raising capital based on the promise of outspending everyone else in order to dominate a world of ubiquitous, pluripotent, winner-take-all centralized AI?): https://pluralistic.net/2025/10/16/post-ai-ai/#productive-residue That's a situation not unlike the post-dotcom bubble of the early 2000s. Almost overnight, the legion of humanities undergrads who'd been treated to subsidized training in perl, Python and HTML found themselves looking for work. Servers could be purchased in bulk for pennies on the dollar (with user data still on them!). I bought a \"dining room set\" of six $1,000+ fancy office chairs for $50 each (still wrapped in plastic!) from a dotcom founder who was selling them on the sidewalk out front of his failed startup's office in the Mission. He offered to sell me ten lifetime's supply of branded t-shirts for $20. I turned him down. That was the birth of Web 2.0. All of a sudden, people who wanted to make real things that were good could do so, because they could find skilled workers, hardware, and office space at such knock-down prices that they could be funded out of pocket or put on a credit card. People got to pursue the web they wanted, free from asshole bosses and VCs. Not everything that got built in those heady days was good, but many good things got built. I can easily imagine that the post-bubble AI scene will produce benefits comparable to Web 2.0 – projects built by and for people who want to do useful and fun things, without being distracted by the mirage of illusory billions promised by the stock swindlers who created the bubble. I can easily imagine that I will find some of those post-bubble tools useful, and that in 20 years I will still be using them, just as today, I am still using some of those early post-dotcom bubble services and tools. And despite all that, IT IS NOT WORTH IT. The residue that is left behind by every bubble is subsidized, but that subsidy doesn't come from the deep-pocketed investors who are gripped by \"irrational exuberance.\" It comes from mom-and-pop, normie, retail investors who have been tricked into giving their money to the insiders who inflated the bubble. From Worldcom to Enron, from crypto to AI, the point of the bubble wasn't ever the residue or lack thereof – it was a transfer from working people to crooks. Bubbles are a system for moving the painfully sequestered life's savings of people who do things to people who steal things. Since the Carter years, workers have been forced to flush their savings into the stock market, after the traditional \"defined benefits pension\" (that guarantees you an inflation-adjusted sum every month until you die) was replaced with 401(k)s and other \"market-based pensions\" (where you only get to survive after retirement if you bet correctly on the movement of stocks): https://pluralistic.net/2022/05/29/against-cozy-catastrophies/ Despite this having all the appearances of a rigged game – finance industry insiders are always going to be better at betting on stocks than teachers, nurses, janitors and other productive workers – proponents of this system always insisted that workers weren't really the suckers at the table. But the stock market is like Kalshi or Polymarket in that one bettor's losses are another bettor's gains, and in those markets, nearly all the money is harvested by less than 1% of bettors: https://www.coindesk.com/markets/2026/04/29/a-tiny-group-is-winning-on-polymarket-as-under-1-of-wallets-take-half-the-profits Somehow, supposedly, we could beat those insiders and survive into our old age without having to eat dog food or become a burden on our kids by betting on the whole market, through index-tracker funds: https://pluralistic.net/2022/03/17/shareholder-socialism/#asset-manager-capitalism Supposedly, this would \"diversify\" our portfolios, which would insulate us from risks we could not understand, much less estimate. But thanks to private equity and the AI bubble, betting on \"the whole market\" is basically \"betting on AI.\" 35% of the S&P 500 is tied up in seven AI companies, who are engaged in the obviously fraudulent (and Worldcom-adjacent) practice of passing the same $100b IOU around really quickly and pretending it's in all their bank accounts at once: https://www.fool.com/investing/2025/11/05/ai-growth-stocks-is-there-still-room-to-run/ When the AI bubble pops, it will vaporize (at least) 35% of the US stock market and wipe out everyday savers who have been swindled into betting their futures on AI, based on the fraudulent representations of AI pitchmen. Millions of people who worked hard all their lives and deprived themselves of small comforts in order to save for their retirement will be wiped out. They will be made dependent on the Social Security system that Republicans are determined to starve into bankruptcy and then turn into (yet another) \"market based system\" that you will be required to convert into chips at the stock market casino where you're up against professional players who hold all the cards: https://www.newsweek.com/major-social-security-change-proposed-to-build-wealth-11727844 Annihilating a third of the stock market will have severe knock-on effects, even though the median US worker only has $955 saved for retirement: https://finance.yahoo.com/news/955-saved-for-retirement-millions-are-in-that-boat-150003868.html Because wiping out the life's savings of everyone else will tank consumption for a generation. Retirees who have to sell their family homes to pay their medical bills won't be buying breakfast at the local diner or catching a Tuesday night movie. They won't be indulging their grandkids with nice birthday presents or helping their own kids buy their first home. Worse still: the only thing our society knows how to do about economic catastrophe (for now, anyway) is to impose brutal austerity, and austerity drives voters into the arms of fascist strongmen, who blame all their woes on a scapegoated minority in order to win office, and then steal everything that's not nailed down: https://pluralistic.net/2026/04/12/always-great/#our-nhs Which is all to say, there's a world of difference between recognizing that the AI bubble is the superior sort of bubble in that it will leave a productive residue, and endorsing the AI bubble as a productive or morally acceptable way to produce that residue. It's one thing to anticipate salvaging something useful out of a catastrophe, and another thing altogether to deliberate induce or prolong that catastrophe so as to maximize the amount of salvage. The swindlers who created this bubble are crooks who have set out to destroy the futures of a generation of savers. They are monsters, and their bubble needs to be popped as quickly as possible. Hey look at this (permalink) Appearing Productive in The Workplace https://nooneshappy.com/article/appearing-productive-in-the-workplace/ Unsolicited https://www.jennyvolvovski.com/category/unsolicited Half of Labour’s Voters Set to Abandon Party in England as Keir Starmer’s ‘London Wall’ Crumbles https://bylinetimes.com/2026/05/06/exclusive-poll-half-of-labours-voters-set-to-abandon-party-in-england-as-keir-starmers-london-wall-crumbles/ Am I Meant To Be Impressed? https://www.wheresyoured.at/am-i-meant-to-be-impressed/ Froth is a small live lexical language for programmable devices https://frothlang.org/ Object permanence (permalink) #20yrsago Judge mocks FCC’s legal argument for wiretapping VoIP https://web.archive.org/web/20060512141440/https://www.eff.org/deeplinks/archives/004638.php #20yrsago Podcasting saved from the UN — for now https://web.archive.org/web/20060603152220/https://www.eff.org/deeplinks/archives/004637.php #15yrsago Two billion people and the royal wedding: pretty damned unlikely https://www.gyford.com/phil/writing/2011/05/06/2-billion-viewers/ #15yrsago Mozilla tells DHS: we won’t help you censor the Internet https://torrentfreak.com/homeland-security-wants-mozilla-to-pull-domain-seizure-add-on-110505/ #15yrsago Foxconn workers forced to sign promise not to commit suicide due to working conditions https://memex.craphound.com/2011/05/05/foxconn-workers-forced-to-sign-promise-not-to-commit-suicide-due-to-working-conditions/ #15yrsago Shannon’s Law: a story about bridging Faerie and the mundane world with TCP-over-magic https://reactormag.com/shannons-law/ #15yrsago Green Army men with PTSD https://www.wearedorothy.com/collections/artworks/products/casualties-of-war #10yrsago Deep Insert skimmers: undetectable, disposable short-lived ATM skimmers https://krebsonsecurity.com/2016/05/crooks-go-deep-with-deep-insert-skimmers/ #10yrsago How standardizing DRM will make us all less secure https://www.eff.org/deeplinks/2016/04/standardized-drm-will-make-us-less-safe #10yrsago Excellent advice for generating and maintaining your passwords https://www.wired.com/2016/05/password-tips-experts/ #10yrsago Amid education funding emergency, Washington State gives Boeing, Microsoft $1B in tax breaks https://jeffreifman.com/2016/05/05/forget-boeing-microsofts-tax-break-costs-776-million/ #5yrsago MRNA vaccines and Clarke's Law https://pluralistic.net/2021/05/05/clarkes-third-law/#indistinguishable-from-magic #5yrsago Stimmies killed the McJob https://pluralistic.net/2021/05/05/clarkes-third-law/#precariat-nostalgia #1yrago Bridget Read's 'Little Bosses Everywhere' https://pluralistic.net/2025/05/05/free-enterprise-system/#amway-or-the-highway Upcoming appearances (permalink) Guelph: Musagetes Lecture, May 8 https://riverrun.ca/whats-on/guelph-lecture-on-being-2026/ Barcelona: Internet no tiene que ser un vertedero (Global Digital Rights Forum), May 13 https://encuentroderechosdigitales.com/en/speakers/ Virtual: How to Disenshittify the Internet with Wendy Liu (EFF), May 14 https://www.eff.org/event/effecting-change-enshittification Berlin: Re:publica, May 18-20 https://re-publica.com/de/news/rp26-sprecher-cory-doctorow Berlin: Enshittification at Otherland Books, May 18 https://www.otherland-berlin.de/de/event-details/cory-doctorow-in-der-friesenstrasse-23-kreuzberg-praesentiert-von-otherland.html Berlin: Enshittification at Otherland Books, May 19 https://www.otherland-berlin.de/de/event-details/cory-doctorow.html Hay-on-Wye: HowTheLightGetsIn, May 22-25 https://howthelightgetsin.org/festivals/hay/big-ideas-2 SXSW London, Jun 2 https://www.sxswlondon.com/session/how-big-tech-broke-the-internet-b3c4a901 NYC: The Reverse Centaur's Guide to Life After AI with Jonathan Coulton (The Strand), Jun 24 https://www.strandbooks.com/cory-doctorow-the-reverse-centaur-s-guide-to-life-after-ai.html Edinburgh International Book Festival with Jimmy Wales, Aug 17 https://www.edbookfest.co.uk/events/the-front-list-cory-doctorow-and-jimmy-wales Recent appearances (permalink) Enshittification (99% Invisible) https://99percentinvisible.org/episode/666-enshittification/ Artificial Intelligence: The Ultimate Disruptor, with Astra Taylor and Yoshua Bengio (CBC Ideas) https://www.cbc.ca/listen/live-radio/1-23-ideas/clip/16210039-artificial-intelligence-the-ultimate-disruptor When Do Platforms Stop Innovating and Start Extracting? (InnovEU) https://www.youtube.com/watch?v=cccDR0YaMt8 Pete \"Mayor\" Buttigieg (No Gods No Mayors) https://www.patreon.com/posts/pete-mayor-with-155614612 The internet is getting worse (CBC The National) https://youtu.be/dCVUCdg3Uqc?si=FMcA0EI_Mi13Lw-P Latest books (permalink) \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 (https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/) \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2026 \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Third draft completed. Submitted to editor. \"The Reverse Centaur's Guide to AI,\" a short book for Farrar, Straus and Giroux about being an effective AI critic. LEGAL REVIEW AND COPYEDIT COMPLETE. \"The Post-American Internet,\" a short book about internet policy in the age of Trumpism. PLANNING. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "6b0f187c62ae2bb622543bca39eebbaee85e820f7c51bb1c446decb9305fd365",
+      "ref_id": "1",
+      "recommendationScore": 70,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "Cory Doctorow对经济泡沫的犀利评论，并预告了与AI相关的书籍。",
+      "reason": "间接涉及AI对社会经济的影响，提供了宏观思考，具有较高的思想价值和话题性。",
+      "tags": [
+        "AI",
+        "经济学",
+        "社会评论",
+        "互联网政策"
+      ]
+    },
+    {
+      "title": "Hardening Firefox with Claude Mythos Preview",
+      "link": "https://hacks.mozilla.org/2026/05/behind-the-scenes-hardening-firefox/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-07T16:05:33.000Z",
+      "summary": "https://arstechnica.com/information-technology/2026/05/mozil...\nComments URL: https://news.ycombinator.com/item?id=48051079\nPoints: 168\n# Comments: 84",
+      "id": "de4ab85f24d2c0f3ba66e1eaa2936c3bef04c38300d8ab7b81f3a8aa525c9294",
+      "ref_id": "2",
+      "recommendationScore": 69,
+      "popularityScore": 24,
+      "priority": "medium",
+      "comment": "一篇关于增强Firefox浏览器安全与隐私的实用指南。",
+      "reason": "提供了Firefox浏览器安全硬化的具体方法，对注重隐私和安全的读者有一定实用价值，信息密度良好，属于重要技术话题。",
+      "tags": [
+        "浏览器安全",
+        "Firefox",
+        "隐私保护",
+        "网络安全"
+      ]
+    },
+    {
+      "title": "Free as in Tribbles",
+      "link": "https://nesbitt.io/2026/05/07/free-as-in-tribbles.html",
+      "source": "nesbitt.io",
+      "publishedAt": "2026-05-07T10:00:00.000Z",
+      "summary": "The free software movement gave us two prepositions to argue over. Free as in beer: it costs you nothing. Free as in speech: you can do what you like with it. Stallman spent decades insisting the second was the one that mattered and the first was nearly a distraction, which is why the FSF ended up maintaining a page about the word “free” that runs longer than most licences.\nSomewhere around the time open source started turning up in procurement meetings, a third variant appeared: free as in puppy. The software costs nothing to take home, but now it needs feeding, walking, and trips to the vet, and someone has to look after it when you’re on holiday. It was the total-cost-of-ownership argument with fur on, and it was a useful corrective because it moved the conversation from the licence to the lifecycle. I liked it enough to give a whole talk under that title at Bath Ruby in 2018, so consider what follows me retiring my own metaphor rather than picking a fight with someone else’s.\nThe puppy metaphor fit the era it came from, and I think it fit the point I was making then. You’d bring in one big open source thing, a database or an application server or a CMS, and your ops team would learn its habits, read its changelogs, and generally know it by name. Run npm ls --all on a moderately sized project today and that relationship is gone. A new Rails app resolves over a hundred gems before you’ve added a line of your own, a React starter pulls in well over a thousand packages, and each of those direct dependencies arrives with its own dependencies already inside it. The date picker you actually wanted accounts for about ninety of the new lockfile entries, which is roughly the point at which I started reaching for a fourth variant: free as in tribbles.\nFor anyone who hasn’t seen the episode, tribbles are small purring balls of fur that a crew member brings aboard the Enterprise because one of them is pleasant to have around and obviously harmless. They are also born pregnant, and Spock does the maths at one point to get 1,771,561 tribbles from a single animal in three days given an adequate food supply. They show up in the air vents, on the captain’s chair, and finally in the grain stores, which is where they reveal that the cargo the ship was guarding has been poisoned.\nEach transitive dependency is a small soft thing in much the same way, a few dozen lines of someone else’s code that you will never open. The born-pregnant property is the bit that does the real damage, because the package you add already contains the packages it needs, and those contain theirs, and that chain is how left-pad ended up in the build path of most of the JavaScript world without a single team consciously choosing it. In the episode the tribbles are also what find the poisoned grain, since the infestation is the only reason anyone goes near the cargo hold.\nAI-assisted scanners are now surfacing vulnerability reports faster than maintainers can read them, let alone triage which ones describe a real problem, and while some are legitimate and plenty are slop, every one of them still lands in somebody’s queue. At the same time AI-assisted coding has dropped the cost of forking to roughly the cost of having the idea. If a library mishandles one edge case it’s a few minutes’ work to fork it, have an agent patch the offending function and draft a README, and publish the result under a new name. The original doesn’t go anywhere when that happens; both versions stay in the registry, both keep getting resolved into different trees, and occasionally into the same tree at once. Registries are filling up with near-identical organisms, each with its own release cadence and its own bug surface, and you inherit whichever one a maintainer somewhere above you in the graph happened to switch to.\nThe puppy framing told you to budget for care and assumed you could treat each animal individually: read the release notes, run the upgrade, maybe even recognise the maintainer. That stops being practical somewhere around the point where you open a storage compartment and they pour out onto your head. At tribble densities there’s no sensible individual to start with, so you end up managing a population instead, with rules about what’s allowed on board at all and quarantine for anything that fails a scan at the transporter. The unit you reason about stops being the package and becomes the lockfile, and after that every lockfile in the org.\nMost of the tooling we have was built for the per-animal case. Dependabot files a pull request per package, advisories identify one CVE in one version range of one library on the assumption you can find it in your tree and think about it in isolation, and SBOMs enumerate every tribble on board without saying much about which compartments they’ve reached. All of that was designed for a number of dependencies you could plausibly have a relationship with, and if Dunbar’s number puts that ceiling somewhere around 150, even the simplest projects are now well past it before the first feature lands.\nScotty solved the infestation by beaming the entire population onto a Klingon ship without asking first, and then nobody on the bridge particularly wanted to tell Kirk how the problem had gone away.1 That maps onto modern supply chain practice rather better than I’d like. Short of a passing Klingon vessel there’s quarantine for new arrivals, lockfiles so the population is at least the same one on every machine, some discipline about what’s allowed aboard in the first place, and the usual advice about not feeding them after midnight.\nAn earlier version of this post had Kirk ordering the beam-out. Josh Bressers corrected me within a couple of hours of it going up, which is roughly the response time you get for citing Star Trek anywhere infosec people can see it. ↩",
+      "id": "a4e7c7b09cd12642fd02c3e996b4f81acd375b0fcda3d8629dc6a6435d9c85ad",
+      "ref_id": "0",
+      "recommendationScore": 68,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "深入探讨开源软件“免费”的不同维度，引发对隐性成本的思考。",
+      "reason": "从哲学层面剖析开源软件的生命周期和成本，对软件选择和独立开发者有启发意义。",
+      "tags": [
+        "开源软件",
+        "软件哲学",
+        "独立开发",
+        "成本分析",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "The Download: the tech reshaping IVF and the rise of balcony solar",
+      "link": "https://www.technologyreview.com/2026/05/07/1136956/the-download-ivf-tech-balcony-solar/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-05-07T12:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. What’s next for IVF IVF has brought millions of babies into the world over the last four decades. But the process can still be slow, painful, and expensive—and far from guaranteed…",
+      "id": "36fb22a372274d8866559418b8fa4f624227de63dea91cef070a0ba939002d10",
+      "ref_id": "0",
+      "recommendationScore": 65,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "涵盖了生殖技术（IVF）与可再生能源（阳台太阳能）两大新兴科技趋势的概览。",
+      "reason": "作为一份科技新闻通讯，它提供了关于IVF技术和阳台太阳能的简明更新，具有一定的普遍兴趣和实用性。",
+      "tags": [
+        "新兴科技",
+        "健康科技",
+        "可再生能源",
+        "新闻"
+      ]
+    },
+    {
+      "title": "Canvas Breach Disrupts Schools & Colleges Nationwide",
+      "link": "https://krebsonsecurity.com/2026/05/canvas-breach-disrupts-schools-colleges-nationwide/",
+      "source": "krebsonsecurity.com",
+      "publishedAt": "2026-05-08T02:58:46.000Z",
+      "summary": "An ongoing data extortion attack targeting the widely-used education technology platform Canvas disrupted classes and coursework at school districts and universities across the United States today, after a cybercrime group defaced the service's login page with a ransom demand that threatened to leak data from 275 million students and faculty across nearly 9,000 educational institutions.",
+      "id": "71d567a7a33d95afc954ab59a2592968f5bc2d6952b48994ea831dc06c5c5b45",
+      "ref_id": "3",
+      "recommendationScore": 65,
+      "popularityScore": 80,
+      "priority": "medium",
+      "comment": "一篇关于重大教育平台数据泄露事件的及时报道，影响广泛。",
+      "reason": "报道了影响数百万用户的网络安全事件，具有较高的实用性和新闻价值，社会关注度高。",
+      "tags": [
+        "网络安全",
+        "数据泄露",
+        "教育科技",
+        "新闻"
+      ]
+    },
+    {
+      "title": "Plasticity and language in the anaesthetized human hippocampus",
+      "link": "https://www.bcm.edu/news/researchers-discover-advanced-language-processing-in-the-unconscious-human-brain",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-07T23:06:44.000Z",
+      "summary": "https://www.nature.com/articles/s41586-026-10448-0\nComments URL: https://news.ycombinator.com/item?id=48056268\nPoints: 97\n# Comments: 39",
+      "id": "c297da1f6c69092fdc09695f7582233c19a05b0355269aa6883af255b0337cfb",
+      "ref_id": "1",
+      "recommendationScore": 60,
+      "popularityScore": 45,
+      "priority": "medium",
+      "comment": "探讨麻醉状态下人海马体可塑性和语言的神经科学前沿研究。",
+      "reason": "具有较高科学深度和新颖性，对理解人脑和未来AI发展有潜在启示，但非直接应用型技术。",
+      "tags": [
+        "神经科学",
+        "大脑",
+        "语言",
+        "基础研究",
+        "AI潜力"
+      ]
+    },
+    {
+      "title": "Behind the Scenes Hardening Firefox with Claude Mythos Preview",
+      "link": "https://simonwillison.net/2026/May/7/firefox-claude-mythos/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-05-07T17:56:25.000Z",
+      "summary": "",
+      "id": "446f5a8605ef2e79f73c240f78bb4698f6bcc844d88928032f4531a65f1c47e9",
+      "ref_id": "0",
+      "recommendationScore": 50,
+      "popularityScore": 60,
+      "priority": "high",
+      "comment": "标题显示涉及AI和浏览器安全，潜力巨大，但文章内容缺失无法评估。",
+      "reason": "主题符合AI和编程工具的高优先级，但缺乏实际内容进行质量判断。",
+      "tags": [
+        "AI",
+        "网络安全",
+        "浏览器",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "Notes on the xAI/Anthropic data center deal",
+      "link": "https://simonwillison.net/2026/May/7/xai-anthropic/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-05-07T17:09:28.000Z",
+      "summary": "",
+      "id": "d4576f9d8fdb5830f9a729cf3d5bc12a3deddb4a74d3b13440a92fccd02a1e4e",
+      "ref_id": "1",
+      "recommendationScore": 50,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "聚焦AI领域重要公司的商业动态，但文章内容缺失无法评估。",
+      "reason": "AI领域的重要公司交易是高优先级关注点，但内容缺失无法进行深度评价。",
+      "tags": [
+        "AI",
+        "商业",
+        "数据中心",
+        "市场分析"
+      ]
+    },
+    {
+      "title": "Cloudflare to cut about 20% workforce",
+      "link": "https://www.reuters.com/business/world-at-work/cloudflare-cut-over-1100-jobs-2026-05-07/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-07T20:23:37.000Z",
+      "summary": "https://blog.cloudflare.com/building-for-the-future/\nComments URL: https://news.ycombinator.com/item?id=48054423\nPoints: 633\n# Comments: 390",
+      "id": "6d6c9127cff21bc93404783d2361d3600b20f741d4709ba12290fffd26484949",
+      "ref_id": "0",
+      "recommendationScore": 30,
+      "popularityScore": 90,
+      "priority": "low",
+      "comment": "一篇关于Cloudflare裁员的行业新闻，关注公司动态。",
+      "reason": "虽然受关注度高，但技术深度和与核心科技主题的关联度较低，更偏向商业资讯而非技术洞察。",
+      "tags": [
+        "Business",
+        "Layoffs",
+        "Cloudflare"
+      ]
+    },
+    {
+      "title": "Notes on incidents",
+      "link": "https://seangoedecke.com/notes-on-incidents/",
+      "source": "seangoedecke.com",
+      "publishedAt": "2026-05-08T00:00:00.000Z",
+      "summary": "",
+      "id": "55d27252d9dac18f4fa85d54c616237d9a41882593e6cdda596a3fac182b7d46",
+      "ref_id": "2",
+      "recommendationScore": 30,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "标题过于泛泛且内容缺失，无法进行有效评估和归类。",
+      "reason": "缺乏具体主题和内容，难以判断其技术深度、新颖性或实用性。",
+      "tags": [
+        "通用",
+        "事件"
+      ]
+    },
+    {
+      "title": "The Intolerable Hypocrisy of Cyberlibertarianism",
+      "link": "https://matduggan.com/the-intolerable-hypocrisy-of-cyberlibertarianism/",
+      "source": "matduggan.com",
+      "publishedAt": "2026-05-07T09:43:28.000Z",
+      "summary": "I like the Internet. I am old enough to remember the pre-Internet era and despite the younger generations pining for those simpler days, I was there. Paper maps were absolutely horrible, just you and a compass in your car on the side of the road in the middle of the",
+      "id": "f4aa3741dc84be21b862f31bd0bcbfeb4f182cb3d7607df0214e20b0f52e58ca",
+      "ref_id": "0",
+      "recommendationScore": 30,
+      "popularityScore": 45,
+      "priority": "low",
+      "comment": "一篇关于网络自由主义的社会文化评论，内容偏向观点探讨而非技术分析。",
+      "reason": "文章主题远离预设的科技优先主题（如AI、Apple生态），技术深度、新颖性与实用性评分较低。",
+      "tags": [
+        "互联网文化",
+        "社会评论",
+        "哲学思考"
+      ]
+    },
+    {
+      "title": "HantaWatch Real time hantavirus outbreak tracker",
+      "link": "https://hantawatch.net/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-08T05:24:24.000Z",
+      "summary": "Article URL: https://hantawatch.net/\nComments URL: https://news.ycombinator.com/item?id=48058917\nPoints: 5\n# Comments: 1",
+      "id": "c12d6008dd7c221a218fe181a2ca4e5e3094255ecc25357bb55d6f1196cf41e2",
+      "ref_id": "0",
+      "recommendationScore": 25,
+      "popularityScore": 15,
+      "priority": "low",
+      "comment": "一个实时的汉坦病毒爆发追踪器，提供了公共健康领域的数据应用。",
+      "reason": "项目具有一定的社会价值，但技术深度和在科技博客主题优先级中的相关性较低。",
+      "tags": [
+        "公共卫生",
+        "数据追踪",
+        "Web应用"
+      ]
+    },
+    {
+      "title": "Gambling ads on social media reach more than twice as many men as women: study",
+      "link": "https://www.cam.ac.uk/research/news/gambling-ads-on-social-media-reach-more-than-twice-as-many-men-as-women",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-07T23:17:03.000Z",
+      "summary": "Article URL: https://www.cam.ac.uk/research/news/gambling-ads-on-social-media-reach-more-than-twice-as-many-men-as-women\nComments URL: https://news.ycombinator.com/item?id=48056359\nPoints: 57\n# Comments: 47",
+      "id": "65a89ab486317fa5703e80d960338a120b8e70c956a0f098646d8918e9b2ae85",
+      "ref_id": "0",
+      "recommendationScore": 25,
+      "popularityScore": 35,
+      "priority": "low",
+      "comment": "一项关于社交媒体赌博广告性别差异的社会学研究报告。",
+      "reason": "内容偏向社会学，与核心科技主题关联度低，技术深度和实用性有限。",
+      "tags": [
+        "社会研究",
+        "社交媒体",
+        "广告"
+      ]
+    },
+    {
+      "title": "Brazil's Pix payment system faces pressure from Visa and Mastercard",
+      "link": "https://www.elciudadano.com/en/brazils-pix-payment-system-faces-pressure-from-visa-and-mastercard/04/04/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-07T17:42:58.000Z",
+      "summary": "Article URL: https://www.elciudadano.com/en/brazils-pix-payment-system-faces-pressure-from-visa-and-mastercard/04/04/\nComments URL: https://news.ycombinator.com/item?id=48052371\nPoints: 172\n# Comments: 142",
+      "id": "2314e5743a20c1deb43e2e840de30ecbf6140bd7245b10953a1c290e8a5c4fc6",
+      "ref_id": "0",
+      "recommendationScore": 25,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "一篇关于巴西支付系统市场竞争的报道，非核心科技主题。",
+      "reason": "主题与科技博客的核心关注点关联度低，技术深度和实用性不足，虽然有一定市场信息，但非科技领域。",
+      "tags": [
+        "金融科技",
+        "市场分析"
+      ]
+    },
+    {
+      "title": "The Greatest Match Cut in Cinematic History, Improved by Amazon Prime",
+      "link": "https://bsky.app/profile/gethill.bsky.social/post/3ml6fyfv7kc2l",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-07T15:21:34.000Z",
+      "summary": "I’m sure there’s a scene marker right at the cut, so that’s why an ad got inserted there. But, my god. Someone at Amazon should go to prison for this.\n(I think it’s a total coincidence that the Febreze ad seems roughly color-matched to the sky. But scroll down in the Bluesky thread for some links to the absolute genius campaign from Cerveza Cristal beer, with spots specifically designed to integrate into Star Wars when it was broadcast on commercial TV in Chile. “Your father wanted you to have this when you were old enough” might be the funniest TV commercial ever made.)\nUpdate: Here’s Todd Vaziri’s 2026 HD remaster of the original jump cut, for your comparison. Enjoy.\n ★",
+      "id": "039171a2c47e0880d77ab44e11c18794cc7bb9c52948de32446539e6b3ad8ae2",
+      "ref_id": "0",
+      "recommendationScore": 25,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "趣味性多于技术性的电影剪辑与广告插入评论。",
+      "reason": "主题偏离科技领域，缺乏技术深度和实用价值。",
+      "tags": [
+        "电影",
+        "广告",
+        "文化评论"
+      ]
+    },
+    {
+      "title": "Nonprofit hospitals spend billions on consultants with no clear effect",
+      "link": "https://www.uchicagomedicine.org/forefront/research-and-discoveries-articles/nonprofit-hospitals-spend-billions-on-management-consultants",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-07T22:54:34.000Z",
+      "summary": "Article URL: https://www.uchicagomedicine.org/forefront/research-and-discoveries-articles/nonprofit-hospitals-spend-billions-on-management-consultants\nComments URL: https://news.ycombinator.com/item?id=48056158\nPoints: 138\n# Comments: 40",
+      "id": "a9f9413ceb52c9f637fac4b38c22c08ed30d3d936379466b986e42b13eb582c9",
+      "ref_id": "3",
+      "recommendationScore": 20,
+      "popularityScore": 55,
+      "priority": "low",
+      "comment": "一项关于非营利医院巨额咨询费支出效果不明显的管理学调查报告。",
+      "reason": "内容属于商业管理范畴，与科技博客关注的AI、编程工具等主题关联度低。",
+      "tags": [
+        "商业管理",
+        "医疗行业",
+        "咨询",
+        "研究报告"
+      ]
+    },
+    {
+      "title": "Big Words",
+      "link": "https://simonwillison.net/2026/May/7/big-words/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-05-07T18:47:09.000Z",
+      "summary": "",
+      "id": "b04200899d48186e68d48f711bc13098d8e7d187fdf8e2449819fda4d9b61acc",
+      "ref_id": "4",
+      "recommendationScore": 20,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "文章标题过于笼统，且无内容，无法进行有效评估。",
+      "reason": "由于缺少具体内容和清晰的标题，无法判断其技术深度、新颖性或实用性，故不推荐。",
+      "tags": [
+        "未分类",
+        "占位符"
+      ]
+    },
+    {
+      "title": "The Bold Ones Win",
+      "link": "https://feed.tedium.co/link/15204/17336568/ted-turner-bold-ceo-bets",
+      "source": "tedium.co",
+      "publishedAt": "2026-05-08T00:13:15.000Z",
+      "summary": "We lost Ted Turner, a patron saint of Tedium, just as an entrepreneur made an audacious Turner-style bet. What can we learn from that?\n\nThis week, word came out that the CEO of a name-brand, heavily memed company was trying to do something completely audacious.\nAlso, Ted Turner, the guy who arguably invented that trick and arguably did it better than possibly anyone else of his generation, just died.\nIt’s hard not to want to compare the left-field tactics of Ryan Cohen, the CEO of GameStop, founder of Chewy, and apparent suitor of eBay, to what Turner did throughout his long, storied, crazy-like-a-fox career. There’s a modest cult of personality around Cohen; I have a self-contained cult of personality around Turner, who is one of my favorite business leaders of the modern era.\nI described Turner way back in 2015 as the Steve Jobs of television, and it’s a reputation that sticks. Like Jobs, he faced his share of boardroom drama, and took bold swings that everyone thought were out there at the time but looked brilliant in retrospect.\nThere are so many good stories about Turner, the guy who shot a nuclear winter contingency plan for his 24-hour news network. He was perhaps the only competitive yachtsman of note to appear on the cover of Sports Illustrated, a magazine whose then-owner later bought his company. He tried (and quickly failed) to take on MTV. He attempted to colorize lots of films for purely commercial reasons, only to do an about-face and launch a prestige cable channel instead. He created an environmentally friendly superhero.\nAnd then there’s whatever the Goodwill Games was.\nTed Turner was a big enough deal in 1985 that he could dominate an entire business section in his home state of Georgia. (Macon Telegraph/Newspapers.com)\nBut in 1985, he had a moment where his boldness was about to knock him off the rails. In April of that year, he announced his plans to launch a hostile takeover of CBS, a company that, like eBay, was comically larger than its potential acquirer. Like Ryan Cohen’s eBay bid, Turner was trying to do it with cash he largely did not have. And it felt audacious at the time; the Macon Telegraph dedicated an entire page of its business section just to the implications of the deal, involving one of Georgia’s most powerful residents.\nIt didn‘t work out, ultimately; for once, Turner’s audacity got the best of him. His consolation prize? Buying the MGM library, considered a film industry crown jewel at the time, but selling the company. (The colorization drama came after.)\nNow, 40 years later, we have a different class of weird, audacious, CEOs, the kind that are more likely to take potshots at the UN than give it a billion dollars just because.\n\n\n Sponsored By Scrimba \n\n\nCode doesn’t have to be scary. Get to know Scrimba.\nListen, I get it. You’ve been vibe coding like crazy trying to figure out how to make your way around the weirdness that is the modern internet. But wouldn’t it be nice if you actually understood what that code did?\nThat’s where Scrimba comes in. It’s an educational tool that combines actual code exercises with interactive video courses. You’ll be learning ternarys and navigating variables like a champ in no time—including on languages you’ll actually see in the wild. And in case it gets a little boring coding by yourself, Scrimba has a pretty killer community, too.\nPlus, an annual subscription, which is way cheaper than going back to school, is 20% off for Tedium subscribers. Give ’em a look—you might find out you actually like programming.\n\n\nAnd then we have dudes like GameStop CEO Ryan Cohen, who does admittedly have a track record. Chewy is a pretty huge company that blew up after he refused to accept the logic that a pet-centric e-commerce site couldn’t work. In some ways, Turner and Cohen have a lot in common—if eBay is Cohen’s CBS moment, Cohen got there at a slightly younger age than Turner did. But in others, they sharply diverge.\nLove or hate Turner, he built his empire by taking bold risks with business moves that others were too nervous to try themselves. He acquired companies, yes, but he also built essential things from the ground up, like CNN. He helped give Atlanta a modern identity and a voice in the conversation, along with the roots of one of the strongest film industry epicenters in the country.\nCohen has taken bold risks, too, but much of his power is centralized in the stock market. His motivation for buying eBay seems far different from the motivation that drove Turner. When I heard about the proposed buyout, I immediately expressed skepticism and wondered if there might be a gas leak at GameStop HQ.\n(Part of the reason for this: Cohen treats companies like financial instruments that can be optimized and tweaked for maximum stock market value. He’s an investor first, CEO second.)\n\nCNN’s Turner obit was in the can long enough that it features an extended interview with Jimmy Carter, someone who died over a year ago. (Turner was diagnosed with Lewy body dementia in 2018.)\nBut looking at the deal in context of what Turner did is forcing me to check my priors a little. If I was looking at Ted’s wheeling and dealing in 1985, would I feel differently about it? Is there actually a point to such audacious bets?\n(And it’s to be noted that Turner himself got burned by an audacious bet like this, with the AOL Time Warner merger, when the Turner-owning Time Warner played CBS to AOL’s Ted Turner.)\nRyan Cohen I’m sure is a fine entrepreneur, and entrepreneurship is a game of bets. But I wonder if he should study up on Ted Turner’s career before he dives into the deep water of an eBay acquisition any further.\nThere was always a logic to Turner’s decision-making even when it led to weird places like Captain Planet. It wasn’t always about the stock price. It might have been meeting another goal for him. That style of business feels old-school in an era when it’s literally possible for a company whose product everyone has been using for decades can see a 4,000% jump in value just because it’s indirectly attached to AI.\nThe logic needs to be more than about stock price.\n\nColorized Links\nYour favorite artist is in the midst of cancelling their tour, presumably because concert tickets cost a million bucks these days.\n\nHere’s an extremely Tedium-coded video that tangentially relates to today’s story. Ted Turner’s son, Teddy, once started a company that sold computers with MyTurn branding as well as NewDeal Office—i.e. the rebranded GeoWorks. The company sank like a stone, and even proved a liability when Turner ran for political office. But it left behind this infomercial, presumably funded by Teddy’s dad.\nRecently I’ve been messing around with the AT Protocol-native blogging platform Leaflet. I figured out that its support of KaTeX code through its math function allows for some really weird code tricks, including pixel art.\n--\nRIP legend. Find this one an interesting read? Share it with a pal!\nDevelop your analytical side: Check out our sponsor Scrimba, which mixes video lessons with interactive code windows—and makes it feel downright approachable. Sign up here for a 20% discount.",
+      "id": "3de61ffd56b1f119b71e4caba301d54f476e3b22181d17406446c322e86fb428",
+      "ref_id": "2",
+      "recommendationScore": 20,
+      "popularityScore": 55,
+      "priority": "low",
+      "comment": "一篇关于商业策略和领导力的文章，与科技博客主题不符。",
+      "reason": "内容完全偏离科技博客的关注主题，缺乏技术相关性。",
+      "tags": [
+        "商业策略",
+        "领导力",
+        "非技术"
+      ]
+    },
+    {
+      "title": "I've found just the right paper for my Bottom Hole problem",
+      "link": "https://shkspr.mobi/blog/2026/05/ive-found-just-the-right-paper-for-my-bottom-hole-problem/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-05-07T11:34:54.000Z",
+      "summary": "A few weeks ago, I went on a mad quest to find the newspaper used in 1995's Bottom Hole TV show.  During the episode, Eddie starts reading this newspaper:    Obviously, the \"Hammersmith Bugle\" is not a real paper and they never ran a headline \"No News Shocker\". But judging from all the other shots, the prop is based on a real newspaper.    So I decided to rip off Dirty Feed's shtick and find out…",
+      "id": "fdddfe3f5c31486e483b225fa39f91c091ba5161934289eddc6ee53a153a6790",
+      "ref_id": "2",
+      "recommendationScore": 15,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "一篇关于寻找电视节目道具报纸的非常规内容。",
+      "reason": "与科技博客主题无关，不具备技术深度或实用性。",
+      "tags": [
+        "怀旧",
+        "文化",
+        "探索"
+      ]
+    },
+    {
+      "title": "Digging into Drama at the Document Foundation",
+      "link": "https://lwn.net/Articles/1066418/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-08T03:51:59.000Z",
+      "summary": "Article URL: https://lwn.net/Articles/1066418/\nComments URL: https://news.ycombinator.com/item?id=48058337\nPoints: 19\n# Comments: 1",
+      "id": "d1a777dfe50d4961658fdb47e2f042f9eb0e08323d05dd51525dbd0a912ffe78",
+      "ref_id": "2",
+      "recommendationScore": 10,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "揭露了Document Foundation内部的组织冲突和治理问题。",
+      "reason": "内容主要关注开源社区的内部政治和管理，与科技博客关注的核心技术主题优先级不符。",
+      "tags": [
+        "开源社区",
+        "治理",
+        "新闻",
+        "组织管理"
+      ]
+    },
+    {
+      "title": "I want to live like Costco people",
+      "link": "https://tastecooking.com/i-want-to-live-like-costco-people/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-07T15:19:27.000Z",
+      "summary": "Article URL: https://tastecooking.com/i-want-to-live-like-costco-people/\nComments URL: https://news.ycombinator.com/item?id=48050499\nPoints: 286\n# Comments: 594",
+      "id": "e530823cb9c103e4b652a43e5581a55e44a2729973e4767a84865ec462dc9a19",
+      "ref_id": "4",
+      "recommendationScore": 5,
+      "popularityScore": 85,
+      "priority": "low",
+      "comment": "一篇关于生活方式和消费观点的非科技文章，与本博客主题无关。",
+      "reason": "文章内容与科技博客主题完全不符，不具备任何技术深度、新颖性或实用性，尽管可能在其他领域受欢迎。",
+      "tags": [
+        "生活",
+        "非科技",
+        "社会观察"
+      ]
+    },
+    {
+      "title": "How Long Do We Wait for New Inventions?",
+      "link": "https://www.construction-physics.com/p/how-long-do-we-wait-for-new-inventions",
+      "source": "construction-physics.com",
+      "publishedAt": "2026-05-07T15:23:28.000Z",
+      "summary": "Mostly not very long",
+      "id": "0690e2f03912c943fb3705c96183622bb0e09d384de10dc088a04e799e401c41",
+      "ref_id": "1",
+      "recommendationScore": 5,
+      "popularityScore": 5,
+      "priority": "low",
+      "comment": "内容过短，无法评估其价值和主题相关性。",
+      "reason": "文章内容缺失，无从判断其技术深度、新颖性或实用性。",
+      "tags": [
+        "内容缺失",
+        "无法评估"
+      ]
+    },
+    {
+      "title": "Notes on the Hantavirus Outbreak",
+      "link": "https://borretti.me/article/notes-on-the-hantavirus-outbreak",
+      "source": "borretti.me",
+      "publishedAt": "2026-05-08T00:00:00.000Z",
+      "summary": "Cruise ships are bad for the world.",
+      "id": "c272b5a26b4d5a12bed94120a6da5b15f9ebbdc258240b70a831461a7bd50741",
+      "ref_id": "3",
+      "recommendationScore": 5,
+      "popularityScore": 5,
+      "priority": "low",
+      "comment": "内容过短且与科技主题无关，无法评估。",
+      "reason": "文章内容缺失，且主题与科技博客不符。",
+      "tags": [
+        "内容缺失",
+        "非技术",
+        "无法评估"
+      ]
+    }
+  ]
+}
