@@ -4,7 +4,7 @@ const apiKey = process.env.GEMINI_API_KEY || '';
 const genAI = new GoogleGenerativeAI(apiKey);
 const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
-const SUMMARY_PROMPT = `你是科技博客编辑，请用中文写一段 100 字以内的今日科技速递摘要，概括以下文章的核心热点，语气简洁专业。
+const SUMMARY_PROMPT = `你是科技博客编辑，请用中文写一段 60 字以内的今日科技速递摘要，概括以下文章的核心热点，语气简洁专业。
 
 文章列表：
 {{articles_json}}
@@ -39,7 +39,10 @@ export async function generateDailySummary(scoredArticles: any[]): Promise<strin
       setTimeout(() => reject(new Error('Summary generation timed out')), 30000)
     );
 
-    const result = await Promise.race([model.generateContent(prompt), timeoutPromise]);
+    const result = await Promise.race([
+      model.generateContent(prompt, { maxOutputTokens: 200 }),
+      timeoutPromise
+    ]);
     const response = await result.response;
     const content = response.text();
 
@@ -48,9 +51,23 @@ export async function generateDailySummary(scoredArticles: any[]): Promise<strin
       return '';
     }
 
-    // 截断到 100 字以内
     const summary = content.trim();
-    return summary.length > 100 ? summary.slice(0, 100) + '...' : summary;
+    if (summary.length <= 100) {
+      return summary;
+    }
+
+    const truncationIndex = Math.max(
+      summary.lastIndexOf('。', 100),
+      summary.lastIndexOf('，', 100),
+      summary.lastIndexOf('.', 100),
+      summary.lastIndexOf(',', 100)
+    );
+
+    if (truncationIndex > 0) {
+      return summary.slice(0, truncationIndex + 1);
+    }
+
+    return summary.slice(0, 100) + '...';
   } catch (error) {
     console.error('Failed to generate daily summary:', error);
     return '';
