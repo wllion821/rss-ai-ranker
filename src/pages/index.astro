@@ -103,7 +103,16 @@ const recommendedCount = recommendedArticles.length;
   {dailySummary && (
     <div style="background:#1e293b;border-radius:12px;padding:16px;margin-bottom:16px;border-left:4px solid #22d3ee;">
       <h3 style="margin:0 0 8px;color:#22d3ee;font-size:1.1rem;">🤖 AI 今日摘要</h3>
+<<<<<<< HEAD
       <p style="margin:0;color:#e2e8f0;line-height:1.6;">{dailySummary}</p>
+=======
+      <div id="daily-summary-container" style="overflow:hidden;max-height:3.2em;transition:max-height 0.3s ease;position:relative;">
+        <p id="daily-summary-text" style="margin:0;color:#e2e8f0;line-height:1.6;">{dailySummary}</p>
+      </div>
+      <div style="text-align:right;margin-top:8px;">
+        <span id="daily-summary-toggle" style="display:inline-block;color:#22d3ee;font-size:12px;cursor:pointer;user-select:none;">展开全文 ▼</span>
+      </div>
+>>>>>>> 1909d4d (fix: add expandable AI summary on homepage)
     </div>
   )}
 
@@ -201,6 +210,22 @@ const recommendedCount = recommendedArticles.length;
       }
 
       updateSelection('全部');
+
+      const summaryContainer = document.getElementById('daily-summary-container');
+      const summaryToggle = document.getElementById('daily-summary-toggle');
+
+      if (summaryContainer && summaryToggle) {
+        const needsToggle = summaryContainer.scrollHeight > summaryContainer.clientHeight + 1;
+        if (!needsToggle) {
+          summaryToggle.style.display = 'none';
+        }
+
+        summaryToggle.addEventListener('click', function () {
+          const isExpanded = summaryContainer.style.maxHeight === 'none';
+          summaryContainer.style.maxHeight = isExpanded ? '3.2em' : 'none';
+          summaryToggle.textContent = isExpanded ? '展开全文 ▼' : '收起 ▲';
+        });
+      }
     })();
   </script>
 </BaseLayout>
