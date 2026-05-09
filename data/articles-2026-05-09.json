@@ -1,0 +1,731 @@
+{
+  "dailySummary": "今日科技速递：AI正加速重塑漏洞发现文化，凸显开源软件供应链安全危机。约12%关键开源项目已无人维护，构成巨大安全隐患。此外，Anthropic发布AI解释能力新进展，",
+  "articles": [
+    {
+      "title": "You gave me a u32. I gave you root. (io_uring ZCRX freelist LPE)",
+      "link": "https://ze3tar.github.io/post-zcrx.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-08T19:40:39.000Z",
+      "summary": "Article URL: https://ze3tar.github.io/post-zcrx.html\nComments URL: https://news.ycombinator.com/item?id=48067734\nPoints: 117\n# Comments: 73",
+      "id": "3911cdaa9436b0d7316e0fb97673a235714742aa298266b49bb2897f70b90ee0",
+      "ref_id": "3",
+      "recommendationScore": 95,
+      "popularityScore": 100,
+      "priority": "high",
+      "comment": "一篇极其深入的内核漏洞利用分析，技术深度和新颖性极高。",
+      "reason": "详细揭示了io_uring组件中的最新安全漏洞及其利用细节，对安全研究和系统开发人员具有里程碑式的参考价值。",
+      "tags": [
+        "安全",
+        "漏洞利用",
+        "内核",
+        "io_uring",
+        "系统编程"
+      ]
+    },
+    {
+      "title": "Premium: AI's Circular Psychosis",
+      "link": "https://www.wheresyoured.at/premium-ais-circular-psychosis/",
+      "source": "wheresyoured.at",
+      "publishedAt": "2026-05-08T14:40:45.000Z",
+      "summary": "In this week’s free newsletter, I explained how bad the circular AI economy is in the simplest-possible terms: \nAnthropic not have money to pay big cloud bills, because Anthropic company cost lots of money, more money than Anthropic make! So Anthropic only PAY cloud bills if OTHERS",
+      "id": "a941b2297f1b17b957a16ff18c6c945e4d090af4437b11d6a43a9c4b8cdf02d1",
+      "ref_id": "3",
+      "recommendationScore": 92,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "对当前AI产业的商业模式和经济困境进行了深刻且尖锐的分析。",
+      "reason": "紧扣AI这一核心主题，从经济角度切入，观点独到，对行业内人士具有极高的参考价值。",
+      "tags": [
+        "AI",
+        "经济分析",
+        "产业洞察",
+        "商业模式"
+      ]
+    },
+    {
+      "title": "Teaching Claude Why",
+      "link": "https://www.anthropic.com/research/teaching-claude-why",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-08T17:59:41.000Z",
+      "summary": "Article URL: https://www.anthropic.com/research/teaching-claude-why\nComments URL: https://news.ycombinator.com/item?id=48066592\nPoints: 66\n# Comments: 13",
+      "id": "b86216cf8bfbd2b74add93d6d5e783c24b7d41915edcc4898dbd87fd85698d2a",
+      "ref_id": "1",
+      "recommendationScore": 90,
+      "popularityScore": 60,
+      "priority": "high",
+      "comment": "Anthropic关于提升Claude大模型解释能力的研究文章。",
+      "reason": "深入探讨AI可解释性的前沿研究，对AI领域发展至关重要。",
+      "tags": [
+        "AI",
+        "LLM",
+        "Claude",
+        "可解释性",
+        "研究",
+        "Anthropic"
+      ]
+    },
+    {
+      "title": "Weekend at Bernie’s",
+      "link": "https://nesbitt.io/2026/05/08/weekend-at-bernies.html",
+      "source": "nesbitt.io",
+      "publishedAt": "2026-05-08T10:00:00.000Z",
+      "summary": "In the 1989 film, two junior employees turn up at their boss’s beach house to find him dead, and spend the rest of the weekend wheeling him around the party with sunglasses on so nobody notices. The other guests keep slapping him on the back and putting drinks in his hand. It works because nobody looks too closely and because everyone has a strong incentive for Bernie to still be alive.\nI have spent the last couple of weeks trying to work out how many of the open source packages we all depend on are in roughly that condition: resolving in every install, pulling millions of downloads a week, accepting new issues, with nobody behind the sunglasses. I’m asking now rather than a few years ago because AI-assisted vulnerability discovery is changing how often somebody actually checks for a pulse.\nThis matters most at the point where one of those packages gets a security report. Sometimes nobody responds at all, the embargo expires, and a CVE is published with no fixed version to point at. Sometimes a fix does get written, often by the reporter or a drive-by contributor, and it lands in git or sits in an open PR, but the one account with publish rights on the registry has gone and the patched code never reaches anyone’s install command.\nLinux distributions deal with that second case routinely because distro packagers have always carried patches without waiting for upstream, but language package managers have no equivalent role. The registry namespace belongs to whoever registered it, and if they’re gone there is nobody standing between you and the unpatched tarball. There are per-application workarounds, which I went through in some detail last week, but they put the work on every downstream consumer individually rather than fixing the published artifact once.\nThere’s also a quieter way an unmaintained package causes problems that doesn’t need a vulnerability in the package itself. If it declares a tight version range on one of its own dependencies, and that dependency is actively maintained and ships a security release in a new major version, the resolver can’t reach the fix because the dead package’s constraint won’t allow it. Everything downstream gets held on the vulnerable version by a single line in a manifest that nobody is around to edit, which is more or less the situation byroot describes hitting with openssl in Bundler.\nWhat counts as dead\nThe naive way to do this is to look at the last commit date, call anything over two years old “abandoned”, and publish a scary number. I didn’t want to do that, because a package with no commits since 2019 isn’t necessarily dead. A lot of the most depended-on packages in any ecosystem are forty lines long, finished, and don’t need commits. The thing I actually want to know is whether anyone would answer if you knocked, and the commit log on its own doesn’t tell you that.\nSo I started from the ecosyste.ms critical package set, which is the top packages per registry by a blend of downloads and dependent repos, across sixteen package managers. That gave me 8,606 packages backed by 5,874 distinct repositories. For each repo I pulled a year of commit activity, a year of issue and PR activity, who closed or merged anything, who has publish rights on the registry, the date of the last release, and any security advisories filed against the package. Then I sorted them into four buckets.\nActive: regular non-bot commits to the default branch, or a release, in the past year.\nDormant: little or no development, but someone with write access has closed an issue, merged a PR, or pushed a commit in the past year, so a fix could plausibly land.\nDead: the repo is archived, or issues/PRs were filed in the past year and nobody with write access closed, merged, committed or released anything in response.\nUnknown: no issues or PRs filed and no activity, so responsiveness hasn’t been tested.\nDead requires evidence of non-response rather than just inactivity, because I’d rather undercount than put a package on a list whose author happened to take a year off.\nThe numbers\nOf those 5,874 critical repos, 48.8% are active, 20.2% are dormant, 12.1% are dead, and 18.9% are unknown. So just under half are unambiguously maintained. Twelve percent confirmed dead doesn’t sound enormous, but those 713 repositories back packages whose dependent-repo counts sum to about 290 million (these are edges in the dependency graph, not deduplicated repositories), and adding the dormant and unknown buckets takes that sum well past a billion.\nBroken down by ecosystem the dead share wobbles a bit, but it’s in double figures almost everywhere I have enough repos to say anything:\necosystem\n      repos\n      active\n      dormant\n      dead\n      unknown\n      dead %\n    \nnpm\n      1599\n      578\n      385\n      181\n      455\n      11.3\n    \nrubygems\n      683\n      347\n      158\n      74\n      104\n      10.8\n    \ncargo\n      580\n      365\n      95\n      69\n      51\n      11.9\n    \npackagist\n      547\n      380\n      62\n      66\n      39\n      12.1\n    \ngo\n      530\n      188\n      122\n      107\n      113\n      20.2\n    \npypi\n      458\n      335\n      73\n      37\n      13\n      8.1\n    \nhackage\n      396\n      100\n      105\n      69\n      122\n      17.4\n    \nmaven\n      370\n      234\n      36\n      27\n      73\n      7.3\n    \nconda\n      302\n      202\n      53\n      12\n      35\n      4.0\n    \njulia\n      173\n      34\n      34\n      37\n      68\n      21.4\n    \nhex\n      153\n      73\n      35\n      17\n      28\n      11.1\n    \nA repo appears under every ecosystem it publishes to, so the columns sum to more than 5,874. I’ve left out the five smallest registries (swiftpm, nuget, cocoapods, pub, cpan) where the sample is under 100 repos and the percentages are mostly noise.\nGo’s 20% is high enough not to be noise, and I suspect part of it is import paths going stale when repositories move while the module proxy keeps the old path installable, so nobody downstream is forced to notice. npm sits near the middle on dead share but dominates by absolute volume, and its unknown column is enormous. That’s mostly an artifact of what npm’s critical set looks like: hundreds of tiny utilities that nobody files issues against because there’s nothing to file.\nThe top of the dead list, sorted by dependent repos, is almost entirely those tiny npm utilities. fast-deep-equal, fast-json-stable-stringify, utils-merge, require-directory, each with somewhere between three and five million repos depending on them and no maintainer activity in years. About a third of the non-active packages have zero runtime dependencies of their own, so they’re leaves. The most depended-on dead code is also the code with the least in it, which is simultaneously reassuring (very little to go wrong in forty lines) and the entire problem, since there’s also very little reason for anyone to ever read those forty lines again.\nKnocking on the door\nOf the 713 dead repos, 322 are formally archived on GitHub, where the owner has at least put up a sign saying so. The other 391 are the Bernies: not archived, often with green squares on the contribution graph from Dependabot commits to branches nobody will ever merge, and an issue tab that’s still accepting input.\n321 of them had at least one issue filed by a human in the past year. 243 had at least one pull request opened in the past year with zero merged, and some of those PRs are the fix, sitting there with the patch attached and nobody left who can press the button.\nThe registry side is often worse than the repo side: 1,414 of the dead-or-dormant packages have exactly one account with publish rights, and for a lot of the dead ones it’s reasonable to assume that account’s owner has moved on, lost the 2FA device, or forgotten the package exists.\nI’m more worried about the dormant bucket than the dead one, since there are considerably more of them and 156 have exactly one person with write access who has done anything in the past year. That one person is also on the receiving end of all the AI-generated report spam and entitled drive-by demands that make solo maintainership steadily less appealing as a way to spend your evenings, and every one of those repos is a single goat-farming career change from the dead column.\nWhy now\nA dead package with five million dependents and zero CVEs is unexamined rather than safe, and for most of the last decade that distinction barely mattered. The supply of people willing to spend an afternoon auditing a 200-line string-escaping utility from 2017 was roughly zero, so “nobody has bothered to look” was, in practice, a perfectly good defence.\nIt is becoming a much worse one, because the same AI tooling that’s filling maintainer inboxes with slop reports is also, increasingly, finding real things. The cost of pointing a model at a tarball and asking what’s wrong with it has dropped to almost nothing, and the population of people doing that for bounties or for a foothold is growing a great deal faster than the population able to act on what they send in.\nAcross the whole critical set there are already 110 published advisories with no patched version available, by which I mean no first_patched_version in the advisory data at all rather than a fix that’s tagged in git but never released. Some are against packages that were dead long before the advisory was filed, so the disclosure process ran its course, the CVE was published, and there is no version to upgrade to. Every other package in the dead bucket is in the same position with respect to the next advisory filed against it.\nThe unknown 18.9% bothers me about as much as the dead 12.1%, since those are repos where nobody has filed an issue or a PR in a year and there’s been no test of whether anyone is home. The first security report against any of them will be that test.\nA lot of people are about to start running that test at once, on purpose, across whole registries, and a meaningful fraction of what they find will be real. When the report lands on a package in the dead column there is currently no good path for it: no distro-style downstream packager who can publish under the same name, and abandoned-package policies at most registries that assume someone wants to take ownership of the name rather than just get one fix out.\nTreating every entry in the lockfile as though there’s a maintainer behind it who’ll handle whatever comes in has been a workable assumption mainly because so few reports were ever filed. Registries and the communities around them are going to need an actual process for a valid CVE against a package with nobody to receive it, and right now most of them don’t have one.",
+      "id": "b2fb7a1de0de9b2030af9d9e97b81ab516dfc99ec78be471d134914db97b0c26",
+      "ref_id": "1",
+      "recommendationScore": 88,
+      "popularityScore": 85,
+      "priority": "medium",
+      "comment": "以独特视角揭示了开源软件供应链的安全隐患，并强调了AI在漏洞发现中的影响。",
+      "reason": "主题关乎编程工具和AI安全，具有高度的实用性和新颖性，能引起广泛开发者共鸣。",
+      "tags": [
+        "开源",
+        "软件安全",
+        "AI影响",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "AI is breaking two vulnerability cultures",
+      "link": "https://www.jefftk.com/p/ai-is-breaking-two-vulnerability-cultures",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-08T17:55:08.000Z",
+      "summary": "Article URL: https://www.jefftk.com/p/ai-is-breaking-two-vulnerability-cultures\nComments URL: https://news.ycombinator.com/item?id=48066524\nPoints: 205\n# Comments: 89",
+      "id": "6089c72ed6736e2060f22e4565667c46ec48bd17b3a88bdfd3d0e86ed751fe34",
+      "ref_id": "2",
+      "recommendationScore": 85,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "分析AI技术如何冲击并改变现有的两种漏洞文化。",
+      "reason": "提出了AI时代下网络安全和漏洞管理的新挑战与思考，具有前瞻性。",
+      "tags": [
+        "AI",
+        "网络安全",
+        "漏洞",
+        "伦理",
+        "软件工程"
+      ]
+    },
+    {
+      "title": "The React2Shell Story",
+      "link": "https://lachlan.nz/blog/the-react2shell-story/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-08T16:39:48.000Z",
+      "summary": "Article URL: https://lachlan.nz/blog/the-react2shell-story/\nComments URL: https://news.ycombinator.com/item?id=48065511\nPoints: 4\n# Comments: 0",
+      "id": "f0ed83de317a774012ff08a1159a7f3fc2e5f77d85bf2bb3cccc829bbed9be71",
+      "ref_id": "4",
+      "recommendationScore": 85,
+      "popularityScore": 10,
+      "priority": "high",
+      "comment": "揭示了React生态系统中的一个具体安全漏洞（React2Shell）。",
+      "reason": "详细分析了React相关的安全漏洞及其发现过程，对Web开发者具有重要的警示和学习价值。",
+      "tags": [
+        "React",
+        "Web开发",
+        "安全漏洞",
+        "XSS",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "Can LLMs model real-world systems in TLA+?",
+      "link": "https://www.sigops.org/2026/can-llms-model-real-world-systems-in-tla/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-08T16:21:56.000Z",
+      "summary": "Article URL: https://www.sigops.org/2026/can-llms-model-real-world-systems-in-tla/\nComments URL: https://news.ycombinator.com/item?id=48065254\nPoints: 6\n# Comments: 0",
+      "id": "a9f34835ad2ff3dbaecd02cd5f7afdb08581b3fb7c920235415e377b60cddd7a",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 1,
+      "priority": "high",
+      "comment": "深入探讨LLM在形式化验证中的应用，极具前瞻性和技术深度。",
+      "reason": "紧密贴合AI主题优先级，技术深度和新颖性突出，探索LLM在系统验证中的潜在变革性应用。",
+      "tags": [
+        "AI",
+        "LLM",
+        "TLA+",
+        "形式化验证",
+        "系统设计"
+      ]
+    },
+    {
+      "title": "My first in-prod corrupted hard drive problem",
+      "link": "https://blog.pavementlink.ch/2026/05/07/my-first-corrupted-hard-drive-problem/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-08T19:35:36.000Z",
+      "summary": "Article URL: https://blog.pavementlink.ch/2026/05/07/my-first-corrupted-hard-drive-problem/\nComments URL: https://news.ycombinator.com/item?id=48067686\nPoints: 33\n# Comments: 27",
+      "id": "31ba3e3bd399406ecf9ff9da714196dc807f4584de43489bde3d66b1f84418ce",
+      "ref_id": "4",
+      "recommendationScore": 80,
+      "popularityScore": 28,
+      "priority": "medium",
+      "comment": "分享了生产环境中硬盘损坏问题的实战排查与解决经验。",
+      "reason": "提供了宝贵的生产环境故障排除案例和实用解决方案，对系统管理员和开发者有很高的实用价值。",
+      "tags": [
+        "运维",
+        "故障排除",
+        "硬件",
+        "生产环境",
+        "系统管理"
+      ]
+    },
+    {
+      "title": "Google broke reCAPTCHA for de-googled Android users",
+      "link": "https://reclaimthenet.org/google-broke-recaptcha-for-de-googled-android-users",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-08T18:45:58.000Z",
+      "summary": "Related: Google Cloud fraud defense, the next evolution of reCAPTCHA - https://news.ycombinator.com/item?id=48039362\nalso: Google Cloud Fraud Defence is just WEI repackaged - https://news.ycombinator.com/item?id=48063199\nComments URL: https://news.ycombinator.com/item?id=48067119\nPoints: 500\n# Comments: 165",
+      "id": "ff6fe10889522757d91854929004a4e4308cb068cc3664250aa425f75ccc2720",
+      "ref_id": "0",
+      "recommendationScore": 79,
+      "popularityScore": 95,
+      "priority": "medium",
+      "comment": "探讨谷歌reCAPTCHA服务对去谷歌化安卓用户的破坏性影响。",
+      "reason": "揭示了大型科技公司策略对特定用户群体的技术影响，具有高时效性和实用性。",
+      "tags": [
+        "Google",
+        "reCAPTCHA",
+        "Android",
+        "隐私",
+        "自动化",
+        "政策"
+      ]
+    },
+    {
+      "title": "When is your birthday? The math behind hash collisions",
+      "link": "https://0xkrt26.github.io/math_behind_security/2026/05/08/birthday-problem.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-08T20:18:39.000Z",
+      "summary": "Article URL: https://0xkrt26.github.io/math_behind_security/2026/05/08/birthday-problem.html\nComments URL: https://news.ycombinator.com/item?id=48068254\nPoints: 5\n# Comments: 0",
+      "id": "7ebaa2f7be9755c6532aed1dffd4bf4fca40e0dcf0bda982828787c21cb7eeb5",
+      "ref_id": "1",
+      "recommendationScore": 75,
+      "popularityScore": 4,
+      "priority": "medium",
+      "comment": "深入浅出地讲解了哈希冲突背后的数学原理，具有良好技术深度。",
+      "reason": "清晰阐述了计算机科学和密码学的基础概念，对学习者有较高实用价值。",
+      "tags": [
+        "计算机科学",
+        "算法",
+        "安全",
+        "数学"
+      ]
+    },
+    {
+      "title": "Serving a website on a Raspberry Pi Zero running in RAM",
+      "link": "https://btxx.org/posts/memory/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-08T15:10:35.000Z",
+      "summary": "Article URL: https://btxx.org/posts/memory/\nComments URL: https://news.ycombinator.com/item?id=48064312\nPoints: 186\n# Comments: 75",
+      "id": "d3fcf82e36622a2ac58af1f799ef2e8bd008cd75d7311101abe1fb8e3e04d15f",
+      "ref_id": "2",
+      "recommendationScore": 75,
+      "popularityScore": 21,
+      "priority": "medium",
+      "comment": "一篇关于在树莓派Zero上优化网站服务的实践指南，技术细节丰富。",
+      "reason": "实用性强，技术深度适中，对嵌入式开发、资源受限环境下的性能优化有直接参考价值。",
+      "tags": [
+        "树莓派",
+        "嵌入式",
+        "Linux",
+        "性能优化",
+        "自动化"
+      ]
+    },
+    {
+      "title": "Musk v. Altman week 2: OpenAI fires back, and Shivon Zilis reveals that Musk tried to poach Sam Altman",
+      "link": "https://www.technologyreview.com/2026/05/08/1137008/musk-v-altman-week-2-openai-fires-back-and-shivon-zilis-reveals-that-musk-tried-to-poach-sam-altman/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-05-08T23:59:19.000Z",
+      "summary": "In the second week of the landmark trial between Elon Musk and OpenAI, Musk’s motivations for bringing the suit were under scrutiny. Last week, Musk took the stand, alleging that OpenAI CEO Sam Altman and president Greg Brockman had deceived him into donating $38 million to the company. He claimed that they’d promised to maintain…",
+      "id": "67d11a3f70f65cdeeb4ef2fe2c6400a5186b002db3ca3835f11d25404dd8d2d8",
+      "ref_id": "0",
+      "recommendationScore": 75,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "及时报道了AI领域巨头OpenAI的最新法律冲突，关注行业动态。",
+      "reason": "文章紧跟AI行业前沿的法律与权力斗争，对理解行业发展和主要玩家的动态有重要参考价值。",
+      "tags": [
+        "AI",
+        "行业新闻",
+        "OpenAI",
+        "Elon Musk",
+        "Sam Altman"
+      ]
+    },
+    {
+      "title": "How do I deal with memory leaks? (2022)",
+      "link": "https://www.stroustrup.com/bs_faq2.html#memory-leaks",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-08T17:06:59.000Z",
+      "summary": "Article URL: https://www.stroustrup.com/bs_faq2.html#memory-leaks\nComments URL: https://news.ycombinator.com/item?id=48065916\nPoints: 75\n# Comments: 62",
+      "id": "a4451a6534fcf4e4425417a061ba472b08c3f61c3adacf7e1215bab0d6001412",
+      "ref_id": "3",
+      "recommendationScore": 74,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "Bjarne Stroustrup关于内存泄漏的常见问题解答与处理指南。",
+      "reason": "提供了C++编程中关键问题的权威且实用的解决方案，对开发者帮助巨大。",
+      "tags": [
+        "编程",
+        "C++",
+        "内存泄漏",
+        "调试",
+        "性能优化"
+      ]
+    },
+    {
+      "title": "Compound drivers of Antarctic sea ice loss and Southern Ocean destratification",
+      "link": "https://www.science.org/doi/10.1126/sciadv.aeb0166",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-08T22:00:22.000Z",
+      "summary": "Article URL: https://www.science.org/doi/10.1126/sciadv.aeb0166\nComments URL: https://news.ycombinator.com/item?id=48069313\nPoints: 16\n# Comments: 0",
+      "id": "d475272cba16f55f860babd6e9f693375d606fb1146467ed7296799c0a889c8a",
+      "ref_id": "2",
+      "recommendationScore": 73,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "关于南极海冰和海洋分层变化的严谨科学研究，主题偏离科技博客关注点。",
+      "reason": "学术论文性质，内容专业但与科技博客关注的AI、编程工具等主题关联度低。",
+      "tags": [
+        "Science",
+        "Climate Change",
+        "Research",
+        "Environment"
+      ]
+    },
+    {
+      "title": "Non-determinism is an issue with patching CVEs",
+      "link": "https://flox.dev/blog/achieving-rapid-cve-remediation-in-an-era-of-escalating-vulnerabilities/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-08T21:23:07.000Z",
+      "summary": "Article URL: https://flox.dev/blog/achieving-rapid-cve-remediation-in-an-era-of-escalating-vulnerabilities/\nComments URL: https://news.ycombinator.com/item?id=48068947\nPoints: 31\n# Comments: 10",
+      "id": "3d8e59e3e34b5419ee08594bf886401956c7aca4b58245c9145c112b89a1b3cc",
+      "ref_id": "4",
+      "recommendationScore": 73,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "深入分析CVE补丁管理中的非确定性问题，并提供缓解策略。",
+      "reason": "探讨软件供应链安全和自动化运维的实际技术挑战，对开发者和安全团队有重要指导意义。",
+      "tags": [
+        "Security",
+        "CVE",
+        "DevOps",
+        "Software Development",
+        "Vulnerability Management",
+        "Automation"
+      ]
+    },
+    {
+      "title": "Show HN: CADara – I made an open-source in-browser CAD",
+      "link": "https://cadara.app",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-08T23:26:49.000Z",
+      "summary": "Article URL: https://cadara.app\nComments URL: https://news.ycombinator.com/item?id=48070022\nPoints: 7\n# Comments: 1",
+      "id": "ad3975fd5720b4728959dd9788a9de4e8c7b5dd968a537d314c00d299ec77e12",
+      "ref_id": "1",
+      "recommendationScore": 71,
+      "popularityScore": 40,
+      "priority": "medium",
+      "comment": "一个开源的、基于浏览器的CAD工具展示，探索Web端设计软件的可能。",
+      "reason": "结合开源、Web技术与编程工具开发，对独立开发者和相关技术爱好者有吸引力。",
+      "tags": [
+        "Programming Tools",
+        "Independent Development",
+        "Open Source",
+        "CAD",
+        "Web Development",
+        "Show HN"
+      ]
+    },
+    {
+      "title": "The Download: AI malaise and babymaking tech",
+      "link": "https://www.technologyreview.com/2026/05/08/1136985/the-download-ai-malaise-babymaking-ivf-tech/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-05-08T12:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. We’ve entered the era of AI malaise AI is spreading everywhere, and it is not going away. But what will it do? What effect will it have on our society? Will…",
+      "id": "012f823447376be4867be8d9f0ea736b52a9d8a303f947d3931eb301f184c40a",
+      "ref_id": "2",
+      "recommendationScore": 65,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "探讨AI的社会影响及其广泛传播，并提及生殖科技，内容宏观且具有前瞻性。",
+      "reason": "文章从宏观层面讨论AI的社会和伦理影响，有助于读者理解AI的深远意义，虽深度一般但视角独特。",
+      "tags": [
+        "AI",
+        "社会影响",
+        "科技趋势",
+        "AI伦理"
+      ]
+    },
+    {
+      "title": "HomePod mini feels like magic, but it's just good timing",
+      "link": "https://www.jeffgeerling.com/blog/2026/homepod-mini-feels-like-magic--but-it-s-just-good-timing/",
+      "source": "jeffgeerling.com",
+      "publishedAt": "2026-05-08T14:00:00.000Z",
+      "summary": "Apple introduced the HomePod mini six years ago, in 2020.\nI'm not one into smart speakers, but the feature that made me take a closer look was their ability to form stereo pairs, without any direct wired connection.\nI know there are other speaker manufacturers with wireless speakers, but to my knowledge, Apple was just using AirPlay over WiFi... so how does it work?\nThrough the magic of buying two HomePods mini (pictured above), I found out. A video detailing the process is embedded below:",
+      "id": "2896ea54fdbf0ac0809a18d91eeefa347e5d8aee2cc82be86322731360ae0825",
+      "ref_id": "0",
+      "recommendationScore": 65,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "对HomePod mini立体声配对的运作机制进行了初步探讨，引入了一个有趣的问题。",
+      "reason": "文章选题符合Apple生态高优先级，对产品功能的探索性提问能吸引读者，但正文部分尚待深入。",
+      "tags": [
+        "Apple生态",
+        "HomePod mini",
+        "智能音箱",
+        "AirPlay"
+      ]
+    },
+    {
+      "title": "Tesla Model Y Passes NHTSA's New 'Advanced Driver Assistance System' Tests",
+      "link": "https://www.nhtsa.gov/press-releases/tesla-model-y-first-vehicle-pass-nhtsa-new-advanced-driver-assistance-system-tests",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-08T23:37:55.000Z",
+      "summary": "Article URL: https://www.nhtsa.gov/press-releases/tesla-model-y-first-vehicle-pass-nhtsa-new-advanced-driver-assistance-system-tests\nComments URL: https://news.ycombinator.com/item?id=48070115\nPoints: 20\n# Comments: 13",
+      "id": "2fb57cc9b496701c65099e810ad91a118f82bbab690d9b93c52078c7b3e36606",
+      "ref_id": "0",
+      "recommendationScore": 60,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "报道特斯拉Model Y在NHTSA新的ADAS测试中表现突出，关注智能驾驶安全。",
+      "reason": "紧扣AI和自动化主题，新闻时效性强，对消费者和行业均有参考价值。",
+      "tags": [
+        "AI",
+        "Automation",
+        "Automotive",
+        "Safety",
+        "Tesla",
+        "ADAS"
+      ]
+    },
+    {
+      "title": "Meta Shuts Down End-to-End Encryption for Instagram Messaging",
+      "link": "https://www.pcmag.com/news/meta-shuts-down-end-to-end-encryption-for-instagram-dms-messaging",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-08T21:47:47.000Z",
+      "summary": "Article URL: https://www.pcmag.com/news/meta-shuts-down-end-to-end-encryption-for-instagram-dms-messaging\nComments URL: https://news.ycombinator.com/item?id=48069192\nPoints: 99\n# Comments: 72",
+      "id": "42cd702cba98c9e34c57dbdcfbcc5f6983aebb38efa8c29997e146619d0b86f1",
+      "ref_id": "3",
+      "recommendationScore": 60,
+      "popularityScore": 95,
+      "priority": "medium",
+      "comment": "Meta宣布取消Instagram消息的端到端加密，引发用户隐私和产品策略讨论。",
+      "reason": "重大科技公司产品策略调整，对用户隐私和行业生态有广泛影响，具有较高社会关注度和讨论度。",
+      "tags": [
+        "Privacy",
+        "Social Media",
+        "Meta",
+        "Instagram",
+        "Policy",
+        "Security",
+        "Product Design"
+      ]
+    },
+    {
+      "title": "Developing more confidence when tracking renames via Read­Directory­ChangesW",
+      "link": "https://devblogs.microsoft.com/oldnewthing/20260508-00/?p=112310",
+      "source": "devblogs.microsoft.com/oldnewthing",
+      "publishedAt": "2026-05-08T14:00:00.000Z",
+      "summary": "You can track the file ID.\nThe post Developing more confidence when tracking renames via <CODE>Read­Directory­ChangesW</CODE> appeared first on The Old New Thing.",
+      "id": "5a94645623e22227d27e8cea6712eec67be50c94c4158510c893244decab45f6",
+      "ref_id": "4",
+      "recommendationScore": 55,
+      "popularityScore": 40,
+      "priority": "medium",
+      "comment": "标题指向一个具体的Windows编程技术难题，但文章内容仅为极简介绍或链接。",
+      "reason": "文章主题具有较高的技术实用性，符合“编程工具”或“自动化”优先级，但作为独立文章内容过于稀疏。",
+      "tags": [
+        "编程工具",
+        "Windows API",
+        "文件系统监控",
+        "自动化"
+      ]
+    },
+    {
+      "title": "Here’s how technology transformed babymaking",
+      "link": "https://www.technologyreview.com/2026/05/08/1136974/heres-how-technology-transformed-babymaking-ivf/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-05-08T09:00:00.000Z",
+      "summary": "Technology is changing the way we make babies. The pioneering work of the scientists who invented IVF led to the birth of the first “test tube baby” in 1978. We’ve come a long, long way since then. This week, I’ve been working on a piece about the cutting edge of IVF technologies and what’s coming…",
+      "id": "df79fb5e93495cc986159ca1c4569dfbdd38510d4d76a3571afe25c6ab5375c1",
+      "ref_id": "3",
+      "recommendationScore": 50,
+      "popularityScore": 55,
+      "priority": "low",
+      "comment": "深入探讨生殖科技（如IVF）的历史演进与前沿技术。",
+      "reason": "内容虽具有趣味性和技术性，但与核心科技主题优先级（AI、编程工具等）偏离，受众相对较窄。",
+      "tags": [
+        "医疗科技",
+        "生物技术",
+        "IVF"
+      ]
+    },
+    {
+      "title": "Calculating curvature",
+      "link": "https://www.johndcook.com/blog/2026/05/08/calculating-curvature/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-05-08T13:54:18.000Z",
+      "summary": "Curvature is conceptually simple but usually difficult to calculate. For a level set curve f(x, y) = c, such as in the previous couple posts, the equation for curvature is Even when f has a fairly simple expression, the expression for κ can be complicated. If we define then the level set of f(x, y) = c is […]\nCalculating curvature first appeared on John D. Cook.",
+      "id": "43f8833290d2980f4d309a1afeb1a9574ba0d96b2f906662795f47b81345aca5",
+      "ref_id": "0",
+      "recommendationScore": 45,
+      "popularityScore": 35,
+      "priority": "low",
+      "comment": "深入探讨了曲线曲率的数学计算方法，内容专业但应用领域相对小众。",
+      "reason": "技术内容扎实，但主题不属于主流科技博客的优先关注范围，实用性受限。",
+      "tags": [
+        "数学",
+        "几何",
+        "理论计算"
+      ]
+    },
+    {
+      "title": "Human typing habits and token counts",
+      "link": "https://pankajpipada.com/posts/2026-05-08-human-habits-tokens/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-08T13:12:41.000Z",
+      "summary": "Article URL: https://pankajpipada.com/posts/2026-05-08-human-habits-tokens/\nComments URL: https://news.ycombinator.com/item?id=48062606\nPoints: 3\n# Comments: 0",
+      "id": "3a7520de32f2ff584a54ffa6c5712412881d8d22aef0542a746e9bb542e9e0a2",
+      "ref_id": "3",
+      "recommendationScore": 40,
+      "popularityScore": 0,
+      "priority": "medium",
+      "comment": "探讨人类打字习惯与LLM token计数的关系，一个比较小众的研究领域。",
+      "reason": "内容与NLP及AI边缘相关，但技术深度和直接实用性有待提升，受众可能较小。",
+      "tags": [
+        "NLP",
+        "用户行为",
+        "AI",
+        "文本分析"
+      ]
+    },
+    {
+      "title": "Here’s what you need to know about the cruise ship hantavirus outbreak",
+      "link": "https://www.technologyreview.com/2026/05/08/1136988/heres-what-you-need-to-know-about-the-cruise-ship-hantavirus-outbreak/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-05-08T16:19:40.000Z",
+      "summary": "MIT Technology Review Explains: Let our writers untangle the complex, messy world of technology to help you understand what’s coming next. You can read more from the series here. Eight passengers aboard a Dutch-flagged cruise ship have contracted a type of hantavirus, a rare virus transmitted by rats. Three of them have died. As the ship…",
+      "id": "660f31b7399a3679a82b1123b5970cb243d5041f90c4e40cb2e3bbb298ae9801",
+      "ref_id": "1",
+      "recommendationScore": 20,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "一篇关于邮轮汉坦病毒爆发的公共卫生报道，与科技主题关联度低。",
+      "reason": "内容偏离了科技博客关注的AI、编程工具等核心主题，对技术读者群的价值有限。",
+      "tags": [
+        "公共卫生",
+        "新闻"
+      ]
+    },
+    {
+      "title": "AI makes weak engineers less harmful",
+      "link": "https://seangoedecke.com/ai-makes-weak-engineers-less-harmful/",
+      "source": "seangoedecke.com",
+      "publishedAt": "2026-05-09T00:00:00.000Z",
+      "summary": "",
+      "id": "bfb48c88c6050039979837287cbb0926fa84b4530f28d1507219e83292f81b4f",
+      "ref_id": "1",
+      "recommendationScore": 20,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "标题极具争议性和吸引力，切入AI与工程的结合点，但文章内容完全缺失。",
+      "reason": "鉴于其高度相关的主题和引人注目的标题，作为未来内容的预告值得关注其潜力，但当前无法提供实质价值。",
+      "tags": [
+        "AI",
+        "软件工程",
+        "技术趋势",
+        "职业发展"
+      ]
+    },
+    {
+      "title": "Cartoon Network Flash Games",
+      "link": "https://www.webdesignmuseum.org/flash-game-exhibitions/cartoon-network-flash-games",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-08T16:29:52.000Z",
+      "summary": "Article URL: https://www.webdesignmuseum.org/flash-game-exhibitions/cartoon-network-flash-games\nComments URL: https://news.ycombinator.com/item?id=48065360\nPoints: 264\n# Comments: 90",
+      "id": "2719f017187f74dbe1f5eabd0ed099e502eb30a995b7aa7d5f2791f893e97725",
+      "ref_id": "0",
+      "recommendationScore": 15,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "一篇怀旧性质的Flash游戏回顾，技术讨论较少。",
+      "reason": "内容与科技博客核心主题关联度低，主要为历史回顾和娱乐，技术深度和实用性不足。",
+      "tags": [
+        "Flash",
+        "游戏",
+        "历史",
+        "网页设计"
+      ]
+    },
+    {
+      "title": "Mux (YC W16) Is Hiring",
+      "link": "https://www.mux.com/jobs",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-08T21:02:32.000Z",
+      "summary": "Article URL: https://www.mux.com/jobs\nComments URL: https://news.ycombinator.com/item?id=48068732\nPoints: 0\n# Comments: 0",
+      "id": "17f585182e00eed3a7336e675cd12cd47b5303f4ddc8b9fa5542fba9e4102da1",
+      "ref_id": "0",
+      "recommendationScore": 10,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "公司招聘信息，不属于技术文章评估范畴。",
+      "reason": "内容为招聘广告，缺乏技术深度与实用性。",
+      "tags": [
+        "招聘",
+        "公司信息"
+      ]
+    },
+    {
+      "title": "Hi stranger ",
+      "link": "https://idiallo.com/blog/hi?src=feed",
+      "source": "idiallo.com",
+      "publishedAt": "2026-05-08T14:00:00.000Z",
+      "summary": "I'm at home, sitting on the kitchen table. I just took my boys to school and I'm about to start my work. I'm writing this message directly to you. And you are reading it. Hello!\nIsn't that funny? I've been trying to write consistently, and it gives the impression that  I am this serious person with some serious insights. But no, I'm just writing. Sometimes you respond, you send a nice email, other times it's complete silence. It ends up being like an entry in a journal, for me to stumble upon at a later date and reflect: \"Oh yeah, that's what I was thinking that day.\"\nMy job is a 2 hour drive away, so I rent an office close by. There I can focus and clearly delineate work time from home time. I don't like working when I'm home with my family. So I have some time to talk to you.\nLast year, I spent some time digging through my server logs to find who is reading me. I wanted to know who you are, and why you are interested in reading me? But I can't get an answer from just reading the logs. Instead what I found is that you and most other people come here via RSS. My rough count shows that there are 10,000 of you, or at least 10,000 unique IP addresses that ping the websites whenever I write something new. There are around 2,000 people subscribed via popular RSS readers like feedbin or Feedly. 1,500 of you also subscribe via email which I have neglected this year.\nIt's weird because this data is invisible most of the time. I forget that when I write something, anything, the odds are that someone will find it intriguing. In fact when I look deeper into the logs, I see people are referred by other blogs I never heard about. And they mention me by name, \"and then Ibrahim said this or that.\" It feels so personal. \nI often forget that this is all so human. That, what we call the small web is people not just writing, but telling us something. When I have an insight, or read something interesting, I'm telling you about it. Not directly, but in an asynchronous way. You get to know or read about it on your own terms. The small web has never died, it feels like it did at some point because it has remained small. But I don't think I want it to become any bigger, or any louder. It's right where it's supposed to be. \nI'm breaking the 4th wall today just to say Hi. \nHello!\nHow are you?\nI hope you are doing well. The world is weird sometimes, but you are not invisible. I see you. I hope you are having a good day.",
+      "id": "07a97d4ce68465ec06daf47feacf4421162290fe59c7a7466c1cf13a0d0abaa8",
+      "ref_id": "2",
+      "recommendationScore": 10,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "一篇高度个人化的日记式随笔，缺乏科技博客所需的实质技术内容。",
+      "reason": "文章主题与科技博客核心关注点偏离，更像是个人生活分享而非技术洞察，推荐价值低。",
+      "tags": [
+        "个人随笔",
+        "博客",
+        "生活感悟"
+      ]
+    },
+    {
+      "title": "David Reich – Why the Bronze Age was an inflection point in human evolution",
+      "link": "https://www.dwarkesh.com/p/david-reich-2",
+      "source": "dwarkesh.com",
+      "publishedAt": "2026-05-08T16:38:22.000Z",
+      "summary": "\"Instead of being quiescent, natural selection is everywhere.\"",
+      "id": "3221a8a238ec64432c7d1ee36d1c0c046fed6927516a3679c09bc7026d33e3d2",
+      "ref_id": "2",
+      "recommendationScore": 10,
+      "popularityScore": 15,
+      "priority": "low",
+      "comment": "一段关于人类进化的历史引述，与科技博客主题不符。",
+      "reason": "内容完全脱离科技博客的关注范围，信息量极低，无评估价值。",
+      "tags": [
+        "历史",
+        "人类学"
+      ]
+    },
+    {
+      "title": "Roadside Attraction",
+      "link": "https://theoffingmag.com/essay/roadside-attraction/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-08T19:43:04.000Z",
+      "summary": "Article URL: https://theoffingmag.com/essay/roadside-attraction/\nComments URL: https://news.ycombinator.com/item?id=48067764\nPoints: 17\n# Comments: 3",
+      "id": "3785f9d6b1043eac1078430b94b9e0be8c1a71e58266b0441c109687a759c61a",
+      "ref_id": "2",
+      "recommendationScore": 5,
+      "popularityScore": 15,
+      "priority": "low",
+      "comment": "非技术类散文，与科技博客主题不符。",
+      "reason": "文章内容不涉及任何技术主题，不适合作为科技文章进行评估。",
+      "tags": [
+        "散文",
+        "文化",
+        "非技术"
+      ]
+    },
+    {
+      "title": "Pluralistic: Lee Lai's \"Cannon\" (08 May 2026)",
+      "link": "https://pluralistic.net/2026/05/08/gung-gung/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-05-08T12:19:36.000Z",
+      "summary": "Today's links Lee Lai's \"Cannon\": A beautiful, subtle, long-lingering tale of duty, sex, and working for a shitty restaurant boss. Hey look at this: Delights to delectate. Object permanence: Ebay paying to run newspaper classifieds; Chuck Tingle v Sad Puppies; FBI v TOR; Daycare v Goldman Sachs; Scammers re-used covid nose-swabs; \"The Adventures of Mary Darling.\" Upcoming appearances: Guelph, Barcelona, Berlin, Hay-on-Wye, London, NYC, Edinburgh. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. Lee Lai's \"Cannon\" (permalink) Lee Lai's Cannon is an extraordinary graphic novel that turns out a beautifully told, subtle and ambiguous tale about Lucy (Lucy -> \"Loose\" -> \"Loose Cannon\" -> \"Cannon\"), a queer Chinese-Canadian chef at a Montreal restaurant whose messy family, work, personal and sex life are all falling apart in ways that are powerfully engrossing: https://drawnandquarterly.com/books/cannon/ This is the second outing from Lee Lai, whose debut, Stone Fruit, swept many of the field's awards and won major critical acclaim. When a debut comes out that strong, it's sometimes followed with the dread \"second book syndrome\" in which a creator who has poured everything they ever thought about putting in a book now has to write another book, from scratch. But Cannon avoids any hint of that second book malaise; rather, it is jammed with dense and densely connected ideas, character beats and graphic signifiers that are brilliant in so many ways: https://www.fantagraphics.com/products/stone-fruit Cannon is a thirtysomething chef in a Montreal restaurant run by Guy, an instantly recognizable hustler who praises Cannon for her culinary abilities and her pliability, talks over her, demands the impossible from her kitchen colleagues and periodically breaks out into soliloquies about his own martyrdom to the hardships of entrepreneurship. Cannon cares for her grandfather, who has been abandoned by her mother, who has been traumatized by the abuse he meted out to her during her upbringing. Now in decline and unable to care for himself, Cannon's grandfather continues his abusive ways, scaring off all of his home help, which means Cannon must devote even more time to him (she can't bring herself to put him in a care facility that will inevitably be full of white people who don't speak Chinese). These familial duties leave Cannon isolated, with only one important friendship: Trish, an up-and-coming novelist whom Cannon has known since their school days in Montreal's suburban Eastern Townships, where they were the only queer Chinese girls either of them knew. Trish owes her professional acclaim to her own neurotic social instincts, which she polishes on the page with the help of an old writing teacher who serves as her mentor. Trish may be Cannon's oldest and best friend, but she's not actually a very good friend, and now that they're both in their 30s, neither Cannon nor Trish is entirely sure where they'd make new friends. This is where Cannon starts, as Cannon tries to resolve all these bad situations, each of which is only worsening. Trish disapproves of Cannon's sexual affair with the new front-of-house woman at the restaurant – even as Trish begins a friends-with-benefits arrangement with a guy from her fitness club who clearly wants more than the odd tumble. Guy the restaurateur positions Cannon as his hatchet-woman and confidante, driving conflict in the kitchen that she is meant to hold the bag for. Her grandfather enters a terminal decline, and still her mother won't answer her calls and texts about it. And then, Cannon discovers that Trish has violated her in a way that is intimate and appalling. These may sound like the beats that you'd find in a melodramatic soap opera, but Cannon's affect is so stoic, and her interiority is so beautifully and inventively depicted – Lai deploying the unique strengths of the graphic novel form here with total virtuosity – that the vibe is more David Lynch than Dallas. The result is something that's beautiful, sharp, critical and lingering. Long after I closed the cover, I found myself mulling over the delicate ways that Lai raised the contradictions, sorrows and beauty of queer love, racial identity, camaraderie, self-control, and self-indulgence. Lai's characters have no answers, only questions that can never be fully resolved. Instead, these questions are the defining puzzles, defeats and triumphs of their lives. It's a magnificent, sensitive and innovative work of storytelling. Hey look at this (permalink) Here’s Every Single Death Linked to Immigration Enforcement Since Trump’s Raids Began in 2025 https://lataco.com/ice-death-tracker We only win when we’re singing https://www.absurdintelligence.com/we-only-win-when-were-singing/ Native Apps Should Be Avoided Whenever Possible https://nooneshappy.com/article/native-apps-should-be-avoided-whenever-possible/ The Last Comic https://www.thelastcomic.com Heartland Institute Podcast Questions Whether All Americans ‘Should Have the Right to Vote’ https://www.desmog.com/2026/05/05/heartland-institute-limiting-voting-rights-lee-zeldin/ Object permanence (permalink) #25yrsago Ebay paying newspapers to run listings in the classifieds section https://web.archive.org/web/20010506063910/http://www.business2.com/news/2001/05/ebaypapers.htm #20yrsago Airline spoons of the world photo-gallery https://www.flickr.com/photos/airlinespoons #20yrsago Coach passengers arrested for moving to first class http://news.bbc.co.uk/1/hi/england/manchester/4980364.stm #15yrsago Hidden cognitive costs of doing stuff https://web.archive.org/web/20110507154653/https://us.lifehacker.com/5798202/the-cognitive-cost-of-doing-things #15yrsago Syria’s man-in-the-middle attack on Facebook https://www.eff.org/deeplinks/2011/05/syrian-man-middle-against-facebook #10yrsago Weird erotica author who was dragged into Hugo Awards mess pulls off epic troll https://web.archive.org/web/20160506175535/http://www.dailydot.com/lol/chuck-tingle-trolling-hugo-zoe-quinn-genius/ #10yrsago FBI has been harassing a Tor developer since 2015, won’t tell her or her lawyer why https://blog.patternsinthevoid.net/fbi-harassment.html #10yrsago 2,000 US doctors endorse Sanders’ single-payer healthcare proposal https://web.archive.org/web/20160506095034/https://www.washingtonpost.com/news/wonk/wp/2016/05/05/2000-doctors-say-bernie-sanders-has-the-right-approach-to-health-care/ #10yrsago Community college evicts daycare center to make room for Goldman Sachs https://www.golocalprov.com/news/daycare-center-being-moved-out-of-ccri-for-goldman-sachs #10yrsago Data-driven look at America’s brutal, racist debt-collection machine https://www.propublica.org/article/so-sue-them-what-weve-learned-about-the-debt-collection-lawsuit-machine #10yrsago Homeland Security wants to subpoena Techdirt over the identity of a hyperbolic commenter https://www.techdirt.com/2016/05/06/homeland-security-wants-to-subpoena-us-over-clearly-hyperbolic-techdirt-comment/ #5yrsago NY AG attributes Net Neutrality fraud to telcos https://pluralistic.net/2021/05/06/boogeration/#pais-lies #5yrsago Ed-tech apps spy on kids https://pluralistic.net/2021/05/06/boogeration/#i-spy #5yrsago Scammers recycled covid nose-swabs https://pluralistic.net/2021/05/06/boogeration/#up-your-nose #1yrago The Adventures of Mary Darling https://pluralistic.net/2025/05/06/nevereverland/#lesser-ormond-street Upcoming appearances (permalink) Guelph: Musagetes Lecture, May 8 https://riverrun.ca/whats-on/guelph-lecture-on-being-2026/ Barcelona: Internet no tiene que ser un vertedero (Global Digital Rights Forum), May 13 https://encuentroderechosdigitales.com/en/speakers/ Virtual: How to Disenshittify the Internet with Wendy Liu (EFF), May 14 https://www.eff.org/event/effecting-change-enshittification Berlin: Re:publica, May 18-20 https://re-publica.com/de/news/rp26-sprecher-cory-doctorow Berlin: Enshittification at Otherland Books, May 18 https://www.otherland-berlin.de/de/event-details/cory-doctorow-in-der-friesenstrasse-23-kreuzberg-praesentiert-von-otherland.html Berlin: Enshittification at Otherland Books, May 19 https://www.otherland-berlin.de/de/event-details/cory-doctorow.html Hay-on-Wye: HowTheLightGetsIn, May 22-25 https://howthelightgetsin.org/festivals/hay/big-ideas-2 SXSW London, Jun 2 https://www.sxswlondon.com/session/how-big-tech-broke-the-internet-b3c4a901 NYC: The Reverse Centaur's Guide to Life After AI with Jonathan Coulton (The Strand), Jun 24 https://www.strandbooks.com/cory-doctorow-the-reverse-centaur-s-guide-to-life-after-ai.html Edinburgh International Book Festival with Jimmy Wales, Aug 17 https://www.edbookfest.co.uk/events/the-front-list-cory-doctorow-and-jimmy-wales Recent appearances (permalink) Enshittification (99% Invisible) https://99percentinvisible.org/episode/666-enshittification/ Artificial Intelligence: The Ultimate Disruptor, with Astra Taylor and Yoshua Bengio (CBC Ideas) https://www.cbc.ca/listen/live-radio/1-23-ideas/clip/16210039-artificial-intelligence-the-ultimate-disruptor When Do Platforms Stop Innovating and Start Extracting? (InnovEU) https://www.youtube.com/watch?v=cccDR0YaMt8 Pete \"Mayor\" Buttigieg (No Gods No Mayors) https://www.patreon.com/posts/pete-mayor-with-155614612 The internet is getting worse (CBC The National) https://youtu.be/dCVUCdg3Uqc?si=FMcA0EI_Mi13Lw-P Latest books (permalink) \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 (https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/) \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2026 \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Third draft completed. Submitted to editor. \"The Reverse Centaur's Guide to AI,\" a short book for Farrar, Straus and Giroux about being an effective AI critic. LEGAL REVIEW AND COPYEDIT COMPLETE. \"The Post-American Internet,\" a short book about internet policy in the age of Trumpism. PLANNING. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "da41e3b62fd38daf6beca51fd75c13d0cacda8ed03246fbd73dbe15ea144b72b",
+      "ref_id": "3",
+      "recommendationScore": 5,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "一篇关于图形小说评论和杂项链接的非技术性文章，与科技主题无关。",
+      "reason": "文章内容与科技博客的重点主题完全不符，缺乏任何技术相关性，不适合发布。",
+      "tags": [
+        "书评",
+        "文化",
+        "杂项"
+      ]
+    },
+    {
+      "title": "This Week on The Analog Antiquarian",
+      "link": "https://www.filfre.net/2026/05/this-week-on-the-analog-antiquarian/",
+      "source": "filfre.net",
+      "publishedAt": "2026-05-08T16:11:33.000Z",
+      "summary": "Opus 1: The Comedy of Errors In other news, I’m afraid there will be no article next week, as my wife and I do some much-needed springtime home-and-garden work. I’ll see you in two weeks with some piping-hot fresh content — dealing very directly with games this time, I promise.",
+      "id": "2dfe08d1357257459716691949ef78c3540c97b805c5044b1ca00f8bf5937c74",
+      "ref_id": "4",
+      "recommendationScore": 5,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "博客周报和更新预告，不含实质性内容。",
+      "reason": "并非实际文章，无法进行内容评估，不属于科技博客的发布范畴。",
+      "tags": [
+        "博客公告",
+        "非内容"
+      ]
+    },
+    {
+      "title": "George Orwell's review of Russel's Power: A New Social Analysis",
+      "link": "https://berthub.eu/articles/posts/orwell-review-bertrand-russells-power/",
+      "source": "berthub.eu",
+      "publishedAt": "2026-05-08T20:35:10.000Z",
+      "summary": "I had previously learned a lot from this book review by George Orwell, which is actually a lot more than a book review.\nRecently I had cause to look it up again and found it had vanished from the searchable internet. With some sleuthing I have recovered a copy of the review from the internet archive.\nOrwell’s review was first published in The Adelphi in January 1939. The review can also be found in its original (scanned) form, also on the internet archive.",
+      "id": "44e6e37d1f7ee826929b8c91d96dde32789854770f1ba0e69bd864a0469bf22c",
+      "ref_id": "0",
+      "recommendationScore": 5,
+      "popularityScore": 5,
+      "priority": "low",
+      "comment": "内容与科技博客主题严重不符，更偏向文学历史类，不适合当前博客发布。",
+      "reason": "文章主题（George Orwell的政治学书评）与AI、Apple生态等核心科技关注领域完全无关，技术深度、实用性、新颖性在该语境下均为零，无法吸引目标读者。",
+      "tags": [
+        "文学",
+        "历史",
+        "书评",
+        "非技术"
+      ]
+    },
+    {
+      "title": "Poland is now among the 20 largest economies",
+      "link": "https://apnews.com/article/poland-economy-growth-g20-gdp-26fe06e120398410f8d773ba5661e7aa",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-08T12:30:05.000Z",
+      "summary": "Article URL: https://apnews.com/article/poland-economy-growth-g20-gdp-26fe06e120398410f8d773ba5661e7aa\nComments URL: https://news.ycombinator.com/item?id=48062117\nPoints: 885\n# Comments: 727",
+      "id": "217da01502c5d17d5a7262b27928de680327bbe820dd414ace0521f51fbfe5ad",
+      "ref_id": "4",
+      "recommendationScore": 0,
+      "popularityScore": 100,
+      "priority": "low",
+      "comment": "一篇关于波兰经济增长的国际新闻报道。",
+      "reason": "内容与科技博客核心主题完全不符，不适合本平台发布。",
+      "tags": [
+        "经济",
+        "国际新闻"
+      ]
+    },
+    {
+      "title": "Using Claude Code: The Unreasonable Effectiveness of HTML",
+      "link": "https://simonwillison.net/2026/May/8/unreasonable-effectiveness-of-html/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-05-08T21:00:11.000Z",
+      "summary": "",
+      "id": "0abd127d4083ebc6131eef9fd1b58889b0ec905b9a2fc1bc0b7221cd0042ac7d",
+      "ref_id": "4",
+      "recommendationScore": 0,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "标题极具吸引力，暗示是一篇关于AI编程工具和HTML的深度技术分析，但实际内容缺失。",
+      "reason": "标题完美契合AI与编程工具的主题，暗示了极高的实用性和潜在技术深度，但因文章内容为空，无法提供任何有效信息，故推荐分数为零。",
+      "tags": [
+        "编程工具",
+        "HTML",
+        "AI辅助编程",
+        "Claude"
+      ]
+    }
+  ]
+}
