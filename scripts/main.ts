@@ -51,6 +51,7 @@ async function main() {
     await saveArticles(scoredArticles, dailySummary);
 
     console.log('--- Workflow Complete ---');
+    process.exit(0);
   } catch (error) {
     console.error('Workflow failed:', error);
     process.exit(1);
