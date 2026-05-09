@@ -4,13 +4,17 @@ const apiKey = process.env.GEMINI_API_KEY || '';
 const genAI = new GoogleGenerativeAI(apiKey);
 const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
-const SUMMARY_PROMPT = `你是科技博客编辑，请用中文写一段 60 字以内的今日科技速递摘要，概括以下文章的核心热点，语气简洁专业。
+const SUMMARY_PROMPT = `你是科技博客编辑。请用中文写一段 150-200 字的今日科技速递摘要。
+要求：
+1. 覆盖至少 3-5 个不同话题
+2. 每个话题用一句话概括核心观点
+3. 语气简洁专业，像新闻简报
+4. 按重要性排序
 
-文章列表：
+以下是今日评分最高的文章：
 {{articles_json}}
 
 请直接输出摘要文字，不要添加任何其他内容。`;
-
 export async function generateDailySummary(scoredArticles: any[]): Promise<string> {
   try {
     if (!apiKey) {
