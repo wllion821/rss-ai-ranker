@@ -1,5 +1,5 @@
 {
-  "dailySummary": "今日科技速递：\n\n美国政府今日发布首批不明异常现象（UAP）相关文件及视频，引发公众对未知空域现象和国家安全透明度的新一轮关注，该话题迅速成为热点。在人工智能领域，",
+  "dailySummary": "今日科技速递：\n\n大型语言模型领域持续演进，有用户分享了对ChatGPT 5.5 Pro的深度体验，引发了关于其性能提升和实际应用效果的广泛讨论。同时，Subquadratic公司在LLM领域取得突破，",
   "articles": [
     {
       "title": "You gave me a u32. I gave you root. (io_uring ZCRX freelist LPE)",
@@ -802,6 +802,328 @@
       "tags": [
         "无效",
         "空内容"
+      ]
+    },
+    {
+      "title": "A recent experience with ChatGPT 5.5 Pro",
+      "link": "https://gowers.wordpress.com/2026/05/08/a-recent-experience-with-chatgpt-5-5-pro/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-09T02:41:42.000Z",
+      "summary": "https://twitter.com/wtgowers/status/2052830948685676605\nhttps://xcancel.com/wtgowers/status/2052830948685676605\nComments URL: https://news.ycombinator.com/item?id=48071262\nPoints: 499\n# Comments: 357",
+      "id": "73b53d89415bce0e9d1f12d1381c2bdea523135f82e5b957840fb564b62384cf",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 100,
+      "priority": "high",
+      "comment": "关于ChatGPT 5.5 Pro的最新使用体验分享，信息量大且及时。",
+      "reason": "文章属于AI主题，具有极高的实用性和时效性，直接反映了主流AI模型的最新能力和表现，对广大AI用户和开发者都极具参考价值。",
+      "tags": [
+        "AI",
+        "ChatGPT",
+        "用户体验",
+        "大模型"
+      ]
+    },
+    {
+      "title": "The context window has been shattered: Subquadratic debuts a 12M token window",
+      "link": "https://thenewstack.io/subquadratic-12-million-context-window/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-09T15:15:39.000Z",
+      "summary": "Article URL: https://thenewstack.io/subquadratic-12-million-context-window/\nComments URL: https://news.ycombinator.com/item?id=48075645\nPoints: 19\n# Comments: 4",
+      "id": "3803e505b221bf3398f7d866241a1ea8cea62937ab044e136e06d6e3e60a9b20",
+      "ref_id": "0",
+      "recommendationScore": 90,
+      "popularityScore": 10,
+      "priority": "high",
+      "comment": "关注大型语言模型上下文窗口的突破性进展，实现12M token超长上下文。",
+      "reason": "AI领域的重要进展，对未来LLM应用有深远影响，技术深度和新颖性突出，优先级最高。",
+      "tags": [
+        "AI",
+        "LLM",
+        "上下文窗口",
+        "技术突破",
+        "Subquadratic"
+      ]
+    },
+    {
+      "title": "LLMs Corrupt Your Documents When You Delegate",
+      "link": "https://arxiv.org/abs/2604.15597",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-09T08:44:34.000Z",
+      "summary": "Article URL: https://arxiv.org/abs/2604.15597\nComments URL: https://news.ycombinator.com/item?id=48073246\nPoints: 165\n# Comments: 54",
+      "id": "8c8c38bfca221c713b2b9d5dfd37ca904d237b3f04193491f1ae816123794519",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "揭示LLM在文档处理中可能导致的数据腐败问题，对AI开发者至关重要。",
+      "reason": "文章属于AI主题，技术深度、新颖性和实用性极高，提醒了AI应用中的潜在风险和信任问题，值得高度关注。",
+      "tags": [
+        "AI",
+        "LLM",
+        "数据安全",
+        "研究"
+      ]
+    },
+    {
+      "title": "The Mismeasure of Open Source",
+      "link": "https://nesbitt.io/2026/05/09/the-mismeasure-of-open-source.html",
+      "source": "nesbitt.io",
+      "publishedAt": "2026-05-09T10:00:00.000Z",
+      "summary": "Every attempt to score open source projects for criticality, risk, or funding need ends up built on roughly the same dozen signals, because those are the dozen signals you can get from a registry API and the GitHub REST endpoints in an afternoon. I wrote earlier this week about the 2015 CII census, whose formula scored xz-utils a 6 out of 13 and let it sink to row 254, and which nonetheless got more right than it’s usually given credit for.\nTen years on there are several successor efforts running, from foundations, academics, and funders, and I’ve contributed data to most of them. With far more data and far more people working on the problem they are still largely built on the same inputs, so they inherit most of the same blind spots plus a few new ones, and I wanted to write those down in one place without picking on any single model.\nMissing read as zero\nThe most consequential mistake is treating the absence of a signal as a low value of that signal. Go modules are fetched from version control via a proxy that publishes no per-module download counts. C libraries reach machines through apt, dnf, apk, vendoring, and static linking, none of which report to anyone. If a model’s entry filter is “top N by downloads”, or its importance weight is download-derived, both of these ecosystems are largely excluded before any risk scoring runs, and the output contains no indication that they were ever candidates.\nI mentioned Daniel Stenberg finding curl listed at ten thousand downloads a year, which is an accurate count of the channels that happen to be instrumented and bears no relation to the twenty billion or so installations curl actually has.\nZero GitHub issues might mean zero users, or it might mean bugs are tracked in Bugzilla, a mailing list, Launchpad, or the Debian BTS. The absence of a FUNDING.yml could equally mean nobody is paying or that three full-time maintainers are on Red Hat’s payroll, and a missing OpenSSF Scorecard result tells you nothing about security if the project is hosted on cgit where Scorecard can’t run.\nAlmost every model I’ve seen handles all of these cases by writing a zero into the cell, or by silently dropping the row, rather than by writing “unknown” and propagating the uncertainty. Once the dashboard renders, a null and a zero look identical, and the project that didn’t fit the schema is indistinguishable from the project that genuinely has nothing.\nThe earlier, harsher version of the same failure is the entry filter that decides what gets scored at all. The scoring formula in a criticality model is the part that gets discussed, but the candidate set it runs over has usually made the bigger decision already. The 2015 census scored Debian packages above a popcon threshold, so sudo and polkit weren’t misranked by it, they were never in the input.\nModern equivalents typically start from “top N% of registry downloads” or “packages with a resolvable GitHub URL”, and everything those filters exclude is excluded silently. There is no row in the output that says “not considered”, and a reader has no way to distinguish “scored as low risk” from “never entered the room”.\nEasy to collect, so it must mean something\nAvailability gets mistaken for relevance: a metric is used because the API returns it, and the justification is worked out afterwards. This is the streetlight effect applied to software, with the GitHub and registry APIs as the lamp post and most of the actual risk lying out in the dark. Download counts are the universal example. The number an npm or PyPI API gives you is dominated by CI runners reinstalling the world on every push, with mirror traffic, bot scans, and the occasional human mixed in. It is not a count of users, or of installations, or of anything that maps cleanly to “how many people are affected if this breaks”. It correlates loosely with those things in the fat middle of the distribution and falls apart entirely at the edges, which is unfortunate because the edges are where you’re trying to look.\nGitHub stars measure the intersection of “people with GitHub accounts who clicked a button” and the project’s visibility in that demographic, which skews hard towards web frontend and developer tooling. ICU is linked into every browser, Android, the JDK, and Node, and has roughly 3,500 stars. c-ares does async DNS for curl, Node, and gRPC and has about 2,100. libxml2’s GitHub mirror has 735. Stars are also straightforwardly purchasable. He et al. identified around six million suspected fake stars on GitHub between 2019 and 2024, with the rate climbing sharply in the last year of that window, so any model weighting stars is partly weighting whoever paid for a campaign.\nCVE count is routinely used as a security signal and measures the opposite of what people assume. OpenSSL and the Linux kernel have hundreds of CVEs because security researchers look at them constantly, while an unfuzzed C parser that nobody has examined since 2014 has none and is more dangerous for it. Treated as a risk input the metric tracks audit attention received rather than vulnerabilities present, which rewards exactly the projects nobody has bothered to check.\nIt also only counts the subset of fixed vulnerabilities where someone went through the CVE process. Plenty of maintainers find and fix security bugs and ship the patch in a routine release rather than spend a week arguing with a CNA about severity scoring, and none of that history shows up in the column.\nCode complexity metrics get used as a proxy for how hard a project would be to replace, but cyclomatic and Halstead scores count branches and operators, which is what a static analyser can see and only loosely tracks what a human would find difficult. Vlad-Stefan Harbuz pointed me at the regex engine he wrote for Hare’s standard library, which reads to any such tool as unremarkable loops over arrays. The loops are executing a virtual machine for pattern matching, and all of the difficulty is in the automaton they encode, where no metric is looking.\nCommit cadence and “last activity” penalise software that is finished. TeX is the canonical case, and bzip2, libogg, and a lot of format-parsing and crypto code that implements a frozen specification are deliberately low-churn because the format is stable and churn is itself a risk. The same metric is trivially gamed in the other direction by Dependabot and Renovate, which will happily keep a repository’s activity graph green for years after the last human stopped reading the notifications. That at least leaves a recognisable bot author in the log.\nClaude Code and similar coding agents now support scheduled and repeating tasks, so a repository can accumulate a steady stream of plausible-looking maintenance commits authored under a human’s name with no human in the loop, and commit frequency stops distinguishing maintained from automated entirely. I’ve been trying to count how often that Weekend at Bernie’s condition actually holds across the most-depended-on packages, and the bot-only category is large enough that any activity metric ignoring authorship is measuring the bots.\nOne number, many units\nComparing absolute values of any of these metrics across ecosystems produces nonsense, because the units are different even when the column header is the same. An npm “download” is mostly a count of CI cache misses, the Homebrew analytics equivalent is a ping from a macOS developer laptop, and a Debian popcon install is an opt-in report from a shrinking population that was never representative of servers or containers. Adding these together, or fitting a coefficient that converts one into another, puts a precise-looking number on a quantity that doesn’t exist.\nDependent counts behave the same way: npm’s culture of tiny single-purpose packages means a string-padding helper can have tens of thousands of declared dependents. A C compression library that is statically linked into every browser, every database engine, and most games on the planet might have a few dozen, because C dependencies are expressed as #include, a vendored source file, a git submodule, or a line in a CMake script, none of which produce a manifest edge that a registry crawler can follow. Ranking these two projects against each other by dependent count tells you about packaging conventions in their respective ecosystems and nothing about which one matters more.\nEven within the set of things that do produce manifest edges, package granularity varies enough to break comparisons. A Rust workspace might publish forty crates from one repository and one team where a Python project of the same size would publish a single package, so the Rust project shows up as forty times as many nodes in the graph, internal edges between them inflate its PageRank, and the same handful of maintainers gets counted forty times in any bus-factor sum.\nGitHub as the visible universe\nMost models lean on the GitHub API for everything that isn’t a registry field: contributors, issues, stars, security policy, sponsors, Scorecard. By package count most open source is on GitHub, so this is a reasonable place to start, but the projects hosted elsewhere are disproportionately the old low-level infrastructure that the models exist to find.\nPostgreSQL, SQLite, GnuPG, glibc, FFmpeg, and most GNU projects run primary development on mailing lists, self-hosted cgit, Gerrit, or Savannah. Some have read-only GitHub mirrors, which is its own trap. The mirror has stars and a contributor graph, so the API happily returns numbers for it, but pull requests opened there go nowhere and the contributor graph reflects whoever pushes the sync rather than who writes the code. Nothing in the API response distinguishes a mirror from a primary, so the mirror gets scored as if it were the project.\nThe GitHub /contributors endpoint only counts commit authors it can link to a GitHub account. curl’s own THANKS file lists over 3,600 contributors, but the API returns a few hundred, because most of the people in curl’s history sent patches from an email address that GitHub has never seen. Bus-factor formulas built on the same data then report curl as 1, since Daniel Stenberg has authored over half the commits, and the formula has no way to distinguish a prolific founder working alongside dozens of active people from a solo maintainer with nobody else around.\nThe same endpoint misleads in the opposite direction by returning lifetime totals, so a project that had eighty contributors in 2012 and has one exhausted person today shows a reassuring headcount, and there is no field anywhere in the API or the registry metadata for whether that one person is close to walking away.\nOpenSSF Scorecard is widely consumed as a security score even though several of its checks (Branch-Protection, Token-Permissions, Dependency-Update-Tool, CI-Tests) detect GitHub features rather than security properties. A project with self-hosted Buildbot CI, mailing-list patch review, and twenty years of careful security process scores worse than a weekend template repo with the default Actions workflow enabled. In the other direction, a project that does tick every box comes out near ten, and that gets read downstream as “secure”, as though the checklist covered the whole of security rather than the slice of it a repository scan can reach. And once a score like this becomes an input to funding decisions, Goodhart kicks in: projects start enabling the checkboxes that move the number rather than doing the work the checkboxes were meant to proxy for.\nWhich project is this\nIdentity is harder than it looks, and almost every model gets it wrong in at least one direction, starting with the fact that the same code shows up under different names in different places. libcurl is curl on Homebrew, libcurl4 on Debian, pycurl on PyPI, curl-sys on crates.io, and curl/curl on GitHub. A model that doesn’t unify these holds five separate low-scoring entries for one risk surface, and any funding or attention directed by the output gets split five ways or pointed at the wrapper instead of the thing being wrapped.\nThe opposite mapping also breaks things, since LLVM, GCC, coreutils, util-linux, and BusyBox each ship dozens of separately-named artifacts from a single repository. A model that assumes one package maps to one repo either picks one artifact and ignores the rest, or counts the same maintainer team dozens of times. Several models I’ve looked at simply exclude these projects because computing complexity metrics over a repository that size times out, which means the criticality scoring has a hole exactly where the most critical projects sit.\nForks confuse things further, because when a package’s listed repository URL points at a fork, or the original is archived and development has moved to a fork that the registry metadata doesn’t know about, every repository-derived metric is describing the wrong tree.\nFunding you can’t see\nProject health and funding models tend to look for GitHub Sponsors, FUNDING.yml, Open Collective, and foundation membership lists, because those are public and machine-readable. The most common funding arrangement for critical infrastructure is none of those. It’s a maintainer employed by Red Hat, Google, Intel, Canonical, or a hardware vendor, with the project as some or all of their job, and that arrangement leaves no trace in any file a crawler can fetch. The second most common is consulting and support contracts around the project, which is similarly invisible.\nBen Nickolls and I gave a talk on this at FOSDEM 2025: when we tried to assemble a picture of where open source funding actually comes from and where it goes, the public tip-jar layer that everyone measures turned out to be a thin film over a much larger and almost entirely opaque body of corporate salary, foundation grants disbursed without public reporting, and support revenue. A model reading only the public layer will mark a project with a salaried team as unfunded while treating an enabled but barely-used Sponsors button as evidence of sustainability.\nThe compound case\nIndividually, each of these mismeasures some projects in some direction, and for the bulk of modern, registry-published, GitHub-hosted packages the errors roughly cancel out. The trouble is that the errors correlate, because a project old enough to predate GitHub is disproportionately likely to be written in C, distributed by vendoring rather than a manifest dependency, developed over a mailing list, funded through someone’s salary, and low-churn because the format it implements stopped changing years ago.\nSo the same project gets undercounted on downloads, dropped from the dependency graph, nulled on contributor metrics, scored low on Scorecard, marked unfunded, and flagged as inactive, all at once, for six different expressions of the same underlying fact: it doesn’t look like an npm package. The quiet system library with one tired maintainer and no dashboard footprint is exactly what we built all of this tooling to find, and it remains the thing the tooling is structurally worst at seeing.",
+      "id": "6622e70207fd2b7e4328d9b265ce065e46739ba5686ccfec90999fb488f167b3",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "深入分析了开源项目评估方法中存在的缺陷和误区，具有高度的技术批判性。",
+      "reason": "文章技术深度高，对开源生态系统的评估方法提出了深刻见解，直接契合了“编程工具”和“独立开发”的主题。",
+      "tags": [
+        "开源",
+        "软件工程",
+        "项目评估",
+        "方法论",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "Using Claude Code: The unreasonable effectiveness of HTML",
+      "link": "https://twitter.com/trq212/status/2052809885763747935",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-09T04:53:52.000Z",
+      "summary": "Examples: https://thariqs.github.io/html-effectiveness/\nRelated: https://simonwillison.net/2026/May/8/unreasonable-effectiven...\nComments URL: https://news.ycombinator.com/item?id=48071940\nPoints: 319\n# Comments: 201",
+      "id": "292bd0aba5c1d0bc9fe994e538b3310bb654a5edecaaa60d495ecdc5387ef95e",
+      "ref_id": "3",
+      "recommendationScore": 85,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "探讨AI（Claude）如何有效利用HTML，提供了独特且实用的视角。",
+      "reason": "文章结合了AI与编程工具主题，新颖且实用，为开发者提供了利用AI进行高效前端开发的新思路和对现有技术的重新审视。",
+      "tags": [
+        "AI",
+        "HTML",
+        "前端开发",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "GrapheneOS fixes Android VPN leak Google refused to patch",
+      "link": "https://cyberinsider.com/grapheneos-fixes-android-vpn-leak-google-refused-to-patch/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-09T14:11:10.000Z",
+      "summary": "Article URL: https://cyberinsider.com/grapheneos-fixes-android-vpn-leak-google-refused-to-patch/\nComments URL: https://news.ycombinator.com/item?id=48075144\nPoints: 77\n# Comments: 10",
+      "id": "30f0c4714fa1410f94957dfae1b627f26581aefb3ce9b9880412166228993479",
+      "ref_id": "2",
+      "recommendationScore": 75,
+      "popularityScore": 30,
+      "priority": "medium",
+      "comment": "GrapheneOS成功修复了Google拒绝修补的Android VPN泄露漏洞，提升用户隐私安全性。",
+      "reason": "关注移动操作系统安全与隐私的用户会感兴趣，展示了第三方OS在安全方面的努力，具有较高实用性。",
+      "tags": [
+        "Android",
+        "安全",
+        "隐私",
+        "VPN",
+        "操作系统",
+        "GrapheneOS"
+      ]
+    },
+    {
+      "title": "Read Programming as Theory Building",
+      "link": "https://codeutopia.net/blog/2026/05/09/you-should-read-programming-as-theory-building/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-09T13:31:53.000Z",
+      "summary": "Article URL: https://codeutopia.net/blog/2026/05/09/you-should-read-programming-as-theory-building/\nComments URL: https://news.ycombinator.com/item?id=48074829\nPoints: 55\n# Comments: 9",
+      "id": "5003af7542d5214ea90020db6f204cf42a83bac8bbcd11c827520509a9a85774",
+      "ref_id": "3",
+      "recommendationScore": 70,
+      "popularityScore": 25,
+      "priority": "medium",
+      "comment": "从理论构建的角度探讨编程实践，提供新的思维框架。",
+      "reason": "能够帮助程序员深化对编程本质的理解，提升思考问题和解决问题的方法论，具有较高技术深度和实用性。",
+      "tags": [
+        "编程哲学",
+        "软件工程",
+        "编程方法论",
+        "理论构建"
+      ]
+    },
+    {
+      "title": "Internet Archive Switzerland",
+      "link": "https://internetarchive.ch/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-09T12:00:30.000Z",
+      "summary": "Article URL: https://internetarchive.ch/\nComments URL: https://news.ycombinator.com/item?id=48074265\nPoints: 276\n# Comments: 34",
+      "id": "bbb727ff2bfa185fc0628c6cff60c0de6173601b8ad61d13f47e2509bec1b2cf",
+      "ref_id": "4",
+      "recommendationScore": 65,
+      "popularityScore": 95,
+      "priority": "medium",
+      "comment": "互联网档案在瑞士建立新站点，增强数字遗产的保存能力。",
+      "reason": "对于关注数字文化遗产、数据主权和互联网基础设施的读者具有重要意义，且社群关注度最高。",
+      "tags": [
+        "数字保存",
+        "互联网",
+        "基础设施",
+        "瑞士",
+        "数据主权",
+        "Internet Archive"
+      ]
+    },
+    {
+      "title": "Forking the Web",
+      "link": "https://dillo-browser.org/lab/web-fork/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-09T11:33:07.000Z",
+      "summary": "Article URL: https://dillo-browser.org/lab/web-fork/\nComments URL: https://news.ycombinator.com/item?id=48074087\nPoints: 80\n# Comments: 67",
+      "id": "db2ebfc296826727dedad480a6b17df443cb0a67eb556da3890db91ac2dde55e",
+      "ref_id": "0",
+      "recommendationScore": 65,
+      "popularityScore": 45,
+      "priority": "medium",
+      "comment": "探讨Web未来的大胆设想，技术深度和新颖性突出。",
+      "reason": "文章对互联网的未来架构提出了深刻的思考，具有较高的技术深度和新颖性，但对普通开发者的即时实用性稍弱。",
+      "tags": [
+        "Web",
+        "浏览器",
+        "独立开发",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "I Will Not Add Query Strings to Your URLs",
+      "link": "https://susam.net/no-query-strings.html",
+      "source": "susam.net",
+      "publishedAt": "2026-05-09T00:00:00.000Z",
+      "summary": "Last evening, a short blog post appeared in my feed reader that felt\n  as if it spoke directly to me.  It is Chris Morgan's excellent post\n  called I've\n  banned query strings.\n\nContents\nWisdom on the Web\nWander on the Web\nMisfeature\nBroken URLs\nConclusion\nWisdom on the Web\nChris is someone whose\n  Internet comments I have been reading for about half a decade now.\n  I first stumbled upon his comments when he left very detailed\n  feedback\n  on one of my collections of CSS rules on Hacker News.  I am by no\n  means a web developer.  I have spent most of my\n  professional life\n  doing systems programming in C and C++.  However, developing\n  websites and writing\n  small HTML tools has been a long-time\n  hobby for me.  I have learnt most of my web development skills as a\n  hobbyist by studying what other people do: first by viewing the\n  source of websites I liked in the early 2000s, and later by\n  occasionally getting possessed by the urge to implement a new game\n  or tool and searching\n  MDN Web\n  Docs to learn whatever I needed to make it work.  One problem\n  with learning a skill this way is that you sometimes pick up habits\n  and practices that are fashionable but not necessarily optimal or\n  correct.  So it was really valuable to me when Chris commented on my\n  collection of boilerplate CSS rules.  It helped me improve my CSS a\n  lot.  In fact, a few of the lessons from his comment have really\n  stuck with me; I keep them in mind whenever I make a hobby HTML\n  project: always retain underlines in links and\n  retain purple for\n  visited links.\n\n\n  I have been following Chris's posts and comments on web-related\n  topics since then.  He often posts great feedback on web-related\n  projects.  Whenever I come across one, I make sure to read them\n  carefully, even when the project isn't mine.  I always end up\n  learning something nice and useful from his comments.  Here is one\n  such recent example from the Lobsters story\n  Adding\n  author context to RSS.\n\nWander on the Web\nWander\n  Console.  It is a small, decentralised, self-hosted web console\n  that lets visitors to your website explore interesting websites and\n  pages recommended by a community of independent personal website\n  owners.  For example, my console is here:\n  susam.net/wander/.  If you click the 'Wander'\n  button there, the tool loads a random personal web page recommended\n  by the Wander community.\n\n\n  The tool consists of one HTML file that implements the console and\n  one JavaScript file where the website owner defines a list of\n  neighbouring consoles along with a list of web pages they recommend.\n  If you copy these two files to your web server, you instantly have a\n  Wander console live on the Web.  You don't need any server-side\n  logic or server-side software beyond a basic web server to run\n  Wander Console.  You can even host it in constrained environments\n  like Codeberg Pages or GitHub Pages.  When you click the 'Wander'\n  button, the console connects to other remote consoles, fetches web\n  page recommendations, picks one randomly and loads it in your web\n  browser.  It is a bit like the now defunct\n  StumbleUpon\n  but it is completely decentralised.  It is also a bit like web rings\n  except that the community network is not restricted to being a\n  cycle; it is a graph and it is flexible.\n\n\n  There are currently over 50 websites hosting this tool.  Together,\n  they recommend over 1500 web pages.  You can find a recent snapshot\n  of the list of known consoles and the pages they recommend at\n  susam.codeberg.page/wcn/.\n  To learn more about this tool or to set it up on your website,\n  please see codeberg.org/susam/wander.\n\nMisfeature\nvia= query parameter while loading web pages.  For\n  example, if you encountered midnight.pub\n  while using the console at susam.net/wander/,\n  the console loaded the page using the following URL:\n\nhttps://midnight.pub/?via=https://susam.net/wander/\nblog\n  post is critical of features like this.  He writes:\n\n\n  \nmy URLs.\n  \nhttps://chrismorgan.info/no-query-strings?ref=example.com?\n    Did I ask?  If I wanted to know I'd look at the\n    Referer header; and if it isn't there, it's probably\n    for a good reason.  You abuse your users by adding that to the\n    link.\n  \nfeature\n  request on Codeberg, my initial reaction was reluctance.  I\n  wasn't convinced it was a good feature.  But I was too busy with\n  some ongoing algebraic graph theory research, another recent hobby,\n  with a looming deadline, so I didn't have a lot of time to think\n  about it clearly.  In fact, everything about Wander Console has been\n  made in very little time during the short breaks I used to take from\n  my research.  I made the first version of the console in about one\n  and a half hours one early morning when my brain was too tired to\n  read more algebraic graph theory literature and I really needed a\n  break.  During another such break, I revisited that feature request\n  and, despite my reservations, decided to implement it anyway.\n  During yet another such break, I am writing this post.\n\n\n  Normally, I don't like adding too many new features to my little\n  projects.  I want them to have a limited scope.  I also want them to\n  become stable over time.  After a project has fulfilled some\n  essential requirements I had, I just want to call it feature\n  complete and never add another feature to it again.  I'll fix bugs,\n  of course.  But I don't like to keep adding new features endlessly.\n  That's my style of maintaining my hobby projects.  So it should have\n  been very easy for me to ignore the feature request for adding a\n  referral query string to URLs loaded by the console tool.  But I\n  think a tired body and mind, worn down by long and intense research\n  work, took a toll on me.\n\n\n  Although my gut feeling was telling me that it was not a good\n  feature, I couldn't articulate to myself exactly why.  So I\n  implemented the referral query string feature anyway.  While doing\n  so, I added an opt-out mechanism to the configuration, so that if\n  someone else didn't like the feature, they could disable it for\n  themselves.  This was another mistake.  A questionable feature like\n  this should be implemented as an opt-in feature, not an opt-out\n  feature, if implemented at all.  The fact that I didn't have a lot\n  of time to reason through the implications of this feature meant\n  that I just went ahead and implemented it without thinking about it\n  critically.  As the famous quote from Jurassic Park goes:\n\n\n  Your scientists were so preoccupied with whether or not they could\n  that they didn't stop to think if they should.\n\nBroken URLs\nhttps://int10h.org/oldschool-pc-fonts/fontlist/\n\n\n  Normally, the above URL would load fine, but now the console was\n  altering the URL by adding a query string to it while loading it.\n  The modified URL would not load.  For example, try visiting the\n  following modified URL:\n\n\n  https://int10h.org/oldschool-pc-fonts/fontlist/?foo\n\n\n  The above URL returns an HTTP 404 error page.  Now, with a little\n  time to breathe and some hindsight, I could articulate why adding\n  referral query strings to a working URL is such a bad idea.\n  Altering a URL gives you a new URL.  The new URL could\n  point to a totally different resource, or to no resource at all,\n  even if the alteration is as small as adding a seemingly harmless\n  query string.  By adding the referral query string, I had\n  effectively broken a working URL belonging to a website I am\n  very fond\n  of.  There is also a moral question here about whether it is okay to\n  modify a given URL on behalf of the user in order to insert a\n  referral query string into it.  I think it isn't.\n\nConclusion\nI've banned\n  query strings appeared in my feed reader last evening, it pushed\n  me enough to take a little time away from my academic hobby and\n  devote it to removing that ill-considered feature.  The feature is\n  now gone.  See\n  commit b26d77c\n  for details.  The latest release, version 0.6.0, does not have it\n  anymore.\n\n\n  This is a lesson I'll remember for any new hobby projects I happen\n  to make in the future.  If I ever load URLs again, I'll load them\n  exactly as the website's author intended.  I will never add query\n  strings to your URLs.\n\n\n  \n  \n    Created using Simpsons\n    Chalkboard Generator and GIMP\n  \n\n\n\n  Read on website |\n  #web |\n  #technology",
+      "id": "016ff330286eceb864bf98b87eebeaf98bbac56f288a5ce08eac340f2e90f53b",
+      "ref_id": "0",
+      "recommendationScore": 55,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "一篇关于作者对URL中避免使用查询字符串的个人观点与哲学的分享。",
+      "reason": "文章表达了对优雅URL的个人偏好，内容虽有启发性，但技术深度和实用性相对较低，更偏向于个人理念而非普遍适用性建议。",
+      "tags": [
+        "URL设计",
+        "Web开发",
+        "个人观点",
+        "编程哲学",
+        "前端"
+      ]
+    },
+    {
+      "title": "Killswitch: Per-function short-circuit mitigation primitive",
+      "link": "https://lwn.net/ml/all/20260507070547.2268452-1-sashal@kernel.org/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-09T09:14:05.000Z",
+      "summary": "Article URL: https://lwn.net/ml/all/20260507070547.2268452-1-sashal@kernel.org/\nComments URL: https://news.ycombinator.com/item?id=48073394\nPoints: 57\n# Comments: 11",
+      "id": "3cda0ebbd3f20d4e1d4fefd09f737f16a480e639bfa51587c7b6c9e4db5834ad",
+      "ref_id": "1",
+      "recommendationScore": 40,
+      "popularityScore": 25,
+      "priority": "low",
+      "comment": "极度专业化的Linux内核技术，对大多数读者过于深奥。",
+      "reason": "技术深度极高且新颖，是内核层面的重要优化，但受众面极窄，实用性仅限于资深的系统/内核开发者。",
+      "tags": [
+        "Linux",
+        "内核",
+        "系统编程",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "PipeDream on the Acorn Archimedes",
+      "link": "https://stonetools.ghost.io/pipedream-archimedes/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-09T15:01:16.000Z",
+      "summary": "Article URL: https://stonetools.ghost.io/pipedream-archimedes/\nComments URL: https://news.ycombinator.com/item?id=48075528\nPoints: 33\n# Comments: 9",
+      "id": "b038c0cb2547492258caf875aa4dfc72b94a4a9ab5c9f4ee6ac8073a01bec29a",
+      "ref_id": "1",
+      "recommendationScore": 35,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "回顾Acorn Archimedes平台上的经典软件PipeDream的历史与技术细节。",
+      "reason": "对早期计算历史和特定软件考古有兴趣的读者可能觉得有趣，但现代实用性不高且主题优先级较低。",
+      "tags": [
+        "历史",
+        "编程工具",
+        "复古计算",
+        "Acorn Archimedes"
+      ]
+    },
+    {
+      "title": "Your feed reader User-Agent is generic",
+      "link": "https://utcc.utoronto.ca/~cks/cspace-generic-ua.html",
+      "source": "utcc.utoronto.ca/~cks",
+      "publishedAt": "2026-05-09T00:00:00.000Z",
+      "summary": "Your software is blocked from fetching my syndication feeds\n  because it is using a generic User-Agent header in its HTTP requests.\n  Your software has been redirected to this special single-entry feed\n  so that you can hopefully find out about this and ideally remedy it.\n  Please see\n  my\n  general web page on generic user agents.",
+      "id": "bf7aadeb2be3d17439c1740edc1da63b08b87809d9a6dc9eec4948cac24a880e",
+      "ref_id": "2",
+      "recommendationScore": 35,
+      "popularityScore": 25,
+      "priority": "low",
+      "comment": "一篇简短的通知，解释了订阅源因User-Agent头通用而被阻塞的问题。",
+      "reason": "虽然涉及技术细节，但内容非常具体且深度不足，不具备广泛的吸引力。",
+      "tags": [
+        "Web开发",
+        "HTTP",
+        "User-Agent",
+        "故障排除"
+      ]
+    },
+    {
+      "title": "Pluralistic: Trump's fruitless search for a goreable ox (09 May 2026)",
+      "link": "https://pluralistic.net/2026/05/09/cossie-livvie-crissie/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-05-09T12:51:02.000Z",
+      "summary": "Today's links Trump's fruitless search for a goreable ox: You can keep billionaires happy, or you can fight the cost of living crisis, but not both. Hey look at this: Delights to delectate. Object permanence: Typewriter bust; Phrack's new issue; Panama Papers whistleblower speaks; The PRO Act; Zuck's new mind-control ray. Upcoming appearances: Barcelona, Berlin, Hay-on-Wye, London, NYC, Edinburgh. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. Trump's fruitless search for a goreable ox (permalink) I've got good news and bad news for Trump. The good news: you can get elected by promising to do something about the cost of living crisis, and the president actually has a lot of ways to improve people's daily costs. The bad news: everything you could do to fix working people's cost of living will make an oligarch worse off. This is the essential conundrum of Trumpismo: to keep his base happy, he needs to make their lives better; but to make their lives better, he'll have to make oligarchs angry. The oligarchs' wealth bonanza caused the cost of living crisis. Oligarchs' pleasure causes our suffering, so alleviating our suffering will reduce their pleasure. This means that while Trump can promise help with prices, all he can deliver is union-busting, ICE lynchings, and pointless wars, none of which have any hope of materially improving the lives of working people. Indeed, all of this stuff makes working people materially worse off, as wages fall, crops rot in the fields, and gas prices shoot through the roof. Trump would dearly love to find an ox he can safely gore, but all the good oxen are owned by his oligarch chums. Trump can't punish Ticketmaster, because the billions Ticketmaster steals from the WWE, F1 and football fans in his base all land in the pocket of oligarchs who own stock in Ticketmaster, and Trump can't afford to upset those oligarchs: https://pluralistic.net/2024/06/03/aoi-aoi-oh/#concentrated-gains-vast-diffused-losses Indeed, I can't think of a single corrupt racket that Trump can afford to do something about. Not even the only cost of living metric that can approach gas prices in the hierarchy of American electoral salience: grocery prices. Your grocery bill went up because oligarchs price-gouge you. Eggflation was caused by Cal-Maine, the monopolist that owns every brand of eggs in your grocer's fridge, who jacked up prices because they knew they could: https://pluralistic.net/2025/03/10/demand-and-supply/#keep-cal-maine-and-carry-on Pepsi and Walmart conspired to force every retailer to jack up the prices of all Pepsi products (including Frito-Lay, Gatorade, Aquafina, etc) at every retailer's store, so that Walmart could also jack up their prices and still undersell their competition (naturally, Trump let them get away with it): https://www.thebignewsletter.com/p/secret-documents-show-pepsi-and-walmart This stuff isn't exactly a secret. Grocery store owners hold earnings calls with their investors where they boast about the fact that they can raise their prices far in excess of their increased costs, and blame it on inflation: https://pluralistic.net/2023/03/11/price-over-volume/#pepsi-pricing-power They boast about their \"personalized pricing\" swindles, whereby they use surveillance data to figure out how desperate you are and jack up the prices you see in their apps: https://pluralistic.net/2025/12/11/nothing-personal/#instacartography Trump has the power to put a stop to all of this, but still, he can't, because his oligarch pals would squeal, and when they squeal, Trump jumps. In theory, Trump has lots of power, but in practice, Trump can't do anything. Which brings me to the cost of meat. Meat inflation has raced ahead of other forms of food inflation, even as the payments to ranchers and other producers fell sharply, leading to waves of bankruptcies: https://www.thebignewsletter.com/p/beef-is-expensive-so-why-are-cattle Partly, that's because meat processing is controlled by cartels, with 85% of all the beef being processed by four packers, and nearly every chicken going through one of four poultry processors. These middlemen jack up prices to grocers while colluding to push down the payments to their suppliers. How do they rig those prices? After all, it's very illegal for these four companies to get together around a table to rig prices. Instead, they use a \"price consultancy\" called Agri Stats that does the price-rigging for them. Every week, the packers send a detailed list of all their costs and prices into Agri Stats, and Agri Stats \"advises\" them all to raise all their prices at once, and anyone who doesn't play along is pushed out of the Agri Stats cartel. Everyone wins – except families paying for groceries: https://pluralistic.net/2023/10/04/dont-let-your-meat-loaf/#meaty-beaty-big-and-bouncy Agri Stats has been doing this since the Reagan years, but they grew steadily more brazen, until, back in 2023, Biden's DOJ brought history's most obvious, easily won antitrust case against them: https://www.meatpoultry.com/articles/29124-doj-sues-agri-stats-for-complicity-in-meat-market-manipulation And wouldn't you know it, Trump just settled that case, in a way that will make Agri Stats much, much richer and give them far more opportunities to rig prices: https://prospect.org/2026/05/08/meat-industry-agri-stats-department-of-justice-price-fix-trump/ Under the terms of the settlement, Agri Stats must \"allow\" restaurants, farmers, and other parts of the supply chain to pay it for the data it consolidates. This will allow more parties to collude to rig prices, and provide more income to Agri Stats. As David Dayen writes in The American Prospect, they've been \"sentenced to make money.\" Agri Stats isn't the only \"price consultancy\" that is used to launder a price-fixing cartel that's driving up the cost of living for all Americans, including Trump's base, in order to make oligarchs better off. Companies like Realpage do the same thing for residential rents: https://pluralistic.net/2024/12/11/nimby-yimby-fimby/#home-team-advantage Trump can't do anything about any of these scams, not without goring some oligarch's precious ox. But, as Dayen points out, there are dozens of Democratic state Attorneys General who can kill Trump's sweetheart deal for Agri Stats using the Tunney Act, which gives them standing to sue to force a federal judge to review the settlement and determine whether it is fair. Whether any AG will seize the moment remains to be seen, of course, but it would be very good politics to do so – after all, the path to political power in America runs through credible promises to do something about the cost of living crisis. Hey look at this (permalink) The simple statistical error Republican Supreme Court justices used to gut the VRA https://www.gelliottmorris.com/p/2026-05-08-simple-math-error-scotus-callais-vra Message to Congress on Curbing Monopolies. https://www.presidency.ucsb.edu/documents/message-congress-curbing-monopolies The Scam Artistry of the Right’s Dirty Rotten Scoundrels https://jacobin.com/2026/05/peterson-musk-tate-right-victimization Ploopy Bean Pointing Stick https://ploopy.co/shop/bean-pointing-stick/ 'The Biggest Student Data Privacy Disaster in History': Canvas Hack Shows the Danger of Centralized EdTech https://www.404media.co/the-biggest-student-data-privacy-disaster-in-history-canvas-hack-shows-the-danger-of-centralized-edtech/ Object permanence (permalink) #25yrsago A dotcom founder's tale (funny) https://features.slashdot.org/story/01/05/04/1541239/the-worst-of-times #20yrsago Shell UK abandons chip-and-pin after £1M fraud https://web.archive.org/web/20060508044110/https://www.snakeoillabs.com/2006/05/07/shell-stops-accepting-chip-and-pin-in-fraud-fiasco-bp-to-follow/ #15yrsago Typewriter bust: Grandfather https://web.archive.org/web/20110511033756/http://jemayer.tumblr.com/post/5260317696 #10yrsago Kobo “upgrade” deprives readers of hundreds of DRM-locked ebooks https://www.teleread.com/drm-nightmare-after-recent-upgrade-kobo-customers-report-losing-sony-books-from-their-libraries/ #10yrsago Venerable hacker zine Phrack publishes its first issue in four years https://phrack.org/issues/69/1 #10yrsago Panama Papers whistleblower issues statement, naming and shaming failed states and institutions https://web.archive.org/web/20160506180902/https://panamapapers.icij.org/20160506-john-doe-statement.html #5yrsago The FTC's (kick-ass) Right to Repair report https://pluralistic.net/2021/05/07/pro-act-class-war/#we-fixit #5yrsago The PRO Act and worker misclassification https://pluralistic.net/2021/05/07/pro-act-class-war/#sectoral-balances #1yrago Mark Zuckerberg announces mind-control ray (again) https://pluralistic.net/2025/05/07/rah-rah-rasputin/#credulous-dolts Upcoming appearances (permalink) Barcelona: Internet no tiene que ser un vertedero (Global Digital Rights Forum), May 13 https://encuentroderechosdigitales.com/en/speakers/ Virtual: How to Disenshittify the Internet with Wendy Liu (EFF), May 14 https://www.eff.org/event/effecting-change-enshittification Berlin: Re:publica, May 18-20 https://re-publica.com/de/news/rp26-sprecher-cory-doctorow Berlin: Enshittification at Otherland Books, May 18 https://www.otherland-berlin.de/de/event-details/cory-doctorow-in-der-friesenstrasse-23-kreuzberg-praesentiert-von-otherland.html Berlin: Enshittification at Otherland Books, May 19 https://www.otherland-berlin.de/de/event-details/cory-doctorow.html Hay-on-Wye: HowTheLightGetsIn, May 22-25 https://howthelightgetsin.org/festivals/hay/big-ideas-2 SXSW London, Jun 2 https://www.sxswlondon.com/session/how-big-tech-broke-the-internet-b3c4a901 NYC: The Reverse Centaur's Guide to Life After AI with Jonathan Coulton (The Strand), Jun 24 https://www.strandbooks.com/cory-doctorow-the-reverse-centaur-s-guide-to-life-after-ai.html Edinburgh International Book Festival with Jimmy Wales, Aug 17 https://www.edbookfest.co.uk/events/the-front-list-cory-doctorow-and-jimmy-wales Recent appearances (permalink) The “Enshittification” of Everything (Bioneers) https://bioneers.org/cory-doctorow-enshittification-of-everything-zstf2605/ Enshittification (99% Invisible) https://99percentinvisible.org/episode/666-enshittification/ Artificial Intelligence: The Ultimate Disruptor, with Astra Taylor and Yoshua Bengio (CBC Ideas) https://www.cbc.ca/listen/live-radio/1-23-ideas/clip/16210039-artificial-intelligence-the-ultimate-disruptor When Do Platforms Stop Innovating and Start Extracting? (InnovEU) https://www.youtube.com/watch?v=cccDR0YaMt8 Pete \"Mayor\" Buttigieg (No Gods No Mayors) https://www.patreon.com/posts/pete-mayor-with-155614612 Latest books (permalink) \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 (https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/) \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2026 \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Third draft completed. Submitted to editor. \"The Reverse Centaur's Guide to AI,\" a short book for Farrar, Straus and Giroux about being an effective AI critic. LEGAL REVIEW AND COPYEDIT COMPLETE. \"The Post-American Internet,\" a short book about internet policy in the age of Trumpism. PLANNING. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "62c15c8b8cf9ff0d8b42ccbbae171499b3fc910afc04e5a7fdd8dc86c26a6100",
+      "ref_id": "0",
+      "recommendationScore": 15,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "一篇关于经济政策和政治的评论文章，与科技博客的主题无关。",
+      "reason": "内容不符合任何设定的科技主题优先级，缺乏技术深度和实用性。",
+      "tags": [
+        "政治",
+        "经济",
+        "评论"
+      ]
+    },
+    {
+      "title": "Reading List 05/09/2026",
+      "link": "https://www.construction-physics.com/p/reading-list-05092026",
+      "source": "construction-physics.com",
+      "publishedAt": "2026-05-09T12:02:50.000Z",
+      "summary": "Trapped buildings, in-home data centers, cardboard military drones, Brightline’s potential bankruptcy, and more.",
+      "id": "187f3100e7d503aebfc07d3bf444c8d3ab6e5b00be5a72ec3b2090d6ccc831dc",
+      "ref_id": "4",
+      "recommendationScore": 10,
+      "popularityScore": 15,
+      "priority": "low",
+      "comment": "一个非常简短的阅读列表，仅包含一些分散的科技相关主题关键词。",
+      "reason": "内容过于简略，没有提供实际信息或深入讨论，更像是一个索引而非文章。",
+      "tags": [
+        "阅读清单",
+        "科技新闻"
+      ]
+    },
+    {
+      "title": "Book Review: The Names by Florence Knapp ★★⯪☆☆",
+      "link": "https://shkspr.mobi/blog/2026/05/book-review-the-names-by-florence-knapp/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-05-09T11:34:20.000Z",
+      "summary": "This has an excellent narrative structure, some beautiful prose, and I just didn't enjoy it.  The story is Sliding Doors meets Same Time Next Year mixed with a distressing amount of domestic violence.  A mother faces a difficult choice. Should she name her child after her abusive and violent husband? In one strand she does, in another she doesn't, and in the third she makes a compromise. We…",
+      "id": "e0c3fef99ed6d3b93621a8580b9a91e62c74fb7b1fd9b63bbfc4197f92cffc27",
+      "ref_id": "1",
+      "recommendationScore": 5,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "这是一篇文学性质的书评，完全脱离了科技领域。",
+      "reason": "文章内容与科技博客的任何主题都不相关，不具备技术深度或实用性。",
+      "tags": [
+        "书评",
+        "文学"
       ]
     }
   ]
