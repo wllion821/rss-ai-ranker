@@ -1,0 +1,110 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+
+interface Article {
+  id: string;
+  title: string;
+  link: string;
+  source: string;
+  publishedAt: string;
+  summary: string;
+  recommendationScore: number;
+  comment?: string;
+  tags?: string[];
+  [key: string]: any;
+}
+
+interface DayGroup {
+  date: string;
+  articles: Article[];
+}
+
+let highlights: DayGroup[] = [];
+let totalHighlights = 0;
+let totalScore = 0;
+
+try {
+  const dataDir = path.join(process.cwd(), 'data');
+  if (fs.existsSync(dataDir)) {
+    const files = fs.readdirSync(dataDir)
+      .filter((f: string) => f.startsWith('articles-') && f.endsWith('.json'))
+      .sort()
+      .reverse();
+
+    for (const file of files) {
+      const date = file.replace('articles-', '').replace('.json', '');
+      const raw = fs.readFileSync(path.join(dataDir, file), 'utf-8');
+      const parsed = JSON.parse(raw);
+      
+      let dayArticles: Article[] = [];
+      if (parsed.articles && Array.isArray(parsed.articles)) {
+        dayArticles = parsed.articles;
+      } else if (Array.isArray(parsed)) {
+        dayArticles = parsed;
+      }
+
+      const filtered = dayArticles.filter((a: Article) => (a.recommendationScore || 0) >= 90);
+      
+      if (filtered.length > 0) {
+        highlights.push({
+          date,
+          articles: filtered.sort((a, b) => (b.recommendationScore || 0) - (a.recommendationScore || 0))
+        });
+        totalHighlights += filtered.length;
+        totalScore += filtered.reduce((sum, a) => sum + (a.recommendationScore || 0), 0);
+      }
+    }
+  }
+} catch (e) {
+  console.error('Error loading highlights:', e);
+}
+
+const averageHighlightScore = totalHighlights > 0 
+  ? (totalScore / totalHighlights).toFixed(1) 
+  : '0';
+---
+
+<BaseLayout title="精华推荐">
+  <div style="margin-bottom: 24px;">
+    <h1 style="margin: 0 0 8px; font-size: 2rem; color: #ffffff;">🏆 精华推荐</h1>
+    <p style="margin: 0; color: #94a3b8; font-size: 1rem;">
+      收录所有推荐分 ≥ 90 的精品内容
+    </p>
+  </div>
+
+  <div style="display: flex; gap: 12px; margin-bottom: 32px;">
+    <div style="background: #1e293b; border-radius: 8px; padding: 16px; flex: 1; border-left: 4px solid #f59e0b;">
+      <p style="font-size: 12px; color: #94a3b8; margin: 0 0 4px;">累计精华数</p>
+      <p style="font-size: 24px; font-weight: 700; color: #ffffff; margin: 0;">{totalHighlights}</p>
+    </div>
+    <div style="background: #1e293b; border-radius: 8px; padding: 16px; flex: 1; border-left: 4px solid #22d3ee;">
+      <p style="font-size: 12px; color: #94a3b8; margin: 0 0 4px;">平均精华分</p>
+      <p style="font-size: 24px; font-weight: 700; color: #ffffff; margin: 0;">{averageHighlightScore}</p>
+    </div>
+  </div>
+
+  {highlights.length === 0 ? (
+    <div style="text-align: center; padding: 48px 0; color: #94a3b8;">
+      <p style="font-size: 1.2rem;">暂无精华推荐</p>
+    </div>
+  ) : (
+    highlights.map((group) => (
+      <div style="margin-bottom: 40px;">
+        <h2 style="font-size: 1.25rem; color: #22d3ee; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+          <span style="background: rgba(34, 211, 238, 0.1); padding: 4px 12px; border-radius: 6px;">{group.date}</span>
+          <span style="height: 1px; flex: 1; background: #1e293b;"></span>
+        </h2>
+        <div>
+          {group.articles.map((article) => (
+            <div style="margin-bottom: 16px; border-left: 3px solid #f59e0b; border-radius: 12px;">
+              <ArticleCard article={article} />
+            </div>
+          ))}
+        </div>
+      </div>
+    ))
+  )}
+</BaseLayout>

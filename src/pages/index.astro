@@ -131,6 +131,19 @@ const recommendedCount = recommendedArticles.length;
     </div>
   </div>
 
+  {highScoreCount > 0 && (
+    <a href="/rss-ai-ranker/highlights/" style="text-decoration:none;display:block;margin-bottom:16px;">
+      <div style="background:#1e293b;border-radius:12px;padding:16px;border-left:3px solid #f59e0b;display:flex;justify-content:space-between;align-items:center;transition:background 0.2s;" onmouseover="this.style.background='#334155'" onmouseout="this.style.background='#1e293b'">
+        <div style="color:#e2e8f0;font-size:0.95rem;">
+          <span style="color:#f59e0b;font-weight:bold;">🏆 精华推荐</span>
+          <span style="margin:0 8px;color:#475569;">|</span>
+          今日 {highScoreCount} 篇精华 · 最高分 {Math.max(...recommendedArticles.filter(a => a.recommendationScore >= 90).map(a => a.recommendationScore))}
+        </div>
+        <div style="color:#f59e0b;font-size:0.9rem;">查看全部 →</div>
+      </div>
+    </a>
+  )}
+
   <div id="search-wrapper" style="position:relative;">
     <span id="search-icon" style="color:#94a3b8;font-size:1rem;">🔍</span>
     <input id="search-box" type="text" placeholder="搜索文章标题..." />
