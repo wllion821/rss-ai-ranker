@@ -20,9 +20,15 @@ interface Article {
 interface DayGroup {
   date: string;
   articles: Article[];
+  maxScore: number;
 }
 
-let highlights: DayGroup[] = [];
+interface MonthGroup {
+  month: string; // YYYY-MM
+  days: DayGroup[];
+}
+
+let monthGroups: MonthGroup[] = [];
 let totalHighlights = 0;
 let totalScore = 0;
 
@@ -34,8 +40,11 @@ try {
       .sort()
       .reverse();
 
+    const tempMap: Record<string, Record<string, Article[]>> = {};
+
     for (const file of files) {
       const date = file.replace('articles-', '').replace('.json', '');
+      const month = date.substring(0, 7);
       const raw = fs.readFileSync(path.join(dataDir, file), 'utf-8');
       const parsed = JSON.parse(raw);
       
@@ -49,13 +58,25 @@ try {
       const filtered = dayArticles.filter((a: Article) => (a.recommendationScore || 0) >= 90);
       
       if (filtered.length > 0) {
-        highlights.push({
-          date,
-          articles: filtered.sort((a, b) => (b.recommendationScore || 0) - (a.recommendationScore || 0))
-        });
+        if (!tempMap[month]) tempMap[month] = {};
+        tempMap[month][date] = filtered.sort((a, b) => (b.recommendationScore || 0) - (a.recommendationScore || 0));
+        
         totalHighlights += filtered.length;
         totalScore += filtered.reduce((sum, a) => sum + (a.recommendationScore || 0), 0);
       }
+    }
+
+    // Convert tempMap to sorted monthGroups
+    const sortedMonths = Object.keys(tempMap).sort().reverse();
+    for (const month of sortedMonths) {
+      const days: DayGroup[] = [];
+      const sortedDays = Object.keys(tempMap[month]).sort().reverse();
+      for (const date of sortedDays) {
+        const articles = tempMap[month][date];
+        const maxScore = Math.max(...articles.map(a => a.recommendationScore || 0));
+        days.push({ date, articles, maxScore });
+      }
+      monthGroups.push({ month, days });
     }
   }
 } catch (e) {
@@ -65,6 +86,8 @@ try {
 const averageHighlightScore = totalHighlights > 0 
   ? (totalScore / totalHighlights).toFixed(1) 
   : '0';
+
+const months = monthGroups.map(m => m.month);
 ---
 
 <BaseLayout title="精华推荐">
@@ -86,25 +109,119 @@ const averageHighlightScore = totalHighlights > 0
     </div>
   </div>
 
-  {highlights.length === 0 ? (
+  {monthGroups.length === 0 ? (
     <div style="text-align: center; padding: 48px 0; color: #94a3b8;">
       <p style="font-size: 1.2rem;">暂无精华推荐</p>
     </div>
   ) : (
-    highlights.map((group) => (
-      <div style="margin-bottom: 40px;">
-        <h2 style="font-size: 1.25rem; color: #22d3ee; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
-          <span style="background: rgba(34, 211, 238, 0.1); padding: 4px 12px; border-radius: 6px;">{group.date}</span>
-          <span style="height: 1px; flex: 1; background: #1e293b;"></span>
-        </h2>
-        <div>
-          {group.articles.map((article) => (
-            <div style="margin-bottom: 16px; border-left: 3px solid #f59e0b; border-radius: 12px;">
-              <ArticleCard article={article} />
-            </div>
-          ))}
-        </div>
+    <>
+      {/* Month Tabs */}
+      <div class="hide-scrollbar" style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 16px; margin-bottom: 24px; scrollbar-width: none; -ms-overflow-style: none;">
+        {months.map((month, index) => (
+          <button 
+            type="button"
+            data-month-tab={month}
+            style={`border:none; outline:none; cursor:pointer; border-radius:20px; padding:8px 16px; font-size:0.95rem; white-space:nowrap; transition:all 0.2s; ${index === 0 ? 'background:#f59e0b; color:#000;' : 'background:#1e293b; color:#94a3b8;'}`}
+          >
+            {month}
+          </button>
+        ))}
       </div>
-    ))
+
+      {/* Month Content Containers */}
+      {monthGroups.map((monthGroup, mIndex) => (
+        <div 
+          data-month-content={monthGroup.month} 
+          style={`display: ${mIndex === 0 ? 'block' : 'none'};`}
+        >
+          {monthGroup.days.length === 0 ? (
+            <p style="text-align: center; padding: 32px 0; color: #94a3b8;">该月暂无精华推荐</p>
+          ) : (
+            monthGroup.days.map((dayGroup, dIndex) => (
+              <div style="margin-bottom: 8px;">
+                {/* Accordion Header */}
+                <div 
+                  data-accordion-header
+                  style="background:#1e293b; border-radius:8px; padding:12px; cursor:pointer; display:flex; justify-content:space-between; align-items:center; user-select:none; transition:background 0.2s;"
+                  onmouseover="this.style.background='#334155'"
+                  onmouseout="this.style.background='#1e293b'"
+                >
+                  <div style="display:flex; align-items:center; gap:12px;">
+                    <span style="color:#ffffff; font-weight:700; font-size:1rem;">{dayGroup.date}</span>
+                    <span style="background:rgba(245, 158, 11, 0.1); color:#f59e0b; padding:2px 8px; border-radius:4px; font-size:12px;">{dayGroup.articles.length} 篇</span>
+                    <span style="color:#64748b; font-size:12px;">最高分 {dayGroup.maxScore}</span>
+                  </div>
+                  <span data-accordion-icon style={`color:#64748b; font-size:12px; transition:transform 0.3s; ${mIndex === 0 && dIndex === 0 ? 'transform:rotate(180deg);' : ''}`}>▼</span>
+                </div>
+
+                {/* Accordion Content */}
+                <div 
+                  data-accordion-content
+                  style={`overflow:hidden; transition:max-height 0.3s ease-out; padding-top: 8px; ${mIndex === 0 && dIndex === 0 ? 'max-height: 5000px;' : 'max-height: 0;'}`}
+                >
+                  <div style="padding: 4px 0 8px;">
+                    {dayGroup.articles.map((article) => (
+                      <div style="margin-bottom: 12px; border-left: 3px solid #f59e0b; border-radius: 12px;">
+                        <ArticleCard article={article} />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+      ))}
+    </>
   )}
+
+  <script type="text/javascript">
+    (function () {
+      const tabs = Array.from(document.querySelectorAll('[data-month-tab]'));
+      const contents = Array.from(document.querySelectorAll('[data-month-content]'));
+      const accordionHeaders = Array.from(document.querySelectorAll('[data-accordion-header]'));
+
+      // Month Tab Switching
+      tabs.forEach((tab) => {
+        tab.addEventListener('click', function () {
+          const selectedMonth = this.getAttribute('data-month-tab');
+          
+          // Update Tab Styles
+          tabs.forEach(t => {
+            if (t === this) {
+              t.style.background = '#f59e0b';
+              t.style.color = '#000';
+            } else {
+              t.style.background = '#1e293b';
+              t.style.color = '#94a3b8';
+            }
+          });
+
+          // Show/Hide Content
+          contents.forEach(c => {
+            c.style.display = c.getAttribute('data-month-content') === selectedMonth ? 'block' : 'none';
+          });
+        });
+      });
+
+      // Accordion Functionality
+      accordionHeaders.forEach((header) => {
+        header.addEventListener('click', function () {
+          const content = this.nextElementSibling;
+          const icon = this.querySelector('[data-accordion-icon]');
+          
+          const isExpanded = content.style.maxHeight !== '0px' && content.style.maxHeight !== '';
+          
+          if (isExpanded) {
+            content.style.maxHeight = '0px';
+            icon.style.transform = 'rotate(0deg)';
+          } else {
+            // Expand
+            content.style.maxHeight = '5000px'; // Larger than any likely content
+            icon.style.transform = 'rotate(180deg)';
+          }
+        });
+      });
+    })();
+  </script>
 </BaseLayout>
