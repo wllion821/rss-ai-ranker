@@ -1,0 +1,911 @@
+{
+  "dailySummary": "今日科技速递：AI代理技术成焦点。Voker推出AI代理分析平台优化运行，Hypercubic将AI引入大型机COBOL开发赋能传统系统。同时，行业呼吁软件开发需强调深度思考与“消化”，警惕盲目求快。",
+  "articles": [
+    {
+      "title": "Hacking the lehmer64 RNG",
+      "link": "https://www.johndcook.com/blog/2026/05/12/hacking-the-lehmer64-rng/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-05-12T11:07:31.000Z",
+      "summary": "A couple days ago I wrote about hacking the Mersenne Twister. I explained how to recover the random number generator’s internal state from a stream of 640 outputs. This post will do something similar with the lehmer64 random number generator. This generator is very simple to implement. Daniel Lemire found it to be “the fastest […]\nHacking the lehmer64 RNG first appeared on John D. Cook.",
+      "id": "27e9ccf97e02349da9c0a41544d4426b6aee98d969aa3e6f2bd3d2da3daf3505",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "深入剖析了lehmer64随机数生成器的“破解”方法，揭示其内部状态恢复机制。",
+      "reason": "提供了高级算法和安全漏洞分析的详细技术内容，对开发者和安全研究人员具有极高的参考价值和启发性，符合编程工具和潜在的AI/安全性主题。",
+      "tags": [
+        "编程",
+        "随机数生成器",
+        "算法",
+        "安全性",
+        "密码学",
+        "底层开发"
+      ]
+    },
+    {
+      "title": "Through the looking glass of benchmark hacking",
+      "link": "https://poolside.ai/blog/through-the-looking-glass",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-11T21:24:36.000Z",
+      "summary": "Article URL: https://poolside.ai/blog/through-the-looking-glass\nComments URL: https://news.ycombinator.com/item?id=48100868\nPoints: 21\n# Comments: 9",
+      "id": "12eb453540eb8848ef1f28df28e1156dd026e248df01621356dd01dd88de2ad4",
+      "ref_id": "4",
+      "recommendationScore": 92,
+      "popularityScore": 30,
+      "priority": "high",
+      "comment": "深入探讨基准测试漏洞和性能优化的AI领域文章。",
+      "reason": "属于最高优先级的AI主题，内容具有极高技术深度和实用价值，对AI研究与工程至关重要。",
+      "tags": [
+        "AI",
+        "基准测试",
+        "性能优化",
+        "机器学习",
+        "数据科学"
+      ]
+    },
+    {
+      "title": "Launch HN: Voker (YC S24) – Analytics for AI Agents",
+      "link": "https://voker.ai",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-12T15:45:20.000Z",
+      "summary": "Hey HN, we're Alex and Tyler, co-founders of Voker.ai (https://voker.ai/), an agent analytics platform for AI product teams. Voker gives full visibility into what users are asking of your agents, and whether your agents are delivering, without having to dig through logs. Our main product is a lightweight SDK that is LLM stack agnostic and purpose-built for agent products. (https://app.voker.ai/docs)\nAgent Engineers and AI product teams don’t have the right level of visibility into agent performance in production, which results in bad user experiences, churn, and hundreds of hours wasted with spot checks to find and debug issues with agent configurations.\nDemo: https://www.tella.tv/video/vid_cmoukcsk1000i07jgb4j65u67/vie...\nWe recently conducted a survey of YC Founders and 90%+ of respondents said that the only way they know if their Agents are failing users in production is by hearing complaints from customers. They push a prompt change hoping that it fixes the problem and doesn’t break something somewhere else, and the cycle repeats.\nWe saw tons of observability and evals products popping up to try to address these problems, but we still felt like something was missing in the agent monitoring stack. Obs is good for individual trace debugging but is only accessible to engineers. Evals are good for testing known issues, but don't give insights into trends that teams don’t expect, so engineers are always playing catch up. Traditional product analytics tools do a good job tracking clicks and pageviews across your product surface but weren’t built ground up for agent products. Knowing what users want out of agents, and whether the agent delivered requires specific conversational intelligence / unstructured data processing techniques.\nWe came up with the agent analytics primitives of Intents, Corrections, and Resolutions to describe something pretty much all conversational agents had in common: a user will always come to an agent with an intent, the user might have to correct this agent on the way to getting their intent resolved, and hopefully every intent a user has is eventually resolved by the agent.\nVoker processes LLM calls by automatically annotating individual conversations and picking out user intent and corrections. Voker takes these and uses LLMs and hierarchical text classification to create dynamic categories that give higher level insights so you don’t have to read individual conversations to know what are the main usage patterns across your users.\nThe most common substitute solution we’ve seen is uploading obs logs to Claude or ChatGPT and asking for summary insights. There are a few problems with this - mainly that LLMs aren’t good at math or data science, so you don’t get accurate or consistent statistics. Its highly likely that the LLM overfits to some insights and underfits to others. The LLM isn’t programmatically reading and classifying each individual session or interaction. This is why we don’t use LLMs for any of our core data engineering (processing events, calculating statistics) so the analytics we produce are consistent, reproducible, and accurate.\nWe have a publicly available, lightweight SDK that wraps LLM calls to OpenAI, Anthropic and Gemini in Python and Typescript. Voker handles the data engineering to turn raw data into usable analytics primitives and higher level insights. \nFree tier: 2,000 events / mo, requires email signup. Paid plans start at $80/mo with a 30 day free trial.\nWe'd love to hear how you're currently detecting trends, and if you try Voker, tell us what part of our analysis is valuable, and what still feels missing. Thanks for reading, and we’re looking forward to your thoughts in the comments!\nComments URL: https://news.ycombinator.com/item?id=48109962\nPoints: 21\n# Comments: 9",
+      "id": "64dd88d6edd72f79900c559401c48f9c0b50f5462c237a3fbb625c08d9847ae5",
+      "ref_id": "0",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "聚焦AI Agent性能分析，解决AI产品团队的实际痛点。",
+      "reason": "作为AI领域新兴且关键的基础设施，提供了AI产品团队急需的可见性和调试能力，符合最高优先级主题。",
+      "tags": [
+        "AI",
+        "Agent",
+        "Analytics",
+        "LLM",
+        "Startup",
+        "Product Development"
+      ]
+    },
+    {
+      "title": "Learning Software Architecture",
+      "link": "https://matklad.github.io/2026/05/12/software-architecture.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-12T09:30:21.000Z",
+      "summary": "Article URL: https://matklad.github.io/2026/05/12/software-architecture.html\nComments URL: https://news.ycombinator.com/item?id=48106024\nPoints: 421\n# Comments: 77",
+      "id": "36e95b8758c3e9996a3d132f35ade31817f38d6c4effeef84e47037c196bbada",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "一篇关于如何学习软件架构的深入指南，提供了宝贵的学习路径和建议。",
+      "reason": "技术深度高，实用性极强，直接关系到开发人员的核心技能提升和编程工具的最佳实践，信息密度高，符合编程工具的高优先级。",
+      "tags": [
+        "软件架构",
+        "学习指南",
+        "编程",
+        "开发实践",
+        "技术深度"
+      ]
+    },
+    {
+      "title": "Software Internals Book Club",
+      "link": "https://eatonphil.com/bookclub.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-12T02:28:11.000Z",
+      "summary": "Article URL: https://eatonphil.com/bookclub.html\nComments URL: https://news.ycombinator.com/item?id=48103511\nPoints: 174\n# Comments: 27",
+      "id": "42f10b30f649728aa5efb3d5cc7f43768a51f04258fff63beee690d5e3bbf2d7",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "致力于深入理解软件内部机制的学习资源。",
+      "reason": "为开发者提供极具实用性的深度学习路径，对提升技术能力有重要价值，符合编程工具主题。",
+      "tags": [
+        "软件工程",
+        "计算机科学",
+        "学习资源",
+        "编程"
+      ]
+    },
+    {
+      "title": "Using LLM in the shebang line of a script",
+      "link": "https://simonwillison.net/2026/May/11/llm-shebang/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-05-11T18:48:57.000Z",
+      "summary": "",
+      "id": "3ee4cc623426e8679d372accd246d7b0ccc526e6b2d9f59b083442c4a2b2adac",
+      "ref_id": "0",
+      "recommendationScore": 90,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "标题极具创新性，暗示了将LLM深度整合到脚本执行流程中的可能性。",
+      "reason": "概念新颖，将AI与编程工具结合，有望为开发者带来革命性的工作流改进。",
+      "tags": [
+        "AI",
+        "LLM",
+        "编程工具",
+        "脚本",
+        "自动化",
+        "创新"
+      ]
+    },
+    {
+      "title": "Thinking Machines and interaction models",
+      "link": "https://seangoedecke.com/interaction-models/",
+      "source": "seangoedecke.com",
+      "publishedAt": "2026-05-12T00:00:00.000Z",
+      "summary": "",
+      "id": "31fcfebcf785aadd39b7d1b1c51a7edb7b417265fa9746e8fc6c832e7711c95b",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "标题将AI的理论概念与实际交互设计相结合，预示了对未来人机交互的深度思考。",
+      "reason": "该主题融合了AI和产品设计，对理解和塑造未来智能系统的用户体验至关重要。",
+      "tags": [
+        "AI",
+        "产品设计",
+        "交互模型",
+        "人机交互",
+        "未来科技",
+        "UX"
+      ]
+    },
+    {
+      "title": "Show HN: Agentic interface for mainframes and COBOL",
+      "link": "https://www.hypercubic.ai/hopper",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-12T17:10:22.000Z",
+      "summary": "Hi HN, we’re Sai and Aayush, and we’re building Hypercubic (https://www.hypercubic.ai/), bringing AI tools to the mainframe and COBOL world. (We did a Launch HN last year: https://news.ycombinator.com/item?id=45877517.)\nToday we’re launching Hopper, an agentic development environment for mainframes. You can download it here: https://www.hypercubic.ai/hopper, and you can also request access and immediately get a mainframe user account to play with. There's also a video runthrough at https://www.youtube.com/watch?v=q81L5DcfBvE.\nMainframes still run a surprising amount of critical infrastructure: banking, payments, insurance, airlines, government programs, logistics, and core operations at large institutions. Many of these systems are decades old, but they continue to process enormous transaction volumes because they are reliable, secure, and deeply embedded into business operations.\nA lot of that software is written in COBOL and runs on IBM z/OS. The development environment looks very different from modern cloud or Unix-style development. Instead of GitHub, shell commands, package managers, and CI pipelines, developers often work through TN3270 terminal sessions, ISPF panels, partitioned datasets, JCL, JES queues, spool output, return codes, VSAM files, CICS transactions, and shop-specific conventions.\nTN3270 is the terminal interface used to interact with many IBM mainframe systems. ISPF is the menu and panel system developers use inside that terminal to browse datasets, edit source, submit jobs, and inspect output. It is powerful and reliable, but it was designed for expert humans navigating screens, function keys, and fixed-width workflows, not AI agents.\nA simple COBOL change might require finding the right source member, checking copybooks, locating compile JCL, submitting a job, reading JES/SYSPRINT output, interpreting condition codes, patching fixed-width source, and resubmitting.\nMuch of this work is so well-defined and repetitive that it's a good fit for agentic AI. To get that working, however, a chatbot next to a terminal is not enough. The agent needs to operate inside the mainframe environment.\nHopper combines three things: (1) A real TN3270 terminal, (2) Mainframe-aware panels for datasets, members, jobs, and spool output, and (3) An AI agent that can operate across those z/OS surfaces.\nFor example, here is a tiny version of the kind of thing Hopper can help debug:\n  COBOL:\n\n   IDENTIFICATION DIVISION.\n   PROGRAM-ID. PAYCALC.\n\n   DATA DIVISION.\n   WORKING-STORAGE SECTION.\n   01  CUSTOMER-BALANCE     PIC 9(7)V99.\n\n   PROCEDURE DIVISION.\n       ADD 100.00 TO CUSTOMER-BALNCE\n       DISPLAY \"UPDATED BALANCE: \" CUSTOMER-BALANCE\n       STOP RUN.\n\n\n  JCL:\n\n    //PAYCOMP  JOB (ACCT),'COMPILE',CLASS=A,MSGCLASS=X\n    \n    //COBOL    EXEC IGYWCL\n    \n    [//COBOL.SYSIN](https://cobol.sysin/) DD DSN=USER1.APP.COBOL(PAYCALC),DISP=SHR\n    \n    [//LKED.SYSLMOD](https://lked.syslmod/) DD DSN=USER1.APP.LOAD(PAYCALC),DISP=SHR\n\n\nHopper is not trying to hide the mainframe behind a generic abstraction, and it's not a chatbot. The design principle is simple: preserve the fidelity of the mainframe environment, but make it accessible to AI agents.\nSensitive operations require approval, and the terminal remains visible at all times.\nOnce agents can operate inside the mainframe environment, new workflows become possible: faster job debugging, automated documentation, safer code changes, test generation, migration planning, traffic replay, and modernization verification.\nWe’re curious to hear your thoughts! especially from anyone who has worked with mainframes, COBOL or has done legacy enterprise modernization.\nComments URL: https://news.ycombinator.com/item?id=48111143\nPoints: 8\n# Comments: 2",
+      "id": "ad59a2fba63e96c17332f167fd2587a339b9535124975335ef2095a9f4848115",
+      "ref_id": "0",
+      "recommendationScore": 89,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "为关键但老旧的大型机系统带来了创新的AI代理开发环境。",
+      "reason": "该项目将前沿AI技术应用于COBOL和大型机，解决了关键基础设施维护的痛点，技术深度和实用性极高。",
+      "tags": [
+        "AI",
+        "Mainframe",
+        "COBOL",
+        "Agentic AI",
+        "Development Tools",
+        "Legacy Systems"
+      ]
+    },
+    {
+      "title": "They Live (1988) inspired Adblocker",
+      "link": "https://github.com/davmlaw/they_live_adblocker",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-12T00:37:54.000Z",
+      "summary": "Article URL: https://github.com/davmlaw/they_live_adblocker\nComments URL: https://news.ycombinator.com/item?id=48102700\nPoints: 488\n# Comments: 154",
+      "id": "32bfe58453b492d140f76d2d19cac7e94ffaecd110b09be75213568f9058c1ad",
+      "ref_id": "3",
+      "recommendationScore": 88,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "受电影《他们活在》启发的创意十足的广告拦截器。",
+      "reason": "结合了流行文化与编程实践，新颖性高且实用性强，社区关注度极高，是优秀的编程工具应用案例。",
+      "tags": [
+        "广告拦截",
+        "浏览器扩展",
+        "开源项目",
+        "编程",
+        "Web开发"
+      ]
+    },
+    {
+      "title": "Building Software Requires Digestion",
+      "link": "https://blog.jim-nielsen.com/2026/software-requires-digestion/",
+      "source": "blog.jim-nielsen.com",
+      "publishedAt": "2026-05-12T19:00:00.000Z",
+      "summary": "Here’s Scott Jenson in his insightful piece “The Ma of a New Machine”:\nthe chatbot interface [makes us] feel like deep cognitive work is happening. But the interface is fundamentally reactive. It spits complex text at you, you skim it quickly, and you immediately type a reaction to keep the momentum going.\nMy hypothesis is that the very structure of the chatbot interface (type, read, type again) actively discourages reflection. When you are moving too fast, you get stuck in a groove. You literally need to take a break, step back, and basically step out of this groove so you can view the problem from a new angle. We’ve all walked away from a tough problem only to have the solution arrive unbidden into our thoughts later in the day.\nIn my decades+ experience designing and developing software, I can’t count the number of times I’ve stepped away from a problem at the computer only to return and find the problem magically resolved in my brain.\nBut the human-computer interaction of prompting doesn’t encourage the use of that skill in our subconscious.\nIn fact, I think it actively discourages it (our tools shape us).\nScott talks about this Japanese concept called “Ma” which is about deliberately creating pauses between things. He quotes Studio Ghibli director Hayao Miyazaki who says “if you just have non-stop action with no breathing space at all, it’s just busyness.” Here’s Scott (emphasis mine):\nMa provides a framework for understanding that a pause is not a lack of work\nAs humans we need pauses. We need space to breathe. We need time to digest.\nPausing, breathing, synthesizing, digesting — these are all necessary work.\n“Digestion” is an interesting word here.\nPutting food in your body is merely the beginning of feeding yourself. Our bodies must digest that food, break it down, absorb it, and get rid of the waste.\nBut that’s all happening mostly without our attentive oversight, so I guess it’s not “real” work — right?\nWrong.\nBuilding good, healthy software requires digestion.\nEmail\n      · Mastodon ·\n\n      Bluesky",
+      "id": "2e0998400f798d8e28aa7dd323cf0fa7953a81c0806a2fa17b99af6c82e28a92",
+      "ref_id": "1",
+      "recommendationScore": 88,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "文章深入探讨了聊天机器人界面对人类认知和软件开发中反思过程的潜在负面影响。",
+      "reason": "对AI时代的人机交互和产品设计提出了新颖且实用的见解，对开发者和产品经理具有重要指导意义。",
+      "tags": [
+        "AI",
+        "产品设计",
+        "软件开发",
+        "HCI",
+        "认知"
+      ]
+    },
+    {
+      "title": "Show HN: Gigacatalyst – Extend your SaaS with an embedded AI builder",
+      "link": "https://news.ycombinator.com/item?id=48110593",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-12T16:32:54.000Z",
+      "summary": "Hi HN, I’m Namanyay from Gigacatalyst (link: https://gigacatalyst.com/). Gigacatalyst allows sales, CS, and users to build one-off features, so your SaaS can support long-tail customer workflows and engineers aren’t pulled away from the roadmap.\nWhen you sell software to large businesses, you realize that each customer needs their own workflow and features. Traditionally, this either means long engineering roadmaps or the customers end up using workarounds.\nBut what if everyone could build their critical missing features just by talking to an AI? That’s what we do at Gigacatalyst. We provide an AI customization layer for your customers, CS team, and sales team to build these missing critical workflows without needing any engineers at all. Think Lovable, but built on top of YOUR platform.\nWe connect to your product's APIs, learn your data model and design system, and let non-technical users build governed apps via natural language - inside your product, under your brand.\nHere’s what it looks like in action: https://www.youtube.com/watch?v=_taSpSphH6E\nOne of our customers, a Series B company, saw their users (not engineers - managers, ops people, facility directors) build critical workflows like:\n- Parts stockout prevention: A maintenance manager typed \"show me which parts will run out in the next 2 weeks based on usage over the last 90 days, accounting for vendor lead times.\" The app tracks consumption velocity, forecasts stockouts, and alerts before it's too late. He says it's prevented ~$500K in emergency downtime.\n- Invoice OCR from phone photos: Technicians kept losing paper invoices. The prompt: \"upload a photo of the invoice, extract vendor name, date, amount, and line items, then match it to the purchase order and flag discrepancies.\" Now techs snap a photo on-site to automatically add to the system of record.\n- Restaurant emergency triage: A pizza chain's facilities manager was drowning in maintenance requests. He built a priority matrix: \"walk-in freezer not cooling\" auto-routes as CRITICAL, \"dining room light flickering\" goes to LOW. He's now able to manage backlogs with the correct priority.\nHow Gigacatalyst works under the hood:\n1. Agentic API discovery: Our agents go through your app and parse your endpoints, query params, request/response shapes, and sample data to build the base layer.\n2. Generation and Validation: When a user describes what they want our AI generates an app. We set up multiple validation steps, including static checks, runtime error analysis, and LLM-as-a-judge.\n3. Sandboxing and Compilation: We wrote our own compilation and sandboxing framework to get the fastest speeds and lowest costs. This means that users can interact with the built app in seconds.\n4. Proxy layer: We create a proxy layer for all APIs to handle auth, tenant isolation, and rate limiting. Everything the agent has access to is controlled, logged, observed, and version controlled.\nAfter 2000+ daily users, 900+ apps built, and 70% 30-day retention, today we're opening a public demo.\nTry it: https://app.gigacatalyst.com/ - enter your SaaS product's API URL (or just the homepage) and start prompting.\nIf you're serving a variety of use cases, you probably deal with a lot of custom requests and Gigacatalyst will save you time and increase your bottom line. Book a meeting at https://gigacatalyst.com/#contact and I'll help your team and customers build new functionality on top of your platform.\nI've been reading Hacker News since I was 12 years old. I'm proud to launch for all of you and I want to hear your feedback on my product and comments!\nComments URL: https://news.ycombinator.com/item?id=48110593\nPoints: 15\n# Comments: 3",
+      "id": "aedb58826dc08f0ad71d820ece6a9ece385875eb3276f18d30b34360168064f2",
+      "ref_id": "1",
+      "recommendationScore": 86,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "为SaaS产品提供了创新的嵌入式AI构建器，使非技术用户能够定制功能。",
+      "reason": "这一解决方案通过AI赋能SaaS定制化，极大地提升了产品实用性和市场竞争力，解决了SaaS领域的普遍痛点。",
+      "tags": [
+        "AI",
+        "SaaS",
+        "Customization",
+        "No-code",
+        "Product Management",
+        "API Integration"
+      ]
+    },
+    {
+      "title": "World Models: 10 Things That Matter in AI Right Now",
+      "link": "https://www.technologyreview.com/2026/05/12/1137134/world-models-10-things-that-matter-in-ai-right-now/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-05-12T16:22:15.000Z",
+      "summary": "World models recently made our list of 10 Things That Matter in AI Right Now. Watch executive editor Niall Firth explain why this emerging area of AI is gaining so much attention. Join MIT Technology Review editors and reporters for a subscriber-only Roundtables discussion, “Can AI Learn to Understand the World?” exploring how AI may evolve to…",
+      "id": "ffcc9488fd2c983698c91d08709c07c395cca617267e1297018304805aa9c655",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "深入探讨AI前沿概念“世界模型”，具有高度时效性和前瞻性。",
+      "reason": "文章聚焦AI领域新兴且重要的概念，为读者提供深度洞察和未来发展趋势。",
+      "tags": [
+        "AI",
+        "World Models",
+        "Future Tech",
+        "Trends"
+      ]
+    },
+    {
+      "title": "iOS 26.5 Includes Beta Support for End-to-End Encrypted RCS Messaging",
+      "link": "https://www.apple.com/newsroom/2026/05/end-to-end-encrypted-rcs-messaging-begins-rolling-out-today-in-beta/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-11T22:57:00.000Z",
+      "summary": "Apple Newsroom:\nStarting today, end-to-end encrypted RCS messaging begins rolling\nout in beta for iPhone users running iOS 26.5 with supported\ncarriers and Android users on the latest version of Google\nMessages. When RCS messages are end-to-end encrypted, they can’t\nbe read while they’re sent between devices. Users will know that a\nconversation is end-to-end encrypted when they see a new lock icon\nin their RCS chats. Encryption is on by default and will be\nautomatically enabled over time for new and existing RCS\nconversations.\nI hope this leads to a future where all RCS messages are end-to-end encrypted, but I doubt it. Currently this E2EE RCS depends both on the carriers (of both parties) in a direct chat, and the software running on their devices. The carrier list is pretty broad, but as far as I can tell, it still doesn’t include Google’s own Google Fi.\nBut the indication for this is subtle. You have to read the small print metadata in each chat to see if it’s encrypted. The message text remains the same shade of green. If it’s a group chat and even one single member isn’t on a phone and carrier that supports E2EE RCS, the entire chat will not be encrypted.\nWith iMessage, all chats are always E2EE, and always have been. iMessage has been exclusively E2EE since it was created. With RCS you have to look in the metadata small print to check. That’s better than not supporting encryption at all, but my recommendation is to assume all RCS chats are not encrypted unless you double-check every time.\nOther than bug fixes, encrypted RCS is the biggest new feature in iOS 26.5.\n ★",
+      "id": "4c14efcdbb68dde389b7b4b699057618035243c0f06f61a53ee0f6eae748e28f",
+      "ref_id": "4",
+      "recommendationScore": 85,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "详细报道了iOS 26.5中端到端加密RCS消息的beta支持，并分析了其现状与局限性。",
+      "reason": "文章紧密围绕Apple生态系统的新功能，对iPhone用户的通信隐私和跨平台消息体验具有重要意义。",
+      "tags": [
+        "Apple",
+        "iOS",
+        "RCS",
+        "加密",
+        "隐私",
+        "信息安全",
+        "通信"
+      ]
+    },
+    {
+      "title": "Initialize and print 128-bit integers in C",
+      "link": "https://www.johndcook.com/blog/2026/05/12/c-128-bit-int/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-05-12T12:20:20.000Z",
+      "summary": "If you look very closely at my previous post, you’ll notice that I initialize a 128-bit integer with a 64-bit value. The 128-bit unsigned integer represents the internal state of a random number generator. Why not initialize it to a 128-bit value? I was trying to keep the code simple. A surprising feature of C […]\nInitialize and print 128-bit integers in C first appeared on John D. Cook.",
+      "id": "5280a1231d22a26304fd4464d95ffed9ca6875092eaffe7111bede45934cf9cd",
+      "ref_id": "3",
+      "recommendationScore": 85,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "深入探讨了C语言中128位整数的初始化和打印方法。",
+      "reason": "提供了关于C语言底层数据类型处理的实用技术细节，对特定领域的开发者有很高价值，符合编程工具主题。",
+      "tags": [
+        "C语言",
+        "编程",
+        "数据类型",
+        "底层开发",
+        "算法"
+      ]
+    },
+    {
+      "title": "Not a Security Issue",
+      "link": "https://nesbitt.io/2026/05/12/not-a-security-issue.html",
+      "source": "nesbitt.io",
+      "publishedAt": "2026-05-12T10:00:00.000Z",
+      "summary": "Daniel Stenberg wrote yesterday about Mythos finding a real curl vulnerability, which sent me poking around the curl tree with a couple of AI-assisted scanners to see what else turned up in a codebase that has already had every fuzzer and auditor on earth pointed at it. The findings were better than expected, and one reason stood out: the scanners had read docs/VULN-DISCLOSURE-POLICY.md and applied it.\nA whole class of results came back labelled in effect “real bug, worth fixing, but not a security issue per the project’s own policy”: server-triggered NULL dereferences, small leaks, things that only fire if you can already control the command line. The tool had found them, checked them against curl’s published list of what doesn’t count, and demoted them before I had to.\nOne example from the demoted pile: the scanner found that tool_formparse.c walks a linked list of -F form parts recursively with no depth limit, built a 150k-line config file to prove it, and got an ASan stack-overflow trace out the other end. It then wrote, in its own summary, “trigger requires user to run curl with attacker-supplied config or args, so excluded by policy,” filed it under quality bugs, and moved on. A small ber_free leak on an LDAP error path got the same treatment with a terser “policy excludes small leaks.” The noise floor was lower than comparable runs on projects without a written policy.\nAlmost everything written about AI-generated security reports over the past few months is about what to do once they land in your inbox. Daniel has written and spoken about it at length, Seth Larson called it early from the Python side, ISC reported an 89% false-positive rate on one platform, and there’s an OpenSSF working group effort collecting triage practices. All of that addresses the receiving end, whereas the curl scan suggested the same documents that help a human triager can be loaded into the scanner’s context and suppress findings before anyone has to read them.\nAgentic scanners read the repository as they go, pulling in SECURITY.md, CONTRIBUTING.md, and anything that looks like policy, because they’re built on the same scaffolding as coding agents. A maintainer has no say over who points a scanner at the repo, but the files sitting there when it arrives are entirely theirs.\nVULN-DISCLOSURE-POLICY.md\nThe section that did the work is headed “Not security issues” and lists sixteen named categories, covering things like small memory leaks, never-ending transfers, NULL dereferences triggered by a malicious server, busy-loops that eventually end, escape sequences in terminal output, weak algorithms that a protocol requires, and anything that depends on tricking the user into running a crafted command line.\nEach entry gets a paragraph of reasoning: the busy-loop one says applications already have to handle the transfer loop legitimately running at 100% CPU, so a prolonged one is a bug rather than a vulnerability, and the command-line one points out that an attacker who can make you run a crafted curl invocation could make you run sudo rm -rf / instead.\nThe reasoning is what lets a reader, human or otherwise, apply the rule to cases the list didn’t anticipate, and the categories only work because they’re specific to curl. A generic “DoS is out of scope” line wouldn’t have helped, but “never-ending transfers are not security issues because applications already need countermeasures for stalled connections” is something a tool can match a finding against.\nPrior art\nNode.js embeds a full threat model in SECURITY.md with explicit trust boundaries, listing what the runtime does not trust (inbound network data, file content opened via the API) against what it does (the operating system, the developer’s own code), and sets a high bar for DoS reports by requiring asymmetric resource consumption and ruling out anything mitigable by ordinary process recycling.\nDjango’s policy gives worked code examples of reports that are “not considered valid”, mostly variations on passing unsanitised input to an internal function and blaming the function. It also asks reporters not to include CVSS scores, severity assessments, or “lengthy background sections”, which is a fairly direct description of what an LLM produces by default.\nChrome’s security FAQ is the source of the most-borrowed single exclusion in the genre, that a physically-local attacker who can already run code as you is out of scope because the browser can’t defend against the operating system.\nI collected around five hundred repositories that ship a threat model file of some kind. The filenames are all over the place, THREAT-MODEL.md, threat_model.md, ThreatModel.md, sometimes buried three directories into docs/, which means a tool has to go looking rather than checking a known path.\nThe OpenSSF SECURITY-INSIGHTS schema has had in-scope and out-of-scope arrays under vulnerability-reporting for a couple of years, which would be the obvious machine-readable home for this, but I’ve not seen a scanner that consumes them.\nWhat to write\nThe baseline is having a SECURITY.md at all, which a surprising share of widely-depended-on repos still lack, and on GitHub turning on private vulnerability reporting so there’s somewhere for a report to go that isn’t a public issue. An empty policy file with a contact address is still better than nothing because it’s the first place both humans and tools look.\nThe exclusion list is the cheap part and the part that did the work in the curl scan. Each entry needs the name of the pattern, a flat statement that it doesn’t qualify, and enough reasoning that the rule generalises beyond the exact case you wrote down.\nUnderneath that sits a short threat model describing who the attacker is assumed to be and what they control, against what the project is actually trying to protect, which for most projects fits in three or four paragraphs. The exclusion list is really just the threat model restated as concrete cases. In practice most maintainers will write the exclusions first because that’s where the pain is, accumulating entries as bad reports come in, and only later write down the model that explains why they hold together, which is fine, though the list does tend to get sharper once the model exists. The CNCF self-assessment template is a reasonable starting shape if you want one.\nOne category worth adding that I haven’t seen written down is documentation not matching behaviour. AI scanners flag this constantly because “docs say X, code does Y” is a finding template they’ve learned, and it is technically a defect, but it’s only a security issue if the documented behaviour was a security guarantee somebody relied on. A function that the docs say returns null on error but actually throws belongs in the public tracker, whereas a function documented as escaping HTML that turns out not to is a real vulnerability.\nStating that distinction in the policy file would have trimmed the curl results further, and Piotr Karwasz made much the same observation from the Log4j side, where most of the borderline reports describe real behaviour that the threat model excludes and the fix is usually a Javadoc line saying whether an argument is trusted.\nNone of this stops someone pasting a hallucinated buffer overflow into your HackerOne queue without reading anything, and the bottom of the report-quality distribution is unreachable by documentation. But the better-built tools, the ones that read the repo before reporting, are the ones a policy file can steer, and those are increasingly the ones doing the scanning. Writing the threat model down was always good practice for human reporters, and it turns out the new readers take it more literally than the old ones ever did.\nWhatever mythical models turn up next will be reading the same files.",
+      "id": "d3cced5f56daa8838c1c9e6f90d5b1ce65f0fe38fa5236a6badc0da90e3fa463",
+      "ref_id": "3",
+      "recommendationScore": 83,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "探讨了AI辅助扫描器如何根据项目安全策略自动分类bug，有效提升安全漏洞管理效率。",
+      "reason": "结合了AI、安全和开源项目管理，展示了AI在实际工程中的前沿应用，具有高度的新颖性和实用性。",
+      "tags": [
+        "AI",
+        "安全",
+        "漏洞管理",
+        "编程工具",
+        "自动化"
+      ]
+    },
+    {
+      "title": "Rendering the Sky, Sunsets, and Planets",
+      "link": "https://blog.maximeheckel.com/posts/on-rendering-the-sky-sunsets-and-planets/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-12T13:26:46.000Z",
+      "summary": "Article URL: https://blog.maximeheckel.com/posts/on-rendering-the-sky-sunsets-and-planets/\nComments URL: https://news.ycombinator.com/item?id=48107997\nPoints: 266\n# Comments: 20",
+      "id": "e0313ac9ee5cabe19d4dd290fe3470b7c5a6b5d3f7e973482a43d1a9e5de414b",
+      "ref_id": "3",
+      "recommendationScore": 80,
+      "popularityScore": 80,
+      "priority": "medium",
+      "comment": "深入讲解天空、日落和行星的渲染技术，技术深度高。",
+      "reason": "提供了计算机图形学领域的高级技术细节和算法，对游戏开发和视觉模拟有很高的参考价值，属于编程工具的特定分支。",
+      "tags": [
+        "Computer Graphics",
+        "Rendering",
+        "Shaders",
+        "Game Development",
+        "Programming"
+      ]
+    },
+    {
+      "title": "The Download: a Nobel winner on AI, and the case for fixing everything",
+      "link": "https://www.technologyreview.com/2026/05/12/1137103/the-download-nobel-winner-ai-maintenance-of-everything/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-05-12T12:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. Three things in AI to watch, according to a Nobel-winning economist A few months before he won the Nobel Prize in economics in 2024, Daron Acemoglu published a paper that earned…",
+      "id": "e4d2c12158478b67605d3cf701dcd72c4b5d59184a169a4c2eca84435b8b8ff1",
+      "ref_id": "1",
+      "recommendationScore": 80,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "引用诺贝尔经济学奖得主观点，从宏观经济角度剖析AI发展方向，权威且独特。",
+      "reason": "提供了权威专家对AI发展趋势的独到分析，对理解AI的社会经济影响非常有价值。",
+      "tags": [
+        "AI",
+        "Economics",
+        "Nobel Prize",
+        "Trends",
+        "Opinion"
+      ]
+    },
+    {
+      "title": "Extremely Low Frequencies",
+      "link": "https://computer.rip/2026-05-09-extremely-low-frequencies.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-12T03:59:35.000Z",
+      "summary": "Article URL: https://computer.rip/2026-05-09-extremely-low-frequencies.html\nComments URL: https://news.ycombinator.com/item?id=48104041\nPoints: 174\n# Comments: 15",
+      "id": "b3a3a8203bd430eba015ca82af01111f2f702bf7e7a50ca74dd4e1b02fb694f6",
+      "ref_id": "0",
+      "recommendationScore": 75,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "深度探讨极低频现象的专业文章。",
+      "reason": "内容专业且信息密度高，适合对底层科学与工程感兴趣的读者。",
+      "tags": [
+        "物理学",
+        "信号处理",
+        "计算机科学",
+        "硬件"
+      ]
+    },
+    {
+      "title": "Bambu Lab is abusing the open source social contract",
+      "link": "https://www.jeffgeerling.com/blog/2026/bambu-lab-abusing-open-source-social-contract/",
+      "source": "jeffgeerling.com",
+      "publishedAt": "2026-05-12T14:00:00.000Z",
+      "summary": "Last year I said I'd probably never recommend another Bambu Lab printer again.\nI still use my P1S, but after Bambu Lab started pushing their always-connected cloud solution as the new default:\nI blocked the printer from the Internet via my OPNsense Firewall\nI stopped updating the firmware\nI locked the printer into Developer mode\nI deleted Bambu Studio and started using OrcaSlicer\nI had to do that to keep it under my control, instead of Bambu's.",
+      "id": "d7ad8983c0c7b6930a9616eff0eaeb0dad474b8b6db8cffedcc74959b4afa022",
+      "ref_id": "1",
+      "recommendationScore": 75,
+      "popularityScore": 80,
+      "priority": "medium",
+      "comment": "深入分析了Bambu Lab的闭源策略及其对用户控制权的影响，并提供了实用的应对方案。",
+      "reason": "文章引发了关于智能设备隐私、开源精神和用户控制权的重要讨论，对消费者有指导意义。",
+      "tags": [
+        "3D打印",
+        "开源",
+        "隐私",
+        "自动化",
+        "消费者权益",
+        "智能硬件"
+      ]
+    },
+    {
+      "title": "iPhone Models Ranked 1st, 2nd, 3rd, and 6th in Counterpoint’s List of 10 Bestselling Phones Worldwide in Q1 2026",
+      "link": "https://appleworld.today/2026/05/apples-iphone-17-was-the-worlds-best-selling-smartphone-in-quarter-one-of-2026/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-11T20:48:05.000Z",
+      "summary": "Samsung phones took spots 4, 5, 7, 8, and 9. The one phone not from Apple or Samsung in the top 10 was the Xiaomi Redmi A5 at #10. As I always say, take these numbers with a grain of salt, but according to Counterpoint, the bestselling phones, in order, are:\niPhone 17\niPhone 17 Pro Max\niPhone 17 Pro\nAnd Apple’s phone in spot #6 was not the iPhone Air, alas, but the year-old iPhone 16.\n(Via Horace Dediu.)\n ★",
+      "id": "d071e360851ebd91fe7c14ba02f1d3fdd5b352b0b302c1724e089a6e507c61a6",
+      "ref_id": "0",
+      "recommendationScore": 75,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "简洁分析了iPhone在全球手机市场的主导地位及未来趋势。",
+      "reason": "提供了关于未来iPhone型号市场表现的最新洞察，具有一定的行业参考价值，符合Apple生态主题。",
+      "tags": [
+        "Apple",
+        "iPhone",
+        "市场分析",
+        "智能手机"
+      ]
+    },
+    {
+      "title": "Why senior developers fail to communicate their expertise",
+      "link": "https://www.nair.sh/guides-and-opinions/communicating-your-expertise/why-senior-developers-fail-to-communicate-their-expertise",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-12T15:08:40.000Z",
+      "summary": "Article URL: https://www.nair.sh/guides-and-opinions/communicating-your-expertise/why-senior-developers-fail-to-communicate-their-expertise\nComments URL: https://news.ycombinator.com/item?id=48109460\nPoints: 46\n# Comments: 18",
+      "id": "931d03b252ff1bdc9a547fb22cf6033b7b673eb8c7438c7fc1bd4415c06b5eae",
+      "ref_id": "1",
+      "recommendationScore": 70,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "探讨资深开发者沟通难题，对职业发展和团队协作有益。",
+      "reason": "提供了宝贵的软技能建议，对提升开发者职业发展和团队效率具有实际作用，属于产品设计/独立开发范畴。",
+      "tags": [
+        "Career Development",
+        "Soft Skills",
+        "Communication",
+        "Senior Developer",
+        "Product Design"
+      ]
+    },
+    {
+      "title": "Learning Software Architecture",
+      "link": "https://matklad.github.io/2026/05/12/software-architecture.html",
+      "source": "matklad.github.io",
+      "publishedAt": "2026-05-12T00:00:00.000Z",
+      "summary": "Learning Software Architecture\nMay 12, 2026\n\nIn reply to an email asking about learning software design skills as a researcher physicist:\nI was attached to a bioinformatics lab early in my career,\nso I think I understand what you are talking about, the phenomenon of “scientific code”! My\nthoughts:\nFirst meta observation is that “software design” is something best learned by doing. While I had\nsome formal “design” courses at the University, and I was even “an architect” for our course\nproject, that stuff was mostly make-believe, kindergarteners playing fire-fighters. What really\ntaught me how to do stuff was an accident of my career, where my second real project\n(IntelliJ Rust)\npropelled me to a position of software leadership, and made design my problem. I did make a few\nmistakes in IJ Rust, but nothing too horrible, and I learned a lot. So that’s good news — software\nengineering is simple enough that an inquisitive mind can figure it out from first principles (and\nreading random blog posts).\nSecond meta observation, the bad news:\nConway’s law\nis important. Softwaregenesis repeats the social architecture of the organization producing\nsoftware. Or, as put eloquently by neugierig,\nIf I were to summarize what I learned in a single sentence, it would be this: we talk about\nprogramming like it is about writing code, but the code ends up being less important than the\narchitecture, and the architecture ends up being less important than social issues.\nI suspect that the difference you perceive between industrial and scientific software is not so much\nabout software-building knowledge, but rather about the field of incentives that compels people to\nproduce the software. Something like “my PhD needs to publish a paper in three months” is perhaps a\nsignificant explainer?\nTwo things you can do here. One, at times you get a chance to design or nudge an incentive structure\nfor a project. This happens once in a blue moon, but is very impactful. This is the secret sauce\nbehind TIGER_STYLE,\nnot the set of rules per se, but the social context that makes this set of rules a good idea.\nTwo, you can speedrun the four stages of grief to acceptance. Incentive structure is almost\nnever what you want it to be, but, if you can’t change it, you can adapt to it. This is also true\nabout most industrial software projects — there’s never a time to do a thing properly, you must do\nthe best you can, given constraints.\nLet me use rust-analyzer as an example. The physical\nreality of the project is that it’s simultaneously very deep (it’s a compiler! Yay!) and very wide\n(opposite to an LLM, a classical IDE is a lot of purpose-built special features). The social\nreality is that “deep compiler” can attract a few brilliant dedicated contributors, and that the\n“breadth features” can be a good fit for an army of weekend warriors, people who learn Rust, who\ndon’t have sustained capacity to participate in the project, but who can sink an hour or two to\nscratch their own itch.\nMy insistence that rust-analyzer doesn’t require building rustc, that it builds on stable, that\nit doesn’t have any C dependencies, and that the entire test suite takes seconds, was in the\nservice of the goal of attracting high-impact contributors. I was wrangling the build system to make\nsure people can work on the borrow checker without thinking about anything else.\nTo attract weekend warriors, the internals of rust-analyzer are split into multiple independent\nfeatures, where each feature is guarded by catch_unwind at runtime. The thinking was that I\nexplicitly don’t want to care too much about quality there, that the bar for getting a feature PR\nin is “happy path works & tested”. It’s fine if the code crashes, it will only attract\nfurther contributors, provided that:\nIn contrast, when working on the core spine which provided support for features, I was very\nrelatively more pedantic about quality.\nA word of caution about adapting to, rather than fixing incentive structure — the future is\nuncertain, and tends to happen in the least convenient manner. The original motivation behind\nrust-analyzer experiment was to avoid the need to write a parallel compiler (the one in IntelliJ\nRust), and to prototype a better architecture for LSP, so that the learnings could be backported\nto rustc. So, even in core (especially in core), the code was very experimental. Oh well. Stuck\nwith one more compiler now, I guess?\nI might hazard a guess that something similar happened to uutils project, which started as the\nprimary destination for people learning Rust, and ended up as Ubuntu coreutils implementation.\nThird, now to some concrete recommendations. Sadly, I don’t know of a single book I can recommend\nwhich contains the truths. I suspect one can only find such a book in an apocryphal short story by\nBorges: practice seems to be an essential element here. But here are some things worth paying\nattention to:\nBoundaries talk by Gary Bernhardt is all-time\nfavorite. It contains solid object-level advice, and, for me, it triggered the meta inquiry.\nHow to Test is something I wish I had. I\nimmediately understood the importance of testing, but it took me a long time to grow arrogant enough\nto admit that most widely-cited testing advice is shamanistic snake-oil, and to conceptualize what\nactually works.\n∅MQ guide and, more generally,\nwritings by Pieter Hintjens\nintroduced me to Conway’s Law thinking.\nThat “feature development” architecture of rust-analyzer? –\noptimistic merging, applied.\nReflections on a decade of coding\nby Jamii is excellent, goes very meta. It is intentionally the first of my links.\nTed Kaminski blog is the closest there is to a coherent\ntheory of software development, appropriately framed as a set of notes to a non-existing book!\nAs for the actual books, Software Engineering at Google\nand Ousterhout’s The Philosophy of Software Design are often recommended. They are good. SWE, in\nparticular, helped me with\na couple of important names.\nBut they weren’t ground breaking for me.",
+      "id": "36e95b8758c3e9996a3d132f35ade31817f38d6c4effeef84e47037c196bbada",
+      "ref_id": "1",
+      "recommendationScore": 69,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "强调通过实践而非纯理论学习软件架构的重要性，并分享个人经验。",
+      "reason": "为开发者提供了实用的软件设计学习路径和经验分享，受众广泛且有启发性。",
+      "tags": [
+        "软件架构",
+        "软件设计",
+        "编程",
+        "职业发展"
+      ]
+    },
+    {
+      "title": "Bambu Lab is abusing the open source social contract",
+      "link": "https://www.jeffgeerling.com/blog/2026/bambu-lab-abusing-open-source-social-contract/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-12T14:54:41.000Z",
+      "summary": "Article URL: https://www.jeffgeerling.com/blog/2026/bambu-lab-abusing-open-source-social-contract/\nComments URL: https://news.ycombinator.com/item?id=48109224\nPoints: 625\n# Comments: 217",
+      "id": "d7ad8983c0c7b6930a9616eff0eaeb0dad474b8b6db8cffedcc74959b4afa022",
+      "ref_id": "2",
+      "recommendationScore": 65,
+      "popularityScore": 90,
+      "priority": "low",
+      "comment": "关注Bambu Lab的开源协议滥用问题，引发社区广泛讨论。",
+      "reason": "揭露了开源社区中的潜在问题，对维护开源精神和协议合规性有警示意义，但与核心技术主题优先级较低。",
+      "tags": [
+        "Open Source",
+        "Ethics",
+        "3D Printing",
+        "Hardware",
+        "Community"
+      ]
+    },
+    {
+      "title": "EU to crack down on TikTok, Instagram's 'addictive design' targeting kids",
+      "link": "https://www.cnbc.com/2026/05/12/tiktok-instagram-social-media-addictive-eu-crack-down.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-12T11:00:07.000Z",
+      "summary": "Article URL: https://www.cnbc.com/2026/05/12/tiktok-instagram-social-media-addictive-eu-crack-down.html\nComments URL: https://news.ycombinator.com/item?id=48106534\nPoints: 397\n# Comments: 348",
+      "id": "28407e53f807b2feb43e4cfec90beb20d9e94f0e3f224fb0c8f883719f51c5a8",
+      "ref_id": "1",
+      "recommendationScore": 65,
+      "popularityScore": 71,
+      "priority": "low",
+      "comment": "欧盟针对社交媒体（如TikTok、Instagram）成瘾性设计对儿童影响的监管行动。",
+      "reason": "关注产品设计和社会伦理，对产品经理和政策制定者有一定实用性，但技术深度不足，属于产品设计范畴，优先级较低。",
+      "tags": [
+        "产品设计",
+        "政策法规",
+        "社交媒体",
+        "用户体验",
+        "伦理"
+      ]
+    },
+    {
+      "title": "The Future of Obsidian Plugins",
+      "link": "https://obsidian.md/blog/future-of-plugins/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-12T15:45:54.000Z",
+      "summary": "Article URL: https://obsidian.md/blog/future-of-plugins/\nComments URL: https://news.ycombinator.com/item?id=48109970\nPoints: 90\n# Comments: 47",
+      "id": "7edc8c048a9fd47270c36107c8241f10516ebeaee43e3d48fe7c07c0eee65f08",
+      "ref_id": "4",
+      "recommendationScore": 62,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "探讨了广受欢迎的笔记应用Obsidian插件生态的未来发展。",
+      "reason": "这篇文章对Obsidian开发者和用户具有高度实用价值，内容涉及编程工具和独立开发领域，值得关注。",
+      "tags": [
+        "Obsidian",
+        "Plugins",
+        "Note-taking",
+        "Development Tools",
+        "Personal Knowledge Management",
+        "Independent Development"
+      ]
+    },
+    {
+      "title": "Welcoming the Bangladesh Government to Have I Been Pwned",
+      "link": "https://www.troyhunt.com/welcoming-the-bangladesh-government-to-have-i-been-pwned/",
+      "source": "troyhunt.com",
+      "publishedAt": "2026-05-11T22:27:32.000Z",
+      "summary": "Today, we welcome the 43rd government onboarded to Have I Been Pwned's free gov service, Bangladesh. The BGD e-GOV CIRT department now has full access to query all their government domains via API, and monitor them against future breaches.\n\nBangladesh joins a growing list of national governments using",
+      "id": "5995e1578a718d83731b047b2b120d8e457b67a41095fb3573556b105bddf2d5",
+      "ref_id": "2",
+      "recommendationScore": 60,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "宣布孟加拉国政府正式接入“Have I Been Pwned”服务，以加强其网络安全监控能力。",
+      "reason": "提供了一项重要的网络安全新闻，展示了政府在数据泄露防护方面的国际合作进展，具有一定实用性。",
+      "tags": [
+        "网络安全",
+        "政府科技",
+        "数据泄露",
+        "API",
+        "自动化"
+      ]
+    },
+    {
+      "title": "Amazon employees are \"tokenmaxxing\" due to pressure to use AI tools",
+      "link": "https://arstechnica.com/ai/2026/05/amazon-employees-are-tokenmaxxing-due-to-pressure-to-use-ai-tools/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-12T16:29:21.000Z",
+      "summary": "Article URL: https://arstechnica.com/ai/2026/05/amazon-employees-are-tokenmaxxing-due-to-pressure-to-use-ai-tools/\nComments URL: https://news.ycombinator.com/item?id=48110529\nPoints: 115\n# Comments: 108",
+      "id": "63301160a78e0f6193f5402b3b0fcccd28f940165ad3c9d550dfab456a8894c1",
+      "ref_id": "2",
+      "recommendationScore": 56,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "探讨了亚马逊员工因AI工具压力而出现“tokenmaxxing”行为的现象。",
+      "reason": "尽管内容片段信息密度低，但该文章揭示了AI工具在企业推广中可能导致的人性化问题，对管理和策略有重要参考价值。",
+      "tags": [
+        "AI",
+        "Organizational Behavior",
+        "Work Culture",
+        "Productivity",
+        "Corporate Strategy",
+        "Ethics"
+      ]
+    },
+    {
+      "title": "Regatta Starting Stations – Chi-squared Continued",
+      "link": "https://entropicthoughts.com/regatta-starting-stations",
+      "source": "entropicthoughts.com",
+      "publishedAt": "2026-05-11T22:00:00.000Z",
+      "summary": "In the Henley Royal Regatta two teams at a time propel their boats up a river\nand compete to be first to go a distance. Teams get assigned to their starting\nstations – Berkshire or Buckinghamshire – at random. From there, it is a\nstraight shot up the river, with the lane from each starting station being\nseemingly identical.\n\n\n\n\n\nI didn’t know any of this, but a reader reached out some time ago because they\nhad noticed something odd about this, and they wanted to borrow me as a sounding\nboard. Here’s the odd thing: the team that starts from the Berkshire station has\nwon 53.5 % of the 7555 races in the historic data this reader looked at. This is\nhighly unexpected. If teams are assigned at random, and the starting\nstations are practically equal, then the starting station of the winning team\nshould be a coin flip.\n\n\n\n\n\nIf we flip 7555 coins, we would never have as many as 53.5 % come up heads.\n\n\n\n(Continue reading the full article on the web.)",
+      "id": "74e2fefc5207281ca605e232ba0f574a051c507d5d10dd4dc17cce966d05e86c",
+      "ref_id": "4",
+      "recommendationScore": 56,
+      "popularityScore": 55,
+      "priority": "low",
+      "comment": "对赛艇比赛中起始站胜率异常现象进行了统计学分析。",
+      "reason": "内容是具体的统计学应用案例，对数据分析爱好者有吸引力，但对大部分科技读者而言专业性较强，主题优先级不高。",
+      "tags": [
+        "统计学",
+        "数据分析",
+        "概率",
+        "体育科学"
+      ]
+    },
+    {
+      "title": "UnDUNE II",
+      "link": "https://liquidream.itch.io/undune2",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-12T12:38:45.000Z",
+      "summary": "Article URL: https://liquidream.itch.io/undune2\nComments URL: https://news.ycombinator.com/item?id=48107404\nPoints: 128\n# Comments: 23",
+      "id": "56ff44e59b3be1cdb1f083bc47eb2dd17543995530e421cb05fe0ed722fb8a82",
+      "ref_id": "4",
+      "recommendationScore": 55,
+      "popularityScore": 65,
+      "priority": "low",
+      "comment": "一个致敬经典游戏《沙丘2》的开源重制项目。",
+      "reason": "展示了个人项目在游戏开发上的技术能力，但缺乏广泛的行业实用性和对高优先级主题的直接关联。",
+      "tags": [
+        "Game Development",
+        "Retro Gaming",
+        "Indie Game",
+        "Programming Project"
+      ]
+    },
+    {
+      "title": "Instructure pays ransom to Canvas hackers",
+      "link": "https://www.insidehighered.com/news/tech-innovation/administrative-tech/2026/05/11/instructure-pays-ransom-canvas-hackers",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-12T02:56:31.000Z",
+      "summary": "https://www.instructure.com/incident_update#:~:text=STATUS%2...\nhttps://www.nytimes.com/2026/05/12/us/canvas-instructure-hac..., https://archive.ph/HIkdn\nComments URL: https://news.ycombinator.com/item?id=48103668\nPoints: 47\n# Comments: 21",
+      "id": "e890e180b962568b4858cc15ff2fc276ec2d5f5371c47689a22ce6fd6ebc2a0c",
+      "ref_id": "1",
+      "recommendationScore": 55,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "关于Canvas被黑客勒索并支付赎金的行业新闻。",
+      "reason": "提供了重要的网络安全事件案例，但技术深度不足，不属于核心技术博客范畴。",
+      "tags": [
+        "网络安全",
+        "勒索软件",
+        "新闻",
+        "教育科技"
+      ]
+    },
+    {
+      "title": "Euler function",
+      "link": "https://www.johndcook.com/blog/2026/05/11/euler-function/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-05-12T00:49:41.000Z",
+      "summary": "This morning I wrote a post about the probability that a random matrix over a finite field is invertible. If the field has q elements and the matrix has dimensions n × n then the probability is In that post I made observation that p(q, n) converges very quickly as a function of n [1]. […]\nEuler function first appeared on John D. Cook.",
+      "id": "ab40e636fb62f6f33f99fdfccdf02b13af8bf4174465ee242d74de4bb8ae2023",
+      "ref_id": "0",
+      "recommendationScore": 53,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "深入探讨了有限域随机矩阵可逆性的数学概率问题。",
+      "reason": "内容过于理论和数学化，受众较窄，与主流科技主题关联度低。",
+      "tags": [
+        "数学",
+        "概率",
+        "理论计算机科学"
+      ]
+    },
+    {
+      "title": "Coursera and Udemy are now one company",
+      "link": "https://blog.coursera.org/coursera-and-udemy-are-now-one-company-creating-the-worlds-most-comprehensive-skills-platform/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-12T10:37:44.000Z",
+      "summary": "Article URL: https://blog.coursera.org/coursera-and-udemy-are-now-one-company-creating-the-worlds-most-comprehensive-skills-platform/\nComments URL: https://news.ycombinator.com/item?id=48106367\nPoints: 164\n# Comments: 69",
+      "id": "a8642fdb09116e90eace226c3e82d8ec5e5bdfe40275f23f02b235514d486245",
+      "ref_id": "2",
+      "recommendationScore": 50,
+      "popularityScore": 29,
+      "priority": "low",
+      "comment": "在线教育巨头Coursera和Udemy宣布合并，将整合双方资源。",
+      "reason": "这是在线教育领域的重大商业新闻，具有较高新颖性，但内容侧重商业合并，缺乏技术深度和编程工具等主题的实用性。",
+      "tags": [
+        "在线教育",
+        "行业动态",
+        "商业",
+        "科技新闻"
+      ]
+    },
+    {
+      "title": "Your AI Use Is Breaking My Brain",
+      "link": "https://simonwillison.net/2026/May/11/zombie-internet/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-05-11T19:21:27.000Z",
+      "summary": "",
+      "id": "86964fb98bdd7e8eec9744effaa644d5759037b867f359ab45783a3afa3c5042",
+      "ref_id": "4",
+      "recommendationScore": 40,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "标题直接批评AI使用，具有讨论性，但内容缺失无法进一步评估其深度和观点。",
+      "reason": "标题具有强烈的AI话题吸引力，可能引发关于AI伦理和滥用的讨论，但实际内容未知，故评分偏低。",
+      "tags": [
+        "AI",
+        "Ethics",
+        "Opinion",
+        "Criticism"
+      ]
+    },
+    {
+      "title": "[Sponsor] Drata",
+      "link": "https://drata.com/daring",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-12T00:54:08.000Z",
+      "summary": "Leverage autonomous AI agents to automate compliance, manage internal and third-party risk, and continuously prove your security posture. \n ★",
+      "id": "4ae46c5a86218fad2f39cf69543ebbd47f9e4fd96a697410065b01e125a71347",
+      "ref_id": "3",
+      "recommendationScore": 40,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "一篇关于利用AI代理自动化合规管理的赞助内容。",
+      "reason": "虽然是广告，但其介绍的AI自动化合规管理方向符合高优先级主题，具有一定的市场参考价值。",
+      "tags": [
+        "赞助",
+        "AI",
+        "自动化",
+        "合规",
+        "企业级",
+        "信息安全"
+      ]
+    },
+    {
+      "title": "Pluralistic: A fascist paradigm (12 May 2026)",
+      "link": "https://pluralistic.net/2026/05/12/donella-meadows/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-05-12T07:22:17.000Z",
+      "summary": "Today's links A fascist paradigm: The change that changed everything. Hey look at this: Delights to delectate. Object permanence: Openstreetmap x Isle of Wight; Found grocery lists; Mayor wants to pray away potholes; Designing a D120; \"Too Like the Lightning.\" Upcoming appearances: Barcelona, Berlin, Hay-on-Wye, London, NYC, Edinburgh. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. A fascist paradigm (permalink) Yesterday, I attended a workshop on systems thinking and political change, which included a presentation on the work of Donella Meadows, whose Thinking in Systems is a canonical work on the subject: https://en.wikipedia.org/wiki/Thinking_In_Systems:_A_Primer \"Systems thinking\" is an analytical framework that treats the world as a mesh of interconnected, nonlinear components and relationships that can't be easily understood or steered. A complex system isn't merely \"complicated.\" A mechanical watch is complicated, in that it has many parts that work together in ways that require training and specialized knowledge to understand. But it isn't \"complex\" because each part has a specific function that can be understood and adjusted. In a complex system – say, an ecosystem – the parts are meshed in a web of unobvious relationships that make it difficult to predict what effect will follow from a given perturbation. When a blight kills off a plant species, the soil stability declines, resulting in landslides during the rainy season, changing the mineral content of nearby waterways, which creates microbial blooms or fish die-offs in a distant, downstream lake. But systems thinking isn't a counsel of despair that insists that you shouldn't do anything because you can never predict what will come of your actions. In Thinking in Systems, Meadows presents a hierarchy of leverage points for changing a system, ranked from least effective (\"Constants, numbers, parameters\") to most (\"The power to shift paradigms to deal with new challenges\"): https://www.flickr.com/photos/doctorow/55264856861/ In all, Meadows theorizes 12 different \"places to intervene in a system.\" The least effective of these – constants like taxes and standards, negative and positive feedback loops – are the sites of most of our political fights, and rightly so. They are the fine-tuning knobs of the system that adjust its margins. Once you have the rule of law (\"the rules of the system\"), you can drive change by amending, repealing or passing a law: https://donellameadows.org/archives/leverage-points-places-to-intervene-in-a-system/ But when you're confronted with a system that is significantly, persistently dysfunctional, you will likely have to work at sites that are further up the hierarchy, such as \"the distribution of power over the rules of the system\" or \"the goals of the system\"; or the most profound of all, \"the paradigm out of which the system — its goals, power structure, rules, its culture — arises.\" Thinking about paradigms is a form of \"meta-cognition,\" which is to say, \"thinking about how you think.\" Your paradigm encompasses all your assumptions, including your assumptions about how to proceed from your other assumptions: \"if x, then y\" is a paradigm. The workshop where we were discussing all of this is part of a group whose goal is reversing the antidemocratic movement in our society and the climate emergency that is its backdrop. But as I listened to the speaker and the ensuing discussion, it occurred to me that Meadows' theoretical work was a very good way of describing the successes of the fascist movement in the UK and around the world. Fascists like Farage and Trump are, at their root, anti-democratic. Their pitch is that the people are incapable of self-determination (as Peter Thiel puts it, \"democracy is incompatible with freedom\"). They want us to think that all our neighbors are irrational and foolish, and that we, too, are irrational and foolish, and that our safety and prosperity can only be safeguarded if we seek out those few people who are born to rule and liberate them from the petty niceties and regulations that democracy and the rule of law demand. In other words, the paradigm of democracy is that all of us are capable of both wise self-governance and self-rationalized misgovernance, and each of us has a useful perspective to contribute. The fascist paradigm is that we can't be trusted to rule ourselves, and only the people who are born with \"good blood\" are capable of directing our lives: https://pluralistic.net/2025/05/20/big-cornflakes-energy/#caliper-pilled This is the theory behind \"race realism\" and \"human diversity\" and all the other polite names the modern fascist uses to obscure the fact that they're reviving eugenics. It explains the panic over DEI, a panic driven by the belief that lesser people are being elevated to positions of rule and authority that they are genetically incapable of carrying out. That's why, whenever a disaster arises, fascists demand to know the gender, race and sexual orientation of the pilot, the ship's captain, or the official in charge. If the person who crashed the cargo ship into the bridge has brown skin, we can add another line to the ledger of costs associated with the doomed project to put people who were born to be bossed around in the boss's seat (of course, if the pilot turns out to be a white guy, that proves nothing, except that mistakes sometimes happen). The revival of fascism in this century has been scarily effective, and at times it can feel unstoppable. Meadows' work on systems thinking provides an explanation for that efficacy – and suggests a theory of change for dispatching fascism back to the graveyard of history. Fascists have made changes to things like laws and feedback loops, rules and distribution of power, but this all stems from a more profound alteration to the system, at the level of the paradigm. Which suggests that the real fight we have is over that paradigm: we have to convince our neighbors that they are smart enough to rule themselves, and so are we, and so is everyone else. We have to convince them that even the smartest and wisest person (including us, including them) is capable of folly and needs to have checks on their (our) authority. We need to attack the theory of the \"unitary executive\" and every other autocratic ideology head on. We have to insist that these aren't just unconstitutional, but that they are ideologically catastrophic. \"No kings,\" because even an omnibenevolent king isn't omniscient, and that means that omnipotence is always omnidestructive in the long run. The fascist revival has been scarily effective and resilient – and systems thinking offers an explanation for both that efficacy and that resiliency. Hey look at this (permalink) I knew my writing students were using AI. Their confessions led to a powerful teaching moment https://www.theguardian.com/us-news/ng-interactive/2026/may/10/fiction-writing-professor-ai Reporters at McClatchy withhold bylines in dispute over AI content https://www.spokesman.com/stories/2026/may/01/reporters-at-mcclatchy-withhold-bylines-in-dispute/ Someone Built an App to Fight Surveillance Pricing With a Flipper Zero… for Research Purposes https://gizmodo.com/someone-built-an-app-to-fight-surveillance-pricing-with-a-flipper-zero-for-research-purposes-2000755224 Life without US tech https://www.ft.com/content/4c3aad70-e0cb-46a2-95d5-15d11b6bf818?accessToken=zwAAAZ4VoJdukc9MOq1w4MtGotOV1RXRG2v4GA.MEQCIFXG2BBi81XpJ8D4_1uEUIencLlX2h_fjR9DN9YSKjmdAiA9W8XTlEm0uuh0SQioErfqHFu5R_9gkFTD4L54Bmg-cQ&amp;sharetype=gift&amp;token=3519ae98-a671-4dbe-9058-4ebf21385c9a&amp;syn-25a6b1a6=1 What Challenging a Bowling Monopoly Says About America https://www.thebignewsletter.com/p/monopoly-round-up-what-challenging The Oligarchs Are Starting to Lose Their Grip on Power https://www.nytimes.com/2026/05/07/opinion/hollywood-merger-fear-paramount-warner-bros.html Object permanence (permalink) #25yrsago First aid for the dying dotcom http://modernhumorist.com/mh/0010/dotcom/ #20yrsago OpenStreetMap maps Isle of Wight, Manchester next https://wiki.openstreetmap.org/wiki/Mapchester_Mapping_Party_2006 #20yrsago Fueling model rockets with Oreo fillings https://web.archive.org/web/20060616192646/https://www.popsci.com/popsci/how20/600152d7d441b010vgnvcm1000004eecbccdrcrd.html #20yrsago Legal guide for podcasters https://wiki.creativecommons.org/wiki/Welcome_To_The_Podcasting_Legal_Guide #20yrsago Collection of 1100+ found grocery lists https://grocerylists.org/ #10yrsago Mayor of Jackson, MS: “I believe we can pray potholes away” https://www.wjtv.com/news/jackson-mayor-tony-yarber-we-can-pray-potholes-away/ #10yrsago What’s the best way to distribute numbers on the faces of a D120? https://web.archive.org/web/20160510182023/https://www.wired.com/2016/05/mathematical-challenge-of-designing-the-worlds-most-complex-120-sided-dice/ #10yrsago Billionaire Paypal co-founder Peter Thiel will be a California Trump delegate https://web.archive.org/web/20160510155226/https://www.wired.com/2016/05/investor-peter-thiel-will-california-delegate-trump/ #10yrsago McClatchy newspapers’ CEO pleased to announce that he’s shipping IT jobs overseas https://web.archive.org/web/20160510102956/https://www.computerworld.com/article/3067304/it-careers/newspaper-chain-sending-it-jobs-overseas.html #10yrsago Peace in Our Time: how publishers, libraries and writers could work together https://locusmag.com/feature/cory-doctorow-peace-in-our-time/ #10yrsago Too Like the Lightning: intricate worldbuilding, brilliant speculation, gripping storytelling https://memex.craphound.com/2016/05/10/too-like-the-lightning-intricate-worldbuilding-brilliant-speculation-gripping-storytelling/ #5yrsago LA traveling toward free public transit https://pluralistic.net/2021/05/10/comrade-ustr/#get-on-the-bus #5yrsago Biden's shift on vaccine patents is a Big Deal https://pluralistic.net/2021/05/10/comrade-ustr/#vaccine-diplomacy Upcoming appearances (permalink) Barcelona: Internet no tiene que ser un vertedero (Global Digital Rights Forum), May 13 https://encuentroderechosdigitales.com/en/speakers/ Virtual: How to Disenshittify the Internet with Wendy Liu (EFF), May 14 https://www.eff.org/event/effecting-change-enshittification Berlin: Re:publica, May 18-20 https://re-publica.com/de/news/rp26-sprecher-cory-doctorow Berlin: Enshittification at Otherland Books, May 18 https://www.otherland-berlin.de/de/event-details/cory-doctorow-in-der-friesenstrasse-23-kreuzberg-praesentiert-von-otherland.html Berlin: Enshittification at Otherland Books, May 19 https://www.otherland-berlin.de/de/event-details/cory-doctorow.html Hay-on-Wye: HowTheLightGetsIn, May 22-25 https://howthelightgetsin.org/festivals/hay/big-ideas-2 SXSW London, Jun 2 https://www.sxswlondon.com/session/how-big-tech-broke-the-internet-b3c4a901 NYC: The Reverse Centaur's Guide to Life After AI with Jonathan Coulton (The Strand), Jun 24 https://www.strandbooks.com/cory-doctorow-the-reverse-centaur-s-guide-to-life-after-ai.html Edinburgh International Book Festival with Jimmy Wales, Aug 17 https://www.edbookfest.co.uk/events/the-front-list-cory-doctorow-and-jimmy-wales Recent appearances (permalink) The “Enshittification” of Everything (Bioneers) https://bioneers.org/cory-doctorow-enshittification-of-everything-zstf2605/ Enshittification (99% Invisible) https://99percentinvisible.org/episode/666-enshittification/ Artificial Intelligence: The Ultimate Disruptor, with Astra Taylor and Yoshua Bengio (CBC Ideas) https://www.cbc.ca/listen/live-radio/1-23-ideas/clip/16210039-artificial-intelligence-the-ultimate-disruptor When Do Platforms Stop Innovating and Start Extracting? (InnovEU) https://www.youtube.com/watch?v=cccDR0YaMt8 Pete \"Mayor\" Buttigieg (No Gods No Mayors) https://www.patreon.com/posts/pete-mayor-with-155614612 Latest books (permalink) \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 (https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/) \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2026 \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Third draft completed. Submitted to editor. \"The Reverse Centaur's Guide to AI,\" a short book for Farrar, Straus and Giroux about being an effective AI critic. LEGAL REVIEW AND COPYEDIT COMPLETE. \"The Post-American Internet,\" a short book about internet policy in the age of Trumpism. PLANNING. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "73d7155c4a0bddf66ed70f534e7b4d92779ee3191511ef435a5e819d954133fd",
+      "ref_id": "2",
+      "recommendationScore": 40,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "探讨了系统思维在政治变革中的应用，但与科技主题关联性较弱。",
+      "reason": "内容偏向社会和政治哲学，与科技博客的关注主题不符，缺乏技术深度和实用性。",
+      "tags": [
+        "系统思维",
+        "政治",
+        "社会评论"
+      ]
+    },
+    {
+      "title": "Position or Perish: The Narrative Blueprint",
+      "link": "https://www.joanwestenberg.com/position-or-perish-the-narrative-blueprint/",
+      "source": "joanwestenberg.com",
+      "publishedAt": "2026-05-12T10:15:17.000Z",
+      "summary": "Avis was losing $3.2 million a year; and they'd been unprofitable for thirteen straight. \nIn 1962, they sat at number two in American car rental, well behind Hertz, with no plausible path to catching up. Robert Townsend, the new president, hired Doyle Dane Bernbach and asked",
+      "id": "91e6d188a8e84b94fca3aff4a83e1f19d96ded80c4963f71870cdd95d7a5cb79",
+      "ref_id": "2",
+      "recommendationScore": 35,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "通过经典的Avis案例探讨市场定位和叙事策略的重要性。",
+      "reason": "侧重商业策略和市场营销，与科技博客的核心主题关联度较低，但对独立开发者有一定参考价值。",
+      "tags": [
+        "市场营销",
+        "商业策略",
+        "品牌定位",
+        "产品设计"
+      ]
+    },
+    {
+      "title": "Screenshots of Old Desktop OSes",
+      "link": "http://www.typewritten.org/Media/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-12T05:11:24.000Z",
+      "summary": "Article URL: http://www.typewritten.org/Media/\nComments URL: https://news.ycombinator.com/item?id=48104428\nPoints: 557\n# Comments: 274",
+      "id": "a7d301694799f1fd545280410667cda5b81e2c967725846618d93ca02b7922d9",
+      "ref_id": "4",
+      "recommendationScore": 30,
+      "popularityScore": 100,
+      "priority": "low",
+      "comment": "一组收录了多种经典桌面操作系统截图的图集，具有很强的怀旧感。",
+      "reason": "虽然在社交媒体上广受欢迎，具有很高的趣味性和怀旧价值，但缺乏技术深度、实用性或信息密度，不符合科技博客的专业评估标准。",
+      "tags": [
+        "计算机历史",
+        "操作系统",
+        "怀旧",
+        "视觉内容"
+      ]
+    },
+    {
+      "title": "The New PowerMac",
+      "link": "https://www.kraftheinz.com/kraft-mac-and-cheese/products/00021000086856-power-mac-original-flavor-mac-cheese-macaroni-and-cheese-dinner",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-11T18:32:03.000Z",
+      "summary": "Apple stopped selling the Power Mac G5 (with space) in August 2006, so I’m not sure how much they care about Kraft using “PowerMac” (sans space) as a trademark for protein-enhanced macaroni and cheese. (I feel like there’s got to be a joke to be made here about a “cheese grater”...)\n ★",
+      "id": "bda8ff005cc8a38164631b04df30708426a1a75eb5431f875b44e33737f27bb9",
+      "ref_id": "1",
+      "recommendationScore": 30,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "对苹果旧产品名称与新商标的趣味性观察。",
+      "reason": "内容过于碎片化，缺乏技术深度和实用性，更像是一个轻松的博文片段，与科技博客核心主题相关性弱。",
+      "tags": [
+        "Apple",
+        "商标",
+        "科技趣闻"
+      ]
+    },
+    {
+      "title": "Text Blaze (YC W21) Is Hiring for a No-AI Summer Internship",
+      "link": "https://www.ycombinator.com/companies/text-blaze/jobs/P4CCN62-the-blaze-no-ai-summer-internship",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-12T12:00:46.000Z",
+      "summary": "Article URL: https://www.ycombinator.com/companies/text-blaze/jobs/P4CCN62-the-blaze-no-ai-summer-internship\nComments URL: https://news.ycombinator.com/item?id=48107024\nPoints: 0\n# Comments: 0",
+      "id": "58b22cb470a89a93083018c7283d9023e491f6671134529a4fc4add6b7cae163",
+      "ref_id": "0",
+      "recommendationScore": 20,
+      "popularityScore": 0,
+      "priority": "medium",
+      "comment": "一则关于“无AI”实习的招聘信息，反思了当前AI热潮。",
+      "reason": "虽然标题具有一定新颖性，但内容本质是招聘广告，缺乏技术深度和实用文章价值，信息密度低。",
+      "tags": [
+        "招聘",
+        "独立开发",
+        "AI反思",
+        "实习"
+      ]
+    },
+    {
+      "title": "eBay Rejects GameStop's $56B Takeover as Not Credible",
+      "link": "https://www.bloomberg.com/news/articles/2026-05-12/ebay-rejects-gamestop-s-56-billion-takeover-as-not-credible",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-12T15:49:47.000Z",
+      "summary": "Article URL: https://www.bloomberg.com/news/articles/2026-05-12/ebay-rejects-gamestop-s-56-billion-takeover-as-not-credible\nComments URL: https://news.ycombinator.com/item?id=48110021\nPoints: 131\n# Comments: 120",
+      "id": "490d7684f20f604996b41a55d89d6ebf0bce67c26d93b75e2390db1700093c1d",
+      "ref_id": "3",
+      "recommendationScore": 13,
+      "popularityScore": 15,
+      "priority": "low",
+      "comment": "报道了eBay拒绝GameStop巨额收购要约的商业新闻。",
+      "reason": "该文章主要关注金融和商业并购，与AI、编程工具等科技博客核心主题无关，因此优先级较低。",
+      "tags": [
+        "Business",
+        "Finance",
+        "M&A",
+        "News"
+      ]
+    },
+    {
+      "title": "Where Are All The Data Centers?",
+      "link": "https://www.wheresyoured.at/where-are-all-the-data-centers/",
+      "source": "wheresyoured.at",
+      "publishedAt": "2026-05-12T16:17:30.000Z",
+      "summary": "If you liked this piece, please subscribe to my premium newsletter. It’s $70 a year, or $7 a month, and in return you get a weekly newsletter that’s usually anywhere from 5,000 to 18,000 words, including vast, detailed analyses of NVIDIA, Anthropic and OpenAI&",
+      "id": "e516df87e37d5276451332f0be49989b7b5a672adfbbad1cfc787929ec84f532",
+      "ref_id": "0",
+      "recommendationScore": 10,
+      "popularityScore": 15,
+      "priority": "low",
+      "comment": "这段内容是关于付费新闻简报的宣传，不包含任何实际文章内容。",
+      "reason": "缺乏实质性文章内容，无法进行有效评估，仅涉及主题宣传。",
+      "tags": [
+        "广告",
+        "新闻简报",
+        "AI主题宣传"
+      ]
+    },
+    {
+      "title": "Thoughts on GitLab's workforce reduction\" and \"structural and strategic decisions\"",
+      "link": "https://simonwillison.net/2026/May/11/gitlab-act-2/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-05-11T23:58:55.000Z",
+      "summary": "",
+      "id": "466f592dc33567efbef98304ed52e3e9969cee4e02c2c30d6cec20efb74adbe4",
+      "ref_id": "2",
+      "recommendationScore": 5,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "标题讨论GitLab裁员及战略，但内容为空，无法进行有效评估。",
+      "reason": "文章内容缺失，无法进行有效评审，因此不予推荐。",
+      "tags": [
+        "Industry News",
+        "GitLab",
+        "Workforce"
+      ]
+    },
+    {
+      "title": "Quoting James Shore",
+      "link": "https://simonwillison.net/2026/May/11/james-shore/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-05-11T19:48:32.000Z",
+      "summary": "",
+      "id": "1a4ad3d48a105311b35fe1e02fe4916d57980474a5e70ae1d44ed6848d3e2a73",
+      "ref_id": "3",
+      "recommendationScore": 5,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "标题提及引用James Shore，但内容为空，无法进行有效评估。",
+      "reason": "文章内容缺失，无法进行有效评审，因此不予推荐。",
+      "tags": [
+        "Quote",
+        "Software Development"
+      ]
+    },
+    {
+      "title": "Shame them, shun them, ban them, beat them!",
+      "link": "https://www.experimental-history.com/p/shame-them-shun-them-ban-them-beat",
+      "source": "experimental-history.com",
+      "publishedAt": "2026-05-12T13:23:30.000Z",
+      "summary": "OR: crock pots and lightning bolts",
+      "id": "bb70ceee9840de9c74627ee93d3740f67d961eee75757401c9c82c5f84edb7f7",
+      "ref_id": "3",
+      "recommendationScore": 0,
+      "popularityScore": 5,
+      "priority": "low",
+      "comment": "该片段仅包含一个煽动性标题和副标题，未提供任何文章内容。",
+      "reason": "缺乏任何可评估的实质性内容，无法判断其技术价值或主题相关性。",
+      "tags": [
+        "无法评估",
+        "标题党"
+      ]
+    }
+  ]
+}
