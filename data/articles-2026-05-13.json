@@ -1,0 +1,882 @@
+{
+  "dailySummary": "",
+  "articles": [
+    {
+      "title": "Show HN: Needle: We Distilled Gemini Tool Calling into a 26M Model",
+      "link": "https://github.com/cactus-compute/needle",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-12T18:03:11.000Z",
+      "summary": "Hey HN, Henry here from Cactus. We open-sourced Needle, a 26M parameter function-calling (tool use) model. It runs at 6000 tok/s prefill and 1200 tok/s decode on consumer devices.\nWe were always frustrated by the little effort made towards building agentic models that run on budget phones, so we conducted investigations that led to an observation: agentic experiences are built upon tool calling, and massive models are overkill for it. Tool calling is fundamentally retrieval-and-assembly (match query to tool name, extract argument values, emit JSON), not reasoning. Cross-attention is the right primitive for this, and FFN parameters are wasted at this scale.\nSimple Attention Networks: the entire model is just attention and gating, no MLPs anywhere. Needle is an experimental run for single-shot function calling for consumer devices (phones, watches, glasses...).\nTraining:\n- Pretrained on 200B tokens across 16 TPU v6e (27 hours)\n- Post-trained on 2B tokens of synthesized function-calling data (45 minutes)\n- Dataset synthesized via Gemini with 15 tool categories (timers, messaging, navigation, smart home, etc.)\nYou can test it right now and finetune on your Mac/PC: https://github.com/cactus-compute/needle\nThe full writeup on the architecture is here: https://github.com/cactus-compute/needle/blob/main/docs/simp...\nWe found that the \"no FFN\" finding generalizes beyond function calling to any task where the model has access to external structured knowledge (RAG, tool use, retrieval-augmented generation). The model doesn't need to memorize facts in FFN weights if the facts are provided in the input. Experimental results to published.\nWhile it beats FunctionGemma-270M, Qwen-0.6B, Granite-350M, LFM2.5-350M on single-shot function calling, those models have more scope/capacity and excel in conversational settings. We encourage you to test on your own tools via the playground and finetune accordingly.\nThis is part of our broader work on Cactus (https://github.com/cactus-compute/cactus), an inference engine built from scratch for mobile, wearables and custom hardware. We wrote about Cactus here previously: https://news.ycombinator.com/item?id=44524544\nEverything is MIT licensed. Weights: https://huggingface.co/Cactus-Compute/needle\nGitHub: https://github.com/cactus-compute/needle\nComments URL: https://news.ycombinator.com/item?id=48111896\nPoints: 582\n# Comments: 168",
+      "id": "e1739cedc6f9ead74fedb98f45537682342f7d7c03e436327227ffc1d95eadbb",
+      "ref_id": "3",
+      "recommendationScore": 98,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "Needle模型将Gemini工具调用能力精炼到26M参数，可在消费设备上高效运行。",
+      "reason": "该项目在AI领域具有极高的技术深度和新颖性，解决了边缘设备AI模型的实际痛点，符合AI主题最高优先级。",
+      "tags": [
+        "AI",
+        "LLM",
+        "模型压缩",
+        "边缘计算",
+        "函数调用",
+        "开源",
+        "神经网络"
+      ]
+    },
+    {
+      "title": "Launch HN: Ardent (YC P26) – Postgres sandboxes in seconds with zero migration",
+      "link": "https://www.tryardent.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-13T16:54:03.000Z",
+      "summary": "Hey HN! We’re Vikram and Evan from Ardent (https://tryardent.com). We're building database sandboxes for you and your coding agents.\nIn the last two years coding agents have gotten dramatically more capable at handling complex engineering tasks. But without access to a realistic sandbox at the DB layer for testing, they ship garbage that can take down production databases. I spent over a year building an AI Data Engineer that failed for this exact reason. Evan spent the last 12 years in data engineering and hit this wall building agents at his last company.\nArdent was built to make it possible for coding agents to get near instant access to production-like sandboxes so they can test their work. To do this we write a replication stream out of the target DB, scaling with kafka onto a read replica with copy on write enabled and autoscaling compute (we currently prefer neon as a primary branching engine due to their implementation of these properties).\nOur replication stream uses logical replication + ddl triggers to enable usage on any hosted postgres DB since most platforms do not allow physical replication which is traditionally used for creating replicas.\nThis provides a few primary benefits:\n1. Does not require a platform migration to a DB provider like neon, allowing strong separation of production and development concerns.\n2. Minimal impact on the production database while allowing clones to spin up in https://youtu.be/5S1kwPtiRU0\nWe’d love to understand how you work with coding agents on the DB and if you try Ardent (it's free to get started) what worked, what broke and what’s missing.\nComments URL: https://news.ycombinator.com/item?id=48124436\nPoints: 20\n# Comments: 8",
+      "id": "98f1817d6e46d085a29da833a1278caa1a864e181fad54cef1f35498fabc32e1",
+      "ref_id": "0",
+      "recommendationScore": 95,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "创新性地解决了AI编码代理在数据库测试中的关键痛点。",
+      "reason": "文章深入探讨了AI和数据库沙盒的结合，提供了高度实用且具有技术深度的解决方案，完全符合AI主题优先级。",
+      "tags": [
+        "AI",
+        "Database",
+        "Development Tools",
+        "Postgres",
+        "Startup",
+        "Cloud"
+      ]
+    },
+    {
+      "title": "CERT is releasing six CVEs for serious security vulnerabilities in dnsmasq",
+      "link": "https://lists.thekelleys.org.uk/pipermail/dnsmasq-discuss/2026q2/018471.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-12T18:12:28.000Z",
+      "summary": "Article URL: https://lists.thekelleys.org.uk/pipermail/dnsmasq-discuss/2026q2/018471.html\nComments URL: https://news.ycombinator.com/item?id=48112042\nPoints: 358\n# Comments: 198",
+      "id": "0e72efa31e6e5327e449947d58683108a9e90eac1bc5d45af4af68b599fc718e",
+      "ref_id": "2",
+      "recommendationScore": 95,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "CERT发布dnsmasq的六个严重安全漏洞，对网络安全至关重要。",
+      "reason": "该文涉及核心网络服务的严重安全漏洞，技术深度高、实用性极强且具有高度时效性，对自动化和系统管理用户影响重大。",
+      "tags": [
+        "安全",
+        "网络",
+        "CVE",
+        "漏洞",
+        "系统管理",
+        "Linux"
+      ]
+    },
+    {
+      "title": "The US is winning the AI race where it matters most: commercialization",
+      "link": "https://avkcode.github.io/blog/us-winning-ai-race.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-13T13:53:53.000Z",
+      "summary": "Article URL: https://avkcode.github.io/blog/us-winning-ai-race.html\nComments URL: https://news.ycombinator.com/item?id=48121929\nPoints: 57\n# Comments: 147",
+      "id": "63c32e5ba3e446558d1f06d3f4ab3eb28ad51e9ac3ac09504f6a9942dac1fba0",
+      "ref_id": "2",
+      "recommendationScore": 85,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "从商业化角度深入分析了美国在AI竞赛中的领先地位，引发了广泛的行业讨论。",
+      "reason": "紧密贴合AI这一最高优先级主题，从独特的商业化视角提供了对AI产业竞争格局的深度洞察，对行业决策者和投资者具有重要参考价值。",
+      "tags": [
+        "AI",
+        "商业化",
+        "产业分析",
+        "战略"
+      ]
+    },
+    {
+      "title": "Pluralistic: Billionaire solipsism, dictator solipsism, AI, and the fascist paradigm (13 May 2026)",
+      "link": "https://pluralistic.net/2026/05/13/vibe-governance/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-05-13T15:47:35.000Z",
+      "summary": "Today's links Billionaire solipsism, dictator solipsism, AI, and the fascist paradigm: AGI works best in a K-hole. Hey look at this: Delights to delectate. Object permanence: Woz's remotes; Furbeowulf; Vinge on AR; Oligarch buys FSU; DNC x GOP megadonors; John Key v Panama Papers; Two elevators, one shaft; Save Firefox! \"Cyclopedia Exotica\"; Eat the brood. Upcoming appearances: Barcelona, Berlin, Hay-on-Wye, London, NYC, Edinburgh. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. Billionaire solipsism, dictator solipsism, AI, and the fascist paradigm (permalink) With great power comes great solipsism: the more power you wield over other people, the less real they become to you. To rule is to see people as aggregates, statistical artifacts, as a means to an end. It's how people seem when you're at the bottom of a k-hole. Per Granny Weatherwax, this is the root of all evil: \"Sin is when you treat people like things\": https://brer-powerofbabel.blogspot.com/2009/02/granny-weatherwax-on-sin-favorite.html The problem (for powerful people) is that other people aren't things; they're people, with stubborn attachments to their own priorities and needs. This is a huge problem for social media bosses, since the force that keeps you stuck to their platforms is your love of your friends, which sucks (for social media bosses), because your friends refuse to organize their interactions with you to \"maximize engagement.\" There is a group of platform users who are dedicated to maximizing your engagement: performers (which is why legacy social media platforms have reduced the quantum of your feed given over to your friends to a bare minimum and swapped in the amateur dramatics of theater kids). But even \"influencers\" demand treatment as people, not things (which is why legacy social media is squeezing out performers in favor of slop): https://pluralistic.net/2026/04/17/for-youze/#forever Running a social media service is especially solipsism-inducing, since the back-end of a social media service always reduces people to statistical artifacts to be steered, thwarted, or rewarded based on the degree to which they are \"maximizing engagement.\" No wonder zuckermuskian social media bosses mythologize themselves as dopamine-hacking wizards who've built a mind-control ray. Skinnerism and solipsism fit together very neatly, seducing you into the belief that everyone else is a stimulus-responding automaton, programmed to think they have free will: https://pluralistic.net/2025/05/07/rah-rah-rasputin/#credulous-dolts (Of course, the AI boss version of this is the belief that everyone else is a \"stochastic parrot\":) https://xcancel.com/sama/status/1599471830255177728 But in truth, any corporate boss is prone to solipsism. To maximize corporate profits, you must view other people – employees, suppliers and customers – as inconvenient problems to be solved, not true people with feelings and needs that are co-equal with your own. This is why AI is so attractive to the ruling class. For corporate leaders, the fantasy of your own worth is always dangerously close to collapsing, due to the haunting knowledge that if you don't show up for work, everything continues as per normal; while if your workers don't show up for work, the shop closes down and stays closed. Bosses really want to be in the driver's seat, but ultimately they know that they're strapped into the back seat, playing with a Fisher Price steering wheel. AI is a way to wire that toy steering wheel directly into the drive-train: it's the fantasy that a boss can have an idea and the corporation will execute it, without any messy human needs or demands getting in the way: https://pluralistic.net/2026/01/05/fisher-price-steering-wheel/#billionaire-solipsism Solipsism is why bosses fetishize IP and ignore process knowledge. IP is the part of the job that the worker can explain (and that you can train an AI model on). Process knowledge is the part of the job that can't be abstracted, alienated or commodified. The very existence of process knowledge is the major impediment to de-skilling workers so they can be interchanged with other, more desperate, more timid workers (or with sycophantic AI): https://pluralistic.net/2025/09/08/process-knowledge/#dance-monkey-dance Of course, there's a whole group of powerful people outside of the political world who are gripped by solipsistic AI fantasies: politicians. Like social media bosses, politicians deal with people as statistical artifacts who respond to policy inputs with semi-predictable outputs: https://en.wikipedia.org/wiki/Seeing_Like_a_State And of course, politicians have their own detested class of workers whom they fantasize about replacing with chatbots: bureaucracies. When Trump et al bemoan the \"deep state,\" they are engaged in the politicians' version of the corporate boss's solipsism: \"I make policies, but to enact them, I have to convince civil servants to turn my agenda into action. This sucks. Can't we just have an all-powerful executive who decides on things and then those things just happen?\" Writing for Columbia's Knight First Amendment Institute, political scientist Henry Farrell and statistician Cosma Rohilla Shalizi have produced the definitive account of how AI psychosis has infected our political classes: https://knightcolumbia.org/content/ai-as-social-technology Farrell and Shalizi use this political AI psychosis to explain DOGE, framing DOGE as a project where politicians and their loyal vassals cut such a deep wound in the administrative state on the basis that general AI was about to emerge. With godlike AI around the corner, these bureaucrats – who insist on having opinions based on long experience and ethical sensibilities – could be replaced with sycophantic chatbots who'd turn the will of the unitary executive into policy without any filtration through unreliable, squishy humans. This is a political version of my maxim that \"the fact that an AI can't do your job doesn't stop an AI salesman from convincing your boss to fire you and replace you with an AI that can't do your job.\" Private sector bosses are easy marks for AI salesmen, and not just because they want to reduce their wage bills, but also because it will fulfill the solipsist's fantasy of a corporation that turns the singular genius of the boss into a product without any messy demands from workers (and, if you're Zuckerberg and convinced that you've created a mind-control ray, your product can be rolled out without any messy demands from your customers, either, since you've hypnotized them into doing as they're told). The public sector version of this is the fantasy that you can eliminate the civil service and use an army of chatbots to do the job – not merely as a way of slashing the federal budget, but also as a way of purifying the transfer of the leader's will to the people without any intervening loss of fidelity resulting from the need to have your policies interpreted (and willfuly misinterpreted) by bureaucrats. This is a very important framing, and it explains why fascists like Trump and dead-eyed technocrats like Canadian Prime Minister Mark Carney are hell-bent on gutting their countries' civil service and replacing it with chatbots: https://policyoptions.irpp.org/2026/04/carney-ai-government-risks/ This is how Muskism and DOGE connect to Trumpism and AI: Musk doesn't believe other people are real. He calls them \"NPCs\" (non-player characters). He wants to put a microchip in your head so he can \"replace your bad programming\": https://pluralistic.net/2026/04/21/torment-nexusism/#marching-to-pretoria It's the fascist paradigm: the idea that people are incapable of self-rule, save for a very small number of singular geniuses who should be put in a position of absolute authority over all of us, to keep us safe from our own foolish impulses: https://pluralistic.net/2026/05/12/donella-meadows/#paradigmatic The Technocrats – a protofascist Italian movement that once captured the imagination of Musk's great-grandfather, and now are frequently quoted and alluded to by the likes of Mark Andreessen – were addicted to the quantitative fallacy that infects economics and other disciplines. That's the idea that every social process can be expressed as a mathematical model, which can then be optimized. The problem, of course, is that much of the real world is qualitative, and the act of quantizing those qualia is a very lossy process. To quantize a qualitative question is to incinerate all the qualitative aspects and then do mathematics on the dubious quantitative ash that is left behind: https://locusmag.com/feature/cory-doctorow-qualia/ In their paper, Farrell and Shalizi cite Ben Recht's maxim that \"you can’t optimize a trade-off\": https://www.argmin.net/p/are-there-always-trade-offs But of course, we optimize trade-offs all the time. That's what being a boss means, and it's also at the very core of self-determination: the right to decide what trade-offs you want to make. What Recht means is \"you can't optimize a trade-off for everyone else.\" Those stubborn not-quite-people – customers, workers, bureaucrats – insist that they want different trade-offs. In translating the will of a supreme leader to policy without any intervening need for buy-in by humans, fascist projects like DOGE seek to optimize trade-offs according to the preferences of the supreme leader. AI in government is grounded in the idea that a sufficiently deserving leader can be trusted to vibe-code the entire apparatus of state, checked only by his own sense of rightness: https://thehill.com/policy/international/5680714-trump-morality-international-law/ Farrell and Shalizi forcefully make the point that statecraft is not a set of discrete problems with provably correct answers that must be solved. Government is a matter of making choices between mutually exclusive policies that have benefits and costs, and those costs and benefits befall different groups differently. The idea that you can simply feed every fact about a society into a chatbot and order it to \"solve\" the nation reveals a profound ignorance about the nature of political contests. There's no empirical way of deciding whose priorities deserve to be realized and who must be disappointed. There isn't even an empirical way to compare the benefits that one group receives to the costs another group pays. What's more, any system that uses LLMs to make high-stakes tradeoffs between different societal priorities will be relentlessly targeted by the groups that stand to win or lose based on those decisions, and by bureaucrats whose careers depend on making the number go up. They will poison the LLMs' training data, figure out how to trick it into deceiving their bosses about the situation on the ground. Back in 2018, Yuval Harari predicted that LLMs would supercharge dictatorships by overcoming \"authoritarian blindness\" – when the suppression of political opinion is so effective that the first sign that a dictator has of his waning support is a mob that burns the presidential palace down. This prediction failed, because people who live under dictators have switched all the energy they used to use to put on a good show for the secret police into putting a good show on for the chatbots: https://pluralistic.net/2023/07/26/dictators-dilemma/#garbage-in-garbage-out-garbage-back-in Meanwhile, the \"variability\" introduced by bureaucrats who adapt political policies is a feature, not a bug. When a long-tenured public official receives a directive from on-high that they know will be a disaster if implemented unchanged, they can tweak the policy so that it is at least partially successful. Fire that bureaucrat and hand the policy to a rigidly loyal LLM that will not deviate from its strict instructions and you will end up with nothing (rather than a perfect policy implementation). Indeed, you may end up with less than nothing, as resentful local populations sabotage your agenda. Both Hayek and Marx agreed that people at the very periphery of the system have insights into local conditions that no boss/central planner can know (though they disagreed about what that fact implied). An LLM is the ultimate micro-manager, and government by Computer Says No would only work if the person writing the system prompt knew everything about everyone everywhere. As Farrell and Shalizi write, The frustrations of actually existing bureaucracy do not merely arise from inept or technically-inadequate solutions to the principal-agent problem. They emerge too from the collision of multiple incommensurable demands, each with its own problems and benefits, so that there are no optimal design solutions. Those who build or reform bureaucracies, like those who build other artifacts, need to satisfice across multiple intersecting needs and pathologies. Designs that neatly address one kind of problem may radically worsen others. Actually-existing AI has its own imperfections, some of which are endemic. Grafting AI systems onto existing bureaucracies will solve some problems but will worsen others and make altogether new ones. It will not eliminate the political difficulties of mediating across different, often non-commensurable, goals. Imagining replacing bureaucracy wholesale with AI is only plausible if one waves away the actual difficulties associated with real social technologies. Hey look at this (permalink) The Surveillance Economy Is Here. This Is How We Fight Back. https://jacobin.com/2026/05/surveillance-consumer-worker-protection-levine A Cyberdeck That Runs Linux…in An Altoids Tin https://hackaday.com/2026/05/12/a-cyberdeck-that-runs-linux-in-an-altoids-tin/ Canada’s Bill C-22 Is a Repackaged Version of Last Year’s Surveillance Nightmare https://www.eff.org/deeplinks/2026/05/canadas-bill-c-22-repackaged-version-last-years-surveillance-nightmare When It Comes to Data Privacy, Consumers Must Be in the Driver’s Seat: Attorney General Bonta, Partners Secure $12.75 Million General Motors Privacy Settlement https://oag.ca.gov/news/press-releases/when-it-comes-data-privacy-consumers-must-be-driver’s-seat-attorney-general Britain pays Starlink millions despite Musk's calls to overthrow UK government https://www.theregister.com/networks/2026/05/12/britain-pays-starlink-millions-despite-musks-calls-to-overthrow-uk-government/5238122 Object permanence (permalink) #25yrsago Woz's programmable remotes https://web.archive.org/web/20010603184833/http://www.celadon.com/Industrial/PIC200/pic200oem.html #25yrsago Furbeowulf http://www.trygve.com/furbeowulf.html #20yrsago Diebold voting machines can be 0wned in minutes https://blog.citp.princeton.edu/2006/05/11/report-claims-very-serious-diebold-voting-machine-flaws/ #20yrsago British farmer supplies gallows to totalitarian governments http://news.bbc.co.uk/2/hi/uk_news/england/suffolk/4754515.stm #20yrsago Proposed law requires schools to censor MySpace, LJ, blogs, Flickr https://web.archive.org/web/20060521054806/http://www.pbs.org/teachersource/learning.now/2006/05/new_federal_legislation_would_1.html #15yrsago Vernor Vinge on the promise, progress and threats of Augmented Reality https://www.ugotrade.com/2011/05/10/interview-with-vernor-vinge-smart-phones-and-the-empowering-aspects-of-social-networks-augmented-reality-are-still-massively-underhyped/ #15yrsago American oligarch buys the right to hire professors at Florida State U https://web.archive.org/web/20110511210435/https://www.tampabay.com/news/business/billionaires-role-in-hiring-decisions-at-florida-state-university-raises/1168680/ #15yrsago National Jukebox: public domain music archive from the Library of Congress https://www.loc.gov/collections/national-jukebox/about-this-collection/ #15yrsago America’s net censorship bill is back and worse than ever https://arstechnica.com/tech-policy/2011/05/revised-net-censorship-bill-requires-search-engines-to-block-sites-too/ #10yrsago DNC Host Committee composed of GOP megadonors, Net Neutrality haters, fracking boosters and anti-Obamacare lobbyists https://web.archive.org/web/20160511160814/https://theintercept.com/2016/05/11/lobbyists-dnc-2016-convention/ #10yrsago Minnesota lawmakers propose bizarre, dangerous PRINCE law https://www.eff.org/deeplinks/2016/05/minnesota-legislators-go-crazy-pushing-dangerous-prince-act #10yrsago NZ Prime Minister John Key ejected from Parliament over Panama Papers rant https://www.nzherald.co.nz/nz/prime-minister-john-key-thrown-out-of-debating-chamber-by-speaker/A5LQPMGB56QXTGE2ZFIK2MSRPE/?c_id=1&amp;objectid=11637448 #10yrsago Putting two elevators in one shaft https://web.archive.org/web/20160512013856/https://www.wired.com/2016/05/thyssenkrup-twin-elevator/ #10yrsago Germany will end copyright liability for open wifi operators https://torrentfreak.com/germany-to-rescind-piracy-liability-for-open-wifi-operators-160511/ #10yrsago Save Firefox: The W3C’s plan for worldwide DRM would have killed Mozilla before it could start https://www.eff.org/deeplinks/2016/04/save-firefox #5yrsago Let's eat all the cicadas https://pluralistic.net/2021/05/11/uniboob/#eat-the-brood#5yrsago #5yrsago Cyclopedia Exotica https://pluralistic.net/2021/05/11/uniboob/#one-eye-and-three-dot-dot-dot Upcoming appearances (permalink) Barcelona: Internet no tiene que ser un vertedero (Global Digital Rights Forum), May 13 https://encuentroderechosdigitales.com/en/speakers/ Virtual: How to Disenshittify the Internet with Wendy Liu (EFF), May 14 https://www.eff.org/event/effecting-change-enshittification Berlin: Re:publica, May 18-20 https://re-publica.com/de/news/rp26-sprecher-cory-doctorow Berlin: Enshittification at Otherland Books, May 18 https://www.otherland-berlin.de/de/event-details/cory-doctorow-in-der-friesenstrasse-23-kreuzberg-praesentiert-von-otherland.html Berlin: Enshittification at Otherland Books, May 19 https://www.otherland-berlin.de/de/event-details/cory-doctorow.html Hay-on-Wye: HowTheLightGetsIn, May 22-25 https://howthelightgetsin.org/festivals/hay/big-ideas-2 SXSW London, Jun 2 https://www.sxswlondon.com/session/how-big-tech-broke-the-internet-b3c4a901 NYC: The Reverse Centaur's Guide to Life After AI with Jonathan Coulton (The Strand), Jun 24 https://www.strandbooks.com/cory-doctorow-the-reverse-centaur-s-guide-to-life-after-ai.html Edinburgh International Book Festival with Jimmy Wales, Aug 17 https://www.edbookfest.co.uk/events/the-front-list-cory-doctorow-and-jimmy-wales Recent appearances (permalink) The “Enshittification” of Everything (Bioneers) https://bioneers.org/cory-doctorow-enshittification-of-everything-zstf2605/ Enshittification (99% Invisible) https://99percentinvisible.org/episode/666-enshittification/ Artificial Intelligence: The Ultimate Disruptor, with Astra Taylor and Yoshua Bengio (CBC Ideas) https://www.cbc.ca/listen/live-radio/1-23-ideas/clip/16210039-artificial-intelligence-the-ultimate-disruptor When Do Platforms Stop Innovating and Start Extracting? (InnovEU) https://www.youtube.com/watch?v=cccDR0YaMt8 Pete \"Mayor\" Buttigieg (No Gods No Mayors) https://www.patreon.com/posts/pete-mayor-with-155614612 Latest books (permalink) \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 (https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/) \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2026 \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Third draft completed. Submitted to editor. \"The Reverse Centaur's Guide to AI,\" a short book for Farrar, Straus and Giroux about being an effective AI critic. LEGAL REVIEW AND COPYEDIT COMPLETE. \"The Post-American Internet,\" a short book about internet policy in the age of Trumpism. PLANNING. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "3ec8ce334bc58f5a545cc3c6ddbcf6e817ad313dc81e8c6cce7c737e2b67e57c",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "一篇批判性地探讨AI与权力、社会哲学议题的文章。",
+      "reason": "文章紧扣AI这一高优先级主题，以独特的视角分析了AI可能带来的社会和伦理影响，具有较强的思想深度。",
+      "tags": [
+        "AI",
+        "社会影响",
+        "哲学",
+        "伦理"
+      ]
+    },
+    {
+      "title": "Showing Our Work",
+      "link": "https://nesbitt.io/2026/05/13/showing-our-work.html",
+      "source": "nesbitt.io",
+      "publishedAt": "2026-05-13T10:00:00.000Z",
+      "summary": "A preprint went up on arXiv this week from Alexandros Tsakpinis, Emil Schwenger and Alexander Pretschner at fortiss and TU Munich: Modeling Dependency-Propagated Ecosystem Impact of Changes in Maintenance Activities. They built a model of how maintenance changes propagate through the Python dependency graph, ran it over 718,750 PyPI packages and two million dependency edges, and then benchmarked three real-world support mechanisms against it to see how well each one’s package selection lined up with where the model says support would do the most good.\nThe three were Tidelift’s lifted packages, GitHub Sponsors, and the ecosyste.ms Python fund. The fund is something we run with Open Source Collective: organisations put money in for a language ecosystem as a whole rather than picking individual projects, and we distribute it across the packages our dependency data says are most critical, paying out through whatever funding channel each maintainer already has set up.\nAt 97 packages, that selection accounted for 25.9% of the total modelled improvement impact and 38.0% of the total modelled regression impact across all of PyPI. From the paper: “Ecosyste.ms shows comparatively strong alignment with high-impact packages despite its small size.” Of the mechanisms tested it was the most efficient per package by a comfortable margin.\nI run ecosyste.ms, so I’m not a neutral reader of that result, and I don’t normally use this blog to talk up my own projects. But I didn’t design this test, choose its metric, or know it was being run. An independent group built their own model from raw PyPI data and found that our selection lines up with it better than anything else they could measure. That kind of external validation doesn’t come along often, and I think it’s worth writing about.\nTen years of dependency graphs\nBen Nickolls and I have spent the last decade working on this, starting with Libraries.io in 2015. The premise from the beginning was that the dependency graph, rather than download counts or stars, is the right structure for working out which open source projects actually matter. Downloads mostly measure CI runners reinstalling the world, and stars measure visibility among people who have GitHub accounts and click buttons.\nDeclared dependents are the closest thing we have to a direct measure of who is actually using a library, and unlike either of those they go down as well as up: when people migrate off something the dependent count drops, where the star stays clicked and the download number keeps ticking over from old CI. A usage signal that moves in both directions lets you infer a great deal about a project’s standing without having to measure any of it separately.\necosyste.ms is what that work turned into, and it has long since outgrown the original project. It currently indexes over 14 million packages and 157 million versions across dozens of registries, with close to two billion version-level dependency declarations between them, and advisories, committers, funding links and release history joined on. PyPI alone is 860,000 packages and 8.9 million versions. The paper builds its graph from the latest version of each package; we keep the dependencies of every version ever published, which is what you need if you want to watch the graph change over time rather than take a single snapshot of it.\nSitting on top of that is a second, larger graph of 292 million source repositories and 24 billion edges back to the packages they install, which is how you find out what relies on a library beyond the boundaries of its own registry. All of it is open source, the data is openly licensed, and the APIs are serving around 1.6 billion requests a month.\nThe paper’s core equation is the number of packages that transitively depend on you, multiplied by how much your maintenance state could change. That’s a dependency-graph metric built on the same kind of data as the fund’s selection, and two groups working independently from the same premise and arriving at heavily overlapping lists is more or less what validation looks like.\nThe authors spent five days in February assembling their PyPI snapshot, throttled the whole way by GitHub and registry rate limits. That same graph already exists in ecosyste.ms for npm, RubyGems, Maven, Cargo, Go, Packagist, Hex and a couple of dozen others, refreshed continuously and queryable today. The method in this paper could be applied across every major language ecosystem tomorrow morning without anyone writing another crawler, and I’d very much like someone to do that.\nThe paper’s optimal selection is 730 packages for 80% of modelled impact. The ecosyste.ms critical set for PyPI, picked by a different method and for a different purpose, is currently 523. I pulled the replication package and ran our 523 through the same model: they cover roughly 64% of total improvement impact and 76% of total regression impact, within a few points of the paper’s optimum and well past anything in its comparison table. 333 of their 730 are already in our list, and on the regression side specifically, the “what hurts most if it stops being maintained” question, it’s 165 of their 204.\nIdentifying the critical packages is step one of almost every serious attempt to support open source, and most of those attempts are still doing it from scratch, per ecosystem, with whatever a registry API will give them in an afternoon. Money routed through Open Collective and companies signed up to the Open Source Pledge, security engineering coming out of Alpha-Omega, governments trying to enumerate digital infrastructure: all of it needs a defensible answer to “which packages, and why these ones.” The dependency graph is the best basis I know of for giving that answer, and ecosyste.ms exists so that nobody has to rebuild it before they can start.\nWhat it doesn’t measure\nThe maintenance signal, which the authors themselves flag as a limitation, is the OpenSSF Scorecard Maintained check: ninety days of commit and issue activity on a GitHub repository. I wrote last week about why activity-based signals are getting steadily less trustworthy as bots and scheduled agents keep contribution graphs green on projects no human is reading. The top of the paper’s own improvement ranking is idna, colorama, six, python-dateutil, zipp and pyyaml, all sitting at a Maintained score of zero with somewhere between 90,000 and 200,000 PyPI packages transitively depending on each. Those packages are finished rather than abandoned, and a 90-day activity window can’t tell the difference. The study is also PyPI only, GitHub only, and a handful of high-reach packages fell out of the analysis entirely for lack of a repository URL, though none of that changes the comparative result since every mechanism was scored the same way.\nThe regression half of the result says that if those 97 packages all fell to a maintenance score of zero, that alone would account for 38% of the total possible maintenance collapse across PyPI. The paper treats that as a hypothetical to be simulated, but I spent the week before last trying to measure how hypothetical it actually is across the equivalent critical sets in sixteen ecosystems, and found about 12% of the repositories behind them already gone, another 20% one tired person away from it, and a further 19% untested because nobody’s knocked. I think we now have very good data for working out which packages are structurally critical. What state the people behind them are in is a different and harder question, and that’s where the next ten years of this goes.",
+      "id": "b8fcb02881fcfe08141b52a6d80718d5164e308228ea35d78135a9ba1f0b83a4",
+      "ref_id": "0",
+      "recommendationScore": 84,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "深入探讨了Python生态系统的依赖管理和开源项目维护的挑战。",
+      "reason": "文章基于前沿研究成果，分析了如何通过模型识别关键开源包并优化资金分配，对于理解和改善开源生态的健康度具有高价值。",
+      "tags": [
+        "Python",
+        "开源",
+        "软件供应链",
+        "依赖管理",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "Cost of enum-to-string: C++26 reflection vs. the old ways",
+      "link": "https://vittorioromeo.com/index/blog/refl_enum_to_string.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-13T08:41:30.000Z",
+      "summary": "Article URL: https://vittorioromeo.com/index/blog/refl_enum_to_string.html\nComments URL: https://news.ycombinator.com/item?id=48119326\nPoints: 43\n# Comments: 52",
+      "id": "b278860edcaeee8680306a3651ebc0ca41451802aa8b5c2c9d15e89916e751e0",
+      "ref_id": "2",
+      "recommendationScore": 83,
+      "popularityScore": 40,
+      "priority": "medium",
+      "comment": "深入比较了C++26反射与传统方法在枚举到字符串转换上的性能开销。",
+      "reason": "为C++高级开发者和性能优化者提供了关于新语言特性实用性与性能的宝贵技术洞察，技术深度极高。",
+      "tags": [
+        "编程工具",
+        "C++",
+        "性能优化",
+        "语言特性",
+        "系统编程"
+      ]
+    },
+    {
+      "title": "Leaving GitHub for Forgejo",
+      "link": "https://jorijn.com/en/blog/leaving-github-for-forgejo/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-13T12:54:00.000Z",
+      "summary": "Article URL: https://jorijn.com/en/blog/leaving-github-for-forgejo/\nComments URL: https://news.ycombinator.com/item?id=48121266\nPoints: 391\n# Comments: 212",
+      "id": "5af00fcbb4670f02993b1997e95a6318a56f0e87ddbc240a77e38dc343f79c13",
+      "ref_id": "3",
+      "recommendationScore": 82,
+      "popularityScore": 95,
+      "priority": "medium",
+      "comment": "分享了从GitHub迁移至Forgejo的详细经验，对于寻求代码托管替代方案的开发者极具参考价值。",
+      "reason": "文章涉及流行的编程工具选择，且在社区中获得了极高关注度，满足了开发者对自托管或开源代码管理工具的需求。",
+      "tags": [
+        "编程工具",
+        "代码托管",
+        "开源",
+        "Git",
+        "Forgejo",
+        "GitHub"
+      ]
+    },
+    {
+      "title": "Ideal failures",
+      "link": "https://danieldelaney.net/ideal-failures/",
+      "source": "danieldelaney.net",
+      "publishedAt": "2026-05-13T00:00:00.000Z",
+      "summary": "The way I used to design UI was to sit with paper sketches, or Figma, or a React prototype with no back end. Imagine every failure mode. Design beautiful flows for each.\nI slipped into this mistake while working on LanWhisper, a voice dictation app. I designed for the failure modes I could imagine, drew the flows, and shipped the app. Then real users hit failure modes that I hadn’t anticipated.\nFor example, the AI transcription model can return hallucinated text even if the input audio is empty. I had imagined that if the model returned text at all then the app was working. This failure wasn’t in my carefully designed list of ideal failures. Whoops.\nThe problem is that a representation of a system only contains what you put into it. The failure modes it shows you are exclusively the ones you already thought of.\nThis is the same mistake as designing for users you’ve never talked to. Designers know that’s a trap. The same logic applies to the systems we design: imagined systems aren’t a substitute for real ones.\nWhen designing non-trivial systems, imagination is no longer your best source of truth. The system itself is. And increasingly, designers can build it themselves. Do. Build it, instrument it, surface every piece of state. You can see and feel how the system works instead of projecting the ideal behavior onto some drawings you linked together.\nYour list of ideal failure modes isn’t real.",
+      "id": "8d4bd872c2aee8ba78ea615420b518d5fd8602fbe9afe3da4d7eaa11c2979094",
+      "ref_id": "2",
+      "recommendationScore": 81,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "强调了在产品设计中，超越“理想失败”场景，预见并处理真实用户可能遇到的意外故障的重要性，尤其是在AI应用中。",
+      "reason": "文章通过一个AI转录模型意外行为的例子，深刻阐述了产品设计中考虑未预见失败模式的必要性，对提升产品鲁棒性和用户体验具有直接指导意义。",
+      "tags": [
+        "产品设计",
+        "UI/UX",
+        "AI",
+        "失败模式",
+        "系统设计"
+      ]
+    },
+    {
+      "title": "Scrcpy v4.0",
+      "link": "https://github.com/Genymobile/scrcpy/releases/tag/v4.0",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-12T20:50:02.000Z",
+      "summary": "Article URL: https://github.com/Genymobile/scrcpy/releases/tag/v4.0\nComments URL: https://news.ycombinator.com/item?id=48114356\nPoints: 334\n# Comments: 50",
+      "id": "b502b1183a7148b38139785a6f5d35edcd603cfe166f061eebc9e2f4eb5436c2",
+      "ref_id": "0",
+      "recommendationScore": 80,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "Scrcpy v4.0的发布带来了移动设备控制工具的重要更新。",
+      "reason": "作为一款广受欢迎的开源工具，新版本提供了实际的实用价值和功能改进，属于编程工具和自动化范畴。",
+      "tags": [
+        "Android",
+        "工具",
+        "开源",
+        "自动化",
+        "生产力"
+      ]
+    },
+    {
+      "title": "Open Link in Unloaded Tab, a little Firefox extension",
+      "link": "https://evanhahn.com/open-link-in-unloaded-tab-for-firefox/",
+      "source": "evanhahn.com",
+      "publishedAt": "2026-05-13T00:00:00.000Z",
+      "summary": "In short: I just published Open Link in Unloaded Tab, a little Firefox extension that adds “Open Link in Unloaded Tab” to the right-click context menu.\nIn Firefox, you can unload tabs to save system resources. But there’s no way to open a new tab in the unloaded state…until now! I built a very simple extension that adds a new option to do this. (It even has a cute icon which I paid ~$15 for.)\nI’ve built one-off extensions before, but this is the first one I’ve submitted to the Firefox Add-ons directory.\nDownload the extension here or check out the source code.",
+      "id": "10a918029d53d77b773d81e6c9c548780d7281f718c356902e734606b541e011",
+      "ref_id": "4",
+      "recommendationScore": 80,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "一个关于开发Firefox扩展以在未加载状态打开链接的实用分享。",
+      "reason": "文章展示了独立开发实用工具的实践，直接解决了用户痛点，具有很高的实用性和参考价值。",
+      "tags": [
+        "编程工具",
+        "浏览器扩展",
+        "Firefox",
+        "独立开发",
+        "实用工具"
+      ]
+    },
+    {
+      "title": "Restore full BambuNetwork support for Bambu Lab printers",
+      "link": "https://github.com/FULU-Foundation/OrcaSlicer-bambulab",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-12T21:55:21.000Z",
+      "summary": "Article URL: https://github.com/FULU-Foundation/OrcaSlicer-bambulab\nComments URL: https://news.ycombinator.com/item?id=48115127\nPoints: 612\n# Comments: 274",
+      "id": "72fbc108aaeb78d3652e201aef4762678fa37b9a7ab49badf26b257f63ba2b17",
+      "ref_id": "4",
+      "recommendationScore": 79,
+      "popularityScore": 90,
+      "priority": "medium",
+      "comment": "提供了恢复Bambu Lab打印机完整网络支持的实用开源解决方案。",
+      "reason": "对Bambu Lab 3D打印机用户具有极高实用价值，解决了常见痛点，且社区关注度高。",
+      "tags": [
+        "自动化",
+        "3D打印",
+        "开源软件",
+        "硬件",
+        "社区解决方案"
+      ]
+    },
+    {
+      "title": "Setting up a free *.city.state.us locality domain",
+      "link": "https://fredchan.org/blog/locality-domains-guide/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-13T14:45:18.000Z",
+      "summary": "Article URL: https://fredchan.org/blog/locality-domains-guide/\nComments URL: https://news.ycombinator.com/item?id=48122635\nPoints: 253\n# Comments: 73",
+      "id": "f44f8f959fcbc675a9a68761248e2d6d0e494e8848deea4cac06d7653e1a6fbe",
+      "ref_id": "1",
+      "recommendationScore": 78,
+      "popularityScore": 85,
+      "priority": "medium",
+      "comment": "提供了设置免费本地化域名的具体教程，具有很强的实用性和新颖性。",
+      "reason": "文章为特定需求的用户提供了详细的操作指南，填补了小众但实用的域名配置知识空白。",
+      "tags": [
+        "域名",
+        "网络配置",
+        "互联网基础设施",
+        "实用教程"
+      ]
+    },
+    {
+      "title": "Deterministic Fully-Static Whole-Binary Translation Without Heuristics",
+      "link": "https://arxiv.org/abs/2605.08419",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-13T04:25:03.000Z",
+      "summary": "Article URL: https://arxiv.org/abs/2605.08419\nComments URL: https://news.ycombinator.com/item?id=48117810\nPoints: 272\n# Comments: 64",
+      "id": "f543e464469b1ab71045bada73e07fba86893f42f900bc1ba2666e87c7823317",
+      "ref_id": "3",
+      "recommendationScore": 78,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "一篇关于确定性全静态二进制翻译的学术研究论文，提出无启发式新方法。",
+      "reason": "技术前沿但内容高度理论化，主要面向计算机科学研究领域专家，对普通科技博客读者实用性较低。",
+      "tags": [
+        "计算机科学",
+        "系统编程",
+        "研究",
+        "二进制翻译",
+        "低级编程"
+      ]
+    },
+    {
+      "title": "A plan to make drugs in orbit is going commercial",
+      "link": "https://www.technologyreview.com/2026/05/13/1137153/varda-united-therapeutics-drug-manufacturing-in-space/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-05-13T10:00:00.000Z",
+      "summary": "Varda Space Industries, a startup that’s been pitching its ability to perform drug experiments in space, says it has signed up the pharmaceutical company United Therapeutics in what may be remembered as a notable step toward in-orbit manufacturing. The idea of building things in outer space for use on Earth has so far been explored…",
+      "id": "89e664f6c52c0ab8f5a2fe0a4ee651c63f2b0fb5356cfba75f1a022564ae8aae",
+      "ref_id": "0",
+      "recommendationScore": 78,
+      "popularityScore": 85,
+      "priority": "medium",
+      "comment": "文章介绍了轨道制药的商业化进展，展示了太空科技与生物医药结合的前沿趋势。",
+      "reason": "内容新颖且具未来感，尽管技术深度有限，但为读者提供了有趣的商业航天资讯。",
+      "tags": [
+        "太空科技",
+        "商业航天",
+        "生物医药",
+        "创新",
+        "未来科技"
+      ]
+    },
+    {
+      "title": "New DMA Compliance Features for EU Users in iOS 26.5 (and Perhaps the EU Has Finally Come to Their Senses on Tech Regulation)",
+      "link": "https://www.macrumors.com/2026/05/11/ios-26-5-eu-third-party-wearable-changes/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-12T18:52:12.000Z",
+      "summary": "Juli Clover, MacRumors:\nTo comply with the EU’s Digital Markets Act, Apple is letting\nthird-party wearables access some features that have historically\nbeen limited to the Apple Watch and AirPods.\nProximity pairing — Third-party earbuds are able to use\nproximity pairing to connect to an iPhone, similar to the\nAirPods. Bringing a set of earbuds that support the feature near\nan iPhone will initiate an AirPods-like one-tap pairing process,\nso third-party wearables like earbuds will no longer require\nmultiple steps to pair.\n\n\niPhone notifications — Third-party accessories like\nsmartwatches are able to receive notifications from the iPhone,\nand users are able to view and react to them. Interactive\nnotifications from the iPhone have been limited to the Apple\nWatch, while third-party wearables have only been able to\ndisplay read-only notifications. Notifications can only be\nforwarded to a single connected device at a time, so turning on\nnotifications for a third-party wearable disables notifications\non Apple Watch.\n\n\nLive Activities — Live Activities from the iPhone can be\ndisplayed on a third-party wearable, similar to how Live\nActivities are shown on an Apple Watch.\n\n\n\nAccessory makers will need to add support for the interoperability\nupdates, so they may not be available right away. Third-party TVs,\nsmartwatches, and headphones will be able to use the features.\nTwo thoughts. First, I’d love to hear about any third-party devices that begin taking advantage of these EU-exclusive features.\nSecond, it sure seems as though the European Commission has quietly walked away from using the DMA as a cudgel under the leadership of competition chief Teresa Ribera. I’d even forgotten her name. Margrethe Vestager’s name, I still remember. I haven’t mentioned Ribera, or any new enforcement actions against Apple and iOS, in 13 months. The last was this post regarding a €500M fine imposed against Apple in April last year, the culmination of an investigation that began under Vestager. I wrote then:\nThis finding — and the scope of the fine (roughly $570M converted\nfrom euros) — was completely in line with (at least my)\nexpectations. Apple booked about $184B in profit last year, so\nthis fine is about 0.3% of that. Maybe Apple just considers this\nthe new cost of doing business in the EU? It’s not nothing, but\nit’s about 1/80th of the theoretical maximum fine the EU could\nhave assessed, $39B.\nSomething, not nothing, but definitely not a big deal. Teresa\nRibera, the EC competition chief, is clearly trying to thread a\npolitical needle here. Fines big enough to create the impression\nthat the EU is asserting itself, but small enough not to actually\nbe all that inflammatory amidst the Trump-initiated mad-king trade\nwar. Even Ribera’s job title — Executive Vice-President for\nClean, Just and Competitive Transition — seems designed to\nde-escalate tensions. Margrethe Vestager was adamantly against\nAmerican companies. Ribera is not.\nThese new DMA compliance features are the result of requirements imposed in March last year — again, from investigations that began under Vestager, not Ribera. I wrote then:\nApple’s statement makes clear their staunch opposition to these\ndecisions. But at least at a superficial level, the European\nCommission’s tenor has changed. The quotes from the Commission\nexecutives (Teresa Ribera, who replaced firebrand Margrethe\nVestager as competition chief, and Henna Virkkunen) are anodyne.\nNothing of the vituperativeness of the quotes from Vestager and\nThierry Breton in years past. But the decisions themselves\nmake clear that the EU isn’t backing down from its general\nposition of seeing itself as the rightful decision-maker for how\niOS should function and be engineered, and that Apple’s core\ncompetitive asset — making devices that work better together than\nthose from other companies — isn’t legal under the DMA.\nI think that holds up. The EU hasn’t rescinded any of their existing requirements under the DMA. But Ribera has clearly deescalated the EU’s approach to regulating American companies in general, and Apple specifically. No new requirements in over a year, no new investigations, and no inflammatory rhetoric. (Still no iPhone Mirroring in the EU, either, though, because they haven’t rescinded any already-imposed requirements.)\nMuch better.\n ★",
+      "id": "80b629cec93563620802c39806998720cf83a140b1bd4e16120e5d6b875b98a6",
+      "ref_id": "4",
+      "recommendationScore": 78,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "Apple为遵守欧盟DMA法规，在iOS中新增第三方配件连接和通知功能，极大提升用户体验。",
+      "reason": "文章详细介绍了Apple为遵守DMA而带来的iOS具体功能更新，对欧盟Apple用户和第三方配件开发者具有极高实用性和直接影响，且新颖性强。",
+      "tags": [
+        "Apple",
+        "iOS",
+        "DMA",
+        "欧盟监管",
+        "第三方配件",
+        "用户体验"
+      ]
+    },
+    {
+      "title": "Using OR-Tools CP-SAT for Scheduling Problems",
+      "link": "https://atalaykutlay.com/or-tools-cp-sat-for-scheduling-problems.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-13T11:02:57.000Z",
+      "summary": "Article URL: https://atalaykutlay.com/or-tools-cp-sat-for-scheduling-problems.html\nComments URL: https://news.ycombinator.com/item?id=48120351\nPoints: 58\n# Comments: 22",
+      "id": "509a1c45ea9e06c1234fb333832056a1699e90dea65a34e14a22314cd1aa8308",
+      "ref_id": "1",
+      "recommendationScore": 75,
+      "popularityScore": 50,
+      "priority": "medium",
+      "comment": "详细介绍了如何利用OR-Tools CP-SAT解决复杂的调度问题。",
+      "reason": "为处理资源分配和日程安排问题的开发者提供了具体的优化工具使用指南，实用性强。",
+      "tags": [
+        "编程工具",
+        "优化算法",
+        "自动化",
+        "Python",
+        "排程"
+      ]
+    },
+    {
+      "title": "★ Nextpad++",
+      "link": "https://daringfireball.net/2026/05/nextpad",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-13T02:22:16.000Z",
+      "summary": "Windows Notepad is, more or less, the Windows peer to MacOS’s TextEdit — the built-in system text editor. For years, it was really basic — so much more basic than TextEdit that it engendered no affection. You don’t see paeans to Notepad in The New Yorker. Recently though, Microsoft has started beefing it up, culminating last year when they added fucking Markdown support. Which still blows my mind.\nNotepad++ is a longstanding open source (GPL) Windows text editor by Don Ho, which debuted back in 2003. Just adding “++” to the name might be misleading. The name implies that it’s like Microsoft’s Notepad plus a little more. But Notepad++ is in fact a wholly independent programming text editor, with a rich plugin library. It doesn’t resemble Microsoft’s Notepad much at all anymore. It’s over two decades old but remains quite popular. To some extent Notepad++ is sorta kinda the Windows peer to BBEdit.\nNextpad++ is something new, from Andrey Letov. It’s a Mac port of the Notepad++ GPL code. It launched a few weeks ago under the name “Notepad++ for Mac”, but Letov had no right or permission to the name. That dispute has been settled, and Letov has renamed this project Nextpad++. The website’s About page has entire sections for “How Nextpad++ for Mac Was Built” and “Technology Stack”, and neither of those mentions AI, but this thing has to have been built using AI vibe-coding agents. That same About page also says the project only started on March 10, and the 1.0 version (under the defunct “Notepad++ for Mac” name) shipped just a few weeks after that. Something of the scope of this port couldn’t happen at that pace without AI. Update: On the Author page, not the About page, it states, “multi-agent AI development workflows are what make a one-person project at this scale practical”. Possible, sure, but I wouldn’t call this practical.\nNextpad++ feels like a fever dream. Like what Mac apps would be if the Nazis had won WWII. Look, there are all sorts of foreign apps on the Mac. Electron apps. Apps ported with Wine. Web apps running in browser tabs or saved to the Dock. The curious new generation of lean-and-mean apps that are, in a technical sense, “native”, but are decidedly not Mac-assed apps, like Zed and Tolaria. All those types of apps feel alien on MacOS. Like different species. They are apps for the Mac but aren’t Mac apps. The Mac, however, is welcoming to them all, like the Mos Eisley cantina. We do serve their kind here. Nextpad++ isn’t like that. It doesn’t feel like an alien. It feels like Vincent D’Onofrio’s alien-bug-in-human-skin character from Men in Black.\nLetov’s website describes Nextpad++ as “A real Mac app, not a Wine wrapper: Objective-C++ on top of Scintilla and Cocoa, shipped as a Universal Binary for Apple Silicon (M1–M5) and Intel Macs.” Ostensibly that’s a good thing. The download is only 14 MB. But Nextpad++ looks and feels like something that should not exist. The promotional screenshots on the app’s own website show it with 50 inscrutable toolbar buttons. It closes document tabs on mousedown, not mouseup. Its default font is 10-point Courier New. This is a real dialog box. It offers four settings for font antialiasing — “Default”, “None”, “Antialiased”, and “LCD Optimized” — but the default is not “Default”. No human being would port a complex Windows app like Notepad++ to the Mac like this.\nI’m not anti-AI. I’m very much intrigued by the whole incipient vibe-coding phenomenon. But this app feels unholy.",
+      "id": "4db21f89baebfe9b23a8f38efdb45b3400489f0f56065ee513656a00f6c2945c",
+      "ref_id": "3",
+      "recommendationScore": 75,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "详细介绍了Windows和Mac文本编辑器的演变，并重点推荐了一个将流行编辑器移植到Mac的新工具，实用性高。",
+      "reason": "文章关注Mac生态中的编程工具，详细对比了多款编辑器，并介绍了新颖的Nextpad++，对Mac开发者具有很高的实用价值。",
+      "tags": [
+        "编程工具",
+        "文本编辑器",
+        "Mac",
+        "Apple生态",
+        "独立开发"
+      ]
+    },
+    {
+      "title": "Stupidly Simple SVG Sparklines",
+      "link": "https://shkspr.mobi/blog/2026/05/stupidly-simple-svg-sparklines/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-05-13T11:34:01.000Z",
+      "summary": "A sparkline is a little line-graph with no axes or other unnecessary details. They're useful for getting quick understanding of what the data is showing.  They're also really easy to create programmatically.    This uses the SVG \"polyline\" which takes a list of x,y co-ordinate pairs. But can you spot the small problem?  <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1024 124\">     <polyline …",
+      "id": "cfb50abcac6292078e179d5ceb1b810d0a8cce0c1e10571de1a0b4fc0bf7d783",
+      "ref_id": "1",
+      "recommendationScore": 75,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "一篇关于如何使用SVG创建简洁迷你图的实用教程。",
+      "reason": "提供了清晰的编程工具使用方法和数据可视化技巧，对前端开发者或需要展示图表的用户具有实用价值。",
+      "tags": [
+        "编程工具",
+        "SVG",
+        "数据可视化",
+        "前端开发"
+      ]
+    },
+    {
+      "title": "Points are a weird and inconsistent unit of measure",
+      "link": "https://buttondown.com/hillelwayne/archive/points-are-a-weird-and-inconsistent-unit-of/",
+      "source": "buttondown.com/hillelwayne",
+      "publishedAt": "2026-05-13T15:56:37.000Z",
+      "summary": "I'm in the middle of redoing the Logic for Programmers diagrams and this has surfaced a really annoying problem. The book is formatted in LaTeX using a pseudo-grid of 10.8pt × 7.2pt. The diagrams are done in Inkscape using a 10.8pt × 7.2pt.\nLast week I found out that these are not the same points. \nLatex defines a point as 1/72.27 inches (0.3515 millimeters). Inkscape instead uses 1/72 inches (0.3528 mm). It's only a difference of 0.4% but it still floors me that two widespread digital technologies would be different!\nSo, uh, what happened?\nA few hours of reading articles later, this is what I found, caveat that I didn't spend all that much time researching this and this is only initial impressions. \nwhat even is a point\nA point is a typographic measure, coming from 1517, that is supposedly the smallest interesting size for a printer. This was notably not a standardized measure- different companies in times used different point sizes depending on their equipment. Over time it was standardized, but each country picked a different standard: the German and Japanese point is 0.250 mm, the French point is allegedly 0.399 mm, etc.\nBut early computer history is super Americentric so that's what technology uses. In the US, they standardized the point around the end of the 19th century. To what? I dunno. This source from 1900 gives the length of a point as 35/996 cm (72.281 points/in) and then says there are exactly 867.4699 \"ems per foot\" (72.289 points/in). This source from 1916 says the standard pica (12 points) is 0.16604 inches and that there are 72.272 \"pica ems per foot\". Which conveniently enough gives us 72.272 points/in (a pica being 12 points). Then on the very next page they say no a pica is actually 0.166044 inches and a point is exactly 0.013837 inches. I found other sources with other definitions, too.\nI'm going to chalk the differences up to a mix of \"the definitions of 'meter' and 'foot' changed over time\" and \"these are less than a micron apart so who gives a shit\". I do, I give a shit. Regardless, the official NIST definition settled on a point being 0.013837 inches, so you'd get 72.27 points/inch. \nWrong! You absolute moron. You get 72.270001 points/inch. This annoyed Donald Knuth enough that he rejiggered the ratio in TeX (pg 58):\nTEX’s “pt” has been made slightly larger than the official printer’s point, which was defined to equal exactly .013837 in by the American Typefounders Association in 1886 [cf. National Bureau of Standards Circular 570 (1956)]. In fact, one classical point is exactly .99999999 pt, so the “error” is essentially one part in 10^8. … The new definition 72.27 pt = 1 in is not only better for calculation, it is also easier to remember.\n(To explain his motivation a little: American printers measure things in inches, and define the point in terms of inches. TeX measures things in points1, and define the inch in terms of points.)\nFor the record, NIST seems to think \"72 points/inch\" is a good enough approximation. TeX calls this the bp (big point).\nAKA the Inkscape value\n\nNow what about Inkscape? As far as I can tell, this comes from the Postscript format's definition of the unit size:\nThe length of a unit along the\nx axis and along the y axis is 1/72 of an inch. We call this coordinate system default user space.\nThese features of default user space are chosen for their mathematical simplicity and convenience. The location and orientation of the axes follow common mathematical practice and cause all points within the current page to have positive x and y coordinate values. The unit size, 1/72 of an inch, is very close to the size of a printer's point (1/72.27 inch), which is a standard measuring unit used in the printing industry.\nLater on page 86 they straight up call 1/72 inch a \"point\". Later editions would clarify it's not actually a point and that points are stupid anyway:\nNote: The default unit size (1/72 inch) is approximately the same as a “point,” a unit\nwidely used in the printing industry. It is not exactly the same as a point, however;\nthere is no universal definition of a point.\nApple shipped PostScript in their LaserWriter laser printer, other companies followed suite, making PostScript the de facto printing language and 72 points/in the standard digital measure. The W3 consortium used the same measure in CSS and SVG2, Inkscape is an SVG editor, and that's all she wrote.\n\nEpilog: Frink\nWhenever I need to mess with units of measure, I turn to  Frink. Frink is a Turing-complete language with really good unit of measure support:\noldinch := surveyfoot / 12 // pre 1959 inch \n35 cm / (996 pts) -> oldinch / pts\n0.013834839357429718876\n\n\n\nThe author does also does incredibly thorough research on the history of units measurements. Here's what the Frink data file says about points:\npoint :=          0.013837ee0 inch    // exact, NIST Handbook 44, Appendix 3\nprinterspoint :=       point\n\ntexscaledpoint :=      1/65536 point    // The TeX typesetting system uses\ntexsp :=               texscaledpoint   // this for all computations.\ncomputerpoint :=       1/72 inch        // The American point was rounded \ncomputerpica :=        12 computerpoint // to an even 1/72 inch by computer\npostscriptpoint :=     computerpoint    // people at some point. \n\n\n\nWell, now we know what that \"some point\" is!\nNow we also know that the definitions of texscaledpoint is (gasp) wrong. \nrealtexpoint := 1/72.27 inch\nrealtexsp := 1/65536 realtexpoint\n(realtexsp - texsp)\n5.36285100578e-17 m (length)\n(realtexsp - texsp) / realtexsp\n1.0000000000005691827e-8\n\n\n\nThe Frink definition is off by about 50 attometers, or approximately 3% of the width of a proton.\nActually \"scaled points\", where 2^16 sp = 1 pt. ↩\nWhich is why it's super weird that the SVG editor draw.io uses a point size of 1/100 inch. ↩",
+      "id": "46ddf934fa1f2fa1822836effc2dd5df975ebad70755703ea20c243e8d0285dd",
+      "ref_id": "1",
+      "recommendationScore": 72,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "揭示了数字领域中“点”作为测量单位的历史渊源及其在不同工具间（如LaTeX和Inkscape）的不一致性。",
+      "reason": "对从事精确排版或图形设计的开发者而言，这篇文章提供了重要的实战洞察，有助于解决跨工具兼容性问题，避免不必要的布局错误。",
+      "tags": [
+        "排版",
+        "LaTeX",
+        "Inkscape",
+        "计量单位",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "Kagi Snaps",
+      "link": "https://help.kagi.com/kagi/features/snaps.html",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-12T21:06:21.000Z",
+      "summary": "Kagi’s documentation:\nTyping @r headphones will search for “headphones” but limit the\nresults to reddit.com (r is the short code for Reddit). This\nallows you to quickly find relevant content on a specific site\nusing Kagi’s powerful index. It is effectively the same as doing\nheadphones site:old.reddit.com.\nIts relative, Bangs feature, invoked by using “!r\nheadphones”, would redirect the user to Reddit’s internal search.\nI learned about the snaps feature from a Kagi blog post a few months ago, and I’ve been loving it ever since.  From that post:\nYou can also use Snaps to quickly search within Kagi’s\nknowledgebase. For example, the @help snap searches the Kagi\nhelp docs, handy for when you want to quickly look into a feature.\nUser tip: “I recommend combining Snaps with the “I’m feeling\nlucky” bang: ! with no short code. Like searching @gh curl !\nto go to the curl repo.\nI’ve never actually looked any of these up. I just guessed at the ones I most want to use and they all worked on the first try. @nyt returns results from The New York Times; @wsj is for The Wall Street Journal. Take a guess what @df does.\nAnd you can add your own custom bangs/snaps in Kagi’s settings. It’s easy. In fact, I created a custom @nyt bang/snap shortcut to override Kagi’s default. Kagi’s built-in @nyt bang/snap uses the query.nytimes.com subdomain, which is outdated. You get better results just using nytimes.com with no subdomain.\nAlso: Does your preferred search engine have a well-written comprehensive user manual? Kagi does. Good documentation is a tell-tale sign of a great product and a company that puts users first. There exist good products with bad or no documentation, but there are very few poor products with great documentation.\n ★",
+      "id": "6301e826175d78dd430426e059091cc548da4005f9392496620f277265eb0c90",
+      "ref_id": "4",
+      "recommendationScore": 71,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "简洁明了地介绍了Kagi搜索引擎的Snaps功能，提供了提升搜索效率的实用技巧。",
+      "reason": "文章展示了如何通过Kagi的Snaps功能提高信息获取效率，对注重生产力工具的用户具有直接的实用价值。",
+      "tags": [
+        "搜索技巧",
+        "生产力工具",
+        "自动化",
+        "Kagi"
+      ]
+    },
+    {
+      "title": "Open Source Resistance: keep OSS alive on company time",
+      "link": "https://ossresistance.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-13T15:13:37.000Z",
+      "summary": "Article URL: https://ossresistance.com/\nComments URL: https://news.ycombinator.com/item?id=48123015\nPoints: 118\n# Comments: 43",
+      "id": "ce3c3df4492e142a33dca12b741c4c118681878a7212706f0150a0a58f31fb26",
+      "ref_id": "0",
+      "recommendationScore": 70,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "探讨了在公司时间维护开源项目的重要性及挑战，对开源生态的健康发展有积极意义。",
+      "reason": "文章提出了一个关于开源软件可持续发展的重要议题，呼吁公司支持，对开发者和企业均有参考价值。",
+      "tags": [
+        "开源",
+        "软件开发",
+        "公司文化",
+        "独立开发"
+      ]
+    },
+    {
+      "title": "Patch Tuesday, May 2026 Edition",
+      "link": "https://krebsonsecurity.com/2026/05/patch-tuesday-may-2026-edition/",
+      "source": "krebsonsecurity.com",
+      "publishedAt": "2026-05-12T21:46:45.000Z",
+      "summary": "Artificial intelligence platforms may be just as susceptible to social engineering as human beings, but they are proving remarkably good at finding security vulnerabilities in human-made computer code. That reality is on full display this month with some of the more widely-used software makers -- including Apple, Google, Microsoft, Mozilla and Oracle -- fixing near record volumes of security bugs, and/or quickening the tempo of their patch releases.",
+      "id": "f42d900629cb626d982b6d017289448b9ae4faf14fac99f9b7e8a0aa6de3a49a",
+      "ref_id": "2",
+      "recommendationScore": 70,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "文章聚焦AI在安全漏洞发现上的应用，并总结了主流科技公司的最新补丁情况，信息密集且实用。",
+      "reason": "结合了高优先级的AI和安全主题，探讨了AI的双面性，并包含了对Apple等公司的更新，具有较高的实用价值。",
+      "tags": [
+        "AI",
+        "网络安全",
+        "漏洞",
+        "Apple",
+        "Microsoft",
+        "Google"
+      ]
+    },
+    {
+      "title": "I moved my digital stack to Europe",
+      "link": "https://monokai.com/articles/how-i-moved-my-digital-stack-to-europe/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-13T11:42:20.000Z",
+      "summary": "Article URL: https://monokai.com/articles/how-i-moved-my-digital-stack-to-europe/\nComments URL: https://news.ycombinator.com/item?id=48120629\nPoints: 677\n# Comments: 457",
+      "id": "d9625b78209aba08bf0a3c7224fb41c78907399daaeb88c022884dd464faa097",
+      "ref_id": "0",
+      "recommendationScore": 65,
+      "popularityScore": 95,
+      "priority": "medium",
+      "comment": "分享了将个人数字技术栈迁移至欧洲的实践过程与考量。",
+      "reason": "对关注数据主权、隐私和基础设施选择的独立开发者具有较高参考价值，且社区讨论热度高。",
+      "tags": [
+        "独立开发",
+        "云计算",
+        "隐私",
+        "自动化",
+        "基础设施"
+      ]
+    },
+    {
+      "title": "The Download: making drugs in orbit and NASA’s nuclear-powered spacecraft",
+      "link": "https://www.technologyreview.com/2026/05/13/1137176/the-download-drugs-in-orbit-nasa-nuclear-spacecraft/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-05-13T12:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. A plan to make drugs in orbit is going commercial A startup called Varda Space Industries is betting that the future of pharmaceuticals lies in orbit. The company has signed a…",
+      "id": "1ae666320e45a8bc4318dcc91c16876536d5aa885fb2bf7f1e3fd763c93ef252",
+      "ref_id": "4",
+      "recommendationScore": 65,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "一篇关于太空制药和核动力航天器的综合科技新闻。",
+      "reason": "内容属于泛科技新闻，虽然新颖有趣，但与我们关注的核心技术主题（AI、编程工具等）相关性较低，实用性一般。",
+      "tags": [
+        "太空科技",
+        "生物科技",
+        "新闻",
+        "未来科技"
+      ]
+    },
+    {
+      "title": "Seriously, Give Kagi a Try",
+      "link": "https://daringfireball.net/2025/04/try_switching_to_kagi",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-12T20:31:49.000Z",
+      "summary": "Quoting from a post I wrote a year ago:\nLike, even if I use the magic &udm=14 parameter with\nGoogle search, to get “disenshittified” results from\nGoogle, I find I get better results from Kagi. When I\nknow there’s one right answer (say, a specific article I remember\nreading and want to find again), Kagi is more likely than Google\nto list it first. If it’s a years-old article, Kagi is way more\nlikely than Google to find it at all. For me, Google (and, alas,\nDuckDuckGo too) have largely stopped working reliably for finding\nnot-recent stuff on the web. Not true with Kagi.\nI used DuckDuckGo for years as my default search, and for those\nyears, I found it largely on par with Google. But it felt like\nevery once in a while — maybe, say, once or twice a month — DuckDuckGo would come up dry in its results. DuckDuckGo pioneered\na trick they call Bangs. Include !g to any search terms,\nand instead of performing the search itself, DuckDuckGo will\nredirect that search to Google. They have a whole bunch of these\nBangs — “!a” for Amazon search, “!nf” for Netflix. There are\nliterally thousands of them (which of course they allow you to\nsearch for). The only one I ever really used though was !g, for\nredirecting my current search to Google because DuckDuckGo’s own\nresults for the same terms was unsatisfying. My memory may not\nmatch with my actual usage, but like I said, I feel like I used\nthis about once or twice a month for the several years I was using\nDuckDuckGo as my default search engine. Infrequently enough that\nit didn’t annoy me to the point of considering switching back to\nGoogle for default in-browser search, but frequently enough that I\nwas annoyed enough to remember that I needed to use it at all.\nKagi supports Bangs too, including !g for Google web\nsearch. I can’t remember the last time I felt the need to try\nusing it. It’s been months, many months. And, the last few times\nI’ve tried it, Google’s results were no more help than Kagi’s.\nIn the year since writing the above, I honestly don’t think I’ve resorted to the !g bang once. For me, Google web search is about as relevant to my life as Yahoo search. Something I used to use, something that used to be better, but which I’ve found a vastly superior alternative to. If Kagi went out of business or changed for the worse, I’d be heartsick. It’s truly one of the best services I’ve used, and it keeps getting better.\nGoogle Search is like watching 2001: A Space Odyssey with a goddamn Febreze ad stuck in the famed match cut. Kagi search is like paying for a streaming service with no ads and higher image quality and better sound. It’s just plain better.\n ★",
+      "id": "6d09e5360db1a6e1918befbc64c30e54885692c8e22be65dc4e659874660d075",
+      "ref_id": "0",
+      "recommendationScore": 65,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "强烈推荐Kagi作为替代搜索引擎，尤其擅长检索旧内容。",
+      "reason": "文章深度探讨了Kagi在搜索结果质量上的优势，尤其对于非近期内容的查找具有很高实用性。",
+      "tags": [
+        "搜索引擎",
+        "Kagi",
+        "效率工具",
+        "生产力"
+      ]
+    },
+    {
+      "title": "The case of the hang when the user changed keyboard layouts",
+      "link": "https://devblogs.microsoft.com/oldnewthing/20260513-00/?p=112318",
+      "source": "devblogs.microsoft.com/oldnewthing",
+      "publishedAt": "2026-05-13T14:00:00.000Z",
+      "summary": "Keeping things moving.\nThe post The case of the hang when the user changed keyboard layouts appeared first on The Old New Thing.",
+      "id": "cc595ed8dc73b3d887f6d20e8c3f09492b11b5517ec5f0ccd8d47a221cbd490a",
+      "ref_id": "3",
+      "recommendationScore": 65,
+      "popularityScore": 40,
+      "priority": "medium",
+      "comment": "一篇针对特定系统故障（键盘布局切换导致挂起）进行深入分析的文章。",
+      "reason": "标题预示了技术深度较高，可能对系统级开发者有价值，但由于内容过于简短，无法进行全面评估。",
+      "tags": [
+        "编程工具",
+        "系统开发",
+        "调试",
+        "Windows"
+      ]
+    },
+    {
+      "title": "How to make your text look futuristic (2016)",
+      "link": "https://typesetinthefuture.com/2016/02/18/futuristic/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-12T20:16:26.000Z",
+      "summary": "Article URL: https://typesetinthefuture.com/2016/02/18/futuristic/\nComments URL: https://news.ycombinator.com/item?id=48113895\nPoints: 456\n# Comments: 57",
+      "id": "73487790c4e00c69ff1d296e10f1afcc825bd138c2159a54c08f16fe0714baeb",
+      "ref_id": "1",
+      "recommendationScore": 60,
+      "popularityScore": 80,
+      "priority": "low",
+      "comment": "这是一篇关于未来感文字设计的文章，内容偏向设计美学。",
+      "reason": "文章虽有一定人气，但发布于2016年，新颖性不足，且主题优先级在产品设计中偏低。",
+      "tags": [
+        "设计",
+        "排版",
+        "字体",
+        "美学",
+        "UI/UX"
+      ]
+    },
+    {
+      "title": "Search Ads as a Vector for Travel Scams",
+      "link": "https://www.wsj.com/lifestyle/travel/the-simple-travel-scam-that-cost-a-seasoned-traveler-over-12-000-7d317f20?st=WDTpv5",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-12T20:22:20.000Z",
+      "summary": "Dawn Gilbertson, writing for The Wall Street Journal (gift link):\nCalder says that he tried to rebook at the given link a few times\nbut that it wouldn’t work. He became worried new flight options\nwere dwindling, so he googled the airline’s customer-service\nnumber. (There was a link to customer-service contacts way down in\nthe email that he initially overlooked.)\nThe rest of the story is sadly familiar to the Better Business\nBureau, Federal Trade Commission, airlines and consumer advocates.\nIt’s called an impostor scam. This can occur when a company\nimpersonates an airline’s customer-service number or site, often\nby buying a sponsored ad on a search platform. The company is\nhoping that panicked consumers trying, say, to rebook a flight\nwill click on the first link they see, bringing them to\nunscrupulous parties that try to charge exorbitant fees. I’ve\nwritten before about such tactics, and they are only becoming\nmore sophisticated with AI.\n“Scammers thrive on that sense of urgency,” says John Breyault, a\nvice president at the National Consumers League whose coverage\narea includes fraud.\nThe person who answered Calder’s call identified himself as a\nLufthansa representative and asked for the Lufthansa confirmation\nnumber. He found new flights on Lufthansa’s partner Air Canada and\nAustrian Airlines, a Lufthansa Group subsidiary, on the same\nlate-summer dates.\nThe kicker, which Calder admits in hindsight is a colossal red\nflag: He had to pay $12,132 to make the change. That’s more than\nfive times the amount of the original tickets.\nIn addition to airlines, these scammers often impersonate hotels. Yet another reason to try Kagi as your default web search engine. I’m not saying Kagi is scam-proof in its actual search results, but it’s 100 percent resistant to scammers buying search result ads — because they have no ads.  With Kagi, you pay a very small subscription fee and in exchange you get better results with zero ads.\nAlso, another reason to worry about Apple’s upcoming ads in Apple Maps.\n ★",
+      "id": "345595174de5a5560517bad46dbf9c75306b2091e73434b4e5391a46f0baba74",
+      "ref_id": "1",
+      "recommendationScore": 60,
+      "popularityScore": 80,
+      "priority": "medium",
+      "comment": "揭露利用搜索广告进行旅行诈骗的新手法，消费者需提高警惕。",
+      "reason": "文章警示了AI技术在诈骗中的应用，具有极高的实用性和社会关注度，提醒消费者防范风险。",
+      "tags": [
+        "网络安全",
+        "诈骗",
+        "搜索广告",
+        "AI影响",
+        "消费者保护"
+      ]
+    },
+    {
+      "title": "What’s with all the slide decks?",
+      "link": "https://dynomight.net/slides/",
+      "source": "dynomight.net",
+      "publishedAt": "2026-05-13T00:00:00.000Z",
+      "summary": "News from the world of real jobs: Apparently, sometime between 10 and 20 years ago, it became standard for people to communicate by sending slide decks around. These slides are never presented. They aren’t intended to be presented. They’re born, they’re sent around, and they die. What?\nI stress, the question is not why (or if) people give bad presentations.\n\nThe mystery is why everyone is using presentation software for communication that is not a presentation.\nTheory 1: Everybody dumb\nIs it because we’re all dummies? I’m putting this theory first because I suspect that you, beloved readers, will favor it.\nTrue, if you ask people why they make slides instead of writing, they’ll usually say, “because nobody wants to read”. So there’s that. But I don’t consider this much of an explanation. Dummies though we may be, we’ve been like that a long time. If we entered the Slideocene 15 years ago, why then? Why not before?\nTheory 2: The decline of reading\nDid we get worse at reading? The Discourse seems to have decided this is true, but is it true, or just moral panic?\nSince 1971, the US has tested 13-year-olds to measure long-term trends in reading ability. This shows a slow improvement until 2012, then a slow decline, and finally a post-COVID drop. The declines seem too small and too late to explain our mystery.\n\nSince 2000, PISA has tested reading performance in 15-year-olds around the world. This shows a decline on average, but it’s smaller in rich countries and nonexistent in the United States. (It’s the same story for science and a bit more negative for math.)\n\nAmong adults, data is scarce. Basic literacy is generally improving, and American time use data shows a decline in reading for pleasure from around 23 minutes per day in 2003 to around 16 minutes per day in 2023. But this seems to miss time people spend reading on their phones.\nSo it’s unclear if people got worse at reading. It feels plausible that people now spend less of their adulthood grappling with complex written arguments, and so got worse at that. But there’s little firm evidence.\nTheory 3: Technological change\nAnother obvious theory is that we now have computers and software and the internet. Without these things, it would be impossible to email slides to each other. This seems relevant!\nYes, but we had those things for a while before slide culture really took hold. And think about the situation before computers. Photocopiers were ubiquitous in corporate offices by the mid-1980s, and mimeographs were around decades before that. If slides were really that great, people could have made them by hand. But no one did.\nOf course, making slides by hand is inferior. But it’s not that inferior. So slides can’t be that big of a win.\nWhat actually happened?\nAnd… that’s pretty much the end of the obvious theories. None of them are very satisfying. So let’s take a step back. Historically, how did the slide-as-document displace the memo?\nAs best I can tell, this was driven by management consultancies. If you go back to 1960, they delivered detailed written memos. The memo was the product. They’d likely give a presentation as well, but that was a separate ancillary thing, likely done using flipcharts or chalkboards.\nIn the 1970s, the memo was still the product, but consultancies started to enforce a top-down logical structure (the Pyramid principle). Presentations shifted to acetate transparencies. Both memos and presentations often included hand-drawn graphics like the nine-box or growth-share matrices.\nIn the 1980s, the memo was still the product, but presentations became increasingly lengthy and polished. Expensive computers like the Genigraphics started to be used to generate charts.\nThe 1990s were when things started to shift. By then, PowerPoint was everywhere, and junior analysts were expected to create presentations themselves. Consultancies gradually started to notice that (1) clients didn’t always read the memos; (2) clients loved slides and passed them around long after the presentation was over; and (3) creating a memo and a polished presentation was a lot of work. They put more and more effort into the slides. McKinsey especially evolved towards treating slides as the primary product, and mostly stopped writing long memos. Other consultancies followed.\nDuring the 2000s, slides became even more ornate. Consultancies evolved their formatting rules, and created fancy data-dense charts. They learned that a 200 slide deck made clients feel like they got a lot for their money. Gradually, they oriented their entire business around slides. Projects would start with managers creating a template presentation with “ghost slides” and assigning different parts to junior analysts. Soon, this spread outwards, both from people who interacted with consultants and from the ex-consultant diaspora. People everywhere started thinking and communicating in slides, and now everything is slides, yay!\nAlternative history\nThat story makes slides-as-documents sound inevitable: People liked them, so they became popular. But there’s an alternative timeline in which we resisted the slide into slide maximalism. That timeline is Amazon.com, Inc.\nIn 2004, Jeff Bezos famously instituted a no-presentations policy at Amazon. His logic was that slides hide poor reasoning and are a tool to persuade rather than inform. Instead, everyone involved with strategic decisions at Amazon needs to learn to write a six-page memo. Meetings begin with everyone sitting and silently reading one of these memos.\nPresentation software is not banned at Amazon. The ban is only for using it for internal meetings and decision-making. They use slides for external communication. There is no policy that prohibits someone from making slides and emailing them around.\nAnd yet, people don’t make slides and email them around, because it’s not part of Amazon’s culture. In effect, Amazon is a counter-movement. Most of the world decided that slides are good, because slides are easy. Bezos decided that writing is good because writing is hard.\nThere are millions of articles explaining why Bezos’ policy is pure genius. They claim that constructing a narrative requires deeper analytical thinking and exposes flaws in logic. I want to believe those theories. I now realize they’re very similar to some of my arguments for why writing with too much formatting is bad.\nI’m not sure if writing is the secret to Amazon’s success. But Amazon is successful. This demonstrates that slide life is a choice, not technological destiny—institutions can choose writing over slides and flourish anyway.\nOK so then what’s happening?\nWarning: If you like your theories simple and mono-causal, you aren’t going to like this.\nSlides are a win, but a small one. The shift to slides wasn’t a “mistake”, it happened because people like it. But if sharing slides outside of presentations became illegal, this wouldn’t cause per-capita GDP to crash. That’s why people didn’t scratch slides into mimeograph stencils back in the 1950s. It wasn’t worth the modest effort.\nWhen computers and software showed up, it became easier to share slides. But people didn’t immediately shift to slides-as-documents because the win isn’t that big, because culture changes slowly, and because everyone had pre-existing skills for reading and writing documents.\nConsultancies happened to be in the economic niche with the strongest selection pressure to evolve towards slides-as-documents. So when making slides became cheaper, they shifted. Slowly, that norm spread outwards, people got used to communicating in slides, and here we are.\nInstitutions can resist that norm and still be successful. If you take modern people and force them to read and write, they do just fine.\nHumans evolved to learn and communicate in a fragmented, interactive, and visual style. It’s hard to argue that any shift in that direction is a catastrophe.\nExcept blogs. The decline of the blog must be arrested.",
+      "id": "c10d997e5268db8fb3ee53d88c6342eb7b3259c4fef12afb7075e1076077f6cf",
+      "ref_id": "2",
+      "recommendationScore": 60,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "一篇分析职场中滥用幻灯片进行非演示交流现象的文章。",
+      "reason": "虽然文章对职场沟通习惯提供了有趣的洞察，但其技术深度较低，与科技博客的核心主题关联度不强。",
+      "tags": [
+        "职场",
+        "沟通",
+        "产品设计",
+        "效率"
+      ]
+    },
+    {
+      "title": "Teresa Ribera Visited the U.S. and No One Noticed",
+      "link": "https://www.politico.eu/article/eu-big-tech-rulebook-shifting-digital-economy-ribera-dma-pulse-forum/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-12T20:05:28.000Z",
+      "summary": "Jacob Parry and Laura Greenhalgh, reporting for Politico, one month ago:\nThe EU’s landmark tech regulations are a “success story” that are\nbeginning to level the playing field between Silicon Valley’s\ngiants and their digital competitors in Europe, said European\nCompetition Commissioner Teresa Ribera on Friday. [...]\nRibera’s comments come as Brussels prepares for a formal review of\nthe DMA to determine what is working and where the law may need to\nbe reformed. The regulation aims to prevent “gatekeeper” firms,\nincluding Apple, Alphabet and Meta, from using their dominant\npositions to stifle competition from smaller players.\nThe EU’s top antitrust official pushed back against criticism that\nenforcement has been too slow, arguing that the “rule of law”\nrequires a methodical approach based on evidence and due process. [...]\nRibera recently returned from a diplomatic mission to Washington\nand Silicon Valley where she met with U.S. officials and tech\nexecutives. She said there is a surprising degree of alignment\nbetween European and American priorities, despite the differing\npolitical climates. In particular, Ribera highlighted a\n“consistent” dialogue with the U.S. Department of Justice under\nthe current Trump administration.\nAgain, I only found this story because I went searching for news regarding Teresa Ribera and the DMA after taking note in an earlier post that things have been very quiet on this front for the last year. When Margrethe Vestager visited the U.S. and met with tech executives, it was news. There were press photos. Vestager drew attention to the meetings, and, of course, to herself.\nIt’s pretty telling that Ribera recently visited both Washington and Silicon Valley and it barely registered in the news. Ribera’s approach to the E.U. competition chief job might actually be focused on genuine competition and consumer welfare, not punishing U.S. companies for their success by weaponizing byzantine layers of bureaucracy that ultimately work against the interests of EU citizens and the stagnant EU economy.\n ★",
+      "id": "27340bfb628f70d480efc53b2834305fa9334e9a5bd17d528dd8ef49e0814a6f",
+      "ref_id": "2",
+      "recommendationScore": 55,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "关注欧盟DMA法规的执行现状及其对大型科技公司的影响。",
+      "reason": "文章讨论了欧盟DMA对Apple等大型科技公司的监管进展，对了解科技政策和市场格局具有重要意义。",
+      "tags": [
+        "欧盟监管",
+        "DMA",
+        "大科技公司",
+        "政策",
+        "Apple"
+      ]
+    },
+    {
+      "title": "Broadcasters Urge EU to Use the DMA to Go After Smart TV Platforms, None of Which Are From European Companies",
+      "link": "https://www.reuters.com/sustainability/boards-policy-regulation/eu-digital-rules-should-apply-big-techs-smart-tvs-broadcasters-tell-antitrust-2026-03-23/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-12T19:34:00.000Z",
+      "summary": "Foo Yun Chee, reporting for Reuters back on March 23:\nGoogle, Amazon, Apple and Samsung’s smart TVs and virtual\nassistants should fall under the EU’s toughest tech rules because\nof their growing market power, the world’s largest broadcasters\ntold EU antitrust chief Teresa Ribera on Monday.\nThe call by the Association of Commercial Television and Video on\nDemand Services in Europe (ACT) whose members include Canal+, RTL,\nMediaset, ITV, Paramount+, NBCUniversal, Walt Disney, Warner Bros\nDiscovery, Sky and TF1 Groupe underscores the battle between\n​broadcasters and Big Tech for market share in a lucrative\nindustry.\nAndroid TV, which increased its market share from 16% to ​23%\nfrom 2019 to 2024, Amazon Fire OS whose market share rose from 5%\nto 12% in the same period and Samsung’s Tizen OS with its 24%\nmarket share should be designated as gatekeepers under the EU’s\n​Digital Markets Act, the broadcasters said, citing data from a\n2025 market study.\nApple is mentioned only in the context of voice assistants, not Apple TV 4K:\nThe broadcasters also voiced concerns about virtual assistants,\nthe most ​well known of which are Amazon’s ​Alexa and Apple’s\nSiri, while OpenAI entered the field last year with a beta feature\ncalled Tasks for its AI chatbot ChatGPT. The European Commission\nhas yet to label any virtual assistants as gatekeepers under the\nDMA. [...]\nThey urged Ribera to subject smart TVs and virtual assistants to\nthe DMA on the basis of qualitative criteria even if they do not\nmeet the quantitative benchmarks which ​are more than 45 million\nmonthly active users and 75 billion euros ($87 ​billion) in market\ncapitalisation.\nI found this story only after posting the previous item, trying to see if there were any DMA-related actions that I’d missed under Ribera’s leadership. I didn’t find much. And this Reuters story only says the broadcasters sent Ribera a letter asking her to go after smart TV platforms and voice assistants — there’s no suggestion that Ribera intends to do so.\n ★",
+      "id": "c6eaa2b18ca0b3360eec515eb4b56248ed699337b6f769dab00329b6d47c7ef1",
+      "ref_id": "3",
+      "recommendationScore": 55,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "欧洲广播公司呼吁欧盟将智能电视平台纳入DMA监管，直指大科技公司市场主导。",
+      "reason": "文章揭示了DMA在智能电视领域的新应用方向，对Apple生态及相关产业发展有潜在影响。",
+      "tags": [
+        "欧盟监管",
+        "DMA",
+        "智能电视",
+        "大科技公司",
+        "Apple"
+      ]
+    },
+    {
+      "title": "Kickstarter is forced to ban adult content by payment processors",
+      "link": "https://kotaku.com/kickstarter-is-the-latest-platform-seemingly-forced-to-ban-adult-content-by-payment-processors-2000695648",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-13T15:26:27.000Z",
+      "summary": "Article URL: https://kotaku.com/kickstarter-is-the-latest-platform-seemingly-forced-to-ban-adult-content-by-payment-processors-2000695648\nComments URL: https://news.ycombinator.com/item?id=48123198\nPoints: 207\n# Comments: 155",
+      "id": "3a4de4166bd90bd0f99d3e145b488849ef975deb423bb3960b193ab62a3801fc",
+      "ref_id": "3",
+      "recommendationScore": 45,
+      "popularityScore": 90,
+      "priority": "low",
+      "comment": "报道了Kickstarter因支付处理方要求而禁止成人内容的平台政策变更。",
+      "reason": "该文章具有较高的社会和商业关注度，但在技术深度和主题优先级上不符合科技博客的核心关注点，更偏向新闻和政策讨论。",
+      "tags": [
+        "Platform Policy",
+        "Business",
+        "Content Moderation",
+        "News"
+      ]
+    },
+    {
+      "title": "50K Tahoe residents need power as utility eyes redirecting lines to data centers",
+      "link": "https://fortune.com/2026/05/12/lake-tahoe-data-center-49000-residents-power-source/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-13T15:18:41.000Z",
+      "summary": "Article URL: https://fortune.com/2026/05/12/lake-tahoe-data-center-49000-residents-power-source/\nComments URL: https://news.ycombinator.com/item?id=48123090\nPoints: 77\n# Comments: 70",
+      "id": "96cc0fd5bbc045389a0ad2ff0f05a3229ccdee560c9354115e60c0d236e9731d",
+      "ref_id": "4",
+      "recommendationScore": 35,
+      "popularityScore": 75,
+      "priority": "low",
+      "comment": "探讨了塔霍湖地区居民与数据中心之间关于电力分配的社会经济冲突。",
+      "reason": "文章涉及数据中心基础设施的社会影响，但与核心技术开发主题关联性较弱，技术深度不足，不属于高优先级内容。",
+      "tags": [
+        "Data Centers",
+        "Energy",
+        "Infrastructure",
+        "Societal Impact",
+        "News"
+      ]
+    },
+    {
+      "title": "Haiku",
+      "link": "https://www.haiku-os.org",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-13T16:22:10.000Z",
+      "summary": "Article URL: https://www.haiku-os.org\nComments URL: https://news.ycombinator.com/item?id=48124002\nPoints: 100\n# Comments: 40",
+      "id": "3bf795b36596fb35a99e59d6998957952a2b53a856a2b34b459a870daf10dd83",
+      "ref_id": "1",
+      "recommendationScore": 30,
+      "popularityScore": 75,
+      "priority": "low",
+      "comment": "关于Haiku操作系统的简短介绍，主要内容为外部链接。",
+      "reason": "虽然Haiku OS是一个有一定社区基础的项目，但提供的文章内容过于稀少，无法进行深度评估，且主题相对小众。",
+      "tags": [
+        "Operating System",
+        "Open Source",
+        "Niche"
+      ]
+    },
+    {
+      "title": "S-100 Virtual Workbench",
+      "link": "https://grantmestrength.github.io/S100/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-13T15:52:00.000Z",
+      "summary": "Article URL: https://grantmestrength.github.io/S100/\nComments URL: https://news.ycombinator.com/item?id=48123546\nPoints: 46\n# Comments: 7",
+      "id": "c153971467a4446e233d5417ca2137ef3747cedc897b805a77183eafb3f78521",
+      "ref_id": "2",
+      "recommendationScore": 20,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "一个关于S-100总线虚拟工作台的极度小众复古计算项目。",
+      "reason": "该主题对现代技术博客读者来说实用性极低，且文章内容仅为链接，无法展现技术深度或新颖性。",
+      "tags": [
+        "Retro Computing",
+        "Hardware Simulation",
+        "Niche"
+      ]
+    },
+    {
+      "title": "datasette 1.0a29",
+      "link": "https://simonwillison.net/2026/May/12/datasette/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-05-12T23:41:06.000Z",
+      "summary": "",
+      "id": "16379c9544b3fcaddf437e7cff5f47d9dd4090240327407d899c47055e4d8204",
+      "ref_id": "3",
+      "recommendationScore": 20,
+      "popularityScore": 45,
+      "priority": "medium",
+      "comment": "标题是关于Datasette工具的特定版本更新，但文章内容为空，无法评估。",
+      "reason": "Datasette作为编程工具具有一定用户群体，但内容缺失使其无法提供版本更新的详细信息和实用性。",
+      "tags": [
+        "编程工具",
+        "数据管理",
+        "Datasette",
+        "内容缺失"
+      ]
+    },
+    {
+      "title": "CSP Allow-list Experiment",
+      "link": "https://simonwillison.net/2026/May/13/csp-allow/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-05-13T04:50:45.000Z",
+      "summary": "",
+      "id": "0b61ddc929ed26683aa4cbfe1800a9199b381ea2ddb3bd63e1d3a9be2230a190",
+      "ref_id": "2",
+      "recommendationScore": 15,
+      "popularityScore": 30,
+      "priority": "medium",
+      "comment": "标题指向内容安全策略（CSP）的实验，但文章内容为空，无法评估其价值。",
+      "reason": "主题（Web安全）有潜力，但因内容缺失，无法为读者提供任何实用信息。",
+      "tags": [
+        "Web安全",
+        "CSP",
+        "编程工具",
+        "内容缺失"
+      ]
+    },
+    {
+      "title": "Substrate (YC S24) Is Hiring a Technical Success Manager",
+      "link": "https://www.ycombinator.com/companies/substrate/jobs/T2fMBhD-technical-success-manager",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-13T12:00:30.000Z",
+      "summary": "Article URL: https://www.ycombinator.com/companies/substrate/jobs/T2fMBhD-technical-success-manager\nComments URL: https://news.ycombinator.com/item?id=48120776\nPoints: 0\n# Comments: 0",
+      "id": "9c989814fd293efdd2bfb107a61f7406639f9964ababae65d8b6632386387fc9",
+      "ref_id": "4",
+      "recommendationScore": 10,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "这是一则招聘启事，不属于科技博客文章范畴。",
+      "reason": "内容为招聘广告，缺乏技术深度、新颖性与实用性，不适合作为科技博客文章进行推荐。",
+      "tags": [
+        "招聘"
+      ]
+    },
+    {
+      "title": "AI datacenters in space do not have a cooling problem",
+      "link": "https://seangoedecke.com/space-ai-datacenters-do-not-have-a-cooling-problem/",
+      "source": "seangoedecke.com",
+      "publishedAt": "2026-05-13T00:00:00.000Z",
+      "summary": "",
+      "id": "69039d56fc162bf4836dca6e112a10edef513df6844556c87f4c8c50ae327711",
+      "ref_id": "1",
+      "recommendationScore": 10,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "标题极具吸引力并符合AI主题，但文章内容为空，无法进行实质性评估。",
+      "reason": "标题涉及高优先级的AI主题且有新颖性，但无具体内容支持其深度和实用性。",
+      "tags": [
+        "AI",
+        "未来科技",
+        "太空"
+      ]
+    },
+    {
+      "title": "Quoting Boris Mann",
+      "link": "https://simonwillison.net/2026/May/13/boris-mann/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-05-13T16:15:50.000Z",
+      "summary": "",
+      "id": "581522dde77cbd5fa9dfb4a132ec2c84f1cad22182995400a6cbfb32862159ef",
+      "ref_id": "1",
+      "recommendationScore": 5,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "文章内容为空，无法进行有效评估。",
+      "reason": "缺乏文章内容，无法判断其技术深度、新颖性及实用价值。",
+      "tags": [
+        "内容缺失",
+        "无法评估"
+      ]
+    },
+    {
+      "title": "Quoting Mo Bitar",
+      "link": "https://simonwillison.net/2026/May/12/mo-bitar/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-05-12T22:59:58.000Z",
+      "summary": "",
+      "id": "c856942fae27efe775f162ca0d688b32c979a392f75e98de5acc43a8cbeca7f0",
+      "ref_id": "4",
+      "recommendationScore": 5,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "文章内容为空，无法进行有效评估。",
+      "reason": "缺乏文章内容，无法判断其技术深度、新颖性及实用价值。",
+      "tags": [
+        "内容缺失",
+        "无法评估"
+      ]
+    },
+    {
+      "title": "Quoting Mitchell Hashimoto",
+      "link": "https://simonwillison.net/2026/May/12/mitchell-hashimoto/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-05-12T22:21:51.000Z",
+      "summary": "",
+      "id": "30b3124abdc6f60d164156d8a7e84a8c00b4684af463660232f75882bfa6ce74",
+      "ref_id": "0",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "文章内容为空，无法进行评估。",
+      "reason": "无内容可供分析，无法判断其技术深度、新颖性、实用性或信息密度。",
+      "tags": [
+        "N/A"
+      ]
+    }
+  ]
+}
