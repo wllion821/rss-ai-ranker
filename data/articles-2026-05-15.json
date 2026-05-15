@@ -1,0 +1,881 @@
+{
+  "dailySummary": "苹果M5/A19及Pixel 10惊现内核级/0-click漏洞，硬件防护受冲击。OpenAI与苹果合作现裂痕，ChatGPT拓展银行账户。本地AI推理DwarfStar 4重大突破，",
+  "articles": [
+    {
+      "title": "The sigmoids won't save you",
+      "link": "https://www.astralcodexten.com/p/the-sigmoids-wont-save-you",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-15T10:51:13.000Z",
+      "summary": "Article URL: https://www.astralcodexten.com/p/the-sigmoids-wont-save-you\nComments URL: https://news.ycombinator.com/item?id=48147021\nPoints: 37\n# Comments: 34",
+      "id": "73834b611b4df952d27deef5bef68d69532f08eb62881429ea1fbddde2c08c3d",
+      "ref_id": "1",
+      "recommendationScore": 95,
+      "popularityScore": 60,
+      "priority": "high",
+      "comment": "对AI领域中普遍存在的激活函数——Sigmoid，提出了深刻且批判性的思考。",
+      "reason": "作为AI主题，它提供了对流行技术局限性的独到见解，对于行业深度思考至关重要。",
+      "tags": [
+        "AI",
+        "机器学习",
+        "神经网络",
+        "批判性思维"
+      ]
+    },
+    {
+      "title": "Aided by Mythos Preview, Researchers Announce MacOS Kernel Exploit Circumventing M5 Memory Integrity Enforcement",
+      "link": "https://blog.calif.io/p/first-public-kernel-memory-corruption",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-14T23:44:20.000Z",
+      "summary": "Calif, a security research team, on their blog:\nMany security experts consider Apple devices to be the most secure\nconsumer platform. The latest flagship example is MIE (Memory\nIntegrity Enforcement), Apple’s hardware-assisted memory safety\nsystem built around ARM’s MTE (Memory Tagging Extension). It was\nintroduced as the marquee security feature for the Apple M5 and\nA19, specifically designed to stop memory corruption exploits, the\nvulnerability class behind many of the most sophisticated\ncompromises on iOS and macOS. [...]\nOur macOS attack path was actually an accidental discovery. Bruce\nDang found the bugs on April 25th. Dion Blazakis joined Calif on\nApril 27th. Josh Maine built the tooling, and by May 1st we had a\nworking exploit.\nWe didn’t build the chain alone. Mythos Preview helped identify\nthe bugs and assisted throughout exploit development. [...] To the\nbest of our knowledge, this is the first public macOS kernel\nexploit on MIE hardware. Again, we’ll publish our 55-page report\nafter Apple ships a fix.\nThe Wall Street Journal ran a story on Calif’s announcement today that was heavy on hyperbole and extraordinarily light on technical details. Unsurprisingly, the team’s own blog post was much more informative and interesting. The achievement here is circumventing MIE.\n ★",
+      "id": "1cc0794b1e71d3e2616ac88020d424a701a31afd00a770c846f16833d92035f1",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "一篇重磅安全报告，揭示了首次公开绕过Apple M5 MIE的macOS内核漏洞。",
+      "reason": "技术深度极高，新颖性突出（首次公开披露），实用性强（对Apple生态安全影响重大），信息密度高。直接关联Apple生态主题，且具有广泛的安全警示意义。",
+      "tags": [
+        "Apple生态",
+        "安全",
+        "macOS",
+        "漏洞",
+        "M5芯片",
+        "内核开发"
+      ]
+    },
+    {
+      "title": "A 0-click exploit chain for the Pixel 10",
+      "link": "https://projectzero.google/2026/05/pixel-10-exploit.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-15T13:39:54.000Z",
+      "summary": "Article URL: https://projectzero.google/2026/05/pixel-10-exploit.html\nComments URL: https://news.ycombinator.com/item?id=48148460\nPoints: 179\n# Comments: 77",
+      "id": "1635f685d5eb9e40368a910f3936b4dc863fce06dd0a9698863833a29a2adbf2",
+      "ref_id": "2",
+      "recommendationScore": 93,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "Google Project Zero揭露的Pixel 10零点击漏洞链，技术分析深入且影响重大。",
+      "reason": "极高的技术深度和安全研究价值，是移动安全领域不可多得的重磅报告，对安全专家和开发者具有重要意义。",
+      "tags": [
+        "移动安全",
+        "漏洞",
+        "Android",
+        "Project Zero",
+        "安全研究",
+        "高危漏洞"
+      ]
+    },
+    {
+      "title": "OpenAI is connecting ChatGPT to bank accounts via Plaid",
+      "link": "https://firethering.com/chatgpt-bank-account-plaid-openai/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-15T16:38:50.000Z",
+      "summary": "Article URL: https://firethering.com/chatgpt-bank-account-plaid-openai/\nComments URL: https://news.ycombinator.com/item?id=48150723\nPoints: 32\n# Comments: 32",
+      "id": "72a9c4a766bf89d3c17336e71d9b91c51ecd5e2d0973605f6198ae8300692427",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 25,
+      "priority": "high",
+      "comment": "关注OpenAI将ChatGPT与银行账户整合的重大进展，潜力巨大。",
+      "reason": "直接契合最高优先级AI主题，具有极高的新颖性和行业实用性，预示着AI应用新趋势。",
+      "tags": [
+        "AI",
+        "ChatGPT",
+        "金融科技",
+        "OpenAI",
+        "Plaid",
+        "自动化"
+      ]
+    },
+    {
+      "title": "Radicle: Sovereign {code forge} built on Git",
+      "link": "https://radicle.dev/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-15T12:07:55.000Z",
+      "summary": "Article URL: https://radicle.dev/\nComments URL: https://news.ycombinator.com/item?id=48147603\nPoints: 139\n# Comments: 38",
+      "id": "1d14881a2bd647577683dbc66efad1f5ed90905ff1a187c3e561f6b9a03380aa",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "Radicle是一个基于Git的去中心化代码协作平台，代表了编程工具未来发展趋势，技术深度和新颖性俱佳。",
+      "reason": "主题紧扣编程工具和去中心化热点，对开发者具有重要参考价值。",
+      "tags": [
+        "Git",
+        "编程工具",
+        "去中心化",
+        "开源",
+        "协作"
+      ]
+    },
+    {
+      "title": "How Chinese short dramas became AI content machines",
+      "link": "https://www.technologyreview.com/2026/05/15/1137326/chinese-short-dramas-ai/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-05-15T09:00:00.000Z",
+      "summary": "In a dimly lit bedroom, a frightened young woman is thrown onto a bed by a tall, muscular man. He grabs her hand, and flame-like vines crawl across her body, fusing with her flesh. She levitates, then drops. A dragon-shaped tattoo appears across her chest. “Two months,” the man says. “Give me an heir, or…",
+      "id": "84154f75dc63286b317a218e9403d212b1ceea01ae8046ff9951b27378e2d729",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "深入探讨AI如何驱动中国短剧制作，内容生动有趣且具体。",
+      "reason": "作为AI主题的具体应用案例，提供了丰富的细节和新颖的视角，非常适合推荐。",
+      "tags": [
+        "AI",
+        "内容生成",
+        "短剧",
+        "媒体产业",
+        "案例分析"
+      ]
+    },
+    {
+      "title": "Gurman Reports that OpenAI Is Unhappy With Apple Deal",
+      "link": "https://www.bloomberg.com/news/articles/2026-05-14/openai-apple-partnership-frays-setting-up-possible-legal-fight?srnd=undefined&embedded-checkout=true",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-14T18:27:50.000Z",
+      "summary": "Mark Gurman, reporting for Bloomberg under the headline, “Apple-OpenAI Alliance Frays, Setting Up Possible Legal Fight”:\nOpenAI lawyers are actively working with an outside legal firm on\na range of options that could be formally executed in the near\nfuture, said the people, who asked not to be identified because\nthe deliberations are private. That could include sending the\niPhone maker a notice alleging breach of contract without\nnecessarily filing a full lawsuit at the outset, according to the\npeople. OpenAI enlisted the outside firm in recent days to help\nwith the situation.\nOpenAI believed that the companies’ partnership, which wove\nChatGPT into Apple software, would coax more users into\nsubscribing to the chatbot. It also expected deeper integration\nacross more Apple apps and prime placement within the Siri\nassistant.\nTo be fair, Apple expected deeper integration across more Apple apps by now, too.\nBut what’s curious about this story is that it doesn’t even hint at what grounds OpenAI would have for legal action. Expecting deeper integration is one thing. Being contractually obligated to provide deeper integration is another. I don’t see how you run this story, with sources entirely from OpenAI, without describing what terms of the contract OpenAI considers breached.\nSome quotes from Gurman’s unnamed source:\n“We have done everything from a product perspective,” said an\nOpenAI executive who asked not to be identified. “They have not,\nand worse, they haven’t even made an honest effort.” [...]\n“When we heard about this opportunity, it sounded amazing: being\nable to acquire a giant number of customers and have distribution\nin such a big mobile ecosystem,” said the OpenAI executive. At the\ntime, though, Apple was unwilling to share exactly what the\nproduct would be, the person said. “They basically said, ‘OpenAI\nneeds to take a leap of faith and trust us,’” the executive said,\nadding that the deal ended up being a failure for the startup.\nChatGPT has been the #1 app in the App Store for most of the last two years. (It’s #2 today, behind Instagram’s new Instants app.) It’s impossible to say how much ChatGPT’s exclusive integration with Siri has helped with that, but it couldn’t have hurt.\nLastly, regarding the deal Apple and Google announced in January to power Apple’s Foundation Models with Google’s Gemini technology (but not Gemini the product), this brave anonymous OpenAI executive says Apple couldn’t break up with them because they wanted to break up with Apple first:\nOpenAI wasn’t interested in working with Apple on the new models\nbecause it felt burned by the initial relationship, according to\nthe people. “Apple has so much market power that they can dictate\nterms,” the executive said. “We already took this leap of faith\nwith you, and it didn’t work out well.”\nThis would be easier to take at face value if they’d said it before the Apple-Google partnership was announced, not months later.\n ★",
+      "id": "5754e9d3d695a72001bf59929407305dc87a56d1dcb66ae450a16539f5c9e3b7",
+      "ref_id": "4",
+      "recommendationScore": 90,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "报道OpenAI对与苹果的合作协议不满，暗示可能出现法律纠纷。",
+      "reason": "涉及AI与Apple生态两大高优先级主题的重磅新闻，揭示了行业巨头合作中潜在的复杂性，可能对未来AI在苹果设备上的发展产生深远影响。",
+      "tags": [
+        "AI",
+        "Apple",
+        "OpenAI",
+        "合作",
+        "商业纠纷",
+        "Siri"
+      ]
+    },
+    {
+      "title": "\nA few words on DS4\n",
+      "link": "\nhttp://antirez.com/news/165\n",
+      "source": "antirez.com",
+      "publishedAt": "2026-05-14T22:22:45.000Z",
+      "summary": "I didn’t expect DwarfStar 4 (https://github.com/antirez/ds4) to become so popular so fast. It is clear that there was a need for single-model integration focused local AI experience, and that a few things happened together: the release of a quasi-frontier model that is large and fast enough to change the game of local inference, and the fact that it works extremely well with an extremely asymmetric quants recipe of 2/8 bit, so that 96 or 128GB of RAM are enough to run it. And, of course: all the experience produced by the local AI movement in the latest years, that can be leveraged more promptly because of GPT 5.5 (otherwise you can’t build DS4 in one week — and even with all this help you need to know how to gently talk to LLMs).\n\nThe last week was funny and also tiring, I worked 14 hours per day on average. My normal average is 4/6 since early Redis times, but the first few months of Redis were like that.\n\nSo, what’s next? Is this a project that starts and ends with DeepSeek v4 Flash? Nope, the model can change over time. The space will be occupied, in my vision, by the best current open weights model that is *practically fast* on a high end Mac or “GPU in a box” gear (like the DGX Spark and other similar setups). I bet that the next contender is DeepSeek v4 Flash itself, in the new checkpoint that will be released and, hopefully, a version specifically tuned for coding, and who knows, other expert-variants (not in the sense of MoE experts) maybe. For local inference, to have a ds4-coding, ds4-legal, ds4-medical models make a lot of sense, after all. You just load what you need depending on the question.\n\nIt is the first time since I play with local inference (I play with it since the start) that I find myself using a local model for serious stuff that I would normally ask to Claude / GPT. This, I think, is really a big thing. It is also the first time that using vector steering I can enjoy an experience where the LLM can be used with more freedom. DeepSeek v4 Flash is really an impressive model, no doubt about that. If you can imagine in your mind the small good local model experience as A, and the frontier model you use online as B, DS4 is a lot more B than A. I can’t wait for the new releases, honestly (btw, thank you DeepSeek).\n\nSo, after those chaotic first days, I hope the project will focus on: quality benchmarks, potentially adding a coding agent that is also part of the project, a hardware setup here in my home that can run the CI test in order to ensure long term quality, more ports, and finally but as a very important point: distributed inference (both serial and parallel).\n\nFor now, thank you for all the support: it was really appreciated :) AI is too critical to be just a provided service.\nComments",
+      "id": "13646c50bd6fb95dcc4770ac3df38b0dfd78e63f318b4096290754d348bf22c7",
+      "ref_id": "0",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "深入探讨了DS4本地AI项目的技术背景和快速发展，提供了有价值的见解。",
+      "reason": "文章聚焦于高优先级的AI主题，技术深度和新颖性突出，对本地AI爱好者和开发者极具参考价值。",
+      "tags": [
+        "AI",
+        "Local AI",
+        "LLM",
+        "DeepSeek",
+        "Inference",
+        "Programming"
+      ]
+    },
+    {
+      "title": "Eric Jang – Building AlphaGo from scratch",
+      "link": "https://www.dwarkesh.com/p/eric-jang",
+      "source": "dwarkesh.com",
+      "publishedAt": "2026-05-15T16:04:58.000Z",
+      "summary": "AlphaGo is still the cleanest worked example of the primitives of intelligence: search, learning from experience, and self-play.",
+      "id": "72113f6d9207576d14fbefd30d9380f04af8d8a23017c91e203b986060fce36a",
+      "ref_id": "1",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "文章以AlphaGo为案例，探讨了智能的基石：搜索、从经验中学习和自我博弈，有望提供从零构建AI系统的深刻洞察。",
+      "reason": "作为AI领域的经典案例，AlphaGo的“从零构建”视角对于理解通用人工智能的核心原理及其工程实践提供了绝佳的学习材料，符合AI主题的最高优先级。",
+      "tags": [
+        "AI",
+        "机器学习",
+        "深度学习",
+        "强化学习",
+        "AlphaGo",
+        "人工智能原理"
+      ]
+    },
+    {
+      "title": "Welcome to the Strip Mining Era of OSS Security",
+      "link": "https://www.metabase.com/blog/strip-mining-era-of-open-source-security",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-15T11:37:17.000Z",
+      "summary": "Article URL: https://www.metabase.com/blog/strip-mining-era-of-open-source-security\nComments URL: https://news.ycombinator.com/item?id=48147339\nPoints: 88\n# Comments: 65",
+      "id": "9085a45ea5fbb87657a787a8c29f429a418dd9eb93ec4bb0cb74ddec1ac60e3e",
+      "ref_id": "4",
+      "recommendationScore": 88,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "深入探讨了开源软件安全面临的“竭泽而渔”挑战，对开发者和企业有极高警示和实用价值。",
+      "reason": "主题紧扣当前热门的开源安全问题，具有高信息密度和实用性。",
+      "tags": [
+        "开源",
+        "网络安全",
+        "软件开发",
+        "供应链安全",
+        "风险管理"
+      ]
+    },
+    {
+      "title": "Image-blaster: Creates 3D environments, SFX, and meshes from a single image",
+      "link": "https://github.com/neilsonnn/image-blaster",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-15T15:42:37.000Z",
+      "summary": "Article URL: https://github.com/neilsonnn/image-blaster\nComments URL: https://news.ycombinator.com/item?id=48150069\nPoints: 12\n# Comments: 0",
+      "id": "09bcf2c2610f5a38793a78d81d5bbb20a1e6832de47aae5028386d07d4fb1ef4",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 15,
+      "priority": "high",
+      "comment": "一个基于AI的图像到3D工具，技术前沿但目前关注度不高。",
+      "reason": "项目新颖且技术深度足，展示了AI在图形生成领域的最新进展，对研究者和开发者有重要参考价值。",
+      "tags": [
+        "AI",
+        "3D生成",
+        "计算机视觉",
+        "GitHub项目",
+        "新工具"
+      ]
+    },
+    {
+      "title": "The Download: China’s AI drama factory and the WHO’s missing health targets",
+      "link": "https://www.technologyreview.com/2026/05/15/1137341/the-download-china-short-drama-ai-who-health-targets/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-05-15T12:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. How Chinese short dramas became AI content machines China’s short drama industry is fueled by bite-sized, melodramatic, and smutty shows built for smartphone scrolling. Now, many are being made entirely with…",
+      "id": "0a8226663c7ef5abad04b9ac17824b2b13cd475608d9a29febb2187b8342f660",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "及时捕捉AI在内容产业的应用，概括了中国AI短剧工厂的兴起。",
+      "reason": "AI是最高优先级主题，文章内容新颖且具有行业洞察力，适合科技博客。",
+      "tags": [
+        "AI",
+        "内容生成",
+        "短剧",
+        "行业趋势"
+      ]
+    },
+    {
+      "title": "Geoffrey Fowler and the Launch of the Youth AI Safety Institute",
+      "link": "https://geoffreyfowler.substack.com/p/what-is-ai-doing-to-our-kids-im-going",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-14T20:51:04.000Z",
+      "summary": "Geoffrey Fowler, on his blog, which, alas, he calls “a Substack”:\nI’m joining the Youth AI Safety Institute as its first new\nemployee. It’s a research and testing organization launching today\nunder the umbrella of children’s nonprofit Common Sense\nMedia. Backed by a $20 million annual budget, the Institute\naims to do something that doesn’t really exist yet: systematically\ntest the AI products kids use, set safety standards, and publicly\nhold tech companies accountable for meeting them. Think crash test\ndummies for AI.\nOn the surface this sounds like a great idea, and Fowler does have a strong background in consumer-oriented product reviews.\nMy title is Head of Public Engagement — a kind of\neditor-at-large. I’ll work alongside researchers, computer\nscientists, pediatricians, clinical psychologists and educators\nto investigate what happens when kids use AI products,\nincluding chatbots, games, educational apps, furry AI\ntoys and whatever comes next. My job is to help turn\nthose findings into something families, educators, policymakers\nand tech leaders can use.\n“We safety-test kids’ PJs. Why not their AI?” says my new\ncolleague at Common Sense, Bruce Reed, who helped craft the Biden\nWhite House’s groundbreaking 2023 AI Executive Order.\nWhat exactly did Biden’s AI Executive Order accomplish? As far as I know, absolutely nothing.\nSome tech power players, including Anthropic and the OpenAI\nFoundation, have joined a consortium of foundations and private\ndonors funding the Institute’s work. They get no say over what we\npublish. (And in my time at The Washington Post, I didn’t let\nJeff Bezos’ ownership of the newspaper affect my\ncriticism of Amazon.)\nI’m not sure I’ve ever in my life used the phrase “Good luck with that” non-sarcastically, but in this case I mean it: good luck with that. I hope it works out, and someone has to pay the bills (and salaries). But color me skeptical about the foxes funding the henhouse inspectors.\n ★",
+      "id": "0f8d2c3200a655c7066a08983a4c024421fc9b4cd2d4522313da3c7333702eec",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "介绍青年AI安全研究所的成立及其使命，旨在系统性测试儿童AI产品并设定安全标准。",
+      "reason": "文章紧密围绕AI安全这一重要且新颖的主题，具有高度的社会责任感和行业前瞻性，对AI领域发展有指导意义。",
+      "tags": [
+        "AI",
+        "AI安全",
+        "儿童AI",
+        "行业动态",
+        "新机构",
+        "社会责任"
+      ]
+    },
+    {
+      "title": "Recovering the state of xorshift128",
+      "link": "https://www.johndcook.com/blog/2026/05/15/xorshift128-state/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-05-15T12:34:29.000Z",
+      "summary": "I’ve written a couple posts lately about reverse engineering the internal state of a random number generator, first Mersenne Twister then lehmer64. This post will look at xorshift128, implemented below. import random # Seed the generator state a: int = random.getrandbits(32) b: int = random.getrandbits(32) c: int = random.getrandbits(32) d: int = random.getrandbits(32) MASK = […]\nRecovering the state of xorshift128 first appeared on John D. Cook.",
+      "id": "7bde0d116a80857b8b17f064e77a84325897c1e2e2ef219dbce82e8acc8fbc5b",
+      "ref_id": "4",
+      "recommendationScore": 85,
+      "popularityScore": 60,
+      "priority": "high",
+      "comment": "深入探讨了xorshift128随机数生成器的状态恢复，技术性强且具有实际应用价值。",
+      "reason": "属于编程工具主题下技术深度和新颖性都非常高的文章，对理解随机数安全和算法逆向工程有重要意义。",
+      "tags": [
+        "Programming",
+        "Algorithms",
+        "Random Number Generators",
+        "Security",
+        "Python",
+        "Reverse Engineering"
+      ]
+    },
+    {
+      "title": "Language Registries Are Unstable by Default",
+      "link": "https://nesbitt.io/2026/05/15/language-registries-are-unstable-by-default.html",
+      "source": "nesbitt.io",
+      "publishedAt": "2026-05-15T10:00:00.000Z",
+      "summary": "Running pip install requests or npm install react against the public registry is the same operation, structurally, as running apt install -t unstable against Debian sid, and nobody involved talks about it that way. I don’t mean “unstable” as a synonym for buggy, I mean it in the specific sense Debian has used since the late nineties: a pool of packages where new versions land the moment a maintainer uploads them, with no promotion gate, no minimum residency time, and no quality bar between the upload and your machine.\nOn a language registry any authenticated publisher can push any version at any time, the index updates within seconds, and any resolver that hasn’t been deliberately configured otherwise will start selecting it on the next run. The path from a maintainer pressing enter to an enterprise CI pipeline executing the result has nothing in it except whatever the consumer remembered to set up, and most consumers haven’t set up anything.\nDebian sid exists on the explicit understanding that you don’t point production at it. The default sources.list on a Debian install points at stable, where packages have spent months in testing, which they only entered after a mandatory stretch in unstable without release-critical bugs. Fedora has updates-testing with karma voting before promotion, Ubuntu has its -proposed pocket gated by autopkgtest, Arch has core-testing and extra-testing repos most users never enable, and FreeBSD ships both quarterly and latest branches of the ports tree.\nEvery system package manager I can think of presents the user with a choice of stability lane and defaults to the conservative one, with the bleeding-edge lane as something you opt into knowing what you’re getting. Language package managers offer one lane, it behaves like the bleeding-edge one, and there’s no switch on the wall to ask for the other thing.\nWe are well past the point where event-stream, Shai-Hulud, xz, and the current run of self-propagating GitHub Actions worms can be read as a string of unlucky one-offs. There is a malicious-package writeup from one security vendor or another most days of the week now, the GitHub Advisory Database adds malware entries faster than I can read them, and I’m tired of watching each one get treated as a clever attacker finding a surprising gap in an otherwise sound system.\nA registry that accepts uploads from tens of thousands of loosely verified publishers and serves the newest upload as the default resolution target within minutes is going to ship malware to consumers at some ambient rate, because that is what an unstable pool is for. We’ve wired that pool directly to production with no promotion step, and I find the recurring surprise harder to justify than the incidents themselves, given the design is the one distributions explicitly label as the lane you run at your own risk.\nThe integration problem\nDistributions ended up with stability channels because a distribution owns the integration problem: tens of thousands of packages have to boot a working operating system together, so somebody upstream of the user has to check that glibc, systemd, Python, and GNOME all agree on the world before any of it ships. The release team is a structural necessity, and once you have a release team you have promotion gates, and once you have promotion gates you have channels almost by accident.\nLanguage registries made the opposite call early on by pushing the integration problem down to each consumer’s lockfile. There was never a single party whose job it was to ask whether requests 2.32.0 and urllib3 2.2.0 and certifi 2024.2.2 actually work together, so that question gets answered thousands of times a day in thousands of CI pipelines instead of once at the registry. With no upstream actor responsible for integration, there’s nobody in a natural position to run a promotion gate either, and the registries themselves have generally declined to be that actor, treating themselves as neutral pipes rather than as the governance layer a promotion policy would require.\nThe vocabulary gap compounds this, because “channel” is a word from distribution and toolchain land (rustup has stable, beta, and nightly; conda has defaults and conda-forge; snap exposes tracks and flatpak exposes branches; Nix has nixos-25.11 and nixos-unstable), while language registries talk about indexes, dist-tags, and pre-release markers, none of which carry the same connotation of “pick how much risk you want.” Someone who came up through Debian or Fedora packaging looks at npm and immediately sees the missing pattern, but someone who learned dependency management from package.json outward has no name for the thing that isn’t there, so it doesn’t register as an absence.\nA few language ecosystems have built partial equivalents, the strongest of which is Stackage, a curated set of LTS and nightly snapshots layered over Hackage and modelled on distribution release processes. It exists because Haskell’s type system makes cross-package incompatibility painful enough that curation moved upstream rather than staying in everyone’s cabal.project. It has been the default resolver target for stack for over a decade now, which makes it an existence proof that a language community can run a curated lane on top of an open registry without forking the registry. Conda treats channels as first-class and lets you compose defaults, conda-forge, and domain-specific channels in something close to an apt sources.list, though that’s as much about subject-area curation as stability tiering.\nrustup’s stable/beta/nightly applies to the compiler rather than to crates, and npm’s dist-tags (latest, next, beta, canary) are publisher-controlled, voluntary, and per-package rather than registry-wide. PyPI relies on PEP 440 pre-release markers that pip skips unless you pass --pre, TestPyPI is a publishing rehearsal space rather than a staging lane, and the rest (RubyGems, Maven Central, NuGet, Hex, Go, CPAN) have nothing at the registry level at all.\nThe urgency objection\nThe main objection to any delay between publish and install is that security fixes can’t wait: a maintainer ships a CVE patch, consumers need it in production today rather than after seven days in a holding pen, and a cooldown that blocks the fix leaves everyone exposed for a week longer than necessary. Attackers know this and exploit the same reflex, which is why the npnjs.com phishing campaign against maintainers arrived as forged npm support email, why the xz backdoor was hustled toward distribution releases, and why “update immediately” in an incident thread is indistinguishable on the wire from the next attack’s delivery mechanism. An index with no promotion gate can’t tell a genuine emergency patch from a forged one because it applies the same zero scrutiny to both.\nDistributions have had a separate security pocket for this for as long as they’ve had stable releases. Debian’s security archive and Fedora’s stable updates repo bypass the normal testing migration so a fix can reach users in hours, but the upload still passes through a security team rather than landing the moment whoever holds the credential presses publish. That team can also ship a patched build without waiting for upstream at all, which language ecosystems mostly can’t: for npm or PyPI the only delivery path for a fix is the upstream maintainer publishing a new version to the one ungated index, which is a large part of why the urgency feels so non-negotiable in the first place.\nCooldowns, proxies, and promotion pipelines\nYou can watch the ecosystem reconstructing Debian’s promotion model piece by piece without using any of its vocabulary in the cooldown wave of the last year, where pnpm, Yarn, Bun, npm, uv, and pip all shipped some variant of “don’t select versions newer than N days” within months of each other. Each of those is a per-consumer reimplementation of Debian’s minimum-time-in-unstable rule, configured at the edge in every project that remembers to turn it on.\nThe gem.coop cooldown endpoint is the closest anyone has got to an actual second channel rather than a client-side approximation of one. It’s a separate source URL serving the RubyGems catalogue with newly published versions held back for 48 hours, so a project opts in by changing one line of its Gemfile rather than by upgrading Bundler or learning a new flag, and every Bundler version ever shipped already understands it because from the client’s side it’s just a gem source. That is structurally the sources.list model, where the stability policy lives in which index you point at rather than in client configuration, and the work of deciding what’s settled enough to serve happens once upstream instead of being reimplemented in every consumer’s config.\nAt the heavier end, every Artifactory or Nexus deployment with a dev → staging → prod promotion pipeline is rebuilding the Debian pocket model inside a single company, complete with policy gates that block artifacts until they’ve passed scanning and sat for a quarantine period. Tools like devpi on the Python side, Athens for Go, assorted verdaccio configs for npm, and lighter-weight caching proxies absorb the same demand privately, which is part of why the pressure for a registry-level feature stays diffuse: every organisation large enough to need a stable lane builds one internally, and the result never becomes a shared demand on the upstream registry.\nI’m not calling for a new standard or a clever resolver hack, because the design work was done a quarter of a century ago by people who are still running it in production. Debian’s testing migration rules, Fedora’s Bodhi karma system, and FreeBSD’s quarterly branches are documented, battle-tested promotion functions sitting in public repositories, and the language-packaging side keeps reinventing individual fragments of them, calling each fragment something new, and shipping it as a novel supply-chain feature.\nThe cooldown flags are the smallest possible channel, a single time-based promotion criterion applied at the edge, and six tools converging on the same feature in the same year is six independent rediscoveries of one line of britney’s config. What a registry-level stable lane would look like for PyPI or npm, and who would run the promotion function, is something I want to come back to separately, starting from the distro release-team docs rather than a blank whiteboard.\nThe reframe I’m after in the meantime is just an honest label on what we already have. If npm or PyPI offered two indexes tomorrow and described one of them the way Debian describes sid, as a development staging area that changes by the minute and is pointed at by people who accept they’ll be the first to hit whatever breaks, I don’t think many teams would deliberately aim a production build at it. Every production build is aimed at exactly that today, not because anyone weighed it against an alternative but because no alternative has ever been on the menu, and a fair amount of “supply-chain security” work is the industry slowly noticing it never got asked.",
+      "id": "654f12fd17ed619299ab80ff3c4d105dc5874c32d4f72372924782b709d9120e",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "深入剖析了语言包管理器默认不稳定性的核心问题，并以Debian的“unstable”分支作类比，提供了独到见解。",
+      "reason": "文章揭示了软件依赖管理中普遍存在但常被忽视的深层风险，对开发者、DevOps工程师和企业级CI/CD管道的稳定性与安全性具有重要的警示和参考价值。",
+      "tags": [
+        "编程工具",
+        "软件工程",
+        "依赖管理",
+        "安全性",
+        "CI/CD",
+        "DevOps"
+      ]
+    },
+    {
+      "title": "The Youth AI Safety Institute Has Margrethe Vestager’s Backing",
+      "link": "https://www.euronews.com/next/2026/05/12/margrethe-vestager-backs-new-ai-safety-institute-for-children-after-decade-regulating-big-",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-15T00:03:13.000Z",
+      "summary": "Una Hajdari, reporting for Euronews:\nA new independent institute dedicated to making artificial\nintelligence safer for children will beformally [sic] presented at the\nDanish Parliament on Tuesday, with former European Commission\nexecutive vice-president Margrethe Vestager among those co-hosting\nthe event.\nThe institute’s approach, as explained in a statement before the\nlaunch, is “modelled on independent crash-test ratings” for cars.\nThe idea, ostensibly, is that just as consumers can check whether\na vehicle is safe before buying it, parents should be able to do\nthe same for the AI their children use.\nQuite what a crash test looks like for a chatbot, the institute\ndoes not yet say.\nHopefully their AI crash testing winds up more effective than the GDPR “cookie” initiative overseen by Vestager, which led to the nonsense that required me to click through this ridiculous full-window dickpanel just to read the story. (I love that the dickpanel is titled “We value your privacy” and then begins with the sentence, “With your agreement, we and our 399 partners use cookies or similar technologies to store, access, and process personal data like your visit on this website, IP addresses and cookie identifiers.” If Euronews did not value your privacy, they might have 400 partners.)\n ★",
+      "id": "895d9d79a7a7caf9409abd95c20ac5eca4fb815b8f0e72e9a9f2fbacd1dd9f63",
+      "ref_id": "3",
+      "recommendationScore": 80,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "报道了新的儿童AI安全研究所及其“AI碰撞测试”的理念，关注AI的社会影响与监管。",
+      "reason": "主题聚焦AI安全和监管，对AI领域的未来发展及其社会影响有重要参考价值，新颖性较高，具有一定的实用性和信息密度。",
+      "tags": [
+        "AI",
+        "AI安全",
+        "政策",
+        "儿童保护"
+      ]
+    },
+    {
+      "title": "I built Zenith: a live local-first fixed viewport planetarium",
+      "link": "https://smorgasb.org/zenith-tech/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-15T15:45:11.000Z",
+      "summary": "Article URL: https://smorgasb.org/zenith-tech/\nComments URL: https://news.ycombinator.com/item?id=48150097\nPoints: 28\n# Comments: 2",
+      "id": "bf257faa11c2acfc308c6bb88171d2d61b2b0f77e620290995d96bb1b79d7b3a",
+      "ref_id": "4",
+      "recommendationScore": 75,
+      "popularityScore": 22,
+      "priority": "medium",
+      "comment": "详细介绍了个人开发一个本地优先星象仪的技术实现和经验分享。",
+      "reason": "属于独立开发和编程工具范畴，技术实现细节丰富，对同类开发者有良好借鉴价值。",
+      "tags": [
+        "独立开发",
+        "编程工具",
+        "数据可视化",
+        "前端开发"
+      ]
+    },
+    {
+      "title": "NanoTDB – Golang Append-Only Time Series DB",
+      "link": "https://github.com/aymanhs/nanotdb",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-15T10:31:51.000Z",
+      "summary": "Article URL: https://github.com/aymanhs/nanotdb\nComments URL: https://news.ycombinator.com/item?id=48146877\nPoints: 30\n# Comments: 5",
+      "id": "661ab165796c6ac728115c8d3c7a70a83ef1ed35c338c811a0470a8b28261941",
+      "ref_id": "3",
+      "recommendationScore": 75,
+      "popularityScore": 25,
+      "priority": "medium",
+      "comment": "一个用Golang实现的轻量级追加型时间序列数据库项目，技术深度高。",
+      "reason": "为Go开发者提供了特定领域的实用工具和实现细节，对学习数据库设计有价值。",
+      "tags": [
+        "Golang",
+        "数据库",
+        "时间序列数据库",
+        "开源项目"
+      ]
+    },
+    {
+      "title": "‘Musk v. Altman’ Closing Arguments",
+      "link": "https://www.theverge.com/ai-artificial-intelligence/931006/musk-v-altman-closing-arguments-analysis?view_token=eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImhxZzBnTXFpSk8iLCJwIjoiL2FpLWFydGlmaWNpYWwtaW50ZWxsaWdlbmNlLzkzMTAwNi9tdXNrLXYtYWx0bWFuLWNsb3NpbmctYXJndW1lbnRzLWFuYWx5c2lzIiwiZXhwIjoxNzc5MjM2OTUwLCJpYXQiOjE3Nzg4MDQ5NTB9.TXQtcV9vkuuKyqcrMaKtSqqoL9_wGWeSYgUyO6ZzK-Y",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-15T00:57:38.000Z",
+      "summary": "Elizabeth Lopatto, reporting for The Verge (gift link):\nToday was closing arguments in the Musk v. Altman trial, and I\nalmost feel bad writing about the unbelievable demolition derby I\njust witnessed. Steven Molo, Musk’s lawyer, stumbled over his\nwords. He at one point called Greg Brockman — a co-defendant — Greg Altman. He erroneously claimed that Musk wasn’t asking for\nmoney and had to be corrected by the judge. He made it clear we’ve\nheard from many liars over the past few weeks, but offered little\nevidence for Musk’s actual legal claims.\nOpenAI’s lawyer, Sarah Eddy, countered this by simply arranging\nthe mountain of evidence that the company introduced in\nchronological order. She didn’t spend time trying to pretend\nanyone in this trial is especially reliable. She did, however, get\nthe zinger of the day, about Musk: “Even the mother of his\nchildren can’t back his story.” William Savitt, who took the\ndefendant baton after her presentation, demonstrated the number of\ntimes Musk “didn’t recall” some critical detail — and wondered\nhow a sophisticated businessman couldn’t understand or read a\nfour-page term sheet OpenAI had sent to him.\nI found myself wondering, again, why we were all wasting our time\nhere. So let’s discuss the gossip, which is the real point of this\ntrial. How good was it? Here are my favorite nuggets.\n ★",
+      "id": "8754dd99688a9113f8c41ae85ebbff65a69c1bcf08cd76d1f6d79c84e923b4a4",
+      "ref_id": "1",
+      "recommendationScore": 75,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "一篇及时报道了‘Musk v. Altman’庭审结案陈词的非技术性文章，内容具有高度新闻价值。",
+      "reason": "主题高度关联AI领域头部事件（OpenAI与马斯克），具有较高的新闻价值和公众关注度，尽管技术深度有限，但信息密度适中。",
+      "tags": [
+        "AI",
+        "法律",
+        "新闻",
+        "OpenAI",
+        "马斯克"
+      ]
+    },
+    {
+      "title": "Premium: What If...We're In An AI Bubble? (Part 1)",
+      "link": "https://www.wheresyoured.at/premium-what-if-were-in-an-ai-bubble-part-1/",
+      "source": "wheresyoured.at",
+      "publishedAt": "2026-05-15T16:44:27.000Z",
+      "summary": "Every day I read some sort of wrongheaded extrapolation about the future of AI — that today’s models are somehow indicative of AGI creating a “permanent underclass” of people that stops people from building software companies, or really doing any kind of job on the computer:",
+      "id": "96a795a177ade20e002469957ed4bd3bf168a59a15521022f60bd426d23ae862",
+      "ref_id": "2",
+      "recommendationScore": 75,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "对当前AI领域围绕AGI和未来劳动力市场的过度炒作及不切实际的预测进行了批判性反思。",
+      "reason": "在AI热潮中，这篇文章提供了对潜在“AI泡沫”的理性分析和审慎思考，有助于读者形成对AI技术更全面、更客观的认知，对于行业观察者和决策者具有较高的参考意义。",
+      "tags": [
+        "AI",
+        "行业分析",
+        "未来趋势",
+        "社会影响",
+        "AI伦理",
+        "批判性思维"
+      ]
+    },
+    {
+      "title": "We are retiring our bug bounty program",
+      "link": "https://turso.tech/blog/the-wonders-of-ai",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-15T13:33:15.000Z",
+      "summary": "Article URL: https://turso.tech/blog/the-wonders-of-ai\nComments URL: https://news.ycombinator.com/item?id=48148391\nPoints: 303\n# Comments: 223",
+      "id": "467da891db99cd42dc140331efa58cc251e0ac5616add97d6709f3b3886c8f31",
+      "ref_id": "3",
+      "recommendationScore": 70,
+      "popularityScore": 98,
+      "priority": "high",
+      "comment": "Turso关于AI的见解，虽然标题与内容URL似有不符，但讨论度极高。",
+      "reason": "作为AI主题的文章，其引发的广泛关注和社区讨论本身就具有较高的参考价值和流行度。",
+      "tags": [
+        "AI",
+        "趋势",
+        "科技评论",
+        "企业视角",
+        "热门讨论"
+      ]
+    },
+    {
+      "title": "Amazon workers under pressure to up their AI usage are making up tasks",
+      "link": "https://www.fastcompany.com/91541586/amazon-workers-pressured-to-up-ai-use-extraneous-tasks",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-15T13:28:55.000Z",
+      "summary": "Article URL: https://www.fastcompany.com/91541586/amazon-workers-pressured-to-up-ai-use-extraneous-tasks\nComments URL: https://news.ycombinator.com/item?id=48148337\nPoints: 173\n# Comments: 133",
+      "id": "0029905e5f60eb4a43e1c84c31c1b0e19dcca00f81a56191301c41af1ab0a06b",
+      "ref_id": "4",
+      "recommendationScore": 70,
+      "popularityScore": 92,
+      "priority": "high",
+      "comment": "揭示了亚马逊员工在AI使用压力下产生的问题，反映了AI落地的人性挑战。",
+      "reason": "文章提供了AI在企业实际应用中带来负面社会影响的独特视角，具有重要的警示和思考价值。",
+      "tags": [
+        "AI伦理",
+        "职场",
+        "亚马逊",
+        "企业文化",
+        "AI影响",
+        "社会观察"
+      ]
+    },
+    {
+      "title": "O(x)Caml in Space",
+      "link": "https://gazagnaire.org/blog/2026-05-14-borealis.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-15T10:55:51.000Z",
+      "summary": "Article URL: https://gazagnaire.org/blog/2026-05-14-borealis.html\nComments URL: https://news.ycombinator.com/item?id=48147058\nPoints: 187\n# Comments: 37",
+      "id": "e4d47e2d7b14ab1a39db3ccbd36250828ad953752fb3e08b0e5001ab75dfb903",
+      "ref_id": "0",
+      "recommendationScore": 70,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "深入探讨了 OCaml 在航天领域的应用，技术性强，对于特定领域的开发者有很高价值。",
+      "reason": "提供了特定编程语言在关键系统中的前沿实践，对系统编程和 OCaml 开发者有启发。",
+      "tags": [
+        "OCaml",
+        "编程语言",
+        "系统编程",
+        "航天"
+      ]
+    },
+    {
+      "title": "Google Announces Its Chromebook Successor: The Googlebook",
+      "link": "https://www.theverge.com/tech/928479/google-googlebook-laptops-android-tease-aluminium-chromebook?view_token=eyJhbGciOiJIUzI1NiJ9.eyJpZCI6IjNVSjlWdlZESmgiLCJwIjoiL3RlY2gvOTI4NDc5L2dvb2dsZS1nb29nbGVib29rLWxhcHRvcHMtYW5kcm9pZC10ZWFzZS1hbHVtaW5pdW0tY2hyb21lYm9vayIsImV4cCI6MTc3OTIxNjg2NiwiaWF0IjoxNzc4Nzg0ODY2fQ.a74WT34THV0Ih1pGO7NH4daq39ytQXdhO4EAgE6HCeI",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-14T19:02:21.000Z",
+      "summary": "Antonio G. Di Benedetto, reporting for The Verge (gift link):\nGoogle is announcing a new line of laptops coming in the fall\ncalled Googlebooks. Details are sparse for now, as the\ntease is just a small part of various Android announcements\nduring Google’s Android Show. But we do know this is a major\nnew initiative in the laptop space for Google, seemingly designed\nto succeed Chromebooks with something more capable: a platform\nrunning a long-rumored new operating system based on a fusion of\nAndroid and ChromeOS.\nWhile there are many outstanding questions to be answered about\nGooglebooks, the biggest and most obvious ones are what will these\nlaptops look like, what chips will be in them, and what will they\ncost? We’ve got none of that so far. Google only has some initial\nrenders of a mysterious Googlebook and the promise that it’s\nworking with Acer, Asus, Dell, HP, and Lenovo to make the first\nmodels. There are no model names. No specs. Nada. Google isn’t\neven saying if the laptop in its renders is made by a partner or a\ntease of some first-party Pixel-like Googlebook to come or is just\na cool mockup.\nThis is so light on details that I was hesitant to even link to it yet. (Di Benedetto is skeptical as well.) But this caught my attention:\nGooglebooks will have a Magic Pointer feature that offers\ncontextual suggestions whenever you shake your cursor and point it\nat something on the screen. Google’s examples include setting up a\nmeeting by pointing at a date in an email or selecting images of\nfurniture and a living space to visualize them together.\nShaking your cursor over something is an interesting gesture. The only feature I’m aware of that uses that gesture is MacOS’s feature that makes your cursor bigger when you shake it, to help spot on the display. It seems a bit silly to me — why not just add the “Magic” features to a contextual menu? But, then again, here we are in 2026 and the standard gesture to invoke the Undo command on iOS is to shake your whole iPhone like a maraca.\n ★",
+      "id": "0687d3b6ec9378f899ea5e80d52de91da4c6baca011166db8185d62d7cc295f4",
+      "ref_id": "3",
+      "recommendationScore": 70,
+      "popularityScore": 85,
+      "priority": "medium",
+      "comment": "谷歌宣布Chromebook的继任者Googlebook，融合Android和ChromeOS的新型笔记本平台。",
+      "reason": "这是一项重要的产品发布，预示着谷歌在硬件和操作系统领域的重大战略调整，但目前细节非常稀疏，技术深度和实用性有待后续报道补充。",
+      "tags": [
+        "Google",
+        "硬件",
+        "操作系统",
+        "Chromebook",
+        "Googlebook",
+        "产品发布"
+      ]
+    },
+    {
+      "title": "Trade Dollars with other startups. Book it as revenue",
+      "link": "https://www.revswap.ai/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-15T13:05:29.000Z",
+      "summary": "Article URL: https://www.revswap.ai/\nComments URL: https://news.ycombinator.com/item?id=48148084\nPoints: 139\n# Comments: 98",
+      "id": "b1c14fa79b347000620bf75af9e5b48858b9df476957e1b72bf144f1343d5154",
+      "ref_id": "1",
+      "recommendationScore": 65,
+      "popularityScore": 85,
+      "priority": "medium",
+      "comment": "介绍了一种创业公司之间互换收入的新颖商业模式，对独立开发者和初创公司具有较高实用性。",
+      "reason": "提供了初创企业增长的新思路，受众广泛且评论活跃。",
+      "tags": [
+        "创业",
+        "商业模式",
+        "独立开发",
+        "市场营销"
+      ]
+    },
+    {
+      "title": "Explore Wikipedia Like a Windows XP Desktop",
+      "link": "https://explorer.samismith.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-15T08:45:36.000Z",
+      "summary": "Article URL: https://explorer.samismith.com/\nComments URL: https://news.ycombinator.com/item?id=48146129\nPoints: 362\n# Comments: 98",
+      "id": "5602ed1121bb244ecb6bae7054bead4d68bbed505e251d69955fd25fa2dfaaa3",
+      "ref_id": "4",
+      "recommendationScore": 65,
+      "popularityScore": 95,
+      "priority": "low",
+      "comment": "以Windows XP桌面风格重新设计维基百科的交互体验，充满创意和怀旧感，但技术深度不高。",
+      "reason": "提供了一个极具新颖性和趣味性的独立开发项目，展现了产品设计的创意可能性。",
+      "tags": [
+        "独立开发",
+        "产品设计",
+        "用户界面",
+        "怀旧",
+        "Web应用"
+      ]
+    },
+    {
+      "title": "Project Gutenberg – keeps getting better",
+      "link": "https://www.gutenberg.org/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-15T16:15:36.000Z",
+      "summary": "Article URL: https://www.gutenberg.org/\nComments URL: https://news.ycombinator.com/item?id=48150431\nPoints: 130\n# Comments: 43",
+      "id": "ee73bc2e229a116fca91b8eecb9d8b421f1d1fdd0aa67284f19eed5ba3bcfb75",
+      "ref_id": "3",
+      "recommendationScore": 60,
+      "popularityScore": 100,
+      "priority": "medium",
+      "comment": "关于经典数字图书馆项目古腾堡的持续更新和价值，社区讨论热烈。",
+      "reason": "虽非前沿技术，但作为互联网文化遗产和公共资源，有广泛的社会和用户基础，且社区活跃度高。",
+      "tags": [
+        "数字图书馆",
+        "文化遗产",
+        "互联网历史",
+        "产品设计"
+      ]
+    },
+    {
+      "title": "A new book on Steve Jobs at NeXT",
+      "link": "https://spectrum.ieee.org/steve-jobs-next-computer",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-15T10:34:58.000Z",
+      "summary": "Article URL: https://spectrum.ieee.org/steve-jobs-next-computer\nComments URL: https://news.ycombinator.com/item?id=48146908\nPoints: 111\n# Comments: 96",
+      "id": "b5c83811217083e592c1a7a2e60d52ea2b2d899b4d6291a3fb7a9810ba2e2339",
+      "ref_id": "2",
+      "recommendationScore": 60,
+      "popularityScore": 80,
+      "priority": "medium",
+      "comment": "一本关于史蒂夫·乔布斯在NeXT时期的新书，提供了宝贵的科技历史和产品设计视角。",
+      "reason": "揭示了苹果生态系统演变的重要历史阶段，对了解产品设计和科技领袖有益。",
+      "tags": [
+        "Apple",
+        "Steve Jobs",
+        "NeXT",
+        "科技历史",
+        "产品设计"
+      ]
+    },
+    {
+      "title": "ASCII by Jason Scott",
+      "link": "https://ascii.textfiles.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-15T14:02:36.000Z",
+      "summary": "https://web.archive.org/web/20260501220231/https://ascii.tex...\nComments URL: https://news.ycombinator.com/item?id=48148726\nPoints: 66\n# Comments: 11",
+      "id": "0bfc243bdee185f3e335339d9f57107e7431106fa1b73d7da03bf2aeaede2e9a",
+      "ref_id": "1",
+      "recommendationScore": 55,
+      "popularityScore": 45,
+      "priority": "low",
+      "comment": "Jason Scott对ASCII编码的深入回顾，内容丰富但主题本身缺乏新颖性。",
+      "reason": "对于了解计算机基础和历史有益，但对于追求前沿技术的读者吸引力有限。",
+      "tags": [
+        "编码",
+        "计算机历史",
+        "基础知识",
+        "编程概念",
+        "文化"
+      ]
+    },
+    {
+      "title": "Wired on the Dark Mood Inside Meta",
+      "link": "https://www.wired.com/story/meta-layoffs-bad-vibes-mark-zuckerberg-ai/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-14T22:53:10.000Z",
+      "summary": "Paresh Dave, Lauren Goode, Steven Levy, and Zoë Schiffer, reporting for Wired (News+ link):\nAs Meta employees brace for layoffs next Wednesday, May 20, many\nsay the vibes are horrifically, historically low. “Everyone is\nunhappy; the only people who are not unhappy are, literally,\nexecutives,” says an employee who works on Instagram.\nI’ve never heard of a company bracing for layoffs where the morale was good. But this Wired report — with some all-star bylines — paints a particularly dark picture of the mood in Menlo Park:\n“I don’t know anyone having a good time,” says a policy staffer.\n“The vibe is a bit ‘over it’ — lack of connection to the mission,\nupcoming layoffs, American employees being used to train the AI\nmodels that will replace them.”\nAnyone who can afford to leave is hoping to be laid off and\nreceive the 16 weeks minimum of severance and 18 months of paid\nhealth care that come with it, several people say. As the\nInstagram employee put it, “Everyone is just like, do it now,\njesus fucking christ.” Only the individuals with the best pay\npackages and involved in the core development of AI seem to be\nthriving, a longtime senior leader at Meta says.\nRegarding the new employee surveillance tracking software:\nOpting out is not possible, according to three employees. “Nobody\nis happy about it,” says a current employee. “And we have no\nchoice.” Some employees claim they have found workarounds to dodge\ntracking or have managed to delay installation.\nThe software, known as Model Capability Initiative, or MCI,\nsuddenly turned people across the company into privacy zealots, a\nlegal staffer says. When employees protested the rollout in\ninternal messages, including by referencing Meta’s history of\nuser data breaches, chief technology officer Andrew Bosworth\n“belittled and berated” the dissenters, one veteran employee says\nand another confirms. “These billionaires can’t even feign\nempathy,” the first person says. “The social contract is\ncompletely shattered at this point.”\nUnanswered remains my question from earlier this week: is MCI installed on Bosworth’s computer too? (And Zuck’s?)\n ★",
+      "id": "266c6b0e28da4b45d2ddfe1f0d78a69b46a03f4d9a762494bccb3886f46c05f5",
+      "ref_id": "0",
+      "recommendationScore": 40,
+      "popularityScore": 65,
+      "priority": "low",
+      "comment": "报道Meta公司内部士气低落及裁员情况，揭示了科技巨头内部的人文困境。",
+      "reason": "内容属于行业观察和公司文化范畴，技术深度和实用性较低，与我们关注的核心技术主题关联度不高。",
+      "tags": [
+        "Meta",
+        "行业新闻",
+        "公司文化",
+        "裁员"
+      ]
+    },
+    {
+      "title": "High dimensional geometry is transforming the MRI industry(2017) [pdf]",
+      "link": "https://www.ams.org/government/DonohoPresentation06-28-17Final.pdf",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-15T13:25:53.000Z",
+      "summary": "Article URL: https://www.ams.org/government/DonohoPresentation06-28-17Final.pdf\nComments URL: https://news.ycombinator.com/item?id=48148309\nPoints: 49\n# Comments: 13",
+      "id": "0301b81a1e4cf4f257b35d500a042e087a29dbaa6c923b807252e36134e836f0",
+      "ref_id": "0",
+      "recommendationScore": 35,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "一篇2017年的高维几何在MRI中的应用论文，技术深度高但主题小众且发布时间较早。",
+      "reason": "内容高度专业化且已过时效，对普通科技博客读者吸引力有限。",
+      "tags": [
+        "数学",
+        "医学影像",
+        "MRI"
+      ]
+    },
+    {
+      "title": "QR code generator",
+      "link": "https://simonwillison.net/2026/May/15/qr-code-generator/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-05-15T04:00:49.000Z",
+      "summary": "",
+      "id": "ba0d9b9d357ffe62fb9fd14baf289d42616f974194921984b00fd208475c25a3",
+      "ref_id": "3",
+      "recommendationScore": 30,
+      "popularityScore": 40,
+      "priority": "medium",
+      "comment": "标题指向QR码生成器，但文章内容缺失，难以评估实际价值。",
+      "reason": "缺乏具体内容支持其技术深度、新颖性或实用性，仅凭标题无法给出高推荐。",
+      "tags": [
+        "工具",
+        "QR码"
+      ]
+    },
+    {
+      "title": "Not so locked in any more",
+      "link": "https://simonwillison.net/2026/May/14/not-so-locked-in/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-05-14T22:53:49.000Z",
+      "summary": "",
+      "id": "c533eb9ba1b6d17a5f2dc3b78c574d8cf48c34561644451a442e0f3c3dad37fd",
+      "ref_id": "4",
+      "recommendationScore": 30,
+      "popularityScore": 50,
+      "priority": "medium",
+      "comment": "标题暗示了开放性或解除锁定的主题，但文章内容缺失。",
+      "reason": "缺乏具体内容无法判断是否符合优先主题或具有足够的价值。",
+      "tags": [
+        "开放性",
+        "平台生态"
+      ]
+    },
+    {
+      "title": "UK Government Kicks Out Palantir",
+      "link": "https://shkspr.mobi/blog/2026/05/uk-government-kicks-out-palantir/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-05-15T05:34:03.000Z",
+      "summary": "The UK Government, for all its faults, is pretty good at publishing contracts it has awarded. That's why I get depressed when I see rage-bait nonsense about how companies have been award \"Top Secret\" deals.  Right now you can go to https://www.contractsfinder.service.gov.uk and search for whichever bête noire has you riled up. You might want to argue that the company is corrupt, incompetent, or …",
+      "id": "8c0e13374352a229360360e1e6a13fbf2b8802283c5259601a93ab904f3857c5",
+      "ref_id": "2",
+      "recommendationScore": 30,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "讨论英国政府合同和透明度，与Palantir相关，但技术内容不足。",
+      "reason": "内容偏向政策和商业新闻，与核心科技主题关联度较低。",
+      "tags": [
+        "Government",
+        "Palantir",
+        "Policy",
+        "Data Transparency",
+        "Business"
+      ]
+    },
+    {
+      "title": "Tim Cook Is in Trump’s Executive Entourage for China Summit",
+      "link": "https://www.the-independent.com/news/world/americas/us-politics/elon-musk-tim-cook-trump-china-tech-ceo-b2975568.html",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-14T19:36:58.000Z",
+      "summary": "Owen Scott, reporting for The Independent:\nThe list of tech and financial industry titans joining the\ncommander-in-chief during his summit with China’s president Xi\nJinping includes Elon Musk, BlackRock CEO Larry Fink, and Apple\nCEO Tim Cook. [...]\nTrump earlier confirmed a number of high-profile attendees in a\nlengthy post on Truth Social, albeit referring to Cook as “Tim\nApple” in the process.\nWhile he’s in such a jocular nickname-y mood, he should drop a reference to Winnie the Pooh into some of these posts on his blog.\n ★",
+      "id": "175c329aee5a03b24bec16d835207e033f9a2e6e3a18fab5588689c8ab1f44ae",
+      "ref_id": "2",
+      "recommendationScore": 25,
+      "popularityScore": 55,
+      "priority": "low",
+      "comment": "报道苹果CEO蒂姆·库克参加中美峰会，并提及特朗普的“Tim Apple”称呼。",
+      "reason": "内容偏向政治和商业新闻花边，与技术主题关联度极低，信息密度不高，缺乏技术分析价值。",
+      "tags": [
+        "Apple",
+        "政治",
+        "商业新闻",
+        "Tim Cook"
+      ]
+    },
+    {
+      "title": "The world is on track to miss its health targets",
+      "link": "https://www.technologyreview.com/2026/05/15/1137270/the-world-is-on-track-to-miss-its-health-targets/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-05-15T09:00:00.000Z",
+      "summary": "Every year the World Health Organization publishes a global health statistics report. It features the numbers behind world health trends and, importantly, assesses whether we’re on track to reach ambitious goals set in 2015. It’s a bit like a health grade. The 2026 report was published on Wednesday. And the results aren’t looking brilliant. While…",
+      "id": "f14bf500a09182e6f80000c4674e3f8821481b394aa041c778e14ac529fae54b",
+      "ref_id": "1",
+      "recommendationScore": 20,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "一篇关于全球健康统计的报告摘要，与科技主题关联度低。",
+      "reason": "文章主题与本科技博客的关注点不符，优先级较低。",
+      "tags": [
+        "健康",
+        "WHO",
+        "社会议题"
+      ]
+    },
+    {
+      "title": "The case of the Create­File­Mapping that always reported ERROR_ALREADY_EXISTS",
+      "link": "https://devblogs.microsoft.com/oldnewthing/20260515-00/?p=112327",
+      "source": "devblogs.microsoft.com/oldnewthing",
+      "publishedAt": "2026-05-15T14:00:00.000Z",
+      "summary": "Maybe because it already exists?\nThe post The case of the <CODE>Create­File­Mapping</CODE> that always reported <CODE>ERROR_<WBR>ALREADY_<WBR>EXISTS</CODE> appeared first on The Old New Thing.",
+      "id": "2ad2f76ae39b990036b5548dac013691aacb74827d4d4529a5a19aa00f2dc0a9",
+      "ref_id": "3",
+      "recommendationScore": 20,
+      "popularityScore": 15,
+      "priority": "medium",
+      "comment": "标题指向一个特定的编程调试问题，但文章内容过于简短，缺乏实质性信息。",
+      "reason": "尽管主题与编程工具相关，但内容极度空泛，无法提供任何价值。",
+      "tags": [
+        "Programming",
+        "Windows API",
+        "Debugging"
+      ]
+    },
+    {
+      "title": "SigNoz (YC W21, open source Datadog) Is hiring for growth and engineering roles",
+      "link": "https://signoz.io/careers",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-15T12:00:31.000Z",
+      "summary": "Article URL: https://signoz.io/careers\nComments URL: https://news.ycombinator.com/item?id=48147533\nPoints: 0\n# Comments: 0",
+      "id": "17a4a3f3620b181bd45b25511793b54f09a58a62acaa8df416266de658cc732a",
+      "ref_id": "3",
+      "recommendationScore": 15,
+      "popularityScore": 5,
+      "priority": "low",
+      "comment": "SigNoz的招聘信息，并非技术内容分享，不属于博客文章的评估范畴。",
+      "reason": "纯粹的招聘广告，不提供技术洞察或实用信息。",
+      "tags": [
+        "招聘",
+        "开源工具"
+      ]
+    },
+    {
+      "title": "Hightouch (YC S19) Is Hiring",
+      "link": "https://hightouch.com/careers",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-15T17:01:15.000Z",
+      "summary": "Article URL: https://hightouch.com/careers\nComments URL: https://news.ycombinator.com/item?id=48151034\nPoints: 0\n# Comments: 0",
+      "id": "81cbca6c50a0eecdb817e076e1ce1801d3ccea5c57be42b8f25589a5471bc22c",
+      "ref_id": "0",
+      "recommendationScore": 10,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "招聘信息，非技术文章，不符合博客内容定位。",
+      "reason": "缺乏技术内容和深度，对科技博客读者无实用价值。",
+      "tags": [
+        "招聘",
+        "商业"
+      ]
+    },
+    {
+      "title": "Let’s Run a Neologism Poll",
+      "link": "https://mastodon.social/@gruber/116575825801893849",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-15T00:53:54.000Z",
+      "summary": "After posting the previous item referencing dickpanels, a term I’ve been using since 2022, it occurred me that they could also be called dickovers (like popovers, but dickheaded). The latter sounds more clever, but I worry it’s less clear. I’m seldom so indecisive, so I’m running a Mastodon poll.\n ★",
+      "id": "0eafb9510b8eecda767fd81f7d349e39bce7846326cc8aece32c1ff0aa927a8d",
+      "ref_id": "2",
+      "recommendationScore": 10,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "一篇关于新词汇的个人随笔，与科技博客主题无关。",
+      "reason": "内容无关科技主题，不具备技术深度、新颖性或实用性，信息密度低，与关注主题优先级不符。",
+      "tags": [
+        "闲聊",
+        "文化",
+        "词汇"
+      ]
+    },
+    {
+      "title": "Pluralistic: No one wants a permanent gerontocracy (15 May 2026)",
+      "link": "https://pluralistic.net/2026/05/15/not-ok-boomer/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-05-15T12:38:04.000Z",
+      "summary": "Today's links No one wants a permanent gerontocracy: The one policy everyone agrees on. Hey look at this: Delights to delectate. Object permanence: Wolfengitmo; Facebook condemns Google privacy invasion; Michael Moore on bin Laden; TSA v babies; Tendril perversion; \"Buy now\"; Uber Ch(eats); Who Broke the Internet (II)? Upcoming appearances: Berlin, Hay-on-Wye, London, NYC, Edinburgh. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. No one wants a permanent gerontocracy (permalink) Perhaps the most demoralizing part of Trumpismo is the fear that the people around you are so cruel and senseless that they approve of the violence, the racism, the pig-ignorant lies and rampant theft: https://www.techdirt.com/2025/07/08/who-goes-maga/ One of the things keeping me going in these dark days is the pollster G Elliot Morris, whose \"Strength in Numbers\" newsletter is a reliable, robust and nuanced source of information about the way other people – including Trump's base – feel about him from moment to moment. Reading items like \"A reminder: Very few people support Donald Trump's presidency\" make it easier to get through the day: https://www.gelliottmorris.com/p/a-reminder-very-few-people-support It's a very good piece, breaking down the collapse in support for Trumpismo and confidence in Trump's mental health, even among the people who have historically stood by him, even though – incredibly! – about a third of Americans still support him and believe in his fitness to rule. But the most interesting part of this post is the eye-popping poll result on a question that is only incidentally about Trump: the extremely broad, bipartisan support for both age limits and term limits for the House, the Senate, the Presidency and the Supreme Court. How broad and bipartisan are these results? 80% of Americans want age limits in the House and Senate (D78%, R83%; I79%); Most Americans want age limits for the presidency (R73%, I61%) (the most popular age limit is 79); Most Americans (65%) want an 18-year term limit for Supreme Court justices; Most Americans (79%) want age limits for Supreme Court justices. As Morris writes, this represents \"a level of cross-partisan agreement that’s almost unheard of on a high-salience issue.\" There are different ways to parse this out. The past decade has shown that, in the absence of a hard rule to the contrary, incumbents will stay in office long after it's obvious they should step down. That was true of Biden, who continued to campaign for a presidential term long after it was obvious that he was no longer physically and mentally capable of doing the job. It was true of Ruth Bader-Ginsburg, whose commitment to the symbolic value of having her successor appointed by the first woman president allowed Trump to appoint the monstrous Amy Coney Barrett to a lifetime on the Supreme Court, which could well last another 30 years. It was true of Antonin Scalia, who would have handed a Supreme Court pick to the Obama administration if it wasn't for Mitch McConnell's willingness to steal a seat for Neal Gorsuch. It's true of Kay Granger, a sitting congresswoman whose staff hid the fact that her dementia had progressed to the point that she had to be moved to an assisted living facility – while still holding office: https://www.politico.com/news/magazine/2025/03/14/kay-granger-dementia-dc-media-00210317 It was true of Gerry Connolly, who insisted that he – not AOC – should be the head of the Oversight Committee, despite the fact that he was dying of cancer: https://www.pbs.org/newshour/politics/rep-gerry-connolly-announces-return-of-cancer-steps-down-as-top-oversight-democrat It was true of Dianne Feinstein, who continued to serve in the Senate despite having advanced dementia: https://www.motherjones.com/politics/2023/04/sen-dianne-feinsteins-saga-is-a-very-public-example-of-a-national-crisis/ These politicians are wed to a system of seniority and patronage that insists that everyone who \"pays their dues\" should get a turn. It's a system that relies on politicians banking favors from their peers and then paying them back by anointing successors, thus requiring politicians to serve until they are ready to choose that successor. We have created a system in which no one dares to hand over power, because to do so is to unilaterally disarm, while the other side keeps their permanent gerontocrats in positions of authority. Not only does this system starve the pipeline of young politicians who can progress to fill those new roles, it also exposes each party to significant risk. If your majority rests on a handful of seats and your caucus includes a dozen people who are actuarially certain to die soon, then the whole system could be upended by a couple of highly likely blood-clots: https://pluralistic.net/2023/07/01/designated-survivors/ It's not that every politician over the age of 70 (or 80, or 85) is incapable of doing the job: it's that a system that runs on a mix of incumbency advantage, seniority, patronage and hubris is a bad system and the only fix for it is to put hard limits on terms – both based on how many years you hold office, and how many years you walk the earth. The system where everyone who pays their dues gets a turn was never going to work, and that should have been especially obvious to the system's longest-tenured participants, who've had decades to notice how long-lived their colleagues are, and to compare those lifespans to the number of committee chairs, senate seats and other treasures there are to be had in the halls of power. There are lots of good ideas – like abolishing the Electoral College or limiting political spending – that are popular with a majority of Americans, but these ideas are often very unpopular with conservatives: https://pluralistic.net/2023/10/18/the-people-no/#tell-ya-what-i-want-what-i-really-really-want But this is a realm in which – as Morris says – there is \"almost unheard-of…cross-partisan agreement.\" It's the one idea that all Americans – including older Americans (at least the ones who aren't in the House, Senate or Oval Office; or on the Supreme Court) agree on: rule by permanent gerontocracy is bad, and should end. In not so many months, both parties are going to have to pick their next presidential candidates (in the case of Republicans, it may be sooner, depending on Trump's cheeseburger intake). Those primary contests are going to implicitly raise the issue of whether we should be ruled according to the principle of \"everyone who pays their dues gets a turn.\" But a shrewd politician could win a lot of favor among voters (and fury among their colleagues) by campaigning on age- and term-limits for high office. (Image: Pacamah, CC BY-SA 4.0, modified) Hey look at this (permalink) Internet of Shit: AI Poop Analysis App Offered to Sell Me Database of Its Users' Poops https://www.404media.co/ai-poop-analysis-app-offered-to-sell-me-access-to-its-users-poops/ How companies weaponize the terms of service against you https://www.theverge.com/podcast/930342/brendan-ballou-companies-courts-forced-arbitration-lawsuits-scalia UK begins antitrust inquiry into Microsoft's business software ecosystem https://www.theregister.com/oses/2026/05/14/uk-begins-antitrust-inquiry-into-microsofts-business-software-ecosystem/5240452 Meta’s New Reality: Record High Profits. Record Low Morale https://www.wired.com/story/meta-layoffs-bad-vibes-mark-zuckerberg-ai/ Verity MCP https://www.iccl.ie/digital-data/verity-mcp/ Object permanence (permalink) #25yrsago The life of a celeb PA https://www.theguardian.com/education/2001/may/14/highereducation.comment #20yrsago DOJ moves in dark of night to quash EFF wiretapping lawsuit https://web.archive.org/web/20060524092447/https://www.eff.org/deeplinks/archives/004659.php #20yrsago WolfenGitmo: Guantanamo Bay mod for Castle Wolfenstein https://web.archive.org/web/20060520203517/https://a.parsons.edu/~evan/school/?q=node/29 #20yrsago Where does booing come from? https://web.archive.org/web/20181215223044/https://slate.com/news-and-politics/2006/05/where-do-hecklers-come-from.html #15yrsago Steven Levy on Facebook’s ironic privacy charge against Google https://web.archive.org/web/20110514121727/https://www.wired.com/epicenter/2011/05/facebook-privacy-problems/ #15yrsago Michael Moore’s “Some Final Thoughts on the Death of Osama bin Laden” https://web.archive.org/web/20110513181408/https://www.michaelmoore.com/words/mike-friends-blog/some-final-thoughts-on-death-of-osama-bin-laden #15yrsago DHS’s “Secure Communities” program will deport battered woman for calling 9-1-1 on her abuser https://web.archive.org/web/20110514142235/https://blogs.ocweekly.com/navelgazing/2011/05/isaura_garcia_battered_secure.php #15yrsago TSA: we’ll search your baby and it will make the country safer https://www.loweringthebar.net/2011/05/tsa-says-baby-frisking-justified.html #10yrsago Telcoms companies try to rescue TV by imposing Internet usage caps on cord-cutters https://www.techdirt.com/2016/05/13/isps-are-now-forcing-cord-cutters-to-subscribe-to-tv-if-they-want-to-avoid-usage-caps/ #10yrsago The weird, humiliating nicknames George W Bush gave to everyone https://en.wikipedia.org/wiki/List_of_nicknames_used_by_George_W._Bush #10yrsago “Tendril perversion”: when one loop of a coil goes the other way https://en.wikipedia.org/wiki/Tendril_perversion #10yrsago Clicking “Buy now” doesn’t “buy” anything, but people think it does https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2778072 #5yrsago Uber (Ch)eats https://pluralistic.net/2021/05/13/uber-cheats/#50-companies #5yrsago The Democratic establishment https://pluralistic.net/2021/05/13/uber-cheats/#party-bosses #1yrago Who Broke the Internet? Part II https://pluralistic.net/2025/05/13/ctrl-ctrl-ctrl/#free-dmitry Upcoming appearances (permalink) Berlin: Re:publica, May 18-20 https://re-publica.com/de/news/rp26-sprecher-cory-doctorow Berlin: Enshittification at Otherland Books, May 18 https://www.otherland-berlin.de/de/event-details/cory-doctorow-in-der-friesenstrasse-23-kreuzberg-praesentiert-von-otherland.html Berlin: Enshittification at Otherland Books, May 19 https://www.otherland-berlin.de/de/event-details/cory-doctorow.html Hay-on-Wye: HowTheLightGetsIn, May 22-25 https://howthelightgetsin.org/festivals/hay/big-ideas-2 SXSW London, Jun 2 https://www.sxswlondon.com/session/how-big-tech-broke-the-internet-b3c4a901 NYC: The Reverse Centaur's Guide to Life After AI with Jonathan Coulton (The Strand), Jun 24 https://www.strandbooks.com/cory-doctorow-the-reverse-centaur-s-guide-to-life-after-ai.html Edinburgh International Book Festival with Jimmy Wales, Aug 17 https://www.edbookfest.co.uk/events/the-front-list-cory-doctorow-and-jimmy-wales Recent appearances (permalink) EFFecting Change: How to Disenshittify the Internet (EFF, with Wendy Liu) https://archive.org/details/effecting-change-enshittification The “Enshittification” of Everything (Bioneers) https://bioneers.org/cory-doctorow-enshittification-of-everything-zstf2605/ Enshittification (99% Invisible) https://99percentinvisible.org/episode/666-enshittification/ Artificial Intelligence: The Ultimate Disruptor, with Astra Taylor and Yoshua Bengio (CBC Ideas) https://www.cbc.ca/listen/live-radio/1-23-ideas/clip/16210039-artificial-intelligence-the-ultimate-disruptor When Do Platforms Stop Innovating and Start Extracting? (InnovEU) https://www.youtube.com/watch?v=cccDR0YaMt8 Latest books (permalink) \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 (https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/) \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2026 \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Third draft completed. Submitted to editor. \"The Reverse Centaur's Guide to AI,\" a short book for Farrar, Straus and Giroux about being an effective AI critic. LEGAL REVIEW AND COPYEDIT COMPLETE. \"The Post-American Internet,\" a short book about internet policy in the age of Trumpism. PLANNING. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "28bcd02264f3196b9fe22aff84480a7cc0f9eb81ed24604aac5c271b5084916b",
+      "ref_id": "1",
+      "recommendationScore": 10,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "一篇政治和社会评论文章，不属于科技博客关注的范畴。",
+      "reason": "内容与科技主题无关，对本科技博客读者价值较低。",
+      "tags": [
+        "Politics",
+        "Social Commentary",
+        "Link Roundup"
+      ]
+    },
+    {
+      "title": "We don't know why Malawi is poor",
+      "link": "https://newsletter.deenamousa.com/p/we-dont-know-why-malawi-is-poor",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-15T16:57:05.000Z",
+      "summary": "Article URL: https://newsletter.deenamousa.com/p/we-dont-know-why-malawi-is-poor\nComments URL: https://news.ycombinator.com/item?id=48150971\nPoints: 3\n# Comments: 0",
+      "id": "679f2c855ace0ab8d3f6e008a8bacd32e4ac46ea68720c0dbc6041bda057f8de",
+      "ref_id": "1",
+      "recommendationScore": 5,
+      "popularityScore": 2,
+      "priority": "low",
+      "comment": "经济社会学主题，与科技博客关注领域不符。",
+      "reason": "文章内容与科技主题无关，对读者群体价值低。",
+      "tags": [
+        "社会经济",
+        "非科技"
+      ]
+    },
+    {
+      "title": "Quoting Mitchell Hashimoto",
+      "link": "https://simonwillison.net/2026/May/14/mitchell-hashimoto/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-05-14T22:31:20.000Z",
+      "summary": "",
+      "id": "eb690f8a5689ade86e2d730d8a761c3eeb8e79b346bde5cb27d7b5ef9ea0790f",
+      "ref_id": "0",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "文章内容缺失，无法进行有效评估。",
+      "reason": "文章内容为空，无法判断其主题、技术深度、新颖性或实用价值，故无法推荐。",
+      "tags": [
+        "无法评估"
+      ]
+    }
+  ]
+}
