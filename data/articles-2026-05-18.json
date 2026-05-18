@@ -1,0 +1,836 @@
+{
+  "dailySummary": "",
+  "articles": [
+    {
+      "title": "Show HN: Auto-identity-remove – Automated data broker opt-out runner for macOS",
+      "link": "https://github.com/stephenlthorn/auto-identity-remove",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-18T11:32:42.000Z",
+      "summary": "Article URL: https://github.com/stephenlthorn/auto-identity-remove\nComments URL: https://news.ycombinator.com/item?id=48178184\nPoints: 305\n# Comments: 122",
+      "id": "9f0e3cac572d19fecb160b61d1009f411f2ec68093ef1abc6aebe6d08de354f7",
+      "ref_id": "3",
+      "recommendationScore": 95,
+      "popularityScore": 100,
+      "priority": "high",
+      "comment": "macOS平台上的数据经纪人自动退出工具，极大提升用户隐私。",
+      "reason": "完美结合了自动化、Apple生态和隐私保护，解决了用户痛点，且社区反响热烈。",
+      "tags": [
+        "自动化",
+        "隐私",
+        "macOS",
+        "独立开发",
+        "工具",
+        "数据安全",
+        "Apple 生态"
+      ]
+    },
+    {
+      "title": "FediMeteo, HAProxy, and the art of not wasting snac threads",
+      "link": "https://it-notes.dragas.net/2026/05/18/fedimeteo-haproxy-and-the-art-of-not-wasting-snac-threads/",
+      "source": "it-notes.dragas.net",
+      "publishedAt": "2026-05-18T09:44:00.000Z",
+      "summary": "When I wrote about FediMeteo for the first time, I told the story from the beginning: the idea born almost by chance while checking the weather for a holiday, the memory of my grandfather, who for years had been my personal meteorologist, the decision to build something small and useful, and then the surprise of seeing people actually use it. What began as a personal experiment quickly became a small global service, still running with the same philosophy: FreeBSD, jails, simple scripts, snac, text, emoji, and a lot of small pieces doing their work quietly.\nThat article was mostly about the birth and growth of the project. This one is about one of the less romantic parts of the same story, although I have to admit that I find a certain beauty in it too: keeping the service light as it grows.\nFediMeteo is still intentionally simple from the outside. A homepage, some numbers, a list of countries, and many ActivityPub accounts publishing weather forecasts. The posts are text and emoji. There is no JavaScript requirement to read the pages, no heavy frontend, no unnecessary media attached to every forecast, and no dynamic homepage recalculated at every visit just to show the same numbers. This is not accidental. It is the way I wanted the service to behave from the beginning.\nBut the more the service is used, the more the small details matter. A request that looks harmless when there are ten followers may become a repeated request when there are thousands of followers, remote instances, crawlers, previews, and other servers fetching the same public objects. In the Fediverse, the same small thing can be asked many times by many different places, each one with a perfectly legitimate reason. The backend doesn't care: it just needs to deal with the requests.\nAnd in FediMeteo, the backend is snac.\nI like snac very much precisely because it is small, clear, and efficient. It is not a giant application that tries to be everything. It does a focused job and does it well. But this also means that I want to respect its shape. I do not want to waste its threads on work that the reverse proxy can safely do. A snac thread serving the same public avatar again and again is not a tragedy, but it is still a waste. A snac thread answering the same public ActivityPub object several times in the same minute is doing real work, but often not necessary work.\nThis is the reason behind the HAProxy tuning I am currently using in front of FediMeteo.\nIt is not about making the configuration look clever. It is about keeping snac quiet.\nA continuation of the same idea\nI had already explored the same problem with snac and nginx in two previous posts:  Improving snac Performance with Nginx Proxy Cache  and  Caching snac Proxied Media with Nginx. In both cases, the idea was that the reverse proxy should absorb repeated public requests instead of letting them consume snac resources.\nThis is especially important because snac uses a limited number of threads. I like that. Limits are healthy. They force us to understand what the service is doing, and they prevent a small program from pretending to be an infinite resource. But limits also make waste visible. If a few threads are busy serving files that could have been served from cache, those threads are not available for something more useful.\nWith FediMeteo the implementation is different because the reverse proxy is HAProxy, but the reasoning is the same. I have many small snac instances, each one in its own FreeBSD (Bastille) jail, and one public entry point that has to route, terminate TLS, compress, cache, and generally remove as much repetitive work as possible from the backends.\nThis is, in a way, the natural continuation of the original FediMeteo design. In the first article I wrote that I wanted to manage everything according to the Unix philosophy: small pieces working together. This is another piece of that same puzzle. HAProxy does the edge work. snac does the ActivityPub work. Scripts generate forecasts. cron launches updates. ZFS gives me snapshots. FreeBSD jails keep countries separated. Nothing is particularly heroic by itself, but the whole system becomes pleasant because each part has a clear responsibility.\nWhy there is almost no media\nBefore talking about HAProxy, it is worth mentioning one of the most important optimizations, which is not in the proxy configuration at all.\nFediMeteo does not use media in its forecasts.\nNo images attached to the posts, no generated weather cards, no maps for each city, no decorative banners. The forecasts are text and emoji. This was a deliberate decision. Weather information does not become more useful just because it is put inside an image, and every media file used by the service would become something to store, serve, cache, federate, expire, back up, and occasionally debug.\nText and emoji are enough. They are accessible, light, readable in text browsers, friendly to timelines, and understandable even when someone does not know the local language perfectly. This was one of the original design principles of FediMeteo, and it also helps the infrastructure. Less media means less work, fewer cache entries, fewer repeated fetches, fewer surprises.\nThere is one exception: the avatar.\nAll FediMeteo accounts use the same avatar, and this is also intentional. I could have used a different avatar for each country, or for each city, or created something visually richer. It would have been nicer in some screenshots, perhaps. It would also have been operationally worse.\nWith one shared avatar, the reverse proxy has one very useful object to cache. It is public, identical for everyone, small, requested often, and therefore almost always hot in cache. HAProxy can serve it directly instead of asking each snac instance to return the same file. Since avatars are requested by remote instances, browsers, profile previews, and all sorts of federation-related fetches, this single decision removes a surprising amount of pointless backend traffic.\nSo the avatar is not only a visual identity. It is part of the architecture.\nThis is the kind of optimization I like most, because it starts before the software. It starts with deciding not to create a problem.\nThe homepage is static because it can be static\nThe main homepage follows the same logic.\nIt is a static HTML page generated from a template. Once per hour, a cron script updates the numbers and statistics. It counts the data I want to show, regenerates the page, and then the page remains static until the next run.\nThis is not because I cannot make a dynamic page. It is because I do not need one. Boring is good.\nThe homepage does not need to query all the country instances on every visit. It does not need a database request for each user who opens it. It does not need to ask snac anything in real time. The numbers are useful, but they do not need to be updated every second. Once per hour is enough, and it also fits the spirit of the whole project: do the work when it is needed, then serve the result cheaply.\nI have seen too many small services become heavy because the first implementation was convenient rather than appropriate. A cron job and a template are not fashionable, but they are often exactly what a page like this needs.\nMany countries, one entry point\nFediMeteo is made of many country instances. Each one runs in its own jail and listens on its own internal address and port. From the outside, however, they all live under the same domain structure:\nfedimeteo.com\nwww.fedimeteo.com\nit.fedimeteo.com\nuk.fedimeteo.com\njp.fedimeteo.com\nus.fedimeteo.com\nusa.fedimeteo.com\ncan.fedimeteo.com\ncanada.fedimeteo.com\n\nAnd many more.\nAt the beginning, it is always tempting to write one ACL after another in the HAProxy frontend. It is quick, it is explicit, and for five hostnames it is perfectly fine. But FediMeteo did not remain at five hostnames. As countries and aliases grew, a long chain of ACLs would have turned the frontend into a list of names instead of a description of how the proxy behaves.\nSo I moved the hostname to backend mapping into a map file:\nfedimeteo.com        backend_fedimeteo\nwww.fedimeteo.com    backend_fedimeteo\nit.fedimeteo.com     backend_it\nuk.fedimeteo.com     backend_uk\njp.fedimeteo.com     backend_jp\nus.fedimeteo.com     backend_us\nusa.fedimeteo.com    backend_us\ncan.fedimeteo.com    backend_ca\ncanada.fedimeteo.com backend_ca\n\nThe frontend then needs only one rule:\nuse_backend %[req.hdr(host),field(1,:),lower,map(/usr/local/etc/fedimeteo.map,backend_fedimeteo)]\n\nThis reads the  Host  header, removes the port if present, lowercases the result, and looks it up in  /usr/local/etc/fedimeteo.map. If nothing matches, it falls back to the main FediMeteo backend.\nI like this because it keeps the configuration honest. The frontend contains the policy. The map contains the data. Adding a country means adding an entry to the map and defining a backend. I do not need to make the frontend more complicated every time the service grows.\nBackends as small compartments\nThe country backends are deliberately plain:\nbackend backend_it\n    mode http\n    http-reuse safe\n    server srv1 10.0.0.2:8001 maxconn 30\n\nbackend backend_uk\n    mode http\n    http-reuse safe\n    server srv1 10.0.0.7:8001 maxconn 30\n\nbackend backend_jp\n    mode http\n    http-reuse safe\n    server srv1 10.0.0.32:8001 maxconn 30\n\nOne backend, one jail, one snac instance. This is exactly the same organizational principle as the rest of the project. If I need to reason about Italy, I look at the Italian jail. If I need to reason about the United Kingdom, I look at the UK jail. If one day I need to move a country elsewhere, the separation is already there.\nThe  maxconn 30  value is not a magic number. It is a ceiling. I want each small backend to have a visible limit in front of it. If something starts hammering a country instance, I prefer the pressure to appear at the HAProxy layer instead of becoming unlimited concurrent work inside snac.\nhttp-reuse safe  lets HAProxy reuse backend connections where appropriate. This is another small reduction in unnecessary work. Opening connections repeatedly is not the biggest problem in the world, but avoiding it is still better, especially when many small services sit behind the same proxy.\nThe front door\nThe HTTPS frontend listens on IPv4 and IPv6 and offers both HTTP/2 and HTTP/1.1:\nfrontend https_in\n    bind :::443 v4v6 ssl crt /usr/local/etc/certs/ alpn h2,http/1.1\n    mode http\n    option http-keep-alive\n\nTLS defaults are set globally:\nssl-default-bind-ciphersuites TLS_AES_128_GCM_SHA256:TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256\nssl-default-bind-options no-sslv3 no-tlsv10 no-tlsv11 no-tls-tickets\n\nPort 80 only redirects to HTTPS, except for Let's Encrypt challenges:\nacl letsencrypt-acl path_beg /.well-known/acme-challenge/\nhttp-request redirect scheme https code 301 unless letsencrypt-acl\nuse_backend letsencrypt-backend if letsencrypt-acl\n\nIn the HTTPS frontend I also set the usual forwarding headers:\nhttp-request set-header X-Real-IP %[src]\nhttp-request set-header X-Forwarded-Proto https\n\nAnd I add HSTS:\nhttp-response set-header Strict-Transport-Security \"max-age=31536000; includeSubDomains; preload\"\n\nNone of this is unusual, and that is fine. The interesting parts of an infrastructure are not always the parts that should be unusual.\nTwo caches, because the requests are different\nThe HAProxy configuration defines two caches:\ncache mediacache\n  total-max-size 128\n  max-object-size 10000000\n  max-age 3600\n  process-vary on\n  max-secondary-entries 12\n\ncache jsoncache\n  total-max-size 16\n  max-object-size 1000000\n  max-age 60\n  process-vary on\n  max-secondary-entries 12\n\nI keep media and ActivityPub JSON separate because they are not the same kind of traffic.\nThe media cache is larger and has a longer maximum age. In FediMeteo, this mostly means the shared avatar and a few static-looking objects. Since there is intentionally almost no media, the important cached object is requested very often and remains warm.\nThe JSON cache is smaller and short-lived. It is there for public ActivityPub GET requests, not to store federation state forever. A 60 second cache is enough to collapse many repeated requests that arrive close together in time, without pretending that ActivityPub responses should be treated like immutable files.\nThis distinction is important. Caching is not one decision. It is a set of small decisions about what a response means, who can see it, how often it changes, and what happens if it is served again.\nRecognizing media\nFor media, the ACL is based on file extensions:\nacl is_media path_end -i .jpg .jpeg .png .gif .webp .svg .ico .mp4 .webm .mp3 .ogg .wav .flac .mov .avi .mkv .m4v\n\nThen I store the result in a transaction variable:\nhttp-request set-var(txn.is_media) bool(true) if is_media\n\nThe cache lookup is straightforward:\nhttp-request cache-use mediacache if { var(txn.is_media) -m bool true }\n\nAnd on the response side:\nhttp-response set-header Cache-Control \"max-age=3600, public\" if { var(txn.is_media) -m bool true }\nhttp-response del-header Set-Cookie if { var(txn.is_media) -m bool true }\nhttp-response del-header Vary if { var(txn.is_media) -m bool true }\nhttp-response cache-store mediacache if { var(txn.is_media) -m bool true }\n\nThe  Cache-Control  header makes the intent explicit.  Set-Cookie  is removed because a public media object should not carry session information.  Vary  is removed because I do not want the same avatar to fragment into many cache entries because of harmless header differences.\nThis is aggressive only if removed from its context. In this service, with this media policy, it is a reasonable choice. FediMeteo is not serving private media under these paths. It is mostly serving the same public avatar over and over.\nFor the same reason, I clean the request before it reaches the backend:\nhttp-request del-header Authorization if { var(txn.is_media) -m bool true }\nhttp-request del-header Cookie        if { var(txn.is_media) -m bool true }\n\nI would not do this globally. I do it after deciding that the request is media. Scope is what makes these rules safe.\nThe result is exactly what I want: the shared avatar becomes an almost perfect cache object. Small, public, repeatedly requested, and served by HAProxy instead of snac.\nActivityPub JSON microcaching\nThe ActivityPub side starts from the  Accept  header:\nacl is_ap_json   req.hdr(Accept),lower -m sub application/activity+json\nacl is_ap_ldjson req.hdr(Accept),lower -m sub application/ld+json\nacl is_outbox    path_end /outbox\nacl is_get       method GET\nacl has_auth     req.hdr(Authorization) -m found\nacl has_cookie   req.hdr(Cookie) -m found\n\nThis part matters because ActivityPub uses content negotiation. The same path may return HTML to a browser and JSON to a remote instance. If the proxy pretends that a URL is always one thing, it will eventually cache the wrong representation.\nSo I only mark public ActivityPub GET requests as cacheable:\nhttp-request set-var(txn.is_activitypub) bool(true) if is_get !is_outbox is_ap_json !has_auth !has_cookie\nhttp-request set-var(txn.is_activitypub) bool(true) if is_get !is_outbox is_ap_ldjson !has_auth !has_cookie\n\nThere are several decisions here, all important.\nIt must be a  GET, because I am not caching deliveries or anything that changes state. It must not be  /outbox, because outbox collections are not the traffic I want to cache here. It must not have  Authorization, and it must not have cookies, because authenticated or user-specific requests do not belong in a shared public cache.\nThen the cache can be used and populated:\nhttp-request cache-use jsoncache if { var(txn.is_activitypub) -m bool true }\n\nhttp-response set-header Cache-Control \"max-age=60, public\" if { var(txn.is_activitypub) -m bool true }\nhttp-response cache-store jsoncache if { var(txn.is_activitypub) -m bool true }\n\nSixty seconds is short, but useful. Federation often creates small clusters of identical requests. A remote server fetches an actor, another fetches the same actor, something asks for the same object, something retries. I do not need to cache these responses for hours. I only need HAProxy to answer the second and third identical request during the same small burst.\nThis is microcaching in the most practical sense. It reduces repeated work without changing the nature of the service.\nStatic media paths\nThere is also a rule for static paths:\nacl is_short_path path_reg ^/[^/]+/s/\nhttp-request cache-use mediacache if is_short_path\n\nThis comes from the same observation that led me to cache snac media with nginx. snac uses static media paths, and those paths often represent the kind of public, repeatable traffic that should not consume backend threads if the proxy can serve it. I call them \"short\", not because they are, but because the first time I saw them, I thought the 's' stood for \"short\", not \"static\". The name just stuck.\nIn FediMeteo this is less central than on a normal social instance, because I deliberately do not use media except for the avatar and basic static objects. Still, the rule fits the general policy: let HAProxy handle repeatable edge work, and let snac spend its threads where they are actually needed.\nVary, but not without limits\nBoth caches have:\nprocess-vary on\nmax-secondary-entries 12\n\nI want HAProxy to process  Vary, because content negotiation is real, especially when ActivityPub is involved. But I also want variation to be bounded. If every slightly different header creates another cache entry, the cache becomes a complicated way to miss.\nFor media, I remove  Vary  before storing the response. A shared avatar does not need to vary by  Accept. For ActivityPub JSON, I am more careful because the representation matters.\nAgain, the important thing is not the number itself. It is the decision to make variation explicit and limited.\nSeeing whether it works\nDuring rollout, I like to expose a very small diagnostic header:\nhttp-response set-header X-Cache-Status HIT if !{ srv_id -m found }\nhttp-response set-header X-Cache-Status MISS if { srv_id -m found }\n\nThis is intentionally simple. If HAProxy selected a backend server, I call it a miss. If no backend server was selected, the response came from cache, so I call it a hit. It is not a complete observability system, but it is enough to answer the first question I usually have after changing a cache rule.\nDid this request reach snac?\nA test can be as simple as:\ncurl -I https://it.fedimeteo.com/path/to/avatar.png\ncurl -I https://it.fedimeteo.com/path/to/avatar.png\n\nThe second request should be a hit.\nFor ActivityPub JSON, the test must use the right  Accept  header:\ncurl -I \\\n  -H 'Accept: application/activity+json' \\\n  https://it.fedimeteo.com/some/activitypub/object\n\nAnd I also want to verify that cookies and authorization prevent public caching:\ncurl -I \\\n  -H 'Cookie: test=value' \\\n  -H 'Accept: application/activity+json' \\\n  https://it.fedimeteo.com/some/activitypub/object\n\ncurl -I \\\n  -H 'Authorization: Bearer fake' \\\n  -H 'Accept: application/activity+json' \\\n  https://it.fedimeteo.com/some/activitypub/object\n\nA cache that works should be visible. A cache that is invisible can be correct, but it can also be silently wrong. I prefer to know.\nCompression and operational paths\nHAProxy also handles gzip compression:\nfilter compression\ncompression algo gzip\ncompression type text/css text/html text/javascript application/javascript text/plain text/xml application/json application/activity+json\n\nThis keeps another common responsibility at the edge. The country instances can stay focused on snac and the forecast data, while HAProxy deals with client-facing compression for HTML, JSON, and ActivityPub responses.\nThere is also a local Prometheus exporter:\nfrontend prometheus\n  bind 127.0.0.1:8405\n  mode http\n  http-request use-service prometheus-exporter\n  no log\n\nAnd I keep internal operational paths, such as statistics and Grafana, handled before the hostname map. These are small details, but ordering matters. Special paths should be explicit and early. The hostname map is for FediMeteo routing, not for every internal tool I happen to expose behind the same proxy.\nWhat this changes in practice\nThe nice thing about this configuration is that none of its parts is particularly surprising.\nThe map keeps hostname routing manageable. The backend definitions keep each country isolated and limited. The static homepage avoids dynamic work for something that changes once per hour. The shared avatar gives HAProxy one very hot media object to serve directly. The media cache keeps public files away from snac. The JSON microcache absorbs short ActivityPub bursts. Header cleanup prevents useless variation. Connection reuse avoids unnecessary backend connection churn.\nBut all of this is only a longer way of saying one thing:\nfewer requests reach snac.\nThat is the metric I care about here.\nNot because snac is slow. If anything, FediMeteo exists in its current form because snac is efficient enough to make this kind of project possible on a very small VPS. But precisely because the whole architecture is small and pleasant, I do not want to waste resources where there is no need.\nThis is also consistent with the rest of the project. Forecasts are serialized by scripts. Updates happen every six hours. The homepage is regenerated hourly. Countries live in separate jails. Snapshots and backups are handled outside the application. No single component tries to be the entire system.\nHAProxy is just another small piece, but it sits in the right place to remove a lot of repeated work.\nCaveats\nThis configuration is not a universal HAProxy recipe for ActivityPub services.\nIt matches FediMeteo as it is now: almost no media, one shared avatar, static homepage, public forecasts, many small snac instances, and ActivityPub traffic that can benefit from a short public cache when there are no cookies or authorization headers.\nIf I decide one day to use media in forecasts, the media cache rules will need to be reviewed. If I use different avatars for each city or country, the cache will still work, but I will lose the very nice property of one shared, always-hot avatar. If ActivityPub responses become actor-dependent, public JSON caching must be reconsidered. If one country grows a very different traffic pattern from the others, it may deserve a different limit or policy.\nThis is why I do not like presenting configurations as magic. A good configuration is a written form of the assumptions behind a service. When the assumptions change, the configuration must change too.\nConclusion\nFediMeteo started as a small idea and became larger than I expected, but I still want it to feel small in the right ways. Small does not mean fragile. Small means understandable. It means that each part has a reason to exist, and that unnecessary work is removed before it becomes a problem.\nThe HAProxy layer follows this idea. It terminates TLS, routes hostnames through a map, reuses backend connections, serves the shared avatar from cache, microcaches public ActivityPub JSON, avoids authenticated and cookie-based traffic, and gives me a small diagnostic header to see what is happening.\nThere is no single brilliant directive here. There is only the usual work of matching infrastructure to reality.\nFediMeteo publishes weather forecasts as text and emoji. The homepage is static HTML updated every hour. The accounts share the same avatar because it is enough, and because it is better for the cache. Each country has its own snac instance in its own FreeBSD jail. HAProxy stands in front of them and tries, quietly, not to bother them unless it has to.\nI like this kind of infrastructure.\nNot because it is invisible, but because when it works well, it leaves very little to say.",
+      "id": "ea5b40bf44dd6d03fa11c40b5c7ae3e08f9e8ff8472bba93f7f21d8f98524cbd",
+      "ref_id": "3",
+      "recommendationScore": 95,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "深入探讨了FediMeteo项目在保持轻量化同时进行扩展的技术细节和优化策略。",
+      "reason": "提供了实用的服务器架构优化和性能调优经验，对构建和维护高效服务的独立开发者和运维人员价值巨大，技术深度和实用性极高。",
+      "tags": [
+        "系统架构",
+        "性能优化",
+        "独立开发",
+        "HAProxy",
+        "FreeBSD",
+        "自动化"
+      ]
+    },
+    {
+      "title": "Qwen 3.7 Preview",
+      "link": "https://twitter.com/Alibaba_Qwen/status/2056403591464984753",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-18T16:24:11.000Z",
+      "summary": "Article URL: https://twitter.com/Alibaba_Qwen/status/2056403591464984753\nComments URL: https://news.ycombinator.com/item?id=48181877\nPoints: 40\n# Comments: 10",
+      "id": "cd9ef72b9f38d44340795313f2c75a611fc7dc2e8ae10613f84d39338e0b70b4",
+      "ref_id": "4",
+      "recommendationScore": 90,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "阿里云通义千问大模型3.7版本预览，展示了最新的LLM技术进展。",
+      "reason": "直接关系到核心AI大模型技术的发展，具有极高的技术深度和实用性。",
+      "tags": [
+        "AI",
+        "大模型",
+        "LLM",
+        "通义千问",
+        "阿里云"
+      ]
+    },
+    {
+      "title": "Linux security mailing list 'almost unmanageable'",
+      "link": "https://www.theregister.com/security/2026/05/18/linus-torvalds-says-ai-powered-bug-hunters-have-made-linux-security-mailing-list-almost-entirely-unmanageable/5241633",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-18T12:20:50.000Z",
+      "summary": "Article URL: https://www.theregister.com/security/2026/05/18/linus-torvalds-says-ai-powered-bug-hunters-have-made-linux-security-mailing-list-almost-entirely-unmanageable/5241633\nComments URL: https://news.ycombinator.com/item?id=48178692\nPoints: 160\n# Comments: 76",
+      "id": "ad19ccda3e149deca0507eff1e2dc4895b227b94f7def0a4de9d466f1b517794",
+      "ref_id": "4",
+      "recommendationScore": 90,
+      "popularityScore": 49,
+      "priority": "high",
+      "comment": "Linus Torvalds指出AI驱动的bug猎手正使Linux安全邮件列表难以管理。",
+      "reason": "揭示了AI工具对大型开源项目协作和安全维护的意外挑战，具有重要的行业洞察和技术深度，高度契合AI和编程工具主题。",
+      "tags": [
+        "AI",
+        "Linux",
+        "开源",
+        "安全",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "Voice AI Systems Are Vulnerable to Hidden Audio Attacks",
+      "link": "https://spectrum.ieee.org/voice-ai-audio-attacks",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-18T11:51:05.000Z",
+      "summary": "Article URL: https://spectrum.ieee.org/voice-ai-audio-attacks\nComments URL: https://news.ycombinator.com/item?id=48178378\nPoints: 56\n# Comments: 16",
+      "id": "38981bfd3f1e2010e3cb71e897dba0d37ef9febaefbea2a03821d1f2472b9ea8",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 16,
+      "priority": "high",
+      "comment": "揭示了语音AI系统面临的隐藏音频攻击威胁，具有前瞻性。",
+      "reason": "紧跟AI前沿安全问题，技术深度和新颖性兼具，对AI生态影响深远。",
+      "tags": [
+        "AI",
+        "语音AI",
+        "安全",
+        "漏洞",
+        "机器学习"
+      ]
+    },
+    {
+      "title": "AI Data Centers Are Deeply Unpopular, Across the Political Spectrum",
+      "link": "https://news.gallup.com/poll/709772/americans-oppose-data-centers-area.aspx",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-18T14:59:59.000Z",
+      "summary": "Jeffrey M. Jones, Gallup:\nSeven in 10 Americans oppose constructing data centers for\nartificial intelligence in their local area, including nearly\nhalf, 48%, who are strongly opposed. Barely a quarter favor these\nprojects, with 7% strongly in favor. [...]\nThe data center question parallels the wording Gallup uses to ask\nabout local nuclear power plant construction. In the same\nMarch survey, 53% of Americans say they oppose building a nuclear\nenergy plant in their area, far less than the 71% opposed to data\ncenter construction. Since Gallup first asked the nuclear power\nplant question in 2001, the high point in opposition has been 63%.\nIt’s hard to overstate how unpopular this polling paints AI data centers. It’s just an absolute messaging and marketing disaster for the entire tech industry. Tellingly, the anti-AI-data-center sentiment is bipartisan:\n\n  \nThere are partisan differences, but only in slight degree. A savvy politician or party can grasp on this issue and carve out a broadly bipartisan anti-data-center, anti-AI message. US politics is so polarized in today’s era that the salience of this issue will not go unnoticed. The only thing the hyperscalars have on their side is money, but that fact is a significant factor in the general resentment toward the entire industry.\nTo that point, Ben Thompson suggests (in today’s subscriber-only Stratechery column) that the industry simply pay residents:\nInstead, the most obvious solution is the most crass: simply start\ngiving people money. If data centers are a resource for our AI\nfuture, then start paying people for that resource. If that data\ncenter up the road weren’t sold to my neighbors based on amorphous\ntax benefits that my local government may or may not spend\nappropriately, but rather were to result in a check in the mailbox\nevery year, I suspect you could get a lot more people on board!\nJust to put some numbers on this, the data center up the road was\nexpected to be 1.6 GW, which could generate around $3 billion in\nannual operator revenue. DeForest, the village it was to be built\nin, has around 11,500 people. You could pay every person in\nDeForest $10,000 a year for 3.8% of annual revenue grossed by the\ndata center — I bet that proposal would have been approved, and I\nbet that the operator could very easily pass those costs on to the\nactual data center users (it also highlights how relatively\npathetic QTS’s $50 million commitment was).\nI do get how ridiculous this sounds, but ridiculous is how we do\nthings in America.\nAfter mulling the idea for a bit this morning, I’d say it’s unusual, but not ridiculous. Money talks.\n ★",
+      "id": "a858eb6878ca2120558ee6923dc83fcca414224f5cba1e732959e87daff8cc9a",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "通过具体的民意调查数据揭示了AI数据中心在公众中极度不受欢迎的现状，指出潜在的公关危机。",
+      "reason": "文章提供了关于AI基础设施建设的最新且令人担忧的公众情绪数据，对AI行业决策者具有直接的警示和指导价值。",
+      "tags": [
+        "AI",
+        "数据中心",
+        "社会影响",
+        "公共关系",
+        "民意调查"
+      ]
+    },
+    {
+      "title": "Always Be Blaming",
+      "link": "https://matklad.github.io/2026/05/18/always-be-blaming.html",
+      "source": "matklad.github.io",
+      "publishedAt": "2026-05-18T00:00:00.000Z",
+      "summary": "Always Be Blaming\nMay 18, 2026\n\nA few tips on 4D-ing your code comprehension skills.\nI wrote on the importance of reading code before:\nLook Out For Bugs\nMy default approach to reading is “predictive”: I don’t actually read the code line by line. Rather,\nI try to understand the problem that it wants to solve, then imagine my own solution, and read the\n“diff” between what I have in my mind and what I see in the editor. Non-empty “diff” signifies\neither a bug in my understanding, or an opportunity to improve the code.\nThis is 2D reading, understanding a snapshot of code, frozen in time. This is usually enough to spot\n“this feels odd” anomalies, worthy of further investigation.\nIdeal code is memoryless — it precisely solves the problem at hand. Most real code is Markov —\nthe shape of the code at time T depends not only on the problem statement, but also on the shape\nof the code at time T - 1. The 3D step is to trace the evolution of code over time,\nWhere Do We Come From? What Are We? Where Are We Going?.\nThe step after that is to understand the why. What were we thinking back then, when we wrote this\ncode? It’s useful to have the “theory of mind” concept ready here. I personally learned the term way\ntoo late in my life, so let me give a short intro for today’s lucky 10 000.\nTheory of mind is the ability to imagine yourself in someone else’s skin. Not just in their shoes\n(“I certainly would have acted differently in that situation”), but with their mind (“I wouldn’t\nhave acted that way, but I get why they did”). This is something people learn. The experimental\nsetup here is to have a child in a room with toys, with a doll sitting near the opposite end of the\nroom, and asking the child “what does the doll see?”. Younger children describe the room from their\nperspective, older begin to intuit that doll’s perspective is different.\nSo this is the goal of reading code — understanding what the original author was thinking, and\nwhy.\nEnd of the mumbo-jumbo, some practical advice. First, read\nEvery line of code is always documented,\nit is very good.\nSecond, make sure it is effortless for you to find out how a given snippet of code evolved. This\nis harder than it seems! Just git blame isn’t an answer — mind the gap between the problem\nthat’s easy to solve, and the problem in need of solving.\ngit blame answers spatial question of “how each line appeared in this file”, because there’s a\nrelatively straightforward UI for this — annotate each line with a commit hash. But this is not\nthe question you are asking most of the time! You don’t care about the file! There’s a small snippet\nof code in the middle, and you want a temporal history of that.\nAs much as I\ndon’t like working in the browser\nGitHub’s web interface for blaming is probably better than what you get locally by default. It\nstarts with the y shortcut, which resolves a symbolic reference like\nhttps://github.com/tigerbeetle/tigerbeetle/blob/main/src/vsr/replica.zig\ninto the one which has a commit hash in the URL:\nhttps://github.com/tigerbeetle/tigerbeetle/blob/c54f613a2eb2a127a0ba212704e3fa988c42e5cb/src/vsr/replica.zig\nThis commit hash is critical, because it anchors the entire repository — if you open a different\nfile from the web UI, it will be shown as of that commit. This enables you to not myopically focus\non just the diff in question, but to absorb the entire context at that point in time.\nSo my usual web workflow is:\nctrl+f to find the line I am interested in\n\n\nb to toggle blame\n\n\nClick “blame prior to change” a couple of times, repeating ctrl+f to go back to the snippet\nI am curious about.\n\n\ncmd-click on the commits that are potentially relevant, pinning their commit hashes\nin the URL in new tabs.\n\n\nThen, from the commit page, “Browse files” button to then go and t to other files. Or,\ncmd+l to focus browser’s address bar, and s/commit/tree/ (or back!) as needed, to switch\nbetween diff and snapshot views.\n\n\nAgain, my goal here is not to annotate a diff on a file but rather to get a “virtual checkout” as of\nthe interesting commit.\nThis web approach is what I was using throughout most of my career, but I’ve finally found a way to\nreplicate it locally. The idea is to make blaming “in-place”. Instead of git blame annotating\nlines of code, I directly switch to a historical commit. I have the following\ndevil hydra of shortcuts:\n, b l blames line. It notes the $line the cursor is at, runs\ngit blame -L $line,$line\nto find $commit that introduced the line, and then runs\ngit switch --detach $commit\nto check it out. I have\na dedicated worktree for code archeology,\nso I don’t worry about trashing my work. There’s also a half-hearted attempt to maintain “logical”\ncursor position, but it doesn’t work very well. Is there some git command that tells me directly\n“what’s the equivalent of $file:$line:column in $sha-A for $sha-B?”\n, b p blames parent. Which is just switching to the parent commit of the current HEAD, what\n“blame before this change” does on GitHub (it works slightly differently because it assumes that\n, b l was the previous command)\n, b u undoes the last blaming operation, switching to the previous point. I really love that, on\nthe web, I can cmd-click to create an alternative branch of exploration. In theory, this is\nreplicatable locally, but I prefer to destructively mutate a single working tree on disk. A big\nreason for preferring in-place blame is that LSP, ./zig/zig build test, rg and the like just\nwork. That’s more important for me than the garden of forking paths, and undo is an acceptable\nwork-around.\nFinally, , b w copies GitHub link to the current commit and line, which I can paste into the\nbrowser. An enormous problem with modern version control landscape is that absolutely critical\ninformation in the form of code review comments is not a part of the git repository, and is locked\nin someone else’s proprietary database. I failed to\nsolve this problem in one\nweekend, and had to begrudgingly adapt. Opening the commit in a browser links you to the PR and its\ndiscussion as well.\nImplementing this blame workflow required\na bit of custom code.\nFeel free to use it, but beware that it’s somewhat crufty, especially around maintaining current\ncursor position. Making a production-ready version of this sounds like a fun project ;-)",
+      "id": "b7e45b85c59dfc3e311e2617b23682c3a174baedc2e805ffa52c783646a21eef",
+      "ref_id": "0",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "深度解析了通过'4D'视角理解和改进代码的方法。",
+      "reason": "提供了一种新颖且实用的代码阅读和调试策略，对提升开发者技能非常有价值，高度符合编程工具主题。",
+      "tags": [
+        "代码理解",
+        "软件开发",
+        "编程技巧",
+        "最佳实践"
+      ]
+    },
+    {
+      "title": "Cursor Introduces Composer 2.5",
+      "link": "https://twitter.com/cursor_ai/status/2056415413077233983",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-18T17:20:43.000Z",
+      "summary": "Article URL: https://twitter.com/cursor_ai/status/2056415413077233983\nComments URL: https://news.ycombinator.com/item?id=48182516\nPoints: 16\n# Comments: 1",
+      "id": "9ee743690d3b2d8010aa9682642adaa4dd3e1eaf9b8349fbd6c42a9a77d8bff8",
+      "ref_id": "2",
+      "recommendationScore": 85,
+      "popularityScore": 30,
+      "priority": "high",
+      "comment": "AI辅助编程工具Cursor发布新版本，进一步提升开发者效率。",
+      "reason": "将AI与编程工具结合，直接服务于开发者，具有极高的实用性和关注度。",
+      "tags": [
+        "AI",
+        "编程工具",
+        "开发者工具",
+        "Cursor AI"
+      ]
+    },
+    {
+      "title": "Show HN: Files.md – Open-source alternative to Obsidian",
+      "link": "https://github.com/zakirullin/files.md",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-18T13:33:33.000Z",
+      "summary": "Article URL: https://github.com/zakirullin/files.md\nComments URL: https://news.ycombinator.com/item?id=48179677\nPoints: 325\n# Comments: 183",
+      "id": "f505d7638bdde36ec46a7ff49b61b10b7c35eab7dacd40ec579d3c4c93122372",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 95,
+      "priority": "medium",
+      "comment": "一个值得关注的Obsidian开源替代方案，主打本地优先和简洁。",
+      "reason": "对于追求本地存储和开源解决方案的用户而言，这是一个实用的笔记工具新选择，且有较高社区关注度。",
+      "tags": [
+        "独立开发",
+        "开源",
+        "生产力工具",
+        "笔记"
+      ]
+    },
+    {
+      "title": "Inside Anduril and Meta’s quest to make smart glasses for warfare",
+      "link": "https://www.technologyreview.com/2026/05/18/1137412/inside-anduril-and-metas-quest-to-make-smart-glasses-for-warfare/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-05-18T16:01:39.000Z",
+      "summary": "The defense-tech company Anduril has shared new details about the augmented-reality headset for the military it’s prototyping with Meta, including a vision for ordering drone strikes via eye-tracking and voice commands. Quay Barnett, who leads the efforts as a vice president at Anduril following a career in the Army’s Special Operations Command, says his fundamental…",
+      "id": "2a9530d67f4c550cef42ba94d0fd2ceede3abe6aa18827a04fcb2560ccbc90fe",
+      "ref_id": "2",
+      "recommendationScore": 85,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "深入探讨了Meta与Anduril合作研发军用AR智能眼镜的尖端技术，具有高度新颖性和战略意义。",
+      "reason": "揭示了AI和AR技术在军事领域的前沿应用，内容极具创新性和讨论价值。",
+      "tags": [
+        "AR",
+        "Military Tech",
+        "Meta",
+        "Anduril",
+        "Automation",
+        "Innovation",
+        "AI Application"
+      ]
+    },
+    {
+      "title": "‘AI, “Humanity”, and Dr. Manhattan Syndrome’",
+      "link": "https://www.personfamiliar.com/p/ai-humanity-and-dr-manhattan-syndrome",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-18T16:21:35.000Z",
+      "summary": "Jim Prosser, back in February:\nLet me be clear about causation, because the AI parallel only\nworks if we’re honest about it. The communications failures didn’t\nkill nuclear power. The disasters did. But two decades of talking\nover the public meant the industry had built precisely zero\nreservoir of human-scale trust to draw on when the real crises\nhit. Nuclear pioneer Alvin Weinberg admitted in 1976 (three years\nbefore Three Mile Island) that “the public perception and\nacceptance of nuclear energy appears to be the question that we\nmissed rather badly.” After TMI and Chernobyl confirmed the\npublic’s worst suspicions, over a hundred planned U.S. reactors\nwere cancelled.\nThe entire essay is very good, quite thought provoking. But it really shines in drawing the parallels to nuclear power a generation ago, and the need to communicate the benefits to ordinary people in ways that they actually care about. Regarding OpenAI co-founder Greg Brockman:\nBut think about what the people behind those numbers are actually\nworried about. They’re not anxious about AI in the abstract, per\nse, but its implications. They’re anxious about their job, their\nkid’s homework, their creative work getting scraped without\npermission, their privacy. Human-scale concerns that are specific,\npersonal, and grounded in the daily texture of individual lives.\nAnd Brockman’s response to this very specific, very human anxiety\nis to ... float further up into the philosophical stratosphere\nwhile writing a mega-checks to a partisan PAC and explaining it in\nthe language of civilizational mission. It’s like a doctor hearing\na patient who says, “My knee hurts,” who then delivers a lecture\non the elegance of the musculoskeletal system. The patient doesn’t\nneed you to appreciate the beauty of human biology. They need you\nto look at their damn knee.\n ★",
+      "id": "2747ea48d2afde723511d3412b378a801ab2f89751a40fff8d5cd9a69fe4e9b6",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "引人深思地探讨了AI传播策略与公众信任问题，借鉴了核能发展的历史教训。",
+      "reason": "文章深入分析了AI行业在公众沟通方面的潜在风险，并提供了有价值的历史类比，对行业发展具有重要警示意义。",
+      "tags": [
+        "AI",
+        "社会影响",
+        "公共关系",
+        "历史类比"
+      ]
+    },
+    {
+      "title": "Don't call yourself a Software Engineer, you are an AI Enabled Engineer. ",
+      "link": "https://idiallo.com/blog/you-are-an-ai-enabled-engineer-now?src=feed",
+      "source": "idiallo.com",
+      "publishedAt": "2026-05-18T12:00:00.000Z",
+      "summary": "I can only imagine what it's like learning the skill of programming in this day and age. What does an average college class look like? What is the CS professor teaching? And students, how do you reconcile what you are learning vs the current job market?\nI know if I was a student today, I would at least attempt to make connections on LinkedIn to prepare for a future where I would need those connections to get a job. But LinkedIn is not a real place. It might have been at one point. But it certainly isn't today. Everybody is an AI Engineer/Leverager/Prompter/Professional. If I wasn't in the industry, it would be real confusing. I see my ex-colleagues right there on LinkedIn, gainfully employed, yet still felt the need to update their titles. \nWe've worked together, I know their current role. Or at least I thought I knew. Now, that same role leverages AI in a way that has \"enabled\" them. The software engineers though, their role has remained the same while the entire marketing department has switched to AI first. \nThe software engineer is being left behind. The whole company is moving fast, yet the person writing the code using Claude, Cursor, Codex, Copilot, that person remains a mere Software Engineer. In some cases, this person even calls himself a Software Developer. \nIt reminds me of the days we used to call ourselves programmers. We reluctantly accepted the title of software engineer, feeling that imposter syndrome knowing that our code isn't as reliable as it looks. Patrick Mckenzie wrote something short of a manifesto to convince us to market ourselves as Software Engineers.\nYes, we were just building CRUD applications for our employers, maybe an expense tracker and accounting software here and there. It didn't feel very impressive. But companies didn't care about the technical elegance of our code. They were just happy to get such a valuable product that helped them save money and increase revenue.\nIt's not hard to see how an engineer can create business value in the real world. Software is eating the world after all, and everything runs on software today. When you call yourself a programmer, you undersell your competence and the value you create. You are a problem solver, you are a business contributor, and you directly affect the company's bottom line.\nWe don't need convincing anymore. We are Software Engineers. \nBut I think we missed the point of Patrick's essay. Maybe we stopped reading a little too early. Maybe we didn't read anything past the title. While I think his argument for not calling ourselves programmers is convincing, I think the meat of it was in the career advice he offered. What he was trying to convince us is that the outcome of our work is what's important, not the form. \nTo grow in this field of tech, the programming language and framework we used had little relevance. Instead, he talked about attending conferences and meetups, blogging and participating online, helping people, building professional relationships. These are things software engineers still avoid today and then wonder why they have a hard time getting the next job. He spoke on the value of communication as a skill, salary negotiation, navigating politics at work. Only those who read past the title benefitted from this advice. I know I did!\nBut Patrick is nowhere to be found in this new landscape we find ourselves in. AI is eating the world now. The workplace is transformed and there are no signs of ever going back. What is the career advice for the year 2026? If you are on LinkedIn, you must have noticed everyone is changing their work title. Is that what we are supposed to do? Did I miss the memo? I didn't read Patrick's latest manifesto, if there are any. But let me get ahead and suggest a few AI enabled titles to get you started. \nIf you were a backend engineer, you are now an AI Platform engineer. If you worked as DRE, you switch to Decision Intelligence Pipeline. If you ever updated the cron job, well, my friend, now you know about Autonomous Agents. If you had the word blockchain in your title, it's even easier. You can make a one to one replacement from blockchain to AI. /s\nI'm still working on that list, but I don't think it will have the same impact as going from programmer to software engineer. The title was just semantics. The real value remains in the career advice. And I think Patrick's advice remains just as effective today as it did so many years ago. If you want to grow as a software engineer, don't worry about mastering React. Instead learn the fundamentals of programming and you will have no trouble navigating the different environments. Experience comes from working anyway.\nDon't stop there. Meet people. Join those conferences, blog about your experience, help others, make those connections with people. In fact, send emails and reply to emails. Hop on a call. You will be surprised how much easier it is to get an interview when you aren't application #234 in a list of one thousand. In fact, you can close this tab and read Patrick's essay. Pretend that the title is \"Don't call yourself a Software Engineer.\"\nPs: Patrick was not harmed in the making of this article. He wasn’t even consulted.\nPs2: I understand many won't read past this title as well, but that's just filtering at work.",
+      "id": "ace28ac54f78216233f8bd1af11cc3e9b9cd53ba163cd7d6581422b3ccedf940",
+      "ref_id": "4",
+      "recommendationScore": 85,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "探讨了AI时代软件工程师角色和称谓的演变，揭示了行业内对“AI工程师”头衔的困惑。",
+      "reason": "文章深入剖析了AI对软件工程职业道路的实际影响和认知偏差，对从业者和学习者具有重要的指导意义。",
+      "tags": [
+        "AI",
+        "职业发展",
+        "软件工程",
+        "行业趋势"
+      ]
+    },
+    {
+      "title": "Something’s Rotten in the State of macOS Icon Design",
+      "link": "https://blog.jim-nielsen.com/2026/rotten-macos-icon-design/",
+      "source": "blog.jim-nielsen.com",
+      "publishedAt": "2026-05-18T19:00:00.000Z",
+      "summary": "This is an iconic observation:\nIf you put the Apple icons in reverse it looks like the portfolio of someone getting really really good at icon design\n\n\nThis isn’t, however, just the story of Apple’s Creator Studio icons. It’s the unfolding story of icon design across the entire macOS platform.\nFor example, take a look at some of Apple’s other apps like iMovie:\n\n\n\nOr Remote Desktop:\n\n\n\nApple sets the standard (and the rules) for how icons look on the Mac. Wherever they go, so goes the ecosystem — and they’re taking the entire ecosystem along down with them.\nIt’s fast becoming the case that if you put any Mac app’s icons in reverse, it looks like the portfolio of someone getting really, really good at icon design.\nEven Microsoft — not exactly a bastion of design — starts to look pretty decent with their icons the further back you go. For example, with OneNote, the app icon’s progression looks like it went something like this: \n“I made this with AI”\n“I tried to make the AI one, but by hand myself”\n“I don’t need to be constrained by this squircle”\n“Hey, I’m getting better at this”\n\n\n\nSome 3rd-party apps continue to fight a good fight, even as Apple’s definition of what an icon should be — or what’s even possible — shrinks all around them.\nApps like Capo (remember, these are reverse chronological):\n\n\n\nOr BBEdit:\n\n\n\nOr Fantastical:\n\n\n\nOr Cot Editor:\n\n\n\nEveryone’s being put in a box squircle. The imposition is real.\nI don’t blame any of the 3rd-party app makers. Their designs have to play by Apple’s rules (or end up in icon jail). World-class designers like Matthew Skiles or The Iconfactory are still out there striving for excellence, even as they’re hamstrung by the Mac’s latest rules.\nWhen it comes to icon design on the Mac, the sky is no longer the limit: Apple’s icon design sensibilities are. They set the examples of what world-class icon design should look like, but what do you do when the examples are no longer exemplary?\nEmail\n      · Mastodon ·\n\n      Bluesky",
+      "id": "e26bfc747d21da3b765ade44772050b2ac0ad703cb85e33fa88f0353431aa10a",
+      "ref_id": "2",
+      "recommendationScore": 85,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "对macOS图标设计趋势的深刻批判，指出其审美退化。",
+      "reason": "紧密关联Apple生态和产品设计，观点犀利且有充分例证，易引发读者共鸣和讨论，具有很高的时效性和关注度。",
+      "tags": [
+        "macOS",
+        "图标设计",
+        "Apple",
+        "UI/UX",
+        "产品设计"
+      ]
+    },
+    {
+      "title": "Show HN: InsForge – Open-source Heroku for coding agents",
+      "link": "https://github.com/InsForge/InsForge",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-18T15:40:42.000Z",
+      "summary": "Hi HN, I'm Hang, cofounder of InsForge (YC P26). InsForge is an open-source Heroku for AI coding agents: a backend platform designed for coding agents to deploy, operate, and debug end-to-end. Open source under Apache 2.0 (https://github.com/InsForge/InsForge). Quick demo here (https://youtu.be/7Bax5qz0IfM).\nWe started InsForge because we just wanted our Claude Code to handle all the backend / infra stuff for us, instead of us jumping between dashboards doing manual config, or copy paste logs and docs back to agents.\nWe first tried creating a folder with bunch of .MD files, and installing MCPs like Supabase, Vercel, GitHub, Context7. But soon we found MCPs have their own problems: (a) Tools get pre-loaded into context, before agents even do anything (b) bad design, payloads are returning 10k+ tokens, and (c) a lot of stuff still can’t be done by MCP: e.g. telemetry and configs.\nSo we think, because coding agents are so good at CLI, why not just put everything in CLI and create Skills to teach them how to use it?\nThat’s InsForge: 1 command to install our CLI + Skills, coding agents can run the entire backend platform [1].\nWe started with authentication and database, but we kept adding more primitives we wanted, so now we have: - frontend hosting - backend servers (microVM based) [2] - database - auth - storage - LLM model router - cron jobs - realtime - edge functions - vector\nWe have other features to make coding agents more reliable like real backend engineers:\n- backend branching [3]: agents will 100% mess up, like deleting your database. So inspired by Neon, we branch the entire backend (DB, auth, storage, functions, schedules). Agents work on the branch, you review diffs and then decide to merge or discard.\n- server telemetry: agents can read logs, CPU, memory, disk to find spikes and root causes themselves.\n- debug agent [4]: every project gets a dedicated debug agent. So your coding agent can ask questions like “why deployment fail?”, the debug agent will run diagnoses, find the root causes and propose fixes, then send the answer back.\n- backend advisor [5]: scans your backend daily for security and performance issues, proposes fixes. Then propose remediations, and sends to your coding agent.\nGive it a spin on InsForge cloud :https://insforge.dev, or read our code here: https://github.com/InsForge/InsForge.\nWe're a small team and reading every comment. Tell us what's good, what sucks, what's missing. We love feedback :)\n[1] https://insforge.dev/blog/insforge-skills-cli\n[2] https://insforge.dev/blog/insforge-custom-compute\n[3] https://insforge.dev/blog/backend-branching\n[4] https://insforge.dev/blog/introduce-debug-skills\n[5] https://insforge.dev/blog/backend-health-dashboard\nComments URL: https://news.ycombinator.com/item?id=48181342\nPoints: 11\n# Comments: 2",
+      "id": "2703601b0a860f40231568fbf7dfca0b52eac35f82d80af0eb77df4a7fe955bc",
+      "ref_id": "0",
+      "recommendationScore": 81,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "提出了一个为AI编码代理打造的Heroku式开源后端平台，旨在解决现有工具的痛点。",
+      "reason": "针对AI编码代理的基础设施痛点提供了创新且实用的开源解决方案，技术深度和新颖性俱佳，符合AI和编程工具优先主题。",
+      "tags": [
+        "AI",
+        "编程工具",
+        "开源",
+        "自动化",
+        "基础设施"
+      ]
+    },
+    {
+      "title": "Enough with the AI FOMO, go slow-mo, says Domo CDO",
+      "link": "https://www.theregister.com/ai-ml/2026/05/17/enough-with-the-ai-fomo-go-slow-mo-says-domo-cdo/5240840",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-18T12:49:54.000Z",
+      "summary": "Article URL: https://www.theregister.com/ai-ml/2026/05/17/enough-with-the-ai-fomo-go-slow-mo-says-domo-cdo/5240840\nComments URL: https://news.ycombinator.com/item?id=48179029\nPoints: 119\n# Comments: 63",
+      "id": "93edc927eb75d713dea749905c890a2370581c250b1047f4a22943d15ace5c52",
+      "ref_id": "3",
+      "recommendationScore": 80,
+      "popularityScore": 40,
+      "priority": "high",
+      "comment": "一位CDO对AI热潮中“错过恐惧”心态的冷静反思。",
+      "reason": "为企业和个人在AI浪潮中提供了宝贵的战略性思考和务实建议，具有较高的实用性且紧扣AI主题。",
+      "tags": [
+        "AI",
+        "策略",
+        "商业",
+        "管理"
+      ]
+    },
+    {
+      "title": "Define ‘Boom’ Please",
+      "link": "https://www.nytimes.com/2026/04/21/business/how-apple-became-a-4-trillion-company-under-tim-cook.html?unlocked_article_code=1.jVA.MV8m.0JfUOJOME5WH",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-18T17:17:02.000Z",
+      "summary": "While I’m linking to pieces on Apple’s CEO transition, here’s an annoying tidbit from Tripp Mickle and Karl Russell’s piece for The New York Times, under the headline “Tim Cook Was Very, Very Good at Making Money” (gift link):\nEven though it has largely missed out on the artificial\nintelligence boom now lifting the sales of its technology peers,\nthe company’s profits and stock value continue to grow.\nWhich peers have had their “sales lifted” by AI? There’s Nvidia (now the most valuable company in the world). But Apple doesn’t compete directly with Nvidia. What makes Apple different from its peer companies isn’t that the others are profiting from AI while Apple is not, but rather that Apple, seemingly alone, is not funnelling its free cash flow to Nvidia to build out massive AI datacenters.\nApple might wind up missing out on something huge as a result of its decision to stay out of this race. But it’s nonsense to say they’ve already missed out on a boom. To date it’s a money pit.\n ★",
+      "id": "ed4bae4814dab5bdd132dd6864704dfe4c80f49de2e6c25c800699f8c87f592f",
+      "ref_id": "3",
+      "recommendationScore": 80,
+      "popularityScore": 78,
+      "priority": "high",
+      "comment": "批判性思考AI“繁荣”并辩护Apple策略，视角独到且引人深思。",
+      "reason": "结合AI和Apple两大热门主题，提供了对当前AI热潮的理性反思，具有较高讨论价值。",
+      "tags": [
+        "AI",
+        "Apple",
+        "宏观经济",
+        "商业策略",
+        "批判性思维"
+      ]
+    },
+    {
+      "title": "The Alaska Permanent Fund as Loose Precedent for AI Data Center ‘UBI’ Payments",
+      "link": "https://en.wikipedia.org/wiki/Alaska_Permanent_Fund",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-18T15:34:47.000Z",
+      "summary": "Wikipedia:\nThe Alaska Permanent Fund (APF) is a constitutionally established\npermanent fund and sovereign wealth fund managed by a state-owned\ncorporation, the Alaska Permanent Fund Corporation (APFC). It was\nestablished in Alaska in 1976 by Article 9, Section 15 of the\nAlaska State Constitution under Governor Jay Hammond and Attorney\nGeneral Avrum Gross. [...] As of 2019, the fund was worth\napproximately $64 billion that has been funded by oil and mining\nrevenues and has paid out an average of approximately $1,600\nannually per resident (adjusted to 2019 dollars). The main use for\nthe fund’s revenue has been to pay out the Permanent Fund Dividend\n(PFD), which many authors portray as the only example of a basic\nincome in practice. [...]\nThe PFD is a Basic Income in the form of a resource dividend. Some\nresearchers argue, “It has helped Alaska attain the highest\neconomic equality of any state in the United States... And,\nseemingly unnoticed, it has provided unconditional cash assistance\nto needy Alaskans at a time when most states have scaled back aid\nand increased conditionality.”\nAlaska is not exactly a left-wing state. Again, money talks.\n ★",
+      "id": "4e4322c1c979170f7fafe823def11bc75cf886c472a78899babbec5f97f7b79d",
+      "ref_id": "1",
+      "recommendationScore": 80,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "创新性地探讨了AI数据中心收入作为UBI支付来源的可能性，借鉴了阿拉斯加永久基金模式。",
+      "reason": "文章提出了一个前瞻性的社会经济模型，以应对AI带来的财富分配挑战，提供了独特的视角。",
+      "tags": [
+        "AI",
+        "UBI",
+        "经济影响",
+        "社会政策",
+        "数据中心"
+      ]
+    },
+    {
+      "title": "Elon Musk has lost his lawsuit against Sam Altman and OpenAI",
+      "link": "https://techcrunch.com/2026/05/18/elon-musk-has-lost-his-lawsuit-against-sam-altman-and-openai/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-18T17:38:22.000Z",
+      "summary": "Article URL: https://techcrunch.com/2026/05/18/elon-musk-has-lost-his-lawsuit-against-sam-altman-and-openai/\nComments URL: https://news.ycombinator.com/item?id=48182754\nPoints: 9\n# Comments: 0",
+      "id": "ac84b4fce6945f7112b2f2d484c68448e79bd028e2134e3ea47e7f720885fd7a",
+      "ref_id": "0",
+      "recommendationScore": 75,
+      "popularityScore": 20,
+      "priority": "high",
+      "comment": "AI行业的重要法律进展，揭示了OpenAI与Musk之间的早期冲突。 ",
+      "reason": "作为AI领域的关键新闻，它影响着行业格局，但文章本身信息密度可能不高。",
+      "tags": [
+        "AI",
+        "行业新闻",
+        "法律",
+        "OpenAI"
+      ]
+    },
+    {
+      "title": "Researchers Wanted Preschool Teachers to Wear Cameras to Train AI",
+      "link": "https://www.404media.co/researchers-wanted-preschool-teachers-to-wear-cameras-to-train-ai/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-18T13:26:34.000Z",
+      "summary": "Article URL: https://www.404media.co/researchers-wanted-preschool-teachers-to-wear-cameras-to-train-ai/\nComments URL: https://news.ycombinator.com/item?id=48179569\nPoints: 50\n# Comments: 13",
+      "id": "206cede3d98250bd46116a749c92d958f02424c8bc460e25d06320ee34560db0",
+      "ref_id": "1",
+      "recommendationScore": 75,
+      "popularityScore": 20,
+      "priority": "high",
+      "comment": "探讨了AI训练中关于隐私和伦理的争议性案例。",
+      "reason": "揭示了AI数据收集可能带来的社会伦理困境，对AI从业者和政策制定者有重要警示意义，符合AI主题优先级。",
+      "tags": [
+        "AI",
+        "伦理",
+        "隐私",
+        "数据收集"
+      ]
+    },
+    {
+      "title": "The foundations of a provably secure operating system (PSOS) (1979) [pdf]",
+      "link": "http://www.csl.sri.com/users/neumann/psos.pdf",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-18T09:40:51.000Z",
+      "summary": "Article URL: http://www.csl.sri.com/users/neumann/psos.pdf\nComments URL: https://news.ycombinator.com/item?id=48177300\nPoints: 93\n# Comments: 57",
+      "id": "15e02333aa4acbe207fbd0eb8c6ec175eee5cade1995dfa33d4a0fa991a375e4",
+      "ref_id": "4",
+      "recommendationScore": 75,
+      "popularityScore": 39,
+      "priority": "medium",
+      "comment": "1979年关于可证明安全操作系统的基础性论文，具有历史和理论价值。",
+      "reason": "为理解现代操作系统安全提供了深厚的理论基础和历史视角，对学术和系统设计有启发意义。",
+      "tags": [
+        "操作系统",
+        "安全",
+        "计算机科学",
+        "理论",
+        "历史",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "What to expect from Google this week",
+      "link": "https://www.technologyreview.com/2026/05/18/1137439/what-to-expect-from-google-this-week/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-05-18T17:35:43.000Z",
+      "summary": "This story originally appeared in The Algorithm, our weekly newsletter on AI. To get stories like this in your inbox first, sign up here. When Google opens its doors tomorrow for its annual developer conference, I/O, it will do so as a clear third place in the foundation model race. A year ago, at Google I/O…",
+      "id": "a2739142706dc5c11b0bd1549bf8d5cd434c907501378fe23105025248ab3184",
+      "ref_id": "0",
+      "recommendationScore": 75,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "及时概述了Google I/O大会的预期，特别关注AI领域。",
+      "reason": "提供了对行业重要会议的预告和AI领域的最新动态，有助于读者保持信息同步。",
+      "tags": [
+        "AI",
+        "Google",
+        "Industry News",
+        "Tech Event"
+      ]
+    },
+    {
+      "title": "Jury Rejects Elon Musk’s Claim Against Sam Altman in Unanimous Verdict",
+      "link": "https://www.nytimes.com/live/2026/05/18/technology/openai-trial-verdict-altman-musk?unlocked_article_code=1.jVA.Cc2V.IwYuu2r4SJfQ",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-18T17:53:33.000Z",
+      "summary": "Cade Metz and Mike Isaac, reporting for The New York Times (gift link):\nA nine-person jury found that Elon Musk did not bring his lawsuit\nagainst OpenAI and Sam Altman until after the expiration of the\nthree-year statute of limitations.\nMr. Musk filed his suit against the $730 billion artificial\nintelligence start-up in the summer of 2024, but the jury found\nthat he was aware of the behavior discussed in his complaint\nagainst OpenAI as far back as 2021.\nThis update quoting Judge Yvonne Gonzalez Rogers’s “poetic” jury instructions is just lovely:\n“A jury reflects the attitudes and mores of the community from\nwhich it is drawn,” she said, paraphrasing another judge. “It\nlives only for the day and does justice according to its limits.\nThe group of jurors who are drawn to hear a case make a decision\nand then melt away. It is not present the next day to be\ncriticized. It is the one governmental agency that has no\nambition. It is as human as the people who make it up.”\n ★",
+      "id": "37dbbd4578761d7c55d4aa2abfdf9a77b2d7d5f950268443233dd14c1bc859ce",
+      "ref_id": "1",
+      "recommendationScore": 75,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "AI领域大佬法律纠纷的及时报道，兼具人文色彩。",
+      "reason": "关注AI核心人物和公司动态，虽然技术内容不多，但行业关注度极高。",
+      "tags": [
+        "AI",
+        "法律",
+        "OpenAI",
+        "Elon Musk",
+        "Sam Altman"
+      ]
+    },
+    {
+      "title": "Project Glasswing: what Mythos showed us",
+      "link": "https://blog.cloudflare.com/cyber-frontier-models/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-18T13:37:11.000Z",
+      "summary": "Article URL: https://blog.cloudflare.com/cyber-frontier-models/\nComments URL: https://news.ycombinator.com/item?id=48179732\nPoints: 148\n# Comments: 57",
+      "id": "4c9b12981d46eb0accba7c0705f13a7fe32f087ae0dbe0a2e6b6c31dd510950e",
+      "ref_id": "4",
+      "recommendationScore": 74,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "Cloudflare关于“Project Glasswing”及其“Mythos”模型发现的博文，可能涉及网络安全前沿技术和模型。",
+      "reason": "来源于知名技术公司，主题涉及网络安全前沿模型（URL暗示与AI模型相关），具有较高的技术深度和新颖性，符合AI和自动化优先主题。",
+      "tags": [
+        "网络安全",
+        "AI",
+        "模型",
+        "云计算",
+        "基础设施"
+      ]
+    },
+    {
+      "title": "We stopped AI bot spam in our GitHub repo using Git's –author flag",
+      "link": "https://archestra.ai/blog/only-responsible-ai",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-18T15:24:19.000Z",
+      "summary": "Article URL: https://archestra.ai/blog/only-responsible-ai\nComments URL: https://news.ycombinator.com/item?id=48181125\nPoints: 218\n# Comments: 89",
+      "id": "ee755b8e53cee38cef2ad65c3a02d4746d927e98711a6c6bfdbd3883edd59eb5",
+      "ref_id": "1",
+      "recommendationScore": 71,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "分享了如何利用Git的--author标志有效阻止GitHub仓库中的AI机器人垃圾信息。",
+      "reason": "提供了一个针对当前AI时代新问题的高度实用且巧妙的解决方案，技术细节结合实用性，且广受关注，符合AI和编程工具优先主题。",
+      "tags": [
+        "AI",
+        "编程工具",
+        "GitHub",
+        "自动化",
+        "安全"
+      ]
+    },
+    {
+      "title": "Anthropic Acquires Stainless",
+      "link": "https://www.anthropic.com/news/anthropic-acquires-stainless",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-18T17:01:21.000Z",
+      "summary": "Article URL: https://www.anthropic.com/news/anthropic-acquires-stainless\nComments URL: https://news.ycombinator.com/item?id=48182281\nPoints: 57\n# Comments: 31",
+      "id": "7708d4e1b8241c35bf3d4d794f7c2a98b7695fccc8dbeccfc31c982211b9ac31",
+      "ref_id": "3",
+      "recommendationScore": 70,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "AI巨头Anthropic收购Stainless，预示行业整合与发展趋势。",
+      "reason": "虽然是行业新闻，但反映了AI生态的重要变化，对关注AI领域的人有参考价值。",
+      "tags": [
+        "AI",
+        "行业新闻",
+        "并购",
+        "Anthropic"
+      ]
+    },
+    {
+      "title": "Learn Harness Engineering",
+      "link": "https://walkinglabs.github.io/learn-harness-engineering/en/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-18T12:17:04.000Z",
+      "summary": "Article URL: https://walkinglabs.github.io/learn-harness-engineering/en/\nComments URL: https://news.ycombinator.com/item?id=48178652\nPoints: 42\n# Comments: 1",
+      "id": "bda265006f5bf00ed30d00cef942720426f2bb50109111c277f395280f0cffb6",
+      "ref_id": "0",
+      "recommendationScore": 70,
+      "popularityScore": 7,
+      "priority": "medium",
+      "comment": "深入的硬件线束工程学习资源，适合特定领域工程师。",
+      "reason": "内容专业性强，对从事硬件或嵌入式开发的工程师有较高实用价值。",
+      "tags": [
+        "工程",
+        "硬件",
+        "学习资源",
+        "线束工程",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "‘John Appleseed’",
+      "link": "https://om.co/2026/04/20/john-appleseed/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-18T17:34:46.000Z",
+      "summary": "Here’s a great take from last month re: the Cook/Ternus transition, from Om Malik:\nWhen he took over from Steve Jobs in August 2011, Apple’s market\ncapitalization was around $350 billion. As of this morning, it\nsits near $4 trillion. That is more than a 1,000 percent increase.\nRevenue went from $108 billion in fiscal 2011 to over $416 billion\nin fiscal 2025, almost four times bigger. Apple under Cook became\nthe most valuable company in human history, multiple times over.\nIt built Services into a $100-billion-a-year business.\nSure, Cook inherited the greatest product portfolio and the\ngreatest brand in modern business. How many times have we seen\npeople screw it up? He ran it with operational ruthlessness. He is\nno product visionary, and neither is Ternus. They are not Steve.\nTim has run Apple for fifteen years, through a pandemic, two trade\nwars, a supply chain reordering, and the slow grinding shift from\nhardware-only to hardware-plus-services-plus-silicon. Most\nimportantly, he didn’t mess it up.\nServices, as a whole, is now as big a business for Apple as the entirety of the company was when Cook took the helm. And “not screwing it up” is an enormous accomplishment. Success is always precarious. Keeping a good thing going is inordinately difficult. It only looks easy compared to getting the good thing off the ground in the first place.\n ★",
+      "id": "63138cb05bc15721ad7c895f3526c427665070ae8102ec1a4e413485e15b0f9a",
+      "ref_id": "2",
+      "recommendationScore": 70,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "深入分析Tim Cook领导下的Apple成就与挑战，强调其卓越运营能力。",
+      "reason": "提供对Apple核心领导层和商业策略的独到见解，对关注Apple生态的读者有价值。",
+      "tags": [
+        "Apple",
+        "Tim Cook",
+        "商业战略",
+        "公司管理",
+        "Apple Services"
+      ]
+    },
+    {
+      "title": "The Download: Musk v. Altman week 3, and Trump’s tech trading",
+      "link": "https://www.technologyreview.com/2026/05/18/1137407/the-download-musk-altman-trial-trump-tech-trading/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-05-18T12:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. Musk v. Altman week 3: Musk and Altman traded blows over each other’s credibility. Now the jury will pick a side. In the final week of the Musk v. Altman trial,…",
+      "id": "cd0f35b40792ebca03199f38f7a82189ea23e7fc924856272d89482318c48fa1",
+      "ref_id": "3",
+      "recommendationScore": 60,
+      "popularityScore": 80,
+      "priority": "medium",
+      "comment": "报道了科技界知名人物之间的法律纠纷和行业热点，偏向于商业和八卦。",
+      "reason": "提供了对科技界重要人物动态的更新，但技术深度较低，更侧重于行业新闻和人物八卦。",
+      "tags": [
+        "Industry News",
+        "Personalities",
+        "Elon Musk",
+        "Sam Altman",
+        "OpenAI"
+      ]
+    },
+    {
+      "title": "Weekly Update 504",
+      "link": "https://www.troyhunt.com/weekly-update-504/",
+      "source": "troyhunt.com",
+      "publishedAt": "2026-05-18T03:46:55.000Z",
+      "summary": "It's a hot topic, the old \"pay or don't pay\" for hackers not to leak your data. Since recording this a few days ago, we've had Grafana go with the \"no pay\" approach, and I've seen a raft",
+      "id": "773fb46b066eb8a9254955c13fe58778e7ed5b8d5093d00f6df056578b607ea2",
+      "ref_id": "0",
+      "recommendationScore": 60,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "文章简要提及了数据泄露赎金支付的行业热点和Grafana的应对策略。",
+      "reason": "虽然内容片段较短，但其涉及的网络安全与企业策略决策是IT行业普遍关注的实用话题。",
+      "tags": [
+        "网络安全",
+        "数据泄露",
+        "企业策略",
+        "IT管理"
+      ]
+    },
+    {
+      "title": "1024000^2 Blocks, 2B2T Minecraft Server World Download Project, and Discoveries",
+      "link": "https://github.com/2b2tplace/1m_release",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-18T14:13:07.000Z",
+      "summary": "Article URL: https://github.com/2b2tplace/1m_release\nComments URL: https://news.ycombinator.com/item?id=48180204\nPoints: 92\n# Comments: 47",
+      "id": "1e5006b57841d8aad11ab5bdc9df96e8d6f2d8d97674e90c37b235ab1ba68948",
+      "ref_id": "2",
+      "recommendationScore": 59,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "一个关于2B2T Minecraft服务器世界大规模下载与发现的GitHub项目，展示了处理巨量数据的能力。",
+      "reason": "虽然技术上涉及大规模数据处理，但主题过于小众，与优先关注的AI、编程工具等领域关联度较低，实用性受限。",
+      "tags": [
+        "游戏",
+        "数据工程",
+        "大规模系统",
+        "开源项目"
+      ]
+    },
+    {
+      "title": "Iran Starts Bitcoin-Backed Ship Insurance for Hormuz Strait",
+      "link": "https://www.bloomberg.com/news/articles/2026-05-18/iran-starts-bitcoin-backed-shipping-insurance-for-hormuz-strait",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-18T17:25:54.000Z",
+      "summary": "Article URL: https://www.bloomberg.com/news/articles/2026-05-18/iran-starts-bitcoin-backed-shipping-insurance-for-hormuz-strait\nComments URL: https://news.ycombinator.com/item?id=48182592\nPoints: 24\n# Comments: 8",
+      "id": "e8ed0461a018771c62f7f5a1119984cdf51ba934a6905d91f8ca9e05f2562fef",
+      "ref_id": "1",
+      "recommendationScore": 35,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "探讨了比特币在国际贸易保险中的新应用。",
+      "reason": "主题新颖但与核心科技博客的优先级不高，实用性较为小众。",
+      "tags": [
+        "加密货币",
+        "区块链",
+        "国际贸易",
+        "金融科技"
+      ]
+    },
+    {
+      "title": "'We mould trees to grow into the shape of chairs'",
+      "link": "https://www.bbc.co.uk/news/articles/cvg0yy3gp71o",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-18T13:01:18.000Z",
+      "summary": "Article URL: https://www.bbc.co.uk/news/articles/cvg0yy3gp71o\nComments URL: https://news.ycombinator.com/item?id=48179183\nPoints: 150\n# Comments: 37",
+      "id": "f75a13a6e40207df4f0f0ba64c7e06fc8301e3a9a2e5790d26ebcba96c7dc8ab",
+      "ref_id": "2",
+      "recommendationScore": 30,
+      "popularityScore": 41,
+      "priority": "low",
+      "comment": "介绍了一种独特的树木塑形技术，将自然与设计结合。",
+      "reason": "虽然主题新颖有趣，但与科技博客的关注点关联度较低，不符合核心主题优先级。",
+      "tags": [
+        "设计",
+        "可持续性",
+        "创新"
+      ]
+    },
+    {
+      "title": "How I Use My Index 01 + Production Update",
+      "link": "https://repebble.com/blog/how-i-use-my-index-01-production-update",
+      "source": "ericmigi.com",
+      "publishedAt": "2026-05-18T00:00:00.000Z",
+      "summary": "TL;DR Production Update - behind schedule but on track How I use my Index 01 - watch the video for demos! Product design philosophy - why…",
+      "id": "6a324559fa5c7d2519bd9b437277df15e270a03285f2aec6497b9f42d82c388c",
+      "ref_id": "3",
+      "recommendationScore": 30,
+      "popularityScore": 25,
+      "priority": "low",
+      "comment": "简短的个人产品更新，内容过于简略，缺乏深度和普遍兴趣。",
+      "reason": "文章仅为作者个人产品的生产更新和使用介绍，信息量低，对普遍读者实用性不强。",
+      "tags": [
+        "产品设计",
+        "独立开发",
+        "个人更新"
+      ]
+    },
+    {
+      "title": "How to be inspired without copying",
+      "link": "https://www.joanwestenberg.com/how-to-be-inspired-without-copying/",
+      "source": "joanwestenberg.com",
+      "publishedAt": "2026-05-17T22:33:32.000Z",
+      "summary": "In 1713, Johann Sebastian Bach sat down at his desk in Weimar and began copying out concertos by Antonio Vivaldi. He transcribed them note for note, in his own hand, working through at least nine of the L'estro armonico concertos like a medical student dissecting a cadaver. The",
+      "id": "edf3c92180b89d1b72764c4e7421176a8eb314e394d5d55e162913e93071a8fe",
+      "ref_id": "1",
+      "recommendationScore": 30,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "以历史案例探讨了如何在受启发的同时避免抄袭的创作理念。",
+      "reason": "内容富有启发性，但与科技博客的核心技术主题关联度较低，更偏向泛创意领域。",
+      "tags": [
+        "创造力",
+        "灵感",
+        "学习方法",
+        "设计思维"
+      ]
+    },
+    {
+      "title": "Ted Turner’s Small Apartment Above the Former CNN Center",
+      "link": "https://www.youtube.com/watch?v=OUIVs58oyPI",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-18T16:52:03.000Z",
+      "summary": "Simultaneously audacious and humble, a combination that epitomizes Ted Turner’s entire life. (Shades, too, of Walt Disney’s apartment above the fire department at Disneyland.)\n ★",
+      "id": "42c70b30ef52a866115504d43d1ae201edb51a4d94992db443bd51a9855a22f9",
+      "ref_id": "4",
+      "recommendationScore": 15,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "关于Ted Turner的简短轶事，与科技博客关注主题关联度极低。",
+      "reason": "内容不符合科技博客的关注主题，缺乏技术深度、新颖性或实用性。",
+      "tags": [
+        "人物轶事",
+        "非技术"
+      ]
+    },
+    {
+      "title": "Travel notes: RubyKaigi Hakodate",
+      "link": "https://bernsteinbear.com/blog/travel-notes-rubykaigi-hakodate/?utm_source=rss",
+      "source": "bernsteinbear.com",
+      "publishedAt": "2026-05-18T00:00:00.000Z",
+      "summary": "I just got back from a three and a half week trip to Japan. It was the longest\ntrip I have ever been on (aside from studying abroad in Germany, which felt\ndifferent). I made the following wild circuit with only a backpack and a\nduffel:\nTokyo\nToyama\nKanazawa\nNara ish\nIto\nHakodate\nNikko\nMashiko\nKaruizawa\nTokyo\nThis trip was split into three parts: time with my immediate family, going to a\nconference, and then time with my partner. They were all great and also I am\nglad to be home.\nI’ll post my abbreviated travel notes here, including activity and food\nrecommendations.\nPart one\nWe started in Tokyo but we were only there for about 40 hours. We focused our\ntime mostly on arts and crafts: we did a kintsugi workshop, spent time at an\nartists cooperative, and then did a lot of walking around. This was a good\nintro to the trip, because everyone kept waking up at 4am and crashing at 7pm\ndue to the jet lag. 4am wakeup makes for nice morning walks to 7-Eleven.\nI brought my family to T’s Tantan in Tokyo\nStation because I’m vegetarian and it’s otherwise hard to find ramen that\napproaches kosher in Japan. It continues to be great and I really appreciate\nhaving a steady vegetarian option available. Many years ago when I visited\nTokyo there was a place that served a delicious tomato-based vegetarian ramen,\nbut I hear it has since permanently closed. Bummer.\nWe took the shinkansen to Kanazawa. I love the train. It’s fast. It’s quiet. You\ncan eat your snacks on board and gaze out the window as the world whizzes by.\nIt’s nice.\nWe toured a soy sauce factory (meh; they don’t let you in the room where the\nmagic happens) and the old town (pretty!) before finally eventually ending up\nat our small hotel in Toyama: Satoyama Auberge Maki No Oto. I highly recommend\nthis hotel. It is beautiful, the staff is lovely, the food was excellent, and\nthey were very accomodating of me being vegetarian.\nWe continued on to Toyama, which is a port town. We got to talking with an\nolder local guy who told us all about his favorite local spots. We learned\nafter leaving that this guy has extraordinarily fancy taste and they were all\neither Michelin starred or at least Michelin rated and with a lead time of\nmonths. We opted to instead go to a local brewery, which had a ghost pepper\nbeer (!) and pizza.\nWe then moved on via train to Osaka, where we transferred to a car to head\n(eventually) to our hotel in the hills near Nara. We toured the Daimon sake\nbrewery. They explained every little thing about the process, which was\nespecially interesting to me, as I’ve done some small amount of homebrewing and\nI bake. They sounded similar. We had a tasting and even got to talk to\nDaimon-san. I recommend going.\nI also recommend the Akame 48 waterfalls walk/hike, which has some exquisite\nfalls, and Murou Art Forest. They had some really wonderful installations.\nMy brother and I parted ways from the rest of my family in Osaka: they headed\nfurther west and we headed north to Itō on the Izu peninsula. We got a surprise\nperfectly clear view of Fuji along the way.\nIt’s beautiful there. They don’t seem to welcome foreigners in a lot of their\nrestaurants (we were turned away several times) but one place had a guy who\nenthusiastically welcomed us in. We ended that evening enjoying a some food and\na beer while also being stared at by a 300lb completely tattooed guy. It was a\nlittle unsettling but we left without incident.\nMy brother and I made our way to Tokyo for the day before his flight and before\nmy train north to Hakodate for RubyKaigi. I once again did that thing where I\nwalked around in humid 80F heat with a large backpack and pants and was\nextraordinarily warm toward the end of the day. After about a liter of Aquarius\non the train north I felt better.\nPart two\nI stayed at Yunokawa Prince Hotel\nNagisatei which I would like to\nespecially call out for having an enormous, diverse, and very vegetarian\nfriendly breakfast. Every morning I got to try new and tasty things and even\nfeel full after. It was great.\nHakodate is beautiful in the spring. I arrived at peak cherry blossom season\nand Goryokaku, their star shaped fort, is absolutely decked out in cherry\nblossoms. It is also moderately swarmed by tourists (in this case, three cruise\nships). It didn’t feel over-crowded though. I enjoyed eating at The Bear King\nwhich had a vegetarian friendly option.\nThe next day was the committer meeting. I don’t remember a ton from it other\nthan people talking at length about the semantics of deep freezing an object\n(do you freeze its class? its class’s superclass? …?). I picked up my badge\nand also got to check out my colleague Chris Salzberg’s bar\nSOLENOID! It’s a neat spot. I\nheaded out to go find some dinner.\nThis is about when I got a message on my phone that there was going to be an\nearthquake, so I walked back into the bar and said “hey, did you get this?”\njust before everything started shaking. It was the biggest earthquake I’ve\nexperienced, but I was metaphorically not too shaken up. Then we got the\ntsunami warning.\nChris’s bar is already something like 8 meters above sea level and at the foot\nof Mt Hakodate. With the city sirens going off and the police directing traffic\nwith batons, though, I decided my best bet was just to march directly up the\nmountain to get more elevation. Since the tsunami wasn’t scheduled to arrive\nfor about 20 or 30 minutes and my hotel was across the sea-level part of town,\nI parked myself on a little concrete post. Chris found me eventually.\nSomeone told us that there was a middle school offering refuge, so we went and\nhung out on the side of the gymnasium. They were really nice about it.\nOn Wednesday, the conference started. It was really well signed and organized.\nMy usual complaint with conferences is that there’s nothing to eat for\nvegetarians (or that we get mashed with the gluten-free people and each group\nonly gets a salad and bad bread) but that did not happen! They had really\nstellar vegetarian bento. They had a lot of leftovers toward the end of lunch\nso I even went and got a second. This was about when I started freaking out\nbecause my speaking slot was approaching and I wasn’t yet feeling my talk.\nNormally when I give a talk, I get up in front of people and I pace and\ngesticulate and productively complain and throw in some fun anecdotes and the\naudience, one way or another, ends up learning about JITs at scale, or Scheme\nsemantics, or something. It’s what I’d done for my little lunch talk at Brown\ntwo weeks prior. I even titled that talk One must imagine compiler engineers\nhappy so there was plenty of room for educational complaining. But this\nRubyKaigi talk was in front of an enormous crowd and toward a more general\naudience than I was used to addressing. The slides did not feel like they were\nflowing until about twenty minutes before my talk.\nIn the end it went alright. I realized about 40 seconds in that I had way\ntoo much content so I ended up speaking rapidly for 30 minutes straight,\ncompletely unaware of the audience (which you can’t see anyway because of the\nlights). I only really noticed people when I made a dumb six-seven joke and\nAaron laughed.\nThe rest of the conference I was able to relax and enjoy other people’s talks.\nI got some good hallway track in, too. I think there’s a good group of people\nwho are interested in Ruby tracing (for example, Perfetto in\nZJIT) so maybe\nwe will make something happen.\nWe had a nice small dinner at Yasai Bar Miruya, which was vegan (!) and had\nsome nice sake. The host was very friendly, too.\nI nerd-sniped John and J into implementing a VM for the Universal\nMachine. This was a daunting\nhomework assignment back in undergrad but it was a fun project later in life.\nS joined toward the end of the conference. She’s also vegetarian so we got some\nreally excellent vegetarian ramen at MAIDO\nRamen.\nFinally, S and I headed south on the shinkansen for Nikko.\nPart three\nNikko is small, beautiful, and a tourist day-trip town. Dinner closes early.\nShops close earlier. Since we were staying there we had to make sure to track\ndown and visit the one or two vegetarian places before they shuttered.\nS and I, along with J and J, took the bus up from Nikko, up the windiest\nswitchbacks, to the Kegon Falls. We were going to take a boat across the lake,\nbut the water level was too low for the dock on the other side, so we ended up\nhalf hiking and half taking a bus. Then we continued our hike through the\nSenjōgahara Marshland (beautiful), to the Yudaki Cascades (lovely), which also\nhad a surprise restaurant and ice cream shop at the base! It’s called Yutaki\nRest House. After some great\n(vegetarian friendly!! wow!!) udon, we marched up the waterfall and around Yuno\nLake at the top to Yumoto Onsen. In order to make the last reasonable bus back\nto town, we just enjoyed putting our feet in the foot bath.\nOne day was rainy. In the evening, J and I thought it would be fun to continue\nour Universal Machine implementations. As Norman Ramsey would say, “my\nimplementation is 90 lines long and runs sandmark in under six seconds.”\nWe also enjoyed doing a tour of the shrines right above Nikko. The shrines are\nresplendent against the backdrop of forest.\nPro bus tip: you can either pay by IC card or credit card. No need to grab a\nticket if you do that.\nS and I shipped our bags (thanks, Yamato) before continuing on to the small\ntown of Moka, the staging area for our big pottery festival day. Unfortunately,\nthere was no good way to get there: there was no reasonable series of trains\nand no taxi would take us. Ultimately we ended up taking the train to\nUtsonomiya and catching the long local bus to Moka. About twenty minutes into\nthis ride, in the middle of nowhere, bus nearly empty, the bus driver pulled\nover and ran over to us looking kind of panicked. He asked where we were going\nand was visibly relieved when we said Moka. I suppose we are not the usual\nriders. Very nice of him.\nUpon arrival, S introduced me to CoCo ICHIBANYA, which is also super vegetarian\nfriendly. I loved it. We ate really well before walking to our tiny hotel.\nWe did not really know what to expect from the Mashiko pottery festival. The\ninternet said it would be crowded and to arrive early, so we got up at 6:30am\nfor estimated 7am departure on the tiny train from Moka to Mashiko. On most\ntrains you can pay with an IC card but we were out in the sticks so we asked\nthe only other guy on the platform how to pay for the train. He said he had no\nidea and that this was his first time here. When the train showed up completely\npacked to the gills and we had to (politely) push onto it, we started to\nrealize that this was The Event and it was going to be mayhem.\nAlso, fun fact: the way the Moka train payment works is that you grab a\nlittle ticket from the train, and, upon arrival, wait in line to present your\nticket to two very overwhelmed looking people at a table, who charge you, and\nyou pay in cash.\nOnto Mashiko: the festival was packed. There’s pottery everywhere the eye can\nsee. There are tents and there are full buildings. It varies in quality and\nartistry from fine to jaw-droppingly spectacular. You could completely stock\nyour kitchen from this fair alone and it would even be cost-effective. The main\nbummer for us is that we had to get pottery safely back home. We limited\nourselves to a reasonable assortment but we really wanted to buy a beautiful\npainted 20 inch plate with a bird on a branch.\nAfter a ton of walking around, we took another long long bus back to Utsonomiya\nand continued onto Karuizawa. We didn’t know what to expect from Karuizawa but,\nhaving been, I could probably concisely describe it as “Aspen for people from\nTokyo”. It was… fine. We loved our hotel, Tsuruya Ryokan. The manager was\nvery excited when we borrowed a Studio Ghibli DVD from their collection.\nWe continued on to Tokyo, our final stop. We our usual tour of stationery\nstores and bakeries—the bread was something to write home about (har har). We\nenjoyed a (vegetarian!! friendly!!) kaiseki meal at Hyoki Shabu-shabu\nGinza before enjoying some live\nmusic at Rocky Top.\nWe also recommend Jikasei MENSHO\nfor vegetarian ramen.\nBakery checklist:\nBOUL’ANGE NIHONBASHI (check! good croissants)\nBricolage bread & co (check! good everything)\nBrasserie Viron Marunouchi\nBeaver Bread\nBricolage bread & co.\nBartizan Bread Factory\nGontran Cherrier Tokyo Aoyama Shop\nComme’N Tokyo\nShiomi Bakery\nBRØD\nThe Little BAKERY\n<!–\nhttps://www.jocjapantravel.com/kanto-tokyo-bakeries/\n–>\nWe had an uneventful and reasonably easy trip home. Whew. Long post for a long\ntrip. See you next year in Miyazaki!",
+      "id": "a5381fa418385c56513bbdd9f909cf23a98ec28cf4d42c67eb8878c912d4fc85",
+      "ref_id": "4",
+      "recommendationScore": 15,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "一篇个人日本旅行笔记，顺带提及了RubyKaigi。",
+      "reason": "内容主要为旅行见闻和餐饮推荐，缺乏科技深度和实用性，与科技博客的核心主题相关性极低。",
+      "tags": [
+        "旅行",
+        "生活",
+        "日本",
+        "RubyKaigi (提及)"
+      ]
+    },
+    {
+      "title": "When Kierkegaard Got Cancelled",
+      "link": "https://www.plough.com/en/topics/faith/discipleship/when-kierkegaard-got-cancelled",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-18T12:03:10.000Z",
+      "summary": "Article URL: https://www.plough.com/en/topics/faith/discipleship/when-kierkegaard-got-cancelled\nComments URL: https://news.ycombinator.com/item?id=48178510\nPoints: 46\n# Comments: 15",
+      "id": "0f949ea8744bbc9f524050576178daa3e8dfa91f2c552e60be2211cdf6f92165",
+      "ref_id": "1",
+      "recommendationScore": 5,
+      "popularityScore": 14,
+      "priority": "low",
+      "comment": "一篇关于哲学家克尔凯郭尔的文化评论，与科技主题无关。",
+      "reason": "内容不属于科技博客关注范畴，与设定主题优先级不符。",
+      "tags": [
+        "哲学",
+        "文化评论",
+        "非科技"
+      ]
+    },
+    {
+      "title": "The Signals That Matter – MIT Insider’s Panel",
+      "link": "https://www.technologyreview.com/2026/05/18/1137430/the-signals-that-matter-mit-insiders-panel/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-05-18T16:57:44.000Z",
+      "summary": "",
+      "id": "49b9a8240f2bc3dc8fdbe895fc510fd00b6d441b02d074700151155aee4fdf55",
+      "ref_id": "1",
+      "recommendationScore": 5,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "文章内容为空，无法进行有效评估。",
+      "reason": "内容缺失，不具备发布价值。",
+      "tags": [
+        "Missing Content"
+      ]
+    },
+    {
+      "title": "The just-say-no engineer was a ZIRP phenomenon",
+      "link": "https://seangoedecke.com/the-just-say-no-engineer-was-a-zirp-phenomenon/",
+      "source": "seangoedecke.com",
+      "publishedAt": "2026-05-18T00:00:00.000Z",
+      "summary": "",
+      "id": "f8e4a9641d5cfcd42181821153155c8b90c6233d8a63c6851af9f7de751f1066",
+      "ref_id": "0",
+      "recommendationScore": 5,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "文章内容缺失，无法进行有效评估。",
+      "reason": "缺乏文章具体内容，无法判断其技术深度、新颖性、实用性或信息密度。",
+      "tags": [
+        "内容缺失",
+        "无法评估"
+      ]
+    },
+    {
+      "title": "Actually, democracy dies in H.R.",
+      "link": "https://www.nytimes.com/2026/05/18/world/americas/actually-democracy-dies-in-hr.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-18T14:04:26.000Z",
+      "summary": "https://archive.ph/RKltX\nComments URL: https://news.ycombinator.com/item?id=48180091\nPoints: 182\n# Comments: 125",
+      "id": "bc1016405bad60cdd0dd8aa137560e0bad7a2048fbb15df6bf3b4b80e0bca426",
+      "ref_id": "3",
+      "recommendationScore": 0,
+      "popularityScore": 80,
+      "priority": "low",
+      "comment": "一篇关于人力资源对“民主”影响的社会评论文章，与技术主题无关。",
+      "reason": "文章主题完全脱离本科技博客的关注范围，不具技术价值和相关性。",
+      "tags": [
+        "社会评论",
+        "人力资源",
+        "组织管理"
+      ]
+    },
+    {
+      "title": "Glaucous-winged Gull, Brown Pelican, Snowy Egret, Canada Goose",
+      "link": "https://simonwillison.net/2026/May/18/sighting-362781627/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-05-18T14:51:00.000Z",
+      "summary": "",
+      "id": "a7f49c269fbfd31056a3c91df80cf327b8224663a33d77c89c61dc0338636069",
+      "ref_id": "4",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "文章标题和内容均与科技主题无关且内容缺失，无法评估。",
+      "reason": "内容与科技博客主题完全不符，且文章内容为空，无发布价值。",
+      "tags": [
+        "Irrelevant",
+        "Missing Content"
+      ]
+    }
+  ]
+}
