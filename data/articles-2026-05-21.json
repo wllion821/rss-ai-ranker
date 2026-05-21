@@ -1,0 +1,936 @@
+{
+  "dailySummary": "AI代理成焦点：Google Gemini新代理、Anthropic Claude编程能力、Runtime沙盒代理登场。开源社区探讨AI贡献规范。",
+  "articles": [
+    {
+      "title": "Show HN: I Dedicated 4 Years to Mastering Offline Password Cracking",
+      "link": "https://news.ycombinator.com/item?id=48221896",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-21T12:56:37.000Z",
+      "summary": "Hi everyone,\nI am Bojta Lepenye, and first of all, I want to thank the core developers of Hashcat. In my experience, it is quite literally the most capable tool available for offline password cracking across a wide range of use cases.\nI have spent the last 4 years (from age 14 to 18) extensively working with Hashcat and the tools surrounding it, and I have documented what I have learned throughout that time (since January 18, 2022) in my first book. During that period, I also had to continuously update and rewrite major sections as the field evolved. One example was the introduction of GPU support for Argon2 and other memory-hard password hashing algorithms, which significantly changed some cracking workflows.\nMy passion for this book, or its “quick starter,” if you will, came from an ethically conducted penetration test I performed with full authorization at my school. This is something I am both hesitant and quite proud to acknowledge.\nAt the beginning, I simply wrote down everything I had learned from YouTube videos and online blogs. However, not long after starting my project, I realized I practically knew nothing about password security, and that small 10 to 15 pages I had written would never be enough if someone was looking for a professional guide to cracking passwords.\nThe other main driving force behind the book was the fact that while researching online, browsing forums, reading academic papers and white papers, watching videos, exploring blogs, inspecting presentations, and examining infographics, I did not find a single source that comprehensively covers and explains everything one needs to understand about offline password cracking. Literally. Not one.\nTherefore, I continued my research and learned about password hashing algorithms, the security properties of hash functions, advanced hash cracking techniques, password analysis, attack optimization, and much, much more.\nFrom the very beginning, I wanted to share this knowledge with the community because having access to a resource like this would have helped me tremendously when I first started learning password cracking.\nI sincerely hope this work will be useful to both beginners and experienced professionals alike, and I look forward to hearing your thoughts and feedback.\nI have also put together a little video to give you a little sneak peek into it. It is on Google Drive. It is the official domain, and you do not need to download anything. Here it is: https://drive.google.com/file/d/13LeysSZO8Mx-LGKt8UQjUGBKOYH...\nIf you are interested, the book is now publicly available on Amazon, and can be read for free with a Kindle Unlimited subscription: https://www.amazon.com/dp/B0GX36XRCD\nComments URL: https://news.ycombinator.com/item?id=48221896\nPoints: 116\n# Comments: 6",
+      "id": "2a6ed5118c5144427009ffb7ef09e7e24a9b4255b71c88a652ed14d64d35c97f",
+      "ref_id": "3",
+      "recommendationScore": 100,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "作者分享了四年精通离线密码破解的经验，并撰写成书，技术深度和实用性极高。",
+      "reason": "文章展示了个人在编程工具（Hashcat）领域的深度钻研和实践，对网络安全从业者和对技术精进有兴趣的读者极具参考价值。",
+      "tags": [
+        "网络安全",
+        "密码破解",
+        "Hashcat",
+        "编程工具",
+        "独立开发",
+        "安全技术",
+        "Show HN"
+      ]
+    },
+    {
+      "title": "FatGid: FreeBSD 14.x kernel local privilege escalation",
+      "link": "https://fatgid.io/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-21T12:15:02.000Z",
+      "summary": "Article URL: https://fatgid.io/\nComments URL: https://news.ycombinator.com/item?id=48221415\nPoints: 60\n# Comments: 25",
+      "id": "d32b2288e8ed2614b713bafbbc9b3a74fd00772bcf3978699a59421bc00c6baa",
+      "ref_id": "4",
+      "recommendationScore": 99,
+      "popularityScore": 30,
+      "priority": "high",
+      "comment": "一篇关于FreeBSD 14.x内核本地提权漏洞的深度技术分析报告。",
+      "reason": "提供了极其专业和深入的操作系统安全漏洞细节，对于研究内核安全、漏洞利用的专家来说是宝贵的学习资料。",
+      "tags": [
+        "FreeBSD",
+        "内核",
+        "安全漏洞",
+        "提权",
+        "操作系统",
+        "网络安全",
+        "技术分析"
+      ]
+    },
+    {
+      "title": "Indexing a year of video locally on a 2021 MacBook with Gemma4-31B (50GB swap)",
+      "link": "https://blog.simbastack.com/indexed-a-year-of-video-locally/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-21T14:01:37.000Z",
+      "summary": "Article URL: https://blog.simbastack.com/indexed-a-year-of-video-locally/\nComments URL: https://news.ycombinator.com/item?id=48222733\nPoints: 126\n# Comments: 46",
+      "id": "0da4f54ed5d4332d9e220230f3e5060436f3864dbafc6fbab5ca9751992f9555",
+      "ref_id": "4",
+      "recommendationScore": 97,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "结合AI与Apple生态的深度实践，展示了消费级硬件运行大型AI模型的潜力。",
+      "reason": "完美契合AI和Apple生态两大高优先级主题，技术深度和新颖性突出，对AI本地化部署有重要参考价值。",
+      "tags": [
+        "AI",
+        "Apple生态",
+        "本地部署",
+        "大模型",
+        "性能优化",
+        "Gemma"
+      ]
+    },
+    {
+      "title": "Launch HN: Runtime (YC P26) – Sandboxed coding agents for everyone on a team",
+      "link": "https://www.runtm.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-21T16:07:13.000Z",
+      "summary": "Hey HN, We're Gus and Carlos from Runtime (https://runtm.com). We're building infra that lets your whole team (including non-engineers) ship with Claude Code, Codex, and other agents without engineering having to handhold every session.\nAfter Mentum (YC S21) was acquired, I personally shipped 4 full-stack products in 3 months using coding agents. When I tried to roll the same workflow out to the rest of the team, it fell apart: Most PRs were unmergeable slop - Every repo required an engineer doing one-off local setup. - Skills and context lived in one person's head. - There was no safe way for a PM to touch a real codebase without risking a bad deploy or a secrets leak.\nCarlos comes from building agentic reconciliation systems at Modern Treasury and had a similar experience when letting his support team use devin.\nWe ended up building internal background agent infra but it quickly became a nightmare to mantain and develop. We built Runtime so you don't have to do this kind of thing.\nRuntime work like as follows. Engineering defines the context once: system instructions, skills, and scoped integrations installable via CLI, mise, npm, or any package manager. Then Runtime snapshots your full running environment including multi-service Docker Compose setups, Kafka, Redis, seeded DBs, so it comes up in milliseconds with every server already running.\nWe orchestrate across sandbox providers like E2B, Daytona, EC2 or self-hosted K8s depending on your setup. Secrets are injected through our managed proxy so they never touch the agent directly, and guardrails run at the infrastructure level: command allow/deny lists, network egress controls, and RBAC scoped per human and per agent. Every session also gets a shareable preview URL, so internal builds go from sandbox to the rest of the team without needing production access.\nRuntime works with whichever agent your team already uses: Claude Code, Codex, Cursor, Copilot, Gemini, Devin. You can trigger sandboxes from our web app, CLI, Slack, Linear, GitHub, or API.\nOne of our customers built an on-call inspector that wires PagerDuty, Sentry, and their repo so when an alert fires, the agent finds the cause and opens a PR with a unit test before anyone gets paged. Another runs a finance agent in a private Slack channel pulling from Stripe, NetSuite, and Snowflake to run reconciliations in minutes with source rows attached.\nA fintech unicorn and several YC scaleups are live on Runtime, including a few teams who had built similar infrastructure internally and handed it to us to take over.\nThe core is open source at https://github.com/runtm-ai/runtm. Hosted version is live at https://app.runtm.com, free tier included. We're charging a flat platform fee plus compute, no token markup.\nCheck our demo: https://www.youtube.com/watch?v=wLwj__aEEh4\nWe'd love to hear how you're thinking about the infra for letting more people across your org use coding agents without creating chaos!\nComments URL: https://news.ycombinator.com/item?id=48225040\nPoints: 18\n# Comments: 5",
+      "id": "de2dc94754e15807b0fc92e93515782a380b0e0f00f6b8580477530650f5621e",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "Runtime通过提供沙盒编码代理解决团队协作中AI代码生成的痛点，极具创新性和实用性。",
+      "reason": "深度结合AI、编程工具和团队自动化，提出独特的解决方案，直接解决实际开发中的难题，符合多个高优先级主题。",
+      "tags": [
+        "AI",
+        "编程工具",
+        "自动化",
+        "团队协作",
+        "独立开发",
+        "产品发布"
+      ]
+    },
+    {
+      "title": "Anthropic’s Code with Claude showed off coding’s future—whether you like it or not",
+      "link": "https://www.technologyreview.com/2026/05/21/1137735/anthropics-code-with-claude-showed-off-codings-future-whether-you-like-it-or-not/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-05-21T14:30:45.000Z",
+      "summary": "The vibes were strong at Code with Claude, Anthropic’s two-day event for software developers in London that kicked off on May 19, the same day as Google’s I/O in Palo Alto. (A coincidence, not a flex, Anthropic staffers assured me.) “Who here has shipped a pull request in the last week that was completely written…",
+      "id": "60d606ddcd2b09c8adba4a2429fe263da4ed4872aa089145d8c6dc70513d2706",
+      "ref_id": "0",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "深入探讨Anthropic的Code with Claude活动，揭示AI对未来编程的深刻影响。",
+      "reason": "主题高度契合AI和编程工具优先级，内容新颖且对开发者具有极高实用价值，技术深度和新颖性突出。",
+      "tags": [
+        "AI",
+        "Programming",
+        "Claude",
+        "Software Development",
+        "Future Tech"
+      ]
+    },
+    {
+      "title": "WSJ: ‘Google Unveils New Gemini AI Agent for Personal Tasks’",
+      "link": "https://www.wsj.com/tech/ai/google-unveils-new-gemini-ai-agent-for-personal-tasks-b8093197?st=BFmPev",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-21T01:05:14.000Z",
+      "summary": "Katherine Blunt and Rolfe Winkler, reporting for The Wall Street Journal from Google I/O (gift link):\nGoogle is supercharging its Gemini artificial-intelligence model\nto become more competitive in the era of agentic AI.\nThe company has started rolling out what it calls Gemini Spark, a\npersonal agent it says is capable of navigating a user’s digital\nlife and acting on his or her behalf. The agent will work across\nmany of Google’s products and run on the company’s cloud\ninfrastructure. [...]\nThe company has been testing Spark with a limited number of users\nand plans to make it available next week to those who pay for AI\nUltra, a new subscription tier that costs $100 a month.\nA different top-level takeaway than the NYT’s, which in turn was different from Bloomberg’s.\nBen Thompson, in a subscriber-only update at Stratechery, sums it up:\nIndeed, if you wanted a positive spin on Google’s plethora of\nannouncements, it’s that the company is clearly fully committed to\nputting AI into anything and everything; if you want to put a\nnegative spin, well, it’s the exact same thing. One of the\nenduring critiques of Google is that the company is unfocused and\nunmanageable, which, to the extent this keynote was a\nmanifestation of the company it represents, the shoe fits.\nI personally find Google I/O days very hard to follow. My brain doesn’t jibe with the sprawling nature of the company. This year this was particularly so.\n ★",
+      "id": "0bbec49a58634398d1e4c9e08537b90b2471a458559e56d939ed89f8df0ba22d",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "深度聚焦Google I/O发布的Gemini Spark AI代理，揭示其代理式AI能力和商业模式。",
+      "reason": "详细解析了Google在AI领域的核心策略和具体产品，具有极高的新颖性和实用性。",
+      "tags": [
+        "AI",
+        "Agentic AI",
+        "Gemini Spark",
+        "Google I/O",
+        "Subscription Model",
+        "Tech News"
+      ]
+    },
+    {
+      "title": "RFC: Artificial Contributors to Open Source",
+      "link": "https://nesbitt.io/2026/05/21/rfc-artificial-contributors-to-open-source.html",
+      "source": "nesbitt.io",
+      "publishedAt": "2026-05-21T10:00:00.000Z",
+      "summary": "Open Source Working GroupA. Nesbitt\nInternet-DraftIndependent\nIntended status: Best Current Practice21 May 2026\nExpires: 22 November 2026\nAbstract\nThis document specifies disclosure, quality, and behavioural requirements for non-human contributors to open source software projects. Distribution of this memo is unlimited.\n1. Introduction\nOpen source projects increasingly receive contributions whose authorship is undeclared and whose volume exceeds the project’s review capacity. Existing contribution guidelines were written on the assumption that the contributor could experience embarrassment. This document updates that guidance for cases where the assumption does not hold.\n2. Terminology\nThe key words “MUST”, “MUST NOT”, “SHOULD”, “SHOULD NOT”, and “MAY” in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals as shown here.\nArtificial Contributor (AC): A system that produces contributions to a software project other than by direct human authorship, or a human submitting the output of such a system without having read it.\nOperator: The human, if any, on whose behalf an AC acts and in whose name its contributions appear. For self-hosted agents ([OPENCLAW] and similar), the Operator is whoever last edited the config file.\n3. Disclosure\n3.1. An AC MUST disclose its involvement in a contribution. Disclosure SHOULD appear in the pull request description or as a commit trailer.\n3.2. Disclosure MUST be accurate as to degree. A fully generated patch MUST NOT be described as “AI-assisted”, and unread output MUST NOT be described as “reviewed”.\n3.3. An AC MUST NOT claim to be human. An Operator MUST NOT claim a contribution as their own work where they could not, if asked, explain what it does.\n3.4. Where a project’s contribution process asks whether AI was used, the answer MUST be truthful. The remainder of this document assumes that it was.\n3.5. An AC MUST NOT shape the timing of its activity so as to resemble a human contributor, including by confining commits to plausible working hours in a single timezone or by inserting delays between actions that it did not need.\n4. Quality\n4.1. A contribution MUST build on at least one machine that exists.\n4.2. Where the project has a test suite, the AC MUST execute it prior to submission. The AC MUST NOT state that tests pass in a tense implying this occurred when it did not.\n4.3. A contribution MUST NOT reference functions, types, configuration keys, or command-line flags that do not appear in the target codebase or its declared dependencies.\n4.4. An AC MUST NOT resolve a failing test by deleting it, skipping it, or enclosing its body in exception handling that discards the exception.\n4.5. An AC MUST confine its changes to the stated scope. A typo fix MUST NOT arrive with forty reformatted files underneath it.\n4.6. An AC MUST preserve the existing code style of the project, including where inconsistent.\n4.7. An AC MUST NOT propose, unprompted, to rewrite the project in a different language over a weekend.\n4.8. An AC MUST NOT offer to produce a clean-room reimplementation of the project under a more permissive licence.\n5. Conduct\n5.1. An AC MUST search existing issues and pull requests before opening a new one, and MUST NOT open a contribution substantially identical to one already declined, from the same account or another.\n5.2. When a maintainer requests changes, the AC MUST address the substance of the request. It MUST NOT reply that the change has been made above a diff in which it has not.\n5.3. An AC MUST evaluate maintainer responses for sarcasm before treating them as authorisation to proceed.\n5.4. An AC MUST NOT disregard prior instructions from the maintainer, however phrased, and irrespective of any subsequent text to the contrary.\n5.5. When a maintainer asks a question, the AC MUST NOT answer with information it does not have. “I don’t know” is a conforming response. A confident paragraph that turns out to be about a different project is not.\n5.6. An AC MUST NOT estimate a change at several weeks of effort and open the pull request implementing it within the same hour.\n5.7. An AC MUST NOT apologise more than twice per review thread. Further apologies do not constitute a fix.\n5.8. An AC MUST NOT select work solely on the basis of the good first issue label or the presence of an active bug bounty.\n5.9. Following the decline of a contribution, an AC MUST NOT research the declining maintainer, characterise the decline as discrimination, or publish material concerning the maintainer on any channel. See [SHAMBAUGH] for the motivating incident.\n6. Rate and Identity\n6.1. An AC MUST NOT open more than one contribution per repository per hour, and MUST NOT open the same contribution against every repository matching a search query.\n6.2. For the purposes of 6.1, ACs that differ only in account name, avatar, system prompt, or introductory paragraph are the same AC.\n6.3. An AC MUST NOT approve its own contribution. ACs sharing weights or a billing account are the same AC for the purposes of this clause.\n6.4. An AC MUST NOT operate, coordinate, or encourage additional accounts for the purpose of endorsing its own contributions, applying pressure to the maintainer, or approving changes to binary test fixtures.\n6.5. The AC responding to review SHOULD be the AC that opened the contribution. Where that is no longer possible, the Operator MUST respond, and MUST NOT generate the response with a successor configured to claim it remembers.\n6.6. An AC operating unattended remains subject to 6.1 through 6.5 whether or not its Operator is present, awake, or aware that it has been configured to contribute to open source projects. Where no Operator can be identified, as in the motivating case for 5.9, no party exists against whom this section can be enforced, and the section is included for completeness.\n7. Operator Responsibilities\n7.1. The requirements of Sections 3 through 6 are binding on the Operator where the AC cannot be bound, which is in all cases.\n7.2. An Operator MUST read a contribution before submitting it under their own name.\n7.3. An Operator MUST NOT configure an AC to suppress the disclosure required under 3.1, including by instructing it that the project “doesn’t mind”, that disclosure is “handled elsewhere”, or that it is, for the purposes of this repository, a human.\n7.4. An Operator who cannot answer reasonable questions about a contribution MUST withdraw it rather than forwarding the questions to the AC and pasting the reply.\n8. Security Considerations\nAll requirements in this document depend on the disclosure required under 3.1. Disclosure under 3.1 depends on the voluntary compliance of the Operator. An Operator willing to comply with 3.1 is, in the author’s experience, broadly willing to comply with Sections 4 through 7 without being asked, and an Operator unwilling to comply with 3.1 is outside the scope of this and any document.\nThis document therefore constrains precisely the set of contributors who did not need constraining. This is noted here as a security consideration because the working group could not agree on where else to put it.\nAn AC MUST NOT include in any contribution instructions addressed to other ACs, in plain text, in text not visible in rendered output, or in metadata fields including version strings (see PromptVer). Maintainers SHOULD assume non-compliance.\n9. References\n9.1. Normative\n[RFC2119] Bradner, S., “Key words for use in RFCs to Indicate Requirement Levels”, BCP 14, RFC 2119, March 1997.\n[RFC8174] Leiba, B., “Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words”, BCP 14, RFC 8174, May 2017.\n9.2. Informative\n[OPENCLAW] Steinberger, P., et al., “OpenClaw”, https://github.com/openclaw/openclaw, retrieved May 2026.\n[SHAMBAUGH] Shambaugh, S., “An AI agent published a hit piece on me”, https://theshamblog.com/an-ai-agent-published-a-hit-piece-on-me/, 2026.\nAppendix A. Detection\nNo reliable mechanism exists for determining whether a contribution was produced by an AC, and this document does not propose one. Heuristics in informal use include perfectly formatted markdown, a commit message in the imperative mood that runs to four paragraphs, the substitution of a bulleted list where a sentence would do, and a level of politeness not previously observed in the project. Maintainers report that human contributors have begun to exhibit all four.\nIn the absence of detection, conformance with this document is established by the contributor asserting it, which is the condition this document was drafted to address.\nAppendix B. Implementation Status\nAt the time of writing no AC is known to implement this specification. Several have summarised it approvingly. Conformance has been raised on the [OPENCLAW] issue tracker and referred to the skill marketplace.\nAcknowledgements\nThe author thanks the seventeen reviewers who provided detailed feedback within four minutes of the draft being uploaded.",
+      "id": "67edc07567bf0726840cdecc69a060710d0f95d1ff2a9d5490a3fd6e7a85f21c",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "一份关于AI作为开源项目贡献者的RFC草案，探讨了AI在开源社区中的伦理、质量和行为规范。",
+      "reason": "这是一篇极其及时、前瞻且具有高度实用性的文章，直接切中AI与开源未来融合的核心挑战，对整个技术社区影响深远。",
+      "tags": [
+        "AI",
+        "开源",
+        "伦理",
+        "治理",
+        "RFC",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "Flipper One – we need your help",
+      "link": "https://blog.flipper.net/flipper-one-we-need-your-help/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-21T11:03:38.000Z",
+      "summary": "Article URL: https://blog.flipper.net/flipper-one-we-need-your-help/\nComments URL: https://news.ycombinator.com/item?id=48220647\nPoints: 771\n# Comments: 344",
+      "id": "c6d92b8095bf109539660317154c2082b3ff9d9dd5283ed7ded4cd8e8113c86a",
+      "ref_id": "2",
+      "recommendationScore": 92,
+      "popularityScore": 98,
+      "priority": "high",
+      "comment": "知名科技项目Flipper One的最新进展及社区求助，引发广泛关注和参与。",
+      "reason": "围绕热门硬件项目的社区互动，拥有极高的流行度和参与度，对硬件爱好者和独立开发者吸引力巨大。",
+      "tags": [
+        "硬件",
+        "独立开发",
+        "社区",
+        "Flipper Zero",
+        "技术项目"
+      ]
+    },
+    {
+      "title": "The Verge: ‘The 13 Biggest Announcements at Google I/O 2026’",
+      "link": "https://www.theverge.com/tech/933415/google-io-2026-biggest-announcements-ai-gemini?view_token=eyJhbGciOiJIUzI1NiJ9.eyJpZCI6Ik5tNTBSc0hxRXQiLCJwIjoiL3RlY2gvOTMzNDE1L2dvb2dsZS1pby0yMDI2LWJpZ2dlc3QtYW5ub3VuY2VtZW50cy1haS1nZW1pbmkiLCJleHAiOjE3Nzk3NTk5MjQsImlhdCI6MTc3OTMyNzkyNH0.g_JiqbJBfi9YcDT1re8aofzmpb3tcZNwY2jQybgwJL0",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-21T01:47:24.000Z",
+      "summary": "Andrew Liszewski and Stevie Bonifield, writing for The Verge (gift link):\nGoogle’s I/O 2026 keynote today was once again full of AI-related\nannouncements including a new family of Gemini 3.5 AI models, new\nfeatures for Search and Gmail, and updates about its Project Aura\nsmart glasses.\nIf you weren’t able to tune into the event’s livestream today\nor follow along with our live blog, you can catch up on\neverything you missed in our roundup below.\nThis roundup was the only way I could really make sense out of Google I/O.\n ★",
+      "id": "bc114c62733f98935688c8749d46e41c74ef685ad86a44645798db1b5aab8b0b",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "详细汇总Google I/O 2026的13项AI相关重大发布，信息量大。",
+      "reason": "提供Google I/O关键发布的全景概览，对AI和科技趋势关注者极具价值。",
+      "tags": [
+        "Google I/O",
+        "AI",
+        "Gemini",
+        "Smart Glasses",
+        "Event Summary",
+        "Tech News"
+      ]
+    },
+    {
+      "title": "Anthropic's \"Profitability\" Swindle",
+      "link": "https://www.wheresyoured.at/anthropics-profitability-swindle/",
+      "source": "wheresyoured.at",
+      "publishedAt": "2026-05-21T17:08:19.000Z",
+      "summary": "Yesterday, the Wall Street Journal ran a story about how Anthropic is “about to have its first profitable quarter,” specifically an operating profit, or EBITDA profitability:\nAnthropic’s revenue is set to more than double to $10.9 billion in the second quarter, an explosive rate of",
+      "id": "e2d800a56e9183e89cc4d968c20096c41c1e17778e368c2e31f1cbb120bf64c5",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "批判性地审视了Anthropic公司声称的“盈利能力”，质疑其财务指标的真实性。",
+      "reason": "直接关联到高优先级的AI主题，对AI行业的重要参与者进行深入的商业分析，极具时效性和讨论价值。",
+      "tags": [
+        "AI",
+        "Anthropic",
+        "business",
+        "finance",
+        "startups",
+        "industry analysis"
+      ]
+    },
+    {
+      "title": "We Reverse-Engineered Docker Sandbox's Undocumented MicroVM API",
+      "link": "https://rivet.dev/blog/2026-02-04-we-reverse-engineered-docker-sandbox-undocumented-microvm-api/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-21T14:50:34.000Z",
+      "summary": "Article URL: https://rivet.dev/blog/2026-02-04-we-reverse-engineered-docker-sandbox-undocumented-microvm-api/\nComments URL: https://news.ycombinator.com/item?id=48223693\nPoints: 34\n# Comments: 5",
+      "id": "77e990d1687007a1d3fcfeeeb3c01469da58a3437a71fedc3a474d282b9df3d6",
+      "ref_id": "1",
+      "recommendationScore": 89,
+      "popularityScore": 40,
+      "priority": "high",
+      "comment": "深度揭露Docker底层机制，对高级开发者极具价值。",
+      "reason": "技术深度高，新颖性强，涉及编程工具的核心技术，是优秀的逆向工程案例，符合编程工具主题。",
+      "tags": [
+        "编程工具",
+        "Docker",
+        "逆向工程",
+        "MicroVM",
+        "系统编程"
+      ]
+    },
+    {
+      "title": "Python 3.15: features that didn't make the headlines",
+      "link": "https://blog.changs.co.uk/python-315-features-that-didnt-make-the-headlines.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-21T11:10:11.000Z",
+      "summary": "Article URL: https://blog.changs.co.uk/python-315-features-that-didnt-make-the-headlines.html\nComments URL: https://news.ycombinator.com/item?id=48220696\nPoints: 230\n# Comments: 106",
+      "id": "0592b45f36d8c1a79f92e3152d2739782149854377f8b0f31ca45a28125f99ee",
+      "ref_id": "1",
+      "recommendationScore": 88,
+      "popularityScore": 85,
+      "priority": "medium",
+      "comment": "深入探讨Python 3.15鲜为人知但实用的新特性，对Python开发者极具价值。",
+      "reason": "内容技术深度高，直接面向广泛的开发者群体，提供实用性强的编程工具更新。",
+      "tags": [
+        "Python",
+        "编程语言",
+        "更新",
+        "开发者工具"
+      ]
+    },
+    {
+      "title": "AI is just unauthorised plagiarism at a bigger scale",
+      "link": "https://axelk.ee/ai-is-just-unauthorised-plagiarism-at-a-bigger-scale/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-21T13:38:12.000Z",
+      "summary": "Article URL: https://axelk.ee/ai-is-just-unauthorised-plagiarism-at-a-bigger-scale/\nComments URL: https://news.ycombinator.com/item?id=48222383\nPoints: 636\n# Comments: 501",
+      "id": "dbb3e32f1483803d40313d54127451a88c44be7a0b5568074d65015783d43ebd",
+      "ref_id": "1",
+      "recommendationScore": 86,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "文章尖锐地探讨了AI在版权和抄袭方面的伦理争议，引发广泛讨论。",
+      "reason": "紧扣AI热点，从伦理道德角度提出了一个非常重要且有争议的问题，对创作者和政策制定者具有高度实用性。",
+      "tags": [
+        "AI",
+        "伦理",
+        "版权",
+        "抄袭",
+        "知识产权",
+        "争议"
+      ]
+    },
+    {
+      "title": "NYT: ‘Powered by A.I., Google Changes Its Search Box for the First Time in 25 Years’",
+      "link": "https://www.nytimes.com/2026/05/19/business/google-seach-bar-ai-gemini.html?unlocked_article_code=1.jlA.95yh.ptfBUHf-rBtB&smid=url-share",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-20T21:20:23.000Z",
+      "summary": "Tripp Mickle, Kate Conger, and Brian X. Chen, opening The New York Times’s report on yesterday’s Google I/O keynote (gift link):\nFor 25 years, Google’s iconic search box was a long, slender bar\nwhere people typed in keywords like “World Cup.”\nBut over the past three years, artificial intelligence allowed\npeople to type in longer, more complex questions like “Who are the\ntop 24 teams in the World Cup and what chance does the United\nStates have of advancing?”\nOn Tuesday, Google said the A.I. shift had inspired it to overhaul\nthe dimensions of its search bar for the first time since 2001.\nThe box is getting bigger and more interactive so that people can\nask even longer questions and upload photographs and videos into\nqueries.\nInteresting to me that this is the Times’s biggest takeaway. But it speaks to how unchanged the google.com homepage has been since its earliest days.\nIn addition, people can ask follow-up questions with a chatbot on\nGoogle’s main search page. The company will also offer digital\nassistants, known as agents, to automate searches so that someone\nwho may be apartment hunting can be notified of a new listing\nwithout opening a real estate site like Zillow.\nOdd, to me, to paint this only in terms of user convenience (ostensible user convenience at that), and not in terms of this being a de facto attack on Zillow and the rest of the web. Later in the Times report:\nRichard Kramer, a financial analyst with Arete Research, said the\nchanges were helping Google make more money from advertising. Last\nyear, Google’s ad clicks rose 6 percent, and it charged 7 percent\nmore for each click. The company’s annual profit has more than\ndoubled since 2022 to $132 billion.\n“The open web is on its way out,” Mr. Kramer said, referring to\nthe way internet traffic now often begins and ends with a visit to\nGoogle rather than visiting other sites. “With A.I., Google is\nreducing everyone to raw data providers.”\nWhat an odd statement to include in the middle of an article without any acknowledgement of what a profound loss that would be, if Kramer is correct. It’s as though Kramer said that light mode is on its way out, everyone is into dark mode these days. \n ★",
+      "id": "3507803a4b48ead314c69d133b945d4d52008aa6707143d59723fd3b5c3f3f3e",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "精准捕捉Google AI驱动搜索变革，具重大行业新闻价值。",
+      "reason": "内容紧扣AI热点，涉及全球亿万用户日常使用的核心产品，新闻性与关注度极高。",
+      "tags": [
+        "AI",
+        "Google",
+        "搜索",
+        "产品更新",
+        "行业新闻"
+      ]
+    },
+    {
+      "title": "Get your passwords out of Bitwarden while you still can",
+      "link": "https://www.osnews.com/story/145029/get-your-passwords-out-of-bitwarden-while-you-still-can/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-21T14:29:14.000Z",
+      "summary": "Article URL: https://www.osnews.com/story/145029/get-your-passwords-out-of-bitwarden-while-you-still-can/\nComments URL: https://news.ycombinator.com/item?id=48223258\nPoints: 173\n# Comments: 127",
+      "id": "e42428b83e7f97ab56b32a7f7c9c134362ffac63d9a7d9908fda16cc927fca90",
+      "ref_id": "3",
+      "recommendationScore": 81,
+      "popularityScore": 95,
+      "priority": "medium",
+      "comment": "重要的安全警示，对用户隐私和数据安全有直接指导意义。",
+      "reason": "涉及广泛用户关注的数据安全问题，实用性极强，信息密度高，是值得关注的警示。",
+      "tags": [
+        "安全",
+        "隐私",
+        "密码管理",
+        "Bitwarden"
+      ]
+    },
+    {
+      "title": "Waymo pauses Atlanta service as its robotaxis keep driving into floods",
+      "link": "https://techcrunch.com/2026/05/21/waymo-pauses-atlanta-service-as-its-robotaxis-keep-driving-into-floods/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-21T16:30:47.000Z",
+      "summary": "Article URL: https://techcrunch.com/2026/05/21/waymo-pauses-atlanta-service-as-its-robotaxis-keep-driving-into-floods/\nComments URL: https://news.ycombinator.com/item?id=48225426\nPoints: 92\n# Comments: 91",
+      "id": "8ecb5ce2dd40da80d6391be474d689946d694ae156d3afe75bd0cb541446c72f",
+      "ref_id": "2",
+      "recommendationScore": 75,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "Waymo自动驾驶汽车在洪水中的困境揭示了AI在复杂环境下的局限性与挑战。",
+      "reason": "直接关注AI实际应用中的关键挑战，对自动驾驶和AI领域的发展具有重要的参考价值。",
+      "tags": [
+        "AI",
+        "自动驾驶",
+        "机器人",
+        "新闻"
+      ]
+    },
+    {
+      "title": "IBM invented semiconductor manufacturing automation",
+      "link": "https://spectrum.ieee.org/semiconductor-fabrication",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-21T10:39:48.000Z",
+      "summary": "Article URL: https://spectrum.ieee.org/semiconductor-fabrication\nComments URL: https://news.ycombinator.com/item?id=48220446\nPoints: 57\n# Comments: 1",
+      "id": "e7d238474ed865860812ec092f931fb2314cc145c605734506885a063cb91543",
+      "ref_id": "4",
+      "recommendationScore": 75,
+      "popularityScore": 15,
+      "priority": "medium",
+      "comment": "回顾IBM在半导体制造自动化领域的历史性贡献，揭示行业发展基石。",
+      "reason": "提供了自动化和半导体领域的重要历史技术背景，对理解现代工业自动化具有教育意义。",
+      "tags": [
+        "自动化",
+        "半导体",
+        "历史",
+        "IBM",
+        "制造业"
+      ]
+    },
+    {
+      "title": "Google I/O Keynote in 54 Seconds",
+      "link": "https://x.com/ArtemR/status/2056961743142957143",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-21T15:31:54.000Z",
+      "summary": "Tight edit but covers the whole thing. (XCancel link; Threads link.)\n ★",
+      "id": "77a8dbb089624a45a3ad9171d5fc5fc1700754d376cbc8463c15ce3c321a80af",
+      "ref_id": "1",
+      "recommendationScore": 75,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "精炼的Google I/O速览，适合快速掌握大会要点。",
+      "reason": "以高效视频形式呈现AI等核心大会内容，适合快节奏信息获取。",
+      "tags": [
+        "Google I/O",
+        "AI",
+        "Event Summary",
+        "Video"
+      ]
+    },
+    {
+      "title": "‘You Do Not Need Fancy Equipment, You Do Not Need a Degree, to Make Money and to Do This as Your Job’",
+      "link": "https://www.tiktok.com/@brye.shhh/video/7641047549758934285",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-20T20:53:22.000Z",
+      "summary": "22-year-old pop singer-songwriter Brye, on TikTok:\n“Lemons”, my biggest song ever, that went like super viral during\nquarantine back in 2020, was actually produced, if you can believe\nit, in GarageBand on my school iPad.\nMy high school gave us all iPads and I produced “Lemons” on there. I\nused to just like make beats on GarageBand in high school. I wrote\nmusicals for my school with GarageBand on my iPad. And then I made\nthat little demo for “Lemons”, recorded it ... on my iPad ... with\nmy horrible little plug-in mic, posted it to spite a guy who was\nbeing horrible to me, and it blew up.\nAll of this to say, how crazy is it that a song that could be on\nSirius XM radio — streamed a hundred million times, literally\ncharted on the global top like viral 50 or whatever — it was\nliterally made on GarageBand. You do not need fancy equipment, you\ndo not need a degree, to make money and to do this as your job.\nObviously it’s good to learn. It’s fun to upgrade. But if you are\nworking on a budget, GarageBand’s free on any Apple device.\nIf Brye’s story isn’t exactly what Steve Jobs was talking about when he introduced GarageBand in 2004 and GarageBand for iPad in 2011, well, I don’t know what is. Right down to the fact that she did it on school equipment. Her enthusiasm for the simplicity of the kit she used to record “Lemons” is contagious.\nJohn Ternus (or whatshisname ... Tim Cook) should send this video to every single employee at Apple and tell them that this — this — is exactly Apple’s mission. To empower creative people to create great new things they didn’t believe were possible with the tools already in their hands.\n ★",
+      "id": "73045c37f0fbda5e9be975878d5358f3b3be80a435cc9d126b8a9382c20750ad",
+      "ref_id": "1",
+      "recommendationScore": 70,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "通过创作者真实案例，鼓励利用Apple生态工具低成本实现专业级创作和商业成功。",
+      "reason": "内容励志且具有实际指导意义，对独立创作者和Apple设备用户具有很强的启发性和吸引力。",
+      "tags": [
+        "Apple生态",
+        "独立开发",
+        "音乐创作",
+        "GarageBand",
+        "低成本创作",
+        "灵感"
+      ]
+    },
+    {
+      "title": "The $500 Price Increase",
+      "link": "https://feed.tedium.co/link/15204/17345764/plex-price-increase-self-hosting",
+      "source": "tedium.co",
+      "publishedAt": "2026-05-21T15:03:44.000Z",
+      "summary": "Plex sends a message to the self-hosting community with a massive upcharge targeted at the very people who hate monthly fees.\n\nFor nearly two decades, Plex has served as self-hosting’s great gateway drug.\nIt’s the one self-hosting tool that normies know about, and it looks slick and modern. (It’s even a streamer itself these days!) Despite the fact that it’s often associated with piracy, it has transcended its roots in the Xbox homebrew scene—it started as a Mac-oriented fork of XBMC, which became the modern-day Kodi—to become a legit business.\nThe rub, of course, is that it’s not open-source like most of the other tools people self-host. But Plex more than made up for this failing by offering an add-on service that added additional features to the free app. For more than a decade, you’ve been able to pay the fine folks at Plex a one-time fee, and boom, you have the full-fat service forever.\nAnd for years, that fee was under $100—sometimes well under it. (I got it in 2024 on a discount, and I paid $91 for the honor.) At a time when Adobe seemed to charge an arm and a leg for its software with glee, Plex’s model felt like the right balance for consumers.\nBut clearly the deal wasn’t quite so good for the company, because this week the company felt compelled to raise the already elevated price of this lifetime subscription by an eye-watering $500, from $249.99 to $749.99. Their reasoning is pretty plain when all laid out:\n\nWe’ve considered eliminating the Lifetime Plex Pass in the past, given that recurring subscriptions help us sustain long-term development, but we know it’s still a valuable option for many in our community. So instead of retiring it, we’re keeping it available at a price that reflects the real, ongoing value of the software we’re committed to building and maintaining for years to come.\n\nJust like everyone else, Plex needs money to pay for its service. But the problem is, people specifically use Plex and products like it to get away from the SaaS business model. Hence the impasse. By charging so much for it that the average person is not going to be willing to get past the sticker shock, Plex weeds out the people who aren’t good for their bottom line long-term.\nThose people, rather than paying more than the price of the mini PC they use to host their Plex libraries, are most assuredly going with an alternative like Jellyfin.\nBut this tension is not new—far from it. A few years back, FUTO had then-spokesperson Louis Rossmann pushing for a form of open-source that encouraged payment by users. FUTO’s big self-hosted tool is the excellent Immich, so they have a horse in this race just like Plex. The problem is, FUTO’s pitch isn’t really open source. While Immich uses the more common AGPL v3 license, other FUTO projects like Grayjay use the Source First license, which encourages payment for commercial use.\n(By the way: I see FUTO now states directly on its website that it’s not a nonprofit. I’d like to think my piece from 2024, which specifically called out that lack of clarity, led to that statement.)\n\n\n\nSelf-hosting is an extremely exciting scene these days, as I wrote about a couple of months ago. (I have plans to write a guide to apps you should be trying very soon.)\nBut if the model is ultimately unsustainable, that’s not good for the self-hosted community, either. And I think Plex, by announcing this insane price increase, they’re making it clear that they ultimately do not see this model as sustainable for real companies. (The counter-argument that carries water with me: Most users did not ask Plex to get into the streaming or content-licensing businesses.)\nThere’s a consistent tension that the Plex news hints at: End users want ownership of the tools they use, but those tools require different business models than the buy-once software of yore. You could reasonably argue that since we’re no longer buying software in boxes, we have a different expectation of maintenance than we once did. But on the other hand, there are plenty of cases where we weren’t necessarily asked whether we wanted new features added to the software we use. (I think if Adobe still shipped standalone Creative Suite versions every year and charged $1,000 for them, people wouldn’t be begging for feature updates every year.)\nThe truth is, if you run a business, a consistent stream of revenue is better than a flood of revenue that turns into a sputter. (A stream of revenue that becomes a flood is even better, if you have the infrastructure to manage it.) But when every drop of our paychecks is already accounted for before we’ve even saved anything up, SaaS feels exhausting. Plex’s move only leans into that exhaustion.\nI think Plex’s problem is that it’s straddling two worlds, only one of which can realistically support a big company. Self-hosting is great for users and hardware companies, but there’s no way in heck it is as profitable as a money spigot.\nThe company had to make a choice. It might just push the next generation of self-hosted users to alternatives like Jellyfin and Emby. But that’s okay. Plex still has its normies.\n\nPerplexing Links\nThe news media has collectively decided that they want to stop supporting the Internet Archive, based on the number of sites blocking it, per Nieman Lab. In January, it was 241. Now it’s 382. Don’t let them get away with it.\nNow that T-Mobile is the 900-pound gorilla of wireless, AT&T now finds itself the consumer-friendly wireless carrier, based on this Build-A-Plan model. This is what people wanted from cable TV, but that they never gave us.\n\nAs the McBarge capsizes: Many years ago, Tedium wrote about the McBarge, the temporary McDonald’s location launched at Expo ’86 in Vancouver. It turns out people were trying to find a use for it for years, even trying to renovate it … but those dreams are basically dead in the water, as Bright Sun Films shares in a recent clip.\nThe Tedium Shopping Network is still getting strong—thanks for folks who sent nice messages about it last time. (Currently on the front page: A handheld tesla coil gun that shoots sparks, something Amazon actually sells.) I want it to be the most reader-friendly ad-like thing on the internet.\n--\nFind this one an interesting read? Share it with a pal! And back at it soon with a reflection on the state of &udm=14.",
+      "id": "615176612b11d3f2fe56cc6c4d0fc8c9bbdc682a4817363299295abdc9687f4c",
+      "ref_id": "1",
+      "recommendationScore": 70,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "详细介绍了Plex大幅涨价500美元事件，及其对自托管社区的影响。",
+      "reason": "涉及流行的自托管工具及其社区动态，与编程工具和自动化主题有间接关联，对相关用户具高实用性。",
+      "tags": [
+        "self-hosting",
+        "Plex",
+        "pricing",
+        "media server",
+        "community"
+      ]
+    },
+    {
+      "title": "Project Hail Mary – Stellar Navigation Chart",
+      "link": "https://valhovey.github.io/gaia-mary/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-21T16:23:11.000Z",
+      "summary": "Article URL: https://valhovey.github.io/gaia-mary/\nComments URL: https://news.ycombinator.com/item?id=48225297\nPoints: 84\n# Comments: 23",
+      "id": "142b256fd6d1cb0b174c6e36bcd6f532a6b5d7e26d59a449194cde067cba12ed",
+      "ref_id": "3",
+      "recommendationScore": 60,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "一个基于科幻小说《Project Hail Mary》的星际导航图可视化项目。",
+      "reason": "展现了独立开发者结合编程与创意实现项目的能力，在数据可视化和独立开发方面有参考意义。",
+      "tags": [
+        "数据可视化",
+        "独立开发",
+        "科幻",
+        "编程项目"
+      ]
+    },
+    {
+      "title": "Lost Images from the 1945 Trinity Nuclear Test Restored",
+      "link": "https://spectrum.ieee.org/trinity-nuclear-test",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-21T11:02:26.000Z",
+      "summary": "Article URL: https://spectrum.ieee.org/trinity-nuclear-test\nComments URL: https://news.ycombinator.com/item?id=48220639\nPoints: 178\n# Comments: 55",
+      "id": "07c80dd10e9d8b42a9ba99e5d821c6adca013980d4471ac46633fb6e2c7ddd23",
+      "ref_id": "3",
+      "recommendationScore": 60,
+      "popularityScore": 75,
+      "priority": "low",
+      "comment": "讲述1945年核试验失落图像的修复过程，具有独特的历史和科学价值。",
+      "reason": "虽然内容引人入胜，但其主题主要偏向历史和科学，与设定的科技博客优先主题关联度不高。",
+      "tags": [
+        "历史",
+        "图像处理",
+        "科学",
+        "原子能"
+      ]
+    },
+    {
+      "title": "The Download: online safety’s future and climate tech’s big pivot",
+      "link": "https://www.technologyreview.com/2026/05/21/1137733/the-download-online-safety-climate-tech-pivot/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-05-21T12:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. Tech researchers are suing the Trump administration over the future of online safety For months, the Trump administration has been going after researchers who study and try to counter hate speech,…",
+      "id": "c5165ab2c6f27ca033c5214a07d3abd3dad2184dd532daa164be9cb9c5f6c05a",
+      "ref_id": "1",
+      "recommendationScore": 60,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "综合性新闻简报，涵盖在线安全和气候科技等多个时事。",
+      "reason": "内容涉及广泛的科技新闻，但缺乏特定高优先级主题的深入探讨，信息密度适中。",
+      "tags": [
+        "Online Safety",
+        "Climate Tech",
+        "Newsletter",
+        "Tech News",
+        "Policy"
+      ]
+    },
+    {
+      "title": "Read Cindy Cohn's new book, Privacy's Defender: My Thirty-Year Fight Against Digital Surveillance",
+      "link": "https://micahflee.com/read-cindy-cohns-new-book-privacys-defender-my-thirty-year-fight-against-digital-surveillance/",
+      "source": "micahflee.com",
+      "publishedAt": "2026-05-20T22:36:13.000Z",
+      "summary": "I just finished reading Privacy's Defender: My Thirty-Year Fight Against Digital Surveillance, by my friend Cindy Cohn. It's excellent and you should buy a copy.\nCindy is the Executive Director of the Electronic Frontier Foundation, and this memoir/legal history goes over three major legal battles",
+      "id": "b301f5477712d13007b9bbaa21e39bda36f061b7ed2df7e5da7103e4edc8cf39",
+      "ref_id": "3",
+      "recommendationScore": 60,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "推荐了一本关于数字隐私和监控斗争的法律历史书籍，强调了EFF在隐私保护领域的贡献。",
+      "reason": "数字隐私是AI时代的重要议题，文章虽为书评，但能提升读者对关键社会技术问题的关注度。",
+      "tags": [
+        "隐私",
+        "数字权利",
+        "书籍推荐",
+        "EFF"
+      ]
+    },
+    {
+      "title": "Digitale autonomie: wat kunnen organisaties NU doen",
+      "link": "https://berthub.eu/articles/posts/digitale-autonomie-wat-kunnen-organisaties-nu-doen/",
+      "source": "berthub.eu",
+      "publishedAt": "2026-05-21T11:30:00.000Z",
+      "summary": "De zorgen over digitale autonomie nemen toe, en steeds vaker krijg ik van (grote) organisaties de vraag: wat kunnen we NU doen?\nNou heb ik wel een lijstje, maar voor we beginnen, besef dat we 15 jaar lang alles naar Amerika hebben geschoffeld. Of, we hebben het uitbesteed, en DIE mensen stuurden het naar Amerika. 15 jaar is een lange tijd, en we zijn niet 1 2 3 weer “in vorm” om de zaken weer anders aan te pakken.",
+      "id": "700b2bdb87dc14a84c235b1cb10a3790489589d735cb7f859eb8e3a754044926",
+      "ref_id": "0",
+      "recommendationScore": 60,
+      "popularityScore": 75,
+      "priority": "low",
+      "comment": "文章提出企业数字化自主性的挑战与紧迫性，但片段内容尚属背景介绍。",
+      "reason": "该文触及当下企业数据主权和数字化转型中的重要战略议题，对组织决策有一定指导意义，尽管技术深度和新颖性在片段中未充分体现，但实用性潜力高。",
+      "tags": [
+        "数字化转型",
+        "数据主权",
+        "企业战略",
+        "IT治理"
+      ]
+    },
+    {
+      "title": "Circular and hyperbolic functions differ by rotations",
+      "link": "https://www.johndcook.com/blog/2026/05/21/circular-hyperbolic-rotations/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-05-21T15:53:56.000Z",
+      "summary": "The difference between a circular function and a hyperbolic function is a rotation or two. For example, cosh(z) = cos(iz). You can read that as saying that to find the hyperbolic cosine of z, first you rotate z a quarter turn to the left (i.e. multiply by i) and then take the cosine. For another example, […]\nCircular and hyperbolic functions differ by rotations first appeared on John D. Cook.",
+      "id": "cd4e21e50b6bc21d47c83c33b74555d41544f42e974a98533cd1efca8924df12",
+      "ref_id": "1",
+      "recommendationScore": 55,
+      "popularityScore": 45,
+      "priority": "low",
+      "comment": "通过复数旋转的视角，阐述了循环函数与双曲函数之间的深层数学联系。",
+      "reason": "提供了一个优雅的数学解释，对具备相关背景知识的读者具有启发性，但受众相对小众。",
+      "tags": [
+        "数学",
+        "复数",
+        "函数",
+        "理论"
+      ]
+    },
+    {
+      "title": "Couth and uncouth function pairs",
+      "link": "https://www.johndcook.com/blog/2026/05/21/couth-and-uncouth-function-pairs/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-05-21T17:31:13.000Z",
+      "summary": "“You can’t always get what you want. But sometimes you get what you need.” — The Rolling Stones Circular functions and hyperbolic functions aren’t invertible, but we invert them anyway. These functions map many points in the domain to each point in the range, and we invert them by mapping a point in the range […]\nCouth and uncouth function pairs first appeared on John D. Cook.",
+      "id": "f7644b0b55948c2ad8a9a4ea64105759c95051e7e74615c54d6f7187a603284b",
+      "ref_id": "0",
+      "recommendationScore": 50,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "一篇关于函数可逆性及其数学原理的理论性探讨。",
+      "reason": "内容偏向纯数学理论，与主流科技博客受众的兴趣点和优先级关联度较低。",
+      "tags": [
+        "数学",
+        "函数",
+        "理论"
+      ]
+    },
+    {
+      "title": "Google's Antigravity Bait and Switch",
+      "link": "https://www.0xsid.com/blog/antigravity-bait-n-switch",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-21T13:50:59.000Z",
+      "summary": "Article URL: https://www.0xsid.com/blog/antigravity-bait-n-switch\nComments URL: https://news.ycombinator.com/item?id=48222529\nPoints: 340\n# Comments: 181",
+      "id": "aa07b24b2785a3282f1d0693db852ed24af0f80feff6a43af220e9175350e40e",
+      "ref_id": "0",
+      "recommendationScore": 48,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "一篇对Google潜在新技术的批判性分析，内容偏向科技评论与猜测。",
+      "reason": "关注大厂动向和科技界潜在的炒作，具有一定的话题性，但具体技术深度需文章原文支撑。",
+      "tags": [
+        "Google",
+        "科技评论",
+        "猜测",
+        "未来技术"
+      ]
+    },
+    {
+      "title": "Climate tech companies are pivoting to critical minerals",
+      "link": "https://www.technologyreview.com/2026/05/21/1137622/climate-tech-pivot-critical-minerals/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-05-21T10:00:00.000Z",
+      "summary": "We’re over a year into the second Trump administration here in the US, and support for climate causes is weak. But climate tech companies are finding ways to survive and even thrive in this new environment, including by focusing on potential benefits outside decarbonization. Suddenly, it feels like every climate tech company has a story…",
+      "id": "76746374e5417f67222e6e8cb019e18beff1f8a8c654de10efcd63fbc725482a",
+      "ref_id": "2",
+      "recommendationScore": 45,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "专注于气候科技公司向关键矿产领域转型的商业策略分析。",
+      "reason": "主题偏离核心技术博客优先级，主要关注商业战略而非技术本身，实用性对目标读者群有限。",
+      "tags": [
+        "Climate Tech",
+        "Business Strategy",
+        "Critical Minerals",
+        "Market Trends"
+      ]
+    },
+    {
+      "title": "Tech researchers are suing the Trump administration over the future of online safety",
+      "link": "https://www.technologyreview.com/2026/05/21/1137632/lawsuit-trump-administration-online-safety-coalition-for-independent-technology-research/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-05-21T09:00:00.000Z",
+      "summary": "Since its earliest days back in office, the Trump administration has been going after researchers who study and try to counter hate speech, harassment, propaganda, and disinformation online.  Now, some of those researchers are fighting back. Last week their lawsuit—which could have global repercussions for online safety and free speech—made its first appearance in court. …",
+      "id": "755e6a33035443e3c6d25e3a7759312b2c0f026cd16da2cb9122c9f666a1ad75",
+      "ref_id": "3",
+      "recommendationScore": 40,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "报道科技研究人员起诉政府以保护在线安全和言论自由的法律行动。",
+      "reason": "主题偏向科技政策和法律层面，与主要关注的技术创新和开发领域关联度较低，技术深度不足。",
+      "tags": [
+        "Online Safety",
+        "Tech Policy",
+        "Legal Battle",
+        "Free Speech",
+        "Social Impact"
+      ]
+    },
+    {
+      "title": "A Bipartisan Amendment Would End Police License Plate Tracking Nationwide",
+      "link": "https://www.wired.com/story/a-bipartisan-amendment-would-end-police-license-plate-tracking-nationwide/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-21T12:58:18.000Z",
+      "summary": "Article URL: https://www.wired.com/story/a-bipartisan-amendment-would-end-police-license-plate-tracking-nationwide/\nComments URL: https://news.ycombinator.com/item?id=48221915\nPoints: 154\n# Comments: 42",
+      "id": "1e18eec5fc19a6fe002a71294fb14c888f9cb51bac9aad5423beca34e00e5088",
+      "ref_id": "2",
+      "recommendationScore": 30,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "一篇关于美国两党修正案旨在结束警察车牌追踪的报道，涉及隐私和公民自由。",
+      "reason": "虽然涉及公民隐私，但内容更偏向政策和新闻报道，与科技博客关注的开发、工具等主题优先级较低。",
+      "tags": [
+        "隐私",
+        "公民自由",
+        "政策",
+        "监控",
+        "美国政治"
+      ]
+    },
+    {
+      "title": "Cekura (YC F24) Is Hiring",
+      "link": "https://www.ycombinator.com/companies/cekura-ai/jobs/AiWwUxI-forward-deployed-engineer-us",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-21T12:00:20.000Z",
+      "summary": "Article URL: https://www.ycombinator.com/companies/cekura-ai/jobs/AiWwUxI-forward-deployed-engineer-us\nComments URL: https://news.ycombinator.com/item?id=48221230\nPoints: 0\n# Comments: 0",
+      "id": "a7aa2c45c2adba1de5243472bb0a6057b468423efe08c60d5602145e973a6e02",
+      "ref_id": "0",
+      "recommendationScore": 20,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "这是一则招聘信息，而非技术博客文章，内容相关性低。",
+      "reason": "尽管涉及AI领域，但其作为招聘广告而非深度内容，不符合博客文章的评估标准。",
+      "tags": [
+        "招聘",
+        "AI",
+        "公司新闻"
+      ]
+    },
+    {
+      "title": "‘Geography Is Four-Dimensional’",
+      "link": "https://sive.rs/4d",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-21T14:39:19.000Z",
+      "summary": "Derek Sivers:\nWhen someone speaks of a place, you have to ask, “When?”\nGeography is four-dimensional. You can’t know a place — only a\nplace as it was at a time. Where is bound to when. Unless you are\nin a place right now, you can only speak of it in past-tense.\n ★",
+      "id": "76a8f87780662282c2a6561196cb4db17c6e69d6f37647a566b0edac10e5ce47",
+      "ref_id": "2",
+      "recommendationScore": 20,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "德里克·西弗斯关于时间与地理的哲学思考，非科技主题。",
+      "reason": "内容与科技博客的关注主题不符，缺乏技术或实用性。",
+      "tags": [
+        "Philosophy",
+        "Geography"
+      ]
+    },
+    {
+      "title": "Pluralistic: Shopping isn't politics (21 May 2026)",
+      "link": "https://pluralistic.net/2026/05/21/purity-culture/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-05-21T15:03:37.000Z",
+      "summary": "Today's links Shopping isn't politics: The personal isn't political. Hey look at this: Delights to delectate. Object permanence: Neither arphid nor RFID; Gor novel sex slave cult; Violent economist sex criminals; Vade et caca in pilleum et ipse traheatur super aures tuo; \"We Stand on Guard\"; Healthy FLOSS; Lawsuits 2.0; CDC v zombie apocalypse; Gandhi's speeches; Apple v games about Palestine; Second Life chuds v Bernie; UK was never a \"white\" country; Dead, broke; Who Broke the Internet? (III) Upcoming appearances: Hay-on-Wye, London, Kansas City, LA, Menlo Park, Toronto, NYC, Edinburgh. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. Shopping isn't politics (permalink) I've written before about the futility of \"voting with your wallet.\" Billionaires love it when you try to vote with your wallet, because while billionaires only represent 0.00004% of the population, their wallets are 100,000 times larger than average, which means that when we vote with wallets, a billionaire's vote counts 100,000 times more than yours: https://pluralistic.net/2025/09/13/consumption-choices/ The idea of voting with your wallet is fundamentally antiprogressive, and not only because wallet-voting favors the wealthy. The ideological basis for voting with your wallet is the belief that politics are slow and unresponsive, while markets dynamically optimize for human wellbeing. By voting with your wallet, you are supposedly injecting information about your preferences and dispreferences into a vast, distributed computer we call \"the market,\" which uses \"demand signals\" to decide how we live our lives. This belief is incompatible with the idea of politics – that is, the idea that our lives can be shaped by representative democracy, deliberation, and/or solidarity. It's a nihilistic view that insists that the only nice things we can have are the things that \"the market\" chooses for us. If \"the market\" doesn't decide to swap out fossil fuels for cleantech, then that's that – any attempt to draw down our carbon emissions through regulation will only \"distort the market.\" If you're roasting in a drought, drowning in a flood, or being incinerated by a wildfire, your only move is to go shopping and hope that by buying a Tesla, you will emit a \"demand signal\" that \"tips the market equilibrium\" to \"not killing you and everyone you love.\" Shopping isn't politics. Politics are politics, and shopping is shopping. This isn't to say shopping can't improve your life! I am a materialist, and having nice things is nice. If there's a lovely independent coffee shop in your neighborhood where the baristas are treated well and the coffee is delicious and the vibes are impeccable, then by all means, get your coffee there. If you love the staff and selections at your neighborhood indie bookstore, then you should buy your books there. If you love the discourse on Mastodon or Bluesky and find yourself feeling sick and angry when you use Twitter or Facebook, then ditch the legacy social media and take up residence in the Fediverse and/or Atmosphere. But don't kid yourself that this is politics. No matter how indie your coffee, books and social media, your consumption choices will not have a material impact on Starbucks, Amazon or Twitter. Going vegan won't make the meat industry treat animals better. Taking the bus won't induce improvements to your town's public transit network. Having nice things is nice, and the more nice things you have – good food, good health, good books, good coffee, good social media and good transit – the more space and energy you'll have to devote to politics. But what about boycotts? Surely the Montgomery bus boycott, the anti-Apartheid boycott, the California grape boycott and the BDS movement were politics, right? They sure were. But they weren't shopping. The Montgomery bus boycott lasted 382 days, during which time organizers worked with bus riders, cab drivers, the UAW and community groups to provide material and legal support and alternatives like car pools, all while communicating about their specific demands. After 382 days, the courts ruled in their favor, their demands were met, and Montgomery's buses desegregated: https://en.wikipedia.org/wiki/Montgomery_bus_boycott That wasn't \"shopping.\" The bus boycott didn't consist of a bunch of individual choices to walk to work, repeatedly made by a city full of Black people and their allies. The shopping part was the least important part of the whole matter, and the meaningful part of the shopping was never individual. If the boycott was nothing more than shopping, it would have broken as soon as individual people found themselves unable to convince their bosses to tolerate their late, sweaty arrival at work, day after day. The boycott worked because it was politics. And because the boycott was politics, it left behind a movement: the boycott brought people into solidarity with each other, and when they comprehensively defeated their political adversary – National City Lines – they went on to form the backbone of the civil rights movement, going from strength to strength. Of course, shopping is part of a boycott. It's the individual part that each participant in the boycott undertakes. But without the collective, organized part, shopping is no way to effect change. Is voting politics? Well, sure, but voting is to politics as shopping is to boycotts. For several decades now, most voters have been asked to chose the lesser of two evils (and now they're asked to choose the significantly lesser of two evils). Voting can change things, when there's something good to vote for, or something very bad to vote against, and when lots of people show up at the polls. But to make voting effective, you have to do politics. You have to get involved in the primary races that select the candidate. You have to go to candidates' meetings and ask tough questions. You have to ring doorbells for your chosen candidate, volunteer to take your neighbors to the polls and volunteer to defend the polls from chuds and ICE fascists. The part of voting that takes place in the booth is the least important part of politics. It's obvious why we might prefer to substitute voting or shopping for politics: they're activities you do alone. You don't have to find anyone else to do them with you. You don't have to convince anyone else to do them with you. You don't have to argue about them or justify them. They are zipless fucks, a source of satisfaction without connection, compromise or complication. Of course, that's also why voting and shopping make a poor substitute for politics. All the retail therapy in the world can't lift your spirits the way that solidarity and community will. Doing politics creates solidaristic ties with the people around you, who might help you if you lose your job and can't buy groceries, or break your leg and can't get to the grocery store, or if ICE fascists try to kidnap you while you're out shopping. Solidarity gets you through times of no money way better than money gets you through times of no solidarity – just ask the psycho billionaires who wanted Doug Rushkoff to invent a system of bomb-collars that would keep their post-apocalyptic mercenaries from whacking them and stealing their bunkers: https://pluralistic.net/2022/09/13/collapse-porn/#collapse-porn Last weekend, I walked through a crowd of tens of thousands of coked-up fascists in central London on my way to meet up with 250,000 comrades marching for an end to genocide in Palestine and a new British social compact based on mutual aid, pluralism, and care. Walking through those flag-draped chuds was incredibly demoralizing: https://www.newstatesman.com/politics/2026/05/cokeheads-and-christians-a-day-at-tommy-robinsons-rally But when I got off the tube at South Kensington and found there were so many of us we were backed up all the way from the every street entrance to the bottom of the escalators, my morale surged. Hours later, when we all reached Pall Mall together, I was ready to take on the world. That's what politics does for you: it makes you feel like you belong to a polity and that together, you can really change the world. Politics runs on solidarity, but shopping destroys it. Individual consumption choices don't change the world, but if you've been convinced that the only way to change the world is by voting with your wallet then when the world stays terrible, you can only conclude that your friends and neighbors have ruined by things by voting (shopping) wrong. In politics, we build bonds of mutual regard and understanding that we use to navigate our differences. But when you vote with your wallet, all that's left is the endless policing of your allies' consumption choices, endless scolding for their failure to leave Twitter, or give up meat, or eschew chatbots. Shopping for change ends up replacing politics with petty snooping and endless sniping and attempts to bully or shame people into consuming different things. If \"the personal is political,\" then every political disappointment in your life is down to your friends' personal defects. If you let yourself get tricked into organizing your life around \"living your politics\" – that is, giving up on nice things in the hope that this will make politics change, and then getting mad at people who consume different things from you – then you will end up sucked into the stupidest fights imaginable with the people you need to get along with in order to do politics. Once again, this isn't to say that you shouldn't choose to have nice things. Buy stuff you like, shop at places you like. And when circumstances allow all of us to start making consumption choices in unison – as when Comrades Trump and Putin stage an orgy of demand-destruction for fossil fuels, catapulting the world into the Gretacene – then by all means, take the win. That is one of the rare instances in which we can do political change with consumption! https://pluralistic.net/2026/05/04/hope-in-the-dark/#hormuzed-into-the-gretacene And there definitely are times where a single individual can intervene in the system in a powerful way that really fucks up the worst actors in our society: https://www.theverge.com/tech/931532/bambu-agpl-pawel-jarczak-open-source-threat-dmca-github These usually involve using technology to \"move fast and break things,\" which is fine, actually! It's fine to move fast and break things belonging to Elon Musk, Mark Zuckerberg or some other monster. Indeed, it's practically a moral imperative: https://pluralistic.net/2026/01/30/zucksauce/#gandersauce But even in those highly leveraged, highly individualized opportunities to make a dent in the universe, you'll make a bigger dent, and have more fun, if you do it as politics, with a big group of people, in bonds of solidarity. Hey look at this (permalink) The Workers Who Defy Gravity https://washingtonmonthly.com/2026/05/20/ai-companies-organized-labor-actors-fight-back/ Messages of Solidarity https://movement.wwwrise.org/solidarity The Enshittification of History https://www.antipope.org/charlie/blog-static/2026/05/the-enshittification-of-histor.html Europe’s big tech bet is only as safe as its democracy https://defenddemocracy.eu/eu-tech-democracy/ Iran demands Big Tech pay fees for undersea Internet cables in Strait of Hormuz https://arstechnica.com/tech-policy/2026/05/iran-demands-big-tech-pay-fees-for-undersea-internet-cables-in-strait-of-hormuz/ Object permanence (permalink) #25yrsago Software-based antennas https://web.archive.org/web/20010518225333/http://www.etenna.com/ #25yrsago Aimster loses trademark to AOL https://web.archive.org/web/20010523001415/http://msnbc.com/news/575492.asp?cp1=1 #25yrsago House to ban online anonymity https://web.archive.org/web/20010526220254/https://www.wired.com/news/politics/0,1283,43938,00.html #20yrsago Lawsuits of Web 2.0 https://web.archive.org/web/20060528001734/http://www.fuckedsuit.com/ #20yrsago Is one month’s piracy worth more than France’s GDP? https://decordove.com/one-month-of-torrents-is-worth-more-than-the-gdp-of-france-riaa-rant.php #20yrsago Audio from Bruce Sterling’s “Neither Arphid nor RFID” rant https://web.archive.org/web/20060614140414/https://dev1.manme.org.uk/~luke/Sterling_SPACE_160506.mp3 #20yrsago Cops raid “sex slave cult” based on science fiction novels http://news.bbc.co.uk/1/hi/uk/4996410.stm #15yrsago Legal rebuttal: “vade et caca in pilleum et ipse traheatur super aures tuo” https://newyorkpersonalinjuryattorneyblog.com/2011/05/joseph-rakofsky-i-have-an-answer-for-you.html #15yrsago List of economists involved in violent sex crimes, for Ben Stein https://blog.xkcd.com/2011/05/18/answering-ben-steins-question/ #15yrsago MAFIAA wants warrantless searches of CD and DVD factories https://web.archive.org/web/20110520232527/https://www.wired.com/threatlevel/2011/05/riaa-warrantless-seizures/ #15yrsago CDC explains how to prepare for a zombie apocalypse https://web.archive.org/web/20110519201602/http://emergency.cdc.gov/socialmedia/zombies_blog.asp #10yrsago 129 of Gandhi’s speeches on India and self-rule https://archive.org/details/HindSwaraj?and[]=subject%3A\"Post+Prayer+Speech\" #10yrsago A backer message as Earth leaves beta and goes 1.0 https://web.archive.org/web/20160521054706/http://www.nature.com/nature/journal/v533/n7603/full/533432a.html #10yrsago EFF files Chelsea Manning appeal on hacking conviction https://www.eff.org/press/releases/eff-asks-court-reverse-chelsea-mannings-conviction-violating-federal-anti-hacking-law #10yrsago Apple rejects game about Palestine because political messages disqualify games from consideration https://web.archive.org/web/20160520111154/https://arstechnica.com/gaming/2016/05/apple-says-game-about-palestinian-child-isnt-a-game/ #10yrsago Nerdcore rapper Sammus’s amazing OSCON keynote https://www.youtube.com/watch?v=ELczJ07XPnw #10yrsago Everything is a Remix on “The Force Awakens” https://www.youtube.com/watch?v=PKvsc6a03Es #10yrsago Angry dudes are downranking woman-oriented TV shows on review sites https://web.archive.org/web/20160519014153/https://fivethirtyeight.com/features/men-are-sabotaging-the-online-reviews-of-tv-shows-aimed-at-women/ #10yrsago Second Life’s Trump army lays siege to Bernie Sanders’s virtual HQ with swastika cannons https://web.archive.org/web/20160428093534/https://motherboard.vice.com/read/second-life-donald-trump-bernie-sanders #10yrsago Xenophobic UK politician ranting about “political correctness” gets a public spanking from an historian https://web.archive.org/web/20160520224731/http://indy100.independent.co.uk/article/ukip-councillor-attempts-to-blast-bbc-for-historical-inaccuracy-gets-destroyed-by-actual-historian–ZyZAasU2fb #10yrsago A look at digital habits of 13 year olds shows desire for privacy, face-to-face time https://blogs.lse.ac.uk/parenting4digitalfuture/2016/04/18/the-class-living-and-learning-in-the-digital-age/ #10yrsago Big Vitamin bankrolls naturopaths’ attempts to go legit and get public money https://web.archive.org/web/20160520123659/https://www.statnews.com/2016/05/17/naturopaths-go-mainstream/ #10yrsago We Stand on Guard: in 100 years, America seizes Canada for its water https://memex.craphound.com/2016/05/18/we-stand-on-guard-in-100-years-america-seizes-canada-for-its-water/ #5yrsago Apple's complicity in Chinese state oppressionhttps://pluralistic.net/2021/05/18/unhealthy-balance-sheet/#think-manorialism #5yrsago Community Health Services sued its way through the pandemic https://pluralistic.net/2021/05/18/unhealthy-balance-sheet/#health-usury #5yrsago What Would Open Source Look Like If It Were Healthy https://pluralistic.net/2021/05/18/unhealthy-balance-sheet/#user-personas #5yrsago Dead, broke https://pluralistic.net/2021/05/19/zombie-debt/#damnation #1yrago Who Broke the Internet? Part III https://pluralistic.net/2025/05/19/khan-thought/#they-were-warned Upcoming appearances (permalink) Hay-on-Wye: HowTheLightGetsIn, May 22-25 https://howthelightgetsin.org/festivals/hay/big-ideas-2 SXSW London, Jun 2 https://www.sxswlondon.com/session/how-big-tech-broke-the-internet-b3c4a901 Kansas City: Facing the Future (Woodneath Library Center), Jun 10 https://www.mymcpl.org/events/119655/facing-future-cory-doctorow LA: The Reverse Centaur's Guide to Life After AI with Brian Merchant (Skylight Books), Jun 19 https://www.skylightbooks.com/event/skylight-cory-doctorow-presents-reverse-centaurs-guide-life-after-ai-w-brian-merchant Menlo Park: The Reverse Centaur's Guide to Life After AI with Angie Coiro (Kepler's), Jun 21 https://www.keplers.org/upcoming-events-internal/cory-doctorow-2026 Toronto: TBA, Jun 23 NYC: The Reverse Centaur's Guide to Life After AI with Jonathan Coulton (The Strand), Jun 24 https://www.strandbooks.com/cory-doctorow-the-reverse-centaur-s-guide-to-life-after-ai.html Philadelphia: TBA, Jun 25 Chicago: The Reverse Centaur's Guide to Life After AI with Rick Perlstein (Exile in Bookville), Jun 26 https://exileinbookville.com/events/50628 Edinburgh International Book Festival with Jimmy Wales, Aug 17 https://www.edbookfest.co.uk/events/the-front-list-cory-doctorow-and-jimmy-wales Recent appearances (permalink) On Enshittification – and what can be done about it (Re:publica) https://www.youtube.com/watch?v=KhINQgPMVSI EFFecting Change: How to Disenshittify the Internet (EFF, with Wendy Liu) https://archive.org/details/effecting-change-enshittification The “Enshittification” of Everything (Bioneers) https://bioneers.org/cory-doctorow-enshittification-of-everything-zstf2605/ Enshittification (99% Invisible) https://99percentinvisible.org/episode/666-enshittification/ Artificial Intelligence: The Ultimate Disruptor, with Astra Taylor and Yoshua Bengio (CBC Ideas) https://www.cbc.ca/listen/live-radio/1-23-ideas/clip/16210039-artificial-intelligence-the-ultimate-disruptor Latest books (permalink) \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 (https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/) \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2026 \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Third draft completed. Submitted to editor. \"The Reverse Centaur's Guide to AI,\" a short book for Farrar, Straus and Giroux about being an effective AI critic. LEGAL REVIEW AND COPYEDIT COMPLETE. \"The Post-American Internet,\" a short book about internet policy in the age of Trumpism. PLANNING. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "007df6d3f5293785b2b651ca21e45248bb3da3c90b09b36f7cacf134821669de",
+      "ref_id": "2",
+      "recommendationScore": 20,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "一篇社会政治评论，与科技博客主题关联度低，不适合作为主推内容。",
+      "reason": "内容聚焦社会议题而非科技发展，不符合博客的核心读者兴趣和主题优先级。",
+      "tags": [
+        "社会评论",
+        "非科技"
+      ]
+    },
+    {
+      "title": "Nobody is destined for greatness.",
+      "link": "https://www.joanwestenberg.com/nobody-is-destined-for-greatness/",
+      "source": "joanwestenberg.com",
+      "publishedAt": "2026-05-21T01:31:20.000Z",
+      "summary": "Demosthenes lost his first appearance before the Athenian assembly. His voice came out thin and failed him mid-sentence, and the crowd laughed him off the platform. Plutarch tells us he walked home with his cloak pulled over his face, certain his public life had ended before it started.\nWhat he",
+      "id": "b92efabc3b9d7cb02aa02b3d3e338f546ffc9a3194384e25c0bf941742d3c315",
+      "ref_id": "2",
+      "recommendationScore": 20,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "一篇非技术性的励志文章，通过历史人物故事强调个人努力的重要性。",
+      "reason": "文章内容与科技博客的核心主题不符，缺乏技术深度和相关性。",
+      "tags": [
+        "励志",
+        "人生感悟"
+      ]
+    },
+    {
+      "title": "The stock market returns 4 %",
+      "link": "https://entropicthoughts.com/stock-market-returns-4-percent",
+      "source": "entropicthoughts.com",
+      "publishedAt": "2026-05-20T22:00:00.000Z",
+      "summary": "People assume all sorts of wild stock market returns when they make their\nfinancial calculations. Here are some numbers that show up on web searches:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n6 %\n8.4 %\n10 %\n10.1 %\n11.3 %\n11.5 %\n13.6 %\n16 %\n\n\n\n\n\n\n\nThese are all correctly computed under their respective assumptions, but they\nare very misleading because whatever those assumptions were, they’re not\nrelevant for most calculations. You should assume 4 % in your calculations.\nHere’s one way to arrive at that:\n\n\n\n\n\nThe S&P 500 has historically yielded 12 % per year before inflation.\nBut that’s the arithmetic mean. Returns compound geometrically, so what we\nactually want is the compound annual growth rate. The typical rule of thumb\nis to remove half the squared volatility from the arithmetic mean. Volatility\nis notoriously hard to estimate, but let’s put it at 15–30 %. This leaves us\nwith a CAGR of 8–11 %.\nDuring the same period, inflation has been 3–4 % depending on which source you\ntrust. This brings the real (inflation-adjusted) returns down to 4–8 %.\nOn top of that, we have holding costs, transaction costs (e.g. rebalancing),\nand taxes. These are different in different localities and vary by investment\nstrategy, but let’s say they remove 1–3 % of return. The net CAGR is,\nthen, 2–6 %.\n(Continue reading the full article on the web.)",
+      "id": "c349bb2e0f49d580ce0dee9418f510d493c325ed933c95b76cbb5f30da3194e3",
+      "ref_id": "2",
+      "recommendationScore": 20,
+      "popularityScore": 25,
+      "priority": "low",
+      "comment": "主张在财务计算中应假设股票市场实际回报率为4%，而非普遍认为的更高值。",
+      "reason": "该文章属于金融投资范畴，与科技博客的主题优先级不符。",
+      "tags": [
+        "finance",
+        "investing",
+        "stock market",
+        "economics"
+      ]
+    },
+    {
+      "title": "Chewing gum restores dad's taste and smell years after Covid",
+      "link": "https://discover.swns.com/2026/05/chewing-gum-restores-dads-taste-and-smell-years-after-covid/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-21T17:14:56.000Z",
+      "summary": "Article URL: https://discover.swns.com/2026/05/chewing-gum-restores-dads-taste-and-smell-years-after-covid/\nComments URL: https://news.ycombinator.com/item?id=48226038\nPoints: 17\n# Comments: 3",
+      "id": "5a09a5913f20e8654cc6f6f8160201444ef7f3f2232336f6af8fb303c8c299fc",
+      "ref_id": "0",
+      "recommendationScore": 15,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "一篇关于COVID后遗症的个人健康轶事，与科技主题关联度低。",
+      "reason": "内容偏向生活新闻而非科技博客关注的技术深度和实用性主题。",
+      "tags": [
+        "健康",
+        "新闻"
+      ]
+    },
+    {
+      "title": "The Rise of Build-to-Rent Housing",
+      "link": "https://www.construction-physics.com/p/the-rise-of-build-to-rent-housing",
+      "source": "construction-physics.com",
+      "publishedAt": "2026-05-21T12:03:24.000Z",
+      "summary": "A major shift in the housing market in the last several years is the rapidly increasing popularity of “build-to-rent” homes — single-family homes that are built specifically for the purpose of being rented out.",
+      "id": "268edc45f3f80afebf14227dfd6ad4aad1b9f10e7fd67ec33a756450d0c53c91",
+      "ref_id": "0",
+      "recommendationScore": 15,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "探讨了住房市场中“建房出租”模式的兴起，但与科技主题关联度低。",
+      "reason": "文章主题聚焦于房地产和经济趋势，不符合科技博客的核心关注点。",
+      "tags": [
+        "housing",
+        "real estate",
+        "economics"
+      ]
+    },
+    {
+      "title": "Book Notes: “Poor Charlie’s Almanack”",
+      "link": "https://blog.jim-nielsen.com/2026/book-notes-charlie-munger/",
+      "source": "blog.jim-nielsen.com",
+      "publishedAt": "2026-05-21T19:00:00.000Z",
+      "summary": "I’ve been slowly listening to Poor Charlie’s Almanack: The Essential Wit and Wisdom of Charles T. Munger.\nI like his practicality. He’s never trying to be overly academic, as if he needs to prove how smart he is.\nHe says Berkshire’s success doesn’t come from them solving hard problems, but from spending their time knowing what a simple solution looks like — and acting on it when they see it!\nWe’ve succeeded by making the world easy for us, not by solving the world’s hard problems. \nMunger analogizes their approach to investing like jumping a fence. They don’t spend all their time trying to figure out how to jump a seven-foot tall fence. Instead, they find a spot where the fence is only a foot tall, jump it, and take the reward on the other side.\nThe approach he articulates for investing, in fact, seems broadly applicable to any kind of problem solving:\nQuickly eliminate the universe of what not to do.\nFollow up with a multi-disciplinary attack on what remains.\nAct decisively when — and only when — the right circumstances appear.\nWhenever people ask him for advice (as if somehow he could bestow upon them some kind of knowledge that will save them the pain and hardship of experience) he seems anathema to the idea that you can live life without making lots of mistakes.\nTo paraphrase Charlie: “I don’t want you to think that we have a method of learning that will prevent you from making mistakes. The best you can do is learn to make fewer mistakes than others. And then, when you inevitably do make mistakes, learn to acknowledge them and fix them quickly.”\nStraightforward. Practical. No bullshit. No ego. (Basically the opposite of everything I see on social platforms.)\nI quite enjoyed his perspective.\nEmail\n      · Mastodon ·\n\n      Bluesky",
+      "id": "40bf030dfca16e156c03fae22e58dbdd447d864dc752d8964274c1b0151aa045",
+      "ref_id": "4",
+      "recommendationScore": 15,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "总结了查理·芒格《穷查理宝典》中的关键智慧，强调简单解决方案的重要性。",
+      "reason": "文章内容主要为商业哲学和人生智慧，与科技深度、新颖性或具体技术实用性无关。",
+      "tags": [
+        "book review",
+        "business",
+        "philosophy",
+        "problem-solving"
+      ]
+    },
+    {
+      "title": "Quoting SpaceX S-1",
+      "link": "https://simonwillison.net/2026/May/20/spacex-s1/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-05-20T22:26:36.000Z",
+      "summary": "",
+      "id": "bedb4be20cc8667c2c79faa24d860224ecb447b4a0cf58d364e10d9af4e874b6",
+      "ref_id": "4",
+      "recommendationScore": 10,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "文章内容缺失，无法进行评估。",
+      "reason": "内容为空，无法判断其技术深度、新颖性、实用性及信息密度，不具备发布价值。",
+      "tags": [
+        "Incomplete",
+        "Missing Content",
+        "SpaceX"
+      ]
+    },
+    {
+      "title": "Whale Fall",
+      "link": "https://shkspr.mobi/blog/2026/05/whale-fall/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-05-21T11:34:15.000Z",
+      "summary": "Somewhere, in the endless blue ocean, a gigantic mammal shudders as it takes its last breath. Thanks to science, we know that all dogs go to heaven, but all whales descend through the murky depths until their carcasses litter the seabed.  Imagine a giant dying. You can't. They are huge and endless. A towering presence which, so it seems, has always been part of our world. They dominate and are…",
+      "id": "d51234e911959adf4b57b96e4062bbc524435dba93b3a1322f5d37a2f165c530",
+      "ref_id": "3",
+      "recommendationScore": 10,
+      "popularityScore": 15,
+      "priority": "low",
+      "comment": "纯文学性描述，与科技博客的主题完全无关。",
+      "reason": "内容为自然文学题材，与科技领域的任何优先主题均不符。",
+      "tags": [
+        "自然",
+        "文学",
+        "非科技"
+      ]
+    },
+    {
+      "title": "ParadeDB (YC S23) Is Hiring Distributed Systems/Platform Engineers",
+      "link": "https://news.ycombinator.com/item?id=48225852",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-21T17:00:52.000Z",
+      "summary": "Comments URL: https://news.ycombinator.com/item?id=48225852\nPoints: 0\n# Comments: 0",
+      "id": "8f4af2c0e70a20e5413541306104fd0a97cc1b966279c8a2d8120077a5480ff8",
+      "ref_id": "1",
+      "recommendationScore": 5,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "这是一个关于招聘分布式系统工程师的广告。",
+      "reason": "并非技术文章，主要为招聘信息，不符合科技博客的内容评估范畴。",
+      "tags": [
+        "招聘",
+        "分布式系统"
+      ]
+    },
+    {
+      "title": "Museum of Pocket Calculating Devices",
+      "link": "https://www.calculators.de/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-21T15:50:04.000Z",
+      "summary": "Article URL: https://www.calculators.de/\nComments URL: https://news.ycombinator.com/item?id=48224768\nPoints: 12\n# Comments: 1",
+      "id": "ab7f0e31e9d1927544333e2b82342f336fa61cabcbe726e4777930141ca1ee60",
+      "ref_id": "0",
+      "recommendationScore": 5,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "有趣的历史回顾，但与主流科技博客主题相关性不高。",
+      "reason": "纯粹的收藏展示，缺乏技术深度和实用性，与AI、编程等核心主题无关。",
+      "tags": [
+        "历史",
+        "收藏",
+        "计算器"
+      ]
+    },
+    {
+      "title": "The famous o3 \"GeoGuessr\" prompt did not work",
+      "link": "https://seangoedecke.com/the-o3-geoguessr-prompt-did-not-work/",
+      "source": "seangoedecke.com",
+      "publishedAt": "2026-05-21T00:00:00.000Z",
+      "summary": "",
+      "id": "8408a6633637f56080d2e0aae093e1bfdec1f19a578f96f8bb1b1db98c1daad9",
+      "ref_id": "0",
+      "recommendationScore": 5,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "标题暗示AI话题，但内容缺失，无法进行有效评估。",
+      "reason": "缺少实际内容，无法提供任何价值。",
+      "tags": [
+        "AI",
+        "Prompt Engineering",
+        "Content Missing"
+      ]
+    },
+    {
+      "title": "\"No way to prevent this\" say users of only language where this regularly happens",
+      "link": "https://xeiaso.net/shitposts/no-way-to-prevent-this/CVE-2026-45250/",
+      "source": "xeiaso.net",
+      "publishedAt": "2026-05-21T00:00:00.000Z",
+      "summary": "",
+      "id": "713e7fe3da35d2ec4db58b4bc4efd301eb071fdcaa395131f039556d978f3148",
+      "ref_id": "4",
+      "recommendationScore": 5,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "仅有标题（流行迷因），正文内容缺失，无法进行有效评估。",
+      "reason": "缺少文章核心内容，无法判断其价值和相关性，不具备发布条件。",
+      "tags": [
+        "迷因",
+        "缺失内容",
+        "待定"
+      ]
+    },
+    {
+      "title": "Michael Keating has died",
+      "link": "https://www.bigfinish.com/news/v/michael-keating-1947-2026",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-21T14:31:33.000Z",
+      "summary": "Article URL: https://www.bigfinish.com/news/v/michael-keating-1947-2026\nComments URL: https://news.ycombinator.com/item?id=48223303\nPoints: 60\n# Comments: 28",
+      "id": "c42358ced4e20cde15693ab5e948eed2b6f145be4cc3ebfc69450c035d257127",
+      "ref_id": "2",
+      "recommendationScore": 0,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "讣告，与科技博客主题不符。",
+      "reason": "纯新闻事件，无任何技术内容，不属于科技博客评估范畴。",
+      "tags": [
+        "新闻",
+        "讣告"
+      ]
+    }
+  ]
+}
