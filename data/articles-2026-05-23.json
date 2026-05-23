@@ -1,0 +1,662 @@
+{
+  "dailySummary": "科技速递：Anthropic Glasswing项目获进展，微软取消Claude Code许可引热议，AI单一控制层风险引发深思。同时，Deno强化npm整合，多起安全事件凸显软件供应链安全挑战。",
+  "articles": [
+    {
+      "title": "Making Deep Learning Go Brrrr from First Principles",
+      "link": "https://horace.io/brrr_intro.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-23T11:50:22.000Z",
+      "summary": "Article URL: https://horace.io/brrr_intro.html\nComments URL: https://news.ycombinator.com/item?id=48246889\nPoints: 88\n# Comments: 37",
+      "id": "48f2c0ca49ba268cb491d3dc5c714e9cb6e71b193fc1c2685339c506fe214b49",
+      "ref_id": "1",
+      "recommendationScore": 95,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "从第一性原理深入探讨深度学习性能优化，对AI工程师极具价值。",
+      "reason": "完全符合AI主题优先级，技术深度和实用性都非常高，是AI开发者必读。",
+      "tags": [
+        "AI",
+        "深度学习",
+        "性能优化",
+        "机器学习"
+      ]
+    },
+    {
+      "title": "Project Glasswing: An Initial Update",
+      "link": "https://www.anthropic.com/research/glasswing-initial-update",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-22T19:31:45.000Z",
+      "summary": "Article URL: https://www.anthropic.com/research/glasswing-initial-update\nComments URL: https://news.ycombinator.com/item?id=48240419\nPoints: 489\n# Comments: 291",
+      "id": "9d44573c198f670ad553038771ab287d1f5b7e871447338ad67d63e9351fa3d6",
+      "ref_id": "2",
+      "recommendationScore": 95,
+      "popularityScore": 88,
+      "priority": "high",
+      "comment": "Anthropic关于其新AI项目Glasswing的首次更新，揭示了前沿AI研究进展。",
+      "reason": "作为AI领域的顶尖研究更新，技术深度、新颖性与信息密度极高，对关注AI前沿的读者至关重要。",
+      "tags": [
+        "AI",
+        "人工智能",
+        "研究进展",
+        "Anthropic"
+      ]
+    },
+    {
+      "title": "This Week in Package Management: 23 May 2026",
+      "link": "https://nesbitt.io/2026/05/23/this-week-in-package-management.html",
+      "source": "nesbitt.io",
+      "publishedAt": "2026-05-23T10:00:00.000Z",
+      "summary": "I’m trying out a weekly roundup built from the package manager OPML feed collection and whatever I’ve posted or boosted on Mastodon.\nnpm is removing npm-shrinkwrap.json entirely in the v12 prereleases. The command, the config alias, and the loader all gone; project-root shrinkwraps need renaming to package-lock.json and shipping a locked tree inside a tarball now means bundleDependencies.\nSecurity\nuv 0.11.15 fixes two issues worth patching for: a TAR parser differential and entry points escaping the scripts directory. 0.11.16 followed with uv audit now refusing locked installs that match known-malware records.\nRuby 4.0.5 shipped with a fix for CVE-2026-46727; anyone on 4.0.0 through 4.0.4 should update.\nGitHub confirmed that around 4,000 of its own internal repositories were exfiltrated this week. The Register reports the entry point was a poisoned VS Code extension and attributes it to TeamPCP, the group behind the Shai-Hulud worm.\nThe Nx team published a postmortem of the Nx Console v18.95.0 compromise, another poisoned VS Code extension. The detail that stands out: the affected contributor had minimum-release-age set in .npmrc, but their pnpm was old enough to silently ignore the unknown key, so a 77-minute-old malicious package sailed through.\nA dependabot-core issue points out that the cooldown setting can be bypassed by an attacker who controls the version timestamps, which is most of them. Worth knowing if you’ve been treating it as a security control rather than a noise filter.\nReleases\nDeno 2.8 makes npm the default registry: deno add and deno install now treat an unprefixed name as an npm package, with jsr: becoming the thing you opt into. It also ships deno pack for turning a Deno or JSR project into an npm-publishable tarball, plus deno ci, deno why, deno audit fix, a pnpm-style catalog: protocol, optional hoisted node_modules, and min-release-age support in .npmrc. Hard not to read a direction of travel into that list.\npnpm 11.2.2 adds an opt-in preview where adding @pnpm/pacquet to configDependencies hands the materialisation phase of pnpm install to the Rust port. Resolution stays in pnpm; pacquet just fetches and links from the lockfile.\nconda 26.5.0 lands parser support for conditional dependencies, optional dependency groups, and variant flags from CEP 164–166.\nComposer 2.10.0-RC2 is out with a call for testers; composer self-update --preview to try it, --stable to bail.\nHomebrew 5.1.12 adds brew exec, an npx-style launcher that finds which formula provides an executable and runs it. 5.1.13 followed with RubyGems licence checking in audit.\nRubyGems and Bundler 4.0.12 tidy up BUNDLE_VERSION handling and add a warning when an indirect dependency might be confused with a direct one.\nVerdaccio 6.7.0 bumps the Node baseline to 24 and starts soft-warning on older runtimes. PDM 2.27.0 does the same for Python, now requiring 3.10.\nArticles\nThe Go team announced an official pkg.go.dev API: stateless GET endpoints for modules, versions, symbols, vulnerabilities, and search. No more scraping the HTML.\nnpm announced staged publishing and new install-source controls. npm stage publish uploads to a holding queue and a human with a 2FA challenge has to promote it before anyone can install. Alongside it, --allow-file, --allow-remote, and --allow-directory join --allow-git so you can lock installs to registry sources only; --allow-git flips to none by default in v12.\nThe NuGet blog wrote up package pruning in .NET 10, which trims transitive packages that the shared framework already provides and cuts the corresponding noise out of vulnerability reports.\nGábor Bernát posted his Python Packaging Summit recap from PyCon US, covering what got argued about in the room this year.\nA Bloomberg-authored piece in ACM Queue argues that companies need to move from passive consumption to active stewardship of the open source they depend on.\nThe PHP Foundation announced an Ecosystem Security Team funded by an Alpha-Omega grant. Packagist meanwhile has malware filter list support live in Private Packagist ahead of Composer 2.10.\nTrail of Bits wrote up several months of contributions to zizmor. A typosquatting audit for Actions references that I wrote also landed this week.\nElsewhere\npypitoken-cli from Catherine takes an account-scoped PyPI token and narrows it to a package-scoped one from the command line.\ndiffify shows what changed between two versions of a CRAN or PyPI package: function signatures, dependencies, namespace exports. listen to PyPI plays a note for every upload to the index, in the Listen to Wikipedia tradition.\nAnil Madhavapeddy has been resurrecting OCaml system packaging and writing up how it fits together.\nThe GitHub incident prompted an open VS Code issue asking for cooldowns on extension auto-updates. The Dependabot bypass above is a useful read before treating that as solved.\ngit-pkgs\nI tagged git-pkgs v0.16.1 along with a bunch of new versions other repos in the git-pkgs org: brief, proxy, manifests, registries, resolve, forge, enrichment, spdx, outline, and gitignore.\nSend links for next week to @andrewnez@mastodon.social.",
+      "id": "0a11a2e28b3d5a53aaaadfc0216bd5982ac477c9afef29392b7c56c462279cf8",
+      "ref_id": "3",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "内容高度及时且包含多个编程工具和安全领域的重要更新与事件，对开发者极具价值。",
+      "reason": "完美契合“编程工具”主题优先级，信息密度高，实用性强，具有极高的新颖性和关注度。",
+      "tags": [
+        "编程工具",
+        "安全",
+        "包管理",
+        "开发",
+        "npm",
+        "Ruby",
+        "GitHub"
+      ]
+    },
+    {
+      "title": "z386: An Open-Source 80386 Built Around Original Microcode",
+      "link": "https://nand2mario.github.io/posts/2026/z386/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-23T14:25:30.000Z",
+      "summary": "Article URL: https://nand2mario.github.io/posts/2026/z386/\nComments URL: https://news.ycombinator.com/item?id=48248014\nPoints: 42\n# Comments: 9",
+      "id": "ffea2414f2050db812c1e9281508562b64e520e7ed0f3a92c2398990df8f1782",
+      "ref_id": "4",
+      "recommendationScore": 88,
+      "popularityScore": 85,
+      "priority": "medium",
+      "comment": "一项关于开源80386处理器及其微代码实现的卓越技术项目。",
+      "reason": "技术深度和新颖性极高，对计算机体系结构和开源硬件领域有重要参考价值，尽管实用性相对小众，但其突破性值得推荐。",
+      "tags": [
+        "CPU设计",
+        "开源硬件",
+        "微代码",
+        "计算机体系结构",
+        "硬件工程"
+      ]
+    },
+    {
+      "title": "There is only one bad AI scenario",
+      "link": "https://geohot.github.io//blog/jekyll/update/2026/05/23/one-bad-scenario.html",
+      "source": "geohot.github.io",
+      "publishedAt": "2026-05-23T07:00:00.000Z",
+      "summary": "I’ve pushed AI doomers on how exactly the AI kills us, and I’ve never heard a good answer. I think Skynet style scenarios where humanity is largely opposed to an out of control AI are science fiction domination fantasies, along with Gray goo bottom-up scenarios. Both of these assume a major continuity break with current reality, too bizarre to be true. But unfortunately, you don’t need this for humanity to end as an open-ended evolutionary process. I think the danger is that AI continues to optimize the current societal loss function of domestication.\nHumans have endured terrible systems, but fundamentally, humans are evolutionary creatures. Any system of totalitarian control must be able to reproduce generationally. It cannot merely dominate adults; it has to produce children who can live inside it, maintain it, and continue it. And because of how humans reproduce, there’s always evolutionary randomness. Entropy locally asserts itself, and reality cannot be perfectly controlled.\nI’m not sure it’s possible, but if there is a bad scenario with AI, it’s a singleton with nothing that can substantially impact reality outside of it. And this won’t happen through Hitlerian language, it will happen through administrative language. For your safety, reality must be mediated.\n\nThink about it. If we have the technical power, should we let murder happen? What about sexual assault? Sickness? Bullying? Racist speech?\nWe have seen over and over in the last decade where humanity’s impulses lie on these things. Safetyism seems to be very hard to argue against. The current safetyism attempts are pretty quaint, but I don’t think that changes the impulse. Compare the paper COVID vaccine cards in the US to the ones that use real cryptography (that didn’t exist 50 years ago) in Europe. I’m not saying anything new here, but the trend of technology is more and more mediation of reality. For your safety. For your convenience. To make you legible. To place you in the managerial framework.\n\nThis impulse alone is not enough for a bad outcome though, even if everyone had it. The size of each system may increase, but the question is how many independent systems remain. A very simple proxy for this is how many groups can meaningfully still do violence. And not just human groups, bacteria and stuff count too.\nThere may be other things that are locally bad, but the only world-ending scenario is a singleton. Not one big model on one server, but one effective control layer with no outside. No independent actor can impose costs on it. No rival system can route around it. No uncontrolled evolutionary process can surprise it.\nAll violence prevented in the name of safety. That system is no longer answerable to reality. It is no longer subject to evolution. It cannot be corrected from the outside. That is the end.\nI’m not sure if this is possible or not, but if you want a plausible AI doom scenario, it’s this. Not a great war with the machines, but the slow and managed end of evolution, likely in pursuit of further human domestication.",
+      "id": "fa444f3d6fb593dd252b2e3e814a1f1f4b64eef366c26fd99a5ea3b3d036803a",
+      "ref_id": "1",
+      "recommendationScore": 88,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "对AI末日论提供了一个新颖而深远的哲学视角，探讨了AI优化与人类演化的潜在冲突。",
+      "reason": "文章对AI风险的独特思考引人深思，超越了传统科幻叙事，为AI伦理讨论提供了新的维度，且主题优先级高。",
+      "tags": [
+        "AI",
+        "哲学",
+        "未来趋势",
+        "AI伦理"
+      ]
+    },
+    {
+      "title": "On The <dl>",
+      "link": "https://benmyers.dev/blog/on-the-dl/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-23T13:03:43.000Z",
+      "summary": "Article URL: https://benmyers.dev/blog/on-the-dl/\nComments URL: https://news.ycombinator.com/item?id=48247325\nPoints: 187\n# Comments: 59",
+      "id": "1f0c8b8061cfb6db65b6b27cb93e8b32f47a24f743303c1cd663b50e5958e4e2",
+      "ref_id": "2",
+      "recommendationScore": 80,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "深入探讨HTML `<dl>` 标签的正确用法和语义，对Web开发者具有高度实用价值。",
+      "reason": "文章技术深度和信息密度高，直接关联编程工具主题，对前端开发者有很强的实用性。",
+      "tags": [
+        "HTML",
+        "Web开发",
+        "编程工具",
+        "前端",
+        "语义化"
+      ]
+    },
+    {
+      "title": "Microsoft starts canceling Claude Code licenses",
+      "link": "https://www.theverge.com/tech/930447/microsoft-claude-code-discontinued-notepad",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-22T17:32:04.000Z",
+      "summary": "https://archive.ph/WfCta\nComments URL: https://news.ycombinator.com/item?id=48238896\nPoints: 401\n# Comments: 383",
+      "id": "94e2733bab9bdea3370859f42592333d348038c3bca3d0bc5db6bd1a0c550b83",
+      "ref_id": "3",
+      "recommendationScore": 80,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "微软开始取消Claude Code许可，对AI生态系统带来显著影响。",
+      "reason": "文章揭示了AI商业策略和生态变化的最新动向，对AI行业参与者具有高度实用性和市场洞察价值。",
+      "tags": [
+        "AI",
+        "商业策略",
+        "政策",
+        "Microsoft",
+        "Claude"
+      ]
+    },
+    {
+      "title": "Reverse engineering circuitry in a Spacelab computer from 1980",
+      "link": "http://www.righto.com/2026/05/reverse-engineering-spacelab-computer.html",
+      "source": "righto.com",
+      "publishedAt": "2026-05-23T16:17:44.885Z",
+      "summary": "Spacelab was a reusable laboratory that could be carried in the cargo bay of the Space Shuttle, providing lab space for astronauts\nand experiments.\nSpacelab was controlled by a French-built minicomputer, called the Mitra 125 MS.\nUnlike modern computers, this computer didn't contain a microprocessor chip.\nInstead, its 16-bit processor was constructed from several boards of chips.\nIn this article, I reverse-engineer one of the processor boards, shown below, part of the computer's Arithmetic/Logic Unit (ALU).\n\nThe Mitra 125 MS computer, built by CIMSA, with one of the ALU/register cards shown.\n\nSpacelab consisted of a pressurized cylindrical laboratory that held\nexperiments, computers, and work areas for researchers.\nA tunnel connected the laboratory to the Shuttle, allowing researchers to move between the Shuttle and Spacelab.\nSpacelab also supported up to five \nunpressurized \"pallets\" that were exposed to space, holding experiments such as telescopes and sensors.\nThe illustration below shows the tunnel, the Spacelab laboratory, and a pallet installed in the Shuttle's cargo bay.1\n\nIllustration of the Spacelab-3 mission. From NASA.\n\nBecause Spacelab was a European project, it used a European computer, the Mitra 125 MS.\nThe Mitra line started in 1971 when a French company called CII introduced the Mitra 15 minicomputer,\na 16-bit computer that used magnetic core memory.\nMitra is a French acronym2 that translates as \"Mini-machine for Real-Time and Automatic Computing.\"\nAs the name suggests, Mitra was both small and designed for real-time computing, making it suitable for controlling experiments.\nThe Mitra 15 was a popular computer, with almost 8000 units sold.\nIn 1975, CII produced a successor called the Mitra 125.\nThe Mitra 125 improved on the Mitra 15 by adding memory management, I/O processors, higher performance, and additional instructions.\nSpacelab used the Mitra 125 MS minicomputer,3 a militarized variant of the Mitra 125 that was produced by a company\ncalled CIMSA.\nA Spacelab mission had three of these computers: the Subsystem Computer controlled\nand managed Spacelab itself, while the Experiment Computer handled the experiments. A Backup Computer could take over if either\ncomputer failed.1\nThese computers were part of Spacelab's Command and Data Management Subsystem, which controlled experiments and collected data.4\nThe three computers were normally mounted in the Spacelab laboratory underneath the Work Bench Rack (details). The computers were controlled through\na keyboard and a color CRT display, called the Data Display System (DDS).\nThe computer installation and a DDS are visible in the photo below.\n\nThis photo shows astronauts inside Spacelab (but not in space). The Spacelab computers were mounted under the Work Bench (right arrow). The Data Display System (left arrow) provided the interface to the computers. Photo is STS-51B Crew Portrait, 1984.\n\nFor some Spacelab missions, the laboratory was omitted entirely, providing more room for experiment pallets.\nIn this case, the computers were mounted in a small pressurized cylinder called the igloo.\nThe researchers remained in the Shuttle, controlling experiments through two Data Display Systems that were \nmounted in the Shuttle's rear flight deck (photo).\nThe 74181 ALU chip\nThe Spacelab computer didn't use a microprocessor chip. Instead, like most minicomputers at the time, it was built from simple\nintegrated circuits that were combined to implement the computer's circuitry.\nUnlike modern CMOS integrated circuits, these chips contained bipolar transistors, which were fast, but large and\npower-hungry, a technology known as TTL (transistor-transistor logic).\nElectronics hobbyists of a certain age will recall the popular 7400 series of TTL chips.\nThe Spacelab computer was built from the military grade of these chips, the 5400 series.\nThe most complex chip in the computer was probably the '181 Arithmetic/Logic Unit (ALU) chip, containing about 170 transistors.\nThe arithmetic/logic unit is the heart of a computer, performing arithmetic operations as well as Boolean logic operations.\nIn 1970, Texas Instruments put a complete 4-bit arithmetic/logic unit on a single chip, called the 74181.\nSince the chip was fast, compact, and inexpensive,\nit was widely used, providing the ALU in computers \nfrom the popular PDP-11 and Xerox Alto to the powerful VAX-11/780 \"superminicomputer\".\nThe 74181 provides a full set of binary logical operations, including AND, OR, XOR, and complement.\nFor arithmetic, it includes addition, subtraction, incrementing, and decrementing.5\nInconveniently, the 74181 doesn't support shifting right.\nMoreover, multiplication and division were much too complicated to be included in the 74181.\nInstead, a processor implemented multiplication and division through repeated addition or subtraction, combined with shifting.\nLikewise, floating-point operations were way beyond the capability of the 74181, but a processor could use the 74181 when performing\nthe steps of a floating-point operation.\nAlthough the 74181 only handled four bits, multiple 74181 chips could be combined to handle larger words, such as 16 bits or 32 bits.\nTo handle carries, the chips could be chained together, with the carry-out from one chip fed into the carry-in of the next chip. \nThis approach was simple but slow, since the carry had to \"ripple\" through all the chips before the answer could be obtained.\nThe carry process could be sped up by using a carry-lookahead chip called the 74182, which\nspeeds up addition by computing the carries from four 74181 chips (i.e., 16 bits) in parallel.\nThe Mitra's ALU/register boards\nThe Spacelab computer used eight '181 ALU chips to implement a 32-bit adder.6\n(Specifically, these chips are the 54S181, a variant of the 74181: \"54\" indicates that the chips handle the military temperature range, and \"S\" indicates\nthat the chip is built from high-speed Schottky logic.)\nHowever, the ALU boards required numerous additional chips.\nDepending on the instruction, eight different inputs could be selected for the ALU.\nChips called multiplexers selected the desired value, requiring 32 multiplexer chips.\nThree 32-bit registers provided storage for ALU inputs and outputs, requiring 24 chips.\nTwo 54S182 carry-lookahead chips provided fast carry computation.\nFinally, some simple logic chips (inverters and NAND gates) tied things together.\nDue to the number of chips required, the ALU/register circuitry was spread across three boards, as shown below.\n(I reverse-engineered the board on the right.7)\nThe '181 chips are immediately visible as they are much larger than the other chips; they have 24 pins, compared to 14 or 16 pins for\nthe other chips.\nThe first board has two '181 chips, while the last two boards each have three '181 chips.\nThe last two boards are similar, but not identical.\n\nThe three ALU/register boards from the Spacelab computer.\nClick this image (or any other) for a larger version.\n\nFinding a 32-bit ALU was a surprise to me, since the computer is a 16-bit computer.\nThe expanded ALU was probably implemented to improve performance.\nMultiplying two 16-bit numbers yields a 32-bit result, so a 32-bit ALU makes multiplication faster.\nMoreover, the computer supports 32-bit floating-point numbers, so the 32-bit ALU presumably makes floating-point operations faster.\nThe diagram below shows the architecture of the computer's 32-bit ALU system.\nIn the middle is the ALU itself, operating on two 32-bit operands: A and B.\nAt the left, multiplexers (\"mux\") select one of four values for A and one of four values for B.\nAt the right, the output of the ALU can be stored in three 32-bit registers, or sent to the rest of the computer via the bus. The first two registers are shift registers, allowing the value\nto be shifted left or right, while the third register simply holds the value in flip-flops.\nThe first two registers are connected by buses to the rest of the computer, while the value of the third register can only be accessed by using it\nfor another arithmetic operation.8\nI suspect that the shift registers are used for multiplication and division to shift the arguments at each step.\n\nBlock diagram of the ALU/register board.\n\nThe inputs to the multiplexers provide flexibility. For instance, you can add register 1 to a number from the bus, or\nadd register 2 shifted to the right to register 3.\n(Note that this shifting is implemented by wiring the inputs to the multiplexer shifted left or right, completely separate\nfrom the shift register's shifting.)\nThe \"all 1's\" input presumably acts as -1 in two's-complement, providing a decrement.\nThe B input can be taken from the bus, allowing the value to come from memory or from a general-purpose register.\nThe mix input is a jumble of signal lines, register bits,\na shift register input, and a pull-up with no apparent pattern.\nI describe a few more mysteries in the footnote;9\npresumably, the mysteries would be resolved if I reverse-engineered the whole computer.\nThe functions of the multiplexers, ALU chips, and registers depend on what instruction is being executed. \nSpecifically, the computer's microcode engine generates control signals for the computer, including the ALU/register boards.\nSome of these control signals select\nwhich multiplexer inputs are used. Other control signals select the ALU's function. Finally, control signals select which register\nreceives the ALU's output.\nThe board that I reverse engineered implements 12 of the 32 bits of the ALU and registers.\nThe diagram below shows the role of each chip on the board.\nThe three 4-bit ALU chips are indicated 2, 1, and 0.\nEach ALU chip has two multiplexer chips to select the four A input bits and two multiplexer chips to select the four B input bits.10\nThus, there are 12 multiplexer chips on the board.\nThe three 12-bit registers A, B, and C are each implemented with three 4-bit chips.\nThree hex inverter chips and a 4-input NAND chip complete the board.11\n\nThe ALU/register board with the chips labeled.\n\nThese printed-circuit boards (PCBs) have some interesting features.\nIn most electronics, circuit boards have holes only where they are needed, but the Spacelab boards have holes in a fixed grid pattern.\n(IBM used similar boards in its System/360 computers in the 1960s.12)\nA hole can hold an IC pin or other component.\nOr a hole can be used as a via, connecting PCB traces on different layers.\nAnother interesting feature of the boards is the vertical metal bars underneath the integrated circuits. These bars carry heat away from\nthe integrated circuits.\nThe PCB traces are more visible on the back of the board (below).\nThe traces are thin enough that two traces can pass between a pair of holes.\nNote the yellow \"bodge\" wires, correcting errors on the circuit board. I assume that these errors were fixed for the computers\nused in flight.\n\nBack of an ALU/register board. This is a different board from the one I reverse engineered, since I wanted to show the yellow wires.\n\nEach board has a 96-pin connector at the bottom, which plugs into the computer's motherboard.\nNote the three cylindrical pins sticking out of the connector.\nThese pins are keyed to ensure that a board can only be plugged into the correct slot.\nThat is, each pin has a metal tab oriented in one of six directions.\nOn the motherboard, the connectors have corresponding notches.\nIf the tabs and the notches don't match up, the board can't be plugged in.\n\nA close-up of the connector, showing the keying. Also note that the zig-zag pin numbering on the left changes to an irregular number on the right. Unexpectedly, pin 52 is between pins 49 and 51, for example,\n\nThe boards in the Spacelab computer are dense, tightly packing integrated circuits to minimize the size\nof the computer.\nHowever, the boards are considerably less dense than American aerospace computers.\nIn particular, the Spacelab computer used the same integrated circuit packages that were used in consumer electronics: through-hole DIPs (dual\nin-line packages with two rows of pins).\nIn contrast,\nIBM's line of 4 Pi aerospace computers used \"flat-pack\" integrated circuits that were considerably smaller and thinner\n(details).\nAs a result, IBM's double-sided circuit boards could hold 156 integrated circuits compared to 30 on a single-sided Mitra board of\nroughly the same size.\nA brief history of the French computer industry leading up to this computer\nBull is one of France's earliest computing companies, created in 1931. Bull initially sold punch-card equipment, competing with IBM.\nBy the 1960s, Bull was a major computer company with products such as the transistorized Gamma 60 computer,\na large-scale mainframe that was\nsaid to be the first system specifically designed for parallel and multiprogramming.\nUnfortunately, Bull had difficulty competing with IBM, its stock collapsed, and\nBull was acquired by General Electric in 1964, forming Bull-GE.\nThe collapse and controversial takeover were a blow to the French computer industry,\nand the incident was dubbed the Affaire Bull.\nTo make things worse, GE soon canceled two of Bull's computers, focusing instead on GE's computer line.\nThe Affaire Bull was not only an affront to French pride, but an indication that France was largely dependent on the US for\ncomputer technology.\nA second incident revealed the critical military consequences of France's weakness.\nIn the early 1960s, France was attempting to improve its nuclear strength by develop a hydrogen bomb.\nThe mathematics of fusion is computationally intense, so France attempted to buy powerful American computers: the CDC 6600 supercomputer\nand the IBM 360/92.13\nHowever, the US government blocked the export of these computers to France in an attempt to limit nuclear proliferation.\nThese problems led\nFrench president Charles de Gaulle to decide that France needed a strong computer industry of its own.\nIn 1966, he developed a plan for computing (Plan Calcul)14, where the French government\nwould reorganize the computer industry, picking companies to lead in each sector from minicomputers\nto semiconductors.\nIn the minicomputer sector, the government created a company called CII by combining three French computer companies: SEA, CAE, and\nSETI.\nCII was primarily owned by a large French company called Thomson-CSF (now Thales).15\nCII played a key role in the Spacelab computer, since CII developed the Mitra line of computers.\nIn the mid-1970s, CII and the American company Honeywell merged, with the computer division spun off to form a new company called\nSEMS, with majority shareholder Thomson.\nAnother Thomson subsidiary, CIMSA, focused on military electronics and produced the militarized versions of the Mitra line.\nIn particular, CIMSA produced the computer for Spacelab.16\nFrance's Plan Calcul is generally viewed as a failure. Despite expensive subsidies, the French computer industry remained weak and\nunable to escape American dominance. When Giscard d'Estaing was elected president of France in 1974, he ended Plan Calcul.\nThere are various interpretations, such as the failure of government planning versus the free market, but my view is \nthat in the 1960s and 1970s, IBM crushed most challengers in the computer industry, both American and foreign, so Plan Calcul\ndidn't have a chance.\nAs for Bull, the company went through a dizzying sequence of American takeovers and nationaizations by France.17\nJust two months ago (March 2026), the company was reacquired by the French government.\nReplacement by the IBM AP-101SL computer\nSince Spacelab was a European project, using a European computer was a point of pride.\nUnfortunately, the French computers were eventually replaced by IBM computers due to performance needs and undoubtedly political factors.\nDuring the Space Shuttle program, the computers on the Shuttle and in Spacelab became obsolete as computer technology rapidly advanced.\nAlthough the computers were originally considered powerful, their performance and memory capacity became problems over time.\nThe Space Shuttle's IBM AP-101 computers were upgraded to IBM AP-101S computers, first flying in 1991. The AP-101S was half the size,\nthree times faster, and had more than twice the memory, using semiconductor memory instead of magnetic core memory.\nThe Spacelab computer system needed a similar upgrade, and\nin 1991, the CIMSA computers on Spacelab were replaced with IBM AP-101SL computers.\nThe AP-101SL was based on the Shuttle's upgraded AP-101S computer,\nbut modified to support the Mitra's hardware architecture, instruction set, and I/O capabilities.\nThe packaging of IBM's computer was slightly changed to match the dimensions of the CIMSA computer and to use an external heat exchanger rather than\nan internal heat exchanger.\n\nThe IBM AP-101SL Spacelab computer. The circuit boards are much larger than the original Spacelab computer boards or the original AP-101B boards. Note the flat-pack ICs on the boards. Photo courtesy of Kyle Owen.\n\nChanging the Shuttle's 32-bit AP-101S computer to run the 16-bit Mitra instruction set was easier than you might expect,\nsince the AP-101S already supported multiple instruction sets: a 32-bit instruction set derived from the IBM System/360 and\na 16-bit instruction set called 1750A that was an Air Force Standard.\nBecause the AP-101S implemented its instructions in microcode—low-level software that specified the steps of a machine instruction—the instruction set could be modified by updating the microcode.\nI compared the circuit boards in an AP-101S with the boards in an AP-101SL to quantify the changes. The semiconductor memory boards\nand power supplies were essentially identical. \nThe CPU boards had minor changes.\nUnsurprisingly, the I/O boards were completely different, and the complex I/O Processor (IOP) in the Shuttle's AP-101S was omitted.\nFor more on the IBM AP-101 line, see my History of IBM's 4 Pi computers.\nConclusions\nThe Spacelab computer provides an interesting look at how computers were built before microprocessors took over.\nThe components of a computer, such as the ALU, registers, and control circuitry, were constructed from simple chips.\nSince each chip didn't do much, the computer required 36 boards full of chips.\nEven so, the computer was compact enough to go into space.\nBy modern standards, these computers aren't much—each computer had a memory capacity of just 128 KB of magnetic core memory—but\nthey played a critical part in the space program.\nI'm not going to reverse-engineer the full computer, but I may write some more about it.\nFor updates, follow me on\n Bluesky (@righto.com),\nMastodon (@kenshirriff@oldbytes.space),\nor RSS.\nCredits: Thanks to Steve Jurvetson for providing the Spacelab computer for examination.\nAI statement:\nDespite the presence of the em dash, no AI was used in the writing of this article (details).\nNotes and references\nFor details on Spacelab, see Spacelab News Reference. ↩↩\nTo avoid cluttering the main article, I'll summarize the French acronyms and companies in this footnote.\n\n\nCAE: Compagnie européenne d'automatisme électronique (European Electronic Automation Company). A French computer company founded in 1960, selling versions of American computers such as TRW's RW-300. Part of the 1966 merger that formed CII.\n\nCII: Compagnie internationale d'informatique (International Computer Company): the company that created the Mitra line of minicomputers.\nCII also sold computers designed by the American company SDS (Scientific Systems), which was bought by Xerox in 1969 and became XDS (Xerox Data Systems). XDS was shut down in 1975, costing Xerox hundreds of millions\nof dollars.\n\nCIMSA: Compagnie d'informatique militaire, spatiale et aéronautique (Military, Space, and Aeronautical Computing Company): the company that manufactured the Spacelab computer.\n\nCSF: Compagnie Générale de Télégraphie Sans Fil (General Wireless Telegraphy Company). A radio company dating back to 1918. It merged with Thomson in 1968 to form Thomson-CSF.\n\nMATRA: Mécanique Aviation Traction (Mechanics-Aviation-Traction). An electronics company that was the contractor for Spacelab's data systems.\n\nMitra: Mini-machine pour l'Informatique Temps Réel et Automatique (\"Mini-machine for Real-Time and Automatic Computing\"). A line of minicomputers.\n\nSEA: \nSociété d'électronique et d'automatisme  (Electronics and Automation Company): a French computer manufacturer, started in 1947 and merged into CII in 1966.\n\nSEMS: Société Européenne de Mini-informatique et de Systèmes (European Society for Minicomputers and Systems). A subsidiary of Thomson, created by the French government in 1976 during the merger of CII and Honeywell. SEMS took over the manufacturing of Mitra computers from CII.\n\nSETI: Société européenne de traitement de l'information (European Information Processing Society).\nSETI was a French computer company formed in 1961. The American computer company Packard Bell owned a quarter of SETI, and SETI\nsold the desk-sized Packard Bell 250 computer.\n ↩\nOn the ground, the Spacelab project used Mitra 125 S computers that were functionally identical to the Mitra 125 MS (details). ↩\nSpacelab's Command and Data Management Subsystem (CDMS) is surprisingly complicated because of the data communication paths between\nSpacelab, the Shuttle, and the ground. Moreover, multiple units store, encode, and decode data.\nIn the CDMS block diagram below, I've highlighted the three computers; they are just a small part of the CDMS.\nSee Section 3.5 of Spacelab News Reference or\nThe Command and Data Management System of Spacelab for details on CDMS.\n\nA block diagram of Spacelab's Command and Data Management Subsystem. From The Command and Data Management System of Spacelab. Click for a larger version.\n\n ↩\nI reverse-engineered the 74181 ALU chip in this article and explained the motivation for its quirky set of operations in this article. ↩\nAnother board in the Spacelab computer has four 74S181 chips implementing a 16-bit ALU. My guess is that this board is part of the I/O processor.\nThe board has the cryptic label \"HMSG\". ↩\nMy reverse-engineering process was straightforward but tedious.\nI used a multimeter to beep out the connections between the integrated circuits as well as the connections to the connector.\n(Unlike many systems that I look at, these boards didn't have conformal coating, which made beeping out the connections practical.)\nI created a schematic in KiCad from this data; this schematic was \"physical\", with the layout of the chips and pins matching their\nphysical location on the board.\nNext, I converted the integrated circuit symbols from physical rectangles to logical symbols.\nFinally, I moved the symbols around on the schematic to make a reasonable schematic.\n(I had to go back and beep out more connections as I discovered errors or missing connections.)\nTheoretically, I could reverse-engineer the entire computer, but reverse-engineering one of the 36 boards is enough for me. ↩\nMy full reverse-engineered schematic of the ALU/register board is below. Click for a larger version.\n\nSchematic of the ALU/register board.\n\n ↩\nA few mysteries remain in the ALU/register board.\nThe three registers probably act as an accumulator, a temporary register, and an extra register for multiplication/division, but\nit's not clear which register is which. \nI don't understand why the inputs are organized as they are; for instance, you can't add register 1 to register 2 shifted.\nThe mix input seems very random; maybe these signals are part of a self test?\nOn the board, I expected to see 12 bits out of a uniform 32-bit ALU. However, the top two 4-bit \"nibbles\" have different control lines\nand different zero-detection from the third.\nPerhaps this is because the Mitra floating-point numbers have 24 bits of mantissa and 8 bits of exponent. It would make sense for\nthe ALU/register board to handle these parts separately.\nAnother mystery is that the board has a circuit to test two hardwired bits and two external bits to see if they are all 0 or all 1,\nfor some reason. ↩\nThe multiplexer chips are dual 4-to-1 multiplexers. Thus, two multiplexer chips are required to support four bits. ↩\nThe chips in the Spacelab computer use a variety of part number systems. \nA few chips have standard industry part numbers such as \"SNJ5483\" (equivalent to a 7483 adder).\nMost of the chips are labeled with military part numbers such as JM38510/07801 BJB, using the MIL-M-38510 standard.\nThese part numbers can be cross-referenced using the MIL-HDBK-983 handbook.\nOther chips, like the ones below, have Fairchild part numbers that are a mystery to me.\nThe first line is presumably the part number, \"929 567\" and \"929 705\", but I can't find these numbers anywhere.\nIf you know what these numbers mean, please let me know!\n(07263 is the CAGE code for Fairchild, and the last line is the date code.)\n\nTwo Fairchild ICs with mysterious part numbers.\n\nThe ALU/register board that I examined uses the following JM38510 part numbers, which I have converted to standard parts:\n/01403 = 54153 dual 4-1 multiplexer\n/07003 = 54S04 hex inverter\n/07006 = 54S20 4-input NAND\n/07601 = 54S194 4-bit shift register\n/07801 = 54S1814-bit ALU\n/30107 = 54LS175 quad flip-flop ↩\nThe photo below compares an IBM board (top) with a Spacelab board (bottom), both from the early 1980s.\nIt's interesting how similar the boards are. Both use a 0.1\" grid of holes, unlike most printed-circuit boards, which only use\nholes where needed.\nBoth boards are multi-layer with integrated circuits on one side.\nThe IBM board is denser; the chips are spaced 0.1\" apart rather than 0.3\" apart. \n\nAn IBM computer board (top) and a board from the Spacelab computer (bottom).\n\nI don't know which IBM system used this board, but it was a commercial system, not an aerospace system.\nThis board is a bit unusual for IBM, since most of the chips are standard DIPs rather than the square metal cans that IBM typically\nused. ↩\nThe US blocked computer exports to France with NSAM 294, a 1964 National Security Action Memorandum.\nThe US later allowed sales of the CDC 6600 and IBM 360/91 computers to France on the condition that France not use the computers\nfor atomic weapon development, a condition that France apparently violated.\nSee A.E.C. Bids Industry Avoid Sales Aiding French Tests (1964) and Paris Promises Not to Use Equipment for Atomic Weapons (1966).\nThe CDC 6600 supercomputer executed up to 10 million instructions per second (MIPS) while the IBM 360/91 executed about 17 MIPS.\n(In comparison, a 1995 Pentium Pro or a 2012 cell phone is faster than these computers.)\nIn 1971, Henry Kissinger was still blocking computer exports to France, as shown in this transcript.\n(One confusing issue in these articles is that IBM announced the 360/92 computer in 1964, but renamed it as the 360/91 before it\nshipped in 1967.) ↩\nSome contemporary articles on Plan Calcul are\nFrance Entering Computer Battle: Starts All-French Company to Compete (New York Times, 1967) and\nFrance: First the Bomb, Then the \"Plan Calcul\" (Science, 1967).\nSee History of Computing in France: A Brief Sketch for an overview of the French computer industry. ↩\nThomson has a complicated history.\nIn 1883, two Americans, Thomson and Houston, started the Thomson-Houston Electric Company. A decade later, this company became\nGeneral Electric, with a French subsidiary: Thomson Houston International.\nAfter various mergers, the French subsidiary became Thomson-CSF, a major defense and electronics firm.\nIn a sense, Thomson-Houston both created and destroyed GE.\nThe Thomson-Houston Electrical Company became GE, but the French subsidiary of Thomson-Houston ended up\nbeing a key part of GE's collapse almost a century later.\nSpecifically, the French rail transport company Alsthom (later Alstom) was formed from the French heavy engineering subsidiary of\nThomson-Hudson in 1928; the \"thom\" in \"Alsthom\" comes from \"Thomson\".\nIn 2014, General Electric acquired Alstom for $10.1 billion. The acquisition was a disaster, and in 2018, GE wrote off $23 billion.\nThis loss, along with other financial problems, led to GE's announcement in 2021 that it would break up into three companies. ↩\nOne more company should be mentioned: MATRA.\nMATRA was the contractor for Spacelab's data systems, so the Spacelab computer was produced under a contract from MATRA.\nPeople often confuse Mitra (the name of the computer line) with MATRA. ↩\nDue to financial difficulties, Bull was acquired by General Electric in 1964, then was acquired by Honeywell, nationalized by France,\npartnered with NEC, acquired Zenith,\nprivatized by France, and acquired by Atos. Less than two months ago, France acquired Bull, continuing\nthe series of reorganizations. ↩",
+      "id": "b339257516825a5e36ec95c4ce8328ab2eba5916ad0188012dc266c0aa9cf452",
+      "ref_id": "4",
+      "recommendationScore": 78,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "文章详细记录了对1980年代Spacelab计算机ALU电路板的逆向工程过程。",
+      "reason": "文章技术深度极高，详细分析了复古硬件架构，对于对电子工程、计算机历史和逆向工程感兴趣的读者是极佳的学习材料。",
+      "tags": [
+        "Reverse Engineering",
+        "Hardware",
+        "Vintage Computing",
+        "Computer Architecture",
+        "Electronics"
+      ]
+    },
+    {
+      "title": "Lisp in Vim (2019)",
+      "link": "https://susam.net/lisp-in-vim.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-23T14:55:59.000Z",
+      "summary": "Article URL: https://susam.net/lisp-in-vim.html\nComments URL: https://news.ycombinator.com/item?id=48248238\nPoints: 17\n# Comments: 4",
+      "id": "4c52a8a3b5d8d9a29eb8ac790839facb935313dde2835222fa6c6a8f48690562",
+      "ref_id": "3",
+      "recommendationScore": 75,
+      "popularityScore": 40,
+      "priority": "medium",
+      "comment": "一篇详细介绍如何在Vim中配置和使用Lisp环境的实用教程。",
+      "reason": "对Lisp和Vim用户具有较高的实用价值，符合'编程工具'主题优先级，技术深度和信息密度适中。",
+      "tags": [
+        "Lisp",
+        "Vim",
+        "编程工具",
+        "开发环境"
+      ]
+    },
+    {
+      "title": "- -dangerously-skip-reading-code",
+      "link": "https://olano.dev/blog/dangerously-skip/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-23T09:37:16.000Z",
+      "summary": "Article URL: https://olano.dev/blog/dangerously-skip/\nComments URL: https://news.ycombinator.com/item?id=48246232\nPoints: 29\n# Comments: 28",
+      "id": "27f463d728e8c4613e7ee7bf1421c9e6d565b55c97b725d12843eaa77c3b9325",
+      "ref_id": "3",
+      "recommendationScore": 75,
+      "popularityScore": 40,
+      "priority": "medium",
+      "comment": "对编程工具中特定危险命令的深入剖析，具有警示和指导意义。",
+      "reason": "属于编程工具范畴，探讨了特定功能可能带来的风险和最佳实践，对开发者有参考价值。",
+      "tags": [
+        "编程工具",
+        "命令行",
+        "开发实践",
+        "代码"
+      ]
+    },
+    {
+      "title": "Rubish: A Unix shell written in pure Ruby",
+      "link": "https://github.com/amatsuda/rubish",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-23T06:32:00.000Z",
+      "summary": "Article URL: https://github.com/amatsuda/rubish\nComments URL: https://news.ycombinator.com/item?id=48245262\nPoints: 122\n# Comments: 79",
+      "id": "468eb200fff1bcb50f82e41cbb7207f7a2801b6e7c52159cd079da12a6151e43",
+      "ref_id": "0",
+      "recommendationScore": 75,
+      "popularityScore": 55,
+      "priority": "medium",
+      "comment": "一个用纯Ruby实现的Unix shell，展示了编程工具领域的技术创新。",
+      "reason": "对Ruby开发者和系统编程爱好者具有较高的技术深度和参考价值，提供了工程实践的新思路。",
+      "tags": [
+        "编程工具",
+        "Ruby",
+        "Unix shell",
+        "开源"
+      ]
+    },
+    {
+      "title": "Don't Roll Your Own ...",
+      "link": "https://susam.net/do-not-roll-your-own.html",
+      "source": "susam.net",
+      "publishedAt": "2026-05-23T00:00:00.000Z",
+      "summary": "This is going to be a rant about modern web design practices.  But\n  before I get to that, let me begin with a familiar principle from\n  the world of cryptography.  Among software developers, and\n  especially among those who work on security-sensitive systems, there\n  is a well-known maxim: Don't roll your own crypto.  This\n  does not mean that nobody is allowed to write cryptographic code.\n  Someone has to.  It means that, for ordinary production software\n  that protects sensitive data of users, we should not rely on a\n  private, unreviewed implementation that has not been vetted by the\n  wider software development community.  We should use established,\n  vetted software packages or tools wherever possible.\n\n\n  Fortunately, it is now standard industry practice to avoid rolling\n  your own crypto and instead use cryptographic algorithms and\n  packages that have been peer reviewed and stood the test of time.\n  It wasn't so some twenty years ago.  I have seen several flawed\n  home-grown RC4 implementations early in my career, with issues like\n  improper initialisation vectors, predictable keystreams and partial\n  leakage of plaintext into ciphertext, putting sensitive data of\n  users at risk.  But today, major e-commerce websites or banks\n  typically do not use home-grown cryptography for its web services.\n  In fact, in regulated domains such as payments, healthcare and\n  personal data processing, doing so could violate requirements for\n  strong cryptography, possibly leading to hefty financial penalties.\n\n\n  Website design is obviously not cryptography.  A broken scroll bar\n  is not the same kind of failure as a broken encryption scheme.  But\n  I wish there were a similar maxim for website design as well.  There\n  are many aspects of websites where, I think, developers should not\n  be rolling their own X, especially when X is something browsers\n  already do well and something users depend on every day.  Here I\n  present a list of such X.\n\n\n  \nuser of the Web, and as a user, I have found some modern\n  web design patterns to be frustrating.  This post is a lament from\n  one user of the Web, not a design guide.\n\n\n  Of all the things I mentioned above, the one that bothers me the\n  most is custom scroll behaviour on websites.  I am used to how page\n  scrolling responds to my mouse, touchpad or keyboard input.  When\n  you override the default scrolling behaviour of the web browser with\n  your own implementation, it 'breaks' the page for me.  The page now\n  moves too slowly or too quickly when I scroll.  Keyboard scrolling\n  may or may not work.  You take something I am so familiar with that\n  I don't even think about it, and turn it into something unfamiliar\n  that I now have to think about.\n\n\n  Custom link navigation is another pet peeve of mine.  Web browsers\n  can already handle links very well.  You could say that this is the\n  whole reason web browsers even exist.  Following links is their\n  bread and butter.  You shouldn't have to mess with that behaviour at\n  all.  If you think you need to, reconsider what you are trying to\n  achieve and whether it is really so important as to disrupt normal\n  link navigation.  The worst offender I have found here is GitHub.\n  When you click on a link on GitHub, say, a file link or an issue\n  link, it triggers a massive piece of functionality implemented in\n  JavaScript that handles the link click for you.  If you don't\n  believe me, visit your favourite project on GitHub using Firefox or\n  Chrome, type F12 to open the browser's developer tools,\n  then go to the 'Debugger' or 'Sources' tab, find 'Event Listener\n  Breakpoints' on the right sidebar, expand 'Mouse' and select\n  'click'.  Then click on a link on GitHub and see what happens.\n\n\n  \n\n\n  I'm sure I am not the only one who has noticed that, on GitHub, a\n  clicked link sometimes takes too long to load.  Ironically, it is\n  often faster to open the link in a new tab than to wait for GitHub's\n  JavaScript code to handle the navigation in the current tab.\n\n\n  A custom password input field is another such hazard.  Fortunately,\n  custom password input fields have become rarer over the years.  The\n  password input field that comes with the web browser is generally\n  well equipped to handle passwords.  It can offer to save passwords,\n  fill them in later and generate strong passwords for new accounts.\n  It can also warn when a password is submitted over an insecure HTTP\n  connection, work well with password managers and autofill, and\n  cooperate with mobile keyboards and accessibility tools.  If you\n  replace the browser's password field with your own fake version, you\n  may break all of that.  You may also end up using an ordinary text\n  field and masking it yourself, in which case the password may be\n  treated by the browser, the operating system or assistive tools as\n  ordinary visible text rather than as a password, thereby exposing\n  the password in ways you did not intend.\n\n\n  Custom date pickers are another common annoyance.  I know that\n  <input type=\"date\"> does not help you select a\n  date range.  But that is okay.  You can provide two date input\n  fields, one for the start date and one for the end date.  I am\n  willing to pay the small price of using two different inputs to\n  select a date range if that means I can use my favourite web browser\n  to navigate the calendar and select dates the same way everywhere.\n  What I am less inclined to do is to learn ten different ways of\n  using the date selector in ten different implementations across ten\n  different websites.  Right now the implementations of date selector\n  are all over the place.  Some require you to zoom out of the month\n  view to enter a year view, where you can select years. While you are\n  there, you cannot change the month again until you return to the\n  month view.  Some require you to click the previous-year button\n  literally forty times to select your year of birth if you are old\n  enough.  Some do not let you type the date at all.  No.  I do not\n  want to learn your calendar widget.  I just want to use the date\n  picker in my favourite browser, which is quite sane.  Saner than\n  your custom implementation.  If you need to have a calendar widget\n  to support browsers with inadequate native date-picker support,\n  perhaps that support can be added alongside the native date picker\n  rather than as a replacement for it.  For example, the\n  ordinary <input type=\"date\"> element could be\n  left intact, with a custom widget provided in addition to\n  it so that users can manipulate the same field.\n\n\n  In general, just stop messing with the form controls.  They almost\n  always introduce new problems while solving some existing ones.  And\n  while you are at it, don't keep changing your website layout and\n  interface every few months!  I may adapt to the new design, but my\n  ageing relatives cannot.  For them, every time you change the user\n  interface, it amounts to learning a whole new tool.  If every\n  website keeps doing this every few months, they have to spend a\n  significant amount of time relearning familiar things for no\n  functional benefit.  Please just let them enjoy their retirement.\n  Imagine how you would feel if a Linux distribution decided to\n  redesign all its core commands and their command-line options every\n  few months.  Or imagine how you would feel if the buttons of your\n  washing machine were rearranged every morning.  It wouldn't be\n  pleasant!\n\n\n\n  Read on website |\n  #web |\n  #technology",
+      "id": "4a165e357632d7195cc7af7326514d0316bb1de83a913033e8478c25636ee26e",
+      "ref_id": "0",
+      "recommendationScore": 75,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "一篇关于软件开发最佳实践的犀利评论，强调使用成熟、经过审查的工具而非重复造轮子。",
+      "reason": "文章提醒开发者回归可靠的工程原则，避免低效且不安全的自定义实现，对日常开发具有直接指导意义。",
+      "tags": [
+        "软件工程",
+        "开发实践",
+        "web开发",
+        "系统设计"
+      ]
+    },
+    {
+      "title": "Some notes on how we ended up with Palantir & how to replace it",
+      "link": "https://berthub.eu/articles/posts/some-notes-on-palantir/",
+      "source": "berthub.eu",
+      "publishedAt": "2026-05-23T08:30:00.000Z",
+      "summary": "There is justified anger about governments relying on Palantir software. There are also calls to write replacement software, perhaps imbued with European values, and with less fascism.\nAnd I’d love for that to happen pronto, but first we need to understand a few things. It is not just the software.\nImage by Mariia Shalabaieva on Unsplash\n“Palantir is often called a data broker, a data miner, or a giant database of personal information.",
+      "id": "8f4f809e6348380c0dd27b785567280a0e633bc50a8c3c2d01cb2b1c0f21588b",
+      "ref_id": "2",
+      "recommendationScore": 72,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "文章深入探讨了政府软件采购的复杂性，指出替换Palantir不仅是技术问题，更是系统性、政治性的挑战。",
+      "reason": "提供了一个批判性视角，促使读者思考大型技术系统背后的社会和政治驱动因素，有助于更全面理解技术产品在现实世界中的运作。",
+      "tags": [
+        "数据治理",
+        "政府科技",
+        "社会影响",
+        "Palantir",
+        "产品战略"
+      ]
+    },
+    {
+      "title": "BambuStudio has been violating PrusaSlicer AGPL license since their fork",
+      "link": "https://xcancel.com/josefprusa/status/2054602354851254330",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-23T08:24:57.000Z",
+      "summary": "Article URL: https://xcancel.com/josefprusa/status/2054602354851254330\nComments URL: https://news.ycombinator.com/item?id=48245862\nPoints: 320\n# Comments: 114",
+      "id": "f00dca5ef92fa7e4e37c39ba950eb8cca0a3878dc822ec81f2c360be88e6420a",
+      "ref_id": "4",
+      "recommendationScore": 70,
+      "popularityScore": 90,
+      "priority": "medium",
+      "comment": "揭露开源软件的许可证争议，对理解开源生态至关重要。",
+      "reason": "虽然技术深度不高，但对开源社区和开发者影响深远，且受到高度关注。",
+      "tags": [
+        "开源软件",
+        "许可证",
+        "3D打印",
+        "法律"
+      ]
+    },
+    {
+      "title": "Reverse engineering circuitry in a Spacelab computer from 1980",
+      "link": "https://www.righto.com/2026/05/reverse-engineering-spacelab-computer.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-23T16:24:50.000Z",
+      "summary": "Article URL: https://www.righto.com/2026/05/reverse-engineering-spacelab-computer.html\nComments URL: https://news.ycombinator.com/item?id=48248954\nPoints: 9\n# Comments: 1",
+      "id": "88072cb48bfe7df965e84822ff1aef77ddbc8e2dac364715ee130770c05ed5e6",
+      "ref_id": "0",
+      "recommendationScore": 65,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "深入探讨了1980年代Spacelab计算机的电路逆向工程，技术细节丰富。",
+      "reason": "尽管实用性有限，但其对历史硬件的深层技术挖掘和高信息密度值得肯定，适合特定小众读者。",
+      "tags": [
+        "硬件逆向工程",
+        "复古计算",
+        "计算机体系结构"
+      ]
+    },
+    {
+      "title": "80386 Microcode Disassembled",
+      "link": "https://www.reenigne.org/blog/80386-microcode-disassembled/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-23T12:11:43.000Z",
+      "summary": "Article URL: https://www.reenigne.org/blog/80386-microcode-disassembled/\nComments URL: https://news.ycombinator.com/item?id=48247004\nPoints: 145\n# Comments: 22",
+      "id": "a10ea9d96a9881b22df7710d19395f4804ba1d4184361548ac71313a8347585c",
+      "ref_id": "0",
+      "recommendationScore": 65,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "极度硬核的CPU微码逆向工程，深度令人叹服。",
+      "reason": "展示了极高的技术深度和对底层硬件的理解，但受众相对小众。",
+      "tags": [
+        "CPU架构",
+        "逆向工程",
+        "硬件",
+        "微码"
+      ]
+    },
+    {
+      "title": "How to Talk to Your Coworkers ",
+      "link": "https://idiallo.com/blog/how-to-talk-to-your-coworkers?src=feed",
+      "source": "idiallo.com",
+      "publishedAt": "2026-05-22T19:00:00.000Z",
+      "summary": "You know you explained the same issue before in two or three different places, yet here they are asking again. Why don't they understand you? Why do they ask the same question when you've already given them the answer right there on Jira? Are they stupid? Lazy, maybe? Do they not take the time to read?\nI often hear this from developers. They write clear documentation and instructions, and people still bother them to hop on a call. This happens so frequently that I think it is worth addressing. An over-abundance of information is just as confusing as too little. But something I should add is that repetition is normal. In fact, repetition should be a tool you use frequently.\nTo do our jobs as developers, we read instructions. Our tasks are usually carefully written and specced out as a document we can implement and check off. There are usually bullet points, requirements, and acceptance criteria. Sometimes, you could implement a feature by following the instructions without even knowing or understanding what the feature actually does.\nIn other jobs, non-technical ones, people derive their work from conversation. A lossy format. For example, when a non-technical manager wants a new feature, they'll have a conversation with a software architect. A conversation that the architect then has to turn into a spec that a developer can implement.\nOne group talks in instructions, the other in conversations. Which is why they often talk past each other.\nWhenever I hear developers complain that someone keeps pestering them with questions they've already answered, I know it's because they're speaking two different languages.\nJust because you provided an answer doesn't mean everyone saw it or understood it. You might think you're giving a fine explanation of how a feature works by describing how the different APIs interact. But you fail to see that your audience has no frame of reference for understanding that APIs are supposed to work together, or what an API even is.\nIn that same vein, a manager who wants to have meetings and conversations about every step of development might find that people are declining their invites. For that manager, meetings and discussions are how work gets done, while others are expecting purely documented instructions.\nIn simple terms, the answer to this problem is: Translate and Repeat.\nBy translation, I don't mean language, I mean frame of reference. There is always a temptation to provide all available information, whether it's too technical or too detailed. Again, too much information === no information. Instead of explaining how you are solving a problem, focus on what your solution does.\nFor example, I recently worked on a widget that was showing the incorrect number of sales for the month, and only a handful of customers were complaining. Long story short, it turned out that running a job at what we call nighttime is someone else's daytime. Those customers were accessing the widget before the job ran, and the data was cached for a full day. Meaning they were seeing stale data for up to 24 hours. Our fix involved revamping how we display data, we removed caching and created a de-normalized table that updates in real time, eliminating the need for a complex query.\nInternally, we had created new APIs and restructured database tables. What looked like a handful of numbers on the UI was far more complicated under the hood. But when explaining this to a manager, they don't need to know about the cron job, the caching strategy, or how the old system compared to the new one.\nAll they need to know is:\n\"We've updated the widget to display real-time data, and we've added a smarter caching strategy for performance.\"\nThat's the whole answer. If they want the nitty-gritty details, we can have a separate conversation.\nBut developers often start with the technical autopsy first because that's what we would want if another developer asked us. We want the root cause, the stack trace, the PR link. The problem is, different audiences require different information.\nWhile leading with the technical breakdown might make you sound thorough in a meeting, non-technical attendees will walk out clueless and ping you on Slack asking the same questions. The goal isn't to eliminate questions entirely. In fact, no matter how well you tailor your message to your audience, someone will still come back with the same question you already answered. That's exactly why repetition matters.\nIt's fascinating to watch children learn. When I'm doing first-grade math with my kids, we use the same strategy for additions and subtractions. At first, it just doesn't click. I count on my fingers, I use popsicle sticks, and to make it fun I even use my toes. My method doesn't always make sense to them. We'll complete a whole packet of homework and I can tell they're just going through the motions. But we repeat it every day, the same way, no deviation. And somehow, eventually, they just know how to do the math.\nNot to compare your coworkers to children, but repetition works the same way on everyone. Every time they hear your explanation, they pick up one or two more pieces of it. When you keep saying \"we upgraded the payment SDK,\" they don't know what that means, and stopping to explain that one concept isn't going to unlock the whole picture. But maybe they Google \"SDK\" on their own later. Then \"payment SDK.\" The next time you repeat your explanation, they're better equipped to follow along. Each repetition gets them a little closer to understanding the full picture.\nThe same applies to managers who rely on conversation to communicate with developers. While it can be hard to extract a clear requirement from a meeting, the information is in there. It just needs to be surfaced and shaped. And honestly a conversation is often a good way to kick things off. \nImagine if the manager came in with rigid, detailed instructions while having no understanding of how the codebase actually works. Through conversation, a feature can take shape. Developers can push back, raise concerns, and adjust the scope to something realistic for the current state of the infrastructure.\nThat back and forth is what filters raw ideas into actionable instructions.\nSo when you post a Jira comment or Slack message with a detailed explanation of the authentication flow and token expiry logic and it goes ignored, it's not because your coworker is lazy. It was ignored because it was written in a language they don't speak. They asked again not to annoy you, but because they couldn't extract the answer they needed from what you gave them.\nYou don't need to write longer comments or bold more words. Instead, ask yourself whether what you wrote was intended for the right audience, then translate it into something digestible. And be prepared to repeat it a few more times until it lands.",
+      "id": "fa225062bd316aa70a040c290ace2febf43cfca84b35ef1815a8abcfdda8cfdf",
+      "ref_id": "3",
+      "recommendationScore": 58,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "文章探讨了开发者在团队沟通中遇到的常见问题，并给出了实用建议。",
+      "reason": "对开发者而言，提升沟通效率是普遍需求，文章提供了直接且可操作的解决方案，实用性强。",
+      "tags": [
+        "Communication",
+        "Soft Skills",
+        "Developer Productivity",
+        "Teamwork"
+      ]
+    },
+    {
+      "title": "The commencement speech that shook the world ",
+      "link": "https://idiallo.com/blog/the-commencement-speech-that-shook-the-world?src=feed",
+      "source": "idiallo.com",
+      "publishedAt": "2026-05-23T01:14:24.000Z",
+      "summary": "There he was, the man at the helm of innovation. Eric Schmidt, the former CEO of Google. The man who once said, google doesn't need to record your conversation, it already knows everything about you. Yet he didn't see this one coming. In his speech, he looked clear-eyed into the crowd of graduates and told them that AI is inevitable.\nThere was a group of people who will have a hard time joining the workforce. Companies keep using AI as the excuse for laying off workers. Dario keeps telling us by next year, AI will take over all jobs and there is nothing we can do. They will have nothing, and they better embrace it and be happy. Well, they will have a school loan, but that’s it.\nIf you were an external observer, maybe an alien watching humanity from a distance, you would think that AI is a new species that emerged from a lake and is taking over the world. You would never tell that the people spreading this fear are also the ones selling the tool that they swear will turn us all into gods. It's not just a capable tool that can be useful for coding, writing, and retrieving existing information. \nNo. It's the word itself. The all or nothing. The alpha and the omega. And it comes as a monthly subscription from a handful of companies.\nWhat Mr Schmidt was saying to these graduates is that we are done innovating. Now we regurgitate. And then he was booed. He tried to keep talking but the boos were overwhelming. Somewhere between his words, he managed to say that being anti AI is akin to being anti immigrant, trying to score points. I don’t think it worked. \nWhen I read the news, I first read through the transcript of his speech. It seemed as if he was able to go through his material. But I was wrong. Watching his performance on video was a whole other story. \nThere was a man, who had practiced his speech in front of a mirror, most likely with Gemini listening and providing feedback. It probably told him that his speech was brilliant. That it was grounded, and encouraging. \"The kids will love it.\"\nWhat he failed to see is that booing was not in the training data. No way Gemini was going to tell him that, because it is programmed to be agreeable and friendly. So yes, he was booed every time he mentioned AI. \nBut I think there is a lesson in innovation right there. AI learns from existing material. It can hardly deviate from what it already knows. When you ask it to come up with something new, it will show you something that seems new, because obviously you don't know all the material it was trained on. If it doesn't have the information, it can't tell you that it doesn't know. It will make it up instead.\nBut what these graduates did was exactly what differentiates people from the robots. They did something completely unexpected. They booed Eric Schmidt. They innovated. Something tells me that kids will be just fine. I may never be able to convince my mom to stop sharing AI videos, but my kids will learn to navigate it. They will continue to innovate. Maybe AI will be like a calculator for them. They will know how and when to use it for maximum benefit and prevent the psychosis altogether. It's never gonna be a replacement for thinking.\nI was really happy to see the booing because it was the last thing they expected. Just a few days ago, the president of Glendale Community College was booed as well because she chose to have an AI read the graduates names and it butchered the process. AI is not inevitable. It's a nice addition. That’s it.\nWe don't just have to accept things as they come to us. The most valuable human quality in an age of automation is exactly what AI cannot provide: the ability to defy expectations, introduce chaos, and create truly original outcomes. That is precisely the power of human innovation.\nFor fun, I copied the commencement speech from a video and passed it through gemini, it complained about the grammar, but as I said earlier, it couldn't predict the outcome:\nThe emotional arc is clear: acknowledge fear → restore agency → define values → point toward possibility. It reads like something that wants to meet graduates where they actually are, rather than giving them generic optimism.\nThen I asked it if it would result in booing:\nWhat makes the speech work is that it does not say:\n“everything will be fine,”\n“stop worrying,”\nor “technology is inherently good.”\nInstead, it says:\nthe future is undecided,\nhumans remain morally responsible,\nand participation matters.\nThat framing is resilient.\nNot so resilient after all. Anyway, congrats to the 2026 graduates!",
+      "id": "e01506248231394c93cc1bb335a4c19d01cf7d2d044683271b4e9f14ce034aa8",
+      "ref_id": "2",
+      "recommendationScore": 56,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "文章批判性地探讨了AI对就业影响的恐慌叙事，并审视了其背后的商业动机。",
+      "reason": "作为AI主题下的内容，它提供了对热门话题的深刻反思和独到视角，有助于读者形成批判性思维。",
+      "tags": [
+        "AI",
+        "Ethics",
+        "Social Impact",
+        "Opinion",
+        "Future of Work"
+      ]
+    },
+    {
+      "title": "Oura says it gets government demands for user data",
+      "link": "https://this.weekinsecurity.com/oura-says-it-gets-government-demands-for-user-data-will-it-share-how-many/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-23T14:09:57.000Z",
+      "summary": "Article URL: https://this.weekinsecurity.com/oura-says-it-gets-government-demands-for-user-data-will-it-share-how-many/\nComments URL: https://news.ycombinator.com/item?id=48247876\nPoints: 100\n# Comments: 54",
+      "id": "08e59f2ddb87f23bd02c52198c021d4b6a81abaf42b26aa6bce5ae4c8ec2be73",
+      "ref_id": "0",
+      "recommendationScore": 55,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "一篇关于Oura可穿戴设备用户数据隐私及政府数据要求的新闻报道。",
+      "reason": "内容关注用户隐私和数据安全，有社会关注度，但技术深度和实用性一般，不属于核心优先主题。",
+      "tags": [
+        "数据隐私",
+        "安全",
+        "可穿戴设备",
+        "政府监管"
+      ]
+    },
+    {
+      "title": "News about Raspberry Pi 6 and Microcontroller Development",
+      "link": "https://www.jeffgeerling.com/blog/2026/news-about-raspberry-pi-6-and-microcontroller-development/",
+      "source": "jeffgeerling.com",
+      "publishedAt": "2026-05-22T20:15:00.000Z",
+      "summary": "On Thursday, three of the lead Raspberry Pi engineers hosted an AMA on the r/engineering subreddit.\n\n\n\nRaspberry Pi 6\nOne of the most interesting tidbits was on the Pi 6.\nLooking back at previous launches:\n2012: Raspberry Pi\n2015: Raspberry Pi 2 (+3 years)\n2016: Raspberry Pi 3 (+1 year)\n2019: Raspberry Pi 4 (+3 years)\n2023: Raspberry Pi 5 (+4 years)\nFollowing that cycle, one would expect a Pi 6 3-4 years after the Pi 5, which would put it in 2026 or 2027.",
+      "id": "7ab2eb7bd865fe972c37c8caf10360f0a75445a04470b46f3e544026e43cb73f",
+      "ref_id": "0",
+      "recommendationScore": 53,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "文章提供了基于历史周期和AMA信息对树莓派6发布时间的合理预测。",
+      "reason": "对于关注微控制器硬件发展和计划的读者来说，这篇文章提供了及时且有价值的未来展望。",
+      "tags": [
+        "Raspberry Pi",
+        "Hardware",
+        "Microcontroller",
+        "Tech News"
+      ]
+    },
+    {
+      "title": "The FBI Wants 'Near Real-Time' Access to US License Plate Readers",
+      "link": "https://www.wired.com/story/security-news-this-week-fbi-license-plate-reader-real-time-access/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-23T13:57:02.000Z",
+      "summary": "Article URL: https://www.wired.com/story/security-news-this-week-fbi-license-plate-reader-real-time-access/\nComments URL: https://news.ycombinator.com/item?id=48247737\nPoints: 79\n# Comments: 32",
+      "id": "e5f692ac31c64b4e02611199b8fc0945fcd929ee425fac69b45913397f54408f",
+      "ref_id": "1",
+      "recommendationScore": 50,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "报道了FBI要求实时访问美国车牌识别系统数据的事件及其隐私影响。",
+      "reason": "涉及公民隐私与政府监控的社会议题，但对科技开发者的直接实用性较低，非核心优先主题。",
+      "tags": [
+        "隐私",
+        "监控",
+        "执法技术",
+        "公民权利"
+      ]
+    },
+    {
+      "title": "★ The Fonts of the U.S. Federal Courts",
+      "link": "https://daringfireball.net/2026/05/the_fonts_of_the_us_federal_courts",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-22T20:30:18.000Z",
+      "summary": "The 13 circuits of the U.S. federal courts of appeals operate with a fair amount of independence, including their typographic choices. I was reminded of this today while reading the aforelinked decision from the Ninth Circuit in Epic v. Apple, because the Ninth Circuit sets their decisions in Times New Roman — a font that came up back in December in the context of the Trump State Department.\nLong argument short, Times New Roman isn’t bad, but it isn’t good. It is the median choice. But most of the circuit courts use it: the Third, Sixth, Eighth, Ninth, Tenth, and Eleventh. It could be worse: the First and Fourth not only use Courier New (the worst version of Courier, so of course it’s the one Microsoft shipped with Windows), but fully justify their text — contrary to the nature of a monospaced font. It could be better: the Second and Seventh use Palatino. (Note how much better that Seventh Circuit decision looks than the Second’s, with its wider margins creating a narrower column of text.)\nBut it can be much better. The Fifth Circuit was long typographically superior to its peers, using Century Schoolbook — a highly legible font with great tradition and the right vibe. But in 2020, the Fifth Circuit upgraded, switching to Equity, Matthew Butterick’s excellent type family (which, of course, is used throughout Butterick’s own web book, Typography for Lawyers). Here’s a before and after tweet noting the change. The results are typographically sublime (including improved margins).\nThe gold standard is the U.S. Supreme Court, which uses Century Schoolbook. Yes, I just praised the Fifth Circuit’s change from Century Schoolbook to Equity as an upgrade, but tradition and consistency have their place. The Supreme Court’s typographic style has been stunningly consistent for — no pun intended — well over a century. (If only that were true of their recent decisions. Rimshot.) Here is last month’s Louisiana v. Callais decision — the gerrymandering/redistricting case. Here is 1954’s Brown v. Board of Education. I’d give the nod to the older one, which made better use of proper small caps, but the overall consistency is obvious.\nHere is the 2026 edition of the Rules of the Supreme Court. Not only does the Court use Century Schoolbook for its own decisions, it requires submissions to the Court to use the same (p. 44):\nThe text of every booklet-format document, including any appendix\nthereto, shall be typeset in a Century family (e. g., Century\nExpanded, New Century Schoolbook, or Century Schoolbook) 12-point\ntype with 2-point or more leading between lines. Quotations in\nexcess of 50 words shall be indented. The typeface of footnotes\nshall be 10-point type with 2-point or more leading between lines.\nThe text of the document must appear on both sides of the page.\nEvery booklet-format document shall be produced on paper that is\nopaque, unglazed, and not less than 60 pounds in weight, and\nshall have margins of at least three-fourths of an inch on all\nsides. The text field, including footnotes, may not exceed 4⅛\nby 7⅛ inches.\nWhy the extra one-eighths of an inch instead of just 4 × 7? I don’t know. But 4⅛ × 7⅛ is exactly the size of the text field in the court’s own decisions.\nNow compare the current 2026 rulebook to this edition printed in 1910 (with rules adopted in 1884). The consistency is striking — but, once again, the older version makes better use of small caps and just has a bit more vim and vigor to it. Just look at page 44, for example. It’s perfect. The current Court’s document formatters should aspire only to more closely ape the confidence and sturdiness of this older one. A century from now, U.S. Supreme Court decisions should look as similar to today’s as today’s do to those from a century ago.\nThe various circuit courts using lesser typefaces, looser margins, and lazier formatting should follow the Fifth’s lead and get their shit together. Tuck your shirt in, comb your hair, straighten your tie, and pop a mint in your mouth. If you’re a United States federal court, your typographic style should reflect that.\nBack in 2020, Butterick took a well-deserved victory lap when the Fifth Circuit adopted Equity.1 He quoted Fifth Circuit Judge Don Willett, a typography fan who spearheaded the restyling project, on its rationale. Willett wrote:\n[Why] did the circuit devote finite judicial energy to swapping\ntypefaces and widening margins? Simple answer: Our job is not\njust to present clear opinions, but to present our opinions\nclearly. Getting the law right is, of course, our tip-top\npriority. Nothing matters more. ... But good enough is never good\nenough. Our work is consequential, impacting the lives and\nlivelihoods of real people walloped by real problems in the real\nworld. The stakes are high, and we must present our best opinion,\nnot merely a passable one. And that presentation begins before\nthe first word is ever read.\nIn the very same post, Butterick sings the praises of the Apple Extended Keyboard II, and notes that he has several spares in reserve. I do keenly intend to take Butterick up on his standing offer to dine when next I’m in Los Angeles, but I worry that if we meet, we’ll trigger some sort of calamitous singularity of aligned taste. ↩︎",
+      "id": "d034881a524a0172514a9963766889228c0308a0cc88062dc841584377b7ded6",
+      "ref_id": "1",
+      "recommendationScore": 50,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "这是一篇关于美国联邦法院排版和字体选择的深度观察文章。",
+      "reason": "虽然内容小众，但对于字体设计、排版爱好者或法律科技领域的读者来说，具有独特的参考价值。",
+      "tags": [
+        "Typography",
+        "Design",
+        "Legal Tech",
+        "Niche"
+      ]
+    },
+    {
+      "title": "Reading List 05/23/26",
+      "link": "https://www.construction-physics.com/p/reading-list-052326",
+      "source": "construction-physics.com",
+      "publishedAt": "2026-05-23T12:02:39.000Z",
+      "summary": "Squatter removal services, Apple finding uses for defective chips, process heat use in California, the brewing Colorado River crisis, and more.",
+      "id": "c0d3e046b329c58101e233a138b05d15e4619166a7d10f924bf9ad096139cbc3",
+      "ref_id": "4",
+      "recommendationScore": 50,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "精选阅读列表，涵盖了Apple生态等多个主题，但内容本身深度不足。",
+      "reason": "包含“Apple生态”相关话题，具备一定的时效性和广度，但文章本身内容过于简短。",
+      "tags": [
+        "阅读列表",
+        "Apple生态",
+        "时事",
+        "多主题"
+      ]
+    },
+    {
+      "title": "Shipping a laptop to a refugee camp in Uganda",
+      "link": "https://notesbylex.com/shipping-a-laptop-to-a-refugee-camp-in-uganda",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-22T21:36:55.000Z",
+      "summary": "Article URL: https://notesbylex.com/shipping-a-laptop-to-a-refugee-camp-in-uganda\nComments URL: https://news.ycombinator.com/item?id=48241997\nPoints: 607\n# Comments: 210",
+      "id": "5eed93bc540d0f20b1afe4d7917cef4d47a6fd07425de40d86404d579d9fa499",
+      "ref_id": "1",
+      "recommendationScore": 40,
+      "popularityScore": 85,
+      "priority": "low",
+      "comment": "一篇关于向乌干达难民营运送笔记本电脑的个人故事，人文色彩浓厚。",
+      "reason": "虽然技术深度较低且不属于优先主题，但其强烈的人文关怀和社区热度使其成为一篇引人关注的文章。",
+      "tags": [
+        "人道主义",
+        "个人故事",
+        "社会影响"
+      ]
+    },
+    {
+      "title": "The memory shortage is causing a repricing of consumer electronics",
+      "link": "https://simonwillison.net/2026/May/22/memory-shortage/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-05-22T22:01:31.000Z",
+      "summary": "",
+      "id": "cc0169e12c236bc555dcfb910fa81d09442645d1797a7a12daf88ee663526c5f",
+      "ref_id": "4",
+      "recommendationScore": 40,
+      "popularityScore": 45,
+      "priority": "low",
+      "comment": "内存短缺导致消费电子产品重新定价，反映了硬件供应链和市场趋势。",
+      "reason": "主要关注硬件市场和经济趋势，与核心科技博客的编程、AI等主题优先级不符，技术深度和实用性相对较低。",
+      "tags": [
+        "硬件",
+        "市场分析",
+        "供应链",
+        "消费电子"
+      ]
+    },
+    {
+      "title": "The Art of Money Getting",
+      "link": "https://kk.org/cooltools/book-freak-210-the-art-of-money-getting/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-23T12:48:02.000Z",
+      "summary": "Article URL: https://kk.org/cooltools/book-freak-210-the-art-of-money-getting/\nComments URL: https://news.ycombinator.com/item?id=48247208\nPoints: 48\n# Comments: 17",
+      "id": "6d953819f9e6b88fe9898483458bf58c79641c57453627e1ed506aa61f8e51d4",
+      "ref_id": "3",
+      "recommendationScore": 35,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "一本关于理财和赚钱艺术的书籍评论，内容偏向个人成长和商业。",
+      "reason": "主题与科技博客核心关注点不符，技术深度低，与编程、AI等优先主题无关。",
+      "tags": [
+        "理财",
+        "书籍评论",
+        "商业"
+      ]
+    },
+    {
+      "title": "US tech firms share Dutch regulator officials' names with Senate",
+      "link": "https://www.dutchnews.nl/2026/05/us-tech-firms-share-dutch-regulator-officials-names-with-senate/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-23T10:57:14.000Z",
+      "summary": "Article URL: https://www.dutchnews.nl/2026/05/us-tech-firms-share-dutch-regulator-officials-names-with-senate/\nComments URL: https://news.ycombinator.com/item?id=48246614\nPoints: 170\n# Comments: 118",
+      "id": "4ec5ab8cda13c90c2b7351ad4e796ea0a9e13e5e444e10c77ed1cd181ffa70da",
+      "ref_id": "2",
+      "recommendationScore": 30,
+      "popularityScore": 85,
+      "priority": "low",
+      "comment": "科技政策新闻，与技术实践无关，但社会关注度高。",
+      "reason": "虽然受关注度高，但内容不属于技术深度探讨，不符合核心评估主题优先级。",
+      "tags": [
+        "科技政策",
+        "法规",
+        "新闻"
+      ]
+    },
+    {
+      "title": "I Miss Terry Pratchett",
+      "link": "https://www.mahl.me/blog/the-spell-that-wouldnt-leave/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-23T12:35:28.000Z",
+      "summary": "Article URL: https://www.mahl.me/blog/the-spell-that-wouldnt-leave/\nComments URL: https://news.ycombinator.com/item?id=48247127\nPoints: 210\n# Comments: 187",
+      "id": "3ae9444a5d4deb5e09ca488fbf612bf8457d113d19806dea8e806e230bd375ae",
+      "ref_id": "4",
+      "recommendationScore": 20,
+      "popularityScore": 95,
+      "priority": "low",
+      "comment": "一篇纪念作家特里·普拉切特的文学性质文章，表达个人情感。",
+      "reason": "内容完全脱离科技范畴，与本科技博客的任何主题优先级均不符，不适合推荐。",
+      "tags": [
+        "文学",
+        "文化",
+        "个人情感"
+      ]
+    },
+    {
+      "title": "Hilbert transform as an infinite matrix",
+      "link": "https://www.johndcook.com/blog/2026/05/23/hilbert-transform-as-an-infinite-matrix/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-05-23T15:09:34.000Z",
+      "summary": "The previous post linked to a post I wrote a few years ago about the Hilbert transform and Fourier series. That post says that if the Fourier series of a function is then the Fourier series of its Hilbert transform is When I looked back at that post I thought about how if you thought […]\nHilbert transform as an infinite matrix first appeared on John D. Cook.",
+      "id": "b58515f834a55120fc5860437bd74eb6f2c70c5c40faf61ee56ad5248c6dd56c",
+      "ref_id": "0",
+      "recommendationScore": 20,
+      "popularityScore": 15,
+      "priority": "low",
+      "comment": "高度理论化的数学概念，对专业数学或信号处理领域有深度，但通用技术受众面窄。",
+      "reason": "内容过于学术和专业，与主流科技博客关注点不符，实用性差。",
+      "tags": [
+        "数学",
+        "信号处理",
+        "理论"
+      ]
+    },
+    {
+      "title": "Building complex functions out of real parts",
+      "link": "https://www.johndcook.com/blog/2026/05/22/complex-functions-real-parts/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-05-23T03:24:10.000Z",
+      "summary": "A couple months ago I wrote about how to compute the sine and cosine of a complex number using only real functions of real variables using the equations You can do something analogous for all the elementary functions, though some of the equations are quite a bit more complicated than the ones above. See the […]\nBuilding complex functions out of real parts first appeared on John D. Cook.",
+      "id": "c86ea54f1e5ab93b544ccc42487000a781aa513dcd85386ee9c6507b29c8702a",
+      "ref_id": "2",
+      "recommendationScore": 20,
+      "popularityScore": 15,
+      "priority": "low",
+      "comment": "深入讨论复函数分解为实函数的数学方法，理论价值大于实际应用。",
+      "reason": "系列文章，依然是高度专业化的数学内容，不符合通用科技博客的读者偏好。",
+      "tags": [
+        "数学",
+        "复数",
+        "理论"
+      ]
+    },
+    {
+      "title": "Real and imaginary parts",
+      "link": "https://www.johndcook.com/blog/2026/05/23/real-and-imaginary-parts/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-05-23T13:57:21.000Z",
+      "summary": "The previous post announced some notes I wrote up based on an article by Henry Baker implementing functions of a complex variable in terms of functions of a real variable. That is, it finds functions u(x, y) and v(x, y) such that f(x + iy) = u(x, y) + i v(x, y) where x, y, u, and v are […]\nReal and imaginary parts first appeared on John D. Cook.",
+      "id": "83da5d5294d0b035401891fe55c5bd8259a394703aaf90e4155e81b943b8c75a",
+      "ref_id": "1",
+      "recommendationScore": 18,
+      "popularityScore": 12,
+      "priority": "low",
+      "comment": "探讨复变量函数的数学实现细节，专业性强但应用场景有限。",
+      "reason": "延续高度理论化的数学主题，对普通读者缺乏吸引力。",
+      "tags": [
+        "数学",
+        "复数",
+        "理论"
+      ]
+    },
+    {
+      "title": "Italy Cancels Boeing Pegasus Order, Shifting to Airbus A330 MRTT",
+      "link": "https://www.euronews.com/my-europe/2026/05/21/italy-moves-to-airbus-a330-tankers-in-major-nato-aligned-shift",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-23T16:02:43.000Z",
+      "summary": "Article URL: https://www.euronews.com/my-europe/2026/05/21/italy-moves-to-airbus-a330-tankers-in-major-nato-aligned-shift\nComments URL: https://news.ycombinator.com/item?id=48248775\nPoints: 15\n# Comments: 1",
+      "id": "83e21d5159ec59307b6613e8c3f6cae73c632b42a9ced1a3a0eb5372cf66d982",
+      "ref_id": "1",
+      "recommendationScore": 5,
+      "popularityScore": 25,
+      "priority": "low",
+      "comment": "一篇关于意大利军事采购变动的国际新闻报道。",
+      "reason": "与科技博客主题（尤其是关注主题优先级）无关，不推荐。",
+      "tags": [
+        "国际新闻",
+        "军事航空"
+      ]
+    },
+    {
+      "title": "Ebola Outbreak Now Third Largest Recorded and \"Spreading Rapidly\"",
+      "link": "https://arstechnica.com/health/2026/05/ebola-outbreak-now-third-largest-recorded-and-spreading-rapidly/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-23T15:47:38.000Z",
+      "summary": "Article URL: https://arstechnica.com/health/2026/05/ebola-outbreak-now-third-largest-recorded-and-spreading-rapidly/\nComments URL: https://news.ycombinator.com/item?id=48248659\nPoints: 13\n# Comments: 4",
+      "id": "c1a92dd2ba17bf1f236e235b0eb62d6aa3f1ba826393eb3bde204af3bf20b6b8",
+      "ref_id": "2",
+      "recommendationScore": 5,
+      "popularityScore": 35,
+      "priority": "low",
+      "comment": "关于埃博拉疫情的健康新闻报道。",
+      "reason": "与科技博客主题（尤其是关注主题优先级）无关，不推荐。",
+      "tags": [
+        "公共卫生",
+        "疫情新闻"
+      ]
+    }
+  ]
+}
