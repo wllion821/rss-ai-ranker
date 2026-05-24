@@ -1,0 +1,513 @@
+{
+  "dailySummary": "今日科技速递：AI热潮持续，企业“AI洗白”现象引关注，DeepSeek推出高效AI编码代理。软件供应链安全成焦点，rsync漏洞凸显Go语言优势及多层防御重要性，强调通过签名机制应对复杂攻击，",
+  "articles": [
+    {
+      "title": "Time to talk about my writerdeck",
+      "link": "https://veronicaexplains.net/my-first-writerdeck/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-23T18:45:37.000Z",
+      "summary": "Article URL: https://veronicaexplains.net/my-first-writerdeck/\nComments URL: https://news.ycombinator.com/item?id=48250144\nPoints: 427\n# Comments: 253",
+      "id": "6d054060f496123f0c51e69f73eacc727d678174e9ca9326450d7c14aa0c9107",
+      "ref_id": "3",
+      "recommendationScore": 91,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "展示了一个高度个性化和创新的自制写作设备'writerdeck'，具有极高的独创性。",
+      "reason": "文章展现了卓越的新颖性和实用性，能极大激发独立开发者和产品设计师的灵感，且广受欢迎。",
+      "tags": [
+        "独立开发",
+        "产品设计",
+        "硬件定制",
+        "生产力工具"
+      ]
+    },
+    {
+      "title": "'AI washing': firms are scrambling to rebrand themselves as tech-focused",
+      "link": "https://www.theguardian.com/technology/2026/may/24/ai-washing-pr-firms-scrambling-rebrand",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-24T15:21:28.000Z",
+      "summary": "Article URL: https://www.theguardian.com/technology/2026/may/24/ai-washing-pr-firms-scrambling-rebrand\nComments URL: https://news.ycombinator.com/item?id=48257980\nPoints: 38\n# Comments: 29",
+      "id": "18be76277eee9c88a460c8386757cba16667c5e2fc6cd8aefd3a3a232b885472",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 60,
+      "priority": "high",
+      "comment": "揭露企业利用“AI洗白”现象虚假宣传的行业趋势。",
+      "reason": "紧扣最高优先级的AI主题，提供对当前市场乱象的批判性视角，极具时效性和行业洞察力。",
+      "tags": [
+        "AI",
+        "Industry Trends",
+        "Ethics",
+        "Marketing",
+        "Business"
+      ]
+    },
+    {
+      "title": "DeepSeek reasonix, DeepSeek native coding agent with high caching and low cost",
+      "link": "https://esengine.github.io/DeepSeek-Reasonix/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-24T13:02:06.000Z",
+      "summary": "Article URL: https://esengine.github.io/DeepSeek-Reasonix/\nComments URL: https://news.ycombinator.com/item?id=48256953\nPoints: 140\n# Comments: 81",
+      "id": "24f32fffefc369309d5451623c89cce3ed35e423b2d72b6a8be285b280a2294f",
+      "ref_id": "1",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "介绍DeepSeek推出的高效低成本原生编码AI代理DeepSeek Reasonix。",
+      "reason": "深入探讨了AI编码代理的技术创新和实用价值，对提升开发者效率和降低成本具有显著意义。",
+      "tags": [
+        "AI",
+        "编码代理",
+        "开发工具",
+        "DeepSeek",
+        "大模型",
+        "效率"
+      ]
+    },
+    {
+      "title": "Greg Brockman interview [video]",
+      "link": "https://fs.blog/knowledge-project-podcast/greg-brockman/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-24T08:29:38.000Z",
+      "summary": "Article URL: https://fs.blog/knowledge-project-podcast/greg-brockman/\nComments URL: https://news.ycombinator.com/item?id=48255593\nPoints: 132\n# Comments: 109",
+      "id": "5b680f0ecb7db2a690c8a5f9ba91f5c660d5edee26d01904ecad8deaf3f77d21",
+      "ref_id": "1",
+      "recommendationScore": 90,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "OpenAI联合创始人Greg Brockman的访谈，揭示AI发展策略和行业愿景。",
+      "reason": "紧扣AI前沿主题，由行业领袖提供宝贵洞察，具有极高的信息价值和关注度。",
+      "tags": [
+        "AI",
+        "OpenAI",
+        "行业洞察",
+        "访谈",
+        "未来趋势"
+      ]
+    },
+    {
+      "title": "How my minimal, memory-safe Go rsync steers clear of vulnerabilities",
+      "link": "https://michael.stapelberg.ch/posts/2026-05-24-minimal-memory-safe-go-rsync-vulns/",
+      "source": "michael.stapelberg.ch",
+      "publishedAt": "2026-05-24T14:20:22.000Z",
+      "summary": "Back in January 2025, multiple different security researchers published a total\nof 6 security vulnerabilities in\nrsync, some of which\nallow arbitrary code execution and file leaks, so naturally I was wondering\nwhether/how my gokrazy/rsync implementation\nwas affected. Did implementing my own (compatible, but minimal) rsync in Go, a\nmodern and memory-safe programming language, really rule out entire classes of\nsecurity vulnerabilities?\nThis deep dive article was in the making since January 2025, but was delayed\nbecause we uncovered more unpublished vulnerabilities in the process! The\n“Security Vulnerabilities” section now covers all 12 vulnerabilities from the\nJanuary 2025 batch and the May 2026 batch.\nIf you are running (upstream, samba)\nrsync in production, upgrade to version\n3.4.3 or newer.\nIf you are running gokrazy/rsync in\nproduction, upgrade to version v0.3.3 or newer.\nFeel free to skip over the nitty-gritty security issue details and jump directly to:\nThe verdict on whether using Go has helped.\nThe verdict on whether a minimal re-implementation like gokrazy/rsync helps.\nMy comparison with OpenBSD’s openrsync (written in C).\nDefense in depth mechanisms one can use on Linux.\nThe conclusion.\nContext: My own rsync\nFor context, I blogged about rsync, how I use it, and how it\nworks back in June 2022. See also all posts\ntagged “rsync”.\nThe original motivation for writing my own rsync (back then only a server, today\nall directions are supported) was to provide the software packages of distri,\nmy Linux distribution research project for fast package\nmanagement, which I wanted to host on\nrouter7, my small home Linux+Go internet router, which\nin turn is built on gokrazy, my Go appliance platform.\nI am still running multiple gokrazy/rsync servers for this original purpose, and\nalso many others! Having rsync available as a primitive (that you can link into\nyour Go programs!) is really nice.\nSecurity Vulnerabilities\nThis article covers the following security vulnerabilities:\nCVE-2024-12084 to 12088 (original report)\nCVE-2024-12747 (discovered separately by Aleksei Gorban “loqpa”)\nCVE-2026-29518 (discovered by Damien Neil and myself! and independently by Nullx3D)\nCVE-2026-43617 to 43620\nCVE-2026-45232\nThe first batch of the vulnerabilities above was announced on the oss-security\nmailing list, but\nnote that the original report has more detail compared to the oss-security\nsummaries!\nThe later vulnerabilities were announced via GitHub Security Advisories on the\nrsync project.\nJanuary 2025 batch\nCVE-2024-12084: Heap Buffer Overflow (9.8)\nSummary:\nrsync performed insufficient validation: It read the (attacker-controlled)\nchecksum length from the network and compared the length against\nMAX_DIGEST_LEN.\nHowever, rsync’s data structures always declared a 16 byte buffer: char sum2[SUM_LENGTH]\n\nSUM_LENGTH is always 16 (bytes), which is sufficient to hold an\nMD4 or\nMD5 checksum.\nMAX_DIGEST_LEN used to be 16 (bytes), but can be larger when rsync is\ncompiled with SHA256 or SHA512 checksum support.\nHence, the bounds check was ineffective! An attacker could write out of bounds.\nThis issue was introduced with commit ae16850 in September\n2022,\nwhich added SHA256/SHA512 checksum support.\nClick to expand the full description of the improper checksum length validation (quoting the Google Security\nreport)\n\nWhen the checksums are read by the daemon, two different checksums are read:\nA 32-bit Adler-CRC32 Checksum\nA digest of the file chunk. The digest algorithm is determined at the beginning of the protocol negotiation.\nThe corresponding code can be seen below:\nsender.c:\ns->sums = new_array(struct sum_buf, s->count);\n\nfor (i = 0; i < s->count; i++) {\n    s->sums[i].sum1 = read_int(f);\n    read_buf(f, s->sums[i].sum2, s->s2length);\n\n\nMost importantly, note that sum2 field is filled with s->s2length bytes. sum2 always has a size of 16:\nrsync.h\n#define SUM_LENGTH 16\n// …\nstruct sum_buf {\n    OFF_T offset;           /**< offset in file of this chunk */\n    int32 len;              /**< length of chunk of file */\n    uint32 sum1;            /**< simple checksum */\n    int32 chain;            /**< next hash-table collision */\n    short flags;            /**< flag bits */\n    char sum2[SUM_LENGTH];  /**< checksum  */\n};\n\n\ns2length is an attacker-controlled value and can have a value up to MAX_DIGEST_LEN bytes, as the next snipper shows:\nio.c\nsum->s2length = protocol_version < 27 ? csum_length : (int)read_int(f);\nif (sum->s2length < 0 || sum->s2length > MAX_DIGEST_LEN) {\n    rprintf(FERROR, \"Invalid checksum length %d [%s]\\n\",\n            sum->s2length, who_am_i());\n    exit_cleanup(RERR_PROTOCOL);\n}\n\n\nThe problem here is that MAX_DIGEST_LEN can be larger than 16 bytes, depending on the digest support the binary was compiled with:\nmd-defines.h\n#define MD4_DIGEST_LEN 16\n#define MD5_DIGEST_LEN 16\n#if defined SHA512_DIGEST_LENGTH\n  #define MAX_DIGEST_LEN SHA512_DIGEST_LENGTH\n#elif defined SHA256_DIGEST_LENGTH\n  #define MAX_DIGEST_LEN SHA256_DIGEST_LENGTH\n#elif defined SHA_DIGEST_LENGTH\n  #define MAX_DIGEST_LEN SHA_DIGEST_LENGTH\n#else\n  #define MAX_DIGEST_LEN MD5_DIGEST_LEN /* 16 bytes */\n#endif\n\n\nSHA256 support is common and sets the MAX_DIGEST_LENGTH value to 64. As a\nresult, an attacker can write up to 48 bytes past the sum2 buffer limit.\nUpstream fix:\nThe upstream fix for\nCVE-2024-12084\nchanges the sum2 field to a dynamically-allocated sum2_array field, which is\nallocated with xfer_sum_len length, and fixes the bounds check to check\nagainst the xfer_sum_len (checksum length for this transfer’s algorithm).\nCan Go help prevent this?\nYes: Missing or incorrect bounds checks will not result in a heap buffer\noverflow in Go! Instead, attempting to write out of bounds will result in a\npanic because the Go runtime performs bounds checks.\nHow does gokrazy/rsync fare?\ngokrazy/rsync also had insufficient validation! Our issue was different, though:\nIt wasn’t size confusion, we just were not doing any validation of the sum\nheader at all — oops!\nWe can confirm that the Go runtime’s bounds check triggers\non an attempt to write out of\nbounds\nby changing the code like so and running the tests:\ndiff --git i/types.go w/types.go\nindex 5601697..899fcb8 100644\n--- i/types.go\n+++ w/types.go\n@@ -59,7 +59,7 @@ func (sh *SumHead) WriteTo(c *rsyncwire.Conn) error {\n \tvar buf rsyncwire.Buffer\n \tbuf.WriteInt32(sh.ChecksumCount)\n \tbuf.WriteInt32(sh.BlockLength)\n-\tbuf.WriteInt32(sh.ChecksumLength)\n+\tbuf.WriteInt32(512 /*sh.ChecksumLength*/)\n \tbuf.WriteInt32(sh.RemainderLength)\n \treturn c.WriteString(buf.String())\n }\n\n\nAs expected, the Go runtime panics with the following message:\npanic: runtime error: slice bounds out of range [:512] with length 16\n\ngoroutine 277 [running]:\ngithub.com/gokrazy/rsync/rsyncd.(*sendTransfer).receiveSums(0xc0000d7b68)\n\t/home/michael/go/src/github.com/gokrazy/rsync/rsyncd/sender.go:136 +0x339\ngithub.com/gokrazy/rsync/rsyncd.(*sendTransfer).sendFiles(0xc0000d7b68, 0xc000120820)\n\t/home/michael/go/src/github.com/gokrazy/rsync/rsyncd/sender.go:46 +0x134\ngithub.com/gokrazy/rsync/rsyncd.(*Server).handleConnSender(0xc000476090, {{0x95ed9b, 0x7}, {0xc000426810, 0x2a}, {0x0, 0x0, 0x0}}, {0xa2a120, 0xc0000b2ba0}, ...)\n\t/home/michael/go/src/github.com/gokrazy/rsync/rsyncd/rsyncd.go:397 +0x26a\ngithub.com/gokrazy/rsync/rsyncd.(*Server).HandleConn(0xc000476090, {{0x95ed9b, 0x7}, {0xc000426810, 0x2a}, {0x0, 0x0, 0x0}}, {0xa2a120, 0xc0000b2ba0}, ...)\n\t/home/michael/go/src/github.com/gokrazy/rsync/rsyncd/rsyncd.go:351 +0x37a\ngithub.com/gokrazy/rsync/rsyncd.(*Server).HandleDaemonConn(0xc000476090, {0x94db80?, 0xc00018a040?}, {0x7fd15838b118, 0xc000428028}, {0xa2bd90, 0xc0002303c0})\n\t/home/michael/go/src/github.com/gokrazy/rsync/rsyncd/rsyncd.go:307 +0xdbb\ngithub.com/gokrazy/rsync/rsyncd.(*Server).Serve.func2()\n\t/home/michael/go/src/github.com/gokrazy/rsync/rsyncd/rsyncd.go:450 +0xaf\ncreated by github.com/gokrazy/rsync/rsyncd.(*Server).Serve in goroutine 260\n\t/home/michael/go/src/github.com/gokrazy/rsync/rsyncd/rsyncd.go:448 +0xd2\n\n\nOf course, crashing the entire server is not the best failure mode, so I added\nthe missing bounds checking to turn the panic into an\nerror.\nCVE-2024-12085: Stack Info Leak Defeats ASLR (7.5)\nSummary:\nBecause of the same lack of validation as in the previous CVE-2024-12084\nvulnerability, an attacker could select a checksum algorithm with short\nchecksums (e.g. xxhash64 with 8 byte checksums), but then claim they were\nsending longer checksums (e.g. 9 bytes), making the victim leak one byte of\nuninitialized stack content in the response.\nLeaking one byte of stack content may seem benign, but as the Google\nSecurity report puts it:\nThe first pair of vulnerabilities are a Heap Buffer Overflow and an Info Leak.\nWhen combined, they allow a client to execute arbitrary code on the machine a\nRsync server is running on. The client only requires anonymous read-access to\nthe server.\nClick to expand the full description of the info leak\n(quoting the Google\nSecurity report)\n\nThe daemon matches checksums of chunks the client sent to the server against\nthe local file contents in\nhash_search(). Part\nof the function prologue is to allocate a buffer on the stack of\nMAX_DIGEST_LEN bytes:\nstatic void hash_search(int f, struct sum_struct *s,\n                        struct map_struct *buf, OFF_T len)\n{\n    OFF_T offset, aligned_offset, end;\n    int32 k, want_i, aligned_i, backup;\n    char sum2[MAX_DIGEST_LEN];\n\n\nThe daemon then iterates over the checksums the client sent and generates a\ndigest for each of the chunks and compares them to the remote digest:\nif (!done_csum2) {\n    map = (schar *)map_ptr(buf, offset, l);\n    get_checksum2((char *)map, l, sum2);\n    done_csum2 = 1;\n}\n\nif (memcmp(sum2, s->sums[i].sum2, s->s2length) != 0) {\n    false_alarms++;\n    continue;\n}\n\n\nNotably, the number of bytes that are compared again are s->s2length\nbytes. In this case, the comparison does not go out of bounds since\ns->s2length can be a maximum of MAX_DIGEST_LEN.\nHowever, the local sum2 buffer, not to be confused with the\nattacker-controlled s->sums[i].sum2, is a buffer on the stack that is not\ncleared and thus contains uninitialized stack contents.\nA malicious client can send a (known) xxhash64 checksum for a given chunk of\na file, which leads to the daemon writing 8 bytes to the stack buffer\nsum2. The attacker can then set s->s2length to 9 bytes. The result of such\na setup would be that the first 8 bytes match and an attacker-controlled 9th\nbyte is compared with an unknown value of uninitialized stack data.\nAn attacker can divide a file into 255 chunks and as a result leak one byte\nper file download. An attacker can incrementally repeat the process, either in\nthe same connection or by resetting the connection.\nAs a result, they can leak MAX_DIGEST_LEN - 8 bytes of uninitialized stack\ndata, which can contain pointers to Heap objects, Stack cookies, local\nvariables and pointers to global variables and return pointers. With those\npointers they can defeat ASLR.\nUpstream fix:\nThere are two relevant upstream fixes:\nThe “Some checksum buffer\nfixes”\ncommit prevents this attack because the attacker-controlled s->s2length can\nno longer be larger than the transfer’s checksum length.\nThe “prevent information leak off the\nstack”\ncommit initializes the sum2 memory to zero, thereby making any stack leak\nthrough sum2 impossible.\nCan Go help prevent this?\nYes: By design, Go initializes all variables to the zero value. Go programmers\ndo not need to remember to explicitly initialize variables.\nHow does gokrazy/rsync fare?\ngokrazy/rsync is not affected by this vulnerability: Variables are always\ninitialized in Go.\nAdditionally, selecting checksums other than MD4 was only introduced in protocol\nversion 30 (gokrazy/rsync implements protocol version 27).\nCVE-2024-12087: Path Traversal using Symlinks (7.5)\nDescription: (quoting the Google Security\nreport)\nWhen the syncing of symbolic links is enabled, either through the -l or -a\n(--archive) flags, a malicious server can make the client write arbitrary\nfiles outside of the destination directory.  A malicious server can send the\nclient a file list such as:\nsymlink -> /arbitrary/directory\nsymlink/poc.txt\n\nSymbolic links, by default, can be absolute or contain characters such as ../../.\nIn practice, the client validates the file list and when it sees the\nsymlink/poc.txt entry, it will look for a directory called symlink,\notherwise it will error out. If the server sends symlink as [both, a\ndirectory and a symbolic link], [the client] will only keep the directory\nentry, thus the attack requires some more details to work.\nIn inc_recurse mode, which the server can enable for the client, the server\nsends the client multiple file lists. The deduplication of the entries happens\non a per-file-list basis. As a result, a malicious server can send a client\nmultiple file lists, where:\n# file list 1:\n.\n./symlink (directory)\n./symlink/poc.txt (regular file)\n\n# file list 2:\n./symlink -> /arbitrary/path (symlink)\n\nAs a result, the symlink directory is created first and symlink/poc.txt is\nconsidered a valid entry in the file list. Then, the attacker changes the type\nof symlink to a symbolic link.\nWhen the server then instructs the client to create the symlink/poc.txt\nfile, it will follow the symbolic link and thus files can be created outside\nof the destination directory.\nCan Go help prevent this?\nNo. This vulnerability is caused by a logic error: when multiple file lists are\nused, the merged file list needs to be re-verified.\nBut see Defense in depth: Go’s os.Root\nUpstream fix:\nThe upstream fix for\nCVE-2024-12087\nadds the missing validation.\nHow does gokrazy/rsync fare?\ngokrazy/rsync is not affected by this vulnerability: gokrazy/rsync does not\nimplement the incremental recursion mode (--inc-recursive).\nThe trade-off here is implementation complexity vs. resource usage: the\nincremental recursion mode allows working with the file set in a “windowed” way,\nas opposed to having to scan the entire file set before any transfer can\nbegin. See also my How does rsync\nwork? blog post.\nCVE-2024-12088: Bypass for --safe-links (7.5)\nDescription: (quoting the Google Security\nreport)\nThe --safe-links CLI flag makes the client validate any symbolic links it\nreceives from the server. The desired behavior is that symbolic links target\ncan only be 1) relative to the destination directory and 2) never point\noutside of the destination directory.\nThe unsafe_symlink() function is responsible for validating these symbolic\nlinks. The function calculates the traversal depth of a symbolic link target,\nrelative to its position within the destination directory.\nAs an example, the following symbolic link is considered unsafe:\n{DESTINATION}/foo -> ../../\nAs it points outside the destination directory. On the other hand, the\nfollowing symbolic link is considered safe as it still points within the\ndestination directory:\n{DESTINATION}/foo -> a/b/c/d/e/f/../../\nThis function can be bypassed as it does not consider if the destination of a\nsymbolic link contains other symbolic links in the path. For example, take the\nfollowing two symbolic links:\n{DESTINATION}/a -> .\n{DESTINATION}/foo -> a/a/a/a/a/a/../../\nIn this case, foo would actually point outside the destination\ndirectory. However, the unsafe_symlink() function assumes that a/ is a\ndirectory and that the symbolic link is safe.\nUpstream fix:\nThe upstream fix for\nCVE-2024-12088\nmakes unsafe_symlink() stricter by not allowing ../ anywhere within the\npath, except at the very beginning.\nCan Go help prevent this?\nNo. This vulnerability is caused by a logic error: the validation function was\nincorrect. We could have implemented that same bug.\nBut see Defense in depth: Go’s os.Root\nHow does gokrazy/rsync fare?\ngokrazy/rsync is not vulnerable: The --safe-links feature is not yet\nimplemented in gokrazy/rsync.\nCVE-2024-12086: Arbitrary File Leak (6.8)\nSummary:\nThe rsync receiver (in client mode) did not sanitize file names provided by the\nrsync sender, or otherwise prevent opening files outside the destination tree. A\nmalicious sender could instruct a receiver to compare checksums of arbitrary\nfiles outside the destination tree. By observing the receiver’s reaction to a\nprovided one-byte checksum, a malicious sender can leak arbitrary files.\nClick to expand the full description of the file leak\n(quoting the Google\nSecurity report)\n\nWhen a client connects to a malicious server the server is able to leak the\ncontents of an arbitrary file on the client’s machine.  In\nread_ndx_and_attrs()\nthe client will read fnamecmp type as well as the xname from the server if\nthe server sets the appropriate flags. The flag sanitize_paths will not be\nset for the client.\nif (iflags & ITEM_BASIS_TYPE_FOLLOWS)\n    fnamecmp_type = read_byte(f_in);\n*type_ptr = fnamecmp_type;\n\nif (iflags & ITEM_XNAME_FOLLOWS) {\n    if ((len = read_vstring(f_in, xname, MAXPATHLEN)) < 0)\n        exit_cleanup(RERR_PROTOCOL);\n\n    if (sanitize_paths) { /* not enabled when client receives */\n        sanitize_path(xname, xname, \"\", 0, SP_DEFAULT);\n        len = strlen(buf);\n    }\n} else {\n    *buf = '\\0';\n    len = -1;\n}\n*len_ptr = len;\n\n\nThe caller\n(recv_files())\nthen uses the server provided values to determine a file to compare the\nincoming data with.\n    case FNAMECMP_FUZZY:\n    if (file->dirname) {\n        pathjoin(fnamecmpbuf, sizeof fnamecmpbuf, file->dirname, xname);\n        fnamecmp = fnamecmpbuf;\n    } else\n        fnamecmp = xname;\n        break;\n…\nfd1 = do_open(fnamecmp, O_RDONLY, 0);\n\n\nIn\nreceive_data()\nthe contents of the file specified by xname are copied into the destination\nfile. This can be achieved by the server sending a negative token.\nwhile ((i = recv_token(f_in, &data)) != 0) {\n..snip..\n    if (i > 0) {\n..snip..\n    }\n..snip..\n    if (fd != -1 && map && write_file(fd, 0, offset, map, len) != (int)len)\n\n\nThe server sends a checksum to compare. If they don’t match, a 0 is returned.\nif (fd != -1 && memcmp(file_sum1, sender_file_sum, xfer_sum_len) != 0)\n    return 0;\n\n\nWhen the return value is 0 the receiver will then send a MSG_REDO to the\ngenerator. The generator will then write a message to the server.\nThe server can use this as a signal to determine if the checksum they sent was\ncorrect. By starting off with a blength of 1 a malicious server is able to\ndetermine the contents of the target file byte by byte.\nUpstream fix:\nThe upstream fix for\nCVE-2024-12086\nprevents opening files outside the destination tree by verifying the\nsender-provided path.\nCan Go help prevent this?\nYes, Go offers an API to prevent this, see Defense in depth: Go’s\nos.Root.\nHow does gokrazy/rsync fare?\ngokrazy/rsync is not vulnerable: the fuzzy matching feature was introduced with\nrsync protocol version 29, but gokrazy/rsync implements protocol version 27.\nCVE-2024-12747: Symlink Race Condition (5.6)\nDescription: (quoting the Red Hat Security\nAdvisory)\nA flaw was found in rsync. This vulnerability arises from a race condition\nduring rsync’s handling of symbolic links. Rsync’s default behavior when\nencountering symbolic links is to skip them. If an attacker replaced a regular\nfile with a symbolic link at the right time, it was possible to bypass the\ndefault behavior and traverse symbolic links. Depending on the privileges of\nthe rsync process, an attacker could leak sensitive information, potentially\nleading to privilege escalation.\nUpstream fix:\nThe upstream fix for\nCVE-2024-12747\nchanges open() calls in the rsync sender to use the O_NOFOLLOW option. The\npaths are not expected to be symlinks at that point in the algorithm (symlinks\nwould be handled with readlink(2)\n).\nCan Go help prevent this?\nYes, Go offers an API to prevent this, see Defense in depth: Go’s\nos.Root.\nHow does gokrazy/rsync fare?\ngokrazy/rsync was vulnerable before commit\n1b1fbf6,\nwhich introduces the same O_NOFOLLOW mitigation that upstream rsync uses.\nClick to expand the reproduction steps to trigger the\nissue in gokrazy/rsync\nTo reproduce the issue, use the following steps:\nCheck out gokrazy/rsync v0.2.7:\ngit clone https://github.com/gokrazy/rsync\ncd rsync\ngit checkout v0.2.7\n\n\n\nPatch the code as follows to undo the fix and execute the attack:\ndiff --git i/internal/nofollow/nofollow_unix.go w/internal/nofollow/nofollow_unix.go\n--- i/internal/nofollow/nofollow_unix.go\n+++ w/internal/nofollow/nofollow_unix.go\n@@ -2,8 +2,6 @@\n\n package nofollow\n\n-import \"golang.org/x/sys/unix\"\n-\n // Maybe resolves to unix.O_NOFOLLOW on unix systems,\n // 0 on other platforms.\n-const Maybe = unix.O_NOFOLLOW\n+const Maybe = 0 // unix.O_NOFOLLOW\n\ndiff --git i/internal/sender/do.go w/internal/sender/do.go\n--- i/internal/sender/do.go\n+++ w/internal/sender/do.go\n@@ -2,6 +2,8 @@ package sender\n\n import (\n \t\"fmt\"\n+\t\"os\"\n+\t\"path/filepath\"\n \t\"sort\"\n\n \t\"github.com/gokrazy/rsync/internal/log\"\n@@ -55,6 +57,15 @@ func (st *Transfer) Do(crd *rsyncwire.CountingReader, cwr *rsyncwire.CountingWri\n \t\tst.Logger.Printf(\"file list sent\")\n \t}\n\n+\t// HACK: swap out the passwd file with a symlink to /etc/passwd\n+\tif err := os.Remove(filepath.Join(modPath, \"passwd\")); err != nil {\n+\t\treturn nil, err\n+\t}\n+\tif err := os.Symlink(\"../passwd\", filepath.Join(modPath, \"passwd\")); err != nil {\n+\t\treturn nil, err\n+\t}\n+\tst.Logger.Printf(\"HACK: swapped passwd file for symlink\")\n+\n \t// Sort the file list. The client sorts, so we need to sort, too (in the\n \t// same way!), otherwise our indices do not match what the client will\n \t// request.\n\n\nRunning the TestReceiverSymlinkTraversal test now shows that the server\ntraversed the symlink:\n    receiver_test.go:371: unexpected file contents: diff (-want +got):\n          bytes.Join({\n        - \t\"benign\",\n        + \t\"secret\",\n          }, \"\")\n\n\nA surprising discovery\nWhen I shared a draft of this article with Damien Neil, member of the Go\nSecurity Team and the author of the traversal-resistant os.Root\nAPI, he pointed out:\nI believe the gokrazy fix for\nCVE-2024-12747\nis insufficient. You’re calling os.Open with O_NOFOLLOW, but O_NOFOLLOW\nonly prevents symlink traversal in the last path component.\nThis is probably still vulnerable to replacing an earlier path component so\nos.Open(\"dir/passwd\") can be redirected by symlinking dir to /etc.\nWe reported this to the rsync security contact address in April 2025. In\nDecember 2025 I learned that someone else had also independently discovered and\nreported this issue.\nUltimately, this resulted in CVE-2026-29518, published on 2026-05-20.\nMay 2026 batch\nCVE-2026-29518: Symlink Race Condition (7.0)\nDescription: (quoting the rsync 3.4.3 NEWS entry)\nTOCTOU symlink race condition allowing local privilege escalation in\ndaemon mode without chroot.\nAn rsync daemon configured with use chroot = no is exposed\nto a time-of-check / time-of-use race on parent path components. A local\nattacker with write access to a module can replace a parent directory\ncomponent with a symlink between the receiver’s check and its open(),\nredirecting reads (basis-file disclosure) and writes (file overwrite)\noutside the module. Under elevated daemon privilege this allows privilege\nescalation.\nDefault use chroot = yes is not exposed.\nReach: local attacker on the daemon host, write access to a module path,\ndaemon configured with use chroot = no.\nUpstream fix:\nThe upstream fix for\nCVE-2026-29518\nuses secure_relative_open(), which is similar to Go’s os.Root API.\nCan Go help prevent this?\nYes, Go offers an API to prevent this, see Defense in depth: Go’s\nos.Root.\nHow does gokrazy/rsync fare?\ngokrazy/rsync was vulnerable until I switched the\nsender\nand the\nreceiver\nto the traversal-resistant os.Root API.\nCVE-2026-43618: Integer overflow leaks remote memory (8.1)\nDescription: (quoting the GitHub Security Advisory)\nDescription: The receiver’s compressed-token decoder accumulated a 32-bit\nsigned counter without overflow checking. A malicious sender can trigger an\noverflow that, with careful manipulation, leaks process memory contents to\nthe attacker – environment variables, passwords, heap and library pointers\n– significantly weakening ASLR and facilitating further exploitation.\nReach: authenticated daemon connection with compression enabled (the\ndefault for protocols >= 30 when both peers advertise it). Disabling\ncompression on the daemon (“refuse options = compress” in rsyncd.conf) is\nthe available workaround.\nUpstream fix:\nThe upstream fix for\nCVE-2026-43618\nintroduces the missing checks.\nHow does gokrazy/rsync fare?\ngokrazy/rsync is not vulnerable because it does not implement compression. See\ngokrazy/rsync issue\n#35 for\ndetails on why compression support sounds simple, but is non-trivial.\nCVE-2026-43620: DOS after Out-of-bounds read (6.5)\nDescription: (quoting the GitHub Security Advisory)\nThe 2025 fix that added a parent_ndx<0 guard in send_files()\nwas not applied to the visually-identical block in recv_files(). A\nmalicious rsync server can drive any connecting client into a deterministic\nSIGSEGV by setting CF_INC_RECURSE in the compatibility flags, sending a\nflist whose first sorted entry is not a leading “.” directory (which causes\nrecv_file_list() to set parent_ndx = -1), then sending a transfer record\nwith ndx=0 and a non-ITEM_TRANSFER iflag word. The receiver reads\ndir_flist->files[-1] and dereferences the result. On glibc x86-64 the\ndereferenced pointer is mmap chunk metadata that lands at an unmapped\naddress, hence a clean SEGV_MAPERR; non-glibc allocators have not been\naudited.\nReach: any rsync client doing a normal pull from an attacker-controlled\nURL. Works for both rsync:// URLs and remote-shell pulls. inc_recurse is the\nprotocol-30+ default; no special options are required on the victim.\nWorkaround: --no-inc-recursive on the client.\nUpstream fix:\nThe upstream fix for\nCVE-2026-43620\nadds the parent_ndx<0 guard to recv_files() as well.\nHow does gokrazy/rsync fare?\nJust like for CVE-2024-12087, gokrazy/rsync is not affected\nby this vulnerability: gokrazy/rsync does not implement the incremental\nrecursion mode (--inc-recursive).\nCVE-2026-43619: More symlink races (6.3)\nDescription: (quoting the GitHub Security\nAdvisory)\nDescription: Earlier fixes for symlink races on the receiver’s open() call\n(CVE-2026-29518) missed the same race class on every other path-based\nsystem call: chmod, lchown, utimes, rename, unlink, mkdir, symlink, mknod,\nlink, rmdir, lstat. On rsync daemons with “use chroot = no” a local\nattacker with filesystem access on the daemon host can swap a symlink into\na parent directory component between the receiver’s check and one of these\nsyscalls, redirecting it outside the exported module. The fix routes each\naffected path-based syscall through a parent dirfd opened under\nRESOLVE_BENEATH-equivalent kernel-enforced confinement (openat2 on Linux\n5.6+, O_RESOLVE_BENEATH on FreeBSD 13+ and macOS 15+, per-component\nO_NOFOLLOW walk elsewhere). Default “use chroot = yes” is not exposed.\nReach: local attacker on the daemon host, write access to a module path,\ndaemon configured with use chroot = no.\nUpstream fix:\nThe upstream fix for\nCVE-2026-43619\nuses the *at family of syscalls, just like Go’s os.Root.\nCan Go help prevent this?\nYes, Go offers an API to prevent this, see Defense in depth: Go’s\nos.Root.\nHow does gokrazy/rsync fare?\ngokrazy/rsync is not affected, because it uses Go’s os.Root API throughout.\nCVE-2026-43617: Hostname/ACL bypass (4.8)\nDescription: (quoting the GitHub Security\nAdvisory)\nOn an rsync daemon configured with the global daemon chroot = /X rsyncd.conf\nsetting, the reverse-DNS lookup of the connecting client was performed after\nthe daemon had chrooted into /X. If /X did not contain the files glibc\nneeds for resolution (/etc/resolv.conf, /etc/nsswitch.conf, /etc/hosts,\nNSS service modules), the lookup failed and the connecting hostname was set to\n“UNKNOWN”. Hostname-based deny rules (“hosts deny = *.evil.example”) therefore\ncould not match, and an attacker controlling their PTR record could connect\nfrom a hostname the administrator had intended to deny. IP-based ACLs are\nunaffected. The per-module use chroot setting is unrelated to this issue.\nReach: rsync daemon configured with daemon chroot = /X AND hostname-based\nACLs AND /X does not include the libc resolver fixtures.\nUpstream fix:\nThe upstream fix for\nCVE-2026-43617\nmoves the DNS lookup to an earlier point in the protocol.\nHow does gokrazy/rsync fare?\ngokrazy/rsync is not vulnerable because we only implement IP-based allow/deny\nlists, not hostname-based allow/deny lists.\nCVE-2026-45232: stack out-of-bounds write (3.1)\nDescription: (quoting the GitHub Security Advisory)\nThe rsync client’s HTTP CONNECT proxy support contains an off-by-one\nout-of-bounds stack write in establish_proxy_connection() (socket.c). After\nissuing the CONNECT request, rsync reads the proxy’s first response line one\nbyte at a time into a 1024-byte stack buffer with the bound cp < &buffer[sizeof buffer - 1], so the loop only ever writes buffer[0..sizeof-2]. If the proxy\n(or a man-in-the-middle in front of it) returns 1023+ bytes on the first\nresponse line without a '\\n' terminator, the loop exits with cp == &buffer[sizeof buffer - 1] — a slot the loop never wrote, so *cp holds stale\nstack bytes left there by the earlier snprintf() that formatted the outgoing\nCONNECT request. The post-loop code then does:\nif (*cp != '\\n')   /* (*cp is uninitialised stack data) */\n    cp++;          /* cp now &buffer[sizeof]: one past end */\n*cp-- = '\\0';      /* one-byte OOB write on the stack */\n\nThe '\\0' lands one byte past the end of the on-stack buffer[1024],\ncorrupting whatever lives in the adjacent stack slot. AddressSanitizer reports\nstack-buffer-overflow at socket.c:95 in the establish_proxy_connection\nframe.\nUpstream fix:\nThe upstream fix for\nCVE-2026-45232\nvalidates the attacker-supplied data.\nHow does gokrazy/rsync fare?\ngokrazy/rsync does not implement such proxy support, so it is not vulnerable.\nGo verdict\nLet’s summarize how Go fares:\nThe Go runtime’s bounds checks turn more serious security issues into a panic.\n\nA panic is still a denial-of-service risk, but that’s much preferable.\nGo initializes memory to zero, making info leaks like CVE-2024-12085 impossible.\nGo’s os.Root API prevents most of the remaining vulnerabilities.\nOnly one out of twelve vulnerabilities (CVE-2026-43617) is a proper bug in\nthe application logic that using Go could not have prevented.\nCVE number\n          Cause\n          Risk (C)\n          Does Go help?\n      \n2024-12084\n          insufficient validation\n          Heap Buffer Overflow\n          ✅ bounds check (panics!)\n      \n2024-12085\n          insufficient validation\n          Info Leak\n          ✅ zero init\n      \n2024-12086\n          missing validation\n          Arbitrary File Leak\n          ✅ os.Root\n      \n2024-12087\n          insufficient validation\n          Write Arbitrary Files\n          ✅ os.Root\n      \n2024-12088\n          insufficient validation\n          Create Arbitrary Symlinks\n          ✅ os.Root\n      \n2024-12747\n          TOCTOU\n          Leak Privileged Files\n          ✅ os.Root\n      \n2026-29518\n          TOCTOU\n          Leak Privileged Files\n          ✅ os.Root\n      \n2026-43617\n          missing validation\n          Deny List Ineffective\n          ❌ logic bug\n      \n2026-43618\n          insufficient validation\n          Info Leak\n          ✅ bounds check (panics!)\n      \n2026-43619\n          TOCTOU\n          Leak Privileged Files\n          ✅ os.Root\n      \n2026-43620\n          insufficient validation\n          crash (DOS)\n          ✅ bounds check (panics!)\n      \n2026-45232\n          missing validation\n          Memory Write\n          ✅ bounds check (panics!)\n      \ngokrazy/rsync verdict\nAside from being written in Go, another key difference between gokrazy/rsync and\nthe official upstream rsync is that the gokrazy implementation is minimal:\ngokrazy/rsync is unaffected by many vulnerabilities because it does not\nimplement the feature in question, for example --inc-recursive.\nLike all other wire protocol-compatible rsync implementations, gokrazy/rsync\ntargets protocol version 27, because later protocol versions introduce\nsignificant complexity.\nIn some cases, features that would be good to implement come with significant\nblockers, e.g. compression is tricky, see gokrazy/rsync issue\n#35 for\ndetails.\nLet’s have a look at whether gokrazy/rsync was affected by each CVE at the time\nof publishing:\nCVE number\n          Cause\n          gokrazy/rsync impl?\n          gokrazy/rsync affected?\n      \n2024-12084\n          insufficient validation\n          yes\n          ⚠️ panic\n      \n2024-12085\n          insufficient validation\n          no (proto 30)\n          ✅ not vuln\n      \n2024-12086\n          missing validation\n          no (proto 29)\n          ✅ not vuln\n      \n2024-12087\n          insufficient validation\n          no (inc-rec)\n          ✅ not vuln\n      \n2024-12088\n          insufficient validation\n          no (safe-links)\n          ✅ not vuln\n      \n2024-12747\n          TOCTOU\n          yes\n          ❌ vuln\n      \n2026-29518\n          TOCTOU\n          yes\n          ⚠️ patched\n      \n2026-43617\n          missing validation\n          no (host deny lists)\n          ✅ not vuln\n      \n2026-43618\n          insufficient validation\n          no (compression)\n          ✅ not vuln\n      \n2026-43619\n          TOCTOU\n          yes\n          ⚠️ patched\n      \n2026-43620\n          insufficient validation\n          no (inc-rec)\n          ✅ not vuln\n      \n2026-45232\n          missing validation\n          no (proxy)\n          ✅ not vuln\n      \nTo be clear: all known vulnerabilities are fixed in gokrazy/rsync! The table\nabove documents what the state was at the time when each CVE was published. In\nother words:\nWhen the January 2025 vulnerabilities were published, gokrazy/rsync panicked\n(CVE-2024-12084) and was vulnerable to a TOCTOU race (CVE-2024-12747). In the\nprocess of fixing the TOCTOU issue, we discovered CVE-2026-29518, which was\nfixed in gokrazy/rsync before the CVE was published. CVE-2026-43619 was\ndiscovered even later, but was also already fixed in gokrazy/rsync with the same\nfix: using Go’s os.Root everywhere.\nImprecise terminology\nAs I was reading the vulnerability reports, I noticed that the reports were\nslightly misleading by their choice of words: most reports just spoke of\n“server” and “client”. However, in an rsync transfer, both sides, the rsync\nclient and the rsync server can assume either role: sender (upload files) or\nreceiver (download files)!\nSome setups come with further restrictions that make certain attacks harder or\nimpossible to pull off. For example, when running in daemon mode, file system\naccess can be restricted to the pre-configured module paths (but not in command\nmode!).\nHere is a diagram to give you an overview of the 4 different setups and\nrole/protocol layering:\n\n\n\n\nIn the context of our vulnerability reports, I would say that the Arbitrary File\nLeak vulnerability (CVE-2024-12086)’s original title “Server leaks arbitrary\nclient files” can easily be misunderstood.\nInstead, I would say: The rsync receiver will leak arbitrary files to a\nmalicious sender.\nI have verified that a malicious client sender can make an unpatched remote\nrsync open files outside the destination tree (e.g. the /etc/shadow system\npassword database) when running in command mode, for example over SSH. (But,\nwhen running in daemon mode, the server enables additional path sanitization,\nwhich prevents this attack.)\nSimilarly, the Symlink Path Traversal vulnerability (CVE-2024-12087) speaks\nabout a “malicious server”, but again, it should be “malicious sender”, which\ncan be either the client or the server.\nComparison with OpenBSD’s openrsync (C)\nThe OpenBSD project is known for its security focus, so how does openrsync\ncompare?\nopenrsync is not affected by the Heap Buffer Overflow (CVE-2024-12084) and Stack\nInfo Leak (CVE-2024-12085) vulnerabilities because it validates the checksum\nlength and only supports one checksum size/algorithm (MD4).\nopenrsync is not affected by CVE-2024-12086, CVE-2024-12087 and CVE-2024-12088\nbecause it does not implement the relevant features (like gokrazy/rsync). Even\nif it was vulnerable, openrsync’s defense-in-depth measures like using\nOpenBSD’s unveil(2) and\npledge(2) to restrict file system access\nwould have prevented successful exploitation — at least when running on OpenBSD.\nopenrsync is not affected by CVE-2024-12747 because it used O_NOFOLLOW from\nthe very moment they implemented symlink\nsupport. But,\nbecause O_NOFOLLOW is not a sufficient fix for this issue, openrsync is\naffected by CVE-2026-29518!\nThe above covers the January 2025 batch of vulnerabilities; the May 2026 batch\nis similar in that most features just are not implemented.\nOverall, I say: Well done, Kristaps and contributors! By diligently implementing\nvalidation, restricting the attack surface and employing defense-in-depth\nmeasures, openrsync manages to not be affected by almost all of the reported\nvulnerabilities.\nDefense in depth\nWhich APIs and environments can we use on Linux for defense-in-depth measures?\nI’ll go through the ones gokrazy/rsync supports, ordered by traditional to\nmodern.\nLinux mount namespaces\nWithin a few weeks after starting the gokrazy/rsync project, I added support\nfor dropping privileges and using mount/pid namespaces on\nLinux\nto restrict the file system objects that my rsync server could work with.\nThis approach works very well to mitigate path traversal attacks, but requires\nprivileges, meaning we need to run as root or in a Linux user\nnamespace\n(if enabled on your distribution / system).\nThat limitation makes mount namespaces well-suited for server setups, but\nusually unavailable for interactive one-off transfers that are typically running\nunder a human’s user account.\nsystemd hardening\nIn the same commit that introduced Linux mount/pid namespace support, I also\nincluded a systemd service file that restricted file system access to home\ndirectories and encouraged folks in the README to further restrict file system\naccess, depending on what their use-case allows.\nThese file system restrictions, if set up correctly, mitigate the File Leak\n(CVE-2024-12086) and Path Traversal (CVE-2024-12087) vulnerabilities.\nThe Symlink Race Condition (CVE-2024-12747) relies on privilege escalation\nthrough the rsync process, but thanks to the\nDynamicUser\nfeature, our process has fewer privileges than other users.\nSimilarly to mount namespaces, these measures are great for server setups, but\ntoo cumbersome to set up for interactive one-off usages.\nLinux Landlock\nI stumbled upon Justine’s blog post Porting OpenBSD pledge() to Linux\n(2022) and was reminded that Linux offers\nthe Landlock API for\nunprivileged, per-process access control, similar to OpenBSD’s\nunveil(2) system call, which openrsync\nuses. The basic idea is that once your program knows the directory it works\nwith, it makes a call like unveil(\"/home/michael/backups\", \"rw\"); and no\nlonger has access to other file system locations.\nI had previously heard of Landlock at a Go Meetup, so I knew there was Go\nsupport for Landlock. Back in 2022, I enabled Landlock support in the gokrazy\nkernel images.\nSo I gave it a shot in March 2025 and implemented Landlock support to restrict\nfile system\naccess. It\ntook me a few hours, which seems a little longer than one might expect at\nfirst. Making Landlock work (and/or skipping it) in our test environment ran\ninto a couple of road blocks: Our tests had defined many functions that get run\nin the same process, but when repeatedly adding rulesets, we would exceed the\nlimit of 16 (!) policy layers per process.\nOnce I had it set up just right, it is a beautiful solution. Now we can restrict\nrsync transfers to their sources (read-only) or destination directories\n(read-write), even for unprivileged invocations of gokrazy/rsync! 🎉\nThe downside to Landlock is that Landlock operates at the process level. This\nmeans that Landlock policies must include the files that your program needs,\ne.g. gokrazy/rsync needs to be able to read /etc/passwd for user id lookup,\nso if the attacker is after the /etc/passwd file, Landlock does not help.\nGo’s os.Root\nIn February 2025, the Go 1.24 release introduced the\nos.Root API, which is resistant against path\ntraversal, see The Go Blog: Traversal-resistant file\nAPIs (by Damien Neil, March 2025). This API allows\nmore fine-grained control (per file system operation) compared to Landlock.\nGo 1.25 (released in August 2025) added more methods to os.Root, making it a\nconvenient choice for most file system usage.\nI have converted all of gokrazy/rsync’s file system usage to use os.Root,\nwhich is a great fit: users configure input/output directories, but the\nfilenames received over the network are untrusted. That’s exactly what os.Root\nwas designed for!\nWhen I first looked into using os.Root, I thought that some system calls could\ninherently not be made with this API, like for example mknod(2)\n to create device node files. Damien explained:\nIt won’t support mknod, though.\nHowever, you should be able to use it to enable a safe mknod:\nos.Root.OpenFile the parent directory of the target,\nFile.Fd to get the file descriptor for that directory,\nhttps://pkg.go.dev/golang.org/x/sys/unix#Mknodat to create the file.\nIf you’re curious how that looks in practice, check out gokrazy/rsync’s usage\nin internal/receiver/generatormknod_linux.go, line\n15-29.\nAnother stumbling block was when I realized that unlike with mknodat(2)\n, Linux only implements bind(2)\n, but no bindat (as of Linux 7.0)!\nLuckily, Lennart Poettering pointed\nout that there’s a trick\nto skip path resolution without bindat:\nyou can probably bind to /proc/self/<fd>/foobar in the meantime…\nAnd indeed, this works! Path resolution is skipped because we only specify a\nbasename (last component of a path) after the known-safe /proc/self/<fd>, not\na path (see line\n49-56).\nWith these two tips, gokrazy/rsync v0.3.1 and newer are fully using os.Root,\nmeaning all file system access is traversal-safe! 🥳\nConclusion\nLacking validation causes vulnerabilities\nIt is interesting to note that aside from the TOCTOU vulnerabilities\n(CVE-2024-12747, CVE-2026-29518 and CVE-2026-43619), all other vulnerabilities\nwere caused by missing or incorrect input validation. In three cases, there was\njust no validation to begin with. In another case (CVE-2024-12088), the subject\nmatter of file system path resolution is tricky enough that the existing\nvalidation did not cover all edge cases.\nAs the Go verdict section explains in more detail, the most\nvaluable structural fixes are to provide bounds checking (= always-on\nvalidation) and safe-by-default APIs like Go’s os.Root.\nToo much complexity\nA few of the vulnerabilities came from evolution of the rsync protocol: The\ncode used to correctly perform sufficient validation, but then new features were\nadded. For example, when checksum algorithm negotiation was added (protocol\nversion 30), the validation was not correctly updated. When incremental\nrecursion was added (also protocol version 30), the validation that made sense\nfor individual file lists was not updated for the new processing approach of\nmerging incremental file lists.\nAvoiding complexity avoids vulnerabilities! Both gokrazy/rsync and also\nopenrsync were not vulnerable to 8 out of the 12 security vulnerabilities simply\nbecause they do not implement the feature with the vulnerability.\nOf course, these features were added to rsync because they were valuable to\nsomeone at some point, and of course I am not saying that we should just… not\ndevelop software any further, ever.\nBut, I consider it ideal to use an implementation whose complexity is\nappropriate for and proportional to the complexity of the use-case. In other\nwords: for simple use-cases, reach for a simple implementation. Only reach for\nthe fully-featured implementation where needed.",
+      "id": "d0613a10f4ebd11be22e474f4f3a6308b76a06dc059c42956f9559f8118793bc",
+      "ref_id": "4",
+      "recommendationScore": 88,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "详细分析了rsync的漏洞，并阐述了作者通过Go语言实现内存安全版本rsync的优势和解决方案。",
+      "reason": "技术深度高，结合Go语言特性解决实际安全问题，实用性极强，对编程工具和系统安全具有重要的参考价值和行动指导。",
+      "tags": [
+        "Go语言",
+        "网络安全",
+        "rsync",
+        "编程工具",
+        "内存安全"
+      ]
+    },
+    {
+      "title": "Omarchy Is Not A Distro",
+      "link": "https://abyss.fish/your_dotfiles_are_not_a_distro",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-24T14:37:21.000Z",
+      "summary": "Article URL: https://abyss.fish/your_dotfiles_are_not_a_distro\nComments URL: https://news.ycombinator.com/item?id=48257612\nPoints: 66\n# Comments: 42",
+      "id": "5d129245a35655fda4982a32e0d4f8b8bd39dcefeb1b309094a25524e125306c",
+      "ref_id": "4",
+      "recommendationScore": 85,
+      "popularityScore": 90,
+      "priority": "medium",
+      "comment": "深入探讨个人配置文件（dotfiles）与操作系统发行版之间的哲学差异。",
+      "reason": "为资深开发者提供了关于系统配置和环境管理的深刻技术讨论，实用性强，在编程工具和自动化领域有高度相关性。",
+      "tags": [
+        "Programming Tools",
+        "Configuration Management",
+        "Linux",
+        "Dotfiles",
+        "Developer Workflow",
+        "Automation"
+      ]
+    },
+    {
+      "title": "Constraint Decay: The Fragility of LLM Agents in Back End Code Generation",
+      "link": "https://arxiv.org/abs/2605.06445",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-24T12:55:53.000Z",
+      "summary": "Article URL: https://arxiv.org/abs/2605.06445\nComments URL: https://news.ycombinator.com/item?id=48256912\nPoints: 52\n# Comments: 29",
+      "id": "7c96a714efa04e645c70721b05f7a30dcc0358fc854b9b54d739d29d28d4bab3",
+      "ref_id": "2",
+      "recommendationScore": 85,
+      "popularityScore": 60,
+      "priority": "high",
+      "comment": "一篇关于大型语言模型代理在后端代码生成中约束衰减脆弱性的研究论文。",
+      "reason": "深入分析了LLM代理在复杂任务中的局限性，对AI研究和实际应用中的挑战提供了重要见解。",
+      "tags": [
+        "AI",
+        "LLM",
+        "代码生成",
+        "研究",
+        "局限性",
+        "后端开发"
+      ]
+    },
+    {
+      "title": "Wake up! 16b",
+      "link": "https://hellmood.111mb.de/wake_up_16b_writeup.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-24T00:30:50.000Z",
+      "summary": "Article URL: https://hellmood.111mb.de/wake_up_16b_writeup.html\nComments URL: https://news.ycombinator.com/item?id=48253060\nPoints: 342\n# Comments: 25",
+      "id": "bc2197128103ef2204e8297c0f41c48ff4ca56f2d02a3d0b1cbabe4fd8ec3456",
+      "ref_id": "2",
+      "recommendationScore": 85,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "一篇关于'Wake up! 16b'的深入技术挑战解答文章，可能涉及低级编程或逆向工程。",
+      "reason": "文章提供了高技术深度和信息密度的挑战解决方案，对低级编程和逆向工程爱好者具有很高的参考价值。",
+      "tags": [
+        "编程挑战",
+        "底层开发",
+        "逆向工程",
+        "技术分析"
+      ]
+    },
+    {
+      "title": "Microsoft open-sources \"the earliest DOS source code discovered to date\"",
+      "link": "https://arstechnica.com/gadgets/2026/04/microsoft-open-sources-the-earliest-dos-source-code-discovered-to-date/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-24T01:21:13.000Z",
+      "summary": "https://opensource.microsoft.com/blog/2026/04/28/continuing-...\nComments URL: https://news.ycombinator.com/item?id=48253386\nPoints: 361\n# Comments: 116",
+      "id": "e60b985a02c56b99337a8ae1342b06dbe18ffb10f46aad52463ac9f56b9a3b1a",
+      "ref_id": "0",
+      "recommendationScore": 84,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "微软开源了迄今为止发现的最早的DOS源代码，具有重要的计算机历史和系统研究价值。",
+      "reason": "文章提供了罕见的计算机历史文献和底层系统研究的机会，对特定技术爱好者极具吸引力。",
+      "tags": [
+        "操作系统",
+        "开源",
+        "历史",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "Signing is for the bad days",
+      "link": "https://nesbitt.io/2026/05/24/signing-is-for-the-bad-days.html",
+      "source": "nesbitt.io",
+      "publishedAt": "2026-05-24T10:00:00.000Z",
+      "summary": "I have had roughly the same conversation four or five times in the last month. I’m explaining why a registry should adopt Sigstore, or why a build pipeline should emit in-toto attestations, and the person across the table says some version of: we already use TLS to the registry, the registry already hashes the tarballs, the lockfile already pins the hash, what does a signature add? And on a Tuesday afternoon when nothing has gone wrong, the honest answer is that it adds a bit of CPU on publish and a bit of YAML in the workflow and not much else you can see.\nThat answer is also why we keep having supply chain incidents, because a hash in a lockfile tells you the bytes haven’t changed since you locked them; it can’t tell you whether they were ever the right bytes, and the whole point of this class of tooling is to answer that second question. It does nothing visible until the day someone compromises a build server or swaps a tarball on a mirror, and on that day it’s the difference between “the client refused to install it” and a blog post that starts with the word “incident”. I want to walk through the three projects that most of this work sits on and what each one actually defends against, because the benefits are nearly impossible to see from the happy path.\nThe thread connecting all three is Santiago Torres-Arias. His name kept turning up as I was reading the papers and design docs behind each of these, often enough that I went and did a bit of digging into how that happened. He did his PhD at NYU under Justin Cappos, who had already built The Update Framework. Santiago contributed to TUF, published in-toto at USENIX Security ‘19 as the piece TUF was missing, and went on to be one of Sigstore’s creators. In 2021 he was one of the five keyholders who signed its root of trust.\nHe’s now at Purdue running a lab that keeps producing this stuff. GUAC, which turns a pile of SBOMs and attestations into a graph you can query when a CVE lands and you need to know what’s affected, came out of that lab. Before Purdue there was his 2016 paper on git metadata tampering, which showed a hostile server could reorder branch pointers to feed you a vulnerable tree even when every commit was signed. There’s a single design assumption running through all of it, and it’s one most package managers were not built with: some part of your infrastructure is already compromised, and the job of the tooling is to make that survivable.\nTUF: assume the registry gets owned\nThe thing TUF protects is the last hop, from the repository to the machine doing the install. The naive version of that is “sign the packages”, which PGP-based schemes have done for decades, and which falls apart the moment the signing key leaks. If there’s one key, kept online so the CI can sign releases automatically, then whoever pops the CI box can sign whatever they like and every client will trust it. The original TUF research came directly out of cataloguing those failure modes across the Linux distro updaters of the late 2000s.\nTUF’s answer is to split signing into roles with separate keys and separate exposure. A root role, signed by keys that live offline in hardware and get touched once a year, says which keys are valid for the other roles. A targets role says which package files exist and what their hashes are. A snapshot role says which version of all that metadata is current, and a timestamp role, the only key that has to be online and hot, signs a short-lived statement that the snapshot is fresh. The hot key can only say “the metadata you already have is still current”; it can’t add a package or change a hash, and it can’t bless a new key for any other role.\nWalk an attacker through that: they compromise the registry’s online infrastructure and get the timestamp key, which is the one that’s actually reachable. They can now sign fresh timestamps, and that’s it. Tampering with a package needs a targets signature they don’t have the key for. Serving an old vulnerable version, a rollback attack, is blocked because snapshot version numbers only go up. Even sitting on the box and serving stale metadata indefinitely, a freeze attack, stops working once the timestamp signatures expire and clients notice they’ve stopped advancing. To actually ship malware they need the offline targets key, and to change which keys are trusted they need a threshold of the offline root keys, which are in safes in different buildings.\nNone of this is visible when the registry is healthy: pip install with PEP 458 metadata behind it looks identical to pip install without. The difference only shows up in the scenario where someone has the server, and that’s exactly the scenario the threat model post from a couple of weeks ago kept circling back to: registries are big targets with online credentials and we should plan for them to be breached occasionally.\nin-toto: assume the pipeline gets owned\nTUF tells you the file you got is the file the registry meant to give you. It says nothing about whether the registry should have had that file in the first place. The tarball for foo-1.2.3 arrived over TLS and matches the signed hash, fine, but who built it, from what source, on which machine, and did anything touch it between the compiler and the upload? For most of the history of package management the answer has been “whatever the repository field in the manifest claims, which is a string the publisher typed”.\nin-toto is Santiago’s answer to that gap, and I think it’s the most important idea in this whole space. The project owner writes a layout: a signed document that says these are the steps in my pipeline (clone, build, test, package), these are the keys authorised to perform each step, and these are the rules for what each step is allowed to consume from the previous one and produce for the next. Then each step, as it runs, records the hashes of its inputs and outputs and signs that record, a link, with its own key. Verification at the far end takes the final artifact, the layout, and the pile of links, and checks that there’s an unbroken signed chain from the source the layout names to the bytes you’re holding, with every step performed by someone the layout authorised.\nRun xz through that model: the backdoor was in the release tarball but never in the git repository; the attacker added it during the “make a release archive” step that they, as a maintainer, were trusted to perform by hand. An in-toto layout that said “the package step’s inputs must match the tag step’s outputs” would have failed verification, because the tarball contained files the tagged tree didn’t.\nThe SolarWinds build server was a build step whose functionary key would have been on the compromised box, true, but the layout can require that the same source be built by two independent functionaries with matching output, which is the reproducible builds idea expressed as a verifiable policy rather than an aspiration. The Codecov bash uploader was a file modified in a bucket after CI had produced it; a MATCH rule between the CI step’s products and the distribution step’s materials catches exactly that.\nThe USENIX paper walks through thirty real compromises and shows where in the chain each would have been caught, and it’s a slightly uncomfortable read because almost all of them would have been. Again, on the happy path you see none of this. CI emits some JSON files alongside the artifact, the install client checks them, the check passes, nothing is printed.\nSigstore: assume nobody will manage keys\nBoth of the above assume people have signing keys and look after them properly, and thirty years of PGP in open source says they won’t. Keyservers are a graveyard of expired and revoked keys for projects that gave up; the Maven signing requirement is widely satisfied by a key generated once on a laptop in 2014 and never thought about again; the PyPI PGP support was eventually removed outright because almost nobody could verify the signatures that were there.\nSigstore’s contribution, and the reason it’s been adopted faster than anything else in this space, is to delete the long-lived key from the developer’s life entirely. You authenticate with an OIDC identity you already have, GitHub Actions or Google or whatever. Fulcio issues you a code-signing certificate bound to that identity that’s valid for ten minutes. You sign the artifact, the signature and cert go into Rekor, a public append-only transparency log, and then the key is thrown away.\nVerifiers don’t ask “is this signed by key 0xABCD”, they ask “does Rekor contain a signature for this hash from a cert that Fulcio issued to github.com/foo/bar/.github/workflows/release.yml@refs/tags/v1.2.3”. The thing being trusted is the identity and the log, neither of which the maintainer has to look after.\nThere’s also nothing in the publisher’s config for an attacker to steal. The workflow file names the identity that’s expected to produce the signature, and that’s public information by design. Dump the repo and you learn which identity you’d have to impersonate, but nothing that helps you do it. The OIDC token only exists for a few minutes inside a running job, so stealing it means already having code execution in that job, which is a different and harder problem than reading a secrets store. With a long-lived signing key or a registry API token, the thing sitting in the secrets store is the credential itself, and exfiltrating it is the whole attack.\nSantiago co-authored the CCS ‘22 paper that sets out Sigstore’s security model, and his influence is most visible in Rekor, which is the academic transparency-log literature (CONIKS, Certificate Transparency) applied to software artifacts, and in the way Sigstore’s own keys are distributed under a TUF root so the “who signs the signers” recursion bottoms out in the same offline-threshold model as everything else. He physically holds one of the five hardware keys for that root. Identity-bound short-lived certs feeding a public log with TUF at the bottom is the research agenda he and Cappos had been pushing for years, here packaged so that npm publish --provenance can do it without the publisher knowing what a Merkle tree is.\nThe transparency log is the part that does the most work on a bad day. If a maintainer’s GitHub account is phished and used to publish a malicious version, the maintainer can look at Rekor and say “I didn’t make that signature, here’s the log entry showing the OIDC identity and workflow run it came from”.\nWhen Ledger Connect Kit was pushed from a phished npm account, the question of exactly what was published when, and from where, took longer to answer than it should have. A public log you can’t tamper with, which monitors can watch for “package X was just signed by an identity that’s never signed it before”, turns that forensic scramble into a query. It also means a registry operator can’t replace an artifact after the fact even if they wanted to, because the original hash is in a log the registry doesn’t control.\nWhat signing didn’t stop\nIt would be dishonest to leave it there, because the last few months have been a running demonstration that this layer on its own is nowhere near sufficient. We’re currently at something close to a compromise a day, and the recurring pattern is attackers getting inside the CI run itself, where the OIDC token is just another thing to steal.\nThe Shai-Hulud worm and this month’s TanStack wave scraped the token straight out of the GitHub Actions runner’s process memory and POSTed to the registry with it. Ultralytics went the other way: cache poisoning meant the legitimate workflow built a poisoned artifact, so PyPI’s trusted publishing issued a perfectly valid token to a build that was already bad. Trusted publishing closed the “leaked long-lived token” door and the attackers walked through the workflow door instead.\nWhere the signing did help in those cases was in working out what had happened, fast and with certainty. PyPI’s own write-up of Ultralytics is explicit that the Sigstore transparency log is what let them establish the first malicious wheels came from the real workflow rather than a stolen API token, which is what pointed the investigation at the build cache. The second round of bad releases, pushed with an old API token that had never been revoked, had no attestations at all, and the absence was itself a signal. That’s worth having, and it’s also clearly less than “the bad publish was prevented”, which is the strongest argument I know for having more than one of these layers in place at once.\nWhat you get when you stack them\nThe three layers compose, and in practice that composition is now what’s actually being deployed. in-toto defines what a valid build looks like. Sigstore is how each step signs its link without anyone managing keys, and how the final attestation gets bound to the CI identity that produced it. TUF is how the policy, the attestations, and the artifacts get to the client without the distribution channel being able to lie about any of them.\nnpm provenance, PyPI attestations, and Homebrew’s build provenance are all in-toto-format statements, signed via Sigstore, about artifacts whose distribution increasingly sits on TUF metadata. SLSA, which is what most people in industry have actually heard of, is essentially a set of named difficulty levels for in-toto layouts, and is now give or take what the US government asks its software suppliers to attest to, which is a reasonable distance for a PhD thesis to have travelled.\nSo when someone asks what signing adds over a hash in a lockfile: the lockfile tells you the bytes haven’t changed since you locked them. It can’t tell you those were ever the right bytes, or who produced them from what; it gives you nothing on first install before there’s a lock, and nothing to help anyone else figure out the blast radius after the fact. The stack above gives you a refusal to install when the build was tampered with or the registry is serving something it shouldn’t, a public record of who published what that the publisher themselves can audit, and an offline root that means stealing the online keys gets the attacker very little.\nAlmost all of which is invisible almost all of the time, which is, I think, why I keep having that conversation. Santiago’s work is infrastructure in the proper sense, in that you only find out it’s there when something hits it, and “we added signing and nothing visibly changed” is what success looks like for this kind of work. The problem is that very few people hold the whole stack in their heads at once, the gap each layer covers only becomes obvious when an attacker walks through it, and so those of us who do understand it are going to have to keep explaining it, incident by incident, until it sticks.",
+      "id": "400bf575c057f1473e30ef71a86fe5fbf7a2d4bb3c296d299687459fb5acfcf0",
+      "ref_id": "1",
+      "recommendationScore": 81,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "深入解释了软件供应链安全中代码签名的核心价值，超越了传统哈希验证的局限。",
+      "reason": "文章极具实用性，直击当前软件安全痛点，技术深度适中且信息密度高，对编程工具和自动化流程的安全性至关重要。",
+      "tags": [
+        "软件安全",
+        "供应链安全",
+        "Sigstore",
+        "编程工具",
+        "自动化"
+      ]
+    },
+    {
+      "title": "Perceptual Image Codec: What Matters in Practical Learned Image Compression",
+      "link": "https://apple.github.io/ml-pico/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-24T12:01:24.000Z",
+      "summary": "Article URL: https://apple.github.io/ml-pico/\nComments URL: https://news.ycombinator.com/item?id=48256565\nPoints: 34\n# Comments: 8",
+      "id": "24693c1fa4e7adb0591f6504f8ff7b5a6f8f28ad301342670954de1cb9569060",
+      "ref_id": "4",
+      "recommendationScore": 80,
+      "popularityScore": 40,
+      "priority": "high",
+      "comment": "探讨感知图像编解码器和实用机器学习图像压缩的关键因素。",
+      "reason": "深入分析了机器学习在图像压缩领域的实际应用和关键技术，对AI和多媒体开发者有潜在价值。",
+      "tags": [
+        "AI",
+        "机器学习",
+        "图像处理",
+        "图像压缩",
+        "Apple ML"
+      ]
+    },
+    {
+      "title": "DeepSeek to Make Permanent 75% Discount on Flagship AI Model",
+      "link": "https://www.bloomberg.com/news/articles/2026-05-23/deepseek-to-make-permanent-75-discount-on-flagship-ai-model",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-24T14:09:33.000Z",
+      "summary": "Article URL: https://www.bloomberg.com/news/articles/2026-05-23/deepseek-to-make-permanent-75-discount-on-flagship-ai-model\nComments URL: https://news.ycombinator.com/item?id=48257410\nPoints: 73\n# Comments: 80",
+      "id": "67e59aeaf2c3878f8a9954cc9a3fda7d4e122d968263d49bd52575a4ef31179b",
+      "ref_id": "0",
+      "recommendationScore": 75,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "DeepSeek旗舰AI模型永久75%折扣的商业新闻，影响AI市场格局。",
+      "reason": "该文直接关系到AI模型的使用成本和市场竞争，对开发者和企业决策具有高实用性。",
+      "tags": [
+        "AI",
+        "大模型",
+        "商业",
+        "DeepSeek",
+        "成本"
+      ]
+    },
+    {
+      "title": "Why is Vivado 2026.1 dropping Linux support for free tier?",
+      "link": "https://adaptivesupport.amd.com/s/question/0D5Pd00001YQLdMKAX/why-is-vivado-20261-dropping-linux-support-for-free-tier-?language=en_US",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-24T04:14:52.000Z",
+      "summary": "Article URL: https://adaptivesupport.amd.com/s/question/0D5Pd00001YQLdMKAX/why-is-vivado-20261-dropping-linux-support-for-free-tier-?language=en_US\nComments URL: https://news.ycombinator.com/item?id=48254309\nPoints: 260\n# Comments: 144",
+      "id": "debe7d0dff12159d23c2fb8d6c64cbd290f58750958a6b064c23df8bca8ac4a1",
+      "ref_id": "2",
+      "recommendationScore": 75,
+      "popularityScore": 95,
+      "priority": "medium",
+      "comment": "讨论了Vivado工具在免费层级取消Linux支持的问题，引发了广泛关注。",
+      "reason": "对特定编程工具（FPGA）的Linux用户群体影响重大，反映了软件生态和商业策略变化，社区关注度极高。",
+      "tags": [
+        "编程工具",
+        "FPGA",
+        "Linux",
+        "软件政策",
+        "AMD"
+      ]
+    },
+    {
+      "title": "Building Pi With Pi",
+      "link": "https://lucumr.pocoo.org/2026/5/24/pi-oss/",
+      "source": "lucumr.pocoo.org",
+      "publishedAt": "2026-05-24T00:00:00.000Z",
+      "summary": "Pi is now part of Earendil, but in the important sense it is\nstill Mario’s project.  He has been living with its\nissue tracker longer than I have, and he has been exposed to the weirdness of\nthe new form of agent traffic in Open Source projects for longer too.  This post\nis mostly a reflection of my own experience after spending more time in the\ntracker, using Pi to work on Pi, and watching what I have learned about it so\nfar.\nSlop Issues\nUnsurprisingly, we are using Pi to build Pi.  That sounds like a cute dogfooding\nthing but it really helps understand what we do.  An interesting effect of\nbuilding with agents is that it changes the role of the issue tracker a tiny\nbit.  The issue descriptions are not just messages from a user to a maintainer\nbecause we also use them as inputs for prompts in Pi sessions.  It is something\nI might hand to my clanker1 and say: “understand this, reproduce it, inspect\nthe code, and propose a fix.”\nThat means the shape of the issue matters in a new way.  A bad issue was always\nannoying, but at least a lot of issues were vague.  Now we are also dealing with\na class of issues that are 5% human and 95% clanker-generated and largely\ninaccurate shit.  A bad issue that contains a plausible but wrong diagnosis\ncreates extra work.\nThe most frustrating failure mode right now is that people submit issues that\nare not in their own voice.  They contain an observed problem somewhere, but it\nhas been thrown into a clanker and the clanker reworded it and made a huge mess\nof it.  Typically, it was prompted so badly that the conclusions produced are\nmore often than not inaccurate but always full of confidence.  The result is\ncomplete guesswork on root causes, fake-minimal repros, suggested implementation\nstrategies, analogies to adjacent but often the wrong code, and long lists of\nerror classes that might or might not matter.\nThat is worse than no diagnosis.\nI don’t want to point to specific issues because I really do not want to bad\nmouth anyone, but it is frustrating.  It is also frustrating because when I give\nthat issue to Pi, Pi sees the wrong diagnosis too.  It does not treat the issue\nbody as a rumor.  It treats it as evidence.  It will happily go down the path\nthat the issue already prepared for it, because the prose is confident and the\ncode references look plausible.  We use a custom slash command called /is,\nwhich specifically has this instruction in it:\nDo not trust analysis written in the issue. Independently verify behavior and\nderive your own analysis from the code and execution path.\nUnfortunately, it does not fully work, because when humans first throw their\nissue through the clanker wringer, their clanker expands scope almost\nimmediately.  What was once a very narrow and fact based bug observation, turns\ninto a much expanded surface area full of hypotheses.  So at least personally, I\nincreasingly want issue reports to be condensed to what the human actually\nobserved:\nI ran this command.\nI expected this to happen.\nThis happened instead.\nHere is the exact error or log.\nThat is enough.  If you used an LLM to understand the problem, great, maybe\nleave it as a follow-up comment.  But the issue and the issue text should be\nsomething you own.  If you do not know the root cause, say that.  I too can\noperate a clanker, and I would rather do this myself than use your slop.  If\nyour repro is a guess, say that.  If the only hard fact is one stack trace, give\nme the stack trace and stop there.\nSlop Begets Slop\nThat we’re seeing issues full of slop is just a result of the present day\nquality of these machines.  Sadly, their failures in creating good issues\nextend to a lot of code that is generated.  Not all of it, but a lot of code.\nOver and over I keep running into them over-engineering the hell out of issues\nand implementations.\nIf you tell them that “this malformed session log crashes the reader,” the\nclanker\nwill often add a tolerant reader.  Then it will add a fallback, then maybe a\nmigration, then more debug output, then a test for all of this.  None of this is\nnecessarily wrong in isolation, but it can be the wrong move for the system.\nAt Pi’s core is a rather well-designed session log with invariants that must be\nupheld.  The clanker’s present-day behavior is to just assume that no such\ninvariants exist, and instead to make the system work with all kinds of\nmalformedness, blowing up the complexity in the process.\nAlmost always, the correct fix is not to handle the bad state, but to make the\nbad state impossible.  This matters a lot for persisted data such as Pi session\nlogs.  They are opened, branched, compacted, exported, shared, and analyzed.\nThe goal here is to never write bad session data.  Yet if you just let the\nclanker roam freely, it will attempt to handle every case of bad data in the\nsession log with a more permissive reader.\nI have complained about this plenty, but working on Pi’s code base continues to\nreinforce the point.  This is one of the ways LLM authored code grows so much\nneedless complexity.  All these models see a local failure and try to locally\ndefend against it.  As maintainers we have to keep pulling the conversation back\nto the global invariant, which is harder than it should be, and it’s laborious.\nVolume Is The Problem\nThen there is the issue of volume.  The tracker is receiving a lot of issues and\nPRs, and a significant fraction of them are clearly LLM-assisted.  Some are\ngood, none are excellent, and most are just bad.  The total throughput is a\nmaintenance problem by itself.\nAs you might know, Pi’s issue tracker is automated to close all issues and pull\nrequests from new contributors, and there is a manual process by which we might\nreopen some of them or approve individuals.  So auto-close -> reopen -> close\nagain is an interesting statistic for us to look at.\nI pulled the public GitHub tracker data while writing this over the last 90\ndays.  Excluding Earendil members, that leaves 3,145 external issues and pull\nrequests.  Of those, 2,504 were auto-closed because they were from non-approved\nindividuals.  17% were reopened.  For pull requests the number is worse: less\nthan 10% were merged.\nMany of the issues and PRs are complete slop and in some cases the humans did\nnot even realize that they created them.  Sources of low-quality spam include\nOpenClaw instances, as well as some skills that people put into their context\nthat seemingly encourage issue creation.\nGitHub clearly is not built to deal with this new form of Open Source, but I’m\nincreasingly feeling the need to put the blame less on GitHub than on all the\npeople involved who make that experience painful.  If your clanker shits on\nsomeone else’s issue tracker then it’s not the fault of GitHub, it’s yours alone.\nCareful Parallelism\nPi might be built with Pi, but we’re quite far off today from where Bun and\nOpenClaw already are: fully detached, automated software engineering.  Maybe we\nwill reach that point, I don’t know.  Today it does not seem like we know how to\npull off a dark factory and we also don’t yet have the desire.  That said, there\nis quite a bit of parallelism going on, and it is mostly for reproducing issues.\nThe small setup we use for this is three tiny pieces in Pi’s own committed\n.pi folder.  /is (for\nanalyze issue) is a prompt for analyzing GitHub issues: it labels and assigns\nthe issue, reads the full thread and links, then explicitly tells the agent not\nto trust the analysis in the issue and to derive its own diagnosis from the\ncode.  Then an extension adds a prompt-url-widget which watches the prompt\nbefore the agent starts, recognizes the GitHub issue or PR URL that /is (or\nthe PR equivalent) put into the prompt, fetches the title and author with gh,\nrenders that in a little UI widget, and renames the session.  It also rebuilds\nthat state on session start or session switch, so if we reopen an older\ninvestigation the window still tells the developer which issue it belongs to.\nIn practice this means it’s possible to have several Pi windows open, each\nrunning /is against a different issue, and the UI keeps the investigations\nvisually distinct while the agents do their independent reproduction and code\nreading.  Once the investigations are done, one can work through them\nsequentially.  To finish off everything, /wr (wrap it up) is the matching\nwrap-up prompt: it infers the GitHub context from the session, updates the\nchangelog, drafts or posts the final issue comment with a disclaimer, commits\nonly the files changed in that session, adds the appropriate closes #... when\nthere is exactly one issue, and pushes from main.\nOpen Source Is About Hard Problems Worth Fixing\nYou will have noticed this already but Open Source in a post-AI world is under a\nstrange new pressure.  We are getting more code, more projects, and more issues.\nProjects appear with no real users, or a temporary audience of one, and even\nprojects with thousands of stars can have a shelf life of weeks.\nFor us, Pi’s harness layer is worth maintaining carefully because it solves hard\ncoordination problems and creates a platform we and others can build on.  We\nalso know that coordination and cooperation lifts us all up.  Many times the\nright answer is not to work around a problem locally, but to make the upstream\nbehavior correct.  Mario has been very good at refusing to make Pi paper over\nevery misconfigured gateway, and we’re trying to preserve that discipline.  When\na gateway behaves correctly, everybody benefits.\nSadly that type of thinking is quickly disappearing because these machines make\nlocal workarounds cheap, so code accumulates local defenses against every\nmisbehavior.  Instead of humans talking to humans about where a fix belongs, one\nhuman and one machine work around the problem in isolation.\nKeep in mind that AI has not increased the number of people who need software,\nor the number of maintainers who can review it.  It has mostly increased the\namount of code and the number of projects competing for attention.  Some of that\nis healthy, but a lot of it fragments effort that should be shared.\nWe need stronger foundations, not weaker ones.  Open Source needs more\ncollaboration, not more isolated work with a machine.  Human communication is\nhard, and it is tempting to avoid it when you can sit alone with your clanker.\nBut isolation is not where Open Source derives its value.  The value is in the\ncommunity and the structure that lets projects outlive their original creators.\nTo me, clanker is a much\npreferable term for agent.  Agency lies with humans, not with machines.\nCalling these things agents I still believe is a mistake, but alas.↩",
+      "id": "b88b0610b56ab9fb618a027a3fa4107833274cdccb3334906053fb02f7baef0f",
+      "ref_id": "0",
+      "recommendationScore": 75,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "探讨了AI agent在软件开发中的创新应用，尤其是如何重塑issue tracker的角色。",
+      "reason": "文章内容围绕AI和开发流程的结合，具有较高的新颖性和技术深度，对自动化和编程工具有实际启发。",
+      "tags": [
+        "AI",
+        "软件开发",
+        "自动化",
+        "编程工具",
+        "狗粮效应"
+      ]
+    },
+    {
+      "title": "Mastering Dyalog APL",
+      "link": "https://mastering.dyalog.com/README.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-24T11:42:15.000Z",
+      "summary": "Article URL: https://mastering.dyalog.com/README.html\nComments URL: https://news.ycombinator.com/item?id=48256475\nPoints: 83\n# Comments: 18",
+      "id": "c78ff1afc9f494a51197967d6bbcfc03060a96ca831f8222ab0e5d174d741613",
+      "ref_id": "0",
+      "recommendationScore": 65,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "深入探讨了Dyalog APL这一小众但功能强大的编程语言。",
+      "reason": "对Dyalog APL感兴趣的开发者提供了全面的学习资源，技术深度较高，但实用性受限于其小众性。",
+      "tags": [
+        "编程语言",
+        "Dyalog APL",
+        "技术深度"
+      ]
+    },
+    {
+      "title": "Ruby for Good",
+      "link": "https://ti.to/codeforgood/rubyforgood",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-24T15:49:19.000Z",
+      "summary": "Article URL: https://ti.to/codeforgood/rubyforgood\nComments URL: https://news.ycombinator.com/item?id=48258254\nPoints: 11\n# Comments: 0",
+      "id": "65458cd7757c8623a330c88de89e17c7692c58bead966fb337bfbda66807017f",
+      "ref_id": "0",
+      "recommendationScore": 55,
+      "popularityScore": 20,
+      "priority": "medium",
+      "comment": "介绍一个针对Ruby开发者的慈善编程活动。",
+      "reason": "对Ruby社区有一定吸引力，但作为一篇科技博客文章，其技术深度和普适性不高。",
+      "tags": [
+        "Ruby",
+        "Community",
+        "Event",
+        "Programming Tools"
+      ]
+    },
+    {
+      "title": "Scammers are abusing an internal Microsoft account to send spam links",
+      "link": "https://techcrunch.com/2026/05/21/scammers-are-abusing-an-internal-microsoft-account-to-send-spam/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-24T00:51:32.000Z",
+      "summary": "Article URL: https://techcrunch.com/2026/05/21/scammers-are-abusing-an-internal-microsoft-account-to-send-spam/\nComments URL: https://news.ycombinator.com/item?id=48253186\nPoints: 213\n# Comments: 115",
+      "id": "d410f3444c39b889696cc2fee75acdc1962d8421a8c599dbe5eebad3b78fadfb",
+      "ref_id": "1",
+      "recommendationScore": 51,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "揭露了微软内部账户被滥用以发送垃圾邮件的骗局，是一个网络安全警示。",
+      "reason": "虽然提供了重要的网络安全警示，但其技术深度和新颖性相对一般，且不直接符合核心主题优先级。",
+      "tags": [
+        "网络安全",
+        "诈骗",
+        "微软",
+        "新闻"
+      ]
+    },
+    {
+      "title": "Weekly Update 505",
+      "link": "https://www.troyhunt.com/weekly-update-505/",
+      "source": "troyhunt.com",
+      "publishedAt": "2026-05-24T01:34:54.000Z",
+      "summary": "Well, that didn't last long! Recording this on Saturday morning my time, I observed ShinyHunters having gone quiet since the massive haul that would have been the Instructure ransom. It was two weeks almost to the hour since I'd first heard rumour of payment being made,",
+      "id": "f05ecf0c27787cde699972ca748661dbaf2cad4becdeb722603ce570bc38cec9",
+      "ref_id": "3",
+      "recommendationScore": 45,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "简短地提到了Instructure勒索事件的最新进展，属于安全事件快报。",
+      "reason": "内容是实时安全事件更新，具有一定的时效性，但信息量和技术深度有限，属于常规新闻报告。",
+      "tags": [
+        "网络安全",
+        "安全事件",
+        "周报"
+      ]
+    },
+    {
+      "title": "Usborne 1980s Computer Books",
+      "link": "https://usborne.com/us/books/computer-and-coding-books",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-24T15:43:00.000Z",
+      "summary": "Article URL: https://usborne.com/us/books/computer-and-coding-books\nComments URL: https://news.ycombinator.com/item?id=48258194\nPoints: 26\n# Comments: 9",
+      "id": "8701e37796f66a923c020a6a4e69624f80256bbcfdc5e9245c9466d91bae9a5d",
+      "ref_id": "2",
+      "recommendationScore": 40,
+      "popularityScore": 35,
+      "priority": "low",
+      "comment": "回顾1980年代Usborne出版的经典计算机编程书籍。",
+      "reason": "具有怀旧和历史意义，但缺乏现代技术深度和实用指导，受众有限。",
+      "tags": [
+        "History",
+        "Computers",
+        "Books",
+        "Nostalgia"
+      ]
+    },
+    {
+      "title": "Childhood Computing",
+      "link": "https://susam.net/childhood-computing.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-24T12:07:34.000Z",
+      "summary": "Article URL: https://susam.net/childhood-computing.html\nComments URL: https://news.ycombinator.com/item?id=48256597\nPoints: 93\n# Comments: 48",
+      "id": "7093553a66f364dae7c6dd55f9c0a9402dbf720f181875e341fb43687b0255d0",
+      "ref_id": "3",
+      "recommendationScore": 35,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "一篇关于早期计算经历的个人回忆文章，具有怀旧色彩。",
+      "reason": "虽然具有一定的文化和怀旧价值，但与当前核心技术主题（AI、Apple生态等）的关联度较低，实用性不高。",
+      "tags": [
+        "历史",
+        "计算文化",
+        "个人故事",
+        "怀旧"
+      ]
+    },
+    {
+      "title": "The C64 Dead Test Font",
+      "link": "https://www.masswerk.at/nowgobang/2026/c64-dead-test-font",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-24T03:57:01.000Z",
+      "summary": "Article URL: https://www.masswerk.at/nowgobang/2026/c64-dead-test-font\nComments URL: https://news.ycombinator.com/item?id=48254236\nPoints: 101\n# Comments: 17",
+      "id": "37035db82c201121394ae339697f84ac527fcdf97eb7b48c7e14f1595baaa65c",
+      "ref_id": "3",
+      "recommendationScore": 35,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "深入探究了Commodore 64经典“死机测试”屏幕的字体设计与技术细节。",
+      "reason": "属于怀旧计算的非常小众话题，对现代技术实践者实用性较低，主要服务于特定爱好者。",
+      "tags": [
+        "怀旧计算",
+        "C64",
+        "字体设计",
+        "历史技术"
+      ]
+    },
+    {
+      "title": "Alexander Grothendieck Revolutionized 20th-Century Mathematics",
+      "link": "https://www.quantamagazine.org/how-alexander-grothendieck-revolutionized-20th-century-mathematics-20260520/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-24T03:19:02.000Z",
+      "summary": "Article URL: https://www.quantamagazine.org/how-alexander-grothendieck-revolutionized-20th-century-mathematics-20260520/\nComments URL: https://news.ycombinator.com/item?id=48254020\nPoints: 101\n# Comments: 22",
+      "id": "15cfaad611c3bac1b254aa62c07a779d2cc677e0743a11726a6583756e9fea80",
+      "ref_id": "4",
+      "recommendationScore": 25,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "介绍了20世纪数学巨匠Alexander Grothendieck的革命性数学成就。",
+      "reason": "具有高学术价值，但与科技博客的直接关联和实用性不符，属于基础科学范畴。",
+      "tags": [
+        "数学",
+        "科学史",
+        "理论基础",
+        "学术"
+      ]
+    },
+    {
+      "title": "Childhood Computing",
+      "link": "https://susam.net/childhood-computing.html",
+      "source": "susam.net",
+      "publishedAt": "2026-05-24T00:00:00.000Z",
+      "summary": "I recently stumbled upon a nice blog post titled\n  Childhood\n  Computing.  It made me think about my own childhood computing\n  experience.  I am much older than the author of the aforementioned\n  post, but like them, I too love computers.  I have for most of my\n  life.\n\n\n  In 1992, when I was eight years old, my parents decided to transfer\n  me to a new school because of its curriculum.  They did not know it\n  then, and it probably did not even matter to them, but this new\n  school had a computer lab.  That was quite remarkable for its time.\n  I grew up in a very tiny industrial town.  The computers in the lab\n  were hand-me-downs from the silica factory around which the town was\n  built.  We got only about two hours of time per month in the\n  computer lab, but the little time I got there opened up a whole new\n  world for me.\n\n\n  Before entering the lab, we had to leave our shoes at the door.\n  'These are expensive machines.  We must keep them free of dust', our\n  teacher would say.  It was a ritual.  The computers were very old\n  IBM PC compatible machines, mostly with monochrome cathode-ray tube\n  (CRT) monitors.  They had no hard disks at all.  They had a few\n  hundred kilobytes of RAM.  Every time, we performed the same ritual.\n  Insert a 5¼-inch floppy disk to load MS-DOS into memory.\n  Then insert another disk to load LOGO.COM.  Then write\n  small Logo programs and watch the turtle move.  I have written more\n  about that early Logo programming experience\n  here: FD 100.  Further, since there were\n  no hard disks and storage was at a premium, nothing was ever saved.\n  The moment you turned off the computer, all your work vanished.  So\n  saving a program meant literally writing the program down in a\n  physical notebook.\n\n\n  \n  \n    Video capture of IBM Personal Computer Logo\n    [MP4]\n  \n\n\n  Since I had so little time with an actual computer, most of my Logo\n  programming happened with pen and paper at home.  I would 'test' my\n  programs by tracing the results on graph paper.  Eventually, I would\n  get about thirty minutes of actual computer time in the lab to run\n  them for real.  One particular Logo program I still remember very\n  well drew a house with animated dashed lines, where the dashes moved\n  around the outline of the house.  Everyone around me loved it,\n  copied it and tweaked it to alter the details and add their own\n  little touches.  That must have been my first 'free and open source\n  software'.  The 'licence' was 'do whatever you want but show me if\n  you make any interesting modifications'.  The distribution system\n  was entirely analogue: classmates copied the code into their\n  notebooks with pencils, then went back to their machines in the lab\n  and typed it back into the computer.\n\n\n  Occasionally, when we successfully completed the Logo programming\n  exercises our teacher set us as challenges, he would let us play\n  computer games too.  The first computer game I ever played was Moon\n  Bugs.  Space Invaders, Bricks and Dangerous Dave were some of my\n  other favourites.  Space Invaders inspired me to write my own game,\n  but the little GW-BASIC programming I knew back then and the very\n  limited access to computers I had then were insufficient to write\n  anything more sophisticated than simple text-based input/output\n  programs.  But eventually, in 2022, as an adult, I did manage to\n  write an Invaders-like game, which you can find\n  here: Andromeda Invaders.  Although\n  thirty years too late, writing this game fulfilled a childhood\n  dream!\n\n\n  One of my buddies liked the game called Digger developed by Windmill\n  Software.  It soon became my favourite as well.  The game came on a\n  self-booting disk, so we did not have to go through the elaborate\n  ritual of first inserting a floppy disk to load DOS.  We could\n  insert the Digger floppy disk directly and the computer would boot\n  and start the game immediately.\n\n\n  \n  \n    Video capture of Digger\n    [MP4]\n  \n\n\n  Another computer game I remember fondly was Grand Prix Circuit by\n  Accolade.  I really loved typing the command GPEGA to\n  launch the game, knowing that in a moment I would be greeted with\n  its excellent opening music.  Grand Prix Circuit blew my mind.  As a\n  child who only knew how to draw basic two-dimensional geometrical\n  shapes with Logo and GW-BASIC, I found it astounding that a computer\n  program could create a projection of a three-dimensional fictional\n  world that you could navigate with keyboard inputs.  How was it even\n  possible, I wondered.\n\n\n  \n  \n    Video capture of Grand Prix Circuit\n    [MP4]\n  \n\n\n  It has been over thirty years since then, but the memories and the\n  feelings still remain fresh in my mind.  There are times when I can\n  close my eyes and recall the buzzing sound of the dozen or so\n  computers running in the lab, the beeps from the power-on self-tests\n  (POST) and the distinctive, strangely pleasant smell of the closed,\n  air-conditioned room.  For some reason, that smell is one of the\n  strongest memories I have from those days.  I have never been able\n  to describe it well, but once in a while I encounter it in very\n  unexpected places, like a corridor somewhere, or a store, and it\n  takes me right back to those early days of childhood computing.\n  Those childhood computing experiences form some of my strongest and\n  most vivid memories.  They were such magical experiences, full of\n  wonder and exploration.\n\n\n\n  Read on website |\n  #programming |\n  #technology |\n  #retrospective",
+      "id": "7093553a66f364dae7c6dd55f9c0a9402dbf720f181875e341fb43687b0255d0",
+      "ref_id": "2",
+      "recommendationScore": 16,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "一篇关于作者童年计算经历的怀旧文章，情感色彩浓厚，但技术内容不足。",
+      "reason": "内容属于个人回忆录，缺乏科技博客所需的批判性技术深度、新颖性和实用性，不符合评估主题优先级。",
+      "tags": [
+        "个人经历",
+        "怀旧",
+        "计算机历史"
+      ]
+    },
+    {
+      "title": "When (if ever) it's appropriate to make jokes before the US Supreme Court",
+      "link": "https://www.scotusblog.com/2026/05/when-if-ever-its-appropriate-to-make-jokes-take-selfies-or-curse-before-the-court/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-24T15:47:34.000Z",
+      "summary": "Article URL: https://www.scotusblog.com/2026/05/when-if-ever-its-appropriate-to-make-jokes-take-selfies-or-curse-before-the-court/\nComments URL: https://news.ycombinator.com/item?id=48258236\nPoints: 25\n# Comments: 3",
+      "id": "5d563fba10636170138079739872da9294cdd48eb986ef76b11872ddb31b4ad8",
+      "ref_id": "1",
+      "recommendationScore": 5,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "探讨在美国最高法院庭审中开玩笑的恰当性。",
+      "reason": "完全脱离科技博客主题，内容与AI、编程等核心关注点无关，不适合收录。",
+      "tags": [
+        "Law",
+        "Society",
+        "Supreme Court"
+      ]
+    },
+    {
+      "title": "On the <dl>",
+      "link": "https://simonwillison.net/2026/May/23/on-the-dl/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-05-23T20:24:48.000Z",
+      "summary": "",
+      "id": "4b4b1295d2449a27cb879e8c4f42048c612a58e756b58b74834ac70239afa9f2",
+      "ref_id": "4",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "文章内容缺失，无法进行有效评估。",
+      "reason": "由于内容为空，无法提供任何有价值的信息，因此无法推荐。",
+      "tags": [
+        "缺失内容",
+        "HTML"
+      ]
+    }
+  ]
+}
