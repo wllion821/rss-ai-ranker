@@ -1,0 +1,582 @@
+{
+  "dailySummary": "今日科技速递：Chert推企业iMessage API；AI领域，DwarfStar探索分布式LLM推理，",
+  "articles": [
+    {
+      "title": "Launch HN: Chert (YC P26) – Twilio for iMessage",
+      "link": "https://www.trychert.com",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-25T15:12:33.000Z",
+      "summary": "Hey HN! We’re Gary and Ian, and we’re building Chert (https://www.trychert.com/), an API for businesses to send, receive, and automate iMessage conversations at scale. Check out our demo: https://www.youtube.com/watch?v=SRdwvVxMMoI.\nWe originally started by building products on top of iMessage because the blue bubble interface, typing indicators, and reactions made agentic conversations feel more human than ones on SMS/RCS. These included a one-shot iMessage agent builder that reached 2,000 users in one week and an automated iMessage outbound sequencer that sent thousands of outbound messages per day.\nThe hard part is that iMessage does not have a native API like SMS/RCS. Sending and receiving iMessages requires a separate infrastructure that is difficult to set up and maintain, especially at scale.\nAs we talked to more companies, we realized that the highest-volume use cases for iMessage were not B2C agents or even sales. They were things like customer service, missed-call text-back, cart abandonment, and inbound lead capture in verticals like home services, DTC brands, and property management that drive the highest volume.\nFurthermore, these companies often need additional support, such as custom infrastructure setup (e.g. contact card, area code, or local worker sessions), integration support with their existing SMS/RCS or voice agent systems, and a reliable way to scale their volume over time.\nWe built Chert to be an infrastructure layer for businesses to handle iMessage conversations at scale. Businesses can use our API to send and receive iMessages programmatically, route replies to humans or agents, and integrate conversations into the systems they already use.\nTo maintain stability across both outbound and inbound use cases, we built phone line health checks and SMS/RCS fallback systems. We also integrate with existing SMS/RCS systems, voice agents, CRMs such as Salesforce, HubSpot, and Attio, and tools like Slack. Finally, we let businesses reliably scale from a few test lines to hundreds of lines with automated line provisioning and a usage-based pricing structure.\nWe’re working with companies doing conversational messaging in DTC, sports programs, property management, and home services at the scale of hundreds of lines.\nWe’d love to hear your thoughts on this and other similar verticals where iMessage could be useful. All comments welcome!\nComments URL: https://news.ycombinator.com/item?id=48267829\nPoints: 23\n# Comments: 76",
+      "id": "69ea1f5687ccc78de1c7f5c1b8a17f23f6e944b4c876da4ecbf360ab453f899a",
+      "ref_id": "2",
+      "recommendationScore": 95,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "一个创新性平台，为企业提供了iMessage大规模自动化通信的API解决方案。",
+      "reason": "填补了iMessage在企业级应用中的痛点，兼具技术创新、实用性和对Apple生态的深度利用，对开发者和独立开发者社区有巨大吸引力。",
+      "tags": [
+        "Apple生态",
+        "iMessage",
+        "API",
+        "自动化",
+        "编程工具",
+        "独立开发",
+        "Startup"
+      ]
+    },
+    {
+      "title": "\nDistributing LLM inference in DwarfStar\n",
+      "link": "\nhttp://antirez.com/news/167\n",
+      "source": "antirez.com",
+      "publishedAt": "2026-05-25T14:54:59.000Z",
+      "summary": "High end NVIDIA cards, and the server and power needed to run them, cost a lot of money, especially if you plan to reach enough VRAM to run massive models. The alternative, so far, has been Apple hardware, or the DGX Spark that, even if severely limited because of memory bandwidth, still allows to run LLMs prompt processing (prefill) fast enough. The Mac Studio provided up to 512GB unified memory, a solution with modest memory bandwidth (but much better than the Spark) and compute at a price that was, after all, given the current situation, relatively fair.\n\nFor instance, with DwarfStar the Mac Studio M3 Ultra 512GB can run DeepSeek v4 PRO at 150 t/s prefill and ~10-13 t/s decoding, not great but at a level that is usable for certain use cases. Even 2-bit quantized, DeepSeek v4 PRO resists very well, like Flash at the same quantization (today I made PRO write a C compiler, I'll publish the video soon). I would not consider a trivial fact to run a frontier model at home, with a ~12k total spending.\n\nOne could expect this to get better and better, but the situation at the horizon appears cloudy. There is almost zero hope that NVIDIA setups will get less expensive, and even a small company can’t afford to easily purchase and handle a small data center for local inference. At the same time the RAM shortage is making it not exactly likely that we will see a Mac Studio with an M5 Ultra, maybe 1.2T/s memory bandwidth and more compute (the M5 Max is already faster, compute wise, and has the Neural Accelerators inside each GPU core that help with certain models).\n\nSo the current situation for local inference is that the best machine is probably a laptop. The M5 Max 128GB can run DeepSeek v4 Flash and Mimo V2.5, 2-bit quantized, at very decent prefill and decoding speeds. We are talking of ~500 t/s prefill and ~35-40t/s decoding speed, with a performance slope as the context size increases which is very acceptable. At the cost of 6-7k depending on the configuration, this is currently one of the best deals.\n\nIf this is the situation, for local inference projects in general, and for DwarfStart in particular, looking at distributed inference starts to be interesting. What we can do if we have two, three, four MacBook M5 Max systems? Or two M3 Ultra with 512 GB of RAM?\n\nTraditionally there are two main systems to run distributed inference. One is to duplicate memory by loading 50% of the transformer layers in computer A, the remaining 50% on computer B, and running the inference in a sequential way. In this case there is to send just the activations around, that’s very simple conceptually, and with some micro-batching magic it is possible to not just duplicate the memory but even in theory to increase substantially the prompt processing speed (but not the decoding: for a single token generation you have to wait the first layers on machine A, the remaining layers on machine B, and so forth — but at least less heat will be produced so it is possible to use a sustained load), which is not bad at all. This means, for example, that the lucky ones that have two Mac Studio 512GB machines could run full size DeepSeek v4 PRO (even if even the 2-bit quants are running very, very well) and with micro-batching even enjoy a faster prefill.\n\nAnother approach is, using Apple RDMA, to parallelize the execution across the two machines, a vertical split basically. For instance one could try to load the same 2 bit quants on machine A and B, so that both fit, and each side has *all* the routed experts. Then for each layer we could try to do the coordination needed in order to execute half the experts in machine A, half in machine B, and so forth (note that both machines have all the experts, so whatever the router says, we can send 50% of the computation to the other machine, and the activations are tiny). This is more viable for the PRO that has much larger routed experts, so the communication penalty is less sensible. But if this could be made to work well, is all to be seen.\n\nThere is also tensor parallelism, you are thinking, right? But I bet this is not viable at all with the communication speed we have among two Apple computers, two DGX Spark and so forth (go read the speed of NVLink). The magic about the above two models is that you have to send very little data.\n\nOk, so far I bet you are thinking, this is the same shit everybody knows about running LLMs in a parallel fashion, and indeed this is true. But this post was conceived to reach this exact point. What about if we could, instead, parallelize two Mac or DGX in a completely different way? Open weights models are now in a golden age, we have plenty and many are very powerful. In the 128GB 2-bit quants classes there are many interesting: Minimax M2.7, Mimo V2.5, DeepSeek v4 Flash, and a few more. At the same time it was recently noted that LLMs ensemble (https://arxiv.org/abs/2502.18036) is an understudied possibility that allows two models to run in a completely shared-nothing way in two different machines, to only combine the logits or select the best continuation at the end. There are different ways to do that, and it works even if the two models have different vocabularies: you can pick the continuation where the perplexity is lower (that is, pick the model which is more sure: it’s like a two experts MoE where the routing is implicit), and it is even possible to combine the logits (with some complexities given by the different vocabularies) and sample from there. More recent papers suggest that mixing the two techniques is the best approach. Anyway: these techniques seem to really work, models appear to do better than alone. It’s like if their knowledge is improved because each one brings his POV on what to say next.\n\nMaybe this is one of the most logical third approach to try, other than the first two. I really hope to find the time to play more with all that, in the next months.\nComments",
+      "id": "5c1bf23fc60d4b100a9412a9ab235bc7c578d8f91cfa85c48d82a7bfec68bbbb",
+      "ref_id": "3",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "深入探讨了如何在Apple硬件上优化和分发LLM推理，提供了具体的性能数据和实用工具。",
+      "reason": "文章完美结合了AI和Apple生态两大高优先级主题，技术深度极高，提供了实际的LLM部署解决方案，信息密度大且新颖。",
+      "tags": [
+        "AI",
+        "LLM推理",
+        "Apple生态",
+        "硬件优化",
+        "DwarfStar",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "GitHub Actions security in Python packages",
+      "link": "https://nesbitt.io/2026/05/25/github-actions-security-in-python-packages.html",
+      "source": "nesbitt.io",
+      "publishedAt": "2026-05-25T10:00:00.000Z",
+      "summary": "This is a written version of a talk I gave at PyCon US 2026 in Long Beach. Slides (PDF), scripts, and datasets are at github.com/andrew/pycon.\nOf the roughly 864,000 packages PyPI lists, about 387,000 declare a repository URL on GitHub, mapping to 343,000 distinct repositories once you collapse the monorepos. 152,000 of those have something in .github/workflows/, and for practical purposes open source Python has one CI system: Travis CI, the previous default, accounts for 11% of the same population and stopped offering free open source builds in 2023, with everything else below 2%.\nAround 56,000 of those repositories reference pypa/gh-action-pypi-publish somewhere in a workflow file, which is to say they tag a commit, a runner spins up, a wheel gets built, and twine upload puts it on PyPI. About 22% of them have migrated to trusted publishing, where PyPI accepts a short-lived OIDC token minted by the workflow instead of a stored API key, and the publisher configuration on PyPI’s side names the repository, the workflow file, and optionally a deployment environment. The other 44,000 or so still have a PYPI_API_TOKEN sitting in repository secrets.\nI think trusted publishing is one of the better things to have happened to Python packaging in years, and it also means the workflow’s identity is now the credential, so PyPI’s trust in a release rests on the integrity of an Actions run. PEP 740 attestations, Sigstore signatures, and SLSA provenance all bind an artifact to the workflow and commit it came from, which tells you where it was built but says nothing about whether something tampered with the workflow before the upload step ran. Signing is the last thing that happens, so every preceding step is in scope for an attacker who can reach any of them, which is the argument I made at length in GitHub Actions is the weakest link last month.\nActions as a package manager\nA uses: line in a workflow is a dependency declaration that pulls code from somebody else’s repository and runs it on your runner with whatever permissions the job has, which is functionally pip install except that the thing after the @ is a git ref rather than an immutable version, and whoever controls the source repository can move it.\n\ngit tag -f v41 <new-sha>\ngit push -f origin v41\n\n\nAfter those two commands every workflow on @v41 runs the new commit on its next execution, including re-runs of last week’s green build. There’s no lockfile recording which SHA you accepted yesterday, nothing equivalent to --require-hashes, and a hijacked tag stays hijacked until somebody force-pushes it back because there’s no PEP 592 yank either. Composite actions resolve their own uses: lines at runtime, so an action you’ve pinned to a SHA can still pull other/helper@main internally and you’d never see it from your own workflow file. The longer version of that argument is the December post; what’s changed since is that the list of incidents demonstrating it in production has reached ten, six of which end with a malicious wheel on PyPI.\nWhen\n      Project\n      Compromise\n    \nNov 2024\n      spotbugs\n      pull_request_target ran fork code, maintainer PAT stolen\n    \nDec 2024\n      Ultralytics\n      cache poisoning from fork PR -> crypto miner on PyPI\n    \nMar 2025\n      tj-actions / reviewdog\n      tags force-pushed, secrets dumped from ~23k repos\n    \nMar 2026\n      Trivy\n      pull_request_target ran fork code, CI tokens harvested\n    \nMar 2026\n      Trivy (again)\n      75 of 76 tags force-pushed three weeks later with stolen tokens\n    \nMar 2026\n      LiteLLM\n      PyPI token harvested via Trivy chain -> malicious wheel\n    \nMar 2026\n      Telnyx\n      PyPI token harvested via Trivy chain -> malicious wheel\n    \nApr 2026\n      elementary-data\n      issue comment -> shell injection -> malicious wheel\n    \nApr 2026\n      lightning\n      stale long-lived token, no OIDC -> malicious wheel\n    \nMay 2026\n      mistralai, guardrails-ai\n      cache poison + OIDC token theft -> malicious wheels\n    \nFive of those six PyPI uploads are from March to May this year. The lightning row is the useful counter-example, since nothing was wrong with that workflow; it had a long-lived API token that leaked through some other route, and trusted publishing on its own would have stopped it. elementary-data and the mistralai chain are the opposite case, where trusted publishing was configured or wouldn’t have helped, because the attacker ended up holding a valid OIDC token minted by the real workflow. LiteLLM, Telnyx, and Ultralytics sit in between, with stored tokens stolen from a runner that an Actions misconfiguration let the attacker reach.\nUltralytics is worth walking through in detail because it stacks three failure modes in one incident. A pull_request_target workflow checked out and ran code from a fork PR with the cache write permission in scope, and the fork’s branch name interpolated into a shell step, which gave the attacker enough to poison a GitHub Actions cache entry. The legitimate publish workflow later restored that cache, built a wheel containing a crypto miner, and uploaded it to PyPI as 8.3.41 and 8.3.42 using a stored token. Then, because the token had already been lifted from the runner during phase one, two more malicious versions were uploaded directly without touching CI at all. The template injection bug had been reported and patched in August 2024 and reintroduced in a regression ten days after the advisory.\nMethod\nWhat turns this from a list of anecdotes into something you can study is zizmor, William Woodruff’s static analyser for Actions workflows, which reads .github/workflows/ and reports findings as named audits with a severity and a confidence, running locally or in CI in a couple of seconds.\nI took the ecosyste.ms index of every PyPI package with a linked GitHub repository, shallow-cloned each one, ran zizmor --format=json on the workflows directory, and separately extracted every uses: line into an actions inventory, with both outputs going into SQLite. The scan ran 9-11 May 2026 with zizmor pinned to 1.24.1. About 20% of the linked repository URLs failed to clone (404, gone private, or renamed without a redirect), and those packages still pip install fine even though their source is no longer publicly readable, which probably deserves its own write-up.\nzizmor reads YAML files and nothing else. It can’t see if a repository’s “Workflow permissions” default has been flipped to read-only in the settings UI, or if a secret is environment-scoped behind a required reviewer, or if branch protection would stop the push that an injection would otherwise enable. Read the numbers below as counting workflows whose YAML permits a pattern, which is an upper bound on what’s exploitable today.\nFindings\nThere are currently 49 advisories filed under ecosystem:actions in the GitHub Advisory Database. Bucketing them against zizmor’s audit names and counting affected PyPI repositories gives this:\nAudit\n      PyPI repos\n      GHSA advisories\n    \nexcessive-permissions\n      102,235\n      6\n    \nunpinned-uses\n      85,774\n      4\n    \nuse-trusted-publishing\n      44,181\n      n/a\n    \ntemplate-injection\n      21,166\n      27\n    \ncache-poisoning\n      15,371\n      2\n    \ndangerous-triggers\n      7,025\n      8\n    \nThe advisory column counts how often each audit class has been the documented root cause of a published compromise, which is a different thing from how dangerous a single finding is. An excessive-permissions finding on its own is harmless, and a template-injection on its own often is too, so most of what follows reads better as combinations of audits than as a ranking; those two together, for instance, are how somebody else gets a release out of your repository.\nexcessive-permissions fires when a workflow has no permissions: block, so the job’s GITHUB_TOKEN inherits the repository default. For any repository created before February 2023 that default includes contents: write and actions: write, which means a step compromised by any other means can push commits and dispatch other workflows. About two thirds of the corpus, 102,000 repositories, have at least one workflow in this state, and permissions: {} at the top of the file with explicit grants per job closes it.\nunpinned-uses is in about 86,000 repositories, which is 91% of those that use any third-party action at all. The four advisories in this bucket are exactly the four known tag-hijack compromises: tj-actions, reviewdog, Trivy, and xygeni. A month after the second Trivy compromise 403 PyPI packages were still on aquasecurity/trivy-action by tag, and 336 are still referencing tj-actions/changed-files by a moveable ref a full year after CVE-2025-30066. The fix is a 40-character commit SHA after the @, which both Dependabot and Renovate will keep up to date for you. zizmor --fix=all rewrites every tag in a repo to its current SHA in place, given a GH_TOKEN. Pinning actions/* itself is mostly a wash, since GitHub’s own organisation being compromised already invalidates the runner image you’re executing on.\ntemplate-injection accounts for 27 of the 49 published advisories, the majority of the table, and about 21,000 PyPI repositories have at least one. The pattern is a ${{ }} expression containing attacker-influenced data interpolated into a run: block. The expansion happens before the shell parses the script, so a PR title or branch name or issue body becomes shell source. In the elementary-data case an issue_comment trigger echoed github.event.comment.body into bash, and an account created two days earlier left a comment that closed the echo and appended curl | bash. Because there was no permissions: block the default GITHUB_TOKEN was write-scoped, and ten minutes after the comment there was a malicious 0.23.3 on PyPI exfiltrating SSH keys and cloud credentials.\nThat repository was already in my dataset when it happened, and zizmor had flagged the exact line three weeks earlier with three separate audits, any one of which would have broken the chain if remediated. Narrowing the 21,000 repositories down to those where the interpolated expression actually carries attacker-controlled data gives 1,396, and filtering those for triggers like issues and issue_comment where secrets are always in scope leaves 99. After deduplicating shared monorepos and checking job-level permissions, ten of those have a write-scoped token in the same job as a stored PyPI credential. All ten are going through coordinated disclosure and aren’t named here. The fix for all of them is to pass the value through env: and reference the shell variable, which carries the same data without the pre-parse expansion.\nuse-trusted-publishing is in about 44,000 repositories, roughly 78% of gh-action-pypi-publish users, and has no GHSA advisories because nobody files a CVE for storing a long-lived token, though that token is what makes the other audits worth an attacker’s time. The largest packages still on stored tokens include six at 896M monthly downloads, fsspec at 616M, pyasn1 at 430M, tomli at 377M, greenlet at 337M, and sqlalchemy at 335M. One caveat is that PyPI’s trusted publishing doesn’t yet support reusable workflows, so packages publishing through something like Speakeasy’s shared release workflow have a legitimate excuse. zizmor also misses those callers entirely because the twine upload lives in a different repository, and mistralai was one of them, which is why it wasn’t among the 44,000 despite having a stored token and partly why it ended up in the incidents table instead.\ncache-poisoning fires for about 15,000 repositories where a privileged job restores from a cache namespace that a lower-privilege job can write into, with Ultralytics as one of the two published advisories. The May 2026 mistralai and guardrails-ai compromise was the same shape on the entry side: a pull_request_target job ran fork code, the fork code poisoned a cache, the publish workflow restored it, and the cached code lifted the runner’s OIDC token from memory. Trusted publishing didn’t help because the workflow had a legitimate id-token: write and the attacker was already executing inside it. 1,348 PyPI repositories have dangerous-triggers and cache-poisoning findings together, which is the population that exact chain applies to, and the remediation in every case is to not restore caches in jobs that build or publish artifacts.\ndangerous-triggers is the smallest of the six at about 7,000 repositories with eight advisories. It fires on pull_request_target and workflow_run, both of which run in the base repository’s context with secrets available, and the usual mistake is to then check out the PR’s head and run its tests. The spotbugs PAT theft that started the reviewdog and tj-actions chain four months later was this pattern, as was the Ultralytics entry point and the Trivy entry point. For most workflows the answer is plain pull_request, where fork PRs get a read-capped token and no secrets, and the cases that do need pull_request_target should never check out the PR head and never restore caches.\narchived-uses isn’t in the table above because there are no advisories against it, but it catches about 3,600 repositories depending on at least one action whose maintainer has archived it on GitHub. actions/create-release is the standout, in nearly 2,000 repositories at 98.7% unpinned, archived by GitHub itself in March 2021. I wrote about this shape, dependencies that still install but that nobody is fixing any more, in Weekend at Bernie’s a couple of weeks ago, and actions/create-release is one of the more on-the-nose Bernies in the dataset.\nWho Python CI depends on\nAlongside the audit findings, extracting every uses: line gives an inventory of who Python’s CI actually depends on. pypa/gh-action-pypi-publish is in about 56,000 repositories at 84% unpinned, codecov/codecov-action in 21,000 at 92%, astral-sh/setup-uv in 17,000 at 86%, then softprops/action-gh-release, pre-commit/action, the docker actions, and pypa/cibuildwheel. After the first few names the owners are increasingly individuals (softprops, peter-evans with sixteen separate actions, dtolnay, ncipollo, JamesIves), each a single account whose key compromise would propagate across thousands of dependents.\nzizmor’s audits stop at the workflow YAML, leaving what an action does at runtime as a separate question, so as a one-action case study I looked harder at pypa/cibuildwheel, which is in about 2,700 publish workflows and already runs zizmor on itself with one Low finding. Its action.yml is a thin composite wrapper around python -m cibuildwheel, and that Python code fetches CPython, PyPy, GraalPy, virtualenv, Node.js, nuget, and python-build-standalone from seven different upstream hosts at runtime over HTTPS with no hash pin, a transitive dependency tree that doesn’t appear in any action.yml and that every consuming workflow inherits without seeing. The other popular composites I checked either pin their internal uses: to SHAs or only call actions/*, with a few long-tail counterexamples that pull third-party actions by tag from inside the composite definition.\nSlicing for third-party actions that run in the same job as pypa/gh-action-pypi-publish narrows the picture again.\nAction\n      Publish jobs\n      Unpinned\n    \nastral-sh/setup-uv\n      3,819\n      90.5%\n    \nsoftprops/action-gh-release\n      2,448\n      93.7%\n    \npython-semantic-release/python-semantic-release\n      451\n      87.0%\n    \nsnok/install-poetry\n      381\n      95.9%\n    \nsalsify/action-detect-and-tag-new-version\n      265\n      99.6%\n    \nA tag hijack on any of those would run alongside PyPI credentials across hundreds or thousands of packages. Astral at the top of that list is a funded company with a security team, but everything below it is back to individual maintainers, which is a different risk profile even at the same unpinned percentage. The one outlier further down the list is step-security/harden-runner at 144 publish jobs and 2.4% unpinned, an order of magnitude better than anything else on the list, which mostly tells you that the people already running an Actions security tool are also the people who pin.\nGitHub’s roadmap\nPython packaging spent fifteen years building the controls that Actions doesn’t have. A requirements.txt with --require-hashes, a uv.lock, or a PEP 751 lockfile means yesterday’s resolution is tomorrow’s install regardless of what tags moved upstream. PEP 592 yanking lets a maintainer pull a release so resolvers stop selecting it, where in Actions a hijacked tag stays live until somebody force-pushes it back, and the tj-actions tags were malicious for hours before that happened.\nGitHub published a 2026 security roadmap in March that announces workflow dependency locking for direct and transitive action SHAs, policy controls that can ban pull_request_target outright at the organisation level, secrets scoped so repository write access no longer implies secret access, and an egress firewall for hosted runners. None of these has a committed ship date and the document reads as a statement of intent more than a release plan, but the locking feature is the lockfile, arriving roughly thirteen years after pip got --require-hashes. The roadmap doesn’t mention malware detection on the marketplace, a yank or recall mechanism, CVE alerts for actions you depend on, or any enforcement by default, all of which PyPI already has in some form.\nHardening a publish workflow\nIf you maintain a Python package that publishes from Actions, the change with the best ratio of effort to effect is migrating to trusted publishing with a deployment environment, where the environment has either required reviewers or a branch restriction, and the trusted publisher on PyPI is bound to the environment name.\n\njobs:\n  pypi-publish:\n    environment: release\n    permissions:\n      id-token: write\n    steps:\n      - uses: actions/download-artifact@v4\n      - uses: pypa/gh-action-pypi-publish@release/v1\n\n\nOIDC on its own removes the long-lived credential, but it’s the environment binding that stops the elementary-data pivot, where an injected step with actions: write dispatches the real publish workflow and gets a valid OIDC token because the workflow filename and repository claims still match. The intercom-client compromise in April, on npm rather than PyPI but the mechanism is registry-agnostic, was id-token: write on a tag-push trigger with no environment configured: attacker pushed a tag, the workflow ran, the OIDC token was valid, and the workflow run was deleted afterwards so the audit trail went with it. The mistralai compromise is the third variant: code already executing inside the publish job can mint the OIDC token from runner memory regardless of environment, which is the case the environment binding can’t close and the reason keeping the publish job minimal and not restoring caches in it matter independently.\nInside the workflow file, permissions: {} at the top with explicit grants per job removes the write-by-default inheritance. Third-party actions get pinned to a 40-character SHA (zizmor --fix=all will do the whole repo in one pass), with Dependabot or Renovate keeping the pins current. ${{ github.event.* }} values referenced inside run: blocks go through env: instead. The publish job itself can be actions/checkout, actions/download-artifact, and pypa/gh-action-pypi-publish, with the wheel built in a separate job that hands the artifact across. A hijack of any third-party action then never runs in the same process as the publish credential.\nWiring zizmor into CI is four lines:\n\nname: zizmor\non: [push, pull_request]\npermissions: {}\njobs:\n  zizmor:\n    runs-on: ubuntu-latest\n    permissions:\n      security-events: write\n    steps:\n      - uses: actions/checkout@v4\n      - uses: zizmorcore/zizmor-action@v0\n\n\nFindings show up on the PR and in the Security tab, and the check fails by default. As proof that zero findings is achievable on a real project, requests, pytest, stamina, flask, django, and boto3 all currently scan clean on their default branches, and their release workflows are reasonable templates to copy.\nI’ve been re-scanning the PyPI critical set at intervals to see whether publicised incidents change behaviour.\nAudit\n      6 Apr\n      28 Apr\n      11 May\n    \nunpinned-uses\n      7,446\n      6,320\n      6,406\n    \nartipacked\n      2,755\n      2,337\n      2,376\n    \nexcessive-permissions\n      2,186\n      1,887\n      1,900\n    \nThe first interval spans the second Trivy compromise and elementary-data, and finding counts dropped roughly fifteen percent across the board, with apispec, awscli, and babel going to zero entirely. The second interval had no comparable incident in the news and the numbers are flat to slightly up. Maintainers respond to compromises they see in their feeds and then attention moves on, which is roughly what you’d expect, and the argument for putting the check in CI as a blocking step is that it runs on every change without anyone having to remember.\nThanks to William Woodruff for building and maintaining zizmor, without which none of this analysis would have been possible, and for fielding a lot of questions while I was putting it together. zizmor is largely one person’s work; if it saves you an incident, or you’d just rather the best available defence for the dominant open source CI platform wasn’t running on one volunteer’s spare time, please consider supporting him through GitHub Sponsors, thanks.dev, or ko-fi.\nIncidents referenced:\nspotbugs -> reviewdog -> tj-actions chain, Nov 2024 - Mar 2025\nUltralytics cache poisoning and PyPI’s analysis, Dec 2024\ntj-actions/changed-files CVE-2025-30066, Mar 2025\nCISA advisory on tj-actions/reviewdog\nTrivy action compromise and second-round tag hijack, Feb-Mar 2026\nLiteLLM and Telnyx via the Trivy chain and Datadog’s TeamPCP write-up, Mar 2026\nelementary-data comment injection, Apr 2026\nlightning credential stealer and intercom-client OIDC bypass on npm, Apr 2026\nmistralai / guardrails-ai compromise and CSA Mini Shai-Hulud research note, May 2026",
+      "id": "718e14d25a265f6dc3fbae944a4da7eba548fe0e290dc0e7195ae0f93ca0939b",
+      "ref_id": "1",
+      "recommendationScore": 95,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "深入探讨了Python包的GitHub Actions安全实践，特别是PyPI的信任发布机制，数据详实。",
+      "reason": "主题高度符合编程工具和自动化优先级，技术深度高、实用性强，对开发者具有直接指导价值。",
+      "tags": [
+        "Python",
+        "GitHub Actions",
+        "CI/CD",
+        "安全性",
+        "PyPI",
+        "自动化"
+      ]
+    },
+    {
+      "title": "Uber’s COO says it’s getting harder to justify money spent on tokenmaxxing",
+      "link": "https://www.businessinsider.com/uber-coo-andrew-macdonald-ai-token-spending-harder-justify-2026-5",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-25T16:44:49.000Z",
+      "summary": "Article URL: https://www.businessinsider.com/uber-coo-andrew-macdonald-ai-token-spending-harder-justify-2026-5\nComments URL: https://news.ycombinator.com/item?id=48268871\nPoints: 82\n# Comments: 92",
+      "id": "e926298d45641c3be90c250abd30f8d23b7e30c15497253878eb639d6d4e58ba",
+      "ref_id": "1",
+      "recommendationScore": 90,
+      "popularityScore": 82,
+      "priority": "high",
+      "comment": "Uber COO分享了其对AI Token成本效益的看法，揭示AI大规模应用面临的商业挑战。",
+      "reason": "从商业战略角度深入探讨了AI成本与价值平衡，对企业决策者具有极高的参考价值和实用性。",
+      "tags": [
+        "AI",
+        "商业策略",
+        "成本管理",
+        "Uber",
+        "企业级AI"
+      ]
+    },
+    {
+      "title": "IBM Spins Off the First Pure-Play Quantum Chip Foundry",
+      "link": "https://futurumgroup.com/insights/2-billion-chips-act-investment-in-quantum-bets-on-ibms-300mm-superconducting-silicon/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-25T09:43:03.000Z",
+      "summary": "Article URL: https://futurumgroup.com/insights/2-billion-chips-act-investment-in-quantum-bets-on-ibms-300mm-superconducting-silicon/\nComments URL: https://news.ycombinator.com/item?id=48265056\nPoints: 90\n# Comments: 27",
+      "id": "75990042e2b8eb37c2f59f2fa206f02703b1d430bc17d393a8d7445ab05ff1bc",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 45,
+      "priority": "high",
+      "comment": "量子计算领域的重大进展，标志着芯片制造的新里程碑。",
+      "reason": "触及AI和前沿技术最高优先级主题，具有极高的技术深度和新颖性。",
+      "tags": [
+        "量子计算",
+        "AI",
+        "半导体",
+        "IBM",
+        "深度科技",
+        "芯片制造"
+      ]
+    },
+    {
+      "title": "Show HN: Geomatic – a command-driven geometry studio enabled with autodiff",
+      "link": "https://www.tinyvolt.com/geomatic",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-25T08:25:00.000Z",
+      "summary": "All commands have the format `output = \\func inputs` or just `\\function inputs`. Points and scalars are built on the fly. Eg `\\line a b` to an empty canvas creates points `a` and `b`, and joins them with a line.\nOne can use broadcasting semantics similar to NumPy and PyTorch in a visual setting (imagine creating a list of circles where one dim corresponds to radius and another to the center). One can also use backpropagation, run gradient descent or visualize vector fields. Almost everything is reactive so changing a variable updates all of the downstream geometry. It also allows anyone to write and load their own visualization, which can be broadcasted and differentiated through.\nComments URL: https://news.ycombinator.com/item?id=48264635\nPoints: 52\n# Comments: 13",
+      "id": "147663a2254303992fdc92f9b64c5ee1af696420ab2b60620efbaff885852f07",
+      "ref_id": "3",
+      "recommendationScore": 88,
+      "popularityScore": 25,
+      "priority": "high",
+      "comment": "创新的命令行几何工作室，融合了自动微分和AI相关计算功能。",
+      "reason": "作为编程工具，它深度结合了AI核心技术（自动微分），具有高技术深度和创新性。",
+      "tags": [
+        "编程工具",
+        "几何",
+        "自动微分",
+        "AI",
+        "可视化",
+        "数学",
+        "开源"
+      ]
+    },
+    {
+      "title": "Migrating from Go to Rust",
+      "link": "https://corrode.dev/learn/migration-guides/go-to-rust/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-24T18:31:42.000Z",
+      "summary": "Article URL: https://corrode.dev/learn/migration-guides/go-to-rust/\nComments URL: https://news.ycombinator.com/item?id=48259808\nPoints: 398\n# Comments: 394",
+      "id": "29a5949547009d7bef5e2cfd37ebc05ee3841df2d095b6153b4acb505985ec56",
+      "ref_id": "1",
+      "recommendationScore": 86,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "一份深度且实用的Go到Rust迁移指南，详细探讨了语言转换的实践细节和关键考量。",
+      "reason": "该文章属于高优先级主题“编程工具”，内容技术深度高、实用性强，且社区讨论热度高，能吸引大量关注语言栈优化的开发者读者。",
+      "tags": [
+        "编程语言",
+        "Go",
+        "Rust",
+        "软件开发",
+        "技术迁移",
+        "系统编程"
+      ]
+    },
+    {
+      "title": "FediMeteo, timezones, and the art of not breaking what already works",
+      "link": "https://it-notes.dragas.net/2026/05/25/fedimeteo-timezones-and-the-art-of-not-breaking-what-already-works/",
+      "source": "it-notes.dragas.net",
+      "publishedAt": "2026-05-25T09:14:00.000Z",
+      "summary": "I have already written about how FediMeteo was born, and about how HAProxy helps reduce the number of requests that reach snac.\nSeen from the outside, FediMeteo almost seems still. There is a static homepage, regenerated every hour. There are the city pages, with their forecasts. There are RSS feeds waiting to be fetched, JSON objects waiting to be requested, Fediverse instances refreshing data, subscribing, unsubscribing, retrieving profiles, and reading notes.\nThat is the visible part.\nBehind it, however, FediMeteo is much more than a homepage, a few ActivityPub accounts, and a well-behaved reverse proxy. It is a chain of small pieces, in proper Unix style, each trying to do one thing and do it as well as possible.\nThat chain, although almost invisible from the outside, was not born already tidy. It changed, was rewritten, adapted to new countries, timezones, ambiguous city names, external service limits, and also to my own mistakes.\nSome mistakes were small. Others were much less so.\nBecause FediMeteo is a human project and, as such, imperfect. Imperfect in the way humans are imperfect, which today almost seems unfashionable. I like that.\nThe first version of the bot was almost embarrassingly simple, and I was proud of that.\nIt took a city name as input, asked Nominatim for the coordinates through geopy, called the Open-Meteo API for the current weather and the next several days, and printed a markdown block with current conditions, the forecast for today, the next twelve hours, and the coming days. The text was in Italian. The cities were Italian. The timezone was Europe/Rome. There was nothing to calculate.\nAround the script, a small sh wrapper read a list of cities and, for each one, ran the Python program and piped its output into snac note_unlisted. A cron job ran the wrapper every six hours. The output was loose markdown, which snac happily renders, and the integration was: standard output goes into standard input. Nothing fancier than that.\nI like this kind of design. It is the part of the Unix philosophy that survives even when fashions change.\nWhen I started adding other European countries, I did not need to change much. I separated the operational logic from the localized strings, moved the strings into one JSON file per country, and spread the cron entries so that not every country posted in the same minute. Each country had its own snac instance, in its own FreeBSD jail, with its own dataset. The bot, internally, was almost the same script as before.\nThis worked because Europe is, in essence, two or three timezones across most of the countries I cared about. \nThen I added Germany, and Germany taught me my first lesson about names.\nThere are several places called Neustadt in Germany. There is a Frankfurt am Main, and a Frankfurt an der Oder, and they are not the same city. There is a Halle in Saxony-Anhalt and a Halle in North Rhine-Westphalia. Asking Nominatim for \"Frankfurt, Germany\" produced one of the two, consistently, but not always the one I wanted. Some German users wrote to me, politely, to point out that the forecast for \"their\" Frankfurt was, in fact, for the other one.\nI started thinking about disambiguation, but only enough to fix the immediate cases. The bot still took a single city name. The ambiguous ones I worked around by editing the cities file and hoping for the best.\nIn hindsight, this was the seed of what would happen later.\nThe United States broke every assumption the bot had grown up with.\nThe first problem was the number of cities. I wanted reasonable coverage at state level, which meant identifying the main cities for each of the fifty states. The list ended up at more than 1200 entries. That alone is more cities than every other country in the project combined.\nThe second problem was timezones. The contiguous United States covers four of them, and Alaska and Hawaii bring the total to six. A \"current weather at 12:00\" line generated at the same instant for New York and for Los Angeles is technically the same instant, but the two cities are living different parts of the day, and the forecast for \"today\" is not even quite the same window. A bot that pretended every city was on the same clock would be wrong, sometimes embarrassingly so, every single day.\nThe third problem was the name thing again, only larger. There are dozens of Springfields. There is a Portland in Oregon and a Portland in Maine. The Germany workaround - editing the cities file by hand and hoping Nominatim picked the right city - was clearly not going to scale to a country where the same name is also a state.\nI sat with this for a couple of days before admitting what I already knew.\nThe bot needed to be rewritten.\nWhat made this hard was not the rewriting itself. It was the requirement to do it without breaking everything else.\nBy the time I decided to add the United States, the infrastructure around the bot had grown into something I trusted. Jails, snapshots, backup jobs, cron schedules, snac instances on production paths, the HAProxy layer, the homepage cron that aggregated follower counts, and a long list of cities being processed in series every six hours. None of that knew or cared about the bot's internal shape. All of it cared, very much, about the bot's external behavior: a city name and a country code go in, valid markdown comes out, and that markdown ends up in a timeline.\nSo the contract was clear, even if I had never written it down anywhere. The command-line interface, the output format, the exit codes, the way the wrapper script invoked it, the structure of the JSON country configs - all of it had to keep working. Italian had to keep working. German had to keep working. The cron job that ran every six hours had to keep producing the same shape of output, just with new countries added.\nWhat I changed was almost everything below the surface.\nThe city argument grew an optional __state suffix, with a double underscore as separator:\npython3 main.py springfield__illinois us\npython3 main.py springfield__massachusetts us\npython3 main.py new_york__new_york us\n\nA city without the suffix continued to work exactly as before, which is what every European country needed. The country config gained a timezone field that could be a fixed string or the literal \"auto\"; when it was \"auto\", the bot used timezonefinder against the resolved coordinates to determine the right zone for that specific city. Internally I separated the weather provider behind an interface, so Open-Meteo could remain the primary while MET Norway and wttr.in sat behind as alternatives, with automatic fallback when the primary failed. Units became configurable per country: temperature, wind speed, precipitation. The United States needed Fahrenheit, miles per hour, and inches. Most of Europe wanted Celsius, kilometers per hour, and millimeters. The bot now does either, on a per-country basis, without caring which is which.\nI am skipping a lot of small detail here, but the principle was always the same: every new degree of freedom had to be expressible as an optional field in the config or as an optional CLI flag. If a country did not set the new field, the old behavior continued, identical to before.\nI tested this by running the new bot against the old country configs and comparing the output line by line. Where it differed, it was a bug in the new bot. Not in the test.\nThe first cycle after deploying the rewrite was, for every country except the United States, indistinguishable from the cycle before. That was the point.\nThis is the part of the story I dislike telling, which is precisely why I should tell it.\nAt some point during the development, while debugging an Open-Meteo response that did not look right, I added a print statement to the error path that dumped the full request URL whenever something went wrong. The full URL of the Open-Meteo customer endpoint includes the apikey query parameter. The print was meant for development. I forgot to remove it.\nI deployed.\nThe next time Open-Meteo had an outage - and small ones happen, sometimes for several minutes at a time - the bot dutifully printed the failing request URL into the post body. For every city. For every cycle that ran during the outage. The wrapper script piped the output into snac note_unlisted without complaint. The posts went out, federated across the Fediverse, with my API key sitting in the text for anyone who cared to read.\nSome users were kind enough to write me and tell me. Others were less kind, and made fun of me. Both groups were correct. This should not have happened.\nI reported the incident to the Open-Meteo team, who were extremely understanding. They rotated the key immediately and gave me a fresh one. I removed the debug print, and then I did the slightly more useful thing, which was to add redaction at multiple layers - in the bot's output, in the daemon's logging, and in the debug helpers themselves. URL query parameters that look like API keys are masked. Environment variables and config keys named apikey or OPEN_METEO_APIKEY are redacted before any string reaches stdout or a log file. Even JSON-like fields that include open_meteo_apikey are scrubbed if they ever appear in something the program prints.\nThe lesson is not \"be more careful.\" The lesson is that debug paths leak, sooner or later, so the secrets have to be unreachable from the debug paths in the first place. Now they are.\nThat afternoon, when I realised what was happening, I closed everything for a minute and looked out of the window. Then I started fixing.\nNominatim is a public service, and it is generous, but it is not infinite. Every city in the project needs coordinates, and at the start of the project every cycle would re-ask Nominatim for every city. Most of the time this worked. Sometimes it did not.\nThere was one cycle, before I added caching, when Nominatim simply did not respond for one of my queries. The geopy call timed out. The bot raised an exception. The wrapper script gave up on that city and moved on to the next one. A few users noticed that a particular city had not received its forecast that day, and asked what had happened.\nI added a coordinate cache, and I am still grateful that I did.\nThe cache is intentionally boring. The first time the bot resolves a city, it writes the latitude and longitude into a small file under /tmp, named after the city, and the state when present. Every subsequent run reads the file. If the file exists, no Nominatim call is made. If the file is missing, the bot calls Nominatim and writes the file. After the first successful lookup, the cache becomes the source of truth for the coordinates of that city.\nThis is lighter on Nominatim, faster for every cycle, and much more resilient against transient failures. It is also nice for a reason I did not anticipate.\nNominatim is a geocoder, and like every geocoder it has opinions.\nI live in Ferrara, so when I added Italy I made sure Ferrara was in the list, and I checked the first cycle to make sure everything looked right. The forecast came out fine. The temperature was reasonable. The icon matched the sky outside my window. I closed the laptop and forgot about it.\nThen, one evening months later, I looked more carefully at the coordinates Nominatim had returned for \"Ferrara, Italy\", and I realised they did not point to the city. They pointed to a location closer to the centroid of the province, which is a much larger area and mostly countryside. The forecast had been, on average, for a field somewhere outside town, not for the city center.\nI am not entirely sure why I had not noticed earlier. Probably because the weather in Ferrara and the weather in the fields outside Ferrara is, on most days, indistinguishable to anyone who is not paying attention. But this is the kind of detail I do not want to leave wrong, especially for my own city.\nThere are other places where geocoding lands slightly off. Sometimes it is a few kilometers, sometimes a different neighborhood, sometimes genuinely the wrong place.\nBecause the cache is just a file per city, the fix is also just a file per city. I open the cache file, replace the latitude and longitude with the correct values, save. The next cycle uses the corrected coordinates. No code change, no redeploy, no special tooling. I keep a small list of patched cities in a separate text file, so that if I ever rebuild the cache, I do not lose the manual corrections.\nThis is the kind of operational simplicity I like. A cache made of plain files costs almost nothing and quietly pays back every time a small problem appears.\nFor every report it generates, the bot also writes a simplified English text snapshot to /tmp/<city>.txt, or /tmp/<city>__<state>.txt when there is a state.\nThis is intentional, and it is not a debug artifact. I am not ready to say what I am doing with it yet, but it is part of a future direction for the project. Text is a useful intermediate format, and having a clean, language-neutral representation of every forecast sitting on disk costs almost nothing and might be worth a great deal later.\nI prefer to let ideas mature in private before I commit to them in public. So I will leave it at this for the moment.\nA full cycle for the United States takes hours.\nIt is not because the work is heavy. It is because I deliberately inserted a small sleep between cities, to give snac time to dispatch the previous post before the next one is generated. With more than 1200 cities in series, even a short pause adds up. I am not in a hurry. Forecasts that arrive a few minutes apart from each other are not a problem, and the bot was already a polite citizen elsewhere. A polite cycle is fine.\nThe problem with a slow cycle is not the duration. The problem is what happens to it.\nIn the original design, the cycle was launched by cron. Every six hours, cron called the wrapper script, the wrapper iterated through the cities file, and for each city it ran the bot and piped the output into snac. There was no scheduler in the project at all. Cron was the scheduler. The wrapper was just a loop.\nRestarting snac was harmless. The wrapper would call snac note_unlisted per city, and if snac happened to be unavailable for a moment, that single call might fail, but the loop kept moving and snac was usually back within seconds. Snac itself was not what held the cycle together.\nWhat held the cycle together was the wrapper process. And the wrapper process lived inside the jail.\nIf the FreeBSD jail was restarted while the wrapper was running, the loop stopped wherever it happened to be. The cron schedule did not care. Six hours later, the next cron tick started a new cycle from the first city, and the cities that had been about to be processed at the moment of the restart were simply skipped for that window. For the United States, this could mean several hundred cities going without an update.\nThere was a worse case, and it took me longer than it should have to recognise it. If the host was rebooting exactly in the minute when cron should have fired, cron simply did not fire. There was no daemon waiting to pick up the missed tick. The cycle never even started. Six hours of forecasts would be lost, in silence, with nothing in any log to suggest anything had gone wrong.\nI lived with this for a long time. Reboots were rare, the impact was limited, and adding state was the kind of thing I always meant to do \"next week.\"\nWhat finally changed it was not a dramatic incident. It was the slow accumulation of small ones. A scheduled VPS reboot. A jail restart after an upgrade. Each one on its own was nothing. Together, they were a steady drip of missed cycles.\nSo I wrote a daemon.\nThe crontab entries for the bot went away. There is now a long-running process inside the jail, started at boot, and it does the scheduling itself. The schedule is a list of hours and a minute, read from a JSON config. The daemon wakes up once a minute, checks whether it is time to start a cycle, and either starts one or waits.\nThe interesting part is the state file.\nAs the daemon walks through the cities file, it writes its position to a small JSON file: which cities file it is processing, and the index of the next city to handle. The write happens at the boundary between one city and the next, because that is the only place where resuming makes sense. If the daemon is interrupted mid-city, that city is retried on resume; no half-finished post escapes.\nWhen the daemon starts, it reads the state file. If it finds one matching the current cities file, it resumes from the saved index. If the cities file has changed since the state was written, the daemon starts fresh. The check is deliberately conservative: a renamed or modified cities file is treated as a different cycle, because the indices would otherwise be meaningless.\nThe result is the behavior I should have had from the start. If the host reboots while the United States cycle is running, the daemon comes back up with the jail, reads the state, and continues from where it left off. Every city still gets its update, just with a small gap corresponding to the reboot itself. The cycle finishes. The state file is reset. Life goes on.\nAnd the worst case from the cron days is gone. The daemon does not need anyone to fire it. As long as the jail is running, the daemon is running, and the next scheduled cycle will happen when its hour comes, regardless of what was happening at any specific minute.\nOf all the changes I have made to the project, this is the one I like most. It is not exciting work. It is the kind of thing that earns no applause because, when it works, it produces no visible event. But it removes a whole class of small daily annoyances, and it makes a slow process robust against the boring kind of failure: the kind nobody plans for, but that always eventually happens.\nThe current bot does considerably more than the original Italian script. It handles per-city timezones, three weather providers with automatic fallback, unit conversion for temperature, wind, and precipitation, optional air quality, pressure trend indicators when the provider supplies pressure data, a simplified English text snapshot for future use, a coordinate cache that can be patched by hand, secret redaction at multiple layers, a heartbeat that adapts to whichever HTTP client is installed on the host, and a scheduler-and-resume daemon that survives reboots.\nBut from the outside, almost nothing has changed.\nThe European country configs work the same way they always did. The wrapper scripts are unchanged. The snac integration is the same one-line pipe. The HAProxy layer in front does not know or care that the bot was rewritten. The homepage cron that counts followers and regenerates the static page works exactly as before.\nThe original Italian script does not exist as a file anymore, but it survives as a default. A country config with timezone set to Europe/Rome and no special options behaves, today, exactly as the first version of the bot would have. Everything else is opt-in.\nI like this kind of work.",
+      "id": "fe55fedd440ff5e3141fee785265f405005ce4a8100e61973772cafa6fd43928",
+      "ref_id": "2",
+      "recommendationScore": 80,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "通过FediMeteo项目案例，分享了分布式系统设计、时区处理和从错误中学习的宝贵经验。",
+      "reason": "文章讲述了独立开发的真实案例及系统演进过程，对系统设计和实际挑战处理有深入见解，符合独立开发主题。",
+      "tags": [
+        "独立开发",
+        "系统设计",
+        "Fediverse",
+        "架构",
+        "时间处理",
+        "HAProxy"
+      ]
+    },
+    {
+      "title": "C extensions, portability, and alternative compilers",
+      "link": "https://lemon.rip/w/6-c-extensions-compilers/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-25T14:15:19.000Z",
+      "summary": "Article URL: https://lemon.rip/w/6-c-extensions-compilers/\nComments URL: https://news.ycombinator.com/item?id=48267126\nPoints: 75\n# Comments: 17",
+      "id": "32cf2b7377d102c7d167bd4eb174c16cdf743840a60416a9c449b4f265d0b36d",
+      "ref_id": "0",
+      "recommendationScore": 76,
+      "popularityScore": 40,
+      "priority": "medium",
+      "comment": "深入探讨 C 语言扩展与跨平台编译的复杂性，技术深度较高。",
+      "reason": "为需要处理 C/C++ 语言底层和可移植性问题的开发者提供了宝贵的洞察和解决方案，实用性强。",
+      "tags": [
+        "C语言",
+        "编程工具",
+        "编译器",
+        "可移植性",
+        "系统编程"
+      ]
+    },
+    {
+      "title": "A fundamental principle of aeronautical engineering has been overturned",
+      "link": "https://www.wired.com/story/a-fundamental-principle-of-aeronautical-engineering-has-been-overturned/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-24T19:10:26.000Z",
+      "summary": "Article URL: https://www.wired.com/story/a-fundamental-principle-of-aeronautical-engineering-has-been-overturned/\nComments URL: https://news.ycombinator.com/item?id=48260117\nPoints: 212\n# Comments: 107",
+      "id": "495646d6f86805a3c75c6162c9188e6453c92e3aa031ae4656e16b3853fb9c94",
+      "ref_id": "0",
+      "recommendationScore": 74,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "这篇报道揭示了一项颠覆性的航空工程原理发现，具有重要的科学探索价值和广泛影响潜力。",
+      "reason": "虽然不直接属于核心技术主题，但科学领域的重大突破能激发读者兴趣，并可能间接影响未来技术发展，内容新颖且深度高。",
+      "tags": [
+        "科学突破",
+        "航空工程",
+        "物理学",
+        "基础科学"
+      ]
+    },
+    {
+      "title": "Leave Me Behind",
+      "link": "http://androidessence.com/leave-me-behind/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-25T12:03:54.000Z",
+      "summary": "Article URL: http://androidessence.com/leave-me-behind/\nComments URL: https://news.ycombinator.com/item?id=48265876\nPoints: 272\n# Comments: 197",
+      "id": "2e2e979cf397e62c74afd9463a450d678467e925c9a8e465002c6102275041c7",
+      "ref_id": "4",
+      "recommendationScore": 71,
+      "popularityScore": 90,
+      "priority": "medium",
+      "comment": "（推测）一篇关于 Android 开发或独立开发中个人成长与选择的深度反思。",
+      "reason": "文章可能提供了独特的视角和宝贵的经验教训，对开发者，尤其是独立开发者具有启发意义，且社区反馈热烈。",
+      "tags": [
+        "Android开发",
+        "独立开发",
+        "个人成长",
+        "经验分享",
+        "移动应用"
+      ]
+    },
+    {
+      "title": "Jira Is Turing-Complete",
+      "link": "https://seriot.ch/computation/jira.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-25T03:54:14.000Z",
+      "summary": "Article URL: https://seriot.ch/computation/jira.html\nComments URL: https://news.ycombinator.com/item?id=48263253\nPoints: 271\n# Comments: 124",
+      "id": "58685bc8ffb423005d376689f74bc1f031e770ac2b7235102c002c7f89e5cf9d",
+      "ref_id": "4",
+      "recommendationScore": 70,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "从理论计算机科学角度趣味探讨Jira的图灵完备性。",
+      "reason": "以独特视角审视常用编程工具，引发开发者广泛讨论，信息密度高，趣味性强。",
+      "tags": [
+        "编程工具",
+        "Jira",
+        "图灵完备",
+        "理论计算机科学",
+        "幽默"
+      ]
+    },
+    {
+      "title": "I manage teams without a single call",
+      "link": "https://orchidfiles.com/build-without-calls/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-25T12:03:10.000Z",
+      "summary": "Article URL: https://orchidfiles.com/build-without-calls/\nComments URL: https://news.ycombinator.com/item?id=48265869\nPoints: 36\n# Comments: 27",
+      "id": "e1c50f0d8d90249ad0575b327c7ee835bdfc059fac2897d16e877327d241be52",
+      "ref_id": "0",
+      "recommendationScore": 65,
+      "popularityScore": 15,
+      "priority": "medium",
+      "comment": "提供关于高效异步团队管理的实用见解。",
+      "reason": "为寻求优化远程协作和提升独立开发团队效率的读者提供具体可行的策略。",
+      "tags": [
+        "团队管理",
+        "远程工作",
+        "异步通信",
+        "独立开发",
+        "生产力"
+      ]
+    },
+    {
+      "title": "Netherlands Seizes 800 Servers, Arrests 2 for Aiding Cyberattacks",
+      "link": "https://krebsonsecurity.com/2026/05/netherlands-seizes-800-servers-arrests-2-for-aiding-cyberattacks/",
+      "source": "krebsonsecurity.com",
+      "publishedAt": "2026-05-25T13:21:49.000Z",
+      "summary": "Authorities in the Netherlands have arrested the co-owners of two related Internet hosting companies for operating IT infrastructure used by Russia to carry out cyberattacks, influence operations and disinformation campaigns inside the European Union. The two men were the focus of a 2025 KrebsOnSecurity story about how their hosting companies had assumed control over the technical infrastructure of Stark Industries Solutions, an Internet service provider sanctioned last year by the EU as a frequent staging ground for cyber mischief from Russia's intelligence agencies.",
+      "id": "138181572c8b801a7765434f32b788558d65bc4314612e0af289309a66553e25",
+      "ref_id": "1",
+      "recommendationScore": 55,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "一篇关于网络安全事件的及时新闻报道，揭示了国际网络犯罪的最新动向。",
+      "reason": "内容具有高度的时效性和新闻价值，对网络安全领域有重要关注度，信息密度较高。",
+      "tags": [
+        "网络安全",
+        "新闻",
+        "国际事件",
+        "IT基础设施"
+      ]
+    },
+    {
+      "title": "datasette-agent 0.1a4",
+      "link": "https://simonwillison.net/2026/May/24/datasette-agent/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-05-24T23:19:34.000Z",
+      "summary": "",
+      "id": "e7c40babf6b02277009e152c9c8eb0eaa22696ec7e493ea73b24dcbb2300ec96",
+      "ref_id": "3",
+      "recommendationScore": 54,
+      "popularityScore": 45,
+      "priority": "medium",
+      "comment": "Datasette智能代理插件的早期版本发布，预示着数据自动化和智能处理的潜力。",
+      "reason": "“Agent”概念可能与AI或自动化主题相关，尽管是早期版本，但潜在的未来发展和应用前景值得关注，主题优先级相对提高。",
+      "tags": [
+        "数据工具",
+        "Python",
+        "自动化",
+        "AI",
+        "Datasette",
+        "插件"
+      ]
+    },
+    {
+      "title": "2026 HIPAA Security Rule Update",
+      "link": "https://medcurity.com/hipaa-security-rule-2026-update/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-25T13:55:28.000Z",
+      "summary": "Article URL: https://medcurity.com/hipaa-security-rule-2026-update/\nComments URL: https://news.ycombinator.com/item?id=48266895\nPoints: 66\n# Comments: 53",
+      "id": "81f3b899f85cc5b9f961786f55978d6beb0d2b7457c17177b22176055df52826",
+      "ref_id": "2",
+      "recommendationScore": 52,
+      "popularityScore": 45,
+      "priority": "low",
+      "comment": "2026 年 HIPAA 安全规则的更新解读，侧重于法规合规。",
+      "reason": "对于从事医疗健康领域的技术和合规人员而言，是理解和遵守重要法规的指南，实用性高但技术深度低。",
+      "tags": [
+        "法规合规",
+        "医疗科技",
+        "数据安全",
+        "HIPAA"
+      ]
+    },
+    {
+      "title": "datasette 1.0a30",
+      "link": "https://simonwillison.net/2026/May/24/datasette/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-05-24T23:52:37.000Z",
+      "summary": "",
+      "id": "271dece48922e1c835012a23db9e78016099be22415b5fb573be3a63897d2bd3",
+      "ref_id": "2",
+      "recommendationScore": 48,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "Datasette核心工具的alpha版本更新，主要针对现有用户群体。",
+      "reason": "作为特定数据工具的早期版本更新，信息密度和普遍实用性有限，受众较窄，对大众科技博客读者吸引力不足。",
+      "tags": [
+        "数据工具",
+        "Python",
+        "开源",
+        "软件更新",
+        "Datasette"
+      ]
+    },
+    {
+      "title": "datasette-fixtures 0.1a0",
+      "link": "https://simonwillison.net/2026/May/24/datasette-fixtures/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-05-24T21:38:32.000Z",
+      "summary": "",
+      "id": "ef0577a45e3a34b49591c0129c3db320905b1c4734fc521a4c497997054876de",
+      "ref_id": "4",
+      "recommendationScore": 48,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "Datasette数据固定器插件的alpha版本更新，面向特定开发和测试场景。",
+      "reason": "这是一个针对特定数据管理和测试场景的辅助插件更新，普遍性较低，信息主要服务于小众用户群，对大众读者吸引力有限。",
+      "tags": [
+        "数据工具",
+        "Python",
+        "测试",
+        "Datasette",
+        "插件"
+      ]
+    },
+    {
+      "title": "Netherlands Seizes 800 Servers, Arrests 2 for Aiding Cyberattacks",
+      "link": "https://krebsonsecurity.com/2026/05/netherlands-seizes-800-servers-arrests-2-for-aiding-cyberattacks/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-25T13:56:39.000Z",
+      "summary": "Article URL: https://krebsonsecurity.com/2026/05/netherlands-seizes-800-servers-arrests-2-for-aiding-cyberattacks/\nComments URL: https://news.ycombinator.com/item?id=48266906\nPoints: 151\n# Comments: 28",
+      "id": "138181572c8b801a7765434f32b788558d65bc4314612e0af289309a66553e25",
+      "ref_id": "1",
+      "recommendationScore": 44,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "一则关于荷兰打击网络犯罪的行业新闻，关注网络安全治理。",
+      "reason": "提供了关于网络安全治理和国际合作的最新动态，对了解行业态势有益，但技术深度有限。",
+      "tags": [
+        "网络安全",
+        "行业新闻",
+        "服务器",
+        "网络犯罪"
+      ]
+    },
+    {
+      "title": "Microsoft pulls plug on plans for 244-acre data center in Caledonia (2025)",
+      "link": "https://www.tmj4.com/news/racine-county/microsoft-pulls-plug-on-plans-for-244-acre-data-center-in-caledonia-after-community-pushback",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-25T13:09:53.000Z",
+      "summary": "Article URL: https://www.tmj4.com/news/racine-county/microsoft-pulls-plug-on-plans-for-244-acre-data-center-in-caledonia-after-community-pushback\nComments URL: https://news.ycombinator.com/item?id=48266422\nPoints: 99\n# Comments: 74",
+      "id": "2aeeb7a22bdac9501adb80f85fcfd1e59a5b083694c2d81b4bbaf18765b2adf3",
+      "ref_id": "3",
+      "recommendationScore": 36,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "微软因社区反对取消大型数据中心建设计划的商业新闻。",
+      "reason": "反映了大型科技公司在基础设施扩张中面临的社区和环境挑战，对行业趋势有一定启发，但技术内容稀少。",
+      "tags": [
+        "微软",
+        "数据中心",
+        "基础设施",
+        "商业新闻",
+        "社区关系"
+      ]
+    },
+    {
+      "title": "Pluralistic: No honor among (ad-tech) thieves (25 May 2026)",
+      "link": "https://pluralistic.net/2026/05/25/lying-spies/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-05-25T08:21:45.000Z",
+      "summary": "Today's links No honor among (ad-tech) thieves: Including \"and\" and \"the.\" Hey look at this: Delights to delectate. Object permanence: Budweiser nunchuks; GOP vote-suppressor voted illegally; Airbnb enshittifies; Oculus enshittifies; Nintendo copyfrauds its fans; Meritocracy to eugenics pipeline; Ultima Online crisis management; SNES cartridge urinal; JJ Abrams x Axanar, \"Sex Criminals\"; Beating school filters for fun; Orphan works; Japanese ATM heist; How the Sacklers rigged the game. Upcoming appearances: London, Kansas City, LA, Menlo Park, Toronto, NYC, Edinburgh. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. No honor among (ad-tech) thieves (permalink) It shouldn't come as a surprise to learn that a company that uses dishonest tactics to spy on you for profit will also use dishonest tactics to sell the resulting surveillance data. The only reason this wouldn't be obvious is if you've fallen into the trap of thinking \"if you're not paying for the product, you're the product.\" Companies that cheat when the opportunity arises will cheat everyone: customers, users, regulators, suppliers and employees. You're the product if the company can get away with making you the product: https://pluralistic.net/2022/11/14/luxury-surveillance/#liar-liar The digital surveillance swindle is a con from top to bottom: it's not just that they spy on you, it's also that they lie to you about how and why and where they spy on you and what happens to the data they swindle out of you. They're not just cheats, in other words – they're also liars. Of course they're liars! If their terms of service were honest, they'd say something like, \"By being desperate enough to use this product, you 'agree' that we're allowed to come over to your house and punch your grandmother, wear your underwear, make long-distance calls and eat all the food in your fridge.\" So they lie like crazy. But they don't just lie to us: they lie to the people they sell our surveillance data to as well. Of course they do! Those people are the ones giving them the money! By tricking the people paying for the product, these surveillance swindlers can get them to pay more! This is the basis of Tim Hwang's essential 2020 book Subprime Attention Crisis: https://pluralistic.net/2020/10/05/florida-man/#wannamakers-ghost Core to Hwang's thesis is that these ads aren't just dangerous, they're also ineffective. The danger of these ads is the erosion of privacy and the mobilization of private data for state repression and fraud, but not particularly for persuasion. The idea that ad-tech companies have realized the ancient dream of building a mind-control ray via the novel technique of \"hacking your dopamine loop\" is a story that the ad-tech swindlers cooked up to help them sell ads: https://pluralistic.net/2021/09/30/dont-believe-the-criti-hype/#ordinary-mediocrities Critics who repeat these outlandish claims are helping these companies sell ads to credulous advertisers, who are getting robbed to the tune of hundreds of billions of dollars. This is the process that Lee Vinsel calls \"criti-hype,\" which is when you \"take the sensational claims of boosters and entrepreneurs, flip them, and start talking about 'risks'\": https://peoples-things.ghost.io/youre-doing-it-wrong-notes-on-criticism-and-technology-hype/ Criti-hype is satisfying because the hype itself is so fantastically overblown. These companies claim they're going to save/destroy/conquer the world, transform the very nature of humanity, etc, and so critics who repeat those claims (brackets derogatory) can style themselves as defenders of the world and humanity itself. This is also a very profitable style of criticism: there's a huge commercial market for people who claim to be defending the world from conquest by evil dopamine-hacking sorcerers and/or superintelligent paperclip-maximizers that can chatbot you into killing yourself and/or voting for Trump (brackets derogatory). The opposite of criti-hype is materialistic criticism, grounded in independently verifiable claims about how these scams work. To be a good tech critic, you need to start by assuming that a company that lies to its users about what it's doing is perfectly capable of lying to its customers and investors about what it's doing (that is, \"even if you're paying for the product, you're still the product\"). That's demonstrably, verifiably true of the commercial surveillance industry. Commercial spies lie to their customers like crazy, and always have. Think of the department store magnate John Wannamaker's famous quip that \"half my advertising dollars are wasted, I just don't know which half.\" Man, did someone ever do a sell-job on old Wannamaker: imagine believing that only half of your advertising dollars are wasted. Today, thanks to creepy ad-tech analytics, we know that the true figure is around 99%. Hwang's book documents lots more ad-tech fraud that's every bit as audacious as the Wannamaker-era con-jobs. For example, there's the fact that when Procter and Gamble zeroed out its $200m/year surveillance advertising program, they saw a zero percent drop in sales because (to a first approximation) all $200m of that annual spend was disappearing down the fraud-hole. There's been plenty more examples since, rivaling previous eras for audacity and outlandishness. In 2023, Mozilla Labs investigated the ways that modern cars spy on their drivers and concluded that, when it came to privacy, cars were \"the worst product category\" they had ever evaluated, and recommended that you not buy any of the cars currently offered for sale: https://www.mozillafoundation.org/en/privacynotincluded/articles/its-official-cars-are-the-worst-product-category-we-have-ever-reviewed-for-privacy/ Mozilla's report investigated two things: which data your car was collecting and selling about you (lots) and what data your car company claimed it had collected about you and was offering for sale (way, way more). For example, Nissan and Kia claimed that they had data about your sex life, a thing that cannot be reasonably inferred from the sensors in your car (unless you have a highly specific sex life). Six car companies claimed they had your genetic data (again, not a thing that any of the sensors in your car can know about). What's more, all of these scams have only gotten worse in the intervening three years: https://cleantechnica.com/2026/05/22/mozilla-foundation-condemns-data-collection-by-cars/ These companies are spying on you, and lying to you about how much they respect your privacy, and lying to their commercial customers about all the fiendish ways they've cooked up for invading your privacy. Everyone in the ad-tech sector is lying to everyone else in the ad-tech sector, in other words. It's your basic hive of scum and villainy. Back in 2023, Cox Media – part of the sprawling media conglomerate that includes Cox Cable – told advertisers that they had a new product called \"Active Listening\" that recorded and transcribed all the conversations you have around your smart speakers, smart TVs, smart watches and phones: https://www.404media.co/heres-the-pitch-deck-for-active-listening-ad-targeting/ It was a lie. There are plenty of ways that these devices spy on you, of course. Your smart TV is a cesspool of surveillance and data-exfiltration, but that data doesn't include your conversations: https://pluralistic.net/2022/12/03/painful-burning-dribble/#law-of-intended-consequences Same for your smart speaker, which not only gathers tons of information about you for sale and targeting, but also leaks your voice data all the time, whenever you utter any of its \"trigger words,\" which include over 1,000 phrases that sound like its trigger words: https://pluralistic.net/2020/07/02/big-river/#triggered Cox, in other words, was running the same equal-opportunity scam that your auto-maker runs: deceiving you about how little data they were stealing from you, and deceiving their customers about how much data they were gathering on you. That said, there was something remarkable and unique about Cox's fraud: because they were ripping off other (better-connected) fraudsters, their lies triggered an investigation by Donald Trump's FTC, who never met a scammer they wouldn't defend (from another scammer): https://arstechnica.com/tech-policy/2026/05/marketer-that-claimed-it-could-tap-devices-for-ad-targeting-will-pay-880k-settlement/ Still, there are limits to this \"honor among thieves\" business. The settlement Trump's FTC extracted from Cox for lying to other liars is less than $1m – basically, change that Cox can find down the back of its sofa: https://arstechnica.com/tech-policy/2026/05/marketer-that-claimed-it-could-tap-devices-for-ad-targeting-will-pay-880k-settlement/ Still, the Cox settlement is a great criti-hype object lesson, a reminder that these creepy, lying companies lie to everyone, including their customers, which means that even if you're paying for the product, you're still the product. Hey look at this (permalink) Hating AI is good, actually https://www.thehandbasket.co/p/hating-ai-is-good-actually The Labour Party’s Main Problem Isn’t Losing Voters to Reform https://jacobin.com/2026/05/uk-elections-labour-reform-greens Flipper One — we need your help https://blog.flipper.net/flipper-one-we-need-your-help/ London mayor Sadiq Khan blocks £50m Met police deal with Palantir https://www.theguardian.com/uk-news/2026/may/21/london-mayor-sadiq-khan-blocks-met-police-deal-with-palantir Do AI Risks Require Extraordinary Government Intervention? https://www.normaltech.ai/p/do-ai-risks-require-extraordinary?hide_intro_popup=true Object permanence (permalink) #25yrsago Best email disclaimer award https://web.archive.org/web/20010526174903/http://www.theregister.co.uk/content/35/19057.html #25yrsago Kaycee hoax FAQ https://web.archive.org/web/20010629212706/https://rootnode.org/article.php?sid=26 #25yrsago Crisis management in Ultima Online https://web.archive.org/web/20010605015828/http://www.newyorker.com/FACT/ #25yrsago E3 is all softcore porn now https://web.archive.org/web/20010702122044/https://www.salon.com/tech/feature/2001/05/22/e3_2001/print.html #25yrsago Canadian payphone infinite long distance glitch https://web.archive.org/web/20010608183145/https://www.wired.com/news/culture/0,1284,43967,00.html #20yrsago Kids make a sport out of outsmarting school web-filters https://web.archive.org/web/20060821224237/http://news.com.com/Kids+outsmart+Web+filters/2009-1041-6062548.html #20yrsago Orphan works legislation https://web.archive.org/web/20060531135239/http://www.copybites.com/2006/05/chairman_lamar_.html #20yrsago U. Florida cops ask fiction writer for fingerprints, DNA https://memex.craphound.com/2006/05/22/u-florida-cops-ask-fiction-writer-for-fingerprints-dna/ #20yrsago HDMI, the Manchurian DRM – a Broadcast Flag dormant until 2010 https://web.archive.org/web/20060523193853/https://arstechnica.com/news.ars/post/20060521-6880.html #15yrsago The Filter Bubble: how personalization changes society https://memex.craphound.com/2011/05/22/the-filter-bubble-how-personalization-changes-society/ #15yrsago Last decade’s English libel legal sharks poised to make a new fortune on stupid privacy lawsuits and superinjuctions https://memex.craphound.com/2011/05/22/last-decades-english-libel-legal-sharks-poised-to-make-a-new-fortune-on-stupid-privacy-lawsuits-and-superinjuctions/ #15yrsago RIAA boss takes home $3 mil+ https://lefsetz.com/wordpress/2011/05/21/another-member-of-the-overpaid/ #15yrsago Vindictive game company invites employees to pan reviewer’s novel after bad review https://maroonersrock.com/2011/05/conduit-2-developer-calls-for-internal-retaliation-against-author-of-negative-joystiq-review/ #15yrsago France lobbies G8 for Internet control and censorship https://www.laquadrature.net/en/2011/05/20/frances-g8-focuses-on-control-and-restrictions-to-online-freedoms/ #15yrsago Budweiser nunchuks: American Ninja https://web.archive.org/web/20110701153712/http://www.todayandtomorrow.net/2011/05/19/american-ninja/ #15yrsago GOP legislative aide works on punitive voter ID bill, boasts of illegally voting in another district https://web.archive.org/web/20110522014606/http://host.madison.com/wsj/news/local/govt-and-politics/elections/article_ede5d49e-8272-11e0-a6e0-001cc4c03286.html #15yrsago Raising a kid without disclosing their sex https://web.archive.org/web/20110523180952/http://www.parentcentral.ca/parent/babiespregnancy/babies/article/995112–parents-keep-child-s-gender-secret #15yrsago Byron Sonne: Canadian security geek jailed for taunting G20 security theatre https://web.archive.org/web/20110518195236/http://www.torontolife.com/daily/informer/from-print-edition-informer/2011/05/03/how-byron-sonne’s-obsessions-with-the-g20-security-apparatus-cost-him-everything/ #15yrsago HOWTO make a SNES cartridge urinal https://blog.pricecharting.com/2011/05/how-to-build-video-game-urinal.html #15yrsago German police raid German Pirate Party’s servers two days before election https://web.archive.org/web/20120516010632/https://arstechnica.com/tech-policy/2011/05/german-police-seize-pirate-party-servers-looking-at-anons-toolkit/ #10yrsago JJ Abrams urges Paramount to drop its lawsuit over fan Star Trek movie https://web.archive.org/web/20160522121940/https://deadline.com/2016/05/star-trek-axanar-lawsuit-ending-jj-abrams-paramount-1201760721/ #10yrsago Pat Buchanan on the Republican Party’s historical opposition to free trade deals https://web.archive.org/web/20160521162845/http://www.theamericanconservative.com/buchanan/free-trade-vs-the-republican-party/ #10yrsago United offered men-only “executive” flights until 1970 https://viewfromthewing.com/united-airlines-men-only-executive-service/ #10yrsago Elderly man kills wife because they couldn’t afford her medicine https://www.nytimes.com/2016/05/20/us/florida-man-says-he-killed-sick-wife-because-he-couldnt-afford-her-medicine-sheriffs-say.html?_r=0 #10yrsago Sex Criminals: Robin Hood bank robbers who can stop time when they orgasm https://memex.craphound.com/2016/05/21/sex-criminals-robin-hood-bank-robbers-who-can-stop-time-when-they-orgasm/ #10yrsago Airbnb stealth-updates terms of service, says it’s not an insurer and requires binding arbitration https://memex.craphound.com/2016/05/20/airbnb-stealth-updates-terms-of-service-says-its-not-an-insurer-and-requires-binding-arbitration/ #10yrsago Oculus breaks promise, uses DRM to kill app that let you switch VR systems https://web.archive.org/web/20160520161939/https://motherboard.vice.com/read/new-oculus-drm-cross-platform #10yrsago Nintendo claims ownership over fans’ Minecraft/Mario mashups https://web.archive.org/web/20160521193334/http://arstechnica.com/gaming/2016/05/nintendo-issues-copyright-claims-on-mario-themed-minecraft-videos/ #10yrsago Paypal refuses to deliver online purchases to UK addresses containing “Isis” https://b2fxxx.blogspot.com/2016/05/the-tyranny-of-algorithm-yet-again.html #10yrsago 30 students debate mass surveillance on Capitol Hill https://web.archive.org/web/20160521000031/https://theintercept.com/2016/05/20/high-school-debaters-bring-surveillance-encryption-arguments-to-capitol-hill/ #10yrsago What the NSA’s assault on whistleblowers taught Snowden https://www.theguardian.com/us-news/2016/may/22/how-pentagon-punished-nsa-whistleblowers #10yrsago Massive, coordinated ATM heist in Japan nets $12.7 million (¥‎1.4 billion) https://web.archive.org/web/20160523102154/http://mainichi.jp/english/articles/20160522/p2g/00m/0dm/044000c #5yrsago How the Sacklers rigged the game https://pluralistic.net/2021/05/23/a-bankrupt-process/#sacklers #5yrsago Consent theater https://pluralistic.net/2021/05/20/consent-theater/ #5yrsago Debunking the arguments for vaccine apartheid https://pluralistic.net/2021/05/21/wait-your-turn/#vaccine-apartheid #5yrsago How the filibuster dies https://pluralistic.net/2021/05/22/not-with-a-bang/#theory-of-change #1yrago Strange Bedfellows and Long Knives https://pluralistic.net/2025/05/21/et-tu-sloppy-steve/#fractured-fairytales #1yrago The meritocracy to eugenics pipeline https://pluralistic.net/2025/05/20/big-cornflakes-energy/#caliper-pilled Upcoming appearances (permalink) SXSW London, Jun 2 https://www.sxswlondon.com/session/how-big-tech-broke-the-internet-b3c4a901 Kansas City: Facing the Future (Woodneath Library Center), Jun 10 https://www.mymcpl.org/events/119655/facing-future-cory-doctorow LA: The Reverse Centaur's Guide to Life After AI with Brian Merchant (Skylight Books), Jun 19 https://www.skylightbooks.com/event/skylight-cory-doctorow-presents-reverse-centaurs-guide-life-after-ai-w-brian-merchant Menlo Park: The Reverse Centaur's Guide to Life After AI with Angie Coiro (Kepler's), Jun 21 https://www.keplers.org/upcoming-events-internal/cory-doctorow-2026 Toronto: TBA, Jun 23 NYC: The Reverse Centaur's Guide to Life After AI with Jonathan Coulton (The Strand), Jun 24 https://www.strandbooks.com/cory-doctorow-the-reverse-centaur-s-guide-to-life-after-ai.html Philadelphia: TBA, Jun 25 Chicago: The Reverse Centaur's Guide to Life After AI with Rick Perlstein (Exile in Bookville), Jun 26 https://exileinbookville.com/events/50628 Edinburgh International Book Festival with Jimmy Wales, Aug 17 https://www.edbookfest.co.uk/events/the-front-list-cory-doctorow-and-jimmy-wales Recent appearances (permalink) On Enshittification – and what can be done about it (Re:publica) https://www.youtube.com/watch?v=KhINQgPMVSI EFFecting Change: How to Disenshittify the Internet (EFF, with Wendy Liu) https://archive.org/details/effecting-change-enshittification The “Enshittification” of Everything (Bioneers) https://bioneers.org/cory-doctorow-enshittification-of-everything-zstf2605/ Enshittification (99% Invisible) https://99percentinvisible.org/episode/666-enshittification/ Artificial Intelligence: The Ultimate Disruptor, with Astra Taylor and Yoshua Bengio (CBC Ideas) https://www.cbc.ca/listen/live-radio/1-23-ideas/clip/16210039-artificial-intelligence-the-ultimate-disruptor Latest books (permalink) \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 (https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/) \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2026 \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Third draft completed. Submitted to editor. \"The Reverse Centaur's Guide to AI,\" a short book for Farrar, Straus and Giroux about being an effective AI critic. LEGAL REVIEW AND COPYEDIT COMPLETE. \"The Post-American Internet,\" a short book about internet policy in the age of Trumpism. PLANNING. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "24453292566d63e68651fea51f5bb41c5bdf4b0f532d00de5269590057571717",
+      "ref_id": "4",
+      "recommendationScore": 30,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "一篇链接集合文章，内容涵盖广泛但缺乏具体主题的深度分析，更多是社会评论。",
+      "reason": "文章缺乏聚焦和深度，虽然提及广告技术，但未深入探讨其技术细节，实用性对特定技术读者较低。",
+      "tags": [
+        "链接集合",
+        "广告技术",
+        "社会评论",
+        "多主题"
+      ]
+    },
+    {
+      "title": "RentFlow (YC S24) Is Hiring",
+      "link": "https://www.ycombinator.com/companies/rentflow/jobs/V2yneIE-senior-ai-ml-lead",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-25T17:00:27.000Z",
+      "summary": "Article URL: https://www.ycombinator.com/companies/rentflow/jobs/V2yneIE-senior-ai-ml-lead\nComments URL: https://news.ycombinator.com/item?id=48269041\nPoints: 0\n# Comments: 0",
+      "id": "c8b829e3ed2b894b3b16dcf88e431f0e8373a4e41bce10097d87e11df95d575f",
+      "ref_id": "0",
+      "recommendationScore": 20,
+      "popularityScore": 0,
+      "priority": "medium",
+      "comment": "一份关于AI领域高级AI/ML职位机会的招聘信息。",
+      "reason": "虽然与AI主题相关，但作为一篇技术博客文章，其信息密度和技术深度较低，主要针对求职者。",
+      "tags": [
+        "AI",
+        "招聘",
+        "职业发展"
+      ]
+    },
+    {
+      "title": "Hive (YC S14) is hiring sr back-end developers (CA/US remote OK)",
+      "link": "https://jobs.ashbyhq.com/hive.co/538c47f9-d008-49b7-b0d4-583d9294a481",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-25T14:32:47.000Z",
+      "summary": "Article URL: https://jobs.ashbyhq.com/hive.co/538c47f9-d008-49b7-b0d4-583d9294a481\nComments URL: https://news.ycombinator.com/item?id=48267324\nPoints: 0\n# Comments: 0",
+      "id": "e9b43ad9680a7f7b12117a5a7e59e2e905802f8d597cc773be54f39df693a514",
+      "ref_id": "3",
+      "recommendationScore": 15,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "Hive公司招聘高级后端开发人员的广告。",
+      "reason": "作为一篇招聘广告，缺乏技术内容和信息深度，不适合作为普通技术文章推荐。",
+      "tags": [
+        "招聘",
+        "后端开发",
+        "职业发展"
+      ]
+    },
+    {
+      "title": "The History of ‘OK’",
+      "link": "https://www.merriam-webster.com/wordplay/the-hilarious-history-of-ok-okay",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-25T17:18:56.000Z",
+      "summary": "Merriam-Webster:\nThe 1820s and 1830s shared another linguistic fad with today: an\nappreciation for deliberate misspellings. (Kewl, rite?) This\ntrend, which had humorists adopting now-cringey bumpkin personas\nwith ignorance manifested in uneducated spellings, turned no go\ninto know go and no use into know yuse (lol). Abbreviations\nwere not immune, and no go became K.G.. So too all right\nbecame O.W. , as an abbreviation for oll wright. And all\ncorrect became o.k. , as an abbreviation for oll korrect.\nAlthough OK became one of the more commonly used initialisms, it\nmight have passed into oblivion when the linguistic fad had passed\nif not for the presidential election of 1840, when Martin Van\nBuren was given the nickname of “Old Kinderhook” because of his\nhometown of Kinderhook, NY. The Van Buren stans who joined “OK\nClubs” nationwide were themselves, they proclaimed, “OK.” Their\ncampaign was memorable enough to have both popularized the word\nand to have hijacked the story of its origin: there are today\nstill those who believe that “Old Kinderhook” is the original\nmeaning of OK.\nI have a strong preference for OK (perhaps infused by the classic Macintosh Human Interface Guidelines’s adamance on the spelling). Okay is OK in prose, but never as a UI button label. Ok and ok are not OK.\n ★",
+      "id": "2c2441483233e4af8089342ab64e6c709848ebebc14a95f509961ceed0979287",
+      "ref_id": "2",
+      "recommendationScore": 15,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "一篇有趣的语言学历史文章，但与科技博客的核心主题完全不符。",
+      "reason": "虽然内容本身具有趣味性，但技术深度和实用性极低，完全偏离了AI、Apple生态等核心关注主题。",
+      "tags": [
+        "历史",
+        "语言学",
+        "文化"
+      ]
+    },
+    {
+      "title": "Why I can't stand the word \"driven\"",
+      "link": "https://www.joanwestenberg.com/why-i-cant-stand-the-word-driven/",
+      "source": "joanwestenberg.com",
+      "publishedAt": "2026-05-25T00:08:34.000Z",
+      "summary": "A man named Harry Readford once stole close to 1,000 head of cattle from Bowen Downs station in central Queensland and drove them south, down through the Channel Country and along the Strzelecki Track into South Australia - across a stretch of desert the squatters swore no herd could",
+      "id": "7cbea7222c0259298150b7df952dfd720d0c8086623e8a3e78db3ec474559999",
+      "ref_id": "0",
+      "recommendationScore": 15,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "内容偏向个人随笔或历史轶事，与科技博客主题关联度极低。",
+      "reason": "文章主题完全不符合设定的科技领域优先级，缺乏技术深度和实用价值。",
+      "tags": [
+        "非技术",
+        "随笔",
+        "历史"
+      ]
+    },
+    {
+      "title": "The Cost of Safetyism",
+      "link": "https://stevemagness.substack.com/p/the-cost-of-safetyism",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-25T14:29:52.000Z",
+      "summary": "Article URL: https://stevemagness.substack.com/p/the-cost-of-safetyism\nComments URL: https://news.ycombinator.com/item?id=48267290\nPoints: 48\n# Comments: 36",
+      "id": "9d963fae035608980cf9aa85674f2d4918c05fa6ed7e7f636b5b9262da0bf672",
+      "ref_id": "4",
+      "recommendationScore": 10,
+      "popularityScore": 48,
+      "priority": "low",
+      "comment": "一篇探讨“安全主义成本”的社会或哲学评论文章。",
+      "reason": "内容与科技博客的核心关注主题（如AI、Apple生态等）不符，不具备技术相关性。",
+      "tags": [
+        "社会学",
+        "哲学",
+        "文化评论"
+      ]
+    },
+    {
+      "title": "Magnifica Humanitas",
+      "link": "https://www.vatican.va/content/leo-xiv/en/encyclicals/documents/20260515-magnifica-humanitas.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-25T10:11:29.000Z",
+      "summary": "Article URL: https://www.vatican.va/content/leo-xiv/en/encyclicals/documents/20260515-magnifica-humanitas.html\nComments URL: https://news.ycombinator.com/item?id=48265206\nPoints: 750\n# Comments: 323",
+      "id": "5a1ada1138c36c681918913f281f3e9a7e73416242fc3b085fd1d5fc9b574025",
+      "ref_id": "1",
+      "recommendationScore": 5,
+      "popularityScore": 95,
+      "priority": "low",
+      "comment": "一篇宗教哲学文章，与科技博客主题完全不符。",
+      "reason": "内容偏离科技领域，不适合科技博客发布。",
+      "tags": [
+        "无关主题",
+        "宗教",
+        "哲学"
+      ]
+    },
+    {
+      "title": "Quoting Armin Ronacher",
+      "link": "https://simonwillison.net/2026/May/24/armin-ronacher/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-05-24T18:46:53.000Z",
+      "summary": "",
+      "id": "bab7b4bab5ccc8e9d7ee12f15711712498d7b26157ec6cfacb60a33fb8b7d247",
+      "ref_id": "0",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "文章内容为空，无法进行任何有效评估。",
+      "reason": "缺乏具体内容，无法判断其技术深度、新颖性、实用性或信息密度。",
+      "tags": [
+        "N/A"
+      ]
+    }
+  ]
+}
