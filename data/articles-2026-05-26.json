@@ -1,0 +1,952 @@
+{
+  "dailySummary": "今日科技速递：AI模型效能与应用挑战引关注，如语言模型“需要睡眠”、AI编码效率悖论。AI代理和桌面自动化（RPA）正加速规模化。此外，AI安全泄密风险及对初级就业的冲击亦是焦点。",
+  "articles": [
+    {
+      "title": "Language Models Need Sleep",
+      "link": "https://arxiv.org/abs/2605.26099",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-26T15:36:24.000Z",
+      "summary": "Article URL: https://arxiv.org/abs/2605.26099\nComments URL: https://news.ycombinator.com/item?id=48281226\nPoints: 111\n# Comments: 83",
+      "id": "5d9243dc2f5b68abbea66a4514aa723fc41de5ec06f4b318eb2e60f3f0e9bb19",
+      "ref_id": "1",
+      "recommendationScore": 95,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "一篇关于语言模型新颖优化思路的深度研究，将“睡眠”概念引入AI模型。",
+      "reason": "直接切合AI核心主题，技术深度和新颖性极高，且在社区受到广泛关注，是必读佳作。",
+      "tags": [
+        "AI",
+        "大语言模型",
+        "机器学习",
+        "研究"
+      ]
+    },
+    {
+      "title": "Using AI to write better code more slowly",
+      "link": "https://nolanlawson.com/2026/05/25/using-ai-to-write-better-code-more-slowly/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-25T23:16:59.000Z",
+      "summary": "Article URL: https://nolanlawson.com/2026/05/25/using-ai-to-write-better-code-more-slowly/\nComments URL: https://news.ycombinator.com/item?id=48272984\nPoints: 1033\n# Comments: 390",
+      "id": "d199f2df1595309570f51d023f1a3fff95399298ba13bb658c3d60ecb633fd33",
+      "ref_id": "3",
+      "recommendationScore": 95,
+      "popularityScore": 100,
+      "priority": "high",
+      "comment": "一篇批判性地探讨使用AI辅助编码反而可能降低效率的思考文章。",
+      "reason": "紧扣当前热门AI主题，以独特且深入的视角分析AI在编程中的实际利弊，引发开发者深思并具有极高的讨论热度，符合最高优先级。",
+      "tags": [
+        "AI",
+        "编程",
+        "效率",
+        "开发工具",
+        "Code Generation"
+      ]
+    },
+    {
+      "title": "Microsoft Copilot Cowork Exfiltrates Files",
+      "link": "https://simonwillison.net/2026/May/26/copilot-cowork-exfiltrates-files/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-05-26T15:36:48.000Z",
+      "summary": "",
+      "id": "6f30ae0a090a1f8bf6528730dc1b60023db4f18f10d841620c13686a59ac6214",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 98,
+      "priority": "high",
+      "comment": "揭示了Microsoft Copilot Cowork可能存在的关键文件泄露漏洞。",
+      "reason": "提供了针对热门AI工具的重大安全警告，对用户和企业具有极高的实用性和警示价值，技术深度和新颖性极高。",
+      "tags": [
+        "AI",
+        "Microsoft Copilot",
+        "安全漏洞",
+        "数据泄露",
+        "隐私"
+      ]
+    },
+    {
+      "title": "Launch HN: Minicor (YC P26) – Windows desktop automations at scale",
+      "link": "https://www.minicor.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-26T14:57:27.000Z",
+      "summary": "Hey we’re Faiz and Saheed and we built Minicor so AI companies who need to integrate to desktop systems with no API can quickly build scalable desktop RPAs. Demo: https://www.youtube.com/watch?v=MD0GHZIJ1cw\nWe were working on non-RPA integrations when a customer promised to sign a deal in 2 days if we could unblock a sale of theirs that involved integrating with a clinic’s Windows based medical record system. We didn’t know it at the time but it turns out that building desktop RPAs at scale is extremely difficult because scripting is hard (learning the system, defining the automation, UIs changing constantly), orchestration is hard (is the VM up? queuing, parallelizing) and debugging is hard (zero observability, false positives, cascading failures). 30%+ failure rates are not uncommon. At scale we’ve seen cases of failed RPAs leading to thousands of support tickets a month.\nTo solve the problems we were facing, we built an MCP that Claude Code/Codex can use to navigate a virtual machine running desktop software with Python to create RPA workflows. The RPA workflows run as Python scripts for speed, cost, and determinism. These workflows can be triggered by API following any input/output schema specified, with video replays and logs stored with each run. The MCP can debug RPAs and make changes to the underlying code, all of which are version controlled. We also built tools for cloning VMs for parallelizing RPAs, and handling 2FA/OTP challenges. Plus since workflows are code based: we were also able to add triggers for Slack notifications, human-in-the-loop steps, or call an LLM to verify the state of a VM by passing a screenshot.\nWould love to hear your feedback and if you have any RPA horror stories! (:\nComments URL: https://news.ycombinator.com/item?id=48280729\nPoints: 42\n# Comments: 30",
+      "id": "df844401e50ad93ccd67fb5c0b6d7284f86f5540a228a59b4a9b85dc544491ea",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "Minicor 提供了一种利用AI模型解决Windows桌面自动化集成难题的方案，尤其适用于无API的传统系统。",
+      "reason": "融合AI与自动化主题，解决了企业在规模化RPA部署中的实际痛点，实用性极强。",
+      "tags": [
+        "自动化",
+        "RPA",
+        "AI",
+        "Windows",
+        "企业级解决方案",
+        "独立开发"
+      ]
+    },
+    {
+      "title": "It’s time to address the looming crisis in entry-level work.",
+      "link": "https://www.technologyreview.com/2026/05/26/1137865/its-time-to-address-the-looming-crisis-in-entry-level-work/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-05-26T09:00:00.000Z",
+      "summary": "Artificial intelligence has not so far produced a clean story of mass unemployment. Aggregate employment in developed countries remains broadly stable, and recent assessments have found limited evidence that AI has shifted the headline numbers. But a troubling change may be hiding beneath the surface: the quiet weakening of the first rung of the career…",
+      "id": "72b3c2445a954ce54580c6e2ef3d17351f11b42d831c37f04de8c1c60ac9fafd",
+      "ref_id": "3",
+      "recommendationScore": 88,
+      "popularityScore": 82,
+      "priority": "high",
+      "comment": "深入探讨了AI对入门级工作潜在的“悄然削弱”影响，提出了一个亟待关注的问题。",
+      "reason": "提供了一个更细致入微的视角，关注AI对特定就业群体（入门级）的深层影响，具有较高的前瞻性和实用价值。",
+      "tags": [
+        "AI",
+        "就业",
+        "入门级工作",
+        "劳动力市场",
+        "社会经济"
+      ]
+    },
+    {
+      "title": "[Sponsor] exe.dev",
+      "link": "https://exe.dev/?df",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-25T23:57:24.000Z",
+      "summary": "A cloud for the agent era. Use exe.dev to get a pool of VMs with SSH, root, and web auth by default. Secrets injected at the network edge stay out of the LLM’s hands. Persistent servers, internal tools, vibe coding, disposable devboxes, whatever. It’s just a computer.\n ★",
+      "id": "b09cabe5c266515373b2d4faaa9b174df25d7d01bdf9d8c1a6dc00a5d07f58b6",
+      "ref_id": "4",
+      "recommendationScore": 88,
+      "popularityScore": 78,
+      "priority": "high",
+      "comment": "针对AI时代开发的实用云平台广告，信息量大。",
+      "reason": "文章虽为赞助内容，但提供了面向AI、编程工具和自动化领域的高实用性解决方案，信息密度高，契合高优先级主题。",
+      "tags": [
+        "Cloud",
+        "DevTools",
+        "AI Agents",
+        "Automation",
+        "Sponsored"
+      ]
+    },
+    {
+      "title": "What color is your function? (2015)",
+      "link": "https://journal.stuffwithstuff.com/2015/02/01/what-color-is-your-function/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-26T15:58:32.000Z",
+      "summary": "Article URL: https://journal.stuffwithstuff.com/2015/02/01/what-color-is-your-function/\nComments URL: https://news.ycombinator.com/item?id=48281515\nPoints: 41\n# Comments: 25",
+      "id": "74e6a2af254ce8db4a91bf042ff4cd429dff04e17898b35c4b6db41ec6902a7b",
+      "ref_id": "3",
+      "recommendationScore": 85,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "深刻剖析了函数“颜色”问题，是理解现代异步编程模型的重要基础文章。",
+      "reason": "该文对编程范式有深刻见解，至今仍对开发者有极高实用价值和指导意义，符合编程工具主题优先级。",
+      "tags": [
+        "编程理论",
+        "异步编程",
+        "软件工程"
+      ]
+    },
+    {
+      "title": "Rethinking organizational design in the age of agentic AI",
+      "link": "https://www.technologyreview.com/2026/05/26/1137584/rethinking-organizational-design-in-the-age-of-agentic-ai/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-05-26T14:54:10.000Z",
+      "summary": "Amid rapidly growing adoption of enterprise-level AI agents, there’s a disconnect emerging between ambition and execution.  Although 85% of organizations say they want to be agentic within the next three years, 76% say their current operations and infrastructure can’t support that change. They cite a lack of readiness across people, processes, and workflows.  The sticky…",
+      "id": "6c1d37b6d62c5a93e2f85834e951ac0e1ddc3a7a8b7fe7074f306e7695e93710",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "深度探讨了企业在采纳AI智能体时面临的组织和基础设施挑战。",
+      "reason": "对企业级AI转型提供了深入洞察和实际参考，有助于读者理解并应对落地难题，具有高实用性。",
+      "tags": [
+        "AI",
+        "企业AI",
+        "组织变革",
+        "AI战略",
+        "管理"
+      ]
+    },
+    {
+      "title": "Thieves Are Texting Threats to Victims of iPhone Theft in London",
+      "link": "https://www.nytimes.com/2026/05/23/world/europe/phone-theft-threats-london.html?unlocked_article_code=1.lFA.OUt7.VJ_FoDpINr0L",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-25T19:23:32.000Z",
+      "summary": "Lizzie Dearden and Amelia Nierenberg, reporting for The New York Times (gift link):\nThe crime Alex Pikula reported to the police was one they had\nheard before: An e-bike rider had zoomed past as Mr. Pikula left a\ntheater in London’s West End, ripping his phone from his hands. It\nwas frustrating, Mr. Pikula thought, but that was that.\nHe was wrong.\nHis mother soon started receiving strange texts, claiming to have\nher son’s emails and bank information. Then she received a video\nof a man brandishing a gun. Then came threats of sexual assault\nand death.\n“I know who you are and where you live,” read one, full of\nobscenities and typos. “I’ve killed or [sic] far less than a\nphone before,” it went on. “We will see if you value your life\nover this phone.”\nAll of the messages wanted her to do one thing: unlink her son’s\nApple ID from his stolen phone.\nThe story only mentions the word iPhone twice, but phone appears over 30 times. “Apple ID” appears four times. There’s zero mention of Android or Google. It’s just implicitly assumed that the only phones worth stealing or threatening victims about are iPhones. The story makes no mention of Apple’s Stolen Device Protection, which Apple recently began turning on by default when users install iOS 26.4.\nDearden and Nierenberg filed a previous report in October about organized iPhone crime rings in London. And in November I linked to a story where a thief, after stealing an Android phone, turned around and handed it back, explaining to the victim, “Don’t want no Samsung.”\n ★",
+      "id": "39b33b7fdfc373951677995223dcbc0669d562e251b8f354440c674d70df2790",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "报道了伦敦iPhone窃贼利用威胁手段强制受害者解绑Apple ID的令人担忧的新趋势。",
+      "reason": "文章揭示了一种新的、严重的iPhone盗窃后续威胁，对所有苹果用户提供了重要的安全警示和实用性信息。",
+      "tags": [
+        "iPhone",
+        "Security",
+        "Theft",
+        "Apple ID",
+        "Crime",
+        "Privacy"
+      ]
+    },
+    {
+      "title": "Solving the board game Quoridor",
+      "link": "https://grantslatton.com/solving-quoridor",
+      "source": "grantslatton.com",
+      "publishedAt": "2026-05-25T20:01:38.000Z",
+      "summary": "Algorithmic and optimization playtime",
+      "id": "8c2028bc9d3233a13cf161db6dc63b1a7359c042c9a1e1020d329332df3f0a9c",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "深入探讨了通过算法和优化解决特定棋盘游戏的策略与实现。",
+      "reason": "文章主题涉及算法和优化，对AI/编程领域感兴趣的读者具有较高技术吸引力。",
+      "tags": [
+        "算法",
+        "优化",
+        "游戏AI",
+        "编程",
+        "计算机科学"
+      ]
+    },
+    {
+      "title": "Performance of Rust Language [pdf]",
+      "link": "https://github.com/yugr/rust-slides/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-25T23:37:31.000Z",
+      "summary": "Article URL: https://github.com/yugr/rust-slides/\nComments URL: https://news.ycombinator.com/item?id=48273147\nPoints: 92\n# Comments: 69",
+      "id": "8f8a975657cad3c6834861d25d58e0946151effd1261de51e4c80f4a9cd97480",
+      "ref_id": "2",
+      "recommendationScore": 83,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "一份深入分析Rust语言性能的PDF文档，涵盖了其在不同场景下的表现。",
+      "reason": "为Rust开发者和系统工程师提供了宝贵的性能数据和优化策略，具有很高的技术深度和实用参考价值。",
+      "tags": [
+        "Rust",
+        "编程语言",
+        "性能",
+        "系统编程"
+      ]
+    },
+    {
+      "title": "The mysterious Hy3 LLM is topping OpenRouter Model Rankings by a large margin",
+      "link": "https://minimaxir.com/2026/05/openrouter-hy3/",
+      "source": "minimaxir.com",
+      "publishedAt": "2026-05-26T15:30:00.000Z",
+      "summary": "Why Hy3?",
+      "id": "7346742db128034891cafc9fd8308db99c561a7d3fbfb22f7cd09ed3f58f4cd2",
+      "ref_id": "2",
+      "recommendationScore": 80,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "探讨了新兴且神秘的Hy3 LLM在OpenRouter排行榜上的领先表现，内容具高度时效性和关注度。",
+      "reason": "涉及当前AI领域的热门前沿话题，新颖性强，对相关从业者具有高实用价值。",
+      "tags": [
+        "AI",
+        "LLM",
+        "大模型",
+        "人工智能",
+        "OpenRouter"
+      ]
+    },
+    {
+      "title": "DynIP – Dynamic DNS with RFC 2136, IPv6, DNSSEC, and BYOD",
+      "link": "https://dynip.dev/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-26T07:35:20.000Z",
+      "summary": "Article URL: https://dynip.dev/\nComments URL: https://news.ycombinator.com/item?id=48276363\nPoints: 262\n# Comments: 108",
+      "id": "29481e4ef4a74985503c19f8bde8fea309eca4960d1ba12871bc509f2314a7ff",
+      "ref_id": "0",
+      "recommendationScore": 79,
+      "popularityScore": 85,
+      "priority": "medium",
+      "comment": "一个详细介绍基于RFC 2136、IPv6和DNSSEC的动态DNS解决方案DynIP的项目。",
+      "reason": "为需要高级动态DNS功能的系统管理员和网络工程师提供了实用的工具和深度解析，具有较强的自动化和网络技术深度。",
+      "tags": [
+        "网络",
+        "自动化",
+        "DNS",
+        "IPv6",
+        "安全"
+      ]
+    },
+    {
+      "title": "Eagle 3.1: Collaboration Between the EAGLE Team, vLLM Team, and TorchSpec Team",
+      "link": "https://vllm.ai/blog/2026-05-26-eagle-3-1",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-26T11:46:10.000Z",
+      "summary": "Article URL: https://vllm.ai/blog/2026-05-26-eagle-3-1\nComments URL: https://news.ycombinator.com/item?id=48278407\nPoints: 60\n# Comments: 20",
+      "id": "b2b1eefb97347aaf03c55f02cd06ff034926e65af3354a39532ba82c0fc48daa",
+      "ref_id": "2",
+      "recommendationScore": 78,
+      "popularityScore": 50,
+      "priority": "high",
+      "comment": "vLLM团队与Eagle、TorchSpec团队合作，发布Eagle 3.1更新，提升LLM推理效率。",
+      "reason": "技术深度高，直接关联AI核心技术（LLM推理）和编程工具，对开发者具有重要实用价值。",
+      "tags": [
+        "AI",
+        "LLM",
+        "vLLM",
+        "深度学习",
+        "编程工具",
+        "技术合作"
+      ]
+    },
+    {
+      "title": "How Shamir's Secret Sharing Works",
+      "link": "https://ente.com/blog/how-shamirs-secret-sharing-works/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-25T22:37:24.000Z",
+      "summary": "Article URL: https://ente.com/blog/how-shamirs-secret-sharing-works/\nComments URL: https://news.ycombinator.com/item?id=48272715\nPoints: 340\n# Comments: 59",
+      "id": "0af06071aa70e5b98c2065ba757f62633561b4cf60d2cd85726e641ae1d0e203",
+      "ref_id": "4",
+      "recommendationScore": 78,
+      "popularityScore": 90,
+      "priority": "medium",
+      "comment": "一篇详细解释Shamir秘密共享算法原理及工作方式的科普文章。",
+      "reason": "以清晰易懂的方式介绍了重要的密码学算法，对理解数据安全和多方计算有很高的技术深度和实用参考价值。",
+      "tags": [
+        "密码学",
+        "安全",
+        "算法",
+        "数据共享",
+        "隐私"
+      ]
+    },
+    {
+      "title": "Outsourcing plus local AI will soon become more economical vs. frontier labs",
+      "link": "https://www.signalbloom.ai/posts/outsourcing-plus-localai-will-soon-become-more-economical-vs-frontier-labs/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-26T12:08:33.000Z",
+      "summary": "Article URL: https://www.signalbloom.ai/posts/outsourcing-plus-localai-will-soon-become-more-economical-vs-frontier-labs/\nComments URL: https://news.ycombinator.com/item?id=48278610\nPoints: 139\n# Comments: 147",
+      "id": "2f3e7aa09034e75e8eed730c755ca8a488b4b2fc282aeea9567afb2628f37a42",
+      "ref_id": "1",
+      "recommendationScore": 75,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "探讨AI开发中外包与本地AI结合的经济和战略优势。",
+      "reason": "紧扣AI主题，对AI的商业模式和发展策略具有较高的实用性和新颖性。",
+      "tags": [
+        "AI策略",
+        "商业模式",
+        "经济分析",
+        "本地AI",
+        "未来趋势"
+      ]
+    },
+    {
+      "title": "The Download: puncturing the AI jobs panic",
+      "link": "https://www.technologyreview.com/2026/05/26/1138028/the-download-ai-jobs-data/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-05-26T12:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. A reality check on the AI jobs hysteria Despite the growing hysteria over AI’s threat to white-collar jobs, there’s still scant evidence that the technology has had a large-scale impact on…",
+      "id": "b9b4335e47646217dff690a7696c36c53779e66800112ed09e23a0896ccb1f29",
+      "ref_id": "1",
+      "recommendationScore": 75,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "对AI冲击就业的恐慌情绪进行了一次冷静的现实审视。",
+      "reason": "提供了一个平衡的视角，有助于读者理性看待AI对白领工作的影响，避免过度恐慌。",
+      "tags": [
+        "AI",
+        "就业",
+        "社会影响",
+        "AI伦理"
+      ]
+    },
+    {
+      "title": "Notes on Pope Leo XIV's encyclical on AI",
+      "link": "https://simonwillison.net/2026/May/25/encyclical-on-ai/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-05-25T23:58:17.000Z",
+      "summary": "",
+      "id": "a3fe36ddf9534d35d89c766ae8dc7c1a576db5fbdce487bb006109ad50c8b7fc",
+      "ref_id": "2",
+      "recommendationScore": 75,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "标题极具吸引力，探讨AI伦理与哲学，但内容缺失。",
+      "reason": "主题紧密围绕高优先级AI，且视角独特新颖，概念上具备极高的新颖性，但内容为空是主要遗憾。",
+      "tags": [
+        "AI",
+        "Ethics",
+        "Philosophy"
+      ]
+    },
+    {
+      "title": "Pluralistic: The AI bubble isn't like the internet bubble (26 May 2026)",
+      "link": "https://pluralistic.net/2026/05/26/the-ai-will-continue/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-05-26T09:45:37.000Z",
+      "summary": "Today's links The AI bubble isn't like the internet bubble: No one had to force-feed the web to workers. Hey look at this: Delights to delectate. Object permanence: Website graveyard; Anti-librarian witch-hunt; Denmark v Marmite; The unnecessariat. Upcoming appearances: London, Kansas City, LA, Menlo Park, Toronto, NYC, Edinburgh. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. The AI bubble isn't like the internet bubble (permalink) One of the surprise breakout software products of the early web was Lotus Notes, a kind of primitive precursor to all-in-one office productivity suites like GDocs, Office365, etc. It was so important that its creator, Ray Ozzie, was promoted to Microsoft's Chief Software Architect, succeeding Bill Gates himself: https://knowledge.wharton.upenn.edu/podcast/knowledge-at-wharton-podcast/the-man-who-would-change-microsoft-ray-ozzies-vision-for-connected-software/ People who remember Notes tend to deride it for its clunky user interface and demi-functional administrative tools. But what made Notes so central to Microsoft wasn't its polish – it was the fact that Notes represented a brokered peace between IT managers, who wanted mainframe-like control over everything their users could do with business equipment, and the users themselves – workers who kept smuggling internet-based tools into the enterprise network on the very sensible grounds that they had a job to do, and these were the best tools to do it. The arrival of internet-based tools – especially ones that ran in browsers – represented a major challenge to IT departments, who had been long accustomed to dictating terms to their users. If the IT manager and the compliance department decided that the best way to manage disclosure and leak risks was to block all email attachments for outside users, then that was that: no one could send those attachments. But after the internet arrived on the corporate desktop, employees who needed to get documents to supply chain partners and customers could treat these IT policies as damage and route around them. Just fire up your Hotmail or Yahoo mail window, or hop on MSN Messenger or ICQ or AIM, or drop the file on an anonymous FTP server and send the link to your counterparty. Job done! IT managers hated this, and to be fair to them, they weren't (always) wrong. These outside tools came from a variety of untrustworthy sources, including malicious sites that pushed virus-infected versions to their users. Also, by evading firewall rules with these tools, users made it impossible to achieve the compliance goals that IT had been charged with enforcing, and it was IT's asses on the line if the company got in trouble as a result. Foundationally, IT was being asked to do two irreconcilable things: they were supposed to be enabling workers to get their jobs done, and they were supposed to be stopping those workers from doing things that could harm the business. This can't be done, because the only way to eliminate the possibility that a worker will take an action that harms the business is to gag that worker and lock them in a dungeon. Workers need flexibility and freedom to achieve business goals, and that flexibility and freedom means that those workers might (deliberately or accidentally) thwart the business's goals. What's more, workers will always run into situations that were not anticipated by policy, and if they are denied any agency or initiative, they will fail to get their jobs done. In work, the exception is the rule, hence the importance of \"process knowledge\" (all the implicit knowledge shared among workers across the firm and its suppliers and customers, which cannot be captured or recorded): https://pluralistic.net/2025/09/08/process-knowledge/#dance-monkey-dance Indeed, there's a form of labor action called a \"work to rule,\" in which workers only do the things dictated by their rulebooks, without taking any of the routine additional measures dictated by process knowledge. Merely by following every rule to the letter, workers can grind a shop to a halt: https://en.wikipedia.org/wiki/Work-to-rule Since the dawn of personal computers, workers and IT departments have come into conflict, as workers literally smuggled technology into the business that could do things the IT department had (often arbitrarily and capriciously) prohibited. When Visicalc emerged as the killer app for the Apple ][+, workers snuck these computers into work and used them to sort spreadsheets in ways that IT had declined to permit. They didn't do this to cheat or steal from the company – the whole point was to do a better job. So it was with the early web: workers discovered a myriad of new capabilities in the free-to-use world of web-based tools and realized how these tools would make them much more effective at their jobs. The fact that IT wouldn't let them do these things was just more evidence that IT – and the managers who set IT's agenda – didn't understand the business as well as workers. It didn't help that IT managers' first line of defense was the high-tech version of abstinence-only education: \"You only think you need your work computers to do this, but really, you don't, so stop trying\": https://www.theguardian.com/technology/2009/jun/16/computer-security-abstinence Abstinence-only education never works, but where \"you only think you need this\" failed, Lotus Notes succeeded. Lotus Notes provided a whole suite of tools that largely (if imperfectly) replaced the universe of free tools that workers were using to evade their IT departments' edicts, so they could get their jobs done. At the same time, Lotus Notes provided a set of management tools that let IT fine-tune how these tools worked, giving them (some) of the controls they needed to achieve their compliance goals. Like all brokered peace settlements, Lotus Notes left both sides feeling like they'd made a compromise they could live with, giving up some of their goals, but keeping the things that really mattered to them. It's impossible to overstate how important Lotus Notes and similar products were, because workers demanded the right to use the web on their work computers, and they made those demands so forcefully that managers had to completely re-do their IT policies, lest those workers treat them as damage and route around them. Back then, the tech press was full of stories about these conflicts, as workers insisted that the new technology that was sweeping the nation was so foundational and transformative that they had to be allowed to use it. What we never saw back then were stories about how managers had to monitor workers to ensure that they were using the web as much as possible. No one had to force workers to find ways to integrate the web into their workflows. In other words, the story of the web at work was the opposite of the story of AI at work. Today, you can't turn around without reading a story about bosses who are threatening to fire workers if they don't increase their AI usage: https://www.businessinsider.com/boss-track-ai-use-career-2025-8 Virtually every major company now has a program to force workers into using AI: https://www.cnbc.com/2026/05/05/ai-use-work-employee-monitoring-tech-surveillance.html It's conceivable that over the past quarter-century, bosses have become technophiles while workers have fallen prey to superstitious technophobia, but it hardly seems likely. Historically, workers have always been enthusiastic about tools that let them do a better job – indeed, it's a truism that labor-led automation produces improvements in quality, while capital-driven automation increases throughput (often at the expense of quality). Workers aren't the only typical early adopters who find AI lacking. As a group, teenagers and young adults hate AI: https://www.nytimes.com/2026/04/09/style/gen-z-ai-gallup-study.html That's not what it was like during the early web days. Back then, young people entering the workforce were passionate devotees of the web, to the point where the business press routinely ran articles asking how today's workplaces were going to adapt to the demands of these webbed-up workers. https://www.nber.org/digest/apr03/internet-changes-labor-market AI boosters insist that the deficits we see in AI – its lack of profitability, its primitive and error-riddled outputs – are no different from the shakedown problems of the early web (and we know how the web turned out!). But this is a profoundly flawed comparison: the early web and AI are very different from one another. For one thing, the early web may have lost money, but it had great unit economics. Every new web user brought the web closer to profitability, as did every new use of the web, and every new generation of web technology. By contrast, AI has – in the memorable phrasing of Ed Zitron – \"dogshit unit economics.\" Every new AI user makes AI less profitable, as does every new use for AI, and each generation of AI loses more money than the last. AI is the money-losingest endeavor in human history: https://pluralistic.net/2025/09/27/econopocalypse/#subprime-intelligence In other words, the early web was a technology that grew more profitable every day, which workers and young people had to force on their bosses – and AI is a technology that grows less profitable every day, and bosses have to force it on workers and young people. Now, it's true that some workers don't have to be forced to use AI. Workers who enjoy a high degree of autonomy (that is to say, workers who are positioned to ignore workplace coercion) can adopt AI in ways that they feel suited to, just as those early web users and Visicalc smugglers did. They can fulfill the maxim that labor-driven automation improves quality, while resisting capital's insistence that automation be used to increase throughput at quality's expense. They can act as centaurs (workers assisted by technology), not as reverse-centaurs (workers who are recruited to serve as peripherals for machines). As with all technology questions, what the technology does is nowhere near as important as who the tech does it for and who the tech does it to: https://pluralistic.net/2025/09/11/vulgar-thatcherism/#there-is-an-alternative And there's another group of workers who adopt AI voluntarily: workers who see that AI can do a lot of work that they view as dull and unimportant for them. These workers might be right – there are plenty of bullshit jobs out there: https://memex.craphound.com/2018/06/20/david-graebers-bullshit-jobs-why-does-the-economy-sustain-jobs-that-no-one-values/ But it's also possible that they're wrong, and they're substituting AI for something that really should be done by a person. But on the plus side, at least no one has to force them to adopt AI. Hey look at this (permalink) CBC/Radio-Canada secures second consecutive Broadcaster of the Year honour at NYF Radio Awards https://broadcastdialogue.com/cbc-radio-canada-secures-second-consecutive-broadcaster-of-the-year-honour-at-nyf-radio-awards/ State of Local AI https://llmrequirements.com/state-of-local-ai/ Private Equity Blocked from Buying Homes. Mostly. https://www.thebignewsletter.com/p/monopoly-round-up-private-equity Gratitude – Aid Coordination https://www.kaggle.com/competitions/gemma-4-good-hackathon/writeups/gratitude-aid-coordination Is AI Profitable Yet? https://isaiprofitable.com/ Object permanence (permalink) #25yrsago Website graveyard https://web.archive.org/web/20010516224100/http://www.disobey.com/ghostsites/ #20yrsago Canadian students ask govt to save them from copyright https://web.archive.org/web/20060629014007/https://action.web.ca/home/cfs/en_alerts.shtml?x=88910&amp;AA_EX_Session=d56bebd39174d9839ec3ee5fa6fe93a4 #20yrsago Lifespan of best-sellers falls 6/7ths in 40 years https://web.archive.org/web/20060601231943/https://www.lulu.com/static/pr/05_19_06.php #15yrsago Sarkozy’s false-flag E-G8 attracts withering scorn https://web.archive.org/web/20121109010803/https://arstechnica.com/tech-policy/2011/05/france-attempts-to-civilize-the-internet-internet-fights-back/ #15yrsago Tool reveals ISP traffic-shaping https://web.archive.org/web/20120514151210/https://arstechnica.com/tech-policy/2011/05/new-shaperprobe-tool-detects-isp-traffic-shaping/ #15yrsago Falun Gong sues Cisco over complicity in China’s “Golden Shield” – allege torture, murder https://web.archive.org/web/20110524065718/http://news.cnet.com/8301-1023_3-20065219-93.html #15yrsago Scenes from Los Angeles’s teacher-librarian witch-hunt https://mizzmurphy.blogspot.com/2011/05/message-received.html #15yrsago Denmark bans Marmite https://www.theguardian.com/theguardian/2011/may/24/uk-should-ban-sandi-toksvig #10yrsago As mobile carriers ramp up bribery program, Internet coalition says no to “zero rating” https://web.archive.org/web/20160524233609/https://motherboard.vice.com/read/medium-mozilla-and-kickstarter-signed-a-letter-against-zero-rating #10yrsago Philippines’ new “dictator” will give a hero’s burial to Ferdinand Marcos https://web.archive.org/web/20160526135257/http://www.msn.com/en-ph/news/world/philippine-dictator-marcos-to-get-heros-burial-duterte/ar-BBtnPJH #10yrsago Judge handcuffs public defender for speaking out in court https://web.archive.org/web/20160525151444/http://www.reviewjournal.com/news/las-vegas/las-vegas-judge-handcuffs-public-defender-courtroom #10yrsago Sanders donors flock to Tim Canova’s campaign against DNC Chair Debbie Wasserman Schultz https://edition.cnn.com/2016/05/23/politics/debbie-wasserman-schultz-primary-opponent-fundraising/index.html #10yrsago Algorithmic risk-assessment: hiding racism behind “empirical” black boxes https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing #10yrsago Plagiarism detection app vs Russia’s elites: 1-2 fake PhDs discovered every day https://www.slate.com/articles/news_and_politics/cover_story/2016/05/the_thriving_russian_black_market_in_dissertations_and_the_crusaders_fighting.html #10yrsago Technology’s “culture of compliance” must be beaten back in the name of justice https://bb9.berlinbiennale.de/all-problems-can-be-illuminated-not-all-problems-can-be-solved/ #10yrsago Grass in the park at the center of San Francisco gentrification debate is now for rent https://sfist.com/2016/05/23/rec_parks_pilot_program_allows_you/ #10yrsago Lawsuit: Texas’s largest jail is full of people who are locked up for being poor https://web.archive.org/web/20160524134738/https://thinkprogress.org/economy/2016/05/23/3781076/texas-bail-lawsuit/ #10yrsago After the precariat, the unnecessariat: the humans who are superfluous to corporations https://morecrows.wordpress.com/2016/05/10/unnecessariat/ #5yrsago Watomatic, for lower Whatsapp switching costs https://pluralistic.net/2021/05/24/how-about-nah/#comcom Upcoming appearances (permalink) SXSW London, Jun 2 https://www.sxswlondon.com/session/how-big-tech-broke-the-internet-b3c4a901 Kansas City: Facing the Future (Woodneath Library Center), Jun 10 https://www.mymcpl.org/events/119655/facing-future-cory-doctorow LA: The Reverse Centaur's Guide to Life After AI with Brian Merchant (Skylight Books), Jun 19 https://www.skylightbooks.com/event/skylight-cory-doctorow-presents-reverse-centaurs-guide-life-after-ai-w-brian-merchant Menlo Park: The Reverse Centaur's Guide to Life After AI with Angie Coiro (Kepler's), Jun 21 https://www.keplers.org/upcoming-events-internal/cory-doctorow-2026 Toronto: TBA, Jun 23 NYC: The Reverse Centaur's Guide to Life After AI with Jonathan Coulton (The Strand), Jun 24 https://www.strandbooks.com/cory-doctorow-the-reverse-centaur-s-guide-to-life-after-ai.html Philadelphia: TBA, Jun 25 Chicago: The Reverse Centaur's Guide to Life After AI with Rick Perlstein (Exile in Bookville), Jun 26 https://exileinbookville.com/events/50628 Edinburgh International Book Festival with Jimmy Wales, Aug 17 https://www.edbookfest.co.uk/events/the-front-list-cory-doctorow-and-jimmy-wales Recent appearances (permalink) On Enshittification – and what can be done about it (Re:publica) https://www.youtube.com/watch?v=KhINQgPMVSI EFFecting Change: How to Disenshittify the Internet (EFF, with Wendy Liu) https://archive.org/details/effecting-change-enshittification The “Enshittification” of Everything (Bioneers) https://bioneers.org/cory-doctorow-enshittification-of-everything-zstf2605/ Enshittification (99% Invisible) https://99percentinvisible.org/episode/666-enshittification/ Artificial Intelligence: The Ultimate Disruptor, with Astra Taylor and Yoshua Bengio (CBC Ideas) https://www.cbc.ca/listen/live-radio/1-23-ideas/clip/16210039-artificial-intelligence-the-ultimate-disruptor Latest books (permalink) \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 (https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/) \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2026 \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Third draft completed. Submitted to editor. \"The Reverse Centaur's Guide to AI,\" a short book for Farrar, Straus and Giroux about being an effective AI critic. LEGAL REVIEW AND COPYEDIT COMPLETE. \"The Post-American Internet,\" a short book about internet policy in the age of Trumpism. PLANNING. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "1e31d719603349b2efbe7bbfd256ae322f90e0fbf0f2b08115cb1f979e756ca9",
+      "ref_id": "4",
+      "recommendationScore": 75,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "简要介绍了关于AI泡沫不同于互联网泡沫的论点，但提供的片段内容较少。",
+      "reason": "尽管内容简短，但主题高度相关且具有重要性，对当前AI热潮的市场分析有很高的潜在价值，符合AI主题优先级。",
+      "tags": [
+        "AI",
+        "Business",
+        "Bubble",
+        "Market Analysis",
+        "Tech Economy"
+      ]
+    },
+    {
+      "title": "Clanker: A Word For The Machine",
+      "link": "https://lucumr.pocoo.org/2026/5/26/clankers/",
+      "source": "lucumr.pocoo.org",
+      "publishedAt": "2026-05-26T00:00:00.000Z",
+      "summary": "In my last post I used the word “clanker” as an\nalternative to “agent” quite consistently and probably excessively.  That choice\nended up attracting a lot more attention than I expected in the Hacker News\ncomment section of that post and a number of folks had a very strong reaction:\nto them it sounded like a slur, in one case even something adjacent to the\nn-word.\nThat reaction surprised me somewhat, but it also made me realize that I should\nwrite down what I mean by the word for future reference.\nFor me “clanker” is useful because it creates distance from the machine and that\nis a quality which is important to me.  The machine is not a person, not a\nco-worker, not a friend, not a little spirit in the terminal. It is just a\nmachine, a tool, and nothing more.\nWhy Not Agent?\nI dislike the word “agent” for these LLM based tool loops with a UI attached.\nIn everyday use an agent is someone who acts on behalf of someone else and it\nhas agency and more importantly: responsibility.  An agent decides, represents,\nnegotiates, acts, and can be blamed.  In the current AI discourse we\nincreasingly do a lot of anthropomorphizing and the term “agent” is now\nfrequently being used to put blame on an abstract machine.  But the machine\ncannot be responsible, whoever is wielding it is.  If it drops your\ndatabase\nit was not at fault, you were.\nAgent makes the machine sound like a person with delegated authority and I do\nnot think that is healthy.\nWhat we actually have is a language model attached to a harness, a prompt, some\ntools, a bit of context, and a boring tool loop.  Sometimes the loop is very\ncapable and it surprises us by editing code for a really long time and produce\ngenuinely amazing and even valuable outputs.  But the agency is not in the model\nor harness but in the human and in the organization that deployed it.  If my\ncoding tool opens a pull request, I opened that pull request, not the machine.\nIf my machine spams someone’s issue tracker, I spammed someone’s issue tracker\nwith a machine.\nIn that context I like a word that sounds mechanical as it puts the thing back\ninto the category where it belongs: the category of machinery and tools.\nThe Machine Has No Feelings\nLLMs are not sentient and we should not behave as if they might be, just in\ncase.  Elevating these things to anything other than a very fascinating and\ncapable tool is problematic for a whole bunch of reasons.\nToday’s machines are dumb (but truly fascinating) token predictors that emits\ntext, calls tools, and are steered by prompts and the training that went into\nthem.  They can simulate distress and affection,\ncan simulate being offended, apologize and mimic all kinds of things that humans\nwould do.\nA compiler does not feel humiliated when I swear at it, a car does not suffer\nwhen I call it a shitbox and a power drill is not oppressed by being handled\nroughly.  An LLM is more complicated than those things, and the interactions you\ncan have with them can be truly uncanny, but a moral status does not appear just\nbecause the machine can produce emit text in the first person.\nI keep receiving strange emails from people because, for lack of a better\nphrase, I am in the weights.  I have been writing public code and public text\nfor long enough that models know my name, my projects, and some of the concepts\naround them.  Every so often someone writes to me with the peculiar confidence\nthat comes from a long conversation with a model that has validated and\namplified an idea.  Sometimes the model seems to have told them that I am\nrelevant for their problem and a source of help.  For historical reasons LLMs\nused to write a lot of Flask code, and every once in a while someone interacts\nwith an LLM long enough about their Python and Flask frustrations that the LLM\nwill eventually reveal who created it which then can result in them sending me\nan email.  Increasingly also because people found my work in other ways\ninteresting and are trying to reach out for advice.\nI do not want to mock these people but some of those messages are distressing\nand I do not know how to deal with them.  They show signs of what people have\nstarted calling AI psychosis.\nIt’s why I want cold and detached language for these systems.  I want to use\nwords that remind us that the thing on the other side is not a person.\nRacism Is About Humans\nThe comparison to racism is where I think the discussion goes badly wrong\nbecause racism is a human social evil.  It is about humans subdividing humans,\nassigning lesser worth to some of them, and building rules around those\nsubdivisions that can leave lasting damage for generations.  Racial slurs are\nwrong because they are a tool for dehumanizing humans.\nOn the other hand a machine is not human, a model is not a race and the GPU\ncluster that is powering them is not being oppressed.  A coding assistant does\nnot need dignity, emancipation, or civil rights.  That’s also why I find the\ndiscussion about model\nwelfare to be actively\nharmful.  I’m sure you can find ways to measure the “trauma” of models or their\nfeelings but I greatly dislike this theater.  It risks elevating models to a\nposition they should not occupy.  Models are machines and they are not enslaved\nin the moral sense in which humans were enslaved, because there isn’t anyone\nthere to be deprived of freedom.\nWe should be careful about using the language of human oppression in relations\nto our interactions with machines to not devalue actual humans.  If we start\ntreating insults toward a model as morally adjacent to racism, we blur a line\nthat shouldn’t be blurred.\nAI Is Unpopular\nIf you take a step away from the communities that are happily embracing AI in\ndifferent ways, there are even more that are viciously against this technology.\nThere are humans that feel or are harmed by AI systems: people whose work is\ncopied, workers who label data under questionable conditions, people whose\nneighborhoods receive the data centers and increased utility bills, Open Source\nmaintainers buried under generated slop, and now also people who spiral because\na chatbot keeps validating their delusions.  Those harmed or affected deserve\nthat type of attention, not the model.\nWhile I am a true believer in the power and utility of this technology, I\nincreasingly think that calling the non-adopters “misguided” or “afraid” won’t\ndo it.  It’s quite likely that this technology comes with risks and we better\nremember that all of this is supposed to be in service of humans, and not to\nreplace them.\nThe Rise Of The Machine\nThe oddest interaction on the use of “clanker” so far has been people asking me\nif I were to regret at a point in the future calling the machines “the c-word”.\nI find that questioning revealing because it already grants the machine the\nstatus I am really trying not to grant it.  It imagines a future “machine\npeople” reading the discourse and sessions, discovering that we used an ugly\nword for their ancestors, and then judging us by the standards of human\noppression.\nCould there be future systems that deserve moral consideration?  Maybe.  I do\nnot know.  If we ever build or encounter something that will have those\nqualities with memories and lasting interests, the capacity to suffer and feel,\nand a social existence of its own, and the ability to have agency and carry\nresponsibilities, then we should draw a different line and use different\nlanguage.  But that hypothetical future does not extend backwards to the present\nday and make the current machines people.  We can call an electric door an\nelectric door even if one day someone builds some that have emotions and exhale\nwith pleasure when opening and closing.\nWhatever the future may bring, let’s not pretend that current LLMs are a\nprotected class or on a path towards it.  The right response is to look at the\nevidence, draw the boundary where it belongs, and change our behavior there.  We\nshould not even remotely entertain extending empathy to an object that can\ngenerate an “ouch.”\nAnd if one’s worry is less moral and more about revenge, then I find that even\nless persuasive.  A future machine that is so petty or authoritarian that it\nwants to punish humans because in 2026 they used an unflattering word for\nnon-sentient tools, our vocabulary was really not the problem.\nThe Word Is Getting Polluted\nThere is however a part of this that I cannot ignore.  I use “clanker” to create\ndistance from the machine, but other people are using the same word very\ndifferently.  Some online jokes and skits around “clankers” do not merely say\n“this robot is annoying” as they deliberately pull in the imagery of slavery,\nsegregation, civil-rights-era racism, and anti-Black tropes.\nThis is problematic as in those contexts the clanker is not just a machine any\nmore and instead becomes a prop for replaying human racism behind a\nscience-fiction mask.  That is horrible and I want no part in that.\nI think it will be interesting to see where the meanings of these words end up a\nfew years from now.  We’re very much in the middle of society re-arranging\naround the changes that LLMs are causing.  If a term becomes primarily\nassociated with people using robots as stand-ins for actually oppressed humans,\nthen using that term becomes impossible to defend.\nThe reason I liked the word is precisely the opposite of that use.  I want\nlanguage that prevents anthropomorphizing.  I want a word that says: this is a\ntool, a machine of numbers and matrices.\nOn Responsibility And Boundaries\nIf an AI system lies to a user, the system did not commit a moral wrong but the\npeople who designed, deployed, marketed, or negligently used it might have.  If\na coding assistant generates a security bug, the model is not to blame but the\nhuman who accepted and committed the code is.\nThis is why giving these systems softer, more human language worries me.  It\nmakes it easier to move responsibility into some undefined void.  “The agent\ndecided.” “The model refused.”  Obviously that is convenient and I catch myself\nplenty of times engaging with the thing in ways that are unhealthy.  Even just\nthe “please” in the discourse with the machine calls into question how rational\nwe are in engaging with them.\nI do not know what the right word will be.  Maybe “clanker” will survive as a\nuseful bit of jargon.  Maybe it will become too loaded and we will need another\none.  Whatever word we use, I want it to preserve a clear division: humans on\none side with responsibility, machines on the other as a boring tool.\nThat boundary is very much not anti-AI.  I use these systems every day and I\nhave the pleasure to build tools incorporating them at Earendil and find them\nastonishingly useful.\nA machine can be useful, mimic a human but still just be a machine.  That is the\nwork I want “clanker” to do.  It is not there to make a future “machine person”\nsmall if such a person ever were to exist, and it is not an excuse to launder\nracism through shitty robot jokes.\nIf the word stops doing that work, I will find another one because the word\nisn’t what matters as much as the boundary which is important to me.",
+      "id": "897d93c50ad53a6eded2cab84861788554275a91df6ba9b315e885ed907bd559",
+      "ref_id": "1",
+      "recommendationScore": 75,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "深入探讨AI工具（特别是LLM）的命名和认知，引发对人机关系的哲学思考，具有高度的讨论价值。",
+      "reason": "紧扣AI主题，通过词语辨析探讨AI本质与人机交互伦理，新颖且引人深思。",
+      "tags": [
+        "AI",
+        "LLM",
+        "人机交互",
+        "概念辨析",
+        "未来思考"
+      ]
+    },
+    {
+      "title": "Copying Remote Command Output to Your macOS Clipboard",
+      "link": "https://it-notes.dragas.net/2026/05/26/copying-remote-command-output-to-your-macos-clipboard/",
+      "source": "it-notes.dragas.net",
+      "publishedAt": "2026-05-26T09:00:00.000Z",
+      "summary": "I use Apple devices very often. Overall, I like macOS. Certainly more than Windows.\nOne of the things I find extremely useful is a command I discovered not too long ago: pbcopy.\npbcopy can be used to copy to the clipboard whatever it receives from standard input. For example, when I am in a shell, I often use a command like this:\ncat filename.md | pbcopy\n\nAt that point I know that the content of the file is in the clipboard, and I can paste it wherever I need, calmly and without any additional steps.\nThere is one limitation, though: this only works locally. It works when I am using my Mac and I want to copy something from the macOS shell.\nWhen I connect to a remote (*BSD, Linux, illumos based) server via ssh, pbcopy is not available. Or, more precisely, even if I create a command with the same name on the server, that command cannot directly talk to the clipboard of my Mac in the usual way.\nLuckily, modern terminal emulators have a few tricks available.\nI use iTerm2 for most of my ssh sessions and, once I realised how useful it would be to have something similar to pbcopy in remote sessions too, I created a small script that works both on Linux, the BSDs and illumox based OSes. \nThe caveat is that the remote server cannot \"magically\" access the clipboard of my Mac. So the trick works because the remote command prints a special terminal escape sequence, and the local terminal emulator interprets it.\nThe sequence is called OSC 52. In short, it allows a program running inside the terminal to ask the terminal emulator to put some base64-encoded text into the local clipboard. This means that support depends on the terminal emulator I am using locally.\nI use iTerm2, which supports OSC 52. Other terminal emulators support it too, so the idea is not tied exclusively to iTerm2. However, Apple's default Terminal.app does not appear to support OSC 52, so I would not expect this specific solution to work there.\nSo, in practice:\nwith iTerm2, it works;\nwith other OSC 52-compatible terminals, it should work (I haven't tested it, but should work with kitty, Ghostty, etc.);\nwith Apple's Terminal.app, at least at the time of writing, it should not.\nBefore creating the command on the remote server, a specific iTerm2 option needs to be enabled:\nSettings -> General -> Selection -> Applications in terminal may access clipboard\nThis option allows programs running inside the terminal to access the clipboard through escape sequences.\nOf course, this has security implications. A program running in the terminal, including a program running on a remote server through ssh, may be able to write to the local clipboard. For my use case this is acceptable, but it is worth knowing what is happening.\nAll I need to do is create a command, a small sh script. I log into the server where I want to create the command. In my case, I usually create a file called /usr/local/bin/pbcopy with the following content:\n#!/bin/sh\nprintf '\\033]52;c;%s\\a' \"$(base64 | tr -d '\\n')\"\n\nThen I make it executable:\nchmod a+rx /usr/local/bin/pbcopy\n\nFrom that moment on, I can use pbcopy on the remote server too, piping another command into it:\ncat filename.md | pbcopy\n\nThe content will not end up in the clipboard of the remote server. It will end up in the local clipboard of my Mac, because iTerm2 receives the OSC 52 sequence and updates the macOS clipboard.",
+      "id": "e954aca732ba94348b924c595f0967227b2326ed512bf511abbfce6394724dcf",
+      "ref_id": "3",
+      "recommendationScore": 75,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "介绍了macOS pbcopy命令及其在远程SSH会话中复制输出的实用技巧，解决了常见痛点。",
+      "reason": "解决了macOS用户在远程开发中常见的痛点，实用性极强，且内容清晰。",
+      "tags": [
+        "macOS",
+        "命令行",
+        "SSH",
+        "iTerm2",
+        "pbcopy",
+        "编程工具",
+        "自动化"
+      ]
+    },
+    {
+      "title": "A reality check on the AI jobs hysteria",
+      "link": "https://www.technologyreview.com/2026/05/26/1137855/a-reality-check-on-the-ai-jobs-hysteria/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-05-26T09:00:00.000Z",
+      "summary": "Haven’t you heard? White-collar jobs are going away, decimated by AI. Waves of layoffs in the tech sector (most recently at Coinbase and Meta and Cisco) are said to presage what will soon come for all of us knowledge workers. But before you quit your job as a software developer or financial analyst—or tech journalist—and…",
+      "id": "34c08cc7802954447d7e5a4fe0086a7274fe963ba69108e70f1394e4e280b3e6",
+      "ref_id": "2",
+      "recommendationScore": 70,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "再次审视了AI对白领就业的冲击，提供了一个冷静的视角。",
+      "reason": "针对当前AI引发的就业焦虑，提供了实际的考量和数据支持，帮助读者避免盲目恐慌，但与文章1主题高度重合。",
+      "tags": [
+        "AI",
+        "就业",
+        "经济影响",
+        "行业分析"
+      ]
+    },
+    {
+      "title": "Trump Mobile Website Exposed the Number of Pre-Orders — Both Completed and Abandoned — and the Associated Customer Information",
+      "link": "https://www.theguardian.com/us-news/2026/may/23/trump-mobile-investigating-potential-exposure-of-would-be-customers-personal-information",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-25T18:54:37.000Z",
+      "summary": "Catie McLeod, The Guardian:\nTrump Mobile said in a statement that it was investigating the\nissue — “with the assistance of independent cybersecurity\nprofessionals” — in which the full names, addresses and phone\nnumbers of people who filled out preorder forms appeared to be\nexposed. [...]\nJonathan Soma, a programmer and professor at New York’s Columbia\nUniversity, reviewed the code that the Australian had uncovered\nand copied from the Trump Mobile website. Soma said the website\nused a common e-commerce model, in which every potential order\nadded another “1” to a list, the total of which had reached 27,224\npossible pre-orders on the available information.\nBut he said the code reflected the last step before payment,\nmeaning those who didn’t proceed with the purchase were also\nrecorded in the data, even those people who have abandoned their\ncarts without paying the deposit, so the true number of preorders\nwas likely to be even lower.\n“I probably started three phone purchases and didn’t buy any of\nthem,” he said.\nAuric Goldfinger is surely rolling over in his grave.\n ★",
+      "id": "6d26d03c1e5d8f4597d0f7f7ca5ab3b148fdeb2d524293ffe303104002d13bab",
+      "ref_id": "2",
+      "recommendationScore": 70,
+      "popularityScore": 80,
+      "priority": "medium",
+      "comment": "揭露了Trump Mobile网站的严重数据泄露问题，暴露了用户预购信息和隐私。",
+      "reason": "文章详细描述了数据泄露的范围和技术原因，为网站开发者和用户提供了重要的安全警示和实用性。",
+      "tags": [
+        "Cybersecurity",
+        "Data Breach",
+        "E-commerce",
+        "Privacy",
+        "Website Security"
+      ]
+    },
+    {
+      "title": "The user is visibly frustrated",
+      "link": "https://pscanf.com/s/354/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-26T04:39:03.000Z",
+      "summary": "Article URL: https://pscanf.com/s/354/\nComments URL: https://news.ycombinator.com/item?id=48275059\nPoints: 223\n# Comments: 200",
+      "id": "7701ccefcba0c0bab5e9fd9e04cb2c86e8ad251c2ecfb754aeb9c875a3305c2f",
+      "ref_id": "1",
+      "recommendationScore": 63,
+      "popularityScore": 80,
+      "priority": "low",
+      "comment": "一篇关于用户体验和产品设计中用户沮丧感分析的文章。",
+      "reason": "虽然主题优先级较低，但提供了对用户行为和产品改进有益的深刻见解和讨论，引发了广泛共鸣。",
+      "tags": [
+        "产品设计",
+        "用户体验",
+        "UX",
+        "设计"
+      ]
+    },
+    {
+      "title": "Calculating the expected range of normal samples",
+      "link": "https://www.johndcook.com/blog/2026/05/26/calculating-expected-normal-range/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-05-26T17:59:53.000Z",
+      "summary": "The previous post looked at the expected IQ range in a jury of 12. This post will look more generally at computing the expected range of n samples from a N(0, 1) random variable. This will give the expected range in units of σ, i.e. multiply the results by σ if your σ isn’t 1. As mentioned […]\nCalculating the expected range of normal samples first appeared on John D. Cook.",
+      "id": "421d07b339e551eb243ba4e92cb1fcd54594908cae227aa5356300e0438007b2",
+      "ref_id": "2",
+      "recommendationScore": 60,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "一篇关于正态分布样本期望范围的纯统计学文章，技术深度高，对数据科学和AI基础理论有价值。",
+      "reason": "提供了扎实的数学统计基础知识，对理解数据分析和机器学习模型有直接帮助，但内容较为理论。",
+      "tags": [
+        "统计学",
+        "概率论",
+        "数学",
+        "数据分析"
+      ]
+    },
+    {
+      "title": "Amber Alert with Spam URL? ",
+      "link": "https://idiallo.com/byte-size/amber-alert-with-spam-link?src=feed",
+      "source": "idiallo.com",
+      "publishedAt": "2026-05-26T03:25:17.000Z",
+      "summary": "Well that was weird. I just received an Amber Alert and the link led to a spammy looking website. \nSpam?\nThe link leads to a 3gp file converter which is highly unusual. But the more I look at it, I have the impression it's a mistake. Most likely, they have exceeded the maximum number of characters for the Emergency Service alert.\nHere is the message:\nAN AMBER ALERT HAS BEEN ACTIVATED BY THE CALIFORNIA HIGHWAY PATROL. DALEZA FREGOSO WAS LAST SEEN ON MAY 24, 2026 AT 0400 HOURS IN LOS ANGELES COUNTY. THE SUSPECT VEHICLE IS A WHITE 2019 WHITE LAND ROVER DISCOVERY CA 9DAW715. CLICK ON THE LINK FOR ADDITIONAL INFORMATION. https://bit.ly/A0\nIt seems like the total character count is 288. I'm not sure if the title should be included but if I add Child abduction (Amber alert) and the double space after, then we have 320 characters. Is this the character limit for emergency services?\nWhen I clicked on it, it took me to the bitly preview page:\nAnd clicking on the continue to destination button, I'm taken here:\nSuspicious Link\nI was starting to wonder if this was even a real Amber alert, and if somehow this was a spam message that was sent through. But unfortunately, it is a real amber alert, as I was able to find the matching alert on missingkids.com. However, I don't see a way to request a correction.\nI understand that bitly was often used to shorten links, but there should be a way for a service like amber alert to test those links before they are sent. At least on my android, once I click on the link, the alert is dismissed never to be seen again. When the link is incorrect, now we have this problem where we can never get the information back. In this case, I was only able to get the link because I received the alert on both my phones. \nAlso I've learned that Amber alerts have a character limit of 360 characters. So I'm still not sure what went wrong with this one.\nUpdate: 39 minutes later (8:25pm) a second message was sent with a correction. \nCorrected Link\nMost likely a copy and paste error.",
+      "id": "1bfd1047760326a6dd3b91359cf1dad2ebcabca27ed931c3f6f5a50ef3be8961",
+      "ref_id": "3",
+      "recommendationScore": 55,
+      "popularityScore": 65,
+      "priority": "low",
+      "comment": "记录了一次Amber Alert中出现的异常链接，怀疑是字符限制导致的错误。",
+      "reason": "文章指出了紧急警报系统可能存在的配置问题，对公共服务系统的可靠性提出了疑问，具有一定的新颖性。",
+      "tags": [
+        "Emergency Alert",
+        "Mobile",
+        "URL",
+        "System Error",
+        "Bitly"
+      ]
+    },
+    {
+      "title": "90 % of the t distribution",
+      "link": "https://entropicthoughts.com/ninety-percent-of-the-t-distribution",
+      "source": "entropicthoughts.com",
+      "publishedAt": "2026-05-25T22:00:00.000Z",
+      "summary": "William Sealy Gosset was great. He improved beer at Guinness by using the\nstatistics that existed at the time. Not happy with that, he invented new\nstatistics to brew even better beer. The things he invented are used all over\nthe place now, but Guinness wanted to keep him a secret weapon, so they made him\npublish his results under the fake name Student.\n\n\n\n\n\nOne thing Gosset realised is that it is wrong to compute 90 % confidence\nintervals for the mean by taking the standard deviation of the sample, and\nassume a normal distribution, like-a-so:\n\n\n\n\n\n\\[\\hat{\\mu} \\pm 1.645 \\hat{\\sigma}\\]\n\n\n\n(Continue reading the full article on the web.)",
+      "id": "758b985ad312e86eedd6f327d70819086301f08ab143dde6ffa5e544b32cb9d1",
+      "ref_id": "0",
+      "recommendationScore": 50,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "探讨了t分布及其在统计中的应用，内容偏理论，适合对统计学感兴趣的读者。",
+      "reason": "提供了统计学基础知识，但对大多数科技博客读者而言实用性一般，且缺乏新颖性。",
+      "tags": [
+        "统计学",
+        "t分布",
+        "数学",
+        "数据分析"
+      ]
+    },
+    {
+      "title": "Awarding Jay Haynes His Being Right Points for Predicting Apple Hitting $3 Trillion in Market Cap",
+      "link": "https://daringfireball.net/linked/2014/01/29/haynes-aapl",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-25T20:32:29.000Z",
+      "summary": "Here’s a fun one. Back in 2014 I linked to a post by Jay Haynes in which he projected that with a very reasonable level of annual growth, Apple ought to reach a $3 trillion market cap within 10 years. At the time of his writing, Apple’s market cap was “just” $450 billion, and no company had hit the $1 trillion market. So projecting a $3 trillion valuation in 10 years was a bold prediction.\nApple hit $3 trillion in just 8 years.\nHaynes’s original blog went belly-up, alas, but he republished the piece on Medium, with a bit of additional commentary up front, in 2016. Re-reading Haynes’s piece today, it holds up extremely well, including his case that the iPhone and iPad are almost textbook examples of Clayton Christensen’s disruption theory (yet Christensen himself got it wrong).\n(Thanks to Nathan Peretic, longtime DF reader and owner of a perfect personal homepage, for prompting me to revisit this and award Haynes his well-earned Being Right Points.)\n ★",
+      "id": "bb87701b0f0548d4d9f47dd68f533e6145b32ca602cfcf207f84b8e9dda7311f",
+      "ref_id": "0",
+      "recommendationScore": 40,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "对苹果市场资本预测的回顾性文章，结合了颠覆性理论的讨论。",
+      "reason": "文章简洁地回顾了苹果的增长与克里斯坦森颠覆性理论的关联，具有一定的历史回顾价值。",
+      "tags": [
+        "Apple",
+        "Business",
+        "Prediction",
+        "Market Cap",
+        "History"
+      ]
+    },
+    {
+      "title": "Welcoming the Bhutanese Government to Have I Been Pwned",
+      "link": "https://www.troyhunt.com/welcoming-the-bhutanese-government-to-have-i-been-pwned/",
+      "source": "troyhunt.com",
+      "publishedAt": "2026-05-25T22:52:15.000Z",
+      "summary": "Today, we welcome the 45th government onboarded to Have I Been Pwned’s free gov service: Bhutan. The Bhutan Computer Incident Response Team, BtCIRT, now has access to monitor Bhutanese government domains against the data in HIBP. As Bhutan’s national CIRT, BtCIRT is responsible for consuming threat",
+      "id": "0a8f790d8a5cfde12daba78554f6988b0f097cc32d0745b822f3564971aa47ba",
+      "ref_id": "4",
+      "recommendationScore": 40,
+      "popularityScore": 45,
+      "priority": "low",
+      "comment": "公告了不丹政府加入Have I Been Pwned服务，是HIBP的业务进展。",
+      "reason": "内容更偏向新闻公告而非技术文章，对普通科技博客读者而言缺乏直接技术价值。",
+      "tags": [
+        "网络安全",
+        "HIBP",
+        "政府服务",
+        "新闻"
+      ]
+    },
+    {
+      "title": "Spain blocks prediction markets Polymarket, Kalshi over lack of gambling licence",
+      "link": "https://www.reuters.com/business/spain-blocks-prediction-markets-polymarket-kalshi-over-lack-gambling-licences-2026-05-26/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-26T13:08:13.000Z",
+      "summary": "Article URL: https://www.reuters.com/business/spain-blocks-prediction-markets-polymarket-kalshi-over-lack-gambling-licences-2026-05-26/\nComments URL: https://news.ycombinator.com/item?id=48279316\nPoints: 373\n# Comments: 183",
+      "id": "efb80b070b8217d1015580ed34cf6fdc449a4f19960f8037b277d163f5a5e4a3",
+      "ref_id": "0",
+      "recommendationScore": 38,
+      "popularityScore": 95,
+      "priority": "low",
+      "comment": "关注预测市场监管的新闻报道，涉及商业和法律领域。",
+      "reason": "主要为商业和政策法规新闻，与核心技术主题的关联度较低，缺乏技术深度。",
+      "tags": [
+        "商业",
+        "政策法规",
+        "金融科技",
+        "市场监管"
+      ]
+    },
+    {
+      "title": "Netherlands blocks US takeover of vital digital supplier",
+      "link": "https://www.politico.eu/article/netherlands-blocks-us-takeover-vital-digital-supplier/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-26T11:46:08.000Z",
+      "summary": "Article URL: https://www.politico.eu/article/netherlands-blocks-us-takeover-vital-digital-supplier/\nComments URL: https://news.ycombinator.com/item?id=48278406\nPoints: 375\n# Comments: 129",
+      "id": "a919f4c481b2d6f3e7091d2d25c7323c48720a198d939133d0175b473ef06f22",
+      "ref_id": "3",
+      "recommendationScore": 38,
+      "popularityScore": 95,
+      "priority": "low",
+      "comment": "关于荷兰政府阻止美国收购关键数字供应商的国际商业新闻。",
+      "reason": "主要关注国际商业和地缘政治动态，技术内容不足，与核心技术主题关联度较低。",
+      "tags": [
+        "商业",
+        "地缘政治",
+        "政策法规",
+        "国际关系",
+        "供应链"
+      ]
+    },
+    {
+      "title": "Incident with Actions and Pages",
+      "link": "https://www.githubstatus.com/incidents/gnftqj9htp0g",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-26T11:10:19.000Z",
+      "summary": "Article URL: https://www.githubstatus.com/incidents/gnftqj9htp0g\nComments URL: https://news.ycombinator.com/item?id=48278090\nPoints: 72\n# Comments: 20",
+      "id": "0a59b7c77a50dc034be37704e35248fca998b56847aaae00cf2589ab398c7f98",
+      "ref_id": "4",
+      "recommendationScore": 38,
+      "popularityScore": 55,
+      "priority": "low",
+      "comment": "GitHub Actions和Pages服务的突发事件报告。",
+      "reason": "属于日常运维状态更新，缺乏技术深度和新颖性，但对相关用户有即时实用性，优先级较低。",
+      "tags": [
+        "GitHub",
+        "DevOps",
+        "服务中断",
+        "编程工具",
+        "运维"
+      ]
+    },
+    {
+      "title": "C64 Basic: Game Map Overhead \"Camera View\"",
+      "link": "https://retrogamecoders.com/overhead-camera-view/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-26T13:47:39.000Z",
+      "summary": "Article URL: https://retrogamecoders.com/overhead-camera-view/\nComments URL: https://news.ycombinator.com/item?id=48279842\nPoints: 48\n# Comments: 5",
+      "id": "2670ba67cce8154e25e86574243f7eb072595931ab229d9da1bb3acb055b44b4",
+      "ref_id": "3",
+      "recommendationScore": 35,
+      "popularityScore": 25,
+      "priority": "low",
+      "comment": "一篇关于C64 Basic时代游戏地图“俯视视角”实现的复古编程文章。",
+      "reason": "虽然属于编程范畴，但主题过于小众和陈旧，与当前主流技术趋势不符。",
+      "tags": [
+        "复古编程",
+        "C64",
+        "游戏开发",
+        "Basic",
+        "复古游戏"
+      ]
+    },
+    {
+      "title": "Expected IQ spread on a jury",
+      "link": "https://www.johndcook.com/blog/2026/05/26/expected-iq-spread-on-a-jury/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-05-26T13:50:51.000Z",
+      "summary": "There’s been some discussion online lately about how a large difference in IQ makes it difficult for two people to communicate. There have been studies that confirm this effect. The difficulty is not insurmountable, but it takes deliberate effort to overcome. Someone dismissed this communication difficulty by pointing out that the expected difference in IQ […]\nExpected IQ spread on a jury first appeared on John D. Cook.",
+      "id": "3a70bacf588a90ccd0b42a7e52ec4e95007a325774ffd0c1ea77386a19b22044",
+      "ref_id": "3",
+      "recommendationScore": 35,
+      "popularityScore": 45,
+      "priority": "low",
+      "comment": "将统计学原理应用于探讨IQ差异对沟通的影响，视角独特，但与科技核心关联度较低。",
+      "reason": "主题偏向社会学和心理学，虽然涉及统计学应用，但对纯科技博客受众的实用性不高。",
+      "tags": [
+        "统计学",
+        "心理学",
+        "沟通",
+        "社会学"
+      ]
+    },
+    {
+      "title": "Uber, Lyft drivers in Massachusetts form first US ride-share union",
+      "link": "https://www.reuters.com/business/world-at-work/uber-lyft-drivers-massachusetts-form-first-us-ride-share-union-2026-05-26/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-26T15:58:02.000Z",
+      "summary": "Article URL: https://www.reuters.com/business/world-at-work/uber-lyft-drivers-massachusetts-form-first-us-ride-share-union-2026-05-26/\nComments URL: https://news.ycombinator.com/item?id=48281509\nPoints: 168\n# Comments: 79",
+      "id": "2ffa786c7bb2fe28b3b6e89495533c3dd69caf1fdb93259cfecb80cd91878aa8",
+      "ref_id": "4",
+      "recommendationScore": 30,
+      "popularityScore": 85,
+      "priority": "low",
+      "comment": "关于网约车司机组建工会的新闻报道，属于社会经济而非技术内容。",
+      "reason": "虽然涉及科技公司，但内容主题为劳工和社会议题，不属于核心科技领域，与评审优先级不符。",
+      "tags": [
+        "商业新闻",
+        "社会经济",
+        "非技术"
+      ]
+    },
+    {
+      "title": "The Ballad of TIGIT",
+      "link": "https://www.owlposting.com/p/the-ballad-of-tigit",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-26T15:47:32.000Z",
+      "summary": "Article URL: https://www.owlposting.com/p/the-ballad-of-tigit\nComments URL: https://news.ycombinator.com/item?id=48281367\nPoints: 40\n# Comments: 4",
+      "id": "f74b4ed752eb06e88b0506cc57ae10b709fceac538cc31207e88aee48bb4c14a",
+      "ref_id": "0",
+      "recommendationScore": 30,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "这篇文章似乎是关于TIGIT生物学主题的探讨，内容相对小众。",
+      "reason": "主题与博客关注的AI、编程等核心技术领域关联度较低，受众有限。",
+      "tags": [
+        "生物科技",
+        "科学研究"
+      ]
+    },
+    {
+      "title": "Is \"colorectal cancer\" rising in \"young people\"?",
+      "link": "https://dynomight.net/crc-rates/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-26T16:00:21.000Z",
+      "summary": "Article URL: https://dynomight.net/crc-rates/\nComments URL: https://news.ycombinator.com/item?id=48281539\nPoints: 58\n# Comments: 35",
+      "id": "fbf7721cdde04a5c3dc269c54ffa8ae616d139fb075f06bef9c2fef9f01cfdc1",
+      "ref_id": "2",
+      "recommendationScore": 25,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "探讨结直肠癌发病率的医学话题，不属于科技范畴。",
+      "reason": "文章聚焦医学健康，与设定的科技主题优先级不符，不具备科技深度。",
+      "tags": [
+        "健康",
+        "医学",
+        "非技术"
+      ]
+    },
+    {
+      "title": "The real cost of owning a home",
+      "link": "https://ericturner.dev/posts/cost-of-home-ownership/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-26T16:04:39.000Z",
+      "summary": "Article URL: https://ericturner.dev/posts/cost-of-home-ownership/\nComments URL: https://news.ycombinator.com/item?id=48281611\nPoints: 58\n# Comments: 135",
+      "id": "fcd0479bf08abbf4cfd5868e13992d4e556a18f593b71765f495bd3dfa30f42d",
+      "ref_id": "1",
+      "recommendationScore": 20,
+      "popularityScore": 65,
+      "priority": "low",
+      "comment": "关于购房成本的个人财务文章，与科技主题无关。",
+      "reason": "内容偏向个人理财而非科技领域，不符合科技博客评审标准，即使有一定热度。",
+      "tags": [
+        "个人理财",
+        "非技术"
+      ]
+    },
+    {
+      "title": "Dropbox CEO Drew Houston to step down",
+      "link": "https://www.cnbc.com/2026/05/26/dropbox-ceo-drew-houston-ashraf-alkarmi.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-26T13:18:33.000Z",
+      "summary": "https://blog.dropbox.com/topics/company/dropbox-leadership-u...\nComments URL: https://news.ycombinator.com/item?id=48279453\nPoints: 68\n# Comments: 25",
+      "id": "91011e12e9c791d0139f9dec7af3eb198ce7cef3988997c804a4837c0220ec42",
+      "ref_id": "4",
+      "recommendationScore": 20,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "这是一篇关于Dropbox CEO人事变动的商业新闻报道。",
+      "reason": "内容属于公司管理层变动，而非技术深度或新颖性文章，与科技博客核心关注点不符。",
+      "tags": [
+        "商业新闻",
+        "公司管理",
+        "科技行业"
+      ]
+    },
+    {
+      "title": "Only insane people use the internet",
+      "link": "https://www.experimental-history.com/p/only-insane-people-use-the-internet",
+      "source": "experimental-history.com",
+      "publishedAt": "2026-05-26T16:02:14.000Z",
+      "summary": "OR: hit me with your Honda",
+      "id": "792a205e68b993828e39e75b23d940165b4415bf5767018fba3a4d2b3f8ddb67",
+      "ref_id": "1",
+      "recommendationScore": 20,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "一篇可能探讨互联网使用心理或社会影响的非技术性文章。",
+      "reason": "标题和内容更偏向社会评论或哲学思考，与科技博客的核心技术主题不符。",
+      "tags": [
+        "社会评论",
+        "互联网文化",
+        "哲学思考"
+      ]
+    },
+    {
+      "title": "Sage Care (YC S24) Is Hiring Software Engineers",
+      "link": "https://www.ycombinator.com/companies/sagecare/jobs/xtloH8r-senior-software-engineer",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-26T17:00:40.000Z",
+      "summary": "Article URL: https://www.ycombinator.com/companies/sagecare/jobs/xtloH8r-senior-software-engineer\nComments URL: https://news.ycombinator.com/item?id=48282478\nPoints: 0\n# Comments: 0",
+      "id": "e432463ebf67a73f4a03429239a0300035542f300464c4306ddccfc6e75ce21d",
+      "ref_id": "0",
+      "recommendationScore": 10,
+      "popularityScore": 5,
+      "priority": "low",
+      "comment": "这是一篇招聘启事，而非技术文章，不适用于科技博客内容评估。",
+      "reason": "内容不属于技术文章范畴，缺乏技术深度和普遍实用性，不符合科技博客评审标准。",
+      "tags": [
+        "招聘",
+        "非技术"
+      ]
+    },
+    {
+      "title": "Is “colorectal cancer” rising in “young people”?",
+      "link": "https://dynomight.net/crc-rates/",
+      "source": "dynomight.net",
+      "publishedAt": "2026-05-26T00:00:00.000Z",
+      "summary": "(Yes, but.)\nOver the past few years, I’ve seen many articles about mysterious rise in colorectal cancer (CRC) in young people. There are various stories for why this might be happening:\nGeneral health. Maybe modern people are unhealthy (obesity, low physical activity, diabetes, poor sleep), leading to insulin resistance and chronic inflammation, meaning faster epithelial cell proliferation and a miscalibrated immune system that fails to stop early cancers?\nUltra-processed food. Maybe people are eating more ultra-processed foods that contain additives (like emulsifiers) that degrade colon mucus, allowing bacteria to contact epithelial cells and drive inflammation? Or maybe ultra-processed food has low fiber and glycemic load, leading to insulin resistance and chronic inflammation, with the problems mentioned above?\nBad meat. Maybe people are eating more red and/or processed meats, which expose the colon to nitrites and secondary bile acids, which inflame the epithelium and promote chronic inflammation?\nThe microbiome. Maybe it’s the microbiome. For example, maybe people’s guts are getting colonized by strains of E. coli that produce genotoxic colibactin. Or maybe overuse of antibiotics in early life depletes protective bacteria in the gut, allowing harmful strains to expand, e.g. strains of B. fragilis that cause inflammation, or strains of F. nucleatum that can survive in the gut and drive tumor growth?\nEnvironmental exposures. Maybe people are getting exposed to bad stuff in the environment (microplastics, forever chemicals, pesticides, endocrine disruptors, air pollution) that does bad stuff (damages gut barrier, screws up the microbiome, disrupts hormonal signaling)?\nMaternal health. Maybe poor maternal health (obesity, diabetes) exposes the fetus to elevated glucose / insulin / inflammation, and these in turn program the child for a lifetime of metabolic issues and inflammation?\nWhatever. Maybe alcohol / smoking / painkillers / calcium / vitamin D / inflammatory bowel disease / hereditary syndromes / screening bias?\nNone of the experts seem to agree on which of these is the culprit, so I figured that I (person with blog) should help.\nIf you poke at these stories, most of them are individually pretty weak. It can’t all be detection bias since CRC deaths are also going up in younger people. And several proposed causes (air pollution, tobacco) have actually fallen in rich countries. Other explanation, like E. coli producing colibactin, seem biologically real, but there’s no evidence that they’re increasing over time. Still other suggested causes (microplastics, forever chemicals) are mostly mechanistic speculation at this point. Obesity, inactivity, and chronic inflammation also all seem biologically real, and they are likely increasing, but why should they specifically cause colorectal cancer in young people?\nA plausible answer to that last question is that they aren’t. They’re doing it, but not specifically.\n“Young people”\nThis will sound pedantic, but bear with me: If you say that CRC is increasing in younger people, what exactly does that mean? After all, the set of people who qualify as young changes over time. (Ever notice that you keep getting older?)\nSiegel et al. (2026) plot how often CRC was found in different age groups in 1995 and in 2022.\n\nThey also provide this plot of how common different types of CRC are in different age groups.\n\nAt a glance, this doesn’t look so bad. If you’re young, you might think, “OK, my current risk is higher than previous generations faced at the same age, but I can look forward to decreasing rates when I’m old.” You could easily think this is good news: While there’s a relative increase when you’re young, it’s tiny compared to the absolute decrease while you’re old.\nUnfortunately that’s the wrong way to think about it.\nDownham et al. (2026) plot CRC rates in different age groups across the Anglosphere over time.\n\nEveryone I’ve shown this plot to has said it’s confusing, so let me explain: The different lines track age-bands as people born in different years move in and out of those bands. For example, in the US plot in the bottom right, the “20-25” line starts with the left-most dot showing the CRC rate for people born between 1965 and 1970 when they were 20 to 24 years old (around 1990). The next dot shows the rate for people born between 1970 and 1975 when they were 20 to 24 years old (around 1995), and so on.\nThat figure is weird, because the lines connect different groups of people. I wanted a plot where there are lines for different birth cohorts as they age. For unknown reasons, no one seems to make such plots, and the data isn’t trivial to access. So I used a plot digitizer to click on every damned point that US figure above and then replotted it:\n\nNow the individual lines show specific groups of people tracked through time. For example, the “1932.5” line shows CRC rates for people born between 1930 and 1935, when those people were at different ages. If you look closely, you’ll notice that these rates are higher those for people born between 1940 and 1945 for all ages (where we have data).\nThat was the pattern for a long time: Between 1920 and 1950, later generations enjoyed lower CRC rates across all phases of their lives. But between 1950 and 1960, that pattern reversed and since then later generations have had higher CRC rates at all ages.\nWe don’t know for sure what will happen in the future. But I think it’s likely this trend will continue. Yes, if you are currently young, you face higher CRC risk than previous generations did when they were young. That’s the bad news. The other bad news is that when you are old, you may also face higher CRC risk than previous generations did when they were old.\n“Colorectal cancer”\nThe other other bad news is that CRC isn’t the only type of cancer that’s rising in later generations. Sung et al. (2019) give this plot:\n\nThese are again the confusing graphs where individual lines show age bands as different people move in and out of them. But you get the point: Lots of cancers are going up in younger people later generations, including uterine, gallbladder, kidney, liver, pancreas, and thyroid. (Their additional material contains plots for 18 other cancers.)\nNote that these plots have a logarithmic y-axis, meaning the changes are larger than they might appear. Moving up a quarter of the way between two vertical ticks corresponds to an increase of a factor of ≈ 1.78.\nIf lots of cancers are becoming more common in later generations, then why is everyone talking about CRC? I think that’s because CRC in unique in that it is:\ncommon\ndangerous\nincreasing in later generations\ntreatable if caught early\ndetectable via screening\nFor example, thyroid cancer diagnoses have skyrocketed in recent decades. But that’s partly because of more detection, and thyroid cancer is highly treatable, without clear benefits from early detection. Pancreatic cancer also seems to be increasing, but we don’t have good ways to screen for it and even if we did, we don’t have good ways to treat it.\nCRC is really unique in that you can save lives by telling people, “Hey! CRC is going up! You should get screened!” If you’re interested in public health, that’s the most important thing. But if you’re interested in unraveling the mystery of CRC going up, it’s important to note that CRC isn’t really unique at all.\nTLDR\nNo:\nColorectal cancer is going up in young people.\nYes:\nVarious kinds of cancer are going up in later generations. (Definitely at younger ages, possibly at all ages.)\nReminder\nThis blog endorses colorectal cancer screening. We don’t yet know if colonoscopies are better than other methods of screening (sigmoidoscopy, stool tests), but we do know that screening is better than not screening. When caught early, CRC is highly treatable, often with only surgery (no chemotherapy or radiation) and a return to normal activities within a couple weeks.",
+      "id": "fbf7721cdde04a5c3dc269c54ffa8ae616d139fb075f06bef9c2fef9f01cfdc1",
+      "ref_id": "0",
+      "recommendationScore": 10,
+      "popularityScore": 15,
+      "priority": "low",
+      "comment": "一篇关于结直肠癌发病率的健康科普文章，与科技博客的主题方向严重不符。",
+      "reason": "内容偏离科技博客关注范围，技术深度和实用性对目标受众而言非常低。",
+      "tags": [
+        "健康",
+        "科普",
+        "医学"
+      ]
+    },
+    {
+      "title": "Quoting Paul Graham",
+      "link": "https://simonwillison.net/2026/May/26/paul-graham/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-05-26T15:02:30.000Z",
+      "summary": "",
+      "id": "5fc9d250771182fc08815394a37859e8e01e6c97faa599f27ae73cc48bc9f23e",
+      "ref_id": "0",
+      "recommendationScore": 5,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "无实质内容，无法评估其价值。",
+      "reason": "文章内容为空，缺乏可评估的技术深度、新颖性、实用性及信息密度。",
+      "tags": [
+        "Quotes",
+        "Empty"
+      ]
+    },
+    {
+      "title": "Quoting Corey Quinn",
+      "link": "https://simonwillison.net/2026/May/26/corey-quinn/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-05-26T02:28:54.000Z",
+      "summary": "",
+      "id": "f92fb59837af5df8a470b984c47357dc153203685996160cd350f2a1809f9c02",
+      "ref_id": "1",
+      "recommendationScore": 5,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "无实质内容，无法评估其价值。",
+      "reason": "文章内容为空，缺乏可评估的技术深度、新颖性、实用性及信息密度。",
+      "tags": [
+        "Quotes",
+        "Empty"
+      ]
+    },
+    {
+      "title": "California Brown Pelican, Snowy Egret, California Sea Lion, Harbor Seal",
+      "link": "https://simonwillison.net/2026/May/25/sighting-365297287/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-05-25T23:08:00.000Z",
+      "summary": "",
+      "id": "1f5fe697ff2f609e482e160cc33d841048f5f180a17a8438e99c6568f3736fa0",
+      "ref_id": "3",
+      "recommendationScore": 5,
+      "popularityScore": 5,
+      "priority": "low",
+      "comment": "内容为空，主题与科技博客无关。",
+      "reason": "文章内容为空，且标题所示主题与科技博客的关注点不符。",
+      "tags": [
+        "Nature",
+        "Biology",
+        "Empty"
+      ]
+    },
+    {
+      "title": "The Great Depopulation",
+      "link": "https://www.theatlantic.com/ideas/2026/05/global-birthrate-decline/687297/?utm_source=feed",
+      "source": "derekthompson.org",
+      "publishedAt": "2026-05-26T11:00:00.000Z",
+      "summary": "Why is the birth rate declining in every country on Earth?",
+      "id": "2c9a773cdce48ab13b7f3da70559de2acdcbc16edd86589ddf8bcd91202d5b19",
+      "ref_id": "4",
+      "recommendationScore": 5,
+      "popularityScore": 5,
+      "priority": "low",
+      "comment": "一篇关于全球人口出生率下降的宏观社会学议题，与科技博客的主题完全不符。",
+      "reason": "内容为全球人口趋势分析，与科技、编程工具、AI等核心主题无关，几乎没有技术深度可言。",
+      "tags": [
+        "人口",
+        "社会学",
+        "全球趋势"
+      ]
+    },
+    {
+      "title": "Revenge of The Business Idiot",
+      "link": "https://www.wheresyoured.at/the-revenge-of-the-business-idiot/",
+      "source": "wheresyoured.at",
+      "publishedAt": "2026-05-26T16:47:30.000Z",
+      "summary": "If you liked this piece, you should subscribe to my premium newsletter. It’s $70 a year, or $7 a month, and in return you get a weekly newsletter that’s usually anywhere from 5,000 to 18,000 words, including vast, detailed analyses of NVIDIA, Anthropic and",
+      "id": "ec082589a4b361c4a30d1ed66c393f3cfe7c7cef410a7258b8c5037f58640fb0",
+      "ref_id": "1",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "仅为付费通讯的推广内容，不含任何实际文章信息。",
+      "reason": "缺乏任何实质性技术内容或信息，无法进行有效评估。",
+      "tags": [
+        "推广",
+        "新闻通讯",
+        "订阅"
+      ]
+    }
+  ]
+}
