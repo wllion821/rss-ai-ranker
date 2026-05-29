@@ -1,0 +1,717 @@
+{
+  "dailySummary": "今日科技速递：AI领域持续火热，Anthropic年化收入突破470亿美元，Claude Opus 4.8小幅升级。LLM推理技术获重大进展，标准GPU可实现3000 tokens/s。",
+  "articles": [
+    {
+      "title": "Bijou64: A variable-length integer encoding",
+      "link": "https://www.inkandswitch.com/tangents/bijou64/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-29T15:03:32.000Z",
+      "summary": "Article URL: https://www.inkandswitch.com/tangents/bijou64/\nComments URL: https://news.ycombinator.com/item?id=48323992\nPoints: 145\n# Comments: 56",
+      "id": "e79f6b6a787320ca09caaafe4c45b2c1a980e5b9260c6c96e565ed5ab629ee84",
+      "ref_id": "2",
+      "recommendationScore": 95,
+      "popularityScore": 55,
+      "priority": "high",
+      "comment": "详细介绍了一种新颖的可变长整数编码Bijou64，技术深度和实用性极高。",
+      "reason": "内容高度技术化且新颖，直接对应“编程工具”主题，对开发者在数据结构和性能优化方面有极高参考价值。",
+      "tags": [
+        "数据编码",
+        "算法",
+        "编程工具",
+        "性能优化"
+      ]
+    },
+    {
+      "title": "Real-time LLM Inference on Standard GPUs: 3k tokens/s per request",
+      "link": "https://blog.kog.ai/real-time-llm-inference-on-standard-gpus-3-000-tokens-s-per-request/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-29T09:47:23.000Z",
+      "summary": "Article URL: https://blog.kog.ai/real-time-llm-inference-on-standard-gpus-3-000-tokens-s-per-request/\nComments URL: https://news.ycombinator.com/item?id=48321076\nPoints: 168\n# Comments: 77",
+      "id": "34a4865aee9bd38e543e53c0ccc1b8a3799075e8007a1f6913ea94481d8b31a2",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 74,
+      "priority": "high",
+      "comment": "详细探讨了在标准GPU上实现高效实时LLM推理的方法，技术深度和实用性极高。",
+      "reason": "完美契合AI主题，提供了关于LLM推理性能优化的前沿技术方案，具有极高的技术深度、新颖性和实用性。",
+      "tags": [
+        "AI",
+        "LLM",
+        "GPU",
+        "推理",
+        "性能优化"
+      ]
+    },
+    {
+      "title": "How the Pope’s Magnifica Humanitas offers a template for individuals to meet the AI moment",
+      "link": "https://www.technologyreview.com/2026/05/29/1138107/how-the-popes-magnifica-humanitas-offers-a-template-for-individuals-to-meet-the-ai-moment/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-05-29T10:00:00.000Z",
+      "summary": "Pope Leo XIV’s new encyclical on artificial intelligence includes a statement that warrants serious attention from technologists and policymakers: “Technology is never neutral.” Magnifica Humanitas (“Magnificent Humanity”) is a clarion call to all people to act with courage and solidarity as we enter an age already being transformed by artificial intelligence, the greatest change in…",
+      "id": "15c630a21b82e53ba90551bef8e8cee6a28c63f3944c06ff7b59d54feca8fbc2",
+      "ref_id": "2",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "从独特视角深入探讨AI伦理和人文关怀。",
+      "reason": "文章结合AI热点，以极具新颖性和深度的伦理视角，为理解AI的社会影响提供了重要指导，具有极高的推荐价值。",
+      "tags": [
+        "AI伦理",
+        "社会影响",
+        "哲学",
+        "政策",
+        "人文关怀"
+      ]
+    },
+    {
+      "title": "What's going on with Gemini?",
+      "link": "https://martinalderson.com/posts/whats-going-on-with-gemini/?utm_source=rss&utm_medium=rss&utm_campaign=feed",
+      "source": "martinalderson.com",
+      "publishedAt": "2026-05-29T00:00:00.000Z",
+      "summary": "Google's Gemini 3.5 Flash was the headline model at I/O - fast, but expensive and middling at coding. Why it makes more sense as a model built for Google itself, the TPU advantage, and Google's real weakness in coding agents.",
+      "id": "c1ac4d327109cf09218b641ba588c73e2a34f21c4219d810679e377deab7f767",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 92,
+      "priority": "high",
+      "comment": "独到分析Google Gemini 3.5 Flash模型，洞察其战略意义与局限，技术深度与新颖性俱佳。",
+      "reason": "对AI前沿模型的及时深度解读，包含对技术细节、市场定位和发展方向的见解，极具参考价值，是AI主题的优秀内容。",
+      "tags": [
+        "AI",
+        "Gemini",
+        "Google",
+        "LLM",
+        "模型分析",
+        "TPU",
+        "编码智能体"
+      ]
+    },
+    {
+      "title": "Composer’s dependency policies",
+      "link": "https://nesbitt.io/2026/05/29/composer-dependency-policies.html",
+      "source": "nesbitt.io",
+      "publishedAt": "2026-05-29T10:00:00.000Z",
+      "summary": "Composer 2.10 ships a new config.policy block that puts security advisories, malware reports, abandoned packages, and arbitrary custom blocklists under a single configuration object. Each list has the same three knobs: block (remove matching versions from the resolver pool), audit (ignore/report/fail), and ignore (per-package exemptions with optional version constraints). The model is the one uBlock Origin and other ad blockers use for their filter lists: named lists published at URLs by whoever maintains them, with a default set enabled and a config slot to subscribe to more or drop any.\nThe malware list is on by default and, unlike the others, also blocks during composer install from a lockfile. A version that was clean when you locked it and has been flagged since is blocked at install, which is a stronger guarantee than composer audit reporting it after the fact.\nA Composer repository advertises support by setting filter.metadata: true in its packages.json alongside the names of the lists it serves, and Packagist.org currently advertises one, malware, fed by Aikido’s feed via composer/packagist#1681. The per-package metadata files that Composer already fetches during resolution gain a new filter key next to the version list, so there’s no extra round-trip during composer update.\nFor composer install and composer audit, where Composer wouldn’t otherwise hit the registry for every locked package, the repository can advertise a summary-url returning a single JSON document of every flagged package and constraint, or an api-url that takes a POST of PURLs and returns only the matches. Packagist’s summary file is currently 70 packages.\nA flagged entry on the wire looks like this, from the metadata for a package Aikido reported last October:\n\n\"filter\": {\n  \"malware\": [\n    {\n      \"constraint\": \"0.1.1\",\n      \"url\": \"https://packagist.org/packages/techghoshal/my-library/filter-lists/malware/\",\n      \"reason\": \"malware\",\n      \"id\": \"PKFE-h151-2jj1-7rrv\",\n      \"source\": \"aikido\"\n    }\n  ]\n}\n\n\nThe first iteration shipped in #12766 at the start of April as config.filter, was reworked into the unified config.policy object in #12804, and the existing config.audit.* keys for advisories and abandoned packages now fall back to it with a deprecation path planned for 2.11. Stephan Vock did most of the implementation across both composer/composer and composer/packagist, with the Sovereign Tech Agency and Aikido funding the work. Private Packagist already serves the lists to organisations running pre-release Composer.\nThe bit I find most interesting is that malware isn’t a reserved name. It’s a well-known list with built-in defaults, but any other key under config.policy defines a custom list with the same block/audit/ignore options, and the data for it can come from a Composer repository that advertises a list of that name, from one or more HTTPS endpoints configured under sources, or from both merged together. Composer POSTs the project’s dependency PURLs and the configured list names to each source URL and gets back filter entries in the same shape Packagist serves.\n\n{\n  \"config\": {\n    \"policy\": {\n      \"company-policy\": {\n        \"sources\": [{\"type\": \"url\", \"url\": \"https://acme.example.com/filter.json\"}],\n        \"block\": true,\n        \"audit\": \"fail\"\n      }\n    }\n  }\n}\n\n\nAikido is the default malware source on packagist.org, supplying the data under CC-BY 4.0, but it’s wired in as a named source, so malware.ignore-source: [\"aikido\"] drops it entirely and another vendor’s endpoint can run instead or alongside. The same slot works for lists nobody is selling: a community-maintained typosquat list, or an organisation’s “packages legal hasn’t cleared yet” list, plugs in next to the built-in ones with the same exemption syntax and no vendor in a privileged position. The tracking issue reserves license, support, maintenance, and minimum-release-age as future built-in names, which will presumably arrive through the same mechanism rather than as separate features.\nOne flip the wire format could already support is allowlists: a package-to-constraint mapping describes permitted versions as readily as forbidden ones, and the only difference is whether the client drops the matches or drops everything else. cargo-vet is the working example of that model in Rust, requiring every crate in Cargo.lock to be covered by an audit record that’s either local or imported from a published set like Mozilla’s or Google’s, with anything unaudited failing the build. A Composer list configured as allow-mode and backed by a community-published “packages someone has actually read” feed would give PHP the same federated-audit model. The reserved license name rather implies allow semantics are on the roadmap anyway, since licence policy is almost always a set of permitted SPDX identifiers rather than forbidden ones.\nPrior art\nMost registries deal with confirmed malware by making it disappear server-side. PyPI’s project quarantine, live since August 2024, hides a project from the simple index so pip install can’t find it while admins investigate, and PEP 792 status markers now expose the quarantined state in the JSON API for clients to act on. npm’s process removes the package and publishes a security-holding placeholder under the same name. RubyGems and crates.io yank. Hex.pm retires a release, which prints a warning at resolve time but doesn’t block.\nServer-side removal has the advantage that every client gets it for free, including ten-year-old installs that will never be upgraded. Its limitation is that the registry admins’ judgement is the only one available: there’s one list, it’s whatever they’ve actioned so far, and a security vendor that spotted something an hour ago can publish a blog post but can’t get between you and pip install. In Composer’s design the package stays on the registry with a flag attached and which flags are honoured is set in client config, including ones supplied by third parties, with the corresponding cost that a Composer 2.8 install will fetch a flagged version without complaint until Packagist’s slower manual yank catches up. Packagist is making stable versions immutable alongside 2.10, so an upstream git re-tag is rejected rather than silently replacing the published release, and as a server-side change that one does reach the older clients.\nTime-based cooldowns, which I surveyed in March, are the other client-side defence that’s spread across package managers in the last year. pnpm, Yarn, Bun, npm, uv, pip, and Poetry all now refuse versions younger than a configured age. A cooldown blocks everything published in the last N days on the assumption that anything malicious gets caught and removed inside that window, where a filter list names specific versions and is only as good as the latency of whoever populates it. The minimum-release-age name reserved in Composer’s policy schema suggests both will eventually live under the same config block, and one reasonable configuration is a short cooldown plus a malware list for anything that slips past it.\nThird-party install-time blocking has existed for a while as CLI wrappers. Socket’s safe npm and Aikido’s own Safe Chain alias npm to a command that checks each package against the vendor’s database before writing anything to disk, and Socket’s Firewall does the same as a local registry proxy. cargo-deny takes a deny.toml of banned crates, advisories, and licences and fails CI if any appear in Cargo.lock, which is the closest existing thing to Composer’s custom-list shape, though it runs as a separate check rather than inside cargo resolution. I wrote about how none of these policy formats line up a couple of months ago, and Composer’s config.policy adds yet another. The source protocol underneath it, a PURL list in and filter entries out, is a reasonable candidate for the cross-tool format I was after in that post.\nI’d like to see more package managers copy this wholesale, because the design is simple and open: the same config options for every kind of policy list, with data sources anyone can publish.",
+      "id": "3448f1b54bbaa2c35151eaaa1071b33068224dce403467c1e96e03f5b70aaa9a",
+      "ref_id": "2",
+      "recommendationScore": 92,
+      "popularityScore": 78,
+      "priority": "medium",
+      "comment": "深入解析Composer 2.10的依赖策略新特性，对PHP开发者极为实用且及时。",
+      "reason": "及时且详细地介绍了主流编程工具的重要更新，对提高项目安全性和管理效率有直接帮助，技术深度和新颖性俱佳。",
+      "tags": [
+        "PHP",
+        "Composer",
+        "依赖管理",
+        "安全",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "Claude Opus 4.8: \"a modest but tangible improvement\"",
+      "link": "https://simonwillison.net/2026/May/28/claude-opus-4-8/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-05-28T23:59:50.000Z",
+      "summary": "",
+      "id": "99ce3b2883d241e54049ba179590c310945ba5ce62857105dd3b7bbca9988ce8",
+      "ref_id": "0",
+      "recommendationScore": 90,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "及时评估了Claude最新版本的更新和改进。",
+      "reason": "文章主题聚焦于当前热门的AI大模型，对用户了解最新技术进展和模型性能有极高参考价值。",
+      "tags": [
+        "AI",
+        "LLM",
+        "Claude",
+        "模型更新",
+        "技术评估"
+      ]
+    },
+    {
+      "title": "Anthropic's run-rate revenue hits $47 billion",
+      "link": "https://simonwillison.net/2026/May/29/anthropic/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-05-29T01:23:08.000Z",
+      "summary": "",
+      "id": "bc61ba7697f86dd863dce96be73bc614b061372eb87d9b585133e883977734bd",
+      "ref_id": "4",
+      "recommendationScore": 88,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "揭示AI巨头Anthropic的惊人营收表现。",
+      "reason": "文章提供了关于顶级AI公司商业成功的关键数据，对洞察AI产业发展趋势和市场格局至关重要，极具时效性和关注度。",
+      "tags": [
+        "AI",
+        "商业",
+        "市场分析",
+        "Anthropic",
+        "营收"
+      ]
+    },
+    {
+      "title": "Expertise in the age of AI",
+      "link": "https://www.moderndescartes.com/essays/ai_and_expertise/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-29T13:35:13.000Z",
+      "summary": "Article URL: https://www.moderndescartes.com/essays/ai_and_expertise/\nComments URL: https://news.ycombinator.com/item?id=48322929\nPoints: 59\n# Comments: 60",
+      "id": "5048138cf95324ff26e0cf00d14d9f80233cd3475f5d27ef2d6a1d6ed69fdd42",
+      "ref_id": "2",
+      "recommendationScore": 85,
+      "popularityScore": 82,
+      "priority": "high",
+      "comment": "深入探讨了AI时代专业知识的演变和价值，引发对未来的思考。",
+      "reason": "紧扣当前AI热点，对个人职业发展和企业战略规划具有重要指导意义，信息密度高且极具实用性。",
+      "tags": [
+        "AI",
+        "未来工作",
+        "专业知识",
+        "职业发展",
+        "思考"
+      ]
+    },
+    {
+      "title": "We should be more tired than the model",
+      "link": "https://vickiboykis.com/2026/05/28/we-should-be-more-tired-than-the-model/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-29T12:12:16.000Z",
+      "summary": "Article URL: https://vickiboykis.com/2026/05/28/we-should-be-more-tired-than-the-model/\nComments URL: https://news.ycombinator.com/item?id=48322118\nPoints: 100\n# Comments: 90",
+      "id": "1ca6576875413ede664aba235cccdd3ce57b329c1f8905a86ddba4783cbb1ab2",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 53,
+      "priority": "high",
+      "comment": "从认知疲劳角度探讨人与AI模型关系，观点新颖且具深度，对AI设计有启发。",
+      "reason": "紧密贴合AI主题，提供了关于人机交互和AI伦理的独特思考，具有较高的技术深度和新颖性。",
+      "tags": [
+        "AI",
+        "哲学",
+        "认知科学",
+        "人机交互"
+      ]
+    },
+    {
+      "title": "It's hard to justify buying a Framework 12",
+      "link": "https://www.jeffgeerling.com/blog/2026/its-hard-to-justify-framework-12/",
+      "source": "jeffgeerling.com",
+      "publishedAt": "2026-05-29T14:00:00.000Z",
+      "summary": "My nephew just graduated high school, and wants a laptop. When he decides what computer to buy, price (or more precisely, value) is the most important attribute.\nApple's MacBook Neo upended the 'value laptop' equation—Apple's not supposed to be both the cheapest option and the best value... but it seems like that's squarely where the Neo landed for the good-but-cheap laptop category.\n\n\n\nMy nephew is also my godson, and to kick off his computing journey, I thought I'd let him choose from a Framework 12 I bought to test, or the MacBook Neo I bought a couple months ago to use around the studio.",
+      "id": "2cd3051d8a5aaded0a2f2b0a7a82f2b50080ef7d5030facc94a76b9d263bf20a",
+      "ref_id": "3",
+      "recommendationScore": 85,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "通过个人体验对比了Framework笔记本与（虚构的）MacBook Neo的价值。",
+      "reason": "文章触及了消费者关注的硬件选购和价值判断，特别是Apple生态与可修复性笔记本的对比，具有广泛吸引力。",
+      "tags": [
+        "Apple 生态",
+        "硬件评测",
+        "笔记本电脑",
+        "Framework Laptop",
+        "购买指南",
+        "价值分析"
+      ]
+    },
+    {
+      "title": "Premium: What If...We're In An AI Bubble? (Part 3)",
+      "link": "https://www.wheresyoured.at/premium-what-if-were-in-an-ai-bubble-part-3/",
+      "source": "wheresyoured.at",
+      "publishedAt": "2026-05-29T16:58:10.000Z",
+      "summary": "Last week I ran the second part of my three-part “What If…We’re In An AI Bubble?” series where I have been covering the scenarios that I believe could lead to the bubble popping.\nHere’s what I’ve discussed so far:\n\nWhat",
+      "id": "2c722f518e4a3c370dbec76fa0bf35d0496e2b721b065ceb86b74246b04880d3",
+      "ref_id": "3",
+      "recommendationScore": 85,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "对AI泡沫可能破裂的系列分析文章，话题性强，具有一定的思辨价值。",
+      "reason": "紧扣当前AI热点，提供了对行业未来趋势的思辨，引发读者思考，符合AI主题高优先级。",
+      "tags": [
+        "AI",
+        "市场分析",
+        "科技趋势",
+        "泡沫经济"
+      ]
+    },
+    {
+      "title": "Notes from the Mistral AI Now Summit in Paris",
+      "link": "https://koenvangilst.nl/lab/mistral-ai-now-summit",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-29T16:22:01.000Z",
+      "summary": "Article URL: https://koenvangilst.nl/lab/mistral-ai-now-summit\nComments URL: https://news.ycombinator.com/item?id=48325340\nPoints: 142\n# Comments: 21",
+      "id": "6b9d31b7e387d0cf4e4a7ff26c243b37d9c7b29fb78c67356b73b029959d6c66",
+      "ref_id": "3",
+      "recommendationScore": 81,
+      "popularityScore": 74,
+      "priority": "high",
+      "comment": "详细总结了Mistral AI Now Summit的最新发布和关键技术亮点，聚焦大模型前沿。",
+      "reason": "文章提供了当前AI领域领军企业Mistral AI的最新动向和技术发展，对于AI开发者和研究者来说具有极高的信息密度和实用性。",
+      "tags": [
+        "AI",
+        "Mistral AI",
+        "大模型",
+        "峰会",
+        "研究"
+      ]
+    },
+    {
+      "title": "llm-anthropic 0.25.1",
+      "link": "https://simonwillison.net/2026/May/28/llm-anthropic/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-05-28T23:54:56.000Z",
+      "summary": "",
+      "id": "93da7554933827fbbcb0f0ec1f9aa7c3df2690099b6589fdf15247f2e1ff9ad1",
+      "ref_id": "1",
+      "recommendationScore": 80,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "关注了Anthropic相关LLM工具库的版本更新。",
+      "reason": "对使用Anthropic生态系统的开发者而言，这是了解工具链最新特性和改进的重要信息。",
+      "tags": [
+        "AI",
+        "LLM",
+        "编程工具",
+        "Anthropic",
+        "Python库",
+        "开发更新"
+      ]
+    },
+    {
+      "title": "Online (one-pass) algorithms",
+      "link": "https://www.johndcook.com/blog/2026/05/29/online-one-pass-algorithms/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-05-29T12:24:30.000Z",
+      "summary": "Canonical example The sample variance of a set of numbers is defined in terms of the sum of the squared distances from each point to the mean. So it would seem that you first need to calculate the mean, then go back and compute the squared differences from the mean. And yet sample variance can […]\nOnline (one-pass) algorithms first appeared on John D. Cook.",
+      "id": "56542eeb33095113927794958e2ba418e97e4abaf0b4035ae6e8a20ca14678bd",
+      "ref_id": "1",
+      "recommendationScore": 80,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "对在线（单遍）算法的简洁而深刻的解释，具有较高技术深度和实用性。",
+      "reason": "精炼地介绍了重要的算法概念，对数据处理和编程有实际指导意义，信息密度高。",
+      "tags": [
+        "算法",
+        "数据处理",
+        "编程",
+        "计算机科学"
+      ]
+    },
+    {
+      "title": "CAPTCHAs can still detect AI agents",
+      "link": "https://research.roundtable.ai/captchas-detect-ai/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-29T15:57:37.000Z",
+      "summary": "Article URL: https://research.roundtable.ai/captchas-detect-ai/\nComments URL: https://news.ycombinator.com/item?id=48324910\nPoints: 32\n# Comments: 16",
+      "id": "2e3784b3b1df16b21c63b418efe63fb921597257476880c8d85ad0886598d7ae",
+      "ref_id": "4",
+      "recommendationScore": 78,
+      "popularityScore": 31,
+      "priority": "high",
+      "comment": "一篇研究文章探讨了CAPTCHA在检测AI代理方面的有效性及当前AI绕过的局限性。",
+      "reason": "该文涉及AI与网络安全攻防前沿，对了解AI代理技术、网络安全以及如何抵御自动化攻击的读者具有重要的技术深度和实用价值。",
+      "tags": [
+        "AI",
+        "安全",
+        "CAPTCHA",
+        "机器人检测",
+        "研究"
+      ]
+    },
+    {
+      "title": "datasette 1.0a31",
+      "link": "https://simonwillison.net/2026/May/29/datasette/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-05-29T03:32:02.000Z",
+      "summary": "",
+      "id": "9602d7eff45f67f9b506000760fa6131ffe17ff1cd35f65b6b76f38bc0b96313",
+      "ref_id": "3",
+      "recommendationScore": 78,
+      "popularityScore": 55,
+      "priority": "medium",
+      "comment": "`datasette`数据工具的最新版本更新，对开发者有实用价值。",
+      "reason": "文章如果详细介绍新版本特性，对使用或关注数据探索工具的开发者具有较高的实用性和信息密度。",
+      "tags": [
+        "编程工具",
+        "数据管理",
+        "Python",
+        "datasette",
+        "版本更新"
+      ]
+    },
+    {
+      "title": "markdown-svg-renderer",
+      "link": "https://simonwillison.net/2026/May/28/markdown-svg-renderer/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-05-28T19:45:14.000Z",
+      "summary": "",
+      "id": "f435cb2e14a6f6fcbb221bd51c518d16f21f632c6314fd6579b1d231180e0d80",
+      "ref_id": "2",
+      "recommendationScore": 75,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "介绍了一个将Markdown渲染为SVG的实用工具。",
+      "reason": "解决了特定场景下Markdown内容的可视化和嵌入需求，对有此需求的开发者具有实用价值。",
+      "tags": [
+        "编程工具",
+        "Markdown",
+        "SVG",
+        "前端",
+        "开发工具",
+        "渲染"
+      ]
+    },
+    {
+      "title": "SQLite is all you need for durable workflows",
+      "link": "https://obeli.sk/blog/sqlite-is-all-you-need-for-durable-workflows/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-29T17:54:50.000Z",
+      "summary": "Article URL: https://obeli.sk/blog/sqlite-is-all-you-need-for-durable-workflows/\nComments URL: https://news.ycombinator.com/item?id=48326802\nPoints: 21\n# Comments: 6",
+      "id": "ad448856994d7fa8771c0144caeb521abec559c6b402475fbd1b071d5233c7da",
+      "ref_id": "0",
+      "recommendationScore": 74,
+      "popularityScore": 15,
+      "priority": "medium",
+      "comment": "深入探讨了如何利用SQLite构建持久化工作流，展示其作为轻量级可靠解决方案的潜力。",
+      "reason": "该文章为开发者提供了一种实用且高效的方法来处理数据持久化和状态管理，对编程工具类读者有很高的实用价值。",
+      "tags": [
+        "SQLite",
+        "数据库",
+        "编程工具",
+        "工作流",
+        "持久化"
+      ]
+    },
+    {
+      "title": "Someone used my open source project to phish people",
+      "link": "https://andrej.sh/posts/phishing-through-my-open-source-project",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-29T13:18:57.000Z",
+      "summary": "Article URL: https://andrej.sh/posts/phishing-through-my-open-source-project\nComments URL: https://news.ycombinator.com/item?id=48322753\nPoints: 50\n# Comments: 24",
+      "id": "9838c0652d84c046a8ce553c833b884c4167fec350332de6e11f0d689f44d579",
+      "ref_id": "3",
+      "recommendationScore": 70,
+      "popularityScore": 51,
+      "priority": "medium",
+      "comment": "一位开发者分享了其开源项目被用于网络钓鱼的经历，警示开源安全风险。",
+      "reason": "为开源项目开发者和使用者提供了宝贵的安全教训和防范建议，实用性强，具有警示作用。",
+      "tags": [
+        "开源",
+        "网络安全",
+        "钓鱼攻击",
+        "开发者经验",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "It's hard to justify buying a Framework 12",
+      "link": "https://www.jeffgeerling.com/blog/2026/its-hard-to-justify-framework-12/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-29T14:55:31.000Z",
+      "summary": "https://www.youtube.com/watch?v=aPVAnwuSjfk\nComments URL: https://news.ycombinator.com/item?id=48323869\nPoints: 71\n# Comments: 144",
+      "id": "2cd3051d8a5aaded0a2f2b0a7a82f2b50080ef7d5030facc94a76b9d263bf20a",
+      "ref_id": "3",
+      "recommendationScore": 65,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "一篇对Framework 12笔记本的评测视频，探讨其模块化设计和购买合理性。",
+      "reason": "内容涉及硬件产品设计和消费者体验，对关注产品创新和模块化硬件的读者有一定参考价值，属于“产品设计”范畴。",
+      "tags": [
+        "硬件评测",
+        "笔记本电脑",
+        "模块化设计",
+        "产品设计"
+      ]
+    },
+    {
+      "title": "Robinhood now lets your AI agents trade stocks",
+      "link": "https://techcrunch.com/2026/05/27/robinhood-now-lets-your-ai-agents-trade-stocks/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-29T17:46:27.000Z",
+      "summary": "Article URL: https://techcrunch.com/2026/05/27/robinhood-now-lets-your-ai-agents-trade-stocks/\nComments URL: https://news.ycombinator.com/item?id=48326659\nPoints: 39\n# Comments: 39",
+      "id": "1b8bb6a6cf767eac82e9ec38ebeceb3633aa4c474bf44ddb059dfc7499a7da81",
+      "ref_id": "1",
+      "recommendationScore": 64,
+      "popularityScore": 62,
+      "priority": "high",
+      "comment": "罗宾汉推出AI代理交易功能，标志着人工智能在主流金融应用中的重要进展。",
+      "reason": "这是一篇关于AI应用在金融科技领域的重大新闻，对关注AI发展和自动化投资的读者具有高度的新颖性和实用性。",
+      "tags": [
+        "AI",
+        "金融科技",
+        "自动化交易",
+        "AI代理",
+        "Robinhood"
+      ]
+    },
+    {
+      "title": "The Download: unlocking lithium and controlling Ebola",
+      "link": "https://www.technologyreview.com/2026/05/29/1138110/the-download-lithium-extraction-ebola-ai-pope/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-05-29T12:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. How a new extraction process could unlock the world’s lithium A new method for extracting lithium could cut costs and emissions from one of the world’s most important materials for EVs…",
+      "id": "4370ddece44bdeb7d1282af02650f91d598513dec2294cba3ec89647b50a5cbf",
+      "ref_id": "0",
+      "recommendationScore": 60,
+      "popularityScore": 65,
+      "priority": "low",
+      "comment": "关注锂提取新技术，但主题包含非科技内容。",
+      "reason": "文章前半部分涉及新能源技术进展，对关注EV和材料科技的读者有一定参考价值，但整体主题分散，优先级不高。",
+      "tags": [
+        "新能源",
+        "材料科技",
+        "EV",
+        "技术进展"
+      ]
+    },
+    {
+      "title": "GTA 6 Developers Unionize",
+      "link": "https://rockstarintel.com/gta-6-developers-announce-rockstar-games-union/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-29T15:32:55.000Z",
+      "summary": "Article URL: https://rockstarintel.com/gta-6-developers-announce-rockstar-games-union/\nComments URL: https://news.ycombinator.com/item?id=48324499\nPoints: 308\n# Comments: 168",
+      "id": "fa608810bcff57a84aee50c441183a238465048a5b46c0ba97778ac33a4f5fe0",
+      "ref_id": "1",
+      "recommendationScore": 55,
+      "popularityScore": 80,
+      "priority": "medium",
+      "comment": "关于GTA 6开发者组建工会的新闻，反映了游戏行业劳工关系的新动向。",
+      "reason": "虽然缺乏技术深度，但作为科技行业热点新闻，具有较高的时效性和行业洞察价值。",
+      "tags": [
+        "游戏开发",
+        "行业新闻",
+        "劳工关系"
+      ]
+    },
+    {
+      "title": "Headway Therapy Patients Forced to Scan Their Faces to Keep Getting Care",
+      "link": "https://www.404media.co/headway-therapy-facial-scan-biometric-data-identity-verification/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-29T14:15:41.000Z",
+      "summary": "Article URL: https://www.404media.co/headway-therapy-facial-scan-biometric-data-identity-verification/\nComments URL: https://news.ycombinator.com/item?id=48323397\nPoints: 86\n# Comments: 26",
+      "id": "cfe42d41a5a4d99ffabb03d7f6d6d0e7de0b14938f0f1dce24a483dc1222e0c8",
+      "ref_id": "0",
+      "recommendationScore": 55,
+      "popularityScore": 77,
+      "priority": "medium",
+      "comment": "探讨科技伦理和用户隐私的真实案例，引人深思。",
+      "reason": "揭示了健康科技公司在生物识别数据使用上的潜在风险和伦理困境，对产品设计者和普通用户都有警示意义。",
+      "tags": [
+        "隐私保护",
+        "生物识别",
+        "健康科技",
+        "伦理"
+      ]
+    },
+    {
+      "title": "Show HN: TV Explorer. Adding advanced UI to free online TV",
+      "link": "https://tvexplorer.live",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-29T16:39:09.000Z",
+      "summary": "Article URL: https://tvexplorer.live\nComments URL: https://news.ycombinator.com/item?id=48325624\nPoints: 13\n# Comments: 3",
+      "id": "c395bdb399cdc85873de0ca4906fea2744b2c82ec93d58c6bbc479cc2754b166",
+      "ref_id": "2",
+      "recommendationScore": 40,
+      "popularityScore": 8,
+      "priority": "low",
+      "comment": "一个为免费在线电视提供高级用户界面的Show HN项目，侧重于UI/UX改进。",
+      "reason": "该项目主要关注特定产品的界面展示，技术深度和广泛实用性相对较低，且社区关注度不高，优先级较低。",
+      "tags": [
+        "产品设计",
+        "UI/UX",
+        "独立开发",
+        "媒体"
+      ]
+    },
+    {
+      "title": "The UK Government's Low Value Purchase System is a Waste of Time",
+      "link": "https://shkspr.mobi/blog/2026/05/the-uk-governments-low-value-purchase-system-is-a-waste-of-time/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-05-29T11:34:54.000Z",
+      "summary": "It can be hard running a small business. If you want to sell to a large organisation like the UK Government, there are forms to fill in, checks to comply with, tenders to bid on, and a hundred other things.  Luckily, there's the RM6237 Low Value Purchase System to make everything better. If a department wants to buy something below a certain threshold, they can contact any of the registered…",
+      "id": "787749f9741ffcb2479bce05fe534c545c029b7c6ef6e3e4e72ddef9fc123f5a",
+      "ref_id": "0",
+      "recommendationScore": 40,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "针对英国政府采购系统低效的评论，对特定小企业有一定参考价值。",
+      "reason": "主题与核心科技领域关联度较低，受众非常小众，技术深度不高。",
+      "tags": [
+        "政府采购",
+        "小企业",
+        "英国",
+        "管理"
+      ]
+    },
+    {
+      "title": "I am retiring from tech to live offline",
+      "link": "https://openpath.quest/2026/i-am-retiring-from-tech-to-live-offline/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-29T14:40:47.000Z",
+      "summary": "Article URL: https://openpath.quest/2026/i-am-retiring-from-tech-to-live-offline/\nComments URL: https://news.ycombinator.com/item?id=48323683\nPoints: 514\n# Comments: 355",
+      "id": "efb73663cc59ca36712d6a324a65ce5dd10b9202bb5a16de200f691778d2777e",
+      "ref_id": "4",
+      "recommendationScore": 30,
+      "popularityScore": 90,
+      "priority": "low",
+      "comment": "一篇个人叙事，讲述了从科技行业退休并回归线下生活的心路历程。",
+      "reason": "内容为个人反思和生活方式选择，虽然具有极高人气和人文价值，但与科技博客关注的技术主题关联度极低。",
+      "tags": [
+        "个人成长",
+        "生活方式",
+        "科技文化",
+        "社会评论"
+      ]
+    },
+    {
+      "title": "The Secret Garden of Rock-Paper-Scissors",
+      "link": "https://theshamblog.com/the-secret-garden-of-rock-paper-scissors/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-29T14:04:22.000Z",
+      "summary": "Article URL: https://theshamblog.com/the-secret-garden-of-rock-paper-scissors/\nComments URL: https://news.ycombinator.com/item?id=48323266\nPoints: 25\n# Comments: 7",
+      "id": "7045bc286ebe58cdebcb59f3229b155675a4ace493e5b7addfab732ea71664cf",
+      "ref_id": "1",
+      "recommendationScore": 30,
+      "popularityScore": 22,
+      "priority": "low",
+      "comment": "对经典游戏“石头剪刀布”的趣味性分析，娱乐性大于实用性。",
+      "reason": "内容轻松，可能对游戏理论爱好者有吸引力，但技术和实用价值不高。",
+      "tags": [
+        "游戏理论",
+        "趣味",
+        "数学逻辑"
+      ]
+    },
+    {
+      "title": "High Density Living, 2000 Years Ago: Inside the Roman Apartment Building",
+      "link": "https://commonedge.org/high-density-living-2000-years-ago-inside-the-roman-apartment-building/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-29T12:30:02.000Z",
+      "summary": "Article URL: https://commonedge.org/high-density-living-2000-years-ago-inside-the-roman-apartment-building/\nComments URL: https://news.ycombinator.com/item?id=48322241\nPoints: 106\n# Comments: 34",
+      "id": "c9699ec9ba201e64c80dadd70dabfad5ae347774b5113b6eaed52d4145b9b0df",
+      "ref_id": "0",
+      "recommendationScore": 30,
+      "popularityScore": 44,
+      "priority": "low",
+      "comment": "一篇关于古罗马高密度居住的历史建筑分析，内容有趣但与科技主题不符。",
+      "reason": "文章主题为历史与建筑，非科技领域，但内容本身具有一定信息密度和趣味性。",
+      "tags": [
+        "历史",
+        "建筑",
+        "城市规划"
+      ]
+    },
+    {
+      "title": "Tulip mania: when a single flower was worth more than a house (2025)",
+      "link": "https://dutchreview.com/culture/tulip-mania-netherlands/",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-29T11:51:34.000Z",
+      "summary": "Article URL: https://dutchreview.com/culture/tulip-mania-netherlands/\nComments URL: https://news.ycombinator.com/item?id=48321956\nPoints: 129\n# Comments: 113",
+      "id": "a5e9d3c3ba32f3686573f5a6c3972397766aec9607d20cf1de3f562ef8dba1b9",
+      "ref_id": "3",
+      "recommendationScore": 25,
+      "popularityScore": 68,
+      "priority": "low",
+      "comment": "回顾了著名的郁金香狂热历史事件，与科技主题无关。",
+      "reason": "文章主题为历史经济事件，与科技博客关注的AI、编程等领域完全不符。",
+      "tags": [
+        "历史",
+        "经济",
+        "金融"
+      ]
+    },
+    {
+      "title": "The dead economy theory",
+      "link": "https://www.owenmcgrann.com/p/the-dead-economy-theory",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-29T15:46:24.000Z",
+      "summary": "Article URL: https://www.owenmcgrann.com/p/the-dead-economy-theory\nComments URL: https://news.ycombinator.com/item?id=48324712\nPoints: 211\n# Comments: 249",
+      "id": "a02c69fb54e45298b8a60e9274d573fe3a73e8f3961521a829ad80f48dcc49a8",
+      "ref_id": "0",
+      "recommendationScore": 20,
+      "popularityScore": 65,
+      "priority": "low",
+      "comment": "一篇关于经济理论的讨论，与科技博客的核心主题关联度低。",
+      "reason": "内容侧重宏观经济理论，缺乏技术深度和实用性，不符合科技博客的优先关注点。",
+      "tags": [
+        "经济理论",
+        "社会评论"
+      ]
+    },
+    {
+      "title": "The deadly Ebola outbreak is proving difficult to control",
+      "link": "https://www.technologyreview.com/2026/05/29/1138093/the-deadly-ebola-outbreak-is-proving-difficult-to-control/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-05-29T11:19:52.000Z",
+      "summary": "The alert was raised on May 5. Four health-care workers in the Ituri Province of the Democratic Republic of the Congo had died from an unknown illness within four days. Rapid response teams were sent to investigate, and tests at a research center in Kinshasa revealed the culprit: the Bundibugyo virus, one of the viruses…",
+      "id": "be2e408b311322c45039d848f6218c622feb4a4d4b3511a686c375105adf9787",
+      "ref_id": "1",
+      "recommendationScore": 15,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "与科技主题无关的公共卫生报道。",
+      "reason": "文章内容完全属于医学新闻范畴，与本科技博客的关注领域不符，不推荐。",
+      "tags": [
+        "公共卫生",
+        "医学新闻",
+        "疫情"
+      ]
+    },
+    {
+      "title": "Poll: How often do you check \"newest\"?",
+      "link": "https://news.ycombinator.com/item?id=48322267",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-29T12:31:59.000Z",
+      "summary": "Comments URL: https://news.ycombinator.com/item?id=48322267\nPoints: 48\n# Comments: 59",
+      "id": "10f8bb87c1dce2bb1566f95f617e3e2fd9992d2d0423a3bdc80df18ac1b6ecc4",
+      "ref_id": "4",
+      "recommendationScore": 10,
+      "popularityScore": 73,
+      "priority": "low",
+      "comment": "一个关于用户社区浏览习惯的调查，信息价值和技术深度较低。",
+      "reason": "仅为社区内部的讨论性投票，缺乏技术洞察或广泛实用性。",
+      "tags": [
+        "社区",
+        "用户行为",
+        "调查"
+      ]
+    },
+    {
+      "title": "Cedana (YC S23) Is Hiring",
+      "link": "https://www.ycombinator.com/companies/cedana/jobs/d1vYocG-forward-deployed-engineer-ai-hpc",
+      "source": "Hacker News",
+      "publishedAt": "2026-05-29T12:01:00.000Z",
+      "summary": "Article URL: https://www.ycombinator.com/companies/cedana/jobs/d1vYocG-forward-deployed-engineer-ai-hpc\nComments URL: https://news.ycombinator.com/item?id=48322030\nPoints: 0\n# Comments: 0",
+      "id": "77fca6316913a2ceda392057f459a648131c0d15487ef669507c1201fc8820cf",
+      "ref_id": "2",
+      "recommendationScore": 10,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "这是一则关于AI/HPC工程师的招聘信息，而非技术文章。",
+      "reason": "本质是招聘广告，不属于科技博客内容范畴，实用性仅限于求职者。",
+      "tags": [
+        "招聘",
+        "AI",
+        "HPC"
+      ]
+    },
+    {
+      "title": "One Group, Clearly, Is Deranged",
+      "link": "https://paulkrugman.substack.com/p/whos-deranged-exactly",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-05-29T16:22:10.000Z",
+      "summary": "Paul Krugman, describe a few striking data visualizations:\nYouGov’s surveys subdivide Republicans into those who do and those\nwho don’t support MAGA — and the economic views of these two\ngroups are very different. A remarkable 65 percent of non-MAGA\nRepublicans say that the economy is getting worse, while only 11\npercent say that it is getting better. [...]\nAside from MAGA Republicans, Americans are bunched at the upper\nleft, with few people seeing the economy getting better and the\nvast majority seeing it as getting worse. Non-MAGA Republicans are\nmuch more similar in their views to independents, and even to\nDemocrats, than they are to MAGA.\nSo how big is the group that believes that we have a good economy?\nOnly 19 percent of Americans.\nThe MAGA/non-MAGA split amongst self-identifying Republicans is striking. Non-MAGA Republicans have views on the economy that almost exactly mirror those of independents — neither of which are that far from those of Democrats.\nAnd let’s face it, “MAGA” is a euphemism for the Donald Trump cult of personality. These are the people who think it’s fine, just fine for him to be putting his name on buildings, his signature (and perhaps face) on currency, putting his face on “special” edition US passports, erecting gold statues of himself, holding a UFC fight on the White House lawn to celebrate his birthday — not to mention the not-even-trying-to-hide-it-or-excuse-it abject corruption.\nIt’s rather depressing that 20 percent of the US population is in this cult. But I take solace that it’s only 20 percent. That’s not that much higher than the 13 percent who believe “Bigfoot / Sasquatch is a real, living creature”. This whole thing is a political boil that is starting to burst. Rats leave sinking ships.\n ★",
+      "id": "472430350326e1f6e3552c990a5303ab96b9aad3fd8c9f196148a282a224bffe",
+      "ref_id": "4",
+      "recommendationScore": 10,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "一篇关于美国政治经济观点的评论，与科技博客主题无关。",
+      "reason": "文章内容完全偏离科技博客的核心关注点，不适合在科技博客发布。",
+      "tags": [
+        "政治",
+        "经济",
+        "社会评论",
+        "数据分析"
+      ]
+    }
+  ]
+}
