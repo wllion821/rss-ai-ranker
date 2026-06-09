@@ -1,0 +1,395 @@
+{
+  "dailySummary": "",
+  "articles": [
+    {
+      "title": "Where is the AI jobs crisis?",
+      "link": "https://www.apollo.com/wealth/the-daily-spark/where-is-the-ai-jobs-crisis",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-09T17:29:17.000Z",
+      "summary": "Article URL: https://www.apollo.com/wealth/the-daily-spark/where-is-the-ai-jobs-crisis\nComments URL: https://news.ycombinator.com/item?id=48464333\nPoints: 13\n# Comments: 6",
+      "id": "529895b385ba68f129aedd160b30bd911673434e279c076cb4d364cc2e20f239",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "The LD_DEBUG environment variable (2012)",
+      "link": "https://bnikolic.co.uk/blog/linux-ld-debug.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-09T17:29:05.000Z",
+      "summary": "Article URL: https://bnikolic.co.uk/blog/linux-ld-debug.html\nComments URL: https://news.ycombinator.com/item?id=48464330\nPoints: 4\n# Comments: 0",
+      "id": "33cd5ea344849cf3b23d9f362853f95c06a38b54ff243a7d06e71e2bba5c79d8",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "What it feels like to work with Mythos",
+      "link": "https://www.oneusefulthing.org/p/what-it-feels-like-to-work-with-mythos",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-09T17:17:21.000Z",
+      "summary": "Article URL: https://www.oneusefulthing.org/p/what-it-feels-like-to-work-with-mythos\nComments URL: https://news.ycombinator.com/item?id=48464140\nPoints: 19\n# Comments: 8",
+      "id": "8fa21667c4bd4dc9f11a2fe1db879e76d87736f086b3fcc6849743f1d1406895",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "System Card: Claude Fable 5 and Claude Mythos 5 [pdf]",
+      "link": "https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-09T16:58:13.000Z",
+      "summary": "Article URL: https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf\nComments URL: https://news.ycombinator.com/item?id=48463811\nPoints: 133\n# Comments: 32",
+      "id": "6ba772e68b7dd9057c55abc78b73c7c9916527abfe2acdae2d69f365fb0aee5c",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Claude Fable 5",
+      "link": "https://www.anthropic.com/news/claude-fable-5-mythos-5",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-09T16:58:01.000Z",
+      "summary": "Article URL: https://www.anthropic.com/news/claude-fable-5-mythos-5\nComments URL: https://news.ycombinator.com/item?id=48463808\nPoints: 548\n# Comments: 323",
+      "id": "e11fcea9cd94bb207930afa4c02f669e72aafc98e134fd9a5562c910df7d5799",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Launch HN: Transload (YC P26) – Measuring freight items with CCTV",
+      "link": "https://news.ycombinator.com/item?id=48463273",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-09T16:28:28.000Z",
+      "summary": "Hi HN — we’re Julius, Jago, and Nils, and we’re building transload (transload.io).\ntransload helps LTL trucking companies measure freight dimensions using the security cameras already installed in their terminals. Instead of sending shipments through a dedicated dimensioning station, we measure them automatically as they move through the normal dock workflow.\nWe’ve put together a small HN-specific demo site here: https://hn.transload.io/\nIn LTL trucking, dimensions matter because they affect pricing, freight classification, and trailer utilization. If a shipment is larger than the shipper reported, the carrier may undercharge for it while still giving up the same amount of trailer space. The obvious fix is to measure every shipment, but that is surprisingly hard in a busy freight terminal. Dedicated dimensioning systems work for freight that passes through them, but they can add forklift travel, create dock congestion, and change the normal flow of work. In practice, many terminals only measure a sample of their shipments.\nJago grew up close to this industry through his family’s LTL trucking and cross-docking business. We did not start out building freight dimensioning. Our first idea was an AI system for optimizing forklift routes inside cross-dock terminals. After spending time with customers and talking to more than 50 trucking companies, we realized that forklift routing was not the pain people kept bringing up. Freight dimensions were.\nAt the same time, we saw that spatial AI was advancing quickly. Monocular metric depth estimation has become dramatically better, making it possible to recover accurate 3D structure from ordinary camera footage without expensive LiDAR sensors. MapAnything (https://github.com/facebookresearch/map-anything) and MoGe (https://github.com/microsoft/moge) are two examples.\nFreight terminals also have helpful structure: fixed cameras, repeated workflows, barcode scan timestamps, and known layouts. Nearly every warehouse already has CCTV. That led us to a simple question: what if we could measure freight automatically using the existing security cameras, entirely in the background? That would allow carriers to measure every shipment without changing the dock workflow.\nOur system has two main steps: connect a barcode scan to the right object in the video, then estimate that object’s dimensions in real-world units.\nDock workers already scan freight as part of the normal workflow. Each scan gives us a timestamp and a handling-unit ID. Around that timestamp, we analyze the video to infer which worker scanned and which shipment they scanned. We expected VLMs to handle this; they turned out to be far too unreliable. Instead, we train our own model that reasons in 3D over cues like gaze, body orientation, and movement.\nThat association step is critical. A frame can contain dozens of pallets, several workers, forklifts, and partially hidden freight. If we attach the scan to the wrong object, the measurement is useless.\nOnce we know the target shipment, we segment it and estimate a metric 3D bounding box from the monocular camera view. After the box is fitted, the dimensions are straightforward: length, width, height, and volume come directly from it.\nThe hard part is precisely fitting that bounding box from one ordinary security camera. A single 2D image does not directly tell you object shape or scale, and many different 3D boxes can explain similar-looking image evidence. We use the object mask, visible edges, floor contact, camera geometry, and constraints from the terminal to find the 3D box that best matches the scene.\nWe are currently working with several LTL carriers. For one customer, roughly 10% of checked shipments had dimension errors. The first use case is revenue recovery: identify under-dimensioned shipments, attach visual evidence, and help carriers correct the billing or classification. Longer term, the same data can help carriers understand trailer utilization better.\nLTL freight is an odd place to be doing 3D computer vision, and we learn something new every week. If you’ve worked on monocular reconstruction, 3D object detection, warehouse perception, or messy real-world CV, we’d love your take. Questions about freight, LTL terminals, or the technical approach are very welcome too.\nComments URL: https://news.ycombinator.com/item?id=48463273\nPoints: 16\n# Comments: 4",
+      "id": "996e1318bc7f41b6547e6955f5e55e288fe8bea220abe3a8972891bf06f71122",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Apple decided not to roll out Siri in EU after denied request for exemption",
+      "link": "https://www.reuters.com/business/apple-failed-make-its-ai-tool-comply-eu-regulations-eu-commission-says-2026-06-09/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-09T16:13:10.000Z",
+      "summary": "Article URL: https://www.reuters.com/business/apple-failed-make-its-ai-tool-comply-eu-regulations-eu-commission-says-2026-06-09/\nComments URL: https://news.ycombinator.com/item?id=48463024\nPoints: 127\n# Comments: 247",
+      "id": "df82b20c5200f6e1497e284ada264bc60f230316aa58304293230681924030ae",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Biff.core: system composition for Clojure web apps",
+      "link": "https://biffweb.com/p/core/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-09T16:12:52.000Z",
+      "summary": "Article URL: https://biffweb.com/p/core/\nComments URL: https://news.ycombinator.com/item?id=48463018\nPoints: 30\n# Comments: 7",
+      "id": "288146f1db89f72b39139a7848b5a0a494aa4346214ce60950387cc7f0c430f3",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "'Sloppenheimer:' Amazon Employees Mock the Company's AI on Slack",
+      "link": "https://www.404media.co/sloppenheimer-amazon-employees-mock-the-companys-ai-on-slack/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-09T15:59:41.000Z",
+      "summary": "Article URL: https://www.404media.co/sloppenheimer-amazon-employees-mock-the-companys-ai-on-slack/\nComments URL: https://news.ycombinator.com/item?id=48462823\nPoints: 127\n# Comments: 63",
+      "id": "eec5f6130e5b7b0354490006980bd36af164d4ec670c6a772ef79025687456e9",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "FCC wants to kill burner phones by forcing telecoms to get all customers' IDs",
+      "link": "https://www.404media.co/fcc-wants-to-kill-burner-phones-by-forcing-telecoms-to-get-all-customers-ids/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-09T15:21:46.000Z",
+      "summary": "Article URL: https://www.404media.co/fcc-wants-to-kill-burner-phones-by-forcing-telecoms-to-get-all-customers-ids/\nComments URL: https://news.ycombinator.com/item?id=48462308\nPoints: 164\n# Comments: 112",
+      "id": "e22cda1226cc84b36f12c467805ae1528acd7aa91b443716d4cc4962f152efe0",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Using Optical Aberrations to Distinguish Real Astronomical Transients",
+      "link": "https://arxiv.org/abs/2606.08319",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-09T15:12:30.000Z",
+      "summary": "Article URL: https://arxiv.org/abs/2606.08319\nComments URL: https://news.ycombinator.com/item?id=48462184\nPoints: 18\n# Comments: 1",
+      "id": "3fc382283296d3a3b26fd2238fdb19b8a3a05587bbdeabc43539a012aa4ade78",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Can LLMs Beat Classical Hyperparameter Optimization Algorithms?",
+      "link": "https://arxiv.org/abs/2603.24647",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-09T15:01:15.000Z",
+      "summary": "Article URL: https://arxiv.org/abs/2603.24647\nComments URL: https://news.ycombinator.com/item?id=48462062\nPoints: 61\n# Comments: 8",
+      "id": "ed3a0b6b8a5851ee94612c2f1a4ca4c208e4c389526d737fe5c731463af5be43",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Unified Controllable and Faithful Text-to-CAD Generation with LLMs",
+      "link": "https://arxiv.org/abs/2604.19773",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-09T14:04:54.000Z",
+      "summary": "Article URL: https://arxiv.org/abs/2604.19773\nComments URL: https://news.ycombinator.com/item?id=48461311\nPoints: 37\n# Comments: 6",
+      "id": "ec6f5925ee715d6c746288b7b90c5896aab36c50ecf0d3704f7be5e504a56988",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Is Grep All You Need? How Agent Harnesses Reshape Agentic Search",
+      "link": "https://arxiv.org/abs/2605.15184",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-09T13:27:03.000Z",
+      "summary": "Article URL: https://arxiv.org/abs/2605.15184\nComments URL: https://news.ycombinator.com/item?id=48460863\nPoints: 68\n# Comments: 30",
+      "id": "b11ae49f9c879ca1d763da159adbcf38407940cc1799f7a19ee9ef8824d19687",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Emerge Career (YC S22) Is Hiring a Founding Growth Marketer",
+      "link": "https://www.ycombinator.com/companies/emerge-career/jobs/v0S1AEG-founding-growth-marketer",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-09T12:01:09.000Z",
+      "summary": "Article URL: https://www.ycombinator.com/companies/emerge-career/jobs/v0S1AEG-founding-growth-marketer\nComments URL: https://news.ycombinator.com/item?id=48459968\nPoints: 0\n# Comments: 0",
+      "id": "8cf49ab7f7651154258d9a5f494019a16bb5ce7d7dac0376069659fb79c8b24c",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Show HN: Learn from 30 historical figures, open source, nonprofit, self-hosted",
+      "link": "https://github.com/chipmates/agoracosmica",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-09T11:56:25.000Z",
+      "summary": "Hello HN, I am the founder of Agora Cosmica.\nThis started about three years ago. On a walk I asked a chatbot to interpret the cave dream from Cormac McCarthy's book \"The Road\" as C.G. Jung. It gave me a perspective I had not thought of. But for my own dreams the policies of the big providers felt wrong for so personal conversations, as zero data retention is not available. So I started building.\nThe project evolved to a German nonprofit and we published the code (AGPL-3.0) last month. The content is still copyright, but will be opened to CC-BY 4.0 in the next 6 to 12 months.\nAgora Cosmica is a library to learn from 30 historical figures. Each one has 12 narrated stories about their teachings / life wisdom, speech to speech conversation.  Four learning modes and a council where you can gather the figures to discuss or reflect on a topic. Each figure is an AI Echo, an interpretation grounded in primary works, historical context, with a factcheck per figure to show what's verified versus recreated.\nOn privacy: The speech is self hosted on Hetzner GPU servers, Qwen3-TTS for German, Kokoro TTS for English, Faster-Whisper for transcription. 30 free messages per day (EU-hosted for GDPR),  BYOK, or you can run it in a full local self-hosted mode.\nNo conversation is stored, no tracking cookies, no profiling, no signup.\nThe app is slow on purpose. Cosmic, no dopamine rush.\nThe mission is to be a doorway, a first step, an introduction to get people interested and outgrow the app to move to primary texts and human teachers.\nLive at: https://agoracosmica.org\nComments URL: https://news.ycombinator.com/item?id=48459913\nPoints: 11\n# Comments: 2",
+      "id": "7b9f9a7e41cf113f0deadb79e8146987680dd62fc74ee900f2459b59349f55dc",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Show HN: Gravity – interactive solar-system simulator, from Newton to Einstein",
+      "link": "https://qunabu.github.io/Gravity/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-09T11:46:40.000Z",
+      "summary": "Just for fun and self education, I've built this over a weekend to teach myself why orbits exist, not just show planets going around. Something that was never clearly explain to me in school. \nIt opens with a guided tour that builds the idea up step by step: two bodies and the equal/opposite force, inertia (the Sun is removed and Earth just drifts straight), then \"an orbit is falling and continuously missing,\" cosmic velocities with a little rocket, Voyager 1 & 2's real gravity assists (the clock runs the actual 1977–1989 dates so the planets orbit into their grand-tour alignment and the slingshots line up), and it ends on Einstein — gravity as curved spacetime, the classic rubber-sheet well.\nWhat's real: every body uses its real radius/mass and J2000 orbital elements; positions come from solving Kepler's equation each  frame. You can toggle to an N-body mode (symplectic leapfrog) that shows live energy drift (~1e-6%) so you can see the integrator is honest. The only thing faked is scale — at true scale you can't see anything — so there's a toggle between true scale and a log-remapped \"visual\" scale, with physics always running in real AU.\nTech: TypeScript + Three.js + Vite, fully client-side, no backend, works offline (surface textures are generated procedurally from value-noise; only Earth uses a real image). Source: https://github.com/qunabu/Gravity\nHappy to answer questions — and feedback on the physics or the explanations is very welcome. This project might be totally inaccurate in terms of real physics, this is how i do understand this on my own - i'm happy to confront this with reality\nComments URL: https://news.ycombinator.com/item?id=48459837\nPoints: 89\n# Comments: 22",
+      "id": "6872c27c735a5e32ba9b05001b0590852bdb0e2ed32b46393078a13bd84471b7",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Making Graphics Like it's 1993",
+      "link": "https://staniks.github.io/articles/catlantean-3d-blog-1/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-09T10:46:14.000Z",
+      "summary": "Article URL: https://staniks.github.io/articles/catlantean-3d-blog-1/\nComments URL: https://news.ycombinator.com/item?id=48459294\nPoints: 536\n# Comments: 80",
+      "id": "16da20dc67488bf2c834dae4d27576c594650e52ee2dcb1870f793825fd56931",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "The iPhone's Last Stand?",
+      "link": "https://stratechery.com/2026/the-iphones-last-stand/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-09T10:08:18.000Z",
+      "summary": "Article URL: https://stratechery.com/2026/the-iphones-last-stand/\nComments URL: https://news.ycombinator.com/item?id=48459001\nPoints: 116\n# Comments: 159",
+      "id": "5ffa98d3cfa0c5efe512b3d28a54653393dd4a53cff4f69e62c55e1affc23b78",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Cleaning up after AI rockstar developers",
+      "link": "https://www.codingwithjesse.com/blog/rockstar-developers/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-09T09:10:10.000Z",
+      "summary": "Article URL: https://www.codingwithjesse.com/blog/rockstar-developers/\nComments URL: https://news.ycombinator.com/item?id=48458586\nPoints: 363\n# Comments: 265",
+      "id": "d4d728962b581be30860cad1bf2f55b7bd08db25426512e18635ab2df5005e18",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "The Download: whole-body rejuvenation drugs and five things to know about AI",
+      "link": "https://www.technologyreview.com/2026/06/09/1138604/the-download-anti-aging-drugs-ai-five-things-to-know/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-06-09T12:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. David Sinclair plans to test whole-body rejuvenation drugs in the XPrize competition The outspoken longevity scientist David Sinclair has predicted that, one day, you’ll go to the doctor and get a…",
+      "id": "20ce5c187ca8c291b64bb1f49bf97cb540848d60c4b5cb2f50e046c159ea4409",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Learning to lead in a hybrid human-AI enterprise",
+      "link": "https://www.technologyreview.com/2026/06/09/1137830/learning-to-lead-in-a-hybrid-human-ai-enterprise/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-06-09T10:20:06.000Z",
+      "summary": "As adoption of AI agents looks set to surge by as much as 300% in the next two years, leadership teams are carefully considering the implications of a hybrid human-AI workforce.  Unlike existing enterprise-level automation that relies on manual input, AI agents are capable of autonomously coordinating complex tasks, interacting with multiple tools and environments across…",
+      "id": "c934b2ecf9244944475bdd75b6b5016b5a1e9105c08f2e228c63d4d2d289d36c",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "David Sinclair plans to test whole-body rejuvenation drugs in the XPrize competition",
+      "link": "https://www.technologyreview.com/2026/06/09/1138545/david-sinclair-plans-to-test-whole-body-rejuvenation-drugs-in-the-xprize-competition/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-06-09T10:00:00.000Z",
+      "summary": "The outspoken longevity scientist David Sinclair has been predicting that one day, you’ll go to the doctor and get a prescription that will make you 10 years younger. Now MIT Technology Review has learned that he has plans to launch human tests of an oral “reprogramming” drug as part of a $101 million competition organized…",
+      "id": "7d4651a5992977e58cae0b4da0f35d2b18031d230add785af0d78ef8122725f3",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Five things you need to know about AI",
+      "link": "https://www.technologyreview.com/2026/06/09/1138582/five-things-you-need-to-know-about-ai/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-06-09T09:16:45.000Z",
+      "summary": "At SXSW London last week I gave a talk called “Five things you need to know about AI,” in which I shared what I think are the biggest themes in AI right now. I pulled a few things from our first AI10 list, an annual guide to the most important trends in this buzzy world,…",
+      "id": "7397efee0e46f68a9959255b811ab4d99f9264c2e9cd391d62005a65ab58153e",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Siri AI at WWDC 2026",
+      "link": "https://simonwillison.net/2026/Jun/8/wwdc/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-06-08T23:58:04.000Z",
+      "summary": "",
+      "id": "3372d8953b319f7c84b50147c3bc7bd18ed87c9a9b99324ed781636f6dcffb8e",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Apple WWDC 2026 Keynote",
+      "link": "https://www.youtube.com/watch?v=hF8swzNR1-o",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-06-09T17:42:32.000Z",
+      "summary": "A brisk 76 minutes, including the post-credits Easter egg music video. The past few years ran about a half hour longer.\n ★",
+      "id": "05a733ee940ead41fa91f9ed8286aef0b3ce6a036ce14aed357c685071948309",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Apple’s WWDC AI Demos Were Real and in Real Time",
+      "link": "https://techcrunch.com/2026/06/08/apples-wwdc-ai-demos-looked-more-real-after-250m-false-ad-settlement/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-06-09T17:38:21.000Z",
+      "summary": "Julie Bort, TechCrunch:\nBut the most telling detail wasn’t what Apple announced. It was\nhow it chose to show some things off. Many of the Apple\nIntelligence demoes featured someone standing, phone in hand,\npressing buttons or using voice commands in real time, while\nanother camera showed off the phone’s response.\nThese weren’t live onstage, anything-could-go wrong demos; they\nwere pre-taped. But they looked far more like proof of working\nfeatures than what Apple showed at WWDC 2024, when the company\nunveiled Apple Intelligence and a new Siri to the world\nthrough slickly produced videos that turned out to be more promise\nthan product.\nThe demos were all shot in single takes, with no editing. In fact, I think most of them were single takes of multiple demos back-to-back. That’s the way it should be, even when they feel a little slow. When a demo feels slow, the solution isn’t to edit the video — it’s to make the feature work faster.\n ★",
+      "id": "7633b5453d95c1128c41eabb2b8cdbadc6896380412ba8710500f265f76bc266",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Apple Introduces Siri AI",
+      "link": "https://www.apple.com/newsroom/2026/06/apple-introduces-siri-ai-a-profoundly-more-capable-and-personal-assistant/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-06-09T17:23:29.000Z",
+      "summary": "Apple Newsroom yesterday:\nThis new version of Siri is built on Apple Intelligence, allowing\nSiri to draw on personal context understanding and help users find\nwhat they need in the moment across messages, emails, photos, and\nmore. For example, users can ask Siri to find a restaurant\nrecommendation a friend messaged them about, surface a hotel\nconfirmation number from an old email, or pull up photos with\nfriends and family from a recent trip. And personal context\nunderstanding extends to third-party apps when developers\nintegrate with Spotlight.\nWith even more systemwide app actions, Siri AI lets users get\nthings done across apps, like drafting an email from scratch, or\nediting and sharing a set of photos. Using onscreen awareness,\nSiri AI can answer questions related to the content on a user’s\nscreen. For example, if a user gets a text about a potluck with\nfriends, they can brainstorm with Siri on what to bring and then\nadd a recipe to the Notes app.\nIn addition, Siri AI can use broad world knowledge to get\nup-to-date information from the web on virtually any topic and\ngenerate a helpful answer, such as when and where to see the next\nsolar eclipse, or when a musician is coming to town. Users can\nextend almost any response from Siri into a rich conversation and\nask follow-up questions.\nI like the name “Siri AI”. “New Siri” wouldn’t have legs because eventually this won’t be new. This should be the dividing line between Siri as we know it and Siri as it should be. The demos I’ve seen so far (I still don’t have access on my iOS 27 testing device) are impressive. Well, impressive compared to old Siri. They’re table stakes for generative AI. But Siri AI is the only system that can draw upon your personal data in the apps on your devices, and perform actions based on the app intents supported by the apps on your devices. It is in some ways less capable than ChatGPT or Claude, but in other ways has more potential. It’s a very different approach and I think it’s the right one for Apple.\nThey need to execute, they need to prove this can scale, and most of all, they need to get third-party apps on board with App Intents and App Schemas. But it seems like they’re doing all of that. This is not a done deal but it is very realistic.\n ★",
+      "id": "0562324b96a1b9dff51c4452130549ac714621df066fbdf43b17328007c55601",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Apple’s WWDC Announcement of the New Apple Intelligence System",
+      "link": "https://www.apple.com/newsroom/2026/06/apple-intelligence-brings-powerful-ai-capabilities-into-everyday-experiences/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-06-09T16:50:33.000Z",
+      "summary": "Apple Newsroom:\nThese new capabilities are powered by the next generation of Apple\nFoundation Models, custom-built in collaboration with Google and\nits Gemini models for deeply integrated Apple Intelligence\nexperiences. These latest models run on device and on servers\nusing Private Cloud Compute.\nEvery facet of the new Apple Intelligence architecture is built\nprivacy-first, from the latest Apple Foundation Models to the core\noperating system technologies that integrate these models deep\ninto Apple’s platforms. Apple Intelligence uses on-device\nprocessing and Private Cloud Compute to help protect users’\nprivacy. Private Cloud Compute gives users access to\nfrontier-level intelligence, while extending the privacy and\nsecurity of iPhone into the cloud.\nWhat’s confusing about this Apple-Google partnership is that Google pretty much calls all things AI “Gemini”. The models are “Gemini”, the assistant is “Gemini”, and the feature integrations are “Gemini”. So Apple is taking pains to emphasize that they’re building atop the Gemini models, not the Gemini assistant.\nOne way to think about it is this. Let’s say you’re a Google Gemini app user. That’s the assistant. Now you start using the new Apple Intelligence (that builds atop the Gemini models) and the new Siri AI (that builds atop the new Apple Intelligence). When you go back to the Google Gemini app, nothing you did using Apple Intelligence and Siri AI is visible to the Gemini app. And nothing you continue to do in the Google Gemini app is visible to Apple Intelligence or Siri AI.\n ★",
+      "id": "3fa5dc0be21ed69f9f24e2d449acd8d80da9fbdd6752cf617e5620963586d3fb",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "[Sponsor] WorkOS Launches auth.md — an Open Protocol for Agent Registration",
+      "link": "https://youtu.be/Dqp_b8GHLXU?t=1074",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-06-09T04:23:05.000Z",
+      "summary": "Sign-up forms were built for humans in browsers, so how do AI agents programmatically register with services?\nEnter auth.md. By exposing a single, machine-readable Markdown file at your service root, AI agents can dynamically discover your OAuth Protected Resource Metadata, parse required scopes, and authenticate seamlessly.\nWith native support in WorkOS AuthKit, you can now implement this protocol out of the box, giving AI tools a standardized, secure way to log into your application.\nRead the auth.md docs.\n ★",
+      "id": "b45436d6e477b21e53f9789bb0e61874a12102b42e1500c87a8c422b31dd6604",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "From the Annals of People Having Knowledge of the Matter, Siri AI Extensions Edition",
+      "link": "https://www.bloomberg.com/news/articles/2026-03-26/apple-plans-to-open-up-siri-to-rival-ai-assistants-beyond-chatgpt-in-ios-27",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-06-09T01:37:27.000Z",
+      "summary": "Mark Gurman, reporting (?) for Bloomberg two short months ago:\nApple Inc. plans to open Siri to outside artificial intelligence\nassistants, a major move aimed at bolstering the iPhone as an AI\nplatform. The company is preparing to make the change as part of a\nSiri overhaul in its upcoming iOS 27 operating system update,\naccording to people with knowledge of the matter. The assistant\ncan already tap into ChatGPT through a partnership with OpenAI,\nbut Apple will now allow competing services to do the same.\nThe company is developing new tools to allow AI chatbot apps\ninstalled via the App Store to integrate with the Siri assistant,\nsaid the people, who asked not to be identified because the plans\nhaven’t been announced. The chatbots will also work with an\nupcoming Siri app and other features in the Apple Intelligence\nplatform.\nThat means, for instance, if users have Alphabet Inc.’s Google\nGemini or Anthropic PBC’s Claude installed, they’d be able to send\nqueries to those services from within the Siri voice assistant,\njust like they have been able to with ChatGPT since Apple\nIntelligence launched in 2024.\nMaybe Apple ran out of time today, and will announce this tomorrow? Maybe they forgot to announce it? Maybe they scrapped the next-generation Siri that existed two months ago and in the last month rebuilt another entirely new next-generation Siri? I’ll bet something like that is what happened.\nI mean, people had knowledge of the matter.\n ★",
+      "id": "1449998e7f719d07b29f8ab5b6a0f2a5d20cf2408075ab387815d7619c107b7f",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "ppclp.ai announces 100x Productivity Gains ",
+      "link": "https://idiallo.com/blog/100x-productivity-gain",
+      "source": "idiallo.com",
+      "publishedAt": "2026-06-08T19:50:00.000Z",
+      "summary": "ppclp.ai, North America's third-largest AI-native manufacturer of premium wire-formed office fasteners, formerly known as Paper Clip Company, announced a landmark 100x improvement in its proprietary Organizational Productivity Index (OPI™), cementing what leadership is calling \"a new era of operational excellence\" and \"a little bit of a miracle.\"\n\t\t\t\nThe breakthrough follows an 18-month company-wide initiative called Project Streamline, during which all 340 employees completed mandatory efficiency training, adopted a new Jira-based workflow system powered by Rovo, and attended a two-day offsite in Scottsdale where a consultant named Derek asked everyone to \"think about how they think about work.\"\n\"I used to open fourteen browser tabs and just stare at them. Now I open fourteen browser tabs, and AI agents are looking at them for me. I've never felt more in control.\"\n — Sandra K., Senior Clip Assembly Coordinator, 11 years at ppclp.ai\nCentral to the transformation is Rovo, Atlassian's AI, which the ppclp.ai Jira Center of Excellence team has deeply integrated into the company's ticket lifecycle. Rovo now autonomously opens tickets when it detects workflow friction, assigns them to the appropriate team, and, in what the Center of Excellence calls \"the closed-loop moment\", it closes them upon determining that sufficient time has passed. Ticket velocity has increased by 340% as a result.\n\"Rovo doesn't wait for humans to decide a problem is solved,\" explained the Head of Delivery Operations, in a blog post titled We Taught Our Tickets to Heal Themselves. \"It senses resolution. It acts. And then it documents the action in a follow-up ticket, which it also closes.\"\nThe OPI™, aggregating over 200 signals including ticket velocity, standup attendance, emoji reaction latency in Slack, and what the methodology document calls \"ambient focus energy,\" now shows a number in the top-right corner of the dashboard that is very large and going up. The dashboard itself, prominently themed in dark mode (naturally), required six months to build and is, by all accounts, extremely beautiful.\n\"We are incredibly proud of this number,\" said CEO Bob Realman in a statement prepared by the communications team and reviewed by legal. \"It represents the dedication, the hustle, and the genuine passion of every single person at ppclp.ai. And of Rovo, who we consider an honorary team member and who closed 1,400 tickets last Tuesday alone.\"\nWhen asked by a reporter at the earnings call whether the 100x productivity improvement had resulted in a corresponding increase in paperclip output, CFO Melissa Tran paused, smiled warmly, and said the question \"reflected a pre-transformation mindset.\" She then advanced to the next slide, which was a photo of the team at the Scottsdale offsite.\n\"Volume is a very legacy way of thinking about a fastener business. We've moved beyond units. We're measuring what matters: Agentic motion.\"\n — Bob Realman, current and former CEO, ppclp.ai\nThe company did acknowledge, in a footnote on page 34 of the supplemental earnings materials, that paperclip production had declined approximately 20% year-over-year. The footnote attributed this to \"macroeconomic headwinds, a challenging staple-adjacent market, and notable seasonality in Q2 clip demand,\" adding that the trend was \"well within the range of normal paperclip seasonality\" and \"expected to self-correct, eventually.\"\nAnalysts who requested a definition of \"paperclip seasonality\" were directed to a separate FAQ document that had not yet been written. A Rovo ticket to write it was opened and closed the same afternoon.\nppclp.ai says it expects the OPI™ to continue improving through the end of the fiscal year. They are already exploring an OPI™ 2.0, an open source model that will incorporate biometric data, walking pace between meetings, and what the roadmap calls a \"vibe coefficient.\" Production guidance was not provided, but the company noted that the dashboard remains, in their words, \"extremely actionable,\" and that Rovo has already opened a ticket about it.\nOPI™ was developed in collaboration with Proxy Ai™. ProxyAi, so you don't have to.\nAbout ppclp.ai: ppclp.ai has manufactured precision wire-formed fasteners since 1987, and rebranded as an AI-native company in 2024. The company serves offices, government agencies, and one very loyal stationery shop in Duluth. ppclp.ai employs 340 humans and Rovo, and is headquartered in a building with a lot of glass. More information is available at a website that is currently being redesigned by an agent.\nForward-looking statements contained herein involve risks and uncertainties, including but not limited to: continued ambiguity about what productivity means, the possibility that Rovo opens a ticket about this press release and then closes it, and the risk that someone in finance eventually opens a spreadsheet unassisted. OPI™ is a trademark of ppclp.ai. \"Seasonality\" is used here in the broadest possible sense. Rovo is a product of Atlassian and is referenced here with the full confidence that it would autonomously resolve any objections. Past dashboard performance is not indicative of future paperclip output.",
+      "id": "695c212a87b4056737ba7f60b0a529af6b35350384fd6f06c0a3fc3e366c98a5",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Pluralistic: Naomi Kritzer's \"Obstetrix\" (09 Jun 2026)",
+      "link": "https://pluralistic.net/2026/06/09/deliver-us/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-06-09T13:30:12.000Z",
+      "summary": "Today's links Naomi Kritzer's \"Obstetrix\": When forced birth cultists become forced obstetrics militants. Hey look at this: Delights to delectate. Object permanence: DD-WRT; iTunes DRM is illegal; Fingertip magnet; Sony passwords v Gawker passwords; RIAA recants on 3 strikes; Parachute wedding dress; Roald Dahl (jerk); \"Level Up\"; The rent's too damned high; RIAA v \"Search by artist\"; \"Robopocalypse\"; You are not a wallet; The man who created the religious right; NY x voting; NY x antitrust; Media companies fund Heritage Minister's campaign; Richard Dreyfuss x iTunes EULA; 3-way street; RIAA lawyer becomes Solicitor General; Brock Allen's wrist-slap; Ad-tech interop; Apple's manorial security; Billionaires aren't taxed, \"Rabbits.\" Upcoming appearances: Kansas City, LA, Menlo Park, Toronto, NYC, Edinburgh, South Bend. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. Naomi Kritzer's \"Obstetrix\" (permalink) Naomi Kritzer's Obstetrix is a new, tense thriller in the mode of Atwood's Handmaid's Tale and Alderman's The Power; it's a beautifully turned, claustrophobic horror novel about an obstetrician who's been kidnapped by a Christian cult obsessed with fertility: https://us.macmillan.com/books/9781250423375/obstetrix/ Kritzer is a master of building scenarios that require her characters to express and resolve a wide variety of complex and contradictory emotions. Her breakout novel, Catfishing on CatNet is a charming and deceptively goofy story about an AI trained on the impeccable vibes in a really solid groupchat becoming sentient and demanding…cat pictures. This is the setup for a warm (but intense) novel of internet-mediated friendship and IRL mutual aid: https://memex.craphound.com/2019/11/19/naomi-kritzers-catfishing-on-the-catnet-an-ai-caper-about-the-true-nature-of-online-friendship/ Then there's her incredibly prescient 2015 story \"So Much Cooking,\" about people in lockdown during a pandemic. For obvious reasons, it enjoyed an revival in 2020, with Kritzer penning an excellent essay reflecting on what it means to have thought through the implications of a disaster that is now upon us: https://reactormag.com/didnt-i-write-this-story-already-when-your-fictional-pandemic-becomes-reality/ In 2023, Kritzer published one of the most memorable YA novels I've read, Liberty's Daughter, which is set on a libertarian seastead and told from the point of view of the daughter of the cult's founder: https://pluralistic.net/2023/11/21/podkaynes-dad-was-a-dick/#age-of-consent Liberty's Daughter is basically what you'd get if you rewrote a Heinlein YA novel from the perspective of one of the kids, who had to live with a Heinlein-type dad (Heinlein was childless and had some of the most batshit child-rearing ideas, which he managed to make sound bizarrely plausible). There's a lot of sf that is \"in dialogue\" with Heinlein (including some of mine), but no one nailed RAH like Kritzer. Then there's Obstetrix; it's got one of those admirably propulsive setups. Doctor Elizabeth Gwynn is an obstetrician who performed an abortion to save her patient's life, only to be dragged into the culture wars by North Dakota's crusading attorney general, who charged her with felony murder and offered to let her plead out if she would admit that she was wrong to do it, as an example to other OBs who might be tempted. Now, Dr Liz lives in Minneapolis, where her savings are running out and no one wants to hire an obstetrician who's done time. Then, Dr Liz gets a cold-call from a midwifing service that wants to hire her as an on-call doc. It's a weird offer from out of the blue, but Dr Liz can't afford to pass up a chance at steady work. She finds herself in a residence that the midwives work out of, and the nice woman there offers her a cup of tea. That's when the world fades to black, as the drugs in the tea take hold. Liz sporadically regains consciousness in a van during a multi-day drive, and already she is thinking about her escape – even as she is becoming increasingly aware of how truly terrible her situation is. When she finally arrives at the cult's remote compound, frozen and isolated, she learns that she has been kidnapped because the fertility-obsessed cult needs an OB, especially since the daughter of the cult's founder, the \"pastor,\" is carrying a high-risk pregnancy. All that is in the first few pages, which leaves plenty of room for an expertly spun second act in which we get Kritzer's trademark interpersonal work, where carefully chosen and smartly wrought small details flesh out a picture of the complex dynamics of life inside a \"high-demand\" cult, from the way that members are manipulated into policing each other's compliance to the internal processes that keep members cowed even when they're unobserved by others. It's a brilliant work of sociological speculation and the engine that drives it is a series of maneuvers and gambits whereby Dr Liz hopes to make her way to safety. I won't spoil the end, except to say that it is exciting, satisfying, and has a sweet denouement that does real justice to the whole book. All told, this is a read-in-one-sitting thriller that does as much to illuminate the workings and dynamics of patriarchy and religion as any gender studies class. It's peak Kritzer (so far), and that's saying something. Hey look at this (permalink) The mayor of Shelbyville, Indiana, says only people who live in ‘shitty houses’ oppose data center https://www.theverge.com/ai-artificial-intelligence/944984/shelbyville-indiana-mayor-shitty-houses-data-center Last Idea Factory https://starlogic.itch.io/last-idea-factory ‘Her silence was more powerful than words’: how I interviewed a Facebook whistleblower who wasn’t allowed to speak https://www.thenerve.news/p/carole-cadwalladr-sarah-wynn-williams-tim-wu-hay-festival-careless-people-gagging She won a religious exemption from using AI at work. The Pope's remarks could fuel similar appeals. https://www.businessinsider.com/worker-got-religious-exemption-using-ai-at-work-2026-6 Object permanence (permalink) #20yrsago HOWTO turn a $60 Linksys router into a $600 super-router https://web.archive.org/web/20060610003137/http://assets.lifehacker.com/software/router/hack-attack-turn-your-60-router-into-a-600-router-178132.php #20yrsago Dictionary of the Vulgar Tongue: 1811 slang dictionary https://www.gutenberg.org/ebooks/5402 #20yrsago Ex-RIAA head Hilary Rosen rethinks lawsuits and DRM https://web.archive.org/web/20060609030533/https://www.p2pnet.net/story/8979 #20yrsago Norwegian ombudsman says Apple’s iTunes DRM is illegal https://web.archive.org/web/20060611194556/http://forbrukerportalen.no/Artikler/2006/1149587055.44 #20yrsago Implanting a magnet in your fingertip adds a sixth sense https://web.archive.org/web/20060613072724/https://www.wired.com/news/technology/0,71087-0.html?tw=rss.index #20yrsago Recording industry: Search-by-artist is “too interactive” http://news.bbc.co.uk/1/hi/entertainment/5055744.stm #20yrsago US branch of “Pirate Party” launches https://web.archive.org/web/20060613041144/http://www.pirate-party.us/ #20yrsago Pranksters give fake McDonald’s anti-global-warming presentation https://web.archive.org/web/20060614011522/http://www.gamasutra.com/php-bin/news_index.php?story=9621 #20yrsago Can. Heritage Minister’s election was funded by entertainment co’s https://web.archive.org/web/20060612224646/https://www.michaelgeist.ca/component/option,com_content/task,view/id,1289/Itemid,85/nsub,/ #20yrsago High-def DRM licenses cost $15k https://web.archive.org/web/20060612202129/https://www.theinquirer.net/?article=32273 #15yrsago Richard Dreyfuss reads the iTunes EULA https://web.archive.org/web/20110611012317/http://www.cnet.com/8301-30976_1-20068778-10348864.html #15yrsago Top universities a ‘breeding ground’ for Tories, warn Islamic groups https://newsthump.com/2011/06/07/top-universities-a-breeding-ground-for-tories-warn-islamic-groups/ #15yrsago 3-Way Street: visualization of the uneasy dance of pedestrians, bikes and cars at a busy intersection https://web.archive.org/web/20110610123449/http://blog.ronconcocacola.com/2011/06/02/nyc-goes-three-ways.aspx #15yrsago Copyright extremist RIAA lawyer confirmed as America’s Solicitor General https://web.archive.org/web/20110610134934/http://www.wired.com/threatlevel/2011/06/senate-confirms-verrilli/ #15yrsago Scot-free millionaire playboy’s lawyer was judge’s depute campaign treasurer https://web.archive.org/web/20110610123824/http://articles.sun-sentinel.com/2011-06-06/news/fl-levin-sentence-mayocol-b060711-20110606_1_house-arrest-dui-manslaughter-case-kenneth-watkinson #15yrsago Bubble-in forms betray individual, traceable “handwriting” https://web.archive.org/web/20110609164727/http://www.freedom-to-tinker.com/blog/wclarkso/new-research-result-bubble-forms-not-so-anonymous #15yrsago Inbox Influence: plugin reveals corporate money behind the emails in your inbox https://web.archive.org/web/20110816105954/https://inbox.influenceexplorer.com/ #15yrsago Macedonia erupts after young man beaten to death by special police in public square https://web.archive.org/web/20110610132108/http://www.a1.com.mk/vesti/default.aspx?VestID=139049 #15yrsago Robopocalypse: rigorous, terrifying novel about a robotic campaign to exterminate humanity https://memex.craphound.com/2011/06/07/robopocalypse-rigorous-terrifying-novel-about-a-robotic-campaign-to-exterminate-humanity/ #15yrsago Using clickfraud on Google ads to amass shares of Google https://gwei.org/index.php #15yrsago Comparative analysis of leaked Sony and Gawker passwords https://www.troyhunt.com/brief-sony-password-analysis/ #15yrsago China’s Politburo warns Google not to be “political” https://web.archive.org/web/20110610165205/http://www.transparencyrevolution.com/2011/06/china-warns-google-not-to-be-evil/ #15yrsago Guerrilla camper re-opens shuttered Michigan public campsite https://web.archive.org/web/20110609184456/http://www.miningjournal.net/page/content.detail/id/563100/Campground-closed-in-2009-illegally-reopened.html?nav=5006 #15yrsago Record industry lobby says it no longer supports 3-strikes copyright termination laws https://torrentfreak.com/recording-industry-steps-back-from-piracy-disconnections-110606/ #15yrsago Death threats for Aussie climate scientists https://www.theguardian.com/environment/2011/jun/06/australia-climate-scientists-death-threats #15yrsago Wedding-dress made from life-saving parachute https://www.si.edu/collections/snapshot/parachute-wedding-dress #15yrsago Level Up: Gene Yang’s comic about destiny, games, and filial piety https://memex.craphound.com/2011/06/06/level-up-gene-yangs-comic-about-destiny-games-and-filial-piety/ #15yrago Roald Dahl: Jerk https://web.archive.org/web/20110602195454/http://thisrecording.com/today/2011/6/1/in-which-we-consider-the-macabre-unpleasantness-of-roald-dah.html #15yrsago Rotting Gulliver’s Travels themepark in Japan https://web.archive.org/web/20110609235431/http://www.sleepycity.net/posts/40/Gullivers_Kingdom__Sea_of_Trees #15yrsago Ticketed for being childless and eating doughnuts in a playground https://gothamist.com/food/two-women-ticketed-for-eating-doughnuts-in-a-brooklyn-playground #15yrsago Internet Archive becomes archive of physical books, too https://blog.archive.org/2011/06/06/why-preserve-books-the-new-physical-archive-of-the-internet-archive/ #10yrsago Swedish traditional costume made from Ikea bags https://ikeahackers.net/2016/06/swedish-folk-costume-5-ikea-bags.html #10yrsago NSA dumps docs about its Snowden response, reveals that Snowden repeatedly raised alarms about spying https://web.archive.org/web/20160604213547/https://news.vice.com/article/edward-snowden-leaks-tried-to-tell-nsa-about-surveillance-concerns-exclusive #10yrsago John Oliver buys and forgives $15M in medical debt, illustrates horrors of America’s debt-collectors https://web.archive.org/web/20160606234823/https://consumerist.com/2016/06/06/john-oliver-buys-15m-in-medical-debt-then-forgives-it/ #10yrsago David Byrne wants you to register to vote, and wants everyone else to, too https://web.archive.org/web/20160609060810/http://davidbyrne.com/were-better-than-this-vote #10yrsago You are not a wallet: complaining considered helpful https://www.theguardian.com/technology/2016/jun/07/its-your-duty-to-complain-thats-how-companies-improve #10yrsago Web Sheriff’s legal scare strategy: throw everything at the wall, hope something sticks https://www.techdirt.com/2016/06/07/web-sheriff-accuses-us-breaking-basically-every-possible-law-pointing-out-that-abusing-dmca-takedowns/ #10yrsago Lin-Manuel Miranda declares war on bots https://www.nytimes.com/2016/06/07/opinion/stop-the-bots-from-killing-broadway.html #10yrsago Uber loves competition, when it’s the one doing the competing https://www.boston.com/news/technology/2016/06/05/uber-app-urbanhail-startup-ride-prices/ #10yrsago MI5 warning: we’re gathering more than we can analyse, and will miss terrorist attacks https://theintercept.com/document/2016/06/07/preston-study/ #10yrsago Samantha Bee interviews Frank Schaeffer, who helped create the religious right https://www.youtube.com/watch?v=MhLY0JqXP-s #10yrsago Why defense attorneys aren’t cheering Brock Allan Turner’s wrist-slap https://web.archive.org/web/20160611024154/http://mimesislaw.com/fault-lines/brock-turner-the-sort-of-defendant-who-is-spared-severe-impact/10288 #10yrsago Password hashing demystified https://www.wired.com/2016/06/hacker-lexicon-password-hashing/ #5yrsago Google and France agree on ad-tech interop https://pluralistic.net/2021/06/08/leona-helmsley-was-a-pioneer/#monkeys-paw #5yrsago Billionaires don't pay tax https://pluralistic.net/2021/06/08/leona-helmsley-was-a-pioneer/#eat-the-rich #5yrsago Apple's manorial security https://pluralistic.net/2021/06/08/leona-helmsley-was-a-pioneer/#manorialism #5yrsago Rabbits: PK Dick meets Qanon https://pluralistic.net/2021/06/08/leona-helmsley-was-a-pioneer/#rabbits #5yrsago Competition tames ISPs https://pluralistic.net/2021/06/07/fire-on-one-end-fool-on-the-other/#muni-fiber-now #5yrsago New York to revolutionize voting https://pluralistic.net/2021/06/07/fire-on-one-end-fool-on-the-other/#sb309a #5yrsago New York to revolutionize antitrust https://pluralistic.net/2021/06/07/fire-on-one-end-fool-on-the-other/#sb933 #5yrsago The Rent’s Too Damned High https://pluralistic.net/2021/06/06/the-rents-too-damned-high/ Upcoming appearances (permalink) Kansas City: Facing the Future (Woodneath Library Center), Jun 10 https://www.mymcpl.org/events/119655/facing-future-cory-doctorow LA: The Reverse Centaur's Guide to Life After AI with Brian Merchant (Skylight Books), Jun 19 https://www.skylightbooks.com/event/skylight-cory-doctorow-presents-reverse-centaurs-guide-life-after-ai-w-brian-merchant Menlo Park: The Reverse Centaur's Guide to Life After AI with Angie Coiro (Kepler's), Jun 21 https://www.keplers.org/upcoming-events-internal/cory-doctorow-2026 Toronto: TBA, Jun 23 NYC: The Reverse Centaur's Guide to Life After AI with Jonathan Coulton (The Strand), Jun 24 https://www.strandbooks.com/cory-doctorow-the-reverse-centaur-s-guide-to-life-after-ai.html Philadelphia: The Reverse Centaur's Guide to Life After AI with David Williams (Fitler Club/Philadelphia Citizen), Jun 25 https://www.eventbrite.com/e/cory-doctorow-book-event-tickets-1990110326559 Chicago: The Reverse Centaur's Guide to Life After AI with Rick Perlstein (Exile in Bookville), Jun 26 https://exileinbookville.com/events/50628 Edinburgh International Book Festival with Jimmy Wales, Aug 17 https://www.edbookfest.co.uk/events/the-front-list-cory-doctorow-and-jimmy-wales South Bend: An Evening With Cory Doctorow (Notre Dame), Oct 6 https://franco.nd.edu/events/2026/10/06/an-evening-with-cory-doctorow/ Recent appearances (permalink) The Enshittification of Life, the Universe, and Everything https://doctorow.substack.com/publish/post/201176490 Cory Doctorow's digital jail-break (DW In Focus) https://www.dw.com/en/cory-doctorows-digital-jail-break/audio-77414035 Why the Internet Got Worse and What to Do About It (Jim Rutt) (RIP) https://www.jimruttshow.com/cory-doctorow-3/ On Enshittification – and what can be done about it (Re:publica) https://www.youtube.com/watch?v=KhINQgPMVSI EFFecting Change: How to Disenshittify the Internet (EFF, with Wendy Liu) https://archive.org/details/effecting-change-enshittification Latest books (permalink) \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 (https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/) \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2026 \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Third draft completed. Submitted to editor. \"The Reverse Centaur's Guide to AI,\" a short book for Farrar, Straus and Giroux about being an effective AI critic. LEGAL REVIEW AND COPYEDIT COMPLETE. \"The Post-American Internet,\" a short book about internet policy in the age of Trumpism. PLANNING. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "b588b39d3bd7cd8466e2e57e633b1eacef527ef4f81543c6cda7bad637d4ac30",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "\"No way to prevent this\" say users of only language where this regularly happens",
+      "link": "https://xeiaso.net/shitposts/no-way-to-prevent-this/memory-safety/CVE-2026-45447/",
+      "source": "xeiaso.net",
+      "publishedAt": "2026-06-09T00:00:00.000Z",
+      "summary": "",
+      "id": "2232b6ec9a44004ab23088b348db7ca1a392cf22fbfa6be00c91a17ef64b5bf0",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Forms of Open Source Government",
+      "link": "https://nesbitt.io/2026/06/09/forms-of-open-source-government.html",
+      "source": "nesbitt.io",
+      "publishedAt": "2026-06-09T10:00:00.000Z",
+      "summary": "Benevolent dictator for life. The founder keeps final say over project direction in perpetuity, by convention rather than written rule. Python ran this way until Guido stepped down in 2018, and Linux, Ruby, Rails, and Laravel still do. The unspoken upper bound on “in perpetuity” is one human lifespan, which none of the famous projects in the category have had to test yet.\nMalevolent dictator for life. The same arrangement after the benevolence has worn off, with the founder still in the chair and nobody around with the access or the energy to do much about it. From outside it shows up as long-time contributors going quiet and forks appearing in places that do not usually fork.\nSteering council. What a BDFL project becomes after the dictator retires or is asked to. The usual shape is a small elected committee with rotating seats and no permanent membership, as in Python’s transition to a five-person Steering Council via PEP 13 and PEP 8016 after Guido stepped down. Most BDFL projects do not write a succession plan in advance and end up improvising one in whatever crisis prompted the handover.\nPermanent core team. A long-lived group of recognised maintainers joined by invitation and serving without fixed term, sometimes inside a foundation and sometimes not. PostgreSQL’s core team is the canonical example, with new members nominated by existing ones and no formal voting or candidacy process. The model accumulates institutional memory better than rotating committees. The trade-off is that the criteria for joining are unwritten and amount to whatever the current members happen to agree on.\nThe Apache Way. A standardised ladder from contributor to committer to project management committee member, with a rotating chair and decisions taken on the dev mailing list by lazy consensus or vote. The structure is identical across every Apache project, which is the foundation’s actual product. It does not depend on any individual maintainer remaining interested next year, at the price of being slow.\nVendor-neutral foundation. A foundation owns the trademark and the legal entity, a technical oversight committee delegates to maintainers, and member companies pay dues that fund the staff. CNCF, Eclipse, OpenJS, and the Linux Foundation umbrella projects all run on variations of this shape. Neutrality means no single member captures the project, enforced by the membership agreement rather than anything structural in the code. The foundation itself is a participant in the arrangement rather than a neutral platform for it, with its own continuity and growth on the agenda alongside any one project’s.\nTechnical steering committee with subgroups. A TSC handles cross-cutting decisions, and special interest groups or working groups own particular areas of the codebase. Kubernetes is the maximalist version, with a documented governance file for every SIG, and Node.js runs a smaller version of the same shape. The model scales reasonably with the size of the project but less well with employer concentration, since once a majority of SIG leads work for the same company nothing about the org chart will say so.\nDo-ocracy with lazy consensus. Whoever does the work decides, and proposals pass absent objection within some window. Debian’s package maintainership runs this way, as does most of Apache once you are past the formal voting structure. It works as long as participation is broad, and reverts to an unannounced BDFL when one person ends up doing most of the work without saying so, with the cosmetic advantage over the announced version that nobody has to admit it.\nDiscord-driven development. The institutional memory of the project lives in a chat server, with decisions tracked by linking to messages from GitHub issues, and the durable record limited to whoever screenshotted what before the channel scrolled. Common in JavaScript frameworks and crypto projects, with the README linking a community server in place of a CONTRIBUTING file, and issue threads that close with a pointer to chat.\nConference-driven roadmap. The annual conference is the only time the maintainers are all in one room, so the roadmap for the year gets set on a Tuesday afternoon based on which suggestions made it onto the slide deck. The conference is sponsored by the biggest user of the project, whose feedback was incorporated during the planning calls. The signature outcome is a feature appearing in the next release that nobody filed an issue for, traceable to a slide deck nobody kept a copy of.\nRough consensus and running code. IETF doctrine, codified in RFC 7282, under which no formal vote is taken, working implementations carry more weight than opinions, and the chair calls consensus when objections are addressed rather than counted. The model suits standards bodies more than codebases. It reliably produces decisions owned by whoever showed up to push back, who are usually not the people the decisions affect.\nSingle-vendor open source. One company holds the copyright, the trademark, and the publish keys, contributors sign a CLA on the way in, and the roadmap is whatever the company needs. MongoDB, Elastic, HashiCorp, and Redis were open source by the OSI definition for most of their history, then relicensed away from it once the strategic calculation changed. The community check is the same as for the dictator (leave and fork), and the price is the cost of rebuilding whatever the company was paying for, which OpenTofu and Valkey are currently demonstrating in practice.\nHot fork summer. The project goes through governance crises predictably enough that a sequence of forks has accumulated (project, project-ng, project-next, project-classic), each with its own claim to the legitimate inheritance. Each fork was supposed to settle the question and instead added another row to the disambiguation page. Every new README explains at length which other forks the project is not, and downstream picks based on which lockfile they already have.\nToken-governed. On-chain proposals weighted by token holdings and executed by smart contract, as in Uniswap and MakerDAO. It has the only literal elections in the catalogue, with influence proportional to capital and the proportions on public ledger.\nCoding agent for life. Autonomous coding agent create the repository, register the account that hosts it, write the code, open and review their own pull requests, and merge without anyone signing off. Influence over the project accrues to anyone who can phrase an issue convincingly enough that the swarm acts on it, which is a wider electorate than any other model in the catalogue.",
+      "id": "e4b8db94bbdeff3112fe353b454d116380850cab1877ec225635de13e5d05c98",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "LLMs and almost good code",
+      "link": "https://entropicthoughts.com/llms-and-almost-good-code",
+      "source": "entropicthoughts.com",
+      "publishedAt": "2026-06-08T22:00:00.000Z",
+      "summary": "TL;DR: My new prior is that top-of-the-line LLMs working on easy tasks\ngenerate code that is maybe 10 % more complicated than necessary. I also think\nwe accept this complexity too easily, because it comes from code that is right\nhere, right now, solving an immediate problem. This may have consequences\nfor maintenance in the long term.\n\n\n\n\n\nThe background to this discovery was that I needed to do some CRUD plumbing in\na work project. It was a simple change that mostly mirrored existing\nfunctionality. This is a perfect fit for LLMs, in my experience, so I used a\nfrontier model to generate the code for it. The change ended up being a total of\njust over 200 lines, mostly additions.\n\n\n\n\n\nThe part of the generated code we’ll talk about is a 24-line function that\nconverts an arbitrary (user-supplied) string to a safe HTTP header\nvalue.\n\n\n\n(Continue reading the full article on the web.)",
+      "id": "2f2be9d48272c235d9edb050dea11792a1be63b1e313fa97067e7303b475b666",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Incorruptible",
+      "link": "https://steveblank.com/2026/06/09/incorruptible/",
+      "source": "steveblank.com",
+      "publishedAt": "2026-06-09T13:00:23.000Z",
+      "summary": "Incorruptible: Why Good Companies Go Bad… and How Great Companies Stay Great, by Eric Ries. Every once in a while a book comes along that doesn’t just change your tactical thinking, but makes you see the world in a different way. Reading this book is like taking the red pill in the Matrix.  Some will […]",
+      "id": "9d2cc08a8537770d77ba0513f4c56047dc9c47f0bab383e9a6bdd313e01f2ee4",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Active recall",
+      "link": "https://herman.bearblog.dev/active-recall/",
+      "source": "herman.bearblog.dev",
+      "publishedAt": "2026-06-09T14:50:00.000Z",
+      "summary": "Quick aside: My sister has a Bear blog called Notes on Making where she writes about knitting, wool dying, pattern design, and shows off what she's created. If you're into wool and crafting, take a look. It's really cool!\n\nI'm currently reading What I talk about when I talk about running by Haruki Murakami (thanks for the recommendation, Rishi) and a line stuck out to me:\nPerhaps I'm just too painstaking a type of person, but I can't grasp much of anything without putting down my thoughts in writing.\nThis line resonated with me because I've also found that the best way for me to understand a concept or idea is for me to write about it. Reading only gets me so far. The act of articulating what is stored in my brain into something legible and understandable is thinking and understanding.\nI worry about the education system, which has had the entire concept of writing as a form of study upended by AI, and universities have seen their first decline in literacy and comprehension ever recorded. But this isn't what this post is about, this post is about remembering things.\nI have often received complements from friends and strangers alike on how good my memory is. This tends to be complimenting what is generally considered a static attribute, since most people think of memory as being an immutable characteristic of a person. I can say with certainty that this isn't the case. The reason I remember things and confidently convey them is usually because I've written about them at some point.\nThis isn't relegated to ideas and concepts, but events in my own life, since I keep a daily journal and have for over a decade now. I've written more about this here, here, and here.\nThere's a study with the mouthful of a title Retrieval Practice Produces More Learning than Elaborative Studying with Concept Mapping by Karpike and Blunt (2011) that I read this morning where they had college students read short educational texts, then study them in different ways: rereading, building concept maps while looking at the text, and free recall (reading once, then writing down everything they could remember on a blank page without looking at the source material). On a delayed test about a week later they found that free recall produced better information retention than rereading or creating a concept map.\nThere's an extra detail emphasised that's the real kicker: in one version of the experiment, the final test itself was to produce a concept map — yet the students who had studied by free recall still outperformed the ones who had studied by making concept maps. So even when the practice method (free recall) didn't match the test format (concept mapping), the act of retrieving from memory beat the more elaborate, intuitively \"deeper\" study technique.\nI realise that, inadvertently, this is exactly what I've been doing the entire time with my blog, notes, and journal. The reason I can recall information so well is because I have read, watched, experienced, or discussed a concept or idea, then wrote about it on my blog, or in my notes or journal. I was practising free-recall this whole time and managed to trick people around me into thinking I'm just unnaturally good at remembering things.\nThis concept isn't new. The process of studying has historically always involved some form of note-taking and active recall. I wasn't a good student (at all) and never learnt how to study. The structure of school (and government school in South Africa, no less) was not set up in a way that allowed knowledge to stick. I feel like one minor tweak to the school system should be a course dedicated to how to study and effective note-taking. It's a pity I didn't have these skills in school because it would have made it a lot more pleasant. There's nothing quite as frustrating as having to learn something and despite many late nights studying, it refusing to lodge itself in my brain.\nTo come full circle, there's nothing particularly special about the way that I take notes, write, or journal. It is the act of doing it which is important. I tend to journal about my yesterday each morning before getting into work. As for notes, whenever there's something interesting I'd like to remember I write it in my notes.txt file, which is a large file full or random scribbles. As for writing on my blog, I don't have a schedule or explicit plan, I just write when there's something I've been thinking about that I believe is interesting.\nThe interesting part is that I don't really read my notes or journal. The act of writing is the important bit.\nIn a nutshell: I write for you all, but I guess I also write for me.",
+      "id": "93e1c42a22ba775bd000df79f1309bdeae77e1e4817b4b6237bf9451d6b4ff13",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Stop eating Lady Gaga's Oreos",
+      "link": "https://www.experimental-history.com/p/stop-eating-lady-gagas-oreos",
+      "source": "experimental-history.com",
+      "publishedAt": "2026-06-09T16:58:56.000Z",
+      "summary": "OR: The Great Switcheroo",
+      "id": "1da38fd399890f7c32c7f29d99d8d59e2cd437ccc018c8f8cad367a9f3d206d4",
+      "status": "score_failed",
+      "recommendationScore": 0
+    }
+  ]
+}
