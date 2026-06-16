@@ -1,0 +1,856 @@
+{
+  "dailySummary": "本地AI模型效能跃升，AI在机器人和主权语言模型领域加速；JAX框架现性能挑战。欧盟DMA法规恐阻碍AI服务，SpaceX百亿美元并购引业界瞩目。",
+  "articles": [
+    {
+      "title": "Running local models is good now",
+      "link": "https://vickiboykis.com/2026/06/15/running-local-models-is-good-now/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-16T14:36:57.000Z",
+      "summary": "Article URL: https://vickiboykis.com/2026/06/15/running-local-models-is-good-now/\nComments URL: https://news.ycombinator.com/item?id=48555993\nPoints: 650\n# Comments: 308",
+      "id": "f255d254cd0add03078ccd3993477c883207222fd58fe99ecc7c0b111d2dfebb",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 98,
+      "priority": "high",
+      "comment": "探讨了当前运行本地AI模型的便利性和优势，为用户提供了实用的指导。",
+      "reason": "该文章完美契合最高优先级的AI主题，具备极高的实用性和新颖性，反映了行业热门趋势，并获得了巨大的社区关注度。",
+      "tags": [
+        "AI",
+        "本地模型",
+        "机器学习",
+        "开发者工具",
+        "实践指南"
+      ]
+    },
+    {
+      "title": "Qwen-Robot Suite: A Foundation Model Suite for Physical World Intelligence",
+      "link": "https://qwen.ai/blog?id=qwen-robotsuite",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-16T13:15:15.000Z",
+      "summary": "Article URL: https://qwen.ai/blog?id=qwen-robotsuite\nComments URL: https://news.ycombinator.com/item?id=48554814\nPoints: 65\n# Comments: 6",
+      "id": "cd4aa99af2bc48545c5295bff5d68110c7a41052ff1342cdf5d89d0cbbf177af",
+      "ref_id": "1",
+      "recommendationScore": 95,
+      "popularityScore": 40,
+      "priority": "high",
+      "comment": "深入探讨了AI在机器人领域的前沿应用，推出了面向物理世界智能的基座模型套件。",
+      "reason": "完全符合AI主题优先级，技术深度和新颖性极高，代表了机器人AI的未来方向，虽社区热度不高但潜力巨大。",
+      "tags": [
+        "AI",
+        "机器人",
+        "大模型",
+        "前沿技术",
+        "物理世界AI"
+      ]
+    },
+    {
+      "title": "JAX: commitment issues",
+      "link": "https://www.gilesthomas.com/2026/06/jax-commitment-issues",
+      "source": "gilesthomas.com",
+      "publishedAt": "2026-06-15T21:30:00.000Z",
+      "summary": "Imagine you have JAX code like this, and run it on a machine with CUDA set up:\n    key = jax.random.key(42)\n\n    cpu0 = jax.devices(\"cpu\")[0]\n    with jax.default_device(cpu0):\n        array = jax.random.randint(\n            key,\n            (530640, 6, 1024),\n            0, 50_000,\n            dtype=jax.numpy.uint16\n        )\n        array.block_until_ready()\n\n    item = array[0]\n    item.block_until_ready()\n\nWe're creating a big array, blocking until it's ready (JAX is asynchronous, so\nthis makes sure that it's actually finished creating it), then getting\nthe first item, and as a belt-and-braces thing making sure that that is ready too.\nHow long do you think those last two lines -- a simple retrieval of a 6 x 1024 array\nfrom a larger one -- will take?  Some tiny fraction of a second would seem\nreasonable.\nBut running it on my machine just now, the answer is a bit of a surprise: just over 5 seconds.  And if you try to\nget array[1] immediately afterwards, it still takes about 1.2s.  Further lookups into\narray consistently take more than a second -- so while the larger\ninitial number might be something to do with setup -- maybe internal stuff being JITted -- that's clearly not the whole story.\nSomething is making these seemingly-simple array lookups take much longer than you'd\nexpect them to.\nLet's dig into that.\nA bit of background\nFirst things first, why would you want to do that slightly strange dance with the\njax.default_device context manager in the first place, rather than telling randint what\ndevice you want to use (eg. with out_sharding)?\nI'm writing some LLM training\ncode, and want to load my training dataset.  I don't want to load it into the VRAM\non the GPU -- that would be a waste of valuable GPU resources -- so I need it in\nthe CPU-side memory.  I'm using Safetensors, which will\nload stuff onto the system's default device.\nSo I need to override that temporarily to make sure that the dataset is loaded onto\nthe device where I want it.\nI initially discovered this problem when I tried to iterate over the resulting array in my training\nloop; the code above is a simplified version of that -- a minimal repro of the issue.\nAnd it's a serious one!  If each iteration has an overhead of 1.2s just to get 6,144 tokens\nready for the model, JAX will max out at about 5,000 tokens per second\nof training speed just due to that overhead -- a real forward and backward pass plus\nan optimiser step will obviously make things even slower.  For comparison, my PyTorch training loop managed almost 20,000 tokens/second\non the same hardware: all steps from getting the training data, putting it on the GPU,\nand doing the actual training.\nDebugging\nSo, let's look at that code again.  We've created\nour variable array on the CPU explicitly, and indeed if you print array.device,\nit says CpuDevice(id=0).  But if you print the device of the item, you get\nCudaDevice(id=0).  What's worse, if you watch nvtop while the code is running,\nas soon as it hits the lookup into the array, it starts using the GPU -- for each one,\nthere's a spike in GPU usage.\nSo, what gives?  We asked JAX to put the array on the CPU, but now it's doing\nGPU work, and putting the items there.\nThe problem is that when you create an array using the default_device context manager,\nit is placed on the specified device, but it's not committed to it.\nIf an array is not committed to its device, then JAX will feel free to move it\naround to others.\nIn order to commit an array to a device, you need to use jax.device_put explicitly\nstating which device you want it on.  Running\nthe same code, but with this:\narray = jax.device_put(array, cpu0)\n\n...immediately before the lookup into the array changes the numbers drastically;\nthe first lookup takes about 0.95s on my machine, the second 0.0002s, and then\nsubsequent ones less than 0.0001s.\nSome more detailed tests\nI decided to exercise this in depth, and wrote this script.\nIf you run it without the --commit command line flag, it will create the array,\nthen iterate over the first ten items, measuring how long it takes to get each one.\nRunning it just now:\nGetting the zeroth item from the array took about 5.4s.\nEach subsequent one consistently took about 1.2s\nWith the --commit flag, it uses device_put to explicitly commit the array to the\nCPU.  Running that:\nGetting the zeroth item from the array took about 0.95s\nEach subsequent one took less than 0.0002s.\nNow, that didn't quite cover my use case -- what if, I wondered, the slow operation\nwas putting things onto the GPU?  The script also has a --put_items_to_gpu flag to\ndo that -- after getting each item, it uses device_put.  With that flag:\nGetting the zeroth item from the array took about 0.86s, and putting it on the GPU took 0.02s.\nSubsequent items had \"get\" times similar to the previous run,\nand \"put\" times of about 0.0006s.\nSo, there's still a small startup penalty -- perhaps JAX is having to JIT some of\nits internal stuff -- but a perfectly decent speed after that.  Commitment works!\nWrapping up\nI'm still building my mental model of how JAX works, and working out exactly what\nis going on here is proving a bit tricky.  The split between a committed and an\nuncommitted array seems clear; the former is tied to a device, while JAX will move\nthe latter around as needed.\nIt also makes a certain amount of sense that it would want to move the items to the GPU;\nit is, after all, the default device.  But I'm less clear on why that was so slow, compared\nto the manual process of getting the item then putting it there.\nHypothesis: the array is on the CPU's RAM, but not committed there.  We ask for an item\nfrom that array, and maybe JAX wants that to be on the default device, the GPU.  So it moves the entire\n\"parent\" array there, extracts that item, and then returns that.  Then next time around\nwhen we ask for the next item, it does the same thing again.\nPlausible?  Maybe, but it does sound a bit pathological!\nAnyway, at the end of the day, I have a solid new heuristic of my own: if you want something\nto definitely be on some specific device, make sure that you nail it down there with\ndevice_put.  And then you won't have commitment issues like these.",
+      "id": "8b67b1e3826a1a05e6884500ec96e781e1af1dbad318403559d06737e7adc9f2",
+      "ref_id": "3",
+      "recommendationScore": 95,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "文章深入探讨了JAX在CUDA环境下进行数组操作时遇到的非预期性能问题，并进行了详细分析。",
+      "reason": "该文技术深度高，揭示了AI/ML框架JAX的一个重要性能坑点，对使用JAX的开发者具有极高实用性和新颖性，完美契合AI和编程工具主题。",
+      "tags": [
+        "AI",
+        "Machine Learning",
+        "JAX",
+        "Python",
+        "Performance",
+        "CUDA",
+        "Programming Tools"
+      ]
+    },
+    {
+      "title": "SubQ 1.1 Small",
+      "link": "https://subq.ai/subq-1-1-small-technical-report",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-16T14:50:10.000Z",
+      "summary": "Article URL: https://subq.ai/subq-1-1-small-technical-report\nComments URL: https://news.ycombinator.com/item?id=48556163\nPoints: 80\n# Comments: 36",
+      "id": "262bccad34a39b0373a581673f82f571a7546f4086faf1a8355bb9bf2292e812",
+      "ref_id": "3",
+      "recommendationScore": 92,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "SubQ 1.1 Small模型的技术报告，详细介绍了其架构和潜在性能改进。",
+      "reason": "文章直接聚焦于最高优先级的AI主题，技术深度极高，对AI研究人员和开发者具有重要参考价值。",
+      "tags": [
+        "AI",
+        "机器学习",
+        "技术报告",
+        "模型开发"
+      ]
+    },
+    {
+      "title": "The Download: the first brain implant power user and South Korea’s AI obsession",
+      "link": "https://www.technologyreview.com/2026/06/16/1139010/the-download-brain-implant-power-user-bci-south-korea-ai-obsession/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-06-16T12:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. This man with ALS is the first “power user” of a brain implant that lets him speak Casey Harrell has had a set of electrodes embedded in his brain for almost…",
+      "id": "e2a18d21109b538e02dd1f4198d255cf211817a03903831f7922cf704fc4dd96",
+      "ref_id": "0",
+      "recommendationScore": 92,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "聚焦脑机接口前沿应用和全球AI竞争态势，内容极具深度与创新性。",
+      "reason": "文章结合了AI和生物医学的突破性进展，探讨了高科技的社会影响和潜在价值，符合AI高优先级主题。",
+      "tags": [
+        "AI",
+        "Brain-Computer Interface",
+        "Medical Tech",
+        "Neuroscience",
+        "Innovation"
+      ]
+    },
+    {
+      "title": "The Washington Post on the EU’s DMA Folly",
+      "link": "https://www.washingtonpost.com/opinions/2026/06/14/apple-withholding-siri-ai-europe-is-another-dma-failure/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-06-16T02:20:30.000Z",
+      "summary": "The Washington Post editorial board yesterday (News+ link), “Why Europe Won’t Have the New Siri”:\nBrussels insists the decision is “Apple’s and Apple’s only” and\nthat nothing in its flagship Digital Markets Act forbids the\nlaunch. That’s technically true and wholly beside the point.\nThe law requires that the moment Siri AI ships in Europe, any\nrival AI agent must get the same sweeping access to a user’s\nmessages, files and chat history. Apple proposed putting in a\nsoftware security layer to make that safe and offered a phased\nrollout to build it. According to Apple, the European Commission\nrejected the proposal.\nThe DMA was supposed to open markets. But its legal logic was\nborn in the era of browsers, app stores and messaging apps. These\ncomponents can be swapped like batteries.\nThe DMA effectively demands everything to be swappable/interchangeable. So while the European Commission is correct that the DMA does not forbid Apple from launching a version of Siri AI, it clearly forbids Apple from launching the version of Siri AI they actually built.\nBehind all this lies the dream that Europe could be a “regulatory\nsuperpower.” It wanted to create a market too big to skip that\nwould, by virtue of its heft, end up exporting its rules to the\nrest of the world. That hasn’t worked out.\nWhen adapting a product for Europe costs more than European market\naccess is worth, companies no longer comply. They simply leave out\nthe feature.\nThat’s the folly of the DMA, or at least the maximal interpretation of the DMA that the European Commission is pursuing. It only makes sense under the assumption that the EU is too big a market to ignore, and the EU’s market might is such that systems will be designed to meet their compliance standards, regardless of whether the makers of these systems support the regulations or not. (And in the case of Apple with iOS and Google with Android, the two companies are in lockstep in their opposition to the EU’s regulations on system-level AI interoperability.)\nFirst, the EU is big but it isn’t that big. The best estimate I’ve seen is that the EU accounts for about 7% of Apple’s worldwide revenue. Plus, because of the DMA, the cost of doing business in the EU is now significantly higher for Apple and Google, because they need to engineer DMA-compliant versions of various features and systems. Unless, that is, they stop bringing (a long and ever-growing list of) new features to the EU.\nWhich brings me to my second point. What exactly is the motivation for Apple and Google to engineer entirely separate systems for the EU to bring new features into compliance with the Commission’s broad interpretation of the DMA? Because if Apple doesn’t engineer a DMA-compliant version of Siri AI, iOS users in the EU will ... switch to Android, whose system-level AI was deemed noncompliant by the Commission a few months ago?\nThis doesn’t directly hurt Apple. It doesn’t force Apple to design, engineer, and ship a compliant EU-exclusive version of Siri AI that supports plug-and-play LLM back ends. It only hurts iPhone users who live in the EU, who are stuck with the old dumb version of Siri for the foreseeable future. The European Commission is either stupid or insane.\n ★",
+      "id": "74a444b5c16ed80e24b8b6588b9ef6c4a2121986671003e082793a9eef5fd0d0",
+      "ref_id": "2",
+      "recommendationScore": 92,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "深入分析了欧盟DMA法规如何阻碍Apple在欧洲推出新Siri AI功能，引发对技术发展与法规冲突的深刻思考。",
+      "reason": "高度时效性和新颖性，结合AI、Apple生态与法规影响，揭示了前沿技术发展面临的重大挑战，技术深度和信息密度俱佳。",
+      "tags": [
+        "AI",
+        "Apple",
+        "欧盟DMA",
+        "监管",
+        "Siri",
+        "隐私",
+        "安全"
+      ]
+    },
+    {
+      "title": "SpaceX to buy Cursor for $60B",
+      "link": "https://www.reuters.com/legal/transactional/spacex-buy-anysphere-60-billion-2026-06-16/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-16T10:44:24.000Z",
+      "summary": "Article URL: https://www.reuters.com/legal/transactional/spacex-buy-anysphere-60-billion-2026-06-16/\nComments URL: https://news.ycombinator.com/item?id=48553224\nPoints: 594\n# Comments: 995",
+      "id": "8d30a52e4e1520a3fcd1460a099ad8cf05377bf4f9121adbd3593f4395ff4db3",
+      "ref_id": "4",
+      "recommendationScore": 90,
+      "popularityScore": 100,
+      "priority": "high",
+      "comment": "一则关于SpaceX收购AI编程工具Anysphere (Cursor) 的重磅科技新闻，预示着AI在开发工具领域的新动向。",
+      "reason": "结合了AI和编程工具两大高优先级主题，且在社区中获得了极高的关注度和讨论热度，具有重要行业影响力。",
+      "tags": [
+        "AI",
+        "编程工具",
+        "科技新闻",
+        "市场动态",
+        "收购",
+        "Cursor"
+      ]
+    },
+    {
+      "title": "10Gb/s Ethernet: switching to a Broadcom SFP+ module",
+      "link": "https://www.gilesthomas.com/2026/06/10g-ethernet-switching-to-broadcom-sfp-plus",
+      "source": "gilesthomas.com",
+      "publishedAt": "2026-06-16T18:45:00.000Z",
+      "summary": "Back in April, I upgraded my home LAN to 10Gb/s.\nThe in-wall cabling is CAT-6 or similar, so I had to use 10GBASE-T.  Now, the router\nI'm using, and the switch in my study, provide 10Gb/s through SFP+ cages; that meant\nthat they needed 10GBASE-T SFP+ modules in order to connect.\nThat kind of module is known to run hot -- sometimes too hot to actually work.  The\nmodules in reggie, the router, appeared to be running OK (see the linked post above\nfor charts), but the one in nigel, the study switch, was a worrying 93C.  I tried\nsticking some mini-heatsinks on it, which\nseemed to help a bit.  But the weather got warmer, and eventually the module overheated.\nI lost access to the Internet from the study, and checking the metrics showed me this:\n\nYou can see that it's \"flapping\": the temperature gets up to a level where the module\nshuts itself down for its own protection -- about 95C, I think -- and then when it\nhas recovered, it switches on again, the temperature rises, and the process repeats.\nI was able to work around the problem by switching on the air conditioning in the study.\nBut normally I only have it on when I'm in there, and keeping aircon on 24/7 just to keep\nthe network working felt like the wrong solution.\nIt was time to switch to a more power-efficient SFP+ module.\nMy original 10Gb/s post had quite a lot of discussion on Hacker News,\nand xxpor mentioned that there are two generations of 10GBASE-T SFP+ modules:\nold ones using a Marvell chip, and newer ones using\none from Broadcom.  blunden on the ServeTheHome forums\nmade the same point.  The Marvell-based ones were known to run hot, and they both recommended\nfinding Broadcom-based ones.\nI'd confirmed that the MikroTik S+RJ10 that\nI had in nigel was indeed a Marvell one, so the solution was pretty simple: get a better one.\nSo I went on Amazon and picked up a 10Gtek ASF-10G-T80-INT.\nChecking 10Gtek's own page on that module\nconfirmed that it used the right kind of chip (although it was a little bit garbled):\n10Gtek's ASF-10G-T80 is a newest version copper transceiver, its biggest feature\n  are ultra lowpower consumption and longer transmission distance\n  (1.6W C10Gbps 30m，2.0W 110Gbps 80m). ASF-10G-T80 is a 10GBase mult-rate Copper\n  RJ45 SFP+ transceiver, designed in with BROADCOM BCM84891 PHY chip following\n  IEEE 802.3an/az and SFP+ MSA, supporting up to 80-meter transmission over CAT.6a or CAT.7.\nA day or two later, it arrived.  It came in a rather pretty little metal case:\n\n\n\nInstalling it took a little while, because I found removing the existing MikroTik\nmodule tricky; Willie Howe's video on YouTube\nhelped quite a lot in showing how to disengage the latch, but I still needed to fiddle around with it quite a bit to get it out.\nHowever, that was eventually done, and the new module went in.\nI plugged all of the network cables back in, switched on the switch, and (after\na slightly nerve-wracking wait for it to boot up) the network was back up and running!\nSo, were the temperatures any better?  I checked my monitoring, and:\n\nHuh, nothing was being reported.\nThat made sense, though.  The way I was charting those numbers was that the switch\nexposed them over SNMP, and then the Telegraf\ndaemon on my router, reggie, read the numbers and sent them to InfluxDB;\nfinally, Grafana did the charting.\nI'd been reading the module temperatures in using the SNMP OID that I'd identified\nthat the switch was providing them on (.1.3.6.1.4.1.14988.1.1.19.1.1.6.3 if you're interested),\nbut perhaps the new module was published on a different OID.  It was time to log\nin to the switch and take a look.\n[admin@Nigel] > /interface ethernet monitor sfp-sfpplus1 once\n                      name: sfp-sfpplus1\n                    status: link-ok\n          auto-negotiation: done\n                      rate: 10Gbps\n               full-duplex: yes\n           tx-flow-control: yes\n           rx-flow-control: yes\n                 supported: 10M-baseT-half\n                            10M-baseT-full\n                            100M-baseT-half\n                            100M-baseT-full\n                            1G-baseT-half\n                            1G-baseT-full\n                            1G-baseX\n                            2.5G-baseT\n                            2.5G-baseX\n                            5G-baseT\n                            10G-baseT\n                            10G-baseSR-LR\n                            10G-baseCR\n             sfp-supported: 1G-baseX\n                            10G-baseSR-LR\n               advertising: 1G-baseX\n                            10G-baseSR-LR\n  link-partner-advertising:\n        sfp-module-present: yes\n               sfp-rx-loss: no\n              sfp-tx-fault: no\n                  sfp-type: SFP/SFP+/SFP28/SFP56\n        sfp-connector-type: LC\n              sfp-encoding: 64B/66B\n       sfp-link-length-om1: 30m\n       sfp-link-length-om2: 80m\n       sfp-link-length-om3: 300m\n           sfp-vendor-name: Intel Corp\n    sfp-vendor-part-number: FTLX8571D3BCV-IT\n       sfp-vendor-revision: A\n         sfp-vendor-serial: IN101Q14436\n    sfp-manufacturing-date: 26-01-31\n            sfp-wavelength: 850nm\n           eeprom-checksum: good\n                    eeprom: 0000: 03 04 07 10 00 00 00 00  00 00 00 06 67 00 00 00  ........ ....g...\n                            0010: 08 03 00 1e 49 6e 74 65  6c 20 43 6f 72 70 20 20  ....Inte l Corp\n                            0020: 20 20 20 20 00 00 1b 21  46 54 4c 58 38 35 37 31      ...! FTLX8571\n                            0030: 44 33 42 43 56 2d 49 54  41 20 20 20 03 52 00 85  D3BCV-IT A   .R..\n                            0040: 00 1a 00 00 49 4e 31 30  31 51 31 34 34 33 36 20  ....IN10 1Q14436\n                            0050: 20 20 20 20 32 36 30 31  33 31 20 20 00 f0 03 96      2601 31  ....\n                            0060: 00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  ........ ........\n\nIt's saying that it's an Intel module; that in itself is\nnot all that odd -- there are frequently compatibility issues between switches and SFP+\nmodules, so sometimes modules are configured to \"lie\" about which manufacturer made\nthem -- and I'd specifically bought the \"Intel-compatible\" one on Amazon, the ASF-10G-T80-INT,\nbecause I couldn't find one that pretended to be MikroTik.  Research had suggested that\nit would work OK, and it did.\nBut the really odd bits were these:\nsfp-connector-type: LC\nsfp-wavelength: 850nm\nsfp-link-length-om1: 30m\nsfp-link-length-om2: 80m\nsfp-link-length-om3: 300m\nsfp-vendor-part-number: FTLX8571D3BCV-IT\n\nNot only was it impersonating an Intel module -- it was saying that it was a fibre-optic one!\nPerhaps if I had found the \"MikroTik-compatible\" option it would have been better --\nthough, equally, it might have just impersonated a MikroTik fibre module anyway.\nAnyway, it was working -- so that was OK.  But there was some bad news.  If the switch\nwas able to read a temperature from the new module, then you'd expect it to appear in that\noutput, as sfp-temperature.  So, sadly, I don't think I'll be able to monitor the temperature\nof the new module.\nHow could I tell whether it had helped, then?  Well, one thing would be to simply\nsee if there are any further instances of network flapping.  I actually did the\nreplacement just over two weeks ago, and everything has been fine as far as I can tell\nfrom using it and from the other monitoring (despite another hot week last week).\nBut another interesting metric is the CPU temperature for nigel over the two\nweeks before and after the module change:\n\nYou can see that there was a real drop-off late on 1 June, when I switched the modules, and it has been running about 5C\ncooler since.  Of course, there's a lot that's different about the new module -- as\nwell as having a different chipset and a mendacious EEPROM, it's likely to have different\nthermal coupling characteristics -- it might be shedding more or less of its heat to the\nSFP+ cage and thence to the switch's CPU.  So it's not proof of anything, but in\ncombination with the improved link stability, I'll take it as a win.\nSo, an interesting little excursion into the world of SFP+ modules -- in particular,\nslightly dodgy ones :-)   Let's see if this one holds up better as we go through the\ntoasty Lisbon summer.",
+      "id": "adf3496bde004423bfc3f4b0508596099d6b1c53837d3ed96b912ea7643dbfe5",
+      "ref_id": "4",
+      "recommendationScore": 90,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "文章分享了家庭局域网升级到10Gb/s以太网的经验，特别是SFP+模块的过热问题及解决方案。",
+      "reason": "内容技术深度较高，提供了关于家庭网络硬件部署和故障排除的实用经验，对追求高性能家庭网络的用户具有较强实用性。",
+      "tags": [
+        "Networking",
+        "Hardware",
+        "10GbE",
+        "SFP+",
+        "Home Lab",
+        "Troubleshooting"
+      ]
+    },
+    {
+      "title": "GPT‑NL: a sovereign language model for the Netherlands",
+      "link": "https://www.tno.nl/en/digital/artificial-intelligence/gpt-nl/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-16T17:54:02.000Z",
+      "summary": "Article URL: https://www.tno.nl/en/digital/artificial-intelligence/gpt-nl/\nComments URL: https://news.ycombinator.com/item?id=48559188\nPoints: 43\n# Comments: 19",
+      "id": "1b09fc5b242147dd49f469735d8b1873cd38af8c0f83e74abbf83fab59b9483c",
+      "ref_id": "0",
+      "recommendationScore": 88,
+      "popularityScore": 24,
+      "priority": "high",
+      "comment": "荷兰国家级AI语言模型项目，结合技术深度与地缘战略。",
+      "reason": "文章详细介绍了国家主权AI语言模型的研发，具有高技术深度和前瞻性，对AI领域发展有重要参考价值。",
+      "tags": [
+        "AI",
+        "大语言模型",
+        "国家战略",
+        "技术研发"
+      ]
+    },
+    {
+      "title": "Would you like a drainer served at the very top of DuckDuckGo?",
+      "link": "https://timsh.org/drainer-at-the-top-of-duckduckgo/",
+      "source": "timsh.org",
+      "publishedAt": "2026-06-16T13:34:35.000Z",
+      "summary": "Probably no, right? \nThat would be very dangerous, especially if the phishing website serving it is an exact copy of the thing you was looking for. \nWell that's what happened to me! \nTL;DR\nI found a fake tronscan blockchain explorer duplicate on the #1 position in the",
+      "id": "b27d1e46ccdb65202771e41285fe48e67e144b078d428229000fc07e02f92559",
+      "ref_id": "4",
+      "recommendationScore": 88,
+      "popularityScore": 90,
+      "priority": "medium",
+      "comment": "警示了DuckDuckGo搜索结果中出现假冒Tronscan区块链浏览器钓鱼网站，揭示了高级网络钓鱼的风险。",
+      "reason": "提供了重要的网络安全警报，对所有互联网用户识别和防范钓鱼攻击具有极高的实用价值和新颖性，信息密度适中。",
+      "tags": [
+        "安全",
+        "网络钓鱼",
+        "DuckDuckGo",
+        "网络安全",
+        "区块链"
+      ]
+    },
+    {
+      "title": "Making ast.walk 220x Faster",
+      "link": "https://reflex.dev/blog/why-ast-walk-when-you-can-ast-sprint/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-16T16:25:28.000Z",
+      "summary": "Article URL: https://reflex.dev/blog/why-ast-walk-when-you-can-ast-sprint/\nComments URL: https://news.ycombinator.com/item?id=48557768\nPoints: 50\n# Comments: 10",
+      "id": "0960677e06eee6f5cd677bf41ef68824389f7390232aa60f13488690958ee548",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 35,
+      "priority": "medium",
+      "comment": "深入探讨了如何将Python的`ast.walk`性能提升220倍，提供了详细的技术优化方法。",
+      "reason": "文章技术深度高，实用性强，对于需要处理Python抽象语法树的开发者来说具有极高的参考价值。",
+      "tags": [
+        "Python",
+        "性能优化",
+        "编程工具",
+        "AST"
+      ]
+    },
+    {
+      "title": "New in the App Store: Personalized Recommendations",
+      "link": "https://techcrunch.com/2026/06/09/apples-app-store-rolls-out-personalized-recommendations/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-06-16T16:12:31.000Z",
+      "summary": "Sarah Perez, writing for TechCrunch:\nThis week, Apple announced a series of discovery features\nthat will personalize app recommendations based on users’\ninterests and behavior, providing a new way for developers to have\ntheir app discovered.\nAt Apple’s Worldwide Developers Conference (WWDC), the iPhone\nmaker introduced Personalized Collections in the App Store, which\nwill showcase recommendations tailored to the individual. These\nwill also include new “App Notes” that explain why the specific\napps were recommended to you. Starting this week, you’ll find\nthese new personalized suggestions in various places in the App\nStore, including the Apps or Games tab or on the Search tab.\nVia Michael Tsai, security research critics Mysk, posting on Twitter/X (XCancel link), flag that the App Store app seemingly sends analytics usage data to Apple with everything you do in the App Store app, including exactly what you type, character-by-character.\n ★",
+      "id": "a928dc412002ffbfc749d8b9a088fc62d51b4550d0060a1fc65d3cf1233b8b3d",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 88,
+      "priority": "high",
+      "comment": "详尽介绍了App Store的个性化推荐新功能，同时揭示了伴随而来的隐私数据收集问题。",
+      "reason": "及时更新了Apple生态的重要功能及用户隐私风险，对用户和开发者均有高实用性，且信息密度高。",
+      "tags": [
+        "Apple",
+        "App Store",
+        "隐私",
+        "WWDC",
+        "推荐系统"
+      ]
+    },
+    {
+      "title": "Key, in sight",
+      "link": "https://aresluna.org/key-in-sight",
+      "source": "aresluna.org",
+      "publishedAt": "2026-06-16T18:50:27.000Z",
+      "summary": "A guide, of sorts, to keyboard customization. (9,400 words.)",
+      "id": "375b18b9049525998b37f91a0caec2336c9c23fe6e8381d9532e66f9749402a8",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "一篇长达9400字的键盘定制深度指南，覆盖了从入门到进阶的方方面面。",
+      "reason": "为键盘定制爱好者和追求输入效率的用户提供了全面、详尽的指导，有助于提升工作效率和使用体验。",
+      "tags": [
+        "键盘定制",
+        "硬件",
+        "效率工具",
+        "外设",
+        "编程效率",
+        "指南"
+      ]
+    },
+    {
+      "title": "TIL: You can make HTTP requests without curl using Bash /dev/TCP",
+      "link": "https://mareksuppa.com/til/bash-dev-tcp-http-without-curl/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-16T16:40:58.000Z",
+      "summary": "Article URL: https://mareksuppa.com/til/bash-dev-tcp-http-without-curl/\nComments URL: https://news.ycombinator.com/item?id=48558018\nPoints: 109\n# Comments: 62",
+      "id": "2910fecd296818281a4a02d7704512608f75e20fb3453f930770c24a3fab0843",
+      "ref_id": "4",
+      "recommendationScore": 84,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "分享使用Bash /dev/TCP 不依赖curl进行HTTP请求的实用技巧。",
+      "reason": "技术深度和实用性俱佳，对理解底层网络通信和日常脚本编写非常有帮助，属于高优先级的编程工具和自动化主题。",
+      "tags": [
+        "Bash",
+        "HTTP",
+        "网络编程",
+        "Linux",
+        "DevOps",
+        "命令行工具"
+      ]
+    },
+    {
+      "title": "Stop Using JWTs",
+      "link": "https://gist.github.com/samsch/0d1f3d3b4745d778f78b230cf6061452",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-16T16:49:46.000Z",
+      "summary": "Article URL: https://gist.github.com/samsch/0d1f3d3b4745d778f78b230cf6061452\nComments URL: https://news.ycombinator.com/item?id=48558147\nPoints: 61\n# Comments: 32",
+      "id": "0727ad72558ccd5ee0679b6910a4525fc6ac446a2ddcb82330e790d410148641",
+      "ref_id": "2",
+      "recommendationScore": 81,
+      "popularityScore": 50,
+      "priority": "high",
+      "comment": "深度分析JWT的潜在问题，并提出替代方案和最佳实践建议。",
+      "reason": "关乎后端安全和架构选择，技术深度和实用性高，对开发者有重要参考价值，属于核心编程工具主题。",
+      "tags": [
+        "JWT",
+        "安全",
+        "后端开发",
+        "认证",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "Unicorn – The Ultimate CPU Emulator",
+      "link": "https://www.unicorn-engine.org/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-16T11:14:38.000Z",
+      "summary": "Article URL: https://www.unicorn-engine.org/\nComments URL: https://news.ycombinator.com/item?id=48553450\nPoints: 74\n# Comments: 21",
+      "id": "cf3ad020135557f15e98d2389343a2390be412f0977bb387e2d5f0681360e79c",
+      "ref_id": "3",
+      "recommendationScore": 80,
+      "popularityScore": 50,
+      "priority": "medium",
+      "comment": "介绍了一款功能强大的CPU模拟器，是低层系统开发和安全研究的重要工具。",
+      "reason": "属于编程工具范畴，技术深度和实用性强，对特定领域开发者有显著价值。",
+      "tags": [
+        "编程工具",
+        "CPU模拟",
+        "逆向工程",
+        "安全研究",
+        "系统开发"
+      ]
+    },
+    {
+      "title": "Apple's weird anti-nausea dots cured my car sickness",
+      "link": "https://www.theverge.com/tech/942854/apple-vehicle-motion-cues-review-really-work",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-16T16:12:06.000Z",
+      "summary": "Article URL: https://www.theverge.com/tech/942854/apple-vehicle-motion-cues-review-really-work\nComments URL: https://news.ycombinator.com/item?id=48557530\nPoints: 279\n# Comments: 95",
+      "id": "a6b5c35ec06964ab3a26450c91b99891880fb44bec0999f89762602444e8f99e",
+      "ref_id": "1",
+      "recommendationScore": 78,
+      "popularityScore": 88,
+      "priority": "high",
+      "comment": "一篇引人入胜的个人体验文章，讲述了苹果的车辆运动提示如何有效缓解了汽车运动病。",
+      "reason": "文章属于高优先级的Apple生态主题，新颖性和实用性极高，且具有广泛的用户兴趣。",
+      "tags": [
+        "Apple",
+        "用户体验",
+        "健康科技",
+        "iOS"
+      ]
+    },
+    {
+      "title": "Claude: Elevated errors across many models",
+      "link": "https://status.claude.com/incidents/xmhsglsz3h3w",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-16T17:30:30.000Z",
+      "summary": "Article URL: https://status.claude.com/incidents/xmhsglsz3h3w\nComments URL: https://news.ycombinator.com/item?id=48558766\nPoints: 142\n# Comments: 121",
+      "id": "b4c9b217d823c54ae5c443f5b15f57c18c6efc8f73661a31fd9e868bdff33bc9",
+      "ref_id": "3",
+      "recommendationScore": 75,
+      "popularityScore": 100,
+      "priority": "high",
+      "comment": "Claude大模型多模型服务出现严重错误，市场关注度极高。",
+      "reason": "作为主流AI模型Claude的服务状态报告，其故障信息对依赖该服务的AI用户和开发者具有即时且重要的实用性。",
+      "tags": [
+        "AI",
+        "Claude",
+        "服务状态",
+        "故障报告"
+      ]
+    },
+    {
+      "title": "Want to get a data center online quickly? Give it some flex.",
+      "link": "https://www.technologyreview.com/2026/06/16/1138591/data-center-online-quickly-electric-grid-flex/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-06-16T09:00:00.000Z",
+      "summary": "At the end of a tense and scoreless first half of a soccer match between the English men’s team and rival Germany, millions of Brits let out a collective sigh and did what they so often do in moments of stress: They made tea. That wave of electric kettles clicking on, however, caused a different…",
+      "id": "6194c5e85918ac96edfedbe3b48763c67a78bc28122846568a7210f4509ede4c",
+      "ref_id": "1",
+      "recommendationScore": 75,
+      "popularityScore": 68,
+      "priority": "medium",
+      "comment": "探讨数据中心快速部署和能源柔性管理的关键挑战，具有较高的实用价值。",
+      "reason": "关注科技基础设施建设中的重要议题，对数据中心和能源管理领域有实际指导意义。",
+      "tags": [
+        "Data Center",
+        "Infrastructure",
+        "Energy Management",
+        "Cloud Computing",
+        "Automation"
+      ]
+    },
+    {
+      "title": "Lean, not backpressure",
+      "link": "https://entropicthoughts.com/lean-not-backpressure",
+      "source": "entropicthoughts.com",
+      "publishedAt": "2026-06-15T22:00:00.000Z",
+      "summary": "Lucas Costa has written a good article on how to build systems that can handle\ncode-generating robots. Unfortunately, when calling it backpressure, he used\nthe wrong metaphor.\n\n\n\n\n\nBackpressure is about signaling to upstream processes that they are running too\nfast and need to slow down. The suggestions presented by Costa are mostly about\nsignaling to the upstream process that it needs to do things differently,\nrather than just slow down. This has more to do with ensuring sufficient\nquality is sent downstream, rather than quantity.\n\n\n\n\n\nThis irked me. As I was reading, I was searching for the right analogy. I kept\ncoming back to lean manufacturing. The more famous half of the lean philosophy\nis waste reduction. The other half is about managing the unstable input of\npeople. That’s what we’re interested in here.\n\n\n\n(Continue reading the full article on the web.)",
+      "id": "f3b25521c39cfe409e50dbaf0db79b25764439cf3cf4650d8091db6bbcc11f23",
+      "ref_id": "1",
+      "recommendationScore": 75,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "巧妙纠正系统设计比喻，引入精益思想指导AI生成代码系统。",
+      "reason": "提供了构建处理AI代码生成系统的新颖视角和实用方法论，有助于提升系统设计质量。",
+      "tags": [
+        "系统设计",
+        "AI",
+        "自动化",
+        "精益生产",
+        "软件工程"
+      ]
+    },
+    {
+      "title": "How Open Source Projects Change Hands",
+      "link": "https://nesbitt.io/2026/06/16/how-open-source-projects-change-hands.html",
+      "source": "nesbitt.io",
+      "publishedAt": "2026-06-16T10:00:00.000Z",
+      "summary": "Dumb Ways for an Open Source Project to Die listed the ways projects end up dead, and most of the entries describe a moment where maintainership should have moved to someone else and didn’t. This is the other, shorter inventory: the mechanisms that exist for a project to change hands, and who can trigger each one.\nThe maintainer decides\nChosen successor. The maintainer picks a person and hands over the keys. This is the model everyone imagines when they say succession, and it has almost no supporting infrastructure: it’s a private conversation followed by some permission changes. The vetting is whatever the departing maintainer feels like doing, which is how event-stream happened: “he emailed me and said he wanted to maintain the module, so I gave it to him.” The xz takeover was the same mechanism worked patiently, with sock-puppet users manufacturing the pressure on an overworked maintainer to hand over.\nCPAN is the one registry that gives this stage a name: a module whose permissions list the pseudo-user HANDOFF has a maintainer looking for someone to take over, recorded in the same machine-readable permissions file as every real owner.\nThe successor setting. GitHub has had account successors since 2020: you name a person in your account settings, and after presenting a death certificate and waiting seven days, or an obituary and waiting twenty-one, they can archive your public repositories or transfer them to an account they control. It is the only entry on this list built for the case where the maintainer dies. It covers the repos but not the registry accounts that publish from them, and no registry has an equivalent.\nOpen adoption. Instead of picking someone, the maintainer flags the project as available and waits. CPAN again has the oldest version: the ADOPTME pseudo-user as owner means the module is up for adoption, and NEEDHELP means the owner wants co-maintainers without leaving. RubyGems proposed an equivalent in October 2014, designed so that “the happiest of happy paths is to enable communication dev-to-dev, requiring no external involvement”, and shipped it as ownership calls and requests at the end of 2021. Debian’s RFA, Request For Adoption, does the same job for packages: the maintainer keeps working until a successor appears. Outside the registries the equivalent is a repostatus badge or a “looking for maintainers” line in the README, and no tooling reads either one.\nDeliberate ending. The maintainer can also decline to be succeeded, and the registries support that decision better than any of the handovers above. Packagist’s abandoned field takes a replacement package name, and composer prints “Package X is abandoned, you should avoid using it. Use Y instead.” on every install. NuGet deprecation carries an alternate package, and a fully deprecated legacy package can apply to transfer its search ranking to a successor that shares its owners. Maven has the relocation element for coordinates that moved.\nPyPI added project archival in 2025 and now serves status markers through its APIs. GitHub archiving makes the repo read-only with a banner. Pointing at a successor package moves the users to different code rather than moving the code to a different maintainer.\nSomeone else decides\nRegistry adjudication. A third party hears a claim on an unmaintained name and rules on it. PyPI runs the most formal version: PEP 541 defines abandonment by three conjunctive criteria (unreachable owner, no release in twelve months, no owner activity). The claimant has to show failed contact attempts and improvements on their own fork, and explain why a renamed fork won’t do. It handled over 500 requests in 2025 and cleared what had been a nine-month backlog. PAUSE admins will grant co-maintainership on a CPAN module when the owner “has entirely disappeared”, with the condition that the adopter is “required to respect the work and design of the author”. Hackage admins add you to a package’s maintainer group after you’ve tried the maintainer and stated your intent publicly.\nnpm ran a four-week mediation process and suspended it in February 2021 after a mis-transfer; the current policy is “we do not transfer package, organization, or username ownership simply because another user wants the name”. crates.io removed its transfer mediation policy in 2024, on the grounds that requests grow with the registry and “aren’t even usually successful”, citing a PyPI team “not able to keep up with the requests”.\nThe orphan pool. The Linux distributions treat an unmaintained package as a vacancy to fill, and built state machines for filling it. Debian encodes the whole lifecycle as WNPP bugs: O for orphaned, RFA for adoption requested, RFH for help wanted, ITA for intent to adopt, and ITS for intent to salvage a package whose maintainer is present but inactive. Orphaning sets the package’s Maintainer field to the Debian QA Group, and an MIA team chases unresponsive maintainers through a staged escalation that ends in orphaning everything they hold.\nFedora reassigns orphaned packages to a literal orphan user that any packager can take over from with a button. After six weeks unclaimed the package is retired by committing a file named dead.package to its repo. The AUR grants orphan requests after two weeks of maintainer silence, automatically if the package has been flagged out-of-date for 180 days. CRAN marks the maintainer field itself ORPHANED and lets anyone take over without the previous maintainer’s consent. None of the language registries has anything like this: a distro package is communal property with a caretaker of record, while a registry name belongs to whoever published first.\nIn June 2026 an attacker adopted over four hundred orphaned AUR packages and added an npm install line to every PKGBUILD. The fetched npm package’s preinstall hook installed a credential stealer and eBPF rootkit. The first report was a user noticing npm install in a VR streaming tool’s PKGBUILD. Each time the payload package was taken down and the install line grepped for, the next batch of adoptions switched: npm install became bun add on a fresh package, then 'b''u''n' 'a'\"d\"\"d\". Arch restricted account creation and package adoption while the incident ran.\nThe monorepo. Homebrew, nixpkgs, and conda-forge keep every package definition in one shared repository, so there are no keys to hand over and a succession is a pull request, which is as close as this list gets to anyone deciding with a reviewer in the loop. homebrew/core records no per-formula maintainer at all; maintainership amounts to whoever the tap accepts changes from. nixpkgs lists package maintainers as entries in one file, and adopting an orphaned package means adding your name to it, which is the distro’s caretaker-of-record model without the orphaning process.\nFoundation custody. Projects can move into an organisation built to outlive any individual maintainer. Apache projects are run by PMCs rather than people, so succession is a membership change inside a structure that persists, and when a community dissolves the project moves to the Attic, a read-only terminal state with its own documented process. The OpenJS Foundation runs a progression and emeritus lifecycle for hosted projects. The foundation takes on the bus factor in exchange for governance overhead, and most packages on any registry are far too small to ever make that trade.\nCorporate custody. When a company holds the project, succession is an org chart event: from inside it’s the chosen-successor mechanism with an employer attached, and from outside it isn’t visible at all. When antirez stepped down from Redis in 2020 he chose two successors and refused to design the governance that followed. He and both successors were Redis Labs employees, and the company held the trademark. The community’s succession came in 2024, when the relicense pushed Madelyn Olson and most of the external core team into forking Valkey under the Linux Foundation. That arrangement holds until the team is cut and the project becomes the corporate orphan from the previous post.\nAnyone decides\nThe fork. Every mechanism above falls back to this one: PEP 541 requires a working fork before PyPI will consider a transfer, and crates.io’s advice for an unreachable owner is to pick a new name. A fork copies the code, and the original keeps the registry name, which means it also keeps the install count and every manifest and lockfile that references it. The fork limbo and licence rug-pull cases from the death list both happened this way, with development moving to a new repo and the installs still resolving to the old one.\nThe forwarding-address problem has one solution, at the forge layer: GitHub repository transfers redirect the old URL to the new one indefinitely, although creating a new repository at the old name deletes the redirect permanently, an attack surface of its own. Go modules inherit both properties because a module path contains the repo that hosts it: there are no registry accounts to transfer, and a fork lives at a new path with a Deprecated comment in go.mod as the forwarding address. A transferred repo keeps resolving through the redirect, and Swift packages, declared as Git URLs in the manifest, behave the same way without an equivalent of the Deprecated comment to forward a fork.\nThe stranger. Avelino et al. studied 1,932 popular GitHub projects and found 16% had been abandoned by all of their core developers; 41% of those survived, and 86% of the survivors were rescued by a single new core developer. The most common motivation was “because I was using the project”, and the barriers the rescuers reported were not technical: lack of time, and not being able to get push access because the people who could grant it were gone.\nThe rescue the study describes is informal: someone who needs the package asks whoever still has access, and the handover is an email and some permission changes that nothing flags or records. That is also how event-stream changed hands, and the maintainer granting access has no way to tell the rescuer from the attacker. Where the orphan pool has already removed that maintainer, as with the four hundred AUR packages above, there is nobody in a position to tell.",
+      "id": "9a58d34ff1e8acd8a38a5c6056fbb90a8007a1da1dc519e1e4625cbaee67e528",
+      "ref_id": "0",
+      "recommendationScore": 74,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "深入探讨了开源项目维护权交接的机制与挑战。",
+      "reason": "内容及时，结合时事（XZ事件），对开源社区和软件供应链安全具有重要参考价值。",
+      "tags": [
+        "开源",
+        "项目管理",
+        "软件供应链",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "Mechanical Watch (2022)",
+      "link": "https://ciechanow.ski/mechanical-watch/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-16T11:26:27.000Z",
+      "summary": "Article URL: https://ciechanow.ski/mechanical-watch/\nComments URL: https://news.ycombinator.com/item?id=48553550\nPoints: 545\n# Comments: 101",
+      "id": "fc82a313da7b0f5081fd062ea7e91606b77ed63b22b4586e38371319ff81af9b",
+      "ref_id": "2",
+      "recommendationScore": 70,
+      "popularityScore": 90,
+      "priority": "low",
+      "comment": "一篇关于机械手表原理的详尽且高质量的视觉解释性文章，技术深度极高，但与核心主题相关度较低。",
+      "reason": "尽管与核心关注主题相关性低，但其在技术可视化和信息呈现方面的质量和深度非常突出，普适性强，社区热度高。",
+      "tags": [
+        "机械工程",
+        "设计",
+        "科普",
+        "可视化",
+        "高品质内容"
+      ]
+    },
+    {
+      "title": "Has AI already killed self-help nonfiction books?",
+      "link": "https://tim.blog/2026/06/12/has-ai-already-killed-nonfiction/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-16T17:11:05.000Z",
+      "summary": "Article URL: https://tim.blog/2026/06/12/has-ai-already-killed-nonfiction/\nComments URL: https://news.ycombinator.com/item?id=48558489\nPoints: 27\n# Comments: 28",
+      "id": "866ef7423e9172f10e218c79f51583da823a17edfb50f634e5e75345b01e4396",
+      "ref_id": "4",
+      "recommendationScore": 68,
+      "popularityScore": 21,
+      "priority": "medium",
+      "comment": "探讨AI对自助非虚构书籍行业的影响与冲击。",
+      "reason": "文章从特定角度分析AI对内容创作和出版行业的宏观影响，能引发对AI社会角色的深思，具有一定的启发性。",
+      "tags": [
+        "AI",
+        "社会影响",
+        "内容创作",
+        "出版"
+      ]
+    },
+    {
+      "title": "10Gb/s Ethernet: switching to a Broadcom SFP+ module",
+      "link": "https://www.gilesthomas.com/2026/06/10g-ethernet-switching-to-broadcom-sfp-plus",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-16T17:48:42.000Z",
+      "summary": "Article URL: https://www.gilesthomas.com/2026/06/10g-ethernet-switching-to-broadcom-sfp-plus\nComments URL: https://news.ycombinator.com/item?id=48559083\nPoints: 26\n# Comments: 20",
+      "id": "adf3496bde004423bfc3f4b0508596099d6b1c53837d3ed96b912ea7643dbfe5",
+      "ref_id": "2",
+      "recommendationScore": 65,
+      "popularityScore": 17,
+      "priority": "medium",
+      "comment": "关于10Gb/s以太网SFP+模块的实用切换经验分享。",
+      "reason": "文章提供了具体的网络硬件配置实践经验，对需要搭建或优化高速网络的用户具有较高的实用指导意义。",
+      "tags": [
+        "网络",
+        "硬件",
+        "10GbE",
+        "Broadcom"
+      ]
+    },
+    {
+      "title": "But yak shaving is fun",
+      "link": "https://parksb.github.io/en/article/32.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-16T14:26:26.000Z",
+      "summary": "Article URL: https://parksb.github.io/en/article/32.html\nComments URL: https://news.ycombinator.com/item?id=48555838\nPoints: 117\n# Comments: 33",
+      "id": "1b694af1787f05cf70ff64af5b2fc047d3ce727aaa48119fa00b01a205b1bd36",
+      "ref_id": "0",
+      "recommendationScore": 65,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "一篇关于编程或开发过程中“yak shaving”现象的个人体会与思考。",
+      "reason": "探讨了开发者普遍面临的效率与心态问题，提供了个人见解，对提升开发过程的理解有帮助。",
+      "tags": [
+        "开发实践",
+        "效率",
+        "独立开发",
+        "编程"
+      ]
+    },
+    {
+      "title": "Lean Launch Pad 2026 @ Stanford – Lessons Learned Presentations",
+      "link": "https://steveblank.com/2026/06/16/lean-launch-pad-2026-stanford-lessons-learned-presentations/",
+      "source": "steveblank.com",
+      "publishedAt": "2026-06-16T13:00:57.000Z",
+      "summary": "We just finished the 16th annual Lean LaunchPad class at Stanford. In those 16 years, the class has gone from a radical idea – that the Lean method could provide a more productive framework for new startups – to something that everyone agrees is a way to build new startups. The class had gotten so […]",
+      "id": "960debb926861d360634f029bf70aed80c7e21e1e7a05285b4b6b94bf14cb26f",
+      "ref_id": "0",
+      "recommendationScore": 65,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "探讨了斯坦福Lean LaunchPad课程的演进及其对创业的持续影响和经验总结。",
+      "reason": "为关注精益创业和产品开发的读者提供了最新的课程经验和见解，具有一定的指导意义。",
+      "tags": [
+        "创业",
+        "精益创业",
+        "产品管理",
+        "教育",
+        "斯坦福"
+      ]
+    },
+    {
+      "title": "Why is Meta destroying its engineering organization?",
+      "link": "https://newsletter.pragmaticengineer.com/p/why-is-meta-destroying-its-engineering",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-16T16:42:32.000Z",
+      "summary": "Article URL: https://newsletter.pragmaticengineer.com/p/why-is-meta-destroying-its-engineering\nComments URL: https://news.ycombinator.com/item?id=48558045\nPoints: 205\n# Comments: 125",
+      "id": "0d15d7c1b878593a4f43105bb493cbac2bed5610e689f7609fa9736409cebaab",
+      "ref_id": "3",
+      "recommendationScore": 63,
+      "popularityScore": 100,
+      "priority": "medium",
+      "comment": "对Meta工程组织现状进行批判性分析，探讨大公司管理和文化问题。",
+      "reason": "虽然技术深度不高，但对工程管理、职业发展和行业动态有极高参考价值，社区讨论热度非常高。",
+      "tags": [
+        "Meta",
+        "工程管理",
+        "组织文化",
+        "大厂",
+        "职业发展"
+      ]
+    },
+    {
+      "title": "Exclusive: OpenAI Losses Increased Nearly 8X in 2025, With Spending Hitting $34 Billion",
+      "link": "https://www.wheresyoured.at/exclusive-openai-financials/",
+      "source": "wheresyoured.at",
+      "publishedAt": "2026-06-16T03:58:20.000Z",
+      "summary": "Soundtrack: In Flames - Colony\nTo further support my independent journalism, please subscribe to my premium newsletter. It’s $7 a month or $70 a year. If you’re subscribed to the free newsletter and logged in, you should see at the bottom right hand corner of your screen",
+      "id": "102559c3b614f76aad674f1de4865bf45bac109c471f4bf13d989b5db0212dc2",
+      "ref_id": "3",
+      "recommendationScore": 61,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "独家披露OpenAI巨额亏损，揭示AI行业高投入现状。",
+      "reason": "作为AI领域头部公司的财务独家新闻，具有极高的行业关注度和新闻价值。",
+      "tags": [
+        "AI",
+        "行业新闻",
+        "商业",
+        "OpenAI",
+        "财务"
+      ]
+    },
+    {
+      "title": "Do not invite big-tech to join your digital autonomy discussion",
+      "link": "https://berthub.eu/articles/posts/do-not-invite-big-tech-to-your-digital-autonomy-discussion/",
+      "source": "berthub.eu",
+      "publishedAt": "2026-06-16T16:00:00.000Z",
+      "summary": "Some time ago, I attended an event to discuss European digital autonomy and digital dependencies. I accepted the invitation without checking too carefully, and I belatedly found out that most of US big tech was invited as well, and would be presenting their thoughts.\nNow, even in our gloriously digitally autonomous future, we’ll still be doing business with Microsoft, Google and Amazon. And it is fine if they have a role.",
+      "id": "57ca91d44336bb530bd1c86d54a9dbcdc58d54da05429536880205e2f0c0c150",
+      "ref_id": "4",
+      "recommendationScore": 56,
+      "popularityScore": 55,
+      "priority": "medium",
+      "comment": "探讨大型科技公司在数字主权讨论中的角色冲突与影响。",
+      "reason": "提出了关于数字自治与大型科技公司影响力及潜在利益冲突的重要政策思考。",
+      "tags": [
+        "数字主权",
+        "政策",
+        "科技伦理",
+        "地缘政治"
+      ]
+    },
+    {
+      "title": "Specs Augmented Reality Glasses",
+      "link": "https://newsroom.snap.com/introducing-specs-augmented-reality-glasses",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-16T17:00:59.000Z",
+      "summary": "Article URL: https://newsroom.snap.com/introducing-specs-augmented-reality-glasses\nComments URL: https://news.ycombinator.com/item?id=48558337\nPoints: 29\n# Comments: 19",
+      "id": "086a0d1572f9b737103859110cba339f08564f908038f15d5f9c46f1930a8577",
+      "ref_id": "1",
+      "recommendationScore": 43,
+      "popularityScore": 30,
+      "priority": "medium",
+      "comment": "Snap发布新款AR眼镜，展示增强现实技术在消费级硬件上的进展。",
+      "reason": "属于新兴科技领域，但文章可能更侧重产品发布而非深入技术细节，社区关注度一般。",
+      "tags": [
+        "AR",
+        "硬件",
+        "Snap",
+        "产品发布",
+        "未来科技"
+      ]
+    },
+    {
+      "title": "Show HN: Pen and paper resource development game with an emergent world",
+      "link": "https://www.jameshylands.co.uk/2026/06/sortis-paper-empire-game.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-16T17:49:54.000Z",
+      "summary": "I've been working for a while on trying to curate a game that has the emergence of procedurally generated computer games but that can be played with only pen and paper. Here I present the best version I've been able to come up with that is simple and emergent. I've really enjoyed being able to engage with this sort of game while not feeling like my brain in rotting. I recon my numeracy improves while playing it.\nComments URL: https://news.ycombinator.com/item?id=48559108\nPoints: 4\n# Comments: 0",
+      "id": "789e748f99b6aa2e3856f77a850c941ccd9c152ee5c36b6431e6b94a1f404c31",
+      "ref_id": "1",
+      "recommendationScore": 40,
+      "popularityScore": 2,
+      "priority": "low",
+      "comment": "个人创意的笔纸游戏设计分享，新颖但技术深度和实用性有限。",
+      "reason": "该文展示了独特的游戏设计理念，但其技术含量较低且不属于优先关注的科技主题，受众群体较小。",
+      "tags": [
+        "游戏设计",
+        "独立开发",
+        "创意"
+      ]
+    },
+    {
+      "title": "Two Way TV - product photos of 1997's hottest gadget",
+      "link": "https://shkspr.mobi/blog/2026/06/two-way-tv-product-photos-of-1997s-hottest-gadget/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-06-16T11:34:18.000Z",
+      "summary": "Back in the late 1990s, I did a brief stint of work experience at the BBC. One of the most memorable moments was sitting in on a meeting about early forms of Interactive TV.  I saw a demo of \"Two Way TV\". A flimsy grey box which (somehow) integrated with your OnDigital TV Box and connected to a server via a modem. If you were watching \"Who Wants To Be A Millionaire\" you could play along at home,…",
+      "id": "4a9597ed2650e17f1dc92e23fa08e97515972edbfbfc248dc335ae97db34266a",
+      "ref_id": "3",
+      "recommendationScore": 40,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "回顾了1990年代末期早期互动电视技术Two Way TV，充满怀旧色彩。",
+      "reason": "作为历史科技回顾有一定趣味性，但缺乏当下技术深度和实用性，与当前热门主题关联度较低。",
+      "tags": [
+        "历史科技",
+        "互动电视",
+        "产品设计",
+        "怀旧"
+      ]
+    },
+    {
+      "title": "Partial fraction decomposition",
+      "link": "https://www.johndcook.com/blog/2026/06/16/partial-fraction-decomposition/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-06-16T17:56:27.000Z",
+      "summary": "Nearly everyone who as seen partial fraction decomposition was introduced to it as a way to compute integrals. If P(x) and Q(x) are polynomials, then you can break their ratio P(x)/Q(x) into a sum of terms that can each be integrated in closed form. As with most topics in a calculus class, partial fractions go by in […]\nPartial fraction decomposition first appeared on John D. Cook.",
+      "id": "76104e9d1ccdc3a94e871868ff564428377086e6854440e699cd4ec85f8592c8",
+      "ref_id": "0",
+      "recommendationScore": 35,
+      "popularityScore": 25,
+      "priority": "low",
+      "comment": "这是一篇关于数学微积分中“部分分式分解”的文章，内容属于基础数学概念讲解。",
+      "reason": "文章技术深度和新颖性较低，且与优先级主题（AI、Apple生态、编程工具等）关联度不大，受众有限。",
+      "tags": [
+        "Mathematics",
+        "Calculus"
+      ]
+    },
+    {
+      "title": "Three examples suffice",
+      "link": "https://www.johndcook.com/blog/2026/06/16/three-examples-suffice/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-06-16T11:14:01.000Z",
+      "summary": "You can’t prove a theorem by just checking a few examples. Except sometimes you can. A few weeks ago I wrote Pentagonal numbers are truncated triangular numbers. In a nutshell, if the pentagonal numbers are defined by Pn = (3n² − n)/2 and the triangular numbers by Tn = (n² + n)/2 then Pn = T2n − 1 − Tn − 1. Here’s a visualization […]\nThree examples suffice first appeared on John D. Cook.",
+      "id": "eea42171b78388ec840f2b7962a84578e9e8b38c9bb00d99f884109527f5fbf1",
+      "ref_id": "1",
+      "recommendationScore": 30,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "文章探讨了数学证明中的“三例足以”现象，结合五边形数和三角形数进行说明。",
+      "reason": "内容偏向纯数学理论，与科技博客关注的AI、编程工具等主题关联度低，实用性和新颖性有限。",
+      "tags": [
+        "Mathematics",
+        "Number Theory",
+        "Proof"
+      ]
+    },
+    {
+      "title": "Testing pentagonal numbers",
+      "link": "https://www.johndcook.com/blog/2026/06/15/testing-pentagonal-numbers/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-06-15T23:57:54.000Z",
+      "summary": "The nth pentagonal number Pn is the number of dots in diagrams like those below with n concentric pentagons. We have the formula Pn = (3n² − n)/2 where n is a positive integer. If n is an integer but not positive, the equation above defines a generalized pentagonal number. If you’re given an n, you can easily compute Pn. […]\nTesting pentagonal numbers first appeared on John D. Cook.",
+      "id": "91cec66df2f71502ee9dd8d034a70ce4b175b27c76864fda8a0a83686f25c0b0",
+      "ref_id": "2",
+      "recommendationScore": 30,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "这篇短文介绍了五边形数的定义及其计算公式，属于基础数学知识。",
+      "reason": "与前两篇类似，内容是基础数学概念，不符合科技博客的优先主题，技术深度和实用性对目标读者不高。",
+      "tags": [
+        "Mathematics",
+        "Number Theory"
+      ]
+    },
+    {
+      "title": "'Ghost jobs' could soon be illegal in New York",
+      "link": "https://www.fastcompany.com/91558427/ghost-jobs-could-soon-be-illegal-in-new-york",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-16T17:01:12.000Z",
+      "summary": "Article URL: https://www.fastcompany.com/91558427/ghost-jobs-could-soon-be-illegal-in-new-york\nComments URL: https://news.ycombinator.com/item?id=48558338\nPoints: 75\n# Comments: 39",
+      "id": "b472be711927f7a59987a363d5c3f4c1cdd1ac8dae171b3d2909e5ce4976ce63",
+      "ref_id": "0",
+      "recommendationScore": 21,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "关注美国纽约州的劳动法新规，探讨“幽灵职位”的合法性。",
+      "reason": "内容偏向法律和HR政策，对核心技术开发人员的直接实用性和技术深度较低。",
+      "tags": [
+        "劳动法",
+        "HR",
+        "政策法规",
+        "招聘"
+      ]
+    },
+    {
+      "title": "Calvin and Hobbes and the price of integrity",
+      "link": "https://therepublicofletters.substack.com/p/calvin-and-hobbes-and-the-price-of",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-16T15:44:44.000Z",
+      "summary": "Article URL: https://therepublicofletters.substack.com/p/calvin-and-hobbes-and-the-price-of\nComments URL: https://news.ycombinator.com/item?id=48557079\nPoints: 72\n# Comments: 18",
+      "id": "7751c39c610618dd2c49e96a48f21c5d5a7b3ad8e20fd994d500047746bf0657",
+      "ref_id": "2",
+      "recommendationScore": 15,
+      "popularityScore": 55,
+      "priority": "low",
+      "comment": "一篇关于《卡尔文与霍布斯》漫画以及诚信价值的哲学探讨。",
+      "reason": "尽管文章内容本身可能有趣，但其主题与科技博客的优先关注领域（AI、Apple生态、编程工具等）不符。",
+      "tags": [
+        "文化",
+        "哲学",
+        "漫画"
+      ]
+    },
+    {
+      "title": "The Fable 5 Export Controls Harm US Cyber Defense",
+      "link": "https://simonwillison.net/2026/Jun/16/fable-5-export-controls/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-06-16T05:20:29.000Z",
+      "summary": "",
+      "id": "5d3028816a29c80e079b1d90200786917a7d1b1d47855d2a2ef8d91e28765e00",
+      "ref_id": "3",
+      "recommendationScore": 15,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "文章内容为空，无法进行有效评估，标题暗示网络安全和政策主题。",
+      "reason": "缺少主体内容，无法判断其技术深度、新颖性或实用价值，尽管标题可能涉及网络安全和政策。",
+      "tags": [
+        "Unknown",
+        "Missing Content",
+        "Cybersecurity",
+        "Policy"
+      ]
+    },
+    {
+      "title": "Quoting Georgi Gerganov",
+      "link": "https://simonwillison.net/2026/Jun/16/georgi-gerganov/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-06-16T16:04:59.000Z",
+      "summary": "",
+      "id": "99a1d4516e1b7851261212aa2dc2766d80e42fcd5b750a410e2d85560941b1fa",
+      "ref_id": "2",
+      "recommendationScore": 10,
+      "popularityScore": 5,
+      "priority": "low",
+      "comment": "文章内容为空，无法进行有效评估。",
+      "reason": "缺少主体内容，无法判断其技术深度、新颖性或实用价值，以及是否符合关注主题。",
+      "tags": [
+        "Unknown",
+        "Missing Content"
+      ]
+    },
+    {
+      "title": "Quoting Matteo Wong, The Atlantic",
+      "link": "https://simonwillison.net/2026/Jun/16/matteo-wong-the-atlantic/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-06-16T03:07:54.000Z",
+      "summary": "",
+      "id": "0d6b459f43a39f372e7a006d3581a06cbafa0911f9f5061a9a3b9dee68aa0785",
+      "ref_id": "4",
+      "recommendationScore": 10,
+      "popularityScore": 5,
+      "priority": "low",
+      "comment": "文章内容为空，无法进行有效评估。",
+      "reason": "缺少主体内容，无法判断其技术深度、新颖性或实用价值，以及是否符合关注主题。",
+      "tags": [
+        "Unknown",
+        "Missing Content"
+      ]
+    },
+    {
+      "title": "Cloudflare CAPTCHA on at least one ampersand",
+      "link": "https://simonwillison.net/2026/Jun/16/captcha-on-at-least-one-ampersand/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-06-16T00:21:36.000Z",
+      "summary": "",
+      "id": "8d09eb6c881a8b6b77b18268fb53a361b7f704ba6c9ae9e0cf3568536900ddf8",
+      "ref_id": "0",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "文章内容为空，无法进行评估。",
+      "reason": "无内容提供，无法判断其技术深度、新颖性、实用性及信息密度。",
+      "tags": []
+    },
+    {
+      "title": "Ada Palmer – Machiavelli is the most misunderstood thinker of all time",
+      "link": "https://www.dwarkesh.com/p/ada-palmer-2",
+      "source": "dwarkesh.com",
+      "publishedAt": "2026-06-16T17:27:51.000Z",
+      "summary": "\"He begged to work for the regime that tortured him.\"",
+      "id": "e1aa9ff126fab19ea7460798a929601a6c4f292900220af50ed0f4077a76e4ae",
+      "ref_id": "2",
+      "recommendationScore": 0,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "一段关于马基雅维利的历史哲学引用，与科技博客主题无关。",
+      "reason": "内容完全不符合科技博客的范畴和主题优先级。",
+      "tags": [
+        "非科技",
+        "历史",
+        "哲学"
+      ]
+    }
+  ]
+}
