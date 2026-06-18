@@ -1,0 +1,764 @@
+{
+  "dailySummary": "今日速递：GitHub万个恶意软件仓库曝光，网络安全响警报。AI测试平台TesterArmy上线，提升应用测试效率。此外，苹果CEO库克预警，芯片成本推高产品价格。",
+  "articles": [
+    {
+      "title": "I found 10k GitHub repositories distributing Trojan malware",
+      "link": "https://orchidfiles.com/github-repositories-distributing-malware/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-18T11:45:43.000Z",
+      "summary": "Article URL: https://orchidfiles.com/github-repositories-distributing-malware/\nComments URL: https://news.ycombinator.com/item?id=48583928\nPoints: 347\n# Comments: 100",
+      "id": "d2b4a784ba08e09be228a0bb457afb3903ada60c06099987fe00ada3039a4e6b",
+      "ref_id": "4",
+      "recommendationScore": 100,
+      "popularityScore": 88,
+      "priority": "high",
+      "comment": "揭露了GitHub上数万个恶意软件仓库，对软件供应链安全构成严重威胁。",
+      "reason": "文章具有极高的技术深度、新颖性和实用性，是开发者和安全领域需要高度关注的重大发现，且与编程工具相关，符合最高主题优先级。",
+      "tags": [
+        "网络安全",
+        "GitHub",
+        "恶意软件",
+        "软件供应链",
+        "开发者安全",
+        "漏洞"
+      ]
+    },
+    {
+      "title": "Launch HN: TesterArmy (YC P26) – Agents that test web and mobile apps",
+      "link": "https://tester.army",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-18T14:49:44.000Z",
+      "summary": "Hey HN - we’re Oskar, Szymon, and Piotr, and we’re building TesterArmy (https://tester.army). TesterArmy is an agentic testing platform that runs end-to-end checks before deployment and in production. Instead of wasting hours on manual testing or maintaining static scripts, we let you specify your tests in natural language and handle everything in between. We've built the platform fully around agents. Our agent will reliably execute the tests, but your coding agent can manage everything in our platform, from defining tests in natural language to running them on your behalf.\nCheck out our demo video: https://www.youtube.com/watch?v=291IkUbPrlk.\nWe started TesterArmy because testing is still far too painful. AI coding tools have made it dramatically faster to write and ship code, but testing is still a bottleneck. Traditional E2E tests are slow to set up and expensive to maintain. Managing auth and test users is painful. Setting up staging environments is painful. Running tests reliably is painful.\nWe think most teams do not actually want to spend their time writing selectors or maintaining test infrastructure. They just want confidence that their core flows work. With TesterArmy, an engineer can sign up, give an agent our CLI, and let it handle creating tests and running them on schedule or on GitHub.\nWhen something breaks, TesterArmy alerts your team through Slack or Discord.\nOver the past few months, we scaled from 0 to 30+ teams using our product every day. We caught bugs in critical flows, including onboarding, checkout, and AI chat. We've got many of our customers migrating from already established competitors to us because of the quality and reliability of our agents.\nHere are a few of the recent bugs that our agent found (there were quite a lot of them!):\n1) Timezone bug that affected the booking flow in one of our clients' apps, the dashboard was very complex and hard to catch by a human. \n2) Regression in agent orchestration that caused a sandboxed environment to be stuck on loading, thanks to TesterArmy, the team was able to resolve it before it hit production.\n3) Incorrectly counting the order amount in a complex dashboard flow with checkout, thanks to TesterArmy, the team was able to resolve it before it affected revenue\n4) Catching a regression in an AI chat flow that would result in a user not being able to retrieve their data due to broken tool calling.\nAnd many more, mostly related to some incorrect API calls, 404s, unhandled errors, etc.\nIf this sounds useful, we would love your feedback at https://tester.army. We have a bunch of free test runs for you to try. And don’t worry, we won’t make you do sales calls, and we don’t have long onboarding or annoying setup. Our goal is an it-just-works experience.\nIf you're looking for an end-to-end testing solution, we'd love to hear your feedback!\nComments URL: https://news.ycombinator.com/item?id=48586299\nPoints: 53\n# Comments: 28",
+      "id": "f5be795743767fb93d7da1c971b8fabaeaa8cf6ee811ed701382bb8909cd3ceb",
+      "ref_id": "1",
+      "recommendationScore": 95,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "TesterArmy是一个利用AI智能体实现自然语言驱动的Web/移动端自动化测试平台，极具创新性和实用性。",
+      "reason": "该文章紧密结合AI和编程工具，解决软件开发中的测试痛点，具有高新颖性和实用性，完全符合高优先级主题。",
+      "tags": [
+        "AI",
+        "自动化测试",
+        "编程工具",
+        "软件开发",
+        "Agents"
+      ]
+    },
+    {
+      "title": "We built a persistent agent memory layer on Elasticsearch with 0.89 recall",
+      "link": "https://www.elastic.co/search-labs/blog/agent-memory-elasticsearch",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-18T11:20:18.000Z",
+      "summary": "Article URL: https://www.elastic.co/search-labs/blog/agent-memory-elasticsearch\nComments URL: https://news.ycombinator.com/item?id=48583703\nPoints: 77\n# Comments: 32",
+      "id": "517eeecaeea8311e261593687976e74ea84005e0260707c4cc7d5400e24bee5c",
+      "ref_id": "1",
+      "recommendationScore": 90,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "深入展示了如何基于Elasticsearch构建高召回率的智能体持久记忆层。",
+      "reason": "完美契合AI和编程工具主题，技术深度高，实用性强，对AI开发者具有极高的参考价值。",
+      "tags": [
+        "AI",
+        "智能体",
+        "Elasticsearch",
+        "内存管理",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "GLM-5.2 is probably the most powerful text-only open weights LLM",
+      "link": "https://simonwillison.net/2026/Jun/17/glm-52/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-06-17T23:58:39.000Z",
+      "summary": "",
+      "id": "f789678befe69c048ffe1d6fb0c7d454cc0bea3364f77ee7f3893949569d12fe",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "标题预示一篇关于最新、最强大开源文本大语言模型（LLM）的文章，主题高度符合博客优先级。",
+      "reason": "标题直接命中最高优先级主题“AI”，且涉及“开源”、“最强大”等热点，极具潜力，但正文缺失无法进行内容评估，分数仅基于标题假设。",
+      "tags": [
+        "AI",
+        "LLM",
+        "大模型",
+        "开源",
+        "机器学习"
+      ]
+    },
+    {
+      "title": "Tim Cook, in Interview With WSJ: ‘Unfortunately, Price Increases Are Unavoidable’",
+      "link": "https://www.wsj.com/tech/apple-price-increases-memory-supply-199845b1?st=qWH3n1&reflink=desktopwebshare_permalink",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-06-18T15:49:47.000Z",
+      "summary": "Rolfe Winkler, reporting for The Wall Street Journal (gift link):\nApple plans to raise prices on its products to offset the surging\ncosts of memory and storage chips, Chief Executive Tim Cook said\nin an exclusive interview with The Wall Street Journal.\n“Unfortunately, price increases are unavoidable,” he said. “We’re\ndoing our best to mitigate the huge increases that are being\npassed to us, and we’ve been trying to shield our customers from\nthe increases, but the situation has become unsustainable.”\nCook declined to offer details on the timing or scale of the\nplanned price increases, nor which products would be affected.\nApple’s next major product launch is likely to be in September\nwhen it releases the iPhone 18 lineup, expected to include a new\nfoldable iPhone. [...]\nCook said Apple wouldn’t use its cash and silicon expertise to\nbuild its own memory and storage factories. “We can’t do\neverything,” said Cook. “We know what we’re good at.” [...] Cook\nsaid during his time working in the electronics supply chain, from\nIBM to Compaq to Apple, he had never seen a commodity price swing\nlike the one from the past six months. “This is a hundred-year\nflood,” said Cook. “I’ve never seen anything like it in any area\nin over 40 years.”\nApple, to my recollection, has never before issued a warning about price increases. Keep in mind that Apple deals with prices in a very different way from its competitors. For Apple, prices are part of a product’s brand, so they don’t fluctuate with component costs. The trash can Mac Pro held its $3000 starting price for six years, despite its specs remaining effectively unchanged in that span.\nSo when Apple raises prices on the iPhone 18 Pro models this September (and, presumably, launches the folding iPhone “Ultra” with an eye-watering prices), expect those prices to stick. And if Apple expects RAM and SSD component pricing to continue rising through 2027 — which is what many anticipate — they might build that into the pricing now. Raise prices by (say) $200 now rather than $100 this year and another $100 next year.\nAlso, credit to Tim Cook for taking this one personally, months ahead of the iPhone 18 launch, rather than leaving it to John Ternus to serve up a surprise shit sandwich in his first keynote as CEO.\n ★",
+      "id": "6b801eec908455d2222f64ef9b44bc05022accf8de80a39d99558b7b5f3982ac",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "Tim Cook在华尔街日报采访中确认，由于芯片成本上涨，苹果产品未来将不可避免地涨价，并暗示了iPhone 18和折叠屏iPhone。",
+      "reason": "直接来自Apple高层的重磅消息，对广大Apple消费者、行业观察者和投资者都具有极高的关注度和实际影响。",
+      "tags": [
+        "Apple",
+        "商业",
+        "定价",
+        "iPhone",
+        "芯片",
+        "Tim Cook"
+      ]
+    },
+    {
+      "title": "Open Source vs the Invisible Hand",
+      "link": "https://nesbitt.io/2026/06/18/open-source-vs-the-invisible-hand.html",
+      "source": "nesbitt.io",
+      "publishedAt": "2026-06-18T10:00:00.000Z",
+      "summary": "If you handed an economics undergraduate a description of how open source libraries are produced, without saying what it was, and asked them to predict the outcome, they would tell you it doesn’t add up. Non-excludable goods with no price, no contracts, no liability, a median producer headcount of one, and near-total free riding by consumers: there is no model in the textbook under which that arrangement produces anything stable.\nThen you run npm install and a few hundred of these impossible goods arrive in seconds, and the commercial software industry sits almost entirely on top of them. Open source breaks more or less the full set of market axioms at once.\nThe free rider problem. A public good is non-rival (my use doesn’t reduce yours) and non-excludable (you can’t keep me out), and standard theory holds that such goods will be underproduced because every rational actor waits for someone else to pay. The canonical case is the lighthouse, where everyone benefits and nobody volunteers, so government has to build it. An open source library meets the definition exactly, being perfectly non-rival and non-excludable by licence, so the theory predicts a small number of them, grudgingly produced and propped up by grants. npm alone hosts over five million, almost none grant-funded, with thousands more turning up every day.\nYou get what you pay for. Price is supposed to signal quality and scarcity, giving a market a way to sort good from bad. SQLite, by its own count the most widely deployed database engine in the world, costs the same as a week-old typosquat with a crypto miner in the postinstall hook. The most valuable libraries in existence and the most dangerous ones sit at the same number, and consumers route around the missing signal with reputation, download counts, and GitHub stars.\nThe tragedy of the commons. A shared resource gets depleted because each user’s rational move is to take without giving back, so the prediction for a software commons would be a small pool of overused, under-maintained code that decays as consumption outruns contribution. Some corners of the public registries do look like that, but the aggregate has grown every year since registries have existed.\nRational self-interest. Economic agents maximise their own utility, and utility can be defined broadly enough to cover enjoyment, status, and ideology as well as money. Even on the broad definition it is a stretch that so many people’s preferences include answering bug reports from strangers at eleven at night, after a full day at an unrelated job, prompted by an issue from a Fortune 500 company titled “URGENT!!”, for a project that pays them nothing. There are enough people whose preferences apparently work that way to keep most of the modern software stack running.\nSupply and demand. Rising demand is supposed to raise the price and draw in new suppliers until the market clears, but when a library goes from a thousand downloads a week to ten million the price stays at zero and the maintainer count typically stays at one, because demand has no channel through which to act on supply. More users turn up, the issue tracker fills, security researchers start filing CVEs against it, and it stays one person’s job.\nDivision of labour. Critical infrastructure is supposed to be built by specialists, employed full-time, organised into firms that carry liability for failure. Across the public registries ecosyste.ms tracks, more than half of packages have a single maintainer, and that one person frequently has a day job in a different field, no employment relationship with any downstream user, and no contractual liability to anyone. The bus factor for long stretches of the dependency graph works out to a single hobbyist.\nFirms guard competitive advantage. A company is not supposed to pay engineers to build something and then hand it to the people competing for its customers, yet Google, Meta, Microsoft, and Amazon all fund open source libraries the other three run in production. The standard explanation is commoditising your complement: give away the layer adjacent to where you make money so nobody can charge you rent there. That accounts for React and gRPC well enough and is the one entry here with a clean market explanation. The explanation does not extend to the much larger tier underneath, the libraries with one maintainer and no adjacent business model, which is most of what npm install pulls in.\nEconomists have noticed all this, and there is a small literature trying to account for it. Lerner and Tirole put it down to career signalling, contributing in public to build a reputation you cash in elsewhere. That holds when someone is watching, and not for the maintainer of an obscure dependency no hiring manager will ever look up. Benkler argued that the internet made coordination cheap enough to organise production without a firm. That explains how the work gets divided, not why anyone takes on the unglamorous half of it. Von Hippel framed it as user innovation, people building what they need and sharing it afterwards for next to nothing. It fits until the maintainer is still answering bug reports years after they stopped using the thing themselves. All three fit some maintainers some of the time, and none on its own accounts for the shape the system has taken or why it has held together this long.\nCalling all of the above a list of market failures implies a working market underneath that would behave properly once the failures were corrected, and there isn’t one: open source has run for thirty years on a basis the textbook says cannot hold. It looks more like several arrangements overlaid on each other, part gift economy, part shared infrastructure, part public archive, part reputation system, with no single mechanism carrying it.\nThe practical fixes that keep being proposed treat it as a market anyway and bolt the missing pieces on, which is where bug bounties, sponsorship marketplaces, dependents-weighted funding formulas, criticality scores, and tokenised reward schemes all come from. Every one of them is an attempt to reconstruct a price for something that has never had one, and to do that they need a number to stand in for value.\nThe numbers available for that job are weak proxies, two or three steps removed from what anyone wants to know: who is keeping this running, how close they are to stopping, and whether a security report filed against it would reach anyone at all.",
+      "id": "1701a27b22662867d6788cf4a69cfcf894c6f513c44e5c6d2bbdbfbd8e27303e",
+      "ref_id": "4",
+      "recommendationScore": 90,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "深刻分析了开源软件如何打破传统经济理论，对软件生态理解极具启发。",
+      "reason": "技术深度和信息密度高，对编程工具和独立开发背后的经济模型提供了深刻洞察，实用性强，引发思考。",
+      "tags": [
+        "开源",
+        "经济学",
+        "软件开发",
+        "独立开发",
+        "公共产品"
+      ]
+    },
+    {
+      "title": "GLM 5.2 playing text adventures",
+      "link": "https://entropicthoughts.com/glm-5-2-playing-text-adventures",
+      "source": "entropicthoughts.com",
+      "publishedAt": "2026-06-17T22:00:00.000Z",
+      "summary": "I’ve heard some buzz around the new GLM 5.2 open-weights model. They say it’s\nvery capable! I won’t run a full comparison benchmark, but I have some credits\nsloshing around on OpenRouter so I figured I might compare GLM 5.2 to the\nsimilarly-priced Gemini 3 Flash, and see where things land.\n\n\n\n\n\nThis uses the same setup as the previous benchmark: each LLM gets a few\nattempts at playing the game, with each attempt being limited to a fixed budget\nof around $0.15. The LLM doesn’t know it, but the harness tracks achievements\nfor each game, and counts how many the LLM earns in each attempt.\n\n\n\n\n\nHere are the number of attempts for each game in this run.\n\n\n\n(Continue reading the full article on the web.)",
+      "id": "b286e468ee33be80f7e0fc79fa64ae90024f94aa2507c33f3f358377b37be79b",
+      "ref_id": "0",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "深入评测GLM 5.2与Gemini 3 Flash在文字冒险游戏中的性能。",
+      "reason": "文章聚焦当前热门的AI大模型对比，采用独特的游戏化评估方法，对AI开发者和研究者具有极高参考价值，符合最高优先级主题。",
+      "tags": [
+        "AI",
+        "LLM",
+        "模型评测",
+        "生成式AI",
+        "GLM"
+      ]
+    },
+    {
+      "title": "The Token Compression Illusion: Why I'm Skeptical of RTK",
+      "link": "https://mroczek.dev/articles/the-token-compression-illusion-why-im-skeptical-of-rtk/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-18T17:37:00.000Z",
+      "summary": "Article URL: https://mroczek.dev/articles/the-token-compression-illusion-why-im-skeptical-of-rtk/\nComments URL: https://news.ycombinator.com/item?id=48588755\nPoints: 6\n# Comments: 17",
+      "id": "cc266cdcaa60d6520839dfa0e12d6c81e52cc49c21c9030c84b94ec20820cf30",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 40,
+      "priority": "high",
+      "comment": "深入探讨了AI/LLM中Token压缩的潜在误区和技术挑战。",
+      "reason": "提供对关键AI/LLM技术（Token压缩）的批判性视角，对领域内开发者和研究者有重要参考价值，符合AI主题高优先级。",
+      "tags": [
+        "AI",
+        "大语言模型",
+        "Token",
+        "技术批判",
+        "性能优化"
+      ]
+    },
+    {
+      "title": "Advanced Compilers: The Self-Guided Online Course",
+      "link": "https://www.cs.cornell.edu/courses/cs6120/2025fa/self-guided/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-18T11:04:31.000Z",
+      "summary": "Article URL: https://www.cs.cornell.edu/courses/cs6120/2025fa/self-guided/\nComments URL: https://news.ycombinator.com/item?id=48583606\nPoints: 184\n# Comments: 25",
+      "id": "91080aa22dd85dac556584ad2287eefdddfd125aed499b340d4a6411e3a0abf2",
+      "ref_id": "2",
+      "recommendationScore": 85,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "康奈尔大学提供的高级编译器自学课程，内容深奥且具系统性。",
+      "reason": "对于追求计算机科学底层原理和编程工具核心技术的读者，这是一个极其宝贵且深度十足的学习资源。",
+      "tags": [
+        "编程工具",
+        "编译器",
+        "计算机科学",
+        "教育"
+      ]
+    },
+    {
+      "title": "New Domain for Sign In With Apple and iCloud+ Hide My Email",
+      "link": "https://developer.apple.com/news/?id=sus6t6ab",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-06-18T17:13:48.000Z",
+      "summary": "Apple Developer:\nLater this summer, Apple will unify the email domains used by Sign\nin with Apple and iCloud+ Hide My Email under a single, shared\ndomain: private.icloud.com.\nNew addresses generated for both features will be issued on the\nnew domain. For example:\nSign in with Apple addresses, previously issued on\nprivaterelay.appleid.com, will be issued on\nprivate.icloud.com.\n\n\niCloud+ Hide My Email addresses, previously issued on\nicloud.com, will be issued on private.icloud.com.\n\n\n\nExisting addresses on the legacy domains will continue to work and\nforward mail to users without interruption.\nInitial reaction to this change is that it might render “Hide My Email” ineffective, because shitbird services will simply ban the domain, trying to force you to use your primary email address. It seems inevitable that some number of services will do this. But my retort is that a service that won’t accept these email addresses is one that I probably don’t want to have anything to do with. The only reason not to accept private.icloud.com email addresses is if you want to do something invasive with users’ actual email addresses.\n ★",
+      "id": "e85e1ce15c86b02d8d72542c462717f48204af06367757427780afec618fe700",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "这是一篇关于Apple隐私和邮箱管理政策更新的重要通知，直接影响使用Sign in with Apple和iCloud+ Hide My Email的用户。",
+      "reason": "文章揭示了Apple生态系统中的关键隐私政策变动及其潜在影响，对Apple用户具有高度实用性和信息密度。",
+      "tags": [
+        "Apple",
+        "隐私",
+        "iCloud",
+        "Sign in with Apple",
+        "邮箱"
+      ]
+    },
+    {
+      "title": "Emacs 31 is around the corner: The changes I'm daily driving",
+      "link": "https://www.rahuljuliato.com/posts/emacs-31-around-the-corner",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-18T12:10:53.000Z",
+      "summary": "Article URL: https://www.rahuljuliato.com/posts/emacs-31-around-the-corner\nComments URL: https://news.ycombinator.com/item?id=48584135\nPoints: 311\n# Comments: 162",
+      "id": "7361c29f8ffe08277a77ceeb358ef586dfa050073926f487e70ca86989db3829",
+      "ref_id": "3",
+      "recommendationScore": 81,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "详细介绍了Emacs 31的即将到来变化和作者的日常使用体验，对Emacs用户极具价值。",
+      "reason": "文章聚焦核心编程工具的更新，技术深度和实用性俱佳，对开发者社区有重要参考意义，符合主题优先级。",
+      "tags": [
+        "Emacs",
+        "编程工具",
+        "文本编辑器",
+        "开发者效率",
+        "软件更新"
+      ]
+    },
+    {
+      "title": ".gitignore Isn't the Only Way to Ignore Files in Git",
+      "link": "https://nelson.cloud/.gitignore-isnt-the-only-way-to-ignore-files-in-git/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-18T10:29:20.000Z",
+      "summary": "Article URL: https://nelson.cloud/.gitignore-isnt-the-only-way-to-ignore-files-in-git/\nComments URL: https://news.ycombinator.com/item?id=48583356\nPoints: 149\n# Comments: 39",
+      "id": "4bce2848cf1ae846dde5faa7f474cd20ab5abfbf6950f8393e6d6416208b6eb2",
+      "ref_id": "4",
+      "recommendationScore": 80,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "详细介绍了除了.gitignore之外，Git中忽略文件的多种实用方法。",
+      "reason": "对日常使用Git的开发者而言，文章提供了实用的技巧和更全面的文件忽略策略，提升工作效率。",
+      "tags": [
+        "编程工具",
+        "Git",
+        "版本控制",
+        "开发技巧"
+      ]
+    },
+    {
+      "title": "Migrating from GNU Stow to Chezmoi",
+      "link": "https://rednafi.com/misc/chezmoi/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-18T17:09:53.000Z",
+      "summary": "Article URL: https://rednafi.com/misc/chezmoi/\nComments URL: https://news.ycombinator.com/item?id=48588413\nPoints: 17\n# Comments: 7",
+      "id": "f57f8b7e84a6ea35eb913c2235969cbf0378c00bb88092519d6decc3f5118414",
+      "ref_id": "1",
+      "recommendationScore": 75,
+      "popularityScore": 55,
+      "priority": "medium",
+      "comment": "一篇详细实用的点文件管理工具Chezmoi迁移指南。",
+      "reason": "为开发者提供了从旧工具迁移到新工具的清晰步骤和经验分享，对提升开发效率和工作流自动化有帮助，符合编程工具/自动化主题。",
+      "tags": [
+        "编程工具",
+        "自动化",
+        "dotfiles",
+        "Chezmoi",
+        "系统配置"
+      ]
+    },
+    {
+      "title": "‘Popa’ Botnet Linked to Publicly-Traded Israeli Firm",
+      "link": "https://krebsonsecurity.com/2026/06/popa-botnet-linked-to-publicly-traded-israeli-firm/",
+      "source": "krebsonsecurity.com",
+      "publishedAt": "2026-06-18T17:37:58.000Z",
+      "summary": "For the past four years, a sprawling Android-based botnet called Popa has forced millions of consumer TV boxes to relay Internet traffic linked to advertising fraud, account takeovers, and mass data-scraping efforts. This week, researchers from multiple security firms concluded that the Popa botnet is linked to NetNut, a \"residential proxy\" provider operated by the publicly-traded Israeli firm Alarum Technologies Ltd [NASDAQ: ALAR].",
+      "id": "7c4f2c9bb4d90cce506241380ae4232a66536fe001c766458733f430c7d47a03",
+      "ref_id": "4",
+      "recommendationScore": 75,
+      "popularityScore": 80,
+      "priority": "medium",
+      "comment": "揭露了一个大型Android僵尸网络Popa及其与一家上市公司的关联，涉及广告欺诈和数据抓取。",
+      "reason": "内容涉及网络安全、重大欺诈行为和企业责任，信息量大且具有警示性，对广泛的科技读者具有较强吸引力。",
+      "tags": [
+        "网络安全",
+        "僵尸网络",
+        "Android",
+        "欺诈",
+        "数据安全"
+      ]
+    },
+    {
+      "title": "Show your hands honor for the strange power they bring you",
+      "link": "https://aresluna.org/show-your-hands-honor",
+      "source": "aresluna.org",
+      "publishedAt": "2026-06-18T14:43:48.000Z",
+      "summary": "On designing finger-friendly interactions. (7,700 words. 38 playgrounds.)",
+      "id": "df920bd038432968ceb93f57f4edabbbdd0428914d7f4eee69f7ab66386afcf3",
+      "ref_id": "1",
+      "recommendationScore": 75,
+      "popularityScore": 80,
+      "priority": "low",
+      "comment": "全面深入探讨指尖友好型交互设计，内容量大且实践性极强。",
+      "reason": "文章在产品设计领域具有极高的技术深度和实用性，但因主题优先级相对较低，综合推荐分数有所降低。",
+      "tags": [
+        "产品设计",
+        "UI/UX",
+        "交互设计",
+        "移动端"
+      ]
+    },
+    {
+      "title": "Snap Unveils Specs, Its $2,200 AR Glasses, and They’re Fugly",
+      "link": "https://www.theverge.com/tech/950492/snap-specs-ar-glasses-launch-date-preorder?view_token=eyJhbGciOiJIUzI1NiJ9.eyJpZCI6IlZTMmZYVXprcHciLCJwIjoiL3RlY2gvOTUwNDkyL3NuYXAtc3BlY3MtYXItZ2xhc3Nlcy1sYXVuY2gtZGF0ZS1wcmVvcmRlciIsImV4cCI6MTc4MjE3Nzc0OSwiaWF0IjoxNzgxNzQ1NzQ5fQ.Pdh1hCJafS7ca3UfJ7pPoS-wRpZQ6tEAr7HEVfTOAd8",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-06-18T01:33:15.000Z",
+      "summary": "Jay Peters, The Verge (gift link):\nSnap is finally launching augmented glasses for the public. Specs,\nwhich Snap describes as “a wearable computer built into\nsee-through augmented reality glasses,” will cost $2,195. You can\npreorder a pair of Specs now at specs.com with a $200 refundable\ndeposit, and Snap says they’re expected to ship “this fall” in the\nUS, UK, and France. [...]\nThe company says that Specs are “fully standalone, with no puck\nand no tether.” (Which is perhaps a jab at Apple’s Vision Pro,\nwhich is tethered to a separate battery pack.) They’ll be offered\nin two sizes, a 47mm model weighing 132g and a 52mm model weighing\n136g, and will have removable inserts that Snap says will support\n“a wide range of prescriptions.”\nUnlike Vision Pro, Snap is presenting Specs as eyeglasses that users will wear out and about in their daily lives. Viewed perfectly straight-on and photographed by a professional fashion photographer — as presented on the Specs website — they’re a bold look. Viewed from any other angle and captured normally, they look like goggles, not glasses. The frames look orthopedic and the lenses are not even close to clear. They make you look like you forgot to take off your goggles leaving the theater after a 3D movie — goggles that are big enough to wear over regular glasses.\nMaybe Specs are useful enough to justify looking so orthopedic, but I doubt it.\n ★",
+      "id": "4dc21c88b729b3ad9ae00200628d42126510f655673b4e696f79a21a73accc92",
+      "ref_id": "4",
+      "recommendationScore": 70,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "Snap发布了售价2200美元的独立AR眼镜“Specs”，其设计和功能直接与Apple Vision Pro形成对比。",
+      "reason": "作为AR硬件领域的新产品发布，它提供了关于智能眼镜市场发展方向和产品设计理念的洞察，并与Apple生态有直接关联。",
+      "tags": [
+        "AR",
+        "VR",
+        "Snap",
+        "产品发布",
+        "智能眼镜",
+        "硬件",
+        "Apple Vision Pro"
+      ]
+    },
+    {
+      "title": "Pluralistic: AI digital sovereignty risk doesn't exist (18 Jun 2026)",
+      "link": "https://pluralistic.net/2026/06/18/their-trillions-our-billions/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-06-18T15:22:16.000Z",
+      "summary": "Today's links AI digital sovereignty risk doesn't exist: If 'risk + AI = risk – AI', then 'AI = 0'. Hey look at this: Delights to delectate. Object permanence: Napster x librarians; Flickr API reciprocity; KFC's Mega Jug v diabetes research; Hambone virtuoso; Google fiber x binding arbitration; \"The Immortal Choir Holds Every Voice.\" Upcoming appearances: LA, Menlo Park, Toronto, NYC, Philadelphia, Chicago, London, Edinburgh, Sydney, Melbourne, Brighton, London, South Bend. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. AI digital sovereignty risk doesn't exist (permalink) Back at the height of the blockchain bubble, I made a hobby of pointing out that crypto weirdos were palming a card. I used this formulation: if: problem + blockchain = problem – blockchain then: blockchain = 0 https://pluralistic.net/2022/01/30/the-inevitability-of-trusted-third-parties/ If you'd like an essay-formatted version of this thread to read or share, here's a link to it on pluralistic.net, my surveillance-free, ad-free, tracker-free blog: https://pluralistic.net/2026/06/18/their-trillions-our-billions/#eyes-on-the-prize You see, blockchain weirdos kept insisting that they could solve problems related to trust and institutional design with \"smart contracts.\" Rather than having to trust a board of directors to steer an organization, you could just have a self-executing institution, the \"distributed autonomous organization\" or DAO. So for example, if you want to buy a copy of the US Constitution at a Sotheby's auction, you could set up a DAO to raise and pool the funds, eliminating the need to find trustworthy people to receive, hold and deploy these funds: https://en.wikipedia.org/wiki/ConstitutionDAO However – and here's where the palmed card comes in – the DAO can't go to Sotheby's and place a bid on the Constitution. Instead, the members of the DAO have to elect a guy to receive all that cash, walk into Sotheby's, get one of those little ping-pong paddles last seen at the State of the Union in Chuck Schumer's withered claw (emblazoned with the brave slogan \"You're hurting my fee-fees\") and raise the paddle during the bidding. That guy doesn't have to go to Sotheby's. That guy can simply walk away with all the money. Members of the DAO are trusting this guy with their entire collective treasury. Indeed, since the DAO has no corresponding legal entity, it might even be that members of the DAO can't sue this guy if he steals all their money – and even worse, without a limited liability structure, it might mean that everyone in the DAO can be sued for anything bad this guy does with the money. Which raises the question: what's the point of building this insanely complex hairball of blockchain-based smart contracts to raise and hold the money if you're just going to hand it to this guy and trust him without limit? Why not just have that guy set up a Zelle account and a Whatsapp group? In other words: the problem that the DAO is trying to solve is the difficulty of trusting people with the keys to the kingdom, but no matter how much blockchain you sprinkle on this DAO, it ends with this one guy walking around with all your money, which he can steal with impunity if he so chooses. Or, put more succinctly: if: problem + blockchain = problem – blockchain then: blockchain = 0 This turns out to be a really good way of assessing policy prescriptions for their soundness and foundation in reality, because – as the blockchain swindle shows us – it's possible to come up with entirely fictitious solutions to entirely real problems. The problem of designing a trustworthy institution that can't be betrayed by its leaders and whose operations don't consume all its resources is a real problem – it's quite possibly the real problem – but adding a DAO does nothing to solve the core problems of institutional design, and actually makes some of those problems worse. There's another real problem with a fictitious solution that is – surprise! – tied to another tech bubble: digital sovereignty. It's a genuine problem that everyone in the world (outside of China's sphere of influence) is glued to America's tech platforms. These platforms steal everyone's money and data, and every country has signed a trade deal with the USA promising not to let its own technologists and entrepreneurs go into business making add-ons and complementary goods that remediate the defects in America's tech exports: https://pluralistic.net/2026/01/29/post-american-canada/#ottawa What's more, Trump's response to finding himself in this poker game that's rigged entirely in his favor is to flip over the table because he resents having to pretend to play at all (as November Kelly so aptly put it). His incontinent belligerence on the world stage sees him making bids to steal whole countries and he's recruited American tech giants to help him in this chaotic program of lunatic imperialism. When other countries' public officials make decisions that Trump dislikes, he gets companies like Microsoft to disconnect whole institutions from the internet, deleting their files, email archives, calendars and address books, and depriving them of the ability to connect to any service tied to their Outlook accounts: https://pluralistic.net/2026/04/20/praxis/#acceleration Which means that if Trump wants to steal Greenland, he doesn't have to roll tanks into Nuuk – he can just brick the country of Denmark. He can shut down all their ministries, every large firm, every household. He can shut down their iPhones and Android devices. He can kill their smart-speakers. He can hormuz the world's supply of Ozempic, Lego and ferociously strong licorice: https://pluralistic.net/2026/04/04/digital-subjugation/#greenlands-next It doesn't stop there! Trump can also shut down every tractor! https://pluralistic.net/2022/05/08/about-those-kill-switched-ukrainian-tractors/ This is the digital sovereignty risk. It's also the digital sovereignty opportunity. If countries repeal the laws that the US bullied them into accepting, laws that protect US tech giants from local competitors who block their plunder of data and money, they can turn America's tech trillions into their own tech billions. As Jeff Bezos likes to say, \"your margin is my opportunity\": https://pluralistic.net/2026/01/30/zucksauce/#gandersauce Meanwhile, repealing these US-protecting laws would enable countries to extract their data from US platforms so they can move it into domestic alternatives, and bypass the software locks that block them from updating phones, cars, tractors and ventilators to protect them from remote killswitches: https://pluralistic.net/2026/01/01/39c3/#the-new-coalition The digital sovereignty risk is having your country's government, businesses and industries terminated by Trump. The digital sovereignty opportunity is making billions of dollars by producing and exporting products that defend people from Big Tech plunder and Trumpian killswitches. That is the real world. But many \"digital sovereignty\" advocates are living in an imaginary world, in which the digital sovereignty risk is that Trump will shut off their country's access to AI. This is where the \"if problem + blockchain\" formulation comes in handy. If Trump shut off Canada's access to Chatgpt, Claude and Grok tomorrow, nothing would happen. No significant business, no federal or provincial ministry, no municipal government depends on these products for anything essential. And if Canada were to build their own local AI to sub in for Chatgpt, Claude and Grok, it would loose tens, if not hundreds of billions of dollars. Worst of all, a national AI strategy does nothing – not one solitary thing – to protect Canada from Trump shutting down our ministries, our companies, or our tractors. In other words: If: digital sovereignty + AI = digital sovereignty – AI Then: AI = 0 If you think AI tools are nifty and want Canada to invest in AI, then first, please stop pretending that this has anything to do with \"digital sovereignty.\" Not only is this a transparent bit of nonsense, it's a dangerous one, because digital sovereignty is a real problem, and AI does nothing to solve it. If you want a good \"national AI strategy,\" try this: save your money until the bubble bursts, and then buy your GPUs and hire your talent at 10 cents on the dollar and put them to work refining open source models: https://pluralistic.net/2025/12/05/pop-that-bubble/#u-washington Buying AI at the top of the market is nuts. That would be like shopping for Aeron chairs and foosball tables in March 2000. If you just sit tight for a couple months, you'll be able to find bankrupt dotcom entrepreneurs selling these at knock-down prices out front of their formerly overpriced office space in the Mission, in the time-honored tradition of former Wall Street millionaires selling apples out of their Rolls Royces: https://digicoll.lib.berkeley.edu/record/323794 (Literally: I bought a \"dining room set\" of six $1500 Steelcase Leap chairs in the summer of 2000 from a failed dotcom CEO on Van Ness for $25 a piece – still in the original plastic!) And in the meantime, please let's stop pretending that digital sovereignty has anything to do with \"national AI.\" If Trump takes away your AI, everything is fine. If Trump takes away your iPhones, Office 365 and tractors, your country grinds to a halt. This is just not that complicated: If: digital sovereignty + AI = digital sovereignty – AI Then: AI = 0 (Image: Armin Kübelbeck, CC BY-SA 4.0, modified) Hey look at this (permalink) Is Donald Trump the Greatest Environmentalist of All Time?? https://jacobin.com/2026/06/trump-iran-green-transition-environmentalism WNBA Players Scored a Historic Labor Contract—With One Notable Caveat https://www.hardresetmedia.com/p/wnba-players-labor-contract-wearables Trump’s Anthropic shutdown just made the case for non-American AI https://www.theverge.com/ai-artificial-intelligence/949986/anthropic-fable-mythos-shutdown-sovereign-ai Blindsight Sci-fi Short Film https://www.youtube.com/watch?v=VkR2hnXR0SM Introducing: Story Oracle https://www.clarionwest.org/story-oracle/ Object permanence (permalink) #25yrsago Napster boss's American Library Association keynote https://web.archive.org/web/20010623201456/https://www.salon.com/tech/wire/2001/06/17/napster/index.html #20yrsago Flickr: we’ll give full access to competitors – if they reciprocate https://www.flickr.com/groups/central/discuss/72157594165399644/#comment72157594167782546 #20yrsago Report from a concert by a Serbian war-criminal https://web.archive.org/web/20060613081324/http://blog.b92.net/blog/22 #20yrsago European podcasters to WIPO: Stay away from us! https://web.archive.org/web/20060619224538/https://www.bloggernews.net/2006/06/european-podcasters-team-up-to-lobby.html #15yrsago KFC: support diabetes research by buying an 800 calorie, 56 spoonful of sugar “Mega Jug” https://web.archive.org/web/20110619031415/https://theweek.com/article/index/216462/irony-alert-buy-kfcs-800-calorie-soda-to-support-diabetes-research #10yrsago Terrorist who murdered Jo Cox shouts: “Death to traitors” in court https://www.csmonitor.com/World/2016/0618/Accused-killer-of-MP-Jo-Cox-makes-defiant-court-statement #10yrsago Judge orders release of man convicted while his public defender was handcuffed https://web.archive.org/web/20160617172242/http://www.reviewjournal.com/crime/judge-releases-man-who-received-jail-sentence-while-lawyer-was-handcuffs-video #10yrsago Hambone virtuoso https://www.youtube.com/watch?v=YMJeaZtgwng #10yrsago Google Fiber now forces subscribers into binding arbitration; days left to opt out https://web.archive.org/web/20160617141759/https://consumerist.com/2016/06/16/google-fiber-copies-comcast-att-forces-users-to-give-up-their-legal-right-to-sue/ #1yrago The Immortal Choir Holds Every Voice https://pluralistic.net/2025/06/18/anarcho-cryptid/#decameron-and-on Upcoming appearances (permalink) Virtual: The future of world governance, with Kim Stanley Robinson (UN Independent Expert on International Order), Jun 19 https://www.youtube.com/live/wJvBvYdaAMY LA: The Reverse Centaur's Guide to Life After AI with Brian Merchant (Skylight Books), Jun 19 https://www.skylightbooks.com/event/skylight-cory-doctorow-presents-reverse-centaurs-guide-life-after-ai-w-brian-merchant Menlo Park: The Reverse Centaur's Guide to Life After AI with Angie Coiro (Kepler's), Jun 21 https://www.keplers.org/upcoming-events-internal/cory-doctorow-2026 Toronto: The Sovereignty Debate (IAB Canada's State of the Nation), Jun 23 https://iabcanada.com/state-of-the-nation-2026 Toronto: The Reverse Centaur's Guide to Life After AI (Osler Records/Type Books), Jun 23 https://www.eventbrite.com/e/cory-doctorow-book-launch-and-talk-tickets-1991501299998 NYC: The Reverse Centaur's Guide to Life After AI with Jonathan Coulton (The Strand), Jun 24 https://www.strandbooks.com/cory-doctorow-the-reverse-centaur-s-guide-to-life-after-ai.html Philadelphia: The Reverse Centaur's Guide to Life After AI with David Williams (Fitler Club/Philadelphia Citizen), Jun 25 https://www.eventbrite.com/e/cory-doctorow-book-event-tickets-1990110326559 Chicago: The Reverse Centaur's Guide to Life After AI with Rick Perlstein (Exile in Bookville), Jun 26 https://exileinbookville.com/events/50628 London: Idler Festival, Jul 11 https://www.idler.co.uk/festival/ Edinburgh International Book Festival with Jimmy Wales, Aug 17 https://www.edbookfest.co.uk/events/the-front-list-cory-doctorow-and-jimmy-wales Sydney: The Festival of Dangerous Ideas, Aug 23-24 https://festivalofdangerousideas.com/cory-doctorow/ Melbourne: Enshittification at the Wheeler Centre, Aug 25 https://www.wheelercentre.com/events-tickets/season-2026/cory-doctorow-enshittification Brighton: The Reverse Centaur's Guide to Life After AI with Carole Cadwalladr (Brighton Dome), Sep 8 https://brightondome.org/whats-on/LSC-cory-doctorow-the-reverse-centaurs-guide-to-life-after-ai/ London: The Reverse Centaur's Guide to Life After AI with Riley Quinn (Foyle's Picadilly), Sep 9 https://www.foyles.co.uk/events/enshittification-cory-doctorow-riley-quinn South Bend: An Evening With Cory Doctorow (Notre Dame), Oct 6 https://franco.nd.edu/events/2026/10/06/an-evening-with-cory-doctorow/ Recent appearances (permalink) The Enshittification of Life, the Universe, & Everything (Luke Savage) https://www.lukewsavage.com/p/the-enshittification-of-life-the Cory Doctorow's digital jail-break (DW In Focus) https://www.dw.com/en/cory-doctorows-digital-jail-break/audio-77414035 Why the Internet Got Worse and What to Do About It (Jim Rutt) (RIP) https://www.jimruttshow.com/cory-doctorow-3/ On Enshittification – and what can be done about it (Re:publica) https://www.youtube.com/watch?v=KhINQgPMVSI EFFecting Change: How to Disenshittify the Internet (EFF, with Wendy Liu) https://archive.org/details/effecting-change-enshittification Latest books (permalink) \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 (https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/) \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2026 \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Third draft completed. Submitted to editor. \"The Reverse Centaur's Guide to AI,\" a short book for Farrar, Straus and Giroux about being an effective AI critic. LEGAL REVIEW AND COPYEDIT COMPLETE. \"The Post-American Internet,\" a short book about internet policy in the age of Trumpism. PLANNING. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "896226a52fda94b04acca1eceb5fc0ca4e2d16667ec498e648ef9d97a9ad2774",
+      "ref_id": "0",
+      "recommendationScore": 70,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "深入剖析了AI数字主权风险的逻辑谬误，视角独特且批判性强。",
+      "reason": "紧扣AI热门主题，提供独到且批判性的视角，引人深思，适合关注AI伦理和政策的读者。",
+      "tags": [
+        "AI",
+        "数字主权",
+        "批判性思维",
+        "政策与伦理"
+      ]
+    },
+    {
+      "title": "Has W Social switched to closed source?",
+      "link": "https://blog.elenarossini.com/w-social-public-institutions-and-the-theater-of-european-digital-sovereignty/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-18T12:46:04.000Z",
+      "summary": "Article URL: https://blog.elenarossini.com/w-social-public-institutions-and-the-theater-of-european-digital-sovereignty/\nComments URL: https://news.ycombinator.com/item?id=48584497\nPoints: 135\n# Comments: 83",
+      "id": "9abba6b759975d14df8644c775db436cdc007f20907c48b57ffb2c6b3a827fae",
+      "ref_id": "1",
+      "recommendationScore": 68,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "探讨了W Social开源状态转变及其对欧洲数字主权的影响，引人深思。",
+      "reason": "文章触及了开源、数字主权等重要议题，具有较高的讨论价值和政策相关性。",
+      "tags": [
+        "开源",
+        "数字主权",
+        "软件策略",
+        "政策",
+        "欧洲科技"
+      ]
+    },
+    {
+      "title": "Migrate from OpenClaw",
+      "link": "https://hermes-agent.nousresearch.com/docs/guides/migrate-from-openclaw",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-18T14:32:13.000Z",
+      "summary": "Article URL: https://hermes-agent.nousresearch.com/docs/guides/migrate-from-openclaw\nComments URL: https://news.ycombinator.com/item?id=48586005\nPoints: 87\n# Comments: 68",
+      "id": "1d38ef051cf71e452fe2e44cdca114c15472a4c763652899570cf95a18187303",
+      "ref_id": "2",
+      "recommendationScore": 65,
+      "popularityScore": 50,
+      "priority": "medium",
+      "comment": "一篇关于从OpenClaw迁移到Hermes Agent的详细技术指南，对特定用户群体具有指导意义。",
+      "reason": "对特定AI/编程工具用户群体（若Hermes Agent是AI工具）具有较高实用性，技术深度适中，但主题较为小众。",
+      "tags": [
+        "AI",
+        "迁移指南",
+        "编程工具",
+        "Agents",
+        "文档"
+      ]
+    },
+    {
+      "title": "Modos Color Monitor Pushes E-Paper Displays Further",
+      "link": "https://spectrum.ieee.org/modos-e-paper-monitor",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-18T11:41:21.000Z",
+      "summary": "Article URL: https://spectrum.ieee.org/modos-e-paper-monitor\nComments URL: https://news.ycombinator.com/item?id=48583897\nPoints: 139\n# Comments: 36",
+      "id": "5a0a74813a0831bf4b4ee631764a644dc0712cd543c4f7f7ff2e7acade93c85b",
+      "ref_id": "0",
+      "recommendationScore": 65,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "探索了彩色电子纸显示技术的最新进展，为特定用户提供了护眼新选择。",
+      "reason": "文章内容涉及硬件和显示技术，新颖性尚可，但与核心主题AI、编程工具的直接关联度不高。",
+      "tags": [
+        "显示技术",
+        "硬件",
+        "电子纸"
+      ]
+    },
+    {
+      "title": "Microsoft new Outlook takes 10 seconds to do what Outlook Classic does instantly",
+      "link": "https://www.windowslatest.com/2026/06/15/microsofts-new-outlook-takes-10-seconds-to-do-what-outlook-classic-does-instantly-on-windows/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-18T12:19:05.000Z",
+      "summary": "Article URL: https://www.windowslatest.com/2026/06/15/microsofts-new-outlook-takes-10-seconds-to-do-what-outlook-classic-does-instantly-on-windows/\nComments URL: https://news.ycombinator.com/item?id=48584207\nPoints: 395\n# Comments: 275",
+      "id": "d5a5be699b48d19f1eeb2c3e6c9f5b3c37393a27d4dc0e8b1e7e037baa32f629",
+      "ref_id": "2",
+      "recommendationScore": 61,
+      "popularityScore": 90,
+      "priority": "medium",
+      "comment": "批评了新版Microsoft Outlook的性能显著下降，直击用户痛点。",
+      "reason": "文章反映了主流生产力工具的普遍性能问题，社区关注度极高，具有广泛的实用性。",
+      "tags": [
+        "软件性能",
+        "生产力工具",
+        "微软",
+        "Outlook",
+        "用户体验"
+      ]
+    },
+    {
+      "title": "TerraPower in Deal with Meta for Eight Natrium 345 MW Advanced Nuclear Plants",
+      "link": "https://neutronbytes.com/2026/01/09/terrapower-in-mega-deal-with-meta-for-eight-natrium-345-mw-advanced-nuclear-plants/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-18T15:13:26.000Z",
+      "summary": "Article URL: https://neutronbytes.com/2026/01/09/terrapower-in-mega-deal-with-meta-for-eight-natrium-345-mw-advanced-nuclear-plants/\nComments URL: https://news.ycombinator.com/item?id=48586648\nPoints: 63\n# Comments: 62",
+      "id": "57b492e79b9b47239dc523a80b5215992410940b5fd837081fe3b255fb79e91d",
+      "ref_id": "4",
+      "recommendationScore": 60,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "Meta与TerraPower合作建设先进核电站，显示科技巨头对清洁能源的投入。",
+      "reason": "反映了大型科技公司在能源基础设施领域的战略布局和对未来能源的关注，具有行业前瞻性，但与核心编程/AI主题距离较远。",
+      "tags": [
+        "能源",
+        "核能",
+        "Meta",
+        "科技趋势",
+        "基础设施"
+      ]
+    },
+    {
+      "title": "Ubiquiti: Enterprise NAS, Built on ZFS",
+      "link": "https://blog.ui.com/article/introducing-enterprise-nas",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-18T14:24:30.000Z",
+      "summary": "Article URL: https://blog.ui.com/article/introducing-enterprise-nas\nComments URL: https://news.ycombinator.com/item?id=48585866\nPoints: 143\n# Comments: 121",
+      "id": "971b8f8a79a48c093542ac9ee570ed08f62ac8e5ce8768df8b3ec302d8862d7b",
+      "ref_id": "3",
+      "recommendationScore": 60,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "Ubiquiti发布了一款基于ZFS的企业级网络存储设备，适合有高性能存储需求的企业用户。",
+      "reason": "对企业级存储和网络管理人员有价值，但技术创新性一般，更多偏向于产品发布和基础设施，主题优先级相对较低。",
+      "tags": [
+        "网络存储",
+        "ZFS",
+        "企业级",
+        "硬件",
+        "自动化",
+        "基础设施"
+      ]
+    },
+    {
+      "title": "The search for dark matter has been blown wide open",
+      "link": "https://www.technologyreview.com/2026/06/18/1138755/search-for-dark-matter-blown-wide-open/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-06-18T09:00:00.000Z",
+      "summary": "Underneath an Apennine massif, below the Jinping Mountains of Sichuan, and at the bottom of a South Dakota mine, there is a cosmic hunt afoot. Isolated deep beneath these rocky shields, massive detectors filled with liquid xenon aim to make the first direct detections of dark matter, the long-sought invisible substance whose gravity has sculpted…",
+      "id": "37161745af558fecedbf58c210850867ee17f39641f78390c01c7127c0d9fe95",
+      "ref_id": "2",
+      "recommendationScore": 60,
+      "popularityScore": 65,
+      "priority": "low",
+      "comment": "详细介绍了暗物质探测的最新进展及其在世界各地的研究设施。",
+      "reason": "内容具有较高的科学深度和探索性，对前沿物理学感兴趣的读者有吸引力，但与主流科技博客主题关联较弱。",
+      "tags": [
+        "暗物质",
+        "粒子物理",
+        "天体物理",
+        "科学研究"
+      ]
+    },
+    {
+      "title": "NetNewsWire Status",
+      "link": "https://inessential.com/2026/06/15/netnewswire-status.html",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-06-18T16:59:08.000Z",
+      "summary": "Brent Simmons, writing at Inessential:\nMy hope for retirement was to get a lot of work done on\nNetNewsWire.\nA year ago it was in sore need of modernization, tech debt\npay-off, and bug fixes. People were asking for features, but the\nfoundation needed a ton of work before I could get on to adding\nnew rooms.\nHere are some highlights of what we’ve done with 2,188 commits in\nthe past year.\nNetNewsWire was already one of my favorite, most-used, most indispensable apps. Now it’s much better and improving steadily at a rapid clip. You love to see it.\n ★",
+      "id": "9eb8fde0826f815b9fec4bd19577d23ae5962f56e37a72c63e4a454ad6e4ef30",
+      "ref_id": "1",
+      "recommendationScore": 60,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "NetNewsWire这款独立开发的RSS阅读器在过去一年中取得了显著的现代化和改进，展示了独立开发者对产品的持续投入。",
+      "reason": "对NetNewsWire用户或关注独立开发和优秀工具维护的读者来说有价值，但内容本身深度和新颖性有限。",
+      "tags": [
+        "独立开发",
+        "RSS",
+        "NetNewsWire",
+        "应用开发",
+        "工具"
+      ]
+    },
+    {
+      "title": "Geoengineering still faces major practical challenges",
+      "link": "https://www.technologyreview.com/2026/06/18/1139227/geoengineering-engineering-challenges/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-06-18T10:00:00.000Z",
+      "summary": "Solar geoengineering is often portrayed as a sort of emergency brake. Something along the lines of Pull in case of climate emergency to scatter light-reflecting particles to bounce sunlight out of the atmosphere and cool the planet. But it might be less like a simple brake and more like a complicated, entirely unsolved puzzle. Some…",
+      "id": "d7bf25a30886e6ca4e01b16f4111df193609dd6276cceff7c284c242aa9f2199",
+      "ref_id": "1",
+      "recommendationScore": 55,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "深入探讨了地球工程在应对气候变化方面的重大实际挑战。",
+      "reason": "话题具有一定的前瞻性和争议性，对全球科技挑战有讨论价值，但技术实用性和个人操作性不高。",
+      "tags": [
+        "气候变化",
+        "地球工程",
+        "环境科技",
+        "科学政策"
+      ]
+    },
+    {
+      "title": "A website that lists websites to submit your website to",
+      "link": "https://www.submission.directory/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-18T15:12:43.000Z",
+      "summary": "Article URL: https://www.submission.directory/\nComments URL: https://news.ycombinator.com/item?id=48586631\nPoints: 204\n# Comments: 60",
+      "id": "47c4495106690b1fd7d5727b6dd9ce0d7950bca72113e491aeaa771f20449eb3",
+      "ref_id": "0",
+      "recommendationScore": 45,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "一个帮助网站发现和推广的目录工具，实用性尚可但技术含量较低。",
+      "reason": "对独立开发者和市场推广人员有一定实用价值，但缺乏技术深度和新颖性，且主题优先级不高。",
+      "tags": [
+        "独立开发",
+        "网站推广",
+        "营销工具"
+      ]
+    },
+    {
+      "title": "The Download: a new hunt for dark matter and Kenya’s case for going solar",
+      "link": "https://www.technologyreview.com/2026/06/18/1139261/the-download-dark-matter-hunt-kenya-solar-power/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-06-18T12:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. The search for dark matter has been blown wide open For decades, physicists have hunted for weakly interacting massive particles (WIMPs), a leading candidate for dark matter. But their search has…",
+      "id": "83c5c2f2cb319bf72c19a164c50907366712b9411243ddcfd63b70ed036c0683",
+      "ref_id": "0",
+      "recommendationScore": 45,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "一篇涵盖暗物质新发现和肯尼亚太阳能应用的综合性科技新闻摘要。",
+      "reason": "内容广而不深，涉及多个非核心主题，技术深度有限，与博客高优先级主题关联度不高。",
+      "tags": [
+        "科技新闻",
+        "物理学",
+        "能源",
+        "暗物质"
+      ]
+    },
+    {
+      "title": "Pluralistic: The (real) dead economy theory (17 Jun 2026)",
+      "link": "https://pluralistic.net/2026/06/17/its-the-stupid-economy-stupid/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-06-17T18:27:18.000Z",
+      "summary": "Today's links The (real) dead economy theory: Vibes and memestocks, all the way down. Hey look at this: Delights to delectate. Object permanence: Jim Baen has had a stroke; Blame Apple for iTunes DRM; France v the internet; \"Rotters\"; 1901 undersea cables; Washington Post wants Trump coverage blackout; Taxes are for the little people; Gamer lifecycle; Ghanian postal song; \"What Lies Beneath the Clock Tower\": Murder of Jo Cox; 12 year old doxed by anti-vaxers; Hong Kong bookseller recants forced confession. Upcoming appearances: LA, Menlo Park, Toronto, NYC, Philadelphia, Chicago, London, Edinburgh, Brighton, South Bend. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. The (real) dead economy theory (permalink) Here's a fun fact about Elon Musk: in 2020, his (nominal) net worth was $20b, and today it's $1t (nominally). But that's not the fun fact; this is: everything he's done since 2020 was a flop. As John Quiggin writes, the pre-2020 Musk was the Musk of Tesla, batteries and Starlink. The post-2020 Musk is the Musk of Starship, robotaxis, Cybertrucks and Twitter – a string of commercial flops and assets that literally exploded. I would add that post-2020 Musk created the world's hungriest money-furnace, an automated child-porn production tool called \"XAI\": https://crookedtimber.org/2026/06/15/one-big-grift/ Quiggin declares that this is the era in which \"financial markets fail in the task of valuing assets accurately,\" and \"the institutional structures that are supposed to make them work have given up trying.\" Nor did this start with the Spacex IPO. As Quiggin writes, Bitcoin and other cryptos were once shunned by nominally sober financial institutions like Goldman Sachs, but today, not only do all the big banks offer crypto services, people have largely stopped calling it cryptocurrency because no one is even pretending that it's a form of money. It's a tradeable collectible, not even particularly useful for paying for crimes or laundering money. Spacex is just a continuation of the logic of crypto, in which something is valuable because some people think other people will pay more for it in the future, and not because it does useful things: https://johnquiggin.com/2018/02/09/bitcoin-kills-the-efficient-market-hypothesis/ That's the logic of the whole market today. AI – the world's money-losingest technology – attracts investment at the expense of everything else. When horrified NIH lifers begged the DOGE boys not to shut down long-running medical research projects, Musk's broccoli-haired brownshirts laughed in their faces, saying we don't need cancer research because \"GAI\" is almost here and it will cure cancer. You could hardly ask for a better example of investing in vibes over value than shutting down real cancer research to free up money for teaching more words to the word-guessing machine because it's about to become God and cure cancer. Today, Goldman Sachs isn't merely all-in on crypto – it's all-in on the Spacex IPO. As Quiggin writes, the bank has signed off on Musk's claim that \"Musk's ragbag of assets\" will grow one hundredfold in the next 40 months. Quiggin's short essay has been rolling around in my mind since I read it a couple days ago. Then, yesterday, I spotted this essay by Owen McGrann entitled \"The Dead Economy Theory\": https://www.owenmcgrann.com/p/the-dead-economy-theory The perfect name for this phenomenon! Or so I thought. Then I read McGrann's article, and discovered that it's yet another piece asking how the economy will work after AI takes all of our jobs because AI is absolutely going to do that and there's no point in even questioning whether that will happen. Look, thought experiments about how to deal equitably with labor displacement in the face of automation are all well and good. I'm a science fiction writer, that stuff is my bread and butter. But applying \"dead economy theory\" to the blithe acceptance of the claims of AI pitchmen is a terrible waste of a killer coinage. The true risk of AI to your job isn't: \"an AI will do your job.\" It's: \"an AI salesman will exploit your boss's infinite horniness for replacing mouthy workers with pliable machines to sell him a chatbot that can't do your job, and then your boss will fire you and replace you with that inept, defective chatbot.\" By the same token: the real \"dead economy\" risk isn't that all the productive labor will be done by chatbots owned by a habitual liar and eminently guillotineable billionaire like Sam Altman. The actual dead economy risk is that our institutions and markets will continue to move capital from productive activity into memestocks, vibes, and bubbles. We could do \"AI cancer research\" by producing tools that automate gnarly multivariant analysis problems for cancer researchers. But what we're actually doing is defunding cancer research (especially any research into \"systemic\" cancer because studying systemic things is \"woke\") to free up fiscal space so we can build data-centers and make Musk into a trillionaire. That's not just a dead economy – it's one that'll kill everyone you love and everything that matters. Hey look at this (permalink) Onward, Friends https://www.eff.org/deeplinks/2026/06/farewell-now-friends The 40 Most Rage-Inducing Problems in Tech https://www.theringer.com/2026/05/28/tech/pope-leo-xiv-ai-encyclical-tech-industry-problems THE GUILLOTINE EMOJI PROPOSAL https://www.carrozo.com/guillotine-emoji Corporations Repurchase $4.8 TRILLION of Stock Since 2017 Trump-GOP Tax Law https://4taxfairness.substack.com/p/corporations-repurchase-48-trillion US approval of Paramount/Warner Bros. deal surprised DOJ lawyers, report says https://arstechnica.com/tech-policy/2026/06/us-approval-of-paramount-warner-bros-deal-surprised-doj-lawyers-report-says/ Object permanence (permalink) #20yrsago Jim Baen, science fiction publisher, has had a serious stroke https://nielsenhayden.com/makinglight/archives/007658.html#007658 #20yrsago Why Apple is to blame for iTunes DRM https://web.archive.org/web/20060620004534/http://vitanuova.loyalty.org/NewsBruiser-2.6.1/nb.cgi/view/vitanuova/2006/06/15/1 #20yrsago Lifecycle of a gamer https://www.raphkoster.com/2006/06/16/the-lifecycles-of-a-player/ #20yrsago Spammer: I’ll buy MySpace profiles with more than 20k contacts https://web.archive.org/web/20060619062837/http://skibrooklyn.blogspot.com/2006/06/easy-money-sell-your-friends.html #20yrsago Psychology of bad probability estimation: why lottos and terrorists matter https://web.archive.org/web/20060627174933/https://server1.sxsw.com/2006/coverage/SXSW06.INT.20060311.DanielGilbert.mp3 #15yrsago Copyright complaint kills Peanutweeter https://web.archive.org/web/20110620093750/https://www.wired.com/underwire/2011/06/peanutweeter-dmca-takedown/ #15yrsago Work song of Ghanian postal workers cancelling stamps https://blogfiles.wfmu.org/KF/0512/Ghana_Post_Office.mp3 #15yrsago What Lies Beneath the Clock Tower: steampunk choose-your-own-adventure https://memex.craphound.com/2011/06/17/what-lies-beneath-the-clock-tower-steampunk-choose-your-own-adventure/ #15yrsago French proposal: any URL to be arbitrarily blacklisted without due process https://www.laquadrature.net/en/2011/06/15/the-entire-internet-under-governmental-censorship-in-france/ #15yrsago Rotters: YA horror novel about grave-robbing chills, thrills, delights https://memex.craphound.com/2011/06/15/rotters-ya-horror-novel-about-grave-robbing-chills-thrills-delights/ #15yrsago Map of undersea cables from 1901 https://web.archive.org/web/20110220121138/http://www.dephx.com/2010/11/map-of-undersea-cables-from-1901.html #15yrsago Copyright complaint kills Peanutweeter https://web.archive.org/web/20110620093750/https://www.wired.com/underwire/2011/06/peanutweeter-dmca-takedown/ #15yrsago Work song of Ghanian postal workers cancelling stamps https://blogfiles.wfmu.org/KF/0512/Ghana_Post_Office.mp3 #15yrsago What Lies Beneath the Clock Tower: steampunk choose-your-own-adventure https://memex.craphound.com/2011/06/17/what-lies-beneath-the-clock-tower-steampunk-choose-your-own-adventure/ #10yrsago Supreme Court ruling is a blow to copyright trolling business-model https://arstechnica.com/tech-policy/2016/06/attorneys-in-copyright-case-on-resold-textbooks-inch-closer-to-2m-payday/ #10yrsago The Orlando shooting, according to the Congressmen who took the most money from the NRA https://web.archive.org/web/20160617143716/https://theslot.jezebel.com/heres-how-the-congressmen-who-have-gotten-the-most-cash-1782083985 #10yrsago British Pro-EU MP murdered in the street by man shouting “Britain first!” https://web.archive.org/web/20160616212235/https://theintercept.com/2016/06/16/british-referendum-campaign-suspended-killing-pro-europe-lawmaker-jo-cox/ #10yrsago 12 year old makes devastating video about anti-vaxxers, gets doxxed https://skepchick.org/2016/06/anti-vaxxers-dox-a-child-critic/ #10yrsago Report from the prison-industrial complex’s leading trade show https://www.theguardian.com/us-news/2016/jun/16/us-prisons-jail-private-healthcare-companies-profit #10yrsago Your cable operator is spying on you and selling the data from your set-top box https://publicknowledge.org/public-knowledge-defends-consumer-privacy-in-set-top-box-data-complaint-to-fcc-ftc/ #10yrsago Not robots: youth unemployment caused by late retirement, driven by pension precarity https://thebaffler.com/salvos/exit-planning-geoghegan #10yrsago Oakland mayor denies firing police chief over officers who statutorily raped teen sex-worker https://eastbayexpress.com/badge-of-dishonor-top-oakland-police-department-officials-looked-away-as-east-bay-cops-sexually-exploited-and-trafficked-a-teenager-2-1/ #10yrsago Paramount tells judge that they’re still suing over Star Trek fan-film https://www.hollywoodreporter.com/business/business-news/paramount-says-star-trek-fan-903497/ #10yrsago $40,000/year private school sues school for low-income kids for $2M over “Commonwealth” https://www.bostonglobe.com/metro/2016/06/16/can-school-lay-claim-commonwealth-its-name-back-bay-institution-believes-can/WHwiaaPEn04cIY6uxXjoiO/story.html #10yrsago Wisconsin Congresswoman: mandatory drug tests for anyone claiming $150K in itemized tax-deductions https://www.theguardian.com/us-news/2016/jun/16/gwen-moore-drug-test-rich-for-tax-deductions #10yrsago Hong Kong bookseller: I was forced to confess on China TV https://www.bbc.com/news/av/world-asia-china-36552672#5yrsago #10yrsago Washington Post calls for “blackout” on Trump coverage, appeals to RNC https://web.archive.org/web/20160615113350/https://www.washingtonpost.com/opinions/the-right-response-to-donald-trump-a-media-blackout/2016/06/14/2868a0e0-3256-11e6-8758-d58e76e11b12_story.html #10yrsago Security economics: black market price of hacked servers drops to $6 https://www.wired.com/2016/06/xdedic-server-trading-forum-kaspersky/ #10yrsago Lower-case “x” as a gender-neutral typographic convention https://kottke.org/16/06/x-marks-gender-neutral #5yrsago Taxes are for the little people https://pluralistic.net/2021/06/15/guillotines-and-taxes/#carried-interest Upcoming appearances (permalink) Virtual: The future of world governance, with Kim Stanley Robinson (UN Independent Expert on International Order), Jun 19 https://www.youtube.com/live/wJvBvYdaAMY LA: The Reverse Centaur's Guide to Life After AI with Brian Merchant (Skylight Books), Jun 19 https://www.skylightbooks.com/event/skylight-cory-doctorow-presents-reverse-centaurs-guide-life-after-ai-w-brian-merchant Menlo Park: The Reverse Centaur's Guide to Life After AI with Angie Coiro (Kepler's), Jun 21 https://www.keplers.org/upcoming-events-internal/cory-doctorow-2026 Toronto: The Sovereignty Debate (IAB Canada's State of the Nation), Jun 23 https://iabcanada.com/state-of-the-nation-2026 Toronto: The Reverse Centaur's Guide to Life After AI (Osler Records/Type Books), Jun 23 https://www.eventbrite.com/e/cory-doctorow-book-launch-and-talk-tickets-1991501299998 NYC: The Reverse Centaur's Guide to Life After AI with Jonathan Coulton (The Strand), Jun 24 https://www.strandbooks.com/cory-doctorow-the-reverse-centaur-s-guide-to-life-after-ai.html Philadelphia: The Reverse Centaur's Guide to Life After AI with David Williams (Fitler Club/Philadelphia Citizen), Jun 25 https://www.eventbrite.com/e/cory-doctorow-book-event-tickets-1990110326559 Chicago: The Reverse Centaur's Guide to Life After AI with Rick Perlstein (Exile in Bookville), Jun 26 https://exileinbookville.com/events/50628 London: Idler Festival, Jul 11 https://www.idler.co.uk/festival/ Edinburgh International Book Festival with Jimmy Wales, Aug 17 https://www.edbookfest.co.uk/events/the-front-list-cory-doctorow-and-jimmy-wales Brighton: The Reverse Centaur's Guide to Life After AI with Carole Cadwalladr (Brighton Dome), Sep 8 https://brightondome.org/whats-on/LSC-cory-doctorow-the-reverse-centaurs-guide-to-life-after-ai/ South Bend: An Evening With Cory Doctorow (Notre Dame), Oct 6 https://franco.nd.edu/events/2026/10/06/an-evening-with-cory-doctorow/ Recent appearances (permalink) The Enshittification of Life, the Universe, & Everything (Luke Savage) https://www.lukewsavage.com/p/the-enshittification-of-life-the Cory Doctorow's digital jail-break (DW In Focus) https://www.dw.com/en/cory-doctorows-digital-jail-break/audio-77414035 Why the Internet Got Worse and What to Do About It (Jim Rutt) (RIP) https://www.jimruttshow.com/cory-doctorow-3/ On Enshittification – and what can be done about it (Re:publica) https://www.youtube.com/watch?v=KhINQgPMVSI EFFecting Change: How to Disenshittify the Internet (EFF, with Wendy Liu) https://archive.org/details/effecting-change-enshittification Latest books (permalink) \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 (https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/) \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2026 \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Third draft completed. Submitted to editor. \"The Reverse Centaur's Guide to AI,\" a short book for Farrar, Straus and Giroux about being an effective AI critic. LEGAL REVIEW AND COPYEDIT COMPLETE. \"The Post-American Internet,\" a short book about internet policy in the age of Trumpism. PLANNING. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "3c05b529ba4de62fd6a05576448f9cc894772e0a1680109d17221a389b4b639f",
+      "ref_id": "1",
+      "recommendationScore": 45,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "对当前“僵尸经济”现象的批判性解读，但与科技核心关联度不高。",
+      "reason": "话题有趣且涉及知名人物，但内容偏离科技博客的核心主题，对技术读者实用性有限。",
+      "tags": [
+        "经济学",
+        "社会评论",
+        "马斯克",
+        "宏观趋势"
+      ]
+    },
+    {
+      "title": "Hospitals and universities repurposing drugs at 90% lower cost",
+      "link": "https://www.kcl.ac.uk/news/hospitals-and-universities-repurposing-drugs-at-90-lower-cost",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-18T10:33:22.000Z",
+      "summary": "Article URL: https://www.kcl.ac.uk/news/hospitals-and-universities-repurposing-drugs-at-90-lower-cost\nComments URL: https://news.ycombinator.com/item?id=48583386\nPoints: 206\n# Comments: 86",
+      "id": "3eb41e5d35fe9cf3a1efb81385e744db7bddebca72963e0d80c5a85802709020",
+      "ref_id": "3",
+      "recommendationScore": 40,
+      "popularityScore": 85,
+      "priority": "low",
+      "comment": "报道了医院和大学通过药物重用大幅降低成本的社会新闻。",
+      "reason": "虽然话题本身具有社会价值和较高的流行度，但与本科技博客关注的AI、编程工具等主题关联度较低，技术深度不符。",
+      "tags": [
+        "医疗",
+        "科学",
+        "社会效益"
+      ]
+    },
+    {
+      "title": "SpaceX, Newly Public, to Acquire Cursor for $60 Billion in SpaceX Funny-Money Stock",
+      "link": "https://www.cnbc.com/2026/06/16/spacex-spcx-cursor-acquisition-ipo.html",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-06-18T16:49:00.000Z",
+      "summary": "CNBC, two days ago:\nIn November, Cursor said it crossed $1 billion in annualized\nrevenue, according to a release at the time. Cursor was also\nranked at No. 37 on the annual CNBC Disruptor 50 list in 2026. The\n$60 billion in class A common stack that SpaceX has agreed to pay\nto acquire Cursor represented a 3.4% dilution at the aerospace and\ntech conglomerate’s IPO valuation.\nShares of SpaceX gained roughly 16% on Tuesday, topping Amazon and\nMicrosoft by market cap and making it the fourth most valuable\ncompany in the U.S.\nSpaceX is an amazing company but this valuation is insane. The idea that it’s even close to as valuable as Microsoft or Amazon is bananas. SpaceX still isn’t even profitable, so its price-to-earnings ratio is literally infinity. It’s halfway through Thursday as I post this and SpaceX is down ~10 percent on the day, so a touch of sanity is being restored, at least at the moment.\nCursor, with $1 billion in sales, certainly isn’t worth 60× revenue — especially in a business where it too isn’t profitable. But who cares when you’re paying with funny-money stock?\n ★",
+      "id": "224b1ee04575b236bf1548966f1f0798d0ab3b04d5daf1fb6dc25f64da608652",
+      "ref_id": "2",
+      "recommendationScore": 40,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "一篇讽刺性的文章，以SpaceX收购Cursor为例，尖锐批判了当前科技公司过高的市场估值和投机现象。",
+      "reason": "尽管是虚构内容，但它提供了一个对科技市场估值泡沫的批判性视角，对关注宏观经济和科技金融的读者有一定吸引力。",
+      "tags": [
+        "金融",
+        "讽刺",
+        "市场估值",
+        "SpaceX",
+        "科技产业"
+      ]
+    },
+    {
+      "title": "Show HN: Gerrymandle - Daily puzzle game where you redraw electoral districts",
+      "link": "https://gerrymandle.cc/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-18T14:16:25.000Z",
+      "summary": "Article URL: https://gerrymandle.cc/\nComments URL: https://news.ycombinator.com/item?id=48585739\nPoints: 54\n# Comments: 20",
+      "id": "074d1b033956528ff862f0071ae650fadecca7b1f4f805919604f5a34052dcab",
+      "ref_id": "0",
+      "recommendationScore": 25,
+      "popularityScore": 35,
+      "priority": "low",
+      "comment": "一个有趣的独立开发游戏项目，主题独特。",
+      "reason": "虽然是一个创意项目，但其技术深度和实用性较低，不属于核心科技博客的高优先级关注点。",
+      "tags": [
+        "游戏",
+        "独立开发",
+        "产品设计",
+        "休闲娱乐"
+      ]
+    },
+    {
+      "title": "I hate compilers",
+      "link": "https://xeiaso.net/notes/2026/anubis-wasm-vendor-binary/",
+      "source": "xeiaso.net",
+      "publishedAt": "2026-06-18T00:00:00.000Z",
+      "summary": "You'd think that given the same bytes of input you'd get the same bytes of output. lol. lmao. No, you don't. It's complicated.",
+      "id": "0c39113daafb04523de4cab5adaa62d542a9858306b1818409602f3867818660",
+      "ref_id": "3",
+      "recommendationScore": 25,
+      "popularityScore": 40,
+      "priority": "medium",
+      "comment": "简短表达了对编译器的吐槽，但缺乏实质内容和深度。",
+      "reason": "话题贴近编程领域，但信息密度极低，缺乏技术深度和实用价值，更像随笔而非文章。",
+      "tags": [
+        "编程",
+        "编译器",
+        "吐槽"
+      ]
+    },
+    {
+      "title": "The founder of Craigslist has given away half a billion dollars",
+      "link": "https://www.independent.co.uk/us/money/craigslist-multimillionaire-craig-newmark-b2980681.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-18T16:55:25.000Z",
+      "summary": "Article URL: https://www.independent.co.uk/us/money/craigslist-multimillionaire-craig-newmark-b2980681.html\nComments URL: https://news.ycombinator.com/item?id=48588216\nPoints: 74\n# Comments: 22",
+      "id": "1027fcbb81e9252af94c79820af176ec74f2f5224186b00b726a2ad0dfaac42c",
+      "ref_id": "2",
+      "recommendationScore": 20,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "报道了Craigslist创始人Craig Newmark的巨额慈善捐款。",
+      "reason": "内容偏离核心科技主题，属于商业/社会新闻，虽然有一定流行度但与科技博客的关注点不符。",
+      "tags": [
+        "商业",
+        "慈善",
+        "社会新闻",
+        "科技人物"
+      ]
+    },
+    {
+      "title": "The Harajuku Moment",
+      "link": "https://tim.blog/2024/02/09/harajuku-moment/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-18T16:05:58.000Z",
+      "summary": "Article URL: https://tim.blog/2024/02/09/harajuku-moment/\nComments URL: https://news.ycombinator.com/item?id=48587527\nPoints: 33\n# Comments: 12",
+      "id": "4f7485ac07e4265992eb54276fe29090b06156f90f2387bb7d37ed0bdac69458",
+      "ref_id": "3",
+      "recommendationScore": 15,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "Tim Ferriss的一篇关于个人思考或生活哲学的文章。",
+      "reason": "与科技博客的核心主题无关，内容偏向个人感悟和生活方式，不适合科技内容平台。",
+      "tags": [
+        "个人成长",
+        "生活方式",
+        "哲学思考",
+        "Tim Ferriss"
+      ]
+    },
+    {
+      "title": "Book Review: The Great When by Alan Moore ★★★★☆",
+      "link": "https://shkspr.mobi/blog/2026/06/book-review-the-great-when-by-alan-moore/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-06-18T11:34:19.000Z",
+      "summary": "This is the most overwritten book I've ever read. Unfortunately, Alan Moore knows exactly how much polysyllabic pressure it takes to transmogrify base coal into precious gems.  With lines like \"his shaved suede skull made him look like a wilted thistle\" and \"There was a rumour of pink lipstick circling her mouth\" you know you're in for a treat. Even better than the joyful prose of Bob…",
+      "id": "5399a5fbfb8381a0f64721fb484f61a09eab722dba9e3c0ced0feb6035af299a",
+      "ref_id": "2",
+      "recommendationScore": 10,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "文学书评，与科技博客主题完全不符。",
+      "reason": "内容与本科技博客的任何主题都不相关，不适合发布。",
+      "tags": [
+        "书评",
+        "文学"
+      ]
+    },
+    {
+      "title": "Swiss parliament lifts ban on new nuclear power plants",
+      "link": "https://www.bluewin.ch/en/news/switzerland/parliament-lifts-ban-on-new-nuclear-power-plants-3257535.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-18T14:17:07.000Z",
+      "summary": "Article URL: https://www.bluewin.ch/en/news/switzerland/parliament-lifts-ban-on-new-nuclear-power-plants-3257535.html\nComments URL: https://news.ycombinator.com/item?id=48585746\nPoints: 363\n# Comments: 217",
+      "id": "693372a64b24dde8385efdf95690434070890e2014f1f213c5ae128782f28e29",
+      "ref_id": "4",
+      "recommendationScore": 5,
+      "popularityScore": 90,
+      "priority": "low",
+      "comment": "该文章报道了瑞士议会解除新建核电站禁令的政治新闻，与科技博客主题不符。",
+      "reason": "该文章属于政治和能源政策范畴，与科技博客关注的AI、编程工具等技术主题无关，不建议收录。",
+      "tags": [
+        "政治",
+        "能源",
+        "核能",
+        "不相关"
+      ]
+    }
+  ]
+}
