@@ -1,0 +1,618 @@
+{
+  "dailySummary": "本周科技速递：Cloudflare为AI代理推临时账户，LLM复杂性与知识获取引深思。包管理器安全与供应链成焦点，npm、pnpm等工具密集更新。英国VPN禁令也受关注。",
+  "articles": [
+    {
+      "title": "Temporary Cloudflare Accounts for AI Agents",
+      "link": "https://blog.cloudflare.com/temporary-accounts/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-20T11:19:05.000Z",
+      "summary": "Article URL: https://blog.cloudflare.com/temporary-accounts/\nComments URL: https://news.ycombinator.com/item?id=48608394\nPoints: 52\n# Comments: 28",
+      "id": "21b28d7c945af8a7f0e44fc990ad096acd1321bb230860b4319863b829424cde",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "Cloudflare 推出针对 AI Agents 的临时账户功能，显著提升了 AI 应用的安全性和管理效率。",
+      "reason": "直接切合 AI 这一高优先级主题，为 AI Agents 的开发和部署提供了高度实用的安全解决方案。",
+      "tags": [
+        "AI",
+        "云计算",
+        "Cloudflare",
+        "安全",
+        "自动化"
+      ]
+    },
+    {
+      "title": "LLMs Are Complicated Now",
+      "link": "https://ianbarber.blog/2026/06/19/llms-are-complicated-now/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-20T01:25:14.000Z",
+      "summary": "Article URL: https://ianbarber.blog/2026/06/19/llms-are-complicated-now/\nComments URL: https://news.ycombinator.com/item?id=48605355\nPoints: 122\n# Comments: 43",
+      "id": "ab7ccdb321a9ff76272b37de41c6e3b34a1078abf6110d4851e7b3f4d957dfe3",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 36,
+      "priority": "high",
+      "comment": "深刻剖析了大型语言模型（LLMs）日益增长的复杂性及其带来的挑战和机遇。",
+      "reason": "作为AI领域的深度文章，它对理解LLM的演变和未来发展趋势至关重要，具有高度的实用价值。",
+      "tags": [
+        "AI",
+        "LLM",
+        "Machine Learning",
+        "Complexity",
+        "Development"
+      ]
+    },
+    {
+      "title": "This Week in Package Management: 20 June 2026",
+      "link": "https://nesbitt.io/2026/06/20/this-week-in-package-management.html",
+      "source": "nesbitt.io",
+      "publishedAt": "2026-06-20T10:00:00.000Z",
+      "summary": "Week five of the roundup, built from the package manager OPML feed collection and whatever I’ve posted or boosted on Mastodon.\nReleases\nsbt 2.0.0 moves build definitions and plugins to Scala 3, requires JDK 17, and replaces the caching layer with a Bazel-compatible local/remote cache that the rewritten compile and test tasks use. The project matrix plugin is now built in and a native-image client cuts startup time. sbt 1.12.12 shipped alongside it for the 1.x line.\npnpm 11.7 adds a frozenStore setting that opens the store’s SQLite index read-only so pnpm install can run against a Nix store, a read-only bind mount or an OCI layer without trying to write WAL sidecar files. The release also adds a --batch flag to publish a whole workspace in one request, per-scope auth tokens, and an option to delegate resolving installs to pacquet.\npnpm 10.34.4 on the v10 line fixes two path-traversal issues. A traversal-shaped configDependencies name or version in pnpm-workspace.yaml could write files outside node_modules/.pnpm-config and the store (GHSA-qrv3-253h-g69c), and a crafted lockfile alias under nodeLinker: hoisted could write outside the install root (GHSA-fr4h-3cph-29xv, also fixed in 11.7.0).\nnpm 12.0.0-pre.1 is the first pre-release with the v12 defaults switched on: dependency install scripts are blocked unless listed in allowScripts, allow-git and allow-remote default to none, and unknown configs and CLI flags error instead of warn. New in this build are an npm patch subcommand for native dependency patching and a packageExtensions field for repairing dependency manifests from the root.\nYarn 4.17.0 adds package map generation and lets npmMinimalAgeGate be set per npm scope rather than globally.\nDependabot Core 0.382.0 supports a scope property on npm_registry credentials and fixes a leak where npm registry credentials were sent to sibling paths on the same host.\nmise 2026.6.11 adds Alpine apk as a bootstrap package manager alongside apt, dnf, pacman and brew, and stops the default Windows .exe shims from leaking into WSL sessions.\nStack 3.11.1 changes the default MSYS2 environment on 64-bit Windows from MINGW64 to CLANG64, following the MSYS2 project’s deprecation of the former.\nconda 26.5.3 stops caching a not-found response for sharded repodata, which broke shards-only channels on subsequent runs.\nAthens 0.18.0, the Go module proxy, adds Redis cluster-mode support for its singleflight stash.\nGo 1.27rc1 drops Bazaar from the version control systems the go command can fetch modules from, and go mod tidy now consolidates duplicate require blocks into one direct and one indirect block for modules at go 1.27 or later.\npipx 1.14.1 restores a package after an interrupted reinstall and fixes inject --force reinstall behaviour.\nuv 0.11.22 adds SARIF output to uv audit, a --script flag for uv check and uv metadata, and lets preview features be set in uv.toml and pyproject.toml. 0.11.23 followed a day later reverting two earlier fixes, one of which had broken pre-commit-uv.\nDocker Engine 29.6.0 adds a GET /images/{name}/attestations endpoint that returns in-toto attestation statements such as SLSA provenance and SPDX SBOMs attached to an image, with platform selection and predicate-type filtering.\nyay v13 shows how long it has been since each PKGBUILD was last modified, so a recently changed AUR package stands out for review, and adds Lua hooks in init.lua for scripting package checks and filtering.\nAlso out: Homebrew 6.0.2, Helm 4.2.2, Helm 3.21.2, Gradle 9.6.0, snapd 2.76, Harbor 2.15.2-rc1, Renovate 43.233.3.\nArticles\nrv: plan and progress (André Arko) reports a year in on the Rust-based Ruby toolchain. It now installs Rubies, builds with YJIT, manages gems with clean-install and rvx, and runs on Windows. The next step is full dependency resolution, evaluating a Gemfile and writing a lockfile at uv-like speed.\nPackage managers need global hooks (Nemo) argues every package manager should expose pre-clone and pre-build hooks so users can wire dependency cooldowns and threat-feed scanning into the install path locally, without a proxy registry or a shell wrapper.\nIntroducing pkgcli (Matthias Klumpp) is a new command-line front end for PackageKit to replace pkcon, with friendlier command names, coloured output and a JSON mode for scripting.\nWhy stdx is not on crates.io (Sylvain Kerkour) distributes his 64-crate Rust extended standard library by git only, citing the lack of namespaces and the attack surface a central registry adds: publish tokens, source that need not match the repository, typosquatting, dependency confusion. He argues Rust should follow Go’s model of pointing the package manager at the source repository and backing it with a checksum database and an optional caching proxy.\nWhat is npm doing to protect the JavaScript ecosystem, and is it enough? (Mary Branscombe, The Stack) surveys the registry-side changes npm has shipped against supply-chain attacks and what that leaves for developers to do themselves.\ncurl summer of bliss (Daniel Stenberg) announces that the curl project will not accept or handle vulnerability reports during July 2026, giving the maintainers a month off the disclosure treadmill. libexpat is doing the same through 1 August.\nThe Vulnerability Report Is Dead. Long Live the Prompt! (Mikaël Barbero) argues an AI-assisted vulnerability report should lead with the prompt, model version, commit hash, tool access and verification status, and treat the generated write-up as supporting material.\nComposer & Packagist Supply Chain Security in 2026 (Nils Adermann) are the slides from the PHPVerse talk covering the same series of changes the Packagist blog has been writing up over the last few weeks.\nHomebrew tightens tap security, begins work on its interface (Help Net Security) interviews Mike McQuaid about the 6.0.0 release and the tap trust mechanism.\nThoughts on governance (Dawn Foster) gathers her recent talks on open source project governance and where it meets public-sector governance.\nOpen source is a gig (Cristovao Verstraeten, LinkedIn) compares maintaining open source to a touring musician’s life, mostly paid in exposure rather than money.\nElsewhere\nSoftware Dark Matter: Gazing at Uncharted Files to Navigate SBOM Integrations (Reddypalle et al., arXiv) names the gap between what an SBOM lists from package manager metadata and the security-relevant files that actually ship in an artifact but never appear in a manifest.\nThe ClickPy May 2026 report puts PyPI at 163.8 billion downloads for the month, up about 20% since March.\nactions/checkout v7 now refuses by default to check out fork pull request code in pull_request_target workflows, blocking a common path to running untrusted code with write tokens in CI.\nGitHub repositories can now cap the number of open pull requests a user without write access may have at once, aimed at drive-by contribution volume.\nWeston Steimel has opened a discussion on improving the data quality of the PyPA advisory database and is asking for ideas.\ngem-guardian is a RubyGems checksum verifier that has grown lockfile-checksum support, provenance reporting and publisher-provided checksum verification for private registries.\nFollowing last week’s AUR takeover, Morten Linderud points out that anyone maintaining ten or more AUR packages they depend on should consider becoming an official Arch package maintainer instead.\nSend links for next week to @andrewnez@mastodon.social.",
+      "id": "d2eab51724fbc1cf49d056aad91ab6d2add9712727e1da99e9613b8d4cecf21a",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "全面回顾了sbt和pnpm等包管理工具的最新更新和重要特性，技术细节丰富。",
+      "reason": "技术深度高，实用性极强，信息密度大，对使用这些编程工具的开发者群体极具参考价值。",
+      "tags": [
+        "编程工具",
+        "包管理",
+        "sbt",
+        "pnpm",
+        "开发更新",
+        "技术深度"
+      ]
+    },
+    {
+      "title": "Bootimus – A Self-Contained PXE and HTTP Boot Server",
+      "link": "https://bootimus.com",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-20T10:55:18.000Z",
+      "summary": "Article URL: https://bootimus.com\nComments URL: https://news.ycombinator.com/item?id=48608255\nPoints: 66\n# Comments: 22",
+      "id": "eef6a7162c8531c2ca5f53b66a459cd17d365b799ec685f4025365a1e60b8aa2",
+      "ref_id": "4",
+      "recommendationScore": 88,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "介绍了一个自包含的 PXE 和 HTTP 启动服务器工具，极大简化了系统自动化部署流程。",
+      "reason": "提供了一个高度实用的自动化部署工具，对系统管理员和开发者在构建自动化运维方面有巨大价值。",
+      "tags": [
+        "自动化",
+        "系统管理",
+        "网络启动",
+        "开源工具",
+        "DevOps"
+      ]
+    },
+    {
+      "title": "I know Kung-fu ",
+      "link": "https://idiallo.com/blog/i-know-kung-fu",
+      "source": "idiallo.com",
+      "publishedAt": "2026-06-20T03:17:05.000Z",
+      "summary": "Remember that scene in the Matrix where Neo is strapped into the chair and Link uploads all sorts of martial arts into his mind? When Neo wakes up, he says \"I know Kung-fu,\" then proceeds to demonstrate his skill in a battle with Morpheus. That was a pretty amazing scene. But if you suspend your disbelief for a second, it also suggests that when you have all the information at your fingertips, knowledge is just a matter of uploading it into your mind.\n\t\t\t\nThe directors of the movie conveniently skip the scene where we actually see him acquiring the knowledge. All we see is Link typing on the keyboard and different karate poses appearing on the screen. Is Neo practicing kicks? Is he doing strength training? Is he running up and down a mountain, carrying buckets of water a la Kill Bill? We don't know. So we have to assume that, from his seat, the information is simply being downloaded into his mind.\nWhat if we had this same capability in the real world? What if you had all the information you needed to learn any skill? You don't have to limit it to learning Kung-fu, but you sure can. What if I provided you with a computer, an internet connection, and a subscription to ChatGPT Pro Max Ultra Turbo? If you wanted, you could become a doctor, right? What can a university teach you that ChatGPT can't? In fact, the LLM is more patient than a teacher and can tailor the course to your exact needs and level.\nBy these metrics, we should all be geniuses by now. We should see people wake up in the morning and say \"I know medicine\" or \"I know quantum computing.\"\nPersonally, I'm experiencing the opposite. The better access we have to these tools, the less we seem to know. It's as if acquiring knowledge takes more than just exposure to information. Recently I was building a little game with a 10 by 8 grid. The data was stored in a one-dimensional array, and I wanted to look through it using x, y coordinates. I struggled. I tried not to use AI to write the mapping function, but try as I might, my mind could not come up with the terms \"rows and columns.\" It was embarrassing to watch the AI solve it for me. It's as if, my knowledge degrades over time.\nFrom the outside, though, you can look at the application as a whole and be impressed with the results. But unless I go through the code and build a mental model of the application, I'm not confident enough to modify or debug it. My knowledge is built as I spend more time reading the code, forming the neural paths in my mind that help me understand how the different parts work together. I can do this because I'm a software engineer and I understand software.\nBut if I decided I wanted to learn Kung-fu, ChatGPT would oblige. It would probably be the perfect teacher. I don't know what I don't know, so any information it gives me would be more than I currently know, because I know nothing. If it were training me to become a doctor, I would feel just the same. But if it were training me to become a software developer, I would question everything it tells me. Why? Because somehow, large language models suddenly start to fall short when it comes to a subject you actually have experience in.\nWhen we're learning something we don't know, we tend to focus on the answers and the definitions. Knowledge is the thing that appears after you let information marinate in your brain for a moment. I've done math in school since I was a child, but I remember the exact moment I figured out what pi was:\n[...] In my very first electrical engineering class something unusual happened. The professor was talking about sine waves and he drew a straight line between two humps and the line was labeled, as you might have guessed, π. This is not the first time I see this graph or used it for that matter. But all of the sudden, after many years of toiling with this, it clicked. Call it:\n\"Deus ex machina.\"\nI looked at π as the distance between the two humps. The circle, the small triangle in the first quadrant. I know these, I have memorized them, but today for the first time, I understood what they meant.\nSo I interrupted the teacher and said, \"So pi is half the length of the perimeter of the circle if it was stretched into a straight line?\" He didn't know where this came from. He looked at the class for a moment then said, \"yes... sure.\" My classmates looked at me as if I was stupid. I bet most of them still didn't know what I was talking about but had camouflaged their ignorance with an exceptionally confident face. This was a defining moment for me. It was the Rosetta stone to solve the cryptic text file I had been appending to for over two decades.\nThis is not to say that an abundance of information is useless. I'd take it over no information any day. But it doesn't accelerate knowledge acquisition. You can try to download all the information into your mind a la Matrix, but unless you spend time understanding it and building a mental model of the subject, you might as well be relying on hypnopedia.\nIn the movie, while Neo is strapped to the chair, Link tells Morpheus that he's been at it for \"10 hours straight. He is a machine.\" While 10 hours is a short time, it seems long in the movie world. It tells us that on top of information, time is a necessary ingredient to breed knowledge. We've built the technology that brings information to everyone. For now at least, all we have is our brains to ingest and slowly digest information into knowledge.",
+      "id": "d344b53a1e841a5534cd3c0598371746429bc89f371022dc3b8de03ced905ea4",
+      "ref_id": "4",
+      "recommendationScore": 85,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "以《黑客帝国》为引，深入探讨了知识获取和上传的未来可能性，充满想象力和对AI的哲学思考。",
+      "reason": "紧密贴合AI主题，具有很高的思想深度和启发性，能激发读者对未来科技伦理与发展的思考。",
+      "tags": [
+        "AI",
+        "脑机接口",
+        "知识学习",
+        "未来科技",
+        "哲学思考",
+        "科幻"
+      ]
+    },
+    {
+      "title": "Where to Find the Colors Your Screen Can't Show You",
+      "link": "https://moultano.wordpress.com/2026/06/19/where-to-find-the-colors-your-screen-cant-show-you/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-20T03:36:49.000Z",
+      "summary": "Article URL: https://moultano.wordpress.com/2026/06/19/where-to-find-the-colors-your-screen-cant-show-you/\nComments URL: https://news.ycombinator.com/item?id=48606140\nPoints: 342\n# Comments: 86",
+      "id": "c391bdbe1fe2ad8b5ccbb734305cc4307e7bbcea6c53a1ea1a88ceab0053bbe3",
+      "ref_id": "2",
+      "recommendationScore": 81,
+      "popularityScore": 100,
+      "priority": "high",
+      "comment": "深入探讨了显示技术和人眼视觉的极限，揭示了屏幕无法呈现的色彩世界。",
+      "reason": "对图形、显示和色彩科学感兴趣的读者来说，这篇文章提供了极具洞察力的技术深度和知识。",
+      "tags": [
+        "Color Science",
+        "Display Technology",
+        "Graphics",
+        "Hardware",
+        "Perception"
+      ]
+    },
+    {
+      "title": "I Stored a Website in a Favicon",
+      "link": "https://www.timwehrle.de/blog/i-stored-a-website-in-a-favicon/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-20T05:33:59.000Z",
+      "summary": "Article URL: https://www.timwehrle.de/blog/i-stored-a-website-in-a-favicon/\nComments URL: https://news.ycombinator.com/item?id=48606619\nPoints: 253\n# Comments: 86",
+      "id": "9f76a187f7f031d8c24e468f14b496877b833ddbaae1ccf236994a3d43c19160",
+      "ref_id": "1",
+      "recommendationScore": 80,
+      "popularityScore": 74,
+      "priority": "medium",
+      "comment": "一个令人惊叹的技术奇思妙想，成功将整个网站编码存储在了一个小小的Favicon中。",
+      "reason": "极富创意和技术深度，展示了浏览器和文件格式的隐藏潜力，对技术探索者极具启发性。",
+      "tags": [
+        "Web Development",
+        "Favicon",
+        "Hacking",
+        "Data Encoding",
+        "Browser"
+      ]
+    },
+    {
+      "title": "Cargo-Geiger",
+      "link": "https://github.com/geiger-rs/cargo-geiger",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-20T14:52:59.000Z",
+      "summary": "Article URL: https://github.com/geiger-rs/cargo-geiger\nComments URL: https://news.ycombinator.com/item?id=48609645\nPoints: 16\n# Comments: 3",
+      "id": "953b8454e1f9e50f6e1bc31274b78d45a0b11105d339bb4ee3531aa7de908e98",
+      "ref_id": "2",
+      "recommendationScore": 76,
+      "popularityScore": 19,
+      "priority": "medium",
+      "comment": "一个用于Rust项目的安全审计工具，可能用于检查不安全代码。",
+      "reason": "针对Rust开发者的实用编程工具，技术深度和实用性俱佳，但当前热度较低。",
+      "tags": [
+        "Rust",
+        "编程工具",
+        "代码安全",
+        "审计",
+        "开源"
+      ]
+    },
+    {
+      "title": "VPN ban update for UK households as government looks at 'age-gate'",
+      "link": "https://www.birminghammail.co.uk/news/midlands-news/vpn-ban-update-uk-households-34141063",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-20T14:14:35.000Z",
+      "summary": "Article URL: https://www.birminghammail.co.uk/news/midlands-news/vpn-ban-update-uk-households-34141063\nComments URL: https://news.ycombinator.com/item?id=48609385\nPoints: 139\n# Comments: 127",
+      "id": "9a24c94365101a38ae7b078ec35123df5befc412faa55425a482edc050dc7bd8",
+      "ref_id": "2",
+      "recommendationScore": 75,
+      "popularityScore": 100,
+      "priority": "medium",
+      "comment": "关于英国VPN禁令和年龄验证的政策更新，影响广泛且具争议性。",
+      "reason": "高度关注的隐私和网络自由议题，对英国及全球互联网用户有重要参考价值。",
+      "tags": [
+        "VPN",
+        "政策",
+        "隐私",
+        "英国",
+        "网络安全",
+        "数字权利"
+      ]
+    },
+    {
+      "title": "CSSQuake",
+      "link": "https://cssquake.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-20T10:49:53.000Z",
+      "summary": "Article URL: https://cssquake.com/\nComments URL: https://news.ycombinator.com/item?id=48608223\nPoints: 313\n# Comments: 67",
+      "id": "eb7a06e8d4f39894e87f2ec58103ef6198d0fdcad432c3e733f7319d9dd1b662",
+      "ref_id": "0",
+      "recommendationScore": 75,
+      "popularityScore": 91,
+      "priority": "medium",
+      "comment": "展示了CSS的创造性极限，将传统游戏视觉效果搬到网页，极具视觉冲击力。",
+      "reason": "提供了有趣的技术演示和灵感，对前端开发者和创意编码爱好者有启发意义。",
+      "tags": [
+        "CSS",
+        "Web Development",
+        "Frontend",
+        "Creative Coding"
+      ]
+    },
+    {
+      "title": "US Scientist John Jumper to Leave Google DeepMind for Anthropic",
+      "link": "https://www.reuters.com/technology/us-scientist-john-jumper-leave-google-deepmind-anthropic-2026-06-19/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-20T14:32:15.000Z",
+      "summary": "Article URL: https://www.reuters.com/technology/us-scientist-john-jumper-leave-google-deepmind-anthropic-2026-06-19/\nComments URL: https://news.ycombinator.com/item?id=48609506\nPoints: 41\n# Comments: 4",
+      "id": "a61a504ed22022c1dd5348180411844e2659e6e1b21fa603299839b6302194ed",
+      "ref_id": "4",
+      "recommendationScore": 72,
+      "popularityScore": 42,
+      "priority": "high",
+      "comment": "诺贝尔奖得主、深度学习科学家John Jumper从Google DeepMind跳槽至Anthropic的行业大新闻。",
+      "reason": "属于AI领域的高优先级新闻，反映了行业人才流动和竞争格局，对关注AI方向的读者有重要参考价值。",
+      "tags": [
+        "AI",
+        "行业新闻",
+        "DeepMind",
+        "Anthropic",
+        "人才流动"
+      ]
+    },
+    {
+      "title": "Windows 11 New Media Player Uses 3.5x More RAM, Charges for Popular Video Codecs",
+      "link": "https://www.extremetech.com/computing/windows-11s-new-media-player-uses-35x-more-ram-charges-for-popular-video",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-20T14:08:30.000Z",
+      "summary": "Article URL: https://www.extremetech.com/computing/windows-11s-new-media-player-uses-35x-more-ram-charges-for-popular-video\nComments URL: https://news.ycombinator.com/item?id=48609343\nPoints: 73\n# Comments: 33",
+      "id": "aa7712b81b28df985f238af3ad10792a2887d33acd3d5c46e595a2057508cc67",
+      "ref_id": "4",
+      "recommendationScore": 70,
+      "popularityScore": 39,
+      "priority": "medium",
+      "comment": "揭露Windows 11新媒体播放器的高内存占用和付费编码问题，影响用户体验。",
+      "reason": "对主流操作系统重要组件的性能和商业模式进行批判性分析，对Windows用户有实际参考意义。",
+      "tags": [
+        "Windows 11",
+        "媒体播放器",
+        "性能",
+        "软件评测",
+        "操作系统",
+        "用户体验"
+      ]
+    },
+    {
+      "title": "DOS Game \"F-15 Strike Eagle II\" reversing project needs DOS test pilots",
+      "link": "https://neuviemeporte.github.io/f15-se2/2026/06/20/needyou.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-20T15:10:03.000Z",
+      "summary": "Article URL: https://neuviemeporte.github.io/f15-se2/2026/06/20/needyou.html\nComments URL: https://news.ycombinator.com/item?id=48609766\nPoints: 62\n# Comments: 13",
+      "id": "b3b4c383fb89f0a0282412bce196ef3ff1dcbb73baf1d75070083caf0c493a72",
+      "ref_id": "1",
+      "recommendationScore": 66,
+      "popularityScore": 78,
+      "priority": "medium",
+      "comment": "一个寻找DOS游戏《F-15 Strike Eagle II》逆向工程项目测试员的招募。",
+      "reason": "技术深度较高，涉及逆向工程和复古计算，对特定技术社区有吸引力，属于编程工具范畴。",
+      "tags": [
+        "逆向工程",
+        "DOS",
+        "游戏开发",
+        "编程工具",
+        "复古计算"
+      ]
+    },
+    {
+      "title": "The European Social Stack",
+      "link": "https://european.social",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-20T14:20:45.000Z",
+      "summary": "Article URL: https://european.social\nComments URL: https://news.ycombinator.com/item?id=48609421\nPoints: 69\n# Comments: 48",
+      "id": "ace2c061ca4c75fedb1675af58ca9b8c8b34f59baa38e9988a747c4eda6eebad",
+      "ref_id": "1",
+      "recommendationScore": 65,
+      "popularityScore": 44,
+      "priority": "medium",
+      "comment": "探讨欧洲社会技术栈的构建，兼具技术与社会趋势洞察。",
+      "reason": "主题涉及社交网络、隐私及地缘科技趋势，具有一定的时效性和讨论价值。",
+      "tags": [
+        "社交网络",
+        "欧洲",
+        "隐私",
+        "技术趋势",
+        "数字主权"
+      ]
+    },
+    {
+      "title": "From PGP to Mythos: a brief history of export controls that didn't stop anyone",
+      "link": "https://techcrunch.com/2026/06/19/encryption-spyware-and-now-mythos-history-shows-why-cyber-export-control-doesnt-work/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-20T13:44:39.000Z",
+      "summary": "Article URL: https://techcrunch.com/2026/06/19/encryption-spyware-and-now-mythos-history-shows-why-cyber-export-control-doesnt-work/\nComments URL: https://news.ycombinator.com/item?id=48609194\nPoints: 96\n# Comments: 39",
+      "id": "0b42675c02c010f655b805a3d88df8c1a6b3d9a36d9c7158c959a23dfcafe813",
+      "ref_id": "1",
+      "recommendationScore": 65,
+      "popularityScore": 80,
+      "priority": "medium",
+      "comment": "概述了加密技术出口管制的历史及其无效性，提供了深入的网络安全政策背景。",
+      "reason": "提供有价值的历史视角和政策背景，有助于读者理解网络安全发展和技术与法规的互动。",
+      "tags": [
+        "加密",
+        "网络安全",
+        "政策",
+        "历史"
+      ]
+    },
+    {
+      "title": "Trump Mobile T1 Phone Is a Gold-Painted Two-Year-Old HTC U24 Pro",
+      "link": "https://www.nbcnews.com/tech/gadgets/trump-mobile-t1-phone-nearly-identical-htc-device-analysis-rcna349293",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-06-19T18:47:02.000Z",
+      "summary": "NBC News:\nThe Trump Mobile T1 phone, originally marketed as “Made in the\nUSA,” is nearly identical to the two-year-old HTC U24 Pro, a phone\nmade by the Taiwanese company HTC using Chinese parts, according\nto a technical analysis the repair-guide and parts company iFixit\nconducted in partnership with NBC News.\nThat report is paywalled, but NBC News’s five-minute video is on YouTube, and iFixit has a full teardown report of their own. The only thing that’s surprising is that the Trump T1 doesn’t cost much more than the HTC-branded one ($500 vs. $470).\n ★",
+      "id": "18d6044249b02e1971fa774e6917c2bd71cb3b093319879aa72c4e73a4fe3908",
+      "ref_id": "2",
+      "recommendationScore": 65,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "揭露了一款手机的虚假营销和重贴牌本质，具有一定的时事性和消费者关注度。",
+      "reason": "结合了知名技术分析机构iFixit的报告，对消费者有警示作用，话题性强。",
+      "tags": [
+        "手机",
+        "产品欺诈",
+        "iFixit",
+        "消费科技",
+        "时事新闻"
+      ]
+    },
+    {
+      "title": "Fox to Buy Roku Streaming Service in $25 Billion Deal",
+      "link": "https://www.wsj.com/business/deals/fox-roku-deal-f6e564f9?st=mKdQwC&reflink=desktopwebshare_permalink",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-06-19T18:29:40.000Z",
+      "summary": "The Wall Street Journal on Monday:\nFox Corp. said it is acquiring Roku in a deal valued at around\n$25 billion, making a major bet on the future of ad-supported\nstreaming. The deal — Fox’s largest to date — brings together a media\ncompany known for its live news and sports programming with the\nbiggest provider of streaming platforms for connected TVs.\nIt will add scale to Fox’s streaming business, currently home to\nfree, ad-supported streaming service Tubi, which the company\nbought for $400 million in 2020, and subscription-based Fox One\nand Fox Nation.\nIn addition to distributing other streaming services through\nconnected TVs and devices, Roku has its own ad-supported Roku\nChannel. The combined company will better compete with the likes\nof Amazon.com and Netflix for ad dollars.\nI’m late to comment on this, but this seems stupid. Roku sucks. I know they’ve got a 25 percent or so share of the smart TV interface market, but no one is attached to Roku. The entirety of their market share is people who don’t care. That’s not worth $25 billion. Shit platforms seldom last, and the ones that do last achieve monopolies. I think Roku’s share is going to slip, not grow.\n ★",
+      "id": "334e09046c86c43b59e011bb2ec7132cb2d89c0e94e601bd6f24836b315771cd",
+      "ref_id": "3",
+      "recommendationScore": 60,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "一篇关于流媒体行业重大并购案的报道，结合了作者个人观点，对行业发展有参考价值。",
+      "reason": "关注科技/媒体行业的商业动态，信息及时，是行业内的重要事件。",
+      "tags": [
+        "流媒体",
+        "并购",
+        "Roku",
+        "Fox",
+        "商业新闻",
+        "媒体行业"
+      ]
+    },
+    {
+      "title": "Pong in S Favicon",
+      "link": "https://pong-in-a-favicon.franzai.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-20T12:14:32.000Z",
+      "summary": "Article URL: https://pong-in-a-favicon.franzai.com/\nComments URL: https://news.ycombinator.com/item?id=48608681\nPoints: 20\n# Comments: 4",
+      "id": "bf9ded3e7aa04219d0f717e8f571c42a6994d3efb35e3e1638eb3fc13d72ebd7",
+      "ref_id": "2",
+      "recommendationScore": 50,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "展示了在网页 Favicon 中运行经典游戏 Pong 的创意实现，极具新颖性和趣味性。",
+      "reason": "创意十足且具娱乐性，但技术深度和实际应用价值较低，主要作为编程趣味分享。",
+      "tags": [
+        "编程趣味",
+        "前端",
+        "创意项目"
+      ]
+    },
+    {
+      "title": "Bobby Prince has died",
+      "link": "https://oldvcr.blogspot.com/2026/06/bobby-prince-has-died.html",
+      "source": "oldvcr.blogspot.com",
+      "publishedAt": "2026-06-20T01:45:09.871Z",
+      "summary": "Bobby Prince, '90s FPS game musician extraordinare and longtime id Software associate, has died at 81. Now, prior to that, there were things like Commander Keen and Eat Your Vegetables, which were cute and amusing yet almost completely orthogonal to his later output. Correspondingly, his transitional work in Wolfenstein 3D was fine (especially The Ultimate Challenge) but clearly all of a particular genre, and his otherwise solid contributions to Duke Nukem 3D and Rise of the Triad ended up overshadowed by Lee Jackson's (exhibit A: Grabbag; exhibit B: Prince's main theme but Jackson's KISS OFF).\n\nDoom, on the other hand ... well. It's not just that these were solid gamer tracks, it's that they sounded good on just about anybody's sound card. We had high quality MIDI on Mac while you schlubs struggled with Sound Blaster Pros and it still didn't sound like a$$. That's talent. While everybody will name At Doom's Gate (E1M1) as his best, I claim it is only merely his most memorable, and solely because everyone on the whole stinking planet has played it at least once. Instead, I proffer I Sawed The Demons (E2M1), Untitled (E3M1), and the reworked Wolf 3D holdover Evil Incarnate (Doom II MAP31) as his heaviest and meatiest, Donna To The Rescue (E3M2) as his funkiest, The Demons from Adrian's Pen (E2M2) and They're Going To Get You (E2M4) as his creepiest (I love the \"car going out of control\" feel to E2M2, as Prince himself called it), and Sign of Evil (E1M8) as the first track that legitimately had me scared as the doors slide open and the Bruiser Brothers emerge to kill. If that one didn't make you wet your pants back in the day, maybe this remix will. The Doom port for PlayStation didn't want to pay him royalties so they cheaped out and brought in Aubrey Hodges. Good music but hardly worthy of the Master, and to an otherwise excellent port's detriment.\n\nI'd say rest in peace, but given the infernal subject matter that just doesn't seem adequate.",
+      "id": "4c9db705028db9b5f3f2025af37e79ee69d31d4b07769074a8d7869ca7d222b7",
+      "ref_id": "4",
+      "recommendationScore": 40,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "纪念90年代FPS游戏著名音乐家Bobby Prince的逝世及其对游戏音乐的贡献。",
+      "reason": "情感价值高，但与科技博客的核心主题不符，缺乏技术或行业深度分析，主要面向游戏文化爱好者。",
+      "tags": [
+        "游戏音乐",
+        "人物纪念",
+        "Doom",
+        "文化",
+        "历史"
+      ]
+    },
+    {
+      "title": "Big Tech is borrowing like never before",
+      "link": "https://startupfortune.com/big-tech-is-borrowing-like-never-before-and-the-fed-just-made-that-a-lot-more-expensive/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-20T13:49:15.000Z",
+      "summary": "Article URL: https://startupfortune.com/big-tech-is-borrowing-like-never-before-and-the-fed-just-made-that-a-lot-more-expensive/\nComments URL: https://news.ycombinator.com/item?id=48609233\nPoints: 40\n# Comments: 32",
+      "id": "543efed30b43b6c331171f2a5d4cee1aead967501204cdf667f5ac1e6ee86dd5",
+      "ref_id": "0",
+      "recommendationScore": 35,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "探讨了大型科技公司借贷行为的新趋势及其经济影响，对科技行业整体趋势有一定参考价值。",
+      "reason": "内容偏向经济新闻而非核心技术，对科技博客读者实用性有限。",
+      "tags": [
+        "经济",
+        "科技巨头",
+        "金融分析"
+      ]
+    },
+    {
+      "title": "Pluralistic: How the Epstein Class recruits (20 Jun 2026)",
+      "link": "https://pluralistic.net/2026/06/20/any-club-that-would-have-me/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-06-20T16:12:26.000Z",
+      "summary": "Today's links How the Epstein Class recruits: Oh wait, THAT'S what this was?! Hey look at this: Delights to delectate. Object permanence: MPAA blasted in WSJ; RFID skimmers; Post-Soviet inventions; \"Farthing\"; \"Dirty, Drunk and Punk\"; Dweb v founders' frailty; Tax cheating made simple; Oregon v corporate medicine. Upcoming appearances: Toronto, NYC, Philadelphia, Chicago, London, Edinburgh, Sydney, Melbourne, Brighton, London, South Bend. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. How the Epstein Class recruits (permalink) Perhaps you've encountered the stories about Dialog, an extremely weird secret society associated with Peter \"Antichrist\" Thiel, whose membership data and details have leaked this week: https://www.wired.com/story/how-peter-thiels-private-dialog-club-secretly-ranks-its-members/ By all appearances, this is a comically creepy, awful talking-shop for the Epstein Class. It's not all that surprising, in retrospect, to learn that all these terrible people were in a group chat, secretly assigning ratings to one another, and periodically gathering to have tedious panels about, I dunno, \"race science\" or whatever. I'm on the oligarchy beat, so stories about Dialog have been popping up in my RSS feed for the past week or so, but it wasn't until last night that I made a connection. A year or two ago, I got an invite to speak at an event. This is normal, I get a lot of these and I do a lot of public speaking. I'm good at it, and it's a good way for me to reach people and get them energized about the issues I care about. Sometimes, I do these talks for free. Sometimes I get paid. When I first glanced at this speaking offer, I thought, \"Huh, I guess this is one to send on to my speaking agent,\" because the names the offer dropped were a bunch of rich people, and so I assumed that they were having some kind of summit and looking for a keynoter. Then I read a little more carefully and realized they – these billionaires and their lickspittles! – wanted me to pay them, thousands of dollars, so that I could shlep my ass to some luxury resort in order to have the privilege of speaking to them. I came up as a science fiction writer, and at some point, every sf writer learns \"Yog's Law,\" coined by James D Macdonald when he was running the science fiction forum on GEnie, under the screen name \"Yog Sysop\": money flows toward the writer https://en.wikipedia.org/wiki/James_D._Macdonald#Educational_work In other words, whenever you, as a creative worker, are approached by someone who wants to \"help\" you with your work, and they want you to pay them, they are a scammer, preying upon your essential human need to communicate with others. Run away. Which is what I did. I deleted the email. Then, I got another one a couple months later. Ugh. I wrote a mail rule that auto-deleted anything from that sender and promptly forgot about the matter. Until last night. I just had a look at my Trash folder and yup, these people are still emailing me in hopes that I will give them thousands of dollars to join their weird secret society. I don't know if everyone who joined Dialog got an email like the one I was sent, but if you want to understand how at least some of those people ended up on those membership rolls, well, now you know: they were schmucks who'd never learned Yog's Law. (Image: Gage Skidmore 1, 2, 3, 4, 5, 6, CC BY-SA 2.0; TechCrunch50-2008, Dan Taylor 1, 2, CC BY 2.0; modified) Hey look at this (permalink) EFF Joins 60+ Groups Urging the UK to Halt Face Estimation at the Border https://www.eff.org/deeplinks/2026/06/joins-60-groups-urging-uk-halt-face-estimation-border AI Shouldn’t Dictate Our Democracy. Vote Alex Bores. https://www.youtube.com/watch?v=M6KQ2yDK1Q4 tokenalysis and john henry https://backofmind.substack.com/p/tokenalysis-and-john-henry Making Free Warhammer Terrain https://www.youtube.com/watch?v=p6YC-cOngHg Mechanical Watch https://ciechanow.ski/mechanical-watch/ Object permanence (permalink) #20yrsago Wendy Seltzer smokes the MPAA in the Wall St Journal https://web.archive.org/web/20061016014904/http://online.wsj.com/public/article/SB115047057428882434-1V_FEK_CJelMfytdST8APRW7cZw_20060720.html #20yrsago HOWTO build an RFID skimmer https://web.archive.org/web/20060703081753/http://www.eng.tau.ac.il/~yash/kw-usenix06/index.html #20yrsago Desperate inventions of post-Soviet Russia https://memex.craphound.com/2006/06/20/desperate-inventions-of-post-soviet-russia/ #20yrsago NYT falsely reports that Wikipedia has added restrictions https://jimmywales.com/2006/06/17/the-new-york-times-gets-it-exactly-backwards/ #20yrsago Farthing: Heart-rending alternate history about British-Reich peace https://memex.craphound.com/2006/06/20/farthing-heart-rending-alternate-history-about-british-reich-peace/ #15yrsago Dirty, Drunk and Punk: the untold history of Toronto’s BUNCHOFFUCKINGGOOFS https://memex.craphound.com/2011/06/20/dirty-drunk-and-punk-the-untold-history-of-torontos-bunchoffuckinggoofs/ #10yrsago Video: Guarding the Decentralized Web from its founders’ human frailty https://www.youtube.com/watch?v=zlN6wjeCJYk #10yrsago Unnamed Canadian telco sabotages’ library’s low-income internet service https://web.archive.org/web/20160618143132/https://motherboard.vice.com/read/canadian-telecoms-limiting-wifi-low-income-families-toronto-public-libraries-digital-divide #10yrsago Clarence Thomas rumored to be considering retirement https://web.archive.org/web/20160622135444/http://www.washingtonexaminer.com/end-of-conservative-supreme-court-clarence-thomas-may-be-next-to-leave/article/2594317 #10yrsago Tolkien elf or prescription drug name? https://web.archive.org/web/20160609021515/https://entertainment.howstuffworks.com/arts/literature/drug-or-tolkien-elf-quiz.htm #5yrsago The EU, Tech Trustbusting, and Trade Wars https://pluralistic.net/2021/06/20/the-eu-tech-trustbusting-and-trade-wars/ #5yrsago How to cheat on your taxes https://pluralistic.net/2021/06/20/la-hougue/#complexity #1yrago Oregon bans the corporate practice of medicine https://pluralistic.net/2025/06/20/the-doctor-will-gouge-you-now/#states-rights == Upcoming appearances (permalink) Toronto: The Sovereignty Debate (IAB Canada's State of the Nation), Jun 23 https://iabcanada.com/state-of-the-nation-2026 Toronto: The Reverse Centaur's Guide to Life After AI (Osler Records/Type Books), Jun 23 https://www.eventbrite.com/e/cory-doctorow-book-launch-and-talk-tickets-1991501299998 NYC: The Reverse Centaur's Guide to Life After AI with Jonathan Coulton (The Strand), Jun 24 https://www.strandbooks.com/cory-doctorow-the-reverse-centaur-s-guide-to-life-after-ai.html Philadelphia: The Reverse Centaur's Guide to Life After AI with David Williams (Fitler Club/Philadelphia Citizen), Jun 25 https://www.eventbrite.com/e/cory-doctorow-book-event-tickets-1990110326559 Chicago: The Reverse Centaur's Guide to Life After AI with Rick Perlstein (Exile in Bookville), Jun 26 https://exileinbookville.com/events/50628 London: Idler Festival, Jul 11 https://www.idler.co.uk/festival/ Edinburgh International Book Festival with Jimmy Wales, Aug 17 https://www.edbookfest.co.uk/events/the-front-list-cory-doctorow-and-jimmy-wales Sydney: The Festival of Dangerous Ideas, Aug 23-24 https://festivalofdangerousideas.com/cory-doctorow/ Melbourne: Enshittification at the Wheeler Centre, Aug 25 https://www.wheelercentre.com/events-tickets/season-2026/cory-doctorow-enshittification Brighton: The Reverse Centaur's Guide to Life After AI with Carole Cadwalladr (Brighton Dome), Sep 8 https://brightondome.org/whats-on/LSC-cory-doctorow-the-reverse-centaurs-guide-to-life-after-ai/ London: The Reverse Centaur's Guide to Life After AI with Riley Quinn (Foyle's Picadilly), Sep 9 https://www.foyles.co.uk/events/enshittification-cory-doctorow-riley-quinn South Bend: An Evening With Cory Doctorow (Notre Dame), Oct 6 https://franco.nd.edu/events/2026/10/06/an-evening-with-cory-doctorow/ Recent appearances (permalink) How to Think About AI Before It’s Too Late (Galaxy Brain) https://www.youtube.com/watch?v=SPQNPJ0CEPo The future of world governance, with Kim Stanley Robinson (UN Independent Expert on International Order) https://www.youtube.com/live/wJvBvYdaAMY How to Think About Artificial Intelligence (KUER) https://radiowest.kuer.org/show/radiowest/2026-06-16/cory-doctorow-on-how-to-think-about-artificial-intelligence The Enshittification of Life, the Universe, & Everything (Luke Savage) https://www.lukewsavage.com/p/the-enshittification-of-life-the Cory Doctorow's digital jail-break (DW In Focus) https://www.dw.com/en/cory-doctorows-digital-jail-break/audio-77414035 Latest books (permalink) \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 (https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/) \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2026 \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Third draft completed. Submitted to editor. \"The Reverse Centaur's Guide to AI,\" a short book for Farrar, Straus and Giroux about being an effective AI critic. LEGAL REVIEW AND COPYEDIT COMPLETE. \"The Post-American Internet,\" a short book about internet policy in the age of Trumpism. PLANNING. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "d4c1f3c98f9fe54ba02a553f3cc4306a9195b73e0da08de5d46d1902006c646e",
+      "ref_id": "0",
+      "recommendationScore": 30,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "一篇关于彼得·蒂尔秘密社团的社会评论，信息来源于泄露数据。",
+      "reason": "虽然有一定话题性，但内容与科技博客的核心主题关联度低，缺乏技术深度。",
+      "tags": [
+        "社会评论",
+        "调查报告",
+        "Peter Thiel",
+        "文化"
+      ]
+    },
+    {
+      "title": "Reading List 06/20/26",
+      "link": "https://www.construction-physics.com/p/reading-list-062026",
+      "source": "construction-physics.com",
+      "publishedAt": "2026-06-20T12:01:56.000Z",
+      "summary": "A new housing bill, General Motors joining the grid-scale battery game, skepticism about data center delays, solid-state air conditioning, and more.",
+      "id": "1b39fadedfd596051c7684f0ebd402af3907d39190cf04989944372bfaa2183e",
+      "ref_id": "3",
+      "recommendationScore": 30,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "简要罗列了一系列新闻标题，涵盖住房、能源、数据中心等领域。",
+      "reason": "内容过于简短，缺乏具体信息和深入分析，导致实用性和技术深度极低。",
+      "tags": [
+        "新闻摘要",
+        "能源",
+        "数据中心",
+        "阅读列表"
+      ]
+    },
+    {
+      "title": "Pluralistic: The Big Con (19 Jun 2026)",
+      "link": "https://pluralistic.net/2026/06/19/too-big-to-fact-check/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-06-19T20:54:32.000Z",
+      "summary": "Today's links The Big Con: Making the pile of shit bigger won't increase the number of ponies underneath it. Hey look at this: Delights to delectate. Object permanence: TVA v SETI@Home; Telemarketers v DHS batphones; Matt Stone's MPAA censorship memo; Stonehenge pocket watch; W3C v security research; Congressional mass-shooting response simulator; Dynastic wealth; Gig economy astroturf; Meta publishes your AI prompts. Upcoming appearances: LA, Menlo Park, Toronto, NYC, Philadelphia, Chicago, London, Edinburgh, Sydney, Melbourne, Brighton, London, South Bend. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. The Big Con (permalink) Partway through Bridget Read's unmissable chronicle of pyramid (\"multi-level marketing\") schemes, Little Bosses Everywhere, there comes a dual revelation: no one is selling any product to end-users and no one knows it: https://pluralistic.net/2025/05/05/free-enterprise-system/#amway-or-the-highway That is to say, all the hustlers who have spent thousands of dollars on Mary Kay, Herbalife and Amway have failed to move any of their product (beyond a statistically insignificant number of sales to friends and family who quickly tire of being hustled and stop buying this substandard, overpriced junk). But none of these \"entrepreneurs\" knows it, or admits it to anyone – not their \"downlines\" (friends they've lured into the swindle), nor their \"uplines\" (friends who recruited them into the con). Each pyramid scheme victim thinks that they're the only failure in the whole bunch. They go to massive \"sales conferences\" where people boast about all the sales they're making, and they're all lying about it. Incredibly, the pyramid schemers who run these criminal enterprises have figured out how to make a virtue out of this situation: they offer \"sales coaching\" courses to help people make the sales that \"everyone else is making.\" In other words, once you've gone bust failing to sell Amway, they'll get you to go further into debt to learn how to correct the (nonexistent) issues with your sales strategy so that you can join the (imaginary) legion of people who sell Amway by the bushel. Con artists have a name for this kind of swindle: it's called a \"big con,\" which is when everyone a mark comes into contact with is in on the scam. Here's how the big con worked: after a \"roper\" snared a victim (usually on an intercity train), they would telegraph ahead and let the home team know they had a live one. From that point forward, every single person the victim came into contact with was in on it – from the porter who collected his bags at the train station to the cab driver to the Western Union clerk he uses to cable his banker and ask for a cashier's check for his life's savings. In the big con, dozens of skilled actors are putting on a play for an audience of one: you. It's a real-world, non-hallucinatory version of \"gang stalking delusion,\" which is when someone going through a mental health crisis believes that everyone they meet is in on a conspiracy to drive them crazy: https://pluralistic.net/2026/06/03/mission-space/#gsd The situation that people suffering from GSD hallucinate is actually happening to people ensnared in a big con…and pyramid schemes are a big con. What's more – as Read's book makes clear – you can't understand modern American politics without understanding pyramid schemes. One of the most destructive pyramid schemes in American history is Amway. The FTC was about to shut Amway down in the mid-1970s, but then Nixon resigned and Ford became president. Ford had been the Congressman to Amway's founders Jay Van Andel (then the head of the US Chamber of Commerce, which is to say, America's most powerful business lobbyist) and Dick DeVos (yes, that DeVos). Ford and the Amway swindlers were thick as thieves, and so Ford called off the FTC. Rather than going to jail, DeVos and Van Andel became morbidly wealthy, and they used some of their stolen money to found and fund the Heritage Foundation (yes, that Heritage Foundation). The political class running America are pyramid scheme swindlers, funded by pyramid scheme money. They're running a big con on all of us. That's true of the Trumps, who've excreted a diarrhoeic slurry of shitcoins that have made them billions – and lost billions for their \"investors\": https://www.citationneeded.news/issue-106/ Trump insists that he is a self-made man who made his money with successful real estate deals. In reality, he lied all the time about his real estate, committing a string of felonies in order to defraud the banks, even as he went bankrupt, time and again: https://en.wikipedia.org/wiki/Prosecution_of_Donald_Trump_in_New_York Another \"self made man\" is Elon Musk (who is a \"trillionaire,\" in a highly technical sense meaning \"not a trillionaire at all\"). Musk would have been broke several times over but for a string of massive government bailouts and subsidies, which continue to this day: https://www.congress.gov/119/meeting/house/117956/documents/HMKP-119-JU00-20250226-SD003.pdf Trump, Musk, and the rest of the schemers in the pyramid routinely claim that they are wealthy because they are running good businesses, a \"fact\" that many of us accept at face value. It's bad enough that we are deceived about reality, but many of their most addled cult-members try to follow in their footsteps. When they fail, they are in the same situation as one of those busted Amway sellers: thinking they are the only ones who can't make this \"sure thing\" work. Conservativism is a movement of bitter rubes, led by pyramid scheme swindlers: https://pluralistic.net/2025/07/22/all-day-suckers/#i-love-the-poorly-educated The \"wait, is everyone else also failing?\" awakening is an experience that many of America's CEOs are sharing at this moment, as they wonder whether they are the only ones who've fired as many workers as possible and replaced them with AI, only to see their company's fortunes fall: https://www.msn.com/en-us/money/markets/uber-ceo-says-other-execs-are-lying-about-ai-they-say-it-ll-be-fine-publicly-but-privately-admit-millions-of-jobs-are-gone/ar-AA1Z9QMv Like an Amway victim, these boardroom rubes simply can't believe that all these people could be in on the con. How could the world spend trillions on AI if it's not on a path to profitability? It's not that these guys spent 2008 in a cave – rather, they just lack the object permanence to remember the last time a \"Federal Wallet Inspector\" approached them at a board meeting and took them for everything: https://pluralistic.net/2025/12/13/uncle-sucker/#willing-marks The thesis that \"it can't be nonsense if there's a lot of money at stake\" is the core of so many of these swindles. It's the investment theory that holds that once a pile of shit gets big enough, there must be a pony under it somewhere. There's a Bugs Bunny bit that I find myself returning to in this era of the big con: it's a gag from 1954's \"Bugs and Thugs\": https://en.wikipedia.org/wiki/Bugs_and_Thugs Bugs has been kidnapped by gangsters, who have come to trust him. He tricks them into thinking that the police are coming and he urges them to hide in the oven while he sends the cops away. Then, Bugs performs a one-rabbit show in which he plays both the cop (with a broad Irish accent) and himself: Bugs (cop voice): All right, open up! This is the police! [banging] All right, where's Rocky, where's he hiding? Bugs (normal voice): He's not in this stove. Bugs (cop): Oh-ho, he's hidin' in that stove, eh? Bugs (normal): Now look, would I turn on this gas if my friend Rocky was in there? Bugs (cop): You might, rabbit, you might. Bugs (normal) Would I throw a lighted match in there if my friend was in there? [Massive explosion] Bugs (cop): Well, all right, rabbit, you've convinced me. I'll look for Rocky in the city. https://www.youtube.com/watch?v=LSNTjX_g9a4 We keep living through real world versions of this: \"Would I, Mark Zuckerberg, change my company's name to 'Meta' if I wasn't serious about this?\" \"Oh, you might, Zuck, you might.\" \"OK, but would I spend $61b on the metaverse if I wasn't serious about this?\" \"All right, Zuck, you've convinced me. I won't sell my Facebook (oops, I mean 'Meta'!) shares.\" But neither Zuck nor Musk nor Trump has the charm of Bugs Bunny. At a certain point we're all going to look at each other and say, \"It was all bullshit, wasn't it?\" Hey look at this (permalink) AI Economics for Dummies https://www.mcsweeneys.net/articles/ai-economics-for-dummies The Longreads Questionnaire, Featuring Cory Doctorow https://longreads.com/2026/06/17/questionnaire-cory-doctorow/ A guide to ‘greedflation’ https://timharford.com/2026/06/a-guide-to-greedflation/ Ubisoft uses DMCA to kill game: slopsmith gets destroyed by obsolete 30 year old law https://www.youtube.com/watch?v=bgVlEgV27ow Canada Is Forging Ahead with Its Dangerous Surveillance Bill https://www.eff.org/deeplinks/2026/06/canada-forging-ahead-its-dangerous-surveillance-bill Object permanence (permalink) #25yrsago TVA bans SETI@Home https://web.archive.org/web/20010625113535/https://www.knoxnews.com/archives/browserecent/06162001/archives/31399.shtml #25yrsago Scott McCloud on microtransactions and Napster https://web.archive.org/web/20010708054658/http://www.thecomicreader.com/html/icst/icst-6/icst-6.html #20yrsago Wardialling telemarketers stumble on Homeland Security batphones https://web.archive.org/web/20060630104202/https://www.delawareonline.com/apps/pbcs.dll/article?AID=/20060616/NEWS/606160329/1006 #20yrsago NAB: Evidence is irrelevant to copyright treaties https://web.archive.org/web/20060622174657/https://drn.okfn.org/node/133#comment-246#comment-246 #20yrsago LA Times censors newsroom Internet feed https://web.archive.org/web/20060702051259/http://www.laobserved.com/archive/2006/06/protecting_reporters_from.html #20yrsago Matt Stone’s memo to MPAA censors https://web.archive.org/web/20060619220447/https://www.mcnblogs.com/thehotblog/archives/2006/06/preparing_for_t.html #20yrsago Stonehenge pocket-watch predicts solstices https://web.archive.org/web/20060627053213/http://www.thinkgeek.com/gadgets/watches/7d2b/ #15yrsago Mean things authors say about each other https://www.flavorwire.com/188138/the-30-harshest-author-on-author-insults-in-history #15yrsago Glasses with 720p HD video camera https://www.kickstarter.com/projects/zioneyez/eyeztm-by-zioneyez-hd-video-recording-glasses-for #15yrsago ICANN votes to roll out 400-800 new generic top-level domains https://www.flickr.com/photos/wseltzer/5852419280/ #10yrsago W3C DRM working group chairman vetoes work on protecting security researchers and competition https://lwn.net/Articles/691108/ #10yrsago Thoughts and Prayers: a Congressional mass-shooting simulator https://thoughtsandprayersthegame.com/ #5yrsago The doctrine of dynastic wealth https://pluralistic.net/2021/06/19/dynastic-wealth/#caste #5yrsago The gig economy's dark-money, astroturf \"community groups\" https://pluralistic.net/2021/06/19/dynastic-wealth/#astroturf #1yrago Your Meta AI prompts are in a live, public feed https://pluralistic.net/2025/06/19/privacy-breach-by-design/#bringing-home-the-beacon Upcoming appearances (permalink) LA: The Reverse Centaur's Guide to Life After AI with Brian Merchant (Skylight Books), Jun 19 https://www.skylightbooks.com/event/skylight-cory-doctorow-presents-reverse-centaurs-guide-life-after-ai-w-brian-merchant Menlo Park: The Reverse Centaur's Guide to Life After AI with Angie Coiro (Kepler's), Jun 21 https://www.keplers.org/upcoming-events-internal/cory-doctorow-2026 Toronto: The Sovereignty Debate (IAB Canada's State of the Nation), Jun 23 https://iabcanada.com/state-of-the-nation-2026 Toronto: The Reverse Centaur's Guide to Life After AI (Osler Records/Type Books), Jun 23 https://www.eventbrite.com/e/cory-doctorow-book-launch-and-talk-tickets-1991501299998 NYC: The Reverse Centaur's Guide to Life After AI with Jonathan Coulton (The Strand), Jun 24 https://www.strandbooks.com/cory-doctorow-the-reverse-centaur-s-guide-to-life-after-ai.html Philadelphia: The Reverse Centaur's Guide to Life After AI with David Williams (Fitler Club/Philadelphia Citizen), Jun 25 https://www.eventbrite.com/e/cory-doctorow-book-event-tickets-1990110326559 Chicago: The Reverse Centaur's Guide to Life After AI with Rick Perlstein (Exile in Bookville), Jun 26 https://exileinbookville.com/events/50628 London: Idler Festival, Jul 11 https://www.idler.co.uk/festival/ Edinburgh International Book Festival with Jimmy Wales, Aug 17 https://www.edbookfest.co.uk/events/the-front-list-cory-doctorow-and-jimmy-wales Sydney: The Festival of Dangerous Ideas, Aug 23-24 https://festivalofdangerousideas.com/cory-doctorow/ Melbourne: Enshittification at the Wheeler Centre, Aug 25 https://www.wheelercentre.com/events-tickets/season-2026/cory-doctorow-enshittification Brighton: The Reverse Centaur's Guide to Life After AI with Carole Cadwalladr (Brighton Dome), Sep 8 https://brightondome.org/whats-on/LSC-cory-doctorow-the-reverse-centaurs-guide-to-life-after-ai/ London: The Reverse Centaur's Guide to Life After AI with Riley Quinn (Foyle's Picadilly), Sep 9 https://www.foyles.co.uk/events/enshittification-cory-doctorow-riley-quinn South Bend: An Evening With Cory Doctorow (Notre Dame), Oct 6 https://franco.nd.edu/events/2026/10/06/an-evening-with-cory-doctorow/ Recent appearances (permalink) How to Think About AI Before It’s Too Late (Galaxy Brain) https://www.youtube.com/watch?v=SPQNPJ0CEPo The future of world governance, with Kim Stanley Robinson (UN Independent Expert on International Order) https://www.youtube.com/live/wJvBvYdaAMY How to Think About Artificial Intelligence (KUER) https://radiowest.kuer.org/show/radiowest/2026-06-16/cory-doctorow-on-how-to-think-about-artificial-intelligence The Enshittification of Life, the Universe, & Everything (Luke Savage) https://www.lukewsavage.com/p/the-enshittification-of-life-the Cory Doctorow's digital jail-break (DW In Focus) https://www.dw.com/en/cory-doctorows-digital-jail-break/audio-77414035 Latest books (permalink) \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 (https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/) \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2026 \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Third draft completed. Submitted to editor. \"The Reverse Centaur's Guide to AI,\" a short book for Farrar, Straus and Giroux about being an effective AI critic. LEGAL REVIEW AND COPYEDIT COMPLETE. \"The Post-American Internet,\" a short book about internet policy in the age of Trumpism. PLANNING. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "7db121f1f593c4bb998b12bafbe3a4fe2405d08d2b939755589c93a38af05822",
+      "ref_id": "1",
+      "recommendationScore": 25,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "探讨传销（多层次营销）的社会现象，结合新书进行评述。",
+      "reason": "主题偏向社会学，与核心科技领域关联不强，内容新颖度有限且实用性低。",
+      "tags": [
+        "社会学",
+        "商业模式",
+        "诈骗",
+        "评论"
+      ]
+    },
+    {
+      "title": "Web Browsers on PDAS",
+      "link": "https://vale.rocks/posts/pda-browsers",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-20T14:20:47.000Z",
+      "summary": "Article URL: https://vale.rocks/posts/pda-browsers\nComments URL: https://news.ycombinator.com/item?id=48609422\nPoints: 21\n# Comments: 5",
+      "id": "6ce8d081464264908c92c7d3f64c5adfafaea330bc7cb15c6b42d1216233b367",
+      "ref_id": "0",
+      "recommendationScore": 20,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "一篇关于PDA浏览器历史的回顾，对现代技术博客读者实用性较低。",
+      "reason": "主题过于小众和怀旧，不符合主流科技趋势关注点。",
+      "tags": [
+        "历史",
+        "移动设备",
+        "浏览器",
+        "怀旧科技"
+      ]
+    },
+    {
+      "title": "Big Tech is stoking unrest in the UK. Why?",
+      "link": "https://www.ft.com/content/0f3e33d2-0b9e-481d-a911-245d8cc01a9c",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-20T15:42:35.000Z",
+      "summary": "Article URL: https://www.ft.com/content/0f3e33d2-0b9e-481d-a911-245d8cc01a9c\nComments URL: https://news.ycombinator.com/item?id=48610055\nPoints: 40\n# Comments: 23",
+      "id": "06d2657ea6130e49886ec97e8658cfc6e56fa775b51a463f75423a8b3868ca73",
+      "ref_id": "0",
+      "recommendationScore": 19,
+      "popularityScore": 82,
+      "priority": "low",
+      "comment": "探讨大型科技公司在英国引发社会动荡的原因，属于宏观经济社会议题。",
+      "reason": "话题偏向社会评论而非硬核技术，与核心关注点不符，但具有一定的社会观察价值。",
+      "tags": [
+        "大科技",
+        "社会影响",
+        "英国",
+        "政治经济"
+      ]
+    },
+    {
+      "title": "Ubisoft co-founder Claude Guillemot has died in a plane crash",
+      "link": "https://www.bloomberg.com/news/articles/2026-06-20/ubisoft-co-founder-claude-guillemot-dies-in-air-crash-at-age-69",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-20T14:12:50.000Z",
+      "summary": "Article URL: https://www.bloomberg.com/news/articles/2026-06-20/ubisoft-co-founder-claude-guillemot-dies-in-air-crash-at-age-69\nComments URL: https://news.ycombinator.com/item?id=48609373\nPoints: 78\n# Comments: 28",
+      "id": "c0c33d9d4ebb4c262001909ba083ac886ef76bee2ed43ee4cb62686f73b76468",
+      "ref_id": "3",
+      "recommendationScore": 15,
+      "popularityScore": 39,
+      "priority": "low",
+      "comment": "育碧联合创始人去世的讣告，属于行业新闻而非技术内容。",
+      "reason": "虽然是重要的行业人物新闻，但与科技博客关注的技术深度、新颖性等维度不符。",
+      "tags": [
+        "游戏行业",
+        "新闻",
+        "人物传记"
+      ]
+    },
+    {
+      "title": "‘What’s the Deal With Old Guys and Giant Glasses?’",
+      "link": "https://www.youtube.com/watch?v=8DYGxn6Xvt0",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-06-20T01:21:19.000Z",
+      "summary": "Early adoption of new technology is generally considered a young-person thing, but maybe Snap Specs will turn that notion on its head. Direct sales in retirement homes?\n ★",
+      "id": "895c837959f61985fc667c89474a05872593f0ebeff11de0e000a39efcab1142",
+      "ref_id": "1",
+      "recommendationScore": 15,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "极其简短的评论，内容过于单薄，缺乏深度和实用价值，难以称之为文章。",
+      "reason": "仅是一个基于旧技术的臆测，没有提供任何有价值的信息或分析。",
+      "tags": [
+        "可穿戴设备",
+        "科技评论",
+        "Snap Specs"
+      ]
+    },
+    {
+      "title": "Another One for the ‘Sorry, We Used to Be Crap’ Truth-in-Advertising File: Carlsberg Beer",
+      "link": "https://www.independent.co.uk/news/business/news/carlsberg-probably-not-best-beer-in-world-lager-brewer-a8874016.html",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-06-20T01:29:29.000Z",
+      "summary": "Ben Chapman, reporting for The Independent in 2019:\nAfter 40 years of advertising its lager as “Probably the best beer\nin the world”, Danish brewer Carlsberg has confessed that the\nfamous slogan may not be true. Reacting to falling sales and\nincreasingly harsh comments from drinkers about the taste of its\nbeer, Carlsberg has launched a new recipe along with a more honest\napproach to marketing.\nThe campaign declares: “Probably not the best beer in the world.\nSo we’ve changed it. Somewhere along the line, we lost our way. We\nfocused on brewing quantity, not quality. We became one of the\ncheapest, not the best.”\nAs part of the new ad campaign Carlsberg is sharing negative\ncomments about the old beer including, “Carlsberg tastes like\nstale breadsticks” and another comparing it to “drinking the\nbathwater your nan died in”.\nI drank a Carlsberg once. Once.\n ★",
+      "id": "1450e304f86e2772a06cb736a99cab05f1310b9d8b6b3f9c4f9567a5ca38d2de",
+      "ref_id": "0",
+      "recommendationScore": 10,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "一篇与科技主题无关的品牌营销案例分析，内容偏离科技博客关注点。",
+      "reason": "缺乏技术深度和实用性，不符合科技博客的评估标准。",
+      "tags": [
+        "营销",
+        "品牌策略",
+        "商业案例"
+      ]
+    },
+    {
+      "title": "Vacation With An Artist – Mini-Apprenticeships with Artists in Their Studios",
+      "link": "https://vawaa.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-20T14:40:12.000Z",
+      "summary": "Article URL: https://vawaa.com/\nComments URL: https://news.ycombinator.com/item?id=48609553\nPoints: 12\n# Comments: 2",
+      "id": "18586594c19aefb8e85e5a97cbf7dda90fdb49476709d6d15951537ffa217951",
+      "ref_id": "3",
+      "recommendationScore": 0,
+      "popularityScore": 14,
+      "priority": "low",
+      "comment": "提供艺术家工作室迷你学徒体验的度假服务。",
+      "reason": "内容与科技领域完全无关，不适合作为科技博客文章推荐。",
+      "tags": [
+        "艺术",
+        "生活方式",
+        "学徒"
+      ]
+    },
+    {
+      "title": "Quoting Sean Lynch",
+      "link": "https://simonwillison.net/2026/Jun/19/sean-lynch/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-06-19T22:45:49.000Z",
+      "summary": "",
+      "id": "9370d60ff069b1f40eddfba795e531c74d790662acc0281a3a2f13d4fd2b0362",
+      "ref_id": "4",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "文章内容缺失，无法进行有效评估。",
+      "reason": "缺少文章正文信息，无法判断其技术深度、新颖性或实用价值。",
+      "tags": [
+        "Unknown",
+        "Incomplete"
+      ]
+    }
+  ]
+}
