@@ -1,0 +1,712 @@
+{
+  "dailySummary": "今日科技速递：AI代理工程步入“循环”开发新阶段，机器自主迭代代码效率提升，但引发对人类理解与控制的担忧。同时，OCR技术持续突破，iPhone超广角镜头被赋予文档扫描及AI输入新用途，",
+  "articles": [
+    {
+      "title": "The Coming Loop",
+      "link": "https://lucumr.pocoo.org/2026/6/23/the-coming-loop/",
+      "source": "lucumr.pocoo.org",
+      "publishedAt": "2026-06-23T00:00:00.000Z",
+      "summary": "I don’t prompt Claude anymore. I have loops running that prompt Claude and\nfiguring out what to do. My job is to write loops.\n— Boris Cherny\nOver the last months I have watched more and more people build something on top\nof coding agents that feels meaningfully different from just using a coding\nagent.  Some of this happens on top of Pi which is cool to\nsee for sure!  The pattern is the same everywhere though: work is put into a\nqueue of sorts, a machine picks it up, attempts it, stops, and then some harness\ndecides whether that was actually the end.\nIf not, the harness continues the same session, injects another message, starts\na fresh session with modified context, or sends the task to another machine.  The\ntask stays alive beyond the point where the model by itself would normally have\nsaid: “I am done.”\nI think about that type of loop more than I want to admit.\nThere is already an agent loop inside every coding agent.  The model calls a\ntool, incorporates the result, calls another tool, reads a file, edits a file,\nruns tests, and eventually produces some answer.  That loop is one we have been\nquite familiar with for a long time.  The other loop is the harness level loop:\nthe loop outside the agent loop.  That loop is also not\nnew.  We have been doing versions of this since\nearly Claude Code days, but that loop is becoming ever more present in agentic\nengineering and in recent weeks it has started to dominate the Twitter\ndiscourse.\nI Am Not Good At This Yet\nMy current status is that I have not had much success with this way of working\nfor code I deeply care about which turns out to be quite a lot of code.\nPart of that is taste and part of it is control.  I attempt to set a high bar\nfor what I want code to look like, and I want to understand the code I ship.\nUnder pressure, or in a discussion with another human, I want to be able to\nexplain what the system does without first having to ask a clanker to explain it\nto me.  Now there is obviously a question if this desire to understand the code\nis one that I will still have a few years from now.  For now I have not moved\npast the point of comprehension being important to me.\nGiven this desire, there is something I lack with my experience of code written\nwithout me paying attention, particularly from loops.  Present-day models tend\nto produce code that is too defensive, too complex, too local in its reasoning.\nThey avoid strong invariants.  They add fallbacks instead of making bad states\nimpossible.  They duplicate code, invent bad abstractions, and paper over\nunclear design with more machinery.  Worse though: I so far see very little\nprogress of this improving.  If anything, on that front it feels to me that\nwe might even be making steps in the wrong direction.  At least for my taste,\npresent-day hands-off harnesses like Claude Code with ultracode produce worse\ncode than what we were producing last autumn.  That’s because Claude Code, with\nFable for instance will be working uninterrupted on a problem for thirty minutes\nor more, when previously the process would have been much more human in the\nloop.\nFurthermore it’s well understood that models tend to observe some local failure\nand add a local defense.  Karpathy\nmentioned how they are\n“mortally terrified of exceptions”.  In systems with important invariants,\nespecially persisted data formats or core infrastructure, the right fix is not\n“handle every malformed case.”  The right fix is to make the malformed case\nunrepresentable or impossible to write in the first place.  Yet even with a lot\nof manual steering, that type of code does not come out of LLMs naturally, and\neven if the code comes out naturally like that, they will still attempt to\nhandle now impossible errors.\nWhen you take that behavior and you put it behind loops, you tend to amplify it.\nIf each iteration adds another small defense, the system slowly becomes less\nunderstandable while appearing more robust.  The more hands-off you are, the\nmore that happens.  It also teaches really bad practices when tools like this\nare given to juniors without clear guidance.  Because if you ask them, why they\nare doing all that, they will convincingly argue their case.\nWhere Loops Work\nAt the same time, it would be dishonest to pretend the loop pattern does not\nwork because it already works astonishingly well in some domains.\nPorting code one of them.  There are already impressive examples of large\nautomatic porting efforts, including the reported work around moving parts of\nBun from Zig to\nRust.  I have\nused it with success myself to port MiniJinja to\nGo.  Performance explorations are another case\nwhere this works beautifully.  A machine can try experiments, benchmark them,\ndiscard failures, and keep searching.  Security scanning fits naturally too and\nso does almost any type of research: asking a system to explore a complex\nproblem space and report back without necessarily committing lasting code.  One\nthing that many of these have in common is that they either do not generate new\ncode, but transform code that already exists, or they produce code that\nintentionally does not have a long shelf life.  They either produce proof of\nconcepts or ideas, surface findings or are more akin to mechnical\ntransformation.\nI believe that loops that produce artifacts without necessity of longevity or\nthat create some form of clearly verifiable mechnical translation matters more\nthan the general ability of a harness to mechanically measure a goal.  Many\nsuccessful applications of loops use another LLM as a judge or as an\norchestrator.  The mechnical translation case can be verified with a binary test\ncase, but it can also be judged by an LLM instead!\nClaude Code, for instance, is increasingly good at creating entire experimental\nworkflows that it will then execute.  Sure, the code it produces is slop, but\nthat’s more the fault of the model than the harness not being a good judge on if\na step in the workflow resulted in a net improvement or completion.\nThe harness just needs some signal that lets it continue.  It does not have to\nbe objective or binary, it just has to be useful enough to drive another\niteration.\nI absolutely love loops already that take the boring parts out of my day to\nexperiment and measure and to give me ideas.\nSoftware As Organism\nOn the other hand using that same looping methodology to write lasting code does\nnot yet sit well with me.  The metaphor I like to reach for is one of moving\nfrom software as a deterministic machine to software as an organism.\nI became a software engineer in an enviornment that encouraged me to understand\nthe machine.  There was always a layer you could peel off to deepen your\nunderstanding.  Machines that did not exhibit deterministic observable behavior\nwere maybe accepted, but generally seen as not exactly optimal.  Software\narchitecture-wise, I saw it as desireable to push further towards more\ndeterminism rather than less.  Likewise the ability to understand the code has\nbeen an undeniable goal.  In practice not always possible we still took pride in\nwriting code so that it became possible even for new engineers to navigate\ncomplex code bases through clever architecture.  On well designed systems there were\nalways engineers that knew where the invariantes lived, which parts were\nload-bearing and which changes were safe.  Ideally all of that was also well\ndocumented.  Where that understanding was lacking, it was generally regarded as\nsomething to improve upon.\nObviously that ideal has always been strained.  Many software systems,\nespecially very successful ones had periods where engineers on the team were\nable to keep them clean.  Large software systems are not infrequently too big,\ntoo dynamic and too dependent on external services to fit into anyone’s head.\nEven without LLMs we already diagnose distributed systems somewhat like doctors\nin that we observe symptoms, form hypotheses, “order more tests”, try some\nremedies, and observe again.\nYet with LLMs we’re pushing much further in that direction and much quicker.  We\nuse them to write the code and we also use them for diagnosis and remedy.\nThere are plenty of engineers that already live in a world in which the first\nstep after the occurrence of a production issue is followed by having a clanker\nread logs, propose root causes and proactively put up a patch.  The resulting\npatch is then often picked up by another machine that reviews, sometimes even\nlanding it on main without any human supervision.\nObviously that is powerful and I cannot deny that it sounds appealing.  But\ngiving in to that idea, particularly with less and less human oversight means\naccepting that we may no longer understand the whole system in the same way.  We\ntreat it, we monitor it, we stabilize it, but we do not necessarily comprehend\nit.\nI have no doubts that for some software, that is okay.  Not every line of code\ndeserves human authorship and worse code might have been written in the past.\nBut do I want all software to be authored this way?\nYou Cannot Quite Opt Out\nWhat’s very uncomfortable is that opting out of this fully machine-driven\nfuture may not be an option.\nSecurity is the clearest example today.  Even if you do not use loops to build\nyour software, other people will use loops against your software.  Attackers\nwill run machines continuously and even if it’s not attackers, then security\nresearchers will and some of that automated work will throw up dust but also\nfind real issues.  And both the signal and the noise will come your way at a\nvolume that makes it almost impossible to deal with unless you yourself throw a\nmachine at the problem.\nDaniel Stenberg’s post about curl’s summer of\nbliss is a good\nexample of the pressure maintainers are already under.  As far as I know, AI\ndoes not play a tremendous role in the core development of curl today.  Yet\ndespite all of this, maintainers are overwhelmed by reports, most of which are\nnow AI-generated ones.\nIf attackers and reporters loop, defenders will eventually need to loop too to\nkeep up.  Maybe not to write patches directly, maybe just to triage and\nreproduce and pressure will increase.\nThe same is true competitively as some teams will out-build others through raw\nspeed.  Some projects will suddenly move faster because a tiny group figures out\nhow to orchestrate machines effectively.  Some startups will do with five people\nwhat used to require fifty.  Some people might literally put a machine against\nyour product in a loop and ask it to “make it like the other one.”  And if their\nusers are happy, does it really matter?\nNot all software will be equally affected.  Some domains will punish sloppiness\nand demand trust and responsibility, but a lot of software lives in a world\nwhere raw speed, quick experimentation, and vast coverage matter enormously.\nBuilding New Dependencies\nThe scariest part to me is that we become dependent on these new machines in new\nways.  Software has always depended on tools.  I remember the time when I had to\npay for compilers.  These new tools are a flashback to times where creating\nsoftware came with real costs.  But now it’s no longer a one-time payment, it’s\na constant dependency.  Not just a dependency on a filled wallet, but also a\ncognitive dependency.\nIf a codebase is produced by loops, reviewed by loops, patched by loops, and\nkept alive by loops, what happens when you no longer have access to the same\nclass of systems?  What happens when some trade restrictions take away access to\nthe most powerful models?  What if just the cost becomes unbearable?  What if\nyou and your team just lose the last remaining ability to understand the code\nwithout using the machine?\nWe may create codebases that are not merely hard to maintain by humans, but that\nassume machine participation as part of their maintenance model.  This is\nalready happening!  It’s not happening everywhere, and it might not even be\nhappening in ways that are seen as problematic, but we see more and more of it.\nPeople more and more merge code they cannot fully explain.  People lose their\nability to create issue reports or discuss things in chat, without augmenting or\nrephrasing their messages with the context provided by a clanker.  Too many\npeople increasingly rely on a machine to summarize or contextualize it.  More\nand more do I encounter people who converse with me through the indirection of\nan LLM.\nAgain, maybe that is not even going to be wrong, but it’s a massive change to\nhow we did things.\nFuture Harnesses\nI have little doubt that this is where things are going but going there will\nrequire us to do something about our tooling everywhere, and not just in the\ncoding agents.\nJust orchestrating more loops won’t be enough.  Better visualizations of changes\nor orchestration or agents will not restore our understanding.  Either we need\nto find clever ways to jolt the human back into the loop and make the changes of\nthe loops legible long term, or we need to find better ways to compose these\never more complex systems.\nThis is also where my thinking about the role of Pi is changing.  Pi has been\ncautious, and I think that caution is good.  I do not want a future where every\ninteraction turns into an uncontrolled swarm of machines making changes I cannot\nfollow.  I would not want Pi to become an unmaintainable mess in an effort to\nwin the race towards software that writes itself and I would not want Pi to\npromote this type of engineering either.  At the same time Pi is a harness and\nharnesses are at the center of people running these new types of experiments.\nTask queues for coding tasks, orchestration of agents, subagents, durable\nsessions will matter more and more.  Even those of us who have their\nreservations and are not blindly embracing loops will have to start doing those\nexperiments.  We need to, because we need to understand how to make this future\nbounded and survivable.\nControlling Loops\nAs you can read from this post, I’m very uneasy about this future.  Not cause of\nfear, but because of caution given experiences with this technology so far.\nAdopting the idea of harness loops means that the harness decides when work is\nfinished.  In the agent loop, the model eventually says “done” and I review.\nEven before that, I usually steer along the way.  I am involved and I enjoy\nlearning along the way.  In the harness operated loop I’m not sure what my role\neven is.  Even the “done” signal loses all meanings and just becomes\ncommunicated to yet another machine that judges.  My role is reduced to that of\na messenger.\nToday I do not like much of the code that I see from systems built that way and\nneither do I enjoy interacting with too much of software built with AI\nassistence.  Looping is powerful but it removes responsibility more and more,\nand it at least today very much encourages us to give in to the machine.\nAnd yet I have no doubts that this looping future is going to be our future\ndespite the fact that I presently resent it.  I already see astonishingly small\nteams building at impossible speed and I see codebases turning more and more\ninto obscure and confusing organisms that can only be diagnosed by more\nmachines.  Those codebases are simultaniously useful and messy.\nSo I guess I’m coming to terms with that the question is not whether we will\nloop because clearly we will.  Maybe the question is that in a future of loops,\nhow do we don’t abdicate judgment, how we can retain rules of good engineering,\nhow we can ensure that responsible human can continue to supervise, how we need\nto re-think how we architect code to retain sanity along the way.",
+      "id": "2eece697b1d063df12fe914c3b0374b807fe7ad233cd761b96c40ccbc44f5622",
+      "ref_id": "2",
+      "recommendationScore": 95,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "深入探讨AI Agents的循环工作模式及其对未来编程范式的重要影响。",
+      "reason": "高度契合AI主题优先级，技术深度、新颖性及实用性极高，是当前AI领域的前沿热点。",
+      "tags": [
+        "AI",
+        "Agent",
+        "自动化",
+        "编程范式",
+        "LLM",
+        "开发工具"
+      ]
+    },
+    {
+      "title": "Lift4D: Harmonizing Single-View 3D Estimation for 4D Reconstruction In-the-Wild",
+      "link": "https://lift4d.github.io/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-23T14:40:17.000Z",
+      "summary": "Article URL: https://lift4d.github.io/\nComments URL: https://news.ycombinator.com/item?id=48645721\nPoints: 65\n# Comments: 5",
+      "id": "d11caaa7dad02558ac0825fa4c5475e9231e3c68ac0fadd8a0cee37b0a9095bb",
+      "ref_id": "2",
+      "recommendationScore": 92,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "针对单视角3D估计和4D重建的尖端AI研究，极具技术深度和前瞻性。",
+      "reason": "AI主题优先级最高，内容属于计算机视觉前沿研究，技术和新颖性得分突出。",
+      "tags": [
+        "AI",
+        "计算机视觉",
+        "4D重建",
+        "研究"
+      ]
+    },
+    {
+      "title": "Show HN: TikZ Editor – WYSIWYG editor for figures in LaTeX",
+      "link": "https://tikz.dev/editor/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-23T14:24:21.000Z",
+      "summary": "Hi all! TikZ is a widely-used LaTeX package for drawing figures in papers. It uses commands like \\draw[->] (0,0) -- (1,2); to draw lines, shapes, text, etc. Academics usually code up their figures by hand, so there is lots of twiddling around with the coordinates and recompiling until things look nice. I guess it’s a bit like SVG, but it’s more code than markup, for example it has loops with \\foreach.\nI built an open-source WYSIWYG TikZ editor (available for web and desktop) that allows you to edit your TikZ source code visually by dragging and resizing elements. It simultaneously shows the source code and the rendered figure, and lets you edit either one while the two views stay in sync. I’m not aware of any other editors that are simultaneously source editors and WYSIWYG (even for editing SVG or HTML), and I’m quite pleased with how well the combination works.\nThe way the app is implemented is by parsing the TikZ code, and at all times keeping track of the exact source location of each object. Thereby, when a user drags an element to a new position, the app can override just the numbers in the coordinate without changing anything else in the code (such as line breaks or indentation).\nThis approach essentially required reimplementing a large fraction of TikZ, which is the kind of task that no human would ever want to do. I think building software that doesn’t exist yet because it would be impossibly tedious to code up is one of the great new possibilities thanks to coding agents, and it’s worth brainstorming for other examples. (This app was built almost entirely by Codex.)\nImplementing the app came with lots of fun side quests, including building converters from SVG / pptx / ipe to TikZ, re-implementing the LaTeX hyphenation and line-breaking algorithm to support multi-line nodes, and making a color picker that uses the red!20!black color mixing notation used in LaTeX papers.\nComments URL: https://news.ycombinator.com/item?id=48645437\nPoints: 214\n# Comments: 37",
+      "id": "46e8746e8b43d104bf059936d0d282dc93bcc8e3d49305207f937d6c182627c1",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "一个实用的LaTeX TikZ图形WYSIWYG编辑器，大幅提升学术绘图效率。",
+      "reason": "巧妙地解决了LaTeX用户（尤其是学术界）的绘图痛点，技术实现复杂且具有极高的实用性，属于优先级高的编程工具。",
+      "tags": [
+        "LaTeX",
+        "绘图工具",
+        "WYSIWYG",
+        "编程工具",
+        "学术",
+        "Show HN"
+      ]
+    },
+    {
+      "title": "Mistral OCR 4",
+      "link": "https://mistral.ai/news/ocr-4/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-23T14:03:19.000Z",
+      "summary": "Article URL: https://mistral.ai/news/ocr-4/\nComments URL: https://news.ycombinator.com/item?id=48645152\nPoints: 276\n# Comments: 70",
+      "id": "5da62f2b8762fdd155825dbeaeee5588410a4aa2789813ceadd62810024389f6",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "Mistral发布了其最新OCR 4模型，展示了AI在文档识别领域的重大进展。",
+      "reason": "文章直接聚焦于AI领域的最新技术突破，技术深度、新颖性与实用性兼具，优先级最高。",
+      "tags": [
+        "AI",
+        "OCR",
+        "Mistral",
+        "模型更新",
+        "计算机视觉"
+      ]
+    },
+    {
+      "title": "Unlimited OCR: One-Shot Long-Horizon Parsing",
+      "link": "https://github.com/baidu/Unlimited-OCR",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-23T11:35:05.000Z",
+      "summary": "Article URL: https://github.com/baidu/Unlimited-OCR\nComments URL: https://news.ycombinator.com/item?id=48643426\nPoints: 335\n# Comments: 84",
+      "id": "11b86268bb2d567afb586fa6f8feb81292c550e00cabaee3fc0e17a2856da355",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "介绍了一个基于“一次性长距离解析”技术的开源OCR项目，具有极高的实用和技术价值。",
+      "reason": "该项目提供了先进的OCR解决方案，在AI领域具有前沿性、技术深度和广泛的应用潜力。",
+      "tags": [
+        "AI",
+        "OCR",
+        "Machine Learning",
+        "Deep Learning",
+        "Open Source",
+        "Tool"
+      ]
+    },
+    {
+      "title": "Ultra-Wide 0.5× Lenses Have Utility Beyond ‘Photography’",
+      "link": "https://daringfireball.net/linked/2026/06/22/gurman-iphone-air-2",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-06-23T01:21:38.000Z",
+      "summary": "Some follow-up thoughts on my earlier piece, regarding the second-gen iPhone Air’s additional camera lens being a 0.5× ultra-wide, not a 3× or 4× telephoto:\nUltimately, it’s the fact that I use my 0.5× lens not so much for photography but for scanning documents and notes, and taking “What is this?” images of things in my hand, that explains its utility compared to a telephoto. I think of photography as meaning, roughly, “I’m trying to capture an aesthetically pleasing image that I intend to keep in perpetuity, to enjoy and remember for years to come.”\nA telephoto is only good for photography, in that sense. The ultra-wide lens is a tool with additional utility beyond capturing photos you want to keep in any artistic or emotional sense. You can always grit your teeth and use digital zoom if you don’t have a telephoto, but you can’t fake going wider or, importantly, closer. The minimum focal distance of the iPhone 17 Pro 1× lens is 20 cm. The minimum focal distance of the iPhone Air 1× lens is 15 cm. Those extra 5 cm make a difference, but the iPhone Pro’s 0.5× lens has a minimum focal distance of just 2 cm. It can focus on pretty much anything you put in front of it. The iPhone Air’s 1× lens can’t do that. With Apple Intelligence and Siri AI, taking macro photos of objects and text, simply to ask Siri or another chatbot about them, is increasingly important.\nOne reader, who previously owned iPhone Pro models, but bought an Air last year, emailed to say: “It would be nice to have the telephoto; it’s annoying not having the ultra wide. When I was buying it I thought I’d miss the telephoto but actually it’s the other way around. If they add ultra wide it will be an instant upgrade for me.”\nI think that sentiment sums it up.\n ★",
+      "id": "6695f19b8cfe615fbf796702339d4f3bff0dd1295a96be53f53e7a1fde824ee9",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "深度探讨iPhone超广角镜头的非摄影实用性，观点新颖且具启发。",
+      "reason": "对Apple产品特性有独到见解和实用分析，技术深度和实用性兼具，符合Apple生态主题。",
+      "tags": [
+        "Apple",
+        "iPhone",
+        "相机",
+        "摄影",
+        "产品分析"
+      ]
+    },
+    {
+      "title": "Sunsetting a Package Manager",
+      "link": "https://nesbitt.io/2026/06/23/sunsetting-a-package-manager.html",
+      "source": "nesbitt.io",
+      "publishedAt": "2026-06-23T10:00:00.000Z",
+      "summary": "On December 2nd 2026, CocoaPods trunk goes read-only. Orta Therox set the plan out in 2024: the server stops accepting new pods and new versions, while the more than 100,000 libraries already published keep resolving through the Specs repo on GitHub and the CDN on jsDelivr, so every existing Podfile resolves exactly as it did the day before. The maintainers had run out of people, Apple’s Swift Package Manager had become the first-class tool, and a 2024 round of critical vulnerabilities had turned running the trunk server into a liability.\nPlenty of users remain: React Native still resolves its iOS dependencies through CocoaPods, the move to SPM is an active RFC rather than a finished path, and a long tail of apps will keep running pod install well after the freeze. A registry that stops accepting uploads still serves installs to everyone who already depends on it, and the CocoaPods maintainers are not the first team to manage that. Four registries have frozen or shut down before them:\nBower, web and JavaScript, 2017\nBintray, JFrog’s binary host, May 2021\nJCenter, Java and Android, read-only May 2021, redirected August 2024\nAtom apm, Atom editor packages, December 2022\nDegrees of read-only\nRead-only covers a range of states, from a server that rejects new uploads to a dataset that outlives the organisation that ran it, and CocoaPods is choosing the far end by design. The Specs index already lives in a GitHub repository and the packages are served from jsDelivr, so the freeze retires the trunk server the team ran, leaving the index and packages on infrastructure CocoaPods does not operate, on the bet that GitHub and jsDelivr outlast the need for it.\nAtom’s apm went the other way: when GitHub archived the editor in December 2022 the package backend was retired with it, and apm install stopped working. Keeping installs alive after a freeze takes deliberate arrangement.\nJFrog made the opposite arrangement for JCenter, the Java and Android registry it inherited from Bintray. When Bintray was deprecated on May 1st 2021, JFrog kept JCenter as “a read-only repository to ease the burden on the community”, and ran it that way on its own infrastructure for three years. Apache’s Attic is the same terminal state given a process: a project whose community has dissolved is moved there, its code stays readable, and nothing new ships. In both cases the organisation that ran the registry holds the data itself.\nBower sits at the other extreme: its registry only ever stored a package name and a git URL, with versions read live from the repository’s git tags rather than kept centrally. When it stopped accepting new registrations, existing packages went on resolving untouched. A Bower package installs straight from its repository, where the code and tags live, so the freeze took away new names and nothing else, as long as each repo keeps its bower.json.\nSince 2000 Perl has kept BackPAN for exactly this question of who holds the files, a mirror that replicates uploads and ignores deletions, so every release an author ever pushed stays fetchable even after they remove it. A frozen registry needs the same answer: if jsDelivr ever drops the CocoaPods mirror, who holds a complete copy of 100,000 podspecs becomes an urgent question, best answered while the data is still live.\nRedirect or rewrite\nA registry that keeps serving sets no deadline, so users keep putting the migration off, and JFrog applied some pressure with brown-outs: scheduled windows where requests were redirected to Maven Central instead of served, starting with two one-hour windows on July 30th 2024, then two four-hour windows, then a full day, before the permanent redirect on August 15th. The escalation gave every remaining build a recoverable failure to react to ahead of the permanent one. CocoaPods has a gentler version already scheduled, a test run of read-only mode from November 1st to 7th 2026, a month before the real switch.\nA redirect only works when there is somewhere equivalent to send the traffic, and JFrog could point JCenter at Maven Central because the two registries serve the same artifacts under the same coordinates, so the redirect was close to a drop-in. Bower had no equivalent: it told users to move to npm and Webpack, a different tool with a different manifest, so the move was a rewrite. CocoaPods is closer to Bower, because SPM is not a drop-in for a Podfile and moving off it means rewriting each manifest by hand.\nThe escape hatch is built into CocoaPods’ original design: a podspec’s source can name a git tag, and a Podfile can point a dependency straight at a repository, bypassing trunk entirely. Therox’s announcement notes that the freeze “shouldn’t affect people who use CocoaPods with their own specs repos, or have all of their dependencies vendored”. Private specs repos and git-backed pods keep the client useful long after the central index stops moving.\nGit-backed pods inherit the forge’s mutability: a published registry coordinate cannot change, but a git tag can be moved, and a repository deleted and recreated at the same path takes its old URL with it, the same redirect surface that lets a transferred GitHub repo keep resolving. Swapping a frozen immutable index for a live mutable forge is a real trade, easy to make without noticing.\nPatching after the freeze\nThe freeze removes the only place a pod can ever be fixed, even though the 2024 vulnerabilities that helped justify it were in CocoaPods’ own infrastructure and not in any published pod: an orphaned-pod takeover at CVSS 9.3, a session hijack at 9.6, and an RCE on the trunk server itself at 10.0, all of them closed by shutting the server down.\nThe pods are where the cost lands: after December 2nd, a popular library with a newly discovered critical CVE has no canonical version to carry the fix, and every consumer is left pinning a git fork by hand. SDWebImage is the kind of pod this strands: actively maintained, resolving from trunk into more than 25,000 repositories, with image decoders a routine source of memory-safety CVEs. Once trunk is read-only, a fix its maintainers ship has no way onto the coordinate those repositories already point at.\nThe team has already used a write restriction as a security tool, blocking new pods that use prepare_command in May 2025 because the field runs arbitrary shell at install time, and a full freeze is the same lever pulled all the way: it closes trunk’s attack surface and the ability to ship any fix along with it.\nLinux distributions have lived with this for decades and built a narrow exception for it: a Debian stable release is frozen for everything except security, where a small team backports fixes into an otherwise static tree, and the LTS effort extends that window past the point where the rest of the project has moved on.\nOne shape that maps onto a sunset registry is a security-only publishing channel: trunk stays closed to feature releases, but a named set of admins retains the ability to cut a patch version when a vulnerability in a widely-depended-on pod would otherwise have nowhere to land. It keeps publishing narrow, a minimal team and an audit trail, and accepts that the alternative is a known-exploitable package frozen as the newest version.\nNone of this is free: someone has to staff the channel, decide which CVEs clear the bar, and hold publishing keys to a system that was shut down partly because holding those keys had become dangerous. The 2024 vulnerabilities were in the trunk server’s web stack rather than in cutting a release, so a narrow publishing path need not stand the dangerous server back up. A maintainer might reasonably decide the long tail can fork and pin, and that keeping a loaded server alive costs more than the patches it would ship. The freeze date forecloses the option, so the security-only channel is worth pricing before the switch rather than after the first post-freeze CVE.",
+      "id": "43527d72068eed817266919beb7dd2a8cbe361a209fe1581004a727fa1563bc7",
+      "ref_id": "4",
+      "recommendationScore": 90,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "宣布CocoaPods Trunk即将停止更新，并讨论包管理器在Apple生态中的演变。",
+      "reason": "对Apple生态系统中的开发者而言，这是非常重要且实用的信息，技术分析透彻，符合主题优先级。",
+      "tags": [
+        "Apple生态",
+        "编程工具",
+        "CocoaPods",
+        "Swift Package Manager",
+        "包管理",
+        "iOS开发"
+      ]
+    },
+    {
+      "title": "Show HN: Treedocs: Documentation that automatically checks for staleness",
+      "link": "https://dandylyons.github.io/treedocs/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-23T15:07:30.000Z",
+      "summary": "Article URL: https://dandylyons.github.io/treedocs/\nComments URL: https://news.ycombinator.com/item?id=48646209\nPoints: 21\n# Comments: 16",
+      "id": "6da139e8e0c5de1f1aae7dd566c9c2200c507a796dbcca7d1bc2d90563623f7c",
+      "ref_id": "1",
+      "recommendationScore": 88,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "创新的文档工具，能自动检查过时内容，极大提升文档维护效率。",
+      "reason": "解决开发者普遍存在的文档维护痛点，实用性极高且具有显著的新颖性，属于优先级高的编程工具和自动化范畴。",
+      "tags": [
+        "文档工具",
+        "自动化",
+        "开发效率",
+        "编程工具",
+        "Show HN"
+      ]
+    },
+    {
+      "title": "Elephant alert! AI warning systems aim to avoid deadly clashes",
+      "link": "https://www.technologyreview.com/2026/06/23/1138562/elephant-alert-ai-warning-systems-avoid-deadly-clashes-india/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-06-23T09:00:00.000Z",
+      "summary": "India is home to about 60% of the world’s wild Asian elephants, and around 80% of the animals’ habitat lies outside protected areas, according to the Ministry of Environment, Forest, and Climate Change. That brings people and wildlife into close contact, and clashes can turn lethal: There have been some 3,000 human casualties in the…",
+      "id": "abbfa217e7549434abcd33bd8caf519d864181cffc44fe467a209bddfab34e28",
+      "ref_id": "1",
+      "recommendationScore": 88,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "展示了AI在野生动物保护方面的创新应用，解决实际社会问题。",
+      "reason": "突出AI的积极社会影响和独特应用场景，具有高度启发性，兼具实用性和新颖性。",
+      "tags": [
+        "AI应用",
+        "环境保护",
+        "社会影响",
+        "机器学习"
+      ]
+    },
+    {
+      "title": "Gurman Says Second-Gen iPhone Air, Coming in Early 2027, Will Sport a 0.5× Ultra-Wide Second Camera",
+      "link": "https://www.bloomberg.com/news/articles/2026-06-17/apple-prepares-second-generation-iphone-air-for-spring-2027?accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzb3VyY2UiOiJTdWJzY3JpYmVyR2lmdGVkQXJ0aWNsZSIsImlhdCI6MTc4MTcyNjU5MiwiZXhwIjoxNzgyMzMxMzkyLCJhcnRpY2xlSWQiOiJUR1BINkJLR0NURlEwMCIsImJjb25uZWN0SWQiOiJBMDdGRjZGMzlBOTY0NzREOTNBQkFGRjUyQjBBQTE2NiJ9.25UCFLJjGHnk7gaJKhfIP2uChXC-tJLjKfOyUeY4QqI&leadSource=uverify%20wall",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-06-22T19:36:46.000Z",
+      "summary": "Mark Gurman, reporting for Bloomberg:\nApple Inc. is preparing a second-generation iPhone Air for spring\n2027, aiming to boost the appeal of the slimmed-down device,\naccording to people with knowledge of the matter.\nCurrent prototypes of the new model, code-named V62, add a second\nrear camera for ultrawide-angle photography, said the people, who\nasked not to be identified because the product hasn’t been\nannounced. It’s now in advanced testing within Apple, they said.\nWhen Wayne Ma and Qianer Liu of The Information broke the story on the second-gen iPhone Air getting a second camera system back in November, they didn’t say what kind of lens it would be — ultra-wide or telephoto. I speculated that it could go either way. The no-adjective iPhones 11–17 have all sported two lenses: 1× and 0.5×. Pro-tier iPhones have shipped with three lenses (1×, 0.5×, and a telephoto that has varied in length from 2× to 5×) ever since the iPhone 11 Pro introduced the “Pro” adjective in the name. But prior to the iPhone 11 model year, top-tier iPhones with two lenses (7 Plus, 8 Plus, X, XS) shipped with a telephoto 2× lens, not a 0.5× ultra wide, as the second lens.\nIf Gurman is correct that the additional lens on the second-gen iPhone Air is going to be an ultra-wide 0.5×, I wonder if that is motivated by which type of lens is more popular, or which one fits the Air’s thin form factor better. Could be both — that ultra-wide photography and video is more popular than telephoto, and it fits the constraints of the form factor better. (When I wrote about this in November, a bunch of  readers emailed to say that their teenage kids shoot a ton of ultra-wide photos.)\nI just ran the numbers on my personal photography with the iPhone 17 Pro over the last nine months. I’ve shot just a hair under 4,000 stills and 90 videos. Still photos by lens:\n 0.5x:   6%\n   1x:  86%\n   4x:   5%\nFront:   3%\n\nVideos by lens:\n 0.5x:  18%\n   1x:  80%\n   4x:   2%\nFront:   0\n\nBy the numbers, I use the ultra-wide 0.5× lens about the same amount as the telephoto 4× for stills, but much more frequently for video — because video is captured with a sensor crop. But flipping through the stills shot with each, an awful lot of my 0.5× photos are macro close-ups of things like receipts and products on store shelves. If I could only have one of the two additional lenses, it’d be a close call, but I’d choose the telephoto 4× — which has become more useful than any previous telephoto lens this year with the sensor crop to get an optical 8× zoom.\nUpdate: “Ultra-Wide 0.5× Lenses Have Utility Beyond ‘Photography’”.\n ★",
+      "id": "f0cea7bfe008e7499bd20dbe6d45e493dd97110eca17f9fa15c7bf285d14cab4",
+      "ref_id": "4",
+      "recommendationScore": 88,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "爆料2027年iPhone Air新特性，提供对未来Apple产品的早期洞察。",
+      "reason": "及时且独家披露Apple未来产品细节，对Apple用户和行业观察者有极高吸引力，信息密度高。",
+      "tags": [
+        "Apple",
+        "iPhone Air",
+        "传闻",
+        "产品爆料",
+        "相机"
+      ]
+    },
+    {
+      "title": "Show HN: Bun-sqlgen – Type-safe raw SQL for Bun, no ORM",
+      "link": "https://github.com/ilbertt/bun-sqlgen",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-23T14:20:24.000Z",
+      "summary": "Article URL: https://github.com/ilbertt/bun-sqlgen\nComments URL: https://news.ycombinator.com/item?id=48645390\nPoints: 42\n# Comments: 18",
+      "id": "c3ee0bf99c44022f59f0934e0ae433819bb0cbfcc8054bb2349e6f521122cbca",
+      "ref_id": "4",
+      "recommendationScore": 85,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "为Bun环境提供类型安全的原始SQL方案，避免ORM开销同时保证代码健壮性。",
+      "reason": "解决Bun开发者数据库访问的痛点，强调类型安全和效率，符合编程工具的优先主题，且社区讨论度高。",
+      "tags": [
+        "Bun",
+        "SQL",
+        "类型安全",
+        "数据库",
+        "编程工具",
+        "Show HN"
+      ]
+    },
+    {
+      "title": "The Download: the future of chipmaking and Anthropic’s government clash",
+      "link": "https://www.technologyreview.com/2026/06/23/1139483/the-download-chipmaking-future-asml-ai-anthropic-government-clash/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-06-23T12:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. The $400 million machine powering the future of chipmaking It’s a bit of a schlep to get to the top of ASML’s newest machine. It’s about the size of a double-decker…",
+      "id": "d0d039c51d16613080df7f38d293d7bcd009597aad875d5e1d93c544b956afcf",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "概述了芯片制造的未来趋势和AI公司的政策冲突，信息量大。",
+      "reason": "内容涉及AI公司和尖端芯片制造，具有高新闻价值和行业影响力，对理解科技前沿发展至关重要。",
+      "tags": [
+        "AI",
+        "芯片制造",
+        "科技新闻",
+        "政策"
+      ]
+    },
+    {
+      "title": "Apple Is Going to Raise Device Prices — but When?",
+      "link": "https://x.com/markgurman/status/2067741507273289766",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-06-22T20:06:37.000Z",
+      "summary": "Speaking of Mark Gurman, in the wake of Tim Cook’s unprecedented interview with the WSJ to warn that Apple is going to raise prices in response to the steep rise in RAM and SSD prices, he tweeted (XCancel link):\nRegarding Apple price hikes, have to imagine these are fairly\nimminent. No other reason to flag them now. I’d also note that\nApple back to school sale is very imminent, and it could make\nsense to tie these together as a buffer. Either way this is\nhappening soon. Not a fall thing.\nI won a steak dinner from my Dithering cohost Ben Thompson, betting that Apple would not raise the prices on RAM when they introduced the M5 Pro and M5 Max MacBook Pros in March, largely on the basis that Apple considers the pricing part of the product’s brand. For the same reason, I also do not think they’re going to raise the prices of existing products mid-cycle. I think Cook’s warning is about the fall, starting with the iPhones 18 Pro and the folding “Ultra” in September, and he issued the warning months early just to make the bad news “old news” by the time September gets here.\nBut unlike with the MacBook Pros in March, I wouldn’t bet more than a beverage on my hunch here. However out of character it would be for Apple to raise prices midway through product cycles, the global RAM shortage is unprecedented. I wouldn’t be surprised if Apple pushes price increases moments after I hit “Publish” on this post. (I’m checking right now, before I hit the button, in fact.)\nBut Cook gave that interview on Wednesday. Now it’s Monday and Apple still hasn’t changed any pricing. If they were going to push out price increases soon, why not last Friday? Why wait at all unless they’re waiting for new hardware? I wouldn’t want to bet on this, but if I had to, I think price increases will roll out with new and refreshed hardware products and they’ll ride the storm in the meantime. I also wonder whether Apple hasn’t yet decided when to increase pricing. Maybe they’re bracing right now for the RAM shortage (and thus RAM pricing) to get even worse, soon, but hoping to hold out until September. And that’s why Cook didn’t offer any hints about when?\n ★",
+      "id": "fbe46a063fd0f10186305c00fb24f4745f821c133b942d313491b78046c66e58",
+      "ref_id": "3",
+      "recommendationScore": 85,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "对Apple产品价格上涨时机的分析和预测，具有很高的时效性和用户关注度。",
+      "reason": "紧跟Apple市场动态，对消费者决策有重要参考价值，虽然技术深度一般，但实用性和话题性强。",
+      "tags": [
+        "Apple",
+        "价格",
+        "市场策略",
+        "iPhone",
+        "MacBook"
+      ]
+    },
+    {
+      "title": "The $400 million machine powering the future of chipmaking",
+      "link": "https://www.technologyreview.com/2026/06/23/1138837/asml-400-million-dollar-machine-powering-future-of-chipmaking/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-06-23T09:00:00.000Z",
+      "summary": "Jos Benschop is climbing a ladder to get to the top of his newest machine.  It’s a bit of a schlep. The contraption is the size of a double-decker bus—more than 150 tons of gleaming precision-milled aluminum covered in thousands of snaking tubes, colored cables, and pressurized tanks. From the ground, it looks like a…",
+      "id": "0b5b669013148f8e377ab5286c49d01eeaf14ca965a7540066472da396682ea2",
+      "ref_id": "2",
+      "recommendationScore": 82,
+      "popularityScore": 78,
+      "priority": "high",
+      "comment": "深入介绍了驱动未来芯片制造的巨型机器，展示了工程奇迹。",
+      "reason": "揭示了半导体产业最前沿的技术和设备，对理解现代计算基础至关重要，技术深度和信息密度高。",
+      "tags": [
+        "芯片制造",
+        "硬件",
+        "工程",
+        "半导体"
+      ]
+    },
+    {
+      "title": "Pact: Anonymous Credentials for the Web",
+      "link": "https://hacks.mozilla.org/2026/06/pact-anonymous-credentials-for-the-web/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-23T16:21:49.000Z",
+      "summary": "Article URL: https://hacks.mozilla.org/2026/06/pact-anonymous-credentials-for-the-web/\nComments URL: https://news.ycombinator.com/item?id=48647360\nPoints: 32\n# Comments: 1",
+      "id": "525520fe7d46f327962f1aa30544e185e92b7431691c8485edafb663793b4816",
+      "ref_id": "0",
+      "recommendationScore": 78,
+      "popularityScore": 40,
+      "priority": "medium",
+      "comment": "探讨匿名凭证在Web上的应用，提升用户隐私和安全性。",
+      "reason": "涉及Web隐私和安全前沿技术，技术深度和实用性俱佳，但社区讨论度相对不高。",
+      "tags": [
+        "Web安全",
+        "隐私保护",
+        "匿名凭证",
+        "Mozilla"
+      ]
+    },
+    {
+      "title": "Lossless GIF recompression via exhaustive search",
+      "link": "https://blog.arusekk.pl/posts/lossless-gif-recompression/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-23T12:56:16.000Z",
+      "summary": "Article URL: https://blog.arusekk.pl/posts/lossless-gif-recompression/\nComments URL: https://news.ycombinator.com/item?id=48644257\nPoints: 38\n# Comments: 9",
+      "id": "b8f02603026ffe8af07d0750e960d44976a503e22fe6b9f25985ac76ac85d79a",
+      "ref_id": "4",
+      "recommendationScore": 75,
+      "popularityScore": 40,
+      "priority": "medium",
+      "comment": "详细探讨了通过穷举搜索实现GIF无损重压缩的技术原理。",
+      "reason": "文章具有较高的技术深度和信息密度，属于编程工具与算法优化范畴，对特定领域的开发者有实用价值。",
+      "tags": [
+        "图像处理",
+        "算法",
+        "编程",
+        "GIF优化"
+      ]
+    },
+    {
+      "title": "The Low-Tech AI of Elden Ring",
+      "link": "https://nega.tv/posts/low-tech-ai-of-elden-ring.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-23T11:40:50.000Z",
+      "summary": "Article URL: https://nega.tv/posts/low-tech-ai-of-elden-ring.html\nComments URL: https://news.ycombinator.com/item?id=48643489\nPoints: 43\n# Comments: 26",
+      "id": "91e6f6c0974510935d21a7c4fd8d575ef1d0bd9abe9b85ccb13fc7de8a05d6a7",
+      "ref_id": "1",
+      "recommendationScore": 75,
+      "popularityScore": 25,
+      "priority": "high",
+      "comment": "探讨了知名游戏《艾尔登法环》中AI的设计哲学与低技术实现细节。",
+      "reason": "从游戏AI的独特视角剖析了AI在实际应用中的巧妙之处，兼具趣味性与技术洞察力。",
+      "tags": [
+        "AI",
+        "Game AI",
+        "Elden Ring",
+        "Game Development"
+      ]
+    },
+    {
+      "title": "The Coming Loop",
+      "link": "https://lucumr.pocoo.org/2026/6/23/the-coming-loop/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-23T11:06:41.000Z",
+      "summary": "Article URL: https://lucumr.pocoo.org/2026/6/23/the-coming-loop/\nComments URL: https://news.ycombinator.com/item?id=48643180\nPoints: 169\n# Comments: 142",
+      "id": "2eece697b1d063df12fe914c3b0374b807fe7ad233cd761b96c40ccbc44f5622",
+      "ref_id": "3",
+      "recommendationScore": 70,
+      "popularityScore": 80,
+      "priority": "medium",
+      "comment": "一篇引发广泛讨论的文章，预测和分析了软件开发领域的未来趋势和周期性变化。",
+      "reason": "为软件工程师和独立开发者提供了前瞻性的思考，有助于理解行业发展方向。",
+      "tags": [
+        "Software Engineering",
+        "Programming",
+        "Trends",
+        "Future of Tech"
+      ]
+    },
+    {
+      "title": "What we call \"age verification\" is actually mass surveillance",
+      "link": "https://pluralistic.net/2026/06/23/destroy-the-village/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-23T14:04:43.000Z",
+      "summary": "Article URL: https://pluralistic.net/2026/06/23/destroy-the-village/\nComments URL: https://news.ycombinator.com/item?id=48645173\nPoints: 421\n# Comments: 273",
+      "id": "596d03755159d9e82ff1b2e84ed35cb2fc2132ec51d4fe70c30c7ee74e61ca6b",
+      "ref_id": "1",
+      "recommendationScore": 65,
+      "popularityScore": 85,
+      "priority": "low",
+      "comment": "深入剖析了年龄验证背后的隐私和大规模监控风险。",
+      "reason": "该文提出了重要的社会伦理和隐私议题，公众关注度高，但与核心技术开发主题关联度较低。",
+      "tags": [
+        "隐私",
+        "数据安全",
+        "社会影响",
+        "政策"
+      ]
+    },
+    {
+      "title": "MSG Made Dossier on Activists Who Opposed Facial Recognition",
+      "link": "https://www.404media.co/madison-square-garden-made-dossier-on-activists-who-opposed-facial-recognition/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-23T13:36:10.000Z",
+      "summary": "Article URL: https://www.404media.co/madison-square-garden-made-dossier-on-activists-who-opposed-facial-recognition/\nComments URL: https://news.ycombinator.com/item?id=48644781\nPoints: 207\n# Comments: 55",
+      "id": "eda7c57ad7e47c6addfae2a4ad974813dd43c2119210ac5caab3ae9a3900a326",
+      "ref_id": "3",
+      "recommendationScore": 60,
+      "popularityScore": 75,
+      "priority": "low",
+      "comment": "揭露了麦迪逊广场花园利用面部识别技术对活动人士进行监控的事件。",
+      "reason": "该文揭示了技术滥用带来的伦理和隐私问题，社会影响力大，但非AI技术本身的发展探讨。",
+      "tags": [
+        "隐私",
+        "面部识别",
+        "伦理",
+        "企业行为"
+      ]
+    },
+    {
+      "title": "Crypto in 2026: Oh, This Is the Bad Place",
+      "link": "https://www.stephendiehl.com/posts/bad_place_2026/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-23T10:04:04.000Z",
+      "summary": "Article URL: https://www.stephendiehl.com/posts/bad_place_2026/\nComments URL: https://news.ycombinator.com/item?id=48642699\nPoints: 327\n# Comments: 412",
+      "id": "f8ded5a703316e75537818dd167120202ecff5a9a1d138d7dee6baef0f94a0eb",
+      "ref_id": "4",
+      "recommendationScore": 60,
+      "popularityScore": 95,
+      "priority": "low",
+      "comment": "对2026年加密货币市场的未来提出强烈批判性观点，并引起了热烈讨论。",
+      "reason": "尽管主题偏离核心技术优先级，但其极高的讨论度和独特的批判视角值得关注，提供社会和经济洞察。",
+      "tags": [
+        "Cryptocurrency",
+        "Blockchain",
+        "Finance",
+        "Opinion",
+        "Market Analysis"
+      ]
+    },
+    {
+      "title": "The Talk Show: ‘Perp Walk for Selfies’",
+      "link": "https://daringfireball.net/thetalkshow/2026/06/23/ep-450",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-06-23T16:23:43.000Z",
+      "summary": "Jason Snell returns to the show for a look back at WWDC 2026, and a look ahead to Designed in California, his and Myke Hurley’s upcoming 50-episode Apple history podcast.\n\nSponsored by:\nFactor: Healthy eating, made easy. Get 50% off your first box, plus free daily greens, with code talkshow50off.\nSquarespace: Save 10% off your first purchase of a website or domain using code TALKSHOW.\nFinalist — A daily planner for iPhone, iPad and Mac, built on proven paper-based planning methods. DF readers get six months free; see details at the link.\n ★",
+      "id": "0b54d6a5c8fd7b7236e709fb4b817d478220a849966c7ac8a561e234b45ed3bf",
+      "ref_id": "1",
+      "recommendationScore": 60,
+      "popularityScore": 80,
+      "priority": "medium",
+      "comment": "关于WWDC回顾和Apple历史播客的宣传，内容较为轻量。",
+      "reason": "虽然是Apple生态主题，但更偏向播客预告和广告，技术深度和信息密度不高。",
+      "tags": [
+        "Apple",
+        "WWDC",
+        "播客",
+        "Apple生态"
+      ]
+    },
+    {
+      "title": "Elevated error rate across multiple models",
+      "link": "https://status.claude.com/incidents/jbhf20wjmzrf",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-23T14:19:47.000Z",
+      "summary": "Article URL: https://status.claude.com/incidents/jbhf20wjmzrf\nComments URL: https://news.ycombinator.com/item?id=48645386\nPoints: 172\n# Comments: 208",
+      "id": "2d63069d2e24770baca374a5046b20bf1b0a8c352f1e62a52c5fe8220ed5bba3",
+      "ref_id": "0",
+      "recommendationScore": 55,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "关于Claude AI服务高错误率的事件报告，对用户具有及时参考价值。",
+      "reason": "属于AI主题，但侧重于服务状态而非技术深度探讨，对AI开发者了解实时动态有帮助。",
+      "tags": [
+        "AI",
+        "服务状态",
+        "事件报告",
+        "Claude"
+      ]
+    },
+    {
+      "title": "Lobachevsky’s integral formula",
+      "link": "https://www.johndcook.com/blog/2026/06/22/lobachevskys-integral-formula/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-06-22T20:02:47.000Z",
+      "summary": "Let f be an even function with period π. Then the following remarkable theorem by Lobachevsky holds. This theorem is useful in Fourier analysis and signal processing. It’s useful to know even in the special case f(x) = 1. For a “jinc” analog, see this paper. *** Every time I see the name Lobachevsky I […]\nLobachevsky’s integral formula first appeared on John D. Cook.",
+      "id": "de1436f1f1d77bb67e6763fdc47944b193fa7ab614df896ce25563f8ff039cdd",
+      "ref_id": "3",
+      "recommendationScore": 50,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "介绍了Lobachevsky积分公式及其在傅里叶分析和信号处理中的应用。",
+      "reason": "技术深度虽高，但内容过于学术和理论，受众较窄，与科技博客的核心主题优先级关联度不高。",
+      "tags": [
+        "数学",
+        "傅里叶分析",
+        "信号处理",
+        "理论"
+      ]
+    },
+    {
+      "title": "80386 Early Start Memory Access",
+      "link": "https://nand2mario.github.io/posts/2026/80386_early_start/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-23T12:37:04.000Z",
+      "summary": "Article URL: https://nand2mario.github.io/posts/2026/80386_early_start/\nComments URL: https://news.ycombinator.com/item?id=48644022\nPoints: 27\n# Comments: 1",
+      "id": "3f0fc01980b2e2c3338bf426bbf3ea668dcb7392360ec1a1f98e00b5f3e267dc",
+      "ref_id": "0",
+      "recommendationScore": 40,
+      "popularityScore": 5,
+      "priority": "low",
+      "comment": "深入探究了80386处理器早期的内存访问技术，属于硬核的历史计算系统分析。",
+      "reason": "对底层硬件原理和计算机架构历史有浓厚兴趣的读者会发现其技术深度。",
+      "tags": [
+        "Hardware",
+        "CPU",
+        "Assembly",
+        "Vintage Computing"
+      ]
+    },
+    {
+      "title": "Scattered Spider Hackers Plead Guilty on Day 1 of Trial",
+      "link": "https://krebsonsecurity.com/2026/06/scattered-spider-hackers-plead-guilty-on-day-1-of-trial/",
+      "source": "krebsonsecurity.com",
+      "publishedAt": "2026-06-23T16:12:49.000Z",
+      "summary": "Two men pleaded guilty in the United Kingdom this week to criminal charges stemming from an August 2024 cyberattack that crippled Transport for London, the entity responsible for the public transport network in the Greater London area. The duo were key members of a prolific cybercrime group known as Scattered Spider, and their guilty pleas came on the first day of what was expected to be a six-week trial.",
+      "id": "962d41e3a2c99a01513283d5ddc4e973dc8a4b4ee8272a3859b26e67162c7ca4",
+      "ref_id": "0",
+      "recommendationScore": 40,
+      "popularityScore": 65,
+      "priority": "low",
+      "comment": "一则关于网络犯罪团伙成员认罪的简要新闻。",
+      "reason": "新闻报道性质，缺乏技术深度和实用价值，不符合博客核心主题优先级。",
+      "tags": [
+        "网络安全",
+        "新闻",
+        "Scattered Spider"
+      ]
+    },
+    {
+      "title": "Pluralistic: Spying on kids to save kids from spying is very, very stupid (23 Jun 2026)",
+      "link": "https://pluralistic.net/2026/06/23/destroy-the-village/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-06-23T11:30:21.000Z",
+      "summary": "Today's links Spying on kids to save kids from spying is very, very stupid: First they came for the VPNs. Hey look at this: Delights to delectate. Object permanence: RIP Darwin's tortoise; ISPs conspire to create copyright jail; Waxy v fair use; Broken Windows is BS; Google is a machine-learning company; \"Writing the Other\"; Canadian wealth-tax. Upcoming appearances: Toronto, NYC, Philadelphia, Chicago, London, Edinburgh, Sydney, Melbourne, Brighton, London, South Bend. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. Spying on kids to save kids from spying is very, very stupid (permalink) The literature on harms to kids from online platforms is complex and nuanced, rife with people citing small, ambiguous studies as iron-clad evidence that kids are being destroyed by the internet: https://www.youtube.com/watch?v=Ype6c6DdHQY It's a weird coalition of anti-Big Tech campaigners (who are rightly angry at the platforms' callous disregard for user welfare) and Heritage Foundation-backed culture warriors (who think that if their kids aren't exposed to LGBTQ content they won't come out as queer). While there's plenty these groups disagree about, they share one consensus: there should be a \"minimum age\" for certain kinds of internet use. The problem is, there's no such thing as \"age verification\" for the internet. What we call \"age verification\" is actually mass surveillance, so invasive and pervasive that it makes the ad-tech industry's commercial surveillance look like some kind of cypherpunk darknet pirate utopia: https://pluralistic.net/2025/08/14/bellovin/#wont-someone-think-of-the-cryptographers \"Age verification\" means that everyone who does anything online will have to submit to fine-grained tracking and recording of all their online activities. This nightmare is the surveillance advertising industry's fondest dream, a world where it's literally illegal to avoid their tracking, all in the name of saving kids…from them! So it's not just a weird alliance of anti-Big Tech crusaders and the conspiratorial right that's pushing for age verification – they are unwitting allies of the very tech industry they think they're fighting. Those tech industry insiders are fully aware that an \"age verification\" mandate is really a way for the government to teach every child how to use a VPN. They're also fully aware that the next move is to ban VPNs: https://www.express.co.uk/news/uk/2217934/vpn-ban-table-july-labour Tech bosses are the ones sitting on our shoulders saying, \"Go ahead, swallow that fly – it'll be fine. And if you do have to swallow a spider afterward, well, that'll surely be the end of it\": https://pluralistic.net/2026/05/19/shes-dead-of-course/#consensus-hallucination Behind them is a long line of caliper-wielding grifters who claim they can use your phone's camera to distinguish a child who is 17 years, 364 days old from an adult who's just turned 18: https://www.gov.uk/government/publications/facial-age-estimation It's beyond farce. After all, whatever harms you believe the internet is inflicting on kids – and there's absolutely some kids who are being harmed by their internet use – those harms all start with surveillance. Your kids can't be targeted by algorithms without the surveillance data that's being used to target them. They can't be funneled into pro-anorexia content or extreme misogyny forums without that funnel being primed by commercial spying. Why do tech companies spy on your kids? The same reason your dog licks its balls: because they can, and no one stops them: https://pluralistic.net/2026/03/10/ice-tech/#foreseeable-outcomes America hasn't updated its consumer privacy laws since 1988 (when Congress banned the disclosure of your VHS rentals). The EU has the GDPR, but it also has Ireland, the country where all GDPR cases against Big Tech go to die, because any tax haven inevitably becomes a crime haven: https://pluralistic.net/2025/10/31/losing-the-crypto-wars/#surveillance-monopolism Other countries have privacy laws to varying degrees, but are grossly outmatched by US tech giants, who have fused with the Trump regime, to the extent that Trump will impose penalties on your country if you attempt to regulate his tech companies – he'll even have your top officials cut off from the internet in retaliation: https://pluralistic.net/2026/04/04/digital-subjugation/#greenlands-next Any attempt to save kids from online harms should start with saving kids from online surveillance, but that's the opposite of what we're doing today. After decades of failing to pass and enforce privacy controls for the internet, those same governments are breaking all land-speed records to pass \"age verification\" laws that make privacy illegal: https://bsky.app/profile/rebeccawilliams.info/post/3moviqzdit22z The fact that these bills have the firm backing of the tech industry's most controlling, most spying companies tells you everything you need to know about them: https://web.archive.org/web/20260315022337/https://tboteproject.com/ Kids are being harmed by online spying, and so are the rest of us. Whether you think that the algorithm made Grampy go Qanon or you're suspicious that online surveillance data was used to deny you a loan, a job, or a lease, you should want privacy: https://pluralistic.net/2023/12/06/privacy-first/#but-not-just-privacy Online surveillance is being used to raise the prices you pay and lower the wages you're offered: https://pluralistic.net/2026/04/06/empiricism-washing/#veena-dubal And the same data that's being used to \"verify age\" today will be used by ICE tomorrow to figure out who to round up for a concentration camp: https://www.wired.com/story/ice-asks-companies-about-ad-tech-and-big-data-tools/ You can't protect kids from online surveillance by spying on them. You just can't. Anyone who tells you otherwise is trying to get you to swallow a fly so they can sell you a spider, a bird, a cat, and an ICE chud in a gaiter, Oakleys and plate carrier (beneath which lurks a stick-and-poke Totenkopf tattoo). Hey look at this (permalink) AI doomerism is misplaced. Here’s what it will take to pop the bubble https://www.salon.com/2026/06/22/ai-doomerism-is-misplaced-heres-what-it-will-take-to-pop-the-bubble/ Visa and Mastercard: The Original Gangsters of Electronic Collusion https://www.thesling.org/visa-and-mastercard-the-original-gangsters-of-electronic-collusion/ Has it happened yet? https://hasithappenedyet.org/ Platform-Controlled Search and Distortions in Attention Allocation https://tinbergen.nl/discussion-paper/6496/26-035-vii-platform-controlled-search-and-distortions-in-attention-allocation Object permanence (permalink) #20yrsago Darwin’s tortoise dead at 176 https://web.archive.org/web/20060704143750/http://news.yahoo.com/s/afp/20060623/od_afp/australiaanimal_060623102146;_ylt=Ave_b4Ps2r9TGXqs5nZIVIoFO7gF;_ylu=X3oDMTA5bGVna3NhBHNlYwNzc3JlbA–zoo #15yrsago Major US ISPs set to limit repeat infringers with throttling, limiting access to 200 websites, and copyright reeducation school https://web.archive.org/web/20111105225114/http://news.cnet.com/8301-31001_3-20073522-261/exclusive-top-isps-poised-to-adopt-graduated-response-to-piracy/ #15yrsago Why fair use doesn’t work unless you’ve got a huge war-chest for paying lawyers https://waxy.org/2011/06/kind_of_screwed/ #15yrsago Model net neutrality rule for municipalities https://web.archive.org/web/20110626114610/http://envisionseattle.org/2011/06/model-net-neutrality-ordinance-for-seattle.html #15yrsago Campus hookups: college sex isn’t new, but hookups are different https://thesocietypages.org/socimages/2011/06/21/the-promise-and-perils-of-hook-up-culture/ #15yrsago A Brief History of the Corporation: understanding what an attention economy is and where it comes from https://ribbonfarm.com/2011/06/08/a-brief-history-of-the-corporation-1600-to-2100/ #15yrsago Eliza: what makes you think I’m a psychotherapeutic chatbot? https://www.filfre.net/2011/06/eliza-part-1/ #10yrsago Broken Windows policing is nonsense https://www.nyc.gov/assets/oignypd/downloads/pdf/Quality-of-Life-Report-2010-2015.pdf #10yrsago How it feels to be under DDoS attack https://www.oreilly.com/radar/ddos-emotions/ #10yrsago 2016: the first presidential election in 50 years without Voting Rights Act protections https://www.rollingstone.com/politics/politics-news/welcome-to-the-first-presidential-election-since-voting-rights-act-gutted-179737/3/ #10yrsago Google is restructuring to put machine learning at the core of all it does https://web.archive.org/web/20180530051703/https://www.wired.com/2016/06/how-google-is-remaking-itself-as-a-machine-learning-first-company/ #10yrsago Misconfigured database exposes sensitive data for 154 million US voters https://dailydot.com/politics/154-million-voter-files-exposed-l2 #10yrsago To understand the Trump campaign, study real-estate developer hustle https://web.archive.org/web/20161028030522/https://storify.com/KC_EDM/trump-is-running-his-campaign-like-a-real-estate-d #10yrsago Writing the Other: intensely practical advice for representing other cultures in fiction https://memex.craphound.com/2016/06/23/writing-the-other-intensely-practical-advice-for-representing-other-cultures-in-fiction/ #1yrago The case for a Canadian wealth tax https://pluralistic.net/2025/06/23/billionaires-eh/#galen-weston-is-a-rat Upcoming appearances (permalink) Toronto: The Sovereignty Debate (IAB Canada's State of the Nation), Jun 23 https://iabcanada.com/state-of-the-nation-2026 Toronto: The Reverse Centaur's Guide to Life After AI (Osler Records/Type Books), Jun 23 https://www.eventbrite.com/e/cory-doctorow-book-launch-and-talk-tickets-1991501299998 NYC: The Reverse Centaur's Guide to Life After AI with Jonathan Coulton (The Strand), Jun 24 https://www.strandbooks.com/cory-doctorow-the-reverse-centaur-s-guide-to-life-after-ai.html Philadelphia: The Reverse Centaur's Guide to Life After AI with David Williams (Fitler Club/Philadelphia Citizen), Jun 25 https://www.eventbrite.com/e/cory-doctorow-book-event-tickets-1990110326559 Chicago: The Reverse Centaur's Guide to Life After AI with Rick Perlstein (Exile in Bookville), Jun 26 https://exileinbookville.com/events/50628 London: Idler Festival, Jul 11 https://www.idler.co.uk/festival/ Edinburgh International Book Festival with Jimmy Wales, Aug 17 https://www.edbookfest.co.uk/events/the-front-list-cory-doctorow-and-jimmy-wales Sydney: The Festival of Dangerous Ideas, Aug 23-24 https://festivalofdangerousideas.com/cory-doctorow/ Melbourne: Enshittification at the Wheeler Centre, Aug 25 https://www.wheelercentre.com/events-tickets/season-2026/cory-doctorow-enshittification Brighton: The Reverse Centaur's Guide to Life After AI with Carole Cadwalladr (Brighton Dome), Sep 8 https://brightondome.org/whats-on/LSC-cory-doctorow-the-reverse-centaurs-guide-to-life-after-ai/ London: The Reverse Centaur's Guide to Life After AI with Riley Quinn (Foyle's Picadilly), Sep 9 https://www.foyles.co.uk/events/enshittification-cory-doctorow-riley-quinn South Bend: An Evening With Cory Doctorow (Notre Dame), Oct 6 https://franco.nd.edu/events/2026/10/06/an-evening-with-cory-doctorow/ Recent appearances (permalink) How to Mess with Big Tech Oligarchs (Fighting Fascism) https://podcasts.apple.com/us/podcast/how-to-mess-with-big-tech-oligarchs-w-cory-doctorow/id1888647397?i=1000773711479 Reverse Centaur with Angie Coiro (Kepler's Books) https://www.youtube.com/live/cWN6XBa73xA How to Think About AI Before It’s Too Late (Galaxy Brain) https://www.youtube.com/watch?v=SPQNPJ0CEPo The future of world governance, with Kim Stanley Robinson (UN Independent Expert on International Order) https://www.youtube.com/live/wJvBvYdaAMY How to Think About Artificial Intelligence (KUER) https://radiowest.kuer.org/show/radiowest/2026-06-16/cory-doctorow-on-how-to-think-about-artificial-intelligence Latest books (permalink) \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 (https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/) \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2026 \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Fourth draft completed. Submitted to editor. \"The Reverse Centaur's Guide to AI,\" a short book for Farrar, Straus and Giroux about being an effective AI critic. LEGAL REVIEW AND COPYEDIT COMPLETE. \"The Post-American Internet,\" a short book about internet policy in the age of Trumpism. PLANNING. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "596d03755159d9e82ff1b2e84ed35cb2fc2132ec51d4fe70c30c7ee74e61ca6b",
+      "ref_id": "0",
+      "recommendationScore": 40,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "文章聚焦儿童在线隐私和监控的社会伦理问题，而非技术实现。",
+      "reason": "内容偏向社会评论和隐私伦理，技术深度和与核心科技主题的关联度较低。",
+      "tags": [
+        "隐私",
+        "社会伦理",
+        "大科技",
+        "政策"
+      ]
+    },
+    {
+      "title": "The worthlessness of vitamin D is mildly exaggerated",
+      "link": "https://dynomight.net/vitamin-d/",
+      "source": "dynomight.net",
+      "publishedAt": "2026-06-23T00:00:00.000Z",
+      "summary": "For a while there, many people thought vitamin D was magical—that it could improve bones, the heart, infections, cancer, heart disease, longevity, even mental health. But among people I respect, opinion is now overwhelmingly that taking vitamin D does nothing unless you’re severely deficient. The central argument is that while vitamin D levels are correlated with ~all positive health outcomes, when you actually test vitamin D supplements against placebo in randomized trials, nothing ever happens.\nThat’s what I used to think, too. But I’ve come to think the skeptics have over-corrected. Yes, randomized trials have shown the magical correlations are not causal. But if you start with non-insane expectations, the trials look like weak but positive evidence. And if you consider what we know about biology and evolution, I think the balance of evidence tips pretty clearly in the direction that people with low-ish levels would be wise to supplement.\nAm I certain that vitamin D is beneficial for people with low-ish levels? Absolutely not! But I claim that’s the best bet given the limits of our knowledge.\nThe classical view: Boring bone vitamin\nMost vitamins are “ingredients” that the body uses to do stuff. Vitamin D is more like a “signal” that the body uses to communicate with itself about what to do.1 The classical “endocrine” story of vitamin D is that your body uses it to tell your guts to take in more calcium from food. If you don’t get enough vitamin D, then you have calcium problems.\nThat’s all you really need to know about the classical view. But if you enjoy gawking at biology’s complexity, I recommend this diagram and the following three paragraphs:\n\nReady for science? OK: Almost all the cells in your body make provitamin D.2 Usually, this is all converted to cholesterol, but your skin cells leave some sitting around. When UVB light hits those skin cells, provitamin D is transformed (physically by the light itself) into previtamin D and then (by heat) into vitamin D. This diffuses from the skin cells into blood vessels. There it binds to a protein3 and starts circulating in the blood, where it is joined by vitamin D from food.4 Eventually, the liver converts it into more-stable storage vitamin D. It also soaks in and out of fat and muscle tissue, which acts as a slow-release reservoir.\nNow, a fun fact: If calcium levels in your blood get too low, then your heart will stop working and you will die. To avoid this, you have parathyroid glands in your neck that sense when calcium is getting low, and release parathyroid hormone into the blood. This tells your bones to release some of their stored calcium. It also tells your kidneys to convert some of the storage vitamin D from your blood into active vitamin D. And when that gets to your guts, they try to absorb more calcium from food.\nSo what happens if you don’t get enough vitamin D? Well, your body is not going to let calcium levels drop too low, because your body is designed to avoid death. Parathyroid hormone will still get secreted, and it will still tell your bones to scavenge calcium. But without vitamin D, your guts never get the signal to gather extra calcium from food. So the body scavenges a lot of calcium from your bones, and you end up with weak bones, which is bad.\nNow here’s the thing: In this story, only active vitamin D actually does anything. The kidneys make this on demand in response to calcium levels, not in response to storage vitamin D levels. General opinion is that as long as the blood has above ~25 nmol/L of storage vitamin D, then the kidneys have no trouble making active vitamin D.5 Furthermore, survey data suggests that only ~2% of the population has levels below that threshold. This suggests that for ~98% of people, supplementing vitamin D should do approximately nothing.\nThe correlation view: Magical mystery cure\nRickets is a terrible disease that involves soft bones, stunted growth, and skeletal deformities. It’s probably been with us since ancient times, but it became common in the West after the industrial revolution. In 1890, a Scottish missionary named Theobald Palm observed that rickets was common in smog-ridden UK cities but almost unheard of in sunny countries with poor sanitation, suggesting sunlight itself was the issue. This contributed to the discovery that rickets could be cured with UV light or cod-liver oil, and eventually the discovery of vitamin D.\nIn 1941, Apperly noticed that the amount of sunlight in different US states was positively correlated with skin cancer but inversely correlated with overall cancer mortality.6 He gave this charming graph:\n\nApperly never mentions vitamin D, presumably because he thought it was a boring bone vitamin.\nThings took off in 1980, when Cedric and Frank Garland published, “Do Sunlight and Vitamin D Reduce the Likelihood of Colon Cancer?” Seemingly unaware of Apperly, they gave a similar, but uglier, graph:\n\nThey point out that regional diets (like meat and fiber) didn’t seem to explain this pattern. Instead, they propose a mechanistic story:\n    Sunlight\n(It’s always inflammation.) This paper was rejected many times before finally being published. I wish I could find an un-gated copy to link to, because it would have made a magnificent blog post.7\nFollowing that paper, there was an explosion of work that found negative correlations between sunlight (or latitude) and other types of cancers as well as blood pressure, diabetes, and multiple sclerosis.\nThen people started measuring vitamin D in blood. In 1989, the Garlands and collaborators found blood samples takin in 1974 from 25,000 people. They found that 34 of those people had since gotten colon cancer. They matched these with 67 demographically similar people and measured vitamin D levels in the stored blood samples for all 101 people. Among that group, people with vitamin D levels below 50 nmol/L got colon cancer more than three times as often as people with higher levels.\nAgain, many similar studies followed. These linked higher vitamin D levels to better outcomes in cardiovascular disease, diabetes, obesity, infectious disease, Parkinson’s, and mood disorders. While results were mixed for non-colorectal cancer incidence, higher vitamin D levels predicted better survival of many cancers. Amazingly, all-cause mortality was roughly 30% lower for those at the 75th percentile of vitamin D levels compared to the 25th.\nVitamin D was looking like a miracle. But how could it do all that stuff if it was just a boring bone vitamin?\nMeanwhile in biology\nWhile all these correlations were being discovered, we learned that the body doesn’t just use vitamin D for bone stuff.\nIn 1969, we discovered the vitamin D receptor that active vitamin D binds to in the gut and bones. And in the 1980s came a shock: Almost all cells in the body have vitamin D receptors. These seem to do different things in different tissues. In the pancreas, they support insulin secretion. In immune cells, they boost antimicrobial peptides and reduce inflammation. In neurons, they influence proliferation and differentiation.\nSo… What? When calcium drops and the kidneys put out active vitamin D, does every part of the body start doing different unrelated stuff?\nIn the late 1990s, we cloned the gene for the enzyme that the kidneys use to convert storage vitamin D to active vitamin D. Soon came another shock: This enzyme also exists in tons of other cells, including immune cells, the heart, the skin, the prostate, the breast, and colon. (Another win for the Garlands.)\nSo it’s not just the kidneys making active vitamin D to trigger the gut. Cells everywhere are making their own active vitamin D and using it to trigger vitamin D receptors in neighboring cells, or even inside the same cell.8 This often has little to do with calcium or bones.9\nSo:\nThe kidneys use vitamin D as a boring bone hormone.\nAs long as the blood contains at least ~25 nmol/L of storage vitamin D, the kidneys don’t care. They create the same amount of active vitamin D, in response to calcium levels.\nBut now cells everywhere are using storage vitamin D.\nTo do god-knows-what.\nWith god-knows-what sensitivity to circulating vitamin D levels.\nAnd remember how only active vitamin D does anything? That’s wrong. In the mid-1970s, we learned that storage vitamin D also binds to the vitamin D receptor. The affinity is 100-1000× lower, but have ~1000× more in your blood. So maybe circulating levels of storage vitamin D themselves matter, independently of how much active vitamin D gets made?\nIf that’s not confusing enough, people also noticed that while active vitamin D levels in the blood aren’t correlated with storage vitamin D (above ~25 nmol/L), levels of parathyroid hormone (the thing your parathyroid glands use to tell your kidneys to make active vitamin D) seem to decline as levels of storage vitamin D rise from ~25 to 50 or 75 nmol/L. Huh?10\nOn the one hand, all this makes the idea that vitamin D could be a miracle more plausible. On the other hand, this is getting complicated. And do we really believe that raising your vitamin D levels from the 25th to the 75th percentile could reduce your risk of death from any cause by thirty percent? Maybe we should try giving people vitamin D and see what happens.\nThen came the RCTs\nThere have been many randomized trials. The “right” thing to do in such cases is to look at meta analyses that carefully combine all the data. We’ll get to those. But they conceal a lot of important nuance about what actually happens on the ground during these trials. So let’s start by going over the three main “megatrials”.\nThe Women’s Health Initiative (WHI) trial came out in 2006 and is still the largest vitamin D trial ever done. This took 36,000 postmenopausal American women and assigned half to take 400 IU daily with calcium and the other half to placebo.11 After seven years, here’s what happened:12\nOutcome (WHI trial)\n      Hazard ratio\n    \nFractures\n      0.97 (0.91 to 1.03)\n    \nCancer\n      0.97 (0.91 to 1.04)\n    \nCancer mortality\n      0.90 (0.77 to 1.05)\n    \nCVD mortality\n      0.94 (0.78 to 1.12)\n    \nAll-cause mortality\n      0.92 (0.83 to 1.01)\n    \nKidney stones\n      1.17 (1.02 to 1.34)\n    \n(The hazard ratio is the ratio of the rate that something happens in the treatment vs. placebo groups. So, a number less than one suggests a benefit to taking vitamin D, while a number larger than one suggests a harm. The numbers in parentheses show a 95% confidence interval.)\nThe only statistically significant result was a bad one: Extra kidney stones, likely from the extra calcium.13 The other outcomes look vaguely good, but none were statistically significant despite the massive sample size.\nThis was disappointing. However, the WHI trial had limitations: Many subjects in both the vitamin D and placebo groups were already taking vitamin D, and continued taking it through the trial. The dose of 400 IU was fairly low, many subjects stopped taking their pills, and vitamin D levels didn’t actually change that much. They also measured vitamin D levels in only 6% of subjects, meaning we can’t compare the fates of subjects who started out with low versus high levels.\nThe next big hope was VITAL, which came out in 2018. They recruited 26,000 older people across the United States, half of them men and 20% Black (and thus far more likely to be vitamin-D deficient). They measured vitamin D levels in most people, and they gave the treatment group 2,000 IU per day.14 Here were the results after 5.3 years:\nOutcome (VITAL trial)\n      Hazard ratio\n    \nDiabetes\n      0.91 (0.76 to 1.09)\n    \nAutoimmune disease\n      0.78 (0.61 to 0.99)\n    \nCancer\n      0.96 (0.88 to 1.06)\n    \nCancer mortality\n      0.83 (0.67 to 1.02)\n    \nMajor CVD event\n      0.97 (0.85 to 1.12)\n    \nCVD mortality\n      1.11 (0.88 to 1.40)\n    \nAll-cause mortality\n      0.99 (0.87 to 1.12)\n    \nSome of the results look good-ish, but cardiovascular mortality was higher in the treatment group, leading to almost no effect on all-cause mortality.15 More disappointment.\nThe last megatrial was D-Health, which came out in 2022 based on 21,000 older Australians. Instead of daily supplements, it used a monthly “bolus” dose of 60,000 IU or placebo. Unlike in VITAL, there was no exclusion for people with a history of cardiovascular disease or cancer, and less restriction on how much vitamin D participants could take on their own during the trial.16 Here were the results after 6 years:\nOutcome (D-Health trial)\n      Hazard ratio\n    \nCancer mortality\n      1.15 (0.96 to 1.39)\n    \nMajor CVD event\n      0.91 (0.81 to 1.01)\n    \nCVD mortality\n      0.96 (0.72 to 1.28)\n    \nAll-cause mortality\n      1.04 (0.93 to 1.18)\n    \nNow, the treatment group did better in terms of cardiovascular disease, but worse in cancer and worse in all-cause mortality. Even more disappointment.\nJust from these three large trials, the main lesson should already be clear: Vitamin D is not a miracle. The correlations were wrong.17 There is essentially zero remaining hope that taking vitamin D could reduce all-cause mortality by a third.\nIn this sense, the vitamin D skeptics are definitely right. But what about the other trials? And is there a more subtle lesson?\nI made some tables\nI wanted a big table that summarized all the major vitamin D RCTs and what they found for different health outcomes. Annoyingly, no such overview appears to exist. So I made my own:18\nTrial\n      Cancer\n      Cancer mortality\n      CVD\n      CVD mortality\n      All-cause mortality\n    \nLips 1996\n       \n       \n       \n       \n      0.92 (0.80 to 1.06)\n    \nTrivedi 2003\n      1.08\n(0.89 to 1.31)\n      0.86 (0.61 to 1.21)\n      0.95 (0.86 to 1.04)\n      0.86 (0.67 to 1.11)\n      0.90 (0.77 to 1.07)\n    \nWHI 2006\n      0.98 (0.90 to 1.05)\n      0.89 (0.77 to 1.03)\n       \n      0.94 (0.78 to 1.12)\n      0.92 (0.83 to 1.01)\n    \nLyons 2007\n       \n       \n       \n       \n      0.99 (0.93 to 1.05)\n    \nWFPT 2007\n       \n       \n       \n       \n      1.00 (0.87 to 1.15)\n    \nRECORD 2012\n      1.04 (0.91 to 1.19)\n      0.83 (0.55 to 1.26)\n       \n      0.91 (0.79 to 1.05)\n      0.93 (0.85 to 1.02)\n    \nLappe 2017\n      0.70 (0.47 to 1.02)\n       \n       \n       \n       \n    \nVITAL 2018\n      0.96 (0.88 to 1.06)\n      0.83 (0.67 to 1.02)\n      0.97 (0.85 to 1.12)\n      1.11 (0.88 to 1.40)\n      0.99 (0.87 to 1.12)\n    \nViDA  2018\n      1.01 (0.81 to 1.25)\n      0.99 (0.60 to 1.64)\n      1.02 (0.87 to 1.20)\n       \n      1.12 (0.79 to 1.58)\n    \nD2d 2019\n      1.07 (0.70 to 1.62)\n      0.23 (0.03 to 1.86)\n       \n       \n       \n    \nDO-HEALTH 2020\n      0.76 (0.49 to 1.18)\n       \n      1.37 (0.88 to 2.14)\n       \n       \n    \nD-Health  2022\n       \n      1.15 (0.96 to 1.39)\n      0.91 (0.81 to  1.01)\n      0.96 (0.72 to 1.28)\n      1.04 (0.93 to 1.18)\n    \nFIND 2022\n      1.04 (0.72 to 1.51)\n      1.14 (0.56 to  2.33)\n      0.90 (0.62 to 1.32)\n      0.85 (0.28 to 2.53)\n      0.81  (0.32 to 2.06)\n    \nLots of the hazard ratios are less than one, suggesting a benefit to supplementation. But lots of them are also higher than one, suggesting a harm. The numbers that are far from one almost always come from smaller trials, which manifest as larger confidence intervals. If you’re interested in the details of how these trials were run, I refer you to more gigantic tables in a footnote.19\nIf big tables aren’t your thing, here are some formal meta-analyses, both some recent ones and an older but more comprehensive Cochrane review:\nOutcome\n      Meta analysis\n      Hazard ratio\n      Comment\n    \nAll-cause mortality\n      Bjelakovic 2014 (Cochrane)\n      0.96 (0.92 to 0.99)\n      Trials with low risk of bias.\n    \nCancer mortality\n      Bjelakovic 2014 (Cochrane)\n      0.88 (0.78 to 0.98)\n       \n    \nCardiovascular mortality\n      Bjelakovic 2014 (Cochrane)\n      0.98 (0.90 to 1.07)\n       \n    \nCancer mortality\n      Kunzia 2023\n      0.94 (0.86 to 1.02)\n       \n    \nAll-cause mortality\n      Ruiz-García 2023\n      0.96 (0.91 to 1.00)\n      Good-quality trials\n    \nCardiovascular mortality\n      Ruiz-García 2023\n      1.00 (0.92 to 1.08)\n      Good-quality trials\n    \nAll-cause mortality\n      Cao 2023\n      0.99 (0.96 to 1.03)\n       \n    \nSquinting at the data\nThere are various ways you could try to squint at these RCT. In almost all of them, most people already had pretty high levels before they started. So why don’t we separate out people who started low? Usually we can’t, because most trials didn’t measure baseline vitamin D.20 And among the trials that did, there are few people with low levels, so the results are noisy and confusing.21\nOr, you might theorize that benefits would take time to show up, meaning the first couple years just add noise. In some cases—notably VITAL—excluding the first two years seems to help, but in other cases things get worse.22\nFinally, some people speculate that taking gigantic monthly or quarterly “bolus” doses of vitamin D might be dangerous. For example, here’s an enjoyable paragraph from Kunzia et al. in their meta-analysis of vitamin D and cancer mortality:\nOur results showing efficacy of daily, but not bolus, vitamin D3 supplementation in reducing cancer mortality are consistent with previous meta-analyses on cancer mortality or all-cause mortality (Guo et al., 2022; Keum et al., 2022; Keum et al., 2019; Zhang et al., 2022; Zhang et al., 2019). However, by including more trials than these previous meta-analyses, we were able to detect statistically significant effect modification by treatment regimen for the first time with statistical significance (pinteraction=0.042). The pattern of intake could be important for a favourable steady state of the bioavailability of the active 1,25 (OH)₂D hormone. Daily administration counteracts the fast excretion of vitamin D from the circulation (Hollis and Wagner, 2013; Keum et al., 2022). Moreover, the enzymes CYP27B1 (converts 25(OH)D to 1,25 (OH)₂D) and CYP24A1 (inactivates 25(OH)D and 1,25(OH)₂D) follow first-order reaction kinetics (Vieth, 2009). This means that doubling the concentration of the precursor doubles the yield of the product, unlike other steroid hormones (e.g., cortisol, oestrogen, testosterone) that follow zero-order kinetics (Vieth, 2020). Intermittent, non-physiologically large vitamin D3 bolus doses may lead to unstable cycling of 25(OH)D and 1,25(OH)₂D levels in blood because the system needs time to adapt to the large doses (Hollis and Wagner, 2013; Keum et al., 2019; Vieth, 2020). In the long run, intermittent bolus regimens at weekly or larger intervals can lead to an up-regulation of countervailing factors (e.g., 24-hydroxylase (CYP24A1), 24,25(OH)2D and fibroblast growth factor 23), all of which ultimately leads to lower synthesis or higher degradation of 1,25(OH)₂D levels (Mazess et al., 2021). Bolus doses, unlike daily doses, failed to reduce C-reactive protein response and actually elevated anti-inflammatory cytokines and doubled the risk of hypercalcemia in previous studies (Krishnan et al., 2012; Martineau et al., 2017; Mazess et al., 2021).\nOh no, up-regulation of fibroblast growth factor 23!23\nI don’t feel like I understand this deeply enough to have any opinion beyond the surface level that the body seems to adapt to large doses of vitamin D in ways that could possibly be bad.24 It seems intuitive that small daily doses would be safer than gigantic monthly doses, but I’m always suspicious of post-hoc mechanistic speculation. Also, if people get enough sun, they can apparently synthesize 10,000-25,000 IU per day, which isn’t that far from the 60,000 IU they got in the D-Health trial. But then again, I think Kunzia et al. are suggesting that the body is designed to adapt to regular exposure to large doses but not intermittent exposure?\nWell, if you split up the trails by daily vs. bolus dosing, there’s a decent pattern of daily dosing leading to better results:\nTrial (daily dosing)\n      Cancer mortality\n      All-cause mortality\n    \nLips 1996\n       \n      0.92 (0.80 to 1.06)\n    \nWHI (Jackson 2006)\n      0.89 (0.77 to 1.03)\n      0.92 (0.83 to 1.01)\n    \nWFPT (Smith) 2007\n       \n      1.00 (0.87 to 1.15)\n    \nRECORD (Avenell 2012)\n      0.83 (0.55 to 1.26)\n      0.93 (0.85 to 1.02)\n    \nVITAL (Manson 2018)\n      0.83 (0.67 to 1.02)\n      0.99 (0.87 to 1.12)\n    \nD2d (Pittas 2019)\n      0.23 (0.03 to 1.86)\n       \n    \nFIND (Virtanen 2022)\n      1.14 (0.56 to  2.33)\n      0.81  (0.32 to 2.06)\n    \nTrial (bolus dosing)\n      Cancer mortality\n      All-cause mortality\n    \nTrivedi 2003\n      0.86 (0.61 to 1.21)\n      0.90 (0.77 to 1.07)\n    \nLyons 2007\n       \n      0.99 (0.93 to 1.05)\n    \nViDA (Scragg 2018)\n      0.99  (0.60 to 1.64)\n      1.12 (0.79 to 1.58)\n    \nD-Health (Neale 2022)\n      1.15 (0.96 to 1.39)\n      1.04 (0.93 to 1.18)\n    \nIf those bolus dosing trials didn’t exist, I’d think this looked pretty good. So, maybe? Or maybe this is a story made up to hallucinate a positive trend. I would lean towards the latter theory, but there are papers like Mazess et al.’s “Vitamin D: Bolus is Bogus”, that suggested this pattern before D-Health’s dismal results came out. There are even some trials that suggest bolus doses don’t even work for treating rickets. So… I’m still not convinced. But maybe.\nAside: There are also many Mendelian randomization studies that look at correlations between health and genes that are related to vitamin D. But I don’t think these provide much information, because the assumptions are shaky and the genes don’t explain much of the variance.25\nWhere are we?\nStill with me? Here’s a summary of the above 5200 words:\nThe body uses vitamin D in all sorts of weird and complicated ways. It’s biologically plausible that vitamin D could matter beyond bone stuff with severe deficiency, but there’s no convincing mechanistic evidence that it is.\nVitamin D levels are strongly correlated with good health outcomes, but RCTs have conclusively shown that most of these correlations are non-causal.\nRCTs haven’t conclusively shown any benefit for anything beyond beyond bone stuff. At best, they’ve given weak evidence for hazard ratios slightly below one.\nSo you might be wondering: Isn’t that quite weak? Wasn’t this post supposed to be a defense of vitamin D?\nThe case for supplementing anyway\nIt’s biologically plausible that vitamin D is good\nEveryone agrees that severe vitamin D deficiency (below ~25 nmol/L) is bad. It leads to rickets, adult rickets, osteoporosis, muscle weakness or even—with profound deficiency—to seizures or cardiac arrhythmia. This makes sense, because below ~25 nmol/L, the kidneys have trouble converting storage vitamin D into active vitamin D, meaning you don’t absorb enough calcium from food.\nThe question is if taking supplement to further raise your levels (say to 50 or 90 nmol/L) is important. We have no mechanistic proof, but it might be true, because many parts of the body use vitamin D as a local signal and because cells are at least somewhat sensitive to circulating storage levels. There’s also this weird thing where parathyroid hormone continues to decline as vitamin D levels rise above ~25 nmol/L even while this seems to make little difference to how much active vitamin D the kidneys make.\nNothing in this world comes without trade-offs. Surely, supplementing vitamin D comes with some downsides. But it seems very unlikely that raising vitamin D levels to a “normal” level would cause more harm than benefit. Especially because…\nHumans evolved to have a lot of vitamin D\nAccording to Luxwolda et al.’s 2012 paper, “Traditionally living populations in East Africa have a mean serum 25-hydroxyvitamin D concentration of 115 nmol/L”, traditionally living populations in East Africa have a mean serum 25-hydroxyvitamin D concentration of 115 nmol/L.\nMeanwhile, Wahl et al. 2012 try to estimate mean levels around the world today:\n\nThis map looks weird because of varying lifestyle, diet, supplementation, and needing to combine fragmented studies. But you get the idea. And remember, those are just averages. So there are lots of people with levels far lower than that in our evolutionary history.\nOf course, just the fact that vitamin D levels have dropped doesn’t mean it’s important. Parasitic worm load, wood smoke inhalation, and cousin marriage have also dropped, but we aren’t rushing to restore those to ancestral levels.\nBut there’s another piece of evidence: After humans migrated out of East Africa, some of them evolved pale skin. Pale skin is bad, because it allows light to destroy folate, which is crucial for pregnancy.26 Evolution doesn’t typically do things that harm fertility, because evolution wants to increase reproductive fitness. The most common explanation is that pale skin allows more UV light to penetrate, and thus allows people to synthesize more vitamin D. If evolution was willing to pay the high “price” of folate destruction for more vitamin D, that seems like good evidence that vitamin D is important.\nSome even see contrasts like the Inuits versus Scandinavians as a kind of natural experiment: They lived at similar latitudes, but Inuits ate a diet with vitamin D (fatty fish and whale blubber) and Scandinavians didn’t. The result is that Inuits have darker skin than Scandinavians.27\nThis is all speculative, and even if true, might be driven by severe deficiency and rickets. Or perhaps prehistoric benefits don’t translate to your lifestyle. But all the people in Luxwolda’s sample in East Africa had levels above ~60 nmol/L. I just don’t see how you can look at this and not see it as providing some suggestive evidence in favor of the idea that raising levels above severe deficiency is unlikely to be harmful, and could be important. So I think the prior is favorable.\nWhat do you expect from vitamin D?\nA hazard ratio like HR = 0.96 doesn’t look very impressive. But hold on. Suppose that life expectancy is 80 years and that taking vitamin D every day reduces your risk of all-cause mortality by a factor of HR. A reasonable approximation in rich countries is that this would increase your life expectancy by\n    80 × 0.15 × (1-HR) years = 12 × (1-HR) years,\nwhere 0.15 is derived from the entropy of lifespan in rich countries.28 For example, if all-cause mortality had a true hazard ratio of HR = 0.96, then taking vitamin D every day of your life would increase life expectancy by around\n    0.48 years.\nI claim that this would be a lot. Certainly, if I were about to face my destiny, I would pay a lot of money for an extra 0.48 years. Or, you can calculate that this corresponds to an increase of life expectancy per-vitamin-D-pill of 8.6 minutes.29 A common rule-of-thumb is that smoking a cigarette costs around 11 minutes of life in expectation. If you think HR = 0.96 is trivial, do you also think that smoking one cigarette each day is fine?30\nThe correlational studies suggested that vitamin D might drop your risk of all-cause mortality by a third. It’s disappointing that the RCTs refuted this. But those correlational studies were crazy. They imply31 an increase of life expectancy of around 4 years or around 6.5 cigarettes per day. Could we really believe that you could smoke 6.5 cigarettes, then take a vitamin D pill, and you’re even?\nPersonally, I think hazard ratios just slightly less than one are the best we can reasonably hope for. But I also think that they would be an excellent return on investment. Arguably, modern human life expectancy comes from stacking lots of modest hazard ratios on top of each other.\nWhat do you expect from vitamin D trials?\nLet’s play a game. Let’s hallucinate some numbers for what vitamin D might do, and then simulate what trials would show. Here are the strongest effects I consider plausible for different baseline levels, along with how common those levels are in the United States.\nStorage vitamin D (nmol/L)\n      Hazard ratio\n      % of population\n    \n<30\n      0.75\n      5\n    \n30-49\n      0.92\n      15\n    \n50-125\n      0.98\n      72.5\n    \n>125\n      1\n      7.5\n    \nSuppose that were real. Now, say we pick 26,000 people at random, and give half of them vitamin D for give yars. Here are the results of a million simulated trials, assuming a baseline mortality risk of 0.7%: 32\n\nOverall, 9% of trials would find a significant benefit, 63% would find a non-significant benefit, 27% would find a non-significant harm, and 1% would find a significant harm.\nIf you wanted to have an 80% chance of finding a significant decrease, you’d need to run a trial with something like 570,000 people, almost five times more than in all the above trials combined.33 If you don’t like my numbers, I’ve put up a page where you can run your own simulations with different ones.\nMy point is, the results we see in vitamin D RCTs are what we should expect to see if vitamin D had plausible benefits. That’s not proof, of course—just that if you start with realistic expectations, the trials don’t provide much evidence in either direction.\nThe trials do find slightly helpful numbers\nRecent meta-analyses have not consistently found a statistically significant benefit to vitamin D supplementation. But they do suggest a small benefit for cancer mortality and all-cause mortality, and they’re close to being statistically significant. That’s something.\nAnd if you buy the argument that bolus dosing is bad, the results get even better. Kunzia et al. did a meta-analysis of cancer mortality using only trials with daily dosing, and found a hazard ratio of 0.88 (confidence interval 0.78 to 0.98). I’d keep this at arm’s length. The bolus dosing trials might have done worse by random chance, meaning this a kind of p-hacking. But there’s a reasonable chance (maybe 25-50%) that bolus dosing really is bad, in which case those trials would be convincing evidence.\nI actually think it’s surprising that the meta-analyses look as good as they do, because there just aren’t that many people who started out with low vitamin D levels. Only a handful of trials had mean levels below 60 nmol/L, and they all give semi-promising results:34\nTrial (low-ish baseline)\n      Cancer mortality\n      All-cause mortality\n    \nTrivedi 2003\n      0.86 (0.61 to 1.21)\n      0.90 (0.77 to 1.07)\n    \nWHI (Jackson 2006)\n      0.89 (0.77 to 1.03)\n      0.92 (0.83 to 1.01)\n    \nLyons 2007\n       \n      0.99 (0.93 to 1.05)\n    \nRECORD (Avenell 2012)\n      0.83 (0.55 to 1.26)\n      0.93 (0.85 to 1.02)\n    \nAgain, it’s dangerous to dig too deeply looking for these kinds of patterns. If you dig enough, you can always find a way to confirm whatever theory you want. But also again, maybe?\nYou’re probably already taking vitamin D\nYou might not personally supplement vitamin D. But for most people reading this, someone else is supplementing it for you.35\nCountry\n      Commonly fortified with vitamin D\n    \nAustralia\n      Margarine\n    \nBelgium\n      Margarine\n    \nCanada\n      Milk, margarine\n    \nChile\n      Milk, flour\n    \nEthiopia\n      Oils\n    \nFinland\n      Milk, yogurt, margarine\n    \nIreland\n      Margarine, cereal\n    \nNew Zealand\n      Margarine (from Australia)\n    \nNorway\n      Margarine, low-fat milk\n    \nPakistan\n      Oils\n    \nPoland\n      Margarine\n    \nSweden\n      Milk, yogurt, plant milk, margarine\n    \nUnited Kingdom\n      Margarine, cereal\n    \nUnited States\n      Milk, plant milk, margarine, cereal, yogurt\n    \nFortified food is common across the Anglosphere and Scandinavian peninsula. However, it’s rare in the rest of Europe (exceptions: Belgium, Poland) and even-more rare in the rest of the world (exceptions: Chile, Ethiopia, Pakistan).\nI think this is important for two reasons. First, vitamin D is oddly self-defeating. There are some places in the world where people care about vitamin D. These are the places that run large trials. But these places also fortify their food and tend to be full of people that already supplement vitamin D. These places also tend to believe it’s unethical to tell the control group not to take vitamin D.\nAnd here’s another question: If you think vitamin D is worthless, are you comfortable recommending removing vitamin D from food? If not, then why is the particular amount of fortification in food now the right one?\nSome might argue that the purpose of fortification is to reach the severely deficient, or children, the elderly or pregnant mothers. Maybe! But again, if you could press a button and remove fortification from everyone else, would you feel comfortable pushing that button? Remember, trials don’t test don’t test going down from current levels, only going up.\nSo that’s my story\nBiology and evolution suggest a prior that moderate levels of vitamin D (say 80 nmol/L) are quite possibly better than low levels (like 40 nmol/L) and unlikely to be worse.\nObservational studies say that vitamin D is magical, but those studies are bad and we should ignore them.\nThe RCTs show that vitamin D is non-miraculous. But beyond that they don’t provide much information, because they mostly enrolled people with moderate vitamin D levels, meaning plausible effects would require colossal sample sizes to reliably detect.\nWhat evidence the RCTs do provide points weakly towards a modest benefit.\nIf real, that benefit would far exceed the cost of taking vitamin D.\nTherefore, if you have low vitamin D, it seems wise to supplement.\nThis is all very weak, I know! But sometimes weak evidence is all we’ve got.\nI wish we had at least one large trial done in a population with low starting levels. But as far as I can tell, none are underway. In fact, it’s unlikely that there will be any more large trials anytime soon. So weak evidence is how it’s going to be.\nTechnically, vitamin D itself is a type of steroid although not what people usually mean by “steroid”. ↩\nHere are some of the fancy names for the different forms of vitamin D I’ll talk about:\nmy name\n            fancy names\n          \nprovitamin D\n            7-dehydrocholesterol\n          \nprevitamin D\n            previtamin D₃\n          \nvitamin D\n            cholecalciferol\n          \nstorage vitamin D\n            calcifediol / ergocalciferol / 25(OH)D / 25-hydroxyvitamin D\n          \nactive vitamin D\n            calcitriol / ercalcitriol / 1,25(OH)₂D / 1,25-dihydroxyvitamin D\n          \n↩\nCharmingly named “vitamin D-binding protein”. ↩\nIf you eat mushrooms or yeast, it joins the vitamin D from your skin en route to your liver. If you eat animals or animal products, you also get some storage vitamin D, which doesn’t need to be processed by the liver. ↩\nStorage vitamin D is what your doctor measures in your blood test. This is sometimes measured in nmol/L and sometimes in ng/mL. The latter measurement is smaller by a factor of 2.496. So 25 nmol/L ≈ 10 ng/mL. ↩\nApperly was building on a 1937 paper that observed observed that sailors, exposed to lots of sunlight, had much higher skin cancer rates than the general population, but lower overall cancer rates. ↩\nI theorize that the Garland brothers are alive and writing Slime Mold Time Mold. ↩\nIn Biologist, active vitamin D is not just an “endocrine” hormone that sends signals for far away cells through the blood, it’s also a “paracrine” or “autocrine” hormone that sends signals to nearby cells or inside a single cell, through diffusion. ↩\nYou might ask, why is vitamin D used by so many different parts of the body for so many different purposes?\nI think there’s no deep answer here. It’s true for the same reason that dogs sneeze to signal that they’re feeling playful: Evolution re-uses stuff for different purposes all the time. Imagine that DNA already exists coding for the vitamin D receptor and for the enzyme to convert storage vitamin D into active vitamin D. If some cells need to send a local signal, re-using those is easier than inventing something new. There’s nothing unusual or magical about this. ↩\nDon’t try to make sense of this. It doesn’t make sense.\nYou could speculate that this is because the parathyroid glands are trying to make less active vitamin D to compensate for the fact that vitamin-D receptors throughout the body are sensitive to storage vitamin D itself. But I advise against. ↩\n400 IU is the recommended daily amount ↩\nThe WHI trial was a pioneer in salami-slicing results for different outcomes into dozens of different papers, most of which are hard to access. All trials now seem to have adopted this hideous trend which makes it maddening to try to summarize what actually happened in a trial. Also, slightly different numbers for the same quantity appear in different places. I haven’t bothered to chase these down, because the differences are all very small, e.g. a hazard ratio of 0.89 for cancer mortality rather than 0.90. ↩\nGuess what most kidney stones are made of? ↩\nHalf of the vitamin D group and the placebo group also got omega 3. These are averaged together in the results. Also, VITAL carefully stratified the assignment to vitamin D or placebo based on baseline vitamin D levels, which should give more statistical power from a given sample size. ↩\nThere was also a weird study done on a subset of 1031 people from the VITAL population that looked at telomere length. After starting with around 8700 base pairs, the control group lost around 160 base pairs during the study, while the vitamin D group only lost an average of 20. I’m not sure of what to make of this. For one thing, though the authors claim this is statistically significant, it depends on how you analyze the data. But beyond that, sure, telomere length is a marker of aging, but telomeres get shorter for a reason (likely to fight cancer) and it isn’t obvious that slowing this would always be a good thing. ↩\nThis is a little complicated. In VITAL, participants were only eligible if they were taking at most 800 IU per day, and they were restricted to 800 IU per day during the trial. In D-health, participants were only eligible if they were taking at most 500 IU per day, but they were allowed to take up to 2000 IU per day during the trial. ↩\nYou might ask: If vitamin D only has a modest effect, then why is it so strongly correlated with health?\nIn principle, I’d like to push back against the idea that we need to explain why these particular correlations don’t imply causation. But the accepted explanation is a combination of (1) reverse causation where being healthy causes people to spend more time outside and thus get more vitamin D; (2) confounding, where obesity is bad for you and leads to lower measured vitamin D levels; (3) confounding, where more healthy lifestyles lead to both more vitamin D and more health; and (4) confounding, where higher socioeconomic status leads to both more vitamin D and more health. You might ask why these correlations would be true at a state level like the Garlands looked at, but then you run into the ecological fallacy and modifiable areal unit problem. ↩\nI took all the trials that got at least 2% weight and were rated as “low risk of bias” in this 2014 Cochrane review of vitamin D and mortality, then manually added all the “major” trials that were published after 2014.\nI shudder to think of the time it took to make this table. I tried using AI but found it was wildly unreliable. Part of the problem is that each trial’s results are distributed among many papers, in different journals, with different paywalls. And many details aren’t published at all by the original authors but are only scrounged up and put in the depths of the supplementary material of a review years later. In some cases, different sources also give contradictory numbers. The differences were always tiny (e.g. 0.90 rather than 0.89) but it still makes me nervous. ↩\nHere’s a table describing the major contours of the trials:\nName\n            Country\n            Subjects (n)\n            Age (years)\n            white (%)\n          \nLips 1996\n            Netherlands\n            2,578\n            80 ± 6\n             \n          \nTrivedi 2003\n            UK\n            2,686\n            74.7 ± 4.6\n            74\n          \nWHI 2006\n            USA\n            36,282 (women)\n            61.8 ± 6.7\n            84\n          \nLyons 2007\n            Wales\n            3,440\n            84 ± 7.5\n             \n          \nWFPT 2007\n            UK\n            9,440\n            79.1\n             \n          \nRECORD  2012\n            UK\n            5,292\n            77.5 ± 6\n            99.2\n          \nLappe 2017\n            USA\n            2303 (women)\n            65.2 ± 7.0\n            100\n          \nVITAL 2018\n            USA\n            25,871\n            67.1 ± 7.1\n            71.3\n          \nViDA 2018\n            New Zealand\n            5,110\n            65.9 ± 8.3\n            83.3\n          \nD2d  2019\n            USA\n            2,423\n            60.0 ± 9.9\n            67\n          \nDO-HEALTH  2020\n            Several in Europe\n            2,157\n            74.9 ± 4.1\n             \n          \nD-Health 2022\n            Australia\n            21,315\n            69.3 ± 5.5\n            94.7\n          \nFIND 2022\n            Finland\n            2,495\n            68.2 ± 4.5\n            100\n          \nAnd here’s a table focusing on the change in vitamin D levels:\nName\n            Intervention (IU)\n            Allowed personal use  (IU/day)\n            Duration (years)\n            Baseline  D (nmol/L)\n          \nLips 1996\n            400 IU daily\n            0 (screening)\n            3.5\n             \n          \nTrivedi 2003\n            100,000 3× per year (D2)\n            0 (screening) 200 (trial)\n            5\n            52.5 (in controls)\n          \nWHI 2006\n            400 daily with  Ca\n            600 (later 1000)\n            7\n            52.0 ± 21.1 (subset)\n          \nLyons 2007\n            100,000 3× per year\n            <400 (screening)\n            3\n            54.0 (in controls, subset)\n          \nWFPT 2007\n            300,000 IU yearly\n            <400 (screening)\n            3\n             \n          \nRECORD  2012\n            800 daily with Ca\n            200\n            6.2\n            ~38\n          \nLappe 2017\n            2000 daily with Ca\n            any?\n            4\n            71.8 ± 20.0\n          \nVITAL 2018\n            2,000 daily\n            800\n            5.3\n            77 ± 30\n          \nViDA 2018\n            100,000 monthly\n            600 or 800\n            3.3\n            63 ± 24\n          \nD2d  2019\n            4,000 daily\n            1000\n            2.7\n            69.9 ± 26.8\n          \nDO-HEALTH  2020\n            2,000 daily\n            1000 (screening) 800 (trial)\n            3\n            55 ± 22\n          \nD-Health 2022\n            60,000 monthly\n            500 (screening) 2000 (trial)\n            5\n            77 ± 25 (predicted)\n          \nFIND 2022\n            1,600 or 3,200 daily\n            800\n            5\n            75 ± 18\n          \n↩\nAmong the major trials, only VITAL, ViDA, and FIND measured it for more than a tiny number of subjects. ↩\nIn VITAL and ViDA, people with baseline levels below 50 nmol/L had a higher hazard ratio for cancer mortality (though with wide confidence intervals), suggesting if anything less benefit. Or, you could use race as a proxy for baseline vitamin D. But in both VITAL and WHI, the hazard ratio for cancer mortality was higher among non-Whites. After looking at many such analyses for many outcomes, the only clear result I could find was for diabetes in the D2d trail, where the hazard ratio was much lower for people below 30 nmol/L (0.38 vs. 0.93). ↩\nThe results for VITAL look decent:\noutcome (VITAL trial)\n            HR\n            HR excluding first two years\n          \nCancer\n            0.96 (0.88 to 1.06)\n            0.94 (0.83 to 1.06)\n          \nCancer mortality\n            0.83 (0.67 to 1.02)\n            0.75 (0.59 to 0.96)\n          \nMajor CVD event\n            0.97 (0.85 to 1.12)\n            0.93 (0.79 to 1.09)\n          \nAll-cause mortality\n            0.99 (0.87 to 1.12)\n            0.96 (0.84 to 1.11)\n          \nBut in D-Health, excluding the first two years actually increased the hazard ratio for cancer mortality from 1.15 (0.96 to 1.39) to 1.24 (1.01 to 1.54). Most other trials were too short for this kind of analysis to make sense. ↩\nThat could downregulate 25-hydroxyvitamin D 1-alpha-hydroxylase, reducing the rate it catalyzes the hydroxylation of hydroxycholecalciferol into 1,25-dihydroxycholecalciferol! ↩\nDynomight: WTF is this?\nDynomight Biologist: Well, C-reactive protein is generally considered inflammatory.\nDynomight: So reducing that is good? But then why do they talk like elevating anti-inflammatory cytokines would be bad?\nDynomight Biologist: Yeah… That would be good. Unless you have cancer. In which case it’s not good.\nDynomight: OK! ↩\nMendelian randomization studies are based on the idea that certain genes predispose you to have higher levels of circulating vitamin D. If you assume that those genes are randomly distributed in the population and have no effects other than affecting vitamin D, then they serve as a kind of natural experiment. With vitamin D, these studies typically show null results. However, the validity of the assumptions is debatable and the identified genes only explain ~5% of the variance in vitamin D levels, which makes the results very noisy. ↩\nPale skin also greatly increases the risk of sunburn and skin cancer. In the US, White people get melanoma at around 25 times the rate of Black people, despite (I assume) higher usage of sunscreen and better health outcomes in most other dimensions. But experts generally think folate deficiency created stronger selective pressure, since it’s so closely linked to reproduction. ↩\nIt’s a more complicated than this, because you also need to look at the amount of folate in diet, as well as migration patterns and how long populations had to adapt to their environment. But experts seem to consider this the leading explanation for the evolution of pale skin. ↩\nTo derive this, suppose that S(t) is the probability that someone survives to age t. Then life expectancy is  ∫ S(t) dt, where the integral runs from 0 to ∞. If you change the hazard ratio by a factor of HR, then the new in life expectancy is L(HR) = ∫ S(t)ᴴᴿ dt, so the change under a linear approximation is ΔL ≈ (HR-1) × L’(1). This is more commonly written as ΔL ≈ (HR-1) × L(1) × H, where H = -L’(1)/L(1)  is known as the Keyfitz entropy.  This is is chosen because the quantity H is relatively stable, and in rich countries is typically between 0.10 and 0.20. So a decent estimate would be that baseline life expectancy is L(1)=80 years and H = 0.15 in which case the change in life expectancy is around 12 × (1-HR) years. ↩\nObserve that 0.48 years is 252460.8 minutes. Assuming you lived for 80 years and took a pill every day of your life, that would be 80 * 365.25 = 29220 pills. 252460.8 minutes / 29220 pills = 8.64 minutes/pill. ↩\nI expect that a number of you are happy to bite that bullet and say yes, HR=0.96 is trivial and smoking a cigarette each day is also fine. I don’t personally agree, but it’s not my place to question your utility function and I applaud your consistency. ↩\nA hazard ratio of HR=2/3, implies a change in life expectancy of 12 × (1 - 1/3) years = 4 years or 2,103,840 minutes. That corresponds to a per-pill increase of 2,103,840 minutes / 29,220 pills = 72 minutes/pill. ↩\nTechnically, this is calculating a relative risk rather than a hazard ratio, but I think the difference isn’t very significant given that we’re assuming a uniform mortality risk. I used AI to create that simulation, though I did test that it replicates a traditional power calculator across a wide range of parameters when the relative risk is constant for all vitamin D levels. So I mostly trust it. ↩\nThis simulation is probably a bit pessimistic. Things look a bit better if you use an older population where baseline mortality is higher. (Almost all trials do.) In principle, you could also use a population where more people have low levels, which could help a lot. But, for whatever reason, almost no trials do that. In fact, most trials accidentally under-sample people with low vitamin D, because people who agree to participate tend to be more health-conscious. ↩\nKunzia et al. made a heroic effort to contact study authors and get data for individual patients. After getting data for 21,558 people (almost all from ViDA + FIND + VITAL + WHI) only 3,663 had levels below 50 nmol/L. That’s not enough to reliably detect a modest effect, meaning their confidence interval for this group is gigantic. ↩\nIn this table, I tried to capture foods that are commonly fortified in practice, not just when it’s legally required. ↩",
+      "id": "eca7be2f82af27444aba054bcf3b8108f3ff819e2793d01bc959fdec6a8be0f3",
+      "ref_id": "1",
+      "recommendationScore": 20,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "这是一篇关于维生素D健康益处的科普文章，与科技博客的主题不符。",
+      "reason": "文章内容完全属于健康科普范畴，不在科技博客的关注主题优先级之内。",
+      "tags": [
+        "健康",
+        "维生素D",
+        "科普",
+        "生物医学"
+      ]
+    },
+    {
+      "title": "Prompt Injection as Role Confusion",
+      "link": "https://simonwillison.net/2026/Jun/22/prompt-injection-as-role-confusion/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-06-22T23:59:53.000Z",
+      "summary": "",
+      "id": "f26c96cfcb192832119b38547ec2118a76794cefbf432df301644a571a92e972",
+      "ref_id": "3",
+      "recommendationScore": 5,
+      "popularityScore": 0,
+      "priority": "high",
+      "comment": "标题虽提及重要AI安全议题，但内容为空，无法提供任何有效信息。",
+      "reason": "主题在AI优先级中极高，但文章内容缺失，没有任何可供评估的实质内容，因此推荐度极低。",
+      "tags": [
+        "AI安全",
+        "Prompt Engineering",
+        "大语言模型",
+        "内容缺失"
+      ]
+    },
+    {
+      "title": "Porting the Moebius 0.2B image inpainting model to run in the browser with Claude Code",
+      "link": "https://simonwillison.net/2026/Jun/22/porting-moebius/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-06-22T23:43:51.000Z",
+      "summary": "",
+      "id": "d0f14fad967a5b0a133ab702df28aaa8729f3fd63098cccf1e4b2160020391ec",
+      "ref_id": "4",
+      "recommendationScore": 5,
+      "popularityScore": 0,
+      "priority": "high",
+      "comment": "标题指向AI模型在浏览器端部署的前沿技术，但内容为空，无法评估其价值。",
+      "reason": "主题结合AI与编程工具，具有高技术实用性，但文章内容缺失，无法提供实质信息，因此推荐度极低。",
+      "tags": [
+        "AI",
+        "机器学习",
+        "浏览器",
+        "Web开发",
+        "图像处理",
+        "内容缺失"
+      ]
+    },
+    {
+      "title": "75% More Pedestrians Have Been Killed Since 2009. Giant Trucks and SUVs Are Why",
+      "link": "https://www.thedrive.com/news/75-more-pedestrians-have-been-killed-since-2009-giant-trucks-and-suvs-are-why",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-23T17:31:34.000Z",
+      "summary": "Article URL: https://www.thedrive.com/news/75-more-pedestrians-have-been-killed-since-2009-giant-trucks-and-suvs-are-why\nComments URL: https://news.ycombinator.com/item?id=48648371\nPoints: 25\n# Comments: 3",
+      "id": "8e0c5049667cc56b59ab4f99fb448ff32199faa81bf106f0021f8413261bc2a4",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Claude Tag",
+      "link": "https://www.anthropic.com/news/introducing-claude-tag",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-23T17:09:18.000Z",
+      "summary": "Article URL: https://www.anthropic.com/news/introducing-claude-tag\nComments URL: https://news.ycombinator.com/item?id=48648039\nPoints: 45\n# Comments: 13",
+      "id": "64748ac3266300d1d5f0bff327d2c56e40302b237f3caf33b99ead3987648184",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Mark Zuckerberg directed meta to create a prediction markets app",
+      "link": "https://www.nytimes.com/2026/06/23/technology/meta-prediction-markets-app.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-23T17:01:57.000Z",
+      "summary": "Article URL: https://www.nytimes.com/2026/06/23/technology/meta-prediction-markets-app.html\nComments URL: https://news.ycombinator.com/item?id=48647928\nPoints: 14\n# Comments: 5",
+      "id": "ed8de341bff7fb364eb3975d0c498abe92ce3004bfe44a39d6311eef5653e8d5",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "San Diego Photologs from the 1970s",
+      "link": "https://www.beautifulpublicdata.com/san-diego-photologs-from-the-1970s/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-23T16:55:26.000Z",
+      "summary": "Article URL: https://www.beautifulpublicdata.com/san-diego-photologs-from-the-1970s/\nComments URL: https://news.ycombinator.com/item?id=48647823\nPoints: 27\n# Comments: 5",
+      "id": "fff949bb5a6d00957b219a2c73f71b8e0dc75c21f8dc704e5e10c088114f502d",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "F3",
+      "link": "https://github.com/future-file-format/f3",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-23T16:53:32.000Z",
+      "summary": "Article URL: https://github.com/future-file-format/f3\nComments URL: https://news.ycombinator.com/item?id=48647799\nPoints: 155\n# Comments: 45",
+      "id": "6a2c7b0368e0bf357ef55c353f2daa2eb212a7b715fb423210049a9543864596",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "What Was Matt Thinking?",
+      "link": "https://feed.tedium.co/link/15204/17365463/matts-script-archive-retrospective",
+      "source": "tedium.co",
+      "publishedAt": "2026-06-22T18:41:28.000Z",
+      "summary": "The high schooler who developed everyone’s forums and guestbooks in 1996 didn’t really think about security when he was building all that software. But Matt’s Script Archive was more than exploits.\n\nCurrently, I’m in the midst of writing a big post about the roots of web forums, but I hit on an aside weird enough that I decided to stop writing that and work on a separate post. Because I think it actually explains a lot about the way people use the internet.\nEssentially, here’s the deal. Around 1995 or so, a high schooler named Matt Wright decided to launch a website that shared some basic website tools that he programmed. Many of these were dead-simple, things like contact forms, guestbooks, and web counters. One in particular, WWWboard, became a massive hit, becoming one of the first widely used web forum apps on the internet.\nThe copyright notice for WWWboard, Wright’s widely used forum-hosting software.\nThe site Wright built, Matt’s Script Archive, unwittingly helped to highlight the divergence between how normal people think about software, and the developer’s perspective.\nWright, and others like him, hit upon an obvious need. Regular people found these scripts, ran them, and suddenly had forums, counters, and contact forms. They got the job done. But programmers who weren’t in high school and weren’t so wet behind the ears looked aghast at what Wright had done: He had spread poorly designed, but widely used software across the internet. This software was packed with security issues, but worst of all, it wasn’t really getting updated all that much.\nHow serious are the security issues? Well, a look at OpenCVE points out some very serious problems that range from bugs that emerged from massive exposure to some questionable design decisions. (Keeping an encrypted password file in the root? Making it possible to grab env variables via a URL? Not smart!)\nOne exploit in particular, affecting Wright’s textcounter tool, stands out among the list: CVE-1999-1479, with a score of 10.0 critical, effectively allows exploiters to execute code on the server as root.\nYou mean Matt has a script archive? Let’s have the Perl pros take a turn.\nThis state of affairs got serious enough that a competing website, called nms, essentially was launched to replace Matt’s buggy scripts with drop-in versions aren’t full of security exploits from bad coding. Their POV:\n\nThe problem is that the scripts in Matt’s Script Archive aren’t very good. The scripts are well known amongst the Perl community to be badly written, buggy, and insecure. Anyone asking for support on Matt’s scripts in any forum will be told in no uncertain terms that they shouldn’t use his scripts.\nUnfortunately for some time there were no replacements for Matt’s scripts that you would want people to use. In 2001, the London Perl Mongers decided to address this problem and write a series of drop-in replacements for Matt’s scripts. This project is the result.\n\n(I will note that, since nms itself hasn’t been updated in like 20 years, so maybe you might also want to hold off on using that in 2026.)\n\n\nTFW your old computer is at risk of getting hacked by a guestbook. (DepositPhotos.com)\nMatt’s scripts, the easy option, and the problem with overexposure\nWhen so many people use something that it becomes part of the internet’s lingua franca, it’s inevitable exploits are going to emerge. There’s a reason WordPress and Windows each have reputations as bug-ridden, and it’s largely because of the number of eyes on the given tools.\nWith that in mind, I don’t think it’s fair to blame Wright for having bad code—after all, it wasn’t like he knew it was going to become a huge platform. I think there is a lesson for security teams, however, who are going to be stuck trying to work around people who grab the lowest hanging fruit.\nThe average person does not want to spend hours looking over every option under the sun to find something good. They just want it to work, and they may not necessarily think much about how to make it better.\nThat, of course, is why vibe coding is such a big thing nowadays. It hits on the very same tension that an easy-to-access script archive did. And just as with these scripts, you can look at vibe-coded apps as insecure dreck created by someone who didn’t know better, or you can look at them as a democratizing tool.\nProblem is, they’re technically both. Can you appreciate one while appreciating the other? I have the answer, and it’s yes.\nMatt’s Web Scripts, as it appeared on worldwidemart.com in 1997. One example of many of a random website becoming popular, no real rhyme or reason to it. But hey, Matt had some pretty good scripts! (Internet Archive)\nMatt’s scripts, remembered\nRecently, I spotted an incredible project at the domain that once hosted Matt’s Script Archive. As of a year ago, worldwidemart.com was hosting spam gambling content of the kind that might give your computer a virus.\nBut that owner let the domain expire late last year. This turned out to be the best thing. Someone who really cared about the legacy of Matt’s Script Archive decided to buy the domain, build a new site explaining the legacy of what once existed there, and why those scripts, as broken as they are, matter.\nFor something vibe coded, it’s surprising how hard it goes.\nThe new site has the definite smell of vibe coding, but you know what? It’s also doing something incredibly important for the history of the internet. As you know, I’m the kind of guy that complains loudly when someone takes over a historically important website for less-than-stellar reasons. But I have looked through this page and I do not see any reason to complain—no under-the-radar sketchy “yeah, we did this to sell you something” drama. The page where I thought I would see that, a link located at /hosting/, is instead an explanation of how web hosting has changed in the past 30+ years.\nPut another way, this website rules. If we’re going to revive domains into zombie websites, I’d rather it was a vibe-coded thing that explains why this was once historically relevant than something that a spammer doesn’t even want.\nWhat was Matt thinking? He just wanted to be helpful. And that he was.\n\nScript-Free Links\nIf you love old stuff like this, I recommend checking out the dead-website archive rip.so, which hits this very dopamine zone.\nOn a related note, this Verge story about the security risks of vibe coding feels especially relevant given today’s piece.\n\nI find the fact that LinkedIn has like a dozen games that it expects you to play every day to be bizarre. We needed a name for it, and “corporate puzzleslop,” what Juniper Dev landed on, is basically perfect. (Great channel, too, she knows her stuff.)\n--\nFind this one an interesting read? Share it with a pal! (Did Matt run your guestbook in 1997?)\nAnd be sure to check out the latest stuff on the Tedium Shopping Network.",
+      "id": "0643ea216d7979e7a7bdd7079392a74b1a2dfe174889d33799d5e1e9c7a9509f",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Cargo Culture",
+      "link": "https://www.wheresyoured.at/cargo-culture/",
+      "source": "wheresyoured.at",
+      "publishedAt": "2026-06-23T15:23:20.000Z",
+      "summary": "If you liked this piece, you should subscribe to my premium newsletter. It’s $70 a year, or $7 a month, and in return you get a weekly newsletter that’s usually anywhere from 5,000 to 18,000 words, including vast, detailed analyses of NVIDIA, Anthropic and",
+      "id": "146a404a9fea54bcb8d7268794924e0d898bdf6937c960fede0a98c1072bebda",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Our hydro deserves better than a chatbot",
+      "link": "https://hey.paris/posts/ai-data-centres-tasmania/",
+      "source": "hey.paris",
+      "publishedAt": "2026-06-23T00:00:00.000Z",
+      "summary": "Last week, the Tasmanian Greens announced they’ll move for an urgent parliamentary inquiry into the AI data centres going up across the north of the state. I think this is a very good idea. These projects appear to have been approved without any specific regulations or parliamentary oversight, and the public has barely had the chance to have a say. The announcement also put a new number on the record: in Budget Estimates, under Greens questioning, Energy Minister Nick Duigan confirmed Firmus plans to draw 400 to 500 MW across two or three “AI factory” sites, which is more than Bell Bay Aluminium’s 335 MW, currently the state’s single biggest power user.",
+      "id": "8ff67913d333c47dff62b0ec75450854ed161638d2fa1e3c99df900b77cce27b",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "The most wonderful thing that happened to Tommy McHugh",
+      "link": "https://www.experimental-history.com/p/the-most-wonderful-thing-that-happened",
+      "source": "experimental-history.com",
+      "publishedAt": "2026-06-23T15:57:56.000Z",
+      "summary": "...\"was having a stroke while doing a poo\"",
+      "id": "62904a7a6bf0602ee1eb4515b362c45f99c324130c157d3d2371f30c3a874d08",
+      "status": "score_failed",
+      "recommendationScore": 0
+    }
+  ]
+}
