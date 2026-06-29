@@ -1,0 +1,681 @@
+{
+  "dailySummary": "今日科技速递聚焦AI热潮：Qwen 3.6等LLM驱动智能体编码，但AI搜索“粪化”互联网引Cory Doctorow批判。同时，行业探讨CUDA内核运行原理、Tidal AI政策，",
+  "articles": [
+    {
+      "title": "What happens when you run a CUDA kernel?",
+      "link": "https://fergusfinn.com/blog/what-happens-when-you-run-a-gpu-kernel/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-29T13:11:08.000Z",
+      "summary": "Article URL: https://fergusfinn.com/blog/what-happens-when-you-run-a-gpu-kernel/\nComments URL: https://news.ycombinator.com/item?id=48718863\nPoints: 127\n# Comments: 10",
+      "id": "0235cebe80ea18351818dd97be0e49a86fd622c3b29557670320fdf58751760e",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 60,
+      "priority": "high",
+      "comment": "深度剖析了CUDA内核在GPU上运行的底层机制与过程。",
+      "reason": "文章直接切入AI和高性能计算的核心——CUDA，技术深度极高，对理解AI基础设施和GPU编程的开发者具有巨大的实用价值，完美契合主题优先级。",
+      "tags": [
+        "CUDA",
+        "GPU编程",
+        "并行计算",
+        "AI",
+        "高性能计算",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "Ornith-1.0: Self-Scaffolding LLMs for Agentic Coding",
+      "link": "https://simonwillison.net/2026/Jun/29/ornith/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-06-29T16:17:59.000Z",
+      "summary": "",
+      "id": "8edc68a0b3d08afa07d506b50ad4f2fd28bf9eb2ddd37d6353481b3ea614e271",
+      "ref_id": "2",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "尽管内容缺失，但标题明确指出这是一篇关于自适应大型语言模型（LLMs）用于Agentic Coding的高度技术化和前沿研究。",
+      "reason": "标题直接指向了AI领域最前沿且具有高技术深度和新颖性的主题：利用LLMs实现自主编程，对AI研究者和开发者吸引力巨大。",
+      "tags": [
+        "AI",
+        "LLM",
+        "Agentic Coding",
+        "机器学习",
+        "软件开发"
+      ]
+    },
+    {
+      "title": "Qwen 3.6 27B is the sweet spot for local development",
+      "link": "https://quesma.com/blog/qwen-36-is-awesome/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-29T17:05:16.000Z",
+      "summary": "Article URL: https://quesma.com/blog/qwen-36-is-awesome/\nComments URL: https://news.ycombinator.com/item?id=48721903\nPoints: 117\n# Comments: 68",
+      "id": "36a2cd0721c478125cff7e13265f25c388666fb0e412e4891e529202866324e6",
+      "ref_id": "1",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "评估了Qwen 3.6 27B在本地AI开发中的最佳适用性。",
+      "reason": "这篇文章紧密契合AI主题，为开发者提供了关于如何高效在本地运行强大LLM的实用建议和深度分析，具有高实用性和相关性。",
+      "tags": [
+        "AI",
+        "LLM",
+        "Local Development",
+        "Qwen",
+        "Machine Learning"
+      ]
+    },
+    {
+      "title": "Pluralistic: Gemini is better than search because Google enshittified search (29 Jun 2026)",
+      "link": "https://pluralistic.net/2026/06/29/arsonist-firefighters/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-06-29T16:34:57.000Z",
+      "summary": "Today's links Gemini is better than search because Google enshittified search: We're All Trying To Find The Guy Who Did This. Hey look at this: Delights to delectate. Object permanence: Microsoft antitrust overturned; Scammer carves C64; RIP Jim Baen; GOP rep to constituent's child: \"drop dead\" (literally); CCTVs jacked for botnet; Olympic profitability lie; Human factors in health infosec; Exfiltration via computer fans; Congress's summer schedule: 9 working days; Antitrust is political antigrav; Ted Chiang's 72 Letters; Microsoft antitrust appeal; Vinge on privacy; Breaking open the web; Bernie on Brexit; \"The Perdition Score\"; Intuit v Child Tax Credit. Upcoming appearances: London, Edinburgh, Sydney, Melbourne, Brighton, London, South Bend. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. Gemini is better than search because Google enshittified search (permalink) Write a critical AI book, and you become everyone's confessor for their AI sins. People in my life keep telling me about their guilty AI pleasures, in search of an explanation, absolution or condemnation: https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/ Their most common confession: \"I only ever use Google's AI-generated search summaries these days. I no longer click those blue links beneath it, not even to verify the summary.\" People know that the summaries are full of \"hallucinations\" (that is, \"defects\" or \"errors\") but the summaries are right often enough that many people have come to rely on them, to the exclusion of actual websites, made by actual people, on the actual internet. Everyone knows this isn't good. The reason there's a web for Google's Gemini AI to summarize is that Google – the thrice-convicted monopoly search company with a 90% market share – directs people to websites, and when you visit a website, you generate revenue for the site, which pays for its maintenance. Most commonly, you generate an \"ad impression,\" but you might also buy a subscription, or generate an \"affiliate fee\" by purchasing a recommended product. When Google strips all this away by harvesting an \"answer\" and displaying it at the top of the page, the bargain between Google and the open web breaks down. Google is extracting 100% of the value from the websites it summarizes, and giving nothing back in return. This is a marked reversal from Google's founding ethos. In the old days, Google measured its success by how little time you spent on its site. The ideal Google outcome was for you to visit its page (or even better, just a search-box in your browser), type a few words, and get \"ten blue links\" back, the top one of which was the correct link to locate the information or resource you were seeking. The point of Google was to serve as a conduit, a trusted intermediary that neutrally adjudicated the relevance of every web page for every web user from moment to moment. Everyone dunks on Google for its high-minded motto, \"Don't be evil,\" but over the years, the company's mission was far more important: \"Organize the world's information and make it universally accessible and useful.\" That was the pole star that googlers followed for the first couple decades of the company's history…until, that is, the company saturated its market and its growth stalled out. That was when Google started to panic over its plateauing search revenue, this being an inescapable consequence of 90%+ market-share. The ensuing power struggle pitted googlers who were committed to technical excellence against the company's most ardent enshittifiers, who pointed out that by making search worse, they could increase revenues. After all, if you need to search two or three times to get the answers to your questions, that means the company can show you two or three times as many ads: https://pluralistic.net/2024/04/24/naming-names/#prabhakar-raghavan Where once Google measured its success by how quickly it could send you away from its site and out into the open internet, today's Google is a sticky-trap full of ways to keep you inside its walled garden. A decade ago, tech had three major approaches: I. Google's: let you do anything you want, but spy on you while you do it; II. Apple's: strictly control what you can do, but leave you alone to do it in private; and III. Facebook's: control everything you do, spy on you from asshole to appetite. Today, tech is undergoing a form of carcinization, in which every company is turning into a Facebook-crab: maximally surveillant and maximally controlling. Apple has added surveillance to its walled garden: https://pluralistic.net/2022/11/14/luxury-surveillance/#liar-liar While Google has turned its free-range, internet-wide surveillance system into a walled garden that tries to keep you away from the open internet as much as possible. Now, in Google's defense, the \"open internet\" kind of sucks these days. Any piece of useful information you seek out on the open internet is liable to be buried under half a dozen pop-ups, pop-unders, and dickovers: https://daringfireball.net/2026/05/what_is_a_dickover Even after you clear these away, the actual information you're seeking is further buried in word-salads that anticipated insipid AI prose by half a decade. Think of all those omelet recipes that appear beneath 2,500 words of cod-Proustian remembrances of \"the first time I ate an egg.\" The major advantage of AI search summaries is in shielding you from all this nonsense. But where did all that nonsense come from in the first place? It turns out that this is largely Google's fault. Google and Facebook monopolized the display advertising market, entering into an illegal, collusive arrangement to rig the bidding so that advertisers paid more and publishers received less: https://en.wikipedia.org/wiki/Jedi_Blue The Google/Meta duopoly suck up 51% of display advertising revenue – more than triple the historic take for advertising intermediaries (buyers, brokers, agencies, etc). As ad revenues for web publishers cratered, the \"ad load\" on web pages went up. This set up a vicious cycle: increasing the number of ads decreases the number of readers, driving publishers to increase the ad-load even more to make up for the losses. The major brake on this is ad-blocking. In a world with ad-blockers in it, publishers contemplating an increase in ad-load have to confront the possibility that they will induce ad-overload in their readers, who will install a blocker that stops them from seeing any ads: https://www.eff.org/deeplinks/2019/07/adblocking-how-about-nah Google has been looking to kill ad-blocking for a decade, and now they're on the verge of making it happen in Chrome, the dominant web browser they use to reinforce their search monopoly: https://protonprivacy.substack.com/p/google-is-finally-killing-ublock Google long ago did away with ad-blocking on mobile devices (reverse engineering an app is a felony, which means an app is just a web-page skinned with the right kind of IP to make it a crime to protect your privacy while you use it). Part of Google's argument for killing ad-blocking for the web is that this puts the web on an even footing with apps – which is a very weird way to describe a race to the absolute bottom: https://pluralistic.net/2026/06/12/compelled-speech/#quishing To top it all off, this decade has seen Google make a series of changes to its search prioritization that favored low-value shovelware sites over carefully researched, reliable alternatives. Search for product reviews and you're apt to get a \"site reputation abuse\" result from a once-reliable outlet like Forbes filled with useless and even dangerous reviews, which are ranked far above independently maintained, rigorous competitors: https://pluralistic.net/2024/05/03/keyword-swarming/#site-reputation-abuse This has only gotten worse with AI search, which preferentially draws from spam sites to produce decontextualized, highly confident recommendations for substandard, overpriced junk, at the expense of recommendations for good products: https://pluralistic.net/2025/07/15/inhuman-gigapede/#coprophagic-ai It's not like Google doesn't have the ability to sort the good from the bad. Kagi.com is a $10/month paid search engine whose results are vastly superior to Google's. But Kagi doesn't have its own search index: instead, they rent access to Google's index, but apply their own (much smaller and less resourced) team's algorithm to rank the results for your queries. In other words, Google could deliver good search results, they just choose not to: https://pluralistic.net/2024/04/04/teach-me-how-to-shruggie/#kagi Gresham's Law holds that \"bad money drives out good.\" It refers to a counterfeit coin crisis in Tudor England, where people preferentially spent counterfeit money in order to make it someone else's problem; meanwhile, everyone hoarded their good coins. Soon, virtually all the money in circulation was bogus. By downranking quality material in favor of low-effort spam, Google set up a web-wide version of Gresham's Law, where bad webpages drive out good ones, and since so many of those webpages contain product recommendations, they're greshaming the world of real products, too, so the bad is driving out the good there, too. This is the problem that Gemini search summaries solve: in its role as the web's most important gatekeeper, Google remade them as an ad-festooned cesspit of garbage text and cynical shovelware sites. Now Google proposes to wipe out the publishers whose content they stripmined by breaking the web's bargain: that search engines are symbiotic with publishers. Google has turned fully parasitic, sucking the last drops of juice out of the open web before discarding its husk. Hey look at this (permalink) Anti-Monopoly Bill Hits Make-or-Break Moment in California https://prospect.org/2026/06/29/anti-monopoly-bill-hits-make-or-break-moment-in-california/ Om Malik, 1966-2026 https://om.co/2026/06/24/1966-2026/ Why Carbon Capture Can’t Conceivably Solve Climate Change https://projects.propublica.org/why-carbon-capture-cant-solve-climate-change/ The KIDS Act Would Require Age Checks To Get Online https://www.eff.org/deeplinks/2026/06/kids-act-would-require-age-checks-get-online AI Implementation Bingo Card Generator https://www.workersdecide.tech/bingo/ Object permanence (permalink) #25yrsago Appeals court strikes down Microsoft antitrust ruling https://www.nytimes.com/2001/06/28/business/us-appeals-court-overturns-microsoft-antitrust-ruling.html #25yrsago Ted Chiang's 72 Letters https://web.archive.org/web/20010720192340/http://www.tor.com/72ltrs.html #25yrsago Concept handheld devices https://web.archive.org/web/20010620115437/https://www.infosync.no/en/news/n/419.asp #25yrsago Analyzing Microsoft's successful antitrust appeal https://web.archive.org/web/20010703085656/https://www.salon.com/tech/feature/2001/06/28/appeals_reaction/index.html #20yrsago Bengali science fiction of the 1880s https://www.lehigh.edu/~amsp/2006/05/early-bengali-science-fiction.html #20yrsago Vernor Vinge on computers, freedom and privacy https://www.theguardian.com/technology/2006/jun/29/guardianweeklytechnologysection5 #20yrsago Scammer convinced to carve replica Commodore 64 https://www.419eater.com/html/john_boko.php #20yrsago Jim Baen, sf publisher, has passed away https://web.archive.org/web/20060703024337/http://david-drake.com/baen.html #15yrsago YouTube listens to fraudulent NyanCat takedown notice, drags heels on put-back from creator https://web.archive.org/web/20110628132607/http://www.prguitarman.com/index.php?id=369 #15yrsago Wyoming’s corporation mills manufacture privileged artificial “people” to order https://www.reuters.com/article/2011/06/28/us-usa-shell-companies-idUSTRE75R20Z20110628/ #15yrsago Publishing in the Internet era: connecting audiences and works https://www.theguardian.com/technology/2011/jun/30/publishers-internet-changing-role?utm_source=twitterfeed&amp;utm_medium=twitter #15yrsago Why writers should have their own domains https://whatever.scalzi.com/2011/06/29/mastering-ones-own-domain-an-no-this-is-not-a-seinfeld-reference/ #15yrsago Copyright troll’s biggest fan commits terminal irony https://www.eff.org/deeplinks/2011/06/righthaven-cheerleader-wanted-irony-police #10yrsago Mississippi state rep tells distraught mom to buy kid’s lifesaving meds ‘with money she earns’ https://www.sunherald.com/news/local/counties/jackson-county/article86416087.html #10yrsago Always-on CCTVs with no effective security harnessed into massive, unstoppable botnet https://arstechnica.com/information-technology/2016/06/large-botnet-of-cctv-devices-knock-the-snot-out-of-jewelry-website/ #10yrsago Gun-waving cop who attacked black teenaged girl in her bathing suit faces no charges https://web.archive.org/web/20160624103549/http://dfw.cbslocal.com/2016/06/23/grand-jury-no-bills-former-mckinney-pool-party-cop/ #10yrsago The Olympics are profitable for every host city (that lies about the numbers) https://timharford.com/2016/06/how-do-you-make-the-olympics-pay-fudge-the-figures/ #10yrsago Healthcare workers prioritize helping people over information security (disaster ensues) https://www.cs.dartmouth.edu/~sws/pubs/ksbk15-draft.pdf #10yrsago Fansmitter: malware that exfiltrates data from airgapped computers by varying the sound of their fans https://www.youtube.com/watch?v=3GCHCVpndaM #10yrsago Labour’s knives come out for Corbyn, but he’s guaranteed a spot on the ballot https://www.politico.eu/article/inside-account-of-labour-mps-attacks-on-jeremy-corbyn-shadow-cabinet-resignations-brexit/ #10yrsago Hope Larson’s “Compass South”: swashbuckling YA graphic novel https://memex.craphound.com/2016/06/28/hope-larsons-compass-south-swashbuckling-ya-graphic-novel/ #10yrsago How to Break Open the Web: a report on the first Decentralized Web Summit https://www.fastcompany.com/3061357/the-web-decentralized-distributed-open #10yrsago Californians will get to vote on legal recreational weed https://web.archive.org/web/20160629130245/http://abcnews.go.com/US/wireStory/voters-decide-legalize-recreational-marijuana-40206739 #10yrsago Bernie Sanders on Brexit: urgent lessons for the Democrats https://www.nytimes.com/2016/06/29/opinion/campaign-stops/bernie-sanders-democrats-need-to-wake-up.html #10yrsago Electoral fraud: Trump sends fundraiser emails to foreign politicians https://www.cnet.com/culture/trump-spams-foreign-politicians-with-fundraising-emails/#ftag=CAD590a51e #10yrsago The Perdition Score: Sandman Slim vs the One Percent https://memex.craphound.com/2016/06/29/the-perdition-score-sandman-slim-vs-the-one-percent/ #5yrsago Intuit sabotages the Child Tax Credit https://pluralistic.net/2021/06/29/three-times-is-enemy-action/#ctc #5yrsago SCOTUS to wrongfully accused terrorists: \"drop dead\" https://pluralistic.net/2021/06/29/three-times-is-enemy-action/#transunion #5yrsago Lazy Congress only schedules 9 days' work this summer https://pluralistic.net/2021/06/28/dubious-quant-residue/#back-to-work-you #1yrago Antitrust defies politics' law of gravity https://pluralistic.net/2025/06/28/mamdani/#trustbusting Upcoming appearances (permalink) London: Idler Festival, Jul 11 https://www.idler.co.uk/festival/ Edinburgh International Book Festival with Jimmy Wales, Aug 17 https://www.edbookfest.co.uk/events/the-front-list-cory-doctorow-and-jimmy-wales Sydney: The Festival of Dangerous Ideas, Aug 23-24 https://festivalofdangerousideas.com/cory-doctorow/ Melbourne: Enshittification at the Wheeler Centre, Aug 25 https://www.wheelercentre.com/events-tickets/season-2026/cory-doctorow-enshittification Brighton: The Reverse Centaur's Guide to Life After AI with Carole Cadwalladr (Brighton Dome), Sep 8 https://brightondome.org/whats-on/LSC-cory-doctorow-the-reverse-centaurs-guide-to-life-after-ai/ London: The Reverse Centaur's Guide to Life After AI with Riley Quinn (Foyle's Picadilly), Sep 9 https://www.foyles.co.uk/events/enshittification-cory-doctorow-riley-quinn South Bend: An Evening With Cory Doctorow (Notre Dame), Oct 6 https://franco.nd.edu/events/2026/10/06/an-evening-with-cory-doctorow/ Recent appearances (permalink) Breaking Points https://www.youtube.com/watch?v=VJmUbkRqXeE A.I. Enshittifies Everything (Slate) https://slate.com/podcasts/what-next-tbd/2026/06/cory-doctorow-thinks-a-i-is-overvalued-and-overrated-and-still-a-threat A World That Just Might Work https://aworldthatjustmightwork.com/2026/06/cory-doctorow-ai-use-it-dont-buy-the-hype-dont-feed-the-bubble/ \"How to Think About AI\" (Democracy Now!) https://www.youtube.com/watch?v=OBUzl_IaWIw The Data Centers Are Coming (ILSR) https://ilsr.org/articles/the-data-centers-are-coming-ep-6-closing-arguments/ Latest books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/ \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Fourth draft completed. Submitted to editor. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "7ac14a1b99c8d65c0ac9bd9f13e9fb42f521ac69d4728f8089d5b845759aecc8",
+      "ref_id": "4",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "核心论点聚焦AI与搜索引擎的演变，批判性地探讨了Google搜索的衰退与Gemini的崛起，极具时效性和深度。",
+      "reason": "文章主题直接命中AI优先级别，对当前科技趋势有深刻的洞察和实用价值，信息密度高。",
+      "tags": [
+        "AI",
+        "搜索引擎",
+        "Google",
+        "Gemini",
+        "平台衰退",
+        "技术评论",
+        "反垄断"
+      ]
+    },
+    {
+      "title": "Notes from Bryan Cantrill’s “Intelligence is not Enough”",
+      "link": "https://blog.jim-nielsen.com/2026/intelligence-isnt-enough/",
+      "source": "blog.jim-nielsen.com",
+      "publishedAt": "2026-06-28T19:00:00.000Z",
+      "summary": "I quite enjoyed this talk from Bryan Cantrill where he discusses the difficult engineering problems they overcame while working on their company Oxide.\nSome of the problems they ran into were bugs. But these weren’t any ordinary bugs, they were company-destroying bugs: bugs that, if they couldn’t be fixed, would sink the entire company.\nAnd the difficulty in solving these bugs was that they had no precedent. Any documentation or knowledge they could find around the symptoms of the problem was actively incorrect.\nIn fact, Bryan says that the team’s breakthroughs on these bugs were solutions that an artificial super intelligence would’ve never suggested because they ran against  all known and available reasoning, documentation, and knowledge.\nHis point being: intelligence isn’t everything. Human values are still incredibly important.\nIntelligence alone does not solve problems like [the ones we encountered]. Our ability to solve these problems had nothing to do with our collective intelligence as a team. We’ve got a terrific team, but it’s a lot more than just intelligence. And in particular for these [kinds of] problems, and many like them, we had to summon the elements of our character not our intelligence. Our resilience. Our teamwork. Our rigor. Our optimism. […]\nWe talk about super intelligence, but is anyone talking about super collaboration or super teamwork? We absolutely needed teamwork [at Oxide].\nIf human values like curiosity are what led to breakthroughs — not the application of synthetic intelligence — why is there so much emphasis on intelligence these days? Bryan has a curt analysis:\nThis infatuation with intelligence comes from people who just don’t get outside enough.\nHe notes how intelligence isn’t everything in a job interview. Like, you don’t hire people by giving out an exam and taking whoever scores highest. You try to suss out other aptitudes. Nobody looks at applicants who lack values like teamwork or optimism and says, “Well, they can’t work with anyone and they’re incredibly unpleasant to be around, but their intelligence is great — let’s hire them!”\nIntelligence is great, but it’s not everything.\nWe do a disservice to our own humanity when we pretend that [AI] can engineer autonomously.\nA cogent case for the values of our humanity.\nMore like this please.\nEmail\n      · Mastodon ·\n\n      Bluesky",
+      "id": "398fc0fce75eaa82c9ef7959ee9cebf199e0b3cdb4d2cdbec716fd18d0907c42",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "借Bryan Cantrill的演讲，深刻探讨了在面对无先例的“公司毁灭性”工程难题时，人类智慧和价值观超越AI纯粹智能的重要性。",
+      "reason": "文章对AI能力进行了批判性思考，强调了人类解决复杂、非结构化问题的独特价值，对当前AI热潮提供了重要的反思和补充视角。",
+      "tags": [
+        "AI",
+        "工程",
+        "问题解决",
+        "人类智能",
+        "批判性思维"
+      ]
+    },
+    {
+      "title": "Ornith-1.0: self-improving open-source models for agentic coding",
+      "link": "https://github.com/deepreinforce-ai/Ornith-1",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-29T17:16:17.000Z",
+      "summary": "Article URL: https://github.com/deepreinforce-ai/Ornith-1\nComments URL: https://news.ycombinator.com/item?id=48722052\nPoints: 3\n# Comments: 0",
+      "id": "d9f45b9f5a565096b5ccdd861a9c2c636eb9482975a844724183721083a1cfe4",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 5,
+      "priority": "high",
+      "comment": "介绍了Ornith-1.0，一个用于智能体编程的自改进开源AI模型。",
+      "reason": "文章直接聚焦于AI这一最高优先级主题，提供关于前沿自改进模型和智能体编程的深度技术内容，对开发者具有高潜在价值。",
+      "tags": [
+        "AI",
+        "Agentic AI",
+        "Open Source",
+        "Code Generation",
+        "Machine Learning"
+      ]
+    },
+    {
+      "title": "WATaBoy: JIT-Ing Game Boy Instructions to WASM Beats a Native Interpreter",
+      "link": "https://humphri.es/blog/WATaBoy/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-29T15:02:00.000Z",
+      "summary": "Article URL: https://humphri.es/blog/WATaBoy/\nComments URL: https://news.ycombinator.com/item?id=48720190\nPoints: 96\n# Comments: 11",
+      "id": "f1d5a402ae4e7358090ad18ed4e8dc8bf35397a3c20d4d316bfcdb7497c6bc22",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 35,
+      "priority": "high",
+      "comment": "深度剖析了如何利用JIT编译技术将Game Boy指令转换为WASM以超越原生解释器性能。",
+      "reason": "展示了WebAssembly在高性能模拟和浏览器端应用方面的巨大潜力，技术深度和新颖性极高，对前沿编程技术有重要参考价值，符合编程工具优先主题。",
+      "tags": [
+        "WebAssembly",
+        "JIT",
+        "模拟器",
+        "Game Boy",
+        "编程工具",
+        "性能优化"
+      ]
+    },
+    {
+      "title": "Agent confidence on the technical frontier",
+      "link": "https://www.technologyreview.com/2026/06/29/1139635/agent-confidence-on-the-technical-frontier/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-06-29T14:44:01.000Z",
+      "summary": "Enterprise investment in AI is booming. Gartner is calling 2026 an “inflection year” for organizations to align their AI projects with strategic business objectives. As the pressure to prove ROI mounts, executives and technology leaders are looking to agentic AI to drive the measurable financial outcomes their businesses seek. A prime opportunity for AI agents…",
+      "id": "7401eebcf5f390598a27a9b29b3ebdf89925f2cce1c60f7b149a3d114953ec3a",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "本文深入探讨了企业在AI领域的投资趋势，并强调了Agentic AI在实现商业战略目标和ROI方面的关键作用。",
+      "reason": "文章紧扣AI这一最高优先级主题，提供了企业AI应用和投资回报的实用洞察，对商业决策者和技术领导者极具价值。",
+      "tags": [
+        "AI",
+        "企业AI",
+        "Agentic AI",
+        "商业策略",
+        "投资回报"
+      ]
+    },
+    {
+      "title": "Unbundling the standard library",
+      "link": "https://nesbitt.io/2026/06/29/unbundling-the-standard-library.html",
+      "source": "nesbitt.io",
+      "publishedAt": "2026-06-29T10:00:00.000Z",
+      "summary": "I got sent a link to a pull request against Dan Burton’s composition, a tiny Haskell package whose whole gimmick is that it depends on nothing, not even base. The upcoming GHC 10.2 breaks it: built-in names resolve through a real module, GHC.Essentials, which is in base, so from 10.2 every package picks up an implicit base dependency whether the cabal file declares one or not. The PR added a flag to opt out of that. Dan closed it and shipped a 2.0 that depends on base like everything else, on the grounds that the zero-dependency claim had always been a polite fiction about where the compiler’s wired-in identifiers came from.\nThe zero-dependency claim was always a question of where the line falls between the compiler and its standard library, and in GHC 10.2 that line moved by one module. That sent me off cataloguing the same boundary in other ecosystems, but the part I didn’t expect was how much the answer changes what a vulnerability advisory looks like.\nAdvisory format\nThe clearest case I found is Ruby Bug #20516: Ruby 3.3.2 shipped weeks after the fix for CVE-2024-35176 still bundling the vulnerable rexml 3.2.6, because the fix had gone out as a gem release and the copy in the Ruby tarball hadn’t been bumped to match. The advisory for that CVE is filed against the gem rexml, but the vulnerable copy on a 3.3.2 install is there because the Ruby distribution put it there rather than because any project resolved it, and an SBOM generated from a Gemfile.lock won’t list it at all; the gap exists because rexml is on both sides of that line at once.\nSeven years earlier, before Ruby’s gemification had reached WEBrick, CVE-2017-10784 was filed against three Ruby version ranges and fixed by three coordinated point releases, with advisory text reading “all users running an affected release should upgrade immediately.” The 2024 REXML CVEs (CVE-2024-35176 and five more through the year) were each filed against pkg:gem/rexml with a gem version range, each fixed by a gem release that users could apply without waiting for a Ruby point release, though the bundled copy still had to be bumped on each maintained Ruby branch.\nCVE-2023-24329 in Python’s urllib.parse lists five separate CPython version ranges across 3.7 through 3.11 and the fix was five point releases; CVE-2022-35256 in Node’s http parser is three Node release lines and three point releases. Go’s vulnerability database has a pseudo-module literally called stdlib so that toolchain CVEs can be expressed in the OSV schema at all, with govulncheck matching those entries against the Go version that built the binary rather than anything in go.sum.\nBundled vs packaged\nIn most ecosystems the standard library is underneath the package manager: bundled into the compiler or runtime, with no registry page, no independent version number, and no lockfile entry. Python’s stdlib ships in the CPython tarball and urllib has no canonical PyPI package; Rust’s std and core are sysroot crates whose names 404 on crates.io; the Go module spec treats any import path without a dot in the first segment as standard library and never resolves it from the network; dart:core is a URI scheme rather than a pub package; java.base is in the JDK image and fs and http are compiled into the Node binary.\nA smaller group put the standard library inside the package manager, with a registry page and a version that appears in the dependency graph. Haskell’s base is on Hackage, kotlin-stdlib and scala-library are Maven Central artifacts that turn up in Gradle lockfiles, FSharp.Core is an implicit <PackageReference> on NuGet, elm/core is a required line in every elm.json, and Deno’s @std/* is on JSR with nothing equivalent baked into the binary.\nA third group run both at once, with the same module available from the runtime distribution and from the registry under the same name. Perl’s dual-life modules ship in the perl tarball and on CPAN, Ruby has three tiers of non-gemified libraries, default gems, and bundled gems, R splits base packages from CRAN-updatable recommended packages, and Julia bundles its stdlibs as packages with fixed UUIDs that the resolver can satisfy from the General registry instead.\nMigrations\nModules have been moving through Ruby’s tiers from stdlib to default gem to bundled gem for a decade, with the pace picking up in 3.4 (csv, base64, bigdecimal, drb and nine others to bundled) and 4.0 (ostruct, logger, irb, rdoc). PEP 594 removed nineteen modules from CPython in 3.13, and JEP 320 removed the Java EE and CORBA modules from the JDK in 11 with replacements on Maven Central.\nThe dart:html family is deprecated in favour of package:web on pub, and a subset of Julia’s bundled stdlibs became upgradable from the registry in 1.9. In GHC 9.10 base was split over a new ghc-internal package as the first step toward a base that can be reinstalled independently of the compiler version, which is the work Dan’s composition PR was responding to. Racket decomposed its whole distribution in a single 2014 release into roughly two hundred catalog packages over a minimal core.\nASP.NET Core, one layer up from .NET’s base class library, is the one case I found that moved from registry packages back into the runtime: 1.0 shipped as ordinary NuGet packages that every web project restored individually; by 2.1 it had been reconstituted as a shared framework installed alongside the runtime, and from 3.0 the package references were replaced by a single implicit <FrameworkReference>. The package model had produced large restore graphs, slow installs, and diamond conflicts between package versions that application authors had no way to untangle, because the whole framework had gone into the resolver at once rather than one module at a time.\nStated reasons\nThe reason given most often in the migration documents is decoupling release cadence: a fix in one stdlib module shouldn’t have to wait for the next language version, and a language version shouldn’t be forced because one module needs a patch. The Julia 1.9 post is direct about stdlibs having been stuck at whatever version shipped with the binary, with DelimitedFiles made the first upgradable stdlib so a fix could ship from the registry while the library stayed in the distribution. The Dart migration to package:web exists because the old dart:html bindings were hand-maintained and chronically behind the browser APIs, while the package is generated from Web IDL and can be released whenever the IDL changes. Reinstallable base is meant to fix the long-standing Haskell annoyance that an upper bound on base is really a constraint on which GHC you can use.\nThe cpan/ and dist/ directories in the perl source tree exist so a dual-life module can be released on CPAN ahead of the next perl. Ruby’s default gems are the same idea under a different name, and a fix to json or psych reaches users as a gem update rather than three coordinated point releases.\nThe second stated reason is getting code out of the core distribution so the core team is no longer responsible for it. PEP 594’s title is “Removing dead batteries” and the rationale is about modules with no maintainer, obsolete protocols and design decisions from the 1990s; the standard-* packages on PyPI that resurrect telnetlib and cgi are a third-party project, not a CPython deliverable. JEP 320’s rationale is that the Java EE and CORBA APIs were never really part of SE and standalone Maven artifacts had existed for years, and Nim has a graveyard org for modules removed from its stdlib.\nRuby’s default-to-bundled promotion is driven by maintenance handoff rather than release cadence: a default gem still has ruby-core as the maintainer of record while a bundled gem is an ordinary gem that happens to be in the install, and if nobody maintains a bundled gem after promotion that’s no longer ruby-core’s problem.\nThe migration documents give cadence and maintenance burden as reasons and don’t mention advisory format, probably because the benefit goes to scanner authors and SBOM consumers rather than the language teams doing the work. A CVE moving from prose against a runtime version to a purl with a version range is what matters for the SBOM and CRA questions I keep coming back to, and the transitional state where a module ships in both the runtime and the registry is where it breaks.\nDual-life modules\nThe rexml gap was a release-process slip, but dual-shipping produces the same problem by design. CVE-2024-30105 in .NET’s System.Text.Json has a Microsoft advisory listing the NuGet package range (>= 7.0.0, <= 8.0.3) and the runtime range (“.NET 8.0.6 or earlier”) side by side, because the library is both an out-of-band NuGet package and part of the shared framework, and the remediation is effectively “upgrade whichever one you’re getting it from.”\nGo’s GO-2023-1571 lists both the stdlib pseudo-module and golang.org/x/net because the same HPACK code is in both. JavaFX was removed from the JDK in 11 and now ships as pkg:maven/org.openjfx/* on Maven Central, so CVE-2024-20925 is fixed for Java 11+ users by bumping a Maven dependency while Java 8 users, where it’s still bundled, get a JDK update for the same bug, and both paths appear in the one advisory. Any tool consuming these needs a per-ecosystem, per-module record of whether the runtime copy or the registry copy wins at load time, and that mapping isn’t part of any common advisory format.\nPerl has been dual-shipping long enough to have tooling for it: Module::CoreList records which version of every dual-life module shipped in every perl release back to 5.000, the %upstream hash records whether blead or CPAN holds the canonical copy of each, and the corelist command queries both from the shell. That’s a machine-readable record of which version shipped with a given perl and where fixes land first; which copy actually loads is still a runtime introspection question, but the release-to-bundled-version mapping is the part other ecosystems leave implicit. Ruby has stdgems.org, which publishes the equivalent mapping as JSON, though it’s a third-party project rather than part of the toolchain, and for Python, Java, Julia and Dart I can’t find anything comparable.\nThe record that would make the transitional state safe for a scanner has roughly the same fields everywhere: for each runtime release and each module, the bundled version, the registry coordinate it corresponds to, which side is canonical upstream, whether the registry copy can replace the bundled one in place, and which copy the toolchain resolves to when both are installed. Module::CoreList and stdgems.org each cover roughly the first three; nothing I’ve found covers all five, and the identity layer underneath has the same gap, since purl has no syntax for “rexml as bundled in ruby 3.3.2” as distinct from pkg:gem/rexml@3.2.6, which is what the Go stdlib pseudo-module works around for one ecosystem. The migration is happening across a dozen ecosystems and the bookkeeping exists, partially, in two of them.",
+      "id": "8f4efd51033924cdcc69d0a2b6a9a1e962f962d3ecaf16130e32bfe84eb125f3",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "深入探讨了编程语言标准库的边界定义及其对依赖管理和漏洞报告的影响。",
+      "reason": "文章对GHC中标准库解绑的案例进行了深刻分析，并扩展到其他生态系统，提供了宝贵的工程设计视角和对安全实践的启示。",
+      "tags": [
+        "编程语言",
+        "Haskell",
+        "标准库",
+        "依赖管理",
+        "编译器",
+        "安全"
+      ]
+    },
+    {
+      "title": "Tidal AI Policy",
+      "link": "https://tidal.com/ai-policy",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-29T13:09:03.000Z",
+      "summary": "Article URL: https://tidal.com/ai-policy\nComments URL: https://news.ycombinator.com/item?id=48718840\nPoints: 230\n# Comments: 259",
+      "id": "989304dace81a523442e489a0edfb53384153b230cba0a238d13e49703284938",
+      "ref_id": "0",
+      "recommendationScore": 82,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "一篇及时反映音乐平台AI策略的文章，对行业影响和内容创作者有重要参考价值。",
+      "reason": "紧跟AI热点，探讨了AI在内容产业的应用与规范，具有高新颖性和实用性。",
+      "tags": [
+        "AI",
+        "版权",
+        "音乐产业",
+        "政策"
+      ]
+    },
+    {
+      "title": "You Don't Know Jack About Formal Verification",
+      "link": "https://queue.acm.org/detail.cfm?id=3819084",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-29T14:12:05.000Z",
+      "summary": "Article URL: https://queue.acm.org/detail.cfm?id=3819084\nComments URL: https://news.ycombinator.com/item?id=48719521\nPoints: 21\n# Comments: 1",
+      "id": "87015c44af489435f3fdad18aeafb0a7808d85f935e43ebdd1d483373440bf29",
+      "ref_id": "3",
+      "recommendationScore": 80,
+      "popularityScore": 15,
+      "priority": "medium",
+      "comment": "深入探讨了形式化验证这一在关键系统开发中至关重要的技术。",
+      "reason": "提供对高级编程工具和软件工程实践的深刻理解，技术深度极高，对于追求系统严谨性和可靠性的开发者极具启发性，符合编程工具主题。",
+      "tags": [
+        "形式化验证",
+        "软件工程",
+        "编程工具",
+        "系统可靠性",
+        "计算机科学"
+      ]
+    },
+    {
+      "title": "A native graphical shell for SSH",
+      "link": "https://probablymarcus.com/blocks/2026/06/28/native-graphical-shell-for-SSH.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-29T15:42:17.000Z",
+      "summary": "Article URL: https://probablymarcus.com/blocks/2026/06/28/native-graphical-shell-for-SSH.html\nComments URL: https://news.ycombinator.com/item?id=48720758\nPoints: 81\n# Comments: 40",
+      "id": "424d44ce7af4486fe35af921a1afbc7336ee2bd39f56c60a1e2b7c759d5f610e",
+      "ref_id": "0",
+      "recommendationScore": 75,
+      "popularityScore": 45,
+      "priority": "medium",
+      "comment": "探索为SSH提供原生图形界面的创新方法，提升用户体验。",
+      "reason": "对频繁使用SSH的用户，提供了一种更高效、直观的远程操作新思路，具有较高的实用性和技术探索性，属于编程工具和自动化范畴。",
+      "tags": [
+        "SSH",
+        "远程管理",
+        "图形界面",
+        "编程工具",
+        "自动化"
+      ]
+    },
+    {
+      "title": "Building Principia for Windows XP",
+      "link": "https://voxelmanip.se/2026/06/28/building-principia-for-windows-xp/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-29T13:23:19.000Z",
+      "summary": "Article URL: https://voxelmanip.se/2026/06/28/building-principia-for-windows-xp/\nComments URL: https://news.ycombinator.com/item?id=48718995\nPoints: 85\n# Comments: 21",
+      "id": "4f7cb51e989e0a6a4dce46ae751390b2439b2cb8f8a2863899fc7906d7709427",
+      "ref_id": "2",
+      "recommendationScore": 75,
+      "popularityScore": 40,
+      "priority": "medium",
+      "comment": "详细记录了在Windows XP上构建Principia的技术挑战与解决方案。",
+      "reason": "在遗留系统上进行软件构建是一项具有挑战性的技术任务，文章提供了深入的编程工具和跨平台开发经验，对特定领域的开发者有很高价值。",
+      "tags": [
+        "Windows XP",
+        "遗留系统",
+        "编译",
+        "独立开发",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "The Download: metric weaknesses and AI elephant warnings",
+      "link": "https://www.technologyreview.com/2026/06/29/1139834/the-download-metric-weaknesses-ai-elephant-warnings/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-06-29T12:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. The inevitable weakness of metrics There are plenty of useful things a metric can reveal. There are even more that it can obscure or corrupt. Like a lot of people bitten…",
+      "id": "04fc822f835a7be3e8b315f94d554bca11b3c7444991580685c845f0738f0c85",
+      "ref_id": "1",
+      "recommendationScore": 75,
+      "popularityScore": 80,
+      "priority": "medium",
+      "comment": "文章探讨了度量指标固有的弱点及其可能带来的误导性，并在标题中提及了对AI的警示。",
+      "reason": "内容提供了关于数据衡量和批判性思维的实用见解，对所有依赖数据决策的读者都有参考价值，且标题暗示了AI主题。",
+      "tags": [
+        "度量标准",
+        "数据分析",
+        "批判性思维",
+        "科技新闻",
+        "AI风险"
+      ]
+    },
+    {
+      "title": "CachyOS June 2026 Release",
+      "link": "https://cachyos.org/blog/2606-june-release/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-29T13:56:46.000Z",
+      "summary": "Article URL: https://cachyos.org/blog/2606-june-release/\nComments URL: https://news.ycombinator.com/item?id=48719361\nPoints: 88\n# Comments: 47",
+      "id": "2883d3ef64a0126b21a2e111e0d6f8d7c8fd8dbb8496b2f1ef2eae6dcee0dd9d",
+      "ref_id": "0",
+      "recommendationScore": 70,
+      "popularityScore": 42,
+      "priority": "medium",
+      "comment": "深入介绍CachyOS最新版本，包含多项性能优化和新特性。",
+      "reason": "作为性能导向的Linux发行版，其发布内容对关注操作系统底层优化和编程工具的开发者具有较高参考价值。",
+      "tags": [
+        "Linux",
+        "操作系统",
+        "性能优化",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "Sandia National Labs SA3000 8085 CPU",
+      "link": "https://www.cpushack.com/2026/06/03/sandia-national-labs-sa3000-8085-cpu/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-29T10:20:25.000Z",
+      "summary": "Article URL: https://www.cpushack.com/2026/06/03/sandia-national-labs-sa3000-8085-cpu/\nComments URL: https://news.ycombinator.com/item?id=48717287\nPoints: 118\n# Comments: 34",
+      "id": "0054f784ec5c257cbcafb98e991df9c484d76b1866b1f9f70f435884fc7ff819",
+      "ref_id": "4",
+      "recommendationScore": 65,
+      "popularityScore": 50,
+      "priority": "medium",
+      "comment": "深入介绍了Sandia国家实验室的SA3000 8085 CPU，展现了历史硬件的独特魅力。",
+      "reason": "技术深度高，对于计算机历史和硬件爱好者具有很强的吸引力，但实用性较窄。",
+      "tags": [
+        "硬件",
+        "CPU",
+        "计算机历史",
+        "嵌入式系统"
+      ]
+    },
+    {
+      "title": "The New York Times: ‘Om Malik, Whose Blog Shaped How Silicon Valley Saw Itself, Dies at 59’",
+      "link": "https://www.nytimes.com/2026/06/26/technology/om-malik-dead.html?unlocked_article_code=1.t1A.AyPT.p7GhDrDcJSfa",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-06-29T00:25:37.000Z",
+      "summary": "Clay Risen, writing for The New York Times (gift link):\nMr. Malik started his blog just as the dot-com bubble burst,\nleading to a recession that also took down many of the journalism\nstart-ups that wrote about tech, like The Industry Standard and\nInside.com. He was among the most prominent of the writers who\nquickly filled the gap, covering Silicon Valley with a mixture of\nhot scoops and sharp opinions that quickly made Gigaom a\nmust-read.\n“The Android OS leaves me feeling like one feels three hours after\nhaving Chinese food: a tad empty,” he wrote in a 2010 post\nthat neatly summarized Google’s struggles to move beyond its roots\nas a search platform. “Google has to learn the art of engagement — something particularly challenging.”\nLovely, warm, accurate and fair obituary. This pulled snippet is a great one. Early Android as Chinese takeout is such a deft analogy, and the piece really isn’t about Android specifically but Google institutionally. Not speeds and feeds, but can they make products with a soul? With heart? Om’s pessimism was obvious, and I’d say, prescient.\nHe had a rare ability to see around corners, and to pick out from\nthe horde of new companies the ones that were going to make real\nchange. He was an early champion of Slack, the workplace messaging\nservice, and in 2006 he was the first blogger to write extensively\nabout Twitter. He was not a fan.\nBack in the day Letterman had a recurring bit called “Is This Anything?” They’d bring someone or something on stage and then Dave and Paul would render their up/down judgment: was that anything? The answer, more often than not, was no. The Letterman bit was a gag. But that’s basically what tech journalism is — especially back in the heyday of startups. Every startup believes it’s something and wants the press to think it’s something. Most of the time, it’s not something. Once in a while it is. Om was so goddamn good at identifying the somethings.\nLong before Facebook came in for attacks from both the political\nleft and right, he called out, during a 2013 interview with\nBloomberg TV, what he said was “absolutely an air of amorality” on\nthe part of its founder and chief executive, Mark Zuckerberg. In\nthe same interview, he criticized the venture capitalist John\nDoerr for “patently trying to hijack the political process.”\nHe was right early, and right often. You can say now that everyone knows there’s “an air of amorality” at Facebook institutionally and with Zuckerberg personally. In 2013 that was not a common refrain. Just a year earlier, Apple had added Facebook account integration at the system level in iOS 6.\n ★",
+      "id": "910bc19e1a0e9050f01bad996d6d9cdce38934a57939bea8898bf00003cca34b",
+      "ref_id": "2",
+      "recommendationScore": 65,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "权威且精彩的讣告，概述了Om Malik在科技新闻界的贡献及对行业的影响。",
+      "reason": "提供了Om Malik在科技界的重要地位和早期科技评论的深度，具有历史和行业洞察价值，信息密度较高。",
+      "tags": [
+        "人物纪念",
+        "科技新闻",
+        "科技历史",
+        "行业评论",
+        "Gigaom"
+      ]
+    },
+    {
+      "title": "Who you gonna believe: Grok or the docs?",
+      "link": "https://www.johndcook.com/blog/2026/06/29/who-you-gonna-believe/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-06-29T12:12:05.000Z",
+      "summary": "The calculator utility bc has a minimal math library. For example, there’s no tangent function because you’re expected take the ratio of sine and cosine. (The Gnu version of bc does have a function for tangent, but the POSIX version does not.) And yet bc includes support for Bessel functions J(x). The bc function j […]\nWho you gonna believe: Grok or the docs? first appeared on John D. Cook.",
+      "id": "de9dd74e527e79f880b13b20064cedf0c23d98367a6bc8f35c7fb54cc6378d56",
+      "ref_id": "0",
+      "recommendationScore": 65,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "以`bc`工具的数学库为例，探讨AI（Grok）与官方文档之间的信息差异，视角独特但话题略显小众。",
+      "reason": "文章以`bc`工具为例探讨了AI可能如何理解或误解文档的细微之处，其对AI准确性的讨论具有较高的优先级和广泛的探讨价值。",
+      "tags": [
+        "AI",
+        "编程工具",
+        "文档",
+        "Grok"
+      ]
+    },
+    {
+      "title": "Rebuilding the Computer Room",
+      "link": "https://alexwlchan.net/2026/computer-room/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-29T11:34:36.000Z",
+      "summary": "Article URL: https://alexwlchan.net/2026/computer-room/\nComments URL: https://news.ycombinator.com/item?id=48717905\nPoints: 60\n# Comments: 30",
+      "id": "44e485146a0f4ed41d7bd5a3cb8be094c6852549434f41a5b54ddc76203a170b",
+      "ref_id": "2",
+      "recommendationScore": 55,
+      "popularityScore": 35,
+      "priority": "medium",
+      "comment": "一篇关于个人电脑室重构的文章，分享了详细的设置和经验。",
+      "reason": "具有一定的实用性和技术细节，适合对家庭实验室或DIY项目感兴趣的读者。",
+      "tags": [
+        "DIY",
+        "家庭实验室",
+        "硬件",
+        "自动化"
+      ]
+    },
+    {
+      "title": "Matt Mullenweg: ‘All Roads Lead to Om’",
+      "link": "https://ma.tt/2026/06/om-forever/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-06-29T01:08:13.000Z",
+      "summary": "Matt Mullenweg:\nFundamentally, Om was a lover of humanity. He became a fast\n“regular” everywhere he went. He wouldn’t just buy coffee, he\nwould also learn the name and story of every barista, the dogs and\npeople in South Park. His deep curiosity and respect weren’t just\nfor the fine and famous. It extended to every soul that crossed\nhis path. His encyclopedic knowledge and photographic memory\ncreated connections not just in San Francisco, but all around the\nworld wherever we traveled. (I need to pull the stats, but we went\nto five continents together, including Antarctica.)\nHe loved people and their stories.\nAnd:\nOne of the biggest lessons I learned from Om is the deep\nappreciation of craft. When he took an interest in photography or\npens, he would somehow find his way to the most obscure,\nhighest-quality expression of that form. “What Would Om Want?” is\na question I will always ponder. I want to craft products that\nwould make Om proud.\nIf you’re going to get into something, you ought to pursue it to its full extent. If you’re not interested enough to do that, don’t bother getting into it. Find the few things you love; don’t waste your time on the many things you merely like.\nMatt is keeping a wonderful list of links to other remembrances and tributes to Om.\n ★",
+      "id": "18722f1e45aed80b14b8e732cd16e931dcd75de3249c23c39171f29349a988c8",
+      "ref_id": "1",
+      "recommendationScore": 55,
+      "popularityScore": 55,
+      "priority": "low",
+      "comment": "深入描绘了Om Malik的人性光辉和对工艺的热爱，视角温暖。",
+      "reason": "从不同角度补充了对Om Malik的认识，对科技人文有一定价值，但技术内容缺乏，优先级不高。",
+      "tags": [
+        "人物纪念",
+        "科技文化",
+        "个人故事",
+        "品格"
+      ]
+    },
+    {
+      "title": "Daniel Agee: ‘Remembering Om’",
+      "link": "https://glass.photo/highlights/remembering-om",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-06-29T01:21:49.000Z",
+      "summary": "Daniel Agee, an early member of the team at Glass, writing on the Glass blog:\nIt’s not lost on us that Om’s photography, often taken in frozen\nlands in or around the arctic circle, was the polar opposite of\nhis personality. While he focused on subtle shapes and hidden\nlandscapes, he was the sun of any group he was in. Folks just\nnaturally fell into his orbit.\nAgee’s lovely piece is replete with photos by Om. \nA veteran of the internet publishing space, he was one of the\nfirst to take the now well-worn path of technology writing into\nventure capital. When we briefly explored raising a small round of\nVC funding after our launch to support our growth, Om was our\nfirst call. He answered and immediately said, “I love you guys,\nI’ll invest the money if you want it, but don’t fucking do it.\nWhat you have is special. Don’t fucking ruin it.”\nThat’s Om. Simple and to the point. That simplicity showed up in\nhis photography practice. Strip away everything from a photograph,\ndown to the bare minimum of contrast or shadow. What do you focus\non? What do you see? How can something so simple be so fulfilling?\nThat is exactly how Om spoke. Always. To the point. Why waste time? Why mince words? Why make someone guess what you really think? Our instincts say otherwise, but it’s not rude to be blunt. Unmoderated honesty is a profound courtesy.\n ★",
+      "id": "001bd3735a6df149f567a48ae2f4f2fbef3327d8f593890ac399c4166a0ec02c",
+      "ref_id": "0",
+      "recommendationScore": 50,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "一篇感人至深的个人回忆，展现了Om Malik的独特视角和人格魅力。",
+      "reason": "作为对早期科技媒体人的缅怀，内容富有情感，但技术关联度低，与核心主题优先级不符。",
+      "tags": [
+        "人物纪念",
+        "科技文化",
+        "早期互联网",
+        "个人故事"
+      ]
+    },
+    {
+      "title": "Hack Your Summer",
+      "link": "https://simonwillison.net/2026/Jun/28/hack-your-summer/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-06-28T19:26:11.000Z",
+      "summary": "",
+      "id": "f76ff5a4c68132d96f5440c6f84443f266ebb0a220c5f82e44c8fd174f061ac3",
+      "ref_id": "4",
+      "recommendationScore": 45,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "标题“Hack Your Summer”过于泛泛，未能明确指出具体的科技领域或文章深度。",
+      "reason": "标题缺乏明确的技术指向，与优先级主题关联度低，且内容缺失，难以判断其具体价值和受众。",
+      "tags": [
+        "通用",
+        "生活方式",
+        "效率提升",
+        "暑期项目"
+      ]
+    },
+    {
+      "title": "Instagram is incorporating users' photos in ads for Meta Glasses",
+      "link": "https://twitter.com/i/status/2071277885646868536",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-29T13:26:35.000Z",
+      "summary": "Article URL: https://twitter.com/i/status/2071277885646868536\nComments URL: https://news.ycombinator.com/item?id=48719027\nPoints: 212\n# Comments: 91",
+      "id": "98e8303a1630570aa79498ac229b59feb5d8158a707ca77cd57436bce511850e",
+      "ref_id": "1",
+      "recommendationScore": 40,
+      "popularityScore": 100,
+      "priority": "low",
+      "comment": "Meta通过Instagram在广告中未经用户明确同意使用照片，引发隐私和产品伦理争议。",
+      "reason": "尽管公众关注度高，但内容主要围绕隐私政策和公司行为，技术深度不足，与核心技术博客主题关联度较低。",
+      "tags": [
+        "隐私",
+        "Meta",
+        "Instagram",
+        "产品伦理",
+        "AR眼镜"
+      ]
+    },
+    {
+      "title": "Quoting Jon Udell",
+      "link": "https://simonwillison.net/2026/Jun/28/jon-udell/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-06-28T21:57:41.000Z",
+      "summary": "",
+      "id": "968fc5e2f5c07411b5ee6dee92119a5d5ad7d377ec487d1d6ba15923c8fd505b",
+      "ref_id": "3",
+      "recommendationScore": 40,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "文章标题表明这是一篇引用Jon Udell的评论或观点文章，缺乏明确的技术主题和深度。",
+      "reason": "标题未能体现与优先主题的直接关联性，且内容缺失，无法评估其技术深度、新颖性和实用价值。",
+      "tags": [
+        "评论",
+        "观点",
+        "Jon Udell"
+      ]
+    },
+    {
+      "title": "US Supreme Court rules geofence warrants require constitutional protections",
+      "link": "https://www.theguardian.com/us-news/2026/jun/29/supreme-court-geofence-warrants-case-decision",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-29T15:54:24.000Z",
+      "summary": "Article URL: https://www.theguardian.com/us-news/2026/jun/29/supreme-court-geofence-warrants-case-decision\nComments URL: https://news.ycombinator.com/item?id=48720924\nPoints: 149\n# Comments: 56",
+      "id": "fe2c3851345f0f1c33e10a20f4027bbee930492fb234a771b537f9777faed6b1",
+      "ref_id": "4",
+      "recommendationScore": 35,
+      "popularityScore": 95,
+      "priority": "low",
+      "comment": "美国最高法院裁定地理围栏搜查令需受宪法保护。",
+      "reason": "尽管文章涉及技术与隐私的交叉点，但其核心是法律判决，而非技术实现或AI应用，因此对专注于科技开发的博客而言优先级较低。",
+      "tags": [
+        "Privacy",
+        "Legal",
+        "Geofencing",
+        "Civil Liberties",
+        "US Law"
+      ]
+    },
+    {
+      "title": "Studio Canal Movies purchased on PlayStation Store removed without refund",
+      "link": "https://www.playstation.com/en-gb/legal/psvideocontent/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-29T13:20:14.000Z",
+      "summary": "Article URL: https://www.playstation.com/en-gb/legal/psvideocontent/\nComments URL: https://news.ycombinator.com/item?id=48718967\nPoints: 146\n# Comments: 90",
+      "id": "5db87729284a5b7db7883e438a2661fa7ea883823e881c952af5f139cb523aa7",
+      "ref_id": "3",
+      "recommendationScore": 35,
+      "popularityScore": 69,
+      "priority": "low",
+      "comment": "PlayStation Store移除已购电影且不退款，引发消费者对数字内容所有权的担忧。",
+      "reason": "反映了数字内容所有权和平台政策的普遍问题，但其技术深度极低，更多属于消费者权益和法律范畴，不适合作为高优先级科技博客内容。",
+      "tags": [
+        "消费者权益",
+        "PlayStation",
+        "数字内容",
+        "平台政策"
+      ]
+    },
+    {
+      "title": "Samsung, SK Hynix, Micron Sued in US over Memory Price Fixing",
+      "link": "https://en.sedaily.com/international/2026/06/29/samsung-sk-hynix-micron-sued-in-us-over-memory-price-fixing",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-29T11:58:48.000Z",
+      "summary": "Article URL: https://en.sedaily.com/international/2026/06/29/samsung-sk-hynix-micron-sued-in-us-over-memory-price-fixing\nComments URL: https://news.ycombinator.com/item?id=48718102\nPoints: 201\n# Comments: 94",
+      "id": "f6736f8c421dcac0446690581d7535b78902792e4d4bec895429acc31c21c933",
+      "ref_id": "1",
+      "recommendationScore": 35,
+      "popularityScore": 75,
+      "priority": "low",
+      "comment": "报道了内存巨头的价格操纵诉讼，是科技行业的商业新闻。",
+      "reason": "内容为商业法律新闻，技术深度和实用性较低，不符合博客核心关注点。",
+      "tags": [
+        "科技商业",
+        "半导体",
+        "法律"
+      ]
+    },
+    {
+      "title": "European ISPs Want Rightsholders Held Accountable for Overblocking Damage",
+      "link": "https://torrentfreak.com/european-isps-want-rightsholders-held-accountable-for-overblocking-damage/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-29T16:07:15.000Z",
+      "summary": "Article URL: https://torrentfreak.com/european-isps-want-rightsholders-held-accountable-for-overblocking-damage/\nComments URL: https://news.ycombinator.com/item?id=48721072\nPoints: 126\n# Comments: 18",
+      "id": "4e7e8684ff2bfca0ba032f6ade35ccd91055ba090850fd325bac91e3527d74bf",
+      "ref_id": "3",
+      "recommendationScore": 30,
+      "popularityScore": 67,
+      "priority": "low",
+      "comment": "报道了欧洲ISP要求版权方对过度屏蔽造成的损害负责的动向。",
+      "reason": "文章主要涉及互联网政策和法律法规，而非核心技术开发或AI创新，与博客的优先主题不符，尽管具有一定的社会关注度。",
+      "tags": [
+        "Internet Policy",
+        "Legal",
+        "Regulation",
+        "ISP",
+        "Europe"
+      ]
+    },
+    {
+      "title": "The Radiation Exposure Lie",
+      "link": "https://worksinprogress.co/issue/how-to-lie-about-radiation/",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-29T16:27:27.000Z",
+      "summary": "Article URL: https://worksinprogress.co/issue/how-to-lie-about-radiation/\nComments URL: https://news.ycombinator.com/item?id=48721308\nPoints: 6\n# Comments: 0",
+      "id": "5e513cb3cfeb6a23e5147ac32c0b83ed1175a26eef4bc711e3a49b8b36ddb071",
+      "ref_id": "2",
+      "recommendationScore": 20,
+      "popularityScore": 5,
+      "priority": "low",
+      "comment": "探讨了关于辐射暴露的常见误解和科学事实。",
+      "reason": "该文章主题偏向于科学和公共政策，与本科技博客关注的AI、Apple生态、编程工具等核心技术领域不符，因此优先级较低。",
+      "tags": [
+        "Science",
+        "Health",
+        "Debunking",
+        "Public Policy"
+      ]
+    },
+    {
+      "title": "Mag 7 starting to underperform [pdf]",
+      "link": "https://www.apollo.com/content/dam/apolloaem/pdf/daily-spark/2026/jun/28/062826-Mag7.pdf",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-29T14:12:55.000Z",
+      "summary": "Article URL: https://www.apollo.com/content/dam/apolloaem/pdf/daily-spark/2026/jun/28/062826-Mag7.pdf\nComments URL: https://news.ycombinator.com/item?id=48719532\nPoints: 150\n# Comments: 117",
+      "id": "134db58f913eae3f078552a8f7be57d541d1e168bc6ad4442ccacb8339e346a6",
+      "ref_id": "2",
+      "recommendationScore": 20,
+      "popularityScore": 85,
+      "priority": "low",
+      "comment": "一份关于“七巨头”科技股金融表现开始下滑的分析报告。",
+      "reason": "内容主要聚焦于金融市场分析，与科技博客关注的核心技术、编程工具或创新主题关联度较低，不符合我们的主题优先级。",
+      "tags": [
+        "金融",
+        "市场分析",
+        "投资",
+        "科技公司"
+      ]
+    },
+    {
+      "title": "The CEO of Mullvad is the main financer of the Swedish Örebro party",
+      "link": "https://det.social/@lostgen/116820546568940358",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-29T10:45:51.000Z",
+      "summary": "Article URL: https://det.social/@lostgen/116820546568940358\nComments URL: https://news.ycombinator.com/item?id=48717469\nPoints: 246\n# Comments: 615",
+      "id": "c9c5aaebd43cb11d45b16e759f54afde17a19f489c4f980d72b2dbbd9487295c",
+      "ref_id": "3",
+      "recommendationScore": 20,
+      "popularityScore": 95,
+      "priority": "low",
+      "comment": "揭露了VPN公司Mullvad CEO的政治献金情况，引发了广泛讨论。",
+      "reason": "话题偏离科技核心，更侧重于社会政治八卦，技术深度和实用性极低。",
+      "tags": [
+        "科技人物",
+        "政治",
+        "隐私服务"
+      ]
+    },
+    {
+      "title": "Rocketlab acquires Iridium",
+      "link": "https://investors.rocketlabcorp.com/news-releases/news-release-details/rocket-lab-acquire-iridium-historic-deal-creating-fully",
+      "source": "Hacker News",
+      "publishedAt": "2026-06-29T14:09:24.000Z",
+      "summary": "Article URL: https://investors.rocketlabcorp.com/news-releases/news-release-details/rocket-lab-acquire-iridium-historic-deal-creating-fully\nComments URL: https://news.ycombinator.com/item?id=48719485\nPoints: 198\n# Comments: 112",
+      "id": "646cca419121edead6242d6617330fb53fa8cbc2eafcff8660c326e13ff5c52e",
+      "ref_id": "4",
+      "recommendationScore": 15,
+      "popularityScore": 95,
+      "priority": "low",
+      "comment": "一则关于航天公司Rocket Lab收购卫星通信巨头Iridium的商业新闻。",
+      "reason": "属于企业重大商业动态，不涉及具体技术深度探讨，与本科技博客的核心关注点（AI、Apple生态、编程工具等）不符。",
+      "tags": [
+        "商业并购",
+        "航天",
+        "行业新闻"
+      ]
+    },
+    {
+      "title": "I turned my prologue into a short video ",
+      "link": "https://idiallo.com/byte-size/my-prologue-to-short-video",
+      "source": "idiallo.com",
+      "publishedAt": "2026-06-29T02:12:56.000Z",
+      "summary": "It's hard to write a whole book. So for now at least, I've turned the prologue of my book into a short video. I hope you enjoy it.",
+      "id": "6f2e1891a7326a331de5df095d0d3a59818235a4248ac9001190a8dc68fc700f",
+      "ref_id": "3",
+      "recommendationScore": 10,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "仅是关于将书本序言制作成视频的公告，内容过于简短，缺乏实质信息。",
+      "reason": "没有提供任何关于视频或书籍主题的细节，无法进行有效评估，价值极低。",
+      "tags": [
+        "公告",
+        "内容创作"
+      ]
+    }
+  ]
+}
