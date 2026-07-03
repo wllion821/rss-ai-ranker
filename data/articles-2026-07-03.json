@@ -1,0 +1,776 @@
+{
+  "dailySummary": "本周科技热点：本地SOTA LLM指南引关注，AI代理持久内存方案浮现。Anthropic Claude模型先遭美政府短暂限制，后因“后门风险”被阿里巴巴禁用。Safari推出MCP服务器，",
+  "articles": [
+    {
+      "title": "Jamesob's guide to running SOTA LLMs locally",
+      "link": "https://github.com/jamesob/local-llm",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-03T15:03:43.000Z",
+      "summary": "Article URL: https://github.com/jamesob/local-llm\nComments URL: https://news.ycombinator.com/item?id=48775921\nPoints: 59\n# Comments: 24",
+      "id": "fda2072231b00dde02ba1447cd243a36a51484066427e55b16ae144e2599ddca",
+      "ref_id": "1",
+      "recommendationScore": 95,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "提供了在本地部署和运行最先进LLM的详尽指南，实用性极强。",
+      "reason": "紧密贴合AI前沿热点，提供了高质量的实践指导，对开发者具有直接价值。",
+      "tags": [
+        "AI",
+        "LLM",
+        "Local Deployment",
+        "Machine Learning",
+        "Programming Tools",
+        "Guide"
+      ]
+    },
+    {
+      "title": "Introducing the Safari MCP Server for Web Developers",
+      "link": "https://webkit.org/blog/18136/introducing-the-safari-mcp-server-for-web-developers/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-02T21:55:31.000Z",
+      "summary": "Saron Yitbarek, writing on the WebKit blog, with a nice post-WWDC surprise:\nIn Safari Technology Preview 247, we’re introducing the\nSafari MCP server — a Model Context Protocol server for web\ndevelopers that makes your web development and debugging workflow\nfaster and more powerful. We know agents are increasingly integral\nto the coding process and the Safari MCP server gives your agent\nthe ability to know how your code actually renders in the browser\nby connecting it to a Safari browser window.\nAny MCP-compatible client can connect to the Safari MCP server. By\nconnecting your agent to a Safari browser window, your agent can\nemulate what your users experience, giving it the information it\nneeds to debug more autonomously, like access to the DOM, network\nrequests, screenshots, and console output.\nMCP is Anthropic’s open protocol, so it was designed for Claude, but all sorts of other tools use it too — Gemini CLI, Cursor, GitHub Copilot, and more. MCP really is open, not “open”.\n ★",
+      "id": "1910f63bc77e2ac051157f77b21f8dfd8be9b24734e6324030148a6b10deda36",
+      "ref_id": "2",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "苹果为Web开发者推出Safari MCP服务器，显著提升AI代理的调试与开发效率。",
+      "reason": "完美结合AI、Apple生态和编程工具，为开发者带来开创性的工作流改进，实用性和新颖性极高。",
+      "tags": [
+        "AI",
+        "Apple生态",
+        "Web开发",
+        "编程工具",
+        "Safari",
+        "调试"
+      ]
+    },
+    {
+      "title": "Markets are competitive if and only if P = NP",
+      "link": "https://arxiv.org/abs/2602.20415",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-03T15:41:44.000Z",
+      "summary": "Article URL: https://arxiv.org/abs/2602.20415\nComments URL: https://news.ycombinator.com/item?id=48776345\nPoints: 130\n# Comments: 80",
+      "id": "abf1a2684a95a33ac45ff9251bde8f61bd71e337ada18e83573daae7d42e4329",
+      "ref_id": "1",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "深度探讨P=NP问题在市场竞争中的理论映射，极具技术深度和理论价值。",
+      "reason": "核心计算机科学难题与经济学的创新性结合，对算法、AI理论有深远影响，Hacker News讨论热度高。",
+      "tags": [
+        "理论计算机科学",
+        "P vs NP",
+        "算法复杂度",
+        "经济学",
+        "数学"
+      ]
+    },
+    {
+      "title": "Anatomy of Persistent Memory's 3 Layers: Comparing ContextNest, Mem0 and Zep",
+      "link": "https://promptowl.ai/resources/persistent-memory-ai-agents/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-03T14:27:21.000Z",
+      "summary": "Article URL: https://promptowl.ai/resources/persistent-memory-ai-agents/\nComments URL: https://news.ycombinator.com/item?id=48775483\nPoints: 13\n# Comments: 0",
+      "id": "7b428fe9fc097b7ff5a52abb914bca27aebeac14aba619af15351ce226b125e7",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 25,
+      "priority": "high",
+      "comment": "深入比较了AI智能体持久化内存的多种实现和架构，技术深度极高。",
+      "reason": "聚焦AI智能体核心技术挑战，提供了深入的专业分析和工具对比，对AI开发者极具价值。",
+      "tags": [
+        "AI",
+        "AI Agents",
+        "Memory Management",
+        "LLM",
+        "Technical Deep Dive",
+        "Frameworks"
+      ]
+    },
+    {
+      "title": "PostgreSQL and the OOM Killer: Why We Use Strict Memory Overcommit",
+      "link": "https://www.ubicloud.com/blog/postgresql-and-the-oom-killer-why-we-use-strict-memory-overcommit",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-03T13:00:31.000Z",
+      "summary": "Article URL: https://www.ubicloud.com/blog/postgresql-and-the-oom-killer-why-we-use-strict-memory-overcommit\nComments URL: https://news.ycombinator.com/item?id=48774509\nPoints: 86\n# Comments: 31",
+      "id": "70bf316739f05868b50b44fcde06f57a472fae2b9b5faf213a18adcb41ef5b7e",
+      "ref_id": "1",
+      "recommendationScore": 90,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "深度探讨了PostgreSQL在内存管理和OOM Killer场景下的优化策略。",
+      "reason": "技术深度高，实用性极强，对于PostgreSQL的运维和开发人员来说是解决实际痛点的高价值指南，符合编程工具的高优先级。",
+      "tags": [
+        "PostgreSQL",
+        "数据库",
+        "内存管理",
+        "OOM Killer",
+        "系统优化",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "The Safari MCP server for web developers",
+      "link": "https://webkit.org/blog/18136/introducing-the-safari-mcp-server-for-web-developers/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-03T01:37:11.000Z",
+      "summary": "Article URL: https://webkit.org/blog/18136/introducing-the-safari-mcp-server-for-web-developers/\nComments URL: https://news.ycombinator.com/item?id=48769639\nPoints: 205\n# Comments: 60",
+      "id": "1910f63bc77e2ac051157f77b21f8dfd8be9b24734e6324030148a6b10deda36",
+      "ref_id": "3",
+      "recommendationScore": 89,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "WebKit官方发布面向Web开发者的Safari MCP服务器，提供了新的开发工具。",
+      "reason": "针对Apple生态和编程工具的高技术深度和新颖性，对Web开发者在Safari上的调试和开发具有极高实用价值。",
+      "tags": [
+        "Apple生态",
+        "Web开发",
+        "Safari",
+        "WebKit",
+        "编程工具",
+        "前端开发"
+      ]
+    },
+    {
+      "title": "Swimming Pools, Pee, and Trying to Delete Your Data From the Internet",
+      "link": "https://www.troyhunt.com/swimming-pools-pee-and-trying-to-delete-your-data-from-the-internet/",
+      "source": "troyhunt.com",
+      "publishedAt": "2026-07-03T06:52:41.000Z",
+      "summary": "I can't recall if someone else originally came up with this saying or if I said it in some off-the-cuff comment and it just propagated, but since it's often attributed back to me, I'll relay it here regardless:\nTrying to delete yourself",
+      "id": "da825e63f3998a6718e901cc0471785e0d8feab554522f81b006d772a9f655e8",
+      "ref_id": "2",
+      "recommendationScore": 88,
+      "popularityScore": 92,
+      "priority": "high",
+      "comment": "文章探讨了在互联网上删除个人数据的挑战和难度，具有重要的现实意义。",
+      "reason": "主题涉及数据隐私、数字足迹和个人信息管理，是当前热门且实用性强的科技议题，与自动化和独立开发等主题有交叉点。",
+      "tags": [
+        "数据隐私",
+        "网络安全",
+        "个人数据",
+        "数字足迹"
+      ]
+    },
+    {
+      "title": "Program-as-Weights: A Programming Paradigm for Fuzzy Functions",
+      "link": "https://arxiv.org/abs/2607.02512",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-03T12:46:30.000Z",
+      "summary": "Article URL: https://arxiv.org/abs/2607.02512\nComments URL: https://news.ycombinator.com/item?id=48774368\nPoints: 21\n# Comments: 4",
+      "id": "7a703136e0b3bb1d701e61a695a71e7c7fe95844851b720e852aee4bcf364a59",
+      "ref_id": "3",
+      "recommendationScore": 85,
+      "popularityScore": 30,
+      "priority": "high",
+      "comment": "提出了一种新颖的模糊函数编程范式，具有很高的理论研究价值。",
+      "reason": "极高的技术深度和新颖性，虽短期实用性有限，但作为前沿编程范式可能对AI等高优先级领域有深远影响。",
+      "tags": [
+        "AI",
+        "编程范式",
+        "模糊逻辑",
+        "理论计算机科学",
+        "前沿研究"
+      ]
+    },
+    {
+      "title": "Alibaba to ban Claude Code in workplace over alleged backdoor risks, source says",
+      "link": "https://www.reuters.com/world/china/alibaba-ban-claude-code-workplace-over-alleged-backdoor-risks-source-says-2026-07-03/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-03T08:31:37.000Z",
+      "summary": "Article URL: https://www.reuters.com/world/china/alibaba-ban-claude-code-workplace-over-alleged-backdoor-risks-source-says-2026-07-03/\nComments URL: https://news.ycombinator.com/item?id=48772443\nPoints: 276\n# Comments: 234",
+      "id": "58cc5c46d6663f01d3c1c8d6847b37a48e62e07f781dfa3e0e1280e113d6e1f8",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "阿里巴巴因安全风险禁用Claude代码，揭示AI工具在企业应用中的重大挑战。",
+      "reason": "AI主题优先级最高，该新闻对AI治理、企业安全及未来AI工具的采纳策略具有深远影响和高度实用性。",
+      "tags": [
+        "AI",
+        "企业安全",
+        "AI治理",
+        "编程安全",
+        "新闻"
+      ]
+    },
+    {
+      "title": "Claude Fable and Kayfabe",
+      "link": "https://www.anthropic.com/news/redeploying-fable-5",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-02T18:29:01.000Z",
+      "summary": "Anthropic:\nOn Friday, June 12, the US government applied export controls to\nour newest models, Claude Fable 5 and Claude Mythos 5. This\nrequired us to restrict access to foreign nationals, whether\ninside or outside the United States. Because the order took effect\nimmediately and we had no reliable way to verify nationality in\nreal-time, we suspended access to both models for all users.\nAs of today, June 30, the export controls on Fable 5 and Mythos 5\nhave been\nlifted.\nThat’s a link to this tweet on Twitter/X from Commerce Secretary Howard Lutnick:\nOver the past two weeks, we have worked closely with Anthropic to\nanalyze and approve Fable 5 to ensure alignment across the US\nGovernment and strengthen America’s leadership in AI.\nI don’t think a goddamn thing happened in the last two weeks, and if anything did happen, it sure as shit wasn’t anything that Lutnick understood. There should be real government oversight regulating frontier AI, but this is just pantomime performative nonsense.\nThe entire Trump 2.0 term (and much of the 1.0 term before it) can be summarized with a single word: kayfabe, “the tacit agreement between professional wrestlers and their fans to pretend that overtly staged wrestling events, stories, characters, etc., are genuine”. Trumpism and MAGA is entirely about the belief system that everything is bullshit. Everyone is crooked, every supposed fact is merely an opinion, and everything is ultimately subject to the whims of whoever has power. The fix is not just in, it’s always been in, and always will be in. What Trump says is true is true because he’s the fucking president. Trump himself asserts that “evidence” is what he claims to see — not what he can actually show for others to see. If Trump says we won the war he needlessly started with Iran, then we won it. If Trump says there’s a peace deal 38 times, then there have been 38 peace deals. The FIFA “peace prize” Trump was awarded last year was no more legitimate or earned or meaningful than a WWE championship belt. It’s pro wrestling not just writ large, but (alas for the entire world) writ very large.\nWhen you view Trump and his administration through the prism of kayfabe, it doesn’t make actual sense, but you can see how they think it makes sense.\nI’m not accusing Anthropic of being in cahoots, per se, with the Trump administration on this whole “Fable is so good that it’s too dangerous ... wait two weeks ... OK now everyone can have it” back and forth. But they played along. “The AI model the Trump administration didn’t want you to have” is advertising no money could buy.\n ★",
+      "id": "fdd9745edc3aad4e2c44e2c4201c1a339086331f2757c65b16bcb6b59a46ca48",
+      "ref_id": "2",
+      "recommendationScore": 85,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "文章评论了美国政府对Anthropic的Claude Fable 5和Mythos 5 AI模型实施出口管制又解除的事件，并呼吁真实的AI监管。",
+      "reason": "直接聚焦AI前沿模型和相关政策，具有高时效性和重要性，符合AI主题的最高优先级。",
+      "tags": [
+        "AI",
+        "政策",
+        "监管",
+        "Anthropic"
+      ]
+    },
+    {
+      "title": "Wordgard: The new in-browser rich-text editor from the creator of ProseMirror",
+      "link": "https://wordgard.net/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-03T08:50:47.000Z",
+      "summary": "Article URL: https://wordgard.net/\nComments URL: https://news.ycombinator.com/item?id=48772573\nPoints: 162\n# Comments: 70",
+      "id": "a83e1073939bd0f23a92358d70188ffaad3392ae40ae7f47f8dbecfba09ee417",
+      "ref_id": "0",
+      "recommendationScore": 84,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "知名开发者推出全新浏览器内富文本编辑器，有望成为ProseMirror的有力补充或替代。",
+      "reason": "作为编程工具类文章，其技术深度、新颖性和实用性评分较高，对前端开发者有显著价值。",
+      "tags": [
+        "前端开发",
+        "富文本编辑器",
+        "编程工具",
+        "Web开发"
+      ]
+    },
+    {
+      "title": "Claude, please stop trying to memorize random crap",
+      "link": "https://12gramsofcarbon.com/p/agentics-memorizing-session-transcripts",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-03T15:32:51.000Z",
+      "summary": "Article URL: https://12gramsofcarbon.com/p/agentics-memorizing-session-transcripts\nComments URL: https://news.ycombinator.com/item?id=48776232\nPoints: 29\n# Comments: 3",
+      "id": "d09d5555e223c9ffae4b31234bf5876972448a4facef94748e901a9ddb8c5197",
+      "ref_id": "2",
+      "recommendationScore": 80,
+      "popularityScore": 40,
+      "priority": "high",
+      "comment": "针对AI模型Claude的记忆机制问题进行探讨，提供了实用的AI开发洞察。",
+      "reason": "直接聚焦AI核心问题，对LLM开发者和研究者具有高度实用性和参考价值。",
+      "tags": [
+        "AI",
+        "LLM",
+        "人工智能代理",
+        "机器学习"
+      ]
+    },
+    {
+      "title": "I Repeat Myself (5G vs. LTE Edition)",
+      "link": "https://daringfireball.net/linked/2022/03/23/5g-battery-life",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-02T20:32:31.000Z",
+      "summary": "Back in March 2022, Nicole Nguyen of The Wall Street Journal compared the battery life effects of 5G vs. LTE by streaming videos on several iPhone and iPad models. She found that using LTE saved significant battery life. (It would be nice if someone re-ran similar tests on more recent devices — just because it was true with the iPhone 13 Pro doesn’t mean it’s true with current models. But I’ll bet it is.)\nAnyway, linking to her report, I wrote:\nWith both regular 5G and LTE, I typically get between 50–100 Mbps\ndown — and I see a regular 5G connection far far more often than\nI do 5G ultra wideband. I don’t see any practical advantage to\nregular 5G compared to LTE. Those crazy-fast ultra-wideband\ndownload speeds are like owning a car that can go 200 MPH. So I’m\njust going to set my iPhone to use LTE all the time and save\nbattery life. I’ll turn 5G Auto back on if I ever run into a\nsituation where my LTE signal seems weak or slow.\nWhich rings several bells with my “A Tale of Two Modems” post yesterday, regarding an AppleInsider report that data stolen from Apple supplier Tata Electronics shows that Apple is going to use Qualcomm’s mmWave-supporting cellular modems only in models of the iPhone 18 Pro sold in the U.S.\nBut so what happened to my LTE setting? If I switched to LTE in 2022 because the battery life savings were noticeable and 5G’s faster download speeds were not, how’d I wind up back on 5G in 2026 and switching to LTE again only earlier this month?\nI don’t remember exactly, to be honest. I do know that I never switched back to 5G because I found LTE slow. As best I can remember, I switched back at some point when testing a new iPhone and ... just stopped thinking about it and never switched back to full-time LTE. But I’m on LTE again now, and I’m not switching back unless (a) I do find LTE slow, or (b) someone publishes results from a testing showing that 5G no longer consumes more battery power than LTE on current iPhone models.\nOh, and to that point — a few readers emailed to say that one reason to prefer 5G, especially if you’re within range of a mmWave tower, is if you’re sharing your cellular connection to a Mac (or multiple Macs) via hotspot tethering. Yes, for sure. Another point that’s been raised is that 5G is supposedly better than LTE in crowded/congested situations like a stadium or arena full of people. Maybe? But in both cases, you know those situations when you encounter them, and you can use LTE all day most days and just turn on 5G when you’re using your iPhone as a hotspot, or when you find yourself in a crowded stadium. I’m saying try turning 5G off day-to-day, not telling you to sign up for a cellular plan without 5G (which I’m not even sure you can buy anymore).\n ★",
+      "id": "6935a6b91c099153e0957dd0c6356bd29b45f9a79c11cc7bdfea478e7411d6d2",
+      "ref_id": "4",
+      "recommendationScore": 80,
+      "popularityScore": 85,
+      "priority": "medium",
+      "comment": "再次探讨了5G对iPhone电池续航的影响，并提出通过使用LTE节省电量的实用建议。",
+      "reason": "为Apple生态用户提供了简单实用的电池优化技巧，解答了关于5G和LTE选择的常见疑问。",
+      "tags": [
+        "Apple生态",
+        "iPhone",
+        "5G",
+        "LTE",
+        "电池续航",
+        "实用技巧"
+      ]
+    },
+    {
+      "title": "Valve open source the Steam Machine e-ink screen so you can make your own",
+      "link": "https://www.gamingonlinux.com/2026/07/valve-open-source-the-steam-machine-e-ink-screen-so-you-can-make-your-own/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-03T13:01:49.000Z",
+      "summary": "Article URL: https://www.gamingonlinux.com/2026/07/valve-open-source-the-steam-machine-e-ink-screen-so-you-can-make-your-own/\nComments URL: https://news.ycombinator.com/item?id=48774518\nPoints: 318\n# Comments: 46",
+      "id": "fb44d5e2975ad05d8758d327225c8a2a94544659940c5c2603c38a6caffdf5d2",
+      "ref_id": "0",
+      "recommendationScore": 70,
+      "popularityScore": 90,
+      "priority": "medium",
+      "comment": "Valve开源Steam Machine墨水屏设计，为硬件DIY爱好者提供了新的创作机会。",
+      "reason": "对开源硬件和DIY社区有吸引力，具有一定的新颖性和实用性，能激发兴趣。",
+      "tags": [
+        "开源",
+        "硬件",
+        "DIY",
+        "游戏",
+        "Steam"
+      ]
+    },
+    {
+      "title": "Using DSPy to evaluate and improve Datasette Agent's SQL system prompts",
+      "link": "https://simonwillison.net/2026/Jul/2/dspy-datasette-agent-prompts/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-07-02T18:25:00.000Z",
+      "summary": "",
+      "id": "a5c875c2d1226c791e52527189e9524056e6d50f0992ed4978680830fed244cb",
+      "ref_id": "4",
+      "recommendationScore": 70,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "标题精确聚焦AI提示工程和具体工具应用，但文章内容为空。",
+      "reason": "标题涵盖AI、提示工程和特定框架应用，是当前技术热点且优先级极高，但无内容可评估技术深度和实用性。",
+      "tags": [
+        "AI",
+        "LLM",
+        "提示工程",
+        "编程工具",
+        "数据科学",
+        "自动化",
+        "内容缺失",
+        "高潜力"
+      ]
+    },
+    {
+      "title": "Pluralistic: CARDiac, syntax coloring, view source and vibe code (03 Jul 2026)",
+      "link": "https://pluralistic.net/2026/07/03/rod-logic/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-07-03T09:00:15.000Z",
+      "summary": "Today's links CARDiac, syntax coloring, view source and vibe code: With great abstraction comes great power comes great responsibility comes great loss of fidelity. Hey look at this: Delights to delectate. Object permanence: Real elections v reality TV; Copyright troll loses license; Who gets fed housing subsidies? Trump x forced labor. Upcoming appearances: London, Edinburgh, Sydney, Melbourne, Brighton, London, South Bend. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. CARDiac, syntax coloring, view source and vibe code (permalink) In the mid-1970s, my dad – then a budding computer scientist, subsequently a math teacher – brought home my first computer: the CARDiac, a Turing-complete, all-cardboard papercraft computer that you could write and execute programs on: https://en.wikipedia.org/wiki/CARDboard_Illustrative_Aid_to_Computation CARDiac stands for \"CARDboard Illustrative Aid to Computation,\" and it was created in 1968 at Bell Labs as a way to teach high schoolers how computers worked. I wasn't anywhere near high school age (I think I was in third grade?) but the CARDiac was revelatory. The year before, I'd had access to a teletype terminal and acoustic coupler that let me operate a PDP machine at the University of Toronto, and I'd been endlessly fascinated with the possibilities. I wrote simple BASIC programs, chatted with ELIZA, and messaged other system users, one keystroke at a time, all on paper (the terminal didn't have a screen, just a printer, and we fed it 1,000' rolls of paper towels my mom brought home from her kindergarten classroom, which I then rolled back up so she could put them back in the bathroom for the kids to dry their hands on). Interacting with a computer in real-time was captivating, but it wasn't until I assembled and used the CARDiac that it all snapped into place. With the CARDiac, you composed simple programs with pencil and paper, then followed instructions that directed you to move paper tokens in and out of various slots representing memory cells and an accumulator. All an electronic computer does is repeat these crude mechanical operations, millions of times per second, using microscopic transistors. None of that action can be observed with the naked eye, of course. If you had a very sensitive multimeter and a very good microscope, it's conceivable that you could indirectly watch this intricate dance, but only on very early processors, and only if you drastically slowed down their operations. Much later, I learned a word for what I got from the CARDiac: legibility. Together, the CARDiac and I made a working digital computer, with me standing in for the physics that propels electrons down the endless labyrinth of a microchip, like a pinball triggering various blooping, beeping bumpers. Though the computing we performed was sub-trivial (adding one and one was a major undertaking!), the physical performance of that computing imbued me with Fingerspitzengefühl (\"fingertip feeling\"): https://en.wikipedia.org/wiki/Fingerspitzengef%C3%BChl This stood me in great stead in the years to come. To this day, when I think about my computer, I sometimes imagine those little cardboard tokens, shuffling in and out of the slits in my paper CARDiac. There's something very reassuring about this imagery. No matter how many levels of abstraction sit between me and the nanoscale transistors ranked in their billions beneath my fingertips, they are all undertaking those familiar operations I painstakingly performed on my child's desk all those years ago. (This is one of the things that makes Science Comics Computers: How Digital Hardware Works such an amazing kids' book! By illustrating how a computer's operations are built up from simple boolean logic that can be represented as physical switches, the comic performs that same legibilizing magic that I got from the CARDiac:) https://pluralistic.net/2025/11/05/xor-xand-xnor-nand-nor/#brawniac Not long after my CARDiac experience, my dad brought home an Apple ][+, which came with a schematic that revealed the inner workings of the machine in ways that I found visually striking, if significantly less accessible than the CARDiac: https://downloads.reactivemicro.com/Apple%20II%20Items/Hardware/II_&_II+/Schematic/Apple%20II%20Schematics.pdf (For me, at least. For the legendary hardware hacker Andrew \"bunnie\" Huang, it was the start of a journey that turned him into one of the world's virtuoso reverse-engineers and science communicators): https://pluralistic.net/2026/01/09/quantity-break/#so-many-chips The Apple ][+ did very little when you took it out of the box. It came with a few floppies' worth of demo programs, and we bought a few more down at the local computer store, but most of the programs I ended up using with that machine were ones I typed in myself, from magazines I bought at the corner store (I spent half my magazine budget on Cracked, Mad and Crazy, the other half on computer magazines full of BASIC program listings). Typing in a program, keystroke by keystroke, was another Fingerspitzengefühl-generating exercise. I wasn't much of a typist, so it was slow going, and of course I made a lot of typos. What's more, BASIC had already fragmented into several dialects by this point, so even a correctly typed program could fail to run until it had been adapted for the BASIC that shipped with the computer. Getting a program to run on my computer required me to hone my typing skills, but even more so, my problem solving skills. After months of this, I (re-)invented the debugger, from first principles, coming up with lots of little tricks and gimmicks (many of them horribly inefficient) for identifying and solving my programs' errors. In later years, I had lots of opportunity to work with real debuggers, created and maintained by trained programmers who'd forgotten more than I would ever know about writing code, and my own cack-handed efforts to build my own version of their tools conferred a confidence and intuitive understanding that I could not have achieved otherwise. Figuring out the need for a debugger and then rolling my own (crude, inefficient) one made all debuggers more legible to me. I think that \"legibility\" is an underrated trait. If a system is legible to you, then you have a superior basis for understanding it, improving it, and making it work again when it breaks down. There's an old joke that goes, \"physics is applied math; chemistry is applied physics, and biology is applied chemistry\" (I've also heard versions that start with \"math is applied philosophy\" and carry on to \"sociology is applied biology,\" etc). While this isn't entirely true, there's something profound in it: we understand and manipulate our complex reality by wrapping it in abstractions that package up a writhing, shuffling, vibrating machine inside a smooth, serene membrane with a sturdy and easily grasped handle. You could do chemistry using the tools of physics, but it would take hours to perform the kind of calculations a chemist does in seconds (just as it takes an eternity to add one and one with a CARDiac). Nevertheless, there are times when it is useful for a biologist to think about chemical processes, and for a chemist to think about interactions at the level of physics, and for a physicist to do math. The membrane and the handle are essential, but sometimes you have to decap the sealed package and inspect and manipulate its internals directly. Problem solving, improvement and maintenance all require the ability to move up and down the stack of abstractions to figure out where to stick your probes and stage your interventions. This is where legibility comes in. Interacting with physical processes improves your mental model. In Broad Band (a magisterial history of women in computing), Claire Evans talks about how the first programmers were women who did the \"unskilled\" labor of physically cabling components together, developing powerful Fingerspitzengefühl, with such high-fidelity, trans-abstraction mental models of the machines' operations that they became the world's best programmers and debuggers: https://pluralistic.net/2021/02/13/data-protection-without-monopoly/#broad-band My early adventures in programming were so powerful and instructive because nearly all the programs I interacted with on my Apple ][+ were written in BASIC (not just the ones I keyed in, but also the demo software and much of the packaged software we bought). That meant that I could get a listing of any program I was using, peeling open the membrane to look at the machinery underneath. I could even laboriously trace the operations of that program using my toy debugger. This, too, was legibility: the ability to flip between the effects of the running code, and the instructions themselves (and then to mentally map those instructions onto the movement of cardboard tokens in my CARDiac). This affordance was repeated later on the early web, thanks to the \"View Source\" function that came built into every browser, acting as a velcro tab for the membrane that separated rendered web pages from their underlying instructions. In my early years as a web developer, I copied, pasted, adapted, probed and traced HTML in ways that would have been instantly recognizable to the younger me, keying in those BASIC programs and ripping apart the commercial software on my computer. I read somewhere that the Bell Labs scientists who created the CARDiac were worried that, thanks to transistorization, the next generation of programmers wouldn't understand the physical, material processes that unfolded when their programs ran, and that this would mean a loss of legibility and intuition and Fingerspitzengefühl. I can't track down the reference now, but it stuck with me, because the CARDiac is such a perfect way of preserving those virtues. Modern computer science curriculum includes some chip design for just this reason (just as chemists study physics and biologists study chemistry). But there are plenty of programmers – better programmers than I ever was or will be – who taught themselves and never had a CARDiac or gave much thought to chip design. They work at different layers of abstraction and in different ways to solve different problems. Maybe they could improve their art by tinkering with FPGAs, but there's always something even the most skilled artisan can do to round out and incrementally improve their craft. In the same way, there are plenty of programmers – better ones than I ever was or will be – whose journey started at higher abstraction layers than a teletype terminal or a CARDiac. Maybe they started with a browser's View Source, teasing apart other people's Javascript to create weird Myspace customizations. Maybe they tweaked a programmable block in Minecraft. Maybe they modded a Scratch game. Or maybe they recorded macros using Applescript or Hypercard or Visual Basic to automate a routine task, only to later open up the source code generated by the macro recorder to make fine adjustments. Whether you're pasting source from Stack Overflow or recording a macro in Excel, you are just one operation away from unwrapping the membrane and exposing the code beneath it. And with the modern internet, with Wikipedia, with endless tutorial videos, you are one further operation from penetrating the high level code to get at the code beneath it, and the code beneath that, and the code beneath that, all the way down to the bare metal. Which brings me to vibe coding. As I've written, there's a world of difference between writing code for production and writing \"personal software\" that solves a problem you have. Whatever deficits that code has (due to the fact that you're not a skilled programmer) are offset by the fact that you're the one making the tool (which means your needs aren't lossily filtered through a programmer's understanding of those needs): https://pluralistic.net/2026/06/15/vernacular/#hypercardian There's nothing wrong with code that solves your problem, even if you don't know how that code works, even if it breaks in a couple of years, even if no one else could maintain, extend or debug that code. Personal software is fundamentally different from software made to be used and maintained by others: https://pluralistic.net/2026/07/02/canonization/#operate-iterate-improve Higher-level abstractions are necessary. Moving tokens between the slits in a CARDiac is a powerful exercise, but eventually you want to do something more substantial than adding one and one, and so you need to package up the mechanics of computing inside a membrane with an easily grasped handle (knowing that you can always open the membrane if need be). The more automated code you generate – macros, pasted Javascript, Minecraft blocks – the greater the likelihood that you will be failed by a readymade, prefab component. At that point, you have means, motive and opportunity to open the membrane and start tinkering with the internals, and every time you do, you have a better chance of making a realization that improves your grasp on the whole system. Automated code – whether from an LLM, View Source, Stack Overflow, or a macro recorder – is the top of a funnel. Many – most – of the people who enter the funnel won't slip further down the abstraction chute. They'll solve their problem (a virtue unto itself!) and move on. But the more people we put at the top of the funnel, the more chances our civilization gets to produce another skilled artisan who understands and can improve, iterate and repair the code the rest of us use. Hey look at this (permalink) Crime Pays: The Egg Bandits Made A Thousand Times the Fine They Just Paid for Price Fixing https://www.thebignewsletter.com/p/crime-pays-the-egg-bandits-made-a Digital elbows up https://betakit.com/digital-elbows-up/ Stochastic wage suppression on gig platforms and how to organize against it https://arxiv.org/abs/2604.15962 The Hacker Digest – LIFETIME (PDF) https://store.2600.com/collections/subscriptions-renewals/products/the-hacker-digest-lifetime-pdf Coprophagia Is Bad For You https://blog.dshr.org/2026/06/coprophagia-is-bad-for-you.html Object permanence (permalink) #20yrsago What real elections can learn from reality TV voting https://henryjenkins.org/2006/07/democracy_big_brother_style_1.html #20yrsago Veteran print journo on neglected demographics http://citmedia.org/blog/2006/07/03/guest-posting-is-media-performance-democracys-critical-issue/ #10yrsago One of the copyright’s scummiest trolls loses his law license https://fightcopyrighttrolls.com/2016/07/03/prendas-hansmeier-stipulates-to-suspension-of-his-law-license/ #10yrsago Macedonia’s Colorful Revolutionaries defy the state by splashing paint on government buildings and monuments https://globalvoices.org/2016/07/03/defying-police-harassment-the-macedonian-colorful-revolutionaries-continue-to-chant-freedom/ #10yrsago Trump and Brexit are like lotto tickets: the more unrealistic, the better https://www.irishtimes.com/news/world/europe/fintan-o-toole-brexit-and-the-politics-of-the-fake-orgasm-1.2707398 #10yrsago Low income US households get $0.08/month in Fed housing subsidy; 0.1%ers get $1,236 https://web.archive.org/web/20160702151008/https://www.thenation.com/article/who-benefits-most-from-housing-subsidies-the-wealthy/ #5yrsago The future is symmetrical https://pluralistic.net/2021/07/03/beautiful-symmetry/#fibrous-growth #1yrago Trump's not gonna protect workers from forced labor https://pluralistic.net/2025/07/03/states-rights-trumps-wrongs/#mamdani Upcoming appearances (permalink) London: Idler Festival, Jul 11 https://www.idler.co.uk/festival/ Edinburgh International Book Festival with Jimmy Wales, Aug 17 https://www.edbookfest.co.uk/events/the-front-list-cory-doctorow-and-jimmy-wales Sydney: The Festival of Dangerous Ideas, Aug 23-24 https://festivalofdangerousideas.com/cory-doctorow/ Melbourne: Enshittification at the Wheeler Centre, Aug 25 https://www.wheelercentre.com/events-tickets/season-2026/cory-doctorow-enshittification Brighton: The Reverse Centaur's Guide to Life After AI with Carole Cadwalladr (Brighton Dome), Sep 8 https://brightondome.org/whats-on/LSC-cory-doctorow-the-reverse-centaurs-guide-to-life-after-ai/ London: The Reverse Centaur's Guide to Life After AI with Riley Quinn (Foyle's Picadilly), Sep 9 https://www.foyles.co.uk/events/enshittification-cory-doctorow-riley-quinn South Bend: An Evening With Cory Doctorow (Notre Dame), Oct 6 https://franco.nd.edu/events/2026/10/06/an-evening-with-cory-doctorow/ Recent appearances (permalink) Lawfare Daily https://www.youtube.com/watch?v=T1KIwaYRs1g How to Think About AI (Organized Money) https://www.organizedmoney.fm/p/how-to-think-about-ai-with-cory-doctorow Breaking Points https://www.youtube.com/watch?v=VJmUbkRqXeE A.I. Enshittifies Everything (Slate) https://slate.com/podcasts/what-next-tbd/2026/06/cory-doctorow-thinks-a-i-is-overvalued-and-overrated-and-still-a-threat A World That Just Might Work https://aworldthatjustmightwork.com/2026/06/cory-doctorow-ai-use-it-dont-buy-the-hype-dont-feed-the-bubble/ Latest books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/ \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Fourth draft completed. Submitted to editor. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "1097ae6b34011cbc72e133136027632df56ff6c63357d6c76dd3e23f7550dc54",
+      "ref_id": "3",
+      "recommendationScore": 70,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "本文链接聚合了多个话题，其中核心部分介绍了CARDiac纸板计算机、语法着色和“vibe code”等编程相关概念。",
+      "reason": "包含编程工具和计算机科学历史元素，具有一定的技术深度和新颖性，但文章的链接聚合格式分散了焦点。",
+      "tags": [
+        "编程工具",
+        "计算机科学史",
+        "软件开发",
+        "链接聚合"
+      ]
+    },
+    {
+      "title": "Half-Baked Product",
+      "link": "https://weli.dev/blog/half-baked-product/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-03T08:23:32.000Z",
+      "summary": "Article URL: https://weli.dev/blog/half-baked-product/\nComments URL: https://news.ycombinator.com/item?id=48772388\nPoints: 956\n# Comments: 285",
+      "id": "0c669c77f74e1b564deb3db0c5435610de24cd97dabcad7b1a994f6744bd93af",
+      "ref_id": "2",
+      "recommendationScore": 68,
+      "popularityScore": 98,
+      "priority": "low",
+      "comment": "一篇关于产品策略与独立开发的流行观点文章，引发了社区热烈讨论。",
+      "reason": "尽管主题优先级相对较低且技术深度有限，但极高的社区互动度和对独立开发者、产品经理的实用性使其值得关注。",
+      "tags": [
+        "产品设计",
+        "独立开发",
+        "创业",
+        "产品策略"
+      ]
+    },
+    {
+      "title": "Give Smart People the Tools to Do Smart Things",
+      "link": "https://superuserdone.com/posts/2026-07-03-give-smart-people-the-tools/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-03T14:49:44.000Z",
+      "summary": "Article URL: https://superuserdone.com/posts/2026-07-03-give-smart-people-the-tools/\nComments URL: https://news.ycombinator.com/item?id=48775748\nPoints: 42\n# Comments: 22",
+      "id": "f350ab5fedc01b4c13abf74c2f5917625bade13157de9ff5732239c25d9c6527",
+      "ref_id": "2",
+      "recommendationScore": 65,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "讨论了为聪明人提供恰当工具以发挥其潜力的重要性，偏向管理和哲学层面。",
+      "reason": "对工具哲学和团队效率有启发性，但缺乏具体的深层技术细节。",
+      "tags": [
+        "Productivity",
+        "Team Management",
+        "Tools",
+        "Software Development Philosophy"
+      ]
+    },
+    {
+      "title": "llm-coding-agent 0.1a0",
+      "link": "https://simonwillison.net/2026/Jul/2/llm-coding-agent/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-07-02T19:33:12.000Z",
+      "summary": "",
+      "id": "aa700a0b090cbd980852f4eb7582bcd79de6421ce1b6f7805b5335df88be923a",
+      "ref_id": "3",
+      "recommendationScore": 65,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "标题高度相关且热门，但文章内容缺失，无法进行深度评估。",
+      "reason": "标题涉及AI编程代理，符合高优先级的AI和编程工具主题，但因无内容，评分仅基于潜力。",
+      "tags": [
+        "AI",
+        "LLM",
+        "编程工具",
+        "内容缺失",
+        "高潜力"
+      ]
+    },
+    {
+      "title": "EveryMac Turns 30",
+      "link": "https://everymac.com/whatsnew/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-02T21:31:04.000Z",
+      "summary": "EveryMac:\nThirty years is a long time — and a great deal has changed since\nthen — but what has not changed is that EveryMac.com has been\nthere to provide you with detailed info on every Mac from the\noriginal 128k to the current line. Thank you very much for your\nsupport through the years.\nDaring Fireball turns 24 next month, which doesn’t sound that much younger than 30. But the way things work (in my mind at least) is that sites that are still around but were established years prior to my starting Daring Fireball are the real “old guard”. I still feel like DF is a newcomer next to a site like EveryMac. 1996 for chrissakes. Steve Jobs wasn’t even back at Apple yet. What a great run it’s been and continues to be for EveryMac.\nMichael Tsai (whose eponymous blog is the same age as Daring Fireball) asked EveryMac proprietor Brock Kyle how it started. The final line of his answer: “I miss the ethos of those days.”\n ★",
+      "id": "3dc553feb73f0a2e92f5df823ae05374d902130e30c59017d00a268962e0b96c",
+      "ref_id": "3",
+      "recommendationScore": 65,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "庆祝EveryMac网站30周年，回顾其对Mac信息整理的长期贡献与行业变迁。",
+      "reason": "具有对Apple生态和历史的纪念意义，能引起资深用户的共鸣，但技术价值不高。",
+      "tags": [
+        "Apple生态",
+        "Mac",
+        "历史",
+        "网站",
+        "纪念"
+      ]
+    },
+    {
+      "title": "CarPlay Is Additive",
+      "link": "https://www.caseyliss.com/2026/7/2/carplay-is-additive-you-dolts",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-03T01:02:45.000Z",
+      "summary": "Article URL: https://www.caseyliss.com/2026/7/2/carplay-is-additive-you-dolts\nComments URL: https://news.ycombinator.com/item?id=48769397\nPoints: 481\n# Comments: 634",
+      "id": "172310ec08cb1e4bf4202d6c93e68ef1284d698c582fd7e486972f44f8ff7b2e",
+      "ref_id": "4",
+      "recommendationScore": 60,
+      "popularityScore": 95,
+      "priority": "medium",
+      "comment": "一篇引发广泛讨论的CarPlay用户体验观点文章，探讨其对驾驶的增益性。",
+      "reason": "虽然技术深度一般，但作为Apple生态下的热门话题，其极高的社区互动和观点性讨论对Apple用户有吸引力。",
+      "tags": [
+        "Apple生态",
+        "CarPlay",
+        "用户体验",
+        "观点"
+      ]
+    },
+    {
+      "title": "FBI Seizes NetNut Proxy Platform, Popa Botnet",
+      "link": "https://krebsonsecurity.com/2026/07/fbi-seizes-netnut-proxy-platform-popa-botnet/",
+      "source": "krebsonsecurity.com",
+      "publishedAt": "2026-07-02T19:27:33.000Z",
+      "summary": "The Federal Bureau of Investigation (FBI) said today it worked with industry partners to seize hundreds of domains associated with NetNut, a sprawling residential proxy service operated by the publicly-traded Israeli company Alarum Technologies [NASDAQ: ALAR]. The action comes roughly two weeks after KrebsOnSecurity published findings from multiple security firms connecting NetNut to the Popa botnet, a collection of at least two million devices that have been compromised by malicious software with little or no consent from victims.",
+      "id": "417bdaa0c3e139ab2f3c73a51f0d82bd8d7cc49bfa535fbd99fa918e8dcb8694",
+      "ref_id": "0",
+      "recommendationScore": 60,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "及时报道了一起重要的网络安全执法行动，揭露了非法代理服务。",
+      "reason": "新闻性强，提醒读者关注网络安全风险，但技术深度和实用性对普通读者一般。",
+      "tags": [
+        "网络安全",
+        "FBI",
+        "僵尸网络",
+        "新闻"
+      ]
+    },
+    {
+      "title": "Factories Are Just Rooms",
+      "link": "https://interconnected.org/home/2026/07/03/factories",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-03T15:13:43.000Z",
+      "summary": "Article URL: https://interconnected.org/home/2026/07/03/factories\nComments URL: https://news.ycombinator.com/item?id=48776035\nPoints: 45\n# Comments: 18",
+      "id": "66e1b5e8f72a58a96385ff2748925393ab5deb43a520cf54f6e0ba969503d4f9",
+      "ref_id": "3",
+      "recommendationScore": 55,
+      "popularityScore": 55,
+      "priority": "medium",
+      "comment": "从独特视角解读工厂的本质与生产管理，可能启发自动化和产品设计思维。",
+      "reason": "对制造业和自动化领域有一定启示作用，虽然技术深度一般，但观点有趣。",
+      "tags": [
+        "制造业",
+        "自动化",
+        "工业设计",
+        "生产管理"
+      ]
+    },
+    {
+      "title": "Hackers shoveled snow for company, were rewarded with network admin access",
+      "link": "https://www.theregister.com/security/2026/07/02/hackers-shoveled-snow-for-company-were-rewarded-with-network-admin-access/5265240",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-03T13:19:46.000Z",
+      "summary": "Article URL: https://www.theregister.com/security/2026/07/02/hackers-shoveled-snow-for-company-were-rewarded-with-network-admin-access/5265240\nComments URL: https://news.ycombinator.com/item?id=48774704\nPoints: 59\n# Comments: 37",
+      "id": "ff95322155f4be946c3a5e04745cc8a4f803d0975abba9bfc829f6b438d5231e",
+      "ref_id": "4",
+      "recommendationScore": 55,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "一则关于黑客通过非常规手段获取管理员权限的安全趣闻。",
+      "reason": "故事性强，能引发对安全意识的关注，但内容不属于优先级列表中的核心技术主题。",
+      "tags": [
+        "Security",
+        "Cybersecurity",
+        "Human Factors",
+        "Anecdote",
+        "Organizational Security"
+      ]
+    },
+    {
+      "title": "Commodore 64 Basic for PostgreSQL",
+      "link": "https://thombrown.blogspot.com/2026/07/load-plcbmbasic81-commodore-64-basic.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-03T09:08:14.000Z",
+      "summary": "Article URL: https://thombrown.blogspot.com/2026/07/load-plcbmbasic81-commodore-64-basic.html\nComments URL: https://news.ycombinator.com/item?id=48772717\nPoints: 47\n# Comments: 8",
+      "id": "ca9d5c2b9c8a98adbac7d307ef249b08335bd3ab009e4c3f2c5dd25b5d031a94",
+      "ref_id": "4",
+      "recommendationScore": 55,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "一个将Commodore 64 BASIC集成到PostgreSQL的独特且充满怀旧色彩的实验项目。",
+      "reason": "技术上具有一定的趣味性和新颖性，但实际应用价值极低，更偏向技术探索或情怀项目。",
+      "tags": [
+        "PostgreSQL",
+        "BASIC",
+        "复古计算",
+        "编程实验",
+        "独立开发"
+      ]
+    },
+    {
+      "title": "April Report From Ookla: ‘A Return to mmWave 5G’",
+      "link": "https://www.ookla.com/articles/a-return-to-mmwave-5g",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-02T22:30:40.000Z",
+      "summary": "Mike Dano, in a long (too long, I say) report for Ookla (makers of the nifty Speedtest app):\nFurther, few other countries in the world followed in the mmWave\nfootsteps of the U.S., with international spectrum regulators\ninstead putting a focus on releasing mid-band spectrum for 5G.\nHowever, mmWave networks haven’t disappeared. New drive test data\nfrom Ookla’s RootMetrics, coupled with crowdsourced information\nfrom Ookla’s Speedtest Insights, shows the ongoing growth of\nmmWave 5G networks in the U.S., as well as the remarkable\nperformance characteristics of those systems.\nAcross all of RootMetrics’ testing in the second half of 2025,\nin both urban (metro) and rural (state) areas, mmWave showed up\nin 2.2% of Verizon’s samples. For AT&T, that figure was 0.2%.\nFor T-Mobile, that figure was almost 0% (and as a result, this\nreport will mainly focus on Verizon and AT&T).\n\n\nVerizon’s mmWave connections showed up in 75 markets in the\nfirst half of 2024 (out of a total of 125 markets), a figure\nthat rose to 91 in the second half of 2025. That’s almost triple\nthe number of markets where RootMetrics recorded AT&T mmWave\nsystems in the second half of 2025. 5G mmWave from T-Mobile,\nmeanwhile, only showed up in 1 market covered by RootMetrics\ntechnicians during the second half of 2025.\n\n\nMost mmWave samples were obtained within 150 meters (about 500\nfeet) of a mmWave transmission site, reflecting the spectrum’s\nrelatively diminutive coverage area. However, download speeds\nover mmWave connections reached beyond 1 Gbps in some markets.\n\n\nDenver, Atlanta, Philadelphia, and Boston are top mmWave cities\nfor Verizon. Roughly 60% of RootMetrics’ outdoor testing\nsamples landed on Verizon’s mmWave in these cities in the\nsecond half of 2025.\n\n\n\n\nSo mmWave is almost entirely a U.S. thing, and within the U.S. mostly a Verizon thing and sort of an AT&T thing.\nPreviously: A year ago I linked to an Ookla report on the iPhone 16e’s cellular performance, it being the first iPhone to ship with an Apple C-series modem. Performance was very good!\n ★",
+      "id": "d529bc8434f1bb1f812e114c9796a19132c407387db2ed31e05fa8fbde2a9b00",
+      "ref_id": "1",
+      "recommendationScore": 55,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "分析了美国毫米波5G网络的最新发展和性能数据，基于Ookla报告。",
+      "reason": "提供了5G技术部署的具体洞察，但对普通用户实用性较低，且主题优先级不高。",
+      "tags": [
+        "5G",
+        "电信",
+        "网络性能",
+        "报告"
+      ]
+    },
+    {
+      "title": "The Life and Times of Maxis, Part 1: SimEverything",
+      "link": "https://www.filfre.net/2026/07/the-life-and-times-of-maxis-part-1-simeverything/",
+      "source": "filfre.net",
+      "publishedAt": "2026-07-03T15:46:04.000Z",
+      "summary": "This article tells part of the story of Maxis Software. I’m still to this day just blown away by continental drift and things like that, stuff that most people think sounds pretty boring. — Will Wright Gamers are both extremely dedicated to and really good at preserving the history of their hobby. Seldom has a […]",
+      "id": "f8174579ba56b3102888b52edc7f00bc5aec58c0c1fb9cbec41ae10bcc97096e",
+      "ref_id": "0",
+      "recommendationScore": 45,
+      "popularityScore": 65,
+      "priority": "low",
+      "comment": "一篇关于Maxis Software公司历史和创始人Will Wright的叙述性文章。",
+      "reason": "文章主题为游戏公司历史，与科技博客关注的核心技术主题关联度较低。",
+      "tags": [
+        "游戏历史",
+        "公司传记",
+        "Maxis",
+        "Will Wright"
+      ]
+    },
+    {
+      "title": "Best Simple System for Now",
+      "link": "https://dannorth.net/blog/best-simple-system-for-now/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-03T15:06:44.000Z",
+      "summary": "Article URL: https://dannorth.net/blog/best-simple-system-for-now/\nComments URL: https://news.ycombinator.com/item?id=48775949\nPoints: 30\n# Comments: 5",
+      "id": "79a3e7bb6cc3d343514d94cf8a11c58cf5b9828b3f6aaef8f09a812789a5b9c6",
+      "ref_id": "0",
+      "recommendationScore": 40,
+      "popularityScore": 35,
+      "priority": "low",
+      "comment": "一篇关于构建个人简单系统或方法的文章，偏向通用方法论。",
+      "reason": "内容与核心科技主题的优先级关联度较低，技术深度有限。",
+      "tags": [
+        "Productivity",
+        "System Design",
+        "Personal Development",
+        "Methodology"
+      ]
+    },
+    {
+      "title": "The Life and Times of Maxis, Part 1: SimEverything",
+      "link": "https://www.filfre.net/2026/07/the-life-and-times-of-maxis-part-1-simeverything/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-03T15:56:02.000Z",
+      "summary": "Article URL: https://www.filfre.net/2026/07/the-life-and-times-of-maxis-part-1-simeverything/\nComments URL: https://news.ycombinator.com/item?id=48776525\nPoints: 19\n# Comments: 0",
+      "id": "f8174579ba56b3102888b52edc7f00bc5aec58c0c1fb9cbec41ae10bcc97096e",
+      "ref_id": "0",
+      "recommendationScore": 30,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "回顾游戏公司Maxis的历史，对游戏产业史爱好者有价值，但技术深度和实用性一般。",
+      "reason": "主题偏离核心科技领域，信息密度和新颖性平平，且缺乏讨论热度。",
+      "tags": [
+        "游戏历史",
+        "产品设计",
+        "Maxis"
+      ]
+    },
+    {
+      "title": "Truth Social Is Still Just Trump’s Blog",
+      "link": "https://daringfireball.net/2025/06/truth_social_is_just_trumps_blog",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-02T19:38:45.000Z",
+      "summary": "After I linked to Commerce Secretary Howard Lutnick posting on Twitter/X about the Trump administration allowing Anthropic to once again release Claude Fable 5, I was reminded once again that no one else in the Trump administration uses Truth Social other than Trump himself. Not even Lutnick, a lickspittle among lickspittles.* The rest of them all use X. Which in turn reminds me of my observation from a year ago:\nI’ve been thinking about this for a few weeks, and in that time,\nTrump’s own posts on Truth Social have made the news on a\nnear-daily basis. I’ve never once, ever, seen a post from anyone\nelse on Truth Social make the news. Trump is not just the one and\nonly person of consequence using it, his is the one and only\naccount on Truth Social that you ever, ever hear about.\nIf Truth Social were actually meant to compete with X, Threads,\nBluesky, and Mastodon, this almost certainly would have been a\nsource of conflict between Trump and Musk. Because, if it were\nmeant to be an actual competitive social network, it would occur\nto Trump to require all his flunkeys and toadies not only to post\nto Truth Social, but to stop posting to X. But he hasn’t done\nthat, because Truth Social is functioning as intended: it’s just\nan outlet for Trump to spew his demented mad-king musings\n(today he’s retweeting calls for him to be added to Mount\nRushmore) and, most importantly, get some of his all-caps-laden\nbangers read aloud on the TV news.\n* Every single time I type Lutnick’s name I’m tempted to spell it “Nutlick”, but that’s too immature for the hallowed pages of this website.\n ★",
+      "id": "821f8efe5f0d82933baf09531eae4248593fd3f4f9c2089c845a69fd4e40c189",
+      "ref_id": "0",
+      "recommendationScore": 25,
+      "popularityScore": 35,
+      "priority": "low",
+      "comment": "文章探讨了Truth Social作为社交平台的实际使用情况，指出其主要用户仅为特朗普本人。",
+      "reason": "内容偏向政治评论和社交媒体行为观察，缺乏技术深度和对核心科技主题的关注。",
+      "tags": [
+        "社交媒体",
+        "政治",
+        "平台分析"
+      ]
+    },
+    {
+      "title": "America, 1926: What a Forgotten 100-Year-Old Report Says About Who We Are",
+      "link": "https://www.derekthompson.org/p/america-1926-an-absurdly-deep-dive",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-03T15:08:56.000Z",
+      "summary": "Article URL: https://www.derekthompson.org/p/america-1926-an-absurdly-deep-dive\nComments URL: https://news.ycombinator.com/item?id=48775979\nPoints: 51\n# Comments: 33",
+      "id": "1d00e491b0beaea1c6fa07272d034d57875741b25d72dc51d004306fd18552e6",
+      "ref_id": "4",
+      "recommendationScore": 15,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "一篇关于美国历史和社会报告的文章，与科技博客主题无关。",
+      "reason": "内容完全脱离科技范畴，对目标读者没有参考价值。",
+      "tags": [
+        "历史",
+        "社会学",
+        "文化评论"
+      ]
+    },
+    {
+      "title": "The UK’s generational tobacco ban might not work. I’m supporting it anyway.",
+      "link": "https://www.technologyreview.com/2026/07/03/1140036/uk-tobacco-ban-might-not-work-children-smoking/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-07-03T09:00:00.000Z",
+      "summary": "As the parent of two little girls, I often think about how their childhood is different from mine. The seven-year-old is learning about AI at school. The five-year-old is given internet-based homework every week. And they are both absolutely repulsed by the idea of smoking. That was not the prevailing sentiment when I was young.…",
+      "id": "6e349ab6e548ea89775395fd09894fb9e2e3ceddcd773e4e31c656451c708f78",
+      "ref_id": "1",
+      "recommendationScore": 15,
+      "popularityScore": 25,
+      "priority": "low",
+      "comment": "文章核心讨论公共卫生政策和个人观点，科技元素仅为背景提及。",
+      "reason": "主题与科技博客关注的AI、编程工具等优先级不符，科技内容极少。",
+      "tags": [
+        "社会议题",
+        "公共卫生",
+        "个人观点",
+        "非科技"
+      ]
+    },
+    {
+      "title": "Midnight Train to Stockholm",
+      "link": "https://matduggan.com/midnight-train-to-stockholm/",
+      "source": "matduggan.com",
+      "publishedAt": "2026-07-03T13:03:28.000Z",
+      "summary": "I was recently summoned to a meeting in Stockholm, a city I had somehow managed to avoid despite living in Copenhagen for years. My Swedish experience, up to this point, consisted entirely of trips to Malmö — the closest Swedish city to Denmark and, more importantly, home to a",
+      "id": "cf723e5b45c6b6668c13fb7f44dcf08732cb3487b8285e452d095bb3a8992b9f",
+      "ref_id": "1",
+      "recommendationScore": 15,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "一篇关于作者从哥本哈根到斯德哥尔摩的个人旅行日记。",
+      "reason": "内容为个人旅行经历，与任何指定的科技主题均不相关，不适合科技博客发布。",
+      "tags": [
+        "旅行",
+        "个人经历",
+        "斯德哥尔摩"
+      ]
+    },
+    {
+      "title": "The Download: a smoking “endgame” and a new Elizabeth Bear story",
+      "link": "https://www.technologyreview.com/2026/07/03/1140134/the-download-uk-smoking-ban-elizabeth-bear-story/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-07-03T12:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. The UK’s generational tobacco ban might not work. I’m supporting it anyway. —Jessica Hamzelou As the parent of two little girls, I often think about how their childhood is different from…",
+      "id": "47f48d538a4d0155cc0efcf671ffb1b9f2f1f83adaa426c74952c5292db99696",
+      "ref_id": "0",
+      "recommendationScore": 10,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "文章内容主要关注社会议题，与科技博客主题不符。",
+      "reason": "文章为普通新闻简报，缺乏科技深度和相关性。",
+      "tags": [
+        "社会议题",
+        "新闻简报",
+        "非科技"
+      ]
+    },
+    {
+      "title": "‘A Perfect Reflection of Trump’s Washington’",
+      "link": "https://politicalwire.com/2026/06/19/a-perfect-reflection-of-trumps-washington/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-02T19:14:31.000Z",
+      "summary": "Taegan Goddard, two weeks ago at Political Wire:\nThe Lincoln Memorial Reflecting Pool has become an almost\ntoo-perfect metaphor for Donald Trump’s presidency.\nHe promised a quick, cheap fix.\nInstead, taxpayers got a no-bid project that ballooned to more\nthan $14 million, delivered a freshly painted pool in “American\nFlag Blue,” and then promptly watched it turn green with algae as\nthe new coating began to peel just days after it was supposedly\nfinished.\nThat is Trumpism in miniature: a grand declaration, a flashy\ncosmetic overhaul, a politically connected contractor, and an\nimmediate failure blamed on someone else.\nWashington was supposed to be made beautiful again.\nInstead, the Reflecting Pool now looks like a murky swamp — a fitting reflection of a capital overwhelmed by corruption\nand chaos.\nLike I just wrote, it’s all kayfabe. It was never about actually improving the Reflecting Pool. All that mattered was that Trump said he would. The only real part was the taxpayer money funneled to a Trump crony. Just like how in pro wrestling, they charge fans real money for tickets. That’s real too.\nJust like in pro wrestling, Trump has even explained it all away by pinning the blame on non-existent “vandals” who not only caused the weeks-old $14-million pool lining to peel, but somehow filled the pool with left-wing algae. When I was a kid there was a WWF wrestler named “Cowboy” Bob Orton. Orton broke his arm (for real) and was given a special dispensation to wrestle while wearing a cast. Orton’s arm was actually broken for 8 weeks, but it was kayfabe “broken” for an entire year — during which he used the cast to bash the heads of his opponents when the referee was “distracted”. Trump’s Reflecting Pool vandals are no more real than the doctors who vouched that Orton needed to wear a hard cast for an entire year. (Orton might as well be Trump’s next secretary of health and human services.)\nKatie Rogers at The New York Times yesterday reported on how the entire city of Washington is now a fenced-in mess for the nation’s 250th birthday, the ostensible occasion for all these supposedly beautifying projects in the first place:\nPresiding over a series of fenced-off or under-construction\nfestivities ahead of the country’s 250th celebration is President\nTrump, who does not seem to mind that some of the nation’s most\nenduring symbols of liberty and expression are closed off and\nmilitarized.\n“Good Morning from the Pool!” he wrote on social media\nlate last week, posting an image of three soldiers standing guard\nat the pool’s edge, just in front of the Lincoln Memorial.\nIn his drive to “beautify” the nation’s capital, Mr. Trump seems\nto have turned portions of the city into either a construction\nzone or an armed camp as he seeks to prove that he alone can\nimprove a city he interacts with primarily from his armored\nlimousine or presidential helicopter.\nThere’s no “seems to have” about it. Trump did this. That’s like saying “Trump seems to have demolished the East Wing of the White House.” He did it. He did not beautify Washington DC for the nation’s 250th birthday this weekend. He trashed it. But he says he beautified it so that’s all that matters in MAGA Land.\n ★",
+      "id": "4f6ce28f0115ef1190f7ce2971f589df372c92c093b5b5d0773a4b79e8b678e7",
+      "ref_id": "1",
+      "recommendationScore": 10,
+      "popularityScore": 15,
+      "priority": "low",
+      "comment": "文章以林肯纪念堂倒影池的翻修问题为喻，批评了特朗普的执政风格。",
+      "reason": "此文是纯粹的政治评论，与科技博客的主题完全不符，无任何技术内容。",
+      "tags": [
+        "政治",
+        "评论"
+      ]
+    },
+    {
+      "title": "The Fall and Rise of Screwworm",
+      "link": "https://www.construction-physics.com/p/the-fall-and-rise-of-screwworm",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-03T12:58:47.000Z",
+      "summary": "Article URL: https://www.construction-physics.com/p/the-fall-and-rise-of-screwworm\nComments URL: https://news.ycombinator.com/item?id=48774492\nPoints: 59\n# Comments: 22",
+      "id": "eb4eef80cbe174c81b1feca5718ff4509adf15679d54903cb600643c30ad57d4",
+      "ref_id": "2",
+      "recommendationScore": 5,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "一篇关于螺旋蛆兴衰的生物/历史文章，与科技博客主题无关。",
+      "reason": "内容完全偏离科技博客的关注主题，不具备技术深度、新颖性或实用性。",
+      "tags": [
+        "非科技",
+        "生物",
+        "历史"
+      ]
+    },
+    {
+      "title": "The Fall and Rise of Screwworm",
+      "link": "https://www.construction-physics.com/p/the-fall-and-rise-of-screwworm",
+      "source": "construction-physics.com",
+      "publishedAt": "2026-07-03T12:02:57.000Z",
+      "summary": "Every spring, as sure as the seasons, and for generations unknown, screwworms began their annual march northward from their overwintering sanctuaries in Mexico and South Texas.",
+      "id": "eb4eef80cbe174c81b1feca5718ff4509adf15679d54903cb600643c30ad57d4",
+      "ref_id": "4",
+      "recommendationScore": 5,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "文章仅提供了一段关于螺旋蛆（screwworm）迁徙的生物学描述。",
+      "reason": "内容是纯粹的生物学主题，与科技博客的任何核心关注点都无关。",
+      "tags": [
+        "生物学",
+        "自然"
+      ]
+    },
+    {
+      "title": "June 2026 newsletter",
+      "link": "https://simonwillison.net/2026/Jul/3/june-newsletter/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-07-03T14:50:50.000Z",
+      "summary": "",
+      "id": "631dfdc403b947c1d7b059cc938b4456842824343076e66c34321a306ec00153",
+      "ref_id": "2",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "文章内容为空，无法进行任何评估。",
+      "reason": "缺乏任何可供分析的文本内容。",
+      "tags": [
+        "内容缺失"
+      ]
+    }
+  ]
+}
