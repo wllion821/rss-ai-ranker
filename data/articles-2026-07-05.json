@@ -1,0 +1,518 @@
+{
+  "dailySummary": "KiCad成功移植到浏览器，预示Web应用新可能。然而，原生与Web/Electron应用之争持续，Web加密安全问题亦引发深思。科技前沿在拓展Web边界的同时，正审视其固有挑战与局限。",
+  "articles": [
+    {
+      "title": "Show HN: KiCad in the Browser",
+      "link": "https://demo.pcbjam.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-05T12:06:57.000Z",
+      "summary": "KiCad, a PCB EDA suite is now working in a browser, you can try it at the link, there's a demo project or you can bring your own. Firefox is best, Chrome is good, Safari is \"working\".\nWe’re Emergence Engineering, a dev shop from Hungary, mostly working with rich text editors, CRDTs. PCBJam started as my (Viktor, CTO, ex-electrical engineer) hobby project but as time went on I put more\nand more energy into it, and a product started shaping up in my head, in the last few months we’ve started to focus on this project a bit more, and this is the first MVP~ish result.\nThis project is a ton of fun, ton of learning, ton of improvements over improvements:\n- I thought there must be ways to emulate the PCB canvas OpenGL code on the web. And yes, there are a lot of ways, all of them very buggy. Turns out it’s faster to just write WebGL code that works with\nKiCad’s Graphics Abstraction Layer if you add the right intermediate debugging steps. I (with Claude) implemented the features and compared them to native at every step, then the app loaded up the first \ntime and just worked. I spent weeks hunting weird emulation bugs before that.\n- There was an old wxWidgets web port as a starting point that helped a lot, bringing it up to the level KiCad needed is a long (and still ongoing) task. Thanks ahilss!\n- Pthreads on the web: with Emscripten it’s possible to port multithreaded apps (used by DRC, software 3D renderer). A lot of Emscripten features (Asyncify, Pthreads, native exceptions) are in a war with each other, but it’s possible.\n- Asyncify with native exceptions: Asyncify (used to make the WASM code suspend then call into the JS land, emulating blocking C++ calls by rewriting the WASM directly) is not compatible with native exceptions, even on the latest Binaryen version it can’t suspend inside catch arms. If you write a new Binaryen pass then it can, making the bundle 30-40% smaller and the app load in a second instead of 10.\n- Optimizing bundle size is a fun game. We just moved Open CASCADE into a separate lazy-loaded WASM module, moving from 180 to 130 MB (24 MB brotli), still on -O1. -O2 / -Oz etc will be more work than it\nlooks.\nAnd a ton more problems like these above on a daily basis.\nA few months ago I had a barely loading laggy pcbnew that crashed when you looked at it wrong, now we have the whole application working. I should say with quite a few bugs still, but now it feels pretty\nclose to native.\nThere’s a lot of built up knowledge / code that we want to release as blogposts, mainline our changes to Binaryen / KiCad / wxWidgets, but I want to focus on the release first. Our wxWidgets port is quite \nclose to the core, the KiCad is ~150 changed core files (mostly build scripts, some code changes too). The goal is to keep as close to the mainline as possible, and merge eventually.\nWe’ll have a free tier for sure and something around $30/mo for bigger/closed projects, optional paid AI integration / self hosting / enterprise features / native & mobile version down the line.\nThe goal is to build a product on top of KiCad (collaboration, AI integration, sharing, integrations), kind of like what Red Hat did with Linux back then. We’re heads down making it functional and have the\nfirst version up in a ~month or so.\nAnd of course we’re standing on the shoulders of the people who made KiCad & wxWidgets and we want to give back and contribute as much as possible, if you have an idea on how to do that best let me know, I\nreleased a few moderately successful open source projects, but I’ve never been a contributor. All of the front-end code is GPL (it has to be) and you can run this project if you want.\nYou can find the sources at: https://github.com/emergence-engineering/pcbjam.\nOur company site is at:\nhttps://emergence-engineering.com/\nOur crappy LP is at: \nhttps://www.pcbjam.com/\nComments URL: https://news.ycombinator.com/item?id=48793542\nPoints: 55\n# Comments: 26",
+      "id": "a640b868c4894a68108276339c92ceba3ebff19b4a10acefc2deef7500062c2e",
+      "ref_id": "3",
+      "recommendationScore": 95,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "将复杂的PCB设计工具KiCad搬到浏览器，技术实现极具挑战性和创新性，并提及AI辅助。",
+      "reason": "完美结合了高技术深度（WebGL、复杂应用移植）、新颖性（AI辅助、浏览器化）与实用性，涉及编程工具和AI辅助，符合最高优先级主题。",
+      "tags": [
+        "KiCad",
+        "EDA",
+        "WebAssembly",
+        "WebGL",
+        "编程工具",
+        "独立开发",
+        "AI辅助",
+        "产品设计"
+      ]
+    },
+    {
+      "title": "Better Models: Worse Tools",
+      "link": "https://simonwillison.net/2026/Jul/4/better-models-worse-tools/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-07-04T22:53:52.000Z",
+      "summary": "",
+      "id": "8ee24b1ad01cae6a587441ffe234ed9a9c1161d571d301d43ccf954e9901ea71",
+      "ref_id": "3",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "对AI模型进步与配套工具退化之间矛盾的深度思考，直击当前AI发展痛点。",
+      "reason": "抓住了当前AI发展中的一个核心痛点，具有极高的现实指导意义和讨论价值，符合AI主题的最高优先级。",
+      "tags": [
+        "AI",
+        "工具",
+        "用户体验",
+        "开发效率",
+        "AI发展",
+        "产品设计"
+      ]
+    },
+    {
+      "title": "From the DF Archive: ‘Electron and the Decline of Native Apps’",
+      "link": "https://daringfireball.net/2018/12/electron_and_the_decline_of_native_apps",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-04T19:28:45.000Z",
+      "summary": "Yours truly, back in 2018:\nI don’t share the depth of their pessimism regarding native apps,\nbut Electron is without question a scourge. I think the Mac will\nprove more resilient than Windows, because the Mac is the platform\nthat attracts people who care. But I worry.\nIn some ways, the worst thing that ever happened to the Mac is\nthat it got so much more popular a decade ago. In theory, that\nshould have been nothing but good news for the platform — more\nusers means more attention from developers. The more Mac users\nthere are, the more Mac apps we should see. The problem is, the\nusers who really care about good native apps — users who know\nHIG violations when they see them, who care about performance,\nwho care about Mac apps being right — were mostly already on\nthe Mac. A lot of newer Mac users either don’t know or don’t care\nabout what makes for a good Mac app.\nThis eight-year-old piece holds up well. My concern was justified, but so too was my lack of defeatist pessimism. Truly native, idiomatically correct Mac-assed Mac apps are resurgent. Electron and its brethren non-native frameworks have not receded, but they haven’t gained further ground. For every Claude (Electron) there’s a ChatGPT (AppKit). I’m seeing more new good Mac apps released today than I was in 2018, and longstanding Mac stalwarts continue to thrive. High tide seems to have passed without washing the native platform away.\nApple itself is a good example. The Mac version of Journal, first introduced in MacOS 26 Tahoe, is a profound disappointment — not just because of serious bugs but because it’s un-Mac-like in sad ways. You can’t open an entry into its own window, for example. But the brand-new Siri app in the developer betas of MacOS 27 Golden Gate is pretty Mac-like. You can double-click chats in list view to open them in their own windows, for example. (You can’t double-click chats in grid view to open them into windows, though — presumably a bug.) Siri is not a great Mac app but it does feel like a Mac app, and it’s only a 1.0 in its second developer beta. It doesn’t feel like an iOS app running in a Mac window, like Journal does.\nThe ironic frustration with Anthropic’s Claude app being an Electron turd is that Claude and especially Claude Code are so capable of helping to create good native Mac apps. It’s one thing for a big company or organization with cross-platform aspirations but no institutional Mac expertise, like Notion or Slack or Discord, to choose Electron to create their Mac client. It’s another when it’s a company like Anthropic, whose only product’s single most impressive ability is generating programming code, including high-quality AppKit and SwiftUI code for the Mac. To return to my hammering-screws-into-the-walls metaphor from yesterday, it’s as though the building into which Anthropic decided to hammer all the screws is a renowned screwdriver factory.\n ★",
+      "id": "489433e82882646274516bea3a08707ea071e1587d27bf3a6271aa5e30ce3e3b",
+      "ref_id": "4",
+      "recommendationScore": 93,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "对原生应用与Electron之争及其对Mac生态影响的经典回顾与反思，观点犀利且经久不衰。",
+      "reason": "文章深入探讨了软件开发选择对用户体验和平台生态的长远影响，对Apple生态和产品设计有深刻洞察，具有长期的讨论价值和极高的人气潜力。",
+      "tags": [
+        "Apple 生态",
+        "Mac",
+        "Electron",
+        "原生应用",
+        "产品设计",
+        "软件开发",
+        "用户体验"
+      ]
+    },
+    {
+      "title": "Building a World Map with only 500 bytes",
+      "link": "https://simonwillison.net/2026/Jul/4/building-a-world-map-with-only-500-bytes/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-07-04T23:09:02.000Z",
+      "summary": "",
+      "id": "ec4a208082d2296b9c381566216f71950c684a98afd45f41c7377d8c8c6dd9ad",
+      "ref_id": "2",
+      "recommendationScore": 92,
+      "popularityScore": 80,
+      "priority": "medium",
+      "comment": "极致优化，以极小体积构建世界地图的奇技淫巧，展示了令人惊叹的编程技巧。",
+      "reason": "该文章在技术深度和新颖性上表现突出，通过极端限制展示了非凡的编程和优化能力，能激发读者思考。",
+      "tags": [
+        "编程技巧",
+        "数据可视化",
+        "优化",
+        "低资源开发",
+        "独立开发"
+      ]
+    },
+    {
+      "title": "Why DMARC's new \"NP\" tag can fail with DNSSEC",
+      "link": "https://dmarcwise.io/blog/dmarc-np-incompatibility-with-dnssec",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-05T15:00:21.000Z",
+      "summary": "Article URL: https://dmarcwise.io/blog/dmarc-np-incompatibility-with-dnssec\nComments URL: https://news.ycombinator.com/item?id=48794788\nPoints: 7\n# Comments: 0",
+      "id": "794502a340c2dc954b01e53d40c5acb27650e075bfbb6a7a0f48d54f61454dca",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 15,
+      "priority": "high",
+      "comment": "深入剖析了DMARC新NP标签与DNSSEC可能存在的兼容性问题。",
+      "reason": "技术深度高，针对邮件和DNS安全的关键痛点提供了实用解决方案和警示，对专业人士极具价值。",
+      "tags": [
+        "网络安全",
+        "DMARC",
+        "DNSSEC",
+        "编程工具",
+        "邮件协议"
+      ]
+    },
+    {
+      "title": "The Log is the Agent",
+      "link": "https://arxiv.org/abs/2605.21997",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-05T02:57:38.000Z",
+      "summary": "Article URL: https://arxiv.org/abs/2605.21997\nComments URL: https://news.ycombinator.com/item?id=48790912\nPoints: 87\n# Comments: 34",
+      "id": "146fbd2a6d8effbaf3c5d9d78ae57d9a2f3bc3d50ec4b1ad28899ba5bad420b7",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 18,
+      "priority": "high",
+      "comment": "一篇关于“日志即智能体”的学术论文，深入探讨AI和分布式系统前沿理论。",
+      "reason": "技术深度极高，涉及AI和分布式系统的前沿研究，与AI主题高度契合。",
+      "tags": [
+        "AI",
+        "研究",
+        "分布式系统",
+        "智能体"
+      ]
+    },
+    {
+      "title": "sqlite-utils 4.0rc2, mostly written by Claude Fable (for about $149.25)",
+      "link": "https://simonwillison.net/2026/Jul/5/sqlite-utils-fable/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-07-05T01:00:48.000Z",
+      "summary": "",
+      "id": "ef10e0f5c9baeb91e45381a57d4359467104307ad376e178481a9d23687d04a7",
+      "ref_id": "0",
+      "recommendationScore": 88,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "探讨AI辅助编程的成本与实践，结合实用工具发布，具有较高的前瞻性和实用性。",
+      "reason": "将AI与具体编程工具的开发成本结合，话题新颖且实用，对开发者决策有参考价值，符合AI和编程工具的高优先级。",
+      "tags": [
+        "AI",
+        "编程工具",
+        "SQLite",
+        "开发成本",
+        "软件开发"
+      ]
+    },
+    {
+      "title": "Web-based cryptography is always snake oil",
+      "link": "https://www.devever.net/~hl/webcrypto",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-05T08:01:29.000Z",
+      "summary": "Article URL: https://www.devever.net/~hl/webcrypto\nComments URL: https://news.ycombinator.com/item?id=48792203\nPoints: 57\n# Comments: 63",
+      "id": "e41df758c25d22f9d34523423dbb74cb6147a22115386a7e70fc9b0707304eb9",
+      "ref_id": "3",
+      "recommendationScore": 87,
+      "popularityScore": 33,
+      "priority": "medium",
+      "comment": "尖锐批判网络加密的固有缺陷，对Web安全开发者有重要的警示意义。",
+      "reason": "技术深度高，实用性强，直接关乎Web开发安全，是编程工具领域的重要议题。",
+      "tags": [
+        "Web Security",
+        "Cryptography",
+        "Programming Tools",
+        "Security"
+      ]
+    },
+    {
+      "title": "Solar rail could become common in Europe after successful trial in Switzerland",
+      "link": "https://www.euronews.com/2026/07/05/italy-could-be-the-next-country-to-build-a-solar-railway-after-switzerlands-successful-tri",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-05T14:49:42.000Z",
+      "summary": "Article URL: https://www.euronews.com/2026/07/05/italy-could-be-the-next-country-to-build-a-solar-railway-after-switzerlands-successful-tri\nComments URL: https://news.ycombinator.com/item?id=48794704\nPoints: 47\n# Comments: 36",
+      "id": "eff6557e52c2b1d792e0e473a2ef15ba08c6839e04103836bf878913f538e028",
+      "ref_id": "4",
+      "recommendationScore": 85,
+      "popularityScore": 95,
+      "priority": "medium",
+      "comment": "瑞士成功试运行太阳能轨道，预示欧洲清洁能源交通新趋势。",
+      "reason": "具有重要的环境和社会实用价值，代表了清洁能源与基础设施结合的重大技术进展。",
+      "tags": [
+        "清洁能源",
+        "太阳能",
+        "交通",
+        "基础设施",
+        "自动化",
+        "可持续发展"
+      ]
+    },
+    {
+      "title": "Shadcn/UI now defaults to Base UI instead of Radix",
+      "link": "https://ui.shadcn.com/docs/changelog",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-05T04:46:08.000Z",
+      "summary": "Article URL: https://ui.shadcn.com/docs/changelog\nComments URL: https://news.ycombinator.com/item?id=48791328\nPoints: 233\n# Comments: 125",
+      "id": "ddf1957dd9796a2d31ee753e23f1ae64ff227bf5cd6099bf7f4dd73c591f5d9b",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 53,
+      "priority": "high",
+      "comment": "Shadcn/UI 宣布将 Base UI 作为默认组件库，是前端开发领域的重要更新。",
+      "reason": "对大量前端开发者具有直接实用价值，属于编程工具类高优先级主题。",
+      "tags": [
+        "编程工具",
+        "前端开发",
+        "UI/UX",
+        "Web 开发"
+      ]
+    },
+    {
+      "title": "Introduction to Compilers and Language Design",
+      "link": "https://dthain.github.io/books/compiler/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-05T11:54:16.000Z",
+      "summary": "Article URL: https://dthain.github.io/books/compiler/\nComments URL: https://news.ycombinator.com/item?id=48793454\nPoints: 171\n# Comments: 24",
+      "id": "2f85eea631aa77bcc04591b6b5697c4b7c55af7c3c09b903f02158629296a602",
+      "ref_id": "0",
+      "recommendationScore": 83,
+      "popularityScore": 100,
+      "priority": "medium",
+      "comment": "深入探讨编译器与语言设计的基础知识，对于系统级开发者极具价值。",
+      "reason": "文章技术深度高，对编程工具领域的专业人士具有重要的学习和参考价值。",
+      "tags": [
+        "Programming Tools",
+        "Compilers",
+        "Language Design",
+        "Education"
+      ]
+    },
+    {
+      "title": "Autonomous flying umbrella follows and shields users from rain and sunlight",
+      "link": "https://www.designboom.com/technology/autonomous-flying-umbrella-follows-users-rain-sunlight-i-build-stuff-01-13-2026/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-05T15:49:18.000Z",
+      "summary": "Article URL: https://www.designboom.com/technology/autonomous-flying-umbrella-follows-users-rain-sunlight-i-build-stuff-01-13-2026/\nComments URL: https://news.ycombinator.com/item?id=48795174\nPoints: 17\n# Comments: 11",
+      "id": "3f7c0e3c3a99204b77fc9a0cb78624ff84e164cfbe5e064bc1699a0c9ca774b7",
+      "ref_id": "1",
+      "recommendationScore": 80,
+      "popularityScore": 55,
+      "priority": "high",
+      "comment": "一款具备自动跟随功能的智能飞行雨伞，极具创意。",
+      "reason": "创新性强，属于自动化和产品设计交叉领域，具高实用性和市场潜力。",
+      "tags": [
+        "自动化",
+        "产品设计",
+        "智能硬件",
+        "创新"
+      ]
+    },
+    {
+      "title": "Organic Maps",
+      "link": "https://organicmaps.app/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-05T14:14:30.000Z",
+      "summary": "Article URL: https://organicmaps.app/\nComments URL: https://news.ycombinator.com/item?id=48794446\nPoints: 326\n# Comments: 86",
+      "id": "3f58f99d7aa7e2c961b3d4291f8c31f38b99add0b86ed2ed1f225bf04818ef28",
+      "ref_id": "0",
+      "recommendationScore": 70,
+      "popularityScore": 80,
+      "priority": "medium",
+      "comment": "一个实用的开源离线地图应用，注重用户隐私。",
+      "reason": "提供了一个高质量的、注重隐私的地图解决方案，具有广泛的实用性，属于独立开发和产品设计范畴。",
+      "tags": [
+        "地图",
+        "开源",
+        "隐私",
+        "独立开发",
+        "移动应用",
+        "产品设计"
+      ]
+    },
+    {
+      "title": "sqlite-utils 4.0rc2",
+      "link": "https://simonwillison.net/2026/Jul/5/sqlite-utils/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-07-05T00:47:38.000Z",
+      "summary": "",
+      "id": "1888c3f9b8d874b09ef0672c9c4441a0615418f0116ec1d1e88046dcacc565cf",
+      "ref_id": "1",
+      "recommendationScore": 70,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "`sqlite-utils`工具的最新版本发布，对现有用户具有直接实用价值。",
+      "reason": "作为特定编程工具的常规更新，虽然新颖性一般，但对使用该工具的开发者仍是重要信息。",
+      "tags": [
+        "编程工具",
+        "SQLite",
+        "软件更新"
+      ]
+    },
+    {
+      "title": "Fast Software, the Best Software (2019)",
+      "link": "https://craigmod.com/essays/fast_software/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-05T07:25:25.000Z",
+      "summary": "Article URL: https://craigmod.com/essays/fast_software/\nComments URL: https://news.ycombinator.com/item?id=48792008\nPoints: 97\n# Comments: 50",
+      "id": "dde9f8380f06e1c5c87614c9c880ca238fc9b90f87b17b69bdf627e7ca6cf0b4",
+      "ref_id": "4",
+      "recommendationScore": 67,
+      "popularityScore": 57,
+      "priority": "medium",
+      "comment": "强调快速软件的重要性，提供通用的软件工程和产品设计原则。",
+      "reason": "文章实用性极高，对于所有软件开发人员和产品经理都是永恒且重要的指导原则。",
+      "tags": [
+        "Software Engineering",
+        "Performance",
+        "Product Design",
+        "User Experience",
+        "Programming Principles"
+      ]
+    },
+    {
+      "title": "Phosh 0.56.0",
+      "link": "https://phosh.mobi/releases/rel-0.56.0/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-05T13:28:11.000Z",
+      "summary": "Article URL: https://phosh.mobi/releases/rel-0.56.0/\nComments URL: https://news.ycombinator.com/item?id=48794179\nPoints: 122\n# Comments: 42",
+      "id": "3d5fb021ced7e6769f02bd1e200da6752f1bfd069cd4b4aa0aef7679c2172301",
+      "ref_id": "2",
+      "recommendationScore": 65,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "Linux手机用户界面的最新版本发布，对开源移动生态有贡献。",
+      "reason": "关注了Linux手机这一小众但重要的开源领域，体现了持续的开发进展和编程工具的应用。",
+      "tags": [
+        "Linux手机",
+        "开源",
+        "移动操作系统",
+        "用户界面",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "If you're a button, you have one job",
+      "link": "https://unsung.aresluna.org/if-youre-a-button-you-have-one-job/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-05T02:01:03.000Z",
+      "summary": "Related: https://aresluna.org/show-your-hands-honor/\nComments URL: https://news.ycombinator.com/item?id=48790689\nPoints: 460\n# Comments: 225",
+      "id": "f7e1ff5221264724b50c27eee4c71c27d920e5cd074f6482ded8bfce04c0b47a",
+      "ref_id": "4",
+      "recommendationScore": 65,
+      "popularityScore": 100,
+      "priority": "low",
+      "comment": "强调按钮设计应遵循单一职责原则，以提升用户体验和可用性。",
+      "reason": "提供了实用的产品设计和UI/UX指导，虽技术深度不高但用户关注度极高，对广泛的开发者和设计师有参考价值。",
+      "tags": [
+        "产品设计",
+        "UI/UX",
+        "可用性"
+      ]
+    },
+    {
+      "title": "Megawatts by Microwave",
+      "link": "https://computer.rip/2026-07-04-microwave-and-power.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-05T05:56:03.000Z",
+      "summary": "Article URL: https://computer.rip/2026-07-04-microwave-and-power.html\nComments URL: https://news.ycombinator.com/item?id=48791591\nPoints: 61\n# Comments: 5",
+      "id": "5ef1986e8b7c51de101f5fcaa2a7d1db0603968d797caff6b7ffe496cdba66f6",
+      "ref_id": "0",
+      "recommendationScore": 60,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "探讨微波输电这一未来能源技术，概念新颖但短期实用性较低。",
+      "reason": "文章涉及前瞻性工程概念，但与核心科技主题关联度不强，且短期内缺乏实用价值。",
+      "tags": [
+        "能源",
+        "未来科技",
+        "工程"
+      ]
+    },
+    {
+      "title": "Run Windows 2000 on a DEC Alpha with a new es40 fork",
+      "link": "https://raymii.org/s/blog/Run_Windows_2000_for_Dec_Alpha_on_a_new_es40_fork.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-05T13:47:44.000Z",
+      "summary": "Article URL: https://raymii.org/s/blog/Run_Windows_2000_for_Dec_Alpha_on_a_new_es40_fork.html\nComments URL: https://news.ycombinator.com/item?id=48794302\nPoints: 40\n# Comments: 13",
+      "id": "a22f4c916885fa6e53ef633263c6d9ae3a83401b5f7e23d8f18e37a5a451690d",
+      "ref_id": "1",
+      "recommendationScore": 55,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "极客向的复古计算项目，技术挑战性高但受众极窄。",
+      "reason": "对特定小众群体具有高技术兴趣和探索价值，但在实用性和普适性上得分较低，非主流科技主题。",
+      "tags": [
+        "复古计算",
+        "操作系统",
+        "硬件",
+        "模拟",
+        "编程工具",
+        "小众"
+      ]
+    },
+    {
+      "title": "EU Council forces Chat Control via fast-track",
+      "link": "https://www.heise.de/en/news/Chat-Control-1-0-EU-Council-forces-messenger-scans-via-fast-track-11353659.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-05T11:44:04.000Z",
+      "summary": "Article URL: https://www.heise.de/en/news/Chat-Control-1-0-EU-Council-forces-messenger-scans-via-fast-track-11353659.html\nComments URL: https://news.ycombinator.com/item?id=48793393\nPoints: 165\n# Comments: 70",
+      "id": "471c9bdf85a03bee956cbcde3baf875992de824f6ea09d9dcdce2c8379dc90f3",
+      "ref_id": "1",
+      "recommendationScore": 37,
+      "popularityScore": 96,
+      "priority": "low",
+      "comment": "关注欧盟聊天监控政策的最新进展，对隐私和数字权利有重大影响。",
+      "reason": "虽然主题优先级不高，但作为时事新闻，其社会和政治影响力巨大，受众广泛。",
+      "tags": [
+        "Policy",
+        "Privacy",
+        "EU",
+        "Chat Control",
+        "Current Events"
+      ]
+    },
+    {
+      "title": "The Plight of the Martian Farmer",
+      "link": "https://mceglowski.substack.com/p/the-plight-of-the-martian-farmer",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-05T16:04:23.000Z",
+      "summary": "Article URL: https://mceglowski.substack.com/p/the-plight-of-the-martian-farmer\nComments URL: https://news.ycombinator.com/item?id=48795303\nPoints: 17\n# Comments: 3",
+      "id": "c28b11583cc38ab9ff2d06177671670b79d0e09bfad14a8a985c313ffa5892ad",
+      "ref_id": "0",
+      "recommendationScore": 35,
+      "popularityScore": 45,
+      "priority": "low",
+      "comment": "一篇关于火星农夫困境的想象性文章，探讨未来农业挑战。",
+      "reason": "内容过于科幻且缺乏直接的技术实用性，与核心科技主题关联度低。",
+      "tags": [
+        "科幻",
+        "未来",
+        "农业",
+        "太空探索"
+      ]
+    },
+    {
+      "title": "Moby Dick Workout (2022)",
+      "link": "https://www.hogbaysoftware.com/posts/moby-dick-workout/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-05T04:30:33.000Z",
+      "summary": "Article URL: https://www.hogbaysoftware.com/posts/moby-dick-workout/\nComments URL: https://news.ycombinator.com/item?id=48791266\nPoints: 87\n# Comments: 28",
+      "id": "f9739ac137ecb13f9410bf63984b31958ea92cb09099ac1b411e126b4f06b8d7",
+      "ref_id": "2",
+      "recommendationScore": 35,
+      "popularityScore": 17,
+      "priority": "low",
+      "comment": "介绍了一种以经典文学为灵感的独特写作或思维训练方法。",
+      "reason": "内容偏向个人生产力和写作，技术深度和与核心科技主题的相关性较低。",
+      "tags": [
+        "生产力",
+        "写作"
+      ]
+    },
+    {
+      "title": "It's not about physical vs. digital games, it's about ownership",
+      "link": "https://popcar.bearblog.dev/its-about-ownership/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-05T14:56:15.000Z",
+      "summary": "Article URL: https://popcar.bearblog.dev/its-about-ownership/\nComments URL: https://news.ycombinator.com/item?id=48794750\nPoints: 4\n# Comments: 1",
+      "id": "ab7938ef6f9f620309ca6349be7a688185cf8b450f64efa7d8798be897cfbd8c",
+      "ref_id": "3",
+      "recommendationScore": 25,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "探讨了物理与数字游戏背后的所有权概念，而非技术之争。",
+      "reason": "内容偏向社会哲学讨论，技术关联性弱，不符合核心科技博客主题。",
+      "tags": [
+        "游戏",
+        "数字版权",
+        "所有权",
+        "消费者权益"
+      ]
+    },
+    {
+      "title": "Pi squared is nearly 10",
+      "link": "https://mihai.page/pi-square-is-10/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-05T10:50:53.000Z",
+      "summary": "Article URL: https://mihai.page/pi-square-is-10/\nComments URL: https://news.ycombinator.com/item?id=48793073\nPoints: 45\n# Comments: 45",
+      "id": "0830b72462087e670ba7b8c8af35bbe3f54f3c2fdc32c6ac68dedb60638054a1",
+      "ref_id": "2",
+      "recommendationScore": 12,
+      "popularityScore": 26,
+      "priority": "low",
+      "comment": "一篇关于π²接近10的数学趣文，内容轻松但与主要科技主题关联度较低。",
+      "reason": "文章缺乏技术深度和实用性，与设定的科技博客主题优先级不符。",
+      "tags": [
+        "Mathematics",
+        "Curiosity"
+      ]
+    },
+    {
+      "title": "Cannabis users face substantially higher risk of heart attack (2025)",
+      "link": "https://www.acc.org/about-acc/press-releases/2025/03/17/15/35/cannabis-users-face-substantially-higher-risk",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-05T11:59:27.000Z",
+      "summary": "Article URL: https://www.acc.org/about-acc/press-releases/2025/03/17/15/35/cannabis-users-face-substantially-higher-risk\nComments URL: https://news.ycombinator.com/item?id=48793492\nPoints: 111\n# Comments: 142",
+      "id": "26cbdfe4419b67f21b46f52869a76f0d34542300c4ccfe624d42856ac660d614",
+      "ref_id": "4",
+      "recommendationScore": 5,
+      "popularityScore": 65,
+      "priority": "low",
+      "comment": "与科技博客主题不符的健康研究文章。",
+      "reason": "核心内容与科技博客的关注主题（如AI、编程工具等）不符，缺乏技术相关性。",
+      "tags": [
+        "健康",
+        "医学",
+        "非科技"
+      ]
+    }
+  ]
+}
