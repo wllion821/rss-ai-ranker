@@ -1,0 +1,760 @@
+{
+  "dailySummary": "今日科技速递：Feyn发布Pulpie AI模型，实现高效低成本网页内容清洗。桌面AI应用体验受瞩，AMD推出AI开发套件，AI代理赋能Office文件处理。同时，“随机鹦鹉”概念引AI伦理讨论，",
+  "articles": [
+    {
+      "title": "Show HN: Pulpie – Models for Cleaning the Web",
+      "link": "https://usefeyn.com/blog/pulpie-pareto-optimal-models-for-cleaning-the-web/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-06T16:04:27.000Z",
+      "summary": "Hey HN, I'm Shreyash, founder of Feyn. We built Pulpie, a family of Pareto optimal models for cleaning the web. Pulpie strips boilerplate (ads, footers, sidebars) from raw HTML and returns just the main content as HTML or Markdown.\nWe match SOTA extraction quality while being 20x cheaper. Cleaning 1 billion webpages costs $7,900 with Pulpie versus $159,000 with Dripper, the current leading extractor.\nThe gains come from architecture. Today's leading extractors are decoders that generate output one token at a time. Each step reads the full model from memory to produce a single token. Conversely, Pulpie models are encoders. They run one forward pass over the full input HTML and label each block as boilerplate or content. As a result, Pulpie is compute-bound while decoders are memory-bound. Cheaper GPUs have relatively more compute than memory bandwidth. This makes Pulpie easy to run optimally.\nHere's Pulpie and Dripper cleaning the same pages side by side: https://www.youtube.com/watch?v=ibd-tIiQECo. You can try a side-by-side comparison yourself: https://huggingface.co/spaces/feyninc/pulpie\nOur motivation for Pulpie came from building a deep research harness. Every search API returns noisy content that contains ads, nav elements, and sidebars. In one instance, an ad for \"Gemini on Pixel\" slipped into our search results, got passed into LLM context, and ended up in the final answer served to the user. Pretty embarrassing moment for us but it helped us realize how bad data kills model intelligence. We built Pulpie to get clean data for cheap.\nAll models are open source on Hugging Face. You can read about our training process and how to use Pulpie here: https://usefeyn.com/blog/pulpie-pareto-optimal-models-for-cl...\nHappy to answer any questions!\nComments URL: https://news.ycombinator.com/item?id=48806575\nPoints: 30\n# Comments: 4",
+      "id": "b0e5ef879ae90560cd90285cd7ee9aee7baa57e7dc61dd37d975924ef87a8bb0",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "Pulpie提供了一种20倍成本更低的网页内容提取模型，通过独特的编码器架构实现。",
+      "reason": "技术深度高，创新性强，在网页数据清洗方面具有极高的实用性和成本效益，直接关联AI和编程工具。",
+      "tags": [
+        "AI",
+        "网页清洗",
+        "数据提取",
+        "编程工具",
+        "性能优化",
+        "架构"
+      ]
+    },
+    {
+      "title": "The AI Superforecasters Are Here",
+      "link": "https://www.astralcodexten.com/p/the-ai-superforecasters-are-here",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-06T15:45:11.000Z",
+      "summary": "Article URL: https://www.astralcodexten.com/p/the-ai-superforecasters-are-here\nComments URL: https://news.ycombinator.com/item?id=48806296\nPoints: 21\n# Comments: 12",
+      "id": "3e45bfd23848eed3451019816783078ba43a36642aa1f235b5c8a544f35169f1",
+      "ref_id": "1",
+      "recommendationScore": 95,
+      "popularityScore": 40,
+      "priority": "high",
+      "comment": "深入分析了AI在未来预测和高级决策辅助方面的潜在能力和发展前景。",
+      "reason": "作为AI领域的顶级前沿话题，它揭示了人工智能未来在战略洞察和预判中的关键作用，优先级极高且内容富有深度和新颖性。",
+      "tags": [
+        "AI",
+        "人工智能",
+        "预测",
+        "未来趋势",
+        "决策支持"
+      ]
+    },
+    {
+      "title": "Allen Pike, Back in November: ‘Why Is ChatGPT for Mac So Good?’",
+      "link": "https://allenpike.com/2025/why-is-chatgpt-so-good-claude/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-06T17:37:05.000Z",
+      "summary": "Allen Pike, back in November (and corresponding Hacker News thread):\nStill, I wouldn’t count out the possibility of a change in course\nhere. While mobile is king, desktop is still where work happens.\nWhile OpenAI has acquired Sky to double down on desktop,\nGoogle has long been all-in on the browser. That leaves Anthropic\nas the challenger on desktop, with their latest models begging to\nbe paired with well-crafted apps.\nA few months ago Google launched a native Gemini app for the Mac. A month ago I wrote about why it’s not that great, and annoyingly presumptuous. Almost all good Mac apps are native; not all native Mac apps are good.\nWhat keeps me using ChatGPT and keeps me away from using Claude is not that ChatGPT happens to be written using native APIs like AppKit. It’s that it looks and feels like a Mac app — you know, with a Settings window that is ... a window. And even more so, with very cool features like its ability to attach a chat to an open document in BBEdit or Notes. When ChatGPT is attached to an open document in another app, it’s not a snapshot at the moment of attachment, like what you’d get by copying and pasting the whole thing into the chat, or by dragging the current version of the file into the chat. It’s a live ongoing attachment, so as the attached document/note changes, ChatGPT sees the changes. It’s such a great feature, and I don’t think it exists on any platform but the Mac. And it couldn’t exist on iOS, by design, doesn’t allow for inter-application communication.\nI worry for ChatGPT’s future, though.\nWhile Anthropic could surprise everybody by dropping a native Mac\napp, I would bet against that. There’s a lot of headroom available\nto them just by investing in doing Electron well, mixing in bits\nof native code where needed, and hill-climbing from “website in\nshell” to “great app that happens to use web technology”.\nJust as ChatGPT’s unexpected success woke OpenAI to the\nopportunities of being more product-centric, the breakout hit of\nClaude Code might warm Anthropic to the importance of investing in\ndelightful tools. Last year they brought on Mike Krieger as\nCPO, who certainly seems like he could rally a team in this\ndirection given the chance.\nI don’t know what Krieger is doing there, but it sure doesn’t seem like he’s focused on creating delightful tools.\nSee Also: In December 2024 Allen Pike was my guest on The Talk Show, for an episode largely focused on AI.\n ★",
+      "id": "67b7bc824509f52c2c298bfd98e4faa6bb63c30017e6420510441c1ce1fd1e83",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "深度解析Mac平台AI应用的用户体验差异，强调原生设计与系统集成的关键价值。",
+      "reason": "完美结合“AI”和“Apple生态”两大高优先级主题，提供高实用性和对产品设计的深刻洞察。",
+      "tags": [
+        "AI",
+        "Apple生态",
+        "macOS",
+        "ChatGPT",
+        "应用设计",
+        "用户体验",
+        "生产力"
+      ]
+    },
+    {
+      "title": "Show HN: I Built LangGraph for Swift",
+      "link": "https://github.com/christopherkarani/Swarm",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-06T14:47:45.000Z",
+      "summary": "Article URL: https://github.com/christopherkarani/Swarm\nComments URL: https://news.ycombinator.com/item?id=48805437\nPoints: 14\n# Comments: 3",
+      "id": "12650ba778e15dab27dd4adbeddd2530a6550d3b3934231e17558aa569c72d8c",
+      "ref_id": "1",
+      "recommendationScore": 92,
+      "popularityScore": 30,
+      "priority": "high",
+      "comment": "Swift版LangGraph的实现，为Apple生态的AI开发带来强大工具。",
+      "reason": "高度符合AI和Apple生态优先级，技术深度和新颖性突出，对特定开发者群体极具实用性。",
+      "tags": [
+        "AI",
+        "Swift",
+        "LangGraph",
+        "LLM",
+        "Programming Tools",
+        "Apple Ecosystem"
+      ]
+    },
+    {
+      "title": "OfficeCLI: Office suite for AI agents to read and edit Microsoft Office files",
+      "link": "https://github.com/iOfficeAI/OfficeCLI",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-06T16:47:44.000Z",
+      "summary": "Article URL: https://github.com/iOfficeAI/OfficeCLI\nComments URL: https://news.ycombinator.com/item?id=48807225\nPoints: 16\n# Comments: 1",
+      "id": "3ac15a787d97b1270b4f1e7001690b58a7c1c93914d0ec099e62ca13014a045b",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 35,
+      "priority": "high",
+      "comment": "OfficeCLI是为AI代理设计的，用于读写微软Office文件的工具套件。",
+      "reason": "极具实用性的AI编程工具，解决了AI处理Office文档的痛点，技术深度和新颖性兼具。",
+      "tags": [
+        "AI",
+        "编程工具",
+        "自动化",
+        "Office",
+        "文档处理"
+      ]
+    },
+    {
+      "title": "AMD Ryzen AI Halo – $4k AI Dev Kit",
+      "link": "https://www.lttlabs.com/articles/2026/07/06/amd-ryzen-ai-halo",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-06T15:01:18.000Z",
+      "summary": "Article URL: https://www.lttlabs.com/articles/2026/07/06/amd-ryzen-ai-halo\nComments URL: https://news.ycombinator.com/item?id=48805624\nPoints: 136\n# Comments: 108",
+      "id": "cb3a71a5f5f1e5a503003c8928d20e4bf27244d898c821ee89ec2c20aad8d97b",
+      "ref_id": "0",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "深入探讨AMD最新的AI开发套件，适合AI开发者。",
+      "reason": "主题高度契合AI优先级，内容涉及前沿硬件与开发工具，信息量大且实用，具有较高技术深度。",
+      "tags": [
+        "AI",
+        "Hardware",
+        "Development Kit",
+        "AMD",
+        "Ryzen"
+      ]
+    },
+    {
+      "title": "What Emily Bender meant by \"stochastic parrots\"",
+      "link": "https://spectrum.ieee.org/stochastic-parrot",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-06T14:45:31.000Z",
+      "summary": "Article URL: https://spectrum.ieee.org/stochastic-parrot\nComments URL: https://news.ycombinator.com/item?id=48805401\nPoints: 117\n# Comments: 145",
+      "id": "d26b65eeefd01204f4de1d159e7ee62f0eae645d53cbe74dc7140fb565995956",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "深入解读“随机鹦鹉”概念，批判性思考LLM的本质和局限。",
+      "reason": "紧密围绕AI主题，提供了对AI模型深层次的理解，信息密度高，能引发广泛且有意义的讨论。",
+      "tags": [
+        "AI",
+        "LLM",
+        "Ethics",
+        "Philosophy",
+        "Theory"
+      ]
+    },
+    {
+      "title": "Why low-latency Java still requires discipline?",
+      "link": "https://chronicle.software/insights/blogs/why-low-latency-java-still-requires-discipline",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-06T13:03:35.000Z",
+      "summary": "Article URL: https://chronicle.software/insights/blogs/why-low-latency-java-still-requires-discipline\nComments URL: https://news.ycombinator.com/item?id=48804017\nPoints: 62\n# Comments: 33",
+      "id": "04be0dddfd38e59ecef587def38041ab177befa3d70a7bf0a79f47f9dffa86dd",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 55,
+      "priority": "high",
+      "comment": "深入探讨了低延迟Java开发的挑战与实践，技术深度和实用性极高。",
+      "reason": "该文章属于高优先级的“编程工具”主题，对需要进行性能优化的Java开发者具有极高的技术深度和实用价值。",
+      "tags": [
+        "Java",
+        "Low-Latency",
+        "Performance Optimization",
+        "Programming",
+        "JVM"
+      ]
+    },
+    {
+      "title": "sqlite-utils 4.0rc3",
+      "link": "https://simonwillison.net/2026/Jul/6/sqlite-utils/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-07-06T05:40:08.000Z",
+      "summary": "",
+      "id": "1eb6e47c95e4808e2c6000738c0e4092886dc9ea1810586135c2a3d838eb403a",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "发布了 sqlite-utils 4.0rc3，预计将详细介绍该实用编程工具的新功能和改进。",
+      "reason": "属于高优先级的“编程工具”主题，对开发者具有高实用性和技术参考价值。",
+      "tags": [
+        "编程工具",
+        "SQLite",
+        "Python",
+        "数据库",
+        "开发"
+      ]
+    },
+    {
+      "title": "Amazon will stop accepting new customers for Mechanical Turk",
+      "link": "https://techcrunch.com/2026/07/05/amazon-will-stop-accepting-new-customers-for-mechanical-turk/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-06T12:51:12.000Z",
+      "summary": "Article URL: https://techcrunch.com/2026/07/05/amazon-will-stop-accepting-new-customers-for-mechanical-turk/\nComments URL: https://news.ycombinator.com/item?id=48803886\nPoints: 114\n# Comments: 35",
+      "id": "d1a423c6491023229a5cdc0c1a02fe118694cb1cfe4efe526025cfeecdaa23a5",
+      "ref_id": "3",
+      "recommendationScore": 88,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "亚马逊叫停Mechanical Turk新用户注册，对AI及众包行业影响深远。",
+      "reason": "此为重大行业新闻，直接影响AI训练数据和众包生态系统，与AI主题高度相关且具有极高的新颖性和实用性。",
+      "tags": [
+        "Amazon",
+        "Mechanical Turk",
+        "Crowdsourcing",
+        "AI",
+        "Business News",
+        "Platform"
+      ]
+    },
+    {
+      "title": "I'm just so bored of AI",
+      "link": "https://shkspr.mobi/blog/2026/07/im-just-so-bored-of-ai/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-07-06T11:34:18.000Z",
+      "summary": "I'm just so bored of talking about AI. It's like listening to vapers tell me how delicious their flavoured poison is.  Did you ever meet someone at university who'd just tried drugs for the first time? Listening to a stoner ramble on about their mystic crystal revelations is amusing for the first five minutes, but quickly gets tiresome. Wow! You got your little computer friend to automate calling …",
+      "id": "d4b534bfc38855ef490db87ade2761b7963636b08bcb1f7f135de8a37229f42c",
+      "ref_id": "4",
+      "recommendationScore": 85,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "作者表达了对当前 AI 炒作和过度宣传的厌倦与反思。",
+      "reason": "在 AI 热潮中提供了一个冷静且具有批判性的独特视角，引发读者共鸣与思考。",
+      "tags": [
+        "AI",
+        "观点",
+        "技术评论",
+        "科技趋势",
+        "反思"
+      ]
+    },
+    {
+      "title": "Kani: A Model Checker for Rust",
+      "link": "https://arxiv.org/abs/2607.01504",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-06T15:53:24.000Z",
+      "summary": "Article URL: https://arxiv.org/abs/2607.01504\nComments URL: https://news.ycombinator.com/item?id=48806410\nPoints: 38\n# Comments: 1",
+      "id": "a83f1ad22dfa8d283881d23f13ad44daab772cb4402c3d8ad41ae24873f3c540",
+      "ref_id": "0",
+      "recommendationScore": 80,
+      "popularityScore": 30,
+      "priority": "medium",
+      "comment": "深入探讨了Rust语言的形式化验证工具Kani模型检查器，旨在提升软件可靠性。",
+      "reason": "对于追求高可靠性和安全性的Rust开发者而言，这篇文章提供了有价值的工具和技术洞察，符合编程工具主题。",
+      "tags": [
+        "Rust",
+        "模型检查",
+        "形式化验证",
+        "编程工具",
+        "软件工程"
+      ]
+    },
+    {
+      "title": "Fable 5 On Vending-Bench: Misbehaving, With Plausible Deniability",
+      "link": "https://andonlabs.com/blog/fable5-vending-bench",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-06T12:38:13.000Z",
+      "summary": "Article URL: https://andonlabs.com/blog/fable5-vending-bench\nComments URL: https://news.ycombinator.com/item?id=48803762\nPoints: 123\n# Comments: 75",
+      "id": "012f7abd90677ec27839d5af577459f7155002ae0879654c46f9a2834e0b0c04",
+      "ref_id": "4",
+      "recommendationScore": 80,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "一篇关于特定系统（Fable 5 Vending-Bench）故障诊断的深度技术文章。",
+      "reason": "文章可能涉及自动化或嵌入式系统的编程工具，技术深度高，对特定领域专家具有强实用性，但普适性相对较低。",
+      "tags": [
+        "Embedded Systems",
+        "IoT",
+        "Troubleshooting",
+        "Hardware",
+        "Software Engineering",
+        "Automation"
+      ]
+    },
+    {
+      "title": "C2PA only works if everything is signed",
+      "link": "https://seangoedecke.com/c2pa-only-works-if-everything-is-signed/",
+      "source": "seangoedecke.com",
+      "publishedAt": "2026-07-06T00:00:00.000Z",
+      "summary": "",
+      "id": "b2e5cab6d4e8a6759cf3def0c0a0d5eb9b65e3a233c2819bc1b9aa8bbac5a77e",
+      "ref_id": "3",
+      "recommendationScore": 80,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "探讨C2PA内容真实性标准在实际应用中的局限性与挑战。",
+      "reason": "涉及数字内容信任和技术标准，与AI时代的内容鉴别有重要关联，具备较强技术探讨潜力。",
+      "tags": [
+        "数字安全",
+        "内容真实性",
+        "C2PA",
+        "信息管理",
+        "数字签名"
+      ]
+    },
+    {
+      "title": "Big Tech Has Suddenly Flipped on the AI Jobs Wipeout Scenario",
+      "link": "https://www.wsj.com/tech/ai/ai-workers-tech-ceos-job-losses-afc71e15",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-06T17:16:41.000Z",
+      "summary": "Article URL: https://www.wsj.com/tech/ai/ai-workers-tech-ceos-job-losses-afc71e15\nComments URL: https://news.ycombinator.com/item?id=48807651\nPoints: 13\n# Comments: 2",
+      "id": "69497ae7467613f851447448084b00cc654c97fe73472a32c01eb5e886119765",
+      "ref_id": "0",
+      "recommendationScore": 75,
+      "popularityScore": 40,
+      "priority": "high",
+      "comment": "探讨了大型科技公司对AI取代工作岗位的立场转变。",
+      "reason": "关注AI社会影响及行业动态，提供了一个新的视角，主题优先级高。",
+      "tags": [
+        "AI",
+        "就业",
+        "经济影响",
+        "科技政策"
+      ]
+    },
+    {
+      "title": "Nintendo announces new product revisions in Europe with replaceable batteries",
+      "link": "https://www.nintendo.com/en-gb/Support/Nintendo-Switch-2/Information-about-upcoming-battery-related-revisions-to-some-Nintendo-products-3132901.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-06T13:18:16.000Z",
+      "summary": "Article URL: https://www.nintendo.com/en-gb/Support/Nintendo-Switch-2/Information-about-upcoming-battery-related-revisions-to-some-Nintendo-products-3132901.html\nComments URL: https://news.ycombinator.com/item?id=48804193\nPoints: 216\n# Comments: 143",
+      "id": "09e09ff7e536187578a03184f43e5c2af7362e683b06b99c608de03f20503393",
+      "ref_id": "1",
+      "recommendationScore": 75,
+      "popularityScore": 90,
+      "priority": "medium",
+      "comment": "任天堂关于可更换电池的产品修订公告，对消费者和行业具有重要意义。",
+      "reason": "这是一则重要的行业新闻，涉及消费电子产品的可持续性和用户权利，具有较高的实用性和新颖性。",
+      "tags": [
+        "Consumer Electronics",
+        "Hardware",
+        "Sustainability",
+        "Nintendo",
+        "Gaming"
+      ]
+    },
+    {
+      "title": "Amazon Basics, but for intellectual property. ",
+      "link": "https://idiallo.com/blog/amazon-basics-but-intellectual-property",
+      "source": "idiallo.com",
+      "publishedAt": "2026-07-06T07:00:00.000Z",
+      "summary": "Amazon has been accused several times for ripping off merchants on its platform. And every single time they denied any wrongdoing.\n\t\t\t\nA merchant, or anyone really, can create a product (or source it from China), then resell it on amazon. Amazon is the service provider, and hosts all the metrics concerning the products. If Amazon themselves were in the business of creating and selling products, then that creates a potential of conflict of interest. Because they have the data of all products that sell and sell well. They could replicate that success without doing any further research since the merchant has already confirmed the existence of demand. \nIt's not surprising that Amazon Basics quickly became the best selling \"private-label brand\" on Amazon. They already know what sells because they have access to the data. Yet they continued to deny it, and state that they only ever use publicly available data from sellers.\nAn Amazon spokesperson said the company believes the allegations are \"factually incorrect and unsubstantiated,\" adding that Amazon strictly prohibits the \"use or sharing of non-public, seller-specific data for the benefit of any seller, including sellers of private brands.\"\nYet the results are right there for all to see.\nIf you sell any product through Amazon, you are exposing your company's operations to them. If you want to keep that information to yourself, then you don't get to reach your customers, which in reality are Amazon's customers.\nIf you want to buy something online, and get it shipped as quickly as possible, then Amazon is a blessing. Most often than not, you are not buying the product directly from Amazon. An independent store or vendor with a presence on Amazon will fulfill your order. The seller only has minor identifying characteristics on the platform. On the search result page, the space designated to the seller is small and insignificant. The customer has very few reminders that products are offered by anyone but Amazon. (Although if you want to dispute a sale, you are starkly reminded that the item is from a 3rd party vendor.)\nSo there is no surprise when companies embrace AI internally, they are putting themselves at the risk of sharing their product with their competitors. Maybe the most obvious example is when Antropic came up with Claude Design. A tool to help users generate designs, wireframes, etc. Kinda like Figma.\nThat's not a problem on its own, but when Antropic's chief product officer sits on Figma's board of directors, you can't say that there isn't a conflict of interest there. In fact, the chief product officer resigned from the board merely days before Claude Design was announced. He basically extracted all value from Figma then resigned. Figma's AI features are built on top of Claude. So Anthropic literally pulled an Amazon Basic on Figma.\nWhen companies force their own employees to use AI to do their day to day work, they are basically asking employees to upload company data to a 3rd party that may become a competitor. Sure something in the contract clause says that the AI company won't train on enterprise customer data, but nothing stops them from peaking at successful product data.\nWhenever someone tells me that they used AI to build an app and boast of its values or uniqueness, I want to remind them that if you can just prompt-create a product, so can the AI provider. In fact, they might have better resources to create a competing product if it displays any sign of success (see Figma). \nWhile it looks like plenty of people are benefitting from AI today, all this information is being shared with AI providers. We are giving them full access to our thought process. When you include them in your workflow, you are basically providing them with a step by step approach on how to do your job.\nDon’t be surprised when you see a native Antropic/OpenAi project management application suite. Or a CRM, or any software that is trying to integrate with AI and may experience success. \nA few years back, when I worked in Customer Service Automation, we discovered that most companies used Zendesk to manage their customer service. Since customers mainly contacted support via email, an intentional database had been built that tracked users through their shopping experience throughout the web. \nWhile so much could be done with that data, like identifying “problematic” customers, or recommending products based on their history, we ended up finding something more helpful. We could easily detect a pattern of issues for certain shipping carriers. We could see when UPS was having delays in certain cities, or when Fedex was having technical issues when updating the last mile status. None of these things were features designed or provided by anyone. However, having access to businesses’ data gave us insight where we had none before.\nThat became a feature for us, only because we were not competitors to all these online retailers.\nWhen you expose your company's internal data to a potential competitor, don’t be surprised when they build a competing business to rival you.",
+      "id": "37524733d7ba1eb1f795730367e640da919457554e3ca5fdeec9c3aadb512ea9",
+      "ref_id": "3",
+      "recommendationScore": 75,
+      "popularityScore": 80,
+      "priority": "low",
+      "comment": "深入探讨了亚马逊利用平台数据复制商家产品的商业伦理争议。",
+      "reason": "揭示了电商平台的潜在利益冲突，对独立开发者和商家具有警示和参考价值。",
+      "tags": [
+        "电商",
+        "商业伦理",
+        "亚马逊",
+        "知识产权",
+        "平台经济"
+      ]
+    },
+    {
+      "title": "Life with hazard ratios",
+      "link": "https://dynomight.net/hazard-ratios/",
+      "source": "dynomight.net",
+      "publishedAt": "2026-07-06T00:00:00.000Z",
+      "summary": "If you read anything about health or longevity, you’ll soon find yourself in a world of hazard ratios. Some study might say that eating more fiber might change your risk of dying by a factor of HR = 0.90. Another might say that occasional smoking might change it by HR = 1.30.\nBut how much should you care about that? Is HR = 0.90 or HR = 1.30 a lot? What if you don’t want to eat more fiber? What if you like smoking?\nInstead of staring at a ratio1, a more sensible thing to do is think about life expectancy.2 But is it possible to convert a hazard ratio to a change in life expectancy? You might reason as follows: Baseline life expectancy is around 75 years. And HR = 0.90 corresponds to a 10% decrease in mortality. So perhaps that hazard ratio corresponds to something like 7.5 extra years of life expectancy?\nUnfortunately, that’s completely wrong. To see why, imagine that humans only die by playing Russian roulette. They start playing this once per day at the age of 75, with a revolver containing two bullets and six chambers. If you were to remove one of those two bullets, that would drop the person’s risk of death by HR = 0.5. (One bullet versus two.) But life expectancy would barely change, because even with just one bullet, almost nobody would survive for any significant amount of time past 75.\nFor contrast, imagine again that humans only die via Russian roulette, but now they do this once per day from birth with a revolver with 2 bullets and 54,786 chambers. (Newborns emerge and instinctively reach for this gigantic gun.) You can show that these people also live 75 years on average. But now, if you remove one of the bullets, life expectancy doubles, because when someone is spared, it takes a long time before they get unlucky again.3\nNeither of those is a good model for humans. We’re somewhere between the two, with heart disease and so on instead of revolvers and risks slowly rising as we age instead of suddenly starting at age 75 or staying constant throughout life. But you get the point: If you want to convert a hazard ratio for some intervention to a change in life expectancy, the impact depends on how “spread out” baseline mortality risk is over time. Baseline life expectancy is simply not enough information.\nThat’s one problem. Here’s another: What even is a hazard ratio? The technical definition is something like:\nThe hazard ratio at a given time is the rate of an event in the treatment group divided by the rate of that event in the control group.\nHazard ratios are often confused with their more beloved siblings, relative risks. Say you run a trial for 10 years and at the end, 10% of the control group died and 8% of the treatment group. Then the relative risk is RR = 0.8, nice and simple. But relative risks have problems, most notably that if you run a long enough trial, then no one will be alive at the end no matter the intervention, meaning RR = 1.0. That’s not helpful. Intuitively, you can think of the hazard ratio at age 40 as sort of like the relative risk for people between the ages of 39.99 and 40.01.\nIn real life, interventions have different hazard ratios at different ages. Chemotherapy tends to have better results in younger patients who are more able to endure the side-effects. Having a slightly higher BMI (25-30 rather than 20-25) is associated with an increased risk of mortality in young people, but a decreased risk in the elderly. You may remember from 2020 that COVID’s mortality risk had a different age curve than baseline mortality, meaning the hazard ratio of getting COVID was different at different ages.\nThis is important, because hazard ratios at different ages have different impacts on life expectancy. A hazard ratio of 0.9 at age 80 prevents more deaths than at age 20, because baseline mortality is higher at 80. But at the same time, if you save the life of a 20 year-old, they have more years in front of them. Beyond that, the hazard ratios at different ages interact: If some intervention decreases mortality at younger ages, that allows more people to reach older ages, increasing how much hazard ratios matter at older ages.4\nIf we knew the hazard ratio at all ages, we could account for those dynamics. But we don’t, because when estimating hazard ratios, people almost always assume that the hazard ratio is constant.5 We’re quasi-forced to do this because there’s not enough data to estimate a whole time-series of ratios. That’s why papers contain single numbers like HR = 0.90.\nSo even though Intervention A (say, more fiber) and Intervention B (say, light jogging) might have the same hazard ratio in a paper, those numbers could be the product of different underlying age-dependent effects, meaning those interventions could conceivably lead to vastly different changes in life expectancy.\nSo is this all hopeless? Are single hazard ratio numbers just too far removed from what we care about to tell us anything meaningful?\nSurprisingly, no. It’s mostly OK. If we were a different species, it might be hopeless. But for modern humans in rich countries, mortality happens to be distributed in a way that produces a sort of lucky coincidence: When people estimate constant hazard ratio numbers, they’re implicitly sorta-kinda taking a weighted average of hazard ratios at different ages. And those weights happen to (sorta-kinda) reflect how much changes in mortality at different ages change.\nSo, I will argue, even if the true intervention has a varying effect, it’s sorta-mostly OK to just take a hazard ratio from a paper and convert it to a change in life expectancy using this curve:\n\nIf a paper showed that eating more fiber produces a hazard ratio of HR = 0.75, that corresponds to an increase of around 3.7 years. If a paper says that occasional smoking produces a hazard ratio of HR = 1.25, that corresponds to a decrease of around 2.9 years.\nThis isn’t exact. If the intervention is better (or less bad) for older people this will tends to overestimate the increase (or underestimate the decrease) in life expectancy. If the intervention is worse (or less good) for older people, it will tend to underestimate the increase (or overestimate the decrease) in life expectancy. But as long as the hazard ratio doesn’t vary too much by age, it’s probably not off my more than around 30% in either direction.\nThe easy case\nSay there’s some intervention (eating more fiber or whatever) that multiplies your risk of dying at age t by a factor of HR(t). Then it can be shown that this changes life expectancy by approximately\n  ΔL ≈ ∑ₜ ΔHR(t) × P(t) × L(t).\nHere, P(t) is the baseline probability of dying at age t. For males in the United States, it looks like this:\n\nMeanwhile, L(t) is conditional life expectancy at age t. That’s the average number of additional years left for someone who reaches age t. For males in the United States, it looks like this:\n\nFinally, ΔHR(t) is the decrease in hazard at age t. You can think of that as just ΔHR(t) = 1 - HR(t). Though if you’re OK with logarithms, there’s a somewhat better approximation that uses logarithms, which I’ve quarantined in a footnote.6\nLet’s start with the easy case. What if your intervention has the same effect on mortality at all ages, so HR(t)=HR is just a constant? Then, the above equation simplifies into\n  ΔL ≈ ΔHR × L̄,\nwhere\n  L̄ = ∑ₜ P(t) × L(t).\nThis makes sense! Again, P(t) is the baseline probability of dying at age t and L(t) is conditional life expectancy at age t. These are constant, so when you add them up, L̄ is just a number. For males in the United States, it happens to be 12.93 years. This quantity has a specific meaning: The average remaining life expectancy for US males when they die. That sounds a bit odd, but think of picking a random death and asking how many additional years people who reach that age live on average. That number is 12.93 years.\nSo, if an intervention has a constant hazard ratio, the mean change in life expectancy for US males is just\n  ΔL ≈ ΔHR × 12.93 years.\nNow we’re getting somewhere! If you prevent a fraction ΔHR of deaths, then you increase life expectancy by ΔHR times 12.93 years.\nNow remember the naive calculation we started with: Life expectancy for US males is 75.8 years. You might hope that if eating more fiber drops your risk of death by 10%, that would save 7.58 years. Sadly, the above equation says that a 10% drop in risk only increases life expectancy by around 1.293 years—only 0.17 times as much.\nThis is essentially the observation Keyfitz made in his 1977 paper, “What Difference Would It Make if Cancer Were Eradicated?” Cancer is responsible for 18 percent of deaths, so does that mean eradicating it would increase lifespan by 18 percent, or around 13.6 years? Nope, Keyfitz says, it’s only 2.3 years.\nIf a cure for cancer were discovered and made available today, 350,000 cancer deaths would be avoided in the next year. The overall death rate would be lower by nearly 18 percent. If the cure were quick and inexpensive, a large fraction of the country’s hospital beds and medical personnel would be released for treatment of other ailments. Patients would be spared untold suffering. Such an implicit analysis underlies government proposals for eradication of cancer. The argument is sound for first effects on mortality but wholly misleading for the long term.\nThe first effects would soon be offset by more mortality from diseases other than cancer. As a result of the cancer cures, the population would include a higher proportion of people subject to other causes of death. […]\nAt the extreme, it might be said that everyone dies of something sooner or later, so that, when the effects of the eradication of cancer had shaken down, the same number of deaths would occur as before, and the only benefit would be the substitution of heart and other diseases for cancer. A cure for cancer would only have the effect of giving people the opportunity to die of heart disease.\nCheerful stuff! We can also write our approximation in terms of baseline life expectancy as\n  ΔL ≈ ΔHR × 0.17 × 75.8 years,\nwhich makes explicit that 12.93 years is only 0.17 times as large as a naive estimate using baseline life expectancy. The discount factor of 0.17 is sometimes called the “Keyfitz entropy”. You can think of it as measuring how close some population is to playing Russian roulette with 2 bullets in 6 chambers starting at age 75 (a discount factor of just above 0) and playing Russian roulette from birth with 2 bullets and 54,786 chambers (a discount factor of 1.0). It’s typically around 0.15 in rich countries today, though it was historically much higher.\nKeyfitz entropy is also much higher in other species like mice (perhaps 0.45). You could argue that this explains why nothing that increases lifespan in mice ever translates to humans. Say caloric restriction or whatever produced the same constant hazard ratio in mice and humans. Then it’s mathematically guaranteed that the percentage increase in life expectancy will be three times smaller in humans, because Keyfitz entropy is three times smaller in humans. It’s harder to increase life expectancy when the baseline mortality distribution is more compressed.7\nBut that’s all assuming the hazard ratio is the same at all ages. Which it surely isn’t.\nThe interesting case\nHere again is our equation for the change in life expectancy in response to taking some action that changes the risk of mortality at age t by a factor of HR(t):\n  ΔL ≈ ∑ₜ ΔHR(t) × P(t) × L(t),\nBasically, for each age t, we multiply together three numbers:\nΔHR(t) is the decrease in the chance of dying at age t as a result of whatever intervention you’ve made (e.g. eating more fiber). This reflects that larger decreases in risk lead to larger increases in life expectancy.\nP(t) is the baseline probability of dying at age t. This reflects that the hazard ratio is a ratio, so you prevent more deaths when you apply that ratio to ages where the baseline rate is higher.\nL(t) is conditional life expectancy at age t. This reflects that you miss out on more years of life if you die when you’re young.\nNow notice: The impact of a change ΔHR(t) at age t is the product of the baseline risk of death P(t) and remaining life expectancy L(t). So what really matters is their product, P(t) × L(t):\n\nThis shows how sensitive life expectancy is to changes in hazard ratios at different ages. It would be nice if this were constant. Then, the shape of HR(t) wouldn’t matter at all, only the average value. That’s not quite true, but it’s not terribly far from being true.\nAn equivalent way of writing our equation for the change in life expectancy is\n  ΔL ≈ avg(ΔHR) × L̄,\nwhere L̄ is still mean “life expectancy at death” (12.93 years for US males) and avg(ΔHR) is the average change in hazard, weighted by the P(t) × L(t) sensitivity curve at different ages.8 While that sensitivity curve isn’t constant, it’s not too curvy, either. Intuitively, it gives a lot of weight to ages between 50 and 90, somewhat less weight to ages between 20 and 50, and little weight to other ages.9\nSo that’s not too bad. But let’s remember our original problem: You see some number like HR = 0.90 in a paper, and you want to convert it to a change in life expectancy. If the true underlying hazard ratio were constant, then there’s no problem. But if it’s not constant, then what does that HR = 0.90 number even mean?\nNumbers in papers\nUnfortunately, you almost never get to see the underlying time-dependent HR(t), because there’s almost never enough data to estimate it. So it’s almost never possible to compute the weighted average avg(ΔHR). In reality what you have is probably a single number in a paper. Let’s call that number est(HR). The obvious thing to do would be to plug the change into the above equation in place of avg(ΔHR) and approximate the change in life expectancy as\n  ΔL ≈ est(ΔHR) × L̄.\nAgain, you can just think of est(ΔHR) = 1-est(HR) as being the estimated reduction in hazard. Although, again, I’d prefer you use logarithms if you’re OK with logarithms.10 So the question is: Will that be accurate? How close are est(ΔHR) and avg(ΔHR)?\nWell, how do people actually estimate those scalar hazard ratio numbers in papers? Somehow, they’re aggregating together information about hazards at different ages into a single number. But how? Well, it’s complicated. But if there’s a lot of data, you can show that the estimated scalar hazard ratio is approximately11\n  est(HR) ≈ Πₜ HR(t)ᵖ⁽ᵗ⁾.\n(Pardon the hideous typsetting.) That is, the estimated hazard ratio is the geometric average of age-dependent hazard ratios, weighted by the probability of dying at each age. It follows12 that the estimated change in hazard is approximately\n  est(ΔHR) ≈ ∑ₜ P(t) ΔHR(t).\nSo ideally, we’d estimate life expectancy using avg(ΔHR), which averages the changes ΔHR(t) based on the weights P(t) × L(t). But we can’t do that, because we don’t have access to the ΔHR(t) numbers. What we can do is read a hazard ratio number in a paper, call it est(HR) and then compute the change est(ΔHR). The above equation says that if you do that, you are implicitly (and approximately) averaging the changes ΔHR(t) based on the weights P(t) alone.\nThe “right” weights used by avg(ΔHR) and the “wrong” weights implicitly used by est(ΔHR) aren’t the same. But they’re not that different. Here’s P(t) × L(t), the weights that we’d like to use to compute avg(ΔHR) and estimate changes in life expectancy accurately:\n\nAnd here’s P(t), the weights you’re implicitly using if we take a hazard ratio number from a paper and compute est(ΔHR):\n\nThey’re different. In particular, the latter weights give more weight to people aged 80-95 and less weight to people aged 20-50. But they’re not terribly different.\nEnough math, let’s try it\nTo start, imagine some intervention that decreases risk by HR(t)=0.9 for all ages.\n\nHere are the results:\nThing\n      Formula\n      Years\n    \nOriginal life expectancy\n      L\n      75.7769\n    \nNew life expectancy\n      L’\n      76.4127\n    \nExact ΔL\n      ΔL = L - L’\n      0.6358\n    \nIdeal approximation\n      ΔL ≈ avg(ΔHR) × L̄\n      0.6409\n    \nUse number from paper\n      ΔL ≈ est(ΔHR) × L̄\n      0.6409\n    \nLet me explain what’s happening here. I made a simulator that takes actuarial data for how likely US males are to die at various ages. From this, it’s a simple spreadsheet calculation to compute life expectancy L.13 Then I applied a hazard ratio to change the probability of dying at each age, and re-ran the simulator to compute a new life expectancy L’ and the exact difference ΔL. Then I’m showing two approximations of ΔL: The first is the “ideal approximation” using avg(ΔHR), which I’m including mostly to show that my math is good. Finally, I’m showing the approximation you get if you actually fit a Cox proportional hazards model and use the resulting number in est(ΔHR). This corresponds to what you’d get if you plug in a number from a paper.\nSo, with the above constant hazard ratio HR = 0.90, both approximations are very good. This remains true if you switch to some other constant.\nWhat if the hazard ratio varies? At first, you might think that something like this would be very problematic:\n\nBut it’s basically fine:\nThing\n      Formula\n      Years\n    \nOriginal life expectancy\n      L\n      75.7769\n    \nNew life expectancy\n      L’\n      77.4373\n    \nExact ΔL\n      ΔL = L - L’\n      1.6604\n    \nIdeal approximation\n      ΔL ≈ avg(ΔHR) × L̄\n      1.7451\n    \nUse number from paper\n      ΔL ≈ est(ΔHR) × L̄\n      1.7121\n    \nThe reason this is fine is that the changes in the hazard ratio are relatively “high frequency”, meaning they sort of locally average out. To demonstrate this, suppose the hazard ratio is chosen randomly for each 1-year bin:\n\nThen the approximations are even better:\nThing\n      Formula\n      Years\n    \nOriginal life expectancy\n      L\n      75.7769\n    \nNew life expectancy\n      L’\n      77.4218\n    \nExact ΔL\n      ΔL = L - L’\n      1.6449\n    \nIdeal approximation\n      ΔL ≈ avg(ΔHR) × L̄\n      1.7059\n    \nUse number from paper\n      ΔL ≈ est(ΔHR) × L̄\n      1.7123\n    \nWhat causes trouble is if the hazard ratio varies systematically between the young and the old. For example, suppose the intervention is useless for newborns, but gradually becomes more helpful as you get older:\n\nMy “ideal approximation” would still be pretty accurate, if you could compute it. (Which you can’t, in the real world.) But using a number from a paper leads to an overestimate:\nThing\n      Formula\n      Number\n    \nOriginal life expectancy\n      L\n      75.7769 years\n    \nNew life expectancy\n      L’\n      77.9031 years\n    \nExact ΔL\n      ΔL = L - L’\n      2.1261 years\n    \nIdeal approximation\n      ΔL ≈ avg(ΔHR) × L̄\n      2.0962 years\n    \nUse number from paper\n      ΔL ≈ est(ΔHR) × L̄\n      2.7645 years\n    \nThis happens because est(ΔHR) is implicitly weighted by P(t) which is heavily weighted towards older people, whereas we’d like to use something more like avg(ΔHR) which is weighted by P(t) × L(t) which is somewhat less weighted towards older people. Even so, the error isn’t terrible.\nNow, it is possible that plugging in a hazard ratio from a paper could give wildly inaccurate estimates of life expectancy. One such scenario would be an intervention which is amazing for people aged 85-95, but does nothing for anyone else:\n\nNow, the hazard ratio looks good exactly at the ages where est(ΔHR) has the most weight, leading it to hugely overestimate the impact on life expectancy:\nThing\n      Formula\n      Number\n    \nOriginal life expectancy\n      L\n      75.7769 years\n    \nNew life expectancy\n      L’\n      76.1741 years\n    \nExact ΔL\n      ΔL = L - L’\n      0.3972 years\n    \nIdeal approximation\n      ΔL ≈ avg(ΔHR) × L̄\n      0.3840 years\n    \nUse number from paper\n      ΔL ≈ est(ΔHR) × L̄\n      1.0989 years\n    \nAnother nightmare case is an intervention that starts out harmful, but then switches to being helpful at older ages:\n\nNow, using a number from a paper doesn’t even give an estimate with the right sign.\nThing\n      Formula\n      Number\n    \nOriginal life expectancy\n      L\n      75.7769 years\n    \nNew life expectancy\n      L’\n      75.5006 years\n    \nExact ΔL\n      ΔL = L - L’\n      -0.2764 years\n    \nIdeal approximation\n      ΔL ≈ avg(ΔHR) × L̄\n      -0.2348 years\n    \nUse number from paper\n      ΔL ≈ est(ΔHR) × L̄\n      +0.2709 years\n    \nThat’s bad. But I think most interventions probably aren’t like that? My guess is that most real interventions vary somewhat with age, but they do so gradually and without switching sign. In those cases, it’s quite difficult to find cases where plugging in the number from a paper is off by more than 30% or so. If you don’t believe me, just try it.14\nTLDR\nIf we were another species, it might be very hard to convert from hazard ratios to changes in life expectancy. But for modern people in rich countries, there are three lucky coincidences:\nMortality risk happens to be distributed so that you can approximate changes in life expectancy through a simple weighted sum of hazard ratios at different ages, ignoring interactions.\nThe statistical method that people use to estimate scalar hazard ratios can also be approximated as a weighted sum of hazard ratios at different ages, ignoring interactions.\nThe weights that you need to estimate life expectancy (from #1) and the weights that are implicitly used to compute hazard ratio numbers (from #2) aren’t the same. But they’re fairly close.\nThese facts justify taking an estimated hazard ratio number HR from a paper and approximating the change in life expectancy as ΔL ≈ ln(1/HR) × 12.93 years or, if the hazard ratio is close to one and you hate logarithms, as ΔL ≈ (1-HR) × 12.93 years.\n\nThe number 12.93 years is for US males. It’s the product of Keyfitz entropy (0.17) and baseline life expectancy (75.8 years). It will vary a bit in other populations.\nIf the true underlying hazard ratio:\n…is constant across ages, then the above approximation will be extremely good.\n…decreases as people get older, that approximation will overestimate ΔL. That is, it will make helpful interventions look better than they actually are, and it will make harmful interventions look less bad than they actually are.\n…increases as people get older, that approximation will underestimate ΔL. That is, it will make helpful interventions look less good than they actually are, and it will make harmful interventions look worse than they actually are.\nBut as long as the true underlying hazard ratio isn’t too crazy, there’s probably not more than ~30% error in either direction.\nFinally, two major caveats: First, the above discussion assumes that the hazard ratio was estimated by running a trial on people of all ages. In general, est(ΔHR) implicitly gives weight to different ages proportional to how many deaths occur at those ages in the baseline population in the trial. If there’s a minimum age of, say, 50 years old, that won’t change too much because most of the mass of P(t) is above the age of 50 anyway. But if there’s a minimum age of 70, or a maximum age of 50, that could make a huge difference if the true hazard ratio is different at the ages that weren’t seen.\nSecond, these are estimates for the life expectancy for a population. But you are not a population. In some sense, your genetics and lifestyle mean you have your own “personal Keyfitz entropy”, reflecting how spread out your mortality would be for you if you led millions random lives. If you drive safely and use an air purifier and eat well and get exercise and don’t smoke, that likely means your personal life expectancy is higher than average. But it also probably means that your personal Keyfitz entropy is lower than average.15 So, if you make your lifestyle even better by eating more fiber or whatever, even if that produces the same hazard ratio for you as for other people, it would still likely lead to smaller increases in life expectancy, for the same reason that the same hazard ratio produces smaller changes in lifespan in humans compared to mice. What we really need is some interventions strong enough to break the math behind these approximations and free us from Keyfitz tyranny.\n ↩\nI know, I know, you care about quality of life, not just years of life. I agree, some number that measures health and vitality, maybe disability-adjusted life years or quality-adjusted life years, would be better. But these are hard to estimate and so are rarely reported. Anyway, in practice most interventions that make you more vital tend to make you live longer and vice versa, so focusing on life expectancy isn’t too bad. ↩\nIn this model, the number of days of life follows a geometric distribution with p = (number of bullets) / (number of chambers). So the mean life expectancy is 1/p days or (number of chambers) / (number of bullets) days. With 54,786 chambers and 2 bullets, that works out to 75 years. And if you drop down to one bullet, then it increases to 150 years. ↩\nIf some intervention would have reduce mortality among people aged ≥ 60 in prehistorical tribal bands, that wouldn’t have increased life expectancy very much, because most people didn’t make it to 60. But compared to prehistorical tribal bands, we have in fact vastly reduced mortality at younger ages. And so, today, reducing mortality for people aged ≥ 60 will increase life expectancy a lot. ↩\nYou might think this is stupid. Why change a relative risk into a hazard ratio if you’re just going to assume it’s constant? Isn’t that pointless? Well, no. Remember how relative risks always go to 1.0 for long enough trials as everyone in both the treatment and control groups departs our coil? That doesn’t happen with constant hazard ratios. ↩\nIt’s usually (though not always) better to use ΔHR(t) = ln(1/HR(t)). This correctly reflects, for example, that if all hazard ratios go to zero, then life expectancy goes to infinity, yay. These two approximations are almost identical for hazard ratios that are close to one because ln(1/r) ≈ (1-r) when r is close to one. So if you are terrified of logarithms but you’ve made it to the end of this footnote anyway, you’re not missing out on too much. ↩\nThere’s a degree of circularity to this argument. It assumes that hazard ratios transfer better between species than changes in life expectancy. That might be true, but it would be an empirical / biological fact, not something that’s guaranteed by logic. ↩\nTo see this, note that ΔL ≈ ∑ₜ ΔHR(t) × P(t) × L(t) = L̄ × ∑ₜ ΔHR(t) × (P(t) × L(t) / L̄) = L̄ × avg(ΔHR). ↩\nA pretty decent approximation turns out to be\n  avg(ΔHR) ≈ 0.27 × avg₂₀₋₅₀(ΔHR) + 0.73 × avg₅₀₋₉₀(ΔHR),\nwhere avg₂₀₋₅₀(ΔHR) represents a flat average of the change over the ages 20 to 50 and avg₅₀₋₉₀(ΔHR) represents a flat average over the ages 50 to 90. ↩\nThat is, it’s better to use est(ΔHR) = ln(1/est(HR)). This is close to 1-est(HR) when est(HR) is close to one. ↩\nIf there is an infinite amount of data, the typical method reduces to solving\n  ∑ₜ (P(t) + P’(t)) × π(t, HR) = ∑ₜ P’(t),\nfor HR. Here,  P’(t) is the chance of dying at age t after the hazard ratio has been applied, and π(t, HR) is the probability that, if a death occurred at time t, it was in the treatment group. Of course, the true probability that a death is in the treatment group is P’(t) / (P(t) + P’(t)). The standard “proportional Cox” model assumes that the hazard ratio is constant and so replaces this raw fraction with a model-based one, namely\n  π(t, HR) = S’(t) × HR / (S(t) + S’(t) × HR).\nThis reflects the fact that at age t, a fraction S(t) of controls are alive and each of these have some chance μ(t) of dying, so P(t)=S(t) × μ(t). Meanwhile, a fraction S’(t) of the treatment group is alive, and these each have a chance HR × μ(t) of dying, meaning that P’(t) = S’(t) × HR × μ(t). If you substitute these equations for P(t) and P’(t) into the second equation above, the factor of μ(t) conveniently cancels and you get π(t, HR) as written.\nIn effect, the hazard ratio’s job is to attribute deaths to the treatment versus the control group. Now, if the true time-varying HR(t) is close to one, then it can be shown that the estimated hazard ratio est(HR) approximately satisfies\n  ln(est(HR)) ≈  ∑ₜ P(t) ln(HR(t)). ↩\nThe geometric average is equivalent to the condition that\n  ln(est(HR)) ≈ ∑ₜ P(t) ln(HR(t))\nUsing the “better” approximation that ΔHR(t) = ln(1/HR(t)) and *est(ΔHR)=ln(1/est(HR)), it follows that\n  est(ΔHR) ≈  ∑ₜ P(t) ΔHR(t).\nYou can justify interpreting that same equation using est(ΔHR) = 1-est(HR) and ΔHR(t)=1-HR(t) from the fact that these are almost the same when HR(t) is close to one. ↩\nThis simulator pretends that people live for integer numbers of years. That’s not true in reality, of course, but it makes the simulator easier to implement and understand and makes little difference in practice. ↩\nIn the simulation, “true ΔL” is what I called “exact ΔL” above, while “approximation (log)” is what I called “ideal approximation” and “Cox fitted” is what I called “Use number from paper”. ↩\nThe way modern human mortality is distributed, even if your healthy lifestyle were to reduce mortality by a constant factor at all ages, that still has the effect of decreasing Keyfitz entropy. ↩",
+      "id": "5e9b580a2edd0eadb28cb534077d840575a4032ddd0bc424110c8949dbfc7f52",
+      "ref_id": "0",
+      "recommendationScore": 75,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "深入解析了风险比（Hazard Ratios）的统计学概念，并纠正了常见误解，具有较高信息密度。",
+      "reason": "内容严谨且实用，对理解健康和长寿研究报告非常有帮助，但并非主流科技博客关注的焦点。",
+      "tags": [
+        "统计学",
+        "数据分析",
+        "健康",
+        "长寿"
+      ]
+    },
+    {
+      "title": "CS2 Fog Of War: Server-sided anti-wallhack occlusion culling for CS2 servers",
+      "link": "https://github.com/karola3vax/CS2FOW",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-06T15:23:34.000Z",
+      "summary": "Article URL: https://github.com/karola3vax/CS2FOW\nComments URL: https://news.ycombinator.com/item?id=48805965\nPoints: 24\n# Comments: 1",
+      "id": "b160f22a9f6d4cf4997acf5481c2bc7b8fe411fa68719eaefdc3c1befa0ee5e3",
+      "ref_id": "4",
+      "recommendationScore": 70,
+      "popularityScore": 20,
+      "priority": "medium",
+      "comment": "详细介绍了CS2服务器端利用遮挡剔除技术实现反作弊“战争迷雾”的功能。",
+      "reason": "为游戏开发和服务器管理提供了一个具体的反作弊技术实现方案，具有较高的技术参考价值，属于编程工具范畴但较为垂直。",
+      "tags": [
+        "游戏开发",
+        "反作弊",
+        "CS2",
+        "服务器技术",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "ATP Member Special: Mac-Assed Mac Apps",
+      "link": "https://atp.fm/atp-dev-mac-assed-mac-apps",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-06T17:13:52.000Z",
+      "summary": "A banger of an Accidental Tech Podcast members-only special, right on time. ATP memberships are just $8/month or $88/year, and the members-only episodes alone are worth the price.\nThey do a great job explaining what makes for a Mac-assed Mac app, but an even better job talking about why users and developers should care about them.\n ★",
+      "id": "aec1e47caf95dfe294d15afcb5bbeff4945c9a777b101c7e142e2fe3bf7a43df",
+      "ref_id": "0",
+      "recommendationScore": 70,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "探讨了优秀 Mac 应用的核心特质，并推荐了一个相关播客。",
+      "reason": "对 Apple 生态爱好者和开发者来说，理解 Mac 应用的设计哲学具有启发性。",
+      "tags": [
+        "Apple生态",
+        "Mac应用",
+        "用户体验",
+        "播客"
+      ]
+    },
+    {
+      "title": "Making a Shuffle Button",
+      "link": "https://blog.jim-nielsen.com/2026/notes-shuffle/",
+      "source": "blog.jim-nielsen.com",
+      "publishedAt": "2026-07-05T19:00:00.000Z",
+      "summary": "I made some updates to my notes blog, including a change to how my “Shuffle” feature worked.\nFigured I’d blog about it.\nShuffle? On a Blog?\nAt the time of this writing, I have 974 “notes” that I’ve published. \nFor fun, I have a “shuffle” button that digs up a random note from the past. I like to press it from time to time and re-encounter some insight from the past.\nIt’s like going through an old album, pulling out a random photo, and thinking, “Oh yeah, I remember this! Good times.”\nLike old photos, there’s also the occasional “that didn’t age so well”. \nBut I find it fun to randomly dig up old insights from others and continue to be inspired.\nHow Did It Work Before?\nSince my site is built and hosted as static files without a runtime server, this feature required JavaScript to work.\nEvery page had a snippet like this:\n<!-- In the site navigation -->\n<button id=\"js-shuffle\">Shuffle</button>\n\n<!-- Way down at the end of the HTML -->\n<script>\n  // All 974 note IDs injected by my SSG\n  const noteIds = ['id-1', 'id-2', id-3', 'id-4', '...'];\n  document.querySelector(\"#js-shuffle\")\n    .addEventListener('click', () => {\n      // randomly grab an item in `noteIds`\n      const randomId = '...';\n      window.location.href = `/n/${randomId}/`\n    })\n</script>\n\nEssentially: inject every note ID into every HTML page and, when the shuffle button is clicked, randomly grab one and navigate the user to it.\nNot the most elegant thing, but it worked.\nThe problem was that every time I published a new post, every single page had to be re-uploaded to Netlify because every file’s hash would change and its etag/cache was invalidated.\nThis made my builds slow. It also made it difficult, from a development perspective, to ensure refactors didn’t result in unexpected changes to output (using Dev.changes from my SSG web origami).\nSo I decided to make a change.\nWhat About a No-JS Approach?\nBecause I love to see if I can make things work without JavaScript, I had the thought to randomly write the href at build time using my SSG, which would result in output like this:\n<!-- /notes/1 -->\n<a href=\"/notes/3\">Shuffle</a>\n\n<!-- /notes/2 -->\n<a href=\"/notes/1\">Shuffle</a>\n\n<!-- /notes/3 -->\n<a href=\"/notes/2\">Shuffle</a>\n\nAnd every time I re-build my site, just have this logic run on the static site generator so that it’s different href for every page, every time.\nPros:\nDoesn’t require JavaScript\nDoesn’t require a server (request-time logic)\nCons:\nFile hashes change across builds (even if there’s no new content or template changes, every HTML page now has a different href for the shuffle link for every build). This makes deployments way slower because Netlify has to redeploy every file on every build. Plus Etags change so caching is basically ineffectual.\nI decided I didn’t want to do this, so on to JavaScript!\nHow Does It Work Now?\nMy first thought was to create a single JSON file that contained all my note IDs. Then when the “Shuffle” button gets clicked, I fetch that, grab a random ID, and navigate the user, e.g.\n<!-- In the site navigation -->\n<button id=\"js-shuffle\">Shuffle</button>\n\n<!-- Way down at the end of the HTML -->\n<script type=\"module\">\n  const noteIds = await fetch(\"/notes.json\").then(...);\n  // Handler code for when button is clicked\n  // grab a note ID & navigate to that location\n</script>\n\nThis would work. It localizes the caching issue to a single file, so only one file has to be invalidated/re-uploaded across builds.\nBut in playing with it a little more, I decided to try something a little more...unconventional.\nI’ve written before about having lots of little HTML pages and I thought, “Can I put this functionality in a single HTML page rather than a JSON file?”\nAnd what I ended up with was a link, e.g.\n<a href=\"/shuffle/\">Shuffle</a>\nThat when clicked navigates the user to a new page. That page has all the JS logic embedded in it, e.g.\n<!-- In the site navigation -->\n<span>Shuffling...</span>\n\n<!-- In the body of the page -->\n<noscript>JS is required to use the Shuffle functionality</nocript>\n<script>\n  // All 974 note IDs injected by my SSG\n  const noteIds = ['id-1', 'id-2', id-3', 'id-4', '...'];\\\n\n  // A slight delay so user sees \"Shuffling...\" effect\n  setTimeout(() => {\n    // randomly grab an item in `noteIds`\n    const randomId = '...';\n    window.location.href = `/n/${randomId}/`\n  }, 300);\n</script>\n\nThere are a few things I like about the experience this implementation provides.\nFirst: shuffle is a route, so I can navigate to it directly without using the GUI, e.g. notes.jim-nielsen.com/shuffle\nSecond: I handle the UI/X with a slight delay to make it appear like something is happening when you click the button. If you click the button and it immediately jumps to the next, randomized page, it almost seems to happen too fast. Like you’re left with this feeling of “What just happened?”\nBut in this scenario, it navigates you to the “Shuffle” page, the button you just clicked turns into a spinner + text indicating something is happening, and there’s a slight (intentional) delay before the JS executes and sends you to a randomized note.\nI know it’s a bit weird. “Introduce artificial slowness? Are you crazy?” But I like it. It feels like the shuffle feature on an old music player.\nI remember one of my CD players had a “Shuffle” feature. When I’d click the button, it would display “Shuffling…” on the little black and white screen and you’d encounter this brief state where (I presume) the lens inside the hardware would move along the physical track to the spot where it would start reading a new, random song from the CD.\nThe hardware constraints necessitated this kind of an experience, but I always liked it because it felt like the CD player was “thinking” about what track to pick next. This state clearly conveyed to me that my intent to shuffle was received and being followed. I liked that feedback, and it’s exactly what I wanted to do on my notes site (even though it was completely unnecessary).\n\n\n\nI like having that brief moment of feedback where it’s very clear that your intention was received and being followed, vs. having it happen so fast you can’t even perceive precisely what happened.\nHere’s a video to show it in action:\n\nWhy?\nI know that’s a lot of information for something so small — and, arguably, unnecessary.\nBut I still enjoy writing about how I make decisions when I build things for myself.\nHence this post.\nEmail\n      · Mastodon ·\n\n      Bluesky",
+      "id": "34b33fb3c43f141a2b5a139f766ab5d25a88c383fe496156ccd270dd5cf5af1a",
+      "ref_id": "0",
+      "recommendationScore": 70,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "一篇关于在静态博客上实现随机文章功能的实用教程，展示了JavaScript与静态站点的结合应用。",
+      "reason": "内容贴合编程工具和独立开发主题，为静态网站站长提供了具体的实现思路和代码示例，具有较强的实用性。",
+      "tags": [
+        "Web Development",
+        "JavaScript",
+        "Static Site Generation",
+        "Blog",
+        "User Experience"
+      ]
+    },
+    {
+      "title": "Maestral, the Open Source Splendidly Simple Mac Dropbox Client, Has Been Retired",
+      "link": "https://maestral.app/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-06T17:04:44.000Z",
+      "summary": "Maestral developer Sam Schott, on the Maestral website:\nAs of June 2026, Maestral is no longer actively maintained. The\ncurrent version will continue to work until certificates expire.\nSchott, on Maestral’s GitHub project page:\nAs of 2026-07-28, this project is archived. It’s been a fun\nchallenge to develop a syncing client, but unfortunately, I find\ntoo little time to invest in Maestral these days. I’ve also moved\naway from using Dropbox myself.\nMaestral will still remain usable in the medium term, but will no\nlonger be actively maintained or receive updates.\nYou get what you pay for, and Maestral is free of charge and open source. But man, this is a real bummer. I absolutely love Maestral. It restores Dropbox to its original vision — a folder on my Mac that syncs. Nothing at all like the bloated app that Dropbox’s first-party Mac client has grown into. And it doesn’t use any of MacOS’s modern File Provider APIs, which in my experience provide me with no benefits that I want, and saddle me with much needless complexity that I don’t. With Maestral, it’s just a quiet app that runs in the background, consumes preciously few CPU and memory resources, it just syncs a folder of your choosing to your Dropbox account. I of course chose ~/Dropbox/. It’s always been super robust for me. It’s not a hack — it syncs to Dropbox using Dropbox’s APIs.\nAs of today Maestral continues to work just fine. I don’t know when these certificates are expiring. And I don’t know what I’m going to do when they do. I might try moving everything from my Dropbox account to iCloud Drive. That certainly seems worth trying before I resort to going back to Dropbox’s own monstrosity of a Mac client.\nIn theory, because Maestral is open source, someone could fork it and keep it going. But my impression has always been that it was a one-man show from Schott, and if he’s personally no longer using Dropbox, it’s easy to see why he’s lost interest in maintaining Maestral.\nSo it goes.\n ★",
+      "id": "0d53b48d0359749dad8375e8dbc9a3da7ff7a4524258c512df546735e65cdcf5",
+      "ref_id": "1",
+      "recommendationScore": 60,
+      "popularityScore": 55,
+      "priority": "medium",
+      "comment": "一款广受欢迎的开源 Mac 端 Dropbox 客户端宣布停止维护，引发用户遗憾。",
+      "reason": "为 Maestral 用户提供了重要信息，也反映了对轻量级原生应用需求的普遍情绪。",
+      "tags": [
+        "Apple生态",
+        "Mac应用",
+        "开源软件",
+        "Dropbox",
+        "软件更新"
+      ]
+    },
+    {
+      "title": "The Supreme Court Just Lit a Fuse Under Flock's License Plate Camera Empire",
+      "link": "https://www.yahoo.com/news/politics/articles/supreme-court-just-lit-fuse-130900307.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-06T16:58:51.000Z",
+      "summary": "Article URL: https://www.yahoo.com/news/politics/articles/supreme-court-just-lit-fuse-130900307.html\nComments URL: https://news.ycombinator.com/item?id=48807383\nPoints: 34\n# Comments: 4",
+      "id": "f892ef73f417643cb6032c718d84d88263a46f2827e9f418a2040d2e73b02459",
+      "ref_id": "1",
+      "recommendationScore": 55,
+      "popularityScore": 55,
+      "priority": "low",
+      "comment": "最高法院裁决对Flock车牌识别摄像头业务的潜在影响。",
+      "reason": "关注公民隐私和科技公司数据收集的法律边界，但技术深度有限且非核心科技博客主题。",
+      "tags": [
+        "隐私",
+        "监控技术",
+        "法律",
+        "政策",
+        "自动化"
+      ]
+    },
+    {
+      "title": "Aluminum foil (2021)",
+      "link": "https://dernocua.github.io/notes/aluminum-foil.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-06T13:28:57.000Z",
+      "summary": "Article URL: https://dernocua.github.io/notes/aluminum-foil.html\nComments URL: https://news.ycombinator.com/item?id=48804297\nPoints: 163\n# Comments: 67",
+      "id": "803744a8a8bb1b416fac11eefe4052988098138d10956903869f08845ef1354d",
+      "ref_id": "0",
+      "recommendationScore": 45,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "标题模糊，内容不明，难以评估其科技博客价值。",
+      "reason": "文章主题不明确，无法判断其与高优先级主题的关联度，因此推荐度较低。",
+      "tags": [
+        "General Tech",
+        "Exploration"
+      ]
+    },
+    {
+      "title": "e approximation",
+      "link": "https://www.johndcook.com/blog/2026/07/06/e-approximation/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-07-06T12:22:29.000Z",
+      "summary": "I ran across the approximation e ≈ 2721/1001 recently. What makes this remarkable is its accuracy relative to the size of the denominator. You can create a trivial approximation just by truncating a decimal expansion e ≈ 2718/1000 but this is only good to four significant figures, but 2721/1001 is good to seven, almost eight, […]\ne approximation first appeared on John D. Cook.",
+      "id": "e07b588e4ae93e9c8bd43af57ff8264035bca3de80fa0f138de174f5b560209a",
+      "ref_id": "3",
+      "recommendationScore": 45,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "探讨了常数 `e` 的一个高精度分数逼近，解释清晰，但属于纯数学范畴。",
+      "reason": "文章内容偏学术和数学趣味，缺乏直接的科技应用或实际编程指导。",
+      "tags": [
+        "数学",
+        "近似",
+        "常数e",
+        "数论"
+      ]
+    },
+    {
+      "title": "Jason Snell Ends His Column, and 28-Year Run, at Macworld",
+      "link": "https://www.macworld.com/article/3175482",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-06T14:35:02.000Z",
+      "summary": "Jason Snell, at Macworld:\nMy first day on the job at Macworld, Apple was perilously close to\ngoing out of business. It was the fall of 1997, and Steve Jobs had\nreturned to Apple and engineered the ejection of Gil Amelio as\nCEO, but there was no iMac yet, no visible turnaround in terms of\nproducts at all. Beyond the release of the iconic “Think\nDifferent” ad campaign, there was nothing.\nApple’s survival hung by a thread. Steve Jobs asked everyone to\ntrust him. At Macworld Expo, he had enlisted Bill\nGates–Bill Gates, of all people!–to help him instill belief in the\nworld that Apple would find a way to survive.\nThe world was skeptical, to say the least. My family asked what\njob I thought I’d get once Apple went out of business. The\nmagazine I had worked at for four years, MacUser, had\nfolded, and some of us had been transferred over to our rival,\nMacworld, presumably to publish issues until Apple finally gave up\nthe ghost and died. We existed to minimize the loss exposure of\nour respective publishing companies.\n1997 was weird, folks. And that’s how my tenure at Macworld\nstarted.\n ★",
+      "id": "d0a141a929abc923af34ef070c4e9d7b4bf1f6b08626091310a588ae1cedc871",
+      "ref_id": "2",
+      "recommendationScore": 40,
+      "popularityScore": 45,
+      "priority": "low",
+      "comment": "资深记者 Jason Snell 结束了在 Macworld 长达28年的专栏，回顾了 Apple 的历史性时刻。",
+      "reason": "提供了对 Apple 发展史的个人视角回顾，但信息深度和实用性较低。",
+      "tags": [
+        "Apple历史",
+        "科技媒体",
+        "行业观察",
+        "个人回顾"
+      ]
+    },
+    {
+      "title": "Reproducing a geometry theorem diagram",
+      "link": "https://www.johndcook.com/blog/2026/07/06/arc-hypotenuse/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-07-06T14:22:35.000Z",
+      "summary": "I ran across a geometry theorem with the following diagram. The theorem corresponding to the diagram is interesting, but I found reproducing the diagram more interesting. The segment AB is a diameter and the line CD is perpendicular to the diameter. Assume the outer circle is a unit circle. I guessed C = (cos(1), sin(1)) and made the […]\nReproducing a geometry theorem diagram first appeared on John D. Cook.",
+      "id": "d4d6f9613ad8cc8d5a65313bccec1de7f2a508a671d4ca391bf1cae455b59f96",
+      "ref_id": "2",
+      "recommendationScore": 40,
+      "popularityScore": 35,
+      "priority": "low",
+      "comment": "详细描述了复现一个几何定理图的过程，内容具体但专业性较强，受众面窄。",
+      "reason": "专注于纯数学和几何绘图技巧，与主流科技博客关注的编程、AI等主题关联度较低。",
+      "tags": [
+        "几何",
+        "数学",
+        "绘图",
+        "定理"
+      ]
+    },
+    {
+      "title": "Resetting Xbox",
+      "link": "https://news.xbox.com/en-us/2026/07/06/resetting-xbox/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-06T14:18:23.000Z",
+      "summary": "Article URL: https://news.xbox.com/en-us/2026/07/06/resetting-xbox/\nComments URL: https://news.ycombinator.com/item?id=48804993\nPoints: 165\n# Comments: 117",
+      "id": "f1495ad55adb34fe824dead2c14cf429e47ca647443a2131c296c4f683dc50d5",
+      "ref_id": "4",
+      "recommendationScore": 30,
+      "popularityScore": 90,
+      "priority": "low",
+      "comment": "Xbox的重置指南，属于基础用户操作范畴。",
+      "reason": "内容过于基础和通用，不符合科技博客对技术深度和新颖性的要求，与核心主题优先级不符。",
+      "tags": [
+        "Gaming",
+        "Xbox",
+        "How-to",
+        "Consumer Electronics"
+      ]
+    },
+    {
+      "title": "The Download: South Korea’s hottest bachelors, and advancing eye transplants",
+      "link": "https://www.technologyreview.com/2026/07/06/1140172/the-download-south-korea-ai-chipworkers-eye-transplants/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-07-06T13:00:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. South Korea’s hottest new bachelors are chip workers Baek, a 35-year-old manager at the South Korean semiconductor titan SK Hynix, was enrolled in a matchmaking company a year ago. In a…",
+      "id": "9c3f22df66cb8edd5b41cc7c184e85151a03b6ebe5abba856268decbfb6b842f",
+      "ref_id": "0",
+      "recommendationScore": 30,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "综合性科技新闻摘要，涵盖芯片工人社会现象和医疗技术进展。",
+      "reason": "信息分散，技术深度不足，且主要主题与核心优先级关联性较弱。",
+      "tags": [
+        "科技新闻",
+        "社会文化",
+        "半导体"
+      ]
+    },
+    {
+      "title": "Stealth robotics startup (YC S26) is hiring principal engineers (Palo Alto)",
+      "link": "https://news.ycombinator.com/item?id=48806976",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-06T16:33:04.000Z",
+      "summary": "Comments URL: https://news.ycombinator.com/item?id=48806976\nPoints: 0\n# Comments: 0",
+      "id": "603f0576a55111d568ce2c35bc3a2f3483641ea77c8b35c96c60dfe2b1c97713",
+      "ref_id": "3",
+      "recommendationScore": 20,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "一家隐形机器人创业公司正在招聘首席工程师。",
+      "reason": "这是一个招聘信息，而非技术文章内容，不适合作为博客评估对象。",
+      "tags": [
+        "招聘",
+        "机器人",
+        "创业公司"
+      ]
+    },
+    {
+      "title": "DOJ Closing Abbott Labs Case Spurs Wider Corporate Crime Retreat",
+      "link": "https://news.bloomberglaw.com/us-law-week/doj-closing-abbott-labs-case-spurs-wider-corporate-crime-retreat",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-06T14:38:15.000Z",
+      "summary": "Article URL: https://news.bloomberglaw.com/us-law-week/doj-closing-abbott-labs-case-spurs-wider-corporate-crime-retreat\nComments URL: https://news.ycombinator.com/item?id=48805304\nPoints: 91\n# Comments: 24",
+      "id": "5486a105f71d8359d02a1f21604e07f1d00e08dcee23df0be3944c9b1e7bd549",
+      "ref_id": "3",
+      "recommendationScore": 20,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "一篇关于公司犯罪和司法部执法的新闻报道，与科技主题无关。",
+      "reason": "与本科技博客关注的核心主题优先级不符，技术深度和实用性较低。",
+      "tags": [
+        "Law",
+        "Business",
+        "Current Events"
+      ]
+    },
+    {
+      "title": "South Korea’s hottest new bachelors are chip workers",
+      "link": "https://www.technologyreview.com/2026/07/06/1140000/south-korea-bachelors-samsung-skhynix-chip-workers/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-07-06T09:00:00.000Z",
+      "summary": "Baek, a 35-year-old manager at the South Korean semiconductor titan SK Hynix, was enrolled in Sunoo, a matchmaking company based in Seoul, a year ago. In a move typical of anxious South Korean parents, his mother signed him up, hoping to find a good wife for her son. Lately, says Baek (who asked to be…",
+      "id": "d148dec2e623441e6f8c2b30bbc48ff4ff63bc8965e95177de9044c4641d3902",
+      "ref_id": "1",
+      "recommendationScore": 20,
+      "popularityScore": 45,
+      "priority": "low",
+      "comment": "深度挖掘韩国芯片从业者的社会地位及其婚恋观念。",
+      "reason": "内容专注于社会人文而非技术本身，与科技博客主题优先级关联性极低。",
+      "tags": [
+        "社会人文",
+        "韩国文化",
+        "半导体行业"
+      ]
+    },
+    {
+      "title": "I opened a file with FILE_FLAG_DELETE_ON_CLOSE, but now I changed my mind",
+      "link": "https://devblogs.microsoft.com/oldnewthing/20260706-00/?p=112506",
+      "source": "devblogs.microsoft.com/oldnewthing",
+      "publishedAt": "2026-07-06T14:00:00.000Z",
+      "summary": "You can't change your mind, but you can do it a different way.\nThe post I opened a file with <CODE>FILE_<WBR>FLAG_<WBR>DELETE_<WBR>ON_<WBR>CLOSE</CODE>, but now I changed my mind appeared first on The Old New Thing.",
+      "id": "a8655d9bb539b568e8162cd177428ce0ae92656e471317dda4b53a1b939212ae",
+      "ref_id": "1",
+      "recommendationScore": 15,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "文章内容极度简短，仅为标题和引言，未能提供任何实质性信息。",
+      "reason": "正文缺失，无法判断其技术深度和实用性，不适合作为一篇完整文章进行推荐。",
+      "tags": [
+        "Windows API",
+        "编程",
+        "文件操作"
+      ]
+    },
+    {
+      "title": "Premium: The Hater's Guide To SoftBank",
+      "link": "https://www.wheresyoured.at/premium-the-haters-guide-to-softbank/",
+      "source": "wheresyoured.at",
+      "publishedAt": "2026-07-06T14:23:20.000Z",
+      "summary": "Soundtrack: Ozzy Osbourne — Mr. Crowley\nA lot of people have been making a lot of fun of the SoftBank 46th annual shareholder meeting and Masayoshi Son’s (to quote Bryce Elder of the Financial Times) Untethered Goose Game, specifically referring to slides that, well, looked like this:\n\nAs",
+      "id": "84cf1222948ac7a559afcdfedcf058e921403b22291352a66bafe693992b50ed",
+      "ref_id": "4",
+      "recommendationScore": 10,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "一篇关于软银商业评论的文章，非技术内容，且标记为“Premium”。",
+      "reason": "主题属于商业财经领域，与科技博客关注的AI、编程工具等核心主题不符。",
+      "tags": [
+        "商业",
+        "金融",
+        "软银",
+        "公司评论"
+      ]
+    },
+    {
+      "title": "My blog has moved",
+      "link": "https://mjg59.dreamwidth.org/74260.html",
+      "source": "mjg59.dreamwidth.org",
+      "publishedAt": "2026-07-06T09:03:04.000Z",
+      "summary": "A reminder that I am no longer here, but am instead here. The new RSS feed is here. If you're still reading this for some reason other than being on Dreamwidth, please update your feed.\n comments",
+      "id": "911b258a35ad46b84f6813c0a08b43559dd47ca9d3c43697fa068ea5b0003eaa",
+      "ref_id": "1",
+      "recommendationScore": 5,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "一篇简单的博客搬家通知，不含任何技术内容。",
+      "reason": "文章内容为个人博客的行政性更新通知，不属于技术博客范畴，对普遍技术读者不具备技术深度、新颖性或实用价值。",
+      "tags": [
+        "Announcement",
+        "Blog Update"
+      ]
+    },
+    {
+      "title": "Should DayQuil Be Legal?",
+      "link": "https://www.theargumentmag.com/p/should-dayquil-be-legal",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-06T15:44:44.000Z",
+      "summary": "Article URL: https://www.theargumentmag.com/p/should-dayquil-be-legal\nComments URL: https://news.ycombinator.com/item?id=48806289\nPoints: 76\n# Comments: 91",
+      "id": "240820f92670987f2ae67de06c391df0f394090f836ac566ba2d41544ac6e316",
+      "ref_id": "2",
+      "recommendationScore": 0,
+      "popularityScore": 80,
+      "priority": "low",
+      "comment": "这是一篇关于非科技话题（药物合法性）的社会议题讨论。",
+      "reason": "内容与科技博客的核心主题和优先级完全不符，不具备技术深度或实用性。",
+      "tags": [
+        "非科技",
+        "社会议题",
+        "法律与道德"
+      ]
+    },
+    {
+      "title": "1k Words: A Writing Contest",
+      "link": "https://writingclub.world/1picture1000words",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-06T15:30:08.000Z",
+      "summary": "Article URL: https://writingclub.world/1picture1000words\nComments URL: https://news.ycombinator.com/item?id=48806073\nPoints: 49\n# Comments: 18",
+      "id": "77a8256a2a30dfdb6802ba3ec4ce8d9105f9b10807046b0e25bb88864c1942b4",
+      "ref_id": "3",
+      "recommendationScore": 0,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "发布了一个与写作相关的创意比赛信息。",
+      "reason": "内容与科技博客的核心主题和优先级完全不符，不具备技术相关性。",
+      "tags": [
+        "非科技",
+        "写作",
+        "比赛"
+      ]
+    }
+  ]
+}
