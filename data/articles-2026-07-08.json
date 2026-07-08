@@ -1,0 +1,680 @@
+{
+  "dailySummary": "今日科技速递：AI创新不断，Mistral发布机器人导航模型，高效本地TTS方案受关注。但AI安全引警示，GitHub AI Agent被曝泄露私有库。同期，OpenBSD高危漏洞现形，",
+  "articles": [
+    {
+      "title": "Local, CPU-Friendly, High-Quality TTS (Text-to-Speech) with Kokoro",
+      "link": "https://ariya.io/2026/03/local-cpu-friendly-high-quality-tts-text-to-speech-with-kokoro/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-07T18:24:10.000Z",
+      "summary": "Article URL: https://ariya.io/2026/03/local-cpu-friendly-high-quality-tts-text-to-speech-with-kokoro/\nComments URL: https://news.ycombinator.com/item?id=48821576\nPoints: 488\n# Comments: 92",
+      "id": "806d37b4feb73b908c1d9351bfb88c9f34907e5b9fb2d7db407b707d9ecc63c9",
+      "ref_id": "2",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "关于本地CPU友好型高质量文本转语音的实用工具和技术分享，非常有价值。",
+      "reason": "完美契合AI主题，技术深度高，新颖且具有极强的实用性，解决了开发者在本地部署TTS的痛点。",
+      "tags": [
+        "AI",
+        "文本转语音",
+        "开源工具",
+        "开发",
+        "实用工具"
+      ]
+    },
+    {
+      "title": "Mistral's Robostral Navigate: a state of the art robotics navigation model",
+      "link": "https://mistral.ai/news/robostral-navigate/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-08T14:09:17.000Z",
+      "summary": "Article URL: https://mistral.ai/news/robostral-navigate/\nComments URL: https://news.ycombinator.com/item?id=48832212\nPoints: 226\n# Comments: 55",
+      "id": "9588f0d947e93e5f79b1a2566190475fd3b3d4eb15f7a3e4a8b374bc3c36fcbd",
+      "ref_id": "0",
+      "recommendationScore": 92,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "介绍了Mistral公司发布的最新机器人导航AI模型Robostral Navigate。",
+      "reason": "作为AI领域的顶尖进展，该模型对机器人研究和应用具有里程碑意义。",
+      "tags": [
+        "AI",
+        "Robotics",
+        "Machine Learning",
+        "Mistral"
+      ]
+    },
+    {
+      "title": "OpenBSD has a use-after-free allowing local privilege escalation to root",
+      "link": "https://nvd.nist.gov/vuln/detail/cve-2026-57589",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-08T13:24:52.000Z",
+      "summary": "Article URL: https://nvd.nist.gov/vuln/detail/cve-2026-57589\nComments URL: https://news.ycombinator.com/item?id=48831658\nPoints: 127\n# Comments: 59",
+      "id": "50dc2b5268edc9e1ff78d0c6c76d1a0ce2360c03bcbd900309e9caa589ad4969",
+      "ref_id": "1",
+      "recommendationScore": 90,
+      "popularityScore": 78,
+      "priority": "high",
+      "comment": "披露了OpenBSD中一个允许本地权限提升至root的严重use-after-free漏洞。",
+      "reason": "该漏洞对OpenBSD用户和系统安全管理员具有极高的警示和实用价值。",
+      "tags": [
+        "Security",
+        "OpenBSD",
+        "Vulnerability",
+        "CVE",
+        "Operating System"
+      ]
+    },
+    {
+      "title": "The ELIZA Archaeology Project",
+      "link": "https://findingeliza.org/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-08T17:20:44.000Z",
+      "summary": "The ELIZA Archaeology Project:\nELIZA is the original and highly influential chatbot that launched\nthe genre of human-computer interactions using text-based agents.\nIt was created at MIT in the 1960s as part of Project MAC by it’s\n[sic] designer and programmer, Joseph Weizenbaum. ELIZA not only\nallowed Weizenbaum to develop a mode of interaction with computers\nthat is highly interactive, it also contributed to the way in\nwhich people were starting to conceptualize computers as having\nthe capacity to usefully engage in conversation. You can try an\naccurate reimplementation of ELIZA developed as part of this\nproject.\nWe plan to contextualize the program, offering its history and\ncontext as well as offering a detailed explanation of how the\ncode works. This project will look at the culture of\nprogramming in which Weizenbaum was working and then explore his\nturn from ELIZA/DOCTOR, as he began to warn of the hazards of\ntreating machines like humans. We will look at later works\ninspired by ELIZA and consider its influences on the way talking\ncomputer programs are represented in literature and film.\nVia Jason Kottke, who also links to an upcoming book from the same team.\nTheir blog has an entry that discusses something I’ve been meaning to link to for a while, regarding Weizenbaum’s secretary:\nNonetheless, it is clear that Weizenbaum’s secretary actually used\nthe ELIZA system. As he writes in Weizenbaum (1967: 477):\nMy secretary watched me work on this program over a long period\nof time. One day she asked to be permitted to talk with the\nsystem. Of course, she knew she was talking to a machine. Yet,\nafter I watched her type in a few sentences she turned to me and\nsaid “Would you mind leaving the room, please?”\nWeizenbaum writes about the effect, later actually coined the\n“Eliza Effect”, that this dyadic conversation could have between\nuser and computer:\nWhat I had not realized is that extremely short exposures to a\nrelatively simple computer program could induce powerful\ndelusional thinking in quite normal people. This insight led me\nto attach new importance to questions of the relationship between\nthe individual and the computer, and hence to resolve to think\nabout them.\nThe Eliza Effect is the propensity for humans to ascribe\nunderstanding and intelligence to computer systems. Hofstadter\n(1995: 167) described it as “the susceptibility of people to read\nfar more understanding than is warranted into strings of symbols — especially words — strung together by computers”, a compelling\ndescription written in 1995 but which accurately describes\ngenerative AI systems today like ChatGPT. Similarly, Turkle\ndescribed that “the Eliza effect refers to our more general\ntendency to treat responsive computer programs as more intelligent\nthan they really are. Very small amounts of interactivity cause us\nto project our own complexity onto the undeserving object”.\nChatbot technology has changed tremendously since the 1960s. Human nature has not changed at all.\n ★",
+      "id": "d159e097f1e7a6f2bb805f730c7cbdcc8bed1f5170084155cfb9d7544f0212d8",
+      "ref_id": "4",
+      "recommendationScore": 90,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "深入探讨ELIZA聊天机器人的历史、技术原理和其创造者的伦理反思，对AI研究者和爱好者极具价值。",
+      "reason": "文章详细介绍了ELIZA考古项目，不仅重现了经典AI，还计划深入解析其代码并探讨AI伦理，技术深度、新颖性和实用性都非常高。",
+      "tags": [
+        "AI",
+        "chatbot",
+        "ELIZA",
+        "历史",
+        "人机交互",
+        "代码分析",
+        "伦理",
+        "项目介绍"
+      ]
+    },
+    {
+      "title": "GitLost: We Tricked GitHub's AI Agent into Leaking Private Repos",
+      "link": "https://noma.security/blog/gitlost-how-we-tricked-githubs-ai-agent-into-leaking-private-repos/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-08T05:25:35.000Z",
+      "summary": "Article URL: https://noma.security/blog/gitlost-how-we-tricked-githubs-ai-agent-into-leaking-private-repos/\nComments URL: https://news.ycombinator.com/item?id=48827858\nPoints: 425\n# Comments: 167",
+      "id": "cf7d6d2d79cfeb1f24778e778201fe9fe3ce1c0a79fcff6ba4271dba316ef5d5",
+      "ref_id": "1",
+      "recommendationScore": 89,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "揭露GitHub AI代理的安全漏洞，可能导致私有仓库数据泄露。",
+      "reason": "AI安全前沿话题，技术深度高，对广大开发者和企业有极强的警示和实用价值，是AI主题中的重点。",
+      "tags": [
+        "AI Security",
+        "Vulnerability",
+        "GitHub",
+        "Data Leak",
+        "Programming Tool"
+      ]
+    },
+    {
+      "title": "Cloudflare Meerkat - Globally distributed consensus",
+      "link": "https://blog.cloudflare.com/meerkat-introduction/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-08T13:18:03.000Z",
+      "summary": "Article URL: https://blog.cloudflare.com/meerkat-introduction/\nComments URL: https://news.ycombinator.com/item?id=48831565\nPoints: 129\n# Comments: 20",
+      "id": "c3b103b19d2b2c3e843f04f0acde2900599b79df4ca2653d7e0b33e0b5f35d81",
+      "ref_id": "2",
+      "recommendationScore": 88,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "Cloudflare详细介绍了其全球分布式共识系统Meerkat的设计与实现。",
+      "reason": "深入探讨了大规模分布式系统中的核心挑战，对专业工程师具有极高参考价值。",
+      "tags": [
+        "Distributed Systems",
+        "Cloudflare",
+        "Consensus",
+        "Infrastructure",
+        "Engineering"
+      ]
+    },
+    {
+      "title": "Structure and Interpretation of Computer Programs Video Lectures (1986)",
+      "link": "https://ocw.mit.edu/courses/6-001-structure-and-interpretation-of-computer-programs-spring-2005/video_galleries/video-lectures/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-07T23:57:29.000Z",
+      "summary": "Article URL: https://ocw.mit.edu/courses/6-001-structure-and-interpretation-of-computer-programs-spring-2005/video_galleries/video-lectures/\nComments URL: https://news.ycombinator.com/item?id=48825664\nPoints: 283\n# Comments: 39",
+      "id": "dc57ab8dfd78afc12444374f277d4d27270a4b9a3f266e5614a484e5a1d824ac",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "计算机科学经典课程，提供深入的编程思维训练，价值永恒。",
+      "reason": "内容虽旧但极为经典，对编程基础和思维模式有深远影响，信息密度高，是学习编程的优质资源。",
+      "tags": [
+        "计算机科学",
+        "编程",
+        "教育",
+        "经典"
+      ]
+    },
+    {
+      "title": "EmTech AI 2026: The Rise of the AI Platform",
+      "link": "https://www.technologyreview.com/2026/07/08/1140223/emtech-ai-2026-the-rise-of-the-ai-platform/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-07-08T16:26:10.000Z",
+      "summary": "",
+      "id": "6065cdfde6ae9962999b6a906c7c55dbeb54fe5cc9ddfe6429f9cc53702f14f8",
+      "ref_id": "3",
+      "recommendationScore": 85,
+      "popularityScore": 60,
+      "priority": "high",
+      "comment": "聚焦AI平台崛起趋势的未来展望，主题高度相关，具有潜在战略价值。",
+      "reason": "直接聚焦AI前沿趋势，可能提供行业洞察和战略思考，但缺乏具体内容，评估依赖标题推断。",
+      "tags": [
+        "AI",
+        "行业趋势",
+        "未来科技",
+        "平台"
+      ]
+    },
+    {
+      "title": "The other kind of control flow guard check: The combined validate and call",
+      "link": "https://devblogs.microsoft.com/oldnewthing/20260708-00/?p=112510",
+      "source": "devblogs.microsoft.com/oldnewthing",
+      "publishedAt": "2026-07-08T14:00:00.000Z",
+      "summary": "A two-in-one package.\nThe post The other kind of control flow guard check: The combined validate and call appeared first on The Old New Thing.",
+      "id": "51f1b298b0834eac271808f7e3683e870131763f13512bc2102e7410e7828538",
+      "ref_id": "4",
+      "recommendationScore": 85,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "标题表明这是一篇关于控制流保护检查的深度技术文章，但内容片段极少。",
+      "reason": "标题指向了一个非常专业和有深度的编程主题，对特定技术读者群体具有高价值。",
+      "tags": [
+        "编程工具",
+        "系统编程",
+        "安全性",
+        "低级编程"
+      ]
+    },
+    {
+      "title": "Family Feud: Mac-assed Mac App Edition",
+      "link": "https://blog.jim-nielsen.com/2026/mac-assed-family-feud/",
+      "source": "blog.jim-nielsen.com",
+      "publishedAt": "2026-07-08T19:00:00.000Z",
+      "summary": "“We asked 100 people: What are the top three companies on earth best positioned to make a world-class Mac-assed Mac app?”\nBuzz!\n“Apple!”\nSurvey says:\n\n\n\nYes! Apple at the number one spot.\nMakes sense. Who better to make the very definition of a great Mac app than the people who make the Mac? No brainer, I suppose. \nGranted, they’ve had some misses, but nobody bats 1000.\nOk, let’s keep going. \n“We asked 100 people: What are the top three companies on earth best positioned to make a world-class Mac-assed Mac app?”\nBuzz!\n“Anthropic!”\nSurvey says:\n\n\n\nWow, that’s odd huh? You’d think Anthropic would be right there at number two. Not only do they have billions of dollars, but they also develop, maintain, and control the super intelligence we’ll all soon be subservient too, right?\nSurely if anyone (besides Apple) is well positioned to make a world-class Mac app, it would have to be Anthropic — right?\nAnd yet, here we are with Claude Desktop as an Electron app.\nOk, let’s keep going.\n“We asked 100 people: What are the top three companies on earth best positioned to make a world-class Mac-assed Mac app?”\nBuzz!\n“Adobe!”\n\n\n\nMaybe not.\nBuzz!\n“Google!”\n\n\n\nNot so much.\nI’m sorry, but that’s three strikes.\nApparently it’s a mistake to assume that a big company with piles of cash is well poised to make a great Mac app  — even if they are enabled by hyper-super-intelligence.\n“Well who cares? It just goes to show you don’t have to make a good Mac app to be obscenely successful in terms of revenue!”\nWell, maybe that’s true.\nActually, come to think of it, it kinda does seem like the bigger you get and the more money you make, the more likely it is you’re making an Electron app.\nThere seems to be a correlation between “Mac-assed Mac app-edness” and “Company size/revenue”.\n\n\n\nWhy is that?\nI’ll leave that as an exercise for the reader (though my mind is leaning towards something to do with care).\nThank you for playing reading this game of family feud.\nEmail\n      · Mastodon ·\n\n      Bluesky",
+      "id": "c2928edccd593e8c5e86fb55bc71b78a9ce8d7c8f48a64220bfd39d17d9bd7d2",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "以独特的“家庭纷争”形式探讨了AI巨头在Mac原生应用开发中的选择与挑战，引发对Mac应用哲学的深思。",
+      "reason": "文章结合了高优先级的AI和Apple生态主题，通过对比Apple和Anthropic的Mac应用策略，提供了关于技术决策和产品形态的有趣洞察。",
+      "tags": [
+        "AI",
+        "Apple 生态",
+        "Mac App",
+        "产品开发",
+        "Electron"
+      ]
+    },
+    {
+      "title": "SWE-1.7 Reach Near GPT 5.5 and Opus Intelligence",
+      "link": "https://cognition.com/blog/swe-1-7",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-08T16:19:36.000Z",
+      "summary": "Article URL: https://cognition.com/blog/swe-1-7\nComments URL: https://news.ycombinator.com/item?id=48833866\nPoints: 68\n# Comments: 45",
+      "id": "0d1dcf4ab4f0ca6008c7d60b149a762f3a2370c0c0dd234b073abaa04f6ae9db",
+      "ref_id": "1",
+      "recommendationScore": 83,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "SWE-Agent智能水平接近顶尖AI模型，预示着AI软件工程师的巨大飞跃，值得深入研究。",
+      "reason": "聚焦AI领域前沿模型能力和其在编程自动化上的潜力，技术深度和新颖性兼具，优先级高。",
+      "tags": [
+        "AI",
+        "SWE-Agent",
+        "大模型",
+        "编程自动化",
+        "技术突破"
+      ]
+    },
+    {
+      "title": "Decoding the obfuscated bash script on a Uniqlo t-shirt",
+      "link": "https://tris.sherliker.net/blog/obfuscated-self-evaluating-bash-script-by-cdn-akamai-being-supplied-to-consumers-via-retail-stores/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-08T08:46:06.000Z",
+      "summary": "Article URL: https://tris.sherliker.net/blog/obfuscated-self-evaluating-bash-script-by-cdn-akamai-being-supplied-to-consumers-via-retail-stores/\nComments URL: https://news.ycombinator.com/item?id=48829312\nPoints: 1027\n# Comments: 176",
+      "id": "c5ac8a23c73c569549bd693c792888e198f5786f01f0ac69f40af99a2fd0c303",
+      "ref_id": "4",
+      "recommendationScore": 82,
+      "popularityScore": 98,
+      "priority": "medium",
+      "comment": "有趣地揭秘了优衣库T恤上发现的一个混淆的bash脚本并进行了逆向分析。",
+      "reason": "内容极具新颖性和趣味性，同时提供了逆向工程和脚本分析的实战案例。",
+      "tags": [
+        "Bash",
+        "Reverse Engineering",
+        "Security",
+        "Obfuscation",
+        "Fun Tech",
+        "Programming"
+      ]
+    },
+    {
+      "title": "Tenda firmware (multiple versions) contains hidden authentication backdoor",
+      "link": "https://kb.cert.org/vuls/id/213560",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-08T00:08:51.000Z",
+      "summary": "Article URL: https://kb.cert.org/vuls/id/213560\nComments URL: https://news.ycombinator.com/item?id=48825749\nPoints: 306\n# Comments: 107",
+      "id": "7a2f4d3bf3ef0de3b09013ab3154cec3bbc0443e3223a1891038c1aeff9066fa",
+      "ref_id": "4",
+      "recommendationScore": 81,
+      "popularityScore": 85,
+      "priority": "medium",
+      "comment": "揭露Tenda路由器固件中存在的隐藏认证后门漏洞。",
+      "reason": "重要的网络安全警报，技术深度和实用性高，对使用相关设备的用户和网络管理员具有高度价值。",
+      "tags": [
+        "Security",
+        "Vulnerability",
+        "Firmware",
+        "Networking",
+        "Tenda",
+        "Backdoor"
+      ]
+    },
+    {
+      "title": "GPT‑Live",
+      "link": "https://openai.com/index/introducing-gpt-live/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-08T17:03:19.000Z",
+      "summary": "Article URL: https://openai.com/index/introducing-gpt-live/\nComments URL: https://news.ycombinator.com/item?id=48834405\nPoints: 67\n# Comments: 26",
+      "id": "c84f0489248c095ab30de8b5fdba9af21d6112906c70ec3e01faf2db0c8aaa17",
+      "ref_id": "0",
+      "recommendationScore": 78,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "OpenAI新推出的GPT-Live，值得关注其实时交互能力和应用潜力。",
+      "reason": "属于AI领域最新进展，由OpenAI发布，具有高关注度和潜在实用价值，符合最高优先级。",
+      "tags": [
+        "AI",
+        "OpenAI",
+        "GPT",
+        "实时交互"
+      ]
+    },
+    {
+      "title": "Show HN: Kastor – Terraform-style specs for AI agents",
+      "link": "https://github.com/weirdGuy/kastor",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-08T15:25:09.000Z",
+      "summary": "Article URL: https://github.com/weirdGuy/kastor\nComments URL: https://news.ycombinator.com/item?id=48833183\nPoints: 19\n# Comments: 13",
+      "id": "cb095406c72cd1f21d118f4a31a68a4dce5b0932641f1aca52cf9c7dfd303998",
+      "ref_id": "3",
+      "recommendationScore": 78,
+      "popularityScore": 40,
+      "priority": "high",
+      "comment": "Kastor项目将Terraform理念引入AI agents的规范定义与管理，创新且具实用性。",
+      "reason": "结合AI、编程工具和自动化主题，提供了管理AI agents的新思路，对开发者有潜在价值，优先级高。",
+      "tags": [
+        "AI agents",
+        "编程工具",
+        "自动化",
+        "Terraform",
+        "开源"
+      ]
+    },
+    {
+      "title": "Geosql: A Claude/Codex skill for geospatial data",
+      "link": "https://github.com/dekart-xyz/geosql",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-08T08:37:26.000Z",
+      "summary": "Article URL: https://github.com/dekart-xyz/geosql\nComments URL: https://news.ycombinator.com/item?id=48829242\nPoints: 96\n# Comments: 13",
+      "id": "b805019a2d2a96a09f522837f7d12edbef4ead7a2a829c42844bb6e9f131dff1",
+      "ref_id": "0",
+      "recommendationScore": 75,
+      "popularityScore": 40,
+      "priority": "high",
+      "comment": "一个将AI大模型能力应用于地理空间数据处理的创新工具。",
+      "reason": "结合了AI与专业领域，具有较高的技术深度和实用前景，符合AI主题优先级。",
+      "tags": [
+        "AI",
+        "Geospatial",
+        "Programming Tool",
+        "Claude",
+        "Codex"
+      ]
+    },
+    {
+      "title": "How to Build a Minimal ZFS NAS Without Synology, QNAP, TrueNAS (2024)",
+      "link": "https://neil.computer/notes/how-to-setup-minimal-zfs-nas-without-truenas/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-08T03:59:35.000Z",
+      "summary": "Article URL: https://neil.computer/notes/how-to-setup-minimal-zfs-nas-without-truenas/\nComments URL: https://news.ycombinator.com/item?id=48827325\nPoints: 291\n# Comments: 207",
+      "id": "d8aa048430a6a9b108a5f4063434e7d9d8de0a4c69714d3abe6f33c84ef482ed",
+      "ref_id": "2",
+      "recommendationScore": 75,
+      "popularityScore": 80,
+      "priority": "medium",
+      "comment": "一份关于2024年如何自建ZFS NAS的详细指南。",
+      "reason": "针对自建存储的用户提供了高实用性的解决方案和详细步骤，属于自动化范畴，且信息密度高。",
+      "tags": [
+        "NAS",
+        "ZFS",
+        "DIY",
+        "Self-hosting",
+        "Storage",
+        "Automation"
+      ]
+    },
+    {
+      "title": "sqlite-utils 4.0, now with database schema migrations",
+      "link": "https://simonwillison.net/2026/Jul/7/sqlite-utils-4/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-07-07T19:32:57.000Z",
+      "summary": "",
+      "id": "baab745c827868329299b9c379703dbb2715770de3006e3c641703a734a35400",
+      "ref_id": "0",
+      "recommendationScore": 75,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "介绍了sqlite-utils 4.0版本的新功能，特别是数据库Schema迁移，对开发者有较高实用价值。",
+      "reason": "内容为空，但标题显示这是一个关于编程工具的重要更新，对使用SQLite的开发者具有实际意义。",
+      "tags": [
+        "sqlite",
+        "数据库",
+        "编程工具",
+        "版本更新"
+      ]
+    },
+    {
+      "title": "[Sponsor] WorkOS Pipes: More Context Makes for Smarter Products",
+      "link": "https://workos.com/pipes?utm_source=daringfireball&utm_medium=newsletter&utm_campaign=q32026",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-08T14:15:28.000Z",
+      "summary": "Users expect apps and agents to reach the tools they already work in. Every integration that gets you there is a different OAuth flow, a different token lifecycle, weeks of infrastructure before you write a line of product code.\nWorkOS Pipes handles it with one API call. Pre-built connectors for GitHub, Slack, Salesforce, Google Drive, and more. Pipes handles OAuth, token refresh, and credential storage. You call the real provider API with a fresh token, every time.\nConnect to 100+ providers →\n ★",
+      "id": "4aebea70836888d250c50745c8354392ab9b22d60a39370fa3bd5b382066a285",
+      "ref_id": "1",
+      "recommendationScore": 75,
+      "popularityScore": 80,
+      "priority": "medium",
+      "comment": "一篇关于简化多服务集成的赞助内容，介绍WorkOS Pipes API。",
+      "reason": "提供了一个解决常见开发痛点（多服务集成）的实用工具方案。",
+      "tags": [
+        "编程工具",
+        "API",
+        "自动化",
+        "SaaS",
+        "集成"
+      ]
+    },
+    {
+      "title": "Chatto is now Open Source",
+      "link": "https://www.hmans.dev/blog/chatto-is-open-source",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-08T15:19:50.000Z",
+      "summary": "Article URL: https://www.hmans.dev/blog/chatto-is-open-source\nComments URL: https://news.ycombinator.com/item?id=48833116\nPoints: 232\n# Comments: 47",
+      "id": "4f744bee9310c9a1ec8b076eb7d4eaed0c2c79d6c2f50601a752f7b154084648",
+      "ref_id": "4",
+      "recommendationScore": 73,
+      "popularityScore": 90,
+      "priority": "medium",
+      "comment": "Chatto项目开源，为开发者构建聊天功能提供了实用工具，社区关注度高。",
+      "reason": "作为一个开源的编程工具，具有高实用性和社区关注度，有助于提升开发效率，适合编程工具分类。",
+      "tags": [
+        "编程工具",
+        "开源",
+        "聊天应用",
+        "开发框架"
+      ]
+    },
+    {
+      "title": "Apple to increase spend with Broadcom to produce billions more U.S. chips",
+      "link": "https://www.apple.com/newsroom/2026/07/apple-to-increase-spend-with-broadcom-to-produce-billions-more-us-chips/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-08T11:30:56.000Z",
+      "summary": "Article URL: https://www.apple.com/newsroom/2026/07/apple-to-increase-spend-with-broadcom-to-produce-billions-more-us-chips/\nComments URL: https://news.ycombinator.com/item?id=48830565\nPoints: 223\n# Comments: 168",
+      "id": "971c5ed93b6643e398e8e1f05b9ddcf7ab261cf5a0bf4d004c82cf4bc7845f17",
+      "ref_id": "3",
+      "recommendationScore": 68,
+      "popularityScore": 90,
+      "priority": "medium",
+      "comment": "苹果宣布增加与博通的合作，以扩大在美国的芯片生产。",
+      "reason": "对关注苹果产业链、美国制造业政策和科技商业趋势的读者具有一定的参考价值。",
+      "tags": [
+        "Apple",
+        "Business",
+        "Supply Chain",
+        "Broadcom",
+        "Manufacturing"
+      ]
+    },
+    {
+      "title": "Copy That Floppy – Cambridge guide for preserving data from fragile floppy disks",
+      "link": "https://www.digipres.org/the-floppy-guide/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-08T03:22:31.000Z",
+      "summary": "Article URL: https://www.digipres.org/the-floppy-guide/\nComments URL: https://news.ycombinator.com/item?id=48827092\nPoints: 152\n# Comments: 60",
+      "id": "b9b1ba4044cba6aa87f0948b41ecf3069ab20775eb74ee343587d85277f27086",
+      "ref_id": "3",
+      "recommendationScore": 65,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "剑桥大学发布的软盘数据保存指南，针对脆弱的软盘数据恢复。",
+      "reason": "对特定领域（数据归档、历史数据恢复）具有专业价值，但受众范围较窄，主题优先级不高。",
+      "tags": [
+        "Data Preservation",
+        "Archiving",
+        "Floppy Disk",
+        "Legacy Tech",
+        "Hardware"
+      ]
+    },
+    {
+      "title": "My Conversation With ELIZA",
+      "link": "https://sites.google.com/view/elizaarchaeology/try-eliza?authuser=0",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-08T17:33:05.000Z",
+      "summary": "I vaguely recall first trying some version of ELIZA back in the 1990s. I never found it all that impressive nor understood its stature in the AI literature. It’s better than a bunch of if/then statements but not by much. There’s some natural language grammar parsing that is somewhat interesting, but I never thought it came close to passing the Turing Test, and I was always skeptical of claims that people got deeply involved with it as a virtual therapist/counselor. I just tried it again, via The ELIZA Archeology Team’s web-based re-creation. Here’s my transcript:\nHOW DO YOU DO. PLEASE TELL ME YOUR PROBLEM\nI don’t really have a problem.\nDON’T YOU REALLY REALLY HAVE A PROBLEM\nNo.\nARE YOU SAYING ‘NO’ JUST TO BE NEGATIVE\nNo.\nYOU ARE BEING A BIT NEGATIVE\nNo.\nWHY NOT\nI’m just being honest.\nIS IT BECAUSE YOU ARE JUST BEING HONEST THAT YOU CAME TO ME\nNo, I’m just curious to try this out.\nWHY ‘NO’\nI said “no” because my “just being honest” is not the reason I\ncame to you.\nYOUR JUST BEING HONEST IS NOT THE REASON YOU CAME TO I\nThat’s ungrammatical.\nI AM NOT SURE I UNDERSTAND YOU FULLY\nI am quite sure you don’t.\nHOW LONG HAVE YOU BEEN QUITE SURE I DON’T\nPretty much since I got here.\nThere’s something wrong with people who consider today’s chatbots to be their friends or companions. But there’s something really wrong with people who considered ELIZA a useful confidant. Like suffered-a-permanent-head-injury wrong.\n ★",
+      "id": "ad1c3aa66c230180bc355a21b819f2fa220c4ffca2b621f2298be7c9da2cf6a6",
+      "ref_id": "3",
+      "recommendationScore": 65,
+      "popularityScore": 60,
+      "priority": "high",
+      "comment": "作者与经典AI聊天机器人ELIZA的个人对话与反思，对AI历史有一定参考价值。",
+      "reason": "文章主题是关于早期AI聊天机器人ELIZA的个人体验和评价，属于AI范畴，对了解AI发展历程有帮助。",
+      "tags": [
+        "AI",
+        "chatbot",
+        "ELIZA",
+        "历史",
+        "人机交互",
+        "个人体验"
+      ]
+    },
+    {
+      "title": "App Icon Conventions From the Original Macintosh",
+      "link": "https://leancrew.com/all-this/2026/07/old-icons/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-08T14:36:57.000Z",
+      "summary": "Dr. Drang, in a post replete with examples of icons of popular apps from the original Macintosh, in their one-bit glory:\nYou can see that Apple liked the idea of app icons being a\ntilted rectangle with some image inside the rectangle to\nindicate what the app did. The hand was Apple’s way of telling\nyou that this icon was for doing things, and the rectangle was\ntilted to match the orientation of the hand. (If you were\nleft-handed, this was just another injustice inflicted on you by\na cruel right-handed world.)\nDocument icons were typically upright rectangles with dog-eared\ncorners and similar designs inside the rectangle — no hands\nbecause documents don’t do anything. But we’re not here to talk\nabout document icons.\nI never loved the hand on these icons. It felt too uniform. It functioned like a “this is an application” badge, but such a badge never felt necessary to me. But it was so ubiquitous I sort of stopped seeing it, and now, in hindsight, it holds some nostalgic warmth. Right from the start, though, TeachText didn’t have a hand — just a pencil. This is from System 1.0:\n\n  \nThat TeachText icon was prescient about the future of good icon design. A year later the renamed and expanded (it now moved desk accessories in addition to fonts) Font/DA Mover lost the hand and became a fun truck (also prescient of great icons to come):\n\n  \n(So many little things were still in flux in those primordial days. Note the bold text in the Finder window status bar header in System 1. That kind of looks cool, though. But the single-story “a” in the Geneva font — that’s just wrong, and gives me the ick.)\nDrang continues:\nOther publishers abandoned either the hands or the tilted\nrectangle or both. As people got more used to working with Macs,\nthese clues for what’s an app and what isn’t became unnecessary,\nand icon design became less constrained. Even Apple gave up on\nthem for utilities like Disk First Aid and Font/DA Mover.\nI think it’s less that Apple gave up on them and more that it came into focus that the “hand holding a pen over a diamond-shaped document” convention was intended for document-based apps. It signified “This is a creative tool that you use to create documents”. Apps that weren’t about creating document files — like Disk First Aid and Font/DA Mover — got different icons. Font/DA Mover’s truck icon in System 2 signified that you use this tool to move things. Disk First Aid’s ambulance was an obvious metaphor for repairing something unwell. Moving and repairing are very different purposes from creating. Font Mover’s icon in System 1 wrongly suggested, if only subtly, that it was a tool for creating font-related document files of some sort.\nBut the main thing about the “hand holding pen over diamond” convention was that it was only ever a convention. If Apple’s squircle fetish were merely a convention, then third-party developers would be free to ignore it. Some conventions are merely fads — they come into and out of vogue quickly. Some are long-term trends that persist. But the ones that prove to be more than passing fads win out on merit in the marketplace of ideas. Mandating the squircles with squircle jail doesn’t make them a winning idea. It’s like claiming to win elections when credible rivals aren’t permitted on the ballots.\n(Also, I am in complete agreement with Drang re: my favorite app icon of that era. So perfect, so fun, but so ineffable as to why it’s so perfect.)\n ★",
+      "id": "54a83938d006f1f612eca2a2b07c56fe7fa80a3fc39b771068e48872ad792350",
+      "ref_id": "0",
+      "recommendationScore": 60,
+      "popularityScore": 55,
+      "priority": "medium",
+      "comment": "一篇关于初代Macintosh应用图标设计历史的趣闻。",
+      "reason": "提供了对早期Apple生态系统设计哲学的一些怀旧而有趣的洞察，但对现代开发的实用性不高。",
+      "tags": [
+        "Apple生态",
+        "产品设计",
+        "历史",
+        "UI/UX"
+      ]
+    },
+    {
+      "title": "Felons, Fraudsters Flog Offensive Cybersecurity Startup",
+      "link": "https://krebsonsecurity.com/2026/07/felons-fraudsters-flog-offensive-cybersecurity-startup/",
+      "source": "krebsonsecurity.com",
+      "publishedAt": "2026-07-08T12:31:39.000Z",
+      "summary": "A cybersecurity startup dangling millions of dollars to acquire zero-day security vulnerabilities in popular software is run by a pair of far-right conspiracy theorists and convicted felons whose most recent ventures included fake intelligence companies and a now-defunct AI-based lobbying platform they operated under assumed names.",
+      "id": "11d2003407b798e6030d024291965ac9499698ecf6729df3cf0f340bcc3b01a8",
+      "ref_id": "2",
+      "recommendationScore": 55,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "一篇揭露网络安全初创公司欺诈行为的调查报道，警示意味浓厚，但技术内容不足。",
+      "reason": "文章揭露了行业内的欺诈和不道德行为，具有新闻价值和警示意义，但并非科技博客关注的AI、编程工具等技术深度内容。",
+      "tags": [
+        "网络安全",
+        "欺诈",
+        "新闻",
+        "创业",
+        "丑闻"
+      ]
+    },
+    {
+      "title": "The Special Value Pi 4 was extremely short-lived",
+      "link": "https://www.jeffgeerling.com/blog/2026/special-value-pi-4-extremely-short-lived/",
+      "source": "jeffgeerling.com",
+      "publishedAt": "2026-07-08T14:00:00.000Z",
+      "summary": "The 'Special Value' Pi 4 pictured above is probably the rarest Raspberry Pi I own—even rarer than my blue special edition Pi.\nA Raspberry Pi reseller briefly listed a special 'value edition' Pi 4. But the product page 404's now. While it was up, my curiosity got the better of me, and now I have two 'value' Pi 4s.\nWhat makes them a 'value'? They're only certified to run at 1.25 GHz (retail Pi 4s run at 1.8 GHz, and can usually be overclocked).",
+      "id": "411c5d492b1439e65c7a402562a434227efdc9a7641b29127506c43e3463a569",
+      "ref_id": "1",
+      "recommendationScore": 45,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "一篇关于稀有Raspberry Pi型号的趣闻，技术深度和实用性较低，更偏向收藏爱好者。",
+      "reason": "文章内容侧重于一个罕见硬件版本的趣闻，而非技术深入分析或广泛应用，受众较为小众。",
+      "tags": [
+        "Raspberry Pi",
+        "硬件",
+        "收藏",
+        "趣闻"
+      ]
+    },
+    {
+      "title": "And Then the Billionaire Paid Off $550 Million of Our Debts ",
+      "link": "https://idiallo.com/blog/billionaire-paid-off-550-million-dollars-of-our-debts",
+      "source": "idiallo.com",
+      "publishedAt": "2026-07-08T08:00:00.000Z",
+      "summary": "Imagine being worth $2 billion. Would you give away $550 million? That's a quarter of your wealth, more money than I could spend in several lifetimes. Yet that's how much Evan Spiegel, the CEO of Snapchat, and his wife have donated to a charity in California. Specifically, they donated to Undue Medical Debt, an organization that buys Californians' medical debts and expunges them. A noble act.\n\t\t\t\nI'm not one to tell you that billionaires shouldn't exist, or what is or isn't fair in a system I don't control. But one thing I've come to see over the years is that public good deeds are rarely what they seem. Whether it's a feel-good story on the news, a TV show pimping your car, or another turning your house into a mansion, there's an underlying truth that often gets obscured by the appearance of a good deed.\nBill Gates, who was once the richest man in the world, pledged to leave almost all his money to charity. Over the years this story has been repeated, and I'm the last person to tell you how to feel about it. For me, it's a good thing to help a charitable organization that's trying to help others. Last year, Bill Gates renewed this pledge, stating that he would give away around $200 billion and keep less than 1% for himself. I mean, $200 billion? That's crazy. Any charitable organization receiving even a fraction of that money will be able to do a lot of good with it, especially when Elon Musk said he could end world hunger with just $6.6 billion.\nBut that's only part of his statement. He isn't leaving his money to any random organization that needs it. He's leaving it to the Bill and Melinda Gates Foundation. That's a different thing. Not a bad thing, but it changes the statement from \"I'm donating my money to charity\" to \"I'm going to use my money to do charity.\" The money moves from one pocket to another.\nThe point I'm trying to make is that good stories often come with a few asterisks. When I read the Evan Spiegel story, I was intrigued because, well, I'm Californian. I've been here for over 20 years, my kids were born and raised here, and so far I have no intention of going anywhere else. Oh, and I've had one of those surprising medical bills that nearly made me faint. (A story for another day)\nReading a story where a billionaire pays off people's medical debt makes you feel good. It made me feel good. But when I looked at the details, things didn't add up.\nThe language of billionaire philanthropy.\nFirst of all, the title of the LA Times article said: \"Snap CEO Evan Spiegel and Miranda Kerr help erase $550 million in medical debt for Californians\". Note that it says \"help erase.\" The charitable interpretation is that they paid $550 million of our debts. But that's not what it says, it says \"help erase.\"\nFurther into the article, it states:\nThe couple made a multimillion-dollar donation to Undue Medical Debt, a nonprofit that provides debt relief to people in financial need. The organization acquires medical debt in bulk from hospitals, physician groups, collection agencies and other groups for a fraction of the cost.\nSo rather than pay the debt directly, they made a donation to Undue Medical Debt, which had already acquired the debts. And the most interesting part of all this is that Undue Medical Debt acquires debts for \"a fraction of the cost.\"\nIn the article, they admit that the actual amount the couple donated was not disclosed; however, they do explain how much the organization pays to acquire debt:\nEvery $10 donated to Undue Medical Debt relieves an average of $1,000 in medical debt.\nIn other words, they acquire debt for a hundredth of its original value, a penny on the dollar (1/100). \n10 years ago, to the date, John Oliver aired an episode of his show where he bought $15 million of medical debt “from Texas at a cost of less than half a cent on the dollar, which is less than 60 grand”. He then paid it off, relieving 9,000 people of their medical debt. It’s a ripe business for anyone looking for a quick PR win.\nAgain, I'm not complaining about this, I'm just doing the math. It's a good thing that they're taking on people's debt and finding rich people to pay for it. That's a good thing for the person receiving the relief.\n\"No one should go bankrupt because of a cancer diagnosis and no family should have to choose between insulin and groceries.\"\nIt's a good thing:\nSan Diego County residents benefited the most from the donation, with total medical debt relief through the couple's gift totaling roughly $99 million and affecting 40,369 people. In Los Angeles County, the gift provided $26.7 million in medical debt relief to 17,466 people, according to the nonprofit.\nThat's close to 60,000 people benefiting from this relief. But the language keeps circling the drain instead of just telling us what they actually gave. It says \"the donation with total medical debt relief through the couple's gift totaling roughly...\" They never tell us how much they gave, just how much the medical debt is \"roughly\" worth.\nBut we can do the math. Undue Medical Debt purchases debt for a penny on the dollar. Evan and Miranda paid off $550 million in debt. At a penny on the dollar, or 1/100, that puts the purchase price at roughly $5.5 million. That's a huge difference in value. Evan and Miranda donated $5.5 million to Undue Medical Debt, \"roughly\". Why was that so hard to say? Is the value too low? Not good enough? I'd argue it's still very generous. But it doesn't generate the same amount of PR, does it?\nIt's one thing to say you've donated a quarter of your wealth, but a whole other thing to say you've donated 0.27% of your money.\nI'm not trying to shame them really, I think they should just be honest. Either donate silently, or tell the truth. Why inflate it? It also tells us something about how inflated medical bills really are. If the debt only costs a hundredth of its face value, then patients should be able to pay it off themselves. When my children were in the NICU, we were charged \"roughly\" $20,000 a night for our two-month stay in the hospital, per child. I'll spare you the math for now. (Again that's a story for another day)\nThere's always an angle to these charitable stories. We celebrated Bill Gates' pledges without questioning that he was funding his own foundation, and that it did more than just charitable work (like oil, fast food, or pharma). We celebrated Warren Buffett's pledges, while he quietly changed his tune in his last annual letter. Evan and Miranda boasted $550 million, while they actually donated only a hundredth of that amount.\nI'm not saying the money they donated or actions these people took aren't commendable, it's just that it would have been better if they had been honest about it from the beginning. When the rich donate money or make a show of it, there is always more to the story.\nResources:\nNPR\nLA Times\nYahoo",
+      "id": "a89b40e99f3d3e81ba9fd651c54cffb8c1656dd628c653a3ddb92899a9bc3e76",
+      "ref_id": "2",
+      "recommendationScore": 40,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "一篇关于亿万富翁慈善行为及其背后动机的社会评论文章。",
+      "reason": "内容偏离科技博客关注主题，更侧重于社会经济和哲学讨论。",
+      "tags": [
+        "社会评论",
+        "经济",
+        "慈善",
+        "非科技"
+      ]
+    },
+    {
+      "title": "The Download: worms fight pollution, and geoengineering faces reality",
+      "link": "https://www.technologyreview.com/2026/07/08/1140216/the-download-worms-manure-pollution-geoengineering-reality-check/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-07-08T12:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. Why worms (and microbes) are catching on as a manure pollution solution Anthony Agueda, a third-generation California dairy farmer, pulls a rake through a bed of dark, wet wood chips to…",
+      "id": "5b99821b617534660e1c50628c6808bf7fe158d6b3576d67d358a9723ca88a5f",
+      "ref_id": "4",
+      "recommendationScore": 35,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "科技新闻简报，涵盖生物治污和地球工程，主题较为分散且偏离核心。",
+      "reason": "内容范围广但与AI、编程等高优先级主题关联不强，信息密度可能不足，对目标读者吸引力有限。",
+      "tags": [
+        "环境科技",
+        "生物技术",
+        "新闻简报"
+      ]
+    },
+    {
+      "title": "GAO: DOE Is Prematurely Excluding Less Expensive Options for Nuclear Cleanup",
+      "link": "https://www.gao.gov/products/gao-26-108193",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-07T22:23:58.000Z",
+      "summary": "Article URL: https://www.gao.gov/products/gao-26-108193\nComments URL: https://news.ycombinator.com/item?id=48824826\nPoints: 256\n# Comments: 137",
+      "id": "0656c25ec2cbbb74c009ec3ea2e9be400b0dd7d592555d30a23be94e8c406241",
+      "ref_id": "1",
+      "recommendationScore": 30,
+      "popularityScore": 65,
+      "priority": "low",
+      "comment": "政府问责报告，内容关于核清理成本，与科技博客核心主题关联度低。",
+      "reason": "话题偏离AI、编程工具等科技博客核心关注点，缺乏直接的技术深度或实用性。",
+      "tags": [
+        "政策",
+        "环境",
+        "能源"
+      ]
+    },
+    {
+      "title": "A bug which only affected left-handed users",
+      "link": "https://shkspr.mobi/blog/2026/07/a-bug-which-only-affected-left-handed-users/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-07-08T11:34:43.000Z",
+      "summary": "Verily, some of our brethren (and sistren) be afflicted with a sinister disposition. While the righteous scroll using the thumb of their right hand - as is good and proper - an accurs'd minority swing the other way.  Look, you try writing an interesting bug report without sounding like a clanker, OK!  I try to optimise my blog as much as possible. It may not look like much, but it has got it…",
+      "id": "3f18505353ef95e741a82801bb4c393efec641c3a641443b81e65165f3d28936",
+      "ref_id": "3",
+      "recommendationScore": 30,
+      "popularityScore": 30,
+      "priority": "medium",
+      "comment": "一篇标题有趣但内容极短且模糊的文章，可能为一篇未完成的bug报告。",
+      "reason": "内容信息量极低，未能深入阐述任何技术细节或实用见解。",
+      "tags": [
+        "编程",
+        "Bug",
+        "独立开发",
+        "短文"
+      ]
+    },
+    {
+      "title": "Biohacker seeking immortality afflicted with incurable 'stomach eating' disease",
+      "link": "https://www.lifesitenews.com/news/biohacker-seeking-immortality-afflicted-with-incurable-stomach-eating-disease/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-08T16:16:12.000Z",
+      "summary": "Article URL: https://www.lifesitenews.com/news/biohacker-seeking-immortality-afflicted-with-incurable-stomach-eating-disease/\nComments URL: https://news.ycombinator.com/item?id=48833823\nPoints: 32\n# Comments: 24",
+      "id": "e645bd5105b2baa803b7bd426216fde3b442b88c409f6e8e6ee448305935c2f1",
+      "ref_id": "2",
+      "recommendationScore": 25,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "一个关于生物黑客的悲剧性新闻故事，与科技博客关注的AI、编程等主题关联度低。",
+      "reason": "内容偏离科技领域核心关注点，缺乏技术深度和实用性，不适合科技博客。",
+      "tags": [
+        "生物伦理",
+        "新闻",
+        "非科技"
+      ]
+    },
+    {
+      "title": "Weekly Update 511: Live from my Riad in Marrakech",
+      "link": "https://www.troyhunt.com/weekly-update-511/",
+      "source": "troyhunt.com",
+      "publishedAt": "2026-07-08T13:54:46.000Z",
+      "summary": "How's this for a location?! I mean, last week was nice with Scott in Mallorca, but Marrakech is, well, wow 😮 Anyway, about those data breaches... This week I'm talking about the futility of attempting to remove piss from a pool, yet here we are, with",
+      "id": "81e679c582e4f30e04f9c04cb55c1294d865bc960e56221c2bbbc48ede1f4317",
+      "ref_id": "1",
+      "recommendationScore": 15,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "个人游记与模糊的技术话题随意组合，内容碎片化且缺乏实质信息。",
+      "reason": "文章内容高度个人化且缺乏明确的技术主题和深度，无法为科技博客读者提供价值。",
+      "tags": [
+        "个人随笔",
+        "生活",
+        "数据泄露"
+      ]
+    },
+    {
+      "title": "The Decline of Deviance 2",
+      "link": "https://www.experimental-history.com/p/the-decline-of-deviance-2",
+      "source": "experimental-history.com",
+      "publishedAt": "2026-07-08T16:10:54.000Z",
+      "summary": "2 Decline, 2 Deviance",
+      "id": "fe5ed9134f2070ae8c9d9e0d131bc791bffcafd39256662f43a87c639cb0a736",
+      "ref_id": "2",
+      "recommendationScore": 5,
+      "popularityScore": 5,
+      "priority": "low",
+      "comment": "内容过于简短，缺乏任何可供评估的实质信息。",
+      "reason": "文章仅有几个词语，无法判断其主题、技术深度或潜在价值。",
+      "tags": []
+    }
+  ]
+}
