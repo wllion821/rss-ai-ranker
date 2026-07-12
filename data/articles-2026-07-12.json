@@ -1,0 +1,599 @@
+{
+  "dailySummary": "今日科技速递：AI代理工具编排成焦点，Skillscript等新语言优化本地代理运作。大模型方面，Mesh LLM探索分布式AI计算。此外，OpenAI因ChatGPT新版体验受争议，",
+  "articles": [
+    {
+      "title": "Show HN: Skillscript – A declarative, sandboxed language for tool orchestration",
+      "link": "https://github.com/sshwarts/skillscript",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-12T13:34:00.000Z",
+      "summary": "Hi HN — I'm Scott. Skillscript is a small language I built to write what I want my local agent to actually do, in a form I can read and version, instead of hoping the model gets it right each time.\nThe itch started with something small. I wanted my NanoClaw agent to run my morning brief the same way every day. Check overnight tickets, summarize the deploy pipeline, flag anything urgent. Every session, it would re-figure out how to do this from scratch, drift a little, and cost tokens for what's basically a fixed procedure. I could put it in a system prompt or an MD skill file, but those are still instructions the model reads and reasons about every time. And I wanted it to run autonomously and then hand it to the model to reason over the data.\nThe second thing that pushed me: I wanted to use small local models for the cheap stuff. They're capable, but if you just hand them the wheel, they wander. What I wanted was a way for the frontier model (or me) to write a specific procedure and hand it to the local model to execute, not interpret. The skillscript is the program; the model is the runtime.\nSkillscript is that. A skillscript is a text file with named steps, variables, conditions, and calls out to tools (MCP connectors, a local model, and shell commands from an operator allowlist). It's deliberately minimal — no eval, no arbitrary imports, no subprocess, no unbounded loops. Bounded language, limited potential for damage. Everything a skillscript can do is in the file. You read it and know.\nWhere it is: pre-1.0 (0.30), MCP-native, self-hosted. Rough edges I know about: first-run setup takes more steps than it should, some of the grammar is still moving, and the local model integration currently assumes Ollama. It works well enough that I use it every day, but I wouldn't necessarily call it production-ready.\n- Repo: [https://github.com/sshwarts/skillscript](https://github.com/sshwarts/skillscript)\n- Site: [https://skillscript.ai](https://skillscript.ai)\n- Docs: [https://skillscript.mintlify.app/docs](https://skillscript.mintlify.app/docs)\n- npm: `skillscript-runtime`\nI'd welcome critique on two things especially: the language design (is it too small? too big? wrong shape?) and the trust model around agent-authored skills. What would you want to see before you trusted this on your own machine?\nComments URL: https://news.ycombinator.com/item?id=48881112\nPoints: 7\n# Comments: 6",
+      "id": "a6a2f3ce01e5e0bf48c8fc1afe684161a3ccabe5a1415ac0f2e45a626a68cd0a",
+      "ref_id": "4",
+      "recommendationScore": 98,
+      "popularityScore": 60,
+      "priority": "high",
+      "comment": "一款针对AI代理工具编排的声明式沙盒语言Skillscript，旨在解决LLM行为不稳定和token成本高昂的问题。",
+      "reason": "高度创新且实用，直接针对AI代理开发中的核心痛点提供具体的编程工具解决方案，完美结合了AI、编程工具和自动化主题。",
+      "tags": [
+        "AI",
+        "AI代理",
+        "编程语言",
+        "工具",
+        "自动化",
+        "LLM",
+        "独立开发",
+        "Show HN"
+      ]
+    },
+    {
+      "title": "Old and new apps, via modern coding agents by Terry Tao",
+      "link": "https://terrytao.wordpress.com/2026/07/11/old-and-new-apps-via-modern-coding-agents/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-12T11:09:42.000Z",
+      "summary": "Article URL: https://terrytao.wordpress.com/2026/07/11/old-and-new-apps-via-modern-coding-agents/\nComments URL: https://news.ycombinator.com/item?id=48880170\nPoints: 264\n# Comments: 72",
+      "id": "c27e1dfeff9dc90a552f07d6aa7c7c8523834aa8ca3cc50985aba49756c80e15",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "陶哲轩探讨AI编码智能体在应用开发中的作用，极具前瞻性和深度。",
+      "reason": "完美契合最高优先级AI主题，出自顶级学者之手，探讨了AI在编程领域的最新进展和深远影响，信息量大且具启发性。",
+      "tags": [
+        "AI",
+        "编程智能体",
+        "软件开发",
+        "未来趋势",
+        "Terry Tao"
+      ]
+    },
+    {
+      "title": "Understanding the Odin Programming Language",
+      "link": "https://odinbook.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-12T12:08:07.000Z",
+      "summary": "Article URL: https://odinbook.com/\nComments URL: https://news.ycombinator.com/item?id=48880499\nPoints: 91\n# Comments: 31",
+      "id": "f9fd33c961cc6ca1704fd27fe7061b7d84290ebf2169612fad44ee906e2ff7a9",
+      "ref_id": "2",
+      "recommendationScore": 92,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "深入介绍Odin编程语言的资源，对开发者极具价值和实用性。",
+      "reason": "完美契合编程工具主题，技术深度和实用性极高，是学习新语言的优质资源。",
+      "tags": [
+        "编程语言",
+        "Odin",
+        "开发工具",
+        "技术教程"
+      ]
+    },
+    {
+      "title": "Autoresearch, Claude and Constrained Optimization",
+      "link": "https://www.elliotcsmith.com/autoresearch-claude-and-constrained-optimization/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-12T14:32:00.000Z",
+      "summary": "Article URL: https://www.elliotcsmith.com/autoresearch-claude-and-constrained-optimization/\nComments URL: https://news.ycombinator.com/item?id=48881498\nPoints: 6\n# Comments: 1",
+      "id": "9ad000cac78b6d7dcb49eda4e6b49e772f2c1ab6e532d2bb5934cdd8c31f726c",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 6,
+      "priority": "high",
+      "comment": "深入探讨如何利用Claude模型进行自动化研究和受限优化的AI技术实践。",
+      "reason": "完美契合AI主题，结合具体AI模型和优化理论，为自动化研究提供实用且前沿的解决方案。",
+      "tags": [
+        "AI",
+        "Claude",
+        "自动化研究",
+        "优化",
+        "机器学习",
+        "大模型"
+      ]
+    },
+    {
+      "title": "Mesh LLM: distributed AI computing on iroh",
+      "link": "https://www.iroh.computer/blog/mesh-llm",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-11T22:38:57.000Z",
+      "summary": "Article URL: https://www.iroh.computer/blog/mesh-llm\nComments URL: https://news.ycombinator.com/item?id=48876505\nPoints: 313\n# Comments: 72",
+      "id": "0cb2a7c0c0cba9c680db169a589a7c45101315cd19ba1f24cabf9d2b568219d2",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "关于在iroh上实现分布式AI计算和Mesh LLM的深度探讨。",
+      "reason": "解决了LLM扩展和部署的关键技术难题，对AI领域影响深远，优先级最高。",
+      "tags": [
+        "AI",
+        "LLM",
+        "分布式计算",
+        "基础设施"
+      ]
+    },
+    {
+      "title": "Gurman on Tang Tan and Paul Meade",
+      "link": "https://www.bloomberg.com/news/articles/2026-07-11/openai-engineer-s-lol-moment-set-stage-for-legal-fight-with-apple",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-11T18:02:17.000Z",
+      "summary": "Mark Gurman, reporting for Bloomberg (paywalled, alas):\nApple was quickly alarmed by OpenAI’s recruiting drive, which\nincluded poaching senior hardware and design leaders and ravaging\nseveral teams across its engineering organizations. The practice\ncontinued as recently as June, when OpenAI lured away Apple’s\nsmart glasses chief. That executive, Paul Meade, was quickly\nshown the door at Apple and not given the opportunity to stay on\nfor a transition period, according to people with knowledge of\nthe matter.\nRegarding Tang Tan, who is at the center of Apple’s lawsuit:\nTan was famous for taking risks at Apple and “flying very close to\nthe sun” during his 25-year career, according to someone who\nworked with him. “Tang is well known for moving fast, playing fast\nand loose and breaking things,” said the person, who asked not to\nbe identified while discussing former colleagues.\nGurman broke the story of Meade leaving Apple for OpenAI on June 26, writing then:\nMeade’s departure is a blow to the iPhone maker. He has led\nhardware engineering for the Vision Pro headset — once seen as\nApple’s next major computing platform — for seven years. Apple\nand OpenAI spokespeople declined to comment. He has also been\nresponsible for the development of display-free Apple smart\nglasses meant to vault the company into the AI wearables space\nnext year and compete with a growing category pioneered by Meta\nPlatforms Inc.\n ★",
+      "id": "97d7cc590804c51f4b75eab57a66f8636d2731dfecedc6e6abf4b816cdf06737",
+      "ref_id": "1",
+      "recommendationScore": 90,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "深度报道Apple与OpenAI之间的人才争夺及相关法律行动。",
+      "reason": "直接关联AI和Apple两大高优先级主题，信息新颖、密度高，揭示了科技巨头间的竞争态势，具有极高的行业关注度。",
+      "tags": [
+        "Apple",
+        "OpenAI",
+        "人才争夺",
+        "AI战略",
+        "行业新闻"
+      ]
+    },
+    {
+      "title": "Agent Harness Engineering",
+      "link": "https://addyosmani.com/blog/agent-harness-engineering/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-12T14:16:31.000Z",
+      "summary": "Article URL: https://addyosmani.com/blog/agent-harness-engineering/\nComments URL: https://news.ycombinator.com/item?id=48881393\nPoints: 3\n# Comments: 0",
+      "id": "16336db7a9c5ca8fb83c3cdc39b61c96ae38c30934423885aaa1f7a81ae28440",
+      "ref_id": "3",
+      "recommendationScore": 88,
+      "popularityScore": 3,
+      "priority": "high",
+      "comment": "Addy Osmani撰写的关于AI代理系统构建和管理的工程实践探讨，提供了AI agent开发的工程视角。",
+      "reason": "紧密围绕AI代理这一前沿领域，提供了工程化视角来解决AI系统设计和部署的挑战，具备高技术深度和实用性。",
+      "tags": [
+        "AI",
+        "AI代理",
+        "软件工程",
+        "系统设计",
+        "LLM应用"
+      ]
+    },
+    {
+      "title": "AI Boosts Research Careers but Flattens Scientific Discovery",
+      "link": "https://spectrum.ieee.org/ai-science-research-flattens-discovery",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-12T13:26:13.000Z",
+      "summary": "Article URL: https://spectrum.ieee.org/ai-science-research-flattens-discovery\nComments URL: https://news.ycombinator.com/item?id=48881043\nPoints: 86\n# Comments: 69",
+      "id": "5a7c527e84b4a1e5ac6759d420b1f41f2d17b53faa11cc8fd87536547e3b21ed",
+      "ref_id": "0",
+      "recommendationScore": 88,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "一篇深度探讨AI对科学研究利弊的批判性分析文章，视角独特。",
+      "reason": "选题符合最高优先级AI主题，并提供了对AI影响的独特深度思考，信息量大且具有启发性。",
+      "tags": [
+        "AI",
+        "科学研究",
+        "社会影响",
+        "批判性思维"
+      ]
+    },
+    {
+      "title": "Show HN: Ant – A JavaScript runtime and ecosystem",
+      "link": "https://antjs.org",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-11T20:07:18.000Z",
+      "summary": "Hello HN!\nI'm the author of Ant, a JavaScript ecosystem built around a runtime with its own JavaScript engine. Ant also includes a package manager, the ants.land package registry, a platform for deploying and hosting applications, and Ant Desktop for building native desktop apps with web technologies, similar to Electron.\nThe goal is for these pieces to work as one coherent platform while remaining compatible with the wider JavaScript ecosystem. It's still early, and I'd appreciate any feedback on the overall direction or what you'd like to see from an e2e alternative to the existing JavaScript stacks.\nP.S. I’ve shared Ant here before as a runtime; since then, it has grown into the broader ecosystem you see today.\nComments URL: https://news.ycombinator.com/item?id=48875377\nPoints: 311\n# Comments: 142",
+      "id": "00573cdd32302f633e49081fc126a1abc6c0af1a2e5c115d9eda81b2e6c69356",
+      "ref_id": "4",
+      "recommendationScore": 88,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "一个雄心勃勃的JavaScript运行时和生态系统，旨在提供统一的开发平台。",
+      "reason": "试图从底层构建一个全面的JavaScript替代方案，具备极高的技术挑战性和潜在实用价值，优先级高。",
+      "tags": [
+        "JavaScript",
+        "运行时",
+        "编程工具",
+        "生态系统",
+        "Web开发",
+        "桌面应用"
+      ]
+    },
+    {
+      "title": "OpenAI Help Center Describes What Is Wrong With the New ChatGPT",
+      "link": "https://help.openai.com/en/articles/20001275-chatgpt-work-and-codex",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-11T22:24:20.000Z",
+      "summary": "OpenAI Help Center, “Where Work and Codex are available”:\nWork is available on ChatGPT web and mobile for eligible paid\nplans. Work is also available in the ChatGPT desktop app when\nincluded for your plan and workspace.\nWork on web and mobile runs in the cloud. Work in the desktop app\ncan also use local files and desktop apps with your permission. At\nlaunch, cloud Work conversations do not appear in desktop Work;\ndesktop Work threads and local files remain on that computer.\nCodex is available as a mode in the ChatGPT desktop app. It can\nwork with local folders, repositories, terminals, and developer\ntools. Codex is not a selectable mode on web or mobile. You can\naccess supported desktop Codex tasks from the Remote tab in the\nChatGPT mobile app, but those tasks do not become web or mobile\nchat history.\nThese three paragraphs, from OpenAI’s own Help Center, sound more like a critic’s scathing review of what’s wrong with the new ChatGPT “super” app than a guide to how to use it.\n ★",
+      "id": "0cfdd4c3ce0047cab5e2f8bf88bb87da60a03976a58dae66265b3117128dd689",
+      "ref_id": "3",
+      "recommendationScore": 88,
+      "popularityScore": 92,
+      "priority": "high",
+      "comment": "巧妙地引用OpenAI官方文档，有力地揭示了新ChatGPT应用在功能设计和描述上的混乱。",
+      "reason": "从产品沟通层面深刻剖析了AI产品的用户体验问题，对理解当前AI工具的挑战性有助益，信息密度高。",
+      "tags": [
+        "AI",
+        "ChatGPT",
+        "产品设计",
+        "用户体验",
+        "OpenAI",
+        "应用更新",
+        "批评"
+      ]
+    },
+    {
+      "title": "Unauthenticated RCE in Motorola's MR2600 Router",
+      "link": "https://mrbruh.com/motorola/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-12T11:52:21.000Z",
+      "summary": "Article URL: https://mrbruh.com/motorola/\nComments URL: https://news.ycombinator.com/item?id=48880406\nPoints: 55\n# Comments: 16",
+      "id": "f5c6cf334df0d8dec46e038cb35d901c981c4e18372ea8fb739b48bd41c6b1a3",
+      "ref_id": "3",
+      "recommendationScore": 85,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "一篇详细分析Motorola路由器RCE漏洞的技术报告，具有高度的安全实用价值。",
+      "reason": "技术深度极高，揭示了具体的安全漏洞及攻击方式，对网络安全领域读者有重要参考价值。",
+      "tags": [
+        "网络安全",
+        "漏洞分析",
+        "RCE",
+        "路由器",
+        "技术报告"
+      ]
+    },
+    {
+      "title": "Stacks — HyperCard Player for Modern MacOS",
+      "link": "https://morphing.cloud/hypercard/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-12T15:42:21.000Z",
+      "summary": "Well this is just delightful:\nRun HyperCard stacks directly on your modern Mac. No emulator\nrequired!\nBrowse the Internet Archive’s HyperCard collection and run\nstacks with one-click.\nPeriod-accurate typography.\nSound, instruments, and MacinTalk speech synthesis.\nCross-stack navigation.\nStacks is a really beautiful native Mac app, and its presentation of classic HyperCard stacks is exquisitely faithful to the era. It’s simultaneously Mac-assed 2026-style and Mac-assed 1987-style. Crackerjack work from developer Jeff Halter.\n ★",
+      "id": "aec383c17bd66a6c7518adb6e852d238f5750e38a94c16bf2b15688ab2a621fc",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "将经典HyperCard带到现代macOS的精致原生应用，技术实现卓越且充满情怀。",
+      "reason": "在Apple生态中具有极高的新颖性和技术深度，对复古计算爱好者和Mac用户群体极具吸引力。",
+      "tags": [
+        "Apple生态",
+        "macOS",
+        "HyperCard",
+        "原生应用",
+        "独立开发",
+        "复古计算"
+      ]
+    },
+    {
+      "title": "Benedict Evans on the New ‘Super App’ ChatGPT",
+      "link": "https://www.threads.com/@benedictevans/post/Dano_uvDr8F",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-11T22:16:21.000Z",
+      "summary": "Benedict Evans with a succinct review on Threads:\nWow, what a total mess.\nWhat is the difference between a project, a task and a chat?\nWhy did chats get a crappy floating window but tasks and\nprojects don’t?\nWhy does choosing ‘plugins’ get me ‘templates’?\nAm I not allowed to finish ‘setup’ if I don’t use Slack or\nGoogle Drive?\nI forget how I made the Setup dickbar disappear despite my not using Slack or Google Drive. It was confusing.\nIt is sometimes observed that in companies dominated by internal politics, their shipped product (and public keynotes) reflect the company’s org chart. That’s never been truer than with the new ChatGPT app. OpenAI’s internal org chart is a complete disorganized mess. This new app perfectly reflects that.\nThe old ChatGPT app was focused. That’s the app that still ships for mobile (which includes iPad, which tells you whether OpenAI thinks iPad is a real computer or a big iPhone), and is, for some Mac users, left installed on their systems as “ChatGPT Classic”. The new app is an incredibly confusing sloppy mess. At a glance it looks like a polished app. But the UI is just slop. It has the veneer of a polished app without actually being organized or structured or labeled in ways that add clarity and coherence. It’s playing dress-up as a big-boy app. My understanding from people adjacent to OpenAI is that the company’s senior executives are singularly consumed with FOMO obsession regarding Anthropic, and the only real clout within the company belongs to the AI researchers. Not product designers or app craftspeople. What the researchers say goes, and with this update, we can see their level of taste in app design.\nThe app icon for the new “super” app should be the Homer.\n ★",
+      "id": "4ef2285fde59287183136d4a538df90bc88342fa24c08f0445cb0c2da26fd452",
+      "ref_id": "4",
+      "recommendationScore": 82,
+      "popularityScore": 88,
+      "priority": "high",
+      "comment": "精准而辛辣地批评了新ChatGPT应用的混乱，并将其与OpenAI的组织结构相关联。",
+      "reason": "对AI产品设计和公司内部治理之间关系进行了独特且深刻的评论，提供了高层面的洞察。",
+      "tags": [
+        "AI",
+        "ChatGPT",
+        "产品设计",
+        "用户体验",
+        "OpenAI",
+        "公司治理",
+        "评论"
+      ]
+    },
+    {
+      "title": "Show HN: Mindwalk – Replay coding-agent sessions on a 3D map of your codebase",
+      "link": "https://github.com/cosmtrek/mindwalk",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-12T05:51:32.000Z",
+      "summary": "Article URL: https://github.com/cosmtrek/mindwalk\nComments URL: https://news.ycombinator.com/item?id=48878682\nPoints: 132\n# Comments: 54",
+      "id": "98c2d393b0cb4e129652a023d69b703c254c5dcd12bcfb7882ed0f28874fc863",
+      "ref_id": "1",
+      "recommendationScore": 80,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "一个高度新颖的工具，通过3D地图可视化和重放AI编程代理会话。",
+      "reason": "结合了AI和代码可视化，为理解和调试AI编程行为提供了创新视角，优先级高。",
+      "tags": [
+        "AI",
+        "编程工具",
+        "代码可视化",
+        "调试"
+      ]
+    },
+    {
+      "title": "Can Someone Explain to Me How to Get ‘ChatGPT Classic’?",
+      "link": "https://help.openai.com/en/articles/20001276-moving-to-the-new-chatgpt-desktop-app",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-11T22:38:39.000Z",
+      "summary": "One more link from OpenAI’s Help Center, this one explaining how to upgrade from the old Mac app to the new “super” app version:\nFollow the prompt in the app to download the new ChatGPT desktop\napp. Then sign in with the same ChatGPT account.\nThe new app may install alongside your current app. If both remain\ninstalled, you will see:\nChatGPT: The new app with Chat, Work, and Codex.\nChatGPT Classic: The previous ChatGPT desktop app. You can\ncontinue using it; no migration is required at launch. It\ncontinues to receive model updates, bug fixes, security patches,\nand support for its existing Enterprise capabilities. New agent\nfeatures may be available only in the new app.\nNone of this has been my experience. I had the existing old ChatGPT app installed on three different Macs. On all three of them, the built-in “Check for Updates” command only installs the latest version of the classic app. This is good, I suppose. But if you’re not aware from following the news that OpenAI released an altogether new “super” app for MacOS and Windows, you’d never know it from the Check for Updates command built into the classic Mac app.\nSo I don’t see “the prompt in the app to download the new ChatGPT desktop app”. If I download the new app manually, I get a disk image. After mounting the disk image, the instructions say to double-click the “ChatGPT” app on the disk image — not to drag it to the Applications folder. If I do that while the old ChatGPT app is still running, it bounces back and forth a few times but nothing new gets installed and nothing old gets removed or renamed. I’m just left with the classic ChatGPT app, still named “ChatGPT”.\nIf I run the installer on the disk image when the old ChatGPT app is not running, the old app gets replaced by the new one in my Applications folder, and the old app is moved to the Trash. There is no app named “ChatGPT Classic”.\nI mean, their Help document does say “the new app may install alongside your current app”, and “if both remained installed”, so they seem just as confused as I am. And while you can, for now at least, just remain on the old version of the app and still get model updates and bug fixes, there is seemingly no way to download a new copy of the classic ChatGPT Mac app if you don’t already have a copy. The update installation is seemingly non-deterministic.\nThis is an app with over a billion users. I know there aren’t a billion users of the native Mac app, but, still. It’s one of the most popular apps any company has ever made, and the biggest update they’ve ever shipped is an incoherent confusing mess.\n ★",
+      "id": "4bcf1966994683e1accd82e6b5d92072efe4894a495f6755f5d452dc3b62ec32",
+      "ref_id": "2",
+      "recommendationScore": 80,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "针对ChatGPT新旧桌面应用切换的普遍用户困惑提供了清晰的解读。",
+      "reason": "紧密围绕AI主题，直接解决了大量ChatGPT用户可能遇到的实际问题，实用性强。",
+      "tags": [
+        "AI",
+        "ChatGPT",
+        "用户体验",
+        "应用更新",
+        "故障排除"
+      ]
+    },
+    {
+      "title": "The power of collaboration: How we can reduce traffic congestion",
+      "link": "https://research.google/blog/the-power-of-collaboration-how-we-can-reduce-traffic-congestion/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-12T15:35:36.000Z",
+      "summary": "Article URL: https://research.google/blog/the-power-of-collaboration-how-we-can-reduce-traffic-congestion/\nComments URL: https://news.ycombinator.com/item?id=48881967\nPoints: 12\n# Comments: 5",
+      "id": "c5c1b5d6c5b2191c567690df9f82859d76530a90c1059a144f4f53e67f22e4d0",
+      "ref_id": "4",
+      "recommendationScore": 75,
+      "popularityScore": 26,
+      "priority": "medium",
+      "comment": "Google研究文章，探讨利用协作减少交通拥堵，融合了数据科学与潜在的AI自动化应用。",
+      "reason": "内容涉及自动化和AI应用场景，具有较高的技术深度和实用性，信息密度适中，符合博客关注主题。",
+      "tags": [
+        "城市规划",
+        "交通",
+        "数据科学",
+        "AI应用",
+        "自动化",
+        "Google Research"
+      ]
+    },
+    {
+      "title": "RISCBoy is an open-source portable games console, designed from scratch",
+      "link": "https://github.com/Wren6991/RISCBoy",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-11T21:58:00.000Z",
+      "summary": "Article URL: https://github.com/Wren6991/RISCBoy\nComments URL: https://news.ycombinator.com/item?id=48876245\nPoints: 192\n# Comments: 27",
+      "id": "3a32854df8c899519b5c40366eb1c5dc6f40162ad2d9c08e4054f6a4a787ba1f",
+      "ref_id": "3",
+      "recommendationScore": 70,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "一款从零开始设计的开源RISC-V掌上游戏机，技术深度较高。",
+      "reason": "展示了独立开发者在硬件设计领域的深厚技术实力与创新精神，对爱好者有启发。",
+      "tags": [
+        "硬件",
+        "开源",
+        "游戏",
+        "RISC-V",
+        "独立开发"
+      ]
+    },
+    {
+      "title": "Don't You Mean Extinct?",
+      "link": "https://fabiensanglard.net/extinct/index.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-12T15:17:20.000Z",
+      "summary": "Article URL: https://fabiensanglard.net/extinct/index.html\nComments URL: https://news.ycombinator.com/item?id=48881830\nPoints: 30\n# Comments: 9",
+      "id": "bdfb1ef18e23afeae824916ca22cbd602179f65045bed639b86dc03b7a3081b4",
+      "ref_id": "1",
+      "recommendationScore": 65,
+      "popularityScore": 30,
+      "priority": "medium",
+      "comment": "Fabien Sanglard撰写的关于复古计算或底层技术的深度文章，技术细节丰富且具历史价值。",
+      "reason": "提供了特定底层技术领域的深刻洞察，对追求技术深度和历史背景的读者有吸引力，但实用性略偏小众。",
+      "tags": [
+        "复古计算",
+        "底层技术",
+        "编程历史",
+        "硬件"
+      ]
+    },
+    {
+      "title": "Ghostel.el: Terminal emulator powered by libghostty",
+      "link": "https://dakra.github.io/ghostel/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-12T08:52:59.000Z",
+      "summary": "Article URL: https://dakra.github.io/ghostel/\nComments URL: https://news.ycombinator.com/item?id=48879504\nPoints: 144\n# Comments: 25",
+      "id": "d6ae224f37ff0cf8d05198fb26ec6f21eff2c977e838c90e1c90237627f66134",
+      "ref_id": "0",
+      "recommendationScore": 65,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "Emacs用户的一款新终端模拟器，具备不错的技术深度。",
+      "reason": "为特定用户群体提供了新颖且实用的终端体验，值得关注。",
+      "tags": [
+        "编程工具",
+        "Emacs",
+        "终端模拟器"
+      ]
+    },
+    {
+      "title": "sqlite-utils 4.1",
+      "link": "https://simonwillison.net/2026/Jul/11/sqlite-utils/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-07-11T23:50:20.000Z",
+      "summary": "",
+      "id": "97e8fb8081fe304b50d26af60039db6b02e76c0e6b955421fe7311538bd093d0",
+      "ref_id": "0",
+      "recommendationScore": 65,
+      "popularityScore": 40,
+      "priority": "medium",
+      "comment": "标题显示为编程工具的更新，但由于内容缺失，无法进行详细评估。",
+      "reason": "缺乏文章内容，仅能根据标题推断其可能涵盖编程工具的更新和功能介绍，实用性可能较高，但受众相对小众。",
+      "tags": [
+        "编程工具",
+        "SQLite",
+        "更新",
+        "数据库工具"
+      ]
+    },
+    {
+      "title": "TK, or the secret to effortless writing (2024)",
+      "link": "https://atthis.link/blog/2024/49629.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-12T15:58:42.000Z",
+      "summary": "Article URL: https://atthis.link/blog/2024/49629.html\nComments URL: https://news.ycombinator.com/item?id=48882144\nPoints: 13\n# Comments: 1",
+      "id": "e2870cdd604f2acf80c529f58ecc6ed08e210eeb267b152bd450885382eaddf7",
+      "ref_id": "1",
+      "recommendationScore": 30,
+      "popularityScore": 16,
+      "priority": "low",
+      "comment": "探讨轻松写作技巧的文章，主题偏离科技核心，但对个人生产力有一定启发。",
+      "reason": "缺乏技术深度和硬核实用性，不属于博客优先关注的AI、编程工具等主题。",
+      "tags": [
+        "写作技巧",
+        "生产力",
+        "个人成长"
+      ]
+    },
+    {
+      "title": "★ Exactly Like Om Malik",
+      "link": "https://daringfireball.net/2026/07/exactly_like_om_malik",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-11T19:43:35.000Z",
+      "summary": "Fred Vogelstein (Om’s partner at Crazy Stupid Tech):\nWe met a week later at his outdoor office — a bench in SF’s South\nPark. He told me that he was going emeritus at True Ventures, the\nVC firm, and that he was going to spend more of his time writing.\nIt was awesome to see him. Sitting on a bench with Om could be\nquasi religious. He talked so softly and deliberately that it\nforced you to slow down, lean in and forget about everything else.\nWhat became clear was that we actually saw the world the same\nway. We didn’t agree what Wired should be doing about it. But\nwe did agree on this: While everyone was fixated on big tech,\nan explosion in tech innovation not seen in a generation was\ntaking place. We both agreed that not enough people were\nwriting about it.\n“Maybe we should do something together then,” I said.\nJoanna Stern:\nSo saddened to hear about @om. His writing was one of the\nreasons I went into tech journalism. Right out of college, I was\nworking at a PR agency and started reading his site. It inspired\nme to start blogging.\nYears later, he tried to recruit me. Even after I went elsewhere,\nhe’d send me notes telling me how proud he was of my work. He’d\noften review my reviews, so here’s mine of him: Generous with his\ntime. Honest with his feedback. Endlessly encouraging to those\ncoming up behind him.\nCasey Newton:\nVery sad to hear about the passing of @om. He shared two lasting\nlessons with me: the first when I was a cub tech reporter at the\nSF Chronicle; he interviewed me for a job but told me he didn’t\nthink I could hack it at GigaOm because newspaper writers were too\nslow. It taught me that I needed to get out of print media ASAP.\nThe second was many years later, when I was having a drink with\nhim and some other reporters. We asked him for advice. “Never name\na blog after yourself,” he said. RIP\nJim Nielsen:\nOne day on Twitter I got a DM from someone with the handle @om.\n“I don’t know who this is,” I thought, “but damn that is a great\nhandle!”\nThen I peaked at the follower count: over 1 million!\n“WTF? Who is this???” I thought.\nI’d never — then or since — been contacted by someone with such\na high profile online.\nHow was I even on this person’s radar?\nOm seemingly read everything.\nJason Hiner, in a post on LinkedIn:\nThis is the opening anecdote from “Chapter Six: The Blogger” from\nmy 2016 book, Follow the Geeks, co-authored with Lyndsey Gilpin.\nOm once told me that “For three years, it was every day a\nrejection” as he tried to break into tech journalism. This was how\nhe finally broke through.\nDavid Churbuck checked his voicemail. There was a message from\nsomeone looking for a job.\nBecause of the guy’s thick Indian accent, David could barely make\nout what he was saying, except that he worked for a wire service\ndown on Wall Street and was a big Forbes fan. The guy heard that\nForbes was going to be one of the first media companies to launch\nits magazine on the web and he wanted to come help.\nDavid ignored the message. He had a small team and hardly\nany budget.\nThen he got a fax. It was from this guy, explaining why he was a\nperfect fit to join the team.\nThe next day, the guy left another message. If David would just\ngive him a call, it would be great to talk with him. He wouldn’t\nregret it.\nIgnore.\nThe following day, he left another. Whatever time limit there was\nfor voicemails, this guy always used up every minute.\nStill, David ignored it.\nAnd then the guy started getting creative.\n[...]\nOne of the journalists, Michael Noer, said half jokingly, “Just\ncall the guy in!” So, partly out of admiration, and partly out of\npure morbid curiosity, David called him back.\nOne interview. Fifteen minutes. That was all it took for David to\nhire Om Malik.\n“They do not sell themselves”, Om told me in a separate story from that same time in his life.\nHiner made the entire chapter available to read as a handsome PDF. It’s so good, and so utterly Om. It’s a crackerjack good read about the very early “WWW” days of the web. A bit:\nOm is charming and disarming, forceful and accommodating. He has\nan easy smile, a quiet, melodic voice, and a handsome face. Once\nhe opens his mouth, it’s obvious how much he reads and how thirsty\nhe is to learn. It’s rare to meet someone who is ready to debate\nyou on almost any topic, but who’s also genuinely curious about\nyour life and your opinion. It all makes the burly journalist one\nof the most huggable people on Earth. That’s what David was up\nagainst when he met Om. He didn’t stand a chance.\n“It was destiny,” said David, with a self-deprecating laugh. “It\nwas total destiny.”\nOm’s close friend, photographer Christopher Michel, published “Om the Great”, an enormous gallery of portraits of him. Here’s just one of hundreds:\n\n  \nLastly, here’s a story from Andrew Sasaki, which he sent me by email, and I’m reproducing with his permission. It’s the perfect Om story:\nI met Om briefly at a tech event in NYC around 2008 or so. He was\ntalking with a friend of mine, and when I walked up he introduced\nhimself: “Hi, I’m Om.”\n“‘Om’ like ‘Om Malik’?” I asked.\nThis amused him greatly.\n“Yes, exactly like Om Malik”, he said.\nA couple of years later the iPad had just launched, and I saw my\nfriend again at another industry event. I asked him a question\nrelated to the unprecedented development effort we were already\nseeing around the new platform that didn’t yet have a single\ncompelling use case.\n“You know who I bet would know about that? Om Malik”, he said, and\ngave me Om’s email address.\nI hesitated to bother Om, but eventually reached out with my\nquestion. “I don’t know if you remember me, but we met a couple of\nyears ago, and…” blah blah blah.\nNaturally, there was no answer. Why would there be? He doesn’t\nknow me from Adam, and he’s Om Fucking Malik.\nExcept there was an answer about 4 days later. Om started off by\napologizing for the delay in responding, but he had taken the time\nto research his answer before writing to me. And of course, his\nanswer was thoughtful, insightful, and absolutely correct. I was\ngobsmacked at the generosity he had shown replying to someone he\ndidn’t even know. He gave no indication that he even remembered me\nuntil his signature line:\n“Exactly Like Om Malik”",
+      "id": "db4c6694c18387c7c3c721c2efcd9636b98aa4e25ef3b82ee1bae2675b8ec9f1",
+      "ref_id": "0",
+      "recommendationScore": 30,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "一篇关于科技记者Om Malik的个人回忆和行业观察。",
+      "reason": "内容偏向个人轶事和行业见解，技术深度和实用性较低，与核心主题关联不强。",
+      "tags": [
+        "科技新闻",
+        "行业观察",
+        "人物回顾"
+      ]
+    },
+    {
+      "title": "How to Read More Books",
+      "link": "https://scotto.me/blog/2026-07-12-how-to-read-more-books/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-12T15:47:16.000Z",
+      "summary": "Article URL: https://scotto.me/blog/2026-07-12-how-to-read-more-books/\nComments URL: https://news.ycombinator.com/item?id=48882056\nPoints: 48\n# Comments: 18",
+      "id": "9db353967a4ea45c75a766d5b350bc6b3e185e5cb577f936013eb8d44d6b9fe5",
+      "ref_id": "3",
+      "recommendationScore": 25,
+      "popularityScore": 100,
+      "priority": "low",
+      "comment": "分享如何提高阅读量的通用方法，虽受欢迎但与科技主题无关。",
+      "reason": "完全偏离科技博客的核心主题，技术深度和信息密度为零，不符合博客定位。",
+      "tags": [
+        "阅读",
+        "个人成长",
+        "生产力",
+        "生活方式"
+      ]
+    },
+    {
+      "title": "Progress on Gilbreath’s conjecture",
+      "link": "https://www.johndcook.com/blog/2026/07/11/progress-on-gilbreaths-conjecture/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-07-11T21:30:11.000Z",
+      "summary": "Years ago I wrote about Gilbreath’s conjecture. It’s a simple conjecture; you could explain it to anyone who understands what prime numbers are. See the linked post for a description of the problem. Gilbreath’s conjecture is simple, but it’s also kinda weird. As I wrote before, Paul Erdős speculated that Gilbreath’s conjecture is true but […]\nProgress on Gilbreath’s conjecture first appeared on John D. Cook.",
+      "id": "f2193e112b91e354dde6c3ded1d0a2ede1fa9b784fcb7c7f50df07fdfebf14f7",
+      "ref_id": "3",
+      "recommendationScore": 25,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "探讨了Gilbreath猜想在数论领域的最新进展。",
+      "reason": "虽然具有一定的数学深度，但内容高度学术化，与本科技博客的关注主题（AI, Apple生态, 编程工具等）的实用性和新颖性偏差较大。",
+      "tags": [
+        "数学",
+        "数论",
+        "理论研究"
+      ]
+    },
+    {
+      "title": "Why study Diophantine equations?",
+      "link": "https://hidden-phenomena.com/articles/modular",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-12T15:53:53.000Z",
+      "summary": "Article URL: https://hidden-phenomena.com/articles/modular\nComments URL: https://news.ycombinator.com/item?id=48882097\nPoints: 15\n# Comments: 1",
+      "id": "fb6b5f50906fc04a49e3d153c6dc0e6c29c9dc7c787a5b53fafed0d7000b37bc",
+      "ref_id": "2",
+      "recommendationScore": 20,
+      "popularityScore": 19,
+      "priority": "low",
+      "comment": "一篇关于丢番图方程的纯数学文章，学术性强，但与当前科技前沿结合度不高。",
+      "reason": "主题过于理论化和学术化，与本科技博客的实用技术和AI应用方向不符，新颖性和实用性对普通科技读者较低。",
+      "tags": [
+        "数学",
+        "数论",
+        "学术研究"
+      ]
+    },
+    {
+      "title": "A no-brainer for protecting your brain",
+      "link": "https://www.economist.com/leaders/2026/07/09/a-no-brainer-for-protecting-your-brain",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-12T15:23:59.000Z",
+      "summary": "Article URL: https://www.economist.com/leaders/2026/07/09/a-no-brainer-for-protecting-your-brain\nComments URL: https://news.ycombinator.com/item?id=48881874\nPoints: 36\n# Comments: 19",
+      "id": "438670f373aaeff05c6464b4fea39bc6ca91e4e3c66fe28fad422c017b9da1a1",
+      "ref_id": "0",
+      "recommendationScore": 20,
+      "popularityScore": 36,
+      "priority": "low",
+      "comment": "一篇来自经济学人，关于大脑保护的通用性文章，内容可能偏向宏观健康或社会议题。",
+      "reason": "与科技博客的核心关注主题（如AI、编程工具等）关联度较低，更侧重于健康和社会科学而非纯技术。",
+      "tags": [
+        "健康",
+        "社会科学",
+        "宏观趋势"
+      ]
+    },
+    {
+      "title": "An explanation of our search results",
+      "link": "https://web.archive.org/web/20040612082405/https://www.google.com/explanation.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-12T16:04:19.000Z",
+      "summary": "Article URL: https://web.archive.org/web/20040612082405/https://www.google.com/explanation.html\nComments URL: https://news.ycombinator.com/item?id=48882180\nPoints: 7\n# Comments: 2",
+      "id": "4bbcd796c7a9388003b4f4aa67d62b26a8e3b98071e6ec2c724070b1691f62ff",
+      "ref_id": "0",
+      "recommendationScore": 15,
+      "popularityScore": 12,
+      "priority": "low",
+      "comment": "一篇发布于2004年的Google搜索结果解释，内容过于陈旧，历史价值大于技术参考价值。",
+      "reason": "技术深度和新颖性极低，信息密度对现代科技博客来说不足，与当前技术发展脱节。",
+      "tags": [
+        "搜索引擎",
+        "互联网历史",
+        "信息检索"
+      ]
+    },
+    {
+      "title": "Gina Gallery of International Naive Art",
+      "link": "https://www.ginagallery.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-12T13:18:34.000Z",
+      "summary": "Article URL: https://www.ginagallery.com/\nComments URL: https://news.ycombinator.com/item?id=48880985\nPoints: 25\n# Comments: 11",
+      "id": "ba6bea80c4c40be54d1aa815f415b17e00263a41af037483c3e8c6ae3e5458fc",
+      "ref_id": "1",
+      "recommendationScore": 10,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "一个国际素人艺术画廊的网站，与科技博客主题不符。",
+      "reason": "内容完全偏离科技博客关注主题，不具任何技术深度或实用性。",
+      "tags": [
+        "艺术",
+        "文化",
+        "非科技"
+      ]
+    },
+    {
+      "title": "Another Ridiculous Interrail Holiday - 6,379Km and 13 Countries over 7 weeks",
+      "link": "https://shkspr.mobi/blog/2026/07/another-ridiculous-interrail-holiday-6379km-and-13-countries-over-7-weeks/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-07-12T11:34:43.000Z",
+      "summary": "Last year, my wife and I went on a 5,025 Km Interrail adventure. We got the month-long unlimited pass and saw 10 Countries in 30 Days. That was a bit too intense. So this year we got the 15 travel days in 2 months package. We grabbed the 1st class tickets when they went on sale in December.  Here's how our journey ended up:    The trip included two ferries - one overnight - which had a small…",
+      "id": "eca83f316e73c35ed5c8588806136d885e05ea2e5fb8ded5a9833927f16e46ee",
+      "ref_id": "2",
+      "recommendationScore": 10,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "一篇关于欧洲火车旅行的个人分享。",
+      "reason": "与任何科技主题无关，不适合科技博客。",
+      "tags": [
+        "旅游",
+        "个人分享"
+      ]
+    }
+  ]
+}
