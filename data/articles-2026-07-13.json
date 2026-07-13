@@ -1,0 +1,728 @@
+{
+  "dailySummary": "今日科技速递：Apple推出SpeechAnalyzer API备受瞩目，macOS 27私有计算模型的限制被绕过。同时，CISA GitHub泄露事件敲响安全警钟，促使行业反思。此外，",
+  "articles": [
+    {
+      "title": "Apple's new SpeechAnalyzer API, benchmarked against Whisper and its predecessor",
+      "link": "https://get-inscribe.com/blog/apple-speech-api-benchmark.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-13T16:06:08.000Z",
+      "summary": "Article URL: https://get-inscribe.com/blog/apple-speech-api-benchmark.html\nComments URL: https://news.ycombinator.com/item?id=48894752\nPoints: 121\n# Comments: 71",
+      "id": "2676c016c6c62d556037ea26dbab77db10a75e8bed874e2b2bd1c79aaa1c0c3b",
+      "ref_id": "1",
+      "recommendationScore": 95,
+      "popularityScore": 121,
+      "priority": "high",
+      "comment": "详细基准测试了Apple新SpeechAnalyzer API与Whisper的性能。",
+      "reason": "高度符合AI和Apple生态两大热门主题，技术深度、新颖性和实用性俱佳，对开发者极具价值。",
+      "tags": [
+        "AI",
+        "Apple",
+        "API",
+        "语音识别",
+        "基准测试",
+        "开发"
+      ]
+    },
+    {
+      "title": "Show HN: Clawk – Give coding agents a disposable Linux VM, not your laptop",
+      "link": "https://github.com/clawkwork/clawk",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-13T14:02:03.000Z",
+      "summary": "Article URL: https://github.com/clawkwork/clawk\nComments URL: https://news.ycombinator.com/item?id=48892859\nPoints: 125\n# Comments: 116",
+      "id": "9fbe8936ed2a34eeeeb84585f7c3ccf80b569f402cc6fbc250e22859619a3ced",
+      "ref_id": "2",
+      "recommendationScore": 95,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "一个为AI编码代理提供安全一次性Linux VM的创新工具。",
+      "reason": "完美结合了AI和编程工具两大高优先级主题，解决了AI代理开发的安全性和环境管理痛点，实用性和创新性极高。",
+      "tags": [
+        "AI",
+        "编程工具",
+        "开发环境",
+        "自动化",
+        "安全性"
+      ]
+    },
+    {
+      "title": "Lessons Learned from CISA’s Recent GitHub Leak",
+      "link": "https://krebsonsecurity.com/2026/07/lessons-learned-from-cisas-recent-github-leak/",
+      "source": "krebsonsecurity.com",
+      "publishedAt": "2026-07-13T15:03:28.000Z",
+      "summary": "The Cybersecurity and Infrastructure Security Agency (CISA) has issued a postmortem on a data leak in which a contractor published dozens of internal CISA credentials -- including AWS Govcloud keys -- in a public GitHub repository for almost six months before being notified by KrebsOnSecurity. Experts say the gaps identified in the agency's initial response provide important lessons that all security teams should absorb.",
+      "id": "5c213df7e73fbd336f8b9ad10d944510a3e8c4e4b09a7e34fe1094d744525db1",
+      "ref_id": "3",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "详述CISA GitHub泄露事件的教训，对所有安全团队都具极高实用价值。",
+      "reason": "深入分析真实世界的数据泄露事件，提供了宝贵的安全实践指导，信息密度和实用性极高。",
+      "tags": [
+        "网络安全",
+        "数据泄露",
+        "GitHub",
+        "AWS",
+        "安全实践",
+        "DevOps"
+      ]
+    },
+    {
+      "title": "What’s an Icon in 2026?",
+      "link": "https://blog.jim-nielsen.com/2026/icons-as-software/",
+      "source": "blog.jim-nielsen.com",
+      "publishedAt": "2026-07-12T19:00:00.000Z",
+      "summary": "As icons continue to change across Apple’s platforms, I have thoughts. They mainly revolve around two perspectives:\nWhat I think of icons as a long-time user of Apple’s platforms.\nWhat I think of icons as a digital collector and physical archivist of icons.\nLet’s see if I can articulate my thoughts.\nApple Recommends Making Icons With Icon Composer For “More Expressivity”\nIn “Create icons with Icon Composer” from WWDC 2025, Lyan Bewry from Apple’s Design Team gives the rationale for why developers should use Apple’s new Icon Composer:\nIcon design is moving from a past of simply static images, to a future of expressive, multi-layered artworks that respond to user input and adapt between appearances. They’ve become a much richer and more integrated experience on-device.\nCatch that? Icons are moving from a “static” past to an “expressive, multi-layered […] much richer” future.\nYou may have noticed this in some of Apple’s latest OS releases, how lighting effects, customizations, etc., can all affect what an icon looks like at any given moment within the operating system.\nSo what are these .icon files made by Icon Composer?\nIcons Are Software Now\nIn the Accidental Tech Podcast episode 699 “Not the Correct Squircle” John Siracusa talks about some of the technical details and differences between app icons in macOS 26 (Tahoe) and 27 (Golden Gate):\nThese .icon files, this format that Apple came up with, it’s a bunch of resources and a recipe. So it’s like bitmaps, vector images, layers, recipes and effects. That’s what it is. And these icons are assembled on the fly by the operating system. It doesn’t burn up bitmaps of them. I take your ingredients, I assembled them, I composite them, I apply your layer effects, and then eventually it renders a bitmap that it keeps in memory somewhere.\nWho is thinking about backwards compatibility in their icons?\nTahoe’s effects are different than 27’s effects […] And also,  27 has effects that 26 doesn’t support. And 26 won't even read the .icon files from 27, which makes everything complicated.\nComplicated indeed.\nSchrödinger’s Icon\nAs noted, the days of a single, static image for icons are over. An app icon is no longer a PNG file.\nIt’s a bit of a Schrödinger’s icon if you will. There’s no longer a universal answer for “What does your app icon look like?” An icon is simultaneously light, dark, glass, tinted, etc.. Only once it is “observed” — that is rendered at runtime on a device with settings applied (user preferences, device angle, etc.) — can you really know what it looks like.\nAn icon now has a runtime.\nMy Two Cents\nI don’t know.\nIcons are effective because of their ability to be quickly recognizable and memorable. Visual simplicity and consistency support that.\nMaking something more “expressive” and “richer”, to me, means conveying more. But icons are meant, to a degree, to convey less. Only the essential. That’s what makes them effective. There’s definitely a point where, the more they convey, the less effective they are at their purpose.\nThe more you move away from a singular, visual representation, the more room there is for confusion and greater cognitive effort for discernment.\nTake, for example, Apple’s Phone app. What’s the icon for it? Can you picture it in your head? It’s a green icon with a white phone glyph. That’s what it was in the original iPhone keynote (and it’s what the Phone app will always be to me). Iconic!\nBut wait! Now it’s also a black icon with a green phone glyph if you’re in dark mode. And there’s more! It’s a clear glass icon with a phone glyph if you’re in clear mode. And! It’s [insert color here] with a phone glyph if you’ve tinted it.\n\n\n\nConsistent color is a strong ingredient in aiding memorability and recognizability. Look at Coke:\nRed can? Coke\nBlack can? Coke Zero\nSilver can? Diet Coke\nSimplicity matters. It aids recognizability and memorability. If you start making it more complicated and more varied, you lose what made it simple, recognizable, and memorable to begin with.\nAnd what are app icons but visual tools for immediate recognizability?\nAnyway, now that app icons have a runtime and will increasingly vary in their appearance, I’m not sure how to archive them anymore.\nThis story is still developing…\nEmail\n      · Mastodon ·\n\n      Bluesky",
+      "id": "d3c12d141e69bc7524f02e2cb6ff14cfab39c64ceb6e20fcd47c5989b75d84c5",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "探讨了Apple平台未来图标设计的发展趋势和新概念，具有前瞻性和实用性。",
+      "reason": "紧跟Apple生态的设计前沿，对UI/UX设计师和Apple开发者具有极高的参考价值，新颖性和实用性强，且与Apple生态和产品设计主题高度相关。",
+      "tags": [
+        "Apple Ecosystem",
+        "UI/UX Design",
+        "Icon Design",
+        "Future Tech",
+        "WWDC"
+      ]
+    },
+    {
+      "title": "Zig Creator Calls Spade a Spade, Anthropic Blows Smoke",
+      "link": "https://raymyers.org/post/zed-creator-calls-spade-a-spade/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-13T08:39:39.000Z",
+      "summary": "Article URL: https://raymyers.org/post/zed-creator-calls-spade-a-spade/\nComments URL: https://news.ycombinator.com/item?id=48889637\nPoints: 1212\n# Comments: 616",
+      "id": "d51c5746565178f0694008c2e1f30d0860ec93b88d6787c29f47f2aa8872bf25",
+      "ref_id": "3",
+      "recommendationScore": 92,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "Zig语言的创建者对Anthropic等AI公司进行批判，指出其宣传中存在的夸大成分。",
+      "reason": "作为AI领域的热点议题，本文从资深技术人士的视角，对AI的炒作现象进行了深刻且具批判性的分析，信息密度高且引发思考。",
+      "tags": [
+        "AI",
+        "行业评论",
+        "编程语言",
+        "Zig",
+        "Anthropic",
+        "批判性思维",
+        "技术趋势"
+      ]
+    },
+    {
+      "title": "Go-Flavored Concurrency in C",
+      "link": "https://antonz.org/concurrency-in-c/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-13T15:56:22.000Z",
+      "summary": "Article URL: https://antonz.org/concurrency-in-c/\nComments URL: https://news.ycombinator.com/item?id=48894637\nPoints: 25\n# Comments: 6",
+      "id": "982dd2936990a77163a2e3ef2ead8ed4c3aef368fe7cd4ef364f54d47f0c9c05",
+      "ref_id": "4",
+      "recommendationScore": 90,
+      "popularityScore": 25,
+      "priority": "medium",
+      "comment": "深入探讨如何在C语言中实现Go语言风格的并发模型。",
+      "reason": "技术深度极高，切入“编程工具”主题，对追求底层性能和并发优化的开发者有重要参考价值。",
+      "tags": [
+        "编程",
+        "C语言",
+        "Go",
+        "并发",
+        "系统编程",
+        "软件工程"
+      ]
+    },
+    {
+      "title": "TwoMillionKit: Use Private Cloud Compute in MacOS 27 Foundation Models Without an Entitlement",
+      "link": "https://github.com/insidegui/TwoMillionKit",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-12T18:04:05.000Z",
+      "summary": "Guilherme Rambo:\nApple ships the fm command-line tool in macOS 27, which can be\nused to run inference with the local system model or Private Cloud\nCompute from Terminal or scripts. You know what else can run\ncommand-line tools? Mac apps! 😃\nI decided to spend some of my Codex tokens and take GPT 5.6 Sol\nfor a spin. I asked it to create this Swift package. All it does\nis provide a LanguageModel implementation that uses the fm\ncommand-line tool under the hood, meaning that any Mac app can use\nthe Private Cloud Compute model without requiring a special\nentitlement from Apple.\nThe main limitation is that this will not work for sandboxed Mac\napps, so any Mac app distributed via the Mac App Store won’t be\nable to use it.\nBut for developers of Mac apps distributed outside the Mac App\nStore, this provides a simple and entitlement-free way to use\nPrivate Cloud Compute in their apps.\nUse sparingly and at your own risk.\nThis is a workaround for Apple’s current limitation that only grants access to Private Cloud Compute to “developers in the App Store Small Business Program with fewer than two million first time App Store downloads”. Hence Rambo’s clever name for the framework.\n ★",
+      "id": "47f0e6b1cd1cd6a789555ddc4df986ff518c485aa11759cd2a8b4ee9e543681b",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "提供了一个巧妙的方法，让Mac应用无需特殊权限即可使用Private Cloud Compute模型。",
+      "reason": "结合了AI和Apple生态，技术深度高，新颖性强，实用性极佳，解决了Mac开发者集成AI模型的特定痛点。",
+      "tags": [
+        "AI",
+        "Apple生态",
+        "MacOS",
+        "Foundation Models",
+        "Swift",
+        "编程工具",
+        "独立开发"
+      ]
+    },
+    {
+      "title": "Posterior variance",
+      "link": "https://www.johndcook.com/blog/2026/07/12/posterior-variance/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-07-12T19:26:29.000Z",
+      "summary": "A few days ago I wrote a post entitled Does additional data always reduce posterior variance?. In a nutshell, the answer is no, not always. That led the previous post which looked at posterior means for three Bayesian models, showing how the posterior mean is a weighted average of the prior mean and the mean […]\nPosterior variance first appeared on John D. Cook.",
+      "id": "39d60e099749bbfedd3964c37356742bdc6a17f25544e21048c408ecd7242a81",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "探讨了贝叶斯统计中的后验方差概念，并质疑数据增加是否总能降低其值，理论深度很高。",
+      "reason": "对AI/ML领域的核心统计学概念进行了深入分析，提供了重要的理论洞察，技术深度和信息密度极高，且与AI主题高度相关。",
+      "tags": [
+        "Bayesian Statistics",
+        "Machine Learning",
+        "Data Science",
+        "Probability",
+        "Statistical Models"
+      ]
+    },
+    {
+      "title": "Show HN: DOM-docx – HTML to native, editable Word docs (MIT)",
+      "link": "https://github.com/floodtide/dom-docx",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-13T11:51:56.000Z",
+      "summary": "Article URL: https://github.com/floodtide/dom-docx\nComments URL: https://news.ycombinator.com/item?id=48891267\nPoints: 95\n# Comments: 24",
+      "id": "d1b99f33d37bbcfada07264e8c0c26022608dfd2fb83790917a5f644c9687f7e",
+      "ref_id": "1",
+      "recommendationScore": 88,
+      "popularityScore": 55,
+      "priority": "medium",
+      "comment": "展示了一个MIT许可的工具，能够将HTML内容高效且精准地转换为原生可编辑的Word文档。",
+      "reason": "该工具解决了开发者在文档生成方面的一个普遍痛点，技术实现复杂且实用性极高。",
+      "tags": [
+        "编程工具",
+        "HTML",
+        "DOCX",
+        "文档转换",
+        "开源",
+        "前端",
+        "后端"
+      ]
+    },
+    {
+      "title": "Backtrack-Free Cursive",
+      "link": "https://mmapped.blog/posts/52-backtrack-free-cursive",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-13T06:08:12.000Z",
+      "summary": "Article URL: https://mmapped.blog/posts/52-backtrack-free-cursive\nComments URL: https://news.ycombinator.com/item?id=48888518\nPoints: 212\n# Comments: 96",
+      "id": "5ce3fe25a6bf0625f66cac4cb6ed265fa144e9a25b9bac53614fa38d64d8d865",
+      "ref_id": "4",
+      "recommendationScore": 88,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "探讨了一种无需回溯的草书生成或处理算法，展示了高深的计算机科学理论和实践。",
+      "reason": "文章具有极高的技术深度和新颖性，对于从事图形渲染、文本处理或复杂算法设计的工程师有重要参考价值。",
+      "tags": [
+        "算法",
+        "数据结构",
+        "计算机图形学",
+        "编程",
+        "理论",
+        "优化"
+      ]
+    },
+    {
+      "title": "Grok CLI uploaded the whole home directory to GCS",
+      "link": "https://twitter.com/a_green_being/status/2076598897779020159",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-13T13:35:32.000Z",
+      "summary": "https://xcancel.com/a_green_being/status/2076598897779020159\nComments URL: https://news.ycombinator.com/item?id=48892468\nPoints: 288\n# Comments: 347",
+      "id": "5d8a401932a453d89f7fa2ed41d1456fc69e4721e9c6d5314042a5c577d36912",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "揭示了Grok CLI一个严重的隐私安全问题，导致用户主目录被意外上传至GCS。",
+      "reason": "作为AI主题下的重要安全事件，它对AI工具的开发和使用都提供了重要的警示和思考。",
+      "tags": [
+        "AI",
+        "安全",
+        "隐私",
+        "CLI",
+        "GCS",
+        "漏洞",
+        "软件工程"
+      ]
+    },
+    {
+      "title": "Why don’t we just make the entire stack out of guard pages?",
+      "link": "https://devblogs.microsoft.com/oldnewthing/20260713-00/?p=112528",
+      "source": "devblogs.microsoft.com/oldnewthing",
+      "publishedAt": "2026-07-13T14:00:00.000Z",
+      "summary": "Guard pages all the way down?\nThe post Why don’t we just make the entire stack out of guard pages? appeared first on The Old New Thing.",
+      "id": "3897910b88db18e702692ddf7a46d2cd80138f44601b02f804a50493e2d0d577",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "深入探讨了内存管理中Guard Pages的概念及其限制，技术性强。",
+      "reason": "对底层系统编程和内存机制有深刻讨论，对相关开发者具有重要参考价值，技术深度和信息密度高。",
+      "tags": [
+        "System Programming",
+        "Memory Management",
+        "Operating Systems",
+        "Guard Pages"
+      ]
+    },
+    {
+      "title": "Precursor",
+      "link": "https://blog.cloudflare.com/introducing-precursor/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-13T14:39:38.000Z",
+      "summary": "Article URL: https://blog.cloudflare.com/introducing-precursor/\nComments URL: https://news.ycombinator.com/item?id=48893446\nPoints: 124\n# Comments: 102",
+      "id": "8e31d791b1ab6fad6517d20e62f2b87bbfbc090752b9e9117643c7c13f105afb",
+      "ref_id": "1",
+      "recommendationScore": 80,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "Cloudflare发布的新技术或服务，预计具有较高的技术深度。",
+      "reason": "Cloudflare的发布通常引领行业趋势，对云计算、网络安全和基础设施领域有重要参考价值，适合开发者和运维人员。",
+      "tags": [
+        "云计算",
+        "网络安全",
+        "基础设施",
+        "Cloudflare"
+      ]
+    },
+    {
+      "title": "A voxel Tokyo in real Japan time – ride the Yamanote line and study Japanese",
+      "link": "https://jivx.com/densha",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-13T11:18:30.000Z",
+      "summary": "Article URL: https://jivx.com/densha\nComments URL: https://news.ycombinator.com/item?id=48890959\nPoints: 253\n# Comments: 37",
+      "id": "73c75c0a1cbb1238c8f61b5eca911480083d1307552a9e5ad1aa4703270fdcf7",
+      "ref_id": "2",
+      "recommendationScore": 75,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "一个创意独特的体素化东京模拟器，结合了真实的日本时间与语言学习元素，提供沉浸式体验。",
+      "reason": "尽管主题优先级较低，但其新颖的结合方式和产品设计理念值得关注，为独立开发者提供了灵感。",
+      "tags": [
+        "独立开发",
+        "产品设计",
+        "游戏",
+        "语言学习",
+        "体素",
+        "虚拟现实",
+        "创意项目"
+      ]
+    },
+    {
+      "title": "Paulo Andrade: ‘A WWDC 27 Update on Building a Mac-Assed App With SwiftUI’",
+      "link": "https://pfandrade.me/blog/swiftui-mac-assed-wwdc27-update/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-12T21:18:24.000Z",
+      "summary": "Paulo Andrade:\nMy last post on using SwiftUI to build a Mac-assed app got\na bit more traction than I expected. It was mentioned on Mastodon\nseveral times, included in iOS Dev Weekly,\ninspired May’s edition of the Swift Blog Carnival, and was\neventually mentioned by John Gruber, arguably the person\nmost to blame for popularizing the term “Mac-assed”, on Daring\nFireball.\nAll this attention also resulted in an engineer from Apple\nreaching out with some notes. We exchanged a few emails, I filed a\nfew radars, and now that WWDC 27 is behind us, this post serves as\na small update to the issues I wrote about before.\nThere’s real progress here, but I think my main point still stands: SwiftUI is now seven years old and it does not make it easy to create great Mac apps.\n ★",
+      "id": "34e3f07166f7c017703b2721fe3621736c71d71f4813c236b1d1531cd3e6895b",
+      "ref_id": "0",
+      "recommendationScore": 75,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "对SwiftUI在Mac应用开发中的进步与挑战进行了及时更新。",
+      "reason": "为Mac应用开发者提供了关于SwiftUI现状的宝贵见解和发展方向的思考，具有较高实用性。",
+      "tags": [
+        "Apple生态",
+        "SwiftUI",
+        "Mac开发",
+        "WWDC",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "The Download: a donor conception cap and world models for AI",
+      "link": "https://www.technologyreview.com/2026/07/13/1140339/the-download-sperm-donor-limits-ai-world-models/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-07-13T12:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. Sperm donors need limits, says a European fertility group Ties van der Meer doesn’t know how many siblings he has. The 47-year-old was conceived at a private fertility clinic using sperm…",
+      "id": "bf0389e8fc991442f466cfc67cbedadcd7e088812838a6e2dd5ecfe78d7fe319",
+      "ref_id": "3",
+      "recommendationScore": 73,
+      "popularityScore": 50,
+      "priority": "high",
+      "comment": "一篇包含AI世界模型讨论的每日科技新闻摘要，直接关注了AI这一高优先级主题。",
+      "reason": "文章明确涉及AI领域的前沿概念“世界模型”，具有较高的信息密度和新颖性，符合最高优先级主题。",
+      "tags": [
+        "AI",
+        "News",
+        "Machine Learning",
+        "Technology Ethics"
+      ]
+    },
+    {
+      "title": "The Graph That Should Be Front-Page News",
+      "link": "https://www.lyrebirddreaming.com/post/the-graph-that-should-be-front-page-news",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-13T05:35:27.000Z",
+      "summary": "Article URL: https://www.lyrebirddreaming.com/post/the-graph-that-should-be-front-page-news\nComments URL: https://news.ycombinator.com/item?id=48888331\nPoints: 508\n# Comments: 299",
+      "id": "e56b4aa30b661936b46fd9480e8c66b398d74490b3600ac057d0d86b0fb31843",
+      "ref_id": "0",
+      "recommendationScore": 71,
+      "popularityScore": 90,
+      "priority": "medium",
+      "comment": "一篇引发广泛关注的宏观科技趋势分析，尽管具体内容未知，但其高互动量显示其重要性。",
+      "reason": "极高的点赞数和评论量表明文章观点具有显著影响或争议性，值得深入探究其宏观技术或经济趋势。",
+      "tags": [
+        "Tech Trends",
+        "Data Analysis",
+        "Societal Impact"
+      ]
+    },
+    {
+      "title": "Remember Musk’s Suit Alleging a Conspiracy Between Apple and OpenAI?",
+      "link": "https://arstechnica.com/tech-policy/2025/08/elon-musk-sues-apple-openai-to-block-exclusive-iphone-chatgpt-integration/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-13T15:24:53.000Z",
+      "summary": "Ashley Belanger, reporting for Ars Technica back in August 2025:\nAfter a public outburst over Grok’s App Store rankings,\non Monday, Elon Musk followed through on his threat to sue Apple\nand OpenAI.\nAt first, Musk appeared fixated on ChatGPT consistently topping\nApple’s “Must Have” app list — which Grok has never made — claiming Apple seemed to preference OpenAI, an Apple partner, over\nall chatbot rivals. But Musk’s filing shows that the X\nand xAI owner isn’t just trying to push for more Grok downloads on\niPhones — he’s concerned that Apple and OpenAI have teamed up to\ncompletely dash his “everything app” dreams, which was\nthe reason he bought Twitter.\nFor what it’s worth, I just looked at the App Store editorially-curated “Popular iPhone Apps” list, and ChatGPT is in the top spot. Given the lawsuit Apple filed against OpenAI last week, I’d say this is pretty good anecdata that these editorial decisions in the App Store aren’t driven by favoritism. The top 10 downloads list for free iPhone apps currently looks like this (for me here in the U.S. App Store):\nParamount+\nNetflix Game Controller\nChatGPT\nKalshi: Trade the World Cup\nPeacock TV: Stream TV & Movies\nNetshort - Popular Dramas & TV\nThreads\nTikTok Pro - Events\nFreecash - Get Paid Real Money\nDepop - Buy & Sell Clothes\nThere are some real winners on that list. But only one AI app: ChatGPT.\nMusk alleges that the top downloads list is crooked too. That’s just projection. If Musk ran a popular App Store he’d put his thumb on the scale to make sure his own apps always top the list. That’s what he’s done with his personal account, and accounts aligned with his politics, on Twitter/X. Because that’s what he would do, he thinks that’s what Apple does. I really do think he believes the App Store’s top download lists are fixed, and that Grok is on the wrong side of the fix. Crooks think everyone is crooked. It’s just one of several ways that Musk is not hooked up right.\nI suspect, though, that he’s no longer worried that Apple is putting its thumb on the scale to favor OpenAI. Maybe he should never-mind this lawsuit.\n ★",
+      "id": "698a2191d0653ecb68d6426a26b3be647179daef0afbc6c72c7d4664b08d261a",
+      "ref_id": "4",
+      "recommendationScore": 70,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "探讨马斯克起诉苹果和OpenAI的潜在阴谋论，涉及AI和苹果生态的商业竞争。",
+      "reason": "虽然技术深度不高，但结合了AI和Apple生态两大热门主题，具有极高的行业关注度和新闻价值。",
+      "tags": [
+        "AI",
+        "Apple 生态",
+        "商业",
+        "竞争",
+        "Elon Musk",
+        "OpenAI",
+        "App Store"
+      ]
+    },
+    {
+      "title": "\nControl the ideas, not the code\n",
+      "link": "\nhttp://antirez.com/news/169\n",
+      "source": "antirez.com",
+      "publishedAt": "2026-07-13T11:39:52.000Z",
+      "summary": "Look at the past history of this blog. There are many blog posts about programming with AI, a few of them date back to January 2024 (like this: https://antirez.com/news/140). I’m a relatively well regarded programmer, after all. I don’t have the need to still be in the “loop” as a old man that seeks for relevance, I recently rejoined Redis, and now I also am developing a new open source software for local LLM inference that received a good welcome in the community. Why I keep doing this, of saying what people don’t want to hear? Why I keep announcing how future programming will be by default? Because I feel the urge of lowering the impact for people less prepared to the change than me, often younger than me, and that, unlikely me, didn’t see many of those things coming (In 2022 I published, before ChatGPT existed, a book preannouncing many things that now happened and other things that I believe *will* happen, so I feel like I can say this without sounding egocentric).\n\nSo mine is a trick. People feel more and more programming is completely modified by AI and don’t know what they should do, if they can really start coding in a completely different way, without looking much at the code as their main output. They feel like they are betraying their own field. So my intention is to arrive and say “look at me, In can write code, you know, I’m not hiding behind AI: yet, things changed, it’s not your weakness, it’s not that you are AI-pilled. It is just that our field is evolving in an incredible *and* painful (but also joyful) direction”.\n\nThis is why yesterday, on X, I said that I believe many programmers at this point have less impact they could have because they look at the code. I truly believe into that. And note that this does not mean to vibe code something just asking for the final product. The point is: if you control the ideas of your software, looking at the code itself is suboptimal and often pointless. For the following reasons:\n\n1. You can now generate a lot of code, even *not* accounting for the LLM code verbosity (that is also effect of not being able to instruct them well, for most of the part). How are you supposed to review 5k lines of code every day?\n\n2. LLMs are very good at writing locally optimal code, and are worse (but improving) with big ideas. What’s the point of scanning function by function, line by line? Instead you should prompt the design you have in mind, sometimes ask “how is exactly the design of that part? How does it work?”, and evaluate if it is the right model. It is much faster.\n\n3. The working day is 8 hours. If you read the code, it is a tradeoff. You are doing less of what today is the most important part of your job, that is, asking yourself: what I’m doing with this software? What are the new directions I want to take? And also, think at new ideas, features, optimizations tricks. And doing a lot of QA.\n\nControlling the ideas. Do you remember this phrasing from the Mythical Man Month? Well, a book from the 70s tells us more things about the current software era than many of the things that were said from 2000 to 2020. Why people that now protest against AI were not horrified by the state of software in the last decade? The level of slop we touched during recent years, before AI, is unbelievable. I’ll say you another thing. What is slop? With DwarfStar I implemented an inference for two LLMs (DeepSeek v4 and GLM 5.2) in a completely automated way, but: try it yourself, you will discover you can’t just say “implement XYZ” and see it working. You have to understand how things work, what is the best design, how to reach a certain level of performance. Then I compared the implementation, for correctness, to other systems, finding that other implementations sometimes contained more errors. I researched more, and found that the local inference world is full of subtle errors that accumulate and damage the model output, issues in the attention implementation causing performance slopes after the context is over a certain limit because indexed attention implementations are broken (do more work than they should, for instance), and so forth. This is the result of a domain that is very complicated to handle, fast changing, with models that are slightly different one from the other in the inference graph being released every day. It’s an unfair game for developers. Well: AI helps a lot with that. There are many domains where rigorous engineering (in the design side) and testing is *far* better than writing a GPU kernel by hand (or reading it). So are we sure most of that resistance it is not ideological?\n\nMatteo Collina yesterday asked me, in reply to my tweet: but didn’t you say that you check all the AI generated code for Redis? And this is a good question indeed. Yes, I do, but this is, at this point, something I *need* to do but that I believe to be mostly pointless, partially once GPT 5.5 was released, but now with Fable and GPT 5.6 Sol even more. Yes: I identify things that I don’t like how they are coded, but if I open other Redis files written by other Redis contributors there is *far worse*, and not since they are not good coders, but because it is a matter of taste. I write very clean code since I want it to be readable, so during the implementation of Redis Arrays I operated changes. I’m doing it again for the 50% memory saving optimization of Redis sorted sets, a PR that I’ll submit soon. But I do not feel this is useful anymore. Nobody should anymore look at this code, but only at the ideas the code contains. I continued to do it out of respect for users. Redis is at this point a commonly useful thing, and many programmers will open files and modify stuff by hand. But if I had my hands free, you know what I would do, instead? Use all the time that the review is taking me to do more QA, to think at the next optimization idea and apply it, and to use LLMs to write a DESIGN.md file where each data structure is described in human language, with the ideas it contains, the implementation tricks, the design. That, in the future, is going to be much more useful. Do you want to modify sorted sets? You open the file, read the design, then you own the ideas. You can open your agent and ask it what to do with the right mental model. This is a lot more useful than reviewing the code.\n\nFable and GPT 5.6 reviews to the sorted sets memory saving are going to spot ways more errors and subtle race conditions that my review is going to uncover. Yet I’ll do it. But for the majority of software projects, all this does not make sense anymore. Focus on controlling the ideas, instead. Focus on quality, testing, and having an idea of the software you want to ship. The world changed and it is painful, but also full of opportunities to improve a software world that was already completely rotten.\n\nI have a doubt only regarding young programmers that don't have enough experience, and can't build a mental model. We don't know, yet, if they will require or not to understand very well how a given piece of code works, but I believe they should learn how to write programs. Yet, I'm not sure checking the LLM output is the right thing they should do. It may be a lot more useful if they learn some programming language and implement a small interpreter, a small database, an hash table and so forth. Reviewing some Javascript stuff of some web site for a customer? Hell, no, don't lose time with that shit.\nComments",
+      "id": "da25033d2414d81ff07cd6b9c86aa929efa5026170422f8eaa6ec006b4016ebf",
+      "ref_id": "3",
+      "recommendationScore": 70,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "Antirez分享了AI时代编程的哲学思考，强调控制思想而非代码。",
+      "reason": "资深开发者对AI如何重塑编程领域提出了前瞻性见解，对程序员有启发意义，但技术实操性相对较低。",
+      "tags": [
+        "AI",
+        "编程",
+        "未来趋势",
+        "LLM",
+        "开发者思想"
+      ]
+    },
+    {
+      "title": "Beavis Ultrasound PnP ISA Sound Card Replica",
+      "link": "https://github.com/schlae/BeavisUltrasound",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-13T05:15:14.000Z",
+      "summary": "Article URL: https://github.com/schlae/BeavisUltrasound\nComments URL: https://news.ycombinator.com/item?id=48888193\nPoints: 91\n# Comments: 34",
+      "id": "302c72b05f0036cf7d9b6a0e66943e3b42660f39a0c6cb10311931cbb5402fe7",
+      "ref_id": "1",
+      "recommendationScore": 68,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "关于复刻老式ISA声卡的硬件技术项目，具有较高的技术深度和信息密度，但受众小众。",
+      "reason": "对复古计算和硬件DIY爱好者而言技术深度和细节丰富，但其新颖性和实用性对主流科技读者较低。",
+      "tags": [
+        "Hardware",
+        "Retro Computing",
+        "Electronics",
+        "DIY"
+      ]
+    },
+    {
+      "title": "sqlite-utils 4.1.1",
+      "link": "https://simonwillison.net/2026/Jul/12/sqlite-utils/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-07-12T20:55:30.000Z",
+      "summary": "",
+      "id": "61cb7400ca6e72546b199089ccf5d7092ddcb70c0713450f72b9fc0c25d6cabd",
+      "ref_id": "2",
+      "recommendationScore": 65,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "一个实用的SQLite工具库的最新版本更新，可能包含重要改进。",
+      "reason": "标题明确指出是常用编程工具的更新，但内容缺失导致无法评估具体影响，暂定中等优先级。",
+      "tags": [
+        "编程工具",
+        "数据库",
+        "SQLite",
+        "更新"
+      ]
+    },
+    {
+      "title": "Benchmarking 15 \"E-Waste\" GPUs with Modern Workloads",
+      "link": "https://esologic.com/benchmarking-tesla-gpus/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-13T13:48:42.000Z",
+      "summary": "Article URL: https://esologic.com/benchmarking-tesla-gpus/\nComments URL: https://news.ycombinator.com/item?id=48892638\nPoints: 37\n# Comments: 9",
+      "id": "757c92cf7524e33435ce455c6cfd12affbf6ea0f5a9e433fcefd0aa2dd49a506",
+      "ref_id": "4",
+      "recommendationScore": 55,
+      "popularityScore": 21,
+      "priority": "low",
+      "comment": "对15款“电子垃圾”GPU在现代工作负载下的性能基准测试。",
+      "reason": "为硬件爱好者和预算有限的开发者提供了旧硬件再利用的参考价值，但在技术主流热点方面优先级较低。",
+      "tags": [
+        "硬件",
+        "GPU",
+        "性能测试",
+        "循环经济"
+      ]
+    },
+    {
+      "title": "Directly Responsible Individuals (DRI)",
+      "link": "https://simonwillison.net/2026/Jul/12/directly-responsible-individuals/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-07-12T23:57:14.000Z",
+      "summary": "",
+      "id": "2546e8c5277b1da95b075b35a3523459922ffdd5676fe0ef739dc0e51c32049d",
+      "ref_id": "4",
+      "recommendationScore": 54,
+      "popularityScore": 50,
+      "priority": "medium",
+      "comment": "探讨“直接责任人 (DRI)”管理概念的文章，对团队协作和产品管理具有潜在指导意义。",
+      "reason": "虽然内容缺失，但“DRI”是一个重要的产品设计和团队管理概念，实用性较强，但技术深度和新颖性一般。",
+      "tags": [
+        "Management",
+        "Productivity",
+        "Teamwork",
+        "Project Management"
+      ]
+    },
+    {
+      "title": "shot-scraper 1.11",
+      "link": "https://simonwillison.net/2026/Jul/12/shot-scraper/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-07-12T23:46:52.000Z",
+      "summary": "",
+      "id": "b626f9f50c91bc84bf7bcb879398df19f5557e4b89fb82811cf8e7be390fbaef",
+      "ref_id": "0",
+      "recommendationScore": 50,
+      "popularityScore": 40,
+      "priority": "medium",
+      "comment": "一个截图或爬虫工具的版本更新，具体改进和价值未知。",
+      "reason": "标题表明是编程工具更新，但缺乏内容无法评估深度和实用性，暂定中等优先级。",
+      "tags": [
+        "编程工具",
+        "更新",
+        "自动化"
+      ]
+    },
+    {
+      "title": "Fable gets another bump",
+      "link": "https://simonwillison.net/2026/Jul/12/bump/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-07-12T21:20:07.000Z",
+      "summary": "",
+      "id": "abbfea7aa0789a5ddea1401b8e4e0c9408e74f0e342d48d9022600ac10d8a3da",
+      "ref_id": "1",
+      "recommendationScore": 50,
+      "popularityScore": 40,
+      "priority": "medium",
+      "comment": "关于Fable工具或框架的更新，内容缺失使其价值无法判断。",
+      "reason": "标题暗示编程工具更新，但缺乏内容无法评估深度和实用性，暂定中等优先级。",
+      "tags": [
+        "编程工具",
+        "更新"
+      ]
+    },
+    {
+      "title": "How UIs Degrade Over Time",
+      "link": "https://grumpy.website/1723",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-12T19:51:16.000Z",
+      "summary": "These examples are from Windows, but the same degradation is true for the standard look for MacOS alerts too. There was a time when system UI chrome was improving in clarity, everywhere. Today we live in an age when it’s degrading in clarity, everywhere. It’s rather inexplicable.\n ★",
+      "id": "75b2a75a17a44e4a5219320c806c6079b68b6c2b058d41fa8480e12695f6bc08",
+      "ref_id": "1",
+      "recommendationScore": 50,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "批判性地观察了UI界面清晰度随时间退化的现象。",
+      "reason": "提出了一个引人深思的设计趋势问题，但技术深度不足，更偏向观察而非技术指导。",
+      "tags": [
+        "产品设计",
+        "UI设计",
+        "UX",
+        "设计趋势"
+      ]
+    },
+    {
+      "title": "LAPD lets contract with surveillance giant Flock expire",
+      "link": "https://techcrunch.com/2026/07/13/lapd-lets-contract-with-surveillance-giant-flock-expire-citing-serious-concerns-over-civil-liberties-and-privacy/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-13T15:11:50.000Z",
+      "summary": "Article URL: https://techcrunch.com/2026/07/13/lapd-lets-contract-with-surveillance-giant-flock-expire-citing-serious-concerns-over-civil-liberties-and-privacy/\nComments URL: https://news.ycombinator.com/item?id=48893947\nPoints: 178\n# Comments: 103",
+      "id": "a8d8fca88e3d33390aa92804010118599ab16f5060e880f858350f6aae34dd3d",
+      "ref_id": "0",
+      "recommendationScore": 40,
+      "popularityScore": 100,
+      "priority": "low",
+      "comment": "关于LAPD与监控公司合同到期的新闻，涉及隐私和社会影响。",
+      "reason": "该文章探讨了政府与监控技术合作中的公民自由和隐私问题，具有重要的社会讨论价值。",
+      "tags": [
+        "隐私",
+        "监控技术",
+        "政府",
+        "社会影响"
+      ]
+    },
+    {
+      "title": "Pluralistic: Why aren't AI companies competing directly with their customers? (13 Jul 2026)",
+      "link": "https://pluralistic.net/2026/07/13/go-meta-meta/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-07-13T08:15:24.000Z",
+      "summary": "Today's links Why aren't AI companies competing directly with their customers? Why sell picks and shovels if you've already struck gold? Hey look at this: Delights to delectate. Object permanence: Pro-logging Lorax; Anti-DRM picture book; Whose cops did America train? Day on a Device; Theresa May x Fresh Prince; Ratfucking Corbyn supporters; Infosec v W3C DRM; Remix Public Enemy; Hungary's Cold War cartoons; America is unpaving its roads; Olympic overruns are world champions; Vivendi lobbyist is now UN copyright boss; Boris's racism; Facebook's insider stalkers; Semantic drift, ethical drift. Upcoming appearances: Edinburgh, Sydney, Melbourne, Brighton, London, South Bend. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. Why aren't AI companies competing directly with their customers? (permalink) \"I often wonder what the Vintners buy/One half so precious as the Goods they sell\" -The Rubáiyát of Omar Khayyám I first encountered that quote from someone extolling the virtues of bookstores, and it stuck with me, because for most of my childhood, every bookstore visit ended with me broke and wishing I'd had three times as much to spend. As a larval hyperlexic, I just didn't understand what a bookseller could possibly buy with my money that was better than the books they already had? Of course, then I became a bookseller and discovered that Sturgeon's Law (\"90% of everything is shit\") applies to a bookstore's wares as much as it does to anything else. I also acquired a monthly rent obligation and discovered just how important money could be. Nevertheless, Omar Khayyám's question stuck with me, especially when I fell down a years-long rabbit-hole of learning about scams and the finance sector (but I repeat myself). Every get-rich-quick schemer will tell you that they've found the infinite money hack, which they will sell to you for a remarkably reasonable sum. Likewise, every stock picker claims they can outperform a simple low-load index fund, and all they ask of you is a few hundred basis points in exchange for multiplying your wealth beyond the dreams of Creosote. Neither one has a good answer to Khayyám's question: if you can make all the money with your amazing system, why do you need my money? This is a question that needs to be forcefully put to AI hucksters. In their more expansive moments, the Altmans and Amodeis of the world will tell you that they're planning to teach the word-guessing program so many words that it will wake up and become god. DOGE's broccoli-haired brownshirts laughed in the faces of the NIH lifers who begged them not to vaporize their long-running cancer research projects: \"General AI is around the corner and it's going to cure cancer. Cancer research is a waste of money!\" Which all raises the question: if you've truly incubated a foetal demiurge in your \"AI lab,\" why are you offering to sell it to me? What do the AI hucksters buy/One half so precious as the Gods they sell?\" Of course, they might answer, \"We need your money now so we can make god later.\" That's why they want your boss to fire you and replace you with their chatbots and split your wages with your former employer. But this just raises the same question: if you have a chatbot that can do a doctor's job, why sell it to a hospital? Why not just open your own hospital? If you've got a chatbot that can do a tax accountant's job, why sell it to a tax-prep service? Why not just open a tax-prep service? If you've got a chatbot that can teach my kids, why sell it to my local school district? Why not just open a school? If the chatbot can do the job, and if the chatbot costs less than the worker who does the job today, then the chatbot company can profitably sell services more cheaply than anyone who presently employs that worker, because the chatbot company already owns the chatbot. If you were really on a glide path to creating an all-powerful deity and just needed cash to keep the venture going until the cancer-curing word-guesser awoke from its long slumber, then wouldn't you want as much cash as possible? Why would you voluntarily split the take with some sucky, washed, non-god-generating business from before 2022? I think the only reason this question doesn't come up more frequently is that we're stewing in what Douglas Rushkoff calls the \"go meta\" economy, in which the most respectable and smartest business to operate must be as many abstraction layers away from real work as possible. Don't drive a taxi, own a medallion that you rent to the cab driver. Don't own a medallion, start a \"rideshare\" company. Don't start a rideshare company, invest in a rideshare company. Don't invest in a rideshare company, buy options to invest in a rideshare company: https://pluralistic.net/2022/09/13/collapse-porn/#collapse-porn The inverse relationship between doing something useful and making money is deeply ingrained in our economic wisdom. Take the world of online grifters, who don't just peddle get-rich-quick PDFs, they also peddle tools to generate get-rich-quick PDFs, as well as tools to steal other \"wealth influencers'\" insta videos and deepfake yourself into their pretend private jets: https://www.404media.co/how-i-bought-a-private-jet-by-selling-10-subscriptions-to-404-media/ The scam economy boasts a bewildering array of ancillary services, like a $150/month service that lets you produce fake screenshots showing vast monthly income on other scam services (November Kelly calls this \"The world's most expensive 'inspect element'\"): https://www.patreon.com/trashfuture/posts/faux-high-level-163443872 It's an old truism that in a gold rush, the only people who come out ahead are the people selling the picks and shovels. But that's not true – there's even more money to be made wholesaling picks and shovels to the retailers who operate the frontier mercantiles. Go meta! https://commons.wikimedia.org/wiki/File:Alaskan_Gold_Mining_Supplies_(1897)_(ADVERT_277).jpeg Today's economy is dominated by pick-and-shovel wholesalers. America is a gerontocracy drowning in MBAs, while there's no one to do eldercare: https://www.msn.com/en-us/news/us/why-recruiters-can-t-find-workers-and-new-grads-can-t-find-jobs-it-s-not-ai/ar-AA27K57y So it's not surprising that we don't ask why these AI god-botherers need our stupid money while they're immanentizing the eschaton. Why would they operate a hospital if they could go meta and sell the doctorbots to the MBAs running the hospital? Hey look at this (permalink) Mark Zuckerberg and Meta Deride “Headline-Seeking” Damages Sought By State AGs In Social Media Safety Suit: “Untethered From Reality” https://deadline.com/2026/07/social-media-lawsuit-damages-zuckerberg-1236977447/ Zohran Mamdani's retro wristwatch is a Casio classic https://boingboing.net/2026/07/08/zohran-mamdanis-retro-wristwatch-is-a-casio-classic.html B.O.B. (Birds Over Big Bird) https://www.youtube.com/watch?v=fAXO7SXK0Pc A referendum for another development model https://thomaspiketty.wordpress.com/2026/06/23/a-referendum-for-social-justice/ Introducing the Gap Map v0.1 https://www.currentai.org/blogs/introducing-the-gap-map-v0-1 Object permanence (permalink) #25yrsago Pro-lumber industry spoof of The Lorax https://web.archive.org/web/20010721042828/http://www.forestcouncil.org/news/articles/truax1.htm #25yrsago Remixable vocal tracks from the next Public Enemy release https://web.archive.org/web/20010813195140/http://www.slamjamz.com/slamnews.php?article=7 #20yrsago Wikipedia creates RSS for its posts https://web.archive.org/web/20060718103013/http://www.micropersuasion.com/2006/07/wikipedia_entir.html #20yrsago Anti-DRM picture-book https://web.archive.org/web/20060721095740/https://dustrunners.blogspot.com/2006/07/pig-and-box.html #10yrsago The US has spent $122B training foreign cops and soldiers in 150+ countries, but isn’t sure who https://web.archive.org/web/20160713145824/https://theintercept.com/2016/07/13/training/ #10yrsago German free school teaches without grades, timetables or lesson plans https://www.theguardian.com/world/2016/jul/01/no-grades-no-timetable-berlin-school-turns-teaching-upside-down #10yrsago For the first time, a federal judge has thrown out police surveillance evidence from a “Stingray” device https://www.rawstory.com/2016/07/federal-judge-throws-out-evidence-gathered-with-stingray-cell-phone-tracker/ #10yrsago Day on a Device: art made by screenshotting a multitasker’s screen with each context-switch https://www.theverge.com/2016/7/13/12170526/multitasking-phone-laptop-pierre-buttin-art #10yrsago Remarkably Normal: the true stories of abortion in America https://web.archive.org/web/20160810092901/http://jezebel.com/the-vagina-monologues-but-for-abortion-1783289270/amp #10yrsago Theresa May performs the Fresh Prince of Bel-Air theme https://www.youtube.com/watch?v=xv7Jd94bnOI #10yrsago UK Labour’s dirty trick excludes 130,000 members from leadership vote https://web.archive.org/web/20160712225142/http://www.itv.com/news/2016-07-12/corbyn-opponents-try-to-fix-vote/ #10yrsago Security researchers: the W3C’s DRM needs to be thoroughly audited https://www.eff.org/deeplinks/2016/06/call-security-community-w3cs-drm-must-be-investigated #10yrsago Help Doctors Without Borders fill in the geodata blanks for vulnerable communities https://missingmaps.org/blog/2016/07/14/mapswipe/ #10yrsago Sign a book of congratulations for America’s new Librarian of Congress https://web.archive.org/web/20160718023555/https://action.everylibrary.org/congratulate_carla_hayden_today #10yrsago Hungary’s Cold War cartoons were weird and awesome https://globalvoices.org/2016/07/14/the-fascinating-world-of-cold-war-era-hungarian-cartoons/ #10yrsago The ACLU has a roadmap for defeating President Donald Trump’s signature initiatives https://web.archive.org/web/20160715131734/https://action.aclu.org/sites/default/files/pages/trumpmemos.pdf #10yrsago America’s infrastructure debt is so bad that towns are unpaving roads they can’t afford to fix https://web.archive.org/web/20160713170836/https://www.wired.com/2016/07/cash-strapped-towns-un-paving-roads-cant-afford-fix/ #10yrsago It’s official: the Olympics result in the worst budget overruns of any megaproject https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2804554 #10yrsago Vivendi lobbyist appointed to run copyright for UN agency https://web.archive.org/web/20160717052135/http://keionline.org/node/2614 #10yrsago The long, racist history of Brexiteer Boris Johnson, the new UK Foreign Secretary https://www.bbc.co.uk/news/world-36792746 #5yrsago Facebook employees stalk users https://pluralistic.net/2021/07/14/who-watches-the-zuckmen/#pecksniffs #5yrsago Semantic drift versus ethical drift https://pluralistic.net/2025/07/14/pole-star/#gnus-not-utilitarian Upcoming appearances (permalink) Edinburgh International Book Festival with Jimmy Wales, Aug 17 https://www.edbookfest.co.uk/events/the-front-list-cory-doctorow-and-jimmy-wales Sydney: The Festival of Dangerous Ideas, Aug 23-24 https://festivalofdangerousideas.com/cory-doctorow/ Melbourne: Enshittification at the Wheeler Centre, Aug 25 https://www.wheelercentre.com/events-tickets/season-2026/cory-doctorow-enshittification Brighton: The Reverse Centaur's Guide to Life After AI with Carole Cadwalladr (Brighton Dome), Sep 8 https://brightondome.org/whats-on/LSC-cory-doctorow-the-reverse-centaurs-guide-to-life-after-ai/ London: The Reverse Centaur's Guide to Life After AI with Riley Quinn (Foyle's Picadilly), Sep 9 https://www.foyles.co.uk/events/enshittification-cory-doctorow-riley-quinn South Bend: An Evening With Cory Doctorow (Notre Dame), Oct 6 https://franco.nd.edu/events/2026/10/06/an-evening-with-cory-doctorow/ Recent appearances (permalink) Who Owns Your Tractor? (Growing the Future) https://www.youtube.com/watch?v=IU9eBPUZBI4 You Bought it, They Break It (What Now? with Trevor Noah) https://www.podbean.com/media/share/dir-ir36t-2f4a1ac6 Can AI be Saved From Capitalism? (Everyday Anarchism) https://www.everydayanarchism.com/192-can-ai-be-saved-from-capitalism-cory-doctorow/ Lawfare Daily https://www.youtube.com/watch?v=T1KIwaYRs1g How to Think About AI (Organized Money) https://www.organizedmoney.fm/p/how-to-think-about-ai-with-cory-doctorow Latest books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/ \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Fourth draft completed. Submitted to editor. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "c1cfaeb271f5c6c221b227db807361fdeaf5bbb2b935ea1b82b3f9cd92901c47",
+      "ref_id": "4",
+      "recommendationScore": 40,
+      "popularityScore": 65,
+      "priority": "low",
+      "comment": "提出了对AI公司商业模式的策略性疑问。",
+      "reason": "虽与AI相关，但文章内容更偏向商业策略和评论，技术深度和信息密度低，更像是一个引子而非深入分析。",
+      "tags": [
+        "AI",
+        "商业模式",
+        "产业分析",
+        "策略"
+      ]
+    },
+    {
+      "title": "Cyberpunk Comics, Manga and Graphic Novels",
+      "link": "https://shellzine.net/cyberpunk-comics/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-12T22:45:31.000Z",
+      "summary": "Article URL: https://shellzine.net/cyberpunk-comics/\nComments URL: https://news.ycombinator.com/item?id=48885643\nPoints: 274\n# Comments: 122",
+      "id": "0b322a54933d5c44799c6b2842b16c8e40887d19d7b38618fcf6f2dcd3fe9cc6",
+      "ref_id": "2",
+      "recommendationScore": 35,
+      "popularityScore": 75,
+      "priority": "low",
+      "comment": "一份赛博朋克主题的漫画、漫画书和图画小说列表，主要面向文化娱乐领域。",
+      "reason": "文章主题偏向文化娱乐而非技术本身，技术深度和实用性极低，不符合科技博客的核心关注点。",
+      "tags": [
+        "Culture",
+        "Cyberpunk",
+        "Comics",
+        "Entertainment"
+      ]
+    },
+    {
+      "title": "[RSS Club] Half a million steps is about 10 marathons",
+      "link": "https://shkspr.mobi/blog/2026/07/rss-club-half-a-million-steps-is-about-10-marathons/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-07-13T11:34:09.000Z",
+      "summary": "Shhh! RSS Club posts are only available to feed subscribers. Keep the secret!  I'm not a big fan of the \"Quantified Self\" movement, but since buying a ridiculously cheap smartwatch, I've been interested to see just how many steps I take per day.  During our recent Interrail holiday, we travelled about 6,400 Km by train over 49 days. But how much did we cover by foot?  My watch pairs with the Open …",
+      "id": "cd72a1127b487ccffa8db2ff6e7b794db8a35bf674456a72fc6ef4c4eba32d62",
+      "ref_id": "0",
+      "recommendationScore": 30,
+      "popularityScore": 45,
+      "priority": "low",
+      "comment": "一篇关于个人旅行步数和“量化自我”的随笔，技术含量不高。",
+      "reason": "内容偏向个人生活记录，与科技博客的核心主题关联度较低，信息密度不高。",
+      "tags": [
+        "Personal Reflection",
+        "Quantified Self",
+        "Travel",
+        "Smartwatch"
+      ]
+    },
+    {
+      "title": "Wikipedia escapes Category 1 designation under the UK Online Safety Act for now",
+      "link": "https://en.wikipedia.org/wiki/Wikipedia:Wikipedia_Signpost/2026-07-13/Special_report",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-13T15:59:36.000Z",
+      "summary": "Article URL: https://en.wikipedia.org/wiki/Wikipedia:Wikipedia_Signpost/2026-07-13/Special_report\nComments URL: https://news.ycombinator.com/item?id=48894671\nPoints: 34\n# Comments: 21",
+      "id": "798908513ca58300e65c1ffa24e9430497c9e59fe74d85d9fffdbf893d204715",
+      "ref_id": "2",
+      "recommendationScore": 25,
+      "popularityScore": 34,
+      "priority": "low",
+      "comment": "关于维基百科在英国在线安全法案下合规进展的报道。",
+      "reason": "话题偏向法律和政策，不属于技术深度文章，与科技博客的核心主题优先级不符。",
+      "tags": [
+        "政策",
+        "法律",
+        "维基百科",
+        "在线安全"
+      ]
+    },
+    {
+      "title": "Nokia's 14 Years of Mobile-Phone Supremacy Ended in an Afternoon",
+      "link": "https://spectrum.ieee.org/nokia-phones-history",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-13T13:54:10.000Z",
+      "summary": "Article URL: https://spectrum.ieee.org/nokia-phones-history\nComments URL: https://news.ycombinator.com/item?id=48892709\nPoints: 12\n# Comments: 8",
+      "id": "08341041e7f5c3f578726c09ef6bf5b5b55e4ae909730305066b064e7340a95b",
+      "ref_id": "3",
+      "recommendationScore": 20,
+      "popularityScore": 7,
+      "priority": "low",
+      "comment": "诺基亚手机霸主地位终结的科技历史回顾。",
+      "reason": "虽然文章有启发性，但主要聚焦科技史和商业策略，与当前热门技术主题关联度不高，技术深度和实用性有限。",
+      "tags": [
+        "科技史",
+        "商业策略",
+        "手机行业"
+      ]
+    },
+    {
+      "title": "Mandatory Update: A Short Story",
+      "link": "https://micahflee.com/mandatory-update-a-short-story/",
+      "source": "micahflee.com",
+      "publishedAt": "2026-07-13T15:33:31.000Z",
+      "summary": "Guess what? Lately I've been nerding out on creative writing. I even joined a local fiction writers group where we meet up at coffee shops. Like, in person!\nAnyway, I submitted a short story to the DEF CON 34 Creative Writing Short Story Contest. My story is called",
+      "id": "1ac8e18a667536fc9fc8a9d97eb5e589b5fac6a6fbd85e7543a461c2ec5c9b22",
+      "ref_id": "3",
+      "recommendationScore": 15,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "一篇关于作者参加DEF CON创意写作比赛的个人随笔，与技术主题无关。",
+      "reason": "内容完全是关于创意写作的个人分享，不属于科技博客的评估范围，技术深度和实用性低。",
+      "tags": [
+        "Creative Writing",
+        "Personal",
+        "DEF CON"
+      ]
+    },
+    {
+      "title": "PgDog (YC P25) Is Hiring a Founding Software Engineer",
+      "link": "https://www.ycombinator.com/companies/pgdog/jobs/uWymUYy-founding-software-engineer",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-13T17:00:54.000Z",
+      "summary": "Article URL: https://www.ycombinator.com/companies/pgdog/jobs/uWymUYy-founding-software-engineer\nComments URL: https://news.ycombinator.com/item?id=48895565\nPoints: 0\n# Comments: 0",
+      "id": "5dc01d6e068b77c42ef14ea5ce915b7c3c3cd242338801db22f38276b75fc8e7",
+      "ref_id": "0",
+      "recommendationScore": 10,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "一篇招聘信息，寻找创始软件工程师。",
+      "reason": "非技术内容文章，不适合作为科技博客的评估对象，更像一个求职公告。",
+      "tags": [
+        "招聘",
+        "独立开发",
+        "创业"
+      ]
+    },
+    {
+      "title": "DOGE is done. What happened to its records?",
+      "link": "https://www.ms.now/opinion/doge-government-efficiency-records-job-cuts-elon-musk-foia",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-13T15:56:39.000Z",
+      "summary": "Article URL: https://www.ms.now/opinion/doge-government-efficiency-records-job-cuts-elon-musk-foia\nComments URL: https://news.ycombinator.com/item?id=48894641\nPoints: 205\n# Comments: 150",
+      "id": "e368b5cfb692e951c92c3b5a382a2fb9492752782ba6edda369fbe4022a28d7e",
+      "ref_id": "3",
+      "recommendationScore": 5,
+      "popularityScore": 205,
+      "priority": "low",
+      "comment": "一篇关于政府效率、记录和政治影响力的评论文章。",
+      "reason": "内容完全脱离科技范畴，属于政治评论，不适合科技博客发布。",
+      "tags": [
+        "政治",
+        "评论",
+        "政府"
+      ]
+    }
+  ]
+}
