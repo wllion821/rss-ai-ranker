@@ -1,0 +1,750 @@
+{
+  "dailySummary": "今日科技速递：聚焦AI前沿，Agnost AI提升智能体用户反馈分析，Codex强化AI代理提示加密。AI识别作者身份能力激增引隐私担忧。同时，AI模型自我训练及GPU跨平台计算方案等进展也受瞩目。",
+  "articles": [
+    {
+      "title": "Launch HN: Agnost AI (YC S26) – Extract user feedback from agent conversations",
+      "link": "https://agnost.ai",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-14T16:06:18.000Z",
+      "summary": "Hey HN, we’re Shubham & Parth, childhood friends building Agnost AI (https://agnost.ai), product analytics for teams building chat and voice agents.\nWe read production conversations and find behavioral failures like users rageprompting (cursing at the agent), repeatedly rephrasing the same request, correcting the agent, asking for missing features, or leaving after an answer that was technically successful.\nWe have an interactive demo with no signup here: https://app.agnost.ai?demo=true\nHere's a demo video: https://www.tella.tv/video/agnost-ai-launch-hn-demo-9haa\nThe core problem is that chat and voice products do not have the same metrics as web apps. When the product interface is language, clicks and funnels become much less useful. Users also rarely give explicit feedback, and when they do it's usually sugarcoated. I barely type /feedback in Claude or Codex myself. Most users just curse, ask again, correct the agent, or leave. So product engineers get technical visibility from latency, errors, and traces, but still have to guess whether users got what they wanted.\nWe got here after building around agents for the last year and got a couple of founders asking for something like a PostHog for conversations for the AI assistants they were building.\nWe are not trying to be in the observability or evals space. Observability tells you what happened technically. Evals validate cases you already know. We're more on the discovery side like what users wanted, where they got frustrated, what they asked for repeatedly, and what new evals should exist.\nTeams send us agent conversation messages through SDKs or OTel, optionally with metadata like account, plan, source, organization, etc. We cluster conversations into product-specific intents. Feature requests and bugs are default categories; most other clusters are created dynamically from the customer’s data and evolve over time. You can create your own cluster in plain English. If a cluster gets too broad, we split it. If a new pattern appears, we suggest it.\nOne AI video editor company used Agnost AI to find feature requests hidden inside chat. The biggest one was that around 70 users wanted auto-subtitles, but users said it as “add this text in this frame” 12x in a single session, “can you caption it”, “give me transcript of audio” and variations across languages. The team later built the feature.\nDoing this over millions of messages without sending everything to an LLM was the hard part initially. In ClickHouse, “fetch the last 50 events by time across conversations” and “fetch all events in this conversation” want different sort orders, so we had to iterate a lot on sorting keys, partitions, materialized views, and projections.\nFor finding new clusters, sending everything through an LLM was too slow and expensive. HDBSCAN-style embedding clustering also gets painful at scale because of pairwise comparisons. We first split conversations into segments based on cosine drift, run BIRCH to compress the candidate space, and then use HDBSCAN-like clustering on the smaller set. For matching existing clusters, we use embeddings, smaller classifiers/BERT-style models, and LLMs only as fallback for ambiguous cases.\nWe’re live with multiple companies and ingesting ~1M chat and voice messages per day. Pricing is public: Starter is free, Pro is $499/month, and Enterprise is for higher volume, security, retention needs. We use each customer’s data only for that customer. We are SOC 2 Type 1 compliant, Type 2 is in progress, and our SDKs are on PyPI and npm.\nWe’d love feedback from the HN community and people building chat or voice agents: how do you detect these signals today, what feedback methods have worked, and what would block you from trying this? Happy to answer questions and take criticism.\nComments URL: https://news.ycombinator.com/item?id=48908950\nPoints: 12\n# Comments: 0",
+      "id": "3a7019f83c18096db8b7e26a4ecfaf39be4eae432ad3e0fc76442e8812bffadb",
+      "ref_id": "2",
+      "recommendationScore": 95,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "Agnost AI推出，旨在从AI代理对话中提取用户反馈，解决现有分析工具的不足。",
+      "reason": "紧扣AI热点，解决了AI产品用户反馈分析的痛点，对AI开发者和产品经理有极高实用价值和新颖性。",
+      "tags": [
+        "AI",
+        "产品分析",
+        "用户反馈",
+        "独立开发",
+        "NLP"
+      ]
+    },
+    {
+      "title": "Differentiable Fortran with LFortran and Enzyme",
+      "link": "https://docs.pasteurlabs.ai/projects/tesseract-core/latest/blog/2026-07-09-enzyme-lfortran-autodiff.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-14T12:21:46.000Z",
+      "summary": "Article URL: https://docs.pasteurlabs.ai/projects/tesseract-core/latest/blog/2026-07-09-enzyme-lfortran-autodiff.html\nComments URL: https://news.ycombinator.com/item?id=48905667\nPoints: 32\n# Comments: 12",
+      "id": "a6daa21f3e6cc1aefc79c385167da793d5cd74622aa5ba28532575c11d385220",
+      "ref_id": "0",
+      "recommendationScore": 95,
+      "popularityScore": 10,
+      "priority": "high",
+      "comment": "深入探讨了将可微分编程引入Fortran的创新方法，结合了LFortran和Enzyme。",
+      "reason": "该文章在AI和编程工具交叉领域具有高技术深度和新颖性，对科学计算和高性能计算领域潜在影响巨大，与主题优先级高度吻合。",
+      "tags": [
+        "AI",
+        "Fortran",
+        "Differentiable Programming",
+        "Compilers",
+        "Scientific Computing",
+        "HPC"
+      ]
+    },
+    {
+      "title": "Codex starts encrypting sub-agent prompts",
+      "link": "https://github.com/openai/codex/issues/28058",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-14T11:21:32.000Z",
+      "summary": "Article URL: https://github.com/openai/codex/issues/28058\nComments URL: https://news.ycombinator.com/item?id=48905028\nPoints: 381\n# Comments: 231",
+      "id": "c619ed70fe60a039e9ec251c14cb019e26b10259cfe5381b725d4b4593cd9003",
+      "ref_id": "0",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "探讨AI子代理提示加密技术，解决AI隐私与安全新挑战。",
+      "reason": "AI领域前沿话题，技术深度和实用性俱佳，对开发者和AI治理者有重要参考价值。",
+      "tags": [
+        "AI",
+        "安全",
+        "隐私",
+        "Agent",
+        "OpenAI",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "What Anthropic’s latest AI discovery does—and doesn’t—show",
+      "link": "https://www.technologyreview.com/2026/07/13/1140343/what-anthropics-latest-ai-discovery-does-and-doesnt-show/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-07-13T18:00:00.000Z",
+      "summary": "This story originally appeared in The Algorithm, our weekly newsletter on AI. To get stories like this in your inbox first, sign up here. Anthropic—currently the world’s most valuable AI company, with a nearly $1 trillion valuation—has a reputation for publishing strange and heady research. It’s looking into whether AI models can feel pain, for example,…",
+      "id": "083560c542d97e23589a335749f15060643f0a2cff5eb8d8f2f9a0c2016c47c8",
+      "ref_id": "2",
+      "recommendationScore": 95,
+      "popularityScore": 92,
+      "priority": "high",
+      "comment": "深入探讨Anthropic最新AI发现的实际意义与局限性，包括其在AI模型感知方面的探索。",
+      "reason": "这是对高优先级AI主题的深度剖析，来自顶级AI公司Anthropic的研究，涉及AI的认知和伦理前沿，具有极高的技术深度和新颖性。",
+      "tags": [
+        "AI",
+        "Anthropic",
+        "AI伦理",
+        "AI研究",
+        "模型理解"
+      ]
+    },
+    {
+      "title": "How to stop Claude from saying load-bearing",
+      "link": "https://jola.dev/posts/how-to-stop-claude-from-saying-load-bearing",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-14T11:46:02.000Z",
+      "summary": "Article URL: https://jola.dev/posts/how-to-stop-claude-from-saying-load-bearing\nComments URL: https://news.ycombinator.com/item?id=48905248\nPoints: 152\n# Comments: 233",
+      "id": "7f97d56bb8a605fc8a9373269c5db0a6dc85ea7f27e2a51982e73138cc44ef98",
+      "ref_id": "2",
+      "recommendationScore": 92,
+      "popularityScore": 87,
+      "priority": "high",
+      "comment": "提供实用技巧，解决Claude等大型语言模型重复使用特定词汇（如'load-bearing'）的问题。",
+      "reason": "文章专注于AI应用和Prompt Engineering，具有高实用性和热门讨论度，对使用LLM的用户非常有价值。",
+      "tags": [
+        "AI",
+        "LLM",
+        "Prompt Engineering",
+        "Claude",
+        "Productivity"
+      ]
+    },
+    {
+      "title": "Show HN: I RL-trained an agent that trains models with RL (for –$1.3k)",
+      "link": "https://github.com/Danau5tin/ai-trains-ai",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-14T12:41:25.000Z",
+      "summary": "Article URL: https://github.com/Danau5tin/ai-trains-ai\nComments URL: https://news.ycombinator.com/item?id=48905919\nPoints: 65\n# Comments: 26",
+      "id": "6562e70676ff8a7025883183972693ff0b287805140a38cae94a2559a555a402",
+      "ref_id": "3",
+      "recommendationScore": 91,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "展示了一个利用强化学习训练强化学习模型的创新方法，且成本效益显著。",
+      "reason": "高度新颖且技术深度极高，是AI前沿研究（元学习、强化学习）的优秀案例，兼具实用性和极高关注度。",
+      "tags": [
+        "AI",
+        "Reinforcement Learning",
+        "Meta-Learning",
+        "Agent",
+        "Research",
+        "Show HN"
+      ]
+    },
+    {
+      "title": "Alternative(s) to run CUDA on non-Nvidia hardware",
+      "link": "https://www.hpcwire.com/2026/07/09/spectral-compute-aims-to-set-cuda-free-will-it-succeed/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-14T08:24:49.000Z",
+      "summary": "Article URL: https://www.hpcwire.com/2026/07/09/spectral-compute-aims-to-set-cuda-free-will-it-succeed/\nComments URL: https://news.ycombinator.com/item?id=48903715\nPoints: 104\n# Comments: 56",
+      "id": "48757b3ecc9f4c5cd23374ff1d6e4080a14e4780720fe5cfe62f1842c1d901c9",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "深度解析在非Nvidia硬件上运行CUDA的替代方案，有望打破垄断。",
+      "reason": "解决AI/HPC领域关键痛点，技术挑战性高且实用性强，对优化计算资源有重大意义。",
+      "tags": [
+        "CUDA",
+        "GPU",
+        "高性能计算",
+        "AI基础设施",
+        "编程工具",
+        "硬件"
+      ]
+    },
+    {
+      "title": "The Download: Claude’s inner workings, and the future of world models",
+      "link": "https://www.technologyreview.com/2026/07/14/1140391/the-download-anthropic-claude-internal-thoughts-world-models/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-07-14T12:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. What Anthropic’s latest AI discovery does—and doesn’t—show —James O’Donnell When Anthropic announced last week that it had found a new window into its models’ “internal thoughts” as they reason through answers,…",
+      "id": "ce791ec1c8b78d8bc97dcd6dfabc9f9b271bb4f465056b6fa7554da3714cb3a9",
+      "ref_id": "0",
+      "recommendationScore": 90,
+      "popularityScore": 88,
+      "priority": "high",
+      "comment": "本篇聚焦Anthropic关于Claude模型内部工作原理及世界模型未来的最新发现。",
+      "reason": "文章直接关注最高优先级的AI主题，探讨了AI模型深度理解和潜在未来发展，具有极高的新颖性和重要性。",
+      "tags": [
+        "AI",
+        "Anthropic",
+        "Claude",
+        "AI研究",
+        "世界模型"
+      ]
+    },
+    {
+      "title": "[Sponsor] Paper",
+      "link": "https://paper.design/?utm_source=df",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-14T05:02:00.000Z",
+      "summary": "Paper is a professional design tool where every layer is real HTML and CSS. Your design is already code, which means fewer handoffs and fewer translations between what you design and what ships.\nPaper works both ways: code to design, and design to code. Connect any agent through MCP and it can read and edit your designs. Or use Paper Snapshot to capture your live site as editable layers and make new iterations.\nAgents handle the tedious work so you can focus on your craft and the decisions that matter.\nTry Paper at paper.design.\n ★",
+      "id": "d91322b8c6b5c2b69fdf8b4454c714e774b72f82a7ce36c5aa82cbb88cfefb68",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "一款创新性的专业设计工具，将设计与真实HTML/CSS代码无缝集成，并支持智能代理协作。",
+      "reason": "产品理念新颖，解决了设计与开发之间的核心痛点，大幅提升工作效率，并融入AI自动化元素，高度契合当前技术趋势。",
+      "tags": [
+        "产品设计",
+        "前端开发",
+        "自动化",
+        "AI",
+        "设计工具",
+        "赞助内容"
+      ]
+    },
+    {
+      "title": "Pseudpocalypse",
+      "link": "https://dynomight.net/pseudpocalypse/",
+      "source": "dynomight.net",
+      "publishedAt": "2026-07-14T00:00:00.000Z",
+      "summary": "Here’s a conjecture: If you put any significant amount of text on the internet under different names, those identities can be linked using only the text itself. This is possible (I conject) because of the statistical “fingerprint” you leave in everything you write.\nImagine a website where you can paste in some brand-new text someone just wrote. In return, the website provides links to all the text that writer has ever published under any name. It’s not perfect, but it’s pretty good. As far as I know, no such website exists—at least not on the public internet. But I suspect it’s possible and will soon become easy. This will pose some difficulty for pseudonymous blogging.\nNote: I wrote most of this essay in mid-2025, after which I idiotically sat on it for a year tinkering with theorem statements that none of you will read.1 In the meantime, LLMs have gotten much better at guessing authors from text. (Given the first 1000 words of a draft of this post, Claude 4.8 knows it’s me.) Still, I think we’re just getting started. I expect to see increasingly obscure writers identified from increasingly small bits of text. I expect that this work even when people are writing in a different register or about unrelated subjects. And I expect that everything I’ve ever written under any pseudonym will soon be linked to my genuine-nym.2\nA stronger conjecture is that we’re heading towards a sort of generalized pseudpocalypse. Perhaps, in the future, if you interact with the world through essentially any high-bandwidth channel, then you identify yourself. Say you wear a mask in public and only speak by sub-vocalizing into a voice changer. That’s fine, you’ll still be identified using your body shape, gait, or chemical signature. Or say you don’t like your car being tracked everywhere, so you stop carrying a phone and you somehow convince lawmakers to ban license plates. No problem, your car will still be tracked using tiny scratches or unique pinging sounds from the engine. Or say you don’t like being tracked on the internet, so you lock down your browser profile, buy stuff only with Monero, and connect through a chain of three VPNs. That’s OK. You’ll still be identified through how you wiggle your finger as you scroll down the page. We’re all just too unique, and the information theoretic limit is coming for us.\nStarting bits\nLet’s start from first principles. Imagine that at birth, everyone is assigned a random binary string. Whenever you post anything on the internet, you’re required to sign it with that string. If the strings are very short, like 0110, then lots of other people will have the same one as you. But if the strings are very long, then yours would almost certainly be unique and it would be trivial to link all your pseudonyms.\nWhere’s the transition point? If you only know that the author is currently alive and living somewhere in the Anglosphere, it’s around 29 bits. That’s because if there are K digits, then there are 2ᴷ possible binary strings, and if K = 28.86, then 2ᴷ ≈ 490,000,000 is the number of currently-alive Anglosphere-dwellers. If the strings have fewer than 29 bits, then someone else will probably share your string. If they have more than 29 bits, then your string is probably unique.\nWe don’t (yet?) have to sign the things we write with immutable government-issued strings. But the way you write still provides lots of clues about you by way of your tone, personality, word choice, and so on.\nTheoretically speaking, I think it has to be possible to link the identities of anyone who writes enough. Imagine again that everyone is assigned a random binary string at birth, but instead of you needing to sign the stuff you write with your string, each time you write a word, there’s some chance that a random bit from your string is revealed and added as a signature to your message. For example, maybe a signature of bit[129]=1 is added, indicating that your string at position 129 has value 1.\nThink of your string as representing all your writing style quirks, and a bit being revealed as representing when you write something that reveals a preference. For example, maybe bit 18 indicates if you prefer to write your em-dashes with hideous spaces — like this — or without spaces—like this. If you use an em-dash, that bit is revealed.\nSo imagine you’ve written a lot under Pseudonym A, enough that the full bit-string has been revealed. Maybe it’s this:\n\nPseudonym A: \n110000001111001101110000100001\n010100100101011110111001101000\n100111110010101001101010111010\n\n\nNow say you start writing under Pseudonym B. Initially, none of the bits will be known:\n\nPseudonym B: \n??????????????????????????????\n??????????????????????????????\n??????????????????????????????\n\n\nBut slowly, you’ll start to leak a few bits:\n\nPseudonym B:\n?????00???1????1????????1??0??\n?????01??1?????????11????01???\n???1??????1???10??????????????\n\n\nAnd eventually you’ll leak a lot of bits:\n\nPseudonym B:\n???0?00?1?11??110??1????10?0??\n?10?001?0101?11???11100?101???\n???11?1??010??10?1?01??011????\n\n\nNow think about this from the perspective of an “attacker” who wants to know if A and B are the same person. Let’s assume they’ve only seen the above bits, and have no information about anyone else. Then here’s what the attacker knows:\nA and B have revealed K overlapping bits, which all match.\nDifferent people have a 50% chance of matching on any given revealed bit.\nNon-different people have a 100% chance of matching on any given revealed bit.\nThere are 490,000,000 people.\nIntuitively, if K was 5, then the fact that all bits match wouldn’t prove much, since with 490 million people, lots of people would match on those bits by chance. But if K was 70, it’s extremely unlikely that two different people would share all of them, even with such a gigantic pool to start with. It turns out that if there are N other people with random bits, and you pick K of your bits, the probability that someone exists who matches all of them is 1 - (1-2⁻ᴷ)ᴺ. When N is 490 million, that looks like this:\n\nLook at that, 29 appears again. (Isn’t math wonderful?) In general, the transition happens around whatever number of bits K makes 2ᴷ ≈ N, namely K = log₂(N).\nIf you reveal significantly fewer than 29 bits under pseudonym B, then it’s almost guaranteed that there’s someone else out there who matches all of them. But if you reveal significantly more than 29 bits, then there’s almost no chance that anyone else exists who matches all of them. So the attacker essentially knows that A and B are the same person. And I stress again: They know that without needing to see anything from the other 490 million people.\nOf course, we don’t literally leak bits of immutable feature strings as we write. But you can make the model more realistic, and the same issue persists. If you want to reflect that text only provides noisy information about the writer, then you can add noise to the bits before they’re revealed. If you want to reflect that some writing styles are more common than others, then you can make the distribution over bit strings non-uniform. If you want to reflect that certain quirks are more obvious than others, you can give different bits different probabilities of being revealed. All these make the math more complicated.  But they don’t change the basic conclusion: If your writing style contains at least 29 bits of information, and you do enough writing, you’re done.\nThat’s my argument that pseudpocalypse is possible. But I don’t just want to claim that it could happen, eventually. I think it is likely to happen, soon, and that the amount of text you need to reveal isn’t very large. To make that argument, we need to get specific: What features do people have that are reflected in their writing? How many bits of information do those features contain? How accurately can those bits be guessed from written text?\nNote: To avoid this turning into a giant information theory lecture, I’ll mostly use words like “bit” and “information” without being 100% fully precise about what they mean. I’m doing that because I expect that most people reading this aren’t definition-of-bit fetishists, and anyway being hyper-technical would obscure the big picture. If you’re an information theory enthusiast and/or skeptical that I know what I’m doing, I refer you to the Section For Skeptical Information Theory Enthusiasts, below. Until then, use your intuition and have faith.\nFeature space\nSay you knew nothing about me other than that I wrote the above words. And say you had to guess my age or religion or occupation. You could guess, right? It wouldn’t be perfect, but you’d do much better than you would without being able to read those words. Thus, somehow, those words contain information about my demographic characteristics. So I tried to make a list of similar things that you could plausibly guess from text at least somewhat better then chance. Here’s what I came up with:\nAge\nEducation\nEthnicity\nFamily status\nIncome\nMarital status\nMental health\nNative language\nOccupation\nPhysical health\nPolitical leanings\nRegion\nReligious affiliation\nSex\nIn the same spirit, if you only read the above words, could you guess how extroverted or conscientious I am? Again, not perfectly. (When I meet people who read this blog, they usually seem surprised I can survive direct sunlight.) But still, I’m sure you’d do OK. So, again, these words contain information about my personality.\nWhat features does personality have? The HEXACO model lists six, namely honesty-humility, emotionality, extraversion, agreeableness, conscientiousness, and openness to experience. I suspect those can all be guessed with reasonable accuracy from a long-enough writing sample. But could you guess more? For each of those six factors, the HEXACO model lists four “facets”. In the abstract, trying to guess 6 × 4 = 24 different personality features from text sounds ludicrous, but just look at them:\nHonesty-humility\n    \nSincerity\nFairness\nGreed avoidance\nModesty\nEmotionality\n    \nFearfulness\nAnxiety\nDependence\nSentimentality\nExtraversion\n    \nSocial self-esteem\nSocial boldness\nSociability\nLiveliness\nAgreeableness\n    \nForgivingness\nGentleness\nFlexibility\nPatience\nConscientiousness\n    \nOrganization\nDiligence\nPerfectionism\nPrudence\nOpenness to experience\n    \nAesthetic appreciation\nInquisitiveness\nCreativity\nUnconventionality\nIf you think about specific people, I think you can convince yourself that these 24 represent real things, and that it’s plausible to guess them from text. (Your favorite existential angst + science blogger, for example, might score lower on “modesty” than the other honesty-humility facets.) The different sub-factors are surely correlated, but not perfectly correlated.\nOf course, the biggest thing you learn from people’s writing is how they write. Do they pointlessly split infinitives? Do they use hyphen-connected words? Do they, incorrectly, position their adverbial clauses?\nThe idea of attributing authorship using writing style features goes back to at least 1440, when Lorenzo Valla demonstrated that the Donation of Constantine—in which Emperor Constantine supposedly donated the Roman Empire to the Catholic Church—used a vernacular that came from 400 years after Constantine’s death and was therefore a forgery. In 1851, Augustus De Morgan observed that average word length tends to be stable for the same author. The first “modern” attempt seemingly came in 1964, when Mosteller and Wallace published Inference in an Authorship Problem:\nThis study [attempts] to solve the authorship question of The Federalist papers; […]\nWord counts are the variables used for discrimination. Since the topic written about heavily influences the rate with which a word is used, care in selection of words is necessary. The filler words of the language such as an, of, and upon, and, more generally, articles, preposition, and conjunctions provide fairly stable rates, whereas more meaningful words like war, executive, and legislature do not.\nAfter an investigation of the distribution of these counts, the authors execute an analysis […] based on Bayesian methods. The conclusions about the authorship problem are that Madison rather than Hamilton wrote all 12 of the disputed papers.\nGet that? The idea is that your usage of the word war depends mostly on if you happen to be talking about war. But your usage of upon mostly depends mostly on how much you like the word upon. To demonstrate this, they took 48 papers written by Hamilton and 50 by Madison and made this table of how many times they used by, from, and to:\n\nMadison liked by. Hamilton was more a to man. Using these kinds of statistics, they concluded that the disputed Federalist papers must have been written by Madison.\nSo I did some research looking for other writing style features that are believed to be stable when people write about different subjects. I found that there are a lot. There were so many that I struggle to even organize them into meaningful groups:\nLow-level frequencies:\nWord lengths\nSentence lengths\nParagraph lengths\nPunctuation frequencies (commas, colons, dashes, parentheses)\nFunction word frequencies (the, of, and, to)\nAdverb frequencies\n    \nIntensifiers (very, really, quite, pretty, so)\nEvidential markers (apparently, evidently, obviously)\nDowntoners (somewhat, fairly, rather)\nPronoun usage\n    \nOverall preferences (I/we vs. you vs. he/she/they)\nThird-person singular preferences (he, she, he or she, they, one)\nModal verbs (can, could, might, must, should, will, would)\nHedges (perhaps, maybe, possibly, probably)\nConjunctions (and,  but,  yet, so)\nKnown stable ratios (the/a, this/that, these/those, I/me/my)\nCharacter N-grams (3-grams and 4-grams)\nWord N-grams (often 3-grams)\nLexical features:\nVocabulary size\nLexical diversity / type-token ratio (Number of distinct words divided by number of words.)\nFrequencies of rare words\nSemantic density\nDiscourse marker positions, combinations (So, anyway, so anyway)\nUse of abbreviations and acronyms\nPreference for latinate vs. germanic words (The majestic creature traversed the terrain vs. the mighty beast strode across the land.)\nSyntactic features:\nSyntactic complexity\n    \nSubordination index\nAverage parse tree depth\nUse of passive voice.\nNominalization (She was shocked I ate the pizza vs. My pizza consumption shocked her)\nVerb tense and aspect (I walk vs I walked vs I was walking vs I have walked)\nSentence structure preferences:\n    \nBranching preferences (Cursed everyone had a good time when Alice taught some cool dogs I met and brought to dinner to juggle vs. clumsy-but-readable I met some dogs and they were cool and I took them to dinner and Alice taught them to juggle and and everyone had a good time.)\nAdverbial clause positioning (Suddenly I was hungry vs. I was, suddenly, hungry vs. I was hungry, suddenly)\nSentence-final weight (Your plan won’t work because of the dyslexic bears vs. Dyslexic bears mean your plan won’t work.)\nPolysyndeton (I like dogs, cats, and ferrets vs. I like dogs and cats and ferrets.)\nRepetition / breaking of syntactic structures.\nStyle features:\nRegister / formality.\nPatterns in sentence length (long/short/long/short vs. long/long/short/short)\nStressed syllable interval preferences (e.g. iambic vs. trochaic)\nRule preference features:\nMinor punctuation (I laughed—you cried vs. I laughed — you cried, “…” (three periods) vs. “…” an actual ellipsis)\nCapitalization. (Job titles, seasons, after a colon, mistakes)\nApostrophes (Steve Jobs’ car vs Steve Jobs’s car, 1990’s vs 1990s)\nHyphenation (a highly-stable feature vs a highly stable feature)\nOxford commas.\nArticle omissions (Local dog was petted. vs. A local dog was petted.)\nRelative pronoun omissions (the dog you petted vs. the dog that you petted)\nWho vs. whom.\nSplit infinitives (To obsessively blog vs. to blog obsessively)\nIdiosyncratic features:\nWhitespace habits.\nSpelling errors (loose instead of lose)\nGrammar errors. (Between you and I)\nConsistent, unique typos\nOther consistent errors (repeated words, un-closed parentheses)\nThat’s a lot. There are surely more. And these are all “shallow” features that humans came up with using our tiny little brains. I strongly suspect that there are many more “deep” features that could be found by looking for statistical patterns in a sufficiently large dataset. Many of those features might not even have a coherent English-language description. But they’re still there, providing bits for those who seek them.\nSo we leak information about lots of different stuff when we write. But how much information? Is it possible to say how many words are needed to uniquely fingerprint someone?\nNo. To a first approximation, the answer is no. But to a second approximation, maybe? Within an order of magnitude? I’ll try, but it’s going to be hard.\nDemographic bits\nHow many bits of identifying information does text provide by way of demographic features like age and sex and so on?\nAt first glance, this seems a perilous question, as it depends on the number of categories you consider those things to have. Take sex. For pseudpocalypse purposes, your opinion about how sex should be defined or how many sexes exist is irrelevant. Finer categorizations always provide more information, and our de-pseudonymizing attacker friends will use that information if they can. However, going beyond two categories for sex makes little difference, because the additional categories will be hard to guess and even if you could, categories with low prevalence don’t contribute much extra information.3 So, for us, two categories is the right answer.\nAnd what about age? At first glance, converting age into a set of categories seems meaningless. If you code age by the millisecond, then there are 3.156 trillion categories for people born in the last 100 years. If you code age by the decade, there are only 10. Here, the thing to notice is that while you might be able to guess my decade of birth from how I write, you don’t have a snowball’s chance in hell of guessing the millisecond. (See what I did there? People born in certain decades are more likely to use expressions like snowball’s chance in hell?4) If we took age to have some crazy number of categories, we’d have to discount later to reflect the difficulty of guessing. My intuition is that it would be hard to guess age more accurately than around five years, so 20 categories seems reasonable.\nFollowing this kind of logic, I chose a number of categories for each of the demographic variables, trying to hit the upper end of what could be guessed from text. (I’ll provide the actual categories below.)\nFeature\n      Number of categories\n    \nAge\n      20\n    \nEducation level\n      6\n    \nEthnicity\n      6\n    \nFamily status\n      2\n    \nIncome\n      11\n    \nMarital status\n      3\n    \nMental health\n      3\n    \nNative language\n      2\n    \nOccupation\n      23\n    \nPhysical health\n      3\n    \nPolitical leanings\n      3\n    \nRegion\n      23\n    \nReligious affiliation\n      3\n    \nSex\n      2\n    \nIf each of the age bins were equally likely, then knowing what bin someone fell into would provide 4.32 bits of information, because 2ᴷ ≈ 20 when K = 4.32. Doing that same calculation for each feature gives the maximum amount of information they could contain.\nFeature\n      Number of categories\n      Maximum bits\n    \nAge\n      20\n      4.32\n    \nEducation level\n      6\n      2.58\n    \nEthnicity\n      6\n      2.58\n    \nFamily status\n      2\n      1\n    \nIncome\n      11\n      3.46\n    \nMarital status\n      3\n      1.58\n    \nMental health\n      3\n      1.58\n    \nNative language\n      2\n      1\n    \nOccupation\n      23\n      4.52\n    \nPhysical health\n      3\n      1.58\n    \nPolitical leanings\n      3\n      1.58\n    \nRegion\n      23\n      4.52\n    \nReligious affiliation\n      3\n      1.58\n    \nSex\n      2\n      1\n    \nTotal\n       \n      32.88\n    \nBut there’s a problem. There are more people aged 30-35 than there are people aged 90-95. So, even if you could guess those age bins perfectly, they’d provide less than 4.32 bits of information on average. However, it turns out that categories need to get pretty damned uneven before information content drops very much. A perfectly balanced 50/50 distribution provides 1 bit of information, but if you switch to a 60/40 distribution, you still get 0.971 bits, and you need to go almost to 90/10 before information content drops to 0.5 bits.5 The same basic thing is true when there are more than two categories.6\nSo I went through all those features, rated them by how unevenly people are distributed, and tried to discount the bits accordingly. I’ve put the full details of what the original categories are and how I discounted them in a footnote.7\nFeature\n      Number of categories\n      Maximum bits\n      Estimated bits\n    \nAge\n      20\n      4.32\n      3.9\n    \nEducation level\n      6\n      2.58\n      2.1\n    \nEthnicity\n      6\n      2.58\n      1.7\n    \nFamily status\n      2\n      1\n      0.8\n    \nIncome\n      11\n      3.46\n      2.5\n    \nMarital status\n      3\n      1.58\n      1.2\n    \nMental health\n      3\n      1.58\n      0.9\n    \nNative language\n      2\n      1\n      0.6\n    \nOccupation\n      23\n      4.52\n      4.0\n    \nPhysical health\n      3\n      1.58\n      1.3\n    \nPolitical leanings\n      3\n      1.58\n      1.5\n    \nRegion\n      23\n      4.52\n      3.5\n    \nReligious affiliation\n      3\n      1.58\n      1.5\n    \nSex\n      2\n      1\n      1\n    \nTotal\n       \n      32.88\n      26.5\n    \nBut there’s another problem. Female 65 to 70 year-old Asians living in Scotland tend to have different {occupations, family statuses, religious affiliations} than 15 to 20 year-old Latinos living in Southeast Australia. That is, the above features are correlated. So as you look at more of them, they gradually become less surprising and thus contribute less information.\nHow much less? Answering that the right way would require us to estimate how likely someone is to fall into each of the 20 × 6 × 6 × 2 × 11  × 3 × 3 × 2 × 23 × 3 × 3 × 23 × 3 × 2 = 8,144,737,920 joint categories. That seems hard. But a not-completely-ridiculous approximation is that if a group of variables are all pairwise correlated at a level of ρ>0, then the total information might be reduced by a fraction of ρ.8\nSo how correlated are those features? In the social sciences, a correlation of 0.5 is considered quite high. That’s plausible for some pairs of variables, e.g. age vs. health or political leaning vs. religious affiliation. But many of those correlations are are probably quite weak, e.g. age vs. native language or region vs. sex vs. marital status.9\nOverall, my guess is that correlations reduce the total information by at least 10% but I doubt they reduce it by more than 60%. So I’d think the total information in the above features (if you could guess the categories perfectly) is somewhere between 10.6 and 23.9 bits. Let’s take the average and call it 17.2 bits.\nPersonality bits\nWhat about personality features? Let’s use the same same recipe we used for demographic features, but faster: To start, let’s give each of the 24 personality features five bins, in deference to dynomight personality notation. That would correspond to 24 × 2.32 = 55.68 bits total, because 2ᴷ ≈ 5 when K = 2.32.\nThen we need to discount for correlations. The six main HEXACO personality factors are designed to be uncorrelated, but the different “facets” inside each factor are correlated (usually with a coefficient between 0.3 and 0.6). It seems reasonable to use an overall discount factor of 0.3 to reflect strong intra-factor correlations but weak inter-factor correlations. That suggests 39.0 bits overall.\nStyle bits\nAnd what about writing style features? How much information do they contain?\nThis seems hard. Some of the features, like character n-grams are actually themselves long lists of features. (Frequency of typing aaa, frequency of typing aab, etc.) However, many of those features contain little information, since almost everyone types zqx  around 0% of the time. And, of course, writing style features are correlated, since people who write realise instead of realize are less likely to put spaces around their em-dashes.\nIn absence of a better idea, I’m going to give one bit for each leaf node in the above list of style features. I think of this as giving each feature two bins, and then assuming that uneven distributions of features and correlations (which reduce information) are canceled out by the fact that many features deserve more than one bin and that there are probably more “deep” features that aren’t listed (which increase information). This gives us the suspiciously round number of 50.0 bits.\nGuessing bits\nIf you believe the above numbers, then we have at least 17.2 + 39.0 + 50.0 = 106.2 bits of identifying information that we leave clues about when we write. That’s a lot. If you could see all those features, it would be enough to identify people even on a planet with 93 million trillion trillion people.\nBut to argue that the pseudpocalypse is nigh, it’s not enough to argue that those bits exist. We need to argue that they can and will be guessed from a relatively small amount of text.\nSo obviously we need to talk about nuclear weapons. In a nuclear detonation, many unstable atoms are created. These spontaneously decay into more-stable atoms, in the process emitting radiation. Some types of atoms are very eager to decay, meaning they release a lot of radiation but stop existing within a few weeks (iodine-131). Others are reluctant to decay, meaning they don’t release as much radiation but they stick around for decades (strontium-90). Others stick around for millions of years, but they produce so little radiation that they’re not a big problem (cesium-135).10 So, the residual radiation produced after a nuclear detonation is the sum of many different exponential curves, one for each isotope created during the detonation.\nI suspect that identifying bits in text are sort of like that. Your level of formality and your average sentence length are revealed almost immediately. Your preference for latinate vs. germanic words takes a while to come through. And your social boldness and the fact that you live in Queensland rather than Southeast Australia are revealed very slowly, perhaps so slowly that it’s effectively not revealed at all.\nRight. So if you start with 106.2 bits, how many of those do you reveal after writing a given number of words?\nI will answer that question through the noble method of making up numbers. But first, let’s calibrate. You just read 4500 words written by me. How well could you guess my demographic and personality features? As a sanity check, I gave the above words to an LLM and asked it to guess. It did unnervingly well. It wasn’t always right, but it usually was, and it did a great job of rating the confidence of the individual predictions.\nI don’t think there’s any magical explanation for this. The fact is, if you look at the individual personality and demographic features, guessing them just isn’t that hard. So I’m sure you could do just as well. And given enough time, I’m pretty sure you’d do even better for writing style features.\nEven so, you’re probably bad at it. Take the example of GeoGuessr, where people guess a location in the world from a random photo. Random people are sort of OK, but if you pick the top natural talents and have them practice obsessively, they’re really good. I don’t think LLMs are particularly good at guessing features from text, either. They weren’t trained for it. It’s just an emergent property of their general intelligence. The information-theoretic limit is surely much higher.\nSo here’s a very rough cut: After 4500 words, I’d think it’s possible to guess around:\n60% of the demographic features\n70% of the personality features\n80% writing style features\nIf we model each of those with a separate exponential, and start them at 17.2 / 39.0 / 50.0 bits, then the total number of identifying bits that remain hidden after writing a given number of words is as plotted here:11\n\nEt voilà, pseudonymity is compromised when you leak 29 bits, which happens after 1071 words.\nSeriously?\nOf course not. The above figure stands on a creaking tower of tenuous assumptions. I’ve gone through the details of deriving that curve not because you should trust it, but because I think seeing the calculations makes the following points hard to argue with:\nYou have far more than 29 bits of identifying information that you leak into your writing.\nSome of those bits take a long time to get revealed, but others are revealed pretty quickly.\nThere are enough “fast leaking bits” that you can be identified from a writing sample that’s “pretty small”.\nI’ve made lots of debatable choices in terms of choosing features, assigning numbers of categories, estimating distributions across those categories, discounting for correlations, and guessing how many bins can be guessed. Those choices are all individually suspect. But the above points are supported by a pretty wide margin of error. You can make different choices, but it seems very hard to avoid concluding that the above three points are true.12\nHow would this work?\nYou might be wondering why I’m using so many made-up numbers. After all, there’s a whole field devoted to identifying authors from text, usually called “stylometry” or “authorship attribution”. They have research papers and competitions and all that. However, as best I can tell, state of the art published results look something like this:\nTake 50 people.\nGet a few hundred writing samples from each author, each 1000-2000 words long.\nNow, take a new writing sample from one of those authors.\nDo some standard machine learning stuff.\nHey look, the author can be identified with ~95% accuracy!\nThat sounds OK, but that’s only identifying people against a pool of ~50 authors. For my claim to be true, similar accuracy would have to be possible with 490 million people. That’s seven orders of magnitude more.\nThe thing is, the methods those papers are using are extremely weak. All the above math assumes that you’re operating at the “information-theoretic limit”, making perfect use of all available information. If you want to get close to that, we now have some idea how to do it: You apply the “modern” machine learning recipe of gigantic dataset + gigantic neural network + gigantic fortune spent on GPUs. My guess is that for us, that would require something on the order of “all the words ever written” + “tens of billions of parameters” + “tens of millions of dollars”. I couldn’t find a single paper that came remotely close to attempting that.\nSo I don’t think those papers tell us much, for the same reason that a 3rd-order Markov model trained on a few books doesn’t tell us much about how good computers could be at writing text. LLMs have shown that if you use the above recipe, then computers can get close to the information-theoretic limit for generating text.13 So, I suspect that an LLM-level effort could achieve the same thing for identifying authors.\nYou might also wonder: Why am I talking about this as some possible future technology? Isn’t that technology just LLMs?\nI suspect the technology will be quite LLM-like in how it models human language. But current general-purpose LLMs aren’t trained for this task. They’re good at it “by accident”. So, just like specialized chess AIs can crush LLMs at chess, I suspect specialized stylometry methods could crush general-purpose LLMs at stylometry. It’s just that those specialized stylometry methods don’t seem to exist yet, or at least aren’t public.14 So we shouldn’t imagine that current LLMs are anything close to what’s possible, even if you assume that generic LLM progress stopped today.15\nCountermeasures\nIf this is all true, what could be done about it?\nThe most obvious “countermeasure” would be to get used to it. I mean, imagine that we did live in a world in which everyone literally had to sign everything they wrote with a unique immutable string. What would happen? I’d expect a mixture of:\nPeople become more comfortable with their “full selves” being public, with less compartmentalization.\nPeople pull back from communicating in public channels, relying more on group chats and the like.\nPeople self-censor.\nThere are strong historical analogies here, since over the past 20 years many governments and tech companies have in fact decreed that people must sign the things they write with their real names.\nThe effects seem to vary quite a lot based on the ambient culture and political system. Overall, my impression is that people are already much more comfortable with the idea that their work colleagues might read their dating profile or learn that they go to furry conventions. I’m optimistic that culture will continue to adapt to respect the fact that we all encompass multitudes. This seems healthy.\nSome effects seem clearly positive. Self-censoring is not necessarily bad. For example, on the margin, real-names surely stop some teenagers from engaging in cyber-bullying. On the other hand, were you ever a teenager? I’m pretty sure that for anyone who is “different”, having those differences broadcast to the world creates a much larger “bullying surface area”. So the effects are mixed. And adults aren’t as different from teenagers as we might like to think.\nTwenty years ago, I might have predicted that real names would discourage people from expressing controversial political ideas online. Superficially, that seems completely wrong. At least in the West, lots of people are very happy to express minority political views, and if you disagree at all, then you can go to hell. But I also tend to think this hides a lot of self-censorship, where most people don’t want engage in political mortal combat and so are cowed by a feisty minority. And, obviously, people in certain countries know that it’s unwise to criticize the Party. So, getting used to it seems like an imperfect solution at best.\nAnother countermeasure would be to not build this technology, or not make it widely available. In the short term, this seems plausible. As far as I can tell, it’s been possible for years for a modestly-funded group to build a phone app that would identify most people on the street from a photo. And yet, almost no one reading this has access to such an app. If general-purpose LLMs continue to get better at stylometry, it seems entirely possible that AI companies might decide it’s a safety issue and train their AIs to refuse to do it.16 This could work for a while.\nBut if the technology is possible, it seems certain that governments will build it and use it. They might try to keep it out of the hands of normal people. Certain governments might restrict their own use. My privacy-minded allies always seem very jaded, but it wouldn’t surprise me at all if the Supreme Court declared that a warrant was needed before the FBI could de-pseudonymize a U.S. citizen. But when/if that technology becomes sufficiently cheap, it seems like it would be very difficult to keep it out of the hands of normal people and/or bad actors. My guess is that it’s possible to create a program that’s a few hundred gigabytes large and can run (slowly) on most modern laptops. If that program is made public, it would be hard to put the genie back in the bottle.\nThere are also technological countermeasures. Most obviously, you could run your writing through a “filter” to try to remove identifying bits, e.g. by asking an LLM to rewrite it. It’s hard to be sure how well this would work, since we don’t have accurate estimates of how many bits you’re starting with or how many bits this would remove. But I’d guess this would be pretty effective if done carefully. The reason is that the number of identifying bits you leave in writing probably isn’t that large, relative to the number needed to identify you. If you “homogenize” your writing to remove all style and personality, you should be able to remove most of those bits. Theoretically, you’ll still leak some information. But I’d think this would substantially increase the amount you could write while remaining pseudonymous.17\nBut after thinking about it, this makes me sad. Effectively, this countermeasure would preserve pseudonymity by taking writing and destroying all traces of humanity. It seems like this would work well for the “bad” uses of pseudonymity, like cyber-bullying or coordinated violence, but it wouldn’t work at all for the “good” uses, like for example someone who likes to write pseudonymously because they feel like it allows them to be more honest and vulnerable and more fully themselves, damn it.\nGeneralized pseudpocalypse\nMaybe this isn’t just true for writing. Maybe it’s just a feature of our universe that if you interact with the world in any significant way, then you leave traces that make it possible to identify you.\nIf you walk around in public, then you can likely be identified by your face, your gait, your voice, your DNA, your retinas, or your literal fingerprints.\nOr say you use the internet. Even if you lock down your browser fingerprint and hide your IP address using a VPN or Tor, a sufficiently powerful adversary could still identify you by analyzing global packet flow.\nOr say you use any phone or computer. You might be identified through keystroke dynamics or the way you jiggle your finger or mouse.\nSay you buy food at the grocery store, but you pay with cash and somehow shop at a grocery store with no cameras. If you buy more than a handful of items, I’d bet you can still be identified through the patterns in the stuff you buy.\n(Incidentally, did you ever notice that cash has serial numbers on it? And did you know that more and more ATMs are starting to track those numbers?)\nOr say you don’t like your car being tracked, so you stop carrying a phone and somehow get lawmakers to outlaw license plates. Still, your car surely has a few small unique scratches, and the engine probably doesn’t sound exactly the same as other cars, even from the same model and year. So if there’s any high-resolution video or audio, that’s still enough to track you.\nSay you plug your headphones into a charging station at the airport. Your headphones have eccentricities in their analog charging circuits. If someone really wanted to, they could track that.\nOr say you use electricity. Given high-resolution power-usage data, what can be said about how many people live with you? And what devices you’re using? Probably a lot?\nOr say you use a toilet. Many places already test sewage and know, at a population level, what drugs people are using and how prevalent various diseases are. Imagine this was upgraded to test many places in the system, with high temporal resolution, possibly correlated with flow measurements from individual houses. That would be exciting.\nOr say you are a country and you have submarines. Can they be detected by adversaries using distributed acoustic sensing? What about satellite-based synthetic aperture radar? Gravity Gradiometers? Quantum magnetometry?\nAs far as I can tell, the general trend is that without countermeasures, almost everything can be identified. Countermeasures can make it harder, but they’re costly, and on the whole, the arms race seems to favor the identifier, not the person who doesn’t want to be identified.\nI stress: This is not all bad. The goodness / badness of a generalized pseudpocalypse depends on how society is structured. After all, the foundation of civilization is finding ways for people to make deals, and arguably less privacy makes that easier. The degree that we live in a vulnerable world where it’s easy to create civilization-destroying technologies, perhaps we’re very lucky to find ourselves in a non-private world. Still, I do worry that privacy has long provided a kind of “slack” from laws and norms. Historically, that slack has limited the power of institutions to enforce their rules. If privacy is going away, we need to think about how to preserve slack, particularly when institutions don’t want to.\nAppendix: Section for skeptical information theory enthusiasts\nAbove, I tried to estimate the number of bits of identifying information in writing. But what is a “bit”? In general, if x is a discrete random variable, then the Shannon entropy of x in bits is H(x) = ∑ₓ p(x) log₂(1/p(x)), where the sum is over all the values x can take. This is always bounded between zero and the logarithm of the number of values x can take.\nThat’s fine, but “writing style” is not a discrete variable with a discrete number of categories. So how can I estimate the entropy of writing style? The short answer is that I can’t. What I’ve actually estimated above is the mutual information between writing and writing style.\nLet s be a random variable representing writing style. Think of this as some sort of high dimensional continuous vector representing all the quirks of how different people write. And let x be a writing sample of some length. This is discrete because we can represent writing on digital computers. Then what I’ve estimated above is the mutual information I(x;s) = H(x) - H(x|s), where H(x|s) is the conditional entropy of x given s. This can be measured in bits because both H(x) and H(x|s) can be measured in bits. So that’s what my estimate above really says: I(x;s) ≈ 106.2 bits.\nNow, you still might be skeptical. Above, I’ve implicitly assumed something like the following was true:\nIt’s possible to identify one person out of N possibilities with low accuracy if and only if the mutual information between identifying features and writing is at least log₂(N) bits.\nThat’s how I justified pseudonymity being compromised around 29 bits. But is it really true? Strictly speaking, no. Actually, even more strictly speaking, it’s “not even untrue” because it’s not precise enough to be true or false. But as far as I can tell, basically any precise version of that statement is false. However, it’s possible to find versions of that statement that are true, provided you add some extra not-too-crazy assumptions.\nTo start, let’s consider an extremely simple model of information leakage.\nTheorem. Suppose the world consists of you plus N other people, and suppose each person has a binary identity string, drawn at uniform from the distribution over M-bit binary strings. All these strings are known to the attacker. Suppose you pick some subset of K bits and reveal them. Then the probability that this identifies you is\n  (1-2⁻ᴷ)ᴺ.\nFurthermore, in order to hold the probability of being identified below\n  (1-1/N)ᴺ ≈ exp(-1) ≈ 36.7%,\nit is necessary that K ≤ log₂(N).\nProof. The probability that all K observed features collide with any random person in the crowd is 2⁻ᴷ. Thus, the probability of no collisions after checking the crowd of N people (meaning you are the only one matching the observed features) is (1-2⁻ᴷ)ᴺ. □\nThat’s simple. But it’s not realistic at all, since it assumes that people have immutable binary strings that they leak into their writing. Can we make it more realistic?\nWell, there is a simple lower bound. That is, we can say in general that if the mutual information is significantly less than log₂(N), then it’s not possible to reliably identify someone.\nTheorem. Suppose N random people are selected and their full writing style features are made public. One person from that group is chosen and produces a writing sample. Then, the attacker must guess who produced it. The average success rate of the attacker (averaged over the random pool, the random choice of author, and the random writing sample) is at most (I(x;s)+1)/log₂(N).\nProof. Let S=(s₁, s₂, s₃, …) be the pool of N styles and let n be a random variable indicating which person was chosen. Fano’s inequality says that the highest possible success rate is bounded by the conditional mutual information between the writing sample x and the identity n, conditioning on the pool of writing styles, i.e. the probability of success is at most\n  (I(x;n|S)+1)/log₂(N).\nHowever, we can bound that conditional mutual information as\n  I(x;n|S) ≤ I(x;n,S) = I(x;n,sₙ) = I(x;sₙ) = I(x;s).\nThe first inequality is standard. The second step uses the fact that given n, the writing x is conditionally independent of all styles except the chosen writer. The third step uses the fact that n is conditionally independent of x given sₙ. The last step uses that (x,sₙ) is distributed as (x,s). Substituting this bound gives the claimed result. □\nSo, if mutual information is much less than log₂(N), reliable identification is impossible, even if the attacker knows all the style vectors perfectly. So, provided you don’t leak that many bits, you’re definitely safe.\nBut is the converse true? Does leaking more than log₂(N) bits always identify you? The general answer is no. The basic problem is that I(x;s) is the average information that an average person leaks in an average writing sample. Without further assumptions, you can construct scenarios where some rare people and writing samples contain gigantic amounts of information, but most people usually leak nothing. That would mean that the attacker is very certain in some cases but usually learns nothing.\nSo, to get a guarantee that identification is actually possible, you need to make some kind of additional assumption that the information leakage rate doesn’t vary too much between different writers or between different things they write.\nSuppose that p(x,s) is the joint distribution over writing styles s and writing samples x. Let’s suppose that the attacker knows the true style vector ŝ for some person. Then, they will be given a writing sample x that either came from that person or came from a randomly chosen person, and must decide which. Formally, the attacker’s goal is to guess if x was sampled from the writing distribution for that person, p(x|ŝ) or from the population marginal p(x). Intuition suggests that the attacker’s best strategy will be to look at the ratio\n  p(x|ŝ)/p(x),\nand “accept” x as coming from ŝ if above some threshold, and reject it otherwise. In fact, the Neyman-Pearson lemma guarantees that this is the optimal strategy, in a very strong sense: That ratio contains all the information that’s useful for making that decision.\nNow here’s something interesting: Instead of looking at the ratio, the attacker could look at the logarithm of the ratio. It makes no difference since it’s monotonic. But if you take the logarithm of that ratio, and take the expectation over people and over texts, what do you get? Well:\n  𝔼 ln (p(x|s)/p(x)) = 𝔼 ln (p(x,s)/(p(x) p(s))) = I(x;s)\nIt’s the mutual information! So, intuitively, the mutual information is how much an attacker learns about the style of the writer “on average”, where that average is over both writers and text.\nThe following theorem will look at the average information in text for a writer with a particular style. I’ll define this as\n  D(s) = KL(p(X|s) || p(X)).\nIntuitively, this is how different the writing of someone with style s is from the population average. That’s because if you take the average of this value over different styles, you get the mutual information. That is, I(x;s) = 𝔼[D(s)].18\nTheorem (informal). Suppose that the attacker will observe some text and wishes to classify it as either coming from a writer with specific known style ŝ, or coming from someone with a random style. Suppose that the attacker is only willing to tolerate some small risk ε of a false positive. Provided that D(ŝ) is significantly larger than -ln(ε), the attacker can achieve that, while also keeping the risk of false negatives very low, provided that the variance of how much information is revealed in a random writing sample is bounded.\nTheorem. Let D(ŝ) = KL(p(X|ŝ) || p(X)) to be the divergence between the target’s writing distribution and the marginal distribution. Also, define qₜ(x) ∝ p(x|ŝ)ᵗ p(x)¹⁻ᵗ to be the family that interpolates between those two distributions. To formalize the idea that “information leakage” for ŝ doesn’t vary that much, we assume that some constant V exists such that for 0 < t < 1, the variance of log(p(x|ŝ)/p(x)) under qₜ is bounded by V.\nThen for any ε satisfying exp(-D) < ε < exp(-D + ½ V), it is possible for the attacker to simultaneously achieve a false positive rate of FPR ≤ ε and a false negative rate of FNR ≤ exp( - ½ (D+ ln ε)² / V). This false positive rate reflects the mistake rate provided the writing sample x came from a randomly chosen other person, while the false negative rate reflects the mistake rate provided the writing sample x actually came from the person with style ŝ.\nProof sketch. Let f be the distribution of l(x) = log(p(x|ŝ)/p(x)) with respect to p(x|ŝ) and let g be the distribution of l(x) with respect to p(x). The stated variance assumption implies a quadratic bound K(u) ≤ D u +½ V u^2 for -1 < u < 0, where K is the cumulant generating function of f. Observe that g is an exponential tilting of f. The attacker’s strategy must be to “accept” x as coming from ŝ if l is above some threshold c and “reject” it otherwise. Use K in a Chernoff bound on the probability l is less than c under f to upper-bound FNR ≤ exp( - ½ (D-c)²/V). Now, using that g(l) = exp(-l) f(l), again use K in a Chernoff bound on the probability l exceeds c under g to upper-bound FPR ≤ exp( -c - ½ (D-c)²/V). Both of these bounds are simultaneously valid when D-V < c < D. Setting c to make the false-positive bound equal to ε gives FPR ≤ ε and FNR ≤ exp( -½ (V - √(V² - 2V(D + ln ε)))²/V). The latter can be relaxed into the stated result using that √(1-x) ≤1-x/2 for 0 ≤ x ≤ 1. □\nNow, if we suppose that the attacker wants to find a particular person, with a particular known style s. And suppose that the attacker has a pool of N people and will see one writing sample from each, but wants to limit the total probability of a false positive to δ after seeing one sample from each person. Then, they will need that\n  (1-ε)ᴺ ≈ exp(-εN) = (1-δ),\nwhich is satisfied by ε ≈ δ/N. Substituting this into the previous result says that the attacker can hold the total risk of a false positive to δ while achieving a false-negative risk of\n  FNR ≤ exp( - ½ (D(s) + ln δ - ln N)² / V).\nThese results use natural logarithms because the math is easier if you measure information in nats. If you measure information in bits then you would get log₂ δ and log₂ N. (Rescaling D and V appropriately.)\nSo, again, as long as the average information for user s is significantly larger than log₂ N, the attacker can identify that user with minimal risk of false positives.\nSome writers might leak more information (higher D(s)) and some writers might leak less information (lower D(s)). But remember, I(x;s)=𝔼 D(s). So as long as information leakage doesn’t vary too much between people, and assuming that I(x;s) is much larger than log₂ N (and assuming that variance condition), almost everyone can be identified.\nEditor’s note: After this sentence was written, many additional hours were devoted to further idiotic tinkering. ↩\nIt’s fine. ↩\nA standard binary variable that is 0 or 1 with 50% probability conveys 1 bit of information, while a variable that is 0 / 1 / 2 with probability 49.8% / 49.8% / 0.4% conveys 1.0336 bits. ↩\nPeople born in certain decades are also presumably more likely to employ see what I did there gambits. ↩\nFor example, here is the information content for seven different “bent coins”:\nProbability of landing heads\n            Information\n          \n0.50 (fair coin)\n            1.000\n          \n0.60\n            0.971\n          \n0.70\n            0.881\n          \n0.80\n            0.722\n          \n0.90\n            0.469\n          \n0.95\n            0.286\n          \n0.99\n            0.081\n          \n↩\nHere’s a more formal looking version of the table from the previous footnote:\np(A)\n            p(B)\n            Information\n          \n0.50\n            0.50\n            1.000\n          \n0.60\n            0.40\n            0.971\n          \n0.70\n            0.30\n            0.881\n          \n0.80\n            0.20\n            0.722\n          \n0.90\n            0.10\n            0.469\n          \n0.95\n            0.05\n            0.286\n          \n0.99\n            0.01\n            0.081\n          \nYou can generate that table by running this code:\n\nfrom scipy.stats import entropy\n \ndists = ([0.5, 0.5], [0.6, 0.4], [0.7, 0.3], [0.8, 0.2], [0.9, 0.1], [0.95, 0.05], [0.99, 0.01])\nentropies = [entropy(p, base=2) for p in dists]\n\nprint(\"| p(A) | p(B) | Entropy |\")\nprint(\"|------|------|---------|\")\nfor i in range(len(dists)):\n    print(f\"| {dists[i][0]:<4.3f} | {dists[i][1]:<4.3f} | {entropies[i]:<7.3f} |\")\n\n      \nWith three categories, the story is much the same. Things need to get quite uneven before information drops too much:\np(A)\n            p(B)\n            p(C)\n            Entropy\n          \n0.333\n            0.333\n            0.333\n            1.585\n          \n0.400\n            0.300\n            0.300\n            1.571\n          \n0.500\n            0.250\n            0.250\n            1.500\n          \n0.600\n            0.200\n            0.200\n            1.371\n          \n0.700\n            0.150\n            0.150\n            1.181\n          \n0.800\n            0.100\n            0.100\n            0.922\n          \n0.900\n            0.050\n            0.050\n            0.569\n          \n0.950\n            0.025\n            0.025\n            0.336\n          \n0.990\n            0.005\n            0.005\n            0.091\n          \nYou can generate that with this code:\n\nfrom scipy.stats import entropy\n\ndists = (\n    [1/3, 1/3, 1/3],\n    [.4, .3, .3],\n    [.5, .25, .25],\n    [.6, .2, .2],\n    [.7, .15, .15],\n    [.8, .1, .1],\n    [.9, .05, .05],\n    [.95, .025, .025],\n    [.99, .005, .005]\n)\nentropies = [entropy(p, base=2) for p in dists]\n\nprint(\"| p(A) | p(B) | p(C) | Entropy |\")\nprint(\"|------|------|------|---------|\")\nfor i in range(len(dists)):\n    print(f\"| {dists[i][0]:<4.3f} | {dists[i][1]:<4.3f} | {dists[i][2]:<4.3f} | {entropies[i]:<7.3f} |\")\n\n      \n↩\nRoughly speaking, we we should discount those maximum bits as follows:\nNear even: No discount.\n“Mildly uneven” (E.g. 70/30 with two categories) Discount by 10%.\n“Quite uneven” (E.g. 90/10 with two categories) Discount by 50%.\n“Extremely uneven” (E.g. 99/1 with two categories) Discount by 90%.\nThe Shannon entropy of a categorical distribution is - Σᵢ pᵢ log₂ pᵢ. Or, in python:\n\nimport math\ndef entropy(probs):\n\treturn sum(-p * math.log2(p) for p in probs)\n\n      \nAge: It’s hard for me to imagine you could guess age from text with accuracy higher than 5 years. If you assume an age between 0 and 100, that would be 20 categories and log2(20)=4.32 bits. These are mildly non-uniform so I’ll reduce to 3.9.\nEducation: I’m assuming 6 categories: less than high school, high school, some college, finished college, master’s degree, doctorate. That would be log2(6)=2.58 bits, but fairly uneven, so I’ll reduce by 20% to\nEthnicity: Assuming 62% white, 11% black, 16% latino, 6% asian, 1.5% indigenous, 3.5% mixed/other, and actually using the entropy formula.\nFamily status: I’m using two categories: Children / no children, on the logic that guessing the number of children would be very hard. These are mildly non-uniform, so I’ll drop to 0.8 bits. You could have a third category for having children that are grown and that had left home, but this would be heavily redundant with age.\nIncome: The US census gives 11 income brackets. That seems as good a way of discretizing as anything. That would be log2(11) = 3.459 bits, but  these are again moderately non-uniform, so I’ll reduce to 2.5.\nMarital status: I’m taking 3 categories (single, married, divorced / widowed / etc). That would be log2(3)=1.58 bits at maximum, but again these are somewhat non-uniform, so I dropped that to 1.2.\nMental health: I’m using 3 categories: “Healthy”, “chronic condition”, and “severe issues”. Assuming 73% healthy 25% chronic condition, 2% “severe issues”, and using the entropy formula gives 0.9 bits.\nNative language: I’m using 2 categories, namely “English native”, and “non-English native”. These are pretty uneven inside the Anglosphere, so I’ll drop from 1 bit to 0.6 bits.\nOccupation. The BLS classification gives 23 major groups. That would be log2(23)=4.523 bits, but it’s moderately non-uniform, so I’ll reduce to 4 bits.\nPhysical health: Assuming 60% “healthy” 30% “chronic condition” 10% “severe issues” and using the entropy formula.\nPolitical leanings:  I’m using three categories (left, center, right). These are fairly uniform so I’m using 1.58 bits.\nRegion: I asked an LLM to divide the Anglosphere up into a number of regions with reasonable granularity. With some tinkering, it gave 23 regions: South East England, South West England, Midlands, Northern England, Scotland, Wales, Republic of Ireland, Northern Ireland, Quebec, Ontario, Western Canada, Atlantic Canada, Northeast US, Southern US, Midwest US, Western US, Alaska, Hawaii, Southeast Australia, Western Australia, Queensland, Central & Southern Australia, New Zealand. With LLM-generated population estimates (which looked reasonable) and plugging into the entropy formula, this gave 3.5481 bits.\n#\n            Region\n            Pop (M)\n            pi (Pop/Total)\n            log2⁡(pi)\n            pilog2⁡(pi)\n          \n1\n            South East England\n            20.0\n            0.04062\n            -4.617\n            -0.1875\n          \n2\n            South West England\n            6.0\n            0.01219\n            -6.353\n            -0.0774\n          \n3\n            Midlands\n            11.0\n            0.02234\n            -5.485\n            -0.1225\n          \n4\n            Northern England\n            20.0\n            0.04062\n            -4.617\n            -0.1875\n          \n5\n            Scotland\n            5.5\n            0.01117\n            -6.484\n            -0.0724\n          \n6\n            Wales\n            3.0\n            0.00609\n            -7.359\n            -0.0448\n          \n7\n            Republic of Ireland\n            5.0\n            0.01015\n            -6.626\n            -0.0673\n          \n8\n            Northern Ireland\n            2.0\n            0.00406\n            -7.949\n            -0.0323\n          \n9\n            Quebec\n            9.0\n            0.01828\n            -5.774\n            -0.1055\n          \n10\n            Ontario\n            16.0\n            0.03250\n            -4.943\n            -0.1606\n          \n11\n            Western Canada\n            13.0\n            0.02640\n            -5.247\n            -0.1385\n          \n12\n            Atlantic Canada\n            2.5\n            0.00508\n            -7.625\n            -0.0387\n          \n13\n            Northeast US\n            56.0\n            0.11373\n            -3.136\n            -0.3568\n          \n14\n            Southern US\n            130.0\n            0.26401\n            -1.922\n            -0.5074\n          \n15\n            Midwest US\n            69.0\n            0.14013\n            -2.836\n            -0.3973\n          \n16\n            Western US\n            80.0\n            0.16247\n            -2.624\n            -0.4264\n          \n17\n            Alaska\n            0.7\n            0.00142\n            -9.467\n            -0.0134\n          \n18\n            Hawaii\n            1.4\n            0.00284\n            -8.790\n            -0.0249\n          \n19\n            Southeast Australia\n            16.0\n            0.03250\n            -4.943\n            -0.1606\n          \n20\n            Western Australia\n            3.0\n            0.00609\n            -7.359\n            -0.0448\n          \n21\n            Queensland\n            5.5\n            0.01117\n            -6.484\n            -0.0724\n          \n22\n            Central & Southern Australia\n            2.5\n            0.00508\n            -7.625\n            -0.0387\n          \n23\n            New Zealand\n            5.3\n            0.01076\n            -6.539\n            -0.0703\n          \n \n            Sum of pilog2⁡(pi)\n             \n             \n             \n            -3.5481\n          \nReligious affiliation: 3 categories (christian, other religion, atheist / agnostic). These are uniform-ish.\nSex: 2 categories, near-even ↩\nConsider a set of binary random variables, each of which is equally likely to be 0 and 1, yet all are correlated with a pairwise correlation coefficient of ρ. There are many distributions that satisfy this condition, but a natural choice is an Ising model. If there are many variables, then the entropy per-variable in an Ising model with pairwise correlations of ρ tends to h((1+√ρ)/2), where h is the binary entropy function. We can print out those numbers:\nρ\n            h((1+√ρ)/2)\n          \n0.0000\n            1.00000000\n          \n0.1000\n            0.92661216\n          \n0.2000\n            0.85048963\n          \n0.3000\n            0.77121926\n          \n0.4000\n            0.68826012\n          \n0.5000\n            0.60087604\n          \n0.6000\n            0.50801160\n          \n0.7000\n            0.40803633\n          \n0.8000\n            0.29811751\n          \n0.9000\n            0.17212786\n          \n1.0000\n            0.00000000\n          \nAs you can see, the entropy per-variable is always a bit more than 1-ρ. But the Ising model is optimistic, in the sense that it has the highest entropy of all distributions meeting the given conditions. So, screw it, let’s estimate the entropy per-variable to just be 1-ρ. ↩\nIf it means anything to you, I asked Kimi 2.6 to hallucinate some numbers:\n \n            Age\n            Edu\n            Eth\n            Fam\n            Inc\n            Mar\n            Mhe\n            Nlg\n            Occ\n            Phe\n            Pol\n            Reg\n            Rel\n            Sex\n          \nAge\n            1.0\n            -0.2\n            0.0\n            0.6\n            0.1\n            0.5\n            -0.1\n            0.0\n            0.2\n            -0.5\n            0.1\n            0.0\n            0.2\n            -0.1\n          \nEdu\n            -0.2\n            1.0\n            0.3\n            0.2\n            0.6\n            0.2\n            0.1\n            0.1\n            0.7\n            0.3\n            0.3\n            0.2\n            -0.2\n            -0.1\n          \nEth\n            0.0\n            0.3\n            1.0\n            0.2\n            0.3\n            0.1\n            -0.1\n            0.7\n            0.3\n            -0.3\n            0.2\n            0.4\n            0.4\n            0.0\n          \nFam\n            0.6\n            0.2\n            0.2\n            1.0\n            0.2\n            0.7\n            -0.1\n            0.0\n            0.1\n            0.0\n            0.1\n            0.0\n            0.2\n            0.1\n          \nInc\n            0.1\n            0.6\n            0.3\n            0.2\n            1.0\n            0.3\n            -0.2\n            0.1\n            0.7\n            0.3\n            0.1\n            0.2\n            0.0\n            -0.1\n          \nMar\n            0.5\n            0.2\n            0.1\n            0.7\n            0.3\n            1.0\n            0.2\n            0.0\n            0.1\n            0.2\n            0.1\n            0.0\n            0.2\n            0.0\n          \nMhe\n            -0.1\n            0.1\n            -0.1\n            -0.1\n            -0.2\n            0.2\n            1.0\n            0.0\n            -0.2\n            0.4\n            0.0\n            0.0\n            -0.1\n            0.1\n          \nNlg\n            0.0\n            0.1\n            0.7\n            0.0\n            0.1\n            0.0\n            0.0\n            1.0\n            0.1\n            0.0\n            0.1\n            0.5\n            0.3\n            0.0\n          \nOcc\n            0.2\n            0.7\n            0.3\n            0.1\n            0.7\n            0.1\n            -0.2\n            0.1\n            1.0\n            0.1\n            0.2\n            0.2\n            0.0\n            0.3\n          \nPhe\n            -0.5\n            0.3\n            -0.3\n            0.0\n            0.3\n            0.2\n            0.4\n            0.0\n            0.1\n            1.0\n            0.0\n            0.1\n            0.0\n            0.1\n          \nPol\n            0.1\n            0.3\n            0.2\n            0.1\n            0.1\n            0.1\n            0.0\n            0.1\n            0.2\n            0.0\n            1.0\n            0.5\n            0.4\n            0.1\n          \nReg\n            0.0\n            0.2\n            0.4\n            0.0\n            0.2\n            0.0\n            0.0\n            0.5\n            0.2\n            0.1\n            0.5\n            1.0\n            0.2\n            0.0\n          \nRel\n            0.2\n            -0.2\n            0.4\n            0.2\n            0.0\n            0.2\n            -0.1\n            0.3\n            0.0\n            0.0\n            0.4\n            0.2\n            1.0\n            0.1\n          \nSex\n            -0.1\n            -0.1\n            0.0\n            0.1\n            -0.1\n            0.0\n            0.1\n            0.0\n            0.3\n            0.1\n            0.1\n            0.0\n            0.1\n            1.0\n          \nPersonally, this doesn’t mean very much to me… ↩\nIt’s more complicated than this, because some atoms (e.g. strontium-90) emit more energy per decay than others. And some types of radiation are more harmful to human life than others. ↩\nIn general, if you want an exponential curve f(n) that starts at 1 for n=0 and decays to 1-X for n=N, you should choose f(n) = exp(n × ln(1-X) / N). So for demographic features we’re using X=0.6 and N = 4500, meaning f(n) = exp(-0.00020362 × n). For personality features, we’re using X=0.7, meaning f(n) = exp(-0.00026755 × n), and for writing style features, we’re using X = 0.8, meaning f(n) = exp(-0.000357653 × n). So the total number of bits remaining hidden is 17.2 × exp(-0.00020362 × n) + 39.0 × exp(-0.00026755 × n) + 50.0 × exp(-0.000357653 × n). ↩\nOK, what’s the most likely reason I might be wrong? Above, I used math to estimate the information in features, and then I basically made up numbers for how much of that information can be guessed from text. Even so, my greatest concern is that the first part. I’m a bit worried that I might be overestimating the amount of information in the features themselves due to inadequately discounting for correlations. For one thing, there are probably correlations between feature groups. (For example, I’d bet that people who are high in perfectionism are less likely to use lose and loose interchangeably, and that people who live in Northern England are more likely to use the character string colour than people who live in Hawaii.) Also, my crude method of discounting information by ρ due to pairwise correlations of ρ might not discount enough: I used an estimate based on an Ising model, which is the maximum-entropy (highest information) distribution given the correlation constraints. I haven’t been able to figure out how much lower the information could be in the worst-case. ↩\nPeople debate if this is true for “intelligence”, but it’s definitely true in terms of bit-rate. ↩\nAlso, arguably, stylometry is about language. This means that large language models probably have much of what they need baked in. That might explain why they’re pretty good at it just “by accident”. But to do this optimally I think they’d need self-reflection (e.g. access to probabilities of text given different contexts) that current LLMs aren’t typically capable of, and wouldn’t know how to manipulate correctly without task-specific training. ↩\nYou could conjecture that near-optimal stylometry abilities are some kind of “emergent property”. But the general lesson so far is that LLMs mostly don’t have emergent properties but are just good at what they’re trained at. ↩\n(Meta-joke about you—person who works at an AI company—thinking, “maybe we should do that”, coming to this footnote, and seeing this meta-joke.) ↩\nInstead of “homogenizing” writing by imposing a generic style, perhaps it would be better to “camouflage” it by enforcing a very strong but random style. ↩\nBe a little careful here: Typically, the KL-divergence is understood to be measured in nats. But in this article, I’ve measured mutual information in bits. That’s fine, but you need to convert. For example, 106.2 bits = 73.60 nats. ↩",
+      "id": "8c95d8744c57d47e6dfacb687eba2557b88e2334ccca6223a2420219fd9ee4a1",
+      "ref_id": "0",
+      "recommendationScore": 90,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "深入探讨了AI/LLMs通过文本识别作者笔迹的潜力，预示着匿名在线身份可能终结的未来。",
+      "reason": "文章主题直接关联AI的最新发展及其对隐私和在线身份的深远影响，具有高度新颖性、技术相关性和社会讨论价值。",
+      "tags": [
+        "AI",
+        "LLMs",
+        "Privacy",
+        "Pseudonymity",
+        "Authorship",
+        "Future Tech"
+      ]
+    },
+    {
+      "title": "Beautiful Type Erasure with C++26 Reflection",
+      "link": "https://ryanjk5.github.io/posts/rjk-duck/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-14T12:40:50.000Z",
+      "summary": "Article URL: https://ryanjk5.github.io/posts/rjk-duck/\nComments URL: https://news.ycombinator.com/item?id=48905914\nPoints: 72\n# Comments: 30",
+      "id": "efa2cc2fb4903754cbc5da0e88df8e15b5194eaf1c7c516e17794cb50f77ece3",
+      "ref_id": "4",
+      "recommendationScore": 86,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "利用C++26的反射特性，以优雅方式解决了类型擦除问题。",
+      "reason": "探讨C++前沿特性（C++26反射），技术深度和新颖性高，对C++开发者具有极高实用价值和社区关注度。",
+      "tags": [
+        "C++",
+        "Programming Tools",
+        "Type Erasure",
+        "Reflection",
+        "C++26",
+        "Software Engineering"
+      ]
+    },
+    {
+      "title": "Are we offloading too much of our thinking to AI?",
+      "link": "https://www.artfish.ai/p/offloading-thinking-to-ai",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-14T15:18:13.000Z",
+      "summary": "Article URL: https://www.artfish.ai/p/offloading-thinking-to-ai\nComments URL: https://news.ycombinator.com/item?id=48908178\nPoints: 159\n# Comments: 128",
+      "id": "44a5172373879ebb36772b5ae0db4db4d9422636db9ed6cf3193b9a096498cc9",
+      "ref_id": "4",
+      "recommendationScore": 85,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "探讨了我们将过多思考外包给AI的潜在影响，引发对人类思维与AI关系的深刻讨论。",
+      "reason": "紧扣AI热点，具有较高的社会和哲学思考深度，能吸引广泛读者参与讨论。",
+      "tags": [
+        "AI",
+        "伦理",
+        "哲学",
+        "社会影响",
+        "思考"
+      ]
+    },
+    {
+      "title": "PsiQuantum has a plan to make a massive quantum computer out of light",
+      "link": "https://www.technologyreview.com/2026/07/14/1140356/psiquantum-plan-massive-quantum-computer-out-of-light/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-07-14T08:00:00.000Z",
+      "summary": "The machine that could change the world will be housed in a room that looks like a data center crossed with an ice cream factory. Inside will be some 100 stainless-steel cabinets, each about six feet tall and connected to a supply of liquid helium that keeps them only a few degrees above absolute zero.…",
+      "id": "b01622ec31ff7c532f762c9ef8b7b69cf3ef6d79f46840fa3abce98214147b74",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "PsiQuantum正计划通过光子技术构建一台大规模量子计算机，其硬件设计独特且雄心勃勃。",
+      "reason": "量子计算作为前沿科技，虽非纯粹AI，但其变革潜力使其成为与AI同等重要的未来科技主题，具备高技术深度和长期实用性。",
+      "tags": [
+        "量子计算",
+        "PsiQuantum",
+        "未来科技",
+        "硬件创新"
+      ]
+    },
+    {
+      "title": "Tensor Is the Might",
+      "link": "https://zserge.com/posts/tensor/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-14T12:56:21.000Z",
+      "summary": "Article URL: https://zserge.com/posts/tensor/\nComments URL: https://news.ycombinator.com/item?id=48906123\nPoints: 35\n# Comments: 20",
+      "id": "12ae7fc4e2e1cd4ca3d808aecc2e567083a379f25dbcd57a17c0ea8bbeb728a6",
+      "ref_id": "2",
+      "recommendationScore": 81,
+      "popularityScore": 60,
+      "priority": "high",
+      "comment": "深度解析了张量在现代计算尤其是AI中的核心作用。",
+      "reason": "触及AI/ML底层核心概念，技术深度和实用性极高，对理解和实现相关技术至关重要。",
+      "tags": [
+        "AI",
+        "Machine Learning",
+        "Tensor",
+        "Numerical Computing",
+        "Deep Learning"
+      ]
+    },
+    {
+      "title": "Measuring Input Latency on Linux: X11 vs. Wayland, VRR, and DXVK",
+      "link": "https://marco-nett.de/blog/measuring-input-latency-on-linux-x11-vs-wayland-vrr-dxvk/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-14T16:36:06.000Z",
+      "summary": "Article URL: https://marco-nett.de/blog/measuring-input-latency-on-linux-x11-vs-wayland-vrr-dxvk/\nComments URL: https://news.ycombinator.com/item?id=48909424\nPoints: 33\n# Comments: 8",
+      "id": "15ab653984df00d7d86fcfc5ac0292d60f586fa74d44b97ce8e226656b8143ee",
+      "ref_id": "1",
+      "recommendationScore": 80,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "深入探讨Linux下输入延迟的测量，对比X11、Wayland、VRR和DXVK的表现。",
+      "reason": "提供了关于Linux图形栈性能优化的详细技术分析和实用数据，对开发者和高级用户有价值。",
+      "tags": [
+        "Linux",
+        "性能",
+        "Wayland",
+        "X11",
+        "图形",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "The Agentic Loop: Three loops in a trench coat",
+      "link": "https://www.bobbytables.io/p/the-agentic-loop-three-loops-in-a",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-14T14:39:56.000Z",
+      "summary": "Article URL: https://www.bobbytables.io/p/the-agentic-loop-three-loops-in-a\nComments URL: https://news.ycombinator.com/item?id=48907672\nPoints: 12\n# Comments: 2",
+      "id": "757e72ee69828eb3c05061e194ee7946deb4b8042421c80cc82e1098bebd7088",
+      "ref_id": "0",
+      "recommendationScore": 79,
+      "popularityScore": 30,
+      "priority": "high",
+      "comment": "深入探讨了AI代理的核心循环机制，提供理论洞察。",
+      "reason": "文章紧扣AI前沿概念，对理解和构建智能体有重要参考价值，技术深度和信息密度较高。",
+      "tags": [
+        "AI",
+        "Agent",
+        "Machine Learning",
+        "AI Architecture"
+      ]
+    },
+    {
+      "title": "Using uvx in GitHub Actions in a cache-friendly way",
+      "link": "https://simonwillison.net/2026/Jul/14/uvx-github-actions-cache/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-07-14T00:56:20.000Z",
+      "summary": "",
+      "id": "86da57583a0258005420604744bcfef7b6b23c15be948e11ffb88bc5e9984cd1",
+      "ref_id": "3",
+      "recommendationScore": 75,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "阐述了在GitHub Actions中高效使用uvx工具并进行缓存优化的方法。",
+      "reason": "文章提供了针对编程工具和自动化流程的实用优化技巧，对使用GitHub Actions的开发者具有直接的实用价值。",
+      "tags": [
+        "编程工具",
+        "GitHub Actions",
+        "自动化",
+        "CI/CD",
+        "性能优化"
+      ]
+    },
+    {
+      "title": "I'm a USB-C Maximalist",
+      "link": "https://shkspr.mobi/blog/2026/07/im-a-usb-c-maximalist/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-07-14T11:34:26.000Z",
+      "summary": "My wife and I recently went on a 7 week holiday around Europe. Although we each took a massive backpack, we wanted to travel fairly lightly. I took a single universal power brick.  This little unit was all I needed to charge my various gadgets.    It has a hefty USB-C PD (Power Delivery) port for rapid charging of my phone and laptop. Two other USB-C ports for my other gadgets. And a couple of…",
+      "id": "947b18219234a8d261124b502826a17a0585ae8fb752ce00d3e62e7ff933989f",
+      "ref_id": "4",
+      "recommendationScore": 75,
+      "popularityScore": 80,
+      "priority": "medium",
+      "comment": "作者分享了基于USB-C的极简旅行充电方案和个人经验，实用性强且易于读者参考。",
+      "reason": "文章提供了实用的消费电子产品使用经验和生活效率提升方案，对有旅行或简化充电需求的读者很有参考价值。",
+      "tags": [
+        "USB-C",
+        "旅行科技",
+        "消费电子",
+        "硬件",
+        "效率"
+      ]
+    },
+    {
+      "title": "European \"age verification\" \"app\" forcing everyone to use Android or iOS",
+      "link": "https://github.com/eu-digital-identity-wallet/av-doc-technical-specification/discussions/19",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-14T08:34:57.000Z",
+      "summary": "Article URL: https://github.com/eu-digital-identity-wallet/av-doc-technical-specification/discussions/19\nComments URL: https://news.ycombinator.com/item?id=48903777\nPoints: 248\n# Comments: 151",
+      "id": "72f4eaab8d7ba2a14560afb0fb8ffe914564259e24ab951aac392034a757381e",
+      "ref_id": "1",
+      "recommendationScore": 70,
+      "popularityScore": 80,
+      "priority": "medium",
+      "comment": "探讨欧盟数字身份政策对移动平台和应用开发的强制影响。",
+      "reason": "政策与技术交汇点，对关注欧盟市场和移动应用开发的读者具有实用性，但技术深度一般。",
+      "tags": [
+        "政策",
+        "数字身份",
+        "应用开发",
+        "iOS",
+        "Android",
+        "欧盟",
+        "Apple生态"
+      ]
+    },
+    {
+      "title": "Intuition for distribution differences",
+      "link": "https://entropicthoughts.com/distribution-differences",
+      "source": "entropicthoughts.com",
+      "publishedAt": "2026-07-13T22:00:00.000Z",
+      "summary": "Imagine every person in a country is assigned some sort of score, and a higher\nscore is better. I can’t share the specifics around the score I’m investigating\nright now, but on the population level it is collected\nby a government agency. Here’s the distribution of these scores for the\npopulation in my country.\n\n\n\n\n\n\n\n\n\n\n\n(Continue reading the full article on the web.)",
+      "id": "9bf54473d8a46f2f1dd60b8d5d8ab8274f915429e167aaee751f1af5a93c06a7",
+      "ref_id": "4",
+      "recommendationScore": 65,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "通过一个假设场景，引入了对数据分布差异进行直观理解的重要性，为深入探讨统计学和数据分析奠定基础。",
+      "reason": "文章主题涉及数据分析和统计学基础，与AI和编程工具等高优先级主题有间接关联，具有较高实用性和潜在深度，但目前内容仅为引入，完整性有待观察。",
+      "tags": [
+        "Statistics",
+        "Data Analysis",
+        "Distributions",
+        "Data Science",
+        "Intuition"
+      ]
+    },
+    {
+      "title": "DOOMQL",
+      "link": "https://simonwillison.net/2026/Jul/13/doomql/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-07-13T22:34:41.000Z",
+      "summary": "",
+      "id": "083d0cae653d4b7c03684feecb23f33cc52e7755620bd4f37288cb4870fd1fa3",
+      "ref_id": "4",
+      "recommendationScore": 55,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "标题暗示了一个结合DOOM游戏和查询语言的创意编程项目。",
+      "reason": "虽然缺乏具体内容，但其标题显示出新颖和趣味性，可能是一个吸引特定小众开发者或游戏爱好者的实验性项目。",
+      "tags": [
+        "编程",
+        "实验项目",
+        "创意",
+        "DOOM",
+        "GraphQL (推测)"
+      ]
+    },
+    {
+      "title": "ICD-10 chapters and code letters",
+      "link": "https://www.johndcook.com/blog/2026/07/14/icd-10-chapters-letters/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-07-14T14:24:12.000Z",
+      "summary": "I’ve been thinking about ICD-10 codes; they come up a lot in my work. The ICD-10-CM standard is divided into 21 chapters, which generally correspond to the first letter of a code. However, a chapter may contain blocks beginning with more than one letter, and codes starting with a single letter, namely D, can span […]\nICD-10 chapters and code letters first appeared on John D. Cook.",
+      "id": "a75b896663be090bfcf9435b0e57c53c957079dd0e762980b2f04101db2bd4ea",
+      "ref_id": "3",
+      "recommendationScore": 45,
+      "popularityScore": 35,
+      "priority": "low",
+      "comment": "详细阐述了ICD-10编码的章节与字母对应规则，对医疗健康领域有特定专业价值。",
+      "reason": "虽然内容专业且信息密度较高，但主题相对小众，不属于核心关注的AI、Apple生态等领域，对普遍技术读者实用性有限。",
+      "tags": [
+        "ICD-10",
+        "Medical Coding",
+        "Healthcare IT",
+        "Data Classification"
+      ]
+    },
+    {
+      "title": "Serena Williams Fit-Dex",
+      "link": "https://serena-williams-fitdex.netlify.app/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-14T13:12:55.000Z",
+      "summary": "Article URL: https://serena-williams-fitdex.netlify.app/\nComments URL: https://news.ycombinator.com/item?id=48906339\nPoints: 4\n# Comments: 0",
+      "id": "f6fb992e95b196e174e210bf320c4f8db27d2dfb9ea3bd137a1a2c2a8d2612b9",
+      "ref_id": "1",
+      "recommendationScore": 31,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "一个关于Serena Williams的个人健身指数项目展示。",
+      "reason": "主题过于小众，技术深度和实用性相对较低，与本博客的优先关注点不符，且流行度极低。",
+      "tags": [
+        "Personal Project",
+        "Fitness",
+        "Web Development",
+        "Show HN"
+      ]
+    },
+    {
+      "title": "Show HN: Opening lines of famous literary works",
+      "link": "https://www.verbaprima.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-14T15:24:49.000Z",
+      "summary": "This came from an idea that had been knocking around in my head for several years. I had been collecting opening lines of famous works and thought it would be cool to see one everyday as I opened the browser. I tried different styles but landed on the simple background with the text, let the words speak for themselves. Over time i've added more quotes I believe now there are close to 60, so hopefully you can refresh a few times and get a fresh one every time. I hope you guys like it, enjoy!\nComments URL: https://news.ycombinator.com/item?id=48908271\nPoints: 69\n# Comments: 46",
+      "id": "c47f8c3eb2db25ba3656780fca6e21160f493b7f9f50fd17420ccac14aeb3d1a",
+      "ref_id": "3",
+      "recommendationScore": 30,
+      "popularityScore": 75,
+      "priority": "low",
+      "comment": "一个展示文学名著开篇句的个人网页项目，创意但技术深度有限。",
+      "reason": "技术含量较低，主要为娱乐性质，与核心科技博客主题的关联度不大。",
+      "tags": [
+        "Show HN",
+        "文学",
+        "独立开发",
+        "创意"
+      ]
+    },
+    {
+      "title": "Pluralistic: Gerontocracy's failure mode (14 Jul 2026)",
+      "link": "https://pluralistic.net/2026/07/14/designated-survivor/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-07-14T11:10:45.000Z",
+      "summary": "Today's links Gerontocracy's failure mode: Where are the designated survivors? Hey look at this: Delights to delectate. Object permanence: MSFT v MP3; UK industry v schoolkids; Gary Larson v comics sharing; Planned LED obsolescence; PoGo v Black neighborhoods; Gnarlier trolley problems; Royal Society v cryptographic backdoors; Theresa May v climate change; Google v search; Facebook v facts. Upcoming appearances: Edinburgh, Sydney, Melbourne, Brighton, London, South Bend. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. Gerontocracy's failure mode (permalink) The \"designated survivor\" is one of the weirder aspects of America's (very, very weird) political system. Each year, during the State of the Union address, when both houses of Congress and the President are all under one roof, a single political figure, in the line of succession for the presidency, is spirited away to a hidden bunker, just in case the US legislative and administrative branches are decapitated in a single, spectacular terrorist strike: https://en.wikipedia.org/wiki/Designated_survivor Initiated during the 1950s, designated survivors are a paranoid relic of the Cold War, but they're also a relic of an era when America was a less chud-dominated, more technocratic land. It's a longtermist sort of procedure, in stark opposition to vibes-based MAGA chaos in which the Mad King makes daily announcements of new wars, tariffs, monuments, and existential threats to the nation. America's ruling class have always sought an equilibrium between its pure Id of hatred for labor, autocratic yearnings and apocalyptic fantasies, and its patient, scheming Ego, the author of endless FedSoc judicial nominee listings, Projects 2025, and decades-long schemes to overturn Dobbs and reverse the New Deal. (Democrats have their own version of this, of course – the endless contest between the McKinsey wing of the party's right and its infinitely embroidered Machin-Synematic Universe.) The problem is that once the atavistic, impulsive elements of your project escape containment, the resultant turbulence sucks everyone else into their chaotic vortex. How can you plan for anything when you're buffeted by endless stunts, feints, and distractions? Nowhere is this failure to plan more vivid than in the age distribution of both chambers of the US legislature, its presidential candidates, and its judicial appointments. What's more, this is equally true of the Democrats and the Republicans. The equilibrium of all of America's key institutions is brittle: legislative majorities are often just one or two seats wide. Key federal circuits and the Supreme Court are knife-edge balances. We keep getting presidential races between septuagenarians and octogenarians. The question here isn't whether old people can be good at those jobs. They obviously can be. The problem is actuarial: old people are far more likely to die, or suffer severe medical episodes, than younger people. This is a fact of life that every person understands, and the older you get, the better you understand it. I'm 55. 20 years ago, it was unusual for just one of my peers to die in a given year; now I lose a couple every year. It could be me next (my doctor just informed me that I am cancer free, following excision, radiotherapy and immunotherapy). Anyone who pretends this isn't true is setting themselves and the people around them up for terrible things. If you're a writer, this means making plans for the smooth management of your literary estate. For the past couple decades, John Scalzi has been my anointed literary executor. He's a great choice: a fabulous writer with a good head for business and a strong handle on my politics and artistic sensibility, whose personal ethics are above reproach. The only problem is that John is a couple of years older than me, which means that he'd be a great executor if I got hit by a bus tomorrow, but not if I keel over with a heart attack in 20 years. So this year, I added a second executor, Molly White, who is also a fantastic writer, also extremely ethical and also very attuned to my politics and literary sensibilities. Molly is 20 years younger than me, and she has relevant experience: she's also the executor of the literary estate of her great-grandfather (EB White). In the unlikely event of my untimely death, Molly and John will do a great job running the estate (which mostly will consist of reviewing my agents' recommendations). And if John keels over right after me, Molly will be fine on her own. Of course, the only reason I need a literary executor is that my kid is only 18. At 18, she's a remarkable, level-headed, ethical young person, but she's not yet fully formed. Literary history is filled with descendants who take over a literary estate and run it in terrible ways. The most notorious example here is Stephen Joyce, grandson of James Joyce and a colossal asshole: https://en.wikipedia.org/wiki/Stephen_James_Joyce The most likely destiny for my literary estate is that I will grow older alongside my daughter, who will mature in ways that make her a perfectly suitable literary executor (in addition to being the beneficiary of my literary estate) and in a few years I'll send a note of thanks to John and Molly and change the paperwork. But in the unlikely, awful event that my kid runs into serious challenges that make me question her judgment and probity, I'll be covered. That's what planning is all about: thinking through various scenarios, including low-likelihood, high-salience ones that have easy mitigations, and taking appropriate and proportionate steps to avoid disaster. You know: like squirreling away a designated survivor in a bunker far from DC during the State of the Union. This is what makes America's political gerontocracy so weird. In their true hearts, the nonagenarian (1), octogenarians (5), septuagenarians (27) and late sexagenarians (7) in the US Senate know that they could keel over at any moment, and that in a 53:47 Senate, this could spell doom for their political project. Sure, Mitch McConnell might be secretly dead and that's bad and weird. But it wouldn't be exceptional. We're talking about a legislature whose members sometimes disappear for months, only to be discovered in care homes with advanced dementia, while still somehow holding office: https://www.politico.com/news/magazine/2025/03/14/kay-granger-dementia-dc-media-00210317 It's a legislature whose most prominent grandees cling to power at the very brink of death's door, long after they can be effective leaders, just so they can anoint their successor during the next election: https://en.wikipedia.org/wiki/Dianne_Feinstein#Personal_life Elections have consequences, but special elections, called after the sudden death of an elderly lawmaker, have wild consequences. Of course, anyone can die suddenly. 15 years ago, one of my dearest friends, a contemporary, went to bed in seeming perfect health and never woke up. He was only 44. I still miss him, every day: https://memex.craphound.com/2012/06/28/eulogy-for-erik-possum-man-stewart/ But the likelihood this happening goes up the older you get, and once you cross a certain age threshold, odds rise sharply. If you're part of a political project that's laying and executing long-term plans whose outcomes turn on hair-fine majorities, this should factor into your thinking. The failure to do so can throw everything you've worked for into disarray: https://prospect.org/2026/07/13/budget-consequences-of-lindsey-grahams-sudden-departure/ It's not limited to the legislature, of course. The Supreme Court's slide into its role as handmaiden to totalitarianism began when the dying Ruth Bader Ginsburg refused to step down, because she wanted her successor to be picked by the first woman president: https://www.nytimes.com/2020/09/21/magazine/ginsburg-successor-obama.html The amazing thing here is that RBG made her name as a master strategist, but when it came to this incredibly consequential matter, she set strategy aside for hubris: https://radiolab.org/podcast/more-perfect-sex-appeal Security practitioners know that anyone can be hacked or scammed, and that the biggest vulnerability of all is to be so confident in your own procedures and discernment that you assume it could never happen to you. If you think you can't get scammed, you are a danger to yourself and others: https://pluralistic.net/2024/02/05/cyber-dunning-kruger/#swiss-cheese-security By the same token, any politician in their 70s or 80s who thinks that they can't suffer a stroke or heart attack or the kind of lapse that makes you freeze up during a presidential debate is a danger to their party, their politics and their nation: https://www.cbsnews.com/news/jill-biden-joe-biden-stroke-2024-debate-sunday-morning-interview/ This isn't about how healthy or robust any given politician is or feels; this is about the cold reality of actuarial tables. The older I get, the more those actuarial tables factor into my own decision-making. The fact that our political classes seem to think that they can choose the time and manner of their passing is baffling. Hey look at this (permalink) AI Fiction Is Easy to Detect Because It's Stupid and Bad, Research Finds https://www.404media.co/ai-fiction-is-easy-to-detect-because-its-stupid-and-bad-research-finds/ Mayor Mamdani Announces Landmark \"Click-To-Cancel\" Consumer Protection Rules to Ban Subscription Traps and Junk Fees https://www.nyc.gov/mayors-office/news/2026/07/mayor-mamdani-announces-landmark–click-to-cancel–consumer-prot You'll Own Nothing and Be Happy: Why It's So Hard to Break John Deere's Control Over Farming https://www.thebignewsletter.com/p/youll-own-nothing-and-be-happy-why Beyond the Prompt: The Social Costs of Generative Artificial Intelligence https://scholarship.law.missouri.edu/betr/vol10/iss1/4/ Video Game Layoffs Fuelling Historic Union Movement https://www.donotpassgo.ca/p/inside-the-video-game-industrys-historic Object permanence (permalink) #25yrsago Microsoft less hostile to MP3s https://web.archive.org/web/20010716103233/http://news.cnet.com/news/0-1003-200-6567844.html #25yrsago UK record lobby demands copyright school curriculum https://web.archive.org/web/20010718135130/https://www.salon.com/tech/feature/2001/07/16/abc_ip/index.html #25yrsago Gary Larson on online comics sharing https://web.archive.org/web/20010610081014/http://www.creators.com/index2_anotefromgarylarson.html #10yrsago San Francisco’s bike lanes have become Uber’s pickup/dropoff zones (and the cops don’t care) https://sf.streetsblog.org/2016/07/13/collecting-data-to-push-for-safer-biking-on-valencia #10yrsago For 90 years, lightbulbs were designed to burn out. Now that’s coming to LED bulbs https://web.archive.org/web/20160717090604/http://www.newyorker.com/business/currency/the-l-e-d-quandary-why-theres-no-such-thing-as-built-to-last #10yrsago Why do Pokemon avoid Black neighborhoods? https://www.bnd.com/news/nation-world/national/article89562297.html #10yrsago To hell with the Trolley Problem: here’s a much more interesting list of self-driving car weirdnesses https://medium.com/studio-d/15-more-concepts-in-autonomous-mobility-8fd1c794e466#.s10ldm5nf #10yrsago Royal Society’s #1 cybersecurity recommendation: don’t backdoor crypto https://royalsociety.org/~/media/policy/projects/cybersecurity-research/cybersecurity-research-report.pdf #10yrsago UK PM Theresa May nukes climate change department, appoints a climate denier as Climate Secretary https://web.archive.org/web/20160714173020/http://www.independent.co.uk/environment/climate-change-department-killed-off-by-theresa-may-in-plain-stupid-and-deeply-worrying-move-a7137166.html #5yrsago Facebook's alternative facts https://pluralistic.net/2021/07/15/three-wise-zucks-in-a-trenchcoat/#inconvenient-truth #1yrago When Google's slop meets webslop, search stops https://pluralistic.net/2025/07/15/inhuman-gigapede/#coprophagic-ai Upcoming appearances (permalink) Edinburgh International Book Festival with Jimmy Wales, Aug 17 https://www.edbookfest.co.uk/events/the-front-list-cory-doctorow-and-jimmy-wales Sydney: The Festival of Dangerous Ideas, Aug 23-24 https://festivalofdangerousideas.com/cory-doctorow/ Melbourne: Enshittification at the Wheeler Centre, Aug 25 https://www.wheelercentre.com/events-tickets/season-2026/cory-doctorow-enshittification Brighton: The Reverse Centaur's Guide to Life After AI with Carole Cadwalladr (Brighton Dome), Sep 8 https://brightondome.org/whats-on/LSC-cory-doctorow-the-reverse-centaurs-guide-to-life-after-ai/ London: The Reverse Centaur's Guide to Life After AI with Riley Quinn (Foyle's Picadilly), Sep 9 https://www.foyles.co.uk/events/enshittification-cory-doctorow-riley-quinn South Bend: An Evening With Cory Doctorow (Notre Dame), Oct 6 https://franco.nd.edu/events/2026/10/06/an-evening-with-cory-doctorow/ Recent appearances (permalink) Who Owns Your Tractor? (Growing the Future) https://www.youtube.com/watch?v=IU9eBPUZBI4 You Bought it, They Break It (What Now? with Trevor Noah) https://www.podbean.com/media/share/dir-ir36t-2f4a1ac6 Can AI be Saved From Capitalism? (Everyday Anarchism) https://www.everydayanarchism.com/192-can-ai-be-saved-from-capitalism-cory-doctorow/ Lawfare Daily https://www.youtube.com/watch?v=T1KIwaYRs1g How to Think About AI (Organized Money) https://www.organizedmoney.fm/p/how-to-think-about-ai-with-cory-doctorow Latest books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/ \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Fourth draft completed. Submitted to editor. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "9ef39be16bf9d3ebe62f2beb5ba170638c0dd3dfb6391b9a1c33b56819b6633f",
+      "ref_id": "3",
+      "recommendationScore": 30,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "一篇以政治和社会评论为主的文章，其中科技内容占比极少且多为背景提及。",
+      "reason": "内容主题严重偏离科技博客的核心关注点，技术深度和实用性不足以吸引目标读者。",
+      "tags": [
+        "政治评论",
+        "社会观察",
+        "非科技主题"
+      ]
+    },
+    {
+      "title": "Indian scientists produce most detailed 3D atlas of the human brainstem",
+      "link": "https://www.bbc.com/news/articles/cg53l737v1qo",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-14T06:43:28.000Z",
+      "summary": "Article URL: https://www.bbc.com/news/articles/cg53l737v1qo\nComments URL: https://news.ycombinator.com/item?id=48903082\nPoints: 157\n# Comments: 19",
+      "id": "4c74a123ae71fdbb67fe0a457975286329251b63b47a4e0fa976749ec70d018e",
+      "ref_id": "3",
+      "recommendationScore": 20,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "印度科学家发布人脑干3D图谱，是生物医学领域的重大突破。",
+      "reason": "虽是重要科学发现，但与科技博客关注的AI、编程工具等主题关联度较低。",
+      "tags": [
+        "医学",
+        "神经科学",
+        "科学研究"
+      ]
+    },
+    {
+      "title": "Microspeak: Double-click and drill down",
+      "link": "https://devblogs.microsoft.com/oldnewthing/20260714-00/?p=112532",
+      "source": "devblogs.microsoft.com/oldnewthing",
+      "publishedAt": "2026-07-14T14:00:00.000Z",
+      "summary": "Please, tell me more.\nThe post Microspeak: Double-click and drill down appeared first on The Old New Thing.",
+      "id": "3f9d975f7689fa8ab9cc26d06ef153fbc17373e73b298cf919d4e66f3c46dac8",
+      "ref_id": "2",
+      "recommendationScore": 20,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "极其简短的片段，仅提及两个技术行业术语，内容深度和信息量均不足。",
+      "reason": "内容过于稀疏，无法提供实质性见解，且主题优先级在给定范围内较低。",
+      "tags": [
+        "Microspeak",
+        "Jargon",
+        "Product Design",
+        "Language"
+      ]
+    },
+    {
+      "title": "Germany set to restrict its Freedom of Information Act",
+      "link": "https://www.dw.com/en/germany-freedom-of-information-act/a-77939695",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-14T11:49:48.000Z",
+      "summary": "Article URL: https://www.dw.com/en/germany-freedom-of-information-act/a-77939695\nComments URL: https://news.ycombinator.com/item?id=48905290\nPoints: 212\n# Comments: 132",
+      "id": "8a02e4e3cd245fa484166e5e6cd184edbbe9e17ee8fbfa0dce753788f7798fd2",
+      "ref_id": "1",
+      "recommendationScore": 15,
+      "popularityScore": 77,
+      "priority": "low",
+      "comment": "一篇关于德国政府计划限制信息自由法的社会新闻。",
+      "reason": "虽然具有较高的社会关注度，但文章主题属于政治和法律范畴，与科技博客的核心主题优先级不符。",
+      "tags": [
+        "Politics",
+        "Law",
+        "Germany",
+        "Freedom of Information",
+        "Society"
+      ]
+    },
+    {
+      "title": "Australian energy retailers must provide three hours of free daytime electricity",
+      "link": "https://lenergy.com.au/free-daytime-electricity-is-coming-heres-how-it-actually-works/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-14T04:31:48.000Z",
+      "summary": "Article URL: https://lenergy.com.au/free-daytime-electricity-is-coming-heres-how-it-actually-works/\nComments URL: https://news.ycombinator.com/item?id=48902320\nPoints: 219\n# Comments: 304",
+      "id": "a45453baeff4cd7ef668404be11435e98937ae3c2d6d0c1a375af0d6542df153",
+      "ref_id": "4",
+      "recommendationScore": 15,
+      "popularityScore": 85,
+      "priority": "low",
+      "comment": "澳大利亚能源政策变动，提供免费白天用电，影响消费者。",
+      "reason": "属于社会经济和公共政策范畴，与科技博客关注的核心技术主题关联度极低。",
+      "tags": [
+        "能源",
+        "政策",
+        "澳大利亚",
+        "经济"
+      ]
+    },
+    {
+      "title": "No Spanish reading crisis?",
+      "link": "https://www.commonreader.co.uk/p/no-spanish-reading-crisis",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-14T11:31:59.000Z",
+      "summary": "Article URL: https://www.commonreader.co.uk/p/no-spanish-reading-crisis\nComments URL: https://news.ycombinator.com/item?id=48905105\nPoints: 50\n# Comments: 83",
+      "id": "8db5cf5978d49d0dd39fe1bad5510defe486dcf495e92473ab5c788a9597c225",
+      "ref_id": "4",
+      "recommendationScore": 13,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "探讨西班牙是否存在阅读危机的语言学和社会议题。",
+      "reason": "文章主题属于教育、语言学和社会文化领域，与科技博客的专业定位和主题优先级无关。",
+      "tags": [
+        "Education",
+        "Linguistics",
+        "Culture",
+        "Spain",
+        "Society"
+      ]
+    },
+    {
+      "title": "Punch yourself in the face with reality",
+      "link": "https://adi.bio/reality",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-14T11:33:19.000Z",
+      "summary": "Article URL: https://adi.bio/reality\nComments URL: https://news.ycombinator.com/item?id=48905118\nPoints: 122\n# Comments: 62",
+      "id": "98ce921d9d54a991e62365d48686df1844e6963fdcd4b577b6d4f6984ebfecc4",
+      "ref_id": "3",
+      "recommendationScore": 10,
+      "popularityScore": 41,
+      "priority": "low",
+      "comment": "一篇关于个人成长和面对现实的哲学性文章。",
+      "reason": "内容属于自我提升和哲学范畴，与科技博客的关注重点（如AI、编程工具）不符。",
+      "tags": [
+        "Self-improvement",
+        "Life Advice",
+        "Philosophy"
+      ]
+    },
+    {
+      "title": "datasette code-frequency chart on GitHub",
+      "link": "https://simonwillison.net/2026/Jul/13/datasette-code-frequency/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-07-13T21:45:27.000Z",
+      "summary": "",
+      "id": "d20bc9f9cdd109f39d9d53b58db53ca0efb645a117f3ebef5fb8463889915152",
+      "ref_id": "0",
+      "recommendationScore": 10,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "标题指向一个有潜力的开发工具主题，但缺少具体内容，无法进行有效评估。",
+      "reason": "由于文章内容缺失，无法判断其技术深度、新颖性和实用性，因此不予推荐。",
+      "tags": [
+        "编程工具",
+        "数据分析",
+        "GitHub",
+        "内容缺失"
+      ]
+    },
+    {
+      "title": "What does \"playing politics\" mean for software engineers?",
+      "link": "https://seangoedecke.com/playing-politics/",
+      "source": "seangoedecke.com",
+      "publishedAt": "2026-07-14T00:00:00.000Z",
+      "summary": "",
+      "id": "f2531141b9fbd5962c77f21fd3f102dde28146ef97c7ebb115bb8467b6bad4fe",
+      "ref_id": "1",
+      "recommendationScore": 10,
+      "popularityScore": 75,
+      "priority": "low",
+      "comment": "探讨软件工程师职场政治的标题吸引人，但内容为空，无法提供任何有价值的信息。",
+      "reason": "内容缺失导致无法评估文章的观点和实用价值，不符合科技博客的发布标准。",
+      "tags": [
+        "职场技能",
+        "软件工程",
+        "职业发展",
+        "内容缺失"
+      ]
+    },
+    {
+      "title": "Presigned URLs are technically a security vuln",
+      "link": "https://www.tigrisdata.com/blog/presigned-urls-security-vuln/",
+      "source": "xeiaso.net",
+      "publishedAt": "2026-07-14T00:00:00.000Z",
+      "summary": "",
+      "id": "9fd7063b60878f310842698ee5a2d5aee23c57a5dd77c8e87f79f789373ffbb7",
+      "ref_id": "1",
+      "recommendationScore": 10,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "文章内容为空，无法进行有效评估。",
+      "reason": "因文章内容缺失，无法判断其技术深度、新颖性、实用性或信息密度，故推荐和关注度评分较低。",
+      "tags": [
+        "Security",
+        "Web Development",
+        "Cloud",
+        "Incomplete"
+      ]
+    },
+    {
+      "title": "Kontigo (YC S24) Is Hiring (Head of Security)",
+      "link": "https://www.ycombinator.com/companies/kontigo/jobs/uNttrlv-head-of-security",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-14T17:00:17.000Z",
+      "summary": "Article URL: https://www.ycombinator.com/companies/kontigo/jobs/uNttrlv-head-of-security\nComments URL: https://news.ycombinator.com/item?id=48909820\nPoints: 0\n# Comments: 0",
+      "id": "207f9091df9192e55219a17f0c6d805c0ccbc5d0fb20194f9bc3f31df849ae03",
+      "ref_id": "0",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "一则招聘启事，不含技术内容，不符合科技博客评估范围。",
+      "reason": "内容并非技术文章，对科技博客读者价值有限。",
+      "tags": [
+        "招聘",
+        "安全"
+      ]
+    },
+    {
+      "title": "I'm still alive",
+      "link": "https://buttondown.com/hillelwayne/archive/im-still-alive/",
+      "source": "buttondown.com/hillelwayne",
+      "publishedAt": "2026-07-14T16:15:07.000Z",
+      "summary": "",
+      "id": "713d5c4af8a89517a7816e6db09ffafd9f2002ac8d70fa0b76d74e13bdd95953",
+      "ref_id": "0",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "文章内容为空，无法进行任何有效评估。",
+      "reason": "缺乏任何实质性内容，不符合技术博客文章的基本要求。",
+      "tags": [
+        "内容缺失",
+        "无法评估",
+        "占位符"
+      ]
+    }
+  ]
+}
