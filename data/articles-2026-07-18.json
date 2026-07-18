@@ -1,0 +1,716 @@
+{
+  "dailySummary": "今日科技速递：AI进展迅猛，GPT-5.6解决数学难题，DeepMind探索生物韧性。同时，AI内容乱象显现，Apple/Amazon被AI生成书籍困扰，Roblox AI游戏构建引争议。",
+  "articles": [
+    {
+      "title": "Our Approach to Bioresilience: Isomorphic Labs and Google DeepMind",
+      "link": "https://deepmind.google/blog/our-approach-to-bioresilience/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-18T16:02:45.000Z",
+      "summary": "Article URL: https://deepmind.google/blog/our-approach-to-bioresilience/\nComments URL: https://news.ycombinator.com/item?id=48959297\nPoints: 8\n# Comments: 1",
+      "id": "53ad893ddb18c2e18d2eccad268706ed25e43595571809837a01f7cae22eef52",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 20,
+      "priority": "high",
+      "comment": "DeepMind关于生物韧性AI研究的最新进展，前沿且深度，展示AI在生物领域的应用。",
+      "reason": "紧密围绕最高优先级的AI主题，展示顶尖实验室的开创性研究，具有极高的新颖性和技术深度。",
+      "tags": [
+        "AI",
+        "DeepMind",
+        "Bioresilience",
+        "Biotechnology",
+        "Research",
+        "Science"
+      ]
+    },
+    {
+      "title": "Setting up your spare Mac for Claude Code to control, a step-by-step guide",
+      "link": "https://ykdojo.github.io/claude-controls-mac/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-18T16:12:08.000Z",
+      "summary": "Article URL: https://ykdojo.github.io/claude-controls-mac/\nComments URL: https://news.ycombinator.com/item?id=48959392\nPoints: 21\n# Comments: 3",
+      "id": "bbff2f3c36b5e00507da2c37c2dc9d599026d9313833159baac52d29e029aa0f",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "结合AI（Claude）与Apple生态（Mac）的实用配置指南，内容高度实用且紧贴热点。",
+      "reason": "完美契合AI和Apple生态两大高优先级主题，提供详细的动手实践指导，实用性极强。",
+      "tags": [
+        "AI",
+        "Apple Ecosystem",
+        "Mac",
+        "Automation",
+        "Claude",
+        "Tutorial",
+        "Programming Tools"
+      ]
+    },
+    {
+      "title": "Show HN: Q3Edit – Edit and play Quake 3 maps in the browser",
+      "link": "https://q3edit.com",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-18T15:12:40.000Z",
+      "summary": "I've been building a level editor for Quake 3 that runs entirely in the browser: Radiant-style layout, brush and patch editing, CSG, terrain sculpting, and entity editing. It opens and saves .map file and you can play the maps you build directly in the browser using a webassembly build of ioquake3.\nComments URL: https://news.ycombinator.com/item?id=48958854\nPoints: 8\n# Comments: 0",
+      "id": "3eb0d46e2466fec50c42f599be1b40d2cfaf3c42191cf5c49776436802b033c2",
+      "ref_id": "4",
+      "recommendationScore": 90,
+      "popularityScore": 30,
+      "priority": "medium",
+      "comment": "一个基于WebAssembly在浏览器中运行的Quake 3地图编辑器，技术展示强大。",
+      "reason": "技术深度和新颖性极高，是WebAssembly和浏览器技术在复杂应用场景下的绝佳演示，对开发者具有极强的启发性。",
+      "tags": [
+        "WebAssembly",
+        "游戏开发",
+        "编程工具",
+        "前端开发",
+        "Quake 3"
+      ]
+    },
+    {
+      "title": "This Week in Package Management: 18 July 2026",
+      "link": "https://nesbitt.io/2026/07/18/this-week-in-package-management.html",
+      "source": "nesbitt.io",
+      "publishedAt": "2026-07-18T10:00:00.000Z",
+      "summary": "Week nine of the roundup, built from the package manager OPML feed collection and whatever I’ve posted or boosted on Mastodon.\nReleases\npnpm 11.13 adds pnpm change, a native changesets-compatible release planner that handles version bumping, dependent propagation, fixed groups and per-package release lanes. It also adds pnpm team for registry organisation and team membership, and a versioning.epics config that ties a group of packages to a lead package so their versions stay within a band derived from the lead’s major. 11.12 preceded it, letting a pnpmfile fetcher return { delegate: <resolution> } so custom fetchers can hand off to the built-in ones portably across pnpm and pacquet.\nDeno 2.9.3 adds deno add --no-save and --save-optional, and --min-dep-age as a shorter alias for the minimum-release-age check.\npixi 0.73.0 lets { workspace = true } work in environment [dependencies] tables, so a version shared across features or targets is declared once in [workspace.dependencies] without needing the pixi-build preview.\nuv 0.11.29 adds JSON output to uv tree and prefers local artifacts over URLs when installing from pylock.toml.\nVerdaccio 6.8.0 fires the notification webhook on unpublish and single-version removal as well as publish. Templates get a variable, and the object exposes only name, groups and real_groups so the auth token can never reach the notification endpoint.\nzizmor 1.27 adds experimental support for auditing GitHub’s new parallel steps pattern.\nRust 1.97.1 is a point release backporting an LLVM fix and disabling the IR change in 1.97.0 that made the miscompilation more likely to trigger.\nHomebrew 6.0.11 merges brew vulns, so CVE scanning of installed formulae is now built in; I wrote up the work behind it.\nAlso out: npm 12.0.1, Athens 0.18.1, vcpkg 2026-07-13, sbt 2.0.2, Nix 2.35.1, mise 2026.7.10, pipx 1.16.0, Gradle 9.7.0-RC1, Renovate 43.268.4, Dependabot Core 0.387.0.\nSecurity\nDocker Engine 29.6.2 fixes three CVEs: CVE-2026-15793, where a git source checkout from a bundle file could lead to command injection; CVE-2026-15792, where incorrect parameters from a BuildKit frontend could cause a panic; and CVE-2026-15791, where an LLB file operation could be tricked into removing the contents of /tmp.\nsbt 1.12.14 backports the fix for CVE-2026-26032 in the bundled Apache Ivy PackagerResolver.\nArticles\ncrates.io: development update (Tobias Bieniek, Rust Blog) covers six months of work: crate pages now have a Code tab that shows the exact files cargo downloads, which can differ from the linked repository; crates.io accounts are being untangled from GitHub logins; and the Svelte frontend migration is complete.\nComposer and Packagist Under Supply-Chain Stress (Sebastian Bergmann) reviews how the PHP ecosystem held up through 2025 and 2026, what it can borrow from other registries, and who owns the infrastructure.\nMy First Month as AI Security Engineer in Residence (Jacob Finkelman, Rust Foundation) covers building a prioritised database of crates to scan, running early passes with Scrutineer, and working out when a bug found this way should be embargoed rather than reported openly.\nPapers\nSoftware Supply Chains are Dead: Use-Case-Oriented Regeneration (arXiv) argues that supply-chain attacks have raised the cost of external dependencies while generative AI has lowered the cost of local implementation, and evaluates an agent workflow that synthesises only the slice of a dependency an application actually calls.\nSetup Complete, Now You Are Compromised: Weaponizing Setup Instructions Against AI Coding Agents (Bagmar et al., arXiv) evaluates package-install-time supply-chain attacks delivered through project setup docs against production coding-agent harnesses: editing only a README, requirements file or Makefile redirects the agent to an untrusted registry, a known-vulnerable version, or a wrong-but-plausible package name.\nThe Distributed Open-Source Vulnerability Ecosystem (Mandl et al., arXiv) models vulnerability management as a distributed process and traces where scanners diverge on identical software inventories to specific stages of the ecosystem rather than any one tool or data source.\nElsewhere\nForgejo 16.0 adds per-repository watch options, an Authorized Integrations mechanism for secret-less API access, and review comments that span multiple lines.\nRuby 4.0.6 is a routine bugfix release.\nOpen Source Security: Project Lightwell (Josh Bressers) is a podcast conversation with Máirín Duffy on Red Hat’s programme for routing AI-discovered vulnerabilities to upstream projects rather than carrying downstream patches.\nSend links for next week to @andrewnez@mastodon.social.",
+      "id": "34ab35a455df343bade41073f31c3136d9398473dc552736de7d6071855296d6",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "精炼地汇总了多个包管理工具的最新更新，信息密度极高，对开发者非常实用。",
+      "reason": "直接面向编程工具主题，提供了最新的开发生态系统更新，信息密度和实用性高，对目标读者群体有重要价值。",
+      "tags": [
+        "编程工具",
+        "包管理",
+        "pnpm",
+        "Deno",
+        "开发工具",
+        "自动化"
+      ]
+    },
+    {
+      "title": "GPT-5.6 used a prompt to close a 30-year gap in convex optimization",
+      "link": "https://old.reddit.com/r/math/comments/1uxj3cy/after_openais_cdc_proof_announcement_gpt56_used_a/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-18T13:00:52.000Z",
+      "summary": "Article URL: https://old.reddit.com/r/math/comments/1uxj3cy/after_openais_cdc_proof_announcement_gpt56_used_a/\nComments URL: https://news.ycombinator.com/item?id=48957779\nPoints: 261\n# Comments: 140",
+      "id": "6452fee6de74cc5fc4cc3551f3b504c33bdfe7de5ddf777e607d4ff2b3ad699a",
+      "ref_id": "2",
+      "recommendationScore": 88,
+      "popularityScore": 77,
+      "priority": "high",
+      "comment": "GPT-5.6利用提示词解决30年数学难题，展示AI颠覆性能力。",
+      "reason": "文章聚焦AI在高级数学领域的突破，技术深度和新颖性极高，完美契合优先级最高的AI主题，极具推荐价值。",
+      "tags": [
+        "AI",
+        "GPT",
+        "数学",
+        "优化",
+        "前沿研究",
+        "突破"
+      ]
+    },
+    {
+      "title": "OpenAI Starts Cleaning Up the Utter Mess It Made of ChatGPT",
+      "link": "https://x.com/thsottiaux/status/2077928427936710901",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-17T19:10:43.000Z",
+      "summary": "Thibault “Tibo” Sottiaux, the OpenAI engineering lead who’s taking the most public credit for this and thus probably deserves the most blame, on Twitter/X:\nEvening! We’ve gotten lots of great feedback on the new ChatGPT\ndesktop app (which we didn’t get totally quite right on the first\ntry), and as a result, we’ve made some changes.\n1/ ChatGPT conversation history and projects are now visible in\n   the sidebar. Also, your Chat and Work history now sync across\n   web, mobile, and desktop. Local tasks still stay on your\n   computer.\nHow in the world did they ship this without sync?\n2/ You can now easily switch between Chat and Work modes inside\n   ChatGPT on desktop, which is now also consistent with how it\n   shows on web and mobile.\nBringing back “chat” to ChatGPT is literally the least they needed to do. Hiding chat in an obscure corner of the interface from an app named “ChatGPT” would be like removing text editing from TextEdit.\nThe updates OpenAI shipped yesterday address some of the abject incoherence of the initial rollout of the “new” ChatGPT, but it’s still dogshit. The new app remains a 1.5 GB Electron monstrosity (and if it’s not technically Electron that’s because they’ve created another bloated layer of abstraction around Electron — Sottiaux oversees the only engineering group in the world that looked at Electron and thought it was too slim and close to the metal).\nHere’s the software update dialog I saw today in the old version of ChatGPT, which is now named ChatGPT Classic:\n\n\nWhat they’re trying to say here is that if you’ve ever installed the new ChatGPT the “Install Update” button in this dialog will do nothing. It will take some time to do nothing, but ultimately do nothing. Except quit ChatGPT.\nIf you’ve never installed the new ChatGPT, this dialog box will update the old ChatGPT to the latest version, which is now renamed “ChatGPT Classic”. If you have tried the new ChatGPT, you need to install ChatGPT Classic manually, even though you’re seeing this update dialog box in a slightly older version of the app you want to keep using. But at least they now offer a supported way to install ChatGPT Classic.\nThis whole thing makes the “New Coke”/”Coke Classic” fiasco from the 1980s look like a well-thought-out change.\n ★",
+      "id": "a197b0a8dbac78d2ecb160731bc81eec9a9ae537aad25d9e2bf96a9de2334cb0",
+      "ref_id": "3",
+      "recommendationScore": 88,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "OpenAI对ChatGPT桌面版进行了紧急修复，恢复了核心聊天功能和同步。",
+      "reason": "详细说明了ChatGPT近期UI/UX问题的修复细节，对于ChatGPT用户而言具有高度实用性和及时性，直接响应了用户的痛点。",
+      "tags": [
+        "AI",
+        "ChatGPT",
+        "OpenAI",
+        "产品更新",
+        "用户体验"
+      ]
+    },
+    {
+      "title": "Regressive JPEGs",
+      "link": "https://maurycyz.com/projects/bad_jpeg/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-18T03:14:20.000Z",
+      "summary": "Article URL: https://maurycyz.com/projects/bad_jpeg/\nComments URL: https://news.ycombinator.com/item?id=48954851\nPoints: 550\n# Comments: 54",
+      "id": "0392ac25abc72b60507b4b3a6bab8ea4a5fde4715ed278f4791a58a5f6e3afe0",
+      "ref_id": "3",
+      "recommendationScore": 86,
+      "popularityScore": 80,
+      "priority": "medium-high",
+      "comment": "探讨了一种新颖的“退化JPEG”概念，对图像压缩技术有深入见解和创新。",
+      "reason": "技术深度高，概念新颖，对图像处理和计算机图形学爱好者具有很高的参考价值和启发性。",
+      "tags": [
+        "图像处理",
+        "JPEG",
+        "压缩",
+        "图形学",
+        "编程",
+        "算法"
+      ]
+    },
+    {
+      "title": "Apple Books and Amazon Are Lousy With AI-Generated Books Ripping Off Legitimate Authors",
+      "link": "https://thenewthings.com/p/apple-big-ai-book-slop-problem",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-18T00:33:15.000Z",
+      "summary": "Joanna Stern at New Things, last month:\nLast month, just days after my book went on sale, AI knockoffs of\nthe ebook version flooded Apple Books. There was Joanna Stern On\nI Am Not A Robot by Sophie Mercer. I AM NOT A ROBOT by Finn\nTech. I AM NOT A ROBOT by Joana Stern — with one “n.” (Watch\nour latest video showing all these titles and more.)\nIn total, I found ten AI-generated ebooks clearly riding on mine,\nwith AI-generated covers mimicking the style of my real one — the\nsame blue, yellow and red color palette. Most were priced at\n$9.99, but some have gone as high as $20.99. [...]\nAfter I contacted Apple about my own book’s clones back in May,\nthe knockoffs quickly disappeared. [...] But now, a month after\nthat first Apple cleanup, the problem is back. At the start of\nthis week, there were at least three other I AM NOT A ROBOT\ncounterfeits on Apple Books. (They seem to have since been\nremoved.)\nAnd I’m not alone. Lena Dunham’s Famesick has multiple\nlookalikes on the platform. Haley Sacks’s Future Rich Person has\ncopycats that even use AI generated images of women on the cover\nthat resemble the real author.\nKashmir Hill at The New York Times today (gift link):\nRecently, I received a strange text from a new acquaintance. “You\nhave your own biography???” it read. “How did you neglect to tell\nme this?”\nThis was news to me. I went to Amazon to investigate. There it\nwas. A biography of Kashmir Hill — title: “The Biography of\nKashmir Hill” — had been released nearly a year earlier, in\nAugust 2025. My life story had a mottled brown cover and a\npublisher I’d never heard of before. It had no reviews until I\nwrote one, asking, as the subject of this work, if I could please\nspeak to the author. The hardcover cost $26.99, which seemed a\nbit steep, but my editor splurged on a copy and I was forced to\nread it.\nMy biography is 90 pages long and should be shorter. It combines\nfacts about me that are widely available on the internet, such as\nwhere I grew up, with generic insights that could be true of\nanyone, like a horoscope spread over dozens of pages. “You cannot\nunderstand Kashmir Hill without understanding her\ncontradictions,” my biographer wrote, along with an\nexcruciatingly long description of my elaborate coffee-making\nritual. (Fact check: My husband does it.)\nIt’s not just an e-book problem. Printing services are so cheap nowadays that some of these mooks (like one “author” Hill spoke to) are commissioning print editions for hundreds of these slopfests.\n ★",
+      "id": "e8ceb42d65150f170a86bea28b110db98202926ab5c322cdde8f8b804b3fe83e",
+      "ref_id": "3",
+      "recommendationScore": 85,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "及时揭露了AI生成内容在数字出版平台上的侵权乱象，具有很高的社会警示意义和实用性。",
+      "reason": "文章紧密结合了AI和Apple生态系统两大高优先级主题，提供了具体的案例，对作者和读者具有高度实用性，且是当前热点问题。",
+      "tags": [
+        "AI",
+        "版权",
+        "Apple Books",
+        "内容平台",
+        "AI伦理",
+        "侵权"
+      ]
+    },
+    {
+      "title": "Roblox Set to Introduce AI Game-Building Feature, Including on iOS",
+      "link": "https://about.roblox.com/newsroom/2026/07/build-without-limits-on-roblox",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-17T21:20:04.000Z",
+      "summary": "Roblox executives Nick Tornow and Vlad Loktev, on the Roblox blog:\nTwenty years ago, Roblox launched with a simple idea: “You make\nthe game.” At the time, that was a radical proposition — most\ngames were made by studios and professionals, and the idea that\nanyone could be a creator was far from obvious. But we believed\nit. And the millions of creators who built on Roblox proved it. As\nwe look to a future where any one of Roblox’s 132 million daily\nactive users could come up with the next hit game, we’re taking\nthat original idea further than we ever have. Over the coming\nmonths, we’ll share a series of announcements that will give every\ncreator a clear runway to go further and fulfill the promise of\n“You make the game” for more people than ever before.\nToday, we’re announcing Build, a new mobile-first creation tab\nwithin the Roblox app, and a new suite of AI-powered tools within\nStudio for creators of every level. On July 28, we’ll begin\ntesting these new agentic tools. With Build and Studio, creators\ncan delegate the parts of development that don’t require their\nfull attention.\nThis sounds really cool and fun. But you know what else was really cool and fun? AI coding apps that ran on iOS, like Bitrig, Replit, and Vibecode — all of which Apple put the kibosh on back in the winter. You of course are free to use any tool you want to build apps for iOS on a desktop computer, but Apple decided to disallowing building iOS apps on iOS.\nBut it’s OK for Roblox to allow AI-assisted game generation on iOS ... because Roblox is already so big and popular? How can Apple justify allowing Roblox to do this while disallowing anyone else?\n ★",
+      "id": "449046e10e44f288367e0c4080717d98543e2a7e104171f721a0181059008799",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "Roblox将推出AI游戏构建功能，预示着用户生成内容平台的AI化趋势。",
+      "reason": "文章揭示了AI在游戏开发领域的最新应用，结合了AI和独立开发两大热门主题，对行业趋势有重要参考价值。",
+      "tags": [
+        "AI",
+        "游戏开发",
+        "Roblox",
+        "iOS",
+        "独立开发"
+      ]
+    },
+    {
+      "title": "LG monitors silently install software through Windows Update without consent",
+      "link": "https://videocardz.com/newz/lg-monitors-silently-install-software-through-windows-update-without-user-consent",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-18T10:21:19.000Z",
+      "summary": "Article URL: https://videocardz.com/newz/lg-monitors-silently-install-software-through-windows-update-without-user-consent\nComments URL: https://news.ycombinator.com/item?id=48956688\nPoints: 663\n# Comments: 339",
+      "id": "f94a24159d4109fb493141dc6bc2a019fe4432eb36831d93af31b1be05f285cb",
+      "ref_id": "0",
+      "recommendationScore": 84,
+      "popularityScore": 90,
+      "priority": "medium-high",
+      "comment": "揭露了LG显示器通过Windows Update静默安装软件的隐私风险。",
+      "reason": "这是一个重要的用户隐私和安全警报，具有广泛的影响力和实用性，能提醒大量用户。",
+      "tags": [
+        "隐私",
+        "安全",
+        "硬件",
+        "Windows Update",
+        "消费者权益",
+        "系统管理"
+      ]
+    },
+    {
+      "title": "Fable 5 vs. GPT-5.6 Sol on an NP-Hard Problem: Does /goal help?",
+      "link": "https://charlesazam.com/blog/fable-5-gpt-5-6-sol-goal/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-18T11:00:29.000Z",
+      "summary": "Article URL: https://charlesazam.com/blog/fable-5-gpt-5-6-sol-goal/\nComments URL: https://news.ycombinator.com/item?id=48956879\nPoints: 136\n# Comments: 58",
+      "id": "30b464672fa1d6c824fbd225c706ca4f4dbaa34bad834b6c55e89d8468785f27",
+      "ref_id": "4",
+      "recommendationScore": 83,
+      "popularityScore": 37,
+      "priority": "high",
+      "comment": "深度比较AI模型在NP-Hard问题上的表现，探索AI解决复杂挑战。",
+      "reason": "文章探讨AI模型在复杂计算问题上的表现，技术深度和新颖性突出，直接契合AI主题，对AI研究者和从业者具有高实用性。",
+      "tags": [
+        "AI",
+        "模型比较",
+        "NP-Hard",
+        "算法",
+        "前沿技术"
+      ]
+    },
+    {
+      "title": "Linus Torvalds: ‘AI Is a Tool, Just Like Other Tools We Use. And It’s Clearly a Useful One.’",
+      "link": "https://lore.kernel.org/linux-media/CAHk-=wi4zC+Ze8e+p3tMv8TtG_80KzsZ1syL9anBtmEh5Z40vg@mail.gmail.com/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-17T18:13:16.000Z",
+      "summary": "Linus Torvalds:\nI realize that some people really dislike AI, but this is an area\nwhere I’m willing to absolutely put my foot down as the top-level\nmaintainer.\nLinux is not one of those anti-AI projects, and if somebody has\nissues with that, they can do the open-source thing and fork it.\nOr just walk away.\nAI is a tool, just like other tools we use. And it’s clearly a\nuseful one.\nIt may not have been that “clearly” even just a year ago, but it’s\nno longer in question today.\nThere are other questions around AI (like what the economy of it\nwill actually look like in the end), but “is it useful” is no\nlonger one of those questions. Anybody who doubts that clearly\nhasn’t actually used it.\n ★",
+      "id": "33408f3b605046f0c6f5452f57c11250420ad555ff3bec0c3470e894160eb9a0",
+      "ref_id": "4",
+      "recommendationScore": 82,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "Linus Torvalds明确表态，将AI视为有用的工具，并欢迎其在Linux项目中的应用。",
+      "reason": "作为开源界的精神领袖，Linus Torvalds对AI的立场具有重要影响力，为编程工具和开源社区拥抱AI提供了官方背书。",
+      "tags": [
+        "AI",
+        "Linus Torvalds",
+        "开源",
+        "编程工具",
+        "观点"
+      ]
+    },
+    {
+      "title": "Qubes OS Security in the Public Record",
+      "link": "https://arxiv.org/abs/2607.14587",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-18T08:50:07.000Z",
+      "summary": "Article URL: https://arxiv.org/abs/2607.14587\nComments URL: https://news.ycombinator.com/item?id=48956307\nPoints: 52\n# Comments: 9",
+      "id": "e3690f4f28ffb4623d96001f91085309bdc65e2c28c39e4752be00a4711ce147",
+      "ref_id": "1",
+      "recommendationScore": 81,
+      "popularityScore": 40,
+      "priority": "medium",
+      "comment": "一篇关于Qubes OS安全性的学术性分析，深入探讨其隔离模型和记录。",
+      "reason": "对关注极致安全和Qubes OS的用户及研究者而言，具有高度的技术深度和参考价值。",
+      "tags": [
+        "安全性",
+        "操作系统",
+        "Qubes OS",
+        "研究",
+        "虚拟化"
+      ]
+    },
+    {
+      "title": "MG Siegler: ‘OpenAI Makes ChatGPT ChatGPT Again’",
+      "link": "https://spyglass.org/chatgpt-brings-back-chatgpt/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-17T19:48:53.000Z",
+      "summary": "MG Siegler, writing at Spyglass:\nIn that light, we can see the dilemma. But there were also\nprobably about a dozen better ways to do this roll-out — as\nhighlighted by how fast they’re fixing these things — and they\njust missed the mark. While they undoubtedly knew there would be\nsome backlash, they probably didn’t realize there would be this\nmuch. Again. All that points to perhaps a disturbing trend\nwhere OpenAI doesn’t really understand their user base. Which you\nalmost can understand given how they clearly stumbled into ChatGPT\nin the first place. Still, here they are with those billion users.\nA problem that all of their competitors would love to have. But\nstill a problem if you want to fundamentally change what you are\nas a product.\nBut those are bigger, existential issues. All I wanted was chat\nback in the ChatGPT app. Front and center. And I got it. It’s not\nperfect. It’s still bloated. But at least it’s usable again now\nand not a confusing mess of ideas out of the box.\nMG is pretty scathing, but I still think he’s taking it too easy on OpenAI for what a colossal fuck-up this remains. There was nothing wrong with the way things were, with two apps — the simple ChatGPT and the complex Codex. (Well, the Codex Mac app being an Electron turd was wrong, but that complaint seems quaint at this point.)\nAdding “ChatGPT” as a tab to Codex is fine. Renaming Codex to “ChatGPT” is stupid. They have not made ChatGPT “ChatGPT” again.\nThere is nothing — not one single tiny feature — in the new ChatGPT app that makes me want to use it instead of ChatGPT Classic. And there is so much in ChatGPT Classic that works better or just isn’t available in the new ChatGPT. You can’t even just delete a chat in the new app — you have to “archive” it first, then fish around to find the archive and delete it there.\nI don’t think the problem is that OpenAI “doesn’t really understand their user base”. I think it’s that decisions are now being made by AI research eggheads who don’t understand their own products. They think this makes sense. So of course they don’t understand their user base — who uses the ChatGPT product — either. I mean what sense does it make that the ChatGPT app for iOS and Android is still the old ChatGPT, which on the Mac is now “ChatGPT Classic”, but there’s a totally different app that is an entire order of magnitude more complicated on the Mac now named “ChatGPT”?\nThe only good solution is to pretend this last week didn’t happen and go back to calling ChatGPT “ChatGPT” and Codex “Codex”. If they want to give one of them a new name, don’t call ChatGPT “ChatGPT Classic” — instead rename Codex “ChatGPT Codex”. There, done. All problems solved.\nThe Codex app is clearly capable of amazing things. But the reason that there are a billion users of ChatGPT but only a few million users of Codex — by OpenAI’s own accounting — is because ChatGPT is simple and focused and based on a single coherent concept: chat. The frustration of the eggheads now running product at OpenAI is obvious: how come these hundreds of millions of morons using ChatGPT aren’t running Codex instead? Somehow they thought they could fix this by giving Codex the ChatGPT name. This is like if Apple had gotten rid of the Messages app on the Mac and replaced it with Xcode, which they renamed to “Messages”. Now they’ve put an “iMessage” tab in the Xcode sidebar and re-released the Messages app everyone knew and loved as “Messages Classic”.\nOpenAI separated itself from its competition — especially Anthropic — by being good at product. Now their product decisions are being made by people who don’t understand why Apple makes both iMovie and Final Cut Pro, or GarageBand and Logic Pro.\n ★",
+      "id": "75d84bb4d16b9cfdf5b71dda93e310c3b1c78eb11b83de50d9426a97173fdf95",
+      "ref_id": "2",
+      "recommendationScore": 80,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "MG Siegler评论ChatGPT的UI/UX改进，指出OpenAI在理解用户方面存在的挑战。",
+      "reason": "文章对AI产品用户体验问题进行了及时而深刻的评论，对于关注AI产品设计和用户反馈的读者具有参考意义。",
+      "tags": [
+        "AI",
+        "ChatGPT",
+        "OpenAI",
+        "用户体验",
+        "产品设计"
+      ]
+    },
+    {
+      "title": "What AI did to stackoverflow in a graph",
+      "link": "https://data.stackexchange.com/stackoverflow/query/1953768#graph",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-18T11:12:46.000Z",
+      "summary": "Article URL: https://data.stackexchange.com/stackoverflow/query/1953768#graph\nComments URL: https://news.ycombinator.com/item?id=48956949\nPoints: 224\n# Comments: 260",
+      "id": "c92bddbeb7290aefc4732e8eb28f3a1383c4c1b590bb3ecb139d79fe301db366",
+      "ref_id": "3",
+      "recommendationScore": 78,
+      "popularityScore": 93,
+      "priority": "high",
+      "comment": "AI对Stack Overflow影响的可视化分析，揭示编程社区变化。",
+      "reason": "该文通过数据直观展现AI对编程工具和开发者社区的深刻影响，兼顾AI和编程工具主题，实用性强，信息密度高。",
+      "tags": [
+        "AI",
+        "Stack Overflow",
+        "编程工具",
+        "数据分析",
+        "社区影响",
+        "趋势"
+      ]
+    },
+    {
+      "title": "Gleam Is Now on Tangled",
+      "link": "https://tangled.org/gleam.run/gleam",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-18T15:44:04.000Z",
+      "summary": "Article URL: https://tangled.org/gleam.run/gleam\nComments URL: https://news.ycombinator.com/item?id=48959143\nPoints: 55\n# Comments: 23",
+      "id": "3bbef4aea64688ac51e52de37d1e4d74d0074ece84d7505677ca668acac2d1b1",
+      "ref_id": "0",
+      "recommendationScore": 75,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "介绍了新兴函数式编程语言Gleam在Tangled平台上的最新动态。",
+      "reason": "对关注编程工具和函数式编程的开发者具有一定吸引力，展现了语言生态的扩展和实用性。",
+      "tags": [
+        "编程语言",
+        "Gleam",
+        "开发工具",
+        "函数式编程"
+      ]
+    },
+    {
+      "title": "BBEdit 16",
+      "link": "https://www.barebones.com/products/bbedit/bbedit16.html",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-17T17:31:11.000Z",
+      "summary": "Speaking of BBEdit, version 16 dropped just before WWDC, and adds a slew of nifty improvements, headlined by vastly expanded support for Shortcuts. You can also search for text in images, use the W3C HTML syntax checker, and of all things, use vi keyboard emulation. There’s a lot more, of course — and as always the changes, improvements, and additions are copiously documented in the release notes.\nNew licenses are $60, upgrades from v15 cost $30, and upgrades from older versions are $40. In the Mac App Store it’s a $5/month or $50/year subscription.\nSee also: Jason Snell at Six Colors and Adam Engst at TidBITs.\n ★",
+      "id": "cb29889f19525a06b910d53477d7672c9ec092e6baf58e178b503cc0b740ec79",
+      "ref_id": "0",
+      "recommendationScore": 75,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "简洁介绍了BBEdit 16的新特性，特别是对Mac用户和开发者很有用。",
+      "reason": "提供了一个知名编程工具的最新更新，信息量大且实用，对Apple生态用户有吸引力，符合编程工具和Apple生态主题。",
+      "tags": [
+        "编程工具",
+        "Apple生态",
+        "软件更新",
+        "BBEdit"
+      ]
+    },
+    {
+      "title": "Google Runs Out of Appeals, Must Pay Record $4.7 Billion EU Antitrust Fine",
+      "link": "https://www.cnbc.com/2026/07/02/alphabet-google-android-eu-antitrust-fine-4-1-billion-euro-appeal.html",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-17T23:47:16.000Z",
+      "summary": "Arjun Kharpal, reporting for CNBC, back on July 2:\nEurope’s top court on Thursday upheld Google’s fine of around 4.1\nbillion euros ($4.67 billion) over alleged anti-competitive\npractices.\nIn 2018, the European Commission slapped Google with the\nrecord-breaking penalty on the grounds that it abused Android’s\nmobile dominance to give unfair advantage to its own apps via\npre-installation deals with smartphone makers.\nGoogle has been appealing the ruling through the EU court system.\nBut the European Court of Justice (ECJ), Europe’s top court,\ndismissed Google’s appeal. Google has no further right to appeal.\nGoogle last year booked $132 billion in profit; this fine is about 3 percent of that. But in 2018, when the fine was initially assessed, Google booked “just” $31 billion in profit — this fine, if they’d paid it then, would have been about 15 percent of their annual profit. (And they booked only $13B, $19B, $16B, and $14B in profit going back from 2017 to 2014.)\nThere’s never a reason not to string the appeal process out, but it’s especially true when your profits are growing at an exceptional rate. By growing their profits around 5×, they’ve reduced the relative pain of this fine by 5×.\n ★",
+      "id": "7eec2a1c36063b6742947585f2470fbe53e1e0283b71c4574c56115d1cd863a5",
+      "ref_id": "4",
+      "recommendationScore": 60,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "报道了谷歌在欧盟反垄断案中的最终裁决，是重要的科技行业新闻，但技术深度有限。",
+      "reason": "这是一篇重要的科技行业新闻报道，信息密度良好，但其技术深度和与本博客核心高优先级主题（如AI、编程工具）的相关性较低。",
+      "tags": [
+        "Google",
+        "欧盟",
+        "反垄断",
+        "Android",
+        "科技政策",
+        "法律"
+      ]
+    },
+    {
+      "title": "Apple Raises Prices for Apple Music and Apple One Subscriptions",
+      "link": "https://9to5mac.com/2026/07/17/apple-raises-prices-for-apple-music-and-apple-one-subscriptions/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-17T21:08:39.000Z",
+      "summary": "Chance Miller, 9to5Mac:\nHere are the new monthly prices for Apple Music and Apple One as of today:\nApple Music:\nIndividual: $11.99 (up from $10.99)\nFamily: $19.99 (up from $16.99)\nStudent: $6.99 (up from $5.99)\nApple One:\nIndividual: $19.95 (unchanged)\nFamily: $27.95 (up from $25.95)\nPremier: $39.95 (up from $37.95)\n ★",
+      "id": "9a2c53a7163a0390281f3b3dfb8e2d338ec6e83b7533ceb44ad6f2cdc3596bf7",
+      "ref_id": "1",
+      "recommendationScore": 60,
+      "popularityScore": 80,
+      "priority": "medium",
+      "comment": "Apple Music和Apple One订阅价格上调，直接影响大量Apple用户。",
+      "reason": "虽然技术深度为零，但作为Apple生态圈的重要新闻，对用户的实用性很高，且具有广泛关注度。",
+      "tags": [
+        "Apple",
+        "订阅",
+        "价格",
+        "Apple Music",
+        "Apple One"
+      ]
+    },
+    {
+      "title": "If You Build It, They Will Come",
+      "link": "https://www.benlandautaylor.com/p/if-you-build-it-they-will-come",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-18T15:37:01.000Z",
+      "summary": "Article URL: https://www.benlandautaylor.com/p/if-you-build-it-they-will-come\nComments URL: https://news.ycombinator.com/item?id=48959090\nPoints: 7\n# Comments: 0",
+      "id": "187dd8dd7d8c17eab2970c61ab657a44b834afce12cfa62b4a2466ba3914f14d",
+      "ref_id": "2",
+      "recommendationScore": 50,
+      "popularityScore": 25,
+      "priority": "low",
+      "comment": "探讨了产品构建与用户获取的经典理念。",
+      "reason": "主题符合独立开发和产品设计，但标题过于宽泛且当前流行度较低，可能缺乏独特且深入的见解。",
+      "tags": [
+        "独立开发",
+        "产品管理",
+        "创业思维"
+      ]
+    },
+    {
+      "title": "Elixir-lang.org has a new design",
+      "link": "https://elixir-lang.org/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-18T15:32:04.000Z",
+      "summary": "Article URL: https://elixir-lang.org/\nComments URL: https://news.ycombinator.com/item?id=48959042\nPoints: 28\n# Comments: 9",
+      "id": "597d862ddb283e49ebd771ee077af08990da1839fe1a37a77f42754028b24efb",
+      "ref_id": "3",
+      "recommendationScore": 45,
+      "popularityScore": 55,
+      "priority": "low",
+      "comment": "宣布Elixir编程语言官方网站进行了视觉和体验上的更新。",
+      "reason": "属于语言生态的例行更新通告，技术深度和新颖性有限，但对Elixir社区有一定知悉价值。",
+      "tags": [
+        "编程语言",
+        "Elixir",
+        "网站设计",
+        "更新"
+      ]
+    },
+    {
+      "title": "The Computer at the Bottom of a Canal",
+      "link": "https://negroniventurestudios.com/2026/07/18/the-computer-at-the-bottom-of-a-canal/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-18T08:33:31.000Z",
+      "summary": "Article URL: https://negroniventurestudios.com/2026/07/18/the-computer-at-the-bottom-of-a-canal/\nComments URL: https://news.ycombinator.com/item?id=48956231\nPoints: 97\n# Comments: 21",
+      "id": "063708cf8c9ee4ff34868264ddb3c9521cea32ed8e2fce73350b8616fd610d18",
+      "ref_id": "2",
+      "recommendationScore": 44,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "一个关于在运河底部发现电脑的独特故事，偏向技术趣闻和修复。",
+      "reason": "内容可能引人入胜，但缺乏技术深度和实用性，更偏向休闲阅读和技术怀旧。",
+      "tags": [
+        "趣闻",
+        "故事",
+        "修复",
+        "技术文化",
+        "历史"
+      ]
+    },
+    {
+      "title": "The Fermi Paradox, Percolation, and Inbreeding",
+      "link": "https://reactormag.com/the-fermi-paradox-percolation-and-inbreeding/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-18T15:38:36.000Z",
+      "summary": "Article URL: https://reactormag.com/the-fermi-paradox-percolation-and-inbreeding/\nComments URL: https://news.ycombinator.com/item?id=48959102\nPoints: 8\n# Comments: 3",
+      "id": "798d1cf9091e7355547859ffd5741585be1a0f3fe0b73c426035766790c80875",
+      "ref_id": "1",
+      "recommendationScore": 35,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "一篇结合费米悖论、渗流理论和近亲繁殖的科学哲学探讨。",
+      "reason": "内容偏离科技博客核心主题，虽然新颖但技术深度和实用性与给定主题优先级不符。",
+      "tags": [
+        "科学哲学",
+        "费米悖论",
+        "跨学科"
+      ]
+    },
+    {
+      "title": "Heresy",
+      "link": "https://paulgraham.com/heresy.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-18T16:31:42.000Z",
+      "summary": "Article URL: https://paulgraham.com/heresy.html\nComments URL: https://news.ycombinator.com/item?id=48959575\nPoints: 5\n# Comments: 1",
+      "id": "0e5a935e1be98a5192842f2b1624bb0242c3652491a8f6a1b986306db12c4c2f",
+      "ref_id": "0",
+      "recommendationScore": 30,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "一篇典型的Paul Graham式哲学文章，探讨非主流观点。",
+      "reason": "内容偏离科技博客核心主题，但文章思想性强，适合广泛阅读而非特定技术领域。",
+      "tags": [
+        "Paul Graham",
+        "Philosophy",
+        "Essay",
+        "Thought Leadership"
+      ]
+    },
+    {
+      "title": "Overtraining as the path to human-like AI",
+      "link": "https://seangoedecke.com/overtraining-as-the-path-to-human-like-ai/",
+      "source": "seangoedecke.com",
+      "publishedAt": "2026-07-18T00:00:00.000Z",
+      "summary": "",
+      "id": "4c9fda15759ba22d612f548fa5810316931b981ee4d18079b51fbf57a15fbba7",
+      "ref_id": "2",
+      "recommendationScore": 30,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "内容缺失，但标题表明主题具有极高潜力，与AI优先级吻合，值得关注。",
+      "reason": "虽然内容缺失，但标题直接涉及AI核心议题，若有内容将是高优先级，故给予潜在推荐分。",
+      "tags": [
+        "AI",
+        "理论",
+        "潜在价值"
+      ]
+    },
+    {
+      "title": "Book Review: A City on Mars - by Dr. Kelly Weinersmith and Zach Weinersmith ★★★★⯪",
+      "link": "https://shkspr.mobi/blog/2026/07/book-review-a-city-on-mars-by-dr-kelly-weinersmith-and-zach-weinersmith/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-07-18T11:34:18.000Z",
+      "summary": "I'm pretty sure this book is a psyop designed to demoralise a generation of starry-eyed dreamers. It is obviously written by the same people who told us not to land on Europa. A malignant energy designed to limit the scope of human ambition and thwart our plans to colonise the universe.  The problem is, I can't find fault with any of their logic.  The Weinersmiths make a compelling case that…",
+      "id": "ac4f68083a03d1ef3c5c4241cd2f26a5f4b2a5ff62c21a70011d6c621049af4e",
+      "ref_id": "1",
+      "recommendationScore": 30,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "一篇带有幽默感的书评，主题与科技博客核心关注点偏离。",
+      "reason": "内容主要是对一本科幻/现实主义书籍的个人评价，不符合科技博客的优先主题（如AI、编程工具等）。",
+      "tags": [
+        "书评",
+        "科幻",
+        "未来主义"
+      ]
+    },
+    {
+      "title": "The Terminus",
+      "link": "https://feed.tedium.co/link/15204/17382177/terminus-road-ending-history",
+      "source": "tedium.co",
+      "publishedAt": "2026-07-17T20:41:40.000Z",
+      "summary": "When a really long road ends, why don’t we do more to celebrate the staggering amount of collective work that went into it? The ancient Romans really outclassed the federal highway system on this front.\n\nToday in Tedium: What does it mean for a road to end? Particularly, a big, imposing one that represents an essential connection for millions of people across an entire country? Often, major highways take up massive numbers of lanes, and become both the primary path and bottleneck through which people travel. But that’s usually in the middle. Often the terminus of a big road, no matter how important or influential it is, can be anticlimactic in nature. One that comes to mind for me is the end of Interstate 64, a road that starts near the St. Louis area and goes all the way to Virginia, where it absolutely dominates the Hampton Roads area. But then, somewhere in Chesapeake, it just stops at a spot called the Bowers Hill Interchange, where it splits off into three separate interstates: Interstate 264, which goes to the Virginia Beach Oceanfront, and Interstate 664, which leads back to I-64. For a road that represents so much to an area, it feels like a tire slowly leaking air. It’s not like the end of a TV show, which might hit you with all the fireworks it has to offer. Often, it just ends. What else is it supposed to do? Today’s Tedium talks terminus. — Ernie @ Tedium\n\n\n3,254\n\nThe length, in miles, of the longest numbered highway in the United States, U.S. Route 20, which more or less runs continuously between Boston and Newport, Oregon, minus a section that goes through Yellowstone National Park, which is unnumbered. It wasn’t always the longest; U.S. Route 6 used to be longer, but most of its roads in California were renamed in the 1960s. (On the other hand, if you’re a purist, U.S. 6 is the longest continuous highway, at 3,199 miles.) Both U.S. 6 and U.S. 20 are longer than the longest freeway, Interstate 90.\n\nWe don’t think much of them now, but the Romans were obsessed with the terminus, as highlighted by these statues, which are intended as borders. (Wikimedia Commons)\nThe God of Boundaries: The word “terminus” has a hell of an origin story\nSo, that point I made about the terminus being a surprisingly boring part of the federal highway system? Turns out that the term itself came from a not-so-boring place.\nSee, terminus is the Latin term for “boundary marker,” and that term eventually inspired a Roman god who would protect boundaries from all wrongdoing. What did that look like? Let’s refer to an Encyclopaedia Brittanica entry from 1911:\n\nTerminus, in Roman mythology, the god of boundaries, the protector of the limits both of private property and of the public territory of Rome. He was represented by a stone or post, set up in the ground with the following religious ceremonies. A trench was dug, in which a fire was lighted; a victim was sacrificed, and its blood poured into the trench; the body, upon which incense and fruits, honey and wine were thrown, was then cast into the fire. When it was entirely consumed, the boundary stone, which had been previously anointed and crowned with garlands, was placed upon the hot ashes and fixed in the ground. Anyone who removed a boundary stone was accursed and might be slain with impunity; a fine was afterwards substituted for the death penalty.\n\nPut another way: They took their boundary markers pretty seriously, largely thanks to Numa Pompilius, the Roman king (active from 715 to 672 B.C.) who is responsible for, among many other things, the Roman calendar. Also on his list of things he offered—the idea that there was a God named Terminus worth celebrating.\nThere was probably a deeper motive behind making boundaries something that needed a God, admittedly. According to Plutarch’s The Parallel Lives, Numa’s goal was to encourage peace:\n\nHe was also the first, they say, to build temples to Faith and Terminus; and he taught the Romans their most solemn oath by Faith, which they still continue to use. Terminus signifies boundary, and to this god they make public and private sacrifices where their fields are set off by boundaries; of living victims nowadays, but anciently the sacrifice was a bloodless one, since Numa reasoned that the god of boundaries was a guardian of peace and a witness of just dealing, and should therefore be clear from slaughter.\n\n(Call it Roman-era soft power or something.)\nParty at the terminus, everyone’s invited. (The Feast Before the Altar of Terminus/Giovanni Benedetto Castiglione/Harvard Art Museum/Public Domain)\nThe result is that these boundary stones had more weight to them than the road signs that end our long highways. In fact, they even had a festival on, of all days, the 23rd of February. As the Roman poet Ovid wrote of the celebration:\n\nWhen night has passed, let the god whose marker separates fields be celebrated with the customary honors. Terminus—be you a stone, or a stump buried in a field—you too have divine authority from ancient times. You are crowned by two owners on opposite sides; two garlands and two libations are offered to you. An altar is built for you: here a rustic farm-woman brings fire that she has taken herself from the warm hearth on a broken pot. An old man cuts logs and skilfully piles up the chopped wood, and struggles to fix branches in the hard ground; then she kindles the first flames with dry bark, and a boy stands by holding a broad basket in his hands. Next, when he has three times thrown corn into the middle of the fire, a young girl offers up cut honeycombs.\nOthers hold jars of wine, and each one in turn is poured on the flames; the crowd, dressed in white, watches and respects this with silent tongues. Communal Terminus is sprinkled with the blood of a slaughtered lamb, and doesn’t complain when a sucking pig is offered to him. The simple folk of the neighborhood come together and celebrate with a banquet, and sing your praises, sacred Terminus. You mark the ends of nations, cities and great kingdoms: without you, the whole countryside would be full of disputes. You don’t go round trying to influence people, you are not corrupted by money, but with law-abiding good faith you guard the land entrusted to you.\n\nI’m a guy who has never constantly thought about the Roman Empire, but I guess that’s about to change now that I know how these dudes party with boundary markers.\n\n\n\n\n“As a minor Roman god, many today have not heard of Terminus and those who have are limited in terms of readily available backstories on his character. But reminding ourselves of Terminus’ role with borders and their protection places these ideas in a new light.”\n\n\n— Kenneth D. Madsen, a professor of geography at The Ohio State University, and a researcher who focuses on border barriers, discussing the godly roots of the word Terminus. In his paper “Terminus Unleashed: Divine Antecedents of Contemporary Borders,” Madsen argues that the spiritual role Terminus took has been replaced with societal norms. “The higher power vested in Terminus has gone from being explicit to being assumed,” he wrote, noting that borders are essential as a piece of territory and “spatial organization.” The end of a road is a border of sorts, a border that prevents you from driving into a forest or lake.\n\nThe highway has to stop here, because if it doesn’t, it’s going straight into the ocean. (msatthelibrary/Flickr)\nFive examples of notable termini, only two of which involve the Civil War\n\nU.S. Route 66, western terminus, Santa Monica, California. Giving the outsize fame of the route, it’s natural that its ending gets played up, with a giant “End of the Trail” sign at the Santa Monica Pier. The city, which fought hard to extend the road into its borders, is understandably quite proud of it. It’s a reminder that there’s nothing stopping a terminus from becoming a former terminus—and that at least some cities do in fact understand the value of a road’s end. (By contrast, the state of Illinois decommissioned Route 66 in their state, costing folks a Chicago terminus.)\nRoute 1, southern terminus, Key West, Florida. There are way too many bridges between Miami and the end of this notable road, which essentially played the role of I-95 before I-95 existed. It is not just the terminus of U.S. 1, but the southernmost point in the entire United States, which a giant barrier marker plays up. Notably, its northern terminus is actually south of its northernmost point, as the road largely hugs the Canadian border through much of Maine, curving back a little to the south before reaching its terminus in Fort Kent, Maine.\nLincoln Highway, eastern terminus, New York City. In a way, this terminus isn’t famous for being a terminus. Rather, it’s notable because the terminus of this highway, the first transcontinental highway in the United States, is Times Freaking Square, the biggest tourist trap in all of NYC. On the other end, in San Francisco, you’ll find a stone marker and a park.\nJefferson Davis Highway, western terminus, San Diego. This one is notable for more controversial reasons, as the name implies. The Daughters of the Confederacy spent decades attempting to build a long-haul highway in honor of the disgraced Confederate leader. The system, a mishmash of various roads built from years of consistent lobbying, reached from Alexandria, Virginia (i.e. just outside D.C.) to San Diego. In San Diego’s Horton Plaza, a plaque existed in honor of a man who actively fought against making California a state because it wouldn’t be a slave state. Despite all this, it took until 2020 to remove it. Signifiers of the controversial highway still exist elsewhere, however.\nZero Mile Post, southeastern terminus, Atlanta. Some cities are built around natural ports. Atlanta was built around a terminus—a rail terminus. The city, created at the terminus of the Western and Atlantic Railroad, came to life in 1837 as the planned endpoint of a railroad that reached Chattanooga, Tennessee. Its origin story was notable enough that the settlement was originally called Terminus. But a decade later, the city gained its current name. And after being nearly burned to the ground during the Civil War, Atlanta quickly grew into a modern-day juggernaut. The signage for the Zero Mile Post can be hard to find, as it‘s underground, but it sounds like it’s worth finding.\n\nI don’t know why I decided to write such a long section about a random highway, but you get to read the result. (Wikimedia Commons)\nThe massive road with no major cities and four termini: The story of U.S. Route 2\nThere’s not a U.S. Route 0, but that’s because we named it U.S. Route 2. Based on the rough grid system we use for interstates and federal highways, you can’t get much further north than this road, which hugs the Canadian border pretty much the entire way across.\nOccasionally, it gets a chance to run into some famous friends—and in one case, it shares a terminus with one.\nI-95 ends a mere few hundred feet from this site. Squint and you can see the U.S. Customs & Border Patrol checkpoint to get into Canada. There’s a Duty Free store nearby, in case you want to bring some contraband into Canada.\nInterstate 95 and U.S. Route 2 end at around the same spot, at the border between Maine and New Brunswick, Canada. I-95 is perhaps one of the most famous highways in North America, flowing through Miami, Jacksonville, Washington D.C., Baltimore, Philadelphia, New York, and Boston, among many other major cities.\nThe Hewitt Ave. Trestle, which represents the western terminus of U.S. Route 2. Everything has to end somewhere.\nThe story of U.S. 2, however, is the definition of a long drive for someone with nothing to think about. The largest city it hits on its entire run is in Spokane, Washington (population: around 200,000), which is only five hours from its western terminus in Everett, Washington (population: around 100,000), where it hits another extremely notable major interstate: I-5. That road touches Seattle, Portland, Sacramento, Los Angeles, and San Diego. U.S. 2, which ends about an hour outside downtown Seattle, is the northern connection between two of the most important interstates in the country, and it touches each near both coasts.\nBut there’s just one problem with that: Oddly, after an excursion through mostly unpopulated parts of Idaho, Montana, and North Dakota (where it hits Grand Forks and Minot, two modest-sized cities), it runs into Duluth, Minnesota. Duluth is a fairly small city by most standards, but it’s the third-largest city on the entire highway. From there, it briefly clips Wisconsin before hugging the southern part of the Upper Peninsula, where it ends at another major freeway, Interstate 75. That road hits Tampa, Atlanta, Knoxville, Lexington, Cincinnati, and Detroit. I-75 represents what I guess we can call its Midwestern terminus.\n\nAnd as is the case with many termini, it ends with little fanfare. R.I.P. long, boring road. (To be fair, the Mackinac Bridge, located directly nearby, is a pretty beautiful destination. Wouldn’t want to upstage it.)\nEver wanted to go into the state of New York and immediately leave? Enter the States via U.S. 11 and immediately take a left.\nExcept, and here’s the interesting part, it comes back at the tippy top of Upstate New York, nearing but not quite touching the Canadian border. That’s the job of U.S. Route 11, a road that (minus a short excursion between Bristol, Virginia, and Knoxville, Tennessee where it splits into two separate highways, 11W and 11E) goes all the way to New Orleans.\nBut we’re talking about U.S. 2, and U.S. 2 is in New York for less than a mile before it hits the Korean Veterans Memorial Bridge and then transitions into Vermont. The highway only hits one reasonably large city on this entire section of the route, Burlington, though its Upstate New York terminus was only about an hour away from Montreal, a city of 1.7 million people. With apologies to Seattle and Vancouver, it’s the largest city within even shouting distance of U.S. 2.\nFrom there, it glides through a handful of lightly populated parts of New Hampshire and Maine before it hits its final terminus, the quiet connection it has with I-95, perhaps the most important north-south highway in the country. (Apologies to I-69, which I hear is gradually building out and making a name for itself.)\nOf course, I-95 didn’t used to be there, and previously, it had a Customs & Border Patrol location of its own, according to U.S. Ends.\nSo, why does this highway, in a largely rural area of the country with few population centers, appeal to me so much? I think it’s because I remember crossing the Mackinac Bridge as a child, reading atlases, and finding the idea that a highway just randomly stopped and then started back up again 700 miles away to be fascinating. If you wanted to connect the two halves of U.S. 2, you could always flow up I-75, make your way to the Trans-Canada Highway, and take that most of the way there. It’s a 12-hour drive, though. You might be better off flying.\nWhere did this road come from? Well, it has its roots in one of the first transcontinental highway systems in the country, the Theodore Roosevelt International Highway. First built in 1919, the goal was to have the road connect Portland, Maine, to Portland, Oregon. While the modern U.S. 2 hits neither city, stopping in Washington State and instead hitting Bangor, Maine, it did create the blueprint for the modern highway, which is the northernmost cross-country U.S. highway in the United States. (Even if it does presume that you’re going to go into Canada for a solid third of the drive.)\nAdmit it, you were not expecting an obelisk at this point in the piece. (Wikimedia Commons)\nWhile no longer named for him, Roosevelt’s memory and legacy loom large over this road. When it was completed in 1931, a large obelisk was built for him in Montana, at the Marias Pass. In a way, it’s the road’s spiritual terminus, if not its literal one.\nIf we think of termini as vertical, I guess it’s the highway’s tallest point, technically.\n\nLook, not every road is going to have a terminus worthy of Boyz II Men—maybe not even a six-lane freeway.\n\nAfter all, when we’ve come to the end of the road, you as a driver or passenger are definitely ready to let go. It’s the highway’s final destination, not yours, most likely.\nIn this context, U.S. Route 2 stands out, because while it is a road whose final moments are fairly uneventful, it is a road that is likely to start you on a bigger journey. Maybe you’re heading to the south, planning on hitting one of the many major interstates that pass through.\nBut if you head to the north, you get a chance to hit another country entirely. If you have your passport, Canada beckons.\nOn the other hand, a highway of a certain length represents an impressive amount of collective work. Even if it isn’t your destination, it seems like it deserves more than a sign, a reflection that the journey—the one that cut through all those forests, the one that required all that planning and labor—was worth it.\nDo we need to go to random termini on February 23rd and celebrate what these highways gave us by drinking wine and slaughtering a lamb? Maybe not. But perhaps we could try a little bit harder than quietly looping back as if the terminus didn’t even happen.\n--\nFind this one an interesting read? Share it with a pal! And if there’s a major-highway terminus near you, find a way to celebrate it. (Stay safe, tho.)\nAnd be sure to check out the Tedium Shopping Network. You might find something cool there.",
+      "id": "b197700303c4284ccf640320aec7274cefe552d41618667c25d0e974af13bde5",
+      "ref_id": "4",
+      "recommendationScore": 25,
+      "popularityScore": 35,
+      "priority": "low",
+      "comment": "一篇关于道路终点的趣味性文章，与科技博客的核心主题不符。",
+      "reason": "内容属于历史、城市规划或人文地理范畴，与AI、编程工具等科技主题无关。",
+      "tags": [
+        "人文",
+        "历史",
+        "城市规划"
+      ]
+    },
+    {
+      "title": "Fake food delivery site for the dopamine",
+      "link": "https://old.reddit.com/r/BingeEatingDisorder/comments/1uzr3ui/fake_food_delivery_site_for_the_dopamine/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-18T16:08:38.000Z",
+      "summary": "Article URL: https://old.reddit.com/r/BingeEatingDisorder/comments/1uzr3ui/fake_food_delivery_site_for_the_dopamine/\nComments URL: https://news.ycombinator.com/item?id=48959355\nPoints: 14\n# Comments: 3",
+      "id": "a2a94c79de237c84f526ab900ce7f653c237e6c0aa19d27c5a6d53979a46429b",
+      "ref_id": "3",
+      "recommendationScore": 20,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "讨论利用虚拟送餐网站满足心理需求的非技术性话题。",
+      "reason": "主题偏向心理健康，缺乏技术深度和实用性，与科技博客主题偏差较大。",
+      "tags": [
+        "Psychology",
+        "Mental Health",
+        "UX Concept"
+      ]
+    },
+    {
+      "title": "Reading List 07/18/26",
+      "link": "https://www.construction-physics.com/p/reading-list-071826",
+      "source": "construction-physics.com",
+      "publishedAt": "2026-07-18T12:01:57.000Z",
+      "summary": "A setback for California Forever, a $500 million artillery shell plant not producing any shells, the difficulty of recycling EV batteries, manufacturing wire harnesses, and more.",
+      "id": "3a2d072bb61c4d9511c91d906b63ba5a90c6ca3eef86d3ef060fbd1b1ecccc74",
+      "ref_id": "3",
+      "recommendationScore": 20,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "仅是阅读清单的摘要，内容过于简短且缺乏深度，信息价值低。",
+      "reason": "不提供任何实质性内容或分析，难以作为一篇独立的科技博客文章进行评估，主题模糊。",
+      "tags": [
+        "阅读清单",
+        "新闻摘要"
+      ]
+    },
+    {
+      "title": "Young adults are poor despite every metric which suggests otherwise",
+      "link": "https://xcancel.com/i/article/2077113148524417439",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-18T16:20:35.000Z",
+      "summary": "Article URL: https://xcancel.com/i/article/2077113148524417439\nComments URL: https://news.ycombinator.com/item?id=48959473\nPoints: 11\n# Comments: 12",
+      "id": "44eac32597e135e81f0b07f429d3561c9115d0329776a9205dcb0a0bf5528100",
+      "ref_id": "1",
+      "recommendationScore": 15,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "探讨青年贫困的社会经济议题，与科技主题无关。",
+      "reason": "内容不属于科技范畴，对科技博客读者实用性低，偏离主题重心。",
+      "tags": [
+        "Economics",
+        "Social Issues",
+        "Youth",
+        "Finance"
+      ]
+    },
+    {
+      "title": "EU ban on destruction of unsold clothes and shoes enters into application",
+      "link": "https://environment.ec.europa.eu/news/ban-destruction-unsold-clothes-and-shoes-enters-application-2026-07-17_en",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-18T14:04:42.000Z",
+      "summary": "Article URL: https://environment.ec.europa.eu/news/ban-destruction-unsold-clothes-and-shoes-enters-application-2026-07-17_en\nComments URL: https://news.ycombinator.com/item?id=48958269\nPoints: 125\n# Comments: 98",
+      "id": "c8f644df980cff04ad30e273bc03700a5bc9530011da8350839bad35804d5e17",
+      "ref_id": "1",
+      "recommendationScore": 10,
+      "popularityScore": 43,
+      "priority": "low",
+      "comment": "欧盟环保法规，虽有社会意义但与科技博客关联度低。",
+      "reason": "文章涉及欧盟政策和环保，并非科技博客聚焦的主题，对目标读者群体的技术实用性有限。",
+      "tags": [
+        "政策",
+        "环保",
+        "欧盟",
+        "非核心科技"
+      ]
+    },
+    {
+      "title": "Claude make Fable 5 permanent",
+      "link": "https://simonwillison.net/2026/Jul/18/claude-make-fable-5-permanent/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-07-18T06:00:13.000Z",
+      "summary": "",
+      "id": "efd351343b074a48de2727dc588a22081e9d02d20ef3b179e05a8f00c4128cfb",
+      "ref_id": "0",
+      "recommendationScore": 10,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "内容缺失，无法进行有效评估，标题含糊不清。",
+      "reason": "文章缺乏具体内容，无法判断其技术深度、新颖性或实用性，因此推荐度极低。",
+      "tags": [
+        "未知"
+      ]
+    },
+    {
+      "title": "nascheme/quixote",
+      "link": "https://simonwillison.net/2026/Jul/18/quixote/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-07-18T05:27:49.000Z",
+      "summary": "",
+      "id": "8d4229547b886f245b6c6ac806c6ef462ced65d84dc958d69ea5475b501680f3",
+      "ref_id": "1",
+      "recommendationScore": 10,
+      "popularityScore": 15,
+      "priority": "low",
+      "comment": "内容缺失，无法进行有效评估，标题可能指向编程项目。",
+      "reason": "文章缺乏具体内容，无法判断其技术深度、新颖性或实用性，因此推荐度极低。",
+      "tags": [
+        "未知"
+      ]
+    },
+    {
+      "title": "British runner Josh Kerr breaks world record for mile which stood for 27 years",
+      "link": "https://news.sky.com/story/british-runner-josh-kerr-breaks-world-record-for-mile-which-had-stood-for-27-years-13564688",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-18T15:08:32.000Z",
+      "summary": "Article URL: https://news.sky.com/story/british-runner-josh-kerr-breaks-world-record-for-mile-which-had-stood-for-27-years-13564688\nComments URL: https://news.ycombinator.com/item?id=48958814\nPoints: 37\n# Comments: 26",
+      "id": "db389a4182a7454d0a7f22271cc4b2156270a86db7e688aa0f2c9eb6f5b829d4",
+      "ref_id": "0",
+      "recommendationScore": 5,
+      "popularityScore": 12,
+      "priority": "low",
+      "comment": "完全无关科技主题的体育新闻，不适合本博客。",
+      "reason": "文章内容为体育新闻，与科技博客关注的AI、编程等核心主题完全不符，缺乏技术深度和实用性。",
+      "tags": [
+        "体育",
+        "新闻",
+        "非科技"
+      ]
+    },
+    {
+      "title": "DrDroid (YC W23) Is Hiring",
+      "link": "https://www.ycombinator.com/companies/drdroid/jobs/w45QcNV-product-engineer-assignment-mandatory",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-18T01:01:08.000Z",
+      "summary": "Article URL: https://www.ycombinator.com/companies/drdroid/jobs/w45QcNV-product-engineer-assignment-mandatory\nComments URL: https://news.ycombinator.com/item?id=48954074\nPoints: 0\n# Comments: 0",
+      "id": "1eda1d7097540d14674f0c426c05efa31b0c1c2e333a54f2c510eaab6341aa33",
+      "ref_id": "4",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "这是一则招聘启事，而非可供评估的技术文章。",
+      "reason": "不符合技术博客文章的评估范围，因此不进行内容层面的评估。",
+      "tags": [
+        "招聘",
+        "职位"
+      ]
+    }
+  ]
+}
