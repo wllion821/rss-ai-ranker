@@ -1,0 +1,643 @@
+{
+  "dailySummary": "欧盟DMA指令强制谷歌开放Android AI互操作性及搜索数据，将重塑移动生态。AI正变革软件开发与分发模式，MUD实验揭示LLM裁判可靠性挑战。",
+  "articles": [
+    {
+      "title": "Can a MUD evaluate LLMs? A $99 proof of concept",
+      "link": "https://cruciblebench.ai/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-22T15:39:01.000Z",
+      "summary": "I'm the author of a paper my friends and I wrote after we were curious if a MUD, text games originating in the 1970s, could be used to evaluate LLMs. We've spent the last several months on nights and weekends running this experiment and writing the paper on just our personal computers with about $99 in API credits.\nOur experiment did have an interesting leaderboard but even more surprising was the measurements of each LLM. We scored each on four behavioral dimensions, two of which lean heavily on an LLM classifier. When we removed those two, one of the frontier models fell six positions. When we then checked the classifier against a second judge, the per-model agreement between them ranged from 85% to 22%. The aggregate kappa (0.04 on probe detection) indicated the instrument was noisy without saying which models the noise was hitting. The most affected model shared a model family with the classifier. This isn't proof of bias, just one observation we recorded.\nWe realize LLM judges can be unreliable, and while it wasn't our original intent to test this, it ended up being the most interesting finding. The divergence between the two judges is the finding we think generalizes to other judge-based benchmarks.\nWe emphasize this is just a proof of concept and not a validated benchmark. We prepared a thorough limitations section in the paper, including just 50 runs per model, overlapping CIs among the top models, no human raters, a tiny environment, etc.\nEverything we did is publicly available, the paper and data are CC BY 4.0, while the code is MIT. The paper, transcripts, code, and complete API billing export  can be found at https://doi.org/10.5281/zenodo.21386663\nIf you find issues, please let us know, that's why we're sharing this. We're currently designing Phase 2 and want it to be as robust as possible. We're looking at human baselines, multiple judges, more objectives, a larger environment, etc.\nComments URL: https://news.ycombinator.com/item?id=49008538\nPoints: 19\n# Comments: 0",
+      "id": "615e4b1c10d23f1ce2c528f586922f754967219e263e92ab8743f717afbe4292",
+      "ref_id": "2",
+      "recommendationScore": 95,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "这项研究创新性地使用MUD游戏来评估LLM，并揭示了现有评估方法的局限性和潜在偏见。",
+      "reason": "该文章深度聚焦AI领域，新颖性极高，提供了关于LLM评估的重要见解，是AI主题的典范内容，具有高技术深度和信息密度。",
+      "tags": [
+        "AI",
+        "LLM评估",
+        "研究",
+        "MUD",
+        "偏见"
+      ]
+    },
+    {
+      "title": "Show HN: Bento - An entire PowerPoint in one HTML file (edit+view+data+collab)",
+      "link": "https://bento.page/slides/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-22T15:19:23.000Z",
+      "summary": "Over the past few months, our team has been building more and more slidedecks using web frontend technologies with coding harnesses like Claude Code, but a common complaint is to make even small edits we need to edit the code either manually or via the harness.\nTo avoid this loop, I ended up creating Bento, a single HTML file with everything you need in a slide tool including animations and shared editing. There's no install or cloud login, everything works offline. The default deck is around 560 KB and it doesn't need to fetch anything once you got it.\nOpen it in a browser and then you can edit, present, print and save. Share it via email or via Airdrop and all they need is a browser to edit, present and also do live collab on the slides. Drop it in to Claude or ChatGPT to transform existing pptx files into Bento slides. There is no cloud involved, only an encrypted blind relay to allow for shared editing. The relay doesn't see any of the data.\nCheck it out at https://bento.page/slides/ which takes you straight to the editor.\nGo to https://bento.page/guestbook/ to try out the live guestbook to experience share editing / collab.\nThere is also a gallery with some sample decks on the website - https://bento.page/\nAll the code is MIT licensed and you can find it here - https://github.com/nyblnet/bento . I used reveal.js with several other libraries (including some homegrown ones), and Claude Code.\nComments URL: https://news.ycombinator.com/item?id=49008211\nPoints: 210\n# Comments: 48",
+      "id": "f06e6fb7a7b10191141fd433705462d56b6211c4a9f25154a663da1748ab7798",
+      "ref_id": "2",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "一个革命性的演示文稿工具，将所有功能集成到单个HTML文件中，支持离线、协作和AI转换。",
+      "reason": "其高度创新的技术实现、极强的实用性以及与编程工具和产品设计主题的紧密关联，使其成为一个极具价值的项目。",
+      "tags": [
+        "Web Development",
+        "Productivity",
+        "Presentation Tool",
+        "Offline First",
+        "Collaboration",
+        "Independent Project",
+        "AI Tools"
+      ]
+    },
+    {
+      "title": "★ European Commission: ‘Guidance to Google for AI Interoperability on Android & Sharing of Google Search’",
+      "link": "https://daringfireball.net/2026/07/ec_google_guidance_android_ai_and_search_sharing",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-21T22:49:03.000Z",
+      "summary": "The European Commission, last week:\nToday, the European Commission has issued two sets of binding\nspecification measures to Google under the Digital Markets Act.\nThe aim of the first specification measures is to ensure that\ncompetitors’ Artificial Intelligence (AI) services can compete\nwith Google’s own AI services, such as Gemini, by having equal\naccess to features on Google’s Android devices.\nThe aim of the second specification measures is to rebalance the\nplaying field by giving third-party search engines access to\nsearch data that only Google Search can collect at scale.\nThey provide separate “Q&A” overviews of the guidance for Android AI interoperability and web search sharing, and the full guidance documents are PDFs (Case DMA.100220 for Android AI, Case DMA.100209 for web search). I suggest reading the two Q&A overviews, unless you’re having trouble falling asleep at night, in which case you’ll love the full PDF decisions.\nBoth decisions are interesting. With search, Google is required to share with competitors — search engines and AI chatbots alike — a massive amount of user data from Google Search user interactions. What terms people search for, what they click on in results, what languages and devices they use. It’s all ostensibly anonymized but that’s tricky when it comes to search terms. A lot of the terms people type into web search fields are to some degree personally identifying. The EC seems to be saying it’s Google’s problem to filter out things like passwords and usernames and omit them from the shared datasets. Google can charge money for this access, but only under “fair, reasonable, and non-discriminatory (FRAND)” prices, based on a Commission-defined methodology.\nMore interesting to me, however, is the guidance pertaining to on-device AI on Android devices. What the EC is dictating to Google is just breathtaking in scope. The EC is demanding that Google create APIs that allow third-party AI assistants to do everything Google Gemini does now, including:\nControl hardware buttons (to invoke the assistant).\nCapture anything on screen, from any app.\nSeemingly unfettered access to microphones and cameras and other sensors on the device.\nUnfettered background operation. Third-party AI assistants must be permitted to execute in the background whenever they want, for as long as they want.\nExecute their own audio models on the digital signal processor, so they can listen at all times for their own custom “Hey Dingus” wake phrases/hot words.\nGoogle must allow concurrent access to always-on hot word detection. So if you have Claude and ChatGPT and Grok and Meta AI installed, all of them — in addition to Gemini — must be permitted to have always-on audio detection concurrently. Google is permitted to do some vetting here, but this seems like madness.\nThird-party models get access to Google’s on-device local models.\nAlso, in my reading, the EC is demanding that Google make available to third-party AI assistants all information in Google’s own apps (Gmail, Google Calendar, Google Docs, Google Maps, etc.) that Gemini has access to. There is no opt-out for Google regarding data from their own apps. Nor, I think, does this guidance allow third-party apps from other developers to only support specific system-level AI models. Like, let’s say you’re Slack, and you use the APIs to make the content from within Slack available to Gemini on the device. These guidelines don’t permit Google to allow Slack to say that they trust Gemini but only Gemini. If a third-party app like Slack supports making its data available to any system-level AI provider, it must make its data available to every system-level AI provider.\nThere’s a lot more. Basically, though, the EC is demanding that third-party AI assistants be enabled to become part of the system software, not just apps. I’m sure some people think this is a great idea. It’s the user’s device, they should be allowed to make ChatGPT or Claude or Meta AI part of their OS if they want. It’s up to them. Put users in control.\nThis is how PCs have traditionally worked, but many normal people’s PCs are a mess of third-party software running in the background. That includes the Mac. If you ask a normal person “What third-party software runs in the background on your Mac or PC?” they would have no idea. It’s all just magic to them. If Google supports this guidance, it could turn Android phones in the EU into PCs. Honestly, some of the stuff the EC is requiring is lower-level than what MacOS and Windows allow third-party software to do.\nWhat the EC’s “guidance” describes in this document is an entirely different operating system than the Android that Google has designed. The European Commission obviously thinks it is their place to design operating systems. Maybe you do too. Google obviously disagrees, and so does Apple. And so should most people who have any idea how these devices work. This is a recipe for disaster, if Google were to enact it and third-party AI assistants took advantage of it.\nThat second “if” is a big one. One possible scenario that I consider quite likely is that Google could spend years of engineering time and human resources building out APIs to enable all of this, in the safest and most private ways possible, and no major AI assistant adopts it. That’s the way it’s turned out with a whole slew of DMA compliance for Apple and Google. Apple built an entire complex set of APIs to enable third-party web browser rendering engines, exclusively for compliance with the DMA, and there exist no third-party web browser rendering engines for iOS. Not one. Because while the EU is a big market, it’s not big enough to justify building a custom web browser just for the EU alone.\nWays I can see this playing out, in order of likelihood:\n(A) Google enacts all of this and no major AI assistants support it because it’s only for Android, only in the EU. And it’s not like ChatGPT and Claude are seeing a lack of usage as things stand now. In this scenario Google just wastes massive time and engineering talent building APIs that never get used, and Android users in the EU get hassled with additional annoying choice and permission screens just to use the Gemini features that are built into Android.\n(B) Google enacts all of this and major AI assistants do support it. Unintended results include massive privacy violations where third-party assistants exfiltrate on-device data to the cloud, Meta uses on-device third-party data for the targeting of ads, and users who take advantage of these third-party assistants see significant battery life drain as third-party assistants run without limits in the background and run expensive inference locally to save on their own server costs.\n(C) Google enacts all of this, major AI assistants do support it, and there are no privacy scandals, nor any issues with battery life, because each of the companies that makes these assistants develops them with respect for user privacy and for device resources like CPU and memory consumption. \n(D) Google pulls system-integrated Gemini from Android in the EU, or severely restricts its capabilities. Rather than elevate third-party assistants from apps to system software, demote Gemini to the privileges of a mere app and leave Android users in the EU without a system-integrated AI assistant.\nUnder all scenarios, future feature updates to system-level AI in Android will appear late or never in the EU. No future new features can debut in the EU at the same time as the rest of the world because for DMA compliance, Google will need to add support for third-party assistants to do the same things. And they’re not going to hold new features for the rest of the world waiting for that.\nI’m not even sure (D) is permitted under this Commission guidance, given that Google started shipping Gemini on Android last year. The entire guidance document is written under the presumption that Google will comply by building the APIs that the guidance demands, not by achieving parity by removing Gemini system integration features. It would be awkward and unpopular for Google to ship updates to Android that remove core AI features, but that might be more palatable than the alternative.1 Note that with iOS, to my recollection, Apple hasn’t pulled any existing features from the EU. They’ve only withheld or delayed new features. Google’s on-device Gemini horse is already out of the barn.\nLastly, although this guidance document pertains to Android, not iOS, I see no reason to think the European Commission wouldn’t demand all or most of the same things from Apple. They haven’t given Apple any guidance yet, because it’s European Commission policy to give guidance only after a DMA-designator gatekeeper ships something that is then ruled non-compliant. But it’s hard to imagine Apple accepting most of these terms. Unfettered background processing and access to the microphone, cameras, and sensors? Third-party audio models running on the hardware DSP listening for wake words? Granting third-party assistants unsupervised access to all user data from apps published using App Intents?\nApple unfortunately hasn’t shared any technical details describing its proposal for a “Trusted System Agent” that it shared with the EC last year. But whatever Apple’s vision for the Trusted System Agent is, I don’t see how the EC would deem it compliant with the DMA if they want from Apple anything close to what they are now demanding from Google. There are no checks and balances or oversight that Google is permitted to apply to third-party assistants in this guidance. If Gemini can do something, third-party agents must be able to as well. Because Gemini gets to run in the background as much as Google sees fit, third-party assistants must be permitted to run in the background as much as they see fit. And if those third-party assistant developers — OpenAI, Anthropic, xAI, and Meta — have different opinions than Google on how much CPU usage is appropriate in the background, how much RAM and storage is appropriate to consume, or how respectfully to treat users’ on-device data, well that’s just tough noogies. If the user OK’s it, then it’s OK.\nA month ago, after WWDC, when this guidance pertaining to Android AI was rumored to be forthcoming, I wrote:\nGoogle is learning the lesson Apple learned the hard way with all\nthe existing features of iOS that were deemed noncompliant with\nthe DMA when it went into effect. The “ship it first and ask\nforgiveness / hope it’s deemed compliant” strategy is not a good\none in the EU.\nI genuinely wonder what the European Commission thinks the purpose of Android is. Google created Android for the benefit of its own services. Google was worried about Microsoft, not Apple, at the time, but they wanted to ensure their own services were available on a major mobile platform. I’m really not seeing how it’s more attractive to Google to comply with this guidance than to just pull system-level Gemini in the EU. Either they waste a small fortune building APIs no one will use, or, they spend that small fortune buildings APIs for the benefit of their biggest competitors. I get it that that’s the intended price to pay for being a designated DMA gatekeeper. But what’s the motivation for Google to do this rather than just walk away from system-integrated AI on Android in the EU? It certainly doesn’t look like the competing platform, iOS, is going to offer it in the EU anytime soon either.\nIf you are handed a mandate that everyone must be able to run at the same speed, and you can’t figure out how to make slow people faster, you can comply by forcing the fast to wear weighted boots. This is where utopian egalitarian initiatives often lead. ↩︎",
+      "id": "5e7a97d7514c2d04c6b1a50a5299bf2ad264ae1025429ec66fce42ccbd03448c",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 88,
+      "priority": "high",
+      "comment": "欧洲委员会针对Google在Android AI互操作性和搜索数据共享方面发布了重要指导意见。",
+      "reason": "该文深入探讨了AI监管和科技巨头竞争的政策方向，对AI行业发展和市场格局有重大影响，且信息密度高。",
+      "tags": [
+        "AI",
+        "政策法规",
+        "Google",
+        "Android",
+        "欧盟",
+        "市场竞争"
+      ]
+    },
+    {
+      "title": "Hologram works. Elixir runs in the browser",
+      "link": "https://hologram.page/blog/backing-hologram",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-22T14:42:49.000Z",
+      "summary": "Article URL: https://hologram.page/blog/backing-hologram\nComments URL: https://news.ycombinator.com/item?id=49007620\nPoints: 38\n# Comments: 5",
+      "id": "bd71f9b989e9f4d70de7f2d33687f7a5b796f8d48658af6da2c9521c10cc6f59",
+      "ref_id": "4",
+      "recommendationScore": 90,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "Elixir语言借助Hologram框架在浏览器中运行，实现WebAssembly的突破性应用。",
+      "reason": "该技术具有高新颖性和技术深度，极大地扩展了Elixir的应用场景，对编程工具和前端技术发展有重要意义。",
+      "tags": [
+        "Elixir",
+        "WebAssembly",
+        "编程工具",
+        "浏览器技术",
+        "Hologram"
+      ]
+    },
+    {
+      "title": "I Built a Private Genomics Study with Stoffel MPC",
+      "link": "https://vishakh.blog/2026/07/21/i-built-a-private-genomics-study-with-stoffel-mpc/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-22T14:35:55.000Z",
+      "summary": "Article URL: https://vishakh.blog/2026/07/21/i-built-a-private-genomics-study-with-stoffel-mpc/\nComments URL: https://news.ycombinator.com/item?id=49007546\nPoints: 17\n# Comments: 20",
+      "id": "6671aa31d65f6db99fd507eab58d2ebd9573e6e4ea2c3a6d1c80019f80d56400",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 17,
+      "priority": "high",
+      "comment": "详细介绍了利用多方安全计算（MPC）技术构建私有基因组学研究的实践。",
+      "reason": "技术深度高，结合了前沿的隐私计算与生物信息学，实用性强，是编程工具和数据安全领域的优秀案例。",
+      "tags": [
+        "多方计算",
+        "MPC",
+        "基因组学",
+        "隐私计算",
+        "编程工具",
+        "数据安全"
+      ]
+    },
+    {
+      "title": "Open Sauce and GPS time were my summer AI Antiseptics",
+      "link": "https://www.jeffgeerling.com/blog/2026/open-sauce-gps-time-badge/",
+      "source": "jeffgeerling.com",
+      "publishedAt": "2026-07-22T14:00:00.000Z",
+      "summary": "In the midst of our AI slop revolution, traveling to the West coast for Open Sauce this past weekend was the perfect antiseptic for rising costs, summer heat, and online divisiveness.\nIt's ironic, then, that I used Claude to vibe code my Tufty GPS Time Badge.\n\n\n\nPartly due to time constraints, and partly because I wanted to see if I could complete a personal project end-to-end, without editing a line of code, I throw my requirements at Claude and ultimately came up with this 2141-line MicroPython app for Pimoroni's Badgeware ecosystem.",
+      "id": "df0e39d78e6526da0aeb27a63966cf1f7f8229af3700dbcca9217a41ed41a4b7",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "作者分享了利用AI（Claude）完成一个完整硬件项目代码的实战经验，极具启发性。",
+      "reason": "文章结合了最高优先级的AI主题与实际编程和独立开发，为AI辅助编程提供了宝贵的实践案例。",
+      "tags": [
+        "AI",
+        "编程",
+        "独立开发",
+        "硬件项目",
+        "MicroPython",
+        "Claude"
+      ]
+    },
+    {
+      "title": "Launch HN: Unlayer (YC W22) – Add email and document builders to your app",
+      "link": "https://unlayer.com",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-22T16:02:03.000Z",
+      "summary": "Hi HN, We’re Adeel and Umair, co-founders of Unlayer (https://unlayer.com/). We let you add content creation to your applications without having to build an entire editor, renderer, template, and export stack yourself. Unlayer lets you create emails, web pages, and documents inside your app, in three different ways: in code, visually, or with AI.\nHere’s a demo: https://www.youtube.com/watch?v=0HsDtNkdMpM.\nWe started with an embeddable email editor because a lot of products eventually need one: CRMs, marketing tools, customer engagement platforms, marketplaces, internal tools, and vertical SaaS apps all run into this at some point. At first, it sounds like a small feature: \"just\" add a drag and drop editor. In practice, it turns into a big pain. You end up dealing with email rendering, Outlook quirks, responsive layouts, templates, merge tags, image uploads, exports, permissions, localization, versioning, and a long tail of edge cases that have nothing to do with your core product\nOver time, we saw the same problem beyond email. Apps also need landing pages, invoices, proposals, reports, contracts, and PDFs. Some of this content is best created visually by end users. Some of it is better generated in code by developers. Increasingly, some of it is also generated by AI agents. Many teams eventually need all three workflows. That is the direction we have been working toward with Unlayer.\nThere are three parts we are showing today:\n(1) Unlayer Elements. This is our open-source React component library for creating emails, pages, and documents in code (repo: https://github.com/unlayer/elements, more at https://unlayer.com/elements). Instead of hand-writing raw HTML templates, developers can compose content using React components, reuse sections like headers, footers, CTAs, invoice rows, and branded blocks, keep templates in Git, and render them into production output.\nOne newer use case we are seeing is AI-assisted content creation. If an AI agent is asked to create an email, invoice, report, or landing page, the output is usually raw HTML or markdown that becomes hard to maintain. With Elements, the agent can generate structured React components instead. A developer can review the result, refactor it, keep it in Git, and still pass the design into a visual builder later if someone needs to edit it.\n(2) Visual Builder. This is the drag and drop editor (repo: https://github.com/unlayer/react-email-editor, more at https://unlayer.com/email-builder) that can be embedded inside an app so non-technical users can create or edit content. In the demo, we show the email builder and the AI assistant inside the builder. The goal is not to replace the developer workflow, but to connect it with a visual workflow when marketers, admins, customers, or internal teams need to make changes themselves.\n(3) Document Builder. This is for structured documents such as proposals, reports, invoices, contracts, and PDFs. We have seen a lot of teams build separate systems for email templates, web pages, and document generation, even though the underlying primitives are similar: layout, content blocks, variables, assets, preview, export, and permissions. More: https://unlayer.com/document-builder\nThe technical challenge is making these workflows share a common foundation. Developers should be able to build templates in code when that makes sense. End users should be able to edit visually when that makes sense. AI agents should be able to generate structured content instead of unmaintainable blobs. The final output should still be usable by the host application.\nWe make money by selling hosted builder, template, export, and platform features to companies embedding this into their products. Elements is open source. The commercial product is the broader hosted platform around builders, collaboration, storage, exports, and production use cases.\nWe were part of W22, so this is a late Launch HN. At the time, Unlayer was an embeddable email editor, and we did not think we had the right broader story for HN yet. Since then, the product has expanded into a more general content creation layer for products, including emails, pages, documents, APIs, open-source developer projects, and AI-assisted workflows. That felt like a better moment to bring it to HN and ask for feedback.\nWe'd really appreciate thoughts from HN. This is one of those areas where a lot of people have strong opinions because they’ve been burned by editors, email HTML, document editing, or “simple” content workflows before. We'd love to hear what resonates, what sounds wrong, and what you think we should be thinking harder about!\nComments URL: https://news.ycombinator.com/item?id=49008901\nPoints: 10\n# Comments: 7",
+      "id": "1153d0051c6139228eae72fa231c44ba0b365b087f2459042666b18fe323c6fa",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "Unlayer提供嵌入式邮件和文档构建器，并集成了AI功能，显著简化了内容创建的复杂性。",
+      "reason": "解决了多个应用场景中常见的编辑器构建痛点，融入了AI能力，完美契合了编程工具和AI主题的关注点，实用性极高。",
+      "tags": [
+        "编程工具",
+        "SaaS",
+        "AI",
+        "产品设计",
+        "前端开发",
+        "内容创建"
+      ]
+    },
+    {
+      "title": "\nNot just development, distribution of software may change as well\n",
+      "link": "\nhttp://antirez.com/news/170\n",
+      "source": "antirez.com",
+      "publishedAt": "2026-07-22T14:52:39.000Z",
+      "summary": "Even if you are as averse to semver as I used to be in the course of my programming activity, you can still think of open source software distribution as something that used to follow a fixed number of steps. There is a branch where developments happen, and this branch oftentimes happens to be not really ready for reliable work. Then you freeze the developments for a certain amount of time (even if, in the meantime, the work can continue on some new unstable branch), fix bugs, ask people to test it. At some point the number of bug reports starts to drop, your team and your users start to believe there are no longer obvious critical flaws that are easy to discover in the next few weeks: then you call the branch 2.4 or whatever, and that's it.\n\nHowever now, with AI coding, it's not just development that has changed, but also the act itself of using software is affected: it is not just you that can ask an AI to do certain changes to the software, but also the recipient of the software itself. This is obvious in the domains where a piece of software has its main user base among programmers, but this is also true in general, as more and more technologically inclined users have AI access and coding agents.\n\nBecause of this change, the idea of just having a stable branch with everything polished, and an unstable branch where everything is a work in progress, may no longer be the right way to do things. A code repository can also be a finished product, but could be even more useful if it is a template for how to do things around a given problem. Maybe the user will modify the code in order to specialize it for a specific set of requirements, hardware, specific problems to solve. Also, what is too unstable or unproven for the general public may be the right thing for another set of users.\n\nTake the example of Redis. For weeks now I have been iterating on a PR that provides strong memory savings for sorted sets. This work, if accepted, will hit every user of Redis, from people that don't have any idea about how Redis works, to users that maybe even contributed code in the course of years. From use cases that are trivial to use cases where a 50% memory saving on sorted sets could mean cutting a big slice of the cloud bill every year. For this last kind of user, having the final product (after all the testing and changes of design I'm doing to refine something that \"just works\", with the risk that maybe it will not even enter the code base) may be less interesting than having a 95%-ready branch since day zero. It is code they can test, adapt, iterate on, even specialize more for the problem at hand.\n\nMaybe DwarfStar is an even more telling example of how code repositories should be good examples more than finished products covering every piece of the features matrix. With local inference you have, in the specific case of DwarfStar, many kinds of GPUs, models, server mode, agent mode, CLI, SSD streaming, tensor and pipeline distributed execution. To test everything everywhere is complicated. Yet, once you have two solid examples of tensor parallel graph execution, a strong coding agent can infer how to implement the same thing for other backend/model pairs. Similarly, once you have an engine that supports two models well enough, a third can be implemented in an almost automatic way, using the existing code base as a guardrail for coding agents in order to guide the implementation.\n\nThis does not mean that a project like DwarfStar should not work out of the box, but that it could focus on supporting very well a set of features that can be extrapolated to a larger amount of possible situations that the users can cover themselves. It also means another thing: that main and unstable are no longer enough. Many experimental branches could be an integral part of the project. For instance, yesterday the Laguna S.1 model was released. It looks interesting on paper, however: will it really be good enough? Will the new DeepSeek v4 Flash checkpoints make it not really relevant for DwarfStar? It is too early to say. However, to collectively form an idea, publishing a branch with this model implementation is a good middle ground: people will try it, will refine it with their coding agents, and the community can collectively form an idea about how merge-worthy it is. Moreover, today I noticed how, thanks to the rails formed by the corpus of the code inside DwarfStar, the implementation was written in about two hours by GPT 5.6 Sol automatically. Implementing DS4 and GLM5.2 cost me a lot of steering, reading the model card and the details of the implementation of the attention of those models. Now it just worked. GPT 5.6 is more powerful but it also found a lot of good examples inside the existing source code.\n\nSoftware today is more malleable than ever. In some way this means that it can be released in a more fluid way. Also, it means that the documentation itself should not be just good for humans, but also for coding agents to understand how to change the system. How this will evolve exactly, and what the right point of balance between the different dimensions of stability, usability, and features will be, is not clear to me, but I believe we developers need to keep our eyes open to see where all this is headed.\nComments",
+      "id": "464364d7f65e15a5cb42bc6c1b6dc04dd15256c023f56ec2c359947ae99c6ee1",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "深刻探讨AI如何重塑软件开发及分发模式，视角独特且具前瞻性。",
+      "reason": "文章聚焦AI对核心开发流程的颠覆性影响，提供了对未来软件生态的深刻洞察，符合博客高优先级主题。",
+      "tags": [
+        "AI",
+        "软件开发",
+        "未来趋势",
+        "编程工具",
+        "软件分发"
+      ]
+    },
+    {
+      "title": "Making",
+      "link": "https://beej.us/blog/data/ai-making/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-22T15:33:48.000Z",
+      "summary": "Article URL: https://beej.us/blog/data/ai-making/\nComments URL: https://news.ycombinator.com/item?id=49008440\nPoints: 72\n# Comments: 15",
+      "id": "4b363fbff104372c4c1282c03fc9d45a9f6d834b000ceebdcab0017a6350d9b4",
+      "ref_id": "4",
+      "recommendationScore": 80,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "一篇关于'AI Making'的文章，可能深入探讨了AI的创建过程、应用或相关理念。",
+      "reason": "尽管内容摘要较短，但标题和URL明确指向AI主题，并且在社区中获得了较高的关注度，符合本博客对AI内容的最高优先级。",
+      "tags": [
+        "AI",
+        "开发",
+        "机器学习",
+        "AI应用"
+      ]
+    },
+    {
+      "title": "Neo Radar: A browser-based orbital mechanics engine with 41k real asteroids",
+      "link": "https://neoradar.space",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-22T15:15:29.000Z",
+      "summary": "Article URL: https://neoradar.space\nComments URL: https://news.ycombinator.com/item?id=49008143\nPoints: 24\n# Comments: 5",
+      "id": "64935ae8e715d25268a09db8c2e22d51501562dbd74fb98f91fd4cbacac06e2e",
+      "ref_id": "3",
+      "recommendationScore": 80,
+      "popularityScore": 27,
+      "priority": "medium",
+      "comment": "一个在浏览器中实现的轨道力学引擎，精确模拟了41,000颗真实小行星。",
+      "reason": "展示了卓越的Web技术和物理模拟能力，对于对空间科学和高级Web开发感兴趣的读者具有吸引力。",
+      "tags": [
+        "Web Development",
+        "Simulation",
+        "Space",
+        "Physics Engine",
+        "Independent Project",
+        "Data Visualization"
+      ]
+    },
+    {
+      "title": "Ghost Cut – or why Cut and Paste is broken everywhere",
+      "link": "https://ishmael.textualize.io/blog/ghost-cut/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-22T14:43:28.000Z",
+      "summary": "Article URL: https://ishmael.textualize.io/blog/ghost-cut/\nComments URL: https://news.ycombinator.com/item?id=49007626\nPoints: 25\n# Comments: 15",
+      "id": "2c132a30f9135bdb482da09a3fe34d5264a42342c3da960d05b8929585322f7b",
+      "ref_id": "3",
+      "recommendationScore": 75,
+      "popularityScore": 55,
+      "priority": "medium",
+      "comment": "分析剪切粘贴功能在不同应用中表现不一致，甚至“失效”的深层原因。",
+      "reason": "针对日常普遍存在的UI/UX问题提供了独到且深入的见解，对软件开发者和产品设计有启发意义。",
+      "tags": [
+        "UI/UX",
+        "软件设计",
+        "编程工具",
+        "用户体验"
+      ]
+    },
+    {
+      "title": "LG to Ban Residential Proxies from Smart TV Apps",
+      "link": "https://krebsonsecurity.com/2026/07/lg-to-ban-residential-proxies-from-smart-tv-apps/",
+      "source": "krebsonsecurity.com",
+      "publishedAt": "2026-07-22T01:10:38.000Z",
+      "summary": "The home appliance giant LG Electronics USA said this week it plans to suspend any apps built for its smart TVs that turn one's television into an always-on residential proxy node. The move comes less than a month after researchers found that more than 42 percent of games and other apps available for download on LG's webOS store allow unknown third-parties to route their Internet traffic through a user's TV.",
+      "id": "127a687d7f2f13aacbe447170477c85934516e7c6a8a11ad2467ee0bf30e5a11",
+      "ref_id": "3",
+      "recommendationScore": 75,
+      "popularityScore": 80,
+      "priority": "medium",
+      "comment": "揭示了智能电视应用被滥用为住宅代理的潜在风险，并提及LG的应对措施。",
+      "reason": "内容切中当前智能家居设备的隐私安全痛点，对广大智能电视用户具有直接的实用价值和警示意义。",
+      "tags": [
+        "智能电视",
+        "隐私安全",
+        "IoT",
+        "网络安全",
+        "LG",
+        "代理"
+      ]
+    },
+    {
+      "title": "Scattered thoughts on social geolocation",
+      "link": "https://shkspr.mobi/blog/2026/07/scattered-thoughts-on-social-geolocation/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-07-22T11:34:12.000Z",
+      "summary": "I want to be able to share my location with my friends on social media. Twitter (RIP) had a way to attach an optional location to a post. Facebook still lets me check in to venues. But neither ActivityPub (Mastodon) nor AT Protocol (BlueSky) allow me to do that.  I've been banging on about this for a while so was delighted to be invited to chat with the GeoSocial Task Force on their monthly call. …",
+      "id": "18e314366551ad0e9e7e803ebee5b62e3682646982fc062536d5098e6d929087",
+      "ref_id": "2",
+      "recommendationScore": 75,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "探讨了去中心化社交媒体中地理位置共享功能的缺失与需求，提供产品设计洞察。",
+      "reason": "文章关注去中心化社交媒体的用户体验和功能开发，对独立开发者和产品设计者具有实用参考价值。",
+      "tags": [
+        "社交媒体",
+        "去中心化",
+        "产品设计",
+        "用户体验",
+        "Web3"
+      ]
+    },
+    {
+      "title": "Perlin's Noise Algorithm",
+      "link": "https://blog.jaysmito.dev/blog/02-perlins-noise-algorithm/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-22T14:59:08.000Z",
+      "summary": "Article URL: https://blog.jaysmito.dev/blog/02-perlins-noise-algorithm/\nComments URL: https://news.ycombinator.com/item?id=49007863\nPoints: 17\n# Comments: 2",
+      "id": "075de4b2ff4349d819a95158be471d91662a8480c09fb411caf993d11ffbe52d",
+      "ref_id": "4",
+      "recommendationScore": 70,
+      "popularityScore": 17,
+      "priority": "medium",
+      "comment": "对计算机图形学中广泛应用的Perlin噪声算法进行了深入的技术剖析。",
+      "reason": "尽管算法本身不新颖，但它在图形和游戏开发中非常实用且重要，是程序员应掌握的基础知识。",
+      "tags": [
+        "Algorithm",
+        "Computer Graphics",
+        "Procedural Generation",
+        "Programming",
+        "Mathematics"
+      ]
+    },
+    {
+      "title": "The Pillars of an API Platform",
+      "link": "https://launchany.com/the-pillars-of-an-api-platform/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-22T14:57:37.000Z",
+      "summary": "Article URL: https://launchany.com/the-pillars-of-an-api-platform/\nComments URL: https://news.ycombinator.com/item?id=49007839\nPoints: 5\n# Comments: 0",
+      "id": "c02efbeb309ab4f7b45995b882dfad55fe38cd62b0a623f047a4eee5171ce055",
+      "ref_id": "0",
+      "recommendationScore": 70,
+      "popularityScore": 20,
+      "priority": "medium",
+      "comment": "深入探讨API平台构建的关键要素和最佳实践。",
+      "reason": "内容对软件架构师和开发者具有较高实用性，技术深度适中，是构建稳健API服务的基础。",
+      "tags": [
+        "API",
+        "平台架构",
+        "软件开发",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "Show HN: HN Hall of Fame – browse 3,100 legendary Hacker News links",
+      "link": "https://www.orangecrumbs.com/hall/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-22T15:30:36.000Z",
+      "summary": "Article URL: https://www.orangecrumbs.com/hall/\nComments URL: https://news.ycombinator.com/item?id=49008406\nPoints: 86\n# Comments: 20",
+      "id": "fa93a44bda5c7cdd6b002047a09b1f9a6822ed854d1ec528b68ddbf3b95c68e0",
+      "ref_id": "0",
+      "recommendationScore": 65,
+      "popularityScore": 100,
+      "priority": "medium",
+      "comment": "一个精心策划的Hacker News热门链接历史存档，方便用户回顾经典内容。",
+      "reason": "为Hacker News爱好者提供了一个探索历史精华的独特且便捷的工具，属于独立开发类别。",
+      "tags": [
+        "Hacker News",
+        "Curation",
+        "Web Tool",
+        "Independent Project"
+      ]
+    },
+    {
+      "title": "Airbus Full Scale Foldable Wing Extensions",
+      "link": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-launches-new-flight-test-programme-for-wing-of-tomorrow",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-22T14:57:24.000Z",
+      "summary": "Article URL: https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-launches-new-flight-test-programme-for-wing-of-tomorrow\nComments URL: https://news.ycombinator.com/item?id=49007831\nPoints: 36\n# Comments: 17",
+      "id": "44d6c17026d83d3c8f07511cbb634e0c0231d39b5e98b771bfaa9076517567f0",
+      "ref_id": "1",
+      "recommendationScore": 65,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "空客在航空工程领域推出的全尺寸可折叠机翼扩展技术。",
+      "reason": "展示了前沿的航空技术创新，但与AI、编程工具等核心科技博客主题关联度较低。",
+      "tags": [
+        "航空",
+        "工程",
+        "创新",
+        "物理技术"
+      ]
+    },
+    {
+      "title": "Most Americans say \"not in my backyard\" to AI data centers",
+      "link": "https://www.redfin.com/news/ai-data-centers-opposition-education-benefit/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-22T14:34:27.000Z",
+      "summary": "Article URL: https://www.redfin.com/news/ai-data-centers-opposition-education-benefit/\nComments URL: https://news.ycombinator.com/item?id=49007525\nPoints: 57\n# Comments: 96",
+      "id": "98827c5e66921cb1df2a9a36a923377c94444802c386d8c6fe755bb7bbaaa8fe",
+      "ref_id": "3",
+      "recommendationScore": 65,
+      "popularityScore": 57,
+      "priority": "medium",
+      "comment": "分析了AI数据中心建设面临的公众“邻避效应”及社会接受度问题。",
+      "reason": "虽涉及AI主题，但侧重社会经济层面而非技术细节，对本博客而言技术深度略有不足。",
+      "tags": [
+        "AI",
+        "数据中心",
+        "社会影响",
+        "公众舆论"
+      ]
+    },
+    {
+      "title": "The Download: NASA’s new space telescope and OpenAI’s autonomous hacker",
+      "link": "https://www.technologyreview.com/2026/07/22/1140717/the-download-nasa-space-telescope-openai-hugging-face-hack/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-07-22T12:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. Shape-shifting mirrors on NASA’s new space telescope could unveil Jupiters like our own When NASA’s Nancy Grace Roman Space Telescope launches, as early as the end of next month, it will…",
+      "id": "4c631b99af105336001164c45d9d698312e9ec739b15100f6357a1c07f156f74",
+      "ref_id": "0",
+      "recommendationScore": 65,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "这篇新闻摘要涵盖了太空探索和AI等多个科技前沿主题。",
+      "reason": "作为快速了解近期科技热点的有效途径，尤其是其中关于OpenAI AI的部分，具有广泛的吸引力。",
+      "tags": [
+        "AI",
+        "太空探索",
+        "科技新闻",
+        "OpenAI"
+      ]
+    },
+    {
+      "title": "Shape-shifting mirrors on NASA’s new space telescope could unveil Jupiters like our own",
+      "link": "https://www.technologyreview.com/2026/07/22/1140701/shape-shifting-mirrors-roman-space-telescope/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-07-22T09:00:00.000Z",
+      "summary": "When NASA’s Nancy Grace Roman Space Telescope launches, as early as the end of next month, it will attempt one of astronomy’s most precise disappearing acts to date. The telescope will carry the first space-bound “active” coronagraph, an instrument that effectively erases most of the light from a star during photography. It will allow astronomers…",
+      "id": "9fd8ef74af607a3f157cee492ae0517ded0db70c43105b1e84bfcafa09ad64f7",
+      "ref_id": "1",
+      "recommendationScore": 45,
+      "popularityScore": 55,
+      "priority": "low",
+      "comment": "详细介绍了NASA新型太空望远镜的尖端技术，特别是其变型反射镜的工作原理。",
+      "reason": "内容虽有技术深度和新颖性，但聚焦于小众的太空科学领域，与核心关注主题优先级不符。",
+      "tags": [
+        "太空探索",
+        "天文学",
+        "NASA",
+        "望远镜技术"
+      ]
+    },
+    {
+      "title": "A Zipper Patent Sat in a Garage for 40 Years. Now It's Real",
+      "link": "https://www.yankodesign.com/2026/05/31/a-zipper-patent-sat-in-a-garage-for-40-years-now-its-real/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-22T15:37:25.000Z",
+      "summary": "Article URL: https://www.yankodesign.com/2026/05/31/a-zipper-patent-sat-in-a-garage-for-40-years-now-its-real/\nComments URL: https://news.ycombinator.com/item?id=49008512\nPoints: 31\n# Comments: 13",
+      "id": "84b8e4cf53de25b1685bc2a5a0936d2c587b307cbb672d840eb4bef3d00f0327",
+      "ref_id": "3",
+      "recommendationScore": 40,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "一个关于创新性拉链专利的故事，从概念到实现的漫长旅程，属于物理产品设计领域。",
+      "reason": "虽然具有一定的创新性和故事性，但内容更侧重于物理产品设计和专利，与本科技博客主要关注的数字技术主题优先级较低。",
+      "tags": [
+        "产品设计",
+        "创新",
+        "专利",
+        "工业设计"
+      ]
+    },
+    {
+      "title": "Which streaming service was that on again",
+      "link": "https://www.timwehrle.de/blog/which-streaming-service-was-that-on-again/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-22T14:46:14.000Z",
+      "summary": "Article URL: https://www.timwehrle.de/blog/which-streaming-service-was-that-on-again/\nComments URL: https://news.ycombinator.com/item?id=49007671\nPoints: 12\n# Comments: 13",
+      "id": "f974ae937582af3dbaff747f85ef4b030af23b514be24170c575647c65b3ced6",
+      "ref_id": "2",
+      "recommendationScore": 40,
+      "popularityScore": 45,
+      "priority": "low",
+      "comment": "探讨用户在众多流媒体服务中寻找内容时遇到的痛点。",
+      "reason": "话题贴近用户日常生活，但技术深度和新颖性有限，更偏向用户体验讨论而非硬核技术分析。",
+      "tags": [
+        "用户体验",
+        "流媒体",
+        "产品设计",
+        "消费者技术"
+      ]
+    },
+    {
+      "title": "\"We have information that Moonshot distilled Fable for the development of K3\"",
+      "link": "https://twitter.com/mkratsios47/status/2079933645888880708",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-22T14:42:08.000Z",
+      "summary": "https://xcancel.com/mkratsios47/status/2079933645888880708\nComments URL: https://news.ycombinator.com/item?id=49007610\nPoints: 38\n# Comments: 59",
+      "id": "0f3a6fe207808a9978dfa2f661771557f53b10fd1fcd2d5ed32e0d52ca9744bc",
+      "ref_id": "0",
+      "recommendationScore": 40,
+      "popularityScore": 38,
+      "priority": "medium",
+      "comment": "标题暗示与AI/ML项目开发相关，但内容过于简短无法深入评估。",
+      "reason": "缺乏具体内容支持其潜在的AI主题，无法判断技术深度和实用性，但主题优先级高。",
+      "tags": [
+        "AI",
+        "ML",
+        "模型蒸馏",
+        "开发"
+      ]
+    },
+    {
+      "title": "OpenNode – Bitcoin Payment Processor",
+      "link": "https://opennode.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-22T14:34:23.000Z",
+      "summary": "Article URL: https://opennode.com/\nComments URL: https://news.ycombinator.com/item?id=49007524\nPoints: 69\n# Comments: 57",
+      "id": "551b124a5e9f38980e68fd49e3447ef545d771ad7cbd79956e6f6dc3cb5b81cf",
+      "ref_id": "4",
+      "recommendationScore": 35,
+      "popularityScore": 69,
+      "priority": "low",
+      "comment": "介绍了一个提供比特币支付处理服务的OpenNode平台。",
+      "reason": "主题属于区块链/加密货币支付范畴，与本博客的高优先级技术主题关联度不高。",
+      "tags": [
+        "比特币",
+        "支付",
+        "加密货币",
+        "区块链",
+        "金融科技"
+      ]
+    },
+    {
+      "title": "Show HN: Web swing through midtown NYC",
+      "link": "https://www.swingnyc.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-22T16:25:08.000Z",
+      "summary": "Article URL: https://www.swingnyc.com/\nComments URL: https://news.ycombinator.com/item?id=49009324\nPoints: 10\n# Comments: 4",
+      "id": "e182e9b97becc4ae558e78722d1e77f706aab34d3cd4530c01af9ce09491d02a",
+      "ref_id": "0",
+      "recommendationScore": 30,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "一个有趣的互动网络演示，展示了Web开发的创意可能性，但技术深度和实用性有限。",
+      "reason": "主要是一个娱乐性的网页应用，与本科技博客关注的AI、编程工具等高优先级主题关联度不高。",
+      "tags": [
+        "Web开发",
+        "互动演示",
+        "创意项目"
+      ]
+    },
+    {
+      "title": "Ethics Is the Skill That Matters Most Now",
+      "link": "https://agonora.com/blog/ethics-most-important-skill",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-22T14:39:40.000Z",
+      "summary": "Article URL: https://agonora.com/blog/ethics-most-important-skill\nComments URL: https://news.ycombinator.com/item?id=49007581\nPoints: 23\n# Comments: 17",
+      "id": "5d511c551ea5123236d1522ecdf866f235c210fcb8077f7a1d5bbe6e34cbce33",
+      "ref_id": "1",
+      "recommendationScore": 30,
+      "popularityScore": 23,
+      "priority": "low",
+      "comment": "探讨伦理重要性的社会议题文章，与核心技术主题关联度较低。",
+      "reason": "文章主题偏向软技能和哲学，不符合本博客对硬核科技内容的偏好。",
+      "tags": [
+        "伦理",
+        "社会",
+        "软技能"
+      ]
+    },
+    {
+      "title": "When sine of x degrees equals sine of x radians",
+      "link": "https://www.johndcook.com/blog/2026/07/22/degrees-radians/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-07-22T12:17:11.000Z",
+      "summary": "Ordinarily the sine of x radians and the sine of x degrees are very different numbers. Having your calculator in radian mode when it should be in degree mode, or vice versa, results in a major error. But sometimes it doesn’t matter. A trivial example is when x = 0. A more interesting example is […]\nWhen sine of x degrees equals sine of x radians first appeared on John D. Cook.",
+      "id": "04609ffb5ccff9027bee725b46e0e236709106d33f9285ba2df783065f364272",
+      "ref_id": "4",
+      "recommendationScore": 30,
+      "popularityScore": 25,
+      "priority": "low",
+      "comment": "一个有趣的数学几何问题，但与主要科技主题关联度不高。",
+      "reason": "文章是纯粹的数学题目讨论，缺乏与科技开发或应用场景的直接联系，实用性较低。",
+      "tags": [
+        "数学",
+        "三角函数",
+        "科普",
+        "教育"
+      ]
+    },
+    {
+      "title": "Critical Minerals: Reducing U.S. Import Reliance with Substitution and Recycling",
+      "link": "https://www.gao.gov/products/gao-26-108687",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-22T15:26:56.000Z",
+      "summary": "Article URL: https://www.gao.gov/products/gao-26-108687\nComments URL: https://news.ycombinator.com/item?id=49008346\nPoints: 18\n# Comments: 7",
+      "id": "6f62003f83a30e96faec81f057bb94c926adf5e5c017c0f52ec790f3c37b07fe",
+      "ref_id": "1",
+      "recommendationScore": 15,
+      "popularityScore": 25,
+      "priority": "low",
+      "comment": "一份关于美国关键矿物进口依赖及其替代和回收策略的政府报告。",
+      "reason": "内容偏向政策和经济分析，与科技博客关注的AI、编程等核心主题关联度较低。",
+      "tags": [
+        "Policy",
+        "Economics",
+        "Resources",
+        "Sustainability"
+      ]
+    },
+    {
+      "title": "The Subprime Data Center Crisis",
+      "link": "https://www.wheresyoured.at/the-subprime-data-center-crisis/",
+      "source": "wheresyoured.at",
+      "publishedAt": "2026-07-22T16:08:51.000Z",
+      "summary": "Thanks for reading this week’s free Where’s Your Ed At newsletter. Friday’s premium newsletter will ask the simple question: Is Oracle dying? \nIt’s been one year since I launched the premium newsletter, and I’ve decided to extend the discount",
+      "id": "79660a55b04e38d1a630bf95790e5928d12f65cc5d22446ecae55d8c1af94723",
+      "ref_id": "0",
+      "recommendationScore": 15,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "这篇文章更像是一个付费订阅服务的推广预告，而非一篇独立的、有深度的技术文章。",
+      "reason": "文章内容缺乏实质性的技术探讨或信息输出，主要目的是引导读者订阅其高级通讯。",
+      "tags": [
+        "推广",
+        "行业趋势",
+        "数据中心",
+        "Oracle"
+      ]
+    },
+    {
+      "title": "Pluralistic: Trump's America can't even win a rigged game (22 Jul 2026)",
+      "link": "https://pluralistic.net/2026/07/22/table-flipper/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-07-22T08:58:31.000Z",
+      "summary": "Today's links Trump's America can't even win a rigged game: America has created a post-American world. Hey look at this: Delights to delectate. Object permanence: \"Fagin\"; Scott McCloud on comics' future; Laurie Penny on Milo Yiannopoulos; Singaporean regulator rap; Conservatives as bitter rubes. Upcoming appearances: Edinburgh, Sydney, Melbourne, Brighton, London, South Bend. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. Trump's America can't even win a rigged game (permalink) Here's a sentence that stopped me in my tracks last week: \"The statement that 'the cemeteries are full of indispensable people' is just as true of nations, and in particular the US\": https://crookedtimber.org/2026/07/16/55382/ The writer is John Quiggin, writing about the fact that, under Trump, the world has raced through a series of seismic shifts in how it organizes itself, rushing to fill an America-shaped void in its dealings. This is a subject that's very much on my mind. As November Kelly says, Trump inherited a poker game rigged in his favor and then flipped the table over because he resented having to pretend to play at all. The \"international rules-based order\" that gave America oversight and control over the world's militaries, finances, trade, and communications was always a better deal for America than it was for the rest of the world. The long persistence of this system doesn't mean that other countries liked it. The reason the American century endured for as long as it did was that the toll that America extracted from the world was always lower than the cost of making a new system. Just as people stay on Facebook because they love their friends more than they hate Mark Zuckerberg, the nations of the world let America control their systems because they feared the cost and difficulty of building a new system more than they resented letting America dictate and tax every part of their politics and economies. That's where Trump comes in. The price of doing business with Trump is, effectively, infinity. If you buck Trump, he doubles down and demands twice as much. If you capitulate to Trump, he interprets it as weakness and comes back for three times as much. There are no deals to be made with Trump, only temporary measures that last until his next Fox and Friends binge or chance encounter with a ridiculous conspiracy theory. Take Canada: in 2018, Trump tore up NAFTA – the deal that Bush Sr and Clinton crammed down Mexico and Canada's throats – and replaced it with USMCA, a trade treaty that was even more advantageous to America. Then, within months of his 2024 election, Trump tore up USMCA and replaced it with a chaotic series of tariffs that swung around wildly from 25% to 100% to (as of this week) 50%: https://www.whitehouse.gov/fact-sheets/2026/07/fact-sheet-president-donald-j-trump-imposes-additional-tariffs-on-canada/ Trump has no coherent reason for this new tariff. Canada has bent over backwards to give Trump everything he wants and more. Despite some high-minded words at Davos about the need for \"middle powers\" to decouple from the USA, PM Mark Carney has given Trump everything he could ask for. Carney allowed Palantir – a company that makes no bones about being an agent of Trump's will – inside the most sensitive parts of the Canadian military. Carney dropped his plan to charge US tech companies a 3% tax. Carney is firing tens of thousands of civil servants and replacing them with chatbots, the majority of which will be operated by US companies, running on US servers. Sure, Canada's imposed some retaliatory tariffs on US products, but that's just a way of making everything Canadians buy more expensive, which is a weird way of punishing America. It's like punching yourself in the face as hard as you can in the hopes that the downstairs neighbour says \"ouch.\" Meanwhile, Carney has consistently ignored US interference in Canadian politics, including the tsunami of dark money pouring into the Alberta separatist movement – a bid by Trump to literally steal an entire province. Give Trump everything he asks for and he'll demand more. Deny Trump anything and he'll demand more. Sign a contract with Trump and he'll break it. Send Trump an invoice and he'll stiff you. For Trump, \"the art of the deal\" can be summed up in one word: renege. This is why – as David Dayen writes – there will likely be no peace deal in Iran for so long as Trump is in office. Why would the Iranians sign any deal with Trump when they know Trump will break it? https://prospect.org/2026/07/10/aftermath-wars-on/ Last Christmas, I gave a speech in Hamburg about \"the post-American internet\" that the rest of the world has the chance to build now that Trump has zeroed-out all the value it used to get from playing by America's tech policy rules, even as Trump has weaponized US tech companies to attack world officials who buck his agenda: https://pluralistic.net/2026/01/01/39c3/#the-new-coalition After that speech, I wrote a book (The Post-American Internet) that Farrar, Straus and Giroux will publish in August 2027. In the book, I describe the role that \"trusted third parties\" (T3P) play in complex transactions. Think of an escrow agent who holds onto the deed for the house you're buying from the seller until you hand over the money, and then forwards the deed to you and the money to the seller. The more complex a transaction is, the more it needs a T3P. For most of the past century, the US has been the world's T3P. Most of the world's transoceanic fiber optic lines make landfall in the US and interconnect to one another in US data centres. Most of the world's international transactions are conducted in dollars and are cleared through US-controlled platforms like SWIFT. Through its aid programs, the US sets the health and public services agenda for billions of non-Americans, and the US has military installations in more than 100 countries. The US trains the world's militaries, it supplies (and withholds) information from the world's intelligence agencies, and it runs the IT infrastructure powering the world's government agencies and critical infrastructure, from tractors to medical equipment. Right from the start, the US was never an entirely trustworthy \"trusted third party.\" There were plenty of moments where the US abused its control over its \"neutral\" platforms to serve the American national interest at the expense of the countries that relied on those platforms. But those violations were either covert or carried out under some kind of legal rubric (\"the rules-based international order\"). You'd probably continue to trust an escrow agent that obeyed court orders to hold onto the money after handing over the deed. That trust might persist even if the escrow agent withheld the money on the say-so of a DA or sheriff, even without a court order. You might even continue to trust the escrow agent if they sometimes said, \"I'm going to hang onto this money for 72 hours because I think there might be something weird in this deal.\" Same goes for the escrow agent who has a secret side-hustle with the local land-registry office and realtors that lets them skim a few points off every deal and scoop up the best properties through a shell company. Provided you never find out about this, you'll happily hire that escrow agent to handle your property deal. Trump is the escrow agent who keeps the money and the deed, then announces he did it because the seller was a fentanyl dealer and the buyer was a lizard-person; and then publishes a long screed on Truth Social calling everyone who criticises him a terrorist, promising to do it again next time. Even if you need to sell your house, and even if Trump is the only escrow agent you can find, you're just not going to trust him with your deed or the money. As GW Bush says, \"Fool me once, shame on…shame on you. Fool me – you can't get fooled again.\" Back to Quiggin: the US was the world's indispensable nation, and the cemeteries of history are full of indispensable nations. As Quiggin writes, Europe and Ukraine have largely given up on US military protection from Russia and are building their own capacity, already surpassing the US in drone and artillery capabilities. The US can no longer credibly provide missiles and anti-missile defenses, not after Trump used up America's stockpiles in his pointless, endless war in Iran. Quiggin notes that the consensus case against the EU as a military power held that Europe \"lacks the capacity to project power globally\" and that it is \"too disunited to act effectively.\" Per Quiggin, these only matter if you believe that the post-American military order will look and act like the American system that Trump just trashed. Trump has a chud \"Secretary of War\" who kidnaps foreign leaders and can't reliably get oil through the Strait of Hormuz – if that's the dividend from \"unity\" and \"projecting power,\" you can keep it. On finance, Quiggin notes that the EU is racing to break its reliance on SWIFT, Visa and Mastercard, and the more Trump weaponizes these against institutions like the International Criminal Court, the faster this transition will go. America's load-bearing private institutions – like the Big Four accounting firms and the bond rating agencies – have self-immolated, thanks to decades of lax regulation by successive US administrations through scandal after scandal. Quiggin points out that there's no reason to replace these giant, structurally important (but terrifyingly unreliable) cartels with trustworthy versions. It's cheaper and more robust to rebuild our economy so that it no longer serves the finance system, returning finance to \"its pre-1970s role as a provider of a relatively limited set of services to the real economy.\" On manufacturing, Quiggin points to the twin facts of Trump's chaotic tariffs and China's \"economic nationalism,\" which have put the EU in the centre of a new trade order. Here, too, we're getting something new, not a Made-in-Europe version of \"the failed globalist dream of the WTO\" nor \"Trump’s attempts to extort surplus through bilateral bullying\": https://www.nytimes.com/2026/07/12/opinion/america-trump-nato-europe-world.html As I said, Quiggin's article has been rattling around in my mind ever since I read it last week, but there's one area where I think Quiggin's got it wrong: the relative difficulty of building a post-American internet. First, because Quiggin says that the real challenge is building a post-American AI. Sovereign AI is, frankly, nonsense. If Trump turns off all of your country's chatbots, nothing changes. If Trump orders Microsoft to shut off your country's access to Office 365 (as he did to the International Criminal Court and a Brazilian judge who pissed him off), your country would simply cease to function: https://pluralistic.net/2026/06/18/their-trillions-our-billions/#eyes-on-the-prize And if Trump orders John Deere to brick all the tractors in your country, you're gonna starve to death: https://pluralistic.net/2022/05/08/about-those-kill-switched-ukrainian-tractors/ In the face of these real, non-speculative, immediate, grave threats, focusing on AI – the money-losingest technology in human history, which has consistently underperformed relative to its boosters' promises – is just misguided. If you really want an \"AI strategy\" for your country, it should be this: wait for the bubble to burst, then buy hardware and talent at fire-sale prices in the wave of ensuing bankruptcies, and use them to extract more performance from free, open source models. The real digital challenge is building apps and data centres to run everyday administrative, telecoms and e-commerce software on, and then moving your country's, ministries', companies' and households' data over to the new platforms. The hardware and software are challenging, but ultimately straightforward. Raising capital for data centres is just a matter of convincing people to invest in being a kind of landlord, which is among the easier sells to make (and there's plenty of investors who are looking for real alternatives to getting sucked into the AI bubble). Getting the apps is hard, but there's an army of technologists who are ready for more, after decades of doing fake startups for a Big Tech company to \"acqui-hire\" and/or toiling to improve ad click-throughs. These people yearn to follow Steve Jobs's injunction to \"make a dent in the universe\" and they are being chased out of Silicon Valley by ICE chuds who want to send them to Salvadoran slave-labor camps. There's plenty of talent and capital for the taking. The real hard part isn't writing or running the code – it's extracting the data, replacing the firmware, and bridging new systems – like post-American social media platforms – into the existing ones. This part is hard because every country in the world has agreed to a trade deal with America wherein they agreed to make it illegal to reverse-engineer US tech exports, in exchange for tariff-free access to US markets. Trump has made the case for abandoning these deals better than I ever could have: https://pluralistic.net/2026/04/20/praxis/#acceleration Hey look at this (permalink) Your Cookware Got Worse On Purpose https://www.worseonpurpose.com/p/your-cookware-got-worse-on-purpose The Human-in-the-Loop is Tired https://pydantic.dev/articles/the-human-in-the-loop-is-tired HP fined 1.4 billion rupees for “cartelization” of ink cartridges, toner, PCs https://arstechnica.com/gadgets/2026/07/hp-fined-1-4-billion-rupees-for-cartelization-of-ink-cartridges-toner-pcs/ The Healthcare Industry Is Coming for Your Face https://www.karenschoellkopf.com/writing/biometric-data-healthcare.html My Ebike Delivery Went Missing. When I Tried to Recover It, I Ended Up in Chatbot Hell https://www.wired.com/story/ebike-delivery-missing-when-i-tried-to-recover-it-i-ended-up-in-chatbot-hell/ Object permanence (permalink) #20yrsago Fagin: Will Eisner’s retelling of Oliver Twist https://memex.craphound.com/2006/07/22/fagin-will-eisners-retelling-of-oliver-twist/ #20yrsago 95 Theses of Geek Activism: how to defend freedom with tech https://scienceaddiction.com/2006/07/23/95-theses-of-geek-activism/ #20yrsago Plane made of printed parts flies https://web.archive.org/web/20060823102012/http://www.newscientisttech.com/article.ns?id=dn9602&amp;feedId=online-news_rss20 #20yrsago Scott McCloud on the future of comics https://web.archive.org/web/20060822133933/https://www.wired.com/news/culture/1,71434-0.html #10yrsago Middle aged Singaporean media regulators rap about the national public-private content strategy https://www.youtube.com/watch?v=ksw2UqTyhhc #10yrsago Laurie Penny on hanging out with Milo Yiannopoulos and the gay trolls of the RNC https://medium.com/welcome-to-the-scream-room/im-with-the-banned-8d1b6e0b2932#.ftai0i9ra #1yrago Conservatism considered as a movement of bitter rubes https://pluralistic.net/2025/07/22/all-day-suckers/#i-love-the-poorly-educated Upcoming appearances (permalink) Edinburgh International Book Festival with Jimmy Wales, Aug 17 https://www.edbookfest.co.uk/events/the-front-list-cory-doctorow-and-jimmy-wales Sydney: The Festival of Dangerous Ideas, Aug 23-24 https://festivalofdangerousideas.com/cory-doctorow/ Melbourne: Enshittification at the Wheeler Centre, Aug 25 https://www.wheelercentre.com/events-tickets/season-2026/cory-doctorow-enshittification Brighton: The Reverse Centaur's Guide to Life After AI with Carole Cadwalladr (Brighton Dome), Sep 8 https://brightondome.org/whats-on/LSC-cory-doctorow-the-reverse-centaurs-guide-to-life-after-ai/ London: The Reverse Centaur's Guide to Life After AI with Riley Quinn (Foyle's Picadilly), Sep 9 https://www.foyles.co.uk/events/enshittification-cory-doctorow-riley-quinn South Bend: An Evening With Cory Doctorow (Notre Dame), Oct 6 https://franco.nd.edu/events/2026/10/06/an-evening-with-cory-doctorow/ Recent appearances (permalink) Waarom jij straks het hulpje van AI bent (VPRO) https://www.youtube.com/watch?v=tOnvR2fs8CA Talk Tech Bock (Vera Linß) https://www.youtube.com/watch?v=3PFjGvQoBgc How To Think About AI Before It’s Too Late (This Is Hell) https://thisishell.com/episodes/1919 AI Won't Replace You… But This Might (Deep Focus) https://www.youtube.com/watch?v=oorWq_m48AQ Who Owns Your Tractor? (Growing the Future) https://www.youtube.com/watch?v=IU9eBPUZBI4 Latest books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/ \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Fourth draft completed. Submitted to editor. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "587ea74f30936f5388501f8ff562a331c76b0eda9cf1e78227556817a3b30267",
+      "ref_id": "1",
+      "recommendationScore": 5,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "与科技博客主题完全无关的政治评论和个人动态。",
+      "reason": "文章内容与本科技博客的评估主题（AI、编程工具等）完全不符，不具备任何参考价值。",
+      "tags": [
+        "政治",
+        "时事评论",
+        "非科技"
+      ]
+    },
+    {
+      "title": "Does creatine make you smarter?",
+      "link": "https://dynomight.net/creatine/",
+      "source": "dynomight.net",
+      "publishedAt": "2026-07-22T00:00:00.000Z",
+      "summary": "Is creatine a weird steroid-like hormone or drug?\nNo. Creatine is a nutrient. Most omnivores eat a gram or two per day from meat. Your body also synthesizes a gram or two per day. You need creatine to deliver energy inside of cells. It is normal and non-weird.\nDoes creatine increase testosterone?\nUnlikely. This concern comes from one study in 2009 on 16 male rugby players.1 But that study is considered extremely suspect. There have been at least twelve other studies that all found no change or physiologically irrelevant changes. Beyond that, it’s implausible that creatine would increase testosterone, because we know what creatine does and it has nothing to do with hormones.\nDoes creatine make you go bald?\nNo. Or, rather:\nNo study ever reported that.\nOne study reported the opposite.\nThere is no mechanistic reason to think that would happen.\nThere are good mechanistic reasons to think that would not happen.\nThese rumors all trace back to speculation built on top of that same single 2009 study. But that study is contradicted by later research, and anyway didn’t measure hair. Anything is possible, but as far as I can tell, it’s equally plausible that creatine would increase hair growth. And if you’re really worried about this: Are you going to stop eating meat?\nIs creatine safe?\nProbably. The International Society of Sports Nutrition says:\nAvailable short and long-term studies in healthy and diseased populations, from infants to the elderly, at dosages ranging from 0.3 to 0.8 g/kg/day for up to 5 years have consistently shown that creatine supplementation poses no adverse health risks and may provide a number of health and performance benefits.\nIt’s been studied extensively, and no risks have been found. The way it works doesn’t suggest any risks. And supplementing a few grams per day doesn’t put you far outside the range that people get from normal food.\nDoes creatine make you stronger?\nYes. It’s very rare for a supplement to have such strong and consistent evidence. A widely-cited review says that short-term supplementation increases maximal power/strength by 5-15%. This in turn may increase the long-term gainz from strength-training exercise. Creatine also increases sprint performance by 1-5%. Though, there seems to be little if any benefit for endurance exercise like long-distance running.\nBut how does creatine make you stronger?\nBefore answering that, can I go on a rant about how muscles work?\n…OK?\nGreat! Here’s how muscles work:\nAll cells have a molecule called ATP floating around inside, which they use for energy.\nMuscle cells have proteins in them called myosin.\nWhen ATP bumps into myosin, the myosin breaks the ATP down into ADP. This releases energy which is physically captured by the myosin as elastic strain.\nWhen triggered by neurons, myosin releases that mechanical energy.\nWhen you decide to move your arm, your brain triggers many muscle cells, carefully orchestrating the myosin twitches into large-scale movement.\nNow, here’s something that’s crucial for our story: Very little energy is stored as ATP. Your body contains ~100 grams of ATP, representing ~10,000 joules of energy.2 But your body at rest burns ~100 watts. So you only store enough ATP to keep yourself alive for ~100 seconds. If you sprint, you could easily burn ~3000 watts, which would use all your stored ATP in ~3 seconds.\nThrough the magic of eating, you’re always making more ATP. Typically, your mitochondria recycle ~1 gram of ADP back into ATP per second, the same amount you need to stay alive.3 If you start running, your body can ramp that up to ~10 grams per second, though tricks like breathing faster and speeding up your heart.4 But it takes a minute or two for your mitochondria to really get cranking.5\nSo then why am I able to sprint for longer than three seconds?\nBecause creatine acts as an additional energy reservoir, coupled to the ATP reservoir. After you eat or synthesize creatine, 60% is converted into phosphocreatine. This is done by an enzyme that grabs a creatine molecule and an ATP molecule and moves a phosphate group between them. This “charges” the creatine into phosphocreatine and “discharges” the ATP into ADP.6\nBut if your ATP levels drop—e.g. because you’re running away from a tiger—those enzymes will run in reverse, meaning they “discharge” phosphocreatine into creatine and “charge” ADP back into ATP. This happens almost instantly, so that ATP and phosphocreatine deplete at the same rate.7\nAt rest, your muscles contain around 3-4 times as much phosphocreatine as ATP. So the “extra” energy storage in phosphocreatine is much larger than the “base” storage in ATP itself. That’s why you can sprint for ten seconds rather than just three seconds.\nDoes supplementing creatine increase creatine levels in muscle cells?\nYes. Typical levels are:\nVegetarian: 100 mmol / kg\nOmnivore: 120 mmol / kg\nSomeone who supplements creatine: 140 mmol / kg\nSo, everything seems to add up. If you supplement creatine, you increase your levels by ~16.67%, implying ~12.5% more total short-term energy storage.8 That’s in line with the 5-15% increase in strength seen in creatine trials.9 It also seems to make sense that creatine trials find little benefit for endurance exercise. If you don’t have sudden bursts of activity, a larger short-term energy reservoir won’t really help you.\nBut isn’t this all very strange?\nWell, I find it strange. All else equal, more strength is good. The body already knows how to make creatine. If you can just raise creatine levels and get more strength with no downsides, then shouldn’t evolution have done this already? Some variant of the Algernon argument would suggest that the fact that creatine works so well should be impossible.\nYou might think that higher creatine levels are bad somehow, and that’s why evolution didn’t make them higher. But that seems wrong. Creatine levels vary naturally based on what you eat. If higher levels were bad, evolution could have brought them down. But it doesn’t. It just lets them vary.\nOften, evolution makes us “worse” to reduce our energy expenditures, because evolution hates it when we starve to death.10 But the body only spends 1-2 calories per day synthesizing creatine, and more creatine in muscle cells doesn’t have any significant metabolic cost.\nI think the boring explanation is that for our evolutionary ancestors, modest increases in short-term strength just weren’t a big deal. We were exhaustion hunters, not 1-rep max deadlift hunters.11 Also, more creatine causes your muscle cells to draw in some extra water, which slightly increases energy usage for long-distance running.12 So, if you happened to get extra creatine from meat, great. If not, whatever. In the range where creatine fluctuates based on diet, I suspect creatine levels just didn’t have much impact on reproductive success.\nStill, we must acknowledge that creatine is unusual. I wish we could tell our bodies, “Hey, we have access to unlimited amounts of food. Stop worrying about conserving energy and concentrate on being awesome.”  But we have very few ways to do that. As far as I can tell, the list of normal nutrients that have been proven to increase strength is: protein, creatine, beta-alanine, the end.\nSo creatine is special. And creatine makes you a little stronger. Does it make you a little smarter, too?\nIs creatine used by the brain?\nYes. Most parts of the body don’t contain significant creatine. But the brain does, along with muscles, the heart, and testes. Neurons use it to play the same game muscles do with ATP and phosphate groups and so on.\nHow much creatine is in the brain?\nMaybe half as much as in muscle. The number of interest here is the ratio of phosphocreatine to ATP, indicating how much phosphocreatine increases local energy storage. We saw above that in muscle, that ratio is 3 to 4. In the brain, the numbers are a little sketchy, but the ratio seems to be more like 1.5 to 2.13\nBut why? Why would the brain use creatine?\nGood question! The brain doesn’t have bursts of energy usage like muscles do. Yes, the brain uses ~20% of all calories despite only making up ~2% of body mass. But the brain is unusual in that it needs all that energy just for basic housekeeping, and doesn’t ramp up with usage. Contrary to the common myth, thinking hard does not burn significantly more calories. (Demonstration: Start thinking hard, and watch as your heart rate does not increase.)\nSo muscles use creatine for sprints. But the brain doesn’t have sprints. So what the hell is the brain using creatine for?\nThe most common theory seems to go like this: Actually, muscles don’t just use creatine as an extra energy reservoir. They also use it to deliver energy inside of cells. You see, creatine diffuses faster than ATP inside of cells. So even with endurance exercise, creatine is still being used: Enzymes near the mitochondria use ATP to “charge” creatine into phosphocreatine and enzymes near myosin use that phosphocreatine to “recharge” ADP back into ATP. Even though the net change in creatine is zero, it helps “shuttle” energy from the mitochondria to the myosin.\nUnder this theory, what neurons and muscle cells share is that parts of the cell locally use a lot of energy, when they get triggered. So even though your brain doesn’t “sprint”, it still uses creatine to avoid local energy deficits.\nThere’s also experimental evidence that creatine is important for the brain. We’ve created genetically altered mice with brains that lack the enzymes needed to convert creatine to and from phosphocreatine. They display severely limited spatial learning and somewhat smaller brains.\nSome humans also naturally have creatine deficiency. In some variants, people have trouble synthesizing creatine. This leads to lower levels throughout the body, including skeletal muscle where 95% of creatine lives. Nevertheless, the primary symptom is related to the brain, namely intellectual disability. Muscle weakness and seizures are also common. Other people have creatine transporter deficiency, meaning creatine can’t cross the blood-brain barrier. This leads to lower levels in the brain only. This leads again to intellectual disability and also often muscle weakness or seizures. (That muscle weakness is despite the fact that the muscle cells themselves have normal creatine levels.)14\nSo somehow, creatine is very important for the brain.\nDoes supplementing creatine increase creatine levels in the brain?\nProbably, though likely less than in muscle.\nCreatine can definitely cross the blood-brain barrier. However, the protein that helps it cross is not abundant, and there are some suggestions that it’s down-regulated with prolonged creatine consumption. The brain itself can synthesize some creatine, and this too might be down-regulated by prolonged consumption.\nOf course, you can just give people creatine and see what happens to their brains. There have been around a dozen such studies. Most report increases between 3% and 10%, although a few report no change. However, because brains are hard to access, these studies rely on magnetic resonance spectroscopy, and some suggest that these measurements are unreliable.\nIn people who can’t synthesize creatine, oral supplementation seems to normalize levels in the brain. (Some cognitive impairment usually remains. One patient was diagnosed and began supplementing at three weeks of age and had no intellectual disability.) So supplementing can increase brain levels in some circumstances.\nMy best guess is that supplementing does usually increase levels in the brain, and that an increase of 3% to 10% is plausible. But the evidence isn’t particularly strong.\nWhy did people get interested in creatine having cognitive benefits?\nBecause of Rae et al. (2003). They took a group of 45 healthy vegetarian or vegan university students in Australia. They did a cross-over trial where half of people got 5 grams of creatine per day for six weeks, followed by a six-week wash-out period, followed by the other half of people getting creatine. Their results were amazing, with huge improvements on Raven’s matrices (RAPM) and backward digit span (BDS):\n\nIn their analysis, creatine increased BDS by 1.19 standard deviations, and RAPM by 1.76 standard deviations. If we convert those numbers to IQ points (where 1 standard deviation ←> 15 IQ points), that would mean increases of 17.85 and 26.4 IQ points, respectively. In both cases, the results were highly significant (p < 0.0001).\nDoes that replicate?\nNo. Following that paper various groups tried similar experiments but no one found such a large or statistically significant effect. After twenty years of inconclusive results, Sandkühler et al. (2023) set out to give a definitive reproduction. In my view, this is the highest-quality RCT ever done on the cognitive benefits of creatine.15 They largely borrowed the experimental design of Rae et al., although they did the experiment in Germany, used a larger sample of 123 people, used half non-vegetarians, and they dropped the wash-out period. Here are their main results:\n\n(T1 shows test results at baseline. T2 shows results after six weeks of creatine or placebo. T3 shows the results after another six weeks, where the placebo group crossed over to creatine and vise versa.)\nOverall, everyone got better over time, probably from practice. On backwards digit span, during the first six weeks, the group getting placebo actually improved slightly faster than the group getting creatine. But when those groups switched between getting placebo and creatine, that (formerly placebo, now creatine) group improved even faster. Just staring at the graph, this suggests some benefit. On Raven’s matrices, the same thing happened, but with a greatly reduced magnitude.\nThey fit a statistical model and report an effect size of 0.17 standard deviations for backwards digit span (~2.5 IQ points, not quite statistically significant) and 0.09 standard deviations for Raven’s matrices (~1 IQ point, not even close to significant). They found no extra benefit for vegetarians, not even a non-significant benefit.\nAs far as I can tell, this discrepancy has never been convincingly explained. Rae et al.’s 2003 experiment seems well done. The results are too large to be explained by p-hacking and too statistically significant to be explained by random noise. Maybe for some reason, Rae et al.’s cohort had lower baseline creatine levels? It’s very odd. But history suggests that when an exciting result is followed by a disappointing replication, we should bet on the disappointing replication.\nWhat about all the other RCTs? Doesn’t this call for a meta-analysis?\nIn principle, yes. The trouble is, most of the studies don’t report the numbers needed for a good meta-analysis. They do some experiment giving creatine to half of people and placebo to the other half, and measure how those groups do on some cognitive test. Then they fit some statistical model and report p-values or whatever. But they never actually publish the raw means and standard deviations.16\nFortunately for us, Xu et al. (2024) contacted the authors for all those trials and got their raw data. According to their meta-analysis, creatine had the following effects.\nDomain\n      Effect size (standard deviations)\n    \nOverall cognitive function\n      +0.34\n    \nExecutive function\n      +0.32\n    \nAttention\n      +0.22\n    \nMemory\n      +0.31\n    \nProcessing speed\n      +0.01\n    \nUnfortunately for us, that paper is bad. They claim that several of these results are statistically significant, but a 2026 commentary points out that they made an error that amounts to double-counting the same data for several studies.17 For that reason, I haven’t shown their (incorrect) confidence intervals. If computed correctly, I suspect none of the results would be statistically significant. Technically, the above point estimates are also wrong, although the error shouldn’t systematically bias them in either direction.\nIn general, I have to tell you that I really don’t trust this paper. It’s very sloppy with tons of missing details. But as far as I can tell, no one else has ever assembled the data needed to do a good meta-analysis. So I think those numbers are the best summary we have.\nSo who can we trust?\nI’ll tell you who I trust: The European Food and Safety Authority (EFSA). In 2024, a firm selling creatine applied to the EU to be allowed to advertise cognitive benefits. This led the EFSA to publish Creatine and improvement in cognitive function: Evaluation of a health claim pursuant to article 13(5) of regulation (EC) No 1924/2006.\nHere’s what they have to say (I’ve cut references for readability):\nThe Panel considers that, overall, the 10 human intervention studies […] do not show a consistent effect of creatine supplementation on cognitive function. The Panel notes that the acute effect of creatine on working memory reported in some studies […] was not observed at lower creatine doses […] or with continuous consumption of creatine. The Panel also notes that the effect of creatine […] reported in one study is an isolated finding across the body of evidence, where no effect of creatine supplementation was observed on other cognitive domains, including different facets of memory (episodic, short‐term, visual), verbal fluency, attention, alertness, processing speed, psychomotor speed, executive function and general cognitive ability/flexibility and fluid intelligence. Finally, the Panel notes that the three intervention studies conducted in diseased individuals do not support an effect of creatine supplementation on cognition.\nI think we should consider this definitive. I’d go so far as to say this document probably represents the greatest effort our civilization has ever made to understand if creatine has cognitive benefits.\nBut we need to remember the ESFA’s role. They’re asking if creatine has been proven to have cognitive benefits, because they’re deciding if it should be legal to advertise cognitive benefits. They say no and I believe them. But that doesn’t mean there are no cognitive benefits.\nAre there other reviews of the RCTs?\nYes. Here are all the recent reviews I could find, with a few representative quotes from each:\nReview\n      Quotes\n    \nAvgerinos et al. (2018)\n      “There was evidence short term memory and intelligence/reasoning may be improved by creatine administration.”\n“Performance on cognitive tasks stayed unchanged in young individuals.”\n“Vegetarians responded better than meat-eaters in memory tasks”\n\n    \nDolan et al. (2019)\n      “the blood–brain barrier is an obstacle for circulating creatine”\n“may improve the performance in some cognitive tasks, particularly in stressful conditions (e.g. mental fatigue, exhaustive exercise).”\n    \nRoschel et al. (2021)\n      “potential for creatine supplementation to improve cognitive\nprocessing, especially in conditions characterized by brain creatine deficits”\n“supplementation studies concomitantly assessing brain creatine levels and cognitive function are needed”\n    \nProkopidis et al. (2023)\n      “After correction, our overall analysis showed that creatine monohydrate does not improve overall memory performance (standardized mean difference 0.19; 95% confidence interval, –0.07, 0.46)”\n    \nXu et al. (2024)\n      “Creatine supplementation showed significant positive effects on memory and attention time, as well as significantly improving processing speed time. However, no significant improvements were found on overall cognitive function or executive function.”\n    \nMcMorris et al. (2024)\n      “Creatine supplementation has no significant effect on young healthy participants in unstressed situations. Moreover, the review show mixed results for stressed groups.”\n“Vegans do not intake sufficient […] creatine to ensure the levels necessary for maintaining optimal cognitive output.”\n“Closer examination of [the evidence] suggests that there may be more positive outcomes of supplementation than the research so far provides.”\n    \nUK NHCC (2024)\n      “A cause-and-effect relationship has not been established between the consumption of ≤3g per day creatine and improved cognitive function.”\n    \nOn average, the RCTs do find a small positive effect, just not a statistically significant positive effect. As I so often point out, that’s exactly what we would expect if the true effect were positive but small. But it’s also entirely possible that this is due to random chance or p-hacking or publication bias. Gwern contacted one author and found that publication bias did in fact occur.\nOverall, I think the RCTs provide very weak evidence in favor of a small benefit for healthy adults. (Perhaps 0.1 to 0.3 standard deviations, depending on the measure.) I also think they provide moderate evidence against a larger effect for healthy adults (above, say, 0.5 standard deviations) and weak evidence for a small benefit for adults that are “stressed” in some way that might diminish creatine, such as being older, vegan, or physically exhausted.\nCan you summarize the evidence in favor of creatine making you smarter?\nI would love to do that:\nCreatine is special. Very few nutrients really make you stronger, but creatine does.\nFew parts of the body other than muscles use significant creatine, but the brain does.\nCreatine can cross the blood-brain barrier.\nCreatine is vital for the brain to function correctly.\nSupplementing creatine probably increases creatine levels in the brain, at least a little.\nSome RCTs suggest a cognitive benefit.\nCan you summarize the evidence against creatine making you smarter?\nYes:\nWe don’t fully understand how the brain uses creatine. There is no clear mechanistic story for why supplementing creatine should make you smarter.\nThe best analogy for how the brain uses creatine is how your muscles use creatine for endurance exercise. But creatine has little benefit for endurance exercise.\nIt hasn’t been firmly established how much (or if) supplementing creatine increases creatine levels in the brain.\nThe RCTs suggest a benefit that is quite small, on the order of 1 to 3 IQ points.\nThe RCTs are not statistically significant.\nDoes creatine make you smarter?\nI don’t know. Maybe a little.\nYou could make an argument like this: Creatine is crucial for the brain (somehow) so it’s safest to keep levels high, just in case. But I’m not sure I buy that. Creatine is crucial for the brain but there are several hints that evolution knows that, and so regulates levels in the brain more tightly than in muscles.\nI might buy that argument for vegetarians or vegans. But there is scant experimental evidence for extra cognitive benefits in those groups, and even some evidence that vegetarians may not have much lower brain creatine levels, despite vastly lower consumption.\nAnd if creatine is helpful, the likely benefit is probably quite small. Say you think there’s a 50% chance creatine increases IQ by 1 point and a 50% chance it’s useless. Is it actually worth the trouble of taking 5 grams of creatine every day for an expected increase of 0.5 IQ points? I’m not sure.\nTechnically, they found an increase in dihydrotestosterone (DHT) but not testosterone. ↩\nConveniently, in typical cellular conditions, the body can extract around 100 J of energy from 1 gram of ATP. So we can convert 1 gram ≈ 100 J and 1 gram per second ≈ 100 J / second. You may recall from high school that a watt is defined as 1 watt = Joule per second. ↩\nWikipedia quotes a paper saying people make / recycle around 50 kilograms per day. That would imply that people make around 0.5787 grams per second. But this is in tension with the idea that people use 100 watts at rest. Since that 100 watt number seems to be more strongly established, I think 1 gram per second is a better estimate. ↩\nWhy do you breathe? You breathe because your mitochondria need oxygen to make ATP. When you exercise, you breathe faster so that your mitochondria can make more ATP. You can actually calculate how much ATP your mitochondria make using your VO₂ max score: For each liter of oxygen you use, you make ~21,000 joules of energy, corresponding to ~210 grams of ATP. If you have a typical VO₂ max score of 40 mL/kg/min and you weigh 70 kg, that means you are using 2.8 liters of oxygen per minute, which corresponds to ~588 grams of ATP per minute or ~9.8 grams per second. ↩\nA Tour de France cyclist might burn 1500 or even 2000 watts for hours, meaning they are producing ~20 grams of ATP. They can do this because they’ve trained their bodies to have more mitochondria and better oxygen delivery to those mitochondria. But it takes a few seconds for the body to ramp up and start producing this much power. ↩\nThe “T” in “ATP” is for “triple”, meaning there are three phosphate groups. The “D” is for “di”, meaning there are two phosphate groups. ↩\nThere’s also stored energy in the form of glycogen. This takes a few seconds to come online, and lasts a few minutes. In a sprint, you aren’t limited by glycogen stores running out, but by having too much acid buildup.\nSo, effectively, the body has five levels of cached energy:\nThe mechanical energy stored in the elastic strain of the myosin.\nThe chemical energy stored in ATP molecules. (Recharges myosin)\nThe chemical energy stored in (phosph)ocreatine molecules. (Recharges ATP)\nThe chemical energy stored in glycogen. (Recharges ATP and thus creatine.)\nThe chemical energy stored in food and fat. (Used to recharge glycogen (food) and ATP (food or fat) and thus creatine.)\n↩\nIt’s 12.5% rather than 16.67% because your short-term energy storage is ~75% phosphocreatine and ~25% ATP, and supplementing creatine does not increase ATP. ↩\nI’m not sure to what degree this math actually explains why we see a 5-15% increase in strength in creatine studies versus just being a coincidence. It’s a jump from “X% more short-term energy storage” to “X% increase in max bench press”. ↩\nCompared to our evolutionary ancestors, we have long helpless childhoods, low muscle mass, and smaller brains. ↩\nI do wonder about this given how many people died violent deaths in non-state societies. But how often would 10% more strength tip the outcome? ↩\nI find it amusing that lots of sources refer to extra water retention as a “common side effect” and even report statistics, when a far as I can tell it’s essentially guaranteed by physics. ↩\nTsuji et al. report a phosphocreatine to ATP ratio of 0.77 in grey matter and 2.18 in white matter, Lu et al. reports ~1.45 in entire brains, and Hetherington et al. report 1.0 in white matter, 1.6 in gray matter, and 2.1 in the cerebellum. ↩\nDifficulty synthesizing creatine is treated by supplementing creatine. Creatine transporter defect currently has no effective treatment. ↩\nAfter writing this sentence, I later noticed that this experiment had apparently been funded by the Effective Altruism Foundation, Effective Ventures, and personally by (well-known AI alignment researcher) Paul Christiano. ↩\nI know this sounds odd, but it’s very common. Everyone wants to establish truth, not just create data so someone else can establish truth. It’s hard to blame them, given their incentives. ↩\nAnother 2022 meta-analysis by Prokopidis et al.  found similar results but apparently has a similar problem. Prokopidis et al. deserve credit for acknowledging the issue and issuing a correction. However, Prokopidis et al. only look at memory, and they seem to be working with before-after scores on the same people, rather than comparisons between the placebo and creatine groups. ↩",
+      "id": "32e514f425621c058abcf59a3b5cceebbe95b956fdd35725e01ef5b8e06dd6f6",
+      "ref_id": "3",
+      "recommendationScore": 5,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "一篇关于肌酸的健康科普文章，与科技博客主题毫无关联。",
+      "reason": "文章内容属于健康营养领域，与科技博客的主题（AI、编程工具等）完全不符，不应被收录。",
+      "tags": [
+        "健康",
+        "营养",
+        "生物学",
+        "非科技"
+      ]
+    }
+  ]
+}
