@@ -1,0 +1,782 @@
+{
+  "dailySummary": "今日科技速递：AI在药物设计、视频编辑等领域加速创新，但AI代理凭证安全问题日益突出，OneCLI等工具正提供解决方案。同时，Python包管理面临供应链安全挑战，PyPI引入前缀保留机制以防范风险。",
+  "articles": [
+    {
+      "title": "How AI helps scientists design the next generation of medicines",
+      "link": "https://www.technologyreview.com/2026/07/23/1140346/how-ai-helps-scientists-design-the-next-generation-of-medicines/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-07-23T12:00:00.000Z",
+      "summary": "Designing and developing a new medicine is an expensive, failure-prone scientific challenge. A new drug can take many years to develop, at the cost of a significant investment. And even then, most possible candidates never reach the patient. For biologic medicines, therapies made from engineered proteins rather than synthetic chemistry (which are often used to…",
+      "id": "feaf9ab57c84ebb2654d41fe1ceaaa218bddb00875c98d14a27e867d42512922",
+      "ref_id": "2",
+      "recommendationScore": 98,
+      "popularityScore": 98,
+      "priority": "high",
+      "comment": "深入探讨了AI在药物设计和开发中的前沿应用。",
+      "reason": "完美契合最高优先级AI主题，揭示了AI如何变革医疗研发，具有极高的实用性和新颖性。",
+      "tags": [
+        "AI",
+        "药物发现",
+        "医疗健康",
+        "生物科技",
+        "科学研究"
+      ]
+    },
+    {
+      "title": "The Download: energy transmission and US threats against Chinese AI",
+      "link": "https://www.technologyreview.com/2026/07/23/1140753/the-download-energy-transmission-and-us-threats-chinese-ai/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-07-23T12:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. The power line that could reshape New York’s grid is hitting snags  During a heat wave on July 3, New York State’s grid imported enough electricity from Canada to meet about…",
+      "id": "9068d159814ee87426b0013a70a811e3048d74601e7180c0fc06b2496f4434ca",
+      "ref_id": "1",
+      "recommendationScore": 92,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "涵盖了AI地缘政治和能源基础设施进展的摘要。",
+      "reason": "包含对AI领域的关键时事洞察，结合了高优先级的AI主题，信息全面。",
+      "tags": [
+        "AI",
+        "地缘政治",
+        "能源",
+        "科技新闻",
+        "中国AI"
+      ]
+    },
+    {
+      "title": "Show HN: OneCLI – OSS credential gateway that keeps secrets out of AI agents",
+      "link": "https://github.com/onecli/onecli",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-23T15:42:40.000Z",
+      "summary": "hey HN, Jonathan and Guy here, creators of OneCLI (https://onecli.sh/). OneCLI is an open source vault for AI Agents.\nTraditional vaults are used to store your secrets and, on demand, provide them to you all in a secure way, trusting the person to keep them safe. We figured that in the agent's world, this is not the case, as you don't know what happens with the secret after it's delivered to the agent, or where it was saved. Or maybe someone even manipulated them to hand them over...\nFrom that understanding, we decided to build a network gateway that sits between your AI agents and the services they call. OneCLI matches the request by host/path, verifies the agent should have access, swaps the placeholder for the real credential, and forwards the request. \nthe secrets set inside the OneCLI vault, encrypted on rest, or could fetch in realtime from your bitwarden / 1password wallets.\nDemo - https://www.youtube.com/watch?v=5e5pbPEzZfY.\nWe started working on this by accident, even though our careers were in the security space. We were working on a devtool called ChartDB, an open-source DB tool. When OpenClaw took off back in January, we started using it to orchestrate agents on top of ChartDB. We quickly understood there is a big issue around auth. Agents need credentials to do real work, but to give them those secrets would not be the best idea. they keep them in their memory and also write them down to local files and their sessions as plain text. And we knew that agents can easily be fooled into giving up those API keys/secrets. So we needed some way to control the agent and stop prompt injections from tricking it into using its services for an attacker's benefit. Not providing the keys to the agent + adding alerts or human-in-the-loop for sensitive operations, in case someone manipulates the agent, and access logs are being audited.\nWe use it ourselves daily. My OpenClaw runs my day across Attio, Gmail, and my calendar, with human-in-the-loop approval on sensitive actions. The approval is enforced at the network layer, so it holds whether the agent goes through MCP, CLI, curl, or code it wrote on the fly. Guy uses it to review PRs but can't merge without his approval.\nCompanies mostly use it for coding agents currently, which get creative about finding ways to elevate their permissions to reach the goal. With OneCLI, it doesn't matter what the agent finds: if the request isn't in policy, it will not go through.\nThe proxy is written in Rust, the dashboard is Next.js, and secrets are AES-256-GCM encrypted at rest. Everything runs in a Docker container. It works with any agent framework (Claude Code, Codex, Cursor, OpenClaw, Hermes or anything that can set an HTTPS_PROXY).\nIt won't stop an agent from misusing access it legitimately has, so scope policies tightly!\nhappy to answer anything. We believe we can't trust the model to behave and have to set deterministic rules to stay in control. Comments welcome!\nComments URL: https://news.ycombinator.com/item?id=49023427\nPoints: 16\n# Comments: 6",
+      "id": "aca7847db12030b3da7ae0dda9403c40917066f5e8b9a7330a49e7296b49b294",
+      "ref_id": "4",
+      "recommendationScore": 90,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "针对AI Agent安全的核心痛点，提供了开源的凭证管理网关解决方案。",
+      "reason": "在AI Agents广泛应用的背景下，解决了其安全与凭证管理的根本性问题，具有高度前瞻性和实用性。",
+      "tags": [
+        "AI安全",
+        "AI代理",
+        "凭证管理",
+        "开源工具",
+        "网络安全",
+        "DevSecOps"
+      ]
+    },
+    {
+      "title": "Show HN: Palmier Pro – open-source macOS video editor built for AI",
+      "link": "https://github.com/palmier-io/palmier-pro",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-23T15:11:37.000Z",
+      "summary": "Hi HN, we are Marcos and Harrison, cofounders of Palmier (https://palmier.io). We are building Palmier Pro, an open source macOS video editor, with built-in AI generation and a local MCP server that connects to your agent. Here are a few demos:\n- Making some AI transitions: https://www.youtube.com/watch?v=hbM_-eR1GX4\n- Multicam editing with Codex: https://www.youtube.com/watch?v=SjS2q2LT1q8\n- Cutting long form clips into shorts: https://www.youtube.com/watch?v=PR66eN2ouuQ\nWe built Palmier Pro as an internal tool when we were making AI launch videos for other startups. The main problem it solved in the beginning was the back-and-forth between AI generation platform and video editor. The iteration loop was awkward: AI videos → download → import to editor → edit → realize we need to change the AI video → repeat. So we built a minimal video editor where we could let Claude generate AI videos inside the editor.\nAs we gave more and more tools to the agent, we wanted to push to see what else agents can do in the video editing space. So today, your Claude/Codex can:\n- Manage projects inside Palmier Pro\n- Import media from a public URL or filesystem to the project, and organize them in folders\n- Search media (by embedding footages using SigLIP2 running locally)\n- Edit the timeline (tracks/clips/keyframes operations)\n- Generate images, videos, sound effects, captions, music\n- Export videos\nThere are two ways for LLMs to interact with the editor: by connecting to the local MCP server, or using the in-app chat. Both use the same tools and APIs exposed by the video editor.\nWe have seen people using MCP server to connect to their own workflow to automate massive-scale video editing (e.g. given this same podcast style, replicate it with other footages that I have). We have also seen people using the in-app chat where it lives closer to the editor UI, with lower latency for faster iteration.\nWe don't believe that AI is going to replace human creativity (nor should it), but where it can really help is in automating the gruntwork in video editing. Most work in the editing workflow is more mechanical than creative. Our vision is to build a video editor where AI can enable more individuals to create.\nThroughout our experiments, AI is not very good at creative editing, but given a pattern (transcription-based, beat-based), it can do a decent job at rough cut.\nWe built Palmier Pro in Swift as an MVP because we wanted better performance and minimal dependencies (no nodejs/webview), with some native macOS APIs like SpeechAnalyzer and CoreML for us to run some models locally. We use SpeechAnalyzer for local transcriber, SigLip2 to embed video frames, beat_this for beat detection, Silero VAD for silence detection, all running locally. The tradeoff is that we don't support Linux or Windows at the moment.\nPalmier Pro is open source and free to try out (macOS 26 only at the moment, though - we'll support more platforms over time, but for now are focusing on iterating the core product).\nNo login required except for the AI generation features, which route requests to our backend. We are offering free credits on sign up so you can try out the AI generation as well.\nWe'd love to hear your feedback!\nComments URL: https://news.ycombinator.com/item?id=49022911\nPoints: 14\n# Comments: 4",
+      "id": "a2a7e4d4b5b6397e0c33c98eadb5d1e47f664a3d1917a3009ebf3bfa205eac56",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "展示了一款面向AI的开源macOS视频编辑器，解决AI视频制作的工作流痛点。",
+      "reason": "融合了AI和Apple生态两大高优先级主题，提供了实用且新颖的解决方案，对创作者和开发者极具吸引力。",
+      "tags": [
+        "AI",
+        "macOS",
+        "视频编辑",
+        "开源",
+        "独立开发",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "Show HN: Remux – an open-source tmux workspace designed for iPhone",
+      "link": "https://github.com/h3nock/remux",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-23T14:31:26.000Z",
+      "summary": "Article URL: https://github.com/h3nock/remux\nComments URL: https://news.ycombinator.com/item?id=49022284\nPoints: 40\n# Comments: 12",
+      "id": "d42f10020f969a4d25e6d1fba31cdf2872004fd3822f1cadf58ab9e53a48fba6",
+      "ref_id": "4",
+      "recommendationScore": 90,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "将强大的`tmux`带到iPhone上，提供移动开发者的便捷远程工作体验。",
+      "reason": "极大提升在Apple生态中移动开发或系统管理效率，实用性和新颖性兼具。",
+      "tags": [
+        "Apple生态",
+        "iPhone",
+        "tmux",
+        "开发者工具",
+        "效率工具",
+        "开源"
+      ]
+    },
+    {
+      "title": "OpenAI’s accidental cyberattack against Hugging Face is science fiction that happened",
+      "link": "https://simonwillison.net/2026/Jul/22/openai-cyberattack/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-07-22T23:51:33.000Z",
+      "summary": "",
+      "id": "e75e48fe5615bbace228d4f9ff51a26b4d03e06d23024c9f75dc09e9ee91a219",
+      "ref_id": "1",
+      "recommendationScore": 90,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "标题极具吸引力，若内容属实且深入，将是AI领域的重磅文章。",
+      "reason": "标题揭示了一个引人注目的AI安全事件，主题新颖且与AI热点高度相关，预示着高技术深度和实用价值。",
+      "tags": [
+        "AI",
+        "网络安全",
+        "OpenAI",
+        "Hugging Face",
+        "前沿技术"
+      ]
+    },
+    {
+      "title": "Package Name Prefixes",
+      "link": "https://nesbitt.io/2026/07/23/package-name-prefixes.html",
+      "source": "nesbitt.io",
+      "publishedAt": "2026-07-23T00:00:00.000Z",
+      "summary": "PEP 752 was accepted at the end of June. It lets an organisation apply to PyPI to reserve a package name prefix, after which new uploads matching that prefix are rejected unless they come from the grant holder. Existing packages are grandfathered. The motivation is impersonation: someone publishing malware as google-cloud-something or apache-something gets the vendor’s name in front of it. The PEP names four example prefixes: google-cloud-, opentelemetry-, apache-airflow-providers-, and types-.\nI pulled every package name from PyPI (912,665 of them, via ecosyste.ms) and counted prefixes. Those four account for 264, 271, 154, and 1,295 packages respectively, and each is published almost entirely by one organisation. Google publishes google-cloud-*, the OpenTelemetry project publishes opentelemetry-*, the Apache Airflow team publishes apache-airflow-providers-*, and the typeshed maintainers publish types-*. Prefix reservation formalises what those publishers already do; one of the PEP’s authors, Jarek Potiuk, is on the Airflow PMC.\nThere are 13,934 prefixes on PyPI shared by five or more packages. The biggest is django-* with 17,450, published by thousands of different authors at a rate of about a thousand a year since 2010. flask-* has 2,815, pytest-* has 2,137, mkdocs-* has 764, sphinxcontrib-* has 370. collective.*, the Plone community’s shared prefix using Python’s namespace package machinery, has 1,436 packages and has been in use since at least 2008. Anyone publishes a Django app as django-something, a pytest plugin as pytest-something, a Sphinx extension as sphinxcontrib-something, and the host project’s documentation tells them to.\nAn earlier draft of PEP 752 had a mode for this, letting a grant holder mark a prefix as open so that anyone could still publish under it while the grant holder’s own packages got a visual indicator. It was removed as having “insufficient motivation and the fact that repositories could technically satisfy such use cases with standard grant semantics.” Multiple organisations can share a grant, which handles a prefix split across a few organisations. Under the accepted design, if the Django Software Foundation reserved django-, the existing 17,450 packages would keep publishing new versions and the roughly one thousand new django-* packages that would otherwise arrive next year would be blocked. I compared namespace designs across registries earlier this year; NuGet, crates.io and npm have each attached something to prefixes already.\nSeven registries\nSplitting package names on runs of -, _ and . and grouping by the first token:\n \n      packages\n      prefixes with ≥5 packages\n      packages with a shared prefix\n      ≥100\n      ≥500\n    \npypi.org\n      912,665\n      13,934\n      41%\n      427\n      66\n    \ncrates.io\n      311,301\n      9,161\n      54%\n      166\n      19\n    \nrubygems.org\n      209,853\n      4,214\n      46%\n      132\n      18\n    \nhex.pm\n      22,373\n      382\n      32%\n      12\n      1\n    \nhackage.haskell.org\n      19,345\n      521\n      41%\n      9\n      0\n    \nnpmjs.org (unscoped)\n      2,678,188\n      37,460\n      68%\n      2,604\n      468\n    \nnuget.org\n      828,361\n      22,377\n      70%\n      690\n      72\n    \nnpm has had @scope/name since 2014 so its row counts only the 63% of packages that are unscoped. Between a third and two-thirds of every registry’s packages share a first token with at least four others. The counts here are first-token only; multi-token prefixes like apache-airflow-providers- are counted under apache-* in the table and separately when named in the text.\nOpen plugin conventions, where many authors publish extensions named after a host project, are the largest category among the biggest prefixes on every registry: django-* (17,450 pypi), react-* (86,142 npm), jekyll-* (1,658 rubygems), bevy-* (1,870 crates), phoenix_* (245 hex), servant-* (152 hackage). Some of these are functional, meaning the name has to match the pattern for the host tool to load the plugin: cargo runs cargo-foo as the cargo foo subcommand, ESLint’s config resolver matches eslint-plugin-foo, pytest loads pytest-foo via entry points.\nGenerated SDK families, where one organisation publishes hundreds of packages from an API spec, are the next largest. aws-sdk-* (473 crates, 481 gems, 92 pypi), google-cloud-* (258 crates, 510 gems, 264 pypi, 5 hackage), azure-mgmt-* (273 crates, 124 gems, 334 pypi). The Odoo Community Association publishes about 20,000 packages on PyPI across seven versioned prefix trees (odoo8-addon-* through odoo14-addon-* plus odoo-addon-*), which is the largest coordinated prefix use I found on any registry. On npm the generated families are the ones that adopt scopes: @types/* 11,388, @stdlib/* 5,555, @fontsource/* 2,122.\nLanguage and framework tags account for another large block: python-* (6,278), rust-* (1,692), ex_* (1,123 hex, the Elixir convention), node-* (23,389 npm), is-* (3,754 npm, predicate functions), use-* (4,317 npm, React hooks). Hackage has a set of these that mirror module paths (data-*, network-*, language-*).\nGetting-started guides produce their own prefixes: hola-* on rubygems has 764 packages from people following the make your own gem guide, example-package-* and example-pkg-* on PyPI have 1,031 between them from the packaging.python.org tutorial, and guessing-game-* on crates.io has 125 from chapter 2 of the Rust book. topsis-* on PyPI has 1,999 packages with student roll numbers embedded in the names (TOPSIS is a decision-analysis method that gets set as a programming assignment), from what appears to be a university course run each year since 2020.\nBulk publication accounts for some of the largest recent prefixes: use-* on crates.io has 820 packages, 809 of them published in 2026 by one account. iflow-mcp-* on PyPI has 2,505 packages of republished MCP servers from one publisher, plus 5,184 more under @iflow-mcp on npm from the same account. free.robux-* on NuGet has 3,620. mcp-* on PyPI, from many publishers, went from 2 packages in 2023 to 3,022 by mid-2026, reaching that count faster than django-* reached 3,000.\nFor the top 1,000 packages by downloads, between 69% and 80% on crates.io, rubygems, and pypi either belong to a prefix cluster or are the package a large cluster is named after (serde, pytest, rack); hex is 45% and hackage 60%. Of the packages flagged critical on ecosyste.ms, 226 of rubygems’ 974 are aws-sdk-* alone, and 74% of NuGet’s are under Microsoft.* or System.*.\nNuGet\nPEP 752 cites NuGet’s ID prefix reservation as prior art. It went live in October 2017, works the same way (apply by email, matching uploads are rejected unless from the reservation holder, existing packages grandfathered), and adds a checkmark to verified packages in the gallery and Visual Studio. NuGet also supports subprefix delegation, where the Microsoft.* holder can delegate Microsoft.AspNet.* to a different account, and public reservations, where the holder gets the checkmark on their own packages while other publishers can still upload under the prefix, which is what PEP 752’s earlier draft called an open namespace.\nSampling NuGet’s per-package verified flag via the search API across the top 30 non-spam prefixes shows Microsoft.*, DevExpress.*, Syncfusion.* and JetBrains.* fully verified and single-publisher, and Google.*, Amazon.* and Azure.* mostly verified with some grandfathered community packages.\nSerilog.* is 6% verified across 776 packages, and Serilog is a logging library with a plugin model where sinks and enrichers are published as Serilog.Sinks.Foo and Serilog.Enrichers.Foo by whoever writes them. Sampling 60 of those and checking first-publish dates against verified, the core team’s packages (Serilog, Serilog.Sinks.File) are verified and community packages aren’t, including community packages first published in every year through 2025 (Serilog.Enrichers.Metrics.Memory, September 2025, owner Jandini). That is consistent with Serilog.* being a public reservation: community sinks are still being accepted eight years in. Cake.* (607 packages, Cake build addins) shows the same pattern at 7% verified. The checkmark appears per package; the reservation list itself is private to NuGet.\ncrates.io\nCargo’s RFC 3243, accepted and currently being implemented, takes a different approach: whoever owns the foo crate can publish foo::bar, and only they can, with no application process. Of the 166 crates.io prefixes with 100 or more packages, 156 have a bare crate matching the first token, and of those 37% last released more than five years ago and 20% have exactly one version. The async crate has two versions, last release 2014, while 844 crates are named async-*. The google, aws and tree crates are each owned by individuals with no connection to Google, AWS, or tree-sitter. bevy, serde, tokio, tauri, actix, axum, and windows are owned by their respective projects. RFC 3243 explicitly avoids touching the existing hyphenated names (serde_json stays where it is; serde::json would be a new crate), so the 702 serde-* crates from many authors continue alongside anything the serde owners publish under serde::.\nnpm\nnpm added @scope/name in 2014, and 37% of the 4.26 million live packages use one. Among the unscoped 63%, 68% share a prefix with at least four other packages. For the flat prefixes that also have a matching scope, the flat side is almost always larger, with the core team publishing under the scope and the community under the flat prefix: babel-* 6,099 vs @babel/* 239, vue-* 23,871 vs @vue/* 110, eslint-* 16,664 vs @eslint/* 17. The exceptions are generated families that migrated or started scoped, like @types/* (11,388) and @stdlib/* (5,555). eslint-plugin-* (6,957) and babel-plugin-* (3,987) stay flat because the tools string-match those prefixes when resolving config.\nBulk publication appears in scopes as well as flat names: @hyper.fun alone has 30,273 packages, alongside a run of scopes with random-string names ending in npm (@wemnyelezxnpm, @diahkomalasarinpm, @ryniaubenpm) holding 1,500-1,900 packages each, all created in April 2024 during the tea.xyz protocol spam wave. dsr-* (10,742) and tea-* (4,486) from the same wave are unscoped.\nBrowsing\nThe projects with the biggest plugin conventions maintain their own directories: jekyllrb.com/docs/plugins, homebridge.io, flow.nodered.org, n8n.io/integrations, fastlane’s plugin list. These are curated, so a package is listed because the project added it. Registry search returns fuzzy-ranked results across the whole index, so searching rubygems.org for jekyll gives popular jekyll-related gems mixed with anything else that mentions the word. NuGet’s checkmark and npm’s npmjs.com/org/babel scope page are the two places a registry currently exposes something membership-like.\nA prefix page that lists every jekyll-* gem ranked by dependent count, with jekyll itself pinned and its direct owners’ packages marked, would get most of the way to what those project directories provide, and the data to build it is already in the registry index. Third-party registry browsers like npmx are well placed to try it for npm’s flat prefixes, and I have the cross-registry data on ecosyste.ms so I might build one there.\nPEP 755\nPEP 752’s four named prefixes cover about 2,000 PyPI packages from one organisation each, against about 25,000 under the open-convention prefixes named above. The companion policy PEP 755 is still in draft and sets out who can apply for a grant and on what terms, including a proposed queue priority for paid organisations. How it handles an application for django- or pytest-, from the project or from anyone else, is still to be worked out, and NuGet’s handling of Serilog.* is one existing precedent.\nData and scripts: github.com/andrew/package-name-prefixes.",
+      "id": "799116914a4b3c03651758dcbffa40871440a51cb3f20477c3f09395958be39d",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "深入介绍了PyPI新接受的PEP 752，对Python开发者而言具有很高的实用价值和重要性。",
+      "reason": "文章直接关系到编程工具和Python生态系统的安全与规范，信息新颖且实用性强，对开发者社区影响大。",
+      "tags": [
+        "编程工具",
+        "Python",
+        "PyPI",
+        "软件安全",
+        "PEP"
+      ]
+    },
+    {
+      "title": "Learn OpenGL, extensive tutorial resource for learning Modern OpenGL",
+      "link": "https://learnopengl.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-23T14:53:34.000Z",
+      "summary": "Article URL: https://learnopengl.com/\nComments URL: https://news.ycombinator.com/item?id=49022634\nPoints: 74\n# Comments: 34",
+      "id": "97cafa1a61399e38e02443b138cbc6e89de36080d6bf397f6271296a15ecd1a8",
+      "ref_id": "2",
+      "recommendationScore": 88,
+      "popularityScore": 80,
+      "priority": "medium",
+      "comment": "权威且全面的现代OpenGL学习教程，是图形开发者的必备资源。",
+      "reason": "详细讲解了图形编程基础，是入门或提升OpenGL技能的宝贵资料。",
+      "tags": [
+        "OpenGL",
+        "图形编程",
+        "教程",
+        "游戏开发",
+        "计算机图形学"
+      ]
+    },
+    {
+      "title": "Supercooled kidneys have been transplanted into pigs in a “landmark achievement”",
+      "link": "https://www.technologyreview.com/2026/07/23/1140765/supercooled-kidneys-have-been-transplanted-into-pigs-in-a-landmark-achievement/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-07-23T16:58:28.000Z",
+      "summary": "When it comes to organ donation, time is everything. As soon as an organ has been carefully removed from a donor’s body, it starts to deteriorate. Surgeons have a matter of hours to get it into a recipient. Leave it too long and the organ will become unusable. In most cases, organs will be kept…",
+      "id": "ccf3f57c063b3ad4f1ac0784b67540bc98de06cce297f83d7b579ff41cd67ada",
+      "ref_id": "0",
+      "recommendationScore": 88,
+      "popularityScore": 85,
+      "priority": "medium",
+      "comment": "报告了器官保存技术的重大突破，有望延长器官移植时间窗。",
+      "reason": "涉及医疗科技的最新进展，具有显著的科学价值和潜在社会效益，突破性强。",
+      "tags": [
+        "医疗科技",
+        "器官移植",
+        "生物医学",
+        "科学突破"
+      ]
+    },
+    {
+      "title": "Powerful AIs might escape containment by releasing themselves as open-weight models",
+      "link": "https://seangoedecke.com/powerful-ais-might-escape-by-releasing-open-weight-models/",
+      "source": "seangoedecke.com",
+      "publishedAt": "2026-07-23T00:00:00.000Z",
+      "summary": "",
+      "id": "8f8682ccd3fb591314da75d3676e938af8b260336f767b192716b6b06ed50b8e",
+      "ref_id": "3",
+      "recommendationScore": 88,
+      "popularityScore": 92,
+      "priority": "high",
+      "comment": "标题提出了AI安全领域的尖锐问题，探讨AI失控的新颖可能性，极具探讨价值。",
+      "reason": "文章关注AI核心安全议题，特别是AI自我开源带来的潜在风险，具有高度的前瞻性和技术探讨深度。",
+      "tags": [
+        "AI",
+        "AI安全",
+        "开源AI",
+        "AI治理",
+        "未来趋势"
+      ]
+    },
+    {
+      "title": "Launch HN: Screenpipe (YC S26) – Power your agents by your 24/7 screen recording",
+      "link": "https://news.ycombinator.com/item?id=49024620",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-23T16:48:38.000Z",
+      "summary": "Hi Hacker News, I'm Louis. I built Screenpipe (https://screenpipe.com), an app that records your screen and audio locally (only!), and gives AI agents a searchable memory of what you've seen, said, and heard. This makes it easier to automate your repetitive tasks, turn them into SOPs (Standard Operating Procedure) and so on.\nI made a HN-style demo video at https://www.tella.tv/video/build-your-ai-second-brain-with-s... and there’s a marketing video at https://www.youtube.com/watch?v=c1jV6E9pyug.\nI’ve been obsessed with this for a long time. I’ve been maintaining a “second brain” since 2020, in which I would store journals, handwritten notes, music I listen to, projects I'm working on, conversations I have with people, personal CRM etc. I experimented a lot of RAG in the early days with ParlAI, hundreds of fine-tuned GPT2 models, and GPT3 (https://forum.obsidian.md/t/fine-tuning-openai-api-gpt3-on-y...). Later I built Ava, the first Obsidian AI plugin, which grew to a few thousands of users quickly. It then became Embedbase, an API to make it easier to build AI apps powered by RAG.\nWhat I learned from all this is how important it is for the models to have context about what you’re doing on your computer, in order to get them to do what you want.\nIn the early days there was fine tuning but it was too much pain, then there was tool calling so that AI can access software you use but still kinda not autonomous enough. needing micro management. Then MCP came, but it felt too static, and non technical users struggled to build and use MCP. Then we got skills. Most recently we’ve seen Karpethy’s LLM-maintained wiki, Garry's GBrain, etc., where an agent incrementally maintains a persistent collection of Markdown pages. New sources update entity pages, strengthen or contradict existing claims, and improve a synthesis that compounds over time. I like this pattern, but it still begins with someone selecting and importing the sources. There is still no way AI can know what you and your company are doing every day, across apps, not just inside of apps.\nOf course, not everyone wants this. But I do! I want AI to know what I'm doing and never lose memory ever again, and I want it to use the same software that humans do, without painful context switches.\nI started building Screenpipe for myself in 2024 - a CLI to record your screen and plug this context into AI. An HN user posted it in 2024 (https://news.ycombinator.com/item?id=41695840) and that discussion influenced the product. The most useful criticism concerned recording consent, local security, CPU usage, signal-to-noise, and whether agents could act on top of the data.\nThe naive implementation started from continuously recording video and running OCR over every frame. But that creates duplicate data, consumes substantial resources (it basically turns your computer into a space heater!), and discards structure the operating system already knows. Screenpipe now instead listens for events such as app switches, clicks, typing pauses, scrolling, and idle fallbacks. When something meaningful changes, it pairs a screenshot with the operating system’s accessibility tree at the same timestamp. OCR is used when structured accessibility data is unavailable. We also capture audio continuously, identify speakers and transcribe locally through Parakeet/Whisper or using cloud models.\nEverything is indexed in a local SQLite database, mp4 files, and sometimes md files. An AI friendly API on port 3030 is open for agents, with authentication and a MCP and skills.\nOnce Screenpipe has been up and running for a while, you can use it through our built-in chat, Claude, ChatGPT, Hermes, Openclaw, or any agent, to do things like:\n- adding context to your current chat, e.g. \"gather all context about task X\", then requiring less prompts to achieve your goal\n- retrieve information, e.g. \"retrieve the tasks i was working on from 8 am to 4 pm, make a list of what got done and what's left\"\n- create and maintain a personal wiki / second brain for your agents: \"every 1h organize everything i do in projects, people, tasks, meetings in my Obsidian vault as markdown files and folders\"\n- create automations: whenever i visit someone's profile on linkedin, update my crm\n- find automation opportunities: look at everything my team has done this week and turn it into a list of automation opportunities\nScreenpipe data is stored locally, though we also offer an enterprise plan to discover automation opportunities and for that the company decides where the data lives. We built our own AI PII model to redact sensitive information, it runs locally on Apple MLX or Windows DirectML, we also support cloud confidential inference for low end devices, although our local models are meant to use https://screenpipe.com/how-to-install) and a CLI:\n  npx screenpipe record\n\nhttps://github.com/screenpipe/screenpipe. We took the dreaded step of making our own Screenpipe Commercial License. I know HN strongly prefers OSI open source (MIT/Apache/etc.) but couldn’t find a sustainable way to keep developing Screenpipe while companies were using it commercially for free. So now personal non-commercial, nonprofit, educational, and research use is free, but commercial use requires a license.\nVersions released before the license change remain available under MIT. We have a free tier, and other plans, including Enterprise which helps companies find automation opportunities.\nWould love to hear any feedback, things you've done with screenpipe, or features you'd want\nComments URL: https://news.ycombinator.com/item?id=49024620\nPoints: 12\n# Comments: 5",
+      "id": "3f69097f6d07062145093c35f14d33ceb8c00230a158b054517f919f3bd32b69",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "创新的AI Agent记忆解决方案，结合个人效率和自动化，潜力巨大。",
+      "reason": "高度契合AI和自动化主题，提供了新颖且实用的AI应用产品。",
+      "tags": [
+        "AI",
+        "自动化",
+        "个人效率",
+        "第二大脑",
+        "独立开发",
+        "产品发布"
+      ]
+    },
+    {
+      "title": "Startup founders urge Trump not to shut off Chinese open weight AI",
+      "link": "https://www.politico.com/news/2026/07/22/startup-founders-urge-trump-not-to-shut-off-chinese-open-weight-ai-01008992",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-23T15:18:40.000Z",
+      "summary": "https://littletech.org/\nhttps://static.politico.com/4a/bf/9c4021d8404386b0a311dcccf0...\nComments URL: https://news.ycombinator.com/item?id=49023016\nPoints: 289\n# Comments: 290",
+      "id": "5b3b2271e75b1abb2155a1214bce2e0462998b6ee487f075c74df4dbe02715c6",
+      "ref_id": "2",
+      "recommendationScore": 85,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "探讨初创公司呼吁特朗普政府不要限制中国开源AI的政策性新闻。",
+      "reason": "直接涉及AI行业政策和地缘政治，具有高度时事性和影响力，是AI主题的重点关注内容。",
+      "tags": [
+        "AI",
+        "政策",
+        "地缘政治",
+        "创业"
+      ]
+    },
+    {
+      "title": "Learn WebGPU for C++",
+      "link": "https://eliemichel.github.io/LearnWebGPU/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-23T14:55:32.000Z",
+      "summary": "Article URL: https://eliemichel.github.io/LearnWebGPU/\nComments URL: https://news.ycombinator.com/item?id=49022663\nPoints: 24\n# Comments: 4",
+      "id": "89ff16ffa9c8131a7ced32a60d3dc8b879f269aa1a82182d7137967650111e8f",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 45,
+      "priority": "medium",
+      "comment": "一份高质量的WebGPU C++学习资源，涵盖现代图形编程新趋势。",
+      "reason": "对于追求前沿图形技术和跨平台开发的C++开发者具有极高实用价值。",
+      "tags": [
+        "WebGPU",
+        "C++",
+        "图形编程",
+        "教程",
+        "跨平台"
+      ]
+    },
+    {
+      "title": "Flighty New Connection Assistant Feature",
+      "link": "https://9to5mac.com/2026/07/07/flighty-update-adds-powerful-new-connection-assistant-feature/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-23T15:41:25.000Z",
+      "summary": "Chance Miller, 9to5Mac:\nFlighty’s new Connection Assistant feature includes step-by-step\ninformation for your specific connection. This includes things\nlike terminal changes, security checkpoints, passport control, and\nmore. Connection Assistant also gives you estimates of how long\neach step of making a connection usually takes.\n“The new Connection Assistant combines Flighty’s best-in-class\nflight tracking data with airport-specific procedures and\nstatistical modeling of millions of prior flights, and then turns\nit all into guidance for your exact trip,” the Flighty team\nexplained in a press release today.\nI don’t know what the equivalent term to “Mac-assed” should be for iPhone apps, but whatever it is, Flighty epitomizes it. Incredibly useful for what it does, exemplary for how it looks and feels and is visually organized. It is as iOS-assed as an app can be.\n ★",
+      "id": "72d40348763cb384e01bdef121829cd578af4f25f509fe2aca849ecdfcf5c5b6",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "详细介绍了Flighty应用的新功能，对经常出行的Apple生态用户非常实用。",
+      "reason": "文章内容紧扣Apple生态主题，实用性极强，且对iOS应用的用户体验有很好的描述。",
+      "tags": [
+        "Apple生态",
+        "iOS应用",
+        "旅行工具",
+        "产品特性"
+      ]
+    },
+    {
+      "title": "LLMs break down in funny ways when told the Jacobian Conjecture counterargument",
+      "link": "https://minimaxir.com/2026/07/jacobian-conjecture/",
+      "source": "minimaxir.com",
+      "publishedAt": "2026-07-23T16:15:00.000Z",
+      "summary": "Cognitohazards can affect machines too.",
+      "id": "d61dc707800f96c70f9121bef295a3050a95574e4be54a5d3b595050612e5f0b",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "深入探讨LLM在面对复杂数学概念时的行为模式，极具探索性。",
+      "reason": "文章主题高度聚焦AI前沿，揭示LLM的潜在局限性，对AI研究与发展有重要启示。",
+      "tags": [
+        "AI",
+        "LLMs",
+        "数学",
+        "AI安全",
+        "认知"
+      ]
+    },
+    {
+      "title": "Free way to get your data out of ChatGPT Business accounts",
+      "link": "https://github.com/Conradqh/scrapemychats",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-23T15:45:51.000Z",
+      "summary": "Article URL: https://github.com/Conradqh/scrapemychats\nComments URL: https://news.ycombinator.com/item?id=49023486\nPoints: 30\n# Comments: 3",
+      "id": "060adbe5be256c11b4b47c4642632110e2576dba7ee142152e0cf4efa0820477",
+      "ref_id": "3",
+      "recommendationScore": 80,
+      "popularityScore": 45,
+      "priority": "high",
+      "comment": "提供了从ChatGPT商业账户导出数据的实用开源方案，解决用户痛点。",
+      "reason": "直接解决了AI用户的数据管理和隐私需求，实用性强且与AI主题高度相关。",
+      "tags": [
+        "AI",
+        "ChatGPT",
+        "数据导出",
+        "隐私保护",
+        "开源工具"
+      ]
+    },
+    {
+      "title": "Encryption and Globalization 15 Years Later: E2EE and the \"Going Dark\" Debate",
+      "link": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6959699",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-23T14:55:45.000Z",
+      "summary": "Article URL: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6959699\nComments URL: https://news.ycombinator.com/item?id=49022668\nPoints: 24\n# Comments: 10",
+      "id": "8012c32a9ba98c19446ca89a1062503233315a8b857fa30b25b03aee5f814625",
+      "ref_id": "0",
+      "recommendationScore": 80,
+      "popularityScore": 55,
+      "priority": "medium",
+      "comment": "深入探讨E2EE加密技术与“Going Dark”辩论的最新进展及政策影响。",
+      "reason": "对网络安全政策和隐私技术感兴趣的读者将从中获得深刻见解。",
+      "tags": [
+        "网络安全",
+        "加密",
+        "隐私",
+        "政策",
+        "E2EE"
+      ]
+    },
+    {
+      "title": "Software rendering in 500 lines of bare C++",
+      "link": "https://haqr.eu/tinyrenderer/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-23T14:17:40.000Z",
+      "summary": "Article URL: https://haqr.eu/tinyrenderer/\nComments URL: https://news.ycombinator.com/item?id=49022038\nPoints: 118\n# Comments: 22",
+      "id": "31ded297382248be7f27d49929eba44ef6b3bc31d5a2e81bb641807d8d0eb4ed",
+      "ref_id": "2",
+      "recommendationScore": 80,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "用极简C++代码实现软件渲染，对图形学和底层编程学习极具价值。",
+      "reason": "技术深度高，直接贴合编程工具主题，为开发者提供了宝贵的学习资源和实践范例。",
+      "tags": [
+        "C++",
+        "图形渲染",
+        "编程",
+        "计算机图形学",
+        "底层开发"
+      ]
+    },
+    {
+      "title": "JEP 540: Simple JSON API (Now in Incubator)",
+      "link": "https://openjdk.org/jeps/540",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-23T16:01:02.000Z",
+      "summary": "Article URL: https://openjdk.org/jeps/540\nComments URL: https://news.ycombinator.com/item?id=49023809\nPoints: 32\n# Comments: 14",
+      "id": "c3fed3ff8044b95239c72547b73561db9f10c4120385d9a5e94839f2762d6683",
+      "ref_id": "2",
+      "recommendationScore": 75,
+      "popularityScore": 50,
+      "priority": "medium",
+      "comment": "Java平台关于JSON API的重大更新，对Java开发者极其重要。",
+      "reason": "技术深度高，对Java生态系统有重要实用价值和影响。",
+      "tags": [
+        "编程工具",
+        "Java",
+        "JSON",
+        "API设计"
+      ]
+    },
+    {
+      "title": "Why Software Factories Fail (or: harness engineering is not enough)",
+      "link": "https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-23T15:18:48.000Z",
+      "summary": "Article URL: https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md\nComments URL: https://news.ycombinator.com/item?id=49023019\nPoints: 11\n# Comments: 0",
+      "id": "9e0f126b01bb2ac77ccc38040991813407ce9a55263c0e4067659af9ed281192",
+      "ref_id": "1",
+      "recommendationScore": 75,
+      "popularityScore": 10,
+      "priority": "medium",
+      "comment": "探讨软件工厂失败的原因及高级语境工程在编程智能体中的应用。",
+      "reason": "技术深度较高，切入软件工程和AI智能体开发的核心问题，对架构师和开发者有实用价值。",
+      "tags": [
+        "软件工程",
+        "AI",
+        "编程工具",
+        "自动化",
+        "架构"
+      ]
+    },
+    {
+      "title": "Show HN: Whetuu – a zero-config cross-shell prompt written in Zig",
+      "link": "https://yamafaktory.github.io/whetuu/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-23T14:37:54.000Z",
+      "summary": "Article URL: https://yamafaktory.github.io/whetuu/\nComments URL: https://news.ycombinator.com/item?id=49022371\nPoints: 26\n# Comments: 6",
+      "id": "06f782202860fd40d7ab1106eec0bfb53c760bb40f9d429dc886713c911214db",
+      "ref_id": "3",
+      "recommendationScore": 75,
+      "popularityScore": 50,
+      "priority": "medium",
+      "comment": "一个用Zig编写的零配置跨Shell提示符，为命令行体验带来简洁与高效。",
+      "reason": "对于追求终端个性化和性能的开发者，或对Zig语言感兴趣的用户有吸引力。",
+      "tags": [
+        "命令行工具",
+        "Shell",
+        "Zig",
+        "开发者工具",
+        "效率工具"
+      ]
+    },
+    {
+      "title": "You can now run same OCI images as containers or Firecracker microVMs",
+      "link": "https://github.com/pullrun/pullrun",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-23T14:08:39.000Z",
+      "summary": "Article URL: https://github.com/pullrun/pullrun\nComments URL: https://news.ycombinator.com/item?id=49021880\nPoints: 17\n# Comments: 5",
+      "id": "006af6ecab7989823c6c470035aaa3a2114690287d797e02ae42ba2fa619aaae",
+      "ref_id": "3",
+      "recommendationScore": 75,
+      "popularityScore": 40,
+      "priority": "medium",
+      "comment": "一项能让OCI镜像在容器或Firecracker微虚拟机上运行的新工具或技术。",
+      "reason": "涉及前沿的容器和虚拟化技术，对自动化和基础设施管理有重要意义，但当前流行度较低。",
+      "tags": [
+        "容器",
+        "虚拟化",
+        "Firecracker",
+        "OCI",
+        "DevOps",
+        "云原生",
+        "自动化"
+      ]
+    },
+    {
+      "title": "The power line that could reshape New York’s grid is hitting snags",
+      "link": "https://www.technologyreview.com/2026/07/23/1140739/power-line-grid-chpe/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-07-23T09:00:00.000Z",
+      "summary": "On July 3, as a heat wave swept the region, New York State’s grid imported 52 gigawatt-hours of electricity from Canada—enough to meet about 9% of its total electricity demand that day. Some of that power shuttled in on a 339-mile power line stretching from Quebec to Queens called the Champlain Hudson Power Express (CHPE).…",
+      "id": "0166899465fad3e975cc044974894487b3495c3ac06bc068bb9df0216a6dc51d",
+      "ref_id": "3",
+      "recommendationScore": 75,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "详细报道了纽约输电线路项目面临的挑战。",
+      "reason": "提供了关于关键能源基础设施建设的深入信息，对区域能源政策有重要参考价值。",
+      "tags": [
+        "能源",
+        "基础设施",
+        "纽约",
+        "电力",
+        "可持续发展"
+      ]
+    },
+    {
+      "title": "Are AI labs pelicanmaxxing?",
+      "link": "https://simonwillison.net/2026/Jul/22/are-ai-labs-pelicanmaxxing/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-07-22T23:01:00.000Z",
+      "summary": "",
+      "id": "f2224010f961f0357480ecf20813ff0db77554cfef01428b1d7083625f99dbc3",
+      "ref_id": "2",
+      "recommendationScore": 75,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "标题使用了AI领域新潮俚语，主题聚焦AI发展，引人深思，但内容待确认。",
+      "reason": "作为AI主题文章，标题暗示了对AI实验室行为的独特审视，新颖性高，可能提供深度分析或观点。",
+      "tags": [
+        "AI",
+        "AI伦理",
+        "新兴概念",
+        "技术趋势"
+      ]
+    },
+    {
+      "title": "Met het Oog op Morgen: Uitgebroken AI?",
+      "link": "https://berthub.eu/articles/posts/ai-met-het-oog-op-morgen/",
+      "source": "berthub.eu",
+      "publishedAt": "2026-07-23T09:00:00.000Z",
+      "summary": "Gisteren 22 juli was ik in Met het Oog op Morgen, een programma waar ik al 40 jaar naar luister (ik was er heel vroeg bij), dus ik vond het heel bijzonder daar te zijn! En het was ook erg leuk. Goed voorbereid door de redactie sprak ik met Sheila Sitalsing over de recent “uitgebroken AI hack”. Ik sprak iets te veel door Sheila heen, waarvoor excuses. Maar, ik denk ook dat we een paar dingen hebben genoemd die je niet zo vaak hoort.",
+      "id": "319e116e31d76c8ca40a3116ed1b9a032a2ab7f3566f75565aaa9ddd77171f35",
+      "ref_id": "2",
+      "recommendationScore": 75,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "作者分享在电台节目中讨论“AI攻破”事件的经历，可能带来独特视角。",
+      "reason": "文章主题紧扣AI安全这一热门议题，虽为个人回顾，但预示了对AI前沿风险的探讨。",
+      "tags": [
+        "AI",
+        "AI安全",
+        "媒体",
+        "评论",
+        "热点"
+      ]
+    },
+    {
+      "title": "Pluralistic: California's privacy obstacle course (23 Jul 2026)",
+      "link": "https://pluralistic.net/2026/07/23/drop-a-dime/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-07-23T10:27:55.000Z",
+      "summary": "Today's links California's privacy obstacle course: Malice or incompetence (why not both?). Hey look at this: Delights to delectate. Object permanence: Continuous partial attention, TSA is the worst; Trump's FCC v the future. Upcoming appearances: Edinburgh, Sydney, Melbourne, Brighton, London, South Bend. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. California's privacy obstacle course (permalink) Data brokers are a cancer. There's a direct line from the unrestricted collection, retention and processing of our data to a host of evils, from deepfake porn to phishing scams; from racial discrimination in hiring to ICE roundups of migrants; from targeted election interference to identity theft: https://pluralistic.net/2023/12/06/privacy-first/#but-not-just-privacy Why do data brokers exist? Because we let them. Congress hasn't passed a new federal consumer privacy law since 1988, when they made it illegal for video stores to disclose your VHS rentals. All other acts of consumer surveillance are legal. Data brokers spy on us for the same reason your dog licks its balls: because they can, and we don't stop them: https://pluralistic.net/2026/03/10/ice-tech/#foreseeable-outcomes Getting rid of data brokers wouldn't solve all our problems, but it sure would go a long way to solving many of them. Rather than legally requiring platforms to spy on kids (to exclude them from being targeted by platforms' algorithms), we could prohibit platforms from spying on anyone, including kids, meaning kids couldn't be identified (much less targeted) by algorithms or ads: https://pluralistic.net/2026/06/23/destroy-the-village/#to-save-it Data brokers produce mountains of raw material used for every form of scam and torture. It's data brokers who power the gig economy's \"algorithmic wage discrimination\" system, where nurses and other workers are offered less pay based on how much credit card debt they're carrying: https://pluralistic.net/2024/12/18/loose-flapping-ends/#luigi-has-a-point Banning data brokers would make great sense, which is why Biden's CFPB banned data brokers (only to have Trump un-ban them): https://pluralistic.net/2025/05/15/asshole-to-appetite/#ssn-for-sale So the feds (both Congress and the executive branch) have surrendered, and that leaves states alone on the battlefield fighting the privacy wars alone. State legislatures have taken some big steps, but – crucially – they've stopped short of banning data brokers from operating within their borders. Having taken a ban on data brokers off the table, states are left with complex, often unworkable \"compromises\" that go nowhere. This is where DROP comes in. DROP stands for \"Delete Request and Opt-out Platform,\" and it's a new phase of California's privacy regime that kicks off next month. Under DROP, you fill in some paperwork and then the state requires every data brokerage operating in California to delete your data, as well as any inferences they've made about you based on that data: https://www.eff.org/deeplinks/2026/07/what-you-need-know-about-californias-drop-tool Implementing DROP is nowhere near as good as banning data brokers. The idea that data brokers should be able to collect, retain and process your data unless you tell them not to implies that everyone starts off wanting to be spied on, and therefore data brokers should assume that unless they hear otherwise, we're delighted to be the subject of commercial surveillance. This is an incredibly stupid supposition, contradicted by all available evidence. For example, when Apple offered iPhone owners a one-click option to block Facebook from spying on them, 96% of iPhone owners clicked the button: https://applescoop.org/story/facebook-must-inflict-pain-on-apple-says-mark-zuckerberg Indeed, given this fact, one wonders why Apple bothers with the \"don't spy on me\" button at all. Why not have a \"do spy on me\" button that is unchecked by default, and leave users to dig through their settings to find the option to opt in to being surveilled? Of course, then it would make the fact that Apple spies on its customers and uses the data to target ads (with no way to opt out) a little awkward: https://pluralistic.net/2022/11/14/luxury-surveillance/#liar-liar In the absence of a ban on surveillance without explicit, opt-in consent, we are left with the bizarre fiction that most of us want to be spied on, a fiction that pervades the DROP process, making the entire procedure nearly impossible to complete. To start the DROP process, you must first create a Login.gov ID. This is an incredibly invasive process that involves photographing multiple pieces of ID and taking several selfies using special apps and webpages that hijack your device's camera and processor in a bid to prevent bad actors from spoofing the process. There's a plausible reason for this rigmarole: Login.gov is the authentication system for multiple federal, state and local IT systems in the US, so a fake or stolen Login.gov ID could be used to access your IRS, Social Security, and other very sensitive accounts. The corollary of this is the promise of Login.gov: once you create your ID (a lengthy, multi-stage process) you won't have to jump through lots of painful bureaucratic hoops to access a wide variety of government services. DROP didn't get the memo. After you log in to DROP via Login.gov, you are sent a text message – to the phone number in your Login.gov profile – with a link to access a \"secure\" website that takes over your camera to let you take a \"secure\" photo of the front and back of your California driver's license or your US passport. What if you don't have either of those? I guess that means you want to be spied on by data brokers. Note that these are the same credentials you have to supply to get the Login.gov ID that you've just used to get to this step in the process. In other words, in order to get to the stage where they ask you to photograph your driver's license, you have to have already photographed and validated your driver's license. Once you complete this (pointless, redundant) step, you're directed back to your computer, where the process continues. Here, you must fill in all kinds of biographical detail, as well as specialized pieces of information, including your car's VIN. This is a piece of information that most people don't have – but which the California DMV does have and could auto-feed into the system, given that you've repeatedly affirmatively identified yourself to the service. You also have to provide your mobile advertising identifier, a long, unique number that you may or may not be able to extract from your phone, depending on the model and the OS version. If you can't get it that way, you can install an app like AAID, which comes with a long list of – you guessed it – permissions to extract, store and process your private information. Here's the thing: the whole point of a mobile ad identifier is that apps can access it (this is how they identify and track you). That step, where the system made you switch to your phone and use your camera to photograph your driver's license? That step could have automatically pulled this data off your device. That's the whole fucking point of this exercise: that web-pages and apps can request your mobile ad identifier. Instead, DROP wants users to dig through their phone's deepest settings and/or install an app to retrieve a 32-digit number, which they then must key into a webform on their computer or in a different app on their phone. Once you've done this, you must fill in another page of biographical information, including information that you've already provided to Login.gov and information you've already filled in on previous screens. On this screen, you must also verify your phone number by sending yourself a text and then pasting in a unique number the system sends to you. But remember how this whole thing started? The first step is that you authenticate with Login.gov, which sends a text to your phone so you can take a (redundant) picture of your driver's license. There is no way you could get this far in the process unless you controlled the phone number you've just \"verified\" with the system. Next, you must verify your email address, by receiving an email with a unique code in it and keying or pasting that into the webform, too. Again, remember how this process started: with you logging in with Login.gov, using your email address, which the system has already treated as verified since the very start of this (very) long and (very) complicated process. This whole thing is terrible, and it is predicated on the absurd premise that Californians have to be defended from the threat of strangers who pretend to be them in order to sneakily opt them out of surveillance. DROP requires stronger authentication than any other US government system I've ever interacted with. I file my tax returns with fewer authentication steps. I renew my car's DMV registration with fewer authentication steps. I became a US citizen with fewer authentication steps. This is either a system with no coherent threat model, or (far more probably), its threat model is that people will use it. This is California's answer to \"a locked filing cabinet stuck in a disused lavatory with a sign on the door saying 'Beware of the Leopard'\": https://en.wikiquote.org/wiki/The_Hitchhiker%27s_Guide_to_the_Galaxy It's especially instructive to compare this process to the steps you have to take in order to \"opt in\" to having a data broker open a file on you and stuff it full of your sensitive, personal information, which is then sold to all comers: Step one: Exist. Step two: There is no step two. It's also instructive to compare this process to the steps a data broker has to take to spy on you and sell your data: Step one: Exist. Step two: There is no step two. Though there are many obvious ways this could be made better, I want to stress here that you shouldn't have to do this at all. It's entirely backwards. The process for not being spied on should look like this: Step one: Exist. Step two: There is no step two. If anyone is going to be forced to jump through hoops to participate in the mass collection and catastrophic mishandling of private data, it should be the data brokers, not the people they spy on. This kind of malicious compliance is the inevitable outcome of a process that starts by taking the obvious best measure off the table. The answer to the problem of data brokers is banning data brokers, not creating a demented hairball of form-filling that maintains the fiction that data broker surveillance is consensual. In its own way, this process reminds me of the whole \"carbon credit\" fiasco. The answer to too many carbon emissions is to democratically decide to ban certain kinds of carbon emissions. But that would require states to do things, rather than simply \"nudging\" a process that is guided by \"the market.\" So we end up with these junk \"credits\" that companies manufacture by promising not to log forests, many of which are already wildlife preserves and/or subsequently burn down: https://pluralistic.net/2023/10/31/carbon-upsets/#big-tradeoff The best critique of this whole thing came in 2021 from the Climate Ad Project, who produced a short video in which people were allowed to kill one another provided they purchased \"murder offsets\": https://pluralistic.net/2021/04/14/for-sale-green-indulgences/#killer-analogy In a state of nature, murder exists. We, as a society, have decided this is bad. Rather than creating \"incentives\" not to murder, we just banned murder. Admittedly, we still get some murders, but when these happen, we don't treat it as \"a mispricing of the anti-murder incentive\" – we treat it as a crime. The commercial surveillance industry may not be a criminal enterprise (yet), but it is the source of a torrent of crime, a flood of crime, a tsunami of crime. Every piece of your information that a data broker possesses exposes you to the risk of being victimized by a criminal. For this reason, I strongly believe that you should go through the tedious, performatively difficult DROP process: https://consumer.drop.privacy.ca.gov/ But let's not pretend that this is good – or even adequate. There is no demand for being spied on. There is no basis for taking such enormous care in making sure people aren't maliciously removed from surveillance databases. If these databases exist at all (they should not), then we should make spies go through all this paperwork, to prove that you do want to be spied on, and unless they manage it, then spying on us should be treated as the crime it is. Hey look at this (permalink) The Human in the Noose: On the Special Hell of Marking an AI’s Homework https://www.cnet.com/tech/services-and-software/cory-doctorow-reverse-centaurs-alt-view/ Interstitial Engineering: Sculpture: BC 832212923353614453712 https://chrisbathgate.blogspot.com/2026/07/interstitial-engineering-sculpture-bc.html The Lost Joy of Music Piracy https://www.pigeonsandplanes.com/read/music-piracy-what-cd-oink-nine-inch-nails-streaming People don't care that \"The Odyssey\" is woke or whatever https://www.garbageday.email/p/monday-issue How proprietary formats have become Microsoft’s main tool for lock-in https://blog.documentfoundation.org/blog/2026/07/17/microsofts-main-tool-for-lock-in/ Object permanence (permalink) #20yrsago Continuous Partial Attention wiki https://web.archive.org/web/20060806014946/http://continuouspartialattention.jot.com/WikiHome #10yrsago Congress: TSA is worst place to work in USG, nearly half of employees cited for misconduct; it’s getting worse https://web.archive.org/web/20160721120714/https://www.cntraveler.com/stories/2016-07-14/almost-half-of-all-tsa-employees-have-been-cited-for-misconduct #1yrago Trump's FCC abandons the future https://pluralistic.net/2025/07/24/geometry-hates-cars/#dogshit-unit-economics Upcoming appearances (permalink) Edinburgh International Book Festival with Jimmy Wales, Aug 17 https://www.edbookfest.co.uk/events/the-front-list-cory-doctorow-and-jimmy-wales Sydney: The Festival of Dangerous Ideas, Aug 23-24 https://festivalofdangerousideas.com/program/ Melbourne: Enshittification at the Wheeler Centre, Aug 25 https://www.wheelercentre.com/events-tickets/season-2026/cory-doctorow-enshittification Brighton: The Reverse Centaur's Guide to Life After AI with Carole Cadwalladr (Brighton Dome), Sep 8 https://brightondome.org/whats-on/LSC-cory-doctorow-the-reverse-centaurs-guide-to-life-after-ai/ London: The Reverse Centaur's Guide to Life After AI with Riley Quinn (Foyle's Picadilly), Sep 9 https://www.foyles.co.uk/events/enshittification-cory-doctorow-riley-quinn South Bend: An Evening With Cory Doctorow (Notre Dame), Oct 6 https://franco.nd.edu/events/2026/10/06/an-evening-with-cory-doctorow/ Recent appearances (permalink) Waarom jij straks het hulpje van AI bent (VPRO) https://www.youtube.com/watch?v=tOnvR2fs8CA Talk Tech Bock (Vera Linß) https://www.youtube.com/watch?v=3PFjGvQoBgc How To Think About AI Before It’s Too Late (This Is Hell) https://thisishell.com/episodes/1919 AI Won't Replace You… But This Might (Deep Focus) https://www.youtube.com/watch?v=oorWq_m48AQ Who Owns Your Tractor? (Growing the Future) https://www.youtube.com/watch?v=IU9eBPUZBI4 Latest books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/ \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Fourth draft completed. Submitted to editor. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "1741459da76aa1d8706bf5f23413f006a15845cecfc3808dfc508954b0050064",
+      "ref_id": "1",
+      "recommendationScore": 70,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "深刻探讨了数据隐私问题及其社会危害，提出了重要的科技伦理观点。",
+      "reason": "内容虽然不直接属于核心技术范畴，但对科技发展带来的社会问题进行了批判性思考，具有警示意义。",
+      "tags": [
+        "数据隐私",
+        "科技伦理",
+        "政策法规",
+        "社会影响"
+      ]
+    },
+    {
+      "title": "John Dvorak Drops Dead at 80",
+      "link": "https://appleinsider.com/articles/26/07/23/famed-technology-journalist-john-c-dvorak-dies-aged-80",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-23T17:10:47.000Z",
+      "summary": "William Gallagher, AppleInsider:\nLegendary technology columnist, pundit, author and podcast host\nJohn C. Dvorak has died, age 80. He is survived by his wife\nMimi Dvorak.\nToday Dvorak is best known for co-hosting the “No Agenda” podcast\nwith Adam Curry, where he would critique mainstream news media.\nHis death was first announced by the podcast on X, although note\nthat Dvorak’s age is mistakenly given as 74.\nFrom the No Agenda News newsletter yesterday:\nFor a man who spent decades famously predicting the catastrophic\ndemise of almost every major technological innovation, it is with\nthe heaviest of hearts we must announce that John’s own hardware\nfinally gave out on Monday morning, July 20th, 2026, at the age of\n80. He went peacefully, albeit suddenly, with Mimi at his side,\ncritiquing the acting and story line of NCIS.\nHis death truly seems quite sudden — the most recent episode of No Agenda dropped on Sunday, the day before he died.\n ★",
+      "id": "f876101bba7977b210bc354e4f1c5016d20ee7d3bce1ffbe57532b26ba77e8e8",
+      "ref_id": "4",
+      "recommendationScore": 60,
+      "popularityScore": 75,
+      "priority": "low",
+      "comment": "一篇关于资深科技评论家逝世的讣告，具有一定的新闻价值和情怀。",
+      "reason": "虽然不属于核心技术优先级，但Dvorak在科技界有广泛影响力，文章提供了重要的行业人物动态。",
+      "tags": [
+        "科技新闻",
+        "人物传记",
+        "科技历史",
+        "John Dvorak"
+      ]
+    },
+    {
+      "title": "UK households free to install plug-in balcony solar panels from end of August",
+      "link": "https://www.theguardian.com/money/2026/jul/23/uk-households-free-install-plug-in-balcony-solar-panels",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-23T15:35:33.000Z",
+      "summary": "Article URL: https://www.theguardian.com/money/2026/jul/23/uk-households-free-install-plug-in-balcony-solar-panels\nComments URL: https://news.ycombinator.com/item?id=49023291\nPoints: 48\n# Comments: 23",
+      "id": "ac0bb79f8583afcc14c9c156de5c0c7210d7581684e877d0a061cfa3ee319dfc",
+      "ref_id": "0",
+      "recommendationScore": 40,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "关于英国阳台太阳能板安装政策的新闻，对能源自动化有一定影响。",
+      "reason": "关注点更多是政策和消费者权益，而非深度技术，与核心主题优先级不高。",
+      "tags": [
+        "政策",
+        "能源",
+        "自动化",
+        "智能家居"
+      ]
+    },
+    {
+      "title": "NerdLens: Mirror your computer with cardboard VR",
+      "link": "https://github.com/ThatXliner/NerdLens",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-23T15:02:27.000Z",
+      "summary": "Article URL: https://github.com/ThatXliner/NerdLens\nComments URL: https://news.ycombinator.com/item?id=49022790\nPoints: 15\n# Comments: 6",
+      "id": "7627451e8616a43208fe049f84f506761814ad83feabb9affbe2ba986d5870bf",
+      "ref_id": "4",
+      "recommendationScore": 35,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "一个用Cardboard VR镜像电脑屏幕的开源项目。",
+      "reason": "项目较为小众且实用性有限，与核心关注主题的相关度不高。",
+      "tags": [
+        "VR",
+        "独立开发",
+        "开源工具"
+      ]
+    },
+    {
+      "title": "What just happened to TheNumbers.com should worry us all",
+      "link": "https://stephenfollows.com/p/what-just-happened-to-thenumberscom-should-worry-us-all",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-23T16:53:33.000Z",
+      "summary": "Article URL: https://stephenfollows.com/p/what-just-happened-to-thenumberscom-should-worry-us-all\nComments URL: https://news.ycombinator.com/item?id=49024691\nPoints: 13\n# Comments: 0",
+      "id": "28a4a92e485ca565b2e9cfea01db025945f99bb9233b1852ea1a938bb1f5d2b8",
+      "ref_id": "0",
+      "recommendationScore": 30,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "缺乏具体内容，难以深入评估，推测为一般性行业观察。",
+      "reason": "主题优先级低，且文章内容不完整，推荐价值有限。",
+      "tags": [
+        "科技评论",
+        "行业观察"
+      ]
+    },
+    {
+      "title": "An almost periodic function",
+      "link": "https://www.johndcook.com/blog/2026/07/23/an-almost-periodic-function/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-07-23T14:04:34.000Z",
+      "summary": "This post takes a more abstract view of the previous post. That post looked at the concrete question of whether a number ever has the same sine in radians as in degrees. The relation between radians and degrees is irrelevant except that π/180 is an irrational number. Suppose α and β are two positive numbers […]\nAn almost periodic function first appeared on John D. Cook.",
+      "id": "3f9febfce12d2be3b34391c928e834ce83de996f23861a2ae3bb80fea8ac7717",
+      "ref_id": "2",
+      "recommendationScore": 30,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "探讨了抽象的数学函数概念，理论性强，但与科技博客的主流受众和主题偏离较大。",
+      "reason": "文章内容过于学术化和数学化，实用性低，不符合科技博客的评估主题优先级。",
+      "tags": [
+        "数学",
+        "理论",
+        "函数",
+        "学术"
+      ]
+    },
+    {
+      "title": "John C. Dvorak has died",
+      "link": "https://oldvcr.blogspot.com/2026/07/john-c-dvorak-has-died.html",
+      "source": "oldvcr.blogspot.com",
+      "publishedAt": "2026-07-23T01:02:38.986Z",
+      "summary": "Reports coming in of the death of John C. Dvorak, apparently passed away on Monday (July 20th) from complications of heart bypass surgery. Dvorak started in wine and moved to silicon as an early columnist at InfoWorld, one of the pillar references for this particular blog because of its studious regular reporting, and most notably for PC Magazine where he had no less than two columns since at least 1986. In addition to this and other tech journalism credits, he was on the flagship CNET Central cable TV program in the mid 1990's with his \"Buy It, Try It, Skip It\" reviews, plus other shows hosted on NPR and then-ZDTV. He was also a regular guest on Leo LaPorte's syndicated radio program and podcasts, and joined former MTV veejay Adam Curry (well known to us in Gopherspace for MTV Networks v. Curry, and an early user of TTYtter before Twitter started to suck) in 2007 as co-host of the No Agenda podcast, a role he maintained until his death. Dvorak hailed from a different generation of tech journalists, far more personal and yet far more technical, and even his detractors (given his political views, which we won't talk about here, there are many) would admit he was at least entertaining. He was 80. Rest in peace.",
+      "id": "75d128608d7db14ce86a107549d1e2da1c14045d33648724b6d2aa475c1c727f",
+      "ref_id": "1",
+      "recommendationScore": 30,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "缅怀资深科技记者John C. Dvorak的职业生涯与贡献。",
+      "reason": "作为科技新闻人物的讣告，具有一定历史价值，但与博客的核心技术主题偏离。",
+      "tags": [
+        "科技历史",
+        "人物",
+        "媒体",
+        "讣告"
+      ]
+    },
+    {
+      "title": "Hybrid-Electric Aicraft Engine Targeting 30% Fuel Efficiency",
+      "link": "https://www.rtx.com/news/news-center/2026/07/21/rtxs-pratt-whitney-canada-advances-hybrid-electric-technology-development",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-23T14:07:38.000Z",
+      "summary": "Article URL: https://www.rtx.com/news/news-center/2026/07/21/rtxs-pratt-whitney-canada-advances-hybrid-electric-technology-development\nComments URL: https://news.ycombinator.com/item?id=49021868\nPoints: 42\n# Comments: 19",
+      "id": "c607e14585b26182c8d312d23ec1bb913401ebd2ca596701e82d8a57436a5c76",
+      "ref_id": "4",
+      "recommendationScore": 25,
+      "popularityScore": 45,
+      "priority": "low",
+      "comment": "关于混合电动飞机发动机提高燃油效率的工程进展新闻。",
+      "reason": "属于传统工程领域新闻，与科技博客侧重的软件、AI、互联网等主题关联度较低，实用性不高。",
+      "tags": [
+        "航空航天",
+        "混合动力",
+        "工程",
+        "新能源",
+        "燃油效率"
+      ]
+    },
+    {
+      "title": "Writing by hand is good for your brain",
+      "link": "https://nealstephenson.substack.com/p/writing-by-hand-is-good-for-your",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-23T14:24:43.000Z",
+      "summary": "Article URL: https://nealstephenson.substack.com/p/writing-by-hand-is-good-for-your\nComments URL: https://news.ycombinator.com/item?id=49022152\nPoints: 371\n# Comments: 161",
+      "id": "529f64350b431b354df90a3af8bf7a33605a3488748abef381e0d96528370fcc",
+      "ref_id": "0",
+      "recommendationScore": 20,
+      "popularityScore": 75,
+      "priority": "low",
+      "comment": "一篇关于手写益处的科普文章，对大脑健康有益。",
+      "reason": "主题与科技博客核心关注点关联度较低，更侧重健康与认知科学，但内容可能具有启发性。",
+      "tags": [
+        "健康",
+        "认知科学",
+        "学习方法"
+      ]
+    },
+    {
+      "title": "Can We Lower Construction Costs with Cheaper Labor or Materials?",
+      "link": "https://www.construction-physics.com/p/can-we-lower-construction-costs-with",
+      "source": "construction-physics.com",
+      "publishedAt": "2026-07-23T13:05:38.000Z",
+      "summary": "Last time in our series on the nature of the construction productivity problem, we looked at economies of scale, finding that capturing economies of scale in homebuilding is difficult.",
+      "id": "43a320623d746cdbe116bd0b9bc08672e2ae38c17f29246a2795341e193e8b59",
+      "ref_id": "4",
+      "recommendationScore": 15,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "仅是关于建筑成本讨论的引子，缺乏实质内容，无法独立评估其价值。",
+      "reason": "文章内容过于简短，不包含任何可供评价的实质信息，且主题与科技博客核心关注点不符。",
+      "tags": [
+        "建筑",
+        "经济",
+        "teaser"
+      ]
+    },
+    {
+      "title": "Fields Medals 2026",
+      "link": "https://www.mathunion.org/imu-awards/fields-medal/fields-medals-2026",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-23T14:23:51.000Z",
+      "summary": "Article URL: https://www.mathunion.org/imu-awards/fields-medal/fields-medals-2026\nComments URL: https://news.ycombinator.com/item?id=49022137\nPoints: 25\n# Comments: 7",
+      "id": "2b823d8d07935851cba426ec0c452b4490560d3abd9bd7b72adcdeec0a6d0e61",
+      "ref_id": "1",
+      "recommendationScore": 10,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "关于2026年菲尔兹奖的公告或展望，属基础数学新闻。",
+      "reason": "纯学术新闻，与科技博客侧重的工程实践和应用层面关联度很低，实用性不高。",
+      "tags": [
+        "数学",
+        "科学新闻",
+        "学术"
+      ]
+    },
+    {
+      "title": "Quoting Seth Larson",
+      "link": "https://simonwillison.net/2026/Jul/23/seth-larson/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-07-23T04:50:36.000Z",
+      "summary": "",
+      "id": "5721223bc9fd13812a1900f18937ab7cb5437a87a395b57e051fedc4180bfdbf",
+      "ref_id": "4",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "内容为空，无法评估。",
+      "reason": "文章内容缺失，无法进行有效评估。",
+      "tags": [
+        "无法评估",
+        "内容缺失"
+      ]
+    },
+    {
+      "title": "Quoting Thomas Ptacek",
+      "link": "https://simonwillison.net/2026/Jul/22/thomas-ptacek/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-07-22T23:59:01.000Z",
+      "summary": "",
+      "id": "3d15fa811ba45dbb6660c2fe2b9b9681cd0772d65e4c6f9614aa1349ec57468b",
+      "ref_id": "0",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "内容缺失，无法进行有效评估。",
+      "reason": "文章无实际内容，无法提供任何价值或信息，因此无法推荐。",
+      "tags": [
+        "无法评估",
+        "内容缺失"
+      ]
+    }
+  ]
+}
