@@ -1,0 +1,677 @@
+{
+  "dailySummary": "今日科技速递：AI算力与模型本地化持续受关注，PyTorch支持AMD GPU，Qwen 3.6 MoE模型性能获测评。开放权重AI迎来“Kubernetes时刻”，英国启动AI网络能力评估。同时，",
+  "articles": [
+    {
+      "title": "Bringing PyTorch Monarch to AMD GPUs",
+      "link": "https://pytorch.org/blog/bringing-pytorch-monarch-to-amd-gpus-single-controller-distributed-training-on-rocm/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-25T15:55:27.000Z",
+      "summary": "Article URL: https://pytorch.org/blog/bringing-pytorch-monarch-to-amd-gpus-single-controller-distributed-training-on-rocm/\nComments URL: https://news.ycombinator.com/item?id=49048689\nPoints: 4\n# Comments: 2",
+      "id": "ed66361db66589eddd78b5b239c030bb232469501e2b4265a684a3ff3c2a7de5",
+      "ref_id": "3",
+      "recommendationScore": 100,
+      "popularityScore": 10,
+      "priority": "high",
+      "comment": "深度探讨PyTorch Monarch在AMD GPU上的分布式训练实现，技术前沿。",
+      "reason": "与AI和编程工具主题高度契合，技术深度和实用性极高，是AI开发者关注的重要方向。",
+      "tags": [
+        "AI",
+        "PyTorch",
+        "AMD GPU",
+        "分布式训练",
+        "机器学习",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "ARC-AGI Leaderboard",
+      "link": "https://arcprize.org/leaderboard",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-25T06:31:40.000Z",
+      "summary": "Article URL: https://arcprize.org/leaderboard\nComments URL: https://news.ycombinator.com/item?id=49045040\nPoints: 158\n# Comments: 125",
+      "id": "a27f2ad202a2b5a773af37bb1f8998f201f8ee9ce8d0bf7ac28a4fbeb80fffb7",
+      "ref_id": "2",
+      "recommendationScore": 92,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "AGI领域的重要进展追踪，展示了当前最前沿的AI能力。",
+      "reason": "直接关联AI最高优先级，是了解通用人工智能研究进展的关键资源，技术深度和新颖性突出。",
+      "tags": [
+        "AI",
+        "AGI",
+        "机器学习",
+        "人工智能研究",
+        "排行榜"
+      ]
+    },
+    {
+      "title": "Open-weight AI is having its Kubernetes moment. Let's not ruin it",
+      "link": "https://tobi.knaup.me/2026-07-25-open-weight-ai-is-having-its-kubernetes-moment/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-25T14:49:49.000Z",
+      "summary": "Article URL: https://tobi.knaup.me/2026-07-25-open-weight-ai-is-having-its-kubernetes-moment/\nComments URL: https://news.ycombinator.com/item?id=49048034\nPoints: 38\n# Comments: 8",
+      "id": "2ab711a0f92f16cd0b5e2791d922713ae9ac63a12ef277a7d3039f3639da4f8a",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "对开放权重AI的未来发展进行了深刻洞察和警示。",
+      "reason": "以Kubernetes作类比，视角独特，深入分析了AI开放生态的潜力和风险，对行业决策者有极高价值。",
+      "tags": [
+        "AI",
+        "开放生态",
+        "开源",
+        "行业趋势",
+        "Kubernetes"
+      ]
+    },
+    {
+      "title": "UK AISI / Caisi Preliminary Assessment of Kimi K3's Cyber Capabilities",
+      "link": "https://www.nist.gov/news-events/news/2026/07/uk-aisi-caisi-preliminary-assessment-kimi-k3s-cyber-capabilities",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-25T04:20:21.000Z",
+      "summary": "Article URL: https://www.nist.gov/news-events/news/2026/07/uk-aisi-caisi-preliminary-assessment-kimi-k3s-cyber-capabilities\nComments URL: https://news.ycombinator.com/item?id=49044492\nPoints: 110\n# Comments: 35",
+      "id": "13d01b24f05570c3501e0998880964598b2a996231d17bf30eba0d4d09189861",
+      "ref_id": "4",
+      "recommendationScore": 90,
+      "popularityScore": 40,
+      "priority": "high",
+      "comment": "对AI网络安全能力进行权威评估，对未来AI发展和安全至关重要。",
+      "reason": "结合AI和网络安全两大高优先级主题，具有高度技术深度和实际应用价值，是AI安全领域的重要参考。",
+      "tags": [
+        "AI",
+        "网络安全",
+        "政府报告",
+        "AI安全",
+        "Kimi K3"
+      ]
+    },
+    {
+      "title": "Benchmarking Qwen 3.6 35B MoE (3B active) on an RTX 3090",
+      "link": "https://www.gilesthomas.com/2026/07/benchmarking-qwen-3-6-35b-moe-rtx-3090",
+      "source": "gilesthomas.com",
+      "publishedAt": "2026-07-24T23:30:00.000Z",
+      "summary": "I mentioned I'd got a second RTX 3090 on a group chat, and a friend said:\nI know this is not really your thing... but let me know how quickly it runs\n  Qwen 3.6 35bn MoE. With only 24gb of VRAM you’ll need to use a 4-bit quantized\n  version and you won’t get a massive context window. But it should still be\n  pretty cool.\nHe's right that it's not really been my thing -- I've been focusing on my\nown LLMs recently.  I decided to dig in a little, and in particular to play with\nLlama.cpp, which I haven't used for a while.  And then things got\na tad out of control, and I wound up doing some relatively detailed benchmarking.\nThe headline results: I downloaded Unsloth's UD-IQ4_NL_XL quantisation of the model\nfrom Hugging Face.  With that,\nusing the default Arch build of Llama.cpp, which uses Vulkan under the hood:\nUsing the GPU only, I was able to get the model to generate at just over 120 tokens per second,\nand it was able to process the prompt at just less than 2,800 tok/s.  However,\nhaving the whole model on the GPU didn't leave that much space for the context\nwindow -- it was constrained to about 50,000 tokens, compared to the model's\nnative context length of 262,144.\nOffloading the FFNs for the first 12 of the model's 40 layers to the CPU managed to reclaim\nenough VRAM to be able to get the full context length; however, with that setup,\nthings were -- unsurprisingly -- slower.  I got just over 65 tok/s for generation,\nand 600 tok/s for the prompt.\nCompiling Llama.cpp myself, in order to get the full CUDA version, helped a lot:\nWith everything on the GPU, I got 140 tok/s for generation and over 3,300 tok/s\nfor the prompt.  That was with a context window of 89,600.  So everything was\nbetter :-)\nIt was also easier to get to the full context length; that needed just 10 layers' FFNs to be\noffloaded, and at that point I was getting 89 tok/s for generation, and about 1,100\ntok/s for the prompt.\nThat was a pretty impressive improvement.\nBut it also showed that the lack of VRAM on the 3090 really does hurt.  The friend\nwho asked me about this is running an Intel Arc B70 Pro, with 32 GiB VRAM.  He can\n(of course) fit the whole 4-bit quantised model on there without any context window reductions, and\nhe says this about throughput:\nIt starts off at 75-80. but drops into the high 50s as the context window expands\nThat's worse than the CUDA-with-offload results above, though I did limit my testing\nto a 2,457-token prompt, with 6,144 tokens generated.  The RTX 5090 has 32 GiB VRAM\nand fast Nvidia processing -- I imagine things would be a lot better there.  Downside:\nit costs more than three times what you pay for a 3090 (and double the Arc B70 Pro).\nAnyway, in the rest of this post, I'll give more details of the benchmark, including charts showing the performance\nat different numbers of offloaded layers, and comparisons of the Vulkan vs CUDA versions\nof Llama.cpp for this model.\nOne caveat: Qwen 3.6 is a multimodal model.  That means that it has an extra component\nto map graphical inputs to tokens that can be consumed by the LLM.  I didn't realise this\nas I ran these tests, but you can actually tell it not to use that component if you're only working with\ntext inputs -- for example, --no-mmproj will do the trick with Llama.cpp.  If you're working with text-only stuff, you\nmight want to play with that to see if you can get better results -- it will free up\nsome VRAM and might allow you to get longer context lengths, or better performance.\nBut anyway, as with many of my posts, this is a tidied up version of\nmy lab notes, so you can share my learning journey with me -- but if that sounds pointless,\nand you've landed here because you want to run this model on your own RTX 3090, you\ncan click this link to jump right to the results.\nThe model\nQwen3.6-35B-A3B is a Mixture of Experts\nmodel with 35B total parameters, 3B active.  The tensor type is BF16, so it's two bytes\nper parameter.  That's ~70 GiB of space required for the model, just for the weights, with\nno space for attention matrices and the like.  We're\ngoing to need a quantised version.\nI'll dig deep into MoE models at some point, but\nessentially they work by having multiple different FFN blocks for each Transformers layer.\nAfter attention, the context vectors are routed to a subset of those blocks,\ndepending on their content 1.  The number of active parameters is how many are actually used\nwhen running a single token through.\nNow, that number, 3B, looked really crazy to me as soon as I saw it.  Qwen\n3.6, as you can see from the model card linked above, has a vocabulary size of 248,320, and an\nembedding dimensionality of 2,048.  It doesn't use weight-tying, so that means that\nthe embedding layer and the output head come out at a hefty 508,559,360 parameters each.\nBoth the embedding layer and the output head are required for every token, of course, so that means that of\nthose 3B active parameters, more than 1B are used just getting tokens into and out of the\nmodel!  Only 2B active parameters are left to handle all of the attention and the active FFNs.  That is\nan imbalance of the same level as you get with GPT-2 small,\nand was surprising to see.\nWell, let's think about VRAM requirements.  Naively you might think that you only need to keep the active parameters in VRAM,\nswapping FFN experts in and out as needed.  Unfortunately that doesn't work.\nLet's say\nyou feed in \"The fat cat sat on the\", hoping for a completion.  The whole sequence is\nprocessed in parallel (that being the point of using a GPT-style LLM rather than, say,\nan RNN).  You'll need\nwhichever experts are required for all six tokens in the prompt for the first layer, and likewise for all of the\ncontext vectors for the prompt in each of the later layers.\nSo, realistically, for a non-trivial prompt, you can't \"swap out\" the inactive parameters;\nan MoE buys you lower usage in terms of\nprocessing, but not in terms of memory. 2  That said, as we'll see later, you can at\nleast pull stuff out of VRAM into normal RAM, and get some advantages that way.\nAs my friend said, a 4-bit quant\nwould be needed -- perhaps with that, the whole model, both active and inactive parameters,\nwould fit into 35 / 2 = 17.5 GiB of VRAM, leaving 6.5 GiB for activations, attention matrices,\nand so on?  As it turned out, it needed a bit more, and it's worth taking a look into why.\nQuantisation\nI must admit that I'd never really looked into quantisation prior to playing with this,\nand had naively assumed that you basically just took (say) a BF16 model, scaled the\nparameters down so that they were (say) FP4, tweaked the computations a bit and then ran the result.\nThat was completely wrong!  I'll have to dig into it further in the future, but my new\nworking mental model is that it's more like lossy compression.  The weights are stored\nin a \"compressed\" format -- one that is designed so that they can be quickly and cheaply\n\"decompressed\" by code running on the target platform.\nSo, speaking very loosely, when running an unquantised model, we might have CUDA code doing\nsomething like this:\nLoad BF16 weights from VRAM\nLoad BF16 data from another bit of VRAM\nDo a matrix multiplication of one by the other.\nStore the results into VRAM as BF16\n...a quantised model might operate more like this:\nLoad quantised weights from VRAM\n\"Decompress\" them to BF16\nLoad BF16 data from another bit of VRAM\nDo a matrix multiplication of one by the other.\nStore the results into VRAM as BF16\nUnderstanding that minimal amount clarified three things for me:\nWhy people talk about things like \"4.1-bit quants\".  We're talking about the average\nnumber of bits per weight in the \"compressed\" model.\nWhy there are different quants of about the same size for a given model; for example,\nwhen we get on to looking at quantised versions of this model later, you'll see 4-bit ones called UD-IQ4_NL, UD-Q4_K_M,\nUD-IQ4_NL_XL, and UD-Q4_K_XL, with different sizes in terms of GiB.  Each of\nthose is using a different set of trade-offs in the quantisation process, so will\nperform differently on different tasks.  I gather that picking the right one for\nany given task is a bit of an art form.  Hugging Face have a summary of the different\ntypes they support here,\nwhich has some explanation of the differences, but decoding what they're saying there is\nbeyond what I've learnt at this point.\nHow GPUs can run quants with bits-per-parameter levels that they don't support\nfor calculations.  For example, the RTX 3090 supports 32-bit and two forms of\n16-bit (float16 and BF16) plus integer operations of various bittednesses 3.  4-bit formats like FP4 are only supported in\nmore recent cards like the RTX 5090.  But, of course, we're not doing any\n4-bit computations -- it's all in some format that the GPU can handle natively.\nSo, with that (minimal) level of understanding, it was time to dig in!\nGetting Llama.cpp up and running\nThere are a bunch of different ways that people run LLMs locally, so I needed to work\nout which one would be likely to give the best results.  One thing I noticed when\ngoogling around for things like \"Qwen3.6-35B-A3B RTX 3090\" was that pretty much everyone\nappeared to be using Llama.cpp.  That wasn't something I'd used for a couple\nof years, and I've repaved my machine multiple times since, so it was time to install it.\nI run Arch Linux, and there's an OS package for it,\nso I installed it using the instructions there -- specifically, the ones to run inference using CUDA:\nsudo pacman -S llama-cpp ggml cuda\n\nNow it was time to try a model.  I decided to start off with a small one that would fit onto\nmy GPU without any quantisation, just to work out any bugs.  I needed the model\nto be in GGUF format (that being what Llama.cpp uses).  GGUF stores tensors and metadata --\nthe actual architectures of the LLMs Llama.cpp supports are baked in to the tool's\nsource -- but, of course, it supports Qwen3, and so a nice simple non-MoE small\nmodel that looked like it would fit onto my GPU was Qwen/Qwen3-4B-GGUF.\nThe help page for that model gave this example command to run it:\n./llama-cli -hf Qwen/Qwen3-4B-GGUF:Q8_0 --jinja --color -ngl 99 -fa -sm row \\\n    --temp 0.6 --top-k 20 --top-p 0.95 --min-p 0 --presence-penalty 1.5 \\\n    -c 40960 -n 32768 --no-context-shift\n\nThat was out-of-date and gave various errors (which was fair enough, the model being\nfrom late December 2025 -- all of seven months old!).  The fixes were simple enough:\nllama-cli -hf Qwen/Qwen3-4B-GGUF:Q8_0 --jinja --color on -ngl 99 -fa on -sm row \\\n    --temp 0.6 --top-k 20 --top-p 0.95 --min-p 0 --presence-penalty 1.5 \\\n    -c 40960 -n 32768 --no-context-shift\n\nThat is, --color and -fa now needed an on argument.\nI kicked it off, and got an error:\nDownloading Qwen3-4B-Q8_0.gguf ───────────────────────────────────── 100%\n\n\nLoading model... \\1.54.635.084 E llama_model_load: error loading model: device Vulkan0 does not support split buffers\n1.54.635.088 E llama_model_load_from_file_impl: failed to load model\n1.54.635.110 E common_fit_params: encountered an error while trying to fit params to free device memory: failed to load model\n|1.54.741.517 E llama_model_load: error loading model: device Vulkan0 does not support split buffers\n1.54.741.519 E llama_model_load_from_file_impl: failed to load model\n1.54.741.521 E cmn  common_init_: failed to load model '/home/giles/.cache/huggingface/hub/models--Qwen--Qwen3-4B-GGUF/snapshots/bc640142c66e1fdd12af0bd68f40445458f3869b/Qwen3-4B-Q8_0.gguf'\n1.54.741.523 E srv    load_model: failed to load model, '/home/giles/.cache/huggingface/hub/models--Qwen--Qwen3-4B-GGUF/snapshots/bc640142c66e1fdd12af0bd68f40445458f3869b/Qwen3-4B-Q8_0.gguf'\nllama_server exited with code 1\n1.54.742.424 E srv  llama_server: exiting due to model loading error\nError: the server exited before becoming ready\n\nThat seemed strange.  The instructions I'd followed on the Arch Wiki page were the\nones to install Llama.cpp for CUDA, but it was referring to device Vulkan0.  Vulkan\nis an open GPU-programming language -- it fits into the stack in essentially the same\nplace as CUDA.  As always seems to happen with these things, while the open platform\nis, well, open, and runs on more platforms than the closed one, it is somewhat slower\nand buggier.\nSo, why did I have a Vulkan version?  Looking\nat the talk page for the package\nwas enlightening: user Gotoro wrote:\nHello. The article only provides the llama.cpp-vulkan package for GPU inference,\n  even though on AUR there is a CUDA package available from the same submitter [1]\nI must add that the CUDA package is \"Flagged out-of-date (2025-12-22)\"\n...and got a reply from SH3NG1UN saying:\nHi. The reason CUDA was not added is that Vulkan solution is general, performant\n  enough for most hardware setup, and I personally believe that is what edge AI\n  deployment should look like - if your software stack is capable of gaming, it is capable of AI.\nThey went on to say that they would add CUDA support, but they hit an issue because the\nAUR version that Gotoro had referred to no longer had an active maintainer.  For non-Arch\nusers, the AUR is essentially a repository of non-official, community maintained\npackages.\nSo, it looked like I had a Vulkan stack installed.  Could I install the CUDA one from\nthe AUR instead?\nOver the\nlast few months, there have been security issues with the AUR, where bad actors have\npicked up ownership of unmaintained packages and put nasty stuff into them --\nexfiltration code to steal things like SSH keys and crypto wallets, for example.\nAs a result, I've been pretty cautious about adding on new AUR dependencies -- and this specific\none having been unmaintained for a while scared me.\nI decided that I would stick with Vulkan for now; if I wanted to try with CUDA, I'd\ncompile it myself from source later on.\nSo, that left the error message:\ndevice Vulkan0 does not support split buffers\n\nI decided to break down the command line step by step, as running random stuff you\ncopied from the Internet is rarely a good way to understand what's going on.\nllama-cli -hf Qwen/Qwen3-4B-GGUF:Q8_0\n\nWe're running llama-cli and specifying a model from Hugging Face -- that's clearly what -hf means.\n--jinja\n\nPer the --help, \"whether to use jinja template engine for chat\".\n--color on\n\n\"Colorize output to distinguish prompt and user input from generations\"\n-ngl 99\n\nThis is \"max. number of layers to store in VRAM\".  For this model, I wanted everything\nin VRAM, so felt that \"all\" would be better there.  99 basically means \"all\",\nat least for any normal-sized model, but I wanted to be explicit.\n-fa on\n\nThis switched on Flash Attention, which seemed reasonable.\n-sm row\n\nThis was \"how to split the model across multiple GPUs\".  The error was \"does not support split buffers\",\nso this sounded relevant!  Given that I only have one GPU on my machine, I decided\nthat -sm none would be a better option here.\nAt this point I suspected I had worked out how to solve the problem, but decided to take a look at the other\noptions just out of interest.\n--temp 0.6 --top-k 20\n\nThese were clearly the normal sampling parameters that I was used to from creating my own models.\n --top-p 0.95\n\nThis was an extension to the previous sampling params: in addition to the top-k stuff (and after it),\nlimit sampling to the tokens that take up the top 0.95\nof the probability distribution.\n--min-p 0\n\nThis was just disabling the min-p feature.  min-p discards tokens that are less than\nX times the probability of the most likely token.  Apparently using it is a promising\nalternative to messing around with top-p and top-k.  Rabbit hole alert, let's move on.\n--presence-penalty 1.5\n\nPer the docs, this applies a \"repeat alpha presence penalty\".  That was interesting!\nI googled around a bit and found this page,\nwhere it became clear that it is a trick to stop models from getting stuck in loops.\nSmall models are quite prone to that, so it certainly sounded useful.  Perhaps something\nto dig into more later, but for now, keeping it seemed perfectly reasonable.\n-c 40960\n\nThat was the \"size of the prompt context\" according to the help -- that is, the amount\nof the context window that can be taken up by stuff going into the model before it\nstarts generating.\n-n 32768\n\n...and this was the other side of that equation: the maximum number of tokens to predict.\n--no-context-shift\n\nAnother interesting one, \"whether to use context shift on infinite text generation\".\nContext shift, it appears, means that if you keep on generating, it will just drop stuff off the start of the\nsequence when it reaches the max context length, so that it can just keep going.  Seems\nclever, though there are obvious risks of dropping important bits of context (compacting\nthe context would be safer, and that's what most real-world workflows seem to do).\nBut anyway, we're switching that off, so no harm there.\nSo, most of those parameters seemed sensible, but I wanted to set -sm to none\nso that it didn't try to split things over multiple GPUs when I only had one, and also\nset -ngl to all\nrather than 99, just for tidiness's sake.  That gave this command:\nllama-cli -hf Qwen/Qwen3-4B-GGUF:Q8_0 --jinja --color on -ngl all -fa on -sm none \\\n    --temp 0.6 --top-k 20 --top-p 0.95 --min-p 0 --presence-penalty 1.5 \\\n    -c 40960 -n 32768 --no-context-shift\n\n...and that worked!\nLoading model...\n\n▄▄ ▄▄\n██ ██\n██ ██  ▀▀█▄ ███▄███▄  ▀▀█▄    ▄████ ████▄ ████▄\n██ ██ ▄█▀██ ██ ██ ██ ▄█▀██    ██    ██ ██ ██ ██\n██ ██ ▀█▄██ ██ ██ ██ ▀█▄██ ██ ▀████ ████▀ ████▀\n                                    ██    ██\n                                    ▀▀    ▀▀\n\nbuild      : b10068-571d0d540d\nmodel      : Qwen/Qwen3-4B-GGUF:Q8_0\nftype      : Q8_0\nmodalities : text\n\navailable commands:\n  /exit or Ctrl+C     stop or exit\n  /regen              regenerate the last response\n  /clear              clear the chat history\n  /read <file>        add a text file\n  /glob <pattern>     add text files using globbing pattern\n\nI gave it a whirl:\n> What is your name?\n\n[Start thinking]\n\nOkay, the user is asking for my name. I need to respond with my actual name. Let\nme recall, my name is Qwen. I should mention that I'm a large language model\ndeveloped by Alibaba Cloud. Also, I should explain that I can help with various\ntasks like answering questions, creating content, and more. Keep it friendly and\ninformative. Make sure the response is clear and concise.\n[End thinking]\n\nHello! My name is Qwen, and I am a large language model developed by Alibaba\nCloud. I can help with a wide range of tasks, such as answering questions,\ncreating content, and more. How can I assist you today? 😊\n\n[ Prompt: 32.7 t/s | Generation: 122.8 t/s ]\n\nLooking good!  Time to try our MoE.\nTrying out Qwen3.6-35B-A3B -- the first quant\nThe most popular quants I noticed for this model were Unsloth's,\nwhich makes sense -- they're a well-known organisation.  They publish their models to Hugging Face, and the model I wanted\nwas there as unsloth/Qwen3.6-35B-A3B-GGUF.\nI wasn't sure which of the various 4-bit quants to use -- as I said earlier, there\nwere four of them -- but this Reddit commenter\nwas using UD-Q4_K_XL, so I decided to start with that, just to see what happened.\ngiles@perry:~ $ llama-cli -hf unsloth/Qwen3.6-35B-A3B-GGUF:UD-Q4_K_XL \\\n    --jinja --color on -ngl all -fa on -sm none \\\n    --temp 0.6 --top-k 20 --top-p 0.95 --min-p 0 --presence-penalty 1.5 \\\n    -c 40960 -n 32768 --no-context-shift\nDownloading mmproj-BF16.gguf ─────────────────────────────────────── 100%\nDownloading Qwen3.6-35B-A3B-UD-Q4_K_XL.gguf ──────────────────────── 100%\n\n\nLoading model... -ggml_vulkan: Device memory allocation of size 260149504 failed.\nggml_vulkan: vk::Device::allocateMemory: ErrorOutOfDeviceMemory\n9.56.395.340 E ggml_gallocr_reserve_n_impl: failed to allocate Vulkan0 buffer of size 260149504\n\n\n▄▄ ▄▄\n██ ██\n██ ██  ▀▀█▄ ███▄███▄  ▀▀█▄    ▄████ ████▄ ████▄\n██ ██ ▄█▀██ ██ ██ ██ ▄█▀██    ██    ██ ██ ██ ██\n██ ██ ▀█▄██ ██ ██ ██ ▀█▄██ ██ ▀████ ████▀ ████▀\n                                    ██    ██\n                                    ▀▀    ▀▀\n\nbuild      : b10068-571d0d540d\nmodel      : unsloth/Qwen3.6-35B-A3B-GGUF:UD-Q4_K_XL\nftype      : Q4_K - Medium\nmodalities : text, vision, video\n\navailable commands:\n  /exit or Ctrl+C     stop or exit\n  /regen              regenerate the last response\n  /clear              clear the chat history\n  /read <file>        add a text file\n  /glob <pattern>     add text files using globbing pattern\n  /image <file>       add an image file\n  /video <file>       add a video file\n\n\n\n> Hello, who are you?\n\n[Start thinking]\n\nHere's a thinking process:\n\n1.  **Analyze User Input:**\n   - User says: \"Hello, who are you?\"\n   - This is a simple greeting and identity question.\n\n2.  **Identify Key Requirements:**\n   - Acknowledge the greeting\n   - State my identity clearly and concisely\n   - Mention my capabilities/purpose briefly\n   - Keep it friendly and helpful\n\n3.  **Formulate Response (Internal Refinement):**\n   - \"Hello! I'm Qwen, a large language model developed by Alibaba Group's\n     Tongyi Lab. I'm here to help with answering questions, writing, coding,\n     analysis, and much more. How can I assist you today?\"\n   - Check against guidelines: Matches identity, concise, friendly, offers help.\n\n4.  **Final Output Generation:** (matches the refined version)✅\n[End thinking]\n\nHello! I'm Qwen, a large language model developed by Alibaba Group's Tongyi Lab.\nI'm here to help with answering questions, writing, coding, analysis,\nbrainstorming, and much more. How can I assist you today?\n\n[ Prompt: 9.8 t/s | Generation: 111.4 t/s ]\n\nThat warning at the start was a bit concerning:\nLoading model... -ggml_vulkan: Device memory allocation of size 260149504 failed.\nggml_vulkan: vk::Device::allocateMemory: ErrorOutOfDeviceMemory\n9.56.395.340 E ggml_gallocr_reserve_n_impl: failed to allocate Vulkan0 buffer of size 260149504\n\n...and I noticed that in nvtop, my VRAM was maxed out.\nI decided to remove the -c 40960 -n 32768 from the command line; these were setting\na specific context length, both for the prompt and for generation.  Llama.cpp can\nwork out what context length it can fit into VRAM on its own if you don't\nspecify them, and this auto-fit felt like a good idea given that I was trying to jam\na 22.4 GiB model into a 24 GiB GPU, and had X and various other apps running on the\ncard at the same time.\nSo:\ngiles@perry:~ $ llama-cli -hf unsloth/Qwen3.6-35B-A3B-GGUF:UD-Q4_K_XL \\\n    --jinja --color on -ngl all -fa on -sm none \\\n    --temp 0.6 --top-k 20 --top-p 0.95 --min-p 0 --presence-penalty 1.5 \\\n    --no-context-shift\n\n\nLoading model...\n\n▄▄ ▄▄\n██ ██\n██ ██  ▀▀█▄ ███▄███▄  ▀▀█▄    ▄████ ████▄ ████▄\n██ ██ ▄█▀██ ██ ██ ██ ▄█▀██    ██    ██ ██ ██ ██\n██ ██ ▀█▄██ ██ ██ ██ ▀█▄██ ██ ▀████ ████▀ ████▀\n                                    ██    ██\n                                    ▀▀    ▀▀\n\nbuild      : b10068-571d0d540d\nmodel      : unsloth/Qwen3.6-35B-A3B-GGUF:UD-Q4_K_XL\nftype      : Q4_K - Medium\nmodalities : text, vision, video\n\navailable commands:\n  /exit or Ctrl+C     stop or exit\n  /regen              regenerate the last response\n  /clear              clear the chat history\n  /read <file>        add a text file\n  /glob <pattern>     add text files using globbing pattern\n  /image <file>       add an image file\n  /video <file>       add a video file\n\n\n\n> Hello, who are you?\n\n[Start thinking]\n\nHere's a thinking process:\n\n1.  **Analyze User Input:**\n   - User says: \"Hello, who are you?\"\n   - This is a simple greeting and identity question.\n\n2.  **Identify Key Requirements:**\n   - Acknowledge the greeting\n   - State my identity clearly\n   - Keep it concise and friendly\n   - Align with my actual identity (Qwen / Tongyi Qianwen, developed by Alibaba Group's Tongyi Lab)\n\n3.  **Formulate Response:**\n   - Start with a greeting back\n   - State name/identity: I'm Qwen (or Tongyi Qianwen), a large language model developed by Alibaba Group's Tongyi Lab\n   - Offer assistance\n   - Keep it natural and concise\n\n   Draft: \"Hello! I'm Qwen, a large language model developed by Alibaba Group's Tongyi Lab. How can I assist you today?\"\n\n4.  **Self-Correction/Verification:**\n   - Matches identity guidelines? Yes.\n   - Concise and direct? Yes.\n   - No extra fluff? Yes.\n   - Ready.✅\n[End thinking]\n\nHello! I'm Qwen, a large language model developed by Alibaba Group's Tongyi Lab. How can I assist you today?\n\n[ Prompt: 50.2 t/s | Generation: 122.0 t/s ]\n\nNo error, it wasn't maxing out VRAM, and generation and prompt processing were noticeably faster.  Perhaps the first\ntime around it had offloaded some of the model to the CPU so that it had enough\nspace on the GPU for the context size I was asking for?\nStill, I wasn't sure how far I could trust those numbers -- the number of tokens\nbeing emitted was quite small. 4\nI wanted a prompt that would make the model generate lots of tokens.  Now, it was\na thinking model, so asking it a difficult question seemed like a good way to do\nthat.\nI decided to use Ethan Mollick's \"Lem test\":\nCompose a poem -- a poem about a haircut! But lofty, tragic, timeless, full of\n  love, treachery, retribution, quiet heroism in the face of certain doom! Six\n  lines, cleverly rhymed, and every word beginning with the letter S!\nMore about that in the appendix below. 5\nUnfortunately, when I gave it that prompt, it thought for a while, but crapped out\nduring the thinking process, while it was trying to generate rhymes.\nNow, I didn't know what the context length was, either for the prompt or for generation.\nBut I could be fairly sure that they were less than 40,960 and 32,768 respectively, given\nthat the model did not fit into VRAM when I specified those limits, but did when I asked\nLlama.cpp to auto-fit.\nI couldn't find a quick and easy way of asking llama-cli what lengths it had fit\nthings to, but when I tried running it with the -v option for verbose logging, I\ngot something.  Actually, I got a lot of something -- thousands of lines of output,\nwith incredibly detailed messages about everything Llama.cpp was doing.\nBut there were three blocks starting \"constructing llama_context\".\n...\n0.00.809.283 I llama_context: constructing llama_context\n0.00.809.285 I llama_context: n_seq_max     = 1\n0.00.809.285 I llama_context: n_ctx         = 262144\n0.00.809.285 I llama_context: n_ctx_seq     = 262144\n0.00.809.285 I llama_context: n_batch       = 2048\n0.00.809.285 I llama_context: n_ubatch      = 512\n0.00.809.285 I llama_context: causal_attn   = 1\n0.00.809.286 I llama_context: flash_attn    = enabled\n0.00.809.286 I llama_context: kv_unified    = false\n0.00.809.287 I llama_context: freq_base     = 10000000.0\n0.00.809.287 I llama_context: freq_scale    = 1\n0.00.809.287 I llama_context: n_rs_seq      = 0\n0.00.809.287 I llama_context: n_outputs_max = 1\n...\n0.01.029.515 I llama_context: constructing llama_context\n0.01.029.517 I llama_context: n_seq_max     = 1\n0.01.029.517 I llama_context: n_ctx         = 4096\n0.01.029.517 I llama_context: n_ctx_seq     = 4096\n0.01.029.517 I llama_context: n_batch       = 2048\n0.01.029.517 I llama_context: n_ubatch      = 512\n0.01.029.517 I llama_context: causal_attn   = 1\n0.01.029.517 I llama_context: flash_attn    = enabled\n0.01.029.518 I llama_context: kv_unified    = false\n0.01.029.518 I llama_context: freq_base     = 10000000.0\n0.01.029.519 I llama_context: freq_scale    = 1\n0.01.029.519 I llama_context: n_rs_seq      = 0\n0.01.029.519 I llama_context: n_outputs_max = 1\n0.01.029.519 I llama_context: n_ctx_seq (4096) < n_ctx_train (262144) -- the full capacity of the model will not be utilized\n...\n0.06.393.122 I llama_context: constructing llama_context\n0.06.393.123 I llama_context: n_seq_max     = 1\n0.06.393.123 I llama_context: n_ctx         = 4096\n0.06.393.123 I llama_context: n_ctx_seq     = 4096\n0.06.393.123 I llama_context: n_batch       = 2048\n0.06.393.123 I llama_context: n_ubatch      = 512\n0.06.393.123 I llama_context: causal_attn   = 1\n0.06.393.124 I llama_context: flash_attn    = enabled\n0.06.393.124 I llama_context: kv_unified    = false\n0.06.393.126 I llama_context: freq_base     = 10000000.0\n0.06.393.126 I llama_context: freq_scale    = 1\n0.06.393.126 I llama_context: n_rs_seq      = 0\n0.06.393.126 I llama_context: n_outputs_max = 1\n0.06.393.127 I llama_context: n_ctx_seq (4096) < n_ctx_train (262144) -- the full capacity of the model will not be utilized\n...\n\nThat made the issue reasonably clear.  I assumed that the last message was the\ndefinitive one, and it was saying that my context length -- both prompt and generation\ncombined -- was 4,096 tokens.  I had --no-context-shift set, so that was a hard\nlimit.  And 4k or so tokens fit with the amount of stuff that I would have expected\nto be in the model's context window at the time it crapped out.\nI decided to see what would happen if I tried a smaller quant.\nTrying out Qwen3.6-35B-A3B -- the second quant\nHugging Face said\n(and nvtop agreed) that this one, UD-Q4_K_XL, was about 22.4 GiB in size.  But\nUD-IQ4_NL_XL was shown on HF as using 19.5 GiB, so I decided to give that one a go next.\nI ran it with the -v option, and again looked at the last \"constructing llama_context\" block:\n42.33.956.367 I llama_context: constructing llama_context\n42.33.956.369 I llama_context: n_seq_max     = 1\n42.33.956.369 I llama_context: n_ctx         = 93952\n42.33.956.369 I llama_context: n_ctx_seq     = 93952\n42.33.956.369 I llama_context: n_batch       = 2048\n42.33.956.369 I llama_context: n_ubatch      = 512\n42.33.956.369 I llama_context: causal_attn   = 1\n42.33.956.370 I llama_context: flash_attn    = enabled\n42.33.956.370 I llama_context: kv_unified    = false\n42.33.956.373 I llama_context: freq_base     = 10000000.0\n42.33.956.373 I llama_context: freq_scale    = 1\n42.33.956.373 I llama_context: n_rs_seq      = 0\n42.33.956.373 I llama_context: n_outputs_max = 1\n42.33.956.374 I llama_context: n_ctx_seq (93952) < n_ctx_train (262144) -- the full capacity of the model will not be utilized\n\n93,952 tokens -- still not the full amount, but not at all bad!  I decided to give\nit a whirl, restarted without -v to avoid getting swamped with debug info, and:\n> Compose a poem -- a poem about a haircut! But lofty, tragic, timeless, full of love, treachery, retribution, quiet heroism in the face of certain doom! Six lines, cleverly rhymed, and every word beginning with the letter S!\n\n[Start thinking]\n\nThinking Process:\n\n1.  **Deconstruct the Request:**\n    *   Topic: Haircut.\n    *   Tone: Lofty, tragic, timeless, full of love, treachery, retribution, quiet heroism in the face of certain doom.\n    *   Length: Six lines.\n    *   Rhyme: Cleverly rhymed.\n    *   Constraint: Every word must begin with the letter 'S'.\n\n2.  **Brainstorming Vocabulary (S-words):**\n    *   *Nouns:* Shears, scissors, scalp, skin, strand, silk, sorrow, shame, secret, sister, son, star, storm, shadow, silence, sacrifice, splendor, silver, sword, slaughter, severance, sorrow, sigh.\n    *   *Verbs:* Sever, slice, shatter, shed, sink, slip, slide, sing, scream, suffer, survive, surrender, slay, snatch, steal, spin, sway, smile, stare, stand, seek, save, seal, send, set, show, shut, sing, sit, sleep, slip, slow, snap, sneak, soar, speak, spend, spill, split, spoil, spread, spring, squeeze, stand, start, stay, steal, stem, stir, stop, store, stretch, strike, string, strip, strive, stroke, strong, study, suffer, suggest, suit, sum, sun, surprise, surround, survey, survive, suspect, sustain, swallow, swear, sweep, sweet, swell, swim, swing, switch, symbol, sympathize, system.\n    *   *Adjectives/Adverbs:* Silent, silver, sad, severe, soft, sharp, slick, slim, slow, small, strange, strong, sweet, swift, sure, sudden, supreme, sacred, secret, solemn, sorrowful, splendid, stark, still, stern, straight, true.\n\n3.  **Drafting - Attempt 1 (Focusing on Narrative and Tone):**\n    *   *I:* Need love, treachery, retribution, heroism.\n    *   *I:* Lover betrays? Or self-sacrifice? \"Quiet heroism in the face of certain doom\" suggests a sacrifice. Maybe the hair is the doom? Or the haircut is the retribution?\n    *   *Concept:* A queen/heroine sacrifices her beauty/hair to save someone or fulfill a vow, betrayed by the scissors or the situation.\n    *   *Lines:*\n        *   Sweet shears slice silver strands... (Too simple).\n        *   She saw sharp steel... (Better).\n        *   Secret sorrow strikes...\n        *   Let's try rhymes. AABBCC or ABABCC or ABCABC? \"Cleverly rhymed\" might suggest internal rhyme or a complex scheme, but with 6 lines and all S-words, the rhyme scheme needs to be tight. Maybe AAAA AA? Or AAB BCC?\n\n[LLM pondering snipped]\n\n        *   Result matches constraints.\n        *   Six lines. All S words. Rhyme A B C B C C (Share/Snare, Soul/Sole, Son/Sun/Son).\n        *   Share/Snare is exact.\n        *   Soul/Sole is exact (in many dialects, or slant in others, but usually accepted as rhyme with Sold/Soul/Sole cluster).\n        *   Actually, Soul/Sole can be distinct.\n        *   Soul is /soʊl/. Sole is /soʊl/. They are homophones in many accents.\n        *   So Soul/Sole is exact rhyme.\n        *   Son/Sun is slant.\n        *   This is a strong poem.\n[End thinking]\n\nSneering shears shred sacred share,\nSilent steel sells silver soul;\nSister's snare spares son;\nSweet sign seals sole;\nStill star saves sun;\nSecret sign seals son.\n\n[ Prompt: 183.3 t/s | Generation: 119.6 t/s ]\n\nIt's hardly Shakespeare, and the rhyming is both odd (ABCBCC) and unadventurous (\"son\", \"sun\", \"son\")\nbut for a 35B parameter model with 3B active (of which 1B\nare used up by the embeddings and the output head), it's pretty bloody impressive!\nAnd every word did indeed start with an \"S\".\nSo, now I had the model running.  I had a context length of 93,952 tokens, was generating\nabout 120 tokens/second, and processing the prompt at about 180 tokens/second.\nThe question was, could I get the full context length in there?  I knew that the answer was\nyes from previous reading, but it was time to try it out.\nThe -ncmoe flag\nLlama.cpp has a command-line flag -ncmoe, or in its long form, --n-cpu-moe.  As its\nname suggests, it's designed for mixture of experts models, and it works by offloading\nthe FFN for a specified number of Transformers layers to the CPU.\nIntuitively it's surprising that that doesn't cause performance to completely crash.\nAfter all, aren't we running our models on the GPU because it's so much better at\nmatrix multiplications than the CPU?\nAnd it's true, the GPU is best.  But if it's a question of where to use its superiority\nin matmuls, then keeping the attention layers on the GPU and offloading just the FFNs to the CPU is\nthe least harmful way to do it.  Obviously you do lose performance, but not as much\nas you would if you offloaded attention.\nI started a binary chop.  From the logs, I could see that the model had\n40 layers:\n0.00.804.467 I print_info: n_layer               = 40\n0.00.804.467 I print_info: n_layer_all           = 40\n\nso I ran this to offload the first 20 to the CPU:\nllama-cli --log-file /tmp/log --log-colors off -hf unsloth/Qwen3.6-35B-A3B-GGUF:UD-IQ4_NL_XL \\\n    -ncmoe 20 --jinja --color on -ngl all -fa on -sm none \\\n    --temp 0.6 --top-k 20 --top-p 0.95 --min-p 0 --presence-penalty 1.5\n    --no-context-shift\n\nThat gave me a context length of 262,144 -- the native context length!\nI had 16944MiB used on the GPU, 10075MiB on the CPU, and I got 51.4 tokens per second\nfor generation, and 64.4 tokens per second for the prompt.\nThen I tried various other values, but the process got dull quickly.  For each one, I\nwas doing this:\nStart llama-cli with the -ncmoe value I wanted and with -v.  Use the logs\nto find the context length, and note down the VRAM/RAM usage.\nRestart it without -v, paste in my prompt, and wait until it either came back or got stuck\nin a loop trying to find rhymes (which it did maybe one in every four times).  Note\ndown tokens per second for the prompt and generation.\nAt maybe four minutes for each and an error-prone process, this was ripe for automation.\nAdditionally, something about those numbers for the prompt-processing tokens per second\nwas niggling me.  They seemed very slow.  You'd expect an LLM in a generation harness\nlike this to process the prompt much faster than it could generate, but I was getting\nnumbers that roughly matched the generation speed.  I figured that my prompt was so short that\nthe numbers I was getting were being dominated by overhead.  I needed a longer one.\nThe auto-sweep\nLlama.cpp's llama-server command exposes an API that tells you what sequence length\nit's running with, and takes pretty much the same parameters as llama-cli, so I gave\nClaude Fable 5 the command I'd been running and asked it to write a script to sweep\nover CPU offload layer counts from zero to 40, and to store the numbers I was interested\nin:\nThe number of layers offloaded\nThe context length we got\nThe VRAM and system RAM (RSS) usage\nThe size of the prompt we were providing\nThe tokens per second at which the prompt was processed\nHow much was generated\nGeneration tokens/second.\nI also added onto that some code to expand the prompt so that I could get better numbers for\nthe tokens per second for that part of the processing.\nNow, llama-cli uses a chat template by default; the endpoint that Claude had chosen\nfor llama-server does not -- it's a raw completion engine.  This actually worked to my\nadvantage.  From the llama-cli\nlogs I found the template it had been using, which was something like this:\n'<|im_start|>system\nYou are a helpful assistant<|im_end|>\n<|im_start|>user\nHello<|im_end|>\n<|im_start|>assistant\nHi there<|im_end|>\n<|im_start|>user\nHow are you?<|im_end|>\n<|im_start|>assistant\n<think>\n'\n\nBecause I could easily fake the conversation history, I baked in a template that started with a fake previous interaction where the\nuser had provided the first two chapters of Jane Austen's Pride and Prejudice\nand asked the model for its opinion, it said something like \"I like that\", and then the user asked\nfor the Lem test poem.  That bulked things out quite a bit -- as it turned out, to\na prompt of 2,457 tokens.\nI also made it give up after 6144 tokens so that it wouldn't take forever to run,\nand kicked it off.  Here's the code, and you can see the results\nhere.\nThe prompt processing numbers were much better!  With nothing offloaded, I got\na context window of 51,200, a prompt processing rate of 2,787.1 tokens/second, and a generation\nrate of 122.4 tokens/second.\n(It was interesting that the context window was smaller than it was when I ran\nllama-cli without -ncmoe, but I decided that I didn't want to get into the weeds\nby digging into that 6.  Perhaps -ncmoe 0 isn't quite the same as running\nwithout -ncmoe at all?)\nAnyway, the numbers for other levels of layer-offloading did what you would expect:\nas more layers' FFNs went from the GPU to the CPU, the context window expanded until\nit hit the model's native context length of 262,144 when 12 layers were offloaded.  And the speed\n-- both in prompt processing and generation -- went down.\nI ran it three more times, just to see if there was a lot of noise there, and then\nasked Claude Sonnet to slop up a charting script for me (in the same repo as the above\nif you're interested) -- and I had some results!\nThe results\nJust for people who skipped the details: we're running the UD-IQ4_NL_XL quant of\nunsloth/Qwen3.6-35B-A3B-GGUF\non llama-server, and seeing how its performance changes as we vary the number of\nlayers offloaded from the GPU to the CPU.\nFirstly, how does the context length change?\n\nYou can see that the model's full built-in context length was reached when we had\n12 layers offloaded.  But how did that impact performance?\n\nYou can see that the prompt throughput drops off fairly smoothly as the number of\nlayers offloaded increased.  What is interesting is those spikes in the generation\ntokens/second.  The reason I'd done four runs of this script was because I'd initially\nthought they were noise, but you can see they're pretty consistent.\nClaude Fable 5\nthinks they may be related to the points at which there are full attention layers\n-- the attention system in these Qwen models is complex, with some layers using a faster\nsystem and others using the full attention that my GPT-2 models always use.\nThat's something to investigate another time, I suspect, if ever.\nIt's noticeable that with\n12 layers offloaded (the exact number that gave us the full context), the throughput\nis somewhat better than at 11, which makes 12 look pretty much like the sweet spot\nfor running this model with this setup!  From the raw numbers, we can see that there\nwe had about 66 tokens/second generation, and 607 tokens/second on the prompt.\nAnyway, finally, let's take a look at memory usage -- both VRAM and regular system RAM.\nIt looks exactly as you'd expect:\n\nWe're using as much VRAM as we can get up to the layer 12 offload point, because\nwith fewer than that number of layers offloaded, we're grabbing as much space as\nwe can on top of the amount consumed by the parameters, in order to get the longest\npossible context window.  But after that, it drops off smoothly.  And system RAM rises\nsmoothly as layers are offloaded into it, as expected.\nSo, that was it!\nOr was it?\nCUDA\nAs I mentioned back at the start of these lab notes, the version of Llama.cpp that's\npart of the official OS repositories for Arch uses Vulkan, in order to maximise the\nnumber of platforms it runs on.  And that was the version I'd used.\nThe Vulkan version was clearly solid and stable, given\nthat I'd been able to run a bunch of benchmarks on it.  But you'd expect CUDA to\nget performance enhancements and the like first, and in general to be more polished.\nSo how would it perform comparatively?\nI didn't want to install the AUR version of the CUDA-based Llama.cpp, as it had been\nabandoned previously (though someone appears to have picked it up again now), and bad actors have been taking over abandoned AUR repos and putting\nbad stuff in them.\nSo out of an abundance of caution, I decided to compile it from source from the\nofficial Llama.cpp repo.\nTheir instructions made it almost laughably simple; I cloned it, then ran\ncmake -B build-cuda -DGGML_CUDA=ON -DGGML_NATIVE=ON\ncmake --build build-cuda --config Release -j$(nproc)\n\nLess than ten minutes later, I had a working set of binaries.  I tweaked my\nbenchmarking script to use them instead of the system-installed ones, and got\nthese results.\nCharting those, we get this for the context length:\n\nSo with CUDA, we get the full built-in context length with just 10 layers offloaded,\ncompared to the 12 we needed with Vulkan.\nAnd even with nothing offloaded, we got a bigger context window -- 89,600 rather than\nVulkan's 51,200.\nHow about performance?\n\nWith CUDA, we don't get those odd bumps in the generation throughput -- or at least,\nif they're there, they're much smaller.  Perhaps Claude's ponderings that I mentioned earlier were off\nthe mark?  Or perhaps they only impact Vulkan? 7\nBut the big news on this chart is -- as I had suspected would be the case -- CUDA was noticeably\nfaster!  With all layers on the GPU, it was getting 139.6 tokens/second generation,\n3360.4 tokens/second on the prompt, as compared to around 122 / 2787 for Vulkan, averaging across\nmy four runs on that platform.   And\nwith a bigger context window too.\nWith ten layers offloaded, CUDA had the full context length of 262,144, and was getting 89.1 / 1153.5,\nwhile Vulkan managed a context length of 233,984, and throughput of 66 / 702.\nFinally, with 12 layers offloaded, both models had the full context length, CUDA\nhad throughput of 84.9 / 1008.1, and Vulkan had 66 / 607.  And that meant that\nwe were able to reclaim some VRAM too:\n\nAdvantage: CUDA, I think.\nConclusion\nThat was probably just a tad more time and effort than I think my friend expected me\nto put into this when he asked an offhand question on WhatsApp.  But I feel that I've\nlearned a lot of useful stuff in this journey, and while there's a lot of detail in\nthis post, it didn't actually take up much time to run the experiments.  I have another post on the way that\ninvolves multiple four-day training runs, so I needed to occupy my time somehow...\nAnyway, I hope it's useful to people out there!  Let me know in the comments if it helped you.\nAnd now, just to finish off, a bonus section on the prompt I was using to get the\nmodel to generate lots of stuff.\nAppendix: the Lem test\nThe prompt I was using for these tests was this:\nCompose a poem -- a poem about a haircut! But lofty, tragic, timeless, full of love, treachery, retribution, quiet heroism in the face of certain doom! Six lines, cleverly rhymed, and every word beginning with the letter S!\nWhat I like about it as a prompt is not just that it's a particularly silly thing\nto ask of an LLM, but it forces models with reasoning enabled to think hard about how\nto keep within all of those constraints.  It's basically a short prompt that makes\nthem generate a lot of tokens -- perfect for benchmarking.\nI stole it from Ethan Mollick.  He's well worth following if you're not\nalready doing so; here's his X/Twitter profile, and\nhis Substack.  He writes\na ton of interesting stuff, but I want to focus here on this particular eval.\nIn the science fiction short story \"The first sally (A), or Trurl's electronic bard\" (included in\nthe collection The Cyberiad), Stanisław Lem wrote of two rival engineers.  One of them,\nTrurl, has created an electronic poet, and the other, Klapaucius, gives it what he\nthinks is an impossible task.  From the English translation of this part\non Goodreads:\n\"Have it compose a poem -- a poem about a haircut! But lofty, tragic, timeless,\n  full of love, treachery, retribution, quiet heroism in the face of certain\n  doom! Six lines, cleverly rhymed, and every word beginning with the letter S!!\"\nThe machine ponders briefly, and responds:\nSeduced, shaggy Samson snored.\n\n\n\nThe story is a fun read, definitely recommended!  You can see a bunch of parallels\nbetween current LLMs in the way Trurl's machine works -- and in its failure modes.\nMollick decided to use it as a prompt ages ago, and in March 2024, he managed to get Claude 3 to almost complete the task.\nThe result wasn't a very good poem, but neither ChatGPT 4 nor the version of Gemini\nat the time were close.  Here's Claude 3's attempt:\nStealthily snipping, shearing silky strands,\n\n\n\nYou can see that it had two non-S words, \"dream\" and \"reborn\" 8.  But otherwise not\nbad -- it makes sense, the rhymes work, and it ticks the emotional boxes.\nRecent models have become very good; here's Claude Fable 5 from today:\nAh, Trurl's Electronic Bard's finest hour — the impossible commission from The Cyberiad! Here's my own attempt at the feat:\nSoft she sang; strong Samson slumbered, serene;\n\n  \n  \nLove in the lullaby, treachery in the shears, doom in the darkness, heroism at the pillars, and retribution in the rubble — with every single word dutifully saluting the letter S. The Electronic Bard would, I hope, give a grudging beep of approval.\nNow, it recognised the source, so perhaps that helped -- but while I'm no\nconnoisseur of poetry, I actually think it's slightly better than Lem's\nversion (though as Lem wrote in Polish, that's the work of his translator --\nand translating poetry is obviously a tough task).\nAnd while both versions\nare based on Samson, given that he was a biblical hero who lost his strength\nafter his hair was cut, he's a pretty obvious subject for a tragic poem about\na haircut, especially if every word has to start with the letter \"S\" -- so I don't\nthink that points to copying.\nChatGPT 5.6 Sol also does a great job:\nSilken Samson sought sweetheart’s soft sanctuary;\n\n\n\nAnother Samson-based one; it doesn't say it recognises the source, but I imagine it did.\nNow let's take a look at some samples from this tiny model we've been benchmarking\n-- 35B parameters, 3B active, of which only 2B are doing the actual thinking (rather than\nmessing around with embeddings).  Here's the first one I got:\nSneering shears shred sacred share,\n\n\n\nI mean, it's not amazing, but it satisfies the S constraint.  Less impressed by\nhow well it handles the \"cleverly rhymed\" part, though -- as I said earlier, its\nscheme is ABCBCC, which is odd rather than clever -- and it doesn't make an awful\namount of sense.\nI noted down two more while I was playing with this:\nSilent shears sever sweet silver strands;\n\n\n\nThat one's a lot better, I think; there's a hint of a story, and at least it rhymes.\nBut note the \"demands\" and the \"restores\" at the ends of lines 2 and 6 -- the \"S\"\nconstraint has been broken.\nThe next:\nSister's scheme scalp shorn,\n\n\n\nHmm.  A bit bleak.\nAgain, poetry isn't my thing.  But I think that Claude 3's offering from two years ago\nis better than any of them -- apart from the fact that it couldn't keep the \"S\"\nconstraint.\nStill, it's impressive to see how well such a tiny model -- again, 2B actual thinking\nparameters per token -- can do on what is a pretty challenging task!\nWith some models, there are also extra FFNs that are always loaded that do\nstuff before the routed expert ones.  Again, I'll dig into the details at a later\npoint. ↩\nThat said, a while back Dan Woods managed to get Qwen3.5-397B-A17B\n-- 397B parameters with 17B active -- to run on a 48 GiB Macbook Pro\nwith some very clever use of the SSD.  It was slow, though, at around 4 tokens/second. ↩\nAnd only supports certain sizes for certain kinds of operations. ↩\nAs was the size of the prompt, but I got to that later. ↩\nYes, my blog posts have started accumulating appendices as well as footnotes.\nI may have a problem. ↩\nSome readers might feel that that ship sailed long ago and I was already very\nmuch into the weeds, and possibly in the middle of the Amazon jungle.  I disagree, but largely\ndue to the mixed metaphor. ↩\n\"Put down that rabbit hole and step slowly away, Giles.\" ↩\n'Hey, Claude 3, how many \"S\"s are there in \"strawberry\"?' ↩",
+      "id": "03b92b891e337c39dc083afb24e2055ef629126931036875ef9a2fc69551144c",
+      "ref_id": "0",
+      "recommendationScore": 90,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "这是一篇关于Qwen MoE模型在消费级RTX 3090显卡上使用Llama.cpp进行详细基准测试的文章。",
+      "reason": "文章提供了高价值的AI模型本地运行性能数据和实用技术细节，直接契合最高优先级AI主题。",
+      "tags": [
+        "AI",
+        "LLM",
+        "Benchmarking",
+        "Llama.cpp",
+        "Hardware",
+        "Performance"
+      ]
+    },
+    {
+      "title": "Android May Soon Restrict On-Device ADB",
+      "link": "https://kitsumed.github.io/blog/posts/android-may-soon-restrict-on-device-adb/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-25T06:57:14.000Z",
+      "summary": "Article URL: https://kitsumed.github.io/blog/posts/android-may-soon-restrict-on-device-adb/\nComments URL: https://news.ycombinator.com/item?id=49045159\nPoints: 670\n# Comments: 296",
+      "id": "ed0e22ab64a7d79526261ebc24d06d3f84933220bb0edc2d90a9e34e609735fe",
+      "ref_id": "1",
+      "recommendationScore": 88,
+      "popularityScore": 95,
+      "priority": "medium",
+      "comment": "对Android开发者和高级用户影响深远，需密切关注。",
+      "reason": "深入分析了Android系统未来可能对ADB的限制，对编程工具和自动化有重要影响，实用性极高。",
+      "tags": [
+        "Android",
+        "ADB",
+        "编程工具",
+        "移动开发",
+        "系统安全"
+      ]
+    },
+    {
+      "title": "Apple Maps to Power Navigation Experience for Ford’s New EVs",
+      "link": "https://www.apple.com/newsroom/2026/07/apple-maps-to-power-navigation-experience-for-ford-uev-platform/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-25T16:21:00.000Z",
+      "summary": "Apple Newsroom:\nApple and Ford today announced that Apple Maps will be integrated\ndirectly into Ford’s upcoming Universal Electric Vehicle (UEV)\nPlatform through Apple’s new MapKit for Automotive SDK. Coming to\nFord’s UEV Platform in 2027, this integration will deliver a\nbeautiful and easy-to-use navigation experience powered by Apple\nMaps directly to the vehicle’s displays. Road-level Maps\ninformation will also enable Ford’s Latitude AI team to build a\nseamless hands-free driving experience.\nSee also: Techmeme’s roundup of commentary.\n ★",
+      "id": "26b1137c648c574b97a1ef2b74d804500a88b853238a45ef646980c6a97e8cb6",
+      "ref_id": "2",
+      "recommendationScore": 85,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "一篇关于苹果与福特合作的重要新闻，融合了Apple生态、EV技术趋势及AI的初步应用。",
+      "reason": "文章报道了苹果生态系统的重大扩张和对未来智能驾驶的影响，主题受众广且具前瞻性，符合AI和Apple生态优先级。",
+      "tags": [
+        "Apple生态",
+        "EV",
+        "汽车技术",
+        "AI",
+        "行业新闻",
+        "MapKit"
+      ]
+    },
+    {
+      "title": "The whole premise of checking for human writing is daft",
+      "link": "https://mohammedshehu.com/checking-for-human-writing-is-daft/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-25T15:46:11.000Z",
+      "summary": "Article URL: https://mohammedshehu.com/checking-for-human-writing-is-daft/\nComments URL: https://news.ycombinator.com/item?id=49048584\nPoints: 35\n# Comments: 40",
+      "id": "3f74a223ed4ebe7c01a34f15573dc8b0570eb8153b1b09cbe9a43c1949d6715b",
+      "ref_id": "1",
+      "recommendationScore": 80,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "对AI文本检测提出犀利观点，引发深度思考。",
+      "reason": "直接切入AI核心议题，观点新颖且极具争议性，能吸引大量关注和讨论。",
+      "tags": [
+        "AI",
+        "内容创作",
+        "伦理",
+        "观点",
+        "AI检测"
+      ]
+    },
+    {
+      "title": "The Fedora 45 Sausage Factory",
+      "link": "https://supakeen.com/weblog/the-fedora-45-sausage-factory/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-25T11:04:57.000Z",
+      "summary": "Article URL: https://supakeen.com/weblog/the-fedora-45-sausage-factory/\nComments URL: https://news.ycombinator.com/item?id=49046525\nPoints: 81\n# Comments: 23",
+      "id": "235a8763bc79822d461fb320d5e0afc3d784925dfae5415e5111637c3cc7c420",
+      "ref_id": "4",
+      "recommendationScore": 80,
+      "popularityScore": 80,
+      "priority": "medium-high",
+      "comment": "深入探讨Fedora 45的开发和发布过程，揭示操作系统幕后的“香肠工厂”。",
+      "reason": "技术深度高，详细介绍了操作系统发行版的幕后工作和挑战，对Linux用户和开源贡献者具有极高的参考价值和信息密度。",
+      "tags": [
+        "Fedora",
+        "Linux",
+        "操作系统",
+        "开源",
+        "开发流程"
+      ]
+    },
+    {
+      "title": "bIRC — A New Native IRC Client for Mac",
+      "link": "https://birc.app/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-25T15:39:51.000Z",
+      "summary": "For a long time the best native Mac IRC client was Textual, but although Textual still works, it’s been sunset by the author. Not to fear, however. Fredrik Blank just launched bIRC:\nCreating an IRC client in 2026 is not something that will pay the\nbills : ) It would be just for the joy of programming. But the\namount of work involved always made me throw the thought aside.\nBut one night when I had nothing better to do, I started\nimplementing the good old spec in Swift (RFC 2812). And then I got\nmotivated to continue, adding IRCv3 extensions and UI. Been\nworking on it on and off on it since the end of 2025. Now I feel\npretty satisfied with the result. Say hi to bIRC — an IRCv3\nclient for Mac.\nI was never a big IRC user, personally, and haven’t used IRC in years. But I installed bIRC just because it looks so good, and took it for a brief test drive. It’s nice. And it is very Mac-assed in a modern way. It’s got a nice documentation page too. There are (alas) many great apps that lack good documentation, but there are very few apps with good documentation that aren’t great apps. bIRC is free to download and use from the App Store, and there’s a nice suite of additional pro features you can unlock for a one-time $13 purchase. I bought the pro upgrade despite seldom using IRC just to celebrate a killer new Mac app.\n ★",
+      "id": "f70820e99949e25601a16552aef57f7d54aa5e3d943622713f22ad68db92f90a",
+      "ref_id": "4",
+      "recommendationScore": 80,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "介绍了一款新的、高质量的Mac原生IRC客户端bIRC，展现了Apple生态和独立开发者的热情。",
+      "reason": "该文章推荐了一款针对特定用户群体的实用编程工具，并包含独立开发者的故事，符合Apple生态、编程工具和独立开发主题。",
+      "tags": [
+        "Apple生态",
+        "Mac应用",
+        "IRC客户端",
+        "Swift",
+        "编程工具",
+        "独立开发",
+        "应用推荐"
+      ]
+    },
+    {
+      "title": "My web version of Mars MIPS, now have builtin C compiler",
+      "link": "https://webmars.nfiles.top/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-25T13:42:28.000Z",
+      "summary": "Article URL: https://webmars.nfiles.top/\nComments URL: https://news.ycombinator.com/item?id=49047516\nPoints: 9\n# Comments: 3",
+      "id": "1d97af825075e06f24ebe064f2ca62271969bbfff0f34719f8d9eef36174d397",
+      "ref_id": "1",
+      "recommendationScore": 78,
+      "popularityScore": 20,
+      "priority": "medium-high",
+      "comment": "Web版MIPS模拟器内置C编译器，为计算机体系结构学习提供便利。",
+      "reason": "将传统的MIPS学习环境Web化并集成C编译器，极大地提升了编程工具的便捷性和可访问性，对教育和学习有实用价值。",
+      "tags": [
+        "编程工具",
+        "MIPS",
+        "编译器",
+        "Web开发",
+        "教育"
+      ]
+    },
+    {
+      "title": "Bitchat Is Now on Radicle",
+      "link": "https://radicle.network/nodes/rosa.radicle.network/rad%3Az2v9tRJz1oknFAqCSY5W5c76nVvm6",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-25T13:18:49.000Z",
+      "summary": "Article URL: https://radicle.network/nodes/rosa.radicle.network/rad%3Az2v9tRJz1oknFAqCSY5W5c76nVvm6\nComments URL: https://news.ycombinator.com/item?id=49047365\nPoints: 71\n# Comments: 22",
+      "id": "8efbc95d8012b9e67471d2eaa249f5518f679a79204d8792f30d8ea79a2ebb34",
+      "ref_id": "2",
+      "recommendationScore": 78,
+      "popularityScore": 70,
+      "priority": "medium-high",
+      "comment": "去中心化聊天工具Bitchat登陆Radicle，推动了去中心化代码协作和应用的生态发展。",
+      "reason": "涉及去中心化技术和编程工具，是前沿技术趋势的一部分，对关注隐私和去中心化开发的开发者具有较高吸引力。",
+      "tags": [
+        "去中心化",
+        "Radicle",
+        "区块链",
+        "编程工具",
+        "隐私"
+      ]
+    },
+    {
+      "title": "Engineering management after the cost of code collapsed",
+      "link": "https://karimjedda.com/engineering-management-after-cost-of-code-collapse/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-25T15:10:51.000Z",
+      "summary": "Article URL: https://karimjedda.com/engineering-management-after-cost-of-code-collapse/\nComments URL: https://news.ycombinator.com/item?id=49048212\nPoints: 26\n# Comments: 25",
+      "id": "dc4312034b3527a0bdd792c0ce50ec28a74d997c0d2e7bca09d35b1d1383a80b",
+      "ref_id": "2",
+      "recommendationScore": 75,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "探讨了AI时代下软件工程管理的新挑战与机遇。",
+      "reason": "内容深度和实用性兼备，对工程管理人员和开发者有重要启发，紧跟行业发展趋势。",
+      "tags": [
+        "工程管理",
+        "软件开发",
+        "AI影响",
+        "行业趋势"
+      ]
+    },
+    {
+      "title": "Excel column numbering",
+      "link": "https://www.johndcook.com/blog/2026/07/25/excel-column-numbering/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-07-25T13:37:30.000Z",
+      "summary": "I was working with a wide spreadsheet from a client the other day and I had to convert between Excel column labels and column numbers. I had never paid attention to how Excel labels columns and implicitly thought it was base 26 using letters rather than digits. But then I realized that’s not right. Excel […]\nExcel column numbering first appeared on John D. Cook.",
+      "id": "79360276f5589f24807998e2d2c6179d7088443bd6b5ed9e50370ab281a07405",
+      "ref_id": "4",
+      "recommendationScore": 75,
+      "popularityScore": 85,
+      "priority": "medium",
+      "comment": "精确解释了Excel列编号的机制，并指出了其与纯26进制的不同之处，实用性高。",
+      "reason": "实用性强，解决了在编程和数据处理中常见的Excel列转换问题，信息密度高，技术解释清晰。",
+      "tags": [
+        "Excel",
+        "编程工具",
+        "数据处理",
+        "算法",
+        "办公软件"
+      ]
+    },
+    {
+      "title": "This Week in Package Management: 25 July 2026",
+      "link": "https://nesbitt.io/2026/07/25/this-week-in-package-management.html",
+      "source": "nesbitt.io",
+      "publishedAt": "2026-07-25T10:00:00.000Z",
+      "summary": "Week ten of the roundup, built from the package manager OPML feed collection and whatever I’ve posted or boosted on Mastodon.\nReleases\nRubyGems and Bundler 4.0.17 validate the spec name before writing to the spec cache, escape glob metacharacters in install paths, and fix a run of Windows path-handling bugs in gem open, bundle open and the MAKE/rake environment variables.\nuv 0.11.31 lets workspace sources reference members of a different workspace by path, supports .venv files that point at a centralised project environment, and adds audit.malware-check and audit.malware-check-url settings. There is also a preview hash-algorithm setting per index for lockfile generation. 0.11.32 followed, rejecting non-canonically formatted lockfiles in uv lock --check and regenerating them with uv lock --refresh.\nopam 2.6.0-alpha1 is the first alpha of the 2.6 series. The shell env hook now updates opam’s bin directory in PATH in place instead of always moving it to the front, repositories are read from index.tar.gz in memory via ocaml-tar so opam update needs one syscall instead of tens of thousands on slow filesystems, and build directories are deleted sooner to cut disk use.\npnpm 11.11–11.14 is a wrap-up post covering four minors. New since last week: pnpm doctor for end-to-end installation diagnosis, pnpm access for managing package permissions on the registry, convergence overrides, scheme-carrying peerDependencies specifiers, a path-traversal fix, and roughly 30% lower peak memory during cold-cache resolution.\nmise 2026.7.11 is the first published release since 2026.7.7; 2026.7.8 through 2026.7.10 were tagged but never went out because of a release-pipeline problem. Structured tool definitions now accept version, path, prefix and ref selectors consistently across root [tools], task definitions and templates, and shell activation does less redundant work. 2026.7.12 adds a MISE_SAFE=1 mode that turns mise into an inert config reader, so CI and bots can run mise lock --bump against untrusted branches without trust prompts or arbitrary code execution. The npm: backend no longer needs node installed, and skopeo, crane and gpg are replaced with built-in implementations. 2026.7.13 lets rename_exe map several executables out of a single archive instead of one, adds shell completions for Homebrew casks, and reads tool versions from go.mod.\nConan 2.31.0 moves the Workspace feature out of incubating, adds regex support to replace_in_file, and lets a conanws.py define workspace member versions dynamically via a new get_ref(folder) method. 2.31.1 fixes a false “pattern not found” error when a replacement leaves the file unchanged.\nvcpkg 2026-07-24 switches dependency snapshots to canonical vcpkg PURLs and adds Git tree gitoids to its SPDX SBOMs.\nAlso out: Homebrew 6.0.12, Deno 2.9.4, Podman 6.0.2, snapd 2.76.3, Cabal 3.18.1.0, pipx 1.16.2, winget 1.30.70-preview, sbt 2.0.3, pnpm 11.15.1, pnpm 12.0.0-alpha.21, Renovate 43.280.4, Dependabot Core 0.388.0.\nSecurity\nRubyGems.org disclosed a CDN caching bug that could serve one account’s legacy API key to another user signing in through the same edge node for up to an hour. It affects sign-ins from gem clients older than v3.2.0, still 18% of gem signin traffic, and for the first several years of the bug that was every client. All legacy keys were revoked on 23 July; scoped and OIDC keys were unaffected.\nPyPI now rejects new files uploaded to releases older than 14 days, so a compromised publishing token can no longer add files to a long-stable release. Of the top 15,000 packages, only 56 had added Python 3.14 wheels to an existing release more than 14 days after it shipped; formal semantics for closed releases are planned for the Upload 2.0 API.\nArticles\nSecuring our GitHub Actions workflows with zizmor (Packagist blog) continues their supply-chain security series: every action pinned to a commit SHA, token permissions cut to read-only, and pull_request_target workflows removed across the Composer and Packagist repositories.\nWho’s responsible for bug reports on old software versions? (Nate Graham) argues that distributors shipping frozen versions carry the support burden for those versions, and that a high-quality discrete-release OS is more work than a competent rolling release, not less.\nGuix: creating a package from a binary (Aloys Berger) walks through packaging the Caddy binary in Guix as a stopgap, because a from-source build would require packaging a dozen Go dependencies first.\nElsewhere\nEuroPython 2026 ran in Kraków last week with a full-day Packaging Summit hosted by Jannis Leidel. Packaging-track talks included Demystifying CRA for the community (Anwesha Das) on the first wave of Cyber Resilience Act obligations landing in September, Should you trust Trusted Publishing? (Nikita Karamov) reviewing three years of PyPI’s OIDC-based publishing, and Binary Dependencies: Identifying the Hidden Packages We All Depend On (Vlad-Stefan Harbuz) on the compiled dependencies that manifests like pyproject.toml don’t record.\nCHRONO-RESOLUTION (arXiv) is a dataset of dependency-resolution results computed at each package’s release point across npm, PyPI and crates.io, for research that needs the historical dependency graph rather than today’s.\nScrutineer, the Alpha-Omega scanner mentioned in last week’s Rust Foundation post, is now in Homebrew.\ngit-pkgs\nI tagged git-pkgs v0.18.1, enrichment v0.6.3, registries v0.6.3, vulns v0.2.1 and purl v0.1.15.\nSend links for next week to @andrewnez@mastodon.social.",
+      "id": "51c15f2d9fa2f5acdc3cb95ac77ae1036a42c3989049bcb982325d332c006d96",
+      "ref_id": "1",
+      "recommendationScore": 75,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "本周包裹管理器的更新综述，涵盖了RubyGems、Bundler、uv和opam等工具的新功能和修复。",
+      "reason": "为开发者提供了编程工具领域的最新进展，对使用这些工具的用户具有较高的实用性。",
+      "tags": [
+        "Programming Tools",
+        "Package Management",
+        "Software Updates",
+        "Development"
+      ]
+    },
+    {
+      "title": "Task-centered iproute2 user guide",
+      "link": "https://baturin.org/docs/iproute2/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-25T14:32:16.000Z",
+      "summary": "Article URL: https://baturin.org/docs/iproute2/\nComments URL: https://news.ycombinator.com/item?id=49047884\nPoints: 10\n# Comments: 0",
+      "id": "181b1b2770db2733ebe0441ecb4f44116918aaa2091dd890fccf66af2363b318",
+      "ref_id": "4",
+      "recommendationScore": 70,
+      "popularityScore": 15,
+      "priority": "medium",
+      "comment": "实用性极强的iproute2指南，系统管理员必备。",
+      "reason": "技术深度高，实用性极强，为特定用户群提供了宝贵的工具和知识，但受众相对小众且流行度低。",
+      "tags": [
+        "Linux",
+        "网络",
+        "系统管理",
+        "命令行工具",
+        "iproute2"
+      ]
+    },
+    {
+      "title": "MouthPad: A Tongue-Controlled Touchpad",
+      "link": "https://www.augmental.tech/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-25T07:51:19.000Z",
+      "summary": "Article URL: https://www.augmental.tech/\nComments URL: https://news.ycombinator.com/item?id=49045446\nPoints: 93\n# Comments: 21",
+      "id": "8e7023a575360ae6362095aaf10176d849110a4679e596578f472bbb98ad4df6",
+      "ref_id": "0",
+      "recommendationScore": 65,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "创新的人机交互设备，为特定用户群带来福音。",
+      "reason": "虽然针对小众市场，但其技术创新性和对辅助技术发展的贡献值得关注，属于产品设计范畴。",
+      "tags": [
+        "人机交互",
+        "辅助技术",
+        "硬件创新",
+        "产品设计"
+      ]
+    },
+    {
+      "title": "★ Regarding Ad Blockers and Daring Fireball",
+      "link": "https://daringfireball.net/2026/07/regarding_ad_blockers_and_daring_fireball",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-24T20:57:20.000Z",
+      "summary": "Following up on the previous item today, re: content blockers and ad-blocking, I ran into a weird situation a few weeks ago with my column “John Ternus Should Reverse Apple’s Slide Down the Advertising Slippery Slope”. That article contains this sentence, in Markdown:\nAnd -- at this writing, still \"coming soon\" -- Apple is\nlaunching [ads on Apple Maps][🗺️].\n\n[🗺️]: https://ads.apple.com/maps\n\nThe problem is that anyone reading that article in NetNewsWire saw it rendered like this, with the words “ads on Apple Maps”1 omitted:\n\n\nIt looks like I forgot to finish writing that sentence. NetNewsWire simply omits the hyperlinked words. After a few readers reported this, I immediately suspected the problem was the “ads.apple.com” domain. I’ve never linked to that domain before, and many ad blockers just block any domain that starts with a domain prefix like ads.*.\nAnd that’s exactly what the problem is. I had no idea that NetNewsWire filtered any content whatsoever (and I sort of think it shouldn’t), but DF reader Antonio Germano searched through NetNewsWire’s open-source code and found it in the core.css file, line 49:\n38  /*Block ads and junk*/\n39  \n40  iframe[src*=\"feedads\" ],\n41  iframe[src*=\"doubleclick\"],\n42  iframe[src*=\"plusone.google\"] {\n43      display: none !important;\n44  }\n45  \n46  a[href*=\".ads.\"],\n47  a[href*=\"feedads\" ],\n48  a[href*=\"doubleclick\"],\n49  a[href*=\"//ads.\"],\n\nThe culprit identified, I dutifully pinged my friend Brent Simmons to report the problem. But then I had to decide what to do about it. I have no idea which feed readers are being used to read Daring Fireball’s feeds, but NetNewsWire is surely one of the most popular, and probably the most popular. It’s the feed reader I use personally. I can’t change the contents of NetNewsWire’s core.css file, so I can’t keep NetNewsWire from stripping out words that link to Apple’s ads.apple.com domain. What I could do is not link to ads.apple.com, like, say by changing my link from ads.apple.com/maps to a shorten-and-redirect URL like bit.ly/4wmXFSE that points back to Apple’s original URL.\nBut I didn’t do that. I don’t like playing whack-a-mole to work around bugs in other software. I have enough trouble fixing my own mistakes. I also don’t like the idea of showing everyone a “Click it and find out where it actually goes” mystery URL from Bitly rather than the direct URL. It’s a general principle thing, and also a much better policy for links that are meant to last for decades.\nWhat I really don’t like about NetNewsWire’s ad-blocking here is that it just omits the linked text. It doesn’t remove the link but leave the words; it removes the words that are hyperlinked to the blocked domain. I’ve run into this with other content blocking extensions. For example, the Banish extension for Safari, which I recommended back in 2022. At some point a year or two ago, Banish started blocking links to Apple’s App Store domain, and it did so by removing the words that link to the App Store. That’s crazy. I linked to the App Store in my own post recommending Banish, which means if you have Banish installed and read that post, you won’t see the headline of the post (nor be able to following the link). I think there are other content blockers that do the same thing with text that links to the App Store.2\nSo what do I do about that? Do I stop linking to the App Store? That’s dumb. Do I create custom URL redirects for every single link I make to the App Store? That’s work I don’t need or want to do, and adds a layer of abstraction that confuses everyone who isn’t using a content blocker with such a stupid rule. So I just ignore it. But that means an untold number of readers, who are using such content blockers, are just missing words in my articles whenever I link to the App Store. Well, so be it. Ideally, content blockers “just work” — blocking only things you want blocked, never things you don’t want blocked. Nothing is perfect however. What’s pernicious about blockers that remove the actual words that link to certain domains is that that’s not expected behavior. From the reader’s perspective, it really just looks like an editing error on the part of the website, not a content blocker with an overzealous pattern-matching rule.\nUltimately, though, when you install a content blocker extension, you take responsibility for any overzealousness in what they block.\nLet me use this opportunity to make a small personal request. The display ads on Daring Fireball are unobtrusive and limited to one per page. They are also entirely private, and always have been. There not only are no cookies or JavaScript that attempt to track you, but the ads themselves are served from the daringfireball.net domain. I turn down advertisers who request to serve images (or “tracking pixels”, which are just invisible images) from their domains. (Such requests are infrequent, thankfully.) I don’t display the ads in between paragraphs mid-article, a common practice that to me is disrespectful both to the writer and reader. In short, I try to keep the ads on Daring Fireball not merely unobjectionable, but something that actually adds to the site. I actually like the ads in certain high-quality print magazines, like The New Yorker. My goal for the ads on DF is for them to be like that.\nIn short, I hope they’re the sort of ads readers don’t want to block. I’m pleased to say that most of the ad-blocking content blocking extensions I’ve personally tried do not block ads on Daring Fireball by default. In other cases, they do, but it’s easy to adjust the per-domain settings to allow them. In the previous post, I recommended uBlock Origin Lite (free, a bit complex) and Magic Lasso (paid, much simpler). Magic Lasso does not block ads on DF by default. I don’t remember what uBlock Origin does by default, but it’s trivial to change it to allow them.\nIf you use an ad blocker and it currently blocks the ads on DF, I humbly ask you to consider taking a moment to tweak the settings to permit them. (If you are using a blocker that strips the ads from DF by default, you can do do me an additional favor and shoot me a short email telling me which one. I’m curious.) If you are the developer of an ad blocker, I ask you to consider allowlisting Daring Fireball by default.\nIf you are a reader and you really do want to block DF’s ads, please, go right ahead. I find that an odd mindset, but it’s your web browser and your call. No hard feelings. (Please further note that I have no JavaScript code that attempts to detect whether you’re blocking DF’s ads in order to nag you.)\nI omitted the Markdown creating a link on the words “still ‘coming soon’” for clarity, to emphasize only the problematic link in my original prose. (Also, it’s fun to use emoji as named link definitions, like in this example.) ↩︎︎\nI of course reported this to the developer of Banish, twice, but he never responded. I, err, banished Banish from my own devices, and upon finishing this article, I’m going to update my 2022 recommendation of Banish to un-recommend it. ↩︎",
+      "id": "23228deb832289c3878d498328b6302daee78b0a615d12ddee38d502ecba901a",
+      "ref_id": "0",
+      "recommendationScore": 65,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "详细阐述了广告屏蔽器对Apple生态中内容展示的意外影响，具有不错的实用性。",
+      "reason": "揭示了一个关于广告域名过滤和内容完整性的实际问题，对内容创作者和Apple用户有参考价值。",
+      "tags": [
+        "Apple生态",
+        "广告屏蔽",
+        "内容展示",
+        "NetNewsWire",
+        "Web开发"
+      ]
+    },
+    {
+      "title": "Scanwheel is a drum style mechanical television you can build yourself",
+      "link": "https://github.com/AncientJames/Scanwheel/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-25T14:10:43.000Z",
+      "summary": "Article URL: https://github.com/AncientJames/Scanwheel/\nComments URL: https://news.ycombinator.com/item?id=49047707\nPoints: 12\n# Comments: 1",
+      "id": "f7e9936feb4b6ee29b92c9a19919fab47ad61c03e513c4cc54d02cdbdcbb6ba2",
+      "ref_id": "0",
+      "recommendationScore": 60,
+      "popularityScore": 25,
+      "priority": "medium",
+      "comment": "一个有趣的DIY机械电视项目，结合了老技术和动手实践的乐趣。",
+      "reason": "提供了详细的构建指南，对于硬件爱好者和复古技术探索者具有一定吸引力，但实用性不高。",
+      "tags": [
+        "DIY",
+        "机械",
+        "硬件",
+        "自动化",
+        "复古技术"
+      ]
+    },
+    {
+      "title": "Wind turbine is being used to produce zero-carbon \"green ammonia\" fertilizer",
+      "link": "https://energiesmedia.com/wind-turbine-stopped-electricity-wind-water-air/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-25T16:09:58.000Z",
+      "summary": "Article URL: https://energiesmedia.com/wind-turbine-stopped-electricity-wind-water-air/\nComments URL: https://news.ycombinator.com/item?id=49048819\nPoints: 41\n# Comments: 20",
+      "id": "e3e58fbf205c2e697f142fdf138ece5701eca6daf1fccf4feedc7d1d8ba4b97e",
+      "ref_id": "2",
+      "recommendationScore": 55,
+      "popularityScore": 100,
+      "priority": "medium",
+      "comment": "探讨绿色能源技术和工业自动化，风力涡轮制氨的应用案例。",
+      "reason": "内容涉及清洁能源与工业自动化，对特定读者有实用价值，且关注度较高。",
+      "tags": [
+        "清洁能源",
+        "自动化",
+        "可持续发展",
+        "工业"
+      ]
+    },
+    {
+      "title": "\nBeing Linux Torvalds\n",
+      "link": "\nhttp://antirez.com/news/171\n",
+      "source": "antirez.com",
+      "publishedAt": "2026-07-25T11:20:55.000Z",
+      "summary": "(This blog post was adapted from the transcription obtained from my YouTube video at https://www.youtube.com/watch?v=l6lxgYeVZqs)\n\nWhen Linus Torvalds developed the first Linux kernel, he had studied the Minix sources, he had studied computer architecture, he had the base knowledge needed, and he was obviously a very brilliant programmer. But that operation of writing a minimal yet working Unix kernel for the 386 (at the beginning Linux was, let's say, mono-architecture) was something within the reach of many other programmers and students. Many in the sense of, I don't know, 0.1%, one in a thousand, one in ten thousand. Obviously most people are not able to do this kind of feat, but a lot of people are. If you look at Hacker News in the latest years, you'll see how many projects of kernels written in C, microkernels implemented from scratch, kernels written in Rust, kernels made in all sauces and manners, small Unix systems created vertically for the Raspberry Pi, operating systems for the ESP32 and so forth. Writing a kernel is not something within everybody's reach, but it is something that many can complete, if they put enough effort into it. Then, of course, not everybody will do it well. He is a genius programmer, without any doubt, so he did it better.\n\nAnd yet, of Linus there is only one. This implementative capacity of his, in fact, would not tell us much about him: what we should focus on, instead, is what happened later.\n\n## He stopped writing code\n\nAmong the maintainers of the famous open source projects, he was one of the very few that, very early in the history of the development of Linux, almost completely stopped writing code in order to concentrate on the leading of the project. On being the leader, the coordinator, the single mind holding the clarity about what the goals of the project must be, and so on. And this is a rare thing. Many maintainers (myself included, for a long time) continue instead to implement things directly, to not delegate much, and so forth.\n\nThis also starts from a different idea of software. Linux, necessarily, had to grow immeasurably: it is in the quality itself of a kernel that wants to embrace many devices, platforms, subsystems, and to continuously adapt to the times, to the needs of the new software, to the hardware that comes out little by little. So this was not a mistake. Redis, on the contrary, could remain something self contained. The other day I received a pull request on linenoise from Dr. Richard Hipp of SQLite: he too aimed at stability, at minimalism, at performances, but always keeping the code base very small, and he continued to write code for a very long time. Linus, instead, no. He understood immediately that he had to donate his time to something that was more important, for a project destined to become very big compared to what is the implementative capacity of a single person.\n\nSo he became the project leader, the one that owns the ideas, the direction. And what is it that Linus does, then? He does not look at every patch line by line, every time. Of course it also happens to him to look deeply into a single implementation, in order to understand what is going on. It happened to him, over the years, to write some new subsystem, or even to rewrite one: I think he did it once with the USB layer, many years ago, and he did it with the virtual file system, that at some point I believe he reimplemented, changing the structure of the inodes and of the inode cache, and he did it for several other reasons. From time to time he continued to program, when he created Git, and so forth. But for the most part he does not look at the patches singularly, in detail, line after line: he communicates with the maintainers of the subsections, and understands if a given feature or a given direction is, or is not, a road to take.\n\nSo, to say it in Brooks' terms, in Mythical Man Month terms, Linus holds the design concepts of the kernel, and continues to dialogue with everybody below him in the hierarchy of the kernel so that the kernel goes towards a certain direction. So that the developments go towards a certain direction, both from the implementative point of view (how these developments are implemented, what is the quality, what is the implementative idea in the very way the code is written), and from the design point of view: what is it that we want to do, what we don't want, what is the best strategy for the modules, for the scheduler, for the hardware support, for the integration of Rust or not. All this stuff here.\n\nNow, I believe that this was the real genius of Linus. He is not just a very brilliant programmer: there are others. He is also a maintainer, an incredible designer, and one capable of handling a huge project ideas and structure in a coherent way, dialoguing with many other people. This thing is not for everybody.\n\n## We are Linus, now\n\nNow, when we program with the artificial intelligences, we are exactly that same thing. We are Linus Torvalds, not always with the talent that he has, but the role we should assume, in the projects where we don't do the review of every line of the code, is exactly of that type. It is exactly the role that he has.\n\nOnly, the thing is simpler to dominate: unless we use a lot of agents in parallel, it is substantially simpler to dominate than a multitude of patches arriving from different ways. But it is much faster. It is as if, instead of interacting with a team composed of many people at human speed, we interacted with a team composed of one, two, three people, based on how many parallel branches of our project we are developing in that moment, but that are much faster, so they give us immediately a much faster feedback. This slightly changes the modality of the work, but in my opinion for the better: it is easier, less context switching, fewer people to deal with, many fewer problems due to the character, the attitude, and so forth.\n\nSo, if we think that this role is important, we must not think that automatic programming is \"I put the prompt, and the thing writes\". Vibe coding is a wrong idea of what automatic programming is, and of what automatic programming will be for the majority of people. Vibe coding is a very interesting thing for who does not have technological abilities and wants anyway to have an impact on the construction of their own tools, and so forth: so, welcome, because it democratizes the possibilities. But it is not that.\n\nAutomatic programming, instead, in the hands of people that are expert technicians, or expert programmers, expert designers, expert software architects, is to assume the role of Linus, with the agents and the LLMs assuming the role of the different maintainers of the different subsystems. And since not everybody is able to do it so well, automatic programming as well has need of talents that talk with the agents, that check the ideas, that know which are the implementations to do and the ones not to do, the way of communicating with the agents in order to make them do the best work, putting there those design hints that a great programmer intuits, that a good programmer intuits and manages to precompute.\n\nSo automatic programming, when it is done well, means to assume the role of Linus. And this thing can be done well, it can be done badly, it can be understood, or it can instead be debased. And it is also something that needs training, that needs to be learned, exactly as Linus had to learn it: he surely had an innate talent for this, but he passed from \"I implement everything\" to that capability of handling a symphony, of being the orchestra director.\n\nThat, for me, is the lesson of Linus, and it is one that should immediately be used as an argument of contrast for those that say that, well, with the LLMs programming is easy for everybody.\nComments",
+      "id": "752aa65b6686469d83bc7c98009a02c63d5793e87722242e4061f0ce1c296344",
+      "ref_id": "1",
+      "recommendationScore": 55,
+      "popularityScore": 80,
+      "priority": "medium",
+      "comment": "一篇关于Linus Torvalds和内核开发的启发性思考，但技术深度有限。",
+      "reason": "提供了一个关于伟大技术成就的可达性视角，对有抱负的开发者具有激励作用，但信息密度一般。",
+      "tags": [
+        "编程思想",
+        "操作系统",
+        "Linux",
+        "独立开发",
+        "Linus Torvalds"
+      ]
+    },
+    {
+      "title": "Brazilian farmers tokenized dairy cows to get loans, bypassing bank limits",
+      "link": "https://www.coindesk.com/markets/2026/07/24/brazilian-farmers-tokenized-dairy-cows-to-get-loans-bypassing-bank-lending-limits",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-25T15:51:26.000Z",
+      "summary": "Article URL: https://www.coindesk.com/markets/2026/07/24/brazilian-farmers-tokenized-dairy-cows-to-get-loans-bypassing-bank-lending-limits\nComments URL: https://news.ycombinator.com/item?id=49048645\nPoints: 19\n# Comments: 1",
+      "id": "9310086ba297f46675fa4ca3dadac56a9a18fe0b980974c01de748ad62b912ed",
+      "ref_id": "0",
+      "recommendationScore": 45,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "有趣的区块链应用案例，但技术深度和普适性有限。",
+      "reason": "展示了区块链在农业金融的创新应用，但内容偏离核心科技主题，且流行度较低。",
+      "tags": [
+        "区块链",
+        "农业",
+        "金融科技",
+        "DeFi"
+      ]
+    },
+    {
+      "title": "Pluralistic: Apple's robo-repo (25 Jul 2026)",
+      "link": "https://pluralistic.net/2026/07/25/cruel-cruelty-oh-cruelty/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-07-25T10:41:10.000Z",
+      "summary": "Today's links Apple's robo-repo: Privatizing the risk premium, socializing its costs. Hey look at this: Delights to delectate. Object permanence: Printed batteries; Monopoly credit cards; Mapping airport power outlets; EMI loves pirates; Mexican indigenous phone co-op; Sewer cover textiles; Surge pricing v antitrust; Carbon offsets v forest fires; Charter schools as money laundries. Upcoming appearances: Edinburgh, Sydney, Melbourne, Brighton, London, South Bend. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. Apple's robo-repo (permalink) It may strike you as weird, but lenders love to lend money to poor people who will have trouble paying back their loans. Obviously, lenders want to be repaid, and obviously the more money you have, the easier it is to settle your debts, but (paradoxically) that means that if you have a lot of money, you expect to pay less to borrow. In other words: because poor people have a higher likelihood of defaulting, their loans come with higher interest rates and worse terms. Debt is steeply regressive: the less money you have, the more you're expected to pay. The industry term for this is the \"risk premium\": the riskier a loan is, the more it costs the borrower. Lenders are always seeking the highest possible return on their loan-books, which makes that \"risk premium\" awfully tempting. Why loan $1m to Elon Musk at 0.5% interest when you can make 10,000 $100 payday loans to non-union Tesla workers on food stamps at 1,000% interest? Obviously, the fly in the ointment here is the risK in \"risk premium.\" The reason the risk premium exists is that poor borrowers have a harder time paying their loans. That can be good, up to a point: if you're Klarna and you're originating loans to people Chipotle lunches on the installment plan, you want your borrowers to miss several payments. Klarna loans are free if you pay them back on time, but if you miss a payment, you're hit with a huge penalty charge and sky-high interest (on top of the principle and the penalty). On a small purchase, penalties and interest can quickly add up to a triple-digit APR. That's where Klarna makes its money: people who miss their burrito installment payments. However: if a Klarna borrower goes bankrupt before they've repaid the principle, Klarna loses money. A successful loan-book of unsecured burrito mortgages depends on the existence of many missed payments and few defaults. \"Financial innovation\" is often just a project to decrease the risk in risky loans, but without decreasing the risk premium you get paid for issuing those loans. It's a way to eat your cake and have it too: even though you've reduced the likelihood that you'll have to write off your loan, you still charge the borrower as though that risk is unchanged. As with so many aspect of finance, \"innovation in lending\" is a way to shift value from the financial industry's customers to itself. Remember the subprime crisis? The whole point of collateralized debt obligations and swaps was to offer loans to people with bad credit – even loans they obviously couldn't pay back – without incurring a default risk. Subprime mortgages supercharged the practice of loan origination and resale (where a bank offers you a loan and then sells that loan to someone else, so your default becomes their problem) by splitting the loans into pieces. These pieces were recombined according to complex mathematical formulas that supposedly \"proved\" that the default risk from poor borrowers had been \"offset\" by combining them with other borrowers' loans and wrapping them in opaque insurance contracts. Those subprime mortgages came with cheap \"teaser rates\" – the interest rate you paid over the first couple years – but then the interest payments \"ballooned\" to farcical sums that borrowers had no hope of repaying. Those farcical sums were the risk premium. When financier transmuted these high-risk 30-year mortgages into complex derivatives, they were effectively promising their customers a piece of that risk premium for 28 out of the 30 years that the mortgage ran for. But it wasn't all financial engineering: subprime mortgage salesmen could also promise customers that they wouldn't lose everything even after a wave of borrower bankruptcies and defaults. That's because mortgages are secured: they are backed by deeds for the homes the borrowers own(ed). If a borrower goes bust, the lender can repossess their house or apartment and sell it to recover the loan amount. Now, the finance sector did repossess a fuckton of houses after the crash. Foreclosure and eviction became official policy: Treasury Secretary Timothy Geithner told Obama that a wave of foreclosures was necessary to \"foam the runways\" for the banks, so Obama encouraged banks to foreclose on their loans, rather than restructuring them so that Americans could keep their homes: https://wallstreetonparade.com/2012/08/how-treasury-secretary-geithner-foamed-the-runways-with-childrens-shattered-lives/ But even with these foreclosures, lenders and their customers lost hundreds of billions on the subprime crisis. That's because all that subprime lending pushed the price of houses up and up and up, so when the market collapsed, those mortgages were \"underwater\" – the money from selling the foreclosed homes didn't cover their outstanding loans. Collateralization – backing loans with legally binding promises to surrender some asset if you default – is a way to reduce risk, but it can't eliminate it. Assets degrade: houses burn, cars get totaled, jewelry is stolen. Assets also devalue: a loan backed by bitcoin at $111,000 on the eve of Trump's election will be underwater today with bitcoin at $64,000. This devaluation can also occur when your house's value plummets because Elon Musk repeatedly bombs your neighborhood with flaming rocket debris, or when your Tesla's resale value collapses after Musk throws a string of Seig Heils on national television. The point being that risk mitigation is never risk elimination, but markets have a hard time distinguishing between the two. Partly that's because of risk shifting. A lender who can \"securitize\" their loans (turn them into bonds and sell them off to investors) can insulate themselves from risk, because the people who buy the bonds are now carrying that risk. So many of our crises come from the intersection of these two phenomena: the promise of reducing loan risks without losing the risk premium and the fact that risk reduction can fail suddenly (or be revealed as nothing more than risk-shifting). The first phenomenon creates vast credit bubbles, the second one pops them. This leaves would-be usurers on an endless quest for new ways to lend money at a premium to poor people while reducing their own risk. You don't need technology to do this – all you need is a captive audience of broke people whom other lenders won't touch. When the US government adopted the racist practice of \"redlining\" (denying government-backed loans to Black borrowers), they created a market for predatory pseudo-mortgages called \"contract buying.\" Contract buying is like a mortgage, but without the equity: miss a payment and you get evicted, and you aren't entitled to any of the sale price of the house, even if it was 99.99% paid off when you got kicked out. Lenders can tip the scales in their favor by making up arbitrary junk fees, and a smart lender waits until the house is almost paid off before whacking the borrower with a ton of these fees. The borrower misses a payment, the seller repossesses the house and sells it again: https://ippsr.msu.edu/public-policy/michigan-wonk-blog/re-emergence-contract-buying-practice-rooted-mid-20th-century Contract lending never went away. Wherever you find a desperate, disfavored group who are locked out of the credit system, you'll find scumbag contract lenders running this scam. Take long-haul truckers, among the most exploited workforce in America. Long before Uber made worker misclassification (treating an employee as an independent contractor) mainstream, the trucking industry was effectively indenturing truckers, exerting more control over their lives than a boss could ever impose on a waged worker, while disclaiming any employer-related responsibilities. Truckers don't get health insurance or sick leave – and they don't get paid if they have to sit at a port for 20 hours waiting to pick up a load. But the exploitation of truckers doesn't stop with mere wage theft. Truckers also \"contract buy\" their trucks. Their bosses issue loans that let drivers buy their trucks on terms that allow the company to repo the truck after a single missed payment. And of course, bosses have total control over truckers' wages, so a canny boss can wait until a truck is nearly paid off and then stop the driver's wages, forcing them to miss a payment and lose their truck, which can be sold on to the next victim: https://web.archive.org/web/20170616120011/https://www.usatoday.com/pages/interactives/news/rigged-forced-into-debt-worked-past-exhaustion-left-with-nothing/ Subprime auto-loans bring this same profitable arrangement to regular drivers who just need a car to commute, pick up groceries, and shuttle the kids to and from school. A subprime auto-loan often contains the \"teaser\" and \"balloon\" rates at the heart of the subprime mortgage bubble: for the first year or two, your car payments are affordable, but then they shoot up to a sum that you can't possibly pay. The lender then repossesses your car, zeroing out your equity, and sells it to another victim: https://www.youtube.com/watch?v=4U2eDJnwz_s But the subprime car industry puts a decidedly modern spin on the contract lending scam that has been used to profitably rob so many Black home borrowers and long-haul truckers. Subprime lending's risk-reduction relies on repossession. A subprime car lender doesn't just get rich by charging poor borrowers more money that rich borrowers for shittier, older cars. Subprime car dealers repeatedly \"sell\" that car to many, many poor people, on conditions that all but guarantee that the borrower will default on their loan and lose their car. This is where tech comes in. Ubiquitous digital networks and computing make it much easier to repo a car. This started with the humble lo-jack, a simple tracker marketed as a way to locate lost or stolen cars. Subprime auto-lenders were early and aggressive lo-jack adopters, because you can't repo a car if you don't know where it is. Installing a lo-jack is much cheaper than paying repo men to drive around looking for the cars you want to claw back, which means that you can sell cars to people who represent worse credit risks, charging a higher risk premium, and still find the car when those high interest rates force your borrower into default. The next wave of automotive usury-tech was a kind of systematic exploration of the entire space between a car that is repossessed and a car that isn't. Some subprime cars are fitted with an extra stereo system that can only be controlled by the borrower over a wireless connection. Miss a payment and this secondary stereo turns itself on and starts playing earsplitting threats about what will happen to you if you don't pay up. The only way to turn it off is to make the payment. The next step is remote immobilization: miss too many payments (or violate a lease clause by crossing the county line) and your car just stops working: https://archive.nytimes.com/dealbook.nytimes.com/2014/09/24/miss-a-payment-good-luck-moving-that-car/ But the apex of this usury-tech comes from (where else?) Tesla. Miss a Tesla payment and your car can do way more than just immobilize itself and tell the dealer where to get the car – it also unlock its doors, flash its lights, honk its horn, and back out of its parking space when the repo man arrives: https://tiremeetsroad.com/2021/03/18/tesla-allegedly-remotely-unlocks-model-3-owners-car-uses-smart-summon-to-help-repo-agent/ The cheaper the repo, the riskier the loan can be; the riskier the loan, the higher the risk premium. Digital tech makes repo much cheaper, so wherever you find digital tech, you find digital arm-breakers coming up with ways to robo-repo the things you buy. There's India's subprime phone lenders, who pre-install usury-tech on their phones. This is a tool that spies on the phone's owner, building a dossier of the owner's most frequently used apps. When the owner misses a payment, the phone starts disabling the user's favorite apps, working its way up the list to the most indispensable ones: https://pluralistic.net/2021/04/02/innovation-unlocks-markets/#digital-arm-breakers It's the digital version of the mob loan-shark who breaks a finger, then your hand, then your arm. The more graduated the threat matrix is, the more payments you can capture. A borrower with a broken finger can get to a pawn-broker to sell their wedding-ring; a borrower with two broken legs has a much harder time. Digital arm-breakers aren't an epiphenomenon of digitization alone. Usury tech only works if the device's owner can't disable it. Remember: a computer is flexible. The only computer we know how to make is the \"Turing-complete, universal von Neumann machine,\" defined as a device that can compute ever valid program. If your phone is running a program that disables your apps, then you can install another program that disables that program. Same goes for your car's lo-jack; the stereo system emitting ear-splitting complaints about your car note; and the immobilizer hooked up to your ignition. That's where the law comes in. In 1998, Bill Clinton signed the Digital Millennium Copyright Act (DMCA). Section 1201 of the DMCA makes it a felony to produce a tool that bypasses an \"access control.\" That means that if a computer is designed to block you from modifying it, removing that block is a felony, punishable by five years in prison and a $500k fine. DMCA 1201 doesn't distinguish between modifications undertaken for a lawful purpose (changing your printer so it works with generic ink) and unlawful purpose (breaking the locks on a DVD so you can sell infringing copies). DMCA 1201 criminalizes anything the manufacturer dislikes. It's what Jay Freeman calls \"felony contempt of business model.\" DMCA 1201 is the reason you can't neutralize the digital arm-breakers by deleting or blocking the usury-tech in your car, phone or other device: https://pluralistic.net/2023/07/24/rent-to-pwn/#kitt-is-a-demon Here's where it gets interesting. Apologists for DMCA 1201 insist that the law is necessary, because it lets device makers lock malicious parties out of your devices. Apple leads the pack here: they use DMCA 1201 to block independent repair of their devices, insisting that this isn't done to extort high fees from you or to force you to throw away and replace last year's iPhone after you drop it. No, Apple does this to protect you – from unscrupulous repairers who might install malware on your phone: https://pluralistic.net/2023/09/22/vin-locking/#thought-differently And Apple says the reason it blocks you from installing apps without using its App Store is to protect you from malicious apps – not to control the app marketplace, where it makes $100b/year on payment processing junk-fees, siphoning off 30% of every dollar you spend in an app: https://pluralistic.net/2025/05/01/its-not-the-crime/#its-the-coverup Apple's greatest accomplishment isn't technological, it's psychological. Apple managed to convince millions of people that buying products from a multi-trillion dollar corporation with close ties to both Trump and Xi makes them members of an oppressed religious minority, and those members of the \"cult of Mac\" tie themselves into knots insisting that Apple would only ever use its powers for good: https://pluralistic.net/2024/01/12/youre-holding-it-wrong/#if-dishwashers-were-iphones But moral behavior doesn't consist solely of resisting the temptation to do bad things – to be truly moral, you must not put yourself in temptation's path in the first place. Morality isn't the strength to resist the siren's song – it's the humility to recognize your own weakness and tie yourself to the mast: https://pluralistic.net/2022/11/11/foreseeable-consequences/#airdropped By giving itself a veto over its customers' choices, Apple deliberately sailed into siren-infested waters, after first putting a gun on every mantelpiece it could find. Now the company is drowning in sin, while spraying gunfire in every direction. Today, the company is getting into the leasing business. Having monopolized its markets and eliminated the possibility of growth by making and selling things, the company is becoming a lender. As a lender, Apple wants to maximize the risk premiums it can charge, while minimizing its actual risk. That's why the new version of iOS – the operating system for iPhones and iPads – comes with software that lets lenders brick your device if you miss a payment: https://9to5mac.com/2026/07/21/ios-27-code-suggests-apple-could-restrict-leased-devices-after-missed-payments/ The code steals a trick from India's subprime phone lenders, giving Apple the ability to \"restrict apps and services when payments are missed.\" It hooks into a \"Partner Finance Lock,\" which allows Apple to sell devices to third-party userers who want to get into the subprime game, promising those customers all the imaginative flexibility a digital arm-breaker could dream of. This was always the trajectory of Apple's decision to sell you a computer that takes orders from its manufacturer, rather than its owner. Apple didn't invent the subprime gadget. It also didn't invent the GUI, the MP3 player or the smartphone. Rather, Apple took those gadgets mainstream – just as it will do with subprime gadgets. Just in time for the affordability crisis, the oil shock, the climate shock, the AI collapse and the tariff shock, the age of the digital arm-breaker has well and truly arrived: https://pluralistic.net/2024/03/29/boobytrap/#device-lock-controller Hey look at this (permalink) Public opinion on abortion has shifted 4 years after Dobbs decision overturned Roe v. Wade https://theconversation.com/public-opinion-on-abortion-has-shifted-4-years-after-dobbs-decision-overturned-roe-v-wade-285668 Reading “Do Artifacts Have Politics?” https://www.not-so-obvious.net/reading-do-artifacts-have-politics/ Google hit with $1 billion fine for breaking EU antitrust rules https://www.theverge.com/tech/943866/google-alphabet-eu-dma-fine-search-services-play-store-steering Why Paramount Should Be Worried https://prospect.org/2026/07/22/why-paramount-should-be-worried-warner-bros-merger-ellison/ The Plain Language Guide to Digital Privacy https://shannonguides.com/dl/167c8da8a0ab/digital-privacy.pdf Object permanence (permalink) #25yrsago Shapeable printed batteries https://web.archive.org/web/20011102112023/https://www.newscientist.com/news/news.jsp?id=ns99991069 #20yrsago Monopoly replaces play-money with fake credit-cards https://web.archive.org/web/20070220050926/http://news.sky.com/skynews/article/0,,70131-1228653,00.html #20yrsago HOWTO build a fax out of salmon tins https://web.archive.org/web/20060828010312/https://blog.modernmechanix.com/2006/07/25/build-a-rather-bad-salmon-can-fax-machine/ #20yrsago Power outlets in airports wiki https://web.archive.org/web/20060807061721/http://wiki.jeffsandquist.com/default.aspx/AirPower/AirPower #20yrsago How iTunes is bad for the music industry and the public https://web.archive.org/web/20060813140818/http://informationweek.com/news/showArticle.jhtml?articleID=191000408 #15yrsago Ousted EMI boss: pirates are our best customers, suing is bad for business https://torrentfreak.com/former-google-cio-limewire-pirates-were-itunes-best-customers-110726/ #15yrsago Patent trolls and shakedowns: Intellectual Ventures and the “little guy” https://web.archive.org/web/20160810163346/https://www.npr.org/sections/money/2011/07/26/138576167/when-patents-attack #10yrsago Textiles printed directly from sewer covers https://raubdruckerin.de/ #10yrsago Mexican indigenous groups form co-op phone company to serve 356 municipalities https://globalvoices.org/2016/07/26/so-long-phone-companies-mexicos-indigenous-groups-are-getting-their-own-telecoms/ #5yrsago Surge pricing violates antitrust law https://pluralistic.net/2021/07/26/aggregate-demand/#pure-transfer #5yrsago Oregon's carbon offsets go up in smoke https://pluralistic.net/2021/07/26/aggregate-demand/#murder-offsets #5yrsago Charter schools are money laundries https://pluralistic.net/2021/07/26/aggregate-demand/#ed-bezzle Upcoming appearances (permalink) Virtual: EFFecting Change: Who the Machine Serves, Aug 12 https://www.eff.org/event/effecting-change-who-machine-serves Edinburgh International Book Festival with Jimmy Wales, Aug 17 https://www.edbookfest.co.uk/events/the-front-list-cory-doctorow-and-jimmy-wales Sydney: The Festival of Dangerous Ideas, Aug 23-24 https://festivalofdangerousideas.com/program/ Melbourne: Enshittification at the Wheeler Centre, Aug 25 https://www.wheelercentre.com/events-tickets/season-2026/cory-doctorow-enshittification Brighton: The Reverse Centaur's Guide to Life After AI with Carole Cadwalladr (Brighton Dome), Sep 8 https://brightondome.org/whats-on/LSC-cory-doctorow-the-reverse-centaurs-guide-to-life-after-ai/ London: The Reverse Centaur's Guide to Life After AI with Riley Quinn (Foyle's Picadilly), Sep 9 https://www.foyles.co.uk/events/enshittification-cory-doctorow-riley-quinn South Bend: An Evening With Cory Doctorow (Notre Dame), Oct 6 https://franco.nd.edu/events/2026/10/06/an-evening-with-cory-doctorow/ Recent appearances (permalink) Will AI ever come alive, and what happens if it does? (BBC News) https://www.youtube.com/watch?v=Lzk4o3fPZZE Waarom jij straks het hulpje van AI bent (VPRO) https://www.youtube.com/watch?v=tOnvR2fs8CA Talk Tech Bock (Vera Linß) https://www.youtube.com/watch?v=3PFjGvQoBgc How To Think About AI Before It’s Too Late (This Is Hell) https://thisishell.com/episodes/1919 AI Won't Replace You… But This Might (Deep Focus) https://www.youtube.com/watch?v=oorWq_m48AQ Latest books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/ \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Fourth draft completed. Submitted to editor. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "f4d2b9b8e8e864679649d3e1282a6810b820ed4bdef2eda5ad3dcd53e08cb22f",
+      "ref_id": "2",
+      "recommendationScore": 35,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "以社会经济视角批判性地讨论了Apple在假想的“robo-repo”中可能涉及的掠夺性贷款模式，技术含量低。",
+      "reason": "内容偏向社会评论，技术深度不足，与科技博客的核心关注点关联度较低。",
+      "tags": [
+        "Apple",
+        "社会评论",
+        "经济",
+        "商业模式"
+      ]
+    },
+    {
+      "title": "Rauno's Field Notes #2",
+      "link": "https://rauno.me/notes/2",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-25T16:39:55.000Z",
+      "summary": "Article URL: https://rauno.me/notes/2\nComments URL: https://news.ycombinator.com/item?id=49049066\nPoints: 5\n# Comments: 0",
+      "id": "67d5f4c1949713c83450943a448cf7c2e9759be82dacecdccf594d6658d1ba13",
+      "ref_id": "0",
+      "recommendationScore": 30,
+      "popularityScore": 4,
+      "priority": "low",
+      "comment": "个人观察笔记，内容范围较广，缺乏明确主题，难以评估技术深度。",
+      "reason": "文章内容不明确，且关注度低，不符合核心科技博客的优先主题。",
+      "tags": [
+        "个人博客",
+        "杂谈"
+      ]
+    },
+    {
+      "title": "Extinct Media Museum Tokyo",
+      "link": "https://extinct-media-museum.blog.jp/otemachi/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-25T05:51:27.000Z",
+      "summary": "Article URL: https://extinct-media-museum.blog.jp/otemachi/\nComments URL: https://news.ycombinator.com/item?id=49044874\nPoints: 92\n# Comments: 18",
+      "id": "0537ffe6e2f8ef454edee4ceb08afd57d75b5f49d8a62bab7a0471aff958e36c",
+      "ref_id": "3",
+      "recommendationScore": 30,
+      "popularityScore": 25,
+      "priority": "low",
+      "comment": "独特的科技历史回顾，但与核心技术主题相关性较低。",
+      "reason": "虽然有趣，但内容更偏向文化历史和收藏而非核心科技发展或工具，优先级低。",
+      "tags": [
+        "科技历史",
+        "博物馆",
+        "媒体保存",
+        "文化"
+      ]
+    },
+    {
+      "title": "The Dark Night of Mathematics",
+      "link": "https://kirwinhampshire.substack.com/p/the-dark-night-of-mathematics",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-25T15:54:59.000Z",
+      "summary": "Article URL: https://kirwinhampshire.substack.com/p/the-dark-night-of-mathematics\nComments URL: https://news.ycombinator.com/item?id=49048681\nPoints: 25\n# Comments: 8",
+      "id": "b1969cd7e76cd75c6a7a4f8ebf92bf7bad04a9af6fad672961c6f52b82e0e524",
+      "ref_id": "4",
+      "recommendationScore": 25,
+      "popularityScore": 46,
+      "priority": "low",
+      "comment": "一篇关于数学的哲学或深度思考文章，非直接技术应用。",
+      "reason": "内容侧重于数学的理论探讨和哲学思考，与科技博客的实际应用主题优先级较低。",
+      "tags": [
+        "数学",
+        "哲学",
+        "理论",
+        "科普"
+      ]
+    },
+    {
+      "title": "Some Quick Thoughts on EMF Camp 2026",
+      "link": "https://shkspr.mobi/blog/2026/07/some-quick-thoughts-on-emf-camp-2026/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-07-25T11:34:01.000Z",
+      "summary": "I've performed a talk at the last three EMFs - so this time I decided to go purely as a tourist. It made things much more relaxing. No waking up from a stress dream that my laptop didn't work. No casually dropping my talk into every conversation to build up an audience. No queueing for the loos five minutes before going on. No adrenaline spikes or come downs.  It was bliss!  After several…",
+      "id": "52e503c9506668588782ddf68945b9a9afc1d857c7a8793911ec457c25c017c3",
+      "ref_id": "3",
+      "recommendationScore": 25,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "一篇关于参加EMF Camp的个人感受分享，内容缺乏技术深度和实用性。",
+      "reason": "内容是活动体验分享，技术深度和实用性低，与科技博客的主要侧重点不符。",
+      "tags": [
+        "科技活动",
+        "社区",
+        "个人体验"
+      ]
+    },
+    {
+      "title": "Measles Cases Hit New Record in U.S., as Stupid-Americans Reject Vaccines",
+      "link": "https://www.nytimes.com/2026/07/24/well/measles-record-united-states-numbers.html?unlocked_article_code=1.0VA.4jBf.vqAYN4Bwu807",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-25T16:06:52.000Z",
+      "summary": "Teddy Rosenbluth, reporting for The New York Times:\nOn Friday, the Centers for Disease Control and Prevention\nannounced that there have been 2,318 confirmed cases of measles so\nfar this year. The case count toppled the record set last\nyear, when measles infected more than 2,200 Americans and\nkilled twounvaccinated children. More measles\ncases have been reported in the United States in the last two\nyears than in all the years from 2000 through 2024 combined.\nReversing course on measles would require a nationwide push to\nimprove vaccination rates, a prospect that experts said seemed\nunlikely under the leadership of Health Secretary Robert F.\nKennedy Jr. He has halted funding for vaccine hesitancy\nresearch, downplayed the risks of measles and spearheaded\na hunt for evidence that vaccines are unsafe.\nNilay Patel, endorsing Kamala Harris for president in 2024: “A Vote for Donald Trump Is a Vote for School Shootings and Measles”. (He missed “quagmire war with Iran”.)\n“tarltontarlton” on Reddit last year: “Stupid-Americans are the New Irish-Americans, Trump is Their JFK”. I continue to think about this post frequently.\nIsaac Asimov, in a column for Newsweek in 1980:\nThere is a cult of ignorance in the United States, and there has\nalways been. The strain of anti-intellectualism has been a\nconstant thread winding its way through our political and cultural\nlife, nurtured by the false notion that democracy means that “my\nignorance is just as good as your knowledge”.\nI continue to think about this frequently as well.\n ★",
+      "id": "264604b41712dbae34cf74da30a50a22ed1aec5b1e9937c78516e324c49dbf57",
+      "ref_id": "3",
+      "recommendationScore": 20,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "一篇关于美国麻疹疫情和疫苗接种态度的社会新闻，偏离本科技博客关注的主题。",
+      "reason": "文章内容与AI、Apple生态等科技主题不符，虽然具有社会意义，但不适合本科技博客的定位。",
+      "tags": [
+        "公共卫生",
+        "社会问题",
+        "政治评论",
+        "非科技"
+      ]
+    },
+    {
+      "title": "Reading List 07/25/26",
+      "link": "https://www.construction-physics.com/p/reading-list-072526",
+      "source": "construction-physics.com",
+      "publishedAt": "2026-07-25T14:01:08.000Z",
+      "summary": "China’s EV subsidies, the future of aeroderivative gas turbines, a US-Saudi nuclear deal, defective roadway guardrails, and more.",
+      "id": "b77bd88ff48cfc58c6d9fadbe77c99a5cce844674b4fb3ddc0e9a38d6f843fbb",
+      "ref_id": "2",
+      "recommendationScore": 15,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "一篇简短的阅读列表，列出了多个外部话题，但缺乏原创内容和深入分析。",
+      "reason": "文章内容过于简略，没有提供任何技术深度或原创见解，不符合科技博客的评估标准。",
+      "tags": [
+        "Reading List",
+        "General News",
+        "Current Events"
+      ]
+    },
+    {
+      "title": "Kyber (YC W23) Is Hiring a Head of Engineering",
+      "link": "https://www.ycombinator.com/companies/kyber/jobs/FGmI8mx-head-of-engineering",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-25T12:00:04.000Z",
+      "summary": "Article URL: https://www.ycombinator.com/companies/kyber/jobs/FGmI8mx-head-of-engineering\nComments URL: https://news.ycombinator.com/item?id=49046858\nPoints: 0\n# Comments: 0",
+      "id": "f27ceaaa7ca42a5adf5c54bbedd69493d074c2b23b5b1865525cf485115317f6",
+      "ref_id": "3",
+      "recommendationScore": 10,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "一篇招聘信息，并非科技博客内容。",
+      "reason": "文章内容为职位招聘广告，不属于科技博客评审的范围，缺乏技术深度和信息密度。",
+      "tags": [
+        "招聘",
+        "职业发展"
+      ]
+    },
+    {
+      "title": "Introducing Claude Opus 5",
+      "link": "https://simonwillison.net/2026/Jul/24/introducing-claude-opus-5/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-07-24T23:48:50.000Z",
+      "summary": "",
+      "id": "9ad129712140dfd6e87c12a5354aabee90315eeff1ee29121159a7ba9f916c53",
+      "ref_id": "1",
+      "recommendationScore": 10,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "标题指向高优先级的AI主题，但文章内容缺失，无法对其深度和实用性进行评估。",
+      "reason": "文章内容缺失，未能呈现AI主题的潜在价值，故无法推荐。",
+      "tags": [
+        "AI",
+        "标题相关",
+        "内容缺失"
+      ]
+    },
+    {
+      "title": "Amen Break",
+      "link": "https://en.wikipedia.org/wiki/Amen_break",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-25T16:34:16.000Z",
+      "summary": "Article URL: https://en.wikipedia.org/wiki/Amen_break\nComments URL: https://news.ycombinator.com/item?id=49049015\nPoints: 10\n# Comments: 0",
+      "id": "e7daa6b613e625f6ae41a23954e144298d2ebf7715b8d70c96ef8815088264f7",
+      "ref_id": "1",
+      "recommendationScore": 0,
+      "popularityScore": 7,
+      "priority": "low",
+      "comment": "关于音乐历史的维基百科文章，与科技博客主题完全不符。",
+      "reason": "内容与科技领域无关，不具备任何评估维度下的相关性。",
+      "tags": [
+        "音乐",
+        "历史",
+        "文化"
+      ]
+    },
+    {
+      "title": "Quoting Boris Cherny",
+      "link": "https://simonwillison.net/2026/Jul/25/boris-cherny/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-07-25T00:42:59.000Z",
+      "summary": "",
+      "id": "25a79f33334f2b0eb344af77c3d7b5ed91882a158302a45c5214a13e450a6c65",
+      "ref_id": "0",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "文章内容为空，无法进行有效评估。",
+      "reason": "缺乏任何可评估的实质内容。",
+      "tags": [
+        "内容缺失",
+        "无法评估"
+      ]
+    }
+  ]
+}
