@@ -1,0 +1,727 @@
+{
+  "dailySummary": "",
+  "articles": [
+    {
+      "title": "Show HN: FeyNoBg – Automatic background removal model and training library",
+      "link": "https://usefeyn.com/blog/feynobg/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-27T16:59:08.000Z",
+      "summary": "Hey HN, I’m Shreyash from Feyn. We help companies build custom models from their data.\nToday, we’re releasing FeyNoBg, an automatic background removal model. Alongside it, we're open-sourcing NoBg, the Python library we built to train and run it.\nTry the model here: https://huggingface.co/spaces/feyninc/feynobg. Check out the library here: https://github.com/feyninc/nobg\nSome sample outputs:\n(1) Soccer Freekick: https://drive.google.com/file/d/1MZkAGLwbhNVOZ0Oi7XvpCfSEu9Q...\n(2) Hair in wind: https://drive.google.com/file/d/1Odc2m0XMVH9uZtvI_KjaRbXzhLL...\n(3) Bicycle with visible spokes: https://drive.google.com/file/d/1h99ahjfrtS1MFQJJgiKE2fuM3HZ...\n(4) Live Demo video: https://youtu.be/b1heHPvY8BM\nBackground removal separates an image's subject from its surrounding. We've all tried it at some point. Often it is to reuse the subject in a different artifact. Nowadays, it is common to make chat stickers out of it. It is one of the most common but under-appreciated uses of AI. It is also surprisingly complex. Models can be easily confused by camouflage, motion blur, or fine structures like hair.\nThe task requires two skills. First, a model has to identify the foreground. Second, it has to trace the foreground’s boundary and estimate an opacity value for each pixel. Generally, these skills are taught with different datasets. That creates a failure point. A poor training mix can improve one skill at the expense of the other. We saw this in our controlled evaluation. A training run with just the MaskFactory dataset improved on the CAMO benchmark but regressed on DIS5K.\nFor FeyNoBg, we took an interpretability-first approach to training. We first studied how BiRefNet’s stages contribute to finding the foreground and reconstructing its boundary. We discovered that the third stage of it's feature extractor holds a lot of information. Both localization and boundary reconstruction depend heavily on the feature map produced here.\nThis led us to expand this stage from 18 to 24 blocks while preserving the pre-trained weights. We then trained FeyNoBg on 26.1K diverse examples assembled from 10 datasets. The goal was to improve foreground identification and boundary precision without sacrificing either one.\nAcross eight benchmarks, FeyNoBg achieves the best published score on four and comes within 2% of the leader on the rest.\nBuilding FeyNoBg also exposed a tooling problem. Image matting models are usually released as isolated repositories with incompatible preprocessing, training, and evaluation code. We built NoBg to solve this. NoBg puts these workflows behind one Python interface. It supports BiRefNet today, with more architectures coming. We hope you build something exciting with it!\nHappy to answer any questions!\nComments URL: https://news.ycombinator.com/item?id=49072462\nPoints: 10\n# Comments: 0",
+      "id": "246a1ad1b2620a06cb3e1f34f60b2949cdbfdf236a91fddd57c006b118820134",
+      "ref_id": "1",
+      "recommendationScore": 95,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "展示了一个基于AI的自动背景移除模型FeyNoBg及其开源训练库，技术深度和实用性俱佳。",
+      "reason": "高度符合AI主题优先级，提供开源模型和库，解决实际问题，技术细节丰富。",
+      "tags": [
+        "AI",
+        "计算机视觉",
+        "机器学习",
+        "Python",
+        "开源工具",
+        "Show HN"
+      ]
+    },
+    {
+      "title": "Kimi-K3 Technical Report [pdf]",
+      "link": "https://github.com/MoonshotAI/Kimi-K3/blob/main/k3_tech_report.pdf",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-27T15:23:45.000Z",
+      "summary": "Related: Kimi-K3 on HuggingFace - https://news.ycombinator.com/item?id=49065752\nComments URL: https://news.ycombinator.com/item?id=49070985\nPoints: 289\n# Comments: 106",
+      "id": "cef037952ba599c281e2cc4453b4408b15845228bb6a55f54ef95d77babfa29e",
+      "ref_id": "1",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "详细阐述了Kimi-K3大模型的架构、训练和性能，是AI领域的重要技术文档。",
+      "reason": "对AI研究者和开发者而言，这是深入理解和评估前沿大模型技术的不可多得的资源。",
+      "tags": [
+        "AI",
+        "大模型",
+        "技术报告",
+        "自然语言处理",
+        "Kimi-K3"
+      ]
+    },
+    {
+      "title": "Kimi-K3 on HuggingFace",
+      "link": "https://huggingface.co/moonshotai/Kimi-K3",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-27T06:18:10.000Z",
+      "summary": "Related: Kimi-K3 Technical Report [pdf] - https://news.ycombinator.com/item?id=49070985\nComments URL: https://news.ycombinator.com/item?id=49065752\nPoints: 1016\n# Comments: 413",
+      "id": "e7129e9021b63e3a72ddd8f4924ee22a8ddf87870e60f03cb1395b80b1d63631",
+      "ref_id": "3",
+      "recommendationScore": 95,
+      "popularityScore": 100,
+      "priority": "high",
+      "comment": "Kimi-K3 AI模型在HuggingFace上的发布，是当前AI领域的热点事件。",
+      "reason": "该文章完全符合最高优先级“AI”主题，且社区热度极高，提供了最新的AI模型信息和技术报告，技术深度和新颖性俱佳。",
+      "tags": [
+        "AI",
+        "大模型",
+        "HuggingFace",
+        "机器学习",
+        "技术报告",
+        "前沿技术"
+      ]
+    },
+    {
+      "title": "Building the enterprise environment for agentic AI",
+      "link": "https://www.technologyreview.com/2026/07/27/1140668/building-the-enterprise-environment-for-agentic-ai/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-07-27T11:32:58.000Z",
+      "summary": "For the enterprise, the promise of agentic AI is much more than just a better chatbot. It is software agents that execute business tasks end-to-end across people, business workflows, data, and systems. The platform best-suited to run agents is built with proper CPU capacity, resilient data access, policy-aware tool use, observability, memory management, and the…",
+      "id": "cc4e3f6d6e64b2d45c2122a3b7f4cec6b0a8aead21acf056a69baac0330faf11",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "详细阐述了构建企业级智能体AI所需的基础设施和环境要素，极具实践指导意义。",
+      "reason": "为企业部署前沿智能体AI提供了清晰且实用的技术框架，深度和新颖性兼具，直接服务于核心主题AI和自动化。",
+      "tags": [
+        "AI",
+        "企业AI",
+        "智能体AI",
+        "AI架构",
+        "自动化"
+      ]
+    },
+    {
+      "title": "How is the Bun Rewrite in Rust going?",
+      "link": "https://lockwood.dev/ai/2026/07/27/how-is-the-bun-rewrite-in-rust-going.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-27T11:12:26.000Z",
+      "summary": "Article URL: https://lockwood.dev/ai/2026/07/27/how-is-the-bun-rewrite-in-rust-going.html\nComments URL: https://news.ycombinator.com/item?id=49067854\nPoints: 339\n# Comments: 258",
+      "id": "590cc1ead9568ebb104325a34361c324a6c14b2aeb396831ed840fe6f8707118",
+      "ref_id": "1",
+      "recommendationScore": 92,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "深入探讨了JavaScript运行时Bun用Rust重写的进展，技术性强且具前瞻性。",
+      "reason": "高度相关于编程工具主题，技术深度和新颖性兼具，且社区关注度极高，是前端和后端开发者关注的热点。",
+      "tags": [
+        "Bun",
+        "Rust",
+        "JavaScript",
+        "运行时",
+        "编程工具",
+        "性能优化"
+      ]
+    },
+    {
+      "title": "Closing the data loop in AI-driven drug discovery",
+      "link": "https://www.technologyreview.com/2026/07/27/1139667/closing-the-data-loop-in-ai-driven-drug-discovery/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-07-27T11:40:16.000Z",
+      "summary": "Drug discovery is a high-cost, high-risk endeavor that is under growing pressure from a market increasingly defined by first-mover advantage. Since the 1950s, the cost of developing new pharmaceuticals has roughly doubled every nine years—a phenomenon known as Eroom’s Law. Today, bringing a new drug to market takes an average of 10-15 years and costs…",
+      "id": "0a9b60fb4c575c083c9e5cec2feeeef2733dbf97af896e611561b2435c214903",
+      "ref_id": "3",
+      "recommendationScore": 92,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "分析了AI在药物发现中面临的数据循环挑战，并强调了有效数据闭环的重要性。",
+      "reason": "将AI与生物科技前沿结合，直击药物研发痛点，具有极高的行业实用性和深度。",
+      "tags": [
+        "AI",
+        "药物发现",
+        "生物科技",
+        "医疗AI",
+        "数据管理"
+      ]
+    },
+    {
+      "title": "MAI-Cyber 1",
+      "link": "https://microsoft.ai/news/introducing-mai-cyber-1-flash-inside-mdash/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-27T16:52:22.000Z",
+      "summary": "Article URL: https://microsoft.ai/news/introducing-mai-cyber-1-flash-inside-mdash/\nComments URL: https://news.ycombinator.com/item?id=49072361\nPoints: 14\n# Comments: 0",
+      "id": "341a7200330d493e443ddca55548afd3c1815bcba83571709a68ab89226c17e8",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "微软推出的MAI-Cyber 1，很可能是一个结合AI的网络安全项目或模型，具有高关注度。",
+      "reason": "来自微软AI的最新发布，主题紧扣AI优先级，可能涉及前沿技术和重要应用。",
+      "tags": [
+        "AI",
+        "网络安全",
+        "微软",
+        "新产品"
+      ]
+    },
+    {
+      "title": "Scriptc by Vercel: TypeScript-to-Native compiler, no JavaScript engine in binary",
+      "link": "https://github.com/vercel-labs/scriptc",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-26T22:46:10.000Z",
+      "summary": "Article URL: https://github.com/vercel-labs/scriptc\nComments URL: https://news.ycombinator.com/item?id=49063175\nPoints: 251\n# Comments: 143",
+      "id": "0dadaefdea9260e51108cbe5a746c244c3d0188a143a1f44e93dc9fc4cd2bdd2",
+      "ref_id": "4",
+      "recommendationScore": 90,
+      "popularityScore": 24,
+      "priority": "high",
+      "comment": "Vercel推出的TypeScript到Native编译器，显著提升了性能和分发效率。",
+      "reason": "属于高优先级“编程工具”主题，该工具在技术上具有创新性，解决了TypeScript在原生应用部署上的痛点，实用性非常高。",
+      "tags": [
+        "编程工具",
+        "TypeScript",
+        "编译器",
+        "Vercel",
+        "原生应用",
+        "性能优化"
+      ]
+    },
+    {
+      "title": "The path to artificial superintelligence",
+      "link": "https://www.technologyreview.com/2026/07/27/1140724/the-path-to-artificial-superintelligence/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-07-27T12:00:00.000Z",
+      "summary": "Imagine a healthcare system made up of multiple AI agents: one that manages symptom assessment, another scheduling, a third insurance, and a fourth pharmacy. Each is an expert in its domain. But they all have their own distinct knowledge and objectives. Today they can exchange data, but they are not yet able to actually coordinate…",
+      "id": "019f99f4d633a5c019bc6b83a61e83191b33ad9ca0356d277978f49e3d25d089",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "深入探讨了多智能体AI系统及其协调挑战，描绘了通往超人工智能的未来路径。",
+      "reason": "紧跟AI前沿，对理解和探索未来AI发展方向（特别是ASI）具有极高的理论和战略价值。",
+      "tags": [
+        "AI",
+        "超人工智能",
+        "多智能体系统",
+        "AI发展"
+      ]
+    },
+    {
+      "title": "Can the Tide of AI Investment Life All Boats on the Web?",
+      "link": "https://blog.jim-nielsen.com/2026/tide-lifts-all-boats/",
+      "source": "blog.jim-nielsen.com",
+      "publishedAt": "2026-07-27T19:00:00.000Z",
+      "summary": "Jason Grigsby has a great article where he surfaces an opinion from the Safari team about how AI agents shouldn’t get special treatment:\nAn agent acting on a user’s behalf is, in effect, assistive technology: it should operate a site as the user would, and the site should not single it out for different treatment. \nJason synthesizes different discussions happening at standards levels to argue, in essence, that agents should be required to use existing technologies and solutions (APIs, semantics, etc.) rather than get their own bespoke ones. And where there are gaps in the platform, solutions should be centered around closing those gaps generally for everyone (vs. specifically for agents).\nImagine that! Take the billions being invested in AI and funnel it towards improving and enhancing the existing technology agents already use and profit from. No bespoke solutions just for AI, but generalized solutions everyone can benefit from.\nIn other words: allow the rising tide of AI investment to lift all boats in the platform because the web is for everyone. As Jason says:\nIf we’re solving this problem for AI, perhaps we can find a solution that works for end users too.\nHis suggestion being that maybe we should frame AI needs in the web platform the same way we do other needs in the web’s priority of constituents: user needs come before developer needs, implementor needs, spec writer needs — or even agent needs. (UX over DX over AX.)\nNow for the funny part. Here’s Jason:\nlet’s set aside for the moment the irony that AI is supposed to replace all of our jobs and become a super intelligence and at the same time we also need to add special AI training wheels for it to use the web.\nIt’s like that person you know who prides themselves on their independence, that they don’t bend to society and culture, and that they don’t need anyone or anything — oh, and by the way, could you spot them twenty bucks?\nEmail\n      · Mastodon ·\n\n      Bluesky",
+      "id": "aa430d9150b0bcea900366362753a1dd7534b38c44e7923656ed3390522e52db",
+      "ref_id": "4",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "讨论了AI投资应如何通过通用网络标准提升所有用户体验，而非仅为AI代理提供定制方案。",
+      "reason": "文章紧扣当前AI热门议题，观点独到且具前瞻性，对未来AI与网络生态发展具有指导意义，实用性强。",
+      "tags": [
+        "AI",
+        "Web Standards",
+        "Ethics",
+        "Product Design",
+        "Innovation"
+      ]
+    },
+    {
+      "title": "Removing React.js from the codebase and adapting Htmx for UI interactivity (2023)",
+      "link": "https://misago-project.org/t/removing-reactjs-from-the-codebase-and-adapting-htmx-for-ui-interactivity/1267/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-27T09:58:50.000Z",
+      "summary": "Article URL: https://misago-project.org/t/removing-reactjs-from-the-codebase-and-adapting-htmx-for-ui-interactivity/1267/\nComments URL: https://news.ycombinator.com/item?id=49067301\nPoints: 155\n# Comments: 99",
+      "id": "0c8b9f65e7d8f477b68a78a7d81bd9300793219a28ec47f633bd29767dfac5bf",
+      "ref_id": "4",
+      "recommendationScore": 88,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "一篇关于从React迁移到Htmx的实战案例，为前端开发者提供了宝贵的经验。",
+      "reason": "深入探讨了热门的前端技术栈选择与迁移，实用性强，对广大Web开发者有重要参考价值。",
+      "tags": [
+        "React",
+        "Htmx",
+        "前端开发",
+        "Web开发",
+        "编程工具",
+        "技术迁移"
+      ]
+    },
+    {
+      "title": "Digital circuit simulator in Haskell (SICP 3.3)",
+      "link": "https://entropicthoughts.com/sicp-3-3-digital-circuit-simulator-in-haskell",
+      "source": "entropicthoughts.com",
+      "publishedAt": "2026-07-26T22:00:00.000Z",
+      "summary": "I have a copy of SICP, or as it is also known, The Wizard\nBook. This book is widely praised, but I can’t take the\ntime to work my way through all of it. Instead, I’m going to occasionally jump\ninto the parts of it that look interesting.\n\n\n\n\n\nIn the previous two installations of this series, we looked at ways of\nimplementing generic functions. In the first one, by tagging values and\ndispatching operations on tags. In the second case, by filling a mutable table\nof operation–tag pairs. We saw how these are roughly equivalent to the existing\nHaskell features of sum types and type classes.\n\n\n\n\n\nNow we’ll simulate a digital circuit. The reason this is interesting is that the\nsolution in SICP uses hidden mutable state and message-passing to make the\ncode object-oriented. It even uses a mutable global variable for scheduling! I\nwasn’t sure if it would be possible to replicate that in Haskell, but as we’ll\nsee, it can get incredibly close.\n\n\n\n(Continue reading the full article on the web.)",
+      "id": "73e3b9b7493339861a53fc5dea57eb07ecb153808d754f98003c9e95559e8b5e",
+      "ref_id": "3",
+      "recommendationScore": 85,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "深入探讨了如何使用Haskell实现SICP风格的数字电路模拟器，对比了两种范式。",
+      "reason": "文章技术深度高，结合了编程语言特性与系统设计，对函数式编程和SICP爱好者极具吸引力。",
+      "tags": [
+        "Haskell",
+        "Functional Programming",
+        "SICP",
+        "Digital Circuits",
+        "Simulation",
+        "Programming Tools"
+      ]
+    },
+    {
+      "title": "Show HN: Infrawrench – a tool to manage cloud and svcs with workflows and chat",
+      "link": "https://infrawrench.com",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-27T16:25:45.000Z",
+      "summary": "Article URL: https://infrawrench.com\nComments URL: https://news.ycombinator.com/item?id=49071915\nPoints: 7\n# Comments: 0",
+      "id": "3d070c6213a5d41e2240cb8efd8506a9d1b3f755bcec2a12f05240d659efac6a",
+      "ref_id": "4",
+      "recommendationScore": 80,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "Infrawrench是一个通过工作流和聊天管理云服务及自动化的工具，实用性强。",
+      "reason": "涉及自动化和编程工具领域，对云管理和DevOps工程师具有高度实用价值。",
+      "tags": [
+        "自动化",
+        "云管理",
+        "DevOps",
+        "编程工具",
+        "Show HN"
+      ]
+    },
+    {
+      "title": "Paged Out #9 [pdf]",
+      "link": "https://pagedout.institute/download/PagedOut_009.pdf",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-27T14:22:34.000Z",
+      "summary": "Article URL: https://pagedout.institute/download/PagedOut_009.pdf\nComments URL: https://news.ycombinator.com/item?id=49070138\nPoints: 45\n# Comments: 6",
+      "id": "17a918079af6e5b21719bf90ceb825fa8b35d069fec8cee8027aa4550614818f",
+      "ref_id": "3",
+      "recommendationScore": 80,
+      "popularityScore": 55,
+      "priority": "medium",
+      "comment": "最新一期深入探讨底层编程、操作系统和计算机体系结构的硬核技术杂志。",
+      "reason": "为系统级程序员和对计算机底层原理感兴趣的读者提供了大量高质量、有深度的技术文章。",
+      "tags": [
+        "编程工具",
+        "操作系统",
+        "底层技术",
+        "计算机体系结构",
+        "编程"
+      ]
+    },
+    {
+      "title": "Libsm64: Mario 64 as a library for use in external game engines",
+      "link": "https://github.com/libsm64/libsm64",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-27T10:04:48.000Z",
+      "summary": "Article URL: https://github.com/libsm64/libsm64\nComments URL: https://news.ycombinator.com/item?id=49067352\nPoints: 116\n# Comments: 15",
+      "id": "982b688b42c9641d9407ba6d5e3e6d144e0ea06bb5de52c3a4953b3edcdf1169",
+      "ref_id": "3",
+      "recommendationScore": 78,
+      "popularityScore": 50,
+      "priority": "medium",
+      "comment": "将经典游戏《马里奥64》的引擎封装为库，为游戏开发者提供了独特的工具。",
+      "reason": "属于编程工具范畴，技术含量高且有创造性，对游戏开发者群体有吸引力，但受众相对小众。",
+      "tags": [
+        "游戏开发",
+        "Mario 64",
+        "库",
+        "游戏引擎",
+        "C++"
+      ]
+    },
+    {
+      "title": "Exploiting Volvo/Eicher's fleet platform to gain control over all users/vehicles",
+      "link": "https://eaton-works.com/2026/07/27/my-eicher-hack/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-27T15:08:16.000Z",
+      "summary": "Article URL: https://eaton-works.com/2026/07/27/my-eicher-hack/\nComments URL: https://news.ycombinator.com/item?id=49070756\nPoints: 15\n# Comments: 0",
+      "id": "a6d3f27ee7a244a8ddccf1e8e451aad1d75f7b8641271e439f75dc88825090dd",
+      "ref_id": "2",
+      "recommendationScore": 75,
+      "popularityScore": 40,
+      "priority": "medium",
+      "comment": "揭露了Volvo/Eicher车队管理平台的严重漏洞，并详细演示了利用过程。",
+      "reason": "对物联网安全、车联网安全及渗透测试领域提供了极具价值的实战案例和警示。",
+      "tags": [
+        "网络安全",
+        "漏洞利用",
+        "物联网",
+        "车辆安全",
+        "渗透测试"
+      ]
+    },
+    {
+      "title": "VLC for Unity now supported on Linux",
+      "link": "https://code.videolan.org/videolan/vlc-unity",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-27T09:06:34.000Z",
+      "summary": "Article URL: https://code.videolan.org/videolan/vlc-unity\nComments URL: https://news.ycombinator.com/item?id=49066928\nPoints: 107\n# Comments: 31",
+      "id": "ff79c44a5ac37fd92de8420fbb4852933d3e818cf44f58c65e0e5c905e33fe4a",
+      "ref_id": "1",
+      "recommendationScore": 75,
+      "popularityScore": 10,
+      "priority": "medium",
+      "comment": "VLC for Unity在Linux平台获得支持，为特定游戏和多媒体开发者提供了实用更新。",
+      "reason": "文章属于编程工具范畴，对Unity开发者在Linux上集成VLC有直接实用价值，技术上具有一定的专业性。",
+      "tags": [
+        "编程工具",
+        "Unity",
+        "VLC",
+        "Linux",
+        "跨平台",
+        "多媒体开发"
+      ]
+    },
+    {
+      "title": "Counting permutations with roots",
+      "link": "https://www.johndcook.com/blog/2026/07/27/counting-permutations-with-roots/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-07-27T16:03:44.000Z",
+      "summary": "My post from yesterday on permutation roots ends with a Mathematica code for finding the probability that a permutation of n elements has a kth root. This is done by finding the coefficient of xn in the generating function I wanted to say more about this, and look at implementing the same code in SymPy. […]\nCounting permutations with roots first appeared on John D. Cook.",
+      "id": "04ccf544c7ec9664e25c9803ca433dcfaf7b048bdeefd5a02cc7fd21c7d1229a",
+      "ref_id": "4",
+      "recommendationScore": 75,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "详细探讨排列根的数学计数问题，并计划使用Mathematica和SymPy进行代码实现，技术深度高。",
+      "reason": "文章结合了理论数学与实际编程，对算法爱好者和科学计算用户具有很强的学习与实践指导价值。",
+      "tags": [
+        "Mathematics",
+        "Algorithms",
+        "Programming Tools",
+        "Combinatorics",
+        "SymPy",
+        "Mathematica"
+      ]
+    },
+    {
+      "title": "Nvidia's $750B in Deals Reignite Circular AI Fears",
+      "link": "https://www.bloomberg.com/news/articles/2026-07-27/nvidia-s-750-billion-deals-revive-fear-of-ai-circular-financing",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-27T16:02:00.000Z",
+      "summary": "Article URL: https://www.bloomberg.com/news/articles/2026-07-27/nvidia-s-750-billion-deals-revive-fear-of-ai-circular-financing\nComments URL: https://news.ycombinator.com/item?id=49071512\nPoints: 57\n# Comments: 32",
+      "id": "bf386ad721e9950864a4c32aed0d2af143dd11181a1cfa9a64c501c7d125d9c2",
+      "ref_id": "0",
+      "recommendationScore": 70,
+      "popularityScore": 60,
+      "priority": "high",
+      "comment": "深入分析了AI巨头Nvidia的商业策略及其潜在的市场风险。",
+      "reason": "及时关注AI行业金融动态，对理解市场健康度和投资风险有重要参考价值。",
+      "tags": [
+        "AI",
+        "市场分析",
+        "Nvidia",
+        "金融",
+        "商业策略"
+      ]
+    },
+    {
+      "title": "AI companies spend record sums on Washington lobbying",
+      "link": "https://www.ft.com/content/d8a5f95e-3b6d-463a-a848-c9ef8e2394db",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-27T14:07:48.000Z",
+      "summary": "https://archive.ph/PASMJ\nComments URL: https://news.ycombinator.com/item?id=49069939\nPoints: 176\n# Comments: 77",
+      "id": "c60f3865d0456499ccc9f95d8b2057f370b50f225bb6286422f0d2f25f692c82",
+      "ref_id": "4",
+      "recommendationScore": 70,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "报道了AI公司在华盛顿的巨额游说支出，揭示了技术与政治的交织。",
+      "reason": "帮助读者了解AI技术发展背后的政策导向和监管趋势，具有重要的行业视角。",
+      "tags": [
+        "AI",
+        "政策",
+        "监管",
+        "游说",
+        "行业趋势"
+      ]
+    },
+    {
+      "title": "Modern email can be built from borrowed parts",
+      "link": "https://en.andros.dev/blog/d7ed8b07/modern-email-can-be-built-from-borrowed-parts/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-27T08:27:21.000Z",
+      "summary": "Article URL: https://en.andros.dev/blog/d7ed8b07/modern-email-can-be-built-from-borrowed-parts/\nComments URL: https://news.ycombinator.com/item?id=49066639\nPoints: 112\n# Comments: 49",
+      "id": "13c15afc878f9a2956a8329fc65f600630e43cdf7b8e001d6a92be8e7e185fb3",
+      "ref_id": "2",
+      "recommendationScore": 70,
+      "popularityScore": 11,
+      "priority": "medium",
+      "comment": "探讨了如何利用现有组件构建现代邮件系统，为系统架构和独立开发提供了思路。",
+      "reason": "这篇文章为独立开发者和系统架构师提供了关于模块化和高效系统构建的启发，具有中等偏高的实用性和信息密度。",
+      "tags": [
+        "独立开发",
+        "系统架构",
+        "软件工程",
+        "邮件系统",
+        "模块化设计"
+      ]
+    },
+    {
+      "title": "★ Ads in Software Are Like Stickers on Laptops",
+      "link": "https://daringfireball.net/2026/07/ads_in_software_are_like_stickers_on_laptops",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-27T16:32:51.000Z",
+      "summary": "Regarding my recent pieces regarding Apple’s shitty ads in the App Store and Apple News (and, perhaps soon, Apple Maps), a friend sent me this pithy take:\nThe ads Apple is happy to inflict on us in its apps are the\nequivalent of the stickers it would never allow on its physical\nproducts.\nBullseye.\nThat’s what those stickers on PCs are: they’re ads. Intel pays for the “Intel Inside” stickers that booger up PC laptop palm rests. Longtime readers will recall that back in August 2007, Apple held a Town Hall event to introduce new iMacs and some iLife and iWork software updates. In a post-event Q&A (imagine that), Bob Keefe of Cox Newspapers asked “Can you say why you all are not participating in the Intel Inside program, putting the stickers on your new or previous Macs?” This question was so absurd from the perspective of those who covered Apple closely that it prompted outright laughter. Jason Snell wrote a great column arguing that it was actually a good question.\nHere’s the whole exchange (via Dan Moren, then at MacUser). Give it a listen, it’s only 100 seconds or so:\n\nKeefe asks, Steve Jobs answers, Phil Schiller answers, and then Jobs closes it. Jobs broke the ice in his initial answer, with “What can I say? We like our own stickers better.” I was in the room, and that line killed. Jobs at his best. But you can tell that Jobs wasn’t really sure how to answer at first. He didn’t want to throw any shade at Intel, Apple’s partner, but he knew there was a key point to make here about Apple.\nThe whole thing is funny because at a fundamental level we all just know in our bones that Apple never even considered putting “Intel Inside” stickers on Macs. But why? For eons, mankind knew that when you drop something, it will fall to the ground. But why? Gravity is worth asking about. Worth figuring out. I think that’s the point of Snell’s 2007 column arguing that people (like me) were wrong to mock Keefe for asking.\nIt’s when Jobs comes back to the question, after Schiller, that we get the real answer:\nYou know, we put ourselves in the customers’ shoes and we say,\nwhat do we want stuck on our product when we take it out of the\nbox? And the answer is, nothing.\nThat’s the answer. Apple still treats its hardware with that level of respect. With reverence. iPhones don’t even say “iPhone” on the hardware. No model or serial numbers. No small print. Just an Apple logo on the back.\nPutting themselves in customers’ shoes today, how many ads do Apple’s executives want stuck in the results when they search for an app in the App Store? We know the honest answer. But the answer evidenced by the actual App Store is “Two really big ones, including one in the first spot.”",
+      "id": "d011ab2252d1c0d7fbfb09f1d8e0e4d6335d91ae9232bb87ad31bf5e26407368",
+      "ref_id": "1",
+      "recommendationScore": 70,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "一篇犀利地将软件内广告比作硬件贴纸的文章，深刻批判了苹果在用户体验上的双重标准。",
+      "reason": "文章观点新颖，论据充分且高度贴合苹果生态主题，能引起广泛共鸣与讨论。",
+      "tags": [
+        "Apple",
+        "User Experience",
+        "Product Design",
+        "Opinion",
+        "Advertising"
+      ]
+    },
+    {
+      "title": "How lasers could help provide fuel for nuclear reactors",
+      "link": "https://www.technologyreview.com/2026/07/27/1140798/laser-nuclear-enrichment/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-07-27T14:24:42.000Z",
+      "summary": "Outside the small town of Paducah, Kentucky, a wealth of uranium is locked away in thousands of storage cylinders filled with waste material from a now-closed nuclear enrichment facility. Lasers could help get it out. A company called Global Laser Enrichment (GLE) is looking to reprocess this old material with a new technology called laser…",
+      "id": "3beafaf14c45b23354af6ff21f24a3bcef988092e18474be410dad5d032cf453",
+      "ref_id": "0",
+      "recommendationScore": 65,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "探讨了激光技术在核燃料再加工中的创新应用，具有潜在的能源意义。",
+      "reason": "内容专业且涉及重要能源技术，但偏离了AI等核心关注主题。",
+      "tags": [
+        "能源科技",
+        "核能",
+        "激光技术"
+      ]
+    },
+    {
+      "title": "Printing floating point numbers in binary",
+      "link": "https://www.johndcook.com/blog/2026/07/27/float-binary/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-07-27T15:34:05.000Z",
+      "summary": "It’s well known that you can convert the base 16 (hex) representation of an integer to the base 2 (binary) representation by simply converting each digit from hex to binary. For example, CAFEhex = 1100 1010 1111 1110two I imagine it’s less well known that you can do the same thing with floating point numbers. […]\nPrinting floating point numbers in binary first appeared on John D. Cook.",
+      "id": "e3a247e3293af16f6e07e6a50ddc45718cee80fac75e748fae9d73cea0b2c1d5",
+      "ref_id": "0",
+      "recommendationScore": 65,
+      "popularityScore": 50,
+      "priority": "medium",
+      "comment": "深入探讨了浮点数在二进制层面的表示与转换，技术细节丰富。",
+      "reason": "文章提供了扎实的技术深度，对理解计算机底层数据表示有益，但受众相对小众。",
+      "tags": [
+        "Programming",
+        "Binary",
+        "Floating Point",
+        "Computer Architecture"
+      ]
+    },
+    {
+      "title": "The Download: lasers for nuclear fuel, and organ preservation advances",
+      "link": "https://www.technologyreview.com/2026/07/27/1140833/the-download-lasers-nuclear-organ-preservation/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-07-27T12:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. How lasers could help provide fuel for nuclear reactors  Nuclear power provides about 9% of global electricity today, and that fraction could tick up as countries look to build new reactors.…",
+      "id": "3c45661bee2030692baf99d0f25faf503a44d709fff9b5d2a4139c39a4f4dd59",
+      "ref_id": "1",
+      "recommendationScore": 55,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "一篇科技日报摘要，涵盖了多项科技进展，包括核燃料激光应用。",
+      "reason": "内容广而不深，适合快速浏览最新科技动态，但缺乏特定领域的深入分析。",
+      "tags": [
+        "科技资讯",
+        "日报",
+        "能源科技"
+      ]
+    },
+    {
+      "title": "Permutation roots",
+      "link": "https://www.johndcook.com/blog/2026/07/26/permutation-roots/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-07-26T20:32:02.000Z",
+      "summary": "Let σ be a permutation on n elements. If there is a permutation τ such that applying τ twice has the same effect on the list of elements as applying σ once, we say σ = τ² and τ is a square root of σ. If we let our n elements be the integers 0 […]\nPermutation roots first appeared on John D. Cook.",
+      "id": "8711f52ba5e956111432e603f20eeaf6d9b3de6405bbe7521fe3ad6d05a4ced4",
+      "ref_id": "1",
+      "recommendationScore": 55,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "探讨了抽象代数中的排列根概念，内容偏向纯理论数学。",
+      "reason": "文章具有高度的数学理论深度，但与主流科技博客主题的实用性关联较弱。",
+      "tags": [
+        "Mathematics",
+        "Permutations",
+        "Abstract Algebra"
+      ]
+    },
+    {
+      "title": "An Inside Look at the Relay Market Powering Token Resellers and Fraud",
+      "link": "https://simonwillison.net/2026/Jul/26/relay-market/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-07-26T19:30:54.000Z",
+      "summary": "",
+      "id": "2ca540797f84b65ac8dde222bcfbd689b188e391f6ad3763ec13cfc920544f59",
+      "ref_id": "0",
+      "recommendationScore": 50,
+      "popularityScore": 55,
+      "priority": "medium",
+      "comment": "标题引人关注区块链欺诈的幕后市场，但内容缺失，无法进行深度评估。",
+      "reason": "潜在主题具有一定技术安全性和经济探讨价值，但实际内容缺失导致推荐度受限。",
+      "tags": [
+        "Blockchain",
+        "Security",
+        "Fraud",
+        "FinTech"
+      ]
+    },
+    {
+      "title": "Why $550 Million Medical Debt only Cost $5.5 Million ",
+      "link": "https://idiallo.com/byte-size/550-million-only-cost-5-million",
+      "source": "idiallo.com",
+      "publishedAt": "2026-07-26T19:03:04.000Z",
+      "summary": "A couple weeks ago, the CEO of Snap was all over the news in the US because he and his wife made a large donation. The weird part about it was that every news outlet that covered it had an acrobatic title where they didn't specifically say how much they donated, yet insisted on that $550 Million amount. \nWhen you read the article a bit deeper, you can do the math. They donated one hundredth of that amount. So I wondered, why did they inflate the amount in the first place? It looked like a PR stunt. \nThis past couple weeks, I worked on a video to explain what really happened and how we should take this news. \n\nEnjoy",
+      "id": "5264b10ddf146188f507d18c4c85ff033edb60d2d5370139886aa724e6d6ae82",
+      "ref_id": "2",
+      "recommendationScore": 50,
+      "popularityScore": 65,
+      "priority": "low",
+      "comment": "剖析了媒体对捐款金额的夸大报道，揭示了公关宣传手法与实际真相的差异。",
+      "reason": "文章有助于读者批判性地审视新闻信息，但与核心科技主题关联性较低。",
+      "tags": [
+        "Media",
+        "PR",
+        "Finance",
+        "Social Commentary",
+        "Critical Thinking"
+      ]
+    },
+    {
+      "title": "exp_q",
+      "link": "https://www.johndcook.com/blog/2026/07/26/exp-q/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-07-26T18:20:36.000Z",
+      "summary": "The function expq(x) is defined by taking the power series for exp(x) and keeping only the terms whose index is a multiple of q. For example, exp2(x) keeps only the even-numbered terms in the exponential power series and so equals cosh(x). In general, The first sum uses Iverson’s bracket notation: a Boolean expression in brackets […]\nexp_q first appeared on John D. Cook.",
+      "id": "23512ef2fa14530516edd3c8c8a2e1cd5d92e8b2bb0816759fec85fd0c742b8f",
+      "ref_id": "2",
+      "recommendationScore": 50,
+      "popularityScore": 35,
+      "priority": "low",
+      "comment": "介绍了基于指数幂级数的特殊函数exp_q(x)的数学定义与特性。",
+      "reason": "文章是纯粹的数学理论探讨，与科技博客的通用技术主题关联性很低。",
+      "tags": [
+        "Mathematics",
+        "Power Series",
+        "Special Functions"
+      ]
+    },
+    {
+      "title": "Should you wash your solar panels?",
+      "link": "https://incoherency.co.uk/blog/stories/should-you-wash-your-solar-panels.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-27T13:04:11.000Z",
+      "summary": "Article URL: https://incoherency.co.uk/blog/stories/should-you-wash-your-solar-panels.html\nComments URL: https://news.ycombinator.com/item?id=49069132\nPoints: 154\n# Comments: 129",
+      "id": "fba3fc89060aa93142e15f12898d5ae49397b89384ee0be21e289085cdf442bb",
+      "ref_id": "0",
+      "recommendationScore": 45,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "一篇关于太阳能电池板清洁维护的实用文章，内容偏离核心技术主题。",
+      "reason": "虽然对特定家庭用户有实际价值，但其技术深度和主题与科技博客核心关注点不符。",
+      "tags": [
+        "太阳能",
+        "维护",
+        "可持续发展",
+        "家居"
+      ]
+    },
+    {
+      "title": "Pluralistic: How the EU can punish Google (despite Trump) (27 Jul 2026)",
+      "link": "https://pluralistic.net/2026/07/27/eucd-6/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-07-27T10:52:03.000Z",
+      "summary": "Today's links How the EU can punish Google (despite Trump): Grant me the courage to change the things I can. Hey look at this: Delights to delectate. Object permanence: Chilling Effects; Billy Bragg v Myspace; Glenn Beck calls murdered Norwegian children \"Hitler Youth\"; Photog sues Getty for $1b copyfraud; Best paid CEOs perform worst; Olympics v \"Olympics\"; Alberta tar sands v \"hot lesbians\"; IoT security apocalypse; 3 Little Pigs in pidgin; The nasty party; Copyright extortionist infringed fellow extortionist; Grandpa mobbed for photographing grandson in park; Ice Bucket Challenge didn't cure ALS; Twiddling enshittifies your brain. Upcoming appearances: Edinburgh, Sydney, Melbourne, Brighton, London, South Bend. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. How the EU can punish Google (despite Trump) (permalink) The \"Serenity Prayer\" (Serenity to accept things I can't change/Courage to change the things I can/Wisdom to know the difference) is usually cited as pop psychology or addiction recovery advice, but I think there's a place for it in policymaking. Take the EU's fight against US Big Tech. During the Biden years, the EU's tech policy matured into something serious and ambitious, culminating in the Digital Markets Act (DMA) and Digital Services Act (DSA), a pair of big, muscular policies that would curb Big Tech's most abusive conduct. The EU's ambition didn't occur in a vacuum: it was part of a global wave of antitrust fervor whose top agenda item was reining in tech: https://pluralistic.net/2025/06/28/mamdani/#trustbusting In this fight, the EU had important partners all over the world. For example, South Korea and Japan used the facts uncovered through EU enforcement action against Google and Apple to pursue similar cases: https://pluralistic.net/2024/04/10/an-injury-to-one/#is-an-injury-to-all But the EU's most important partner in its fight against American Big Tech was America. Biden's trustbusters – Lina Khan, Rohit Chopra, Jonathan Kanter, Tim Wu, et al – were every bit as serious about Big Tech power as anyone in the EU. After all, the American public are always the first victims of any new tech scam, and America is the only country with a large, affluent population who lack modern, comprehensive consumer privacy protection, making Americans highly prized prey for tech companies: https://pluralistic.net/2025/04/23/zuckerstreisand/#zdgaf With America and the EU on the same side of the tech fight, the world had a fighting chance. Tech knew this, which is why Big Tech backed Trump hard during the 2024 election and aggressively curried his favor after he won. From the tech barons who paid $1m each to sit behind Trump on the inaugural dais to the millions tech companies donated to Trump's Epstein Ballroom at the White House, tech has made it clear that it supports anything Trump wants to do, provided he shields Big Tech from any attempt to limit their ability to spy on and steal from Americans and the world. Even before he took office, Trump made it clear how he would reward tech's loyalty: weeks before the inauguration, Trump went to Davos and threatened the EU with reprisals if they enforced the DSA or DMA against his tech companies: https://techcrunch.com/2025/01/23/trumps-not-happy-with-how-eu-regulators-have-treated-us-tech-giants/ Trump wasted no time leaning on US trading partners on behalf of Big Tech. He bullied Canadian PM Mark Carney into dropping his plan to tax US tech companies. Big Tech uses a variety of tax-cheating gambits to evade taxation around the world, making it impossible for (tax-paying) domestic companies to compete: https://www.canada.ca/en/department-finance/news/2025/06/canada-rescinds-digital-services-tax-to-advance-broader-trade-negotiations-with-the-united-states.html Trump also got UK PM Keir Starmer to drop his plan to tax tech: https://www.theguardian.com/us-news/2025/apr/01/starmer-offered-big-us-tech-firms-tax-cuts-in-return-for-lower-trump-tariffs And he got the EU to roll back its plan to regulate AI: https://fortune.com/2025/11/07/eu-ai-act-weaken-regulation-delay-big-tech-trump-government/ None of the governments that caved to Trump got anything in return. As I've written: Give Trump everything he asks for and he'll demand more. Deny Trump anything and he'll demand more. Sign a contract with Trump and he'll break it. Send Trump an invoice and he'll stiff you. For Trump, \"the art of the deal\" can be summed up in one word: renege. https://pluralistic.net/2026/07/22/table-flipper/#graveyard-of-indispensable-nations Case in point: after the EU surrendered to Trump on AI regulation, Trump announced that a on ban EU officials who had worked on the Digital Services Act from traveling to the USA: https://www.state.gov/releases/office-of-the-spokesperson/2025/12/announcement-of-actions-to-combat-the-global-censorship-industrial-complex/ Then, after the EU made more concessions to Trump, he announced a ban on even more EU officials: https://www.lawfaremedia.org/article/the-trump-administration-targets-europe-s-content-moderation-laws Trump ordered his tech giants to dig through EU officials' private correspondence so he can figure out who to ban next: https://www.politico.eu/article/us-congress-judiciary-committee-big-tech-private-communication-eu-officials/ Trump's tech companies got the memo. When the EU ordered Apple to follow the law, Apple told the EU to fuck off: https://pluralistic.net/2024/02/06/spoil-the-bunch/#dma After all, Apple is a key partner in the Trump administration's mass deportations. Apple blocked an iPhone app that warns Apple customers if they're about to be kidnapped or murdered by ICE. Trump needs Apple, just as much as Apple needs Trump: https://pluralistic.net/2025/10/06/rogue-capitalism/#orphaned-syrian-refugees-need-not-apply Despite this, the EU keeps trying to enforce its laws against Trump's companies. Last week, the Commission announced a $1b fine against Google for violating the Digital Services Act with conduct that cost Europeans many billions: https://digital-markets-act.ec.europa.eu/commission-fines-google-eur890-million-breaches-digital-markets-act-2026-07-23_en In other words, Google wasn't even being ordered to disgorge all the money it stole, just some of it. Remember, a fine is a price: the EU's fine here will only make this kind of cheating slightly less profitable. Nevertheless, Trump responded immediately by threatening the EU with many billions more in tariffs if they continue to attempt to enforce the law against one of his companies: https://www.lemonde.fr/en/international/article/2026/07/24/trump-says-eu-to-pay-very-big-price-for-890-million-google-fine_6755804_4.html Trump, the European Commission and Google all know this is about more than one $1b fine. The DSA and DMA both provide for steeply rising fines and other penalties for repeat offenders, and Google clearly has no plan to end its very profitable European crime-spree. Trump's threats aren't a bid to kill this enforcement – Trump wants to kill all enforcement. Retaliatory tariffs aren't the only weapon Trump has at his disposal. If the EU (or any other country) levies a serious fine against Google, Apple, Oracle, Microsoft, or any of Trump's other tech companies, Trump can order US banks not to turn over those fines, even after the EU sends them a court order for the money. If a bank defies Trump, he can threaten to yank its charter. Or he could just run the same swindle he pulled on Tiktok: stealing the whole company and selling it to one of his buddies, who will run it the way Trump wants. The reality is that without America's assistance, the EU has precious little hope of forcing American companies to do things they don't want to do. In terms of the Serenity Prayer, this is \"a thing they cannot change.\" The Serenity Prayer doesn't stop with \"things you can't change.\" The next line seeks \"the courage to change the things I can.\" The EU has no control over Google's conduct, but it has total control over its own conduct. Specifically, the EU could get rid of the laws that ban European companies from modifying US tech exports. The EU adopted the Copyright Directive in 2001. Article 6 of the EUCD makes it a crime to reverse-engineer and modify a device without the manufacturer's permission. This law was adopted under pressure from the US Trade Representative, who threatened the EU with tariffs on its exports unless it adopted an \"anticircumvention rule\" that banned EU technologists from making products that let Europeans prevent US tech companies from stealing their money and data\": https://pluralistic.net/2026/01/01/39c3/#the-new-coalition This law is still in force in the EU, despite the fact that Trump (predictably) reneged on the US side of the bargain, hitting the EU with massive tariffs and even threatening to steal part of Denmark. Article 6 of the Copyright Directive is the reason European tech companies can't jailbreak America's apps, whether that's to get its government and corporate data off of US platforms: https://pluralistic.net/2025/10/15/freedom-of-movement/#data-dieselgate Or to modify American social media apps to respect EU privacy laws: https://pluralistic.net/2026/01/30/zucksauce/#gandersauce The EU can't control what Apple or Google do. But the EU can absolutely decide whether Trump's companies can use Europe's courts to destroy European companies that defend the privacy and economic integrity of the European people. If the EU kills off Article 6 of the Copyright Directive, they can use European companies to bring Google and Apple's defective tech exports into compliance with European law. Unlike Trump's companies, those companies can be forced to pay their taxes and respect their users' privacy, labor and consumer rights. That's the Serenity Prayer's \"wisdom to know the difference.\" Hey look at this (permalink) Nate Silver discovers the educated poor https://crookedtimber.org/2026/07/25/nate-silver-discovers-the-educated-poor/ Imagine a World in Which Microsoft Sold Cars the Way It Sells Software https://www.thesling.org/imagine-a-world-in-which-microsoft-sold-cars-the-way-it-sells-software/ Tesla swapped a solar owner’s lease contract for the Book of Enoch https://electrek.co/2026/07/23/tesla-solar-lease-contract-book-of-enoch/ Canadian legislator reads out apparent LLM response in floor speech https://arstechnica.com/ai/2026/07/canadian-legislator-reads-out-apparent-llm-response-in-floor-speech/ The Resistance Liberal Lawyers Helping Trump Take Over the Media https://www.thebignewsletter.com/p/the-resistance-liberal-lawyers-helping Object permanence (permalink) #25yrsago Chilling Effects https://web.archive.org/web/20010801172448/http://eon.law.harvard.edu/chill/ #25yrsago 13-year-old hacker's book deal: “The Unofficial Guide to Ethical Hacking\" https://web.archive.org/web/20011102164905/http://www.vnunet.com/News/1124279 #20yrsago France’s new copyright law slaughters kills use and open source https://web.archive.org/web/20060812223624/http://soufron.typhon.net/spip.php?article150 #20yrsago Billy Bragg gets MySpace’s terms of service changed https://web.archive.org/web/20100809150257/http://blogs.myspace.com/index.cfm?fuseaction=blog.view&amp;friendID=34570397&amp;blogID=137856388&amp;MyToken=626131d4-c695-42ba-867b-754b9e2bfeaa #15yrsago Buy an Old West town in South Dakota for $0.8M https://web.archive.org/web/20110728012824/https://edition.cnn.com/2011/US/07/27/south.dakota.town.sale/index.html #15yrsago Glenn Beck compares murdered Norway campers to “Hitler Youth” https://www.latimes.com/archives/blogs/top-of-the-ticket/story/2011-07-25/opinion-glenn-beck-hits-new-low-compares-norway-victims-to-hitler-youth #15yrsago 3 Little Pigs rendered into Papua New Guinea pidgin https://www.abc.net.au/reslib/200709/r184705_686227.mp3 #15yrsago Why they call the Tories “the nasty party” https://www.theguardian.com/uk/2011/jul/28/tory-lib-dems-clash-on-policy #15yrsago US ISP/copyright deal: a one-sided private law for corporations, without public interest https://www.eff.org/deeplinks/2011/07/graduated-response-deal-what-if-users-had-been #15yrsago Copyright extortionist ripped off his competitor’s threatening material https://torrentfreak.com/anti-piracy-lawyers-rip-off-work-from-competitor-110727/ #15yrsago Karl Schroeder: Science fiction versus structured study of the future, sf as aspiration https://www.antipope.org/charlie/blog-static/2011/07/beyond-prediction.html #15yrsago Norwegian PM refuses to let terrorist attacks drive his country to intolerance and paranoid “security” https://www.nytimes.com/2011/07/28/world/europe/28norway.html?_r=1 #15yrsago Man with camera in park who fled angry parent sought by police (turns out he was taking pix of his grandson) https://web.archive.org/web/20110829052009/https://pixiq.com/article/man-photographing-grandkid-in-park-deemed-suspicious #10yrsago Laurie Penny at the DNC: “Dissent will not be tolerated. Protest will not be permitted.” https://medium.com/welcome-to-the-scream-room/bad-moon-rising-8cd348df50e9#.9lhcixjn1 #10yrsago The Ice Bucket Challenge did not fund a breakthrough in ALS treatment https://web.archive.org/web/20160914225439/http://www.healthnewsreview.org/2016/07/ice-bucket-challenge-breakthrough-experts-pour-cold-water-superficial-reporting/ #10yrsago Silicon Valley banks offer tech giants’ new hires 100% mortgages on 24 hours’ notice https://web.archive.org/web/20160727095557/http://www.bloomberg.com/news/articles/2016-07-27/zero-down-on-a-2-million-house-is-no-problem-in-silicon-valley #10yrsago Patent fighters attack the crown jewels of three of America’s worst patent trolls https://web.archive.org/web/20160727191625/https://arstechnica.com/tech-policy/2016/07/patent-defense-group-seeks-to-knock-out-top-three-trolls-of-2015/ #10yrsago Censorship company drops bogus lawsuit against researchers who outed them https://citizenlab.ca/research-interest/ #10yrsago Photographer sues Getty Images for $1B because they’re charging for pix she donated to LoC https://hyperallergic.com/photographer-files-1-billion-suit-against-getty-for-licensing-her-public-domain-images/ #10yrsago First-ever Michelin star for street food awarded to Singaporean hawker stalls https://web.archive.org/web/20160723174014/http://uk.reuters.com/article/us-singapore-food-hawkers-michelin-star-idUKKCN1021XA #10yrsago Highest-paid CEOs generate lowest shareholder returns https://www.msci.com/documents/10199/91a7f92b-d4ba-4d29-ae5f-8022f9bb944d #10yrsago Olympics to companies: mentioning “Olympics” in social media is a trademark violation #https://web.archive.org/web/20160727075209/https://www.espn.com/olympics/story/_/id/17120510/united-states-olympic-committee-battle-athletes-companies-sponsor-not-olympics #10yrsago Pro-tar-sands activists say dirty Canadian oil is better because “lesbians are hot” https://www.joeydevilla.com/2016/07/26/this-ill-advised-hot-lesbians-ad-promoting-canadian-vs-saudi-oil-is-real-and-not-a-parody-by-the-onion/ #5yrsago The infosec apocalypse is nigh https://pluralistic.net/2021/07/27/gas-on-the-fire/#a-safe-place-for-dangerous-ideas #1yrago How twiddling enshittifies your brain https://pluralistic.net/2025/07/28/twiddlehazard/#outboard-brains-considered-harmful Upcoming appearances (permalink) Virtual: EFFecting Change: Who the Machine Serves, Aug 12 https://www.eff.org/event/effecting-change-who-machine-serves Edinburgh International Book Festival with Jimmy Wales, Aug 17 https://www.edbookfest.co.uk/events/the-front-list-cory-doctorow-and-jimmy-wales Sydney: The Festival of Dangerous Ideas, Aug 23-24 https://festivalofdangerousideas.com/program/ Melbourne: Enshittification at the Wheeler Centre, Aug 25 https://www.wheelercentre.com/events-tickets/season-2026/cory-doctorow-enshittification Brighton: The Reverse Centaur's Guide to Life After AI with Carole Cadwalladr (Brighton Dome), Sep 8 https://brightondome.org/whats-on/LSC-cory-doctorow-the-reverse-centaurs-guide-to-life-after-ai/ London: The Reverse Centaur's Guide to Life After AI with Riley Quinn (Foyle's Picadilly), Sep 9 https://www.foyles.co.uk/events/enshittification-cory-doctorow-riley-quinn South Bend: An Evening With Cory Doctorow (Notre Dame), Oct 6 https://franco.nd.edu/events/2026/10/06/an-evening-with-cory-doctorow/ Recent appearances (permalink) A Conversation with Lina Khan (Law and Economy Student Network) https://www.youtube.com/live/7Ak5LZllqwE Will AI ever come alive, and what happens if it does? (BBC News) https://www.youtube.com/watch?v=Lzk4o3fPZZE Waarom jij straks het hulpje van AI bent (VPRO) https://www.youtube.com/watch?v=tOnvR2fs8CA Talk Tech Bock (Vera Linß) https://www.youtube.com/watch?v=3PFjGvQoBgc How To Think About AI Before It’s Too Late (This Is Hell) https://thisishell.com/episodes/1919 Latest books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/ \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Fourth draft completed. Submitted to editor. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "83c448d49b9a6e0ee528e8b64adbcc09146e196f053b88ee62983f5c9100c4bc",
+      "ref_id": "3",
+      "recommendationScore": 30,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "标题就欧盟惩罚谷歌提供了一个宏大视角，但文章内容仅为链接列表，严重偏离主题且信息量极低。",
+      "reason": "实际内容缺乏对标题主题的深入探讨，无法为读者提供实质性价值，不予推荐。",
+      "tags": [
+        "Tech Policy",
+        "EU Regulation",
+        "Google",
+        "Link Dump",
+        "Clickbait"
+      ]
+    },
+    {
+      "title": "Decathlon Germany adds Wero payment option to decathlon.de website",
+      "link": "https://www.sgieurope.com/e-commerce/decathlon-germany-launches-wero-payment-on-its-website/122397.article",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-27T16:49:08.000Z",
+      "summary": "Article URL: https://www.sgieurope.com/e-commerce/decathlon-germany-launches-wero-payment-on-its-website/122397.article\nComments URL: https://news.ycombinator.com/item?id=49072310\nPoints: 39\n# Comments: 17",
+      "id": "b168d5d594c264faa25040af7f662fd40d5e82da2405902ace7d758ad3f6ccdb",
+      "ref_id": "3",
+      "recommendationScore": 20,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "关于迪卡侬德国网站新增支付选项的商业新闻，技术相关性较低。",
+      "reason": "内容偏向商业和电商新闻，与科技博客主要关注的技术深度、新颖性等维度不符。",
+      "tags": [
+        "电商",
+        "支付",
+        "商业新闻"
+      ]
+    },
+    {
+      "title": "The Birth of the American 12-string Guitar (2013)",
+      "link": "https://www.harpguitars.net/history/grunewald/12-string.htm",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-27T10:52:21.000Z",
+      "summary": "Article URL: https://www.harpguitars.net/history/grunewald/12-string.htm\nComments URL: https://news.ycombinator.com/item?id=49067690\nPoints: 60\n# Comments: 32",
+      "id": "c7137890b9e3a7f71d0e2ad9d064d59c9480a6efeef1be917104d5590cf9a6e7",
+      "ref_id": "2",
+      "recommendationScore": 15,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "一篇关于12弦吉他历史的文化文章，与科技博客主题无关。",
+      "reason": "内容完全偏离科技博客关注的编程、AI、自动化等核心主题范围。",
+      "tags": [
+        "音乐",
+        "历史",
+        "文化"
+      ]
+    },
+    {
+      "title": "Shay Locomotives",
+      "link": "https://www.shaylocomotives.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-27T09:23:29.000Z",
+      "summary": "Article URL: https://www.shaylocomotives.com/\nComments URL: https://news.ycombinator.com/item?id=49067043\nPoints: 53\n# Comments: 12",
+      "id": "3672c7286135936aea2cc420726446c7bc3ba8a6fb67d76e13f1ddc7f98f7d68",
+      "ref_id": "0",
+      "recommendationScore": 10,
+      "popularityScore": 5,
+      "priority": "low",
+      "comment": "这是一篇关于火车历史或机械的文章，与科技博客主题关联度极低。",
+      "reason": "文章内容与AI、Apple生态、编程工具等核心科技主题不符，缺乏技术深度和实用性。",
+      "tags": [
+        "非科技",
+        "历史",
+        "机械",
+        "火车"
+      ]
+    },
+    {
+      "title": "UpCodes (YC S17) is hiring remote AE's to help make buildings cheaper",
+      "link": "https://up.codes/careers?utm_source=HN",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-27T17:02:41.000Z",
+      "summary": "Article URL: https://up.codes/careers?utm_source=HN\nComments URL: https://news.ycombinator.com/item?id=49072523\nPoints: 0\n# Comments: 0",
+      "id": "58e2a80f2e938f0ba7abf27b5261a813fc10d9b0cf581a60566859de070bdfea",
+      "ref_id": "0",
+      "recommendationScore": 5,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "这是一篇招聘启事，而非技术文章，与科技博客内容不符。",
+      "reason": "文章内容为招聘信息，不属于科技博客的评估范围和主题优先级。",
+      "tags": [
+        "招聘",
+        "创业公司"
+      ]
+    }
+  ]
+}
