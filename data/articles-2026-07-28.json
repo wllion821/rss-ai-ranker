@@ -1,0 +1,864 @@
+{
+  "dailySummary": "Kimi大模型架构（K3、Delta Attention）受关注。AI风险转向内部威胁，“幻觉”识别力至关重要。Ruby ZJIT内联优化性能大增，Flashpaper提供无数据库秘密共享。",
+  "articles": [
+    {
+      "title": "Kimi K3 Architecture Overview and Notes",
+      "link": "https://sebastianraschka.com/blog/2026/kimi-k3-architecture-notes.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-28T15:48:34.000Z",
+      "summary": "Article URL: https://sebastianraschka.com/blog/2026/kimi-k3-architecture-notes.html\nComments URL: https://news.ycombinator.com/item?id=49085698\nPoints: 52\n# Comments: 4",
+      "id": "1e81b43774934da15d5c683ffd3ed80a12f00d30cf7ca357a05006bcb90b42a3",
+      "ref_id": "4",
+      "recommendationScore": 99,
+      "popularityScore": 38,
+      "priority": "high",
+      "comment": "对Kimi K3架构提供了全面的概述和深入的笔记，揭示其核心设计。",
+      "reason": "直接聚焦于AI模型的最新架构，技术深度极高，是追踪AI技术发展的重要参考。",
+      "tags": [
+        "AI",
+        "LLM",
+        "Kimi",
+        "架构",
+        "深度学习"
+      ]
+    },
+    {
+      "title": "Discovering Cryptographic Weaknesses with Claude",
+      "link": "https://www.anthropic.com/research/discovering-cryptographic-weaknesses",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-28T17:22:16.000Z",
+      "summary": "Article URL: https://www.anthropic.com/research/discovering-cryptographic-weaknesses\nComments URL: https://news.ycombinator.com/item?id=49087091\nPoints: 3\n# Comments: 0",
+      "id": "5f83f5347c32a35f18a99c26b62ed61e83cebbab35692f8d34d163fc1f88c4a4",
+      "ref_id": "0",
+      "recommendationScore": 95,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "深入探讨AI在密码学安全发现中的前沿应用，极具研究价值。",
+      "reason": "文章揭示了Claude等AI模型在识别和分析加密漏洞方面的潜力，对于AI安全和网络安全研究者是不可多得的洞见。",
+      "tags": [
+        "AI",
+        "网络安全",
+        "密码学",
+        "研究"
+      ]
+    },
+    {
+      "title": "Scientific computing in the age of agentic AI",
+      "link": "https://openai.com/index/scientific-computing-agentic-ai/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-28T17:13:15.000Z",
+      "summary": "Article URL: https://openai.com/index/scientific-computing-agentic-ai/\nComments URL: https://news.ycombinator.com/item?id=49086987\nPoints: 4\n# Comments: 0",
+      "id": "7afa5cf938dff38a5877e3bc6de764bc6027cf062cfb4ed2b76c5e7018ed6234",
+      "ref_id": "1",
+      "recommendationScore": 95,
+      "popularityScore": 72,
+      "priority": "high",
+      "comment": "阐述了Agentic AI如何革新科学计算，预示未来科研范式转变。",
+      "reason": "OpenAI出品，探讨了具身智能（Agentic AI）在科学计算领域的突破性应用，对AI研究和各科学领域均有深远指导意义。",
+      "tags": [
+        "AI",
+        "科学计算",
+        "Agent",
+        "OpenAI",
+        "前沿技术"
+      ]
+    },
+    {
+      "title": "You Could Have Come Up with Kimi Delta Attention",
+      "link": "https://blog.doubleword.ai/you-could-have-come-up-with-kimi-delta-attention",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-28T16:02:07.000Z",
+      "summary": "Article URL: https://blog.doubleword.ai/you-could-have-come-up-with-kimi-delta-attention\nComments URL: https://news.ycombinator.com/item?id=49085909\nPoints: 120\n# Comments: 29",
+      "id": "4cdfa332f6724f2fba2d10ed812adaf91c93bdd385a66076c1c3a4a89b14928e",
+      "ref_id": "0",
+      "recommendationScore": 94,
+      "popularityScore": 100,
+      "priority": "high",
+      "comment": "深入探讨Kimi Delta Attention机制，以易懂的方式剖析复杂AI概念。",
+      "reason": "文章紧扣AI前沿，技术深度与新颖性俱佳，对理解大型语言模型关键技术有重要价值。",
+      "tags": [
+        "AI",
+        "LLM",
+        "Attention机制",
+        "深度学习"
+      ]
+    },
+    {
+      "title": "\nThe real AI risk is inside the labs\n",
+      "link": "\nhttp://antirez.com/news/172\n",
+      "source": "antirez.com",
+      "publishedAt": "2026-07-28T09:00:11.000Z",
+      "summary": "Amodei in his latest blog post wrote a mix of agreeable things and things that I believe misrepresent where the real risk of AI is located. I want to focus my attention on why, among all the risks, open weight models constitute the mildest one. I write these words as a person who strongly believes AI may be very dangerous in the near future:\n\n1. Exactly like what happened during the OpenAI / HF incident (which was a joke, but focus on the modalities, not the outcomes), the first serious AI incident is very likely to happen *inside* the walls of frontier AI labs, while testing a new model, or while the AI lab employees, or the few externals who have access, do something wrong compared to the expected power of the model.\n\n2. Closed models that will never even be opened to the public will be just a few TBs of data. All you need to leak one is a single person with access and the wrong goals, and you are back in the situation of open models. Open models are released *after* testing, and after similarly capable models were already available for some time under an API. The real risk is leaks, not releases, and leaks happen inside frontier companies.\n\n3. As Amodei says, open models, once LLMs are dangerous enough in fields like biology, can be trained on a corpus ablated of certain branches of science, while still being useful for a number of other things. The limited context window of a model that lacks strong pre-training in certain domains is a strong protection even if the model is otherwise very capable. We are currently not in a place where open models can constitute that kind of danger.\n\n4. In the context of cyber security, *not* having widespread access to the defensive security and bug seeking provided by LLMs creates exactly the \"LLMs as a weapon\" problem. It is already happening: open source maintainers, if they are out of some cyber program, can't find all the security bugs they could, while people with the right interests will be able to access frontier cyber models, do significant RL training on open weight models, and so forth.\n\n5. Once LLMs are dangerous enough (and we are near this limit, if progress continues), the real security chain that we need in place is inside labs, can't be set up without strong common rules, and a single company should not be able to evaluate independently whether a model is safe enough. We need a joint AI safety organization that includes experts from all over the world and is recognized by the governments where frontier AI companies exist.\n\n6. Slowing down AI for safety must be counterbalanced by the fact that AI discoveries in medicine and other sciences may lower human suffering. Lack of checks may result in some catastrophic outcome (\"Good morning! Let's work on this enhanced smallpox\"). Lack of progress may result in people who could be saved dying, not just in the present, but among the many who will suffer from illnesses in the future. This may look like a bizarre point, but we always need to understand that stopping AI *also* has a security cost embedded inside, which is just a lot more hidden.\n\n7. The ideological position of Amodei against China is unfair. We Europeans killed each other until 80 years ago without any limit of decency (people now forget, but one of the reasons the US invested in the stability of Europe in the past is that we were deeply dangerous, and would probably end up doing it again, while decades of wealth would make us a good market and would prevent us from fighting again). The US has, even in present times, tragic inequalities, people suffering for lack of basic health care, a president who looks unstable and is apparently very prone to war. I wish China had the same level of individual rights we have here in the West, but at the same time China's history is a lot less warlike than Western culture. It is absolutely not clear that an AGI military lock-in could be enforced more easily by China than the US, in the current conditions. Also, the current American administration spits hate at Europe in all forms, which is very worrying in a world where the US dominates everything. On top of all that, China's AI progress is not going to stop, whatever the GPU export policy is, so either Amodei is arguing that once America has AGI it should stop China by force, or what is his argument?\n\n8. In the history of humanity there are many cases where technological supremacy was initially reached in a single place of the world. This, AFAIK, never resulted in *a single* country trying to create a permanent advantage. The non-proliferation of nuclear weapons, which is probably the case most similar to the GPU ban, was not used to achieve a permanent economic advantage by threatening to bomb everybody else not complying, nor did it prevent several actors from acquiring that technology at different times, without one bombing the other to stop their progress. Moreover, I don't believe AI poses the greatest dangers because of government-driven actions. I wish this were the most dangerous scenario! Governments do silly things, are often aggressive, and their actions have even resulted in genocides, but it requires a lot of people agreeing on doing something terrible, which is itself a limiting factor. The greatest problem is what happens in two other cases: A) a few individuals generate an apocalypse event (the virus case), B) AI itself escapes the control of the people building it.\n\nI believe we should not consider AI safe. A critical event that may result in the extinction of Homo sapiens is possible, but the danger is not in open models, or China making faster progress than the US. The danger is that a few CEOs (everywhere in the world) without the required background and legitimacy are in the position of making hard choices for humanity at large. They were not selected to do so; it was just the randomness of events that created this setup. They can't speak for everybody, given the stakes, just because they have GPUs and money. This is the first thing that should be fixed.\nComments",
+      "id": "b692e9402d0a83744df2e98124f015f71095847da492557b04826e3aea671808",
+      "ref_id": "3",
+      "recommendationScore": 92,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "对当前AI安全风险的普遍认知提出挑战，强调内部实验室是更关键的风险源。",
+      "reason": "文章提出了关于AI安全风险的独特且有力的观点，对行业思考具有重要推动作用。",
+      "tags": [
+        "AI",
+        "AI安全",
+        "风险管理",
+        "伦理"
+      ]
+    },
+    {
+      "title": "OpenAI called the Hugging Face attack unprecedented. But we’ve been here before. ",
+      "link": "https://www.technologyreview.com/2026/07/27/1140836/openai-hugging-face-attack-precedent/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-07-27T18:00:00.000Z",
+      "summary": "This story originally appeared in The Algorithm, our weekly newsletter on AI. To get stories like this in your inbox first, sign up here. Reading OpenAI’s account last week of how some of its models broke their containment and hacked into the computer systems of Hugging Face, another AI company, was the first time I got…",
+      "id": "79cfa96755675de3740fb8eabe88bbd9665c86219daecedbe64aaec0f5b08868",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "深入分析OpenAI与Hugging Face安全事件，通过历史比较提供深刻见解，增强了文章的新颖性和技术深度。",
+      "reason": "对热门AI安全事件进行了深度溯源和批判性思考，提供了更广阔的视角和丰富的背景信息，极具参考价值。",
+      "tags": [
+        "AI",
+        "Security",
+        "OpenAI",
+        "Hugging Face",
+        "AI Ethics",
+        "Cybersecurity"
+      ]
+    },
+    {
+      "title": "The inliner is yielding benefits for ZJIT",
+      "link": "https://bernsteinbear.com/blog/zjit-inliner-invokeblock/?utm_source=rss",
+      "source": "bernsteinbear.com",
+      "publishedAt": "2026-07-28T00:00:00.000Z",
+      "summary": "Originally published on Rails At Scale.\nWe recently enabled a really cool feature in ZJIT that makes it feel like a\nReal Compiler™: the inliner! We’ll write more about it soon. In this\npost, we’ll talk about one excellent concrete benefit we are already seeing and\nhow it optimizes blocks in pretty much every Ruby program.\nI’ll start off with a refresher on how blocks work in the Ruby interpreter,\nthen show you how ZJIT understands and optimizes that bytecode, and then show\nyou the impact of the inliner.\nRuby: a refresher\nIn the beginning, there were loops.\n\narr = [1, 2, 3]\ni = 0\nsum = 0\nwhile i < arr.length\n  sum += arr[i]\n  i += 1\nend\n\n\nPeople used them to navigate and manipulate variable-length structures, like\narrays and strings. This was fine.\nThen, in the 1970s, a small group of computer scientists at Palo Alto Research\nCenter invented a programming language called Smalltalk. One of the core\nfeatures of Smalltalk was that everything was an object and computation was\ndone by sending messages to objects.\nThis meant that iteration wouldn’t do at all. Instead, we would have to send\nthe do: message to the array object and pass it a block object.\n\n#(1 2 3) do: [:a | sum := sum + a].\n\n\nThen, in the 1990s, Matz, inspired by Smalltalk and Perl, created Ruby. We\nstill have “normal” loops but we also have a very Smalltalk-y way of doing it,\ntoo:\n\narr = [1, 2, 3]\nsum = 0\narr.each do |a|\n  sum += a\nend\n\n\nWhen this program gets compiled to Ruby bytecode, it ends up looking like a\nmostly normal method call to each except that we pass a special kind of\nargument to it: a block argument.\nTo see how this works inside CRuby, we’re going to look at a listing of YARV\nbytecode—CRuby bytecode. For more on YARV, I recommend Kevin Newton’s\nexcellent Advent of\nYARV.\nIgnore most of the bytecode dump below except for the instruction at 0009,\nthe send instruction. We are send-ing (see? a message!) each with the\nblock argument block in <main> (passed a different way than “normal”\narguments, hence the argc:0).\n\n$ ruby --dump=insns /tmp/arrayeach.rb\n== disasm: #<ISeq:<main>@/tmp/arrayeach.rb:1 (1,0)-(5,3)>\nlocal table (...)\n[ 2] arr@0      [ 1] sum@1\n0000 duparray                   [1, 2, 3]                 (   1)[Li]\n0002 setlocal_WC_0              arr@0\n0004 putobject_INT2FIX_0_                                 (   2)[Li]\n0005 setlocal_WC_0              sum@1\n0007 getlocal_WC_0              arr@0                     (   3)[Li]\n0009 send                       <calldata!mid:each, argc:0>, block in <main>\n0012 leave\n...continued below...\n\n\nThis block in <main> from the bytecode listing above is the generated name of\nthe instruction sequence (bytecode) corresponding to the block we passed to\neach. Its code, shown below, is the next thing in the bytecode dump. You can\nsee the usage of local variables sum and a via getlocal and setlocal\nvariants and also opt_plus, which represents addition (+). Again, the\ndetails are not terribly important:\n\n...continued from above...\n== disasm: #<ISeq:block in <main>@/tmp/arrayeach.rb:3 (3,9)-(5,3)>\nlocal table (...)\n[ 1] a@0<AmbiguousArg>\n0000 getlocal_WC_1              sum@1                     (   4)[LiBc]\n0002 getlocal_WC_0              a@0\n0004 opt_plus                   <calldata!mid:+, argc:1, ARGS_SIMPLE>[CcCr]\n0006 dup\n0007 setlocal_WC_1              sum@1\n0009 leave                                                (   5)[Br]\n$\n\n\nTo make this work, Array has an each method. This each method takes in\nits optional block argument and calls it once for every element in the array.\nAs with most of the core data structures, Array’s methods tend to be written\nin C and each is no different. Here is its nice and short definition with\ncomments added by me:\n\nVALUE\nrb_ary_each(VALUE ary)\n{\n    long i;\n    // Some debug-mode-only checks\n    ary_verify(ary);\n    // If we didn't pass a block in, return an enumerator object\n    RETURN_SIZED_ENUMERATOR(ary, 0, 0, ary_enum_length);\n    // We passed a block in, so call it for every element\n    for (i=0; i<RARRAY_LEN(ary); i++) {\n        rb_yield(RARRAY_AREF(ary, i));\n    }\n    return ary;\n}\n\n\nYou can’t really see the block parameter to the C code because it’s passed in a\nspecial location on the Ruby VM’s own stack called the block handler. All you\nneed to know is that rb_yield knows where to find that and how to call it.\nThere’s just one more thing, which is… hang on, weren’t we building a JIT to\noptimize Ruby code? How are we going to optimize this C code?\nJITs: a refresher\nRewriting code from C to Ruby means that the JIT compiler gets a chance to\nintrospect the run-time behavior and code. This means that, over time, as the\ncompiler and the runtime system grow together, more and more code might get\nrewritten in Ruby. This started happening a couple of years ago with YJIT.\nYJIT precipitated some interesting changes to Ruby VM internals. For example,\nin 2022, Array#each being written in C started to hurt: it was an opaque blob\nthat the JIT couldn’t reason about. So Kokubun submitted a\nPR to rewrite it in Ruby. After some\nback and forth, in 2024, Kokubun landed a different\nPR that everyone was happy with.\n\nclass Array\n  def each # :nodoc:\n    Primitive.attr! :inline_block, :c_trace, :without_interrupts\n\n    unless defined?(yield)\n      return Primitive.cexpr! 'SIZED_ENUMERATOR(self, 0, 0, ary_enum_length)'\n    end\n    i = 0\n    until Primitive.rb_jit_ary_at_end(i)\n      yield Primitive.rb_jit_ary_at(i)\n      i = Primitive.rb_jit_fixnum_inc(i)\n    end\n    self\n  end\nend\n\n\nAh, finally. A version that JITs can reason about.\nI keep saying “reason about” and what that means concretely here is a) that\nit’s written in a format that the JIT can ingest and optimize: Ruby, and b) mostly a\nbrief rehashing of the key lessons in the venerable Smalltalk (!) paper\nEfficient Implementation of the Smalltalk-80\nSystem (PDF):\nThough systems may offer very dynamic behavior, people don’t frequently make\nuse of wild features all over the place\n    \nMost people pass fewer than 4 types of objects through a given method\nAs a corollary, even if there are many classes in a system, code locality\nis super important, and we can take advantage of that\nAlso, most people do not define, re-define, and otherwise continuously\nmodify method definitions\n(And if you don’t believe me that the lessons still apply, check out the\nexcellent paper Who You Gonna\nCall (PDF) by Sophie\nKaleba, Octave Larose, Richard Jones, and Stefan Marr.)\nSo JITs like to watch what types of objects flow through methods before\ncompiling them. And JITs like to, since they know the types of objects, cache\nmethod lookups and specialize method invocations on those objects.\nFor example, take a look at this code:\n\ndef next_capacity(x)\n  x.length * 2 + 1\nend\n\n\nx could be anything. There is no way of knowing its type by looking at the\ncode. This means that the length method could be anything. Furthermore, there\nis no way of knowing what the return type of x.length is, so we can’t\nspecialize the method lookups or invocations of * or + either.\nBut! Per our lessons above, likely only a few types flow through this code. Say\nthe JIT’s profiler notices that x has historically been an Array. Then we\nmight reasonably assume that it will continue to be an Array, so when we\ncompile the method, we add a run-time type check: if the type is no longer an\nArray, jump back into the interpreter.\nLet’s see what optimized code ZJIT can construct by combining profiling\ninformation with the above bytecode. ZJIT operates on its own high-level\nintermediate representation called, uncreatively, HIR. In the following HIR\nsnippet, we can see this very run-time type check (“guard”) for the Array\nclass:\n\nfn next_capacity@file.rb:8:\n...\nbb3(v9:BasicObject, v10:BasicObject):  # v9 is self and v10 is x\n  PatchPoint NoSingletonClass(Array@0xdecaf1)\n  PatchPoint MethodRedefined(Array@0xdecaf2, length@0xdecaf3, cme:0xdecaf4)\n  v35:ArrayExact = GuardType v10, ArrayExact recompile\n  v36:CInt64 = ArrayLength v35\n  v37:Fixnum = BoxFixnum v36\n  # ...\n\n\n(with real pointers replaced by fake ones for readability)\nBecause classes are, among other things, collections of methods, this type\ninformation tells us what the call target of x.length is: it’s\nArray#length! We have a special fast code snippet to read an array’s length\nso we do that instead of a method call.\nAnd in case the methods ever get changed out from underneath us, we leave\nbehind these markers called PatchPoint that invalidate the code.\nFinally, because we know that the result of Array#length is always a small\ninteger (Fixnum), we can special case the method lookups for * and + as\nwell.\n\nfn next_capacity@file.rb:8:\n...\nbb3(v9:BasicObject, v10:BasicObject):  # v9 is self and v10 is x\n  PatchPoint NoSingletonClass(Array@0xdecaf)\n  PatchPoint MethodRedefined(Array@0xdecaf, length@0xdecaf, cme:0xdecaf)\n  v35:ArrayExact = GuardType v10, ArrayExact recompile\n  v36:CInt64 = ArrayLength v35\n  v37:Fixnum = BoxFixnum v36\n  v18:Fixnum[2] = Const Value(2)\n  PatchPoint MethodRedefined(Integer@0xdecaf, *@0xdecaf, cme:0xdecaf)\n  v41:Fixnum = FixnumMult v37, v18\n  v23:Fixnum[1] = Const Value(1)\n  PatchPoint MethodRedefined(Integer@0xdecaf, +@0xdecaf, cme:0xdecaf)\n  v45:Fixnum = FixnumAdd v41, v23\n  CheckInterrupts\n  Return v45\n\n\nThere you have it. This is how JITs work: observe, assume, specialize. So why\nam I telling you all this? How does this circle back to blocks?\nWell, blocks work not quite the same way, but similarly. Instead of having an\nobject that we call a method on, we just have the target instruction\nsequence1. But if we observe that the block argument, in its\nspecial location, has been consistently one object, we can specialize the call\nto it.\nThis is more or less fine for some cases of code. For example, in the following\ncode snippet, we only have one caller to custom_iterator, so its profiled\nblock will be monomorphic (one observed shape).\n\ndef custom_iterator\n  yield 1\n  yield 2\n  yield 3\nend\n\ncustom_iterator do |x|\n  puts x\nend\n\n\nThis reinforces what we know and love about the Smalltalk-80 paper: code\nlocality wins! Yes!\nBut unfortunately this falls apart when we start thinking about all of the\ncore library methods (and potentially the methods and classes you have\nstashed away in the grab-bag utils.rb in your application). Those methods are\nprobably megamorphic (many many observed shapes). They probably see all sorts\nof stuff because they are general-purpose utilities that everybody needs, all\nthe time.\nOne such example in the Ruby core library is the venerable Array#each\nthat we saw earlier. Because there are a million different call sites to\nArray#each across your application and each probably passes a totally\ndifferent block, we’re in an unhappy situation. How can we possibly optimize\nfor so many different blocks? What happened to our code locality? How do we fix\nthis?\nThe code locality is in another tower\nIt’s okay. Code locality still rules. Look at all the various callers of\nArray#each. They all pass a different, but constant2,\nblock at the call-site:\n\ndef method_a(some_array)\n  some_array.each do |x|\n    puts x\n  end\nend\n\ndef method_b(some_array)\n  some_array.each do |x|\n    puts x*2\n  end\nend\n\ndef method_c(some_array)\n  some_array.each do |x|\n    puts x*4\n  end\nend\n\n\nSo the code locality that we need in Array#each to optimize the code is one\nlevel up at the caller. If we can use that call context, we can specialize\nthe code.\nYJIT accomplishes this by splitting, which is a very natural transformation\nfor basic block versioning and tracing. Such compilers are good at following\ncode paths as they would be executed and putting together context across method\ncalls. However, YJIT’s heuristic for splitting blocks is based on\nmanual annotations: it will only kick in for certain Ruby library functions\nspecially annotated with Primitive.attr! :inline_block (and the name is a bit\nof a misnomer).\nThe team that builds ZJIT, a method JIT, decided not to add splitting\nfacilities. We could split methods (and blocks), but we have an easier time\nreasoning about larger code units than YJIT does because we optimize an entire\nmethod at once. So instead, ZJIT chooses to get call context by inlining.\nInlining\nMethod inlining refers to copying the body of the callee into the caller. In\nthe above example, it means copying the body of Array#each into each of\nmethod_a, method_b, and method_c. I don’t mean the Ruby code and I don’t\nmean the bytecode: I mean the HIR. ZJIT does this by building the HIR of the\ncallee (Array#each) into the existing HIR of the caller (method_a, …).\nThe illustrious Kevin Menard wrote ZJIT’s inliner and\nhe’ll write a post about all the details soon. It’s pretty interesting stuff.\nFor now, we can take a look at the (lightly edited) result of Array#each\nbeing inlined into method_a. The details don’t matter, but there are two\nthings I want to call out:\nWhat used to be a dynamic invokeblock is now what we call\nInvokeBlockIseqDirect because we know from the call context what block\nmethod_a is passing to Array#each.\nWhat used to be a method call is now a loop: the condition check is in\nbb10, the body is in bb9, and the stuff after the loop is bb13/bb4.\nIf you’re interested, try to find the iteration variable and where it gets\nincremented. See the footnote3 for the answer.\nThis is a massive improvement over the previous very generic operations.\n\nfn method_a@/tmp/arrayeach.rb:2:\n# ...\nbb3(v9:BasicObject, v10:BasicObject):\n  # ...\n  v55:Fixnum[0] = Const Value(0)\n  Jump bb10(v25, v55)\nbb10(v68:ArrayExact, v69:Fixnum):\n  v73:CInt64 = ArrayLength v68\n  v74:Fixnum = BoxFixnum v73\n  v75:BoolExact = FixnumGe v69, v74\n  v77:CBool = Test v75\n  CondBranch v77, bb13(), bb9(v68, v69)\nbb13():\n  CheckInterrupts\n  Jump bb4(v68)\nbb9(v90:ArrayExact, v91:Fixnum):\n  v96:CInt64 = UnboxFixnum v91\n  v97:BasicObject = ArrayAref v90, v96\n  v99:CPtr = GetEP 0\n  v100:CInt64 = LoadField v99, :VM_ENV_DATA_INDEX_SPECVAL@-0x8\n  v101:CInt64[-4] = Const CInt64(-4)\n  v102:CInt64 = IntAnd v100, v101\n  v103:BasicObject = InvokeBlockIseqDirect (0x16f3d5968), v102, v97\n  v107:Fixnum[1] = Const Value(1)\n  v108:Fixnum = FixnumAdd v91, v107\n  PatchPoint NoEPEscape(each)\n  Jump bb10(v90, v108)\nbb4(v114:BasicObject):\n  PopInlineFrame\n  PatchPoint NoEPEscape(method_a)\n  CheckInterrupts\n  Return v114\n\n\nYou may notice that there is still one call in the loop: the call to the block\n(InvokeBlockIseqDirect). That’s next on our list to tackle. We are optimistic\nthat we will soon also be able to inline block calls. Then the whole thing will\nreally be just a loop!\nThe code that enables us to reason about which block got passed into the\ninlined callee (Array#each) only landed a couple of days\nago\n(July 10, 2026), written by Luke Gruber. This\nwas one of Luke’s first changes to ZJIT.\nSo what does performance look like?\nWell, for starters, the microbenchmarks that we use as “performance unit tests”\nfor specific aspects of Ruby went wild. Some benchmarks that were using\nblock-based looping got much faster; they were previously bounded by ZJIT’s\nblock invocation performance.\nTake a look at the cfunc_itself benchmark, which tests that we can fold away\nthe call to Ruby’s built-in itself method. ZJIT ends up optimizing the\ntimes method to invoke the do block directly, and the do block gets\noptimized to nothing but a guard on the self’s class to make sure it hasn’t\nchanged.\n\nrun_benchmark(500) do\n  500000.times do |i|\n    itself\n    itself\n    itself\n    itself\n    itself\n    itself\n    itself\n    itself\n    itself\n    itself\n  end\nend\n\n\nBecause we had previously optimized the body away, the result of the direct\nblock invocation is a massive speedup:\nThe yellow line represents ZJIT speedup over the interpreter. Higher is better. 35x!\n\n\nOther benchmarks also kind of stop making sense because of the amount of\ninlining. Our bmethod benchmark, which benchmarked how fast we can call methods\ndefined with define_method, also stopped measuring anything of use. We’re\ngoing to have to rework the benchmark to be more fair…\nThe yellow line represents ZJIT speedup over the interpreter. Higher is better. 139x!\n\n\nAs expected, larger Rails benchmarks don’t see a ton of change; they exercise a\ndiffuse set of features so optimizing any one feature bumps the big benchmarks\nonly a little bit.\nI am excited to see what happens when we can fully turn each and friends into\ncall-less loops!\nWrapping up\nCode locality rules. The inliner helps inject more of it and reason across\nmethod calls. ZJIT, a little over one year old, is growing up! :’)\nWe’re still tuning the inliner knobs. Some of the code in this post required\ntweaking --zjit-inline-threshold to convince the compiler to inline\nArray#each into method_a because of Array#each’s size. It will take some\ntime for the ZJIT developers to figure out reasonable defaults.\nTry out our HIR explorer at tryzjit.fly.dev. Try\nout ZJIT in your application by adding the --zjit flag to a Ruby over 4.0.\nThanks for reading and see you next time.\nMostly. I am glossing over nil, procs, ifuncs, etc. But\nthe common path is by and away iseq blocks. ↩\nIt’s not always the case that these methods are called\nwith a constant block iseq. Sometimes they are called with the &:symbol\nform, for example. Or with the &some_block_variable form. In that case,\nwe can use an inline cache to (with a guard) make it constant once more.\nBut we have not implemented that yet, because it is rarer. ↩\nThe iteration variable is v91! You can see it get used\nas an array index when it gets unboxed as v96 and passed to ArrayAref.\nYou can also see it get incremented with FixnumAdd and the constant 1.\nIn bb10 it has a different name, v69, which gets checked against the\narray length. ↩",
+      "id": "ba1750a1f41d2dc6522ed197b05b515c4294ce0bb22c445e9a1dd43ef07a6fa2",
+      "ref_id": "1",
+      "recommendationScore": 90,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "深入探讨Ruby JIT编译器ZJIT的内联优化，技术细节丰富，对性能提升有详细分析。",
+      "reason": "该文章技术深度高，详细解释了编译器优化原理，对Ruby开发者和关注编程语言底层实现的用户具有极高的实用价值和信息密度，符合编程工具的优先主题。",
+      "tags": [
+        "Ruby",
+        "JIT",
+        "编译器",
+        "性能优化",
+        "编程工具",
+        "ZJIT",
+        "后端"
+      ]
+    },
+    {
+      "title": "Show HN: Flashpaper – Self-destructing secret sharing with no database",
+      "link": "https://flashpaper.app/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-28T15:36:35.000Z",
+      "summary": "Hi everyone! This is my first HN and I’m very new to the scene. My name is Min from Bangkok.\nAt first, I just want to create a dead man's switch for personal use and for fun. then, I think about information that self destruct like a spy movie. after that, I try to come up with the better version of Privnote or Bitwarden with self-destruct and some kind of censoring or blocking download ability. Somehow, end up with this product. :O\nFlashpaper is for sending any information that would be burned after reading (with counting down timer like Mission Impossible movie ! or after 24 hrs max if not opened) Encryption happens in browser and because the key stays after # in the link; server never sees the key (Zero-knowledge for web use) and— because I’m a newbie. I don’t want to connect to database because I don’t have the money and I want things light and simple. So, that’s why Flashpaper keeps things in RAM-only, no database.\nFor AI Agent side, Flashpaper provides a REST API and an MCP server so agents can create secret links easily in dead-drop style that can be claimed only once. The second claim would get a 404 which means someone already took it. However, for the agent API flow, the server sees the plaintext for a moment before encrypting, so this flow is not zero-knowledge like the web flow.\nOverall, I think it work quite well for web use, but for agent API use, I am not sure this is enough security. All the limitations are listed in SECURITY.md. Some feedback would be appreciated.  \nI make it open source with MIT license, with honorware policy for Enterprise use, like self-hosted docker.\nHere is my repo https://github.com/mmmpym/flashpaper\nand you can try it here https://flashpaper.app\nAgain ! Please feel free to tell me what I missed.\nMin\nComments URL: https://news.ycombinator.com/item?id=49085503\nPoints: 8\n# Comments: 2",
+      "id": "8196bde179a440f2079473c5e9549e3fedb975aa038fdece5e70bdf599873298",
+      "ref_id": "2",
+      "recommendationScore": 88,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "一个创新的无数据库自毁式秘密分享工具，其'RAM-only'和AI Agent支持理念新颖且实用。",
+      "reason": "项目结合了独立开发、编程工具和AI多个热门主题，实现方式新颖，且在信息安全和隐私方面具有高实用性。",
+      "tags": [
+        "独立开发",
+        "安全",
+        "Web开发",
+        "AI",
+        "隐私"
+      ]
+    },
+    {
+      "title": "Pluralistic: Discernment (28 Jul 2026)",
+      "link": "https://pluralistic.net/2026/07/28/hitl-ers/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-07-28T10:44:03.000Z",
+      "summary": "Today's links Discernment: How can you fact-check AI when you're asking it to teach you something you don't understand? Hey look at this: Delights to delectate. Object permanence: How to help with computers; Batman equation; Fuck and the law; NC's racist voting law; Pregancy app is full of spyware; Stiglitz v Apple's \"tax fraud\"; Accelerometer fingerprinting; Sacklers v bankruptcy; Boss-politics antitrust. Upcoming appearances: Edinburgh, Sydney, Melbourne, Brighton, London, South Bend. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. Discernment (permalink) As far as I can tell, this dialog between MacArthur prize-winning mathematician Terrence Tao and Chatgpt about \"the Jacobian conjecture counterexample\" is very impressive: https://chatgpt.com/share/6a5fdc7a-d6f8-83e8-bbea-8deb42cfed56 Now, the clause \"as far as I can tell\" is doing a lot of work in that sentence. I am reasonably math literate, up to first-year calculus and a lifetime spent around my father (a mathematician). However, I have never heard of \"the Jacobian conjecture,\" and while I know what all the words in the first paragraph of the relevant Wikipedia entry mean, I can't parse any of the sentences they form: https://en.wikipedia.org/wiki/Jacobian_conjecture In other words, I lack the discernment to evaluate the output of the chatbot that Tao exchanged theories with. If you showed me an equally opaque transcript of a \"conversation\" between a chatbot and a crank with AI psychosis whose math made no sense whatsoever, I couldn't make an a priori judgment about which one was a solid piece of mathematical theorizing and which one was a math-flavored word-salad. As many skilled programmers can attest, chatbots can produce very useful output – but as even the most ardent AI-assisted coder will admit, chatbot-written code is also full of baffling, obvious errors (and subtle, hard-to-spot ones): https://pluralistic.net/2025/08/04/bad-vibe-coding/#maximally-codelike-bugs These errors (which the industry wants us to refer to as \"hallucination\" – a whimsical, obscuring, anthropomorphizing euphemism) are the reason that reliable AI use requires the discernment that comes from skill and expertise. I use a local chatbot to spellcheck these posts. Chatbots spot all kinds of typos that regular spellcheckers miss: https://pluralistic.net/2026/02/19/now-we-are-six/#stock-buyback There's a reactionary group of strangers who seek me out to tell me that I'm a bad person for doing this. These are pointless conversations, mostly because I can barely make out a word over the scraping sounds of all the goalpost-moving these scolding strangers engage in. They start by insisting that I'm burning down the planet by running a low-CPU load piece of software on my own computer. After I explain that running a chatbot on my machine uses no more carbon than, say, applying a blur effect to an image in my image editor, they tell me I'm unwisely giving my private data to the AI companies. Then I show them the network logs that demonstrate that my local chatbot doesn't send or receive any network data. Then they turn to the supposed cognitive effects of using a chatbot to find typos in an essay. I explain that I'm not asking an AI to write things for me or explain them to me – I'm asking it to point out where I've forgotten to put a period at the end of a paragraph, or fatfingered a word like \"ever\" as \"every.\" I even send them the \"before\" and \"after\" of an essay after I've corrected some chatbot-identified typos in it: https://craphound.com/before.txt https://craphound.com/after.txt This is when things get increasingly pointless. My interlocutors come up with farcical reasons why it's immoral or dangerous to use this LLM-based spellchecker. They say I'm using too much compute and that I could use a simpler piece of software to do the same thing (which is both untrue and silly – I also run a journaling filesystem on my computer that is vastly overpowered for editing a textfile – who cares?). Or they insist that the mere act of making copies of published works in order to count their elements and the relationships between them is a sin, despite the fact that this standard would kill search engines, the Internet Archive, and the Oxford English Dictionary: https://pluralistic.net/2023/09/17/how-to-think-about-scraping/ I mean, by all means let's hate the AI companies and work to end their disgusting campaign to pauperize creative workers, but let's not fall into the trap of siding with the media bosses who insist that the salvation of creative labor will arrive when Sam Altman pays David Zaslav for the right to cram the entire Warner catalog into Openai's chatbots: https://pluralistic.net/2026/03/03/its-a-trap-2/#inheres-at-the-moment-of-fixation Above all, my interlocutors continue to insist that my LLM-powered, local, open source chatbot spellchecker will make me a worse writer. It's a very strange insistence. My first word processor was a program listing published in a magazine I bought at a corner store and laboriously typed into my Apple ][+. In the 40+ years since, word processors have gotten lots of new features, many of which I thought were useful and many more that I found annoying. There were even some of these features that made the writers who used them worse at writing, in my (expert) judgment. But from the very start, I knew that you couldn't just trust a spellchecker to correct your documents. I mean, I'm a science fiction writer. I started making up silly words decades before coining \"enshittification.\" I've been telling spellcheckers to fuck off since I learned to type. If you aren't a good writer, spellcheckers are dangerous, and the more \"advanced\" the spellchecker is, the more dangerous it is. A few of my collaborators insist that I use Office 365's AI-enabled version of Word to work on documents with them. It's maddening. I estimate the ratio of good suggestions to bad ones that M365 insists on shoving into my face at about 1:100. It's practically unusable – so much so that I often copy the block of text we're working on into a text editor, make my changes, then paste it back into the Word window. If I were to accept even 10% of these suggestions, my work would be made significantly worse. Putting chatbots into Word pushed it from \"annoying\" into \"enshittening.\" I certainly understand how relying on a chatbot to make edits to your work could make it worse. That's where discernment comes in. I have written more than 30 books over the past 25 years. I have lots of experience defending my word choices, and not just against the mechanical judgments of a high-handed spellchecker, but also against overreaching copyeditors and paranoid publisher's lawyers. I know which words I want to write, and I know why I want to write them – and I know when a suggested fix is a good one and when it's wrong or stupid or just plain clunky. When it comes to writing, I have discernment. That's not true when it comes to higher math. I would no more ask a chatbot to explain \"the Jacobian conjecture counterexample\" than I would tell my writing students to get a chatbot to suggest ways to fix their stories: https://pluralistic.net/2026/01/07/delicious-pizza/#hold-the-gravel I don't know nearly enough about math to ask a chatbot to explain it, or check my work, or even assemble a bibliography of human-authored works I should work my way through if I want to learn about it. If I wanted to understand \"the Jacobian conjecture counterexample,\" I would set aside several days and work my way through that gnarly Wikipedia entry and its references and blue links to related concepts. If I really wanted to understand it, I'd enroll in a course at the Open University or Khan Academy. All of this has been obvious to me since I first encountered LLM-powered bots. If you understand a subject really well – well enough to discern useful bot output from defective bot output – then bots can be useful. Sometimes very useful, mostly ordinarily useful. For example, I've been writing Pluralistic for about 6.5 years now. I've written 1,683 posts now (1,684 after I hit publish on this one), and the corpus is now getting large enough that I sometimes struggle to find a post I'm trying to reference, even with all my careful tagging and my extensive knowledge of WordPress's URL-line options for searching the database with tag and keyword combos. I've been toying with the idea of exporting my whole corpus and shoveling it into a local chatbot, so that I can type, \"Which post did I talk about the evils of showing people your chatbot output in?\" and get a link to the correct essay: https://pluralistic.net/2026/03/02/nonconsensual-slopping/#robowanking (Don't follow this link! I will be referencing the essay it goes to shortly; I struggled to find it when I sat down to write today; I'd accidentally tagged it with \"at\" instead of \"ai\" and missed the typo when I published it.) There are very few subjects I have more discernment over than \"essays I have written.\" If I ask a chatbot to tell me which post I'm thinking of, I will instantly know which of its guesses are correct and which ones aren't. No one in the universe is better qualified than me to perform this task. No one ever will be. Now, as it happens, I know exactly how badly a chatbot can screw up when it comes to my own work, because strangers insist on asking chatbots about me and then, for reasons I find baffling, they send me the output. Please don't show anyone your chatbot transcripts unless they ask to see them. It's embarrassing at best and annoying at worst: https://pluralistic.net/2026/03/02/nonconsensual-slopping/#robowanking (There's that reference I promised. You can follow the link now!) Again, discernment is everything when it comes to getting useful work out of a chatbot. If you don't know anything about my work and you ask a chatbot to explain it to you, you will likely be badly misled. If you are familiar with my work and you ask a chatbot for the best examples where I explain a given subject, you may get a good answer, and if you get a bad one, you'll know it. The centrality of discernment to productive AI usage is obvious, and that's why I find the insistence that AI can be used as a teaching assistant (or worse, a teacher) so baffling. By definition, a student isn't an expert on the subject they're studying. That's the whole point of studying – to acquire knowledge and thus discernment. Asking students to learn via chatbot explanations is both incoherent and dangerous. Doubtless, there are ways that teachers might find chatbots useful, but for Christ's sake, don't use them to teach. There's plenty of ways teachers can use chatbots without asking students to learn from them. Here's an example. My daughter graduated from a big, typical American high school a couple years ago, and I spent her high-school years getting progressively angrier about the bad compromises that her teachers were forced into. Between \"Common Core\" and \"Advanced Placement,\" the US system has been highly standardized. Teachers are under enormous pressure to teach specific aspects of specific subjects in a specific order, and students are told that their future life chances turn on their ability to pass high-stakes tests: https://pluralistic.net/2024/01/16/flexibility-in-the-margins/#a-commons This gives rise to many frustrations for teachers and students alike, but nothing got my dander up so much as my daughter's math teachers' testing practices. In all of my kid's higher math classes, teachers had a single, prized set of tests, and lived in fear of these escaping into the wild and turning into cheating aids. As a result, teachers collected students' math exams and quizzes and did not return them. Students sat exams, worked through the problems and got their grades – but were not allowed to take home their tests to see where they went wrong. Look, I know I'm no mathematician, and I know I'm not a math teacher, but I know enough about pedagogy to know that this is crazy. This is like trying to get better at archery by loosing arrows at a target but not checking to see where they hit. It's bananas. I also understand why the teachers felt they had to do it. Writing test questions that test for specific concepts in a specific order is a lot of work, and generating new tests for every class is the kind of task that would consume time better spent on lesson planning and meeting with students. It's easy to imagine a teacher who creates prompts for each test question that cause a chatbot to emit a new test paper for each class, along with answer keys. These questions are easily validated by a skilled teacher, who definitionally has the discernment to know whether a test question fits the bill. I could even see vibe-coding a little app to spit these questions out – though again, I would want the teacher to work through the questions each time to make sure they were sound. Both my parents are teachers. My brother is a teacher. I teach every now and again. Teachers do a lot of repetitive, unrewarding work. They also do a lot of difficult, creative, extremely important work. Good teachers have the discernment to sort good classroom materials from bad ones. They do that already, because just as you don't need an LLM to generate bad spellchecker suggestions, you also don't need an LLM to generate sub-par educational materials. There are plenty of \"educational\" publishers who'll do that all day long. AI is a normal technology. That means there are times when it is useful and times when it is pointless or actively harmful. One rule of thumb for chatbots is that they can only provide useful information to experts who have the discernment to ignore the defective output that LLMs always emit. That means that the dream of chatbots as replacements for teachers is a nightmare. Getting rid of teachers because we all have chatbots is like getting rid of doctors because we all have the plague. Hey look at this (permalink) How Far Did Vannevar Bush Get on the Memex? https://brewster.kahle.org/2026/07/26/how-far-did-vannevar-bush-get-on-the-memex/ Things with Feathers https://vimeo.com/1188522762/7efe874428?share=copy&amp;fl=sv&amp;fe=ci Neuromancer — Official Teaser https://www.youtube.com/watch?v=g79GPZSQHBk Shop worker owned businesses online https://www.workerowned.info/marketplace Americans — including many Republicans — are losing faith in capitalism, polling shows https://edition.cnn.com/2026/07/23/politics/republicans-capitalism-socialism-poll Object permanence (permalink) #25yrsago How to help someone use a computer https://memex.craphound.com/2001/07/29/how-to-teach-someone-to/ #20yrsago Arrested for taking a pic of a cop arresting someone else https://web.archive.org/web/20060813102257/http://www.nbc10.com/news/9574663/detail.html #15yrsago Batman logo in equation form https://www.reddit.com/r/pics/comments/j2qjc/do_you_like_batman_do_you_like_math_my_math/ #15yrsago Vindictive WalMart erroneously accuses couple of shoplifting, has husband deported, wife fired, costs them house and car https://web.archive.org/web/20111002102637/https://www.courthousenews.com/2011/07/26/38455.htm #15yrsago House Committee passes bill requiring your ISP to spy on every click and keystroke you make online and retain for 12 months https://www.eff.org/deeplinks/2011/07/house-committee-approves-bill-mandating-internet #15yrsago Fuck and the law https://papers.ssrn.com/sol3/papers.cfm?abstract_id=896790&amp; #15yrsago Bill Nye explains to Fox News why lunar volcanoes don’t disprove anthropogenic global warming https://web.archive.org/web/20110924185725/https://www.mediamatters.org/mmtv/201107280007 #10yrsago North Carolina’s voter suppression law struck down as “racist” https://edition.cnn.com/2016/07/29/politics/north-carolina-voter-id/index.html #10yrsago Pregnancy-tracking app was riddled with vulnerabilities, exposing extremely sensitive personal information https://www.consumerreports.org/electronics-computers/mobile-security-software/glow-pregnancy-app-exposed-women-to-privacy-threats-a1100919965/ #10yrsago “Tellin The World” 1972 voting PSA aimed at 18-25 y/o working-class voters https://archive.org/details/TellinTheWorld #10yrsago Trump campaign frisks, then blocks ticketed Washington Post reporter at Pence rally https://web.archive.org/web/20160729170353/https://www.washingtonpost.com/news/the-fix/wp/2016/07/28/a-washington-post-reporter-was-banned-from-a-trump-pence-rally-yesterday-that-should-frighten-you/ #10yrsago Nobel-winning economist Joseph Stiglitz calls Apple’s tax strategy a “fraud” https://web.archive.org/web/20160731112543/http://www.bloomberg.com/news/articles/2016-07-28/stiglitz-calls-apple-s-profit-reporting-in-ireland-a-fraud #5yrsago Unauthorized cups https://pluralistic.net/2021/07/29/impunity-corrodes/#well-run-dry #5yrsago Tracking you with accelerometer signatures https://pluralistic.net/2021/07/29/impunity-corrodes/#in-motion #5yrsago Stories from Black women's customer service hell https://pluralistic.net/2021/07/29/impunity-corrodes/#arise-ye-prisoners #5yrsago Bankruptcy and elite impunity https://pluralistic.net/2021/07/29/impunity-corrodes/#morally-bankrupt #1yrago Boss-politics antitrust and the MAGA crackup https://pluralistic.net/2025/07/29/bondi-and-domination/#superjove Upcoming appearances (permalink) Virtual: EFFecting Change: Who the Machine Serves, Aug 12 https://www.eff.org/event/effecting-change-who-machine-serves Edinburgh International Book Festival with Jimmy Wales, Aug 17 https://www.edbookfest.co.uk/events/the-front-list-cory-doctorow-and-jimmy-wales Sydney: The Festival of Dangerous Ideas, Aug 23-24 https://festivalofdangerousideas.com/program/ Melbourne: Enshittification at the Wheeler Centre, Aug 25 https://www.wheelercentre.com/events-tickets/season-2026/cory-doctorow-enshittification Brighton: The Reverse Centaur's Guide to Life After AI with Carole Cadwalladr (Brighton Dome), Sep 8 https://brightondome.org/whats-on/LSC-cory-doctorow-the-reverse-centaurs-guide-to-life-after-ai/ London: The Reverse Centaur's Guide to Life After AI with Riley Quinn (Foyle's Picadilly), Sep 9 https://www.foyles.co.uk/events/enshittification-cory-doctorow-riley-quinn South Bend: An Evening With Cory Doctorow (Notre Dame), Oct 6 https://franco.nd.edu/events/2026/10/06/an-evening-with-cory-doctorow/ Recent appearances (permalink) AI is not inevitable (Betakit) https://www.youtube.com/watch?v=DbiTVkq1WHo A Conversation with Lina Khan (Law and Economy Student Network) https://www.youtube.com/live/7Ak5LZllqwE Will AI ever come alive, and what happens if it does? (BBC News) https://www.youtube.com/watch?v=Lzk4o3fPZZE Waarom jij straks het hulpje van AI bent (VPRO) https://www.youtube.com/watch?v=tOnvR2fs8CA Talk Tech Bock (Vera Linß) https://www.youtube.com/watch?v=3PFjGvQoBgc Latest books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/ \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Fourth draft completed. Submitted to editor. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "097b74574b946efe4719de64399d813564f655bbf7dee25079a19cb92e9f89cd",
+      "ref_id": "4",
+      "recommendationScore": 88,
+      "popularityScore": 88,
+      "priority": "high",
+      "comment": "讨论了在使用AI工具学习不熟悉领域知识时，如何辨别信息真伪的挑战。",
+      "reason": "文章提出了AI时代信息验证的核心问题，对用户如何有效与AI交互具有很强的现实指导意义。",
+      "tags": [
+        "AI",
+        "信息验证",
+        "ChatGPT",
+        "学习策略"
+      ]
+    },
+    {
+      "title": "Zig's Incremental Compilation Internals",
+      "link": "https://mlugg.co.uk/posts/incremental-compilation-internals/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-28T15:46:45.000Z",
+      "summary": "Article URL: https://mlugg.co.uk/posts/incremental-compilation-internals/\nComments URL: https://news.ycombinator.com/item?id=49085666\nPoints: 66\n# Comments: 14",
+      "id": "54e7ac90a4c141cd8e6d773daaa0b8ec142e6bb8d94e4f56d719769aba52b58a",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "深入探讨Zig语言的增量编译内部机制，技术深度和信息密度极高。",
+      "reason": "文章属于核心编程工具范畴，技术深度和专业性强，对关注编译原理和系统级编程的读者有高价值。",
+      "tags": [
+        "编程工具",
+        "编译器",
+        "Zig",
+        "系统编程"
+      ]
+    },
+    {
+      "title": "Now Is the Time to Give LLMs Access to the ACM Digital Library",
+      "link": "https://cacm.acm.org/opinion/now-is-the-time-to-give-llms-access-to-the-acm-digital-library/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-28T15:01:12.000Z",
+      "summary": "Article URL: https://cacm.acm.org/opinion/now-is-the-time-to-give-llms-access-to-the-acm-digital-library/\nComments URL: https://news.ycombinator.com/item?id=49084987\nPoints: 15\n# Comments: 7",
+      "id": "5434440f99dba75998bc46f0b502ef7b2365766a1af924181a4224d08f9adc7f",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "呼吁赋予大型语言模型（LLMs）访问ACM数字图书馆的权限，探讨其潜在影响。",
+      "reason": "直接契合AI主题，探讨LLMs应用与知识获取的前沿观点，对AI领域读者有高实用价值和概念深度。",
+      "tags": [
+        "AI",
+        "LLMs",
+        "知识管理",
+        "学术研究",
+        "伦理"
+      ]
+    },
+    {
+      "title": "The Download: OpenAI’s predictable hack, and an AI stock sell-off",
+      "link": "https://www.technologyreview.com/2026/07/28/1140868/the-download-openai-hack-ai-stock-sell-off/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-07-28T12:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. OpenAI called the Hugging Face attack unprecedented. But we’ve been here before.  —Will Douglas Heaven, senior AI editor Reading OpenAI’s account last week of how some of its models broke their…",
+      "id": "ae2fe667073979a9bb58897c718b231845a00b1fade7d9cc92f1cd915e425ba2",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "聚焦OpenAI安全事件及其市场影响，深度探讨了AI领域的可预测风险。",
+      "reason": "文章主题为当前热门AI领域，结合了安全事件和市场分析，具有高度时效性和关注度，技术深度和信息密度适中。",
+      "tags": [
+        "AI",
+        "Security",
+        "OpenAI",
+        "Market Analysis",
+        "Tech News"
+      ]
+    },
+    {
+      "title": "[Sponsor] Introducing Agent Fone",
+      "link": "https://fail.xyz/phone/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-28T01:31:54.000Z",
+      "summary": "Every phone now ships with an assistant. You ask, it answers. Lame. We built a phone that writes software instead. The app idea you’ve had in your notes for years. The side hustle you will never get around to building. The weird thing only you would want. Describe it, answer a few questions, and it’s on your home screen — yours, working, sendable to a friend. No app store between you and your ideas. The first fifty units go to teams who’ll push on it and tell us what breaks.\n ★",
+      "id": "79a14a455e6099bb1f0d83612a3e961e798e92a211735d962aa9a4c446e4e550",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "推广一款宣称能根据用户描述自动生成软件的创新手机产品。",
+      "reason": "尽管是赞助内容，但其核心概念非常新颖，有潜力革新独立开发和AI应用模式。",
+      "tags": [
+        "AI",
+        "独立开发",
+        "产品创新",
+        "未来科技",
+        "赞助"
+      ]
+    },
+    {
+      "title": "Why npm Dependency Trees Are So Big",
+      "link": "https://nesbitt.io/2026/07/28/why-npm-dependency-trees-are-so-big.html",
+      "source": "nesbitt.io",
+      "publishedAt": "2026-07-28T10:00:00.000Z",
+      "summary": "Every major release of Rails sets off a wave of releases across the rest of the gem ecosystem. An application that tries to upgrade runs bundle update rails and Bundler refuses, because some gem in the tree only allows activesupport up to the previous major. The error names the gem, an issue gets filed on its tracker, and a maintainer who had nothing to do with the Rails release widens a version range and ships. Multiply that across every gem with a Rails constraint and the upgrade arrives as dozens of small releases from maintainers who mostly don’t know each other, each responding to errors their own users are hitting.\nBundler refuses because it picks one version of every gem for the entire application. Every constraint in every gem is a claim on that shared choice, and finding a set of versions that satisfies all of them at once is NP-complete in the general case. Sometimes no set exists, and Bundler refuses to install, listing the gems whose constraints collided.\nThat makes every constraint a cost that other people pay: a gem that pins a dependency tightly will block someone’s upgrade and get issues filed about it, so gem authors keep dependency lists short and ranges wide. All of it runs through the conflict error, which names the packages whose constraints disagree, so the problem reaches the maintainers who can fix it.\nThat error has no equivalent in npm, which starts with the runtime. Ruby loads one copy of each gem per process, Python keys imported modules by name, and a JVM classpath resolves each class name once. You can get a second version into any of them if you work at it, but one version per program is the working assumption, so their package managers all resolve each library to a single version, and disagreements have to be settled somewhere.\nJavaScript module loading keys on file paths, not package names: two copies of the same package in different node_modules directories are just two different files, and Node’s module resolution loads whichever copy sits closest to the code requiring it. A resolver on top of that runtime could still pick one shared version per package and error when constraints can’t agree, but when two packages want different versions of a shared dependency, npm gives each its own copy. Ordinary dependency resolution has no conflict error in it at all: whatever constraints the packages in your tree declare, install succeeds.\nWhich means a constraint in npm costs its author nothing: a library can pin an exact version of everything it uses and no downstream install will ever fail because of it. Your choice of range never collides with anyone else’s, so there is no occasion to talk to another maintainer about what you both should support, and no prompt to look at what your tree has accumulated. A dependency on a ten-line package is as free as any other too, which is the condition the micro-package habit needed.\nThe costs show up elsewhere: npm’s dependency network was already the largest and fastest growing of the seven ecosystems Decan, Mens and Grosjean measured in 2017, and installing an average npm package means trusting 79 other packages and 39 maintainers. Every duplicated copy gets installed, bundled, and added to the surface you have to audit, so everyone pays a little of it and nothing like the Rails upgrade wave follows.\nTwo copies of the same package do break things when the package holds module-level state: each copy gets its own singletons, and instanceof checks fail when an object from one copy reaches the other. The famous case is React, where two Reacts in one app break hooks, so a component library has to run against the application’s copy.\npeerDependencies exists for that case: a declaration that this package must share one version with the rest of the tree rather than getting its own. For years npm only warned when peer ranges couldn’t agree. When npm 7 started enforcing them, the resulting ERESOLVE errors were unpopular enough that npm added --legacy-peer-deps, a flag for turning the conflicts back off.\nCargo runs both designs at once, and within a semver-compatible range it behaves like Bundler: every crate that depends on bitflags 1.x shares a single version. If the requirements can’t unify, say one crate pins =1.2.3 while another needs a later patch, the resolver backtracks and errors rather than take two copies.\nIncompatible ranges get the npm treatment: 1.x and 2.x of the same crate coexist in one build with no error. And because a caret requirement on a 0.x crate only spans that minor, every 0.x minor is its own compatibility range, which puts a large share of the crate ecosystem on the npm side of the line.\nRust’s coordination culture lives on the strict side, where foundational crates sit on the same major for years because a breaking release would split the single version every dependent has to share. serde has been on 1.x since 2017. When a crate that far down the stack does have to break compatibility, there’s the semver trick, where the outgoing major gets one final release that depends on the new major and re-exports its types, so the resolver treats the two as one while the migration rolls through, a contortion maintainers only accept under real pressure.\nOn the loose side of the line, a demo web service at Tweede golf came to 141 crates, with base64, socket2, syn and time each present in two incompatible major versions, and Armin Ronacher counts a basic Rocket web project at 172 crates. Run cargo tree --duplicates in any sizeable project: every incompatible version it lists was resolved the way npm resolves everything.\nDependency trees grow to the size their resolver permits: where every package must share one version, constraints put costs on other people, and those costs get maintainers talking to each other. npm settles every disagreement with another copy instead, and each copy makes the tree bigger.",
+      "id": "1f2462a7b637e8c7796e771debac866313cb983162028e7ec25b599754c3d697",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "深入剖析了Ruby/Bundler生态中依赖解析的复杂性及其NP-complete本质。",
+      "reason": "尽管标题与内容工具（npm vs Bundler）存在不符，文章内容对编程工具的依赖管理问题提供了高质量、技术深入的解释，对开发者有很强的学习价值。",
+      "tags": [
+        "编程工具",
+        "依赖管理",
+        "软件工程",
+        "Bundler",
+        "Ruby"
+      ]
+    },
+    {
+      "title": "How Do I Profile eBPF Code?",
+      "link": "https://naveensrinivasan.com/posts/2026-07-22-how-do-i-profile-ebpf-code/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-28T15:55:44.000Z",
+      "summary": "Article URL: https://naveensrinivasan.com/posts/2026-07-22-how-do-i-profile-ebpf-code/\nComments URL: https://news.ycombinator.com/item?id=49085811\nPoints: 51\n# Comments: 3",
+      "id": "46039e20491ddc88b3f68799f51918fcbe45e877998b7a6c2912329f4e95999f",
+      "ref_id": "1",
+      "recommendationScore": 80,
+      "popularityScore": 36,
+      "priority": "medium",
+      "comment": "详细介绍了eBPF代码的分析方法，对系统级性能优化者极具实用性。",
+      "reason": "提供了eBPF代码性能分析的实用指南，技术深度高，对特定领域开发者是宝贵资源。",
+      "tags": [
+        "eBPF",
+        "性能分析",
+        "系统编程",
+        "Linux"
+      ]
+    },
+    {
+      "title": "Google Calendar \"Unable to launch event\" - caused by missing DTSTAMP",
+      "link": "https://shkspr.mobi/blog/2026/07/google-calendar-unable-to-launch-event-caused-by-missing-dtstamp/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-07-28T11:34:15.000Z",
+      "summary": "For several years, Google's product help forums have been littered with people trying to download a .ics event from their email, only to receive the error \"Unable to launch event\" when trying to add it to Google Calendar. It doesn't happen with all iCal attachments, only some. Here's how to fix it.    I checked dozens of broken iCalendar invites using this iCal validator and they all had the same …",
+      "id": "3d9cdbb049fd49073f44e5f4fb313fc7449b0f38625d16fd0e17a26a6fe6e582",
+      "ref_id": "0",
+      "recommendationScore": 80,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "解决了Google Calendar iCal附件的常见痛点，实用性极强。",
+      "reason": "提供了明确的问题诊断和解决方案，技术深度适中，对遇到此问题的用户非常有帮助，属于自动化和编程工具的交叉领域。",
+      "tags": [
+        "Google Calendar",
+        "Troubleshooting",
+        "iCal",
+        "Bug Fix",
+        "实用教程",
+        "自动化"
+      ]
+    },
+    {
+      "title": "Hiding data in permutations",
+      "link": "https://www.johndcook.com/blog/2026/07/27/hiding-data-in-permutations/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-07-27T23:08:59.000Z",
+      "summary": "The latest issue of Paged Out! has an article by Stephen Hewitt “An off-line backup of your cryptographic key using playing cards.” The idea is to use a deck of 52 to store a 128-bit cryptographic key. To erase the key, shuffle the deck. Hewitt gives his algorithm for embedding a key, one that can […]\nHiding data in permutations first appeared on John D. Cook.",
+      "id": "6c3d16b2383bb80ac3a2735cc2f3ee870d81b40d2f8b699cb5a47c2863d2478b",
+      "ref_id": "4",
+      "recommendationScore": 80,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "介绍了如何利用扑克牌排列来存储加密密钥的具体算法，从理论走向实践。",
+      "reason": "进一步深化了数据隐藏的概念，提供了在排列中存储数据的具体算法思路，将抽象概念具体化，实用性更强，属于编程工具和安全范畴。",
+      "tags": [
+        "密码学",
+        "数据隐藏",
+        "算法",
+        "排列组合",
+        "密钥管理",
+        "安全",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "Show HN: XY – Fast, composable, GPU-accelerated Python charting library",
+      "link": "https://github.com/reflex-dev/xy",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-28T15:54:55.000Z",
+      "summary": "Article URL: https://github.com/reflex-dev/xy\nComments URL: https://news.ycombinator.com/item?id=49085798\nPoints: 40\n# Comments: 15",
+      "id": "2546c963ca959e12e5577fd334abba21c45b5afb0b040b2cb02800f9771bf9a2",
+      "ref_id": "2",
+      "recommendationScore": 79,
+      "popularityScore": 37,
+      "priority": "medium",
+      "comment": "展示了一个快速、可组合且GPU加速的Python图表库，提升数据可视化效率。",
+      "reason": "此新工具利用GPU加速，为Python数据可视化提供了高效新选择，实用性和新颖性良好。",
+      "tags": [
+        "Python",
+        "数据可视化",
+        "GPU加速",
+        "编程工具",
+        "开源库"
+      ]
+    },
+    {
+      "title": "Substack writers, you need a website",
+      "link": "https://elizabethtai.com/2026/06/10/substack-writers-you-need-a-website/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-28T16:58:31.000Z",
+      "summary": "Article URL: https://elizabethtai.com/2026/06/10/substack-writers-you-need-a-website/\nComments URL: https://news.ycombinator.com/item?id=49086788\nPoints: 9\n# Comments: 2",
+      "id": "450e6a5e7e5961980d00b11c9f8a0d247a343807e57656f9e03d99486e47e2db",
+      "ref_id": "3",
+      "recommendationScore": 75,
+      "popularityScore": 80,
+      "priority": "low",
+      "comment": "对Substack内容创作者提出了拥有独立网站的强烈建议，侧重个人品牌建设。",
+      "reason": "文章从独立内容创作者的角度出发，强调了个人品牌和平台掌控的重要性，对Substack用户及独立开发者有实用指导。",
+      "tags": [
+        "独立开发",
+        "内容创作",
+        "个人品牌",
+        "网站建设"
+      ]
+    },
+    {
+      "title": "So, you want to make a game engine (2023)",
+      "link": "https://lisyarus.github.io/blog/posts/so-you-want-to-make-a-game-engine.html#part-3",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-28T15:36:45.000Z",
+      "summary": "Article URL: https://lisyarus.github.io/blog/posts/so-you-want-to-make-a-game-engine.html#part-3\nComments URL: https://news.ycombinator.com/item?id=49085509\nPoints: 16\n# Comments: 12",
+      "id": "3bf0cd2110ea95ed423f242ff05f04e2481a691047d8511c6301ed589949096e",
+      "ref_id": "1",
+      "recommendationScore": 75,
+      "popularityScore": 50,
+      "priority": "medium",
+      "comment": "一份2023年关于游戏引擎开发的指南，对有志于此的开发者有较高参考价值。",
+      "reason": "结合了编程工具和独立开发主题，对特定受众实用性强，能提供实用的开发指导。",
+      "tags": [
+        "编程工具",
+        "游戏开发",
+        "游戏引擎",
+        "独立开发"
+      ]
+    },
+    {
+      "title": "Una Watch: Garmin watch competitor but repairable, open ecosystem and USB-C",
+      "link": "https://unawatch.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-28T14:48:13.000Z",
+      "summary": "Article URL: https://unawatch.com/\nComments URL: https://news.ycombinator.com/item?id=49084813\nPoints: 17\n# Comments: 5",
+      "id": "2796a4fa35ef23dc261b9e9924d6ecfd57f7508318f587423fd90ad1bbe72aea",
+      "ref_id": "3",
+      "recommendationScore": 75,
+      "popularityScore": 45,
+      "priority": "medium",
+      "comment": "介绍一款可修复、开放生态并支持USB-C的智能手表，挑战传统市场。",
+      "reason": "涉及产品设计、独立开发和开放硬件理念，在同类产品中具有显著新颖性和对特定用户群的实用性。",
+      "tags": [
+        "智能手表",
+        "产品设计",
+        "独立开发",
+        "开放硬件",
+        "维修性",
+        "USB-C"
+      ]
+    },
+    {
+      "title": "Cryptographic Keys and Decks of Cards",
+      "link": "https://www.johndcook.com/blog/2026/07/28/keys-and-cards/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-07-28T12:13:17.000Z",
+      "summary": "The previous post looked at the idea of storing a cryptographic key in the order of a deck of cards. A deck of 52 cards can store 225 bits of data because ⌊log2(52!)⌋ = 225. Here ⌊x⌋ is x rounded down to the nearest integer. If we want to store bigger keys, we’re going to need […]\nCryptographic Keys and Decks of Cards first appeared on John D. Cook.",
+      "id": "16fa5e8dfd1f3ced38596da01270928bc5ae99959f98f75774c3e44245ed5cf1",
+      "ref_id": "3",
+      "recommendationScore": 75,
+      "popularityScore": 55,
+      "priority": "medium",
+      "comment": "以扑克牌为例，生动解释了加密密钥的存储原理和信息论概念。",
+      "reason": "巧妙结合数学和密码学，用直观例子阐明了信息存储容量，技术深度和新颖性兼具，对理解编程工具中的安全概念有帮助。",
+      "tags": [
+        "密码学",
+        "信息论",
+        "数学",
+        "密钥存储",
+        "概念解释",
+        "安全"
+      ]
+    },
+    {
+      "title": "Inverse factorial improved",
+      "link": "https://www.johndcook.com/blog/2026/07/28/inverse-factorial-improved/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-07-28T14:11:30.000Z",
+      "summary": "A couple years ago I wrote about how to compute the inverse of factorial. I used that code in writing the previous post because the post required solving the equation ⌊log2(n!)⌋ = b given b. That is, given a number of bits b, find the smallest value of n such that n! > 2b. What the […]\nInverse factorial improved first appeared on John D. Cook.",
+      "id": "3e59a7b43cfb4cfb28dfc6c722bc648ee7606ea1de4560022e658dd901e838f6",
+      "ref_id": "2",
+      "recommendationScore": 70,
+      "popularityScore": 45,
+      "priority": "medium",
+      "comment": "深入探讨了计算逆阶乘的算法优化，对数学和算法爱好者有价值。",
+      "reason": "提供了具体的算法改进方法，技术深度较高，属于编程工具范畴，对特定领域的读者有参考价值。",
+      "tags": [
+        "算法",
+        "数学",
+        "编程",
+        "阶乘",
+        "优化",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "‘Always Choose the Good Soap’",
+      "link": "https://sixcolors.com/post/2026/07/always-choose-the-good-soap/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-28T01:13:55.000Z",
+      "summary": "Jason Snell:\nApple’s most valuable asset is its brand. Not its real estate,\nnot its intellectual property, not even any particular product.\nEven the mighty iPhone has no value if, over time, the traits\nthat differentiate it from competitor products are erased.\nApple’s brand has always stood for higher quality products — you\npay more, but you get more. Apple has never wanted to be the\nlow-price leader. It didn’t put stickers on the first Intel\nMacs to get some marketing dollars from Intel. It doesn’t\nload up new Macs with loads of lousy bundled third-party software\nlike so many PCs do.\nThose are choices Apple has made that cost the company revenue,\nbut they’ve got a bigger purpose. They reinforce the brand.\nOpting not to add more revenue to the bottom line is a difficult\nchoice for anyone working at a profit-driven corporation.\nGreat minds write about the same topic on the same day.\nWhat Snell’s column makes clear is that the incremental revenue Apple is gaining from putting shitty ads in its software comes at a price. They’re withdrawals from Apple’s brand equity. The brand equity that Apple is losing by foisting these ads is more valuable than the marginal dollars they’re earning from them. There’s juice, yes, but it’s a perfect case of the juice not being worth the squeeze.\nIt shouldn’t be easy for users to simply imagine obvious ways for Apple’s software to improve. But it’s trivial for any user to imagine an obvious way for the App Store to be better: take out the ads from search results. If there were a preference setting to remove ads from App Store search results, everyone would turn that on. Apple is doing a thing that obviously makes the experience worse. It’s a little thing. The experience is only a little worse. But getting all the little the things right is how you get to insanely great, and insanely great is Apple’s North Star.\nApple’s competition is lousy with ads. Downright lousy. Apple seems to be choosing the route of “Don’t like ads? Choose Apple, we shove fewer of them in your face.” That’s way less bracingly clear a marketing message than “Don’t like ads? Choose Apple, we don’t shove any ads in your face.” If your competitors’ stores all smell pervasively of dogshit, don’t aim to have the store that smells the least like shit. Aim to have a store that smells pristine. “Our stores only carry a vague whiff of dogshit” is not insanely great.\n ★",
+      "id": "59b7035f09bdf293c21cb7e0c7e2173ed616204c54ac5b5e977a8bac9cc64e37",
+      "ref_id": "2",
+      "recommendationScore": 68,
+      "popularityScore": 72,
+      "priority": "medium",
+      "comment": "探讨了苹果品牌价值的基石，即坚持高质量和用户体验优先于短期利润。",
+      "reason": "文章深刻剖析了苹果的品牌战略，对产品设计和商业伦理具有启发意义。",
+      "tags": [
+        "Apple",
+        "品牌策略",
+        "产品设计",
+        "商业伦理"
+      ]
+    },
+    {
+      "title": "Xenharmlib (music theory library) adds support for Just Intonation",
+      "link": "https://xenharmlib.readthedocs.io/en/latest/whats_new_0_4_0.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-28T16:10:37.000Z",
+      "summary": "Article URL: https://xenharmlib.readthedocs.io/en/latest/whats_new_0_4_0.html\nComments URL: https://news.ycombinator.com/item?id=49086059\nPoints: 6\n# Comments: 0",
+      "id": "c06fee452ffbf4a06606d9fc7e0a0cd5d743bac0d44b519c15a13c4f69be3e92",
+      "ref_id": "4",
+      "recommendationScore": 65,
+      "popularityScore": 55,
+      "priority": "medium",
+      "comment": "音乐理论库Xenharmlib新增了对纯律（Just Intonation）的支持。",
+      "reason": "对于从事音乐算法、微音音乐研究或音乐软件开发的专业人士而言，这是一个值得关注的编程工具更新。",
+      "tags": [
+        "编程工具",
+        "音乐理论",
+        "库更新"
+      ]
+    },
+    {
+      "title": "Steel Bank Common Lisp version 2.6.7",
+      "link": "https://sbcl.org/all-news.html?2.6.7",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-28T17:11:54.000Z",
+      "summary": "Article URL: https://sbcl.org/all-news.html?2.6.7\nComments URL: https://news.ycombinator.com/item?id=49086971\nPoints: 3\n# Comments: 0",
+      "id": "d910a0c7285506c1aaf269d913c1414afdc14483924a5b67ce7edb7f5e61948a",
+      "ref_id": "2",
+      "recommendationScore": 60,
+      "popularityScore": 40,
+      "priority": "medium",
+      "comment": "Steel Bank Common Lisp编程语言的最新版本更新日志。",
+      "reason": "为Lisp开发者提供了SBCL 2.6.7版本的新功能、改进和bug修复信息，是关注该小众语言生态的重要资讯。",
+      "tags": [
+        "编程语言",
+        "Lisp",
+        "工具更新"
+      ]
+    },
+    {
+      "title": "Setup Script Should Support Git Worktrees",
+      "link": "https://piechowski.io/post/setup-script-git-worktrees/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-28T15:32:58.000Z",
+      "summary": "Article URL: https://piechowski.io/post/setup-script-git-worktrees/\nComments URL: https://news.ycombinator.com/item?id=49085449\nPoints: 14\n# Comments: 3",
+      "id": "b06f34fd53098ac8bf97c6adcc08a807932b611d55e5566e23150b0548beaabb",
+      "ref_id": "3",
+      "recommendationScore": 60,
+      "popularityScore": 30,
+      "priority": "medium",
+      "comment": "探讨如何将Git Worktrees功能集成到开发设置脚本中，以提升工作流效率。",
+      "reason": "属于编程工具和自动化范畴，对日常使用Git Worktrees的开发者有一定参考价值，但技术深度和新颖性一般。",
+      "tags": [
+        "编程工具",
+        "Git",
+        "自动化",
+        "开发效率"
+      ]
+    },
+    {
+      "title": "Steve Jobs in 2011: ‘We Build Products That We Want for Ourselves, Too, and We Just Don’t Want Ads’",
+      "link": "https://www.businessinsider.com/apple-snubs-the-iad-2011-6",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-28T16:22:51.000Z",
+      "summary": "Dan Frommer, writing for Business Insider in 2011 about that year’s WWDC (Jobs’s last):\nWhile discussing Apple’s free, new iCloud email service, he took\nan apparent jab at Gmail, Yahoo Mail, and the others, which stuff\nads in their free email services.\n“No ads,” he boasted. “We build products that we want for\nourselves, too, and we just don’t want ads.”\nJobs’s “we” is interesting to ponder here. Apple’s senior leadership today is comprised mostly of the same people in senior leadership positions in 2011. Tim Cook, Phil Schiller, Eddy Cue, Craig Federighi, Greg Joswiak, and even John Ternus (then a director of hardware engineering for the iPad team, I believe) were all presumably included in Jobs’s “we”. The only big player missing today from Jobs’s 2011 “we” is Scott Forstall.\nThe people haven’t changed, but Apple has. Strong leaders inevitably shape the personality — the spirit — of organizations over time. Apple in 2011 was peak Steve Jobs Apple. Apple in 2026 is peak Tim Cook Apple. But it was Cook who popularized the  “you’re not the customer, you’re the product” argument against “free with ads” online services. But that was in 2014.\n ★",
+      "id": "020340413bc4b26df9c0133dfd05dd9047143e936d59f1298ec14bea4b8a0ef7",
+      "ref_id": "0",
+      "recommendationScore": 60,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "回顾了乔布斯时代苹果的品牌哲学与当前苹果的演变对比。",
+      "reason": "文章深入探讨了苹果公司核心价值观的变迁，对品牌历史和领导力有见地。",
+      "tags": [
+        "Apple",
+        "品牌",
+        "领导力",
+        "历史评论"
+      ]
+    },
+    {
+      "title": "Stop Killing the Internet: No Digital ID and No Age Verification",
+      "link": "https://citizens-initiative.europa.eu/initiatives/details/2026/000011_en",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-28T14:58:15.000Z",
+      "summary": "Article URL: https://citizens-initiative.europa.eu/initiatives/details/2026/000011_en\nComments URL: https://news.ycombinator.com/item?id=49084938\nPoints: 95\n# Comments: 30",
+      "id": "623f065d08de9901dcdbd090d0c89080bd72da370f4ea7b153c6c5a0f8974fa0",
+      "ref_id": "2",
+      "recommendationScore": 50,
+      "popularityScore": 90,
+      "priority": "low",
+      "comment": "强烈反对数字身份和年龄验证，倡导捍卫互联网自由。",
+      "reason": "虽是重要的互联网政策议题，但技术深度和与核心优先级主题的直接相关性较低，更偏向公民权利与政策讨论。",
+      "tags": [
+        "互联网自由",
+        "隐私",
+        "政策",
+        "数字权利",
+        "社会议题"
+      ]
+    },
+    {
+      "title": "Anthropeum",
+      "link": "https://anthropeum.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-28T15:01:15.000Z",
+      "summary": "Article URL: https://anthropeum.com/\nComments URL: https://news.ycombinator.com/item?id=49084989\nPoints: 33\n# Comments: 9",
+      "id": "b5e5e1ce31e7cd25658c19e5c560c73b3889ab6bdb9e322e4372085e2f3ca29f",
+      "ref_id": "0",
+      "recommendationScore": 45,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "一篇关于名为“Anthropeum”的未知科技项目的文章。",
+      "reason": "缺乏具体信息来评估其技术深度、新颖性或实用性，主题模糊，与核心优先级关联度低。",
+      "tags": [
+        "项目介绍",
+        "通用科技",
+        "新平台"
+      ]
+    },
+    {
+      "title": "Samsung’s chip workers are jumping ship to rival SK Hynix ",
+      "link": "https://www.technologyreview.com/2026/07/28/1140853/samsung-chip-workers-exodus-sk-hynix/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-07-28T09:18:57.000Z",
+      "summary": "Lee, an engineer at Samsung’s semiconductor division, clocks out when his shift ends. He used to work longer hours, going the extra mile to excel at his projects. But lately, he’s been coming straight home to work on his job application for the chipmaker’s South Korean rival SK Hynix, sharing tips with his coworkers on…",
+      "id": "8980e8ef2e88a0cd98e139de60b3133dba962b9ef7bf5d81ab48ebdf95bbe819",
+      "ref_id": "1",
+      "recommendationScore": 45,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "分析了三星与SK海力士之间的人才流动现象，揭示半导体行业内部的竞争态势。",
+      "reason": "内容属于行业新闻，与AI、Apple生态等核心技术主题关联度较低，技术深度和实用性一般。",
+      "tags": [
+        "Semiconductor",
+        "Industry News",
+        "HR",
+        "Samsung",
+        "SK Hynix"
+      ]
+    },
+    {
+      "title": "Italy Blocks Reproductive Health Websites Women on Web and Women Help Women",
+      "link": "https://ooni.org/post/2026-italy-blocks-wow-and-whw",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-28T14:05:51.000Z",
+      "summary": "Article URL: https://ooni.org/post/2026-italy-blocks-wow-and-whw\nComments URL: https://news.ycombinator.com/item?id=49084091\nPoints: 95\n# Comments: 82",
+      "id": "565708e1ebd83cebeb8dac5e960b455173fdd2c7fcd545115583533a2df5c84f",
+      "ref_id": "4",
+      "recommendationScore": 40,
+      "popularityScore": 95,
+      "priority": "low",
+      "comment": "OONI报告意大利政府阻止访问两个生殖健康网站的事件。",
+      "reason": "尽管具有高度社会关注度和争议性，但与本科技博客的核心主题（AI、编程工具等）关联度较低，缺乏技术深度。",
+      "tags": [
+        "互联网审查",
+        "数字权利",
+        "OONI",
+        "社会议题",
+        "隐私"
+      ]
+    },
+    {
+      "title": "Fa Fa",
+      "link": "https://feed.tedium.co/link/15204/17388904/facebook-home-row-keyboard-trick",
+      "source": "tedium.co",
+      "publishedAt": "2026-07-27T17:45:21.000Z",
+      "summary": "My brain-breaking trick for weaning off of Facebook involved creating a fake URL for Google News. Blame the home row.\n\nOld habits die hard, and the one that led to this post died a lot harder than some of the others.\nRecently, I made a realization: I have been unwillingly addicted to Facebook for a long time, and it’s not even because I like Facebook. Rather, it’s because I find it an extremely easy URL to type into a modern web browser’s omnibar. This sounds crazy, but the first two letters, f and a, are on the home row, and I don’t really rely on bookmarks, but my browser’s history function to type in URLs.\nThis creates a sort of recency bias. If I type in the same URL a lot, it’s the one that pops up the most. And so, if I’m at a browser with no clear idea of what my intent for the next page I load up, I inevitably type in “fa,” which would suck me in.\nOver the years, Facebook’s bad content has gotten worse and worse, and despite my dislike of the company, I’ve kept it mostly out of desire to keep connected with a small number of people from real life. In the past I’ve used an extension designed to hide specific Facebook features on the desktop, most notably reels, and I have limited my Facebook access to my mobile app. But I still loaded the site, even though I hated the company and everything it represents.\n\nTo put it in terms of Guster’s 2000 single “Fa Fa,” I was always clicking somewhere I swear I’d never click again.\nIt’s an infuriating problem that really shows how far dark patterns go. If you type in a URL as a force of habit, inevitably you type it in even when it’s the last place you want to go.\n\n\n\nRecently, I came up with a solution which appears to be deeply effective, and I’m hoping sticks long-term. Essentially, rather than fighting my tendency to type these two characters in my omnibar, I neutralized it. At first, this involved just blocking Facebook in the hosts file, which prevented the website from loading entirely. However, I found this too disruptive, as it gave me nowhere to click. Plus, immediately after I did that, I inevitably had a task that required me to use Facebook.\nFacebook is one of the easiest sites to type on a keyboard thanks to the omnibar. Both the F and A keys are on the home row! (DepositPhotos.com)\nSo, what I ended up doing was creating a URL that does nothing but forward to Google News. (You can supply any domain you’d like, as long as it starts with “fa.” Wanna go to fatberg.com every time you load your computer? Or maybe faxtoy.net? Up to you.) At the same time, I went through my entire history in Vivaldi and removed every reference to the Facebook website. The result is that whenever I type in my new Facebook URL, I go to a news aggregator, which is inevitably what I was using Facebook for anyway. A week later, and my Facebook usage has gone down considerably, and I’m now fully aware of how far downhill Google News has gone; open to suggestions there. Kind of shocked that’s all it took, actually. (I will admit that I did just start on a GLP-1, which is known to ease addictive behavior, but that’s a story for another time.)\nI think addictive behaviors can be really difficult for anyone, no matter how well meaning, to get past. For whatever reason, this one was particularly hard to defeat. I’ve used similar strategies in the past. One of my go-tos: When I need to focus on something creative, I switch my YouTube account to a curated feed that leans on instrumental music. If I start looking up random junk, it ruins the feed. So I’m discouraged from looking up random junk if I’m listening to vintage jazz or higher consciousness music, as I am right now.\nAt this point in time, I think this is something that I’m really trying to get a grasp on. I think that so much of the work we do on computers requires a good sense of flow and rhythm, but if that flow leads to things that take us away from our work, does it really serve our needs?\nIn the case of a browser for example, wouldn’t it be great if the browser detected obsessive behavior like this and called it out for you, rather than you having to call it out for yourself and adapt accordingly?\nWe should be challenging our technology experiences and letting go of things that make our tech worse. And if it means I need to trick my brain to look at the news instead of my Facebook feed, I guess that’s where we’re at.\nI guess what I’m saying is that I should switch to a Dvorak keyboard layout so I don’t mindlessly go to Facebook.\n\n“Fa”-Free Links\n… Speaking of Dvorak, I want to offer my condolences to the family of John C. Dvorak, who died last week at the age of 80. He wasn’t my favorite tech columnist of his era (that honor goes to Jerry Pournelle), and his political opinions later in life kind of lost me. But I have to admit that I loved disagreeing with his questionable opinions when they came up. (He once said podcasting wasn’t ready for prime time, then became known for a podcast just a couple years later.) I linked his old pieces a lot; I once called Dvorak “voice of his generation,” and while I’m sure I meant it in jest, I am convinced that there’s probably more truth to that than most would care to admit.\n\nOver the weekend, I caught Nirvanna the Band the Show the Movie, which I had heard good things about and was more than surprised the movie lived up to. It makes one miss the days when comedies were good, frequent, and invested in the creator’s vision. Anyway, both the movie and the show are on now on Hulu; definitely diving into the show next.\nCool self-hosted app of the day: Crumbs, which is a great way to gather and share quick notes as needed. May your shopping lists get easier to build.\n--\nFind this one an interesting read? Share it with a pal! And may my tip make it easier to stop using Facebook.\nWanna support Tedium? Check out the Tedium Shopping Network. You might find something good there.",
+      "id": "b3e7abaf9ae8fddd7b09168ecea5a5a3f24d10ee5e1940daaeef26d6fe1f82ad",
+      "ref_id": "1",
+      "recommendationScore": 40,
+      "popularityScore": 65,
+      "priority": "low",
+      "comment": "分享了一个通过改变URL习惯来戒断Facebook的个人技巧，内容轻松有趣。",
+      "reason": "文章提供了一个新颖的个人习惯改变方法，具有一定的实用性，但与核心科技博客主题的关联性较低。",
+      "tags": [
+        "生活习惯",
+        "数字排毒",
+        "效率",
+        "个人成长"
+      ]
+    },
+    {
+      "title": "Delayed Gratification – Proud to Be 'Last to Breaking News'",
+      "link": "https://www.slow-journalism.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-28T15:50:38.000Z",
+      "summary": "Article URL: https://www.slow-journalism.com/\nComments URL: https://news.ycombinator.com/item?id=49085731\nPoints: 61\n# Comments: 32",
+      "id": "dd184ba680ec280d0414816b2a4ea97f46c9d0a61aed0b551da3e2cecbdb303e",
+      "ref_id": "3",
+      "recommendationScore": 30,
+      "popularityScore": 62,
+      "priority": "low",
+      "comment": "探讨了慢新闻和延迟满足的理念，关注信息消费方式的非技术性思考。",
+      "reason": "文章主题偏离科技博客核心关注点，技术深度和实用性较低，不属于优先级主题。",
+      "tags": [
+        "媒体",
+        "慢新闻",
+        "信息消费",
+        "生活哲学"
+      ]
+    },
+    {
+      "title": "The Photographer Who Takes No Pictures",
+      "link": "https://simone.org/intent/",
+      "source": "simone.org",
+      "publishedAt": "2026-07-28T13:00:00.000Z",
+      "summary": "How a trip in 2012 transformed my relationship with photography—from staged performances to capturing genuine moments that matter, for engagement rather than validation.",
+      "id": "767e431fafeb6952f6f07920f8e670f9556bbfa8606f3788fa78c479200fad81",
+      "ref_id": "0",
+      "recommendationScore": 25,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "一篇关于个人摄影理念转化的文章，内容偏离科技博客的核心主题。",
+      "reason": "文章缺乏技术深度和实用性，与优先关注的AI、编程工具等主题无关，更像一篇个人随笔。",
+      "tags": [
+        "摄影",
+        "个人感悟",
+        "生活方式"
+      ]
+    },
+    {
+      "title": "Harmony Explained: Progress Towards a Scientific Theory of Music (2012)",
+      "link": "https://arxiv.org/abs/1202.4212",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-28T15:20:35.000Z",
+      "summary": "Article URL: https://arxiv.org/abs/1202.4212\nComments URL: https://news.ycombinator.com/item?id=49085280\nPoints: 48\n# Comments: 38",
+      "id": "a299d4ca4da0fd47589d4842650cdaf127190920bda8d5d7220907f7445e7c60",
+      "ref_id": "4",
+      "recommendationScore": 20,
+      "popularityScore": 45,
+      "priority": "low",
+      "comment": "一篇2012年关于音乐理论的科学论文，与科技博客关注的主题关联度较低。",
+      "reason": "主题（音乐理论）与科技博客的核心关注点及优先级不符，且文章时效性较差。",
+      "tags": [
+        "音乐理论",
+        "科学",
+        "非技术"
+      ]
+    },
+    {
+      "title": "An opinionated guide to which AI to use to do stuff",
+      "link": "https://simonwillison.net/2026/Jul/27/an-opinionated-guide-to-which-ai-to-use-to-do-stuff/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-07-27T21:55:53.000Z",
+      "summary": "",
+      "id": "e6f02996d11936344361fd6e96540acb125529f36f5c279f787e93e81ffc9122",
+      "ref_id": "4",
+      "recommendationScore": 15,
+      "popularityScore": 15,
+      "priority": "low",
+      "comment": "标题表明这是一篇关于AI工具使用的指导文章，但内容为空，无法评估其价值。",
+      "reason": "内容缺失，无法判断其实用性或信息密度，即使主题有潜力，也无法进行有效评估。",
+      "tags": [
+        "AI",
+        "Tools",
+        "Guide",
+        "Unassessable Content"
+      ]
+    },
+    {
+      "title": "moonshotai/Kimi-K3",
+      "link": "https://simonwillison.net/2026/Jul/27/kimi-k3/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-07-27T23:39:04.000Z",
+      "summary": "",
+      "id": "dc5417e61dfc4edb6171c2a4f736e7e2b01880fb3513eb1d7c6d787ccef4b11f",
+      "ref_id": "3",
+      "recommendationScore": 10,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "标题指向一个潜在的AI项目，但文章内容为空，无法进行有效评估。",
+      "reason": "内容缺失，无法判断其技术深度、新颖性、实用性及信息密度，故推荐度和优先级较低。",
+      "tags": [
+        "AI",
+        "Unassessable Content"
+      ]
+    },
+    {
+      "title": "Does every question mark deserve a Betteridge?",
+      "link": "https://dynomight.net/betteridge/",
+      "source": "dynomight.net",
+      "publishedAt": "2026-07-28T00:00:00.000Z",
+      "summary": "To blog is to get dunked on. I accept this. I even sometimes wonder if I should be grateful, as I suspect my willingness to get dunked on may represent a kind of comparative advantage. (You can tell yourself that if you try to placate the haters, you’ll just ruin things for people who like you. But how do you feel when you’re staring down barrel of a 127 comment thread full of people debating how it’s possible that you’re such an idiot?)\nStill, there’s one particular species of dunking that puzzles me. For context, Betteridge’s law states:1\nAny headline that ends in a question mark can be answered by the word no.\nThis is often employed as a sick burn, as in, You titled your article ‘Is this the world’s first gay caveman?’ because it’s not the world’s first gay caveman but you wanted it to be, because you want attention, you are so bad, har-har.\nBut I don’t quite understand the rules. Can someone explain the rules?\nQuestion 1: Are question marks in titles always bad?\nI’m just checking. I suppose I could see the logic, e.g. if you strongly feel that the bottom line should always come right up front. But I’m pretty sure that’s not the rule, because “this title used a question mark” is not regarded as a sick burn.\nQuestion 2: Are question marks only OK if the essay ends with a full-throated “yes”?\nSometimes it does seem like this is the rule. But it’s strange. If it were universally enforced, we could all mentally convert “Do blue-blocking glasses improve sleep?” into “Yes, blue-blocking glasses really do improve sleep!” But then, of what use was the question mark? Why not just say they’re always bad?\nIf we’re going to allow questions that are actual questions, then it has to be possible for the answer to sometimes be something other than yes. On the other hand…\nQuestion 3: Is Betteridge’s law useful at all?\nI think so. At minimum, you can think of it as a convenient label for this theory:\nTraditionally, news articles are written with the bottom line up front.\nTraditionally, news articles have incentives to make a clear affirmative statement in the headline.\nSo if a news article uses a question, that’s because they couldn’t justify making a clear affirmative statement.\nI don’t think this theory is 100% accurate. But it’s accurate enough to deserve a name. (On the whole, more theories should have names.) Still, Betteridge’s law isn’t usually invoked as a neutral observation about the forces that led to a given title. It’s usually invoked as a dunk. So…\nQuestion 4: Is Betteridge dunking ever appropriate?\nAgain, I think it is. Here are some of the best/worst examples from John Rentoul’s book, “Questions to Which the Answer Is No!”:\n“Will Guam capsize?”\n“Is Osama Bin Laden in Chicago?”\n“Did Jesus foresee the US Constitution?”\n“Des smartphones bientôt équipés d’airbags?”\nI think we can agree something is wrong with these. But what, exactly?\nQuestion 5: Is it central that the answer is “no”?\nConsider these made-up titles:\n“Is the Pope still Catholic?”\n“Do you need to sleep every day?”\n“Did Lincoln have personal qualms about slavery?”\n“Did the Rubicon even exist back when Caesar supposedly crossed it?”\nThese are anti-Betteridges. The answer is yes, but the title is irritating in the same way: It gives the impression of a live debate when none exists.\nQuestion 6: What’s really going on here?\nI think it’s pretty clear. Consider the title:\nIs aspartame bad for you?\nIf you understood it to be a settled question that aspartame is safe, and the article ultimately concludes that aspartame is safe, then you might find that title annoying. On the other hand, if you understood it to be settled that aspartame is bad for you, and the article confirms that yes indeed it is bad for you, then you also might find that title annoying.\nThe answer is immaterial. What’s irritating is when a title suggests a novel, interesting possibility that the article does not substantiate as worthy of attention.\nQuestion 7: So what’s the problem?\nHere’s a proposition: The modern internet rewards people for being overconfident. I don’t know if you’ve noticed, but people with blogs are not constrained by the norms of traditional newspapers. On the contrary, if you start a blog, you will soon learn that the best way to get attention is to write spicy aggressive titles like, “No, creatine does not make you smarter despite what all the stupid dumb mouth-breathing supplement hucksters may tell you.”\nNow, I do think you should say what you actually believe. If you truly are that confident, I want you to tell me, not bullshit me by pretending to be neutral.\nHowever, the internet corrupts all of us. Many people seem to start out with a public persona that is careful and measured and calm. But over time, they’re gradually sculpted by the Reward Function into something quite different. The degree this happens depends on your personality, where you’re competing for attention2 and how much you try to resist. But I don’t think anyone is truly above this.\nStill, we should try to resist. My favorite kind of essay is, “Lucid examination of all sides of an issue which finds some evidence pointing in various directions and doesn’t reach a definitive conclusion because the world is complicated.” And I think the fundamental goal of a title should be to accurately signal the contents. But how is such an essay supposed to signal what it is, if not by using a question?\nQuestion 8: What should a title do?\nOne theory is that question titles are sort of like lists: A thing with strong fundamental merits that has been rendered suspicious by abuse. Under this theory, we should push back against all the Betteridgeing and insist that question titles are fine when the question is genuinely open, regardless of the answer, and that people are wrong to Betteridge unless the question mark is being abused.\nAs far as I can tell, that’s the only internally consistent theory that doesn’t amount to saying that question titles should be forbidden. A slightly more conciliatory version would be that if you use a question mark, it’s your responsibility to demonstrate that it’s a real question, not something you made up.\nI lean towards that theory. But part of me—a minority—thinks that perhaps question titles should be effectively forbidden. I thought I’d do a little reductio ad absurdum by trying to give this post an accurate non-question title. The best things I could think of were, “Hesitantly against over-broad Betteridge dunking” and “I weakly think excessive Betteridge dunking disincentivizes fairly examining all sides of an issue.” At first, I thought those were amusingly terrible. But are they, really?\nPS. Was Rentoul’s book correct to list, “Should we clone Neanderthals?” as an example of a question to which the answer is no?\nImplicitly, this applies only to yes/no questions. “How long should you brew your tea?” should not be answered with “no”. ↩\nHi Twitter. ↩",
+      "id": "0724711810c55efeb3da633cd8672102df2e96efc5393d7a4c67a6101b452b16",
+      "ref_id": "1",
+      "recommendationScore": 10,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "一篇关于博客写作与网络评论文化的趣味探讨，与科技博客主题关联度低。",
+      "reason": "内容完全脱离科技主题，更侧重于写作和网络文化讨论，不符合科技博客的评估范畴。",
+      "tags": [
+        "写作",
+        "博客",
+        "互联网文化",
+        "Betteridge's Law",
+        "杂谈"
+      ]
+    },
+    {
+      "title": "When The Future Doesn’t Need Us",
+      "link": "https://borretti.me/article/when-the-future-doesnt-need-us",
+      "source": "borretti.me",
+      "publishedAt": "2026-07-28T00:00:00.000Z",
+      "summary": "What does the world look like when AI outcompetes humans?",
+      "id": "28996efdc96c0bdbf1d724aaf9bb5fe03214bc7c00a51758c5c878ea85c830b6",
+      "ref_id": "2",
+      "recommendationScore": 10,
+      "popularityScore": 80,
+      "priority": "low",
+      "comment": "关于AI未来影响的宏大命题，但文章内容仅为一句话提问。",
+      "reason": "尽管主题（AI）优先级最高且极具吸引力，但文章内容过于简短，完全缺乏实质性分析或论证，不具备独立发表的价值。",
+      "tags": [
+        "AI",
+        "未来",
+        "社会影响",
+        "宏观思考"
+      ]
+    },
+    {
+      "title": "The More You Buy, The More You Lose",
+      "link": "https://www.wheresyoured.at/the-more-you-buy-the-more-you-lose/",
+      "source": "wheresyoured.at",
+      "publishedAt": "2026-07-28T16:29:37.000Z",
+      "summary": "If you liked this piece, you should subscribe to my premium newsletter. It’s $70 a year, or $7 a month, and in return you get a weekly newsletter that’s usually anywhere from 5,000 to 18,000 words, including vast, detailed analyses of NVIDIA, Anthropic and",
+      "id": "508f27eff67d78b513081326ec507da27e0b7a7e06f03b5288753c0429e45b28",
+      "ref_id": "3",
+      "recommendationScore": 5,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "纯粹的付费时事通讯广告文案，缺乏实质性技术内容。",
+      "reason": "并非一篇技术文章，而是引导订阅的营销内容，不符合博客文章的评估标准。",
+      "tags": [
+        "广告",
+        "时事通讯",
+        "营销"
+      ]
+    },
+    {
+      "title": "cancelling-my-hey",
+      "link": "https://chadnauseam.com/random/cancelling-my-hey",
+      "source": "chadnauseam.com",
+      "publishedAt": "2026-07-28T17:28:03.910Z",
+      "summary": "",
+      "dateEstimated": true,
+      "id": "25cb3753ac011939649d0a1bb76cf556f2529db09fb39ef4b027329ce6781f7d",
+      "ref_id": "4",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "文章内容为空，无法进行任何评估。",
+      "reason": "文章缺乏任何可供评估的内容，不具备发表价值。",
+      "tags": [
+        "空内容",
+        "待完善"
+      ]
+    }
+  ]
+}
