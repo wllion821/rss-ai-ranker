@@ -1,0 +1,766 @@
+{
+  "dailySummary": "今日科技速递：Kedge发布全球分布式有状态云平台；Tokenless实现AI模型动态切换大幅节省成本；TurboFieldfare引擎让M系Mac在2GB RAM下运行Gemma 4 26B大型模型。",
+  "articles": [
+    {
+      "title": "Show HN: Kedge – Full-stack cloud with forkable VM snapshots and global SQLite",
+      "link": "https://kedge.dev/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-29T16:15:57.000Z",
+      "summary": "I'm building Kedge, a globally distributed platform for stateful serverless apps. Here's how you make a simple static site: `echo '# Hello world!' | ssh kedge.dev'\nI helped build Fly.io for 4 years and shared enthusiasm for the founders' vision of a 'global Heroku'.  While there, I wrote \"The Serverless Server\" (https://fly.io/blog/the-serverless-server/) as a study of Lambda and a sketch of a modern serverless product built around lightweight VMs. That essay was the initial inspiration for Kedge.\nKedge has a fast VM orchestrator that can create code sandboxes or scale service instances in 3ms, using a combination of forkable VM snapshots and a tree of warm pools (Linux kernel -> base runtime -> app). VMs are memory-dense thanks to shared copy-on-write memory pages. You can run lightweight CGI-style functions, public OCI images, or source code for BuildKit to compile and deploy.\nKedge's global control plane sits on an eventually-consistent SQLite database. Taking inspiration from Corrosion and Litestream, I built a local-first, multi-writer CRDT-based replication system backed by object storage, and just recently made it open source (https://github.com/wjordan/syzy).\nYou can also use a SQLite client to query `/shared.db` from any instance for a build-in replicated database in your app. This lets Kedge autoscale services close to your users while each instance queries its local replica for eventually-consistent data, with no need to micro-manage instance or volume placement. (There's also a /shared/ filesystem adapter for convenience.)\nKedge can even use this same database for stateful, server-rendered HTML apps. Data attributes bind forms, buttons, and values to records in the app database, Kedge compiles the schema and operations at deploy-time, and then queries the local data to serve requests. As a demo, I made a Hacker News clone with story submission, votes, comments and auth in about 60 lines of Markdown, plus CSS (https://kedge.dev/docs/html-apps#kedger-news).\nI've just started collecting public feedback, so please let me know what you think! I'm particularly interested in feedback on the stateful HTML app model, which is the newest (and most ambitious) piece. The preview is currently running in 11 regions for you to kick the tires. There's no billing yet, so the pricing page is an estimate. Thanks for taking a look!\nComments URL: https://news.ycombinator.com/item?id=49099434\nPoints: 14\n# Comments: 2",
+      "id": "7b61b1f7fe5fa97e94ccdca482b4767091b3bf9e8c35065142414fd3ae62db28",
+      "ref_id": "2",
+      "recommendationScore": 95,
+      "popularityScore": 85,
+      "priority": "medium",
+      "comment": "Kedge是一个创新的全栈云平台，利用可分叉VM快照和全局SQLite实现状态化无服务器应用。",
+      "reason": "该项目技术深度极高，解决了分布式无服务器应用的关键痛点，其创新性和实用价值巨大，虽非AI主题但技术重要性突出。",
+      "tags": [
+        "Cloud",
+        "Serverless",
+        "Infrastructure",
+        "VMs",
+        "Distributed Systems",
+        "Database",
+        "Independent Development",
+        "Programming Tools"
+      ]
+    },
+    {
+      "title": "Launch HN: Tokenless (YC S26) – Automatic model switching to save money",
+      "link": "https://usetokenless.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-29T15:55:27.000Z",
+      "summary": "Hi HN, Rohit here from Tokenless (https://usetokenless.com/), which I’m building alongside co-founders Andrew and Kev. We’re building an API gateway which routes agent traffic dynamically turn-by-turn between different models to save on AI spend.\nThe cost of AI tokens is top-of-mind for many. Companies like Uber and Salesforce have been complaining about blowing their yearly AI spend faster than expected.\nFrontier models are amazing for dev work, but are so expensive. Open-source models are cheap and rapidly improving, closing the gap with frontier models, but aren’t quite there yet.\nTokenless gets you the best of both worlds–routing harder turns to smarter models only when needed, which keeps costs low.\nBefore Tokenless, I was doing a PhD at Princeton. While using coding/other agents, I constantly agonized over model choice, to make sure my AI spend was going as far as possible on my academic Cursor account.\nAt the same time, I was doing LLM research, and a small technique I developed while in recovery from NeurIPS submission season seemed to hit SOTA pretty fast. I was surprised that such simple ideas could do routing well.\nWe’ve been able to develop a version of the router that matches the performance of Claude Fable 5 at half the cost. The blog post on our website explores the technical details on how we did this (https://usetokenless.com/blog/building-tokenless/).\nHighlights:\n- Our approach queries multiple models at once and uses their progress to make decisions (this technique is novel AFAIK, let us know if you know anyone else doing this).\n- Switching models doesn’t destroy the cache if the routing algorithm is aware of when the cache is hot/cold.\nTo come:\n- Adding Kimi K3, all other GPT efforts and more to the router\nGo ahead and sign up on usetokenless.com and try using Tokenless with your agent, you’ll get $20 of free credit. Here’s a demo on how to use it: https://youtu.be/sjZWriclcls\nTokenless provides frontier-level intelligence for cheaper, so we’d love some feedback on how it feels to use, any corner cases that the router routes incorrectly, and whether you find the routing problem interesting!\nComments URL: https://news.ycombinator.com/item?id=49099143\nPoints: 19\n# Comments: 19",
+      "id": "9fc4232d9c9ba9c82c1933d53428606f5acc0b9f14c9e42e2fcd7a436451313f",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "Tokenless提供智能API网关，通过动态切换AI模型来显著降低LLM使用成本。",
+      "reason": "该解决方案直接针对当前AI应用中最紧迫的成本问题，具有极高的实用性和市场潜力，是AI领域的重要创新。",
+      "tags": [
+        "AI",
+        "LLM",
+        "Cost Optimization",
+        "API Gateway",
+        "Machine Learning",
+        "Startups",
+        "Infrastructure"
+      ]
+    },
+    {
+      "title": "Show HN: Open-source engine running Gemma 4 26B in 2 GB RAM on any M-series Mac",
+      "link": "https://github.com/drumih/turbo-fieldfare",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-29T15:05:43.000Z",
+      "summary": "Hi HN,\nI built a specialized inference engine for running 4-bit Gemma 4 26B-A4B-IT on any M-series Mac using about 2 GB of RAM. It is called TurboFieldfare and is written in Swift and Metal.\nI have always adored on-device AI. It feels like magic that you can run a powerful NN on your Mac or iPhone. So I wanted to push the limits a bit and run a model whose weights don’t fit in memory.\nThe model’s 4-bit quantized weights occupy roughly 14 GB, which makes running it with conventional inference tools almost impossible on an 8 GB or even 16 GB Mac once the OS, applications, and KV cache are included.\nThe trick is to keep the shared part of the model and the KV cache in RAM, then stream only the routed experts needed for each token from SSD. An SSD is way slower than RAM, so the runtime uses a small expert cache and bounded parallel `pread`. While those reads are in flight, the GPU runs the shared part of the layer.\nI ran more than 100 experiments. Most didn’t work. A few got me here. The experiments are described in the GitHub repo.\nIt currently generates 5–6 tok/s on an 8 GB M2 MacBook Air and 31–35 tok/s on an M5 MacBook Pro.\nI also added an experimental OpenAI-compatible local server. It supports streaming and tool calls, and reuses one prompt prefix from the KV cache.\nTry it! The Mac app is easy to install. On the first run, it will download 15 GB of weights from Hugging Face. The model is surprisingly capable.\nI would love any kind of feedback!\nComments URL: https://news.ycombinator.com/item?id=49098510\nPoints: 240\n# Comments: 59",
+      "id": "7af3ac00212dbeff3f174fce4687bb895223883c8fb862485a5b0c84883d3ecf",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "一个创新的开源引擎，成功在M系列Mac上以极低内存运行大型AI模型Gemma 4 26B。",
+      "reason": "深度结合AI模型优化与Apple硬件特性，极大地拓宽了本地AI运行的可能性，技术细节丰富且实用性极强。",
+      "tags": [
+        "AI",
+        "本地推理",
+        "Apple生态",
+        "M系列Mac",
+        "开源",
+        "编程优化"
+      ]
+    },
+    {
+      "title": "Why do OpenAI's GPT-2 weights beat mine?",
+      "link": "https://www.gilesthomas.com/2026/07/why-do-openai-gpt2-weights-beat-mine-1-intro",
+      "source": "gilesthomas.com",
+      "publishedAt": "2026-07-29T15:30:00.000Z",
+      "summary": "When I finished my project training an LLM from scratch, I was\nleft with a minor mystery.  Why were my models worse at instruction-following than the original OpenAI\nGPT-2 small weights?\nI had an evaluation that I was running,\nbased on the instruction fine-tuning code in chapter 7 of\n\"Build a Large Language Model (from Scratch)\".\nThe process was to train a model on samples from the Alpaca\ninstruction-following dataset until validation loss started rising, to use that instruction fine-tuned model to generate\ncompletions to a held-back test set, and then to use an LLM to compare the\nresults from various different models.  The details are here;\nlet's call it the IFT eval.\nOpenAI's original weights for GPT-2 small consistently beat my own\nmodels, even when mine got better results than theirs on a more technical\nevaluation, where I just measured the cross entropy loss for each model on a\nheld-back set of test sequences.  This surprised me; I would have expected\na reasonably close correlation between the two evals -- that better test loss would imply\nbetter instruction-following.\nI have a couple of thoughts about why this might be, and given that I recently\nset up poppy, my dedicated LLM training box\nI decided to inaugurate her with an experiment to test one of them; further\nexperiments will come in time -- though I don't think this will be a focus for the blog.  More\nof a running theme, with occasional posts until either I solve the mystery, or\ngive up in despair...\nIn this post I'll give a bit more detail about the nature of the problem, and\nlist some of the things I've been thinking might be the cause.  In the next post, I'll give the results\nof the first experiment.\nMore on the mystery\nLet's take a look at the results from my most recent runs of the IFT eval.  I've\nhighlighted the OpenAI models in bold, and the table is sorted by the test loss -- that\nmore technical evaluation that I mentioned earlier, where lower is better.\nHow well the model did\nwith the IFT eval is in the last three columns.  The \"IFT epochs\" column shows\nhow many epochs of training the model needed before its\nvalidation loss started rising, the score is the average mark out of 100 that (in this case)\nGPT 5.5 gives the model's answers to the IFT test set, and the rank is the position the\nmodel holds in terms of that average score.\n\n  Test loss\n  IFT epochs\n  IFT score\n  IFT rank\n\n\n\n\n  OpenAI weights: medium\n  3.231442\n  2\n  41.62\n  1\n\n\n  JAX, with MHA bias, no dropout\n  3.418784\n  4\n  19.25\n  4\n\n\n  JAX, no MHA bias, no dropout\n  3.420089\n  3\n  14.66\n  11\n\n\n  JAX, no MHA bias, with dropout\n  3.476802\n  4\n  12.94\n  15\n\n\n  OpenAI weights: small\n  3.499677\n  2\n  26.73\n  2\n\n\n  1xrtx3090-stacked-interventions\n  3.538161\n  4\n  17.79\n  6\n\n\n  8xa100m40-stacked-interventions-1\n  3.577761\n  4\n  10.29\n  16\n\n\n  Cloud FineWeb, 8x A100 40 GiB\n  3.673623\n  7\n  20.71\n  3\n\n\n  1xrtx3090-baseline\n  3.683835\n  6\n  15.11\n  9\n\n\n  8xa100m40-baseline\n  3.691526\n  4\n  14.74\n  10\n\n\n  Cloud FineWeb, 8x H100 80 GiB\n  3.724507\n  4\n  13.25\n  14\n\n\n  Cloud FineWeb, 8x A100 80 GiB\n  3.729900\n  4\n  14.50\n  12\n\n\n  Cloud FineWeb, 8x B200 160 GiB\n  3.771478\n  4\n  16.03\n  8\n\n\n  Local FineWeb train\n  3.943522\n  7\n  13.73\n  13\n\n\n  Local FineWeb-Edu extended train\n  4.134991\n  7\n  16.70\n  7\n\n\n  Local FineWeb-Edu train\n  4.166892\n  7\n  18.68\n  5\n\n\n\n\nFor the IFT eval, the OpenAI weights are the best.  The \"medium\" model comes first, and the \"small\"\none comes second -- and there's a noticeable gap between \"small\" and\nthe score for my best model for that eval, \"Cloud FineWeb, 8x A100 40 GiB\": 26.73 vs 20.71.  That difference\nwas consistent across multiple runs of the eval -- the relative rankings of my own\nmodels varied more.\nIt's not surprising that the \"medium\" model does better -- it's\nmore than double the size of the others -- but the small model consistently beating mine was odd\ngiven that I had models with lower test loss.\nAnother thing that stands out is the number of epochs that the models were trained for.\nRemember, I trained them until the validation loss started rising -- that is, until the model\nstarted overfitting.  You can see that the OpenAI weights hit that after two epochs of\ntraining, whereas my models ranged between three and seven.\nThe loss landscape\nMy starting hypothesis was that the OpenAI weights were starting off from a better\nposition in the IFT loss landscape than mine.  The loss landscape for the task the various\nmodels were originally pre-trained for -- \"predict the next token for this sequence of\ntext that was pulled from the web\" -- is different to the loss landscape for the IFT task,\nwhich is something more like \"predict the next token in a useful response to this request\".\nLet's dig into that a bit.\nThe core idea behind the normal LLM training paradigm is that we can get a useful\nstarting point for a model by pre-training -- training on a whole load of cheaply-available stuff from the web --\nand only then have to use our much more expensive task-specific datasets for fine-tuning.\nI've been training my models on approximately 3.2 billion tokens of the fineweb\ndataset, which was generated from scrapes of the web, and then deduplicated and tidied up\na bit.\nIf I had instead trained them on 3.2 billion tokens of instruction-following samples --\nessentially, pre-packaged Q&A sessions between a human and an assistant -- then they\nwould almost certainly be much better than the models I have at instruction-following,\nfor the same cost in compute used to do the training run.\nBut the cost of generating those 3.2 billion tokens would be incredibly high.\nImagine hiring people to do it: the GPT-2 tokeniser averages about 0.75 words per token,\nand while I don't know how much you'd need to pay people to write 2.4 billion words, I\nsuspect it would be rather a lot.  Even generating that much synthetic data from\na larger LLM (as the Alpaca dataset was) would not be cheap -- I make it US$144,000 using GPT 5.6 Sol as of mid-2026.\nEven worse, the LLM we trained on that kind of data would be \"brittle\" -- if you wanted\nit to solve an even slightly different task (for example, Alpaca is single-shot question\nand answer, so imagine if you wanted it to handle multi-turn conversations like a chatbot),\nit would be hard to train it to do that.\nSo: the idea is that if we pre-train a base LLM on less-structured -- but, importantly, still\n\"real\" -- data like scraped web pages, we'll get a general-purpose base LLM relatively cheaply.\nIt will have discovered basic stuff like the structure of language, and hopefully some general\nknowledge (eg. maybe that the capital of France is Paris).  Once we have that, we can fine-tune\nit for specific uses.\nNow, both the initial pre-training and -- in this IFT test -- the fine-tuning phase of building our model\nare done in essentially the same way: trying to minimise the cross entropy loss of the model's predictions against a\ndataset. 1  What has changed between them is the targets we're trying to train the model to\npredict.  In the pre-training phase, we're trying to get it to predict web scrape data,\nin the fine-tuning, we're trying to predict responses to queries.\nPutting that idea into slightly more mathematical language (albeit loosely enough that\nany real mathematicians reading this will probably scream with horror), if we're saying that\na pre-trained model is useful as a base for instruction fine-tuning, what we have is\nan assumption that the loss landscape for the original pre-training phase is reasonably\nsimilar to the loss landscape for the fine-tuning.  We are hoping that a place that is\nnice and low on the pre-training landscape is reasonably close (in parameter space) to\na place that is low on the fine-tuning landscape.\nThat's all very abstract; let's try to visualise it.  If we imagine the loss landscape for a model\nwith two parameters, that's reasonably easy.   The two parameters make up\ntwo dimensions -- let's say left and right for one, forward and back for the other -- and\nthe loss at any given point is the vertical dimension.  It's an uneven surface, a bit like a rolling\nlandscape, with hills and mountains at points where the parameters have very high loss,\nand valleys and clefts where the loss is lower.\nIn reality, of course, we have somewhat more than two parameters.  With the 163,009,536\n  parameters in my GPT-2-small-style models, the loss landscape is not a surface but\n  a 163,009,536-dimensional hypersurface 2 in 163,009,537-dimensional space.  Good\n  luck visualising that.\nWhile taking intuitions from levels of dimensionality that we can actually imagine\n  over to insanely high-dimensional spaces like that is often risky -- weird stuff starts\n  happening as the number of dimensions goes up -- for what we're specifically looking at here, it's\n  safe.  The landscape image works for intuition.\nSo, we have one landscape like that for our pre-training phase.  When we start fine-tuning,\nthe loss landscape changes to a different one.  What we're hoping is that the landscape\nis reasonably similar; that the low point that we wound up at in the pre-training landscape\nis close to a low point in the new fine-tuning landscape when that is swapped in. 3\nThe good news is that we know that this process of doing a pre-train then a fine-tune works.\nMost modern AI is trained using it as a foundation (though there's lots of extra stuff on top).\nAnd indeed, you'd intuitively expect it to work -- it would be kind of weird if there was\nno correlation at all between the \"understand language\" loss landscape and the \"answer questions\"\none.\nBut this does mean that we can -- at least in a somewhat hand-wavey way -- characterise\nthe manner in which the OpenAI weights are \"better\" than mine in terms of the loss landscape.\nBoth the OpenAI weights and mine have landed in places that were good from the pre-training viewpoint;\nthat's what the \"Test loss\" results in the table above mean.  GPT-2 medium is doing better than any of\nmy models -- given that it's about twice the size, it should -- and GPT-2 small is doing better\nthan most of them.\nBut the places in the pre-train loss landscape where the OpenAI models landed were clearly better-matched to\ngood places in the fine-tuning loss landscape than my own models' places were.  The fact that\nthey took fewer epochs to start overfitting intuitively points in that direction -- after all,\nif you're closer to somewhere, then it takes less time to get there -- but the fact that they\nscored better after fine-tuning makes it pretty clear.\nBut something else that occurs to me as I write this is that the results on the test set\nalso point to a superiority in the OpenAI weights -- one that hadn't occurred to me\nin the past.\nOpenAI weights: better than we thought!\nLet's think about what that test set is.  In order to get data that was\npre-processed and ready to work with, I downloaded all of the 10 billion token\nversion of FineWeb, and split it into 99% training and 1% validation and test.  I\ntokenised each sample in each of those splits, and then concatenated them together into\na single sequence for each, separating the samples with <|endoftext|> tokens.  My training script\ntook the train split, broke it up into 1024-token sequences, assembled them into batches,\nand ran through 3.2B token's worth.\nThe loss test takes 19,660,800 tokens starting at position 50,000,000 in the validation/test\nsplit, and runs them through in batches of six, working out the average loss.\nNow, the GPT-2 weights were trained on something that I believe was constructed\nsimilarly -- get a load of text consisting of a bunch of documents from the web, tokenise them\nall and tack them together separated with <|endoftext|>s, and then use that.\nBut, importantly, it was a different dataset.  Annoyingly, we don't have access to OpenAI's\n\"WebText\" dataset, but I think it's reasonably safe to say that even if it is similar to what\nI came up with, it will be less similar to the sequences used for the loss test than\nmy own training set is.\nGiven that the loss test for the OpenAI small weights came out with a better\nresult than any of the models I trained in PyTorch, and was only narrowly beaten\nby the ones I trained with JAX (even then, I think, because the JAX models got lucky\nwith their random weight initialisation before they started training), then I think we can say that\nthe OpenAI weights are already considerably better than my own ones.\nThey were already at a good place in their own loss landscape, but it happened to also\nbe in a good place in my test set's.\nAn alternative analogy: if you imagine a group of 15 trail runners having a race on a route in a forest,\nwhere all but one of them regularly run on different routes in the same forest, but the\nodd one out is running there for the first time, if the newcomer gets a very\nclose fourth place, then it's not unreasonable to think that they're probably the best runner\nof all of them. 4\nFinally -- I've been talking about the models as if they were all the same size (apart from\nthe OpenAI medium weights), but there's one extra important\ndifference with OpenAI's: they use weight tying, while mine don't.  That means that\ntheir small model is significantly smaller than mine are -- closer to 124M parameters 5 than the\n163M that mine have.\nWeight tying made a lot of sense back in 2019, when VRAM was even harder to come by\nthan it is now, but when I looked into it,\nit made loss much worse.\nCarrying on with the trail runner metaphor, the OpenAI small weights not only don't know\nthe forest well -- they're also (scratches head looking for a good analogy) physically\nweaker.  Their performance is even more impressive.\nSo: OpenAI weights good, mine (relatively) bad.  Their smaller model, being tested for loss on a\nless-familiar-looking test set, does better -- or at least only a tiny bit worse than --\nmy larger ones.  And when instruction fine-tuned, it converges on a better-performing\nresult, and does it faster.\nWhat could the difference be?\nProbably not dropout...?\nOne thing that occurred to me while I was pondering this was dropout.  If, when training,\nwe randomly ignore 10% of the activations, perhaps we get a more generalisable model?\nMost of what I've read recently about dropout has focused on how\nit helps to avoid memorisation in multi-epoch training runs, but when I first read about it\nI felt that the generalisation argument was also strong.\nIf true, that might explain the lower number of epochs needed for instruction fine-tuning, and\nmaybe even the performance.\nLuckily, though, I'd accidentally done an experiment that suggested that this wasn't the difference.  As one\nof my JAX training runs, I'd trained one with dropout, and as you can see if you look back\nat the results table above, it was one of the worst performers in the IFT\ntest.\nOne result is not a proof, but the fact that this one was bad compared to the others\nmeant that I felt it was solid enough to ignore dropout as a possibility, at least initially.\nData quality?\nAgain, it's kind of annoying that WebText was never published.  All we know about it\nis from the paper,\nwhere they say:\n[W]e created a new web scrape which emphasizes\n  document quality. To do this we only scraped web pages\n  which have been curated/filtered by humans. Manually\n  filtering a full web scrape would be exceptionally expensive\n  so as a starting point, we scraped all outbound links from\n  Reddit, a social media platform, which received at least 3\n  karma. This can be thought of as a heuristic indicator for\n  whether other users found the link interesting, educational,\n  or just funny.\nHow does this compare with FineWeb in terms of quality?  Without seeing the results,\nwe really can't say.  FineWeb is more of a general web-scraping corpus, without the\n\"filtering\" provided by those Reddit upvotes.  On the other hand, we're talking about\nReddit here, and all kinds of awful junk gets upvoted, so I'm not confident that it's\nthat strong a quality signal.  And FineWeb has been curated to some degree.\nThat said, I had previously noticed that the models I had trained on the\nFineWeb-Edu dataset (\"the most educational web pages\"\nfrom FineWeb) punched above their weight in the IFT test.  They got pretty poor\nloss on the test set, but didn't do too badly in IFT.\nIn retrospect, it's actually not that surprising that they did badly on the test loss eval;\nthey were trained on a curated dataset of \"good\" stuff, and then were being evaluated\nagainst whatever less-curated stuff appears in the test set -- which you'll remember came\nfrom FineWeb.  If you train a model\non Jane Austen and then evaluate against Chuck Tingle, then\nyou're not going to get amazing results.\nBut then, there's the excellent performance of the OpenAI weights on that\nsame FineWeb test set.  Even if WebText was higher quality than FineWeb, that clearly wasn't the\nwhole story.\nSo data quality felt like it might be part of it -- but it wasn't where I wanted\nto start.\nOvertraining?\nThis, finally, is where I landed for a first experiment.  I'd been training my models on 20 tokens per parameter -- the Chinchilla-optimal\nnumber.  But that heuristic dates to 2022, and GPT-2 was trained in 2019.  While\nwe don't know for sure, from what I've managed to dig up it looks like it\nwas probably trained on much more data -- and probably over multiple epochs too.\nTraining on more tokens than the Chinchilla number is called overtraining (not to be confused with overfitting).  So,\nin my next post: what happens if we overtrain the model?  Will we get the\nloss down?  And if so, will we start approaching GPT-2 small's results on the IFT\neval?\nStay tuned :-)\nModern production LLMs tend to use reinforcement learning as a big part of the fine-tuning\nphase, and that works quite differently. ↩\nWhen I started reading up on this, I was hoping that it would be a manifold,\nlargely because I like the word.  And it is!  A hypersurface is a specific kind\nof manifold.  :-D ↩\nIf you like fantasy, there are some neat parallels there; the different overlaid\nworlds the characters move between in Philip Pullman's His Dark Materials series\n(aka The Golden Compass), China Miéville's Un Lun Dun, V. E. Schwab's Shades of Magic,\nand Charlie Stross's The Merchant Princes series come to mind.\nEven the Upside Down in Stranger Things works, though then you have to decide\nwhich of your loss landscapes is the evil one, and that muddies the analogy annoyingly. ↩\nSharp-eyed readers might have noticed that there are 16 models in the table above.\nI'm excluding the OpenAI medium weights.  If you want to extend the analogy, that model\nis an Olympic runner who happens to have stopped by for the race... ↩\nThe paper says 117M, but the released weights are larger.  I can successfully\nload them into my code with a model config that has 124,439,808 parameters. ↩",
+      "id": "f7dfdff0aa4f87fc33a845a580d6be89241a2bd6010ca118cfbc1900ac8370ab",
+      "ref_id": "3",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "深入探讨了LLM训练中的一个关键性能评估问题，技术深度和实用性极高。",
+      "reason": "文章直接聚焦于AI领域前沿的LLM训练和模型性能对比问题，提出了具体观察和分析，对LLM研究者和开发者具有重要的启发和参考价值。",
+      "tags": [
+        "AI",
+        "LLM",
+        "GPT-2",
+        "模型训练",
+        "性能评估",
+        "深度学习"
+      ]
+    },
+    {
+      "title": "GPT-5.6 vs. Claude Fable 5 for Physical AI, which performs best?",
+      "link": "https://juliahub.com/blog/frontier-models-physical-ai-evaluation",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-29T14:56:28.000Z",
+      "summary": "Article URL: https://juliahub.com/blog/frontier-models-physical-ai-evaluation\nComments URL: https://news.ycombinator.com/item?id=49098388\nPoints: 33\n# Comments: 5",
+      "id": "6e8c1eec99eb74d90ae6ce150e112a9dadd6c22da6c9bd7fb5e813430dfaabf8",
+      "ref_id": "1",
+      "recommendationScore": 92,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "对比评估了GPT-5.6和Claude Fable 5在物理AI领域的性能表现。",
+      "reason": "直接比较两大前沿AI模型，提供了在特定应用（物理AI）场景下的性能数据和洞察，实用性强。",
+      "tags": [
+        "AI模型",
+        "GPT",
+        "Claude",
+        "性能评估",
+        "物理AI"
+      ]
+    },
+    {
+      "title": "Self-hosting Kimi K3: 20% more hardware cost, 20% better task resolution",
+      "link": "https://aistack.imec-int.com/blog/gpu-self-hosting",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-29T14:38:35.000Z",
+      "summary": "Article URL: https://aistack.imec-int.com/blog/gpu-self-hosting\nComments URL: https://news.ycombinator.com/item?id=49098130\nPoints: 30\n# Comments: 10",
+      "id": "2b9581e6efdc4770cefaccae86098df3a4923f4e4eaf9eec58d3ae37c0fd5075",
+      "ref_id": "3",
+      "recommendationScore": 91,
+      "popularityScore": 68,
+      "priority": "high",
+      "comment": "详细分析了自托管Kimi K3模型的硬件成本与任务解决能力之间的权衡。",
+      "reason": "为考虑自部署AI模型的企业和开发者提供了详尽的成本效益分析和技术参考，信息密度高。",
+      "tags": [
+        "AI部署",
+        "自托管",
+        "Kimi",
+        "硬件成本",
+        "性能优化"
+      ]
+    },
+    {
+      "title": "Infrastructure Patterns for Agentic Applications",
+      "link": "https://render.com/blog/infrastructure-patterns-for-agentic-applications",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-29T16:59:04.000Z",
+      "summary": "Article URL: https://render.com/blog/infrastructure-patterns-for-agentic-applications\nComments URL: https://news.ycombinator.com/item?id=49100035\nPoints: 9\n# Comments: 1",
+      "id": "31797ea180d104d8a7d3abf5ee70a31eb2e8855115f6450025e44c24b7afea8b",
+      "ref_id": "0",
+      "recommendationScore": 90,
+      "popularityScore": 60,
+      "priority": "high",
+      "comment": "深入探讨了AI代理应用的基础设施模式，对开发者构建复杂AI系统极具参考价值。",
+      "reason": "该文紧跟AI前沿热点，提供了实用的系统设计指导，在技术深度、新颖性和实用性上表现出色。",
+      "tags": [
+        "AI",
+        "Infrastructure",
+        "Agentic Applications",
+        "System Design",
+        "Cloud"
+      ]
+    },
+    {
+      "title": "Hugging Face: Anatomy of a frontier-lab agent intrusion",
+      "link": "https://huggingface-anatomy-of-frontier-lab-model-intrusion.static.hf.space/index.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-29T15:01:52.000Z",
+      "summary": "Article URL: https://huggingface-anatomy-of-frontier-lab-model-intrusion.static.hf.space/index.html\nComments URL: https://news.ycombinator.com/item?id=49098466\nPoints: 58\n# Comments: 16",
+      "id": "08fa271d88f45345f7f99a81cc4f204dc467bcee93b5bd0611cf8b43eca6534b",
+      "ref_id": "0",
+      "recommendationScore": 90,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "深入剖析了Hugging Face的AI代理入侵事件，提供了宝贵的安全洞察。",
+      "reason": "文章主题紧密围绕AI安全，技术深度高，对关心大模型平台安全性的读者极具参考价值。",
+      "tags": [
+        "AI安全",
+        "HuggingFace",
+        "网络安全",
+        "大模型",
+        "安全漏洞"
+      ]
+    },
+    {
+      "title": "Discovering cryptographic weaknesses with Claude",
+      "link": "https://simonwillison.net/2026/Jul/28/discovering-cryptographic-weaknesses-with-claude/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-07-28T22:45:37.000Z",
+      "summary": "",
+      "id": "76714d4a34b5d35932439c27c94acc4b0d57659104d1db0f6dd6c34d4c25ee63",
+      "ref_id": "1",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "探索利用AI模型Claude发现加密漏洞的技术细节与方法。",
+      "reason": "将AI与网络安全（密码学）两大热门且前沿领域结合，技术深度和新颖性极高，对安全研究和开发领域具有重要参考价值。",
+      "tags": [
+        "AI",
+        "网络安全",
+        "密码学",
+        "Claude",
+        "漏洞发现"
+      ]
+    },
+    {
+      "title": "Why compute might get 10x+ more expensive in coming years",
+      "link": "https://www.dwarkesh.com/p/why-compute-might-get-10x-more-expensive",
+      "source": "dwarkesh.com",
+      "publishedAt": "2026-07-29T15:01:35.000Z",
+      "summary": "If a human-level software engineer that could run on an H100 equivalent, at current market rates for software engineers, that H100 should rent for over $250k a year. That’s 15x today’s spot price.",
+      "id": "2a335d49ad2d98614d02f007ec31e0305e02cf6d8f2fece48db9d9125604c8f5",
+      "ref_id": "0",
+      "recommendationScore": 90,
+      "popularityScore": 88,
+      "priority": "high",
+      "comment": "深入剖析AI计算成本的未来走势，观点前瞻且具冲击力。",
+      "reason": "文章从经济角度预测AI计算成本的潜在增长，提供了对AI产业未来发展方向的关键洞察，对行业决策者和投资者极具参考价值，且紧扣AI主题。",
+      "tags": [
+        "AI",
+        "经济学",
+        "算力",
+        "成本分析",
+        "未来趋势",
+        "硬件"
+      ]
+    },
+    {
+      "title": "Show HN: Qwen Scribe – local transcription and dictation for Apple Silicon",
+      "link": "https://github.com/VladUZH/qwen-scribe",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-29T14:47:22.000Z",
+      "summary": "Article URL: https://github.com/VladUZH/qwen-scribe\nComments URL: https://news.ycombinator.com/item?id=49098260\nPoints: 23\n# Comments: 4",
+      "id": "005d4146919ce78f047e506f63744f127dad191dd79088d5ccd2966daae07fa5",
+      "ref_id": "2",
+      "recommendationScore": 88,
+      "popularityScore": 55,
+      "priority": "high",
+      "comment": "展示了一款为Apple Silicon优化的本地转录和听写工具。",
+      "reason": "结合AI技术和Apple生态，为Mac用户提供了高效、私密的本地解决方案，实用性突出。",
+      "tags": [
+        "Apple Silicon",
+        "本地AI",
+        "转录工具",
+        "听写",
+        "独立开发"
+      ]
+    },
+    {
+      "title": "Anatomy of a Frontier Lab Agent Intrusion: A Technical Timeline of the July 2026 Incident",
+      "link": "https://simonwillison.net/2026/Jul/28/anatomy-of-a-frontier-lab-agent-intrusion/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-07-28T21:28:54.000Z",
+      "summary": "",
+      "id": "27e9eb043a6d1bd4bf247ab74dcdf310bf110ce99dcbf4cbb9a2cc9e59479aee",
+      "ref_id": "4",
+      "recommendationScore": 88,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "对未来一起假设性高级智能体入侵事件进行技术性复盘和时间线分析。",
+      "reason": "结合了网络安全、自动化或AI agents的潜在主题，通过前瞻性视角分析未来威胁模型，技术深度和实用性俱佳，具有高度吸引力。",
+      "tags": [
+        "网络安全",
+        "入侵分析",
+        "自动化",
+        "未来科技",
+        "AI Agents"
+      ]
+    },
+    {
+      "title": "Apple Upgrade — New Program With Klarna for Leasing iPhones, Macs, iPads, and More for Near-Zero Interest",
+      "link": "https://www.apple.com/newsroom/2026/07/apple-upgrade-launches-in-the-united-states/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-29T16:51:15.000Z",
+      "summary": "Apple Newsroom:\nApple today announced Apple Upgrade, a new product leasing\nprogram provided by Klarna for iPhone, Apple Watch, Mac, and iPad\navailable on the Apple Store online, in the Apple Store app, and\nat Apple Store locations in the United States. Apple Upgrade makes\nit even easier for customers to get the Apple products they love\nwith a leasing plan that is right for them. [...]\nApple Upgrade offers 12- and 24-month leasing options for iPhone\nand Apple Watch, and 24- and 36-month leasing options for Mac and\niPad. Leasing prices start as low as $17.99 per month for iPhone,\n$11.99 for Apple Watch, $24.99 for Mac, and $11.99 for iPad. When\ncustomers first enroll in Apple Upgrade, they can further lower\ntheir monthly lease payments by trading in their currently owned\ndevice through Apple Trade In. Customers can also earn 3 percent\nDaily Cash back when making their lease payments with Apple Card.\nMichael Tsai, quoting Juli Clover at MacRumors:\nJuli Clover:\nThe payoff amount is the difference between what was paid during\nthe leasing period and the retail price of the device, minus any\nremaining trade-in credits. Klarna is not charging a fee for the\nleasing program, so an iPhone that’s $1,099 can be leased and\nthen purchased for $1,099 with no extra cost beyond taxes.\nI guess this means that, for a bit of hassle, you can essentially\nbuy the device for the list price at 0% interest.\nIf you’d rather lease or buy over time, this seems like as good a deal as you could hope for, without any catches.\n ★",
+      "id": "ae3fb2fb7897f8139b13c09fdef7797268a71c01388fe100abba6f434f926762",
+      "ref_id": "1",
+      "recommendationScore": 88,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "及时报道Apple与Klarna合作的全新租赁计划，为用户提供了新的产品获取方式。",
+      "reason": "内容紧扣Apple生态系统（高优先级），提供了消费者关心的、具有高实用性的新金融服务信息。",
+      "tags": [
+        "Apple",
+        "Apple Ecosystem",
+        "Financing",
+        "Consumer Tech",
+        "News"
+      ]
+    },
+    {
+      "title": "Handbook.md shows that long policy documents do not reliably govern agents",
+      "link": "https://arxiv.org/abs/2607.25398",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-29T13:01:57.000Z",
+      "summary": "Article URL: https://arxiv.org/abs/2607.25398\nComments URL: https://news.ycombinator.com/item?id=49096969\nPoints: 190\n# Comments: 127",
+      "id": "49b6b58de5f0d268b5b62445694a45f2e8863c2adb1e7c19a3a532bf16fc6544",
+      "ref_id": "0",
+      "recommendationScore": 86,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "深入探讨了AI代理策略文档的局限性，对AI治理有重要启示。",
+      "reason": "主题高度契合AI优先级，内容具备极高技术深度和理论价值，且社区关注度高。",
+      "tags": [
+        "AI",
+        "Agents",
+        "Policy",
+        "Research"
+      ]
+    },
+    {
+      "title": "Pastebot 3",
+      "link": "https://tapbots.com/pastebot/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-29T16:07:03.000Z",
+      "summary": "New from Tapbots: version 3 of their excellent clipboard manager for Mac. There are so many clipboard managers for the Mac. I run two other apps — Keyboard Maestro and LaunchBar — that offer good clipboard managers as ancillary features. But for years now I’ve chosen to use Pastebot. Chief among my favorite features:\nRemembers up to 1,500 clippings (up from a mere 1,000 in v2).\nSyncs via iCloud. If I copy something on one Mac, it’s in my Pastebot history on my others Macs.\nThat sweet Tapbots UI.\nPastebot 3 requires MacOS 26 Tahoe or later. That means I’m only using it on secondary Macs for now — my primary workstation will continue running MacOS 15 Sequoia until I upgrade directly to 27 Golden Gate later this year. But iCloud sync continues to work between Pastebot 2 and 3.\nNew features include more powerful filters (e.g. you can use a filter to copy a URL and then paste that URL in Markdown’s link syntax), a CLI tool (as yet undocumented), and Shortcuts support.\n$39 for a license via direct purchase, with a $13 discount for users of previous versions. It’s still pending approval in the Mac App Store, where it will cost $25/year or $3/month.\n ★",
+      "id": "6997c773f12bf1741327566f1c958fff96e547ea22098e77845730cade0e654a",
+      "ref_id": "2",
+      "recommendationScore": 82,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "详细评测了Mac平台知名剪贴板管理工具Pastebot 3，突出了新功能和实用价值。",
+      "reason": "聚焦Apple生态（Mac应用）和生产力工具，对Mac用户具有高实用性，且介绍了CLI和Shortcuts支持，触及编程工具领域。",
+      "tags": [
+        "Mac",
+        "Apple Ecosystem",
+        "Productivity",
+        "Software Review",
+        "Programming Tools"
+      ]
+    },
+    {
+      "title": "A Texture Lookup Approach to Bézier Curve Evaluation on the GPU (JCGT)",
+      "link": "https://jcgt.org/published/0015/02/01/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-29T12:40:13.000Z",
+      "summary": "Article URL: https://jcgt.org/published/0015/02/01/\nComments URL: https://news.ycombinator.com/item?id=49096742\nPoints: 29\n# Comments: 4",
+      "id": "cc564787a710790ef1fe8f12381fc100f3f1222ef009897e9b1184ec39f40a4d",
+      "ref_id": "2",
+      "recommendationScore": 80,
+      "popularityScore": 35,
+      "priority": "medium",
+      "comment": "一篇关于在GPU上高效评估Bézier曲线的学术论文，技术深度极高。",
+      "reason": "虽然受众小众，但技术深度和专业性极强，对图形渲染领域的工程师具有重要参考价值。",
+      "tags": [
+        "Graphics",
+        "GPU",
+        "Bézier Curves",
+        "Computer Graphics",
+        "Research"
+      ]
+    },
+    {
+      "title": "Shipping Godot VR and Porting to PSVR2: A Partial Post Mortem",
+      "link": "https://www.claire-blackshaw.com/blog/2026/07/shipping-godot-vr-and-porting-to-psvr2-a-partial-post-mortem/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-29T12:48:18.000Z",
+      "summary": "Article URL: https://www.claire-blackshaw.com/blog/2026/07/shipping-godot-vr-and-porting-to-psvr2-a-partial-post-mortem/\nComments URL: https://news.ycombinator.com/item?id=49096811\nPoints: 69\n# Comments: 0",
+      "id": "5854d09d53994603f335e6e7095586ce58ff95d8c77dc9cc46547730b1f6ed60",
+      "ref_id": "1",
+      "recommendationScore": 76,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "分享了Godot VR游戏开发及PSVR2移植的实践经验与教训，对VR开发者有参考价值。",
+      "reason": "对Godot VR和PSVR2开发有直接实用性，为特定领域的开发者提供了宝贵的实践洞察。",
+      "tags": [
+        "Game Development",
+        "VR",
+        "Godot",
+        "PSVR2",
+        "Post-Mortem"
+      ]
+    },
+    {
+      "title": "The AI Hype Index: Unsexy AI",
+      "link": "https://www.technologyreview.com/2026/07/29/1140795/the-ai-hype-index-unsexy-ai/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-07-29T08:42:57.000Z",
+      "summary": "It feels bad enough when an open letter signed by leading economists warns that AI might steal your job. The fact it may soon be better than you at making dinner? Insult to injury. But that’s exactly what the company 1X promised when it showed off a pair of new, impressively dexterous (and, to some,…",
+      "id": "e012bc9b22d358bbf968ad80427dba08611c5e19bfa17b227f25f45744fcd6e0",
+      "ref_id": "0",
+      "recommendationScore": 75,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "深入探讨AI炒作现象背后的非显性但有影响力的应用及社会效应。",
+      "reason": "文章聚焦AI的非传统视角，结合实际案例分析其潜在影响，具有较高的思考价值和受众吸引力，符合AI主题的高优先级。",
+      "tags": [
+        "AI",
+        "社会影响",
+        "趋势分析",
+        "机器人"
+      ]
+    },
+    {
+      "title": "Superlogical – Mitchell Hashimoto",
+      "link": "https://mitchellh.com/writing/superlogical",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-29T15:45:56.000Z",
+      "summary": "Article URL: https://mitchellh.com/writing/superlogical\nComments URL: https://news.ycombinator.com/item?id=49099015\nPoints: 104\n# Comments: 20",
+      "id": "a883c0208eb7dd5eb606dde65e9e7494ae4cb65be870d92ac2fe149bf0a660ef",
+      "ref_id": "1",
+      "recommendationScore": 70,
+      "popularityScore": 85,
+      "priority": "medium",
+      "comment": "知名技术人物Mitchell Hashimoto宣布新公司Superlogical的链接，具体内容需点击查看。",
+      "reason": "知名技术人物的最新动态，对关注技术圈发展的人有吸引力。",
+      "tags": [
+        "科技新闻",
+        "新公司",
+        "Mitchell Hashimoto"
+      ]
+    },
+    {
+      "title": "Mitchellh starts a new company: Superlogical",
+      "link": "https://www.superlogical.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-29T15:41:33.000Z",
+      "summary": "Article URL: https://www.superlogical.com/\nComments URL: https://news.ycombinator.com/item?id=49098965\nPoints: 95\n# Comments: 30",
+      "id": "7cfd61c901fe08676d018a8d87cf5cd85cec1ab26d0b00b04eb8cd5ac6487efe",
+      "ref_id": "2",
+      "recommendationScore": 70,
+      "popularityScore": 85,
+      "priority": "medium",
+      "comment": "再次确认Mitchell Hashimoto成立新公司Superlogical的消息，直接链接至公司官网。",
+      "reason": "围绕知名技术人物的新公司消息，在科技社区有较高的关注度。",
+      "tags": [
+        "科技新闻",
+        "新公司",
+        "Mitchell Hashimoto"
+      ]
+    },
+    {
+      "title": "Count Those Underscores",
+      "link": "https://arstechnica.com/tech-policy/2026/07/police-missed-one-underscore-and-sent-the-wrong-man-to-prison/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-29T15:28:02.000Z",
+      "summary": "Nate Anderson   , reporting for Ars Technica under the headline “A Missing Underscore Sent Innocent Man to Prison for 18 Months”:\nPolice were looking for a man using the Kik messaging service\nunder the name “fus__ro_dah” (two underscores after “fus”), but\nthey accidentally requested records for the username\n“fus_ro_dah” (one underscore after “fus”). This one-character\ndifference led them not to the perpetrator but to a Canadian man\nnamed Brandon Klayme. [...]\nDespite finding no evidence of the crime on his digital devices,\nCanadian police arrested Klayme in 2020 on child sex abuse\ncharges. He was convicted after a trial in 2023 and sentenced in\n2024 to 18 months in prison. He served the full term.\nEven after release, Klayme continued to fight his conviction. In\nthe process of preparing his appeal, the username mistake that led\nto all these years of disruption was finally discovered. On\nThursday, the Nova Scotia Court of Appeal overturned Klayme’s\nconviction, writing: “Mr. Klayme is factually innocent of the\noffences. He should never have been charged, let alone convicted.”\nVia Paul Kafasis, who asks:\nWhile I understand how the mistake led to this poor guy becoming a\nsuspect, I really can’t fathom how he was convicted. What the hell\nhappened during that trial?\nContra Ars’s headline, it wasn’t the missing underscore that sent Klayme to prison for 18 months.\n ★",
+      "id": "262c6f404ce0d7219ce7012ac333cf89b2507144be8c14b1111f6f26551ab490",
+      "ref_id": "3",
+      "recommendationScore": 68,
+      "popularityScore": 78,
+      "priority": "low",
+      "comment": "报道了一起因一个下划线之差导致无辜者蒙冤入狱的警示性案件，强调了数据精确性在法律和技术中的关键作用。",
+      "reason": "虽然不直接属于核心技术主题，但通过真实案例强调了数据处理和系统设计的严谨性，具有重要的社会和警示意义。",
+      "tags": [
+        "Cybersecurity",
+        "Human Error",
+        "Data Accuracy",
+        "Legal Tech",
+        "Case Study"
+      ]
+    },
+    {
+      "title": "Cesium DevCon 2026 talks are up, including a keynote from SQLite's creator",
+      "link": "https://cesium.com/events/cesium-developer-conference/2026/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-29T15:13:25.000Z",
+      "summary": "Article URL: https://cesium.com/events/cesium-developer-conference/2026/\nComments URL: https://news.ycombinator.com/item?id=49098599\nPoints: 25\n# Comments: 5",
+      "id": "c990786a1360d037b8129e18d09616d9cf2116b54472f7d2f582bc96c4596c98",
+      "ref_id": "3",
+      "recommendationScore": 65,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "Cesium开发者大会2026的演讲列表已公布，其中包含SQLite创建者的主题演讲。",
+      "reason": "知名数据库工具创建者的参与，使得此次开发者大会的关注度提高，对相关开发者有价值。",
+      "tags": [
+        "开发者大会",
+        "SQLite",
+        "编程工具",
+        "地理空间"
+      ]
+    },
+    {
+      "title": "uv 0.12.0",
+      "link": "https://simonwillison.net/2026/Jul/28/uv/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-07-28T21:51:38.000Z",
+      "summary": "",
+      "id": "c688e74a59286a879d46b2391c001df53744eabff498810a6439e9502e14ab28",
+      "ref_id": "3",
+      "recommendationScore": 65,
+      "popularityScore": 50,
+      "priority": "medium",
+      "comment": "关于“uv”工具0.12.0版本更新的发布说明或技术变更。",
+      "reason": "属于编程工具主题，对特定工具用户具有实用性，能帮助他们了解最新功能和改进。",
+      "tags": [
+        "编程工具",
+        "版本更新",
+        "开发",
+        "软件发布"
+      ]
+    },
+    {
+      "title": "Making an agile version of a Windows Runtime delegate in C++/WinRT, part 8",
+      "link": "https://devblogs.microsoft.com/oldnewthing/20260729-00/?p=112570",
+      "source": "devblogs.microsoft.com/oldnewthing",
+      "publishedAt": "2026-07-29T14:00:00.000Z",
+      "summary": "Exceptions hiding in lambda captures.\nThe post Making an agile version of a Windows Runtime delegate in C++/WinRT, part 8 appeared first on The Old New Thing.",
+      "id": "47b7b3ad5b3eff0f5b44867d693096abcda1c8c5fbab19f72ad6da99e11cce8e",
+      "ref_id": "2",
+      "recommendationScore": 65,
+      "popularityScore": 50,
+      "priority": "medium",
+      "comment": "一篇针对C++/WinRT特定高级主题的系列文章，对Windows平台开发者具有专业参考价值。",
+      "reason": "尽管内容简短，但标题明确指向C++/WinRT的高级编程技巧，表明其对特定编程工具和技术细节的深入关注，对目标受众实用性高。",
+      "tags": [
+        "C++",
+        "WinRT",
+        "Windows开发",
+        "编程工具",
+        "委托",
+        "lambda"
+      ]
+    },
+    {
+      "title": "AI: Overwegingen voor wie erover gaat",
+      "link": "https://berthub.eu/articles/posts/ai-voor-wie-erover-gaat/",
+      "source": "berthub.eu",
+      "publishedAt": "2026-07-29T13:20:00.000Z",
+      "summary": "Onlangs presenteerde ik kort na elkaar bij het Netwerk van Publieke Dienstverleners en bij de Adviesraad Wetenschap, Technologie en Innovatie over AI. In deze twee verschillende maar korte presentaties hoopte ik wat inzichten te delen die nuttig zijn voor mensen die nu aan het stuur zitten, mensen die keuzes kunnen of moeten maken over AI-beleid. Dank aan NPD en AWTI voor de uitnodigingen en de stimulerende discussies!\nDit artikel is gebaseerd op deze twee verschillende presentaties.",
+      "id": "6d58c8e21149ded02192779ce73438c1e8bfb070b966d21c7497bafcbb9a6359",
+      "ref_id": "1",
+      "recommendationScore": 65,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "围绕AI政策制定者的考量，内容偏向宏观策略，但信息密度在节选中不高，且为非主流语言。",
+      "reason": "文章关注AI政策和治理，对特定决策者有价值，但其宏观视角、有限的技术深度以及内容语言（荷兰语）可能对广泛的科技博客读者吸引力一般。",
+      "tags": [
+        "AI",
+        "政策",
+        "治理",
+        "宏观策略",
+        "公共服务"
+      ]
+    },
+    {
+      "title": "The Download: a chip talent battle, and deflating AI hype",
+      "link": "https://www.technologyreview.com/2026/07/29/1140884/the-download-chip-talent-battle-deflating-ai-hype/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-07-29T12:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. Samsung’s chip workers are jumping ship to rival SK Hynix   Lee, an engineer at Samsung’s semiconductor division, used to work late. But lately, he’s been clocking out on time and heading…",
+      "id": "8c061c713937680c1044dc9874e74dc0e947b78130d731e05a736b2736f99719",
+      "ref_id": "4",
+      "recommendationScore": 64,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "一份科技新闻摘要，涵盖芯片人才战及AI炒作降温等热门话题。",
+      "reason": "内容涉及AI领域的最新动态和行业趋势，对了解科技大方向具有及时性，但深度有限。",
+      "tags": [
+        "AI Hype",
+        "Semiconductors",
+        "Industry News",
+        "Tech News",
+        "Talent"
+      ]
+    },
+    {
+      "title": "‘eBay’s Bizarre Cyberstalking Saga Ends With a $56 Million Settlement’",
+      "link": "https://www.theverge.com/tech/972209/ebay-cyberstalking-harassment-settlement",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-29T14:43:24.000Z",
+      "summary": "Emma Roth, The Verge:\neBay and three former executives will pay $55.7 million as\npart of a settlement with a Massachusetts couple targeted with a\nbizarre harassment and cyberstalking campaign in 2019, as\nreported earlier by CNBC. The settlement will resolve a\nlengthy legal saga that revealed how eBay’s former executives\nsent live insects, a bloody pig mask, a funeral wreath, and\nother strange items to David and Ina Steiner over their\nnewsletter’s coverage of eBay.\nThe Steiners, who operate the EcommerceBytes newsletter, sued eBay\nand its former executives — including ex-CEO Devin Wenig — in\n2021. The lawsuit accused the company and its executives of\nlaunching a coordinated effort to “intimidate, threaten to kill,\ntorture, terrorize, stalk and silence” the Steiners in an attempt\nto “stifle” their eBay-related reporting.\nI don’t think I’ve ever linked to this saga before, but I’m not sure why. One of those stories that slipped through cracks. It’s an astonishing tale. Could be the basis for  Coen brothers movie.\nFrom David Streitfeld’s 2020 overview of the saga for The New York Times (gift link):\nProsecutors say that on Aug. 7, Ms. Popp — the “Mom” to Mr.\nBaugh’s “Dad” — began sending Twitter messages to Ms. Steiner\nvia a fake account, @Tui_Elei. The profile picture was a skull,\nand he seemed to be an eBay user from Samoa who believed that\nEcommerceBytes had harmed his sales. Ms. Steiner ignored the\nmessages, even as the tone got angrier and more abusive.\n@Tui_Elei wrote: “I guess im goin to have to get ur attention\nanother way bitch…”\nA parade of disturbing deliveries began at 4 p.m. on Aug. 10, when\na package containing a bloody pig mask arrived at the Steiners’\nhome. Fourteen minutes later, @Tui_Elei wrote: “DO I HAVE UR\nATTENTION NOW????”\nThe Steiners received a book titled “Grief Diaries: Surviving the\nLoss of a Spouse” and a funeral wreath. They got fly larvae and\nlive spiders and a box of cockroaches. Copies of the September\nissue of “Hustler: Barely Legal” touting “eye-popping\n18-year-olds” arrived at the homes of neighbors with David\nSteiner’s name on them. The Twitter bombardment continued, as\n@Tui_Elei began to hint at violence: “wen u hurt our bizness u\nhurt our familys… Ppl will do ANYTHING 2 protect family!!!!”\nIt’s certainly not how anyone would plan a business strategy, but this settlement seemingly makes the Steiners some of the most successful independent writers in history. Here’s Ina Steiner’s piece on the settlement at eCommerceBytes.\n ★",
+      "id": "9e2ef596c96ac958bd07660b4daf96f5a26533fa0dcd68679e4399a47508b332",
+      "ref_id": "4",
+      "recommendationScore": 62,
+      "popularityScore": 88,
+      "priority": "low",
+      "comment": "记录了eBay前高管对夫妇进行网络跟踪并最终以巨额和解金收场的离奇丑闻。",
+      "reason": "作为一则耸人听闻的科技公司丑闻，具有较高的社会关注度，但与核心技术深度、新颖性或实用性关联度较低。",
+      "tags": [
+        "Cybercrime",
+        "Corporate Ethics",
+        "Legal",
+        "Tech News",
+        "Scandal"
+      ]
+    },
+    {
+      "title": "Keychron announces first open-source firmware for gaming mice",
+      "link": "https://www.digitalfoundry.net/news/2026/07/keychron-announces-first-open-source-firmware-for-gaming-mice",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-29T16:36:59.000Z",
+      "summary": "Article URL: https://www.digitalfoundry.net/news/2026/07/keychron-announces-first-open-source-firmware-for-gaming-mice\nComments URL: https://news.ycombinator.com/item?id=49099715\nPoints: 17\n# Comments: 7",
+      "id": "22e15fc9f7a606059c6a860761a663a512dde5b218f43e330d5f924d41bd339d",
+      "ref_id": "1",
+      "recommendationScore": 60,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "Keychron发布了首款采用开源固件的电竞鼠标，为硬件爱好者提供了更多自定义空间。",
+      "reason": "文章报道了硬件开源的趋势，对特定用户群体有吸引力，但技术深度和主题优先级相对较低。",
+      "tags": [
+        "Open Source",
+        "Firmware",
+        "Gaming",
+        "Hardware",
+        "Peripherals"
+      ]
+    },
+    {
+      "title": "Ask HN: My domain registrar (Hover) rug-pulled me for $3000",
+      "link": "https://news.ycombinator.com/item?id=49099021",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-29T15:46:28.000Z",
+      "summary": "I registered the domain onlyfans.sexy ~6 years ago as a gag where I'd post pictures of fans (everything on the site and in this post is SFW).  This year I got an email stating that, like all prior years, the domain would auto-renew at $38 in seven days and didn't think anything of the next two emails also notifying me that the domain would auto-renew.\nIt would seem that I very much SHOULD have paid attention to those next two emails, because in both the three and one day renewal emails the price changed from $38 to $3000.  Needless to say, I was surprised when I was billed $3k USD (plus tax).\nAfter contacting Hover's customer support, they told me that there was nothing that they could do about this and they have a no refund policy because \"Hover does not have the ability to override or reverse pricing set by the registry. Premium domain pricing, including renewal costs, is determined by the registry, and they may adjust those prices over time. Once a renewal has been processed, we are charged that fee immediately by the registry, and those charges are non-refundable to us.\"\nSo according to Hover, the .sexy registry (Uniregistry) sets prices as it sees fit, decided to jack up the renewal cost at the last minute because they can, and there's simply nothing they or I can do about it. Has anyone here experienced anything similar?\nComments URL: https://news.ycombinator.com/item?id=49099021\nPoints: 39\n# Comments: 32",
+      "id": "2d24745c0af979576305fd6f69ad6fccf7bd240c5fc682ae906f88b8b7880ce7",
+      "ref_id": "0",
+      "recommendationScore": 60,
+      "popularityScore": 80,
+      "priority": "low",
+      "comment": "一篇关于域名注册商价格陷阱的个人经验分享，值得警惕。",
+      "reason": "揭露了域名续费的潜在陷阱，对拥有域名的用户具有警示作用。",
+      "tags": [
+        "域名",
+        "消费者权益",
+        "技术陷阱"
+      ]
+    },
+    {
+      "title": "Logic for Programmers is Done",
+      "link": "https://buttondown.com/hillelwayne/archive/logic-for-programmers-is-done/",
+      "source": "buttondown.com/hillelwayne",
+      "publishedAt": "2026-07-29T15:43:52.000Z",
+      "summary": "It's done.\nLogic for Programmers is now 1.0 and available in print. Full announcement here, official website here, direct Amazon link here. If you got an early version of the ebook, you can go back to leanpub to download the 1.0 for free.\nThis marks the completion of a project that took five years of work, six bookwriting professionals, fourteen domain experts, and fifteen public alphas. \nThis has been, without a doubt, the biggest and most exhausting project I've ever done. The examples in the discarded drafts alone could make a second book. The cursed knowledge I've gained on LaTeX and typography could fill a third (or at least a couple of entertaining blog posts). Self-publishing was simultaneously the worst and best decision I made.\nNow excuse me I am going to sleep for a month.",
+      "id": "903bd3239261574e03b4694edaa1c31b9c43611e5dca740b0b78dc1c06c20ae4",
+      "ref_id": "4",
+      "recommendationScore": 60,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "宣布了编程逻辑书籍的完成，并分享了个人自出版的宝贵经验和挑战。",
+      "reason": "文章不仅传达了重要书籍发布信息，还间接提供了自出版和技术写作的实践经验，对关注编程基础知识和独立内容创作的读者有一定参考价值。",
+      "tags": [
+        "编程逻辑",
+        "书籍",
+        "自出版",
+        "独立开发",
+        "LaTeX"
+      ]
+    },
+    {
+      "title": "CipherX applies painless permanent tattoos with dissolving microneedle patches",
+      "link": "https://www.designboom.com/technology/cipherx-painless-permanent-tattoos-dissolving-microneedle-patches/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-29T14:20:34.000Z",
+      "summary": "Article URL: https://www.designboom.com/technology/cipherx-painless-permanent-tattoos-dissolving-microneedle-patches/\nComments URL: https://news.ycombinator.com/item?id=49097908\nPoints: 13\n# Comments: 7",
+      "id": "00f0e20e8531f5ecb56aceb4f583723df14154118aafb320adc5a2871a5679ef",
+      "ref_id": "4",
+      "recommendationScore": 30,
+      "popularityScore": 45,
+      "priority": "low",
+      "comment": "介绍了一种通过微针贴片实现无痛永久纹身的新技术，新颖但与核心主题不符。",
+      "reason": "文章主题（生物科技/产品设计）与本博客关注的AI、Apple生态等核心领域关联度较低。",
+      "tags": [
+        "产品设计",
+        "生物科技",
+        "医疗技术",
+        "创新"
+      ]
+    },
+    {
+      "title": "Quoting Akshat Bubna",
+      "link": "https://simonwillison.net/2026/Jul/28/akshat-bubna/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-07-28T22:05:55.000Z",
+      "summary": "",
+      "id": "910e4aea068561cec2c9de80592d6d2c703235ae2eabc1007d32f8fc4b6321b0",
+      "ref_id": "2",
+      "recommendationScore": 30,
+      "popularityScore": 25,
+      "priority": "low",
+      "comment": "一篇引用他人言论的文章，由于内容缺失，无法判断其具体主题和价值。",
+      "reason": "标题过于模糊且文章内容为空，无法评估其技术深度、新颖性或实用性，优先级较低。",
+      "tags": [
+        "引用",
+        "观点",
+        "人物"
+      ]
+    },
+    {
+      "title": "Darktable",
+      "link": "https://www.darktable.org/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-29T12:33:02.000Z",
+      "summary": "Article URL: https://www.darktable.org/\nComments URL: https://news.ycombinator.com/item?id=49096654\nPoints: 153\n# Comments: 82",
+      "id": "d513c00c05a13e6f1019ab8099f2770ae0b9eceecfa2c4dc07692e85e19cd95c",
+      "ref_id": "3",
+      "recommendationScore": 28,
+      "popularityScore": 80,
+      "priority": "low",
+      "comment": "指向知名开源摄影软件Darktable的官网链接，本身无额外内容提供。",
+      "reason": "文章内容仅为官网链接，缺乏独立评估价值，尽管Darktable本身是一个优秀工具，但作为'文章'评分较低。",
+      "tags": [
+        "Photography",
+        "Open Source",
+        "Software",
+        "Tools"
+      ]
+    },
+    {
+      "title": "Pluralistic: Enshittification and Reverse Centaurs go global (29 Jul 2026)",
+      "link": "https://pluralistic.net/2026/07/29/la-la-la-la-la/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-07-29T08:09:34.000Z",
+      "summary": "Today's links Enshittification and Reverse Centaurs go global: The good globalism. Hey look at this: Delights to delectate. Object permanence: Fonz thumps x Linux; CBC v DRM; Aussie mall v photos; English town x CCTVs; Pay no taxes x Big Tech; Games Workshop v gamers; Delta x surveillance pricing. Upcoming appearances: Edinburgh, Sydney, Melbourne, Brighton, London, South Bend. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. Enshittification and Reverse Centaurs go global (permalink) It's safe to say that the past couple of years have been good ones for me publishing-wise, thanks to a string of international bestsellers, both novels (Picks and Shovels) and nonfiction (Enshittification, Reverse Centaur), as well as plenty of awards and accolades: https://craphound.com/shop Over the past two months, I've won the Locus Award (Enshittification), had a NYT bestseller (Reverse Centaur), gotten a word in the OED (\"enshittification\"), and had the number one bestselling nonfiction paperback in Canada for more than a month running (Reverse Centaur). I also turned 55 – and my radiologist told me I'm now cancer-free, so it's been a good summer all around. These books have done especially well internationally because they deal with technopolitics, which means that my readers are disproportionately Internet People, and for historical reasons, these are folks who are more likely to speak English, even if they live outside of the Anglosphere. This post is primarily for those readers, who often write to me to let me know how much they enjoyed the books, so much so that they'd like to share them with their less online, less English-conversant friends, and want to know whether there is a translation coming in their own language. Good news! Both Reverse Centaur and Enshittification have many foreign editions that are either published or forthcoming in the next year or so. The foreign rights team at Farrar, Straus and Giroux were good enough to prepare a list of all these editions, which I'm about to reproduce below. If your preferred language isn't on the list, I apologize. Translation deals are primarily \"pull,\" not \"push\" – that is to say, a foreign publisher contacts my publisher and asks for the rights (though my publisher does market the rights and attends all the book fairs where these deals are often made). The upshot here is that I am not really in a position to do more than has already been done to get an edition published in your preferred language or territory. If you happen to have a favorite local publisher, you could always ask them if they would like to get in touch with Farrar, Straus and Giroux foreign rights team to secure a license. I also need to note here that these deals are generally with established publishers who have relationships with national booksellers and distributors (rather than enthusiastic individuals who want to produce a translation and see if they can get it read by other people in their country). The hard part of publishing isn't the translation, the typesetting, the book design or even the writing – the hard part is connecting a text with its readers: https://pluralistic.net/2021/07/04/self-publishing/ With that all said, here's the master list of editions of Enshittification and The Reverse Centaur's Guide to Life After AI: USA 🇺🇸 and Canada 🇨🇦: Farrar, Straus and Giroux Enshittification: hardcover, Oct 2025; paperback, Sep 2026 https://us.macmillan.com/books/9780374619329/enshittification/ Reverse Centaur: paperback, Jun 2026 https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/ UK 🇬🇧 and Commonwealth excluding Canada (Australia 🇦🇺, New Zealand 🇳🇿, India 🇮🇳, South Africa 🇿🇦, and beyond): Verso Books Enshittification: hardcover, Oct 2025; paperback, Sep 2026 https://www.versobooks.com/en-gb/products/3341-enshittification Reverse Centaur: hardcover, Jun 2026 https://www.versobooks.com/en-gb/products/3584-the-reverse-centaur-s-guide-to-life-after-ai Brazil 🇧🇷: Grupo Editorial Record Enshittification, early 2027 France 🇫🇷: Éditions Eyrolles Enshittification: Feb 2027 Germany 🇩🇪: Aufbau Enshittification: May 2026 https://www.aufbau-verlage.de/blumenbar/enshittification/978-3-351-05143-3 Hungary 🇭🇺: Agave Konyvek Enshittification (as A Nagy Elszaródás/The Big Mess), Mar 2026 https://agavekonyvek.hu/konyv/ismeretterjeszto-190/a-nagy-elszarodas-miert-romlott-el-hirtelen-minden-es-mit-tehetunk-ellene Reverse Centaur (as A Nagy Összemolás/The Big Collapse), not yet scheduled Italy 🇮🇹: Iperborea Enshittification, not yet scheduled Japan 🇯🇵: Impress Corporation Enshittification, Jan 2027 Poland 🇵🇱: Wydawnictwo Otwarte Enshittification (as Gównowacenie), Aug 2026 https://www.znak.com.pl/p/gownowacenie-jak-cyfrowi-giganci-zmieniaja-nasz-swiat-na-gorsze-cory-doctorow-488999?abpid=10388&amp;abpcid=33&amp;bb_coid=231428551&amp;bbclid=cc5f0f24-aa55-4997-95ec-cefead709239 Portugal 🇵🇹: PRH Portugal Enshittification, not yet scheduled Quebec 🏴󠁣󠁡󠁱󠁣󠁿: Éditions Québec Amérique Enshittification: Apr 2027 Slovenia 🇸🇮: Mladinska Knjiga Enshittification, not yet scheduled South Korea 🇰🇷: Next Wave Media Enshittification, Jul 2026 https://product.kyobobook.co.kr/detail/S000220350700 Spain 🇪🇸: Capitán Swing Enshittification (as Mierdificación), Mar 2026 Reverse Centaur, not yet scheduled Taiwan 🇹🇼: Acropolis Enshittification, first quarter 2027 Thailand 🇹🇭: Salt Publishing Enshittification, Oct 2026 Türkiye 🇹🇷: Okuyanus Enshittification, Fall 2026 Ukraine 🇺🇦: Athena Publishing Enshittification, not yet scheduled (These are the confirmed deals. There are lots of other deals in negotiation, especially for Reverse Centaur, which is only a month old.) I hope some of you found this useful! If not (or if so!), don't worry, I'll be back with more essays in the days to come. One final note for newsletter readers: I realize that I have violated my \"one emoji per edition\" rule with the flags above. Rest assured this will not be a regular thing. Hey look at this (permalink) We used to be able to buy things in this country https://dannykatch.substack.com/p/we-used-to-be-able-to-buy-things How to Stop the Enshittification of America https://www.thebignewsletter.com/p/monopoly-round-up-how-to-stop-the Yes, Trump Will Attempt a Coup https://prospect.org/2026/07/28/trump-attempt-coup-january-6-election-republican-congress/ Framework Laptop 13 Pro Review: The Best Modular Laptop Ever Made https://gizmodo.com/framework-laptop-13-pro-review-the-best-modular-laptop-ever-made-2000791804 The $145 Billion Lie? Zuckerberg's Leaked Town Hall Audio Exposes Massive AI Failures After Mass Layoffs https://www.ibtimes.co.uk/zuckerbergs-leaked-audio-meta-ai-struggles-1807607 Object permanence (permalink) #20yrsago Linux Thinkpads can be controlled by knocking on them https://web.archive.org/web/20060814065844/http://www-128.ibm.com/developerworks/linux/library/l-knockage.html?ca=dgr-lnxw01Knock-Knock #20yrsago Why the CBC doesn’t need DRM https://web.archive.org/web/20060820121451/https://www.michaelgeist.ca/component/option,com_content/task,view/id,1342/Itemid,85/nsub,/ #20yrsago Aussie mall defends its photons from terrorists https://web.archive.org/web/20060910224208/http://www.theage.com.au/articles/2006/07/29/1153816426869.html #15yrsago Sleepy English town to be entirely surveilled in case criminals forget and drive through it on their way to crimeshttps://web.archive.org/web/20110731020858/https://www.telegraph.co.uk/motoring/news/8670642/Sleepy-market-town-surrounded-by-ring-of-car-cameras.html #10yrsago Lessons from the DNC: Ronald Reagan, the Southern Strategy, and “abnormal politics”https://crookedtimber.org/2016/07/30/philadelphia-stories-from-reagan-to-trump-to-the-dnc/ #10yrsago How to pay no taxes at all! (if you’re Apple, Google or Facebook) https://www.nakedcapitalism.com/2016/07/video-guide-to-legal-tax-evasion-with-an-apple-boycott.html #5yrsago Games Workshop declares war on its customers https://pluralistic.net/2021/07/30/space-marines/#fairy-use-tale #1yrago Delta's AI-based price-gouging https://pluralistic.net/2025/07/30/efficiency-washing/#medallion-clubbed Upcoming appearances (permalink) Virtual: EFFecting Change: Who the Machine Serves, Aug 12 https://www.eff.org/event/effecting-change-who-machine-serves Edinburgh International Book Festival with Jimmy Wales, Aug 17 https://www.edbookfest.co.uk/events/the-front-list-cory-doctorow-and-jimmy-wales Sydney: The Festival of Dangerous Ideas, Aug 23-24 https://festivalofdangerousideas.com/program/ Melbourne: Enshittification at the Wheeler Centre, Aug 25 https://www.wheelercentre.com/events-tickets/season-2026/cory-doctorow-enshittification Brighton: The Reverse Centaur's Guide to Life After AI with Carole Cadwalladr (Brighton Dome), Sep 8 https://brightondome.org/whats-on/LSC-cory-doctorow-the-reverse-centaurs-guide-to-life-after-ai/ London: The Reverse Centaur's Guide to Life After AI with Riley Quinn (Foyle's Picadilly), Sep 9 https://www.foyles.co.uk/events/enshittification-cory-doctorow-riley-quinn South Bend: An Evening With Cory Doctorow (Notre Dame), Oct 6 https://franco.nd.edu/events/2026/10/06/an-evening-with-cory-doctorow/ Recent appearances (permalink) AI is not inevitable (Betakit) https://www.youtube.com/watch?v=DbiTVkq1WHo A Conversation with Lina Khan (Law and Economy Student Network) https://www.youtube.com/live/7Ak5LZllqwE Will AI ever come alive, and what happens if it does? (BBC News) https://www.youtube.com/watch?v=Lzk4o3fPZZE Waarom jij straks het hulpje van AI bent (VPRO) https://www.youtube.com/watch?v=tOnvR2fs8CA Talk Tech Bock (Vera Linß) https://www.youtube.com/watch?v=3PFjGvQoBgc Latest books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/ \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Fourth draft completed. Submitted to editor. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "ea65c594d6ffeccd474c1a4a6652b7d2b88a9ed28237237267023e9b461cbe69",
+      "ref_id": "0",
+      "recommendationScore": 25,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "个人动态和书籍宣传为主，缺乏科技博客所需的深入技术分析。",
+      "reason": "文章内容主要围绕作者的个人日程、书籍推广及相关社会评论，而非对特定科技主题进行深度探讨或技术分享。",
+      "tags": [
+        "社会评论",
+        "书籍推广",
+        "作者动态"
+      ]
+    },
+    {
+      "title": "I Want to Leave the Internet",
+      "link": "https://chupacabra.bearblog.dev/i-want-to-leave-the-internet/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-29T16:08:27.000Z",
+      "summary": "Article URL: https://chupacabra.bearblog.dev/i-want-to-leave-the-internet/\nComments URL: https://news.ycombinator.com/item?id=49099353\nPoints: 19\n# Comments: 1",
+      "id": "d7054bc9fcdc3ca35d49c4fa9a5cf8ff65727179b235284a5694c67007e81acb",
+      "ref_id": "3",
+      "recommendationScore": 20,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "这是一篇关于个人反思并尝试脱离互联网的哲学类文章。",
+      "reason": "文章主题与科技博客核心关注点偏离较大，在技术深度、新颖性和实用性方面均不符合本博客的评估标准。",
+      "tags": [
+        "Philosophy",
+        "Internet Culture",
+        "Lifestyle",
+        "Digital Detox"
+      ]
+    },
+    {
+      "title": "You don't have to be smart if you can think clearly",
+      "link": "https://seangoedecke.com/you-dont-have-to-be-smart-if-you-think-clearly/",
+      "source": "seangoedecke.com",
+      "publishedAt": "2026-07-29T00:00:00.000Z",
+      "summary": "",
+      "id": "71592c101a461f7e69eeb19acb9374819f0805850dedeb91acfa9468da9f544c",
+      "ref_id": "0",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "文章内容为空，无法进行任何有效评估。",
+      "reason": "缺乏任何可供分析的内容，无法提供价值。",
+      "tags": [
+        "N/A"
+      ]
+    },
+    {
+      "title": "Superlogical",
+      "link": "https://mitchellh.com/writing/superlogical",
+      "source": "mitchellh.com",
+      "publishedAt": "2026-07-29T00:00:00.000Z",
+      "summary": "",
+      "id": "a883c0208eb7dd5eb606dde65e9e7494ae4cb65be870d92ac2fe149bf0a660ef",
+      "ref_id": "1",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "文章内容为空，无法进行任何有效评估。",
+      "reason": "内容缺失导致无法判断其技术深度、新颖性、实用性及信息密度。",
+      "tags": [
+        "无法评估"
+      ]
+    }
+  ]
+}
