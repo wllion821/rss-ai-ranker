@@ -1,0 +1,730 @@
+{
+  "dailySummary": "",
+  "articles": [
+    {
+      "title": "Gemini Robotics 2 brings whole body intelligence to robots",
+      "link": "https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-30T15:15:48.000Z",
+      "summary": "Article URL: https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/\nComments URL: https://news.ycombinator.com/item?id=49111237\nPoints: 223\n# Comments: 214",
+      "id": "42a1992e4b242ffc8c8c09406322964d2510a1c23c0bca59f1b872c69be44078",
+      "ref_id": "1",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "DeepMind在机器人AI领域的最新突破，实现了对机器人的全身智能控制。",
+      "reason": "紧密契合AI主题优先级，技术深度和新颖性极高，预示着AI和机器人技术的重要发展方向。",
+      "tags": [
+        "AI",
+        "机器人",
+        "DeepMind",
+        "机器学习",
+        "前沿科技"
+      ]
+    },
+    {
+      "title": "Launch HN: Prized (YC S26) – Let non-engineer staff build secure internal tools",
+      "link": "https://prized.dev",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-30T13:29:03.000Z",
+      "summary": "Hi HN, we're Marinos and Hudson, founders of Prized (https://prized.dev)! Prized lets non-engineer employees describe the internal tool they need and get a full-stack app, wired to their company’s data and deployed behind the company’s sign-in, without them ever juggling API keys or connectors.\nHere's a demo: https://www.youtube.com/watch?v=730MuYOfZTY\nThe way Prized provides security is by limiting what the agent can reach at the network layer and by keeping credentials out of the sandbox entirely. The sandbox never holds any keys or connector secrets, it only uses scoped session tokens that are stored as opaque placeholders. The real values are swapped into the request headers on our egress proxy. When production data is connected, the sandbox's network policy is set to deny by default so the only path out is via the proxy. Any call the agent makes to an external connector is reviewed by an LLM judge to prevent dangerous operations.\nPrized is meant for the internal workflows that start as notebooks or spreadsheets but never become real tools because engineering has more important things to work on. One customer’s data scientist pasted in his personal fraud-detection notebook with hardcoded thresholds and all. After a few prompts, it became a published risk console connected to the company’s data with those thresholds turned into UI controls. Earlier today, we got off a call with them and most of their company is using it.\nTo do this, you need to give people the freedom to build without having unaudited access to company systems. We allow admins to scope data to specific users or teams and data access is recorded in an audit log. Each tool is built with its own Postgres schema and role, with queries running via an authenticated SQL gateway as that role.\nWe think Prized sits between products like Lovable and Retool. Lovable makes it easy to generate and host software, but it isn’t designed around distribution with permissions. Retool generally assumes that a technical builder is creating an app for an end user.\nPrized treats internal tools as shared objects. Anyone in the workspace can see what others have built, fork, and connect different data. For example, one customer’s marketing lead built a promotional analytics tool. A data scientist at the same company then forked it and added confidence intervals with the existing tool as a starting base. This way workspaces become libraries of tools that people can reuse.\nWe’re live and self-serve. Our free tier includes 2 tool builds/month and our Teams tier is $100/month. The Enterprise tier is custom and supports personalized features like on-prem deployment.\nWe're still working out the right boundary between control and freedom. If you've built internal tools before we'd appreciate your feedback!\nComments URL: https://news.ycombinator.com/item?id=49109721\nPoints: 49\n# Comments: 27",
+      "id": "e4c654fa2f1f713a3dd23f3c1e3a71ca417fa2175be7d0584241973fec701ff7",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "一款创新产品，利用AI赋能非工程师构建安全的企业内部工具。",
+      "reason": "完美结合了AI、自动化和编程工具主题，技术深度、新颖性及实用性极高，解决企业痛点。",
+      "tags": [
+        "AI",
+        "Automation",
+        "No-code",
+        "Internal Tools",
+        "Security",
+        "Startup",
+        "LLM"
+      ]
+    },
+    {
+      "title": "A fundamental flaw leaves LLMs strikingly vulnerable to attack",
+      "link": "https://www.technologyreview.com/2026/07/30/1140927/a-fundamental-flaw-leaves-llms-vulnerable-to-attack/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-07-30T10:15:19.000Z",
+      "summary": "It is impossible to make large language models fully secure against hacks because of a fundamental flaw in how they work, a team of researchers argue in a paper presented at the International Conference on Machine Learning, a top AI conference, this month. The claim has huge implications for the safety of this technology, which…",
+      "id": "94e9e4b193c2006620b5fdb241f62af9692de527662379f9b4cd1c17f044e631",
+      "ref_id": "1",
+      "recommendationScore": 95,
+      "popularityScore": 98,
+      "priority": "high",
+      "comment": "深入揭示了LLM设计中一个根本性的安全漏洞，基于顶尖会议研究。",
+      "reason": "基于顶尖AI会议的论文，揭示了LLM安全的颠覆性发现，具有极高的新颖性、技术深度和实用价值。",
+      "tags": [
+        "AI",
+        "LLM",
+        "Security",
+        "Vulnerability",
+        "Research",
+        "Machine Learning"
+      ]
+    },
+    {
+      "title": "The AI Aesthetic",
+      "link": "https://blog.jim-nielsen.com/2026/ai-aesthetic/",
+      "source": "blog.jim-nielsen.com",
+      "publishedAt": "2026-07-29T19:00:00.000Z",
+      "summary": "Every zeitgeist comes with new design idioms unique to its challenges. Many of them disappear as fads change, but others bake themselves into deeper parts of existing software interaction paradigms.\nFor example, there’s the hamburger menu (≡) which saw a proliferation during the rise of mobile due to the constraints around screen size. It has since spread to many other parts of software interaction design and will likely remain prevalent for a long time as a terse way of indicating “more menu-type content here”.\nAs another example, before AI what were the connotations of the sparkle emoji ✨? Personally, I don’t know, but now it means AI. (AI = sparkles and rainbow colors — it’s funny when you think about it. They should’ve just thrown unicorns in there for the trifecta. AI = sparkles, rainbows, and unicorns ✨🌈🦄. Apt.)\nSome patterns are very specific to the interactions inherent to the nature of AI as a technology. For example: streaming text. This is a pattern made for and refined by chat interfaces, so it may not have tons of utility for reuse across other software interaction paradigms.\n\n\n\nThen there are other patterns that’ve been refined by AI interfaces and are starting to spread to other places in software. For example, the “shimmering text” which in AI land implies a kind of “thinking” but is being repurposed to indicate any kind of asynchronous task (thinking, fetching, computing, etc.).\n\n\n\nThen there are other influences my subconscious is picking up on. For example, a lot of AI apps use tiny icons. These are most obvious (to me) in desktop Electron apps because they clash with the system-level grain of applications. Take a look at this screenshot, where you have desktop AI apps on the left (Claude, Codex, Cursor) and macOS apps from Apple on the right (Finder, Photos, Mail). You can see how the AI apps all have much smaller, thinner icons than their native counterparts.\n\n\n\nAre tiny icons our collective future in interfacing with computers? (Personally, I hope not.)\nThere are other aesthetics my brain associates with AI, like beige/cream colors, orange accents, and serif typefaces as well as whack-a-mole UI controls (you know, the ones where you click the toggle and the entire UI repaints and you have to move your mouse somewhere else in the UI to click the toggle again? The non-determinism of AI’s grain has seeped into its UI/X).\nIt all makes me wonder what other aesthetics are being born out of this AI moment and how many will spread, take seed, and become part of common software interaction paradigms for years or decades to come?\nEmail\n      · Mastodon ·\n\n      Bluesky",
+      "id": "ddeb701e6e6df198acdc3342272829c56c3dfbb209ef1d8922f674b9b02b537a",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "独到分析了AI时代的界面设计美学和特定交互模式。",
+      "reason": "将AI与产品设计、UI/UX深度结合，提出了新颖的观察和见解，如“AI美学”和流式文本，对AI产品开发者和设计师极具启发性。",
+      "tags": [
+        "AI",
+        "产品设计",
+        "UI/UX",
+        "设计趋势"
+      ]
+    },
+    {
+      "title": "Advancing the price-performance frontier with GPT‑5.6",
+      "link": "https://openai.com/index/advancing-the-price-performance-frontier-with-gpt-5-6/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-30T17:15:51.000Z",
+      "summary": "Article URL: https://openai.com/index/advancing-the-price-performance-frontier-with-gpt-5-6/\nComments URL: https://news.ycombinator.com/item?id=49112867\nPoints: 8\n# Comments: 0",
+      "id": "857d7c4ab2ba130469960e07016ac9c6bbf2228c2b70fea55b5d697a46e9b22a",
+      "ref_id": "0",
+      "recommendationScore": 90,
+      "popularityScore": 55,
+      "priority": "high",
+      "comment": "深入探讨了OpenAI最新模型的性能与成本优化，对AI领域具有重要意义。",
+      "reason": "文章直接聚焦于AI前沿技术，提供了关于大型语言模型演进的关键信息，技术深度和新颖性极高，对开发者和行业观察者有重要参考价值。",
+      "tags": [
+        "AI",
+        "GPT",
+        "OpenAI",
+        "大模型",
+        "性能优化",
+        "技术前沿"
+      ]
+    },
+    {
+      "title": "CosmosEscape: Taking over Every Database in Azure Cosmos DB",
+      "link": "https://www.wiz.io/blog/cosmosescape-taking-over-every-database-in-azure-cosmos-db",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-30T12:13:42.000Z",
+      "summary": "Article URL: https://www.wiz.io/blog/cosmosescape-taking-over-every-database-in-azure-cosmos-db\nComments URL: https://news.ycombinator.com/item?id=49108963\nPoints: 45\n# Comments: 12",
+      "id": "6cd8d5bc81b5f714aa53338bf3c8572c51832f011f0ecf571b60ce7e413498ee",
+      "ref_id": "4",
+      "recommendationScore": 90,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "揭露了Azure Cosmos DB的一个严重安全漏洞，可实现数据库完全控制，具有极高的技术价值和实用性。",
+      "reason": "技术深度高，揭示了云数据库的重大安全漏洞，对Azure Cosmos DB用户具有极高的实用性和警示价值，属于核心关注的编程工具安全领域。",
+      "tags": [
+        "云安全",
+        "Azure",
+        "Cosmos DB",
+        "数据库",
+        "漏洞",
+        "编程工具",
+        "网络安全"
+      ]
+    },
+    {
+      "title": "Wheels, Bottles and Images",
+      "link": "https://nesbitt.io/2026/07/30/wheels-bottles-images.html",
+      "source": "nesbitt.io",
+      "publishedAt": "2026-07-30T10:00:00.000Z",
+      "summary": "In February Simon Willison packaged a Go CLI as Python wheels, one wheel per platform with the compiled binary inside, so pip install sqlite-scanner fetches a program containing no Python. His build tool maps each Go target to a wheel tag on the way through: darwin/arm64 to macosx_11_0_arm64, linux/amd64 to manylinux_2_17_x86_64. PyPI accepted the uploads and pip picked the right platforms, and the thread that followed was about whether PyPI should store binaries that serve no Python purpose.\nWheels, Homebrew bottles and OCI images are the three big self-service binary distribution systems: the project publishes a compiled artifact and any machine fetches the one matching its platform, with no distro maintainer in between. conda, NuGet’s native assets, RubyGems platform gems and plain GitHub Releases do the same job in their own ecosystems. The three big ones share no specification: each was designed against its own stack. Simon’s trick works because a wheel is a checksummed archive selected by a platform tag, and that description also fits a bottle and an image. Immutable checksummed files are what CDNs serve cheaply and caches hold safely, and all three systems depend on both.\nSimilarities\nAll three install by downloading a checksummed file over plain HTTP. pip reads the expected hash from the PyPI index and brew reads a sha256 from the formula, while a container client requests each layer by its digest. The files are ordinary zip and tar.gz archives, and no server inspects or transforms them on the way out.\nThe index and the artifact storage are separate systems, and the storage has been swapped without breaking clients. PyPI’s index points at files.pythonhosted.org, a different host from the API. Homebrew moved every bottle from Bintray to GitHub Packages in Homebrew 3.1.0, and an image is copied between Docker Hub, ghcr.io and a private registry with a retag. Static files and content addressing also make a plain HTTP cache a valid mirror of all three, and Package Manager Mirroring covers how much harder that job is for registries that serve dynamic APIs.\nA published artifact never changes and a fix ships as a new version. On PyPI that is policy: a used filename cannot be re-uploaded. For bottles and images it comes from the checksums, the sha256 pinned in the formula and the digest computed from the bytes.\npip matches wheel tags against the running interpreter, and brew matches bottle tags against the OS and architecture. Even with OCI, where the registry holds structured platform data, the client downloads the image index and picks a manifest itself, so selection is client-side in all three designs.\nThe tags being matched cover the same dimensions: CPU architecture, operating system, and enough ABI detail to tell whether a binary will run. Wheel tags, bottle tags, OCI platform objects and the gem2 proposal each spell that set differently, and Platform Strings compares the spellings.\nWhatever the host is not guaranteed to provide ships inside the artifact. A wheel carries private copies of the shared libraries it links against, added by auditwheel or delocate, while a bottle includes almost nothing. An image can pack in everything above the kernel.\nEach format stores a metadata document next to the payload: a wheel’s .dist-info directory, a bottle’s tab file (INSTALL_RECEIPT.json), an image’s config object. All three record a name, a version, and the details of the build.\nDifferences\nA wheel requires an interpreter and a minimum libc from the host, a bottle an OS release and an install prefix, an image only a kernel. manylinux and bottle relocation exist to manage the first two positions, and images carry their own filesystem, so neither mechanism has an OCI equivalent.\nWheels and bottles are entries in a dependency graph: pip resolves a wheel’s requirements against the index, and brew resolves the formula tree before pouring a bottle. An image has no dependency model, since layers stack in a fixed order and nothing is resolved at pull time. A bottle can omit most of its runtime because brew resolves the rest of its dependency tree, while an image has to carry the whole userland itself.\nWhen no wheel matches the platform, pip downloads the sdist and builds it, and brew builds a missing bottle from the formula. docker pull reads no Dockerfile, so a platform without a published image gets no artifact.\nWheel and bottle filenames carry the platform, in a tag grammar private to each ecosystem. OCI records it in the image index, in fields any client library can read, and it is the only one of the three that external tools consume without a translation table.\nConvergence\nHomebrew has been storing bottles in an OCI registry since 2021. The bottles for hello are artifacts at ghcr.io/homebrew/core/hello, published under an image index whose platform fields record arm64, darwin and macOS 15.7. The dimensions the OCI schema has no field for, the glibc version and the CPU variant, are stored as sh.brew.* annotations next to the build metadata. Helm charts moved to the same registries in Helm 3.8, and ORAS generalises the push and pull to arbitrary artifacts. Media types pass through the registry API unparsed, so bottles and charts fit into infrastructure built for container images with no registry-side changes.\nThe build attestations in all three are sigstore bundles. PyPI has accepted attestations alongside uploads since November 2024 under PEP 740, generated by default when a project publishes from GitHub Actions through trusted publishing. Homebrew’s CI has attested every homebrew-core bottle since 2024, and brew can check a bottle against its attestation at install time. cosign pushes an image’s signature or attestation into the registry holding the image, an artifact whose subject field records the digest it covers, and the OCI 1.1 referrers API lists what is attached to any digest. Where the attestation is stored differs: PyPI serves it from the index next to the file, a registry keeps it beside the image, and brew fetches Homebrew’s from GitHub’s attestation API, separate from both the formula and the bottle storage. What Package Registries Could Borrow from OCI covers what the referrers design offers the other two.\nMost of the similarities above are also a feature list of an OCI registry: content-addressed immutable blobs, an index separate from the storage, client-side artifact selection, mirroring through pull-through caches. A registry leaves tag grammar, version resolution, dependency metadata and search undefined, and those are where the three systems differ from each other anyway. pip’s resolver, brew’s formula tree and an image’s ordered layers could not share a registry that defined a dependency model. The objection from the PSF board to Go binaries arriving on PyPI was sustainability and mission, and the uploads themselves worked.\nThe remaining design work for an ecosystem adding binary distribution today is narrower than the decade of wheel PEPs suggests: gem2 specifies the tag dimensions, and bottle storage demonstrates that the blob side can be rented from an existing registry. The open decisions are the tag grammar and the index entry.\nNo tag grammar records a GPU, which is why CUDA wheels often cannot be hosted on PyPI today. PEP 817, drafted in December 2025 out of the NVIDIA-started WheelNext initiative, proposes variant wheels selected by installer plugins that detect GPUs, SIMD levels and BLAS libraries at install time. PEP 825 covers the package format for those variants, and PEP 725 adds pyproject.toml metadata naming the dependencies a package uses from outside PyPI, the same libraries the bundling rule currently copies into wheels. Container images have the same gap: an image index records os and arch, and GPU access is wired in at run time through the NVIDIA Container Toolkit rather than selected at pull time. The existing spellings diverged because each ecosystem named the dimensions on its own, PURL’s request for cross-ecosystem platform qualifiers has been open since 2022, and the GPU dimension is still unnamed outside Python.",
+      "id": "f967f8b49c156532d0f6751a8af29710ce9251295c487448c7b8271f0d999150",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "探讨了将Go CLI打包为Python wheels的创新方法，并比较了多种二进制分发系统。",
+      "reason": "技术深度高，内容对软件开发、编程工具和分发策略具有很强的实用性和启发性，属于编程工具范畴。",
+      "tags": [
+        "编程工具",
+        "Python",
+        "Go",
+        "软件分发",
+        "打包"
+      ]
+    },
+    {
+      "title": "The Economic Benefit of Refactoring",
+      "link": "https://martinfowler.com/articles/exploring-gen-ai/refactoring-economic-benefit.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-30T15:10:27.000Z",
+      "summary": "Article URL: https://martinfowler.com/articles/exploring-gen-ai/refactoring-economic-benefit.html\nComments URL: https://news.ycombinator.com/item?id=49111176\nPoints: 80\n# Comments: 37",
+      "id": "d2c1ec9faaccd10554cf5365ffe75de06a87280d2128cfd939fbea35c44530b7",
+      "ref_id": "2",
+      "recommendationScore": 85,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "Martin Fowler深度分析代码重构的经济效益，强调其在软件开发中的长期价值。",
+      "reason": "针对软件开发中的核心实践，实用性强，对提升开发效率和项目健康度有普适指导意义，触及编程工具和产品设计理念。",
+      "tags": [
+        "软件工程",
+        "重构",
+        "编程实践",
+        "产品设计",
+        "经济分析"
+      ]
+    },
+    {
+      "title": "Trusted URLs via Cryptographic Signatures",
+      "link": "https://blog.certisfy.com/2026/04/trusted-urls-via-cryptographic.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-30T14:31:13.000Z",
+      "summary": "Article URL: https://blog.certisfy.com/2026/04/trusted-urls-via-cryptographic.html\nComments URL: https://news.ycombinator.com/item?id=49110577\nPoints: 13\n# Comments: 11",
+      "id": "7dc393c7be562a3db3ae4a81e9a415220e09dbae8471cc6f709f63773d9fb1d3",
+      "ref_id": "2",
+      "recommendationScore": 85,
+      "popularityScore": 50,
+      "priority": "high",
+      "comment": "探讨通过加密签名确保URL可信度，对网络安全至关重要。",
+      "reason": "内容技术深度高且极具实用性，对提升互联网信任环境有重要意义。",
+      "tags": [
+        "Security",
+        "Cryptography",
+        "Web",
+        "Internet",
+        "Trust"
+      ]
+    },
+    {
+      "title": "The Download: tricking LLMs, and reviving geothermal plants",
+      "link": "https://www.technologyreview.com/2026/07/30/1140936/the-download-tricking-llms-reviving-geothermal/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-07-30T12:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. A fundamental flaw leaves LLMs strikingly vulnerable to attack  It is impossible to make large language models fully secure against hacks because of a fundamental flaw in how they work, a…",
+      "id": "7cb09c16dd6dcdb34b51fa1fa490b8c24fb1848caa694d47341d327501603140",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "一份科技日报摘要，涵盖了AI安全漏洞和地热发电技术进展。",
+      "reason": "作为一份日报综述，涵盖了高优先级AI话题及其他科技热点，信息丰富且具有时效性。",
+      "tags": [
+        "AI",
+        "LLM",
+        "Security",
+        "Geothermal Energy",
+        "Tech News"
+      ]
+    },
+    {
+      "title": "Pluralistic: The stupidest imaginable excuses for surveillance pricing (30 Jul 2026)",
+      "link": "https://pluralistic.net/2026/07/30/pay-for-privacy/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-07-30T12:51:03.000Z",
+      "summary": "Today's links The stupidest imaginable excuses for surveillance pricing: Since 1850, San Francisco's Chamber of Commerce has been pissing in our mouths and calling it rain. Hey look at this: Delights to delectate. Object permanence: RIP Wau Holland; Diebold voting machines suck; How to steal an RFID-locked car; Pirates are big spenders; You can't fight enshittification. Upcoming appearances: Edinburgh, Sydney, Melbourne, Brighton, London, South Bend. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. The stupidest imaginable excuses for surveillance pricing (permalink) With \"surveillance pricing,\" businesses have finally found something AI can do way, way, way better than people: price gouging. As the name suggests, \"surveillance pricing\" is the practice of charging every customer a different price for every transaction, based on the massive surveillance dossiers that Big Tech companies and data-brokers have assembled on everyone in the world. Congress hasn't updated federal consumer privacy law since 1988 (when they passed a law banning the disclosure of VHS rentals), so pretty much any form of consumer surveillance is fair game. This is where the AI comes in. One thing AI is indisputably great for is multivariate statistical analysis. You can feed an AI \"behavioral data\" (information about where you go, what you do, what you buy, who you talk to and what you say) about all of your customers and ask it to cluster them according to their shared traits. Then you can direct the AI to automatically run a series of small experiments to discover the maximum markup each group will stomach under which circumstances. This works without you having to direct the AI to rip off certain groups of people – it will simply find the most vulnerable people and rip them off the most. If you're hiring in an industry that practices a lot of tacit racial discrimination, a system like this can figure out on its own that people of color typically accept lower wages because there are fewer employers bidding for their labor, and recommend lowball salary offers, all without you ever typing \"please be racist\" into your AI prompt. This works so well that Google has announced that it is their plan for making a profit off of AI, after losing hundreds of billions of dollars on chatbots: https://pluralistic.net/2026/01/21/cod-marxism/#wannamaker-slain In the before times, marketers and demographers had to dream up demographic categories based on limited data and run focus groups to figure out how to maximize revenue from each market segment. Now an AI can segment the data to any degree you choose, and continuously, automatically experiment on each segment to find their weak spots. It's \"theory-free.\" You don't have to discover why a group is willing to pay more under a given set of circumstances, you merely have to observe and weaponize this fact. You don't have to know why one group of purchasers consistently accept higher prices between 6AM and 8AM – you can just automatically jack up prices on them without knowing or caring that you're gouging parents of young children who are re-ordering essential supplies while trying to get their kids to school in the morning. I thought up that example. I don't know if it's really happening. But here's something that really is happening: ecommerce sites charge parents of newborns extra when they order thermometers in the middle of the night. I'm not saying that anyone ever sat down and said, \"Parents with sick children will pay whatever we charge for a thermometer at 2AM.\" They didn't have to: this is the kind of thing an automated system can do without any human intervention: https://www.ftc.gov/system/files/ftc_gov/pdf/p246202_surveillancepricing6bstudy_researchsummaries_redacted.pdf The goal of surveillance pricing is to shift all the \"consumer surplus\" (the difference between the highest price you're willing to pay and the price you actually pay) to companies. It's a form of cod-Marxism where you are gouged according to your ability (to pay) and charged according to the desperation of your need: https://pluralistic.net/2025/01/11/socialism-for-the-wealthy/#rugged-individualism-for-the-poor The problems of surveillance pricing are well documented. Under Biden, the FTC did a landmark study on the practice, developing a rich factual record that documents the role surveillance pricing plays in the affordability crisis: https://pluralistic.net/2024/07/24/gouging-the-all-seeing-eye/#i-spy Companies are already using this technology to rip you off, and they're slavering for the chance to do more of it. Instacart was recently caught marking up some shoppers' items by as much as a third: https://pluralistic.net/2025/12/11/nothing-personal/#instacartography The problem is that as much as companies love this, shoppers hate it. Last summer, Delta announced that it was going to surveillance price every seat on every flight, only to face such a massive backlash that they had to make another announcement bemoaning the fact that we'd all misunderstood their (unambiguous and extremely damning) announcement and they were actually going to do no such thing: https://pluralistic.net/2025/07/30/efficiency-washing/#medallion-clubbed One thing the Mamdani campaign impressed upon every politician in the country is that people are pissed about affordability and they will support anyone who stands up for the public against AI-equipped price gougers. The problem of course is that those price gougers are highly organized and have deep treasuries (stuffed with money they stole from us). With surveillance pricing, politicians face a familiar conundrum: if they do the thing that's popular with voters, they'll enrage donors. One way to cut this knot is to enact legislation that seems to address the problem, but stuff it with so many loopholes that it does nothing. This lets you declare yourself the people's champion without doing anything to protect them from the donors who prey on your voters. That's the approach they took in Maryland: https://pluralistic.net/2026/04/30/something-must-be-done/#there-ive-done-something But in California, they're actually doing something about surveillance pricing. AB-2564 is a smart, well-written bill that bans surveillance pricing. It contains an easily evaluated test for surveillance pricing and carves out legitimate reasons for offering different prices for the same purchase (for example, when it costs more to deliver the product or service): https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260AB2564 Now we're in for the hard yards of turning this bill into a law. That's where California's cities come in. When municipal governments pass resolutions supporting a state bill, it makes it much easier to get that bill through the state legislature (and conversely, without support from major cities, it's that much easier to kill the bill before it becomes law). A few days ago, the San Francisco Board of Supervisors was on the verge of passing a resolution in support of AB-2564. Now, that vote is stalled, thanks to a letter sent by the San Francisco Chamber of Commerce, an organization that has been pissing in San Franciscans' faces and telling them it was raining since 1850: https://www.sfexaminer.com/news/community/board-not-yet-ready-to-weigh-in-on-state-surveillance-pricing-ban/article_0ae4d143-cced-4988-abda-0b71bcbe524c.html The Chamber's letter is – to use a technical term – flaming garbage. It raises the most spurious objections imaginable, claims about the bill's language that are belied by its plain, easily understood text. These objections are demolished in a letter the Electronic Frontier Foundation sent to the Supervisors: https://www.eff.org/document/letter-sf-bos-re-surveillance In the letter, EFF explains that claims that surveillance pricing will lower prices are overblown and not borne out by evidence. But more importantly – as EFF points out – privacy is a human right, and the idea that you should have to give up your privacy to get a fair price is just a fancy way of saying that privacy should be the exclusive preserve of people who can afford to pay more: https://www.eff.org/wp/privacy-first-better-way-address-online-harms#Legislation EFF's letter goes on to address the Chamber's objections. Far from creating uncertainty about which conduct the bill addresses, AB-2564 crisply defines surveillance pricing as: a customized price for a good for a specific consumer or group of consumers based, in whole or in part, on personally identifiable information collected through electronic surveillance. The Chamber raises other tired objections, falsely claiming that banning surveillance pricing will end common discounting strategies like offering seniors cheaper movie tickets, or giving cheaper rates to retain customers who call to cancel their service. EFF replies by pointing out that all the Chamber's concerns are covered by the three comprehensive carve-outs in the bill: the ability to charge higher rates when it costs more to service a given customer; offering discounts to retain customers who want to cancel their service; and finally, discounts for criteria anyone can meet (like an \"early bird special\"), for membership in a broadly defined group (like \"seniors\"), or for participation in a loyalty program. The San Francisco Supervisors could have figured out at a glance that the Chamber was bullshitting them. All it takes is a cursory read of the statute. But now they don't even have to do that: EFF has painstakingly debullshittified the Chamber's FUD. Surveillance pricing is grossly offensive. When a company charges me $0.50 for a product that it charges you $1 for, they're essentially saying that your dollars are worth half as much as mine are. Companies shouldn't be able to reach into your wallet or your bank account and chop your money in half: https://pluralistic.net/2025/06/24/price-discrimination/# No wonder AB-2564 has plenty of backers, from EFF to Consumers Union: https://advocacy.consumerreports.org/press_release/california-state-assembly-passes-key-bill-to-prohibit-surveillance-pricing/ San Francisco's city government should be on that list of supporters. (Image: Takkk, CC BY-SA 3.0, modified) Hey look at this (permalink) Louis Brandeis: The Empiricist https://prospect.org/2026/07/30/aug-2026-louis-brandeis-the-empiricist/ The Rent Is Higher Than You Think https://economicpopulist.substack.com/p/the-rent-is-higher-than-you-think Object permanence (permalink) #25yrsago RIP, Wau Holland, founder of the legendary hacker clan, the Chaos Computer Club. https://web.archive.org/web/20010805192406/https://www.wired.com/news/culture/0,1284,45728,00.html #20yrsago Diebold voting machines can be beaten with a switch-flip https://web.archive.org/web/20061007120702/http://openvotingfoundation.org/tiki-read_article.php?articleId=1 #20yrsago How thieves steal RFID-enabled cars https://web.archive.org/web/20060812065423/https://www.wired.com/wired/archive/14.08/carkey_pr.html #15yrsago Official London anti-terrorist publication says anarchists should be reported to local police https://web.archive.org/web/20110801233618/https://communitysafe.gov.uk/articles/5962-griffin-weekly-briefing-sheet-attached/attachments/801/download.pdf #15yrsago French copyright enforcers: “Pirates are big spenders on legit content” https://www.techdirt.com/2011/07/28/another-day-another-study-that-says-pirates-are-best-customers-this-time-hadopi/ #15yrsago Perma-cookie wars continue: KISSMetrics sneaks cookies back onto your computer even if you turn off every cookie vector https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1898390 #1yrago You can't fight enshittification https://pluralistic.net/2025/07/31/unsatisfying-answers/#systemic-problems Upcoming appearances (permalink) Virtual: EFFecting Change: Who the Machine Serves, Aug 12 https://www.eff.org/event/effecting-change-who-machine-serves Edinburgh International Book Festival with Jimmy Wales, Aug 17 https://www.edbookfest.co.uk/events/the-front-list-cory-doctorow-and-jimmy-wales Sydney: The Festival of Dangerous Ideas, Aug 23-24 https://festivalofdangerousideas.com/program/ Melbourne: Enshittification at the Wheeler Centre, Aug 25 https://www.wheelercentre.com/events-tickets/season-2026/cory-doctorow-enshittification Brighton: The Reverse Centaur's Guide to Life After AI with Carole Cadwalladr (Brighton Dome), Sep 8 https://brightondome.org/whats-on/LSC-cory-doctorow-the-reverse-centaurs-guide-to-life-after-ai/ London: The Reverse Centaur's Guide to Life After AI with Riley Quinn (Foyle's Picadilly), Sep 9 https://www.foyles.co.uk/events/enshittification-cory-doctorow-riley-quinn South Bend: An Evening With Cory Doctorow (Notre Dame), Oct 6 https://franco.nd.edu/events/2026/10/06/an-evening-with-cory-doctorow/ Recent appearances (permalink) AI and the Enshittification Era (The Weekly Show with Jon Stewart) https://www.youtube.com/watch?v=-dAIJRjb-Bw AI is not inevitable (Betakit) https://www.youtube.com/watch?v=DbiTVkq1WHo A Conversation with Lina Khan (Law and Economy Student Network) https://www.youtube.com/live/7Ak5LZllqwE Will AI ever come alive, and what happens if it does? (BBC News) https://www.youtube.com/watch?v=Lzk4o3fPZZE Waarom jij straks het hulpje van AI bent (VPRO) https://www.youtube.com/watch?v=tOnvR2fs8CA Latest books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/ \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Fourth draft completed. Submitted to editor. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "437af91ee558771cefaa2c66cd099f47c64fda113271d60c3623ec323752e821",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "批判性探讨AI驱动的监控定价及其深远社会影响。",
+      "reason": "文章深入分析了AI在价格歧视中的应用及其对消费者的潜在负面影响，主题新颖且具社会警示意义，紧密关联AI核心关注点。",
+      "tags": [
+        "AI",
+        "经济学",
+        "社会影响",
+        "隐私"
+      ]
+    },
+    {
+      "title": "Paging Through a Parquet File in DuckDB: File_row_number or Offset?",
+      "link": "https://rusty.today/blog/paging-parquet-duckdb-file-row-number-vs-offset/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-30T14:58:07.000Z",
+      "summary": "Article URL: https://rusty.today/blog/paging-parquet-duckdb-file-row-number-vs-offset/\nComments URL: https://news.ycombinator.com/item?id=49111006\nPoints: 25\n# Comments: 3",
+      "id": "a3c718578c1d26f6f6d2fe240623325511f20d3aaa97409d534790d9dab975bb",
+      "ref_id": "4",
+      "recommendationScore": 80,
+      "popularityScore": 20,
+      "priority": "medium",
+      "comment": "深入比较在DuckDB中分页Parquet文件的两种策略及其性能影响。",
+      "reason": "提供数据处理和数据库优化的高级技术细节，对数据工程师和开发者具有很高的实用性和技术参考价值，符合编程工具和自动化主题。",
+      "tags": [
+        "数据库",
+        "数据工程",
+        "DuckDB",
+        "Parquet",
+        "编程工具",
+        "性能优化"
+      ]
+    },
+    {
+      "title": "Read This Before You Buy That TV Streaming Stick",
+      "link": "https://krebsonsecurity.com/2026/07/read-this-before-you-buy-that-tv-streaming-stick/",
+      "source": "krebsonsecurity.com",
+      "publishedAt": "2026-07-30T16:49:00.000Z",
+      "summary": "Security experts have been sounding the alarm for years about the risks of using generic TV boxes that promise unlimited content streaming for a one-time fee, warning that they secretly rent the user's Internet connection out to strangers. But a groundbreaking new analysis finds these devices also routinely spoof themselves as mobile phones clicking ads on AI-generated websites as part of sprawling operation that seeks to defraud online merchants and advertising networks.",
+      "id": "f62495d0751849763ca637311b830ff7e21d677b36a03c0f84e21435daa92bf2",
+      "ref_id": "1",
+      "recommendationScore": 79,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "揭露了廉价流媒体设备利用AI生成网站进行广告欺诈的新型高风险操作。",
+      "reason": "文章揭示了一种新颖且复杂的网络欺诈手段，对消费者具有高度实用警示价值，并涉及AI相关技术，值得关注。",
+      "tags": [
+        "AI",
+        "网络安全",
+        "消费者警示",
+        "广告欺诈",
+        "流媒体设备"
+      ]
+    },
+    {
+      "title": "Apple Says iOS 27 ‘Restricted Mode’ Isn’t for Users Who Miss Payments in New Apple Upgrade Program",
+      "link": "https://9to5mac.com/2026/07/28/apple-says-ios-27-restricted-mode-isnt-for-new-upgrade-program-leases/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-29T20:56:33.000Z",
+      "summary": "Last week 9to5Mac reported on code in the latest iOS 27 developer beta seemingly meant to restrict leased devices after the user had missed one or more payments. When engaged, Restricted Mode limits the device to the following apps:\nAccessibility Reader\nApp Store\nHealth\nMagnifier\nPhone\nClock\nSettings\nWallet\nPasswords\nAnd some limited access to apps like Messages or health-related apps that might have critical messages.\nMany people reasonably speculated that this feature was related to Apple Upgrade, Apple’s new device leasing partnership with Klarna, which Mark Gurman spoiled a few weeks ago. But an Apple spokesman confirmed to Emma Roth at The Verge today that “There will be no restricted mode and/or there will be no limitations put on device functionality due to missed payments or default with the Apple Upgrade program.”\nWriting again today, here’s 9to5Mac’s Marcus Mendes:\nApple, however, did not tell The Verge what Restricted Mode is\nintended for. One possibility is that it was developed for\nfinancing programs offered by carriers, retailers, or other\npartners outside Apple Upgrade, potentially including markets\nwhere device restrictions are already used to enforce installment\nagreements.\nIn India, lenders have worked in the past with smartphone\nmanufacturers to remotely block financed devices after borrowers\nmissed payments. As The Economic Times reported last year,\nthe Reserve Bank of India (RBI) told non-bank lenders to stop the\npractice in late 2024, amid concerns about lenders sharing\ncustomers’ default information with device manufacturers.\nThe regulator may now permit a more limited version of the\npractice. As Reuters reported in May, the RBI proposed\nallowing lenders to restrict certain functions on financed phones\nonce a loan is at least 90 days overdue, provided the borrower\nagreed to the measure in the contract and received advance notice.\n ★",
+      "id": "04d3775c420ff31e6412b87a520912cd794074c262ded6b45fab7cedb71be99a",
+      "ref_id": "4",
+      "recommendationScore": 76,
+      "popularityScore": 88,
+      "priority": "high",
+      "comment": "报道了iOS 27测试版中“受限模式”的发现及其与Apple Upgrade计划逾期付款无关的官方声明。",
+      "reason": "文章探讨了iOS新功能和苹果官方回应，澄清了公众对设备限制的误解，信息新颖且具有讨论价值。",
+      "tags": [
+        "Apple",
+        "iOS",
+        "Apple Upgrade",
+        "功能限制",
+        "Beta"
+      ]
+    },
+    {
+      "title": "Read This Before You Buy That TV Streaming Stick",
+      "link": "https://krebsonsecurity.com/2026/07/read-this-before-you-buy-that-tv-streaming-stick/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-30T17:04:53.000Z",
+      "summary": "Article URL: https://krebsonsecurity.com/2026/07/read-this-before-you-buy-that-tv-streaming-stick/\nComments URL: https://news.ycombinator.com/item?id=49112744\nPoints: 21\n# Comments: 2",
+      "id": "f62495d0751849763ca637311b830ff7e21d677b36a03c0f84e21435daa92bf2",
+      "ref_id": "1",
+      "recommendationScore": 75,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "为购买电视流媒体棒的用户提供了重要的安全与隐私建议。",
+      "reason": "文章具有较高的实用性，直接解决消费者在选择智能设备时的安全顾虑，信息密度和实用性较好，尽管不在核心优先级主题内。",
+      "tags": [
+        "消费电子",
+        "安全",
+        "隐私",
+        "流媒体",
+        "智能家居",
+        "用户指南"
+      ]
+    },
+    {
+      "title": "SDL_GPU minimal, single-header, high-performance 2D graphics painting library",
+      "link": "https://github.com/n67094/sdl_gp",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-30T14:36:59.000Z",
+      "summary": "Article URL: https://github.com/n67094/sdl_gp\nComments URL: https://news.ycombinator.com/item?id=49110655\nPoints: 38\n# Comments: 14",
+      "id": "baafa88a81bac70480583a482b6fd5120a9e16c97541d5bf8516874bd7a7aab7",
+      "ref_id": "0",
+      "recommendationScore": 75,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "一款专注于高性能和极简设计的2D图形库，适合游戏或渲染开发者。",
+      "reason": "对寻求轻量级、高效能2D图形解决方案的开发者具有实用价值。",
+      "tags": [
+        "Graphics",
+        "C++",
+        "Library",
+        "Game Development",
+        "Programming Tools"
+      ]
+    },
+    {
+      "title": "Show HN: Claude-account – switch Claude Code accounts without logging in again",
+      "link": "https://github.com/hamzarehmandeveloper/claude-account",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-30T14:58:59.000Z",
+      "summary": "I use separate Claude Code accounts for work and personal projects. Having to log out and go through the login flow every time I switched accounts became annoying, so I built a small CLI to solve it.\nThe commands are intentionally simple:\nclaude account add myworkaccount\nclaude account add mypersonalaccount\nclaude account use myworkaccount\nclaude account current\nAfter switching, Claude Code works normally:\nclaude\nclaude \"fix this bug in main.py\"\nRepository: https://github.com/hamzarehmandeveloper/claude-account\nGive it a try\nComments URL: https://news.ycombinator.com/item?id=49111019\nPoints: 18\n# Comments: 12",
+      "id": "ae86323accdec8b35d090f8d5cace3d0f974104901089da504cf736d4e0f4448",
+      "ref_id": "3",
+      "recommendationScore": 70,
+      "popularityScore": 30,
+      "priority": "medium",
+      "comment": "一个用于解决Claude Code多账号切换痛点的实用命令行工具。",
+      "reason": "虽为小工具，但有效提升AI编程工具的用户体验，对特定用户群有直接实用价值，符合编程工具和独立开发主题。",
+      "tags": [
+        "AI工具",
+        "CLI",
+        "编程工具",
+        "独立开发",
+        "效率工具"
+      ]
+    },
+    {
+      "title": "The Differences Between the New ‘Apple Upgrade’ and the Old ‘iPhone Upgrade Program’",
+      "link": "https://9to5mac.com/2026/07/30/apple-upgrade-vs-iphone-upgrade-program-here-are-the-key-differences/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-30T15:56:10.000Z",
+      "summary": "Ryan Christoffel, writing for 9to5Mac:\nApple Upgrade launched this week, and the iPhone Upgrade Program\nis being discontinued as a result. But despite some similarities,\nthe two offerings are not the same. Here are the key differences.\nI wrote yesterday that there seemingly is no catch with the new Apple Upgrade program, but there’s at least one, which Christoffel’s piece doesn’t note. When you lease an iPhone through Apple Upgrade, you need a cellular account on one of the big three U.S. carriers: AT&T, T-Mobile, or Verizon. That kind of stinks, and I’m not quite sure I understand why. You’re leasing the iPhone through Apple and Klarna, not the carrier, so I don’t know why Apple cares. If you know why, shoot me a message and explain it. Is it just a simplistic credit-risk evaluation, where prepaid plan-holders and MVNO users in general are viewed suspiciously? \nI’ve been hearing a lot of good things about the higher-quality MVNOs, especially US Mobile. (Quinn Nelson mentioned last week on The Talk Show that he’s on US Mobile.) But if you’re not on one of the big three you can’t lease an iPhone through Apple Upgrade.\n ★",
+      "id": "ceabbf58d8c54e2156d4fe99e87880457e8ab4edd3631425c13f00a2ade5febb",
+      "ref_id": "3",
+      "recommendationScore": 66,
+      "popularityScore": 82,
+      "priority": "high",
+      "comment": "详细比较了新旧Apple升级计划的差异，并揭示了新计划中未被广泛提及的运营商绑定限制。",
+      "reason": "文章清晰阐述了Apple新旧升级计划的关键区别，并揭示了对消费者有实际影响的隐藏运营商绑定条件，具有高度实用价值。",
+      "tags": [
+        "Apple",
+        "Apple Upgrade",
+        "iPhone",
+        "运营商",
+        "消费指南"
+      ]
+    },
+    {
+      "title": "How Olinia Turns Mexico's EV Ambition into Reality",
+      "link": "https://spectrum.ieee.org/mexico-olinia-car-electric-vehicle",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-30T16:36:47.000Z",
+      "summary": "Article URL: https://spectrum.ieee.org/mexico-olinia-car-electric-vehicle\nComments URL: https://news.ycombinator.com/item?id=49112368\nPoints: 7\n# Comments: 1",
+      "id": "2f4084e76e76854816462269e8f03df51025ffa095dfdf9a7bcb1548378e4221",
+      "ref_id": "3",
+      "recommendationScore": 65,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "介绍了Olinia公司如何推动墨西哥电动汽车产业的发展。",
+      "reason": "提供了关于新兴市场电动汽车产业的案例研究和行业洞察，对关注产业发展和国际市场趋势的读者有一定价值，但技术深度和新颖性一般。",
+      "tags": [
+        "电动汽车",
+        "EV",
+        "墨西哥",
+        "制造业",
+        "产业发展",
+        "国际市场"
+      ]
+    },
+    {
+      "title": "RFC 8890 – The Internet is for End Users (2020)",
+      "link": "https://mnot.net/blog/2020/for_the_users",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-30T13:07:53.000Z",
+      "summary": "Article URL: https://mnot.net/blog/2020/for_the_users\nComments URL: https://news.ycombinator.com/item?id=49109474\nPoints: 82\n# Comments: 24",
+      "id": "83ffa5daa4d6b2c236ff5030a87ab09c68ac99832bedc663dab89b582832bac8",
+      "ref_id": "1",
+      "recommendationScore": 65,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "探讨了互联网设计应以最终用户为中心的RFC 8890，具有一定的技术深度和理念价值。",
+      "reason": "内容涉及互联网架构和用户体验，具有一定技术深度和对未来互联网发展的思考，但非核心开发或AI。",
+      "tags": [
+        "互联网",
+        "RFC",
+        "网络协议",
+        "用户体验",
+        "Web"
+      ]
+    },
+    {
+      "title": "How an overlooked geothermal plant got a second chance",
+      "link": "https://www.technologyreview.com/2026/07/29/1140896/geothermal-second-chance/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-07-29T17:58:44.000Z",
+      "summary": "In June 2024, a small company called Zanskar purchased a geothermal power plant in New Mexico that was failing fast. The water coming from the underground reservoir was getting colder by the day, making the plant uneconomical to run. Now, two years later, that plant is running at full capacity again, thanks to a new…",
+      "id": "71258d9f6a7e044acbe377c39efc5bdc4d952179cfd00cc32b59fd0800e5baaf",
+      "ref_id": "2",
+      "recommendationScore": 65,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "讲述了一个废弃地热电厂通过创新技术成功复兴的故事。",
+      "reason": "提供了可再生能源领域的实际案例和技术应用，但与核心关注的AI主题关联度较低。",
+      "tags": [
+        "Geothermal Energy",
+        "Renewable Energy",
+        "Sustainability",
+        "Innovation"
+      ]
+    },
+    {
+      "title": "Looking for the Catch in Apple Upgrade",
+      "link": "https://www.theatlantic.com/technology/2026/07/apple-lease-upgrade-program/688106/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-30T16:59:39.000Z",
+      "summary": "Damon Beres, writing for The Atlantic under the hed/subhed: “The New iPhone Underclass: Apple’s rental program is a trap”:\nThe Klarna plan — “Apple Upgrade,” which replaces the iPhone\nUpgrade Program — is truly, legally, a lease. This is confusing!\nAnd it’s confusing in part because this is not how Klarna, a\nwell-known buy-now, pay-later service, typically operates: When\nyou use Klarna for clothing from Shein or lip kits at Sephora or\nan Xbox at GameStop, you’re paying back a loan, exactly as you\nwere in the original iPhone Upgrade Program. Same if you use\nKlarna to buy a Samsung Galaxy phone. But with Apple Upgrade,\nyou are renting: The Mac or Apple Watch is not yours until the\nfinal payment is made.\nI don’t think this is confusing at all. Apple Upgrade is the primary brand for this program, not Klarna. Klarna is really only mentioned in the small print. You get into Apple Upgrade through Apple. Off the top of your head, do you remember Apple’s bank partner for the now-discontinued iPhone Upgrade Program? (It was Citizens Bank.) The Samsung program Beres links to above is named “Klarna Pay in 4”. “Apple Upgrade is a leasing program partnered with Klarna” is easily understood.\nHere’s what Beres thinks is a “trap”:\nConsider a student or a young professional, or perhaps an\nunderemployed older one, who needs a new laptop. They decide on a\nMacBook. Apple Upgrade will appear to be the best deal: In its\nannouncement, Apple offers the example of a 14-inch MacBook\nPro that retails for $1,999 but that can be had for a monthly\nlease. Perhaps this person goes for the two-year term, which has\nthem paying $54 a month. Best Buy, which currently has the same\ncomputer on sale for $1,849, offers an 18-month loan repayment\nwith $103 installments. Apple’s deal appears to be cheaper: The\n24-month lease adds up to $1,296; Best Buy’s 18-month loan lands\nat the store’s full retail price of $1,849.\nWhy does Best Buy’s laptop seem more expensive? It’s because the\nplan is actually designed for you to fully pay off the device. At\nthe end of the 24-month MacBook Pro lease, meanwhile, the consumer\nwill still owe $703, meaning that the actual total price of the\nApple arrangement is $1,999 — higher than Best Buy’s offer.\nThis has nothing to do with the differences between Apple Upgrade’s leasing terms and Best Buy’s 18-month loan. It’s the difference between Apple’s retail price of $1,999 and Best Buy’s $1,849. Guess what? $1,849 is less than $1,999.\nI generally like paying for everything I buy up front. The only thing I have a loan for right now is our home. So when Apple Upgrade was announced, I approached it with skepticism, presuming that participants would wind up paying more over time than they would buying devices outright up front. But no. There is no interest penalty. If anything, if you presume inflation is still going to run a bit high for the next few years, buying devices through Apple Upgrade might be a slightly better deal than paying up front.\nIs it a “trap” that at the end your 24 month lease you still owe $703 if you want to buy it? I would say that’s not a trap at all, given that you’d have only paid $1,296 to date on a $1,999 device. I get it. If you pay the full $1,999 up front, or take a loan to pay the full amount over 24 months, then, at that point, you own the device outright and you might not be tempted to buy a new device for a few years. If lease it and still owe $703 after 24 months, you might be inclined to think that it’d be no fun at all to pay $703 to finish purchasing a now-two-year-old MacBook, even if the price is totally fair and carries no interest penalty. It’s just not fun. What would seem fun, at that point, is to just give the leased MacBook back to Apple and start a new lease on a brand-new MacBook. That’s surely the appeal of this whole thing from Apple’s perspective — that leasing entices people to keep starting new leases every two years rather than just sit back and enjoy a fully-paid-for device for a few additional years. I think it’s a stretch to call that a “trap”.\n ★",
+      "id": "c8a90cfc1612dfabf8d62c33dc8999a7738facd05517d5db42b915e8478d7676",
+      "ref_id": "2",
+      "recommendationScore": 63,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "深入解析了Apple Upgrade计划中租赁与贷款的法律本质差异，提醒消费者关注隐藏条款。",
+      "reason": "文章详细辨析了Apple新升级计划的金融本质，对潜在用户理解合同条款具有重要指导意义。",
+      "tags": [
+        "Apple",
+        "Apple Upgrade",
+        "消费金融",
+        "租赁",
+        "法律"
+      ]
+    },
+    {
+      "title": "Reversing Abstractions: An Existential Crisis",
+      "link": "https://www.humprog.org/~stephen/blog/research/recovering-abstraction.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-30T14:34:56.000Z",
+      "summary": "Article URL: https://www.humprog.org/~stephen/blog/research/recovering-abstraction.html\nComments URL: https://news.ycombinator.com/item?id=49110624\nPoints: 6\n# Comments: 0",
+      "id": "2130ac104ca7da846afdc081820e28fd0e54204b6f9c8576f2a7b37e22405060",
+      "ref_id": "1",
+      "recommendationScore": 60,
+      "popularityScore": 25,
+      "priority": "low",
+      "comment": "一篇关于软件抽象的深刻哲学探讨，理论性强但实用性较低。",
+      "reason": "适合对计算机科学深层概念感兴趣的读者，但受众较窄且缺乏具体实践指导。",
+      "tags": [
+        "Computer Science",
+        "Abstraction",
+        "Software Engineering",
+        "Theory",
+        "Philosophy"
+      ]
+    },
+    {
+      "title": "Hacker Public Radio",
+      "link": "https://hackerpublicradio.org/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-30T14:29:27.000Z",
+      "summary": "Article URL: https://hackerpublicradio.org/\nComments URL: https://news.ycombinator.com/item?id=49110547\nPoints: 74\n# Comments: 9",
+      "id": "05fa92607ffe7838db20a20caf90c226eab22446a44ef3162d08f26c27c57c7b",
+      "ref_id": "3",
+      "recommendationScore": 55,
+      "popularityScore": 75,
+      "priority": "low",
+      "comment": "一个高人气的Hacker主题播客电台，提供社区资源和学习内容。",
+      "reason": "虽是受欢迎的社区资源，但作为技术博客文章缺乏深度分析和具体技术内容。",
+      "tags": [
+        "Community",
+        "Podcast",
+        "Radio",
+        "Hacking",
+        "Education"
+      ]
+    },
+    {
+      "title": "How old is Ann?",
+      "link": "https://quuxplusone.github.io/blog/2026/07/29/how-old-is-ann/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-30T12:14:23.000Z",
+      "summary": "Article URL: https://quuxplusone.github.io/blog/2026/07/29/how-old-is-ann/\nComments URL: https://news.ycombinator.com/item?id=49108971\nPoints: 46\n# Comments: 48",
+      "id": "f91221c0e7bae553d90e76955da997d4947c82968ad3a598166f10692256f4bb",
+      "ref_id": "3",
+      "recommendationScore": 55,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "一个标题具有迷惑性的文章，很可能是一个编程或逻辑谜题，能够锻炼思维。",
+      "reason": "如果是一个巧妙的编程或逻辑谜题，能吸引程序员读者，锻炼解决问题的能力，与编程工具有间接关联。",
+      "tags": [
+        "编程挑战",
+        "逻辑",
+        "算法",
+        "谜题",
+        "思维训练"
+      ]
+    },
+    {
+      "title": "Toot.community Is Shutting Down",
+      "link": "https://social.jorijn.com/@jorijn/statuses/01KYN00AP3NCZXCFB96KQB8GN2",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-30T16:33:41.000Z",
+      "summary": "Article URL: https://social.jorijn.com/@jorijn/statuses/01KYN00AP3NCZXCFB96KQB8GN2\nComments URL: https://news.ycombinator.com/item?id=49112327\nPoints: 11\n# Comments: 5",
+      "id": "96cfe8e9f936ef9c442a62f45908e269b9d4c082fc7aed8ddcd0187164db6e05",
+      "ref_id": "4",
+      "recommendationScore": 50,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "Mastodon实例Toot.community宣布关闭。",
+      "reason": "该文章报告了一个去中心化社交媒体平台的关闭事件，对关注Mastodon生态和独立开发者运营挑战的读者有相关性，但内容主要是公告性质，技术深度有限。",
+      "tags": [
+        "Mastodon",
+        "去中心化社交",
+        "社区运营",
+        "互联网服务",
+        "平台关闭"
+      ]
+    },
+    {
+      "title": "Why is everyone trying to build a solid-state battery?",
+      "link": "https://www.construction-physics.com/p/why-is-everyone-trying-to-build-a",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-30T12:38:51.000Z",
+      "summary": "Article URL: https://www.construction-physics.com/p/why-is-everyone-trying-to-build-a\nComments URL: https://news.ycombinator.com/item?id=49109193\nPoints: 104\n# Comments: 129",
+      "id": "abeae2d27bc60a17d411dab2a6dc15598b70f9d361ea88addcfe2ef71babe50e",
+      "ref_id": "2",
+      "recommendationScore": 40,
+      "popularityScore": 90,
+      "priority": "low",
+      "comment": "分析了固态电池成为研发热点的原因，属于前沿物理/化学工程领域。",
+      "reason": "虽然是热门前沿技术且社区关注度高，但与博客关注的AI、软件开发等核心主题偏离。",
+      "tags": [
+        "能源",
+        "电池技术",
+        "材料科学",
+        "科技趋势",
+        "物理"
+      ]
+    },
+    {
+      "title": "AI Worming through Word",
+      "link": "https://simonwillison.net/2026/Jul/29/ai-worming-through-word/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-07-29T18:43:03.000Z",
+      "summary": "",
+      "id": "dc6dd2ecfc18702f906b1e716672193abb07a2e80fd343df265f6f7c872b0e7b",
+      "ref_id": "4",
+      "recommendationScore": 40,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "标题引人注目，预示着AI安全漏洞的深度探讨，但文章内容缺失。",
+      "reason": "标题直接切入高优先级AI安全主题，极具潜力，但由于缺乏内容无法提供实际价值。",
+      "tags": [
+        "AI",
+        "Security",
+        "Vulnerability",
+        "Cybersecurity",
+        "Missing Content",
+        "Promising Title"
+      ]
+    },
+    {
+      "title": "Why Is Everyone Trying to Build a Solid-State Battery?",
+      "link": "https://www.construction-physics.com/p/why-is-everyone-trying-to-build-a",
+      "source": "construction-physics.com",
+      "publishedAt": "2026-07-30T12:04:25.000Z",
+      "summary": "A battery technology that’s getting a lot of attention is solid-state batteries, lithium-ion batteries that replace the liquid electrolyte with a solid material.",
+      "id": "abeae2d27bc60a17d411dab2a6dc15598b70f9d361ea88addcfe2ef71babe50e",
+      "ref_id": "3",
+      "recommendationScore": 40,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "简单介绍了固态电池的基本概念，但信息量不足。",
+      "reason": "主题虽然属于新兴科技范畴，但与核心关注点关联性不强，且内容过于简短，缺乏深入的技术分析或实用指导。",
+      "tags": [
+        "电池技术",
+        "新兴科技"
+      ]
+    },
+    {
+      "title": "Physicists Solve a Muon Mystery. Now, Old Results Don't Add Up",
+      "link": "https://www.quantamagazine.org/physicists-solve-a-muon-mystery-now-old-results-dont-add-up-20260729/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-30T15:22:46.000Z",
+      "summary": "Article URL: https://www.quantamagazine.org/physicists-solve-a-muon-mystery-now-old-results-dont-add-up-20260729/\nComments URL: https://news.ycombinator.com/item?id=49111305\nPoints: 71\n# Comments: 24",
+      "id": "45ae9b4729ec32a548426990c58bcdf438ddf17f6a23cdfbde167c3ae3721770",
+      "ref_id": "0",
+      "recommendationScore": 30,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "一篇关于粒子物理前沿研究的科普文章，揭示了最新的科学发现。",
+      "reason": "内容属于纯科学领域，与科技博客关注的AI、编程工具等主题优先级不符，对一般技术读者实用性较低。",
+      "tags": [
+        "物理",
+        "科学进展",
+        "科普"
+      ]
+    },
+    {
+      "title": "Upper stage impacting the moon on 2026 August 5",
+      "link": "https://www.projectpluto.com/25010d.htm",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-30T13:21:34.000Z",
+      "summary": "Article URL: https://www.projectpluto.com/25010d.htm\nComments URL: https://news.ycombinator.com/item?id=49109616\nPoints: 80\n# Comments: 25",
+      "id": "f89ff64be31f78ae0b3f2ff9e959143a8551272d226673889ed0898929b37a8e",
+      "ref_id": "0",
+      "recommendationScore": 25,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "预测了2026年发生在月球上的撞击事件，内容偏离科技博客核心关注。",
+      "reason": "主题为天文学事件预测，与AI、编程工具等核心关注领域无关，实用性较低。",
+      "tags": [
+        "天文",
+        "科普",
+        "事件预测",
+        "宇宙"
+      ]
+    },
+    {
+      "title": "Rise Reforming (YC S26) Is Hiring",
+      "link": "https://www.ycombinator.com/companies/rise-reforming/jobs/wJ9Q9nv-senior-chemical-process-engineer",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-30T17:00:21.000Z",
+      "summary": "Article URL: https://www.ycombinator.com/companies/rise-reforming/jobs/wJ9Q9nv-senior-chemical-process-engineer\nComments URL: https://news.ycombinator.com/item?id=49112683\nPoints: 0\n# Comments: 0",
+      "id": "bf6b39144e3b3c69a152260fb6f95656fb7538000dd100cdbefe20195d442ea6",
+      "ref_id": "2",
+      "recommendationScore": 10,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "YC孵化公司Rise Reforming的招聘信息。",
+      "reason": "该内容本质上是招聘广告，而非技术博客文章，不提供普适的技术知识或行业洞察，对科技博客读者普遍价值较低。",
+      "tags": [
+        "招聘",
+        "创业公司",
+        "YC",
+        "职业发展"
+      ]
+    },
+    {
+      "title": "Are political journalists always wrong?",
+      "link": "https://shkspr.mobi/blog/2026/07/are-political-journalists-always-wrong/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-07-30T11:34:31.000Z",
+      "summary": "I've mostly tuned out of reading the news. But, once in a while, a headline will be shared on social media and I'll momentarily stare into the abyss.  There has recently been a change in UK Prime Minister. I neither know nor care whether that's a good thing. What I do know is that Senior Political Correspondents collectively shat their pants with excitement at being able to breathlessly report…",
+      "id": "73434824bcce441506eeca1c101371628b2dc2e846e3529b92047e8a08e07253",
+      "ref_id": "1",
+      "recommendationScore": 10,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "与科技主题无关，是对政治新闻和记者行为的个人评论。",
+      "reason": "内容完全不符合科技博客的关注主题，不具备任何技术深度或实用性。",
+      "tags": [
+        "政治",
+        "媒体评论"
+      ]
+    },
+    {
+      "title": "Quoting D. Richard Hipp",
+      "link": "https://simonwillison.net/2026/Jul/29/d-richard-hipp/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-07-29T21:15:21.000Z",
+      "summary": "",
+      "id": "b772d898ee876d6dd6a38ba26de06f8e41471d3cd873c34f03c0eb7ece816940",
+      "ref_id": "3",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "文章内容为空，无法进行任何评估。",
+      "reason": "文章内容缺失，无法评估其主题、深度和价值。",
+      "tags": [
+        "Incomplete",
+        "Empty Content"
+      ]
+    },
+    {
+      "title": "Quoting Matthew Green",
+      "link": "https://simonwillison.net/2026/Jul/29/matthew-green/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-07-29T18:18:15.000Z",
+      "summary": "",
+      "id": "4930bf7708b022091cc9fe26e077eb3b950687faf0e7f9a16ca4600e0e3d56aa",
+      "ref_id": "0",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "文章正文内容缺失，无法进行有效评估。",
+      "reason": "由于缺乏文章内容，无法从任何评估维度进行评价。",
+      "tags": [
+        "N/A"
+      ]
+    }
+  ]
+}
