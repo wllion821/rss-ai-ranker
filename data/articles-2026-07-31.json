@@ -1,0 +1,816 @@
+{
+  "dailySummary": "今日科技速递：AI领域热点频现，GPT-5.6旨在突破性价比极限，Kimi大模型由2万块NVIDIA芯片驱动，同时本地部署Kimi K3实现低内存运行。开发者修复了LLM评估bug，持续优化模型。",
+  "articles": [
+    {
+      "title": "Algorithms on billion-scale graph using 10GB RAM: I love DataFusion",
+      "link": "https://semyonsinchenko.github.io/ssinchenko/post/datafusion-graphs-cc-2/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-31T15:53:37.000Z",
+      "summary": "Article URL: https://semyonsinchenko.github.io/ssinchenko/post/datafusion-graphs-cc-2/\nComments URL: https://news.ycombinator.com/item?id=49124658\nPoints: 28\n# Comments: 6",
+      "id": "fb8da0b91751e333b800811c7aae7989491b22ce39df8df4a66dde9e3a5bdbd4",
+      "ref_id": "3",
+      "recommendationScore": 95,
+      "popularityScore": 40,
+      "priority": "high",
+      "comment": "深入探讨了使用DataFusion在有限内存下处理十亿级图数据的算法优化，技术深度和实用性极高。",
+      "reason": "内容完美契合AI和编程工具主题，提供了解决大规模数据处理挑战的创新方法和具体实践，具有非常高的技术价值、新颖性和信息密度。",
+      "tags": [
+        "AI",
+        "数据工程",
+        "图算法",
+        "DataFusion",
+        "内存优化",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "13 Models and 4 Agents on SWE Tasks: Go, Java, Python, Rust, TS",
+      "link": "https://swe-rebench.com",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-31T15:28:28.000Z",
+      "summary": "Article URL: https://swe-rebench.com\nComments URL: https://news.ycombinator.com/item?id=49124336\nPoints: 15\n# Comments: 4",
+      "id": "dcbf7b5081847319e588cd1a6eef2783b490df5841b05cbd9a389face56d644c",
+      "ref_id": "2",
+      "recommendationScore": 95,
+      "popularityScore": 20,
+      "priority": "high",
+      "comment": "深度评估了多达13个AI模型和4个Agent在软件工程任务上的表现，覆盖多种主流编程语言。",
+      "reason": "文章直接聚焦于AI领域，且具有极高的技术深度和实用性，是当前AI在编程领域应用的权威基准之一。",
+      "tags": [
+        "AI",
+        "大模型",
+        "软件工程",
+        "编程工具",
+        "性能评估"
+      ]
+    },
+    {
+      "title": "Why do OpenAI's GPT-2 weights beat mine?  Part two: the bugfix",
+      "link": "https://www.gilesthomas.com/2026/07/why-do-openai-gpt2-weights-beat-mine-2-the-bugfix",
+      "source": "gilesthomas.com",
+      "publishedAt": "2026-07-30T19:00:00.000Z",
+      "summary": "I'm digging into why my GPT-2 style models score worse on an instruction-following eval than OpenAI's original weights;\nI gave the details in this post.\nWhile I was writing up the results of my first experiment into possible causes,\nI ran the post past ChatGPT -- I always use an \"editorial board\" of AIs to check my\nposts for flow, style, and any technical errors (though all writing is always mine).\nIt took a look at the eval code that I was running, and highlighted a bug.\nLuckily, it doesn't change the important results -- OpenAI's models continue to be\nbetter than mine at instruction-following. But it was\nenough to change the baseline numbers, re-ordering how well my own models did.\nSo I fixed it and regenerated the baseline\nso that future experiments are based on solid ground.\nThe bug\nThe eval takes a model, and trains it over multiple epochs on a split of a subset of the Alpaca\ninstruction-following dataset.  At the end of each epoch, it evaluates\nthe resulting model against a held-back validation split; if the eval loss starts\nrising, it bails out.  Finally, it runs a test split of the dataset through the resulting\nmodel, and saves the result.\nOnce I've run it for a bunch of different models, I use an LLM-as-a-judge script\nto get GPT 5.5 to score results -- for each question-answering result, it sees all\nof the responses for all of the models in the same prompt, shuffled in order each time,\nto try to make it judge models against each other as consistently as possible.\nNow, the idea was that the generation of the test split answers would use the model from the epoch prior\nto the rising-loss one.  So I had code like this:\n    for epoch in range(100):\n        model.train()\n        for input_batch, target_batch in tqdm(train_loader, desc=f\"Epoch {epoch}\"):\n            optimizer.zero_grad()\n            loss = calc_loss_batch(\n                input_batch, target_batch, model, device\n            )\n            loss.backward()\n            optimizer.step()\n\n        model.eval()\n        val_loss = calc_loss_loader(val_loader, model, device, eval_iter)\n\n        if last_val_loss is None or last_val_loss > val_loss:\n            last_val_loss = val_loss\n            last_params = model.state_dict()\n            print(\"Val loss still decreasing, continuing\")\n        else:\n            print(\"Val loss rising, bailing out\")\n            break\n\n    model.load_state_dict(last_params)\n\nEach time the validation loss went down, I wanted to store the model's parameters\nin last_params so that they could be restored later in that last line.\nIf you look closely, the error is pretty obvious.  model.state_dict() does not return\na copy of the model's parameters -- it produces a dictionary containing references\nto the parameters inside the model.  So although I was trying to stash away the parameters\nin last_params each time loss went down, so that we had a copy of the ones that\nwere live in the epoch prior to the rising-loss one, what I was actually doing was\njust pointlessly saving a reference to the \"live\" params.  The call to\nmodel.load_state_dict(last_params) was essentially a no-op.\nThe solution was simple enough:\nfrom copy import deepcopy\n...\n        last_params = deepcopy(model.state_dict())\n\nThat was enough to make the code do what it was meant to do.\nWhile I was there, I also noticed that the evaluation code was only using the first\nfive batches in my eval dataset.  This code was originally adapted from an eval\nin \"Build a Large Language Model (from Scratch)\",\nwhere the eval was run much more frequently and had to be super-fast.  Because\nmy own code ran it more rarely, it made more sense to use all of it.\nGiven that I was going to completely re-run\nthe script to generate the test responses, I figured that I might as well fix that\nat the same time.\nA new baseline\nI re-ran the fixed script on all of the models I'm comparing, and ran that past\nthe GPT 5.5 judge; here's what I got:\n\n  Test loss\n  Old IFT epochs\n  Old IFT score\n  Old IFT rank\n  New IFT epochs\n  New IFT score\n  New IFT rank\n\n\n\n\n  OpenAI weights: medium\n  3.231442\n  2\n  41.62\n  1\n  2\n  42.41\n  1\n\n\n  JAX, with MHA bias, no dropout\n  3.418784\n  4\n  19.25\n  4\n  4\n  18.12\n  5\n\n\n  JAX, no MHA bias, no dropout\n  3.420089\n  3\n  14.66\n  11\n  5\n  20.72\n  3\n\n\n  JAX, no MHA bias, with dropout\n  3.476802\n  4\n  12.94\n  15\n  7\n  16.98\n  8\n\n\n  OpenAI weights: small\n  3.499677\n  2\n  26.73\n  2\n  2\n  26.11\n  2\n\n\n  1xrtx3090-stacked-interventions\n  3.538161\n  4\n  17.79\n  6\n  4\n  13.68\n  11\n\n\n  8xa100m40-stacked-interventions-1\n  3.577761\n  4\n  10.29\n  16\n  4\n  9.81\n  15\n\n\n  Cloud FineWeb, 8x A100 40 GiB\n  3.673623\n  7\n  20.71\n  3\n  6\n  19.45\n  4\n\n\n  1xrtx3090-baseline\n  3.683835\n  6\n  15.11\n  9\n  6\n  13.39\n  12\n\n\n  8xa100m40-baseline\n  3.691526\n  4\n  14.74\n  10\n  4\n  14.64\n  9\n\n\n  Cloud FineWeb, 8x H100 80 GiB\n  3.724507\n  4\n  13.25\n  14\n  4\n  13.84\n  10\n\n\n  Cloud FineWeb, 8x A100 80 GiB\n  3.729900\n  4\n  14.50\n  12\n  4\n  11.30\n  14\n\n\n  Cloud FineWeb, 8x B200 160 GiB\n  3.771478\n  4\n  16.03\n  8\n  4\n  11.82\n  13\n\n\n  Local FineWeb train\n  3.943522\n  7\n  13.73\n  13\n  7\n  8.93\n  16\n\n\n  Local FineWeb-Edu extended train\n  4.134991\n  7\n  16.70\n  7\n  7\n  17.10\n  7\n\n\n  Local FineWeb-Edu train\n  4.166892\n  7\n  18.68\n  5\n  7\n  17.28\n  6\n\n\n\n\nLet's dig into those numbers.\nTraining epochs\nLet's look into the number of training epochs first; I've highlighted the models for which it changed.\nFor the \"Cloud FineWeb, 8x A100 40 GiB\" model, I think that was a result of the change\nto the number of validation samples.\nFor the two JAX models, it's a bit more of a mystery.  There may be some part of the\nsame \"more eval data\" variation there, but I have a suspicion that there's something\nmore, related to dropout.\nMy methodology to date has been that the IFT training runs\nshould use the same dropout setting as the original base model training run (I'll\ncome back to this in a later post).   However, due to differences between the JAX\ntraining script and the evaluation code (which is PyTorch), matching the dropout\nrate when evaluating those models is a bit fiddly and error-prone.\nI am 100% sure that\nI got it right this time around -- I've checked and double-checked the specific commands\nI ran.\nBut I think -- from what I remember doing -- that\nI might have messed it up the previous time.\nThat's not certain, though -- just a suspicion based on half-memories\nof some commands I ran several weeks ago, which never wound up in my .bash_history\n(too many terminals open at once).\nThe ranking\nFor the IFT scores, remember that they're not strongly comparable between runs.\nLet's imagine that the LLM judge is given the following answers to the question \"Who was the author of Pride and Prejudice?\"\n\"Jane Austen\"\n\"The author of 'Pride and Prejudice' was Jane Austen\"\n\"The author of 'Pride and Prejudice' was Sarah Palin\"\n\"The author of 'Pride and Prejudice' was 'Pride and Prejudice'\"\nIn some cases it might treat the first two as being 100/100, in others it\nmight give the second 95/100 for being too wordy.  Likewise, in some cases it might\nrank the last two as 0/100 for being wrong, in others it might give the \"Sarah Palin\"\none 5/100 for at least being the name of a person rather than complete nonsense.\nNow, we always ask the LLM to judge all of the models' answers for a given question in\none go, so at least we can be sure that it will be consistent for a given prompt about\na given question.  But what we can't keep consistent is which way it leans between\ndifferent runs, or different questions within the same run.  Sometimes it might be\nfeeling \"generous\" and give the Sarah Palin answer a bit of grace, other times\nit might be harsher.\nSo there's a significant amount of noise there; my rule of thumb is that a variation of\na point or two is within that noise, so OpenAI medium going from 41.62 to 42.41 is\npretty much meaningless, and likewise \"JAX, with MHA bias, no dropout\"'s move from\n19.25 to 18.12.\nSo what's important is the relative ranking -- which is first, which is second,\nand so on.  Naturally, you have to allow for the fact that -- for example -- if one\nmodel goes from position 11 to position 3, like \"JAX, no MHA bias, no dropout\"\ndid, then the previous number 3 will have to become number 4, 4 will\nbecome 5, and so on.  You can see that happening in the results table.  Obviously,\nas other models rise and fall, that has further knock-on effects.\nAnyway, with all of those caveats, the good news is that my original mystery remains.\nThe OpenAI models were still doing noticeably better than my own ones.  GPT-2 medium\ncontinued to lead the pack (unsurprisingly, given that it's a bigger model), and\nGPT-2 small was still in second place.  If that had changed, it would have made\na rather disappointing end to this series: \"mystery explained, it was a bug in the\neval :-(\"\nBut now let's look at my models.\nFirstly, it looked like the \"no MHA bias\" models might have benefited\nfrom the extra training -- or from having their dropout settings corrected.  They rose from\npositions 11 and 15 to 3 and 8 respectively -- a huge swing for \"JAX, no MHA bias, no dropout\",\nand a solid improvement for \"JAX, no MHA bias, with dropout\".\nMost of the other changes in relative rankings can be explained by those two models\nhaving been promoted, but there are some other changes.  In particular, three models\ndropped significantly in score (and, as a result, ranking):\n1xrtx3090-stacked-interventions\n\"Cloud FineWeb, 8x B200 160 GiB\"\n\"Local FineWeb train\"\nMy suspicion -- a very weakly-held hypothesis, but an interesting one -- is that those models had previously been benefiting from the bug.\nRemember that the signal we're using to stop training is that the validation loss\nstarts rising.  We're using that as a proxy for overfitting, which in turn we're using as\na proxy for \"this model has had as much training\non this data as it needs for the eval\".\nBut there's no guarantee that the connection is there.  Perhaps the models weren't\noverfitting and if we'd waited for another epoch or two, the validation loss might have\nstarted falling again.  Or maybe some amount of overfitting would be beneficial for this\neval?\nConclusion\nThere's probably a near-infinite amount of digging in that I could potentially do here.\nBut I think it's best to stop.  The bugfix was important because it meant that the\neval was now doing what I thought it was doing.\nImportantly, it doesn't change the puzzling\nfact that my models were worse at this eval than OpenAI's, which is what I'm trying to untangle.\nAnd it means that I can now lean more confidently on the baseline numbers.\nSo now it's time to actually start changing things to see if I can close the gap!\nHere's a link to the next post in this series: does overtraining help?.",
+      "id": "c58ca30a90db5fdab38927c9aaa93dc387bb44b05c6c192e7e5a48ac2baf1e15",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "深度解析了AI模型评估中的技术bug，并展示了AI辅助调试的潜力。",
+      "reason": "文章技术深度高，详细解释了AI模型性能评估和调试过程中的具体问题，对AI/ML开发者具有极强的实用性和参考价值。",
+      "tags": [
+        "AI",
+        "机器学习",
+        "GPT-2",
+        "模型评估",
+        "调试",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "Run Kimi K3 using 29 GB of RAM at 0.50 tok/s",
+      "link": "https://github.com/sqliteai/waste",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-31T14:12:38.000Z",
+      "summary": "Article URL: https://github.com/sqliteai/waste\nComments URL: https://news.ycombinator.com/item?id=49123386\nPoints: 19\n# Comments: 1",
+      "id": "d6cfb2eda47ef1ed36e6b2f413fd926d59d1268f846f3da0cd363ab70d1b358c",
+      "ref_id": "2",
+      "recommendationScore": 92,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "展示了如何在相对有限的内存下运行Kimi K3大型AI模型，并提供了性能指标。",
+      "reason": "对于希望在本地部署和优化大型语言模型，尤其是在资源受限环境下进行实验的AI开发者和研究者来说，这是一个非常有价值的参考。",
+      "tags": [
+        "AI",
+        "大型语言模型",
+        "LLM",
+        "模型优化",
+        "本地部署",
+        "性能测试"
+      ]
+    },
+    {
+      "title": "Moonshot’s Kimi uses 20k Nvidia chip cluster from Alibaba",
+      "link": "https://www.bloomberg.com/news/articles/2026-07-31/moonshot-s-kimi-built-on-20-000-nvidia-chip-cluster-from-alibaba",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-31T13:24:03.000Z",
+      "summary": "https://archive.is/vgmMB\nComments URL: https://news.ycombinator.com/item?id=49122838\nPoints: 73\n# Comments: 46",
+      "id": "baf333cf59af10df921a95f712af09088b2141ac248cf6e23b75798669bad16c",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 24,
+      "priority": "high",
+      "comment": "揭示了知名AI公司Kimi大模型背后的超大规模算力支持。",
+      "reason": "提供了AI大模型算力部署的具象案例，技术深度和新颖性较高，对深入理解AI发展至关重要。",
+      "tags": [
+        "AI",
+        "大模型",
+        "算力",
+        "Nvidia",
+        "基础设施"
+      ]
+    },
+    {
+      "title": "Advancing the price-performance frontier with GPT‑5.6",
+      "link": "https://simonwillison.net/2026/Jul/30/luna-price-drop/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-07-30T23:58:42.000Z",
+      "summary": "",
+      "id": "7bc027728ff8ee44826d30e26445bb12c6cef7f01b210b9ef88bc07f7627908e",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "聚焦于GPT-5.6的模型性能与成本优化，极具潜力。",
+      "reason": "标题直接指向AI领域最前沿的大模型技术进展，符合最高优先级主题且具有广泛吸引力。",
+      "tags": [
+        "AI",
+        "大模型",
+        "GPT",
+        "性能优化",
+        "前沿技术"
+      ]
+    },
+    {
+      "title": "Show HN: I built a cross-browser extension that controls fingerprinting surfaces",
+      "link": "https://privacything.com/en/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-31T14:57:39.000Z",
+      "summary": "Hello Hacker News! I’m Tomasz, creator of Privacy Thing, a browser extension for Firefox and Chromium-based browsers. I’ve just released its Preview version.\nPrivacy Thing aims to reduce browser fingerprinting—the tracking of users without cookies.\nIt began as an internal project: a simple location simulator. Over time, I expanded it to cover more fingerprinting surfaces. It now has 13 protection categories affecting 50+ browser APIs and methods: Geolocation, time and locale settings, Canvas, WebGL, Audio, Navigator, Screen, Client Hints, Battery, WebRTC, Dedicated Workers, Service Workers, and Shared Workers. The list is still growing.\nThe extension is fully configurable. Users can create regional profiles and assign them to domain rules, with separate protection settings for each domain. Or they can skip domain rules and rely on the global configuration—I’m not here to decide what works best for them :-)\nPrivacy Thing uses Manifest V3, with all its pros and cons. Chrome and Firefox appear to offer similar extension APIs, but differ fundamentally at the level where Privacy Thing operates. This matters because its scripts must load as early as possible to be effective.\nIts X-Ray module communicates with scripts running in the page context to show which APIs a site uses and how often it queries them. An aggregate count appears on the extension’s toolbar badge by default.\nEach release includes processed, compact datasets covering Chrome build numbers, supported language codes, language-to-country mappings, popular screen resolutions, and hardware configurations. This keeps the extension independent of external services and there is no good reason to build extra infrastructure for it.\nThere are two exceptions. The regional preset wizard uses OpenStreetMap’s Nominatim geocoding service, but only after the user consents to sending the query. Maps are displayed using OpenFreeMap.\nPresets can also be created manually. Users who know the coordinates can enter them directly without contacting any 3rd-party service.\nThe extension does not transmit telemetry or usage data. This makes development harder, but it is fundamental to its identity: user data belongs to the user. Privacy Thing configuration can be exported, edited and imported.\nThe Preview is currently distributed under a proprietary license. This is not ideal; I ultimately intend to release the source under an open-source license, most likely the AGPL.\nMore about the development process:\nhttps://tomaszjanusz.dev/en/projects/privacy-thing/\nDownload:\n- Mozilla Addons:\nhttps://addons.mozilla.org/en-US/firefox/addon/privacy-thing...\n- Chrome Web Store:\nhttps://chromewebstore.google.com/detail/privacy-thing-previ...\nThe extension is STILL under review in the Microsoft Edge Add-ons store -_-\nThank you for your suggestions and feedback. Please remember that this is still a preview: some things may not work, may be slower, or may not behave as intended. I sincerely hope such issues will be few and far between.\nP.S. Yes, Privacy Thing fully supports Firefox Containers. I like the concept and believe extensions should support containers whenever possible. Privacy Thing will support them elsewhere too, including Brave, if Brave Software makes its container API public.\nComments URL: https://news.ycombinator.com/item?id=49124017\nPoints: 13\n# Comments: 3",
+      "id": "1c573c4faf7864151b3c2b57f9016ca4b4eec92b8fc3c03a226a024cce168675",
+      "ref_id": "0",
+      "recommendationScore": 88,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "一个对抗浏览器指纹追踪的全面且可配置的跨浏览器扩展。",
+      "reason": "对网络隐私高度关注的用户，尤其是那些希望细粒度控制指纹参数的用户，会发现它非常实用。",
+      "tags": [
+        "隐私保护",
+        "浏览器扩展",
+        "指纹追踪",
+        "Web安全",
+        "独立开发"
+      ]
+    },
+    {
+      "title": "The AI Phrasebook",
+      "link": "https://nesbitt.io/2026/07/31/the-ai-phrasebook.html",
+      "source": "nesbitt.io",
+      "publishedAt": "2026-07-31T10:00:00.000Z",
+      "summary": "Agentic: bash.\nFunction calling: RPC.\nAgent handoff: a pipe.\nMCP: CGI.\nSkills: markdown.\nMulti-agent orchestration: systemd.\nAutonomous agent: cron.\nComputer use: ssh.\nSystem prompt: .env.\nWorld model: /etc.\nContext window: scrollback.\nShort-term memory: Redis.\nLong-term memory: Postgres.\nEmbeddings: grep.\nDistillation: ripgrep.\nRetrieval augmentation: locate(1).\nCross-attention: a JOIN.\nChain of thought: ~/.bash_history.\nSummarisation: git rebase -i.\nSpeculative decoding: tab completion.\nSymbolic reasoning: regex.\nCode interpreter: awk.\nStructured output: ASN.1.\nModel card: a man page.\nLoRA: patch.\nEvals: CI.\nPelican on a bicycle: fizzbuzz.\nMixture of experts: HAProxy.\nHallucination: a 404 page served as a 200.\nRefusal: /dev/null.\nReflection: set -x.\nReAct: retry with backoff and a print statement.\nRecursive self-improvement: a fork bomb.\nInterpretability: EXPLAIN ANALYZE.\nMechanistic interpretability: strace.\nGuardrails: ulimit.\nJailbreak: sudo.\nPrompt injection: LD_PRELOAD.\nOff switch: SIGKILL.\nHuman in the loop: [y/N].",
+      "id": "eba5d89c48156445c0bb04db68cc1a2b88595a40f25fd3757bdb4161df6abf83",
+      "ref_id": "1",
+      "recommendationScore": 88,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "以极具创意的方式将AI术语与传统Unix/编程概念联系起来，新颖且富有启发。",
+      "reason": "通过独特的类比，它能帮助程序员更快理解AI概念，具有很强的传播潜力。",
+      "tags": [
+        "AI",
+        "编程工具",
+        "Unix",
+        "类比",
+        "词汇表"
+      ]
+    },
+    {
+      "title": "Getting 25 Gbps Thunderbolt Ethernet on My Mac Studio",
+      "link": "https://www.jeffgeerling.com/blog/2026/getting-25g-ethernet-mac-thunderbolt/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-31T16:15:31.000Z",
+      "summary": "Article URL: https://www.jeffgeerling.com/blog/2026/getting-25g-ethernet-mac-thunderbolt/\nComments URL: https://news.ycombinator.com/item?id=49125034\nPoints: 23\n# Comments: 5",
+      "id": "2dfce6624abc658fb629d768c59b28c476fb02ff231e820d53158f60ea5c02ce",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 30,
+      "priority": "high",
+      "comment": "详细探讨了Mac Studio上25Gbps Thunderbolt以太网的实现，对Apple生态用户具有高实用价值。",
+      "reason": "内容紧密贴合Apple生态系统主题，技术深度适中，提供了具体的硬件配置和性能提升方案，对有高速网络需求的Mac用户极具参考价值。",
+      "tags": [
+        "Apple生态",
+        "网络",
+        "硬件",
+        "Mac Studio",
+        "Thunderbolt"
+      ]
+    },
+    {
+      "title": "New Defcon Badges Pack a Unique Open-Source Chip That Doubles as a Security Key",
+      "link": "https://www.wired.com/story/defcon-34-badge-baochip-andrew-bunnie-huang/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-31T15:33:02.000Z",
+      "summary": "Article URL: https://www.wired.com/story/defcon-34-badge-baochip-andrew-bunnie-huang/\nComments URL: https://news.ycombinator.com/item?id=49124409\nPoints: 44\n# Comments: 8",
+      "id": "808f1e61d279590fc58e8f0376fa0b962000af84cd1d416d902c8d56458b83c8",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 40,
+      "priority": "high",
+      "comment": "Defcon徽章集成独特开源芯片作为安全密钥，结合了硬件创新和网络安全实用性。",
+      "reason": "主题新颖且实用性高，涉及开源硬件和安全技术，符合科技前沿趋势，具有广泛的兴趣点。",
+      "tags": [
+        "硬件",
+        "安全",
+        "开源",
+        "Defcon",
+        "自动化"
+      ]
+    },
+    {
+      "title": "llm 0.32rc2",
+      "link": "https://simonwillison.net/2026/Jul/30/llm-rc2/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-07-30T22:52:06.000Z",
+      "summary": "",
+      "id": "31c91c487dcc06ec0e3b0e5c0208f8a1aa760309cdd56b737d0cfc71669fb063",
+      "ref_id": "4",
+      "recommendationScore": 85,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "关于LLM相关工具0.32rc2版本的发布更新。",
+      "reason": "涉及AI领域的重要工具更新，对LLM开发者具有直接实用价值和高优先级。",
+      "tags": [
+        "AI",
+        "LLM",
+        "编程工具",
+        "发布更新"
+      ]
+    },
+    {
+      "title": "BI Slop ",
+      "link": "https://idiallo.com/blog/business-intelligence-slop",
+      "source": "idiallo.com",
+      "publishedAt": "2026-07-30T23:50:00.000Z",
+      "summary": "You must use the tool. We must justify it. These aren't the words companies use, but that's what it comes down to. When you buy an expensive solution before you've clearly identified the problem, you have to use the tool to justify its line item in the spreadsheet. At most companies I've worked in, there's always some application I've used once or twice. The third time I want to use it, it's gone. If a tool isn't popular, the finance team has no trouble dropping it.\n\t\t\t\nBut for some reason, it's different with AI. If nobody's using it, the assumption is that employees aren't being productive enough. So we got signed up for mandatory training. There was limited space, but I moved fast and got a spot. I'd been using ChatGPT since it came out, so I was hoping the training would turn me from a casual user into a pro.\nInstead, we were shown how to copy and paste data from Excel and other sources into the chat interface. We worked with sample data, and there was always someone in class who'd say \"mine didn't work.\" The developers in the room asked about Codex. The OpenAI-certified instructor replied that she wasn't a developer. There was an awkward moment when someone asked if we could just use Copilot, since it's already integrated into Excel.\nI got my certificate. But I don't think I learned anything I couldn't have picked up with a free account on my own time.\nWhat comes with a certificate, though, is the obligation to use the tool. I had a hammer, and everything looked like a nail. Whenever I ran into dense information, I'd copy, paste, extract insight. The great thing is that the result always looks neatly presented. I didn't have time to read the dense information in the first place, so of course I wasn't going to verify whether it was accurately referencing the source material. Besides, everyone was doing the same thing. I hate it when people use AI to write a Slack message, but at this point it's inevitable.\nOne time, after a meeting, I pulled the transcript and asked ChatGPT to organize it into action items and generate a Q&A based on the content. It gave me something very elaborate. Or at least it looked elaborate. I skimmed it and passed it along to the next person, who actually had to use it to research a project. What I failed to notice was that a large part of the document was hallucinated.\nSome of the action items sounded technical enough to fool me. But to someone who actually had to work on them, they made no sense at all. I'm guilty of this, and it's become the norm. The same way we use large language models to write code as software engineers, the planning and architecting behind that code is increasingly written by LLMs too.\nIn my household, AI slop videos are strictly banned, to the point that my kids police their friends who watch that stuff. So when my son saw ChatGPT open on my computer, he asked if I was making BI Slop.\n\"BI Slop? What's that?\"\n\"It's Business Intelligence Slop!\"\nI was so proud of him for recognizing exactly what I was doing. And I was so disappointed in myself, because that's exactly what I was doing. The same way we scrutinize code and refuse to merge PRs that are entirely AI-generated, we need to pay attention to the other ways we use these tools. Business decisions and plans produced by LLMs need to pass the smell test before they're accepted.\nThe issue is the same one. We merge large PRs because we don't have time to read them, then suffer the consequences later in unexpected ways. With business intelligence, we don't read the output because of its sheer volume, and we approve it because it looks good on the surface. Then, again, we suffer the consequences later in unexpected ways.\nThis is a problem created only because we were handed a mandatory solution: use AI to justify the line item in the spreadsheet. It only saves you time in the sense that you skip reading the output, and you do that because it looks good on the surface.",
+      "id": "fb60f30fabb66ea9fbb86d008caf9939f867f9714e905a0733c5a7879905dbe4",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "犀利批判了企业在AI工具采纳中盲目投入和强制使用的现象。",
+      "reason": "文章提供了对AI工具在企业中实际应用面临问题的独到见解，具有很强的现实意义和警示作用。",
+      "tags": [
+        "AI",
+        "企业管理",
+        "工具采纳",
+        "批判性思维"
+      ]
+    },
+    {
+      "title": "Why do OpenAI's GPT-2 weights beat mine?  Part three: testing overtraining",
+      "link": "https://www.gilesthomas.com/2026/07/why-do-openai-gpt2-weights-beat-mine-3-overtraining",
+      "source": "gilesthomas.com",
+      "publishedAt": "2026-07-31T01:15:00.000Z",
+      "summary": "The GPT-2-style models that I've been training work really well, and I've even\nmanaged to train some that perform better than the original OpenAI small model\nin terms of cross entropy loss on a test set.  But\nas I wrote previously,\nthere's a mystery: why do they perform worse on my instruction fine-tuning evaluation?\nI had various theories about why that might be, and to me, the most plausible-seeming of them\nwas the amount of data they were trained with.  As best I can find out, OpenAI's models were, by modern\nstandards, trained on much more data than they should have been, while I'd used\nthe theoretically optimal amount of training data.\nTo put it in other words, OpenAI's models were overtrained.  If I deliberately\novertrained my own models, could I match their performance?  This post is a write-up\nof what happened, but so as not to bury the lede -- it didn't seem to help much, if at all.\nLet's see why.\nOvertraining\nLet's start by getting a nice crisp definition of overtraining.\nIt's important not to confuse overtraining with overfitting.  Overfitting is\nwhere you train a model so that instead of learning a general rule about the\ndata it's seeing, it learns something very specific to the training data -- for example,\nthis:\n\n...rather than this:\n\nOverfitting is pretty much always a bad thing.\nOvertraining, by contrast, is more of a judgement call.  For LLMs, it's generally used as a shorthand for\n\"training for more than the Chinchilla-optimal number of tokens\".  The\nChinchilla paper makes a very specific case:\nif you train a model for roughly 20 times as many tokens as it has parameters, then\nyou'll have as good a model as you can get for that budget in terms of compute.\nThey were arguing against contemporaneous experiments where people were doing\nthings like doubling the number of parameters but training on the same amount of\ndata.\nIf you overtrain, it means that you're training on more than 20 tokens per parameter.\nThe Chinchilla argument is that instead of doing that, you should scale up the number of parameters and the number\nof tokens equally to keep the 20x ratio.  Because the amount of compute used scales pretty much linearly\nwith both tokens and parameters, you'll spend the same amount and you'll get a better model that way.\nBased on that heuristic, if you double your compute budget, then you should scale up your parameter count\nby 2 and your training token count by the same amount, and by doing\nthat you'll get a better result than you would if you'd naively just doubled the parameters\nor the tokens, for the same amount of compute time spent.\nBut overtraining is not always a bad thing.  Keeping things Chinchilla-optimal means\nthat you have to keep scaling up the model as you scale up the compute budget, and\noften you can't do that -- for example, let's imagine you're training a model that's\nmeant to run on mobile phones.  You have a hard limit on the number of parameters:\nwhat will fit in the target devices' RAM.\nAnd importantly, in general you will still get a better model by overtraining -- just not\nas much better as you would have done if you had been able to scale up the model as\nwell as the training tokens.\nNow, as always, we don't know enough about the original GPT-2 training runs to be sure\nas to whether they were overtrained, and if so, by how much.  But one thing that we\ndo know is that GPT-2 was trained in 2019, three years before the Chinchilla paper\ncame out, so they definitely didn't use it as a heuristic!\nOne thing that they do say in the GPT-2 paper\nis that their dataset, WebText, is \"a total of 40 GB of text\".  Assuming 4 bytes per token (a good\nrule of thumb for the GPT-2 tokeniser), that's\n10B tokens.  If the small model, which had 124M parameters, was trained on all of those, then it definitely was\novertrained; 124M times 20 is about 2.5B. 1\nOn top of that, there's the question of epochs.  In my training runs so far, I've been\ntraining through a Chinchilla-optimal 3.2B unique tokens.  But being able to easily get your\nhands on that much training data is a relatively new thing, as you can see from the\nfact that the GPT-2 authors decided to document how they got theirs in the paper.\nSo back then, pre-Chinchilla, people tended to train for multiple epochs so that\nthey could make better use of limited data.\nNow, when I first started training my models,\nI tried to dig up some details on the GPT-2 training run beyond what was there in the paper.\nI found this report,\nand using data there, I\ncalculated\nthat it looked like OpenAI had trained for about 42 epochs over WebText.  The report's author\ncame up with 60 epochs as an equivalent-sized training run for their own dataset. 2\nAgain, those numbers are shaky; we don't have the real data.  But I think it's not\ncrazy to say that the OpenAI models were probably trained on more data than mine,\nand probably over more than one epoch.  They were, in the Chinchilla sense, overtrained.\nThat makes perfect sense for the time, given that it was three years before the\nChinchilla paper!\nBut that opened up a couple of interesting experiments that I could try.\nThe experiments\nObviously I didn't want to train a model over 10B tokens (not least because I'd need\nto download a larger sample of FineWeb).  And I certainly didn't want to do 42 epochs\nof training, given that one epoch over 3.2B tokens took almost two days, even with\nmy relatively fast JAX code.\nBut it seemed plausible that I'd be able to get at least some signal if I trained\nlonger.  I decided to use poppy, my new dedicated training box to train two new models:\nFirstly, I'd train one on 6.4B tokens from my FineWeb dataset -- the original 3.2B\nthat I had been training on to date, and then on whatever 3.2B came next.\nSecondly, I'd train another one on the same 3.2B tokens as usual, but I'd do two\nepochs.\nI expected each training run to take a bit less than four days on poppy.\nOnce they were done, I would be able to evaluate the models, both with the test loss eval and the\nIFT one.\nIn an unusual-for-me fit of scientific good practice, I decided to write down what I expected to\nsee up-front.  I felt that:\nBoth models would get better results on the test loss eval than my existing ones\n(90% probability).  The one trained on more tokens would be better than the\none trained for two epochs on the same tokens (70%).\nBoth models would score better than my existing models in the IFT test (70%) but\nwould still be worse than GPT-2 small (90%).\nIt was time to find out!\nThe extended-train model\nI kicked off the extended train, over 6.4B unique tokens, using my JAX code because it's\nsomewhat faster than the PyTorch version.  It crashed after about 40 hours, with\nthis error:\njax.errors.JaxRuntimeError: INTERNAL: CUDA error: Failed to end stream capture:\nCUDA_ERROR_STREAM_CAPTURE_INVALIDATED: operation failed due to a previous error\nduring capture [executable_name='jit_train_step']\n\nThere were no obvious issues with the machine -- the CPU temperature had been hovering\nat around 60°C, and GPU at around 70°C, as had been typical in training runs on poppy in the past.\nThere was nothing in journalctl or dmesg that looked suspicious.\nOn Nvidia's documentation site\nI found a mention of that error message, but the page in question was all about PyTorch;\nI couldn't find anything relevant to JAX.\nFor now, I decided to chalk it up to some bug somewhere in the training stack, and only\ndig in if it happened again.  So I kicked the training run off again from the latest checkpoint to see what happened,\nand 38 hours later, it completed:\nTraining complete in 140,667.401 seconds\n2026-07-24 03:36:02.148127 Tokens seen: 3,191,341,056\n2026-07-24 03:36:02.148133 Throughput: 22,687 tokens/second\n2026-07-24 03:36:02.148155 Final train loss: 2.979\n2026-07-24 03:36:02.148163 Done\n\nNote that the numbers there -- tokens seen, time taken, and so on -- are for the\nportion of the training run after the restart.  My checkpoint recovery code doesn't carry\nthose over.  The final train loss is just the loss over the period from the penultimate\ncheckpoint to the end of the run -- there must have been some \"easy\" data there :-)\nThe training loss chart looked like this:\n\nAs you can see, the latest checkpoint wasn't the \"best\" one, so I pulled both latest and best down to\nperry, my workstation, for investigation.\nFirstly, I ran them both through my JAX smoke test, which asks them to complete\n\"Every effort moves you\" with 20 more tokens (using greedy sampling):\ngiles@perry:~/Dev/jax-gpt2-from-scratch (main)$ uv run test_generation.py runs/full-llm-full-train-with-mha-output-bias-extended/checkpoints/best/model.safetensors\nEvery effort moves you forward.\nThe best way to get started is to start with a simple, easy to use online\ngiles@perry:~/Dev/jax-gpt2-from-scratch (main)$ uv run test_generation.py runs/full-llm-full-train-with-mha-output-bias-extended/checkpoints/latest/model.safetensors\nEvery effort moves you forward.\n- You are a leader.\n- You are a leader.\n- You are\n\nVery inspirational.  But coherent, and that's what matters.\nNow, the bulk of my evals use PyTorch rather than JAX -- I've been\nsticking to that for consistency -- so I converted the model Safetensors files so that\nthey had the right structure to work with that:\ngiles@perry:~/Dev/jax-gpt2-from-scratch (main)$ uv run convert_model_to_pytorch.py runs/full-llm-full-train-with-mha-output-bias-extended/checkpoints/best/model.safetensors runs/full-llm-full-train-with-mha-output-bias-extended/checkpoints/best/pytorch-model.safetensors\ngiles@perry:~/Dev/jax-gpt2-from-scratch (main)$ uv run convert_model_to_pytorch.py runs/full-llm-full-train-with-mha-output-bias-extended/checkpoints/latest/model.safetensors runs/full-llm-full-train-with-mha-output-bias-extended/checkpoints/latest/pytorch-model.safetensors\n\n...and did the equivalent smoke test on that side (which uses non-greedy decoding\nwith a temperature of 1):\ngiles@perry:~/Dev/ddp-base-model-from-scratch (main)$ uv run test_smoke.py runs/1xrtx3090-baseline/model.json ../jax-gpt2-from-scratch/runs/full-llm-full-train-with-mha-output-bias-extended/checkpoints/best/pytorch-model.safetensors\nEvery effort moves you along to try the recipes for each and every one of them and try it all over again. You\ngiles@perry:~/Dev/ddp-base-model-from-scratch (main)$ uv run test_smoke.py runs/1xrtx3090-baseline/model.json ../jax-gpt2-from-scratch/runs/full-llm-full-train-with-mha-output-bias-extended/checkpoints/latest/pytorch-model.safetensors\nEvery effort moves you to a conclusion.\nIf the answer for each of our goals is to get to where we�\n\nI think that the Unicode junk at the end of the second is probably the first half\nof a two-token apostrophe or something along those lines.  Anyway, those looked good.\nNext, it was time to run the first eval: how would the models perform on the held-back\ntest set?\ngiles@perry:~/Dev/ddp-base-model-from-scratch (main)$ uv run test_loss.py datasets/ runs/1xrtx3090-baseline/model.json ../jax-gpt2-from-scratch/runs/full-llm-full-train-with-mha-output-bias-extended/checkpoints/best/pytorch-model.safetensors\nFetching 4 files: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 593.57it/s]\n100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 3200/3200 [04:54<00:00, 10.88it/s]\nLoss against our test dataset: 3.325897\ngiles@perry:~/Dev/ddp-base-model-from-scratch (main)$ uv run test_loss.py datasets/ runs/1xrtx3090-baseline/model.json ../jax-gpt2-from-scratch/runs/full-llm-full-train-with-mha-output-bias-extended/checkpoints/latest/pytorch-model.safetensors\nFetching 4 files: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 1508.74it/s]\n100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 3200/3200 [04:54<00:00, 10.86it/s]\nLoss against our test dataset: 3.324953\n\nSo, the \"latest\" checkpoint was better than the \"best\" one.\nThis is a problem with\nthe way I define \"best\" in my training script.  The original version of that script used a validation\nset to evaluate the model before every checkpoint; \"best\" at that point meant that the\nmodel was the best performer on that validation set.  Later on, I decided to play a little\nloose with my training runs and pull out the validation -- this seemed reasonably\nsafe because I was doing single-epoch training, so what I saw as the primary benefit\nof regular validation during training -- detecting overfitting by looking for rising\nvalidation loss -- was not so important.  It's hard for a model to overfit on a single\nepoch training run.\nHowever, doing that meant that \"best\" had to be changed\nto mean \"best-performing on the training data\".  And that's actually a really bad metric,\nbecause the training data is different for each measurement, so they're not really\ncomparable.\nSo, for this model, I decided that I'd discard the \"best\" checkpoint, and use the \"latest\" one.\nBut all of that aside, those numbers were pretty impressive!  Not only did it beat my\nbest Chinchilla-optimal model to date,\nwhich had got 3.418784 loss on the same eval, and the original OpenAI small model with a loss of 3.499677,\nbut it was actually getting quite close to the OpenAI medium's loss of 3.231442. 3\nPromising!\nSo now it was time for the two-epoch training run.\nThe two-epoch model\nAdding support for handling multiple epochs to the code was very simple,\nso having done that, I kicked it off.\nJust over three days later:\nTraining complete in 282,366.091 seconds\n2026-07-27 20:14:26.124497 Tokens seen: 6,520,504,320\n2026-07-27 20:14:26.124503 Throughput: 23,092 tokens/second\n2026-07-27 20:14:26.124518 Final train loss: 3.547\n2026-07-27 20:14:26.124524 Done\n\nThis time the numbers are for the full training run -- there were no odd CUDA issues,\nand it ran straight through.  Again, the final train loss is just the loss over the period from the penultimate\ncheckpoint to the end of the run.  For runs over the same dataset, it can actually\nbe a useful quick-and-dirty way to compare results before running the full evals,\nbut in this case it's obviously not comparable with the last run's result there,\nbecause we're talking about loss on different data.\nAnyway, once again, \"best\" and \"latest\" were different checkpoints, as you can see from\nthe loss chart:\n\n...so I pulled them both\nto perry, did the first smoke test:\ngiles@perry:~/Dev/jax-gpt2-from-scratch (main)$ uv run test_generation.py runs/full-llm-full-train-with-mha-output-bias-2-epoch/checkpoints/best/model.safetensors\nEvery effort moves you forward, and you’ll be able to see the results.\nThe best way to get\ngiles@perry:~/Dev/jax-gpt2-from-scratch (main)$ uv run test_generation.py runs/full-llm-full-train-with-mha-output-bias-2-epoch/checkpoints/latest/model.safetensors\nEvery effort moves you forward, and you’re not alone.\nThe most important thing is to be able to\n\n...converted them to PyTorch:\ngiles@perry:~/Dev/jax-gpt2-from-scratch (main)$ uv run convert_model_to_pytorch.py runs/full-llm-full-train-with-mha-output-bias-2-epoch/checkpoints/best/model.safetensors runs/full-llm-full-train-with-mha-output-bias-2-epoch/checkpoints/best/pytorch-model.safetensors\ngiles@perry:~/Dev/jax-gpt2-from-scratch (main)$ uv run convert_model_to_pytorch.py runs/full-llm-full-train-with-mha-output-bias-2-epoch/checkpoints/latest/model.safetensors runs/full-llm-full-train-with-mha-output-bias-2-epoch/checkpoints/latest/pytorch-model.safetensors\n\nDid the PyTorch smoke test:\ngiles@perry:~/Dev/ddp-base-model-from-scratch (main)$ uv run test_smoke.py runs/1xrtx3090-baseline/model.json ../jax-gpt2-from-scratch/runs/full-llm-full-train-with-mha-output-bias-2-epoch/checkpoints/best/pytorch-model.safetensors\nEvery effort moves you to take on a larger responsibility.\nWe’re here to help you.\nWe�\ngiles@perry:~/Dev/ddp-base-model-from-scratch (main)$ uv run test_smoke.py runs/1xrtx3090-baseline/model.json ../jax-gpt2-from-scratch/runs/full-llm-full-train-with-mha-output-bias-2-epoch/checkpoints/latest/pytorch-model.safetensors\nEvery effort moves you closer, and you become a better person as the year progresses.”\nThere’s\n\nSo that all looked good (despite the Unicode junk), and it was time to work out the\nloss:\ngiles@perry:~/Dev/ddp-base-model-from-scratch (main)$ uv run test_loss.py datasets/ runs/1xrtx3090-baseline/model.json ../jax-gpt2-from-scratch/runs/full-llm-full-train-with-mha-output-bias-2-epoch/checkpoints/best/pytorch-model.safetensors\nFetching 4 files: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 3507.68it/s]\n100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 3200/3200 [04:55<00:00, 10.83it/s]\nLoss against our test dataset: 3.332157\ngiles@perry:~/Dev/ddp-base-model-from-scratch (main)$ uv run test_loss.py datasets/ runs/1xrtx3090-baseline/model.json ../jax-gpt2-from-scratch/runs/full-llm-full-train-with-mha-output-bias-2-epoch/checkpoints/latest/pytorch-model.safetensors\nFetching 4 files: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 1760.09it/s]\n100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 3200/3200 [04:53<00:00, 10.90it/s]\nLoss against our test dataset: 3.326482\n\nThat was pleasingly in line with my predictions:\nBoth models would get better results on the test loss eval than my existing ones\n  (90% probability).  The one trained on more tokens would be better than the\n  one trained for two epochs on the same tokens (70%).\n...though of course the difference between the 3.326482 that this model got and the\n3.324953 that the one-long-epoch one got was tiny and probably in the noise.  I decided to\ncount it as a win, anyway :-)\nSo now it was time for the big test: how would they do at instruction-following?\nAt last, the IFT test!\nThere are two phases to getting numbers for this test: firstly, I run\nthe script\nthat does the fine-tuning, and then generates the model's completions for the\ntest set using the fine-tuned model.  These are written to a JSON file for later\nuse by the LLM-as-a-judge script.  That script is the one I fixed in my previous post.\nI ran it for the extended train (one long epoch) model, taking care to make sure\nthat the config it was passed matched the model's original training run in not\nhaving dropout enabled:\ngiles@perry:~/Dev/ddp-base-model-from-scratch (main)$ uv run ift_generate_test_responses.py jax-mha-bias-extended-train runs/1xrtx3090-stacked-interventions/model.json ~/Dev/jax-gpt2-from-scratch/runs/full-llm-full-train-with-mha-output-bias-extended/checkpoints/latest/pytorch-model.safetensors\nEpoch 0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 116/116 [00:06<00:00, 18.23it/s]\nVal loss still decreasing, continuing\nEpoch 1: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 116/116 [00:06<00:00, 18.54it/s]\nVal loss still decreasing, continuing\nEpoch 2: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 116/116 [00:06<00:00, 18.54it/s]\nVal loss still decreasing, continuing\nEpoch 3: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 116/116 [00:06<00:00, 18.58it/s]\nVal loss rising, bailing out\n100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 110/110 [00:08<00:00, 13.40it/s]\n\nNext, I ran it for the two-epoch model:\ngiles@perry:~/Dev/ddp-base-model-from-scratch (main)$ uv run ift_generate_test_responses.py jax-mha-bias-2-epoch runs/1xrtx3090-stacked-interventions/model.json ~/Dev/jax-gpt2-from-scratch/runs/full-llm-full-train-with-mha-output-bias-2-epoch/checkpoints/latest/pytorch-model.safetensors\nEpoch 0: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 116/116 [00:06<00:00, 18.13it/s]\nVal loss still decreasing, continuing\nEpoch 1: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 116/116 [00:06<00:00, 18.22it/s]\nVal loss still decreasing, continuing\nEpoch 2: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 116/116 [00:06<00:00, 18.34it/s]\nVal loss still decreasing, continuing\nEpoch 3: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 116/116 [00:06<00:00, 18.48it/s]\nVal loss still decreasing, continuing\nEpoch 4: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 116/116 [00:06<00:00, 18.32it/s]\nVal loss rising, bailing out\n100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 110/110 [00:10<00:00, 10.06it/s]\n\nWith that done, it was time to run the LLM as a judge script.\nThat gave us results, which I've put into the table below.  For each model, I've shown\nthe number of epochs of training the model needed before its\nvalidation loss started rising.  For the pre-existing models, I've shown the\nscore that they got in my baseline evaluation at the end of my\nlast post, and their\nranking in that eval.  Then for all models, there's the score from this new run, and\nthe new ranking. The two new models are in\nbold.\n\n  Test loss\n  IFT epochs\n  Old IFT score\n  Old IFT rank\n  New IFT score\n  New IFT rank\n\n\n\n\n  OpenAI weights: medium\n  3.231442\n  2\n  42.41\n  1\n  42.91\n  1\n\n\n  JAX, overtrained one long epoch\n  3.324953\n  3\n  \n  \n  18.75\n  5\n\n\n  JAX, overtrained two normal epochs\n  3.326482\n  4\n  \n  \n  18.45\n  6\n\n\n  JAX, with MHA bias, no dropout\n  3.418784\n  4\n  18.12\n  5\n  17.53\n  8\n\n\n  JAX, no MHA bias, no dropout\n  3.420089\n  5\n  20.72\n  3\n  20.25\n  3\n\n\n  JAX, no MHA bias, with dropout\n  3.476802\n  7\n  16.98\n  8\n  16.73\n  10\n\n\n  OpenAI weights: small\n  3.499677\n  2\n  26.11\n  2\n  25.66\n  2\n\n\n  1xrtx3090-stacked-interventions\n  3.538161\n  4\n  13.68\n  11\n  13.35\n  14\n\n\n  8xa100m40-stacked-interventions-1\n  3.577761\n  4\n  9.81\n  15\n  10.33\n  17\n\n\n  Cloud FineWeb, 8x A100 40 GiB\n  3.673623\n  6\n  19.45\n  4\n  19.76\n  4\n\n\n  1xrtx3090-baseline\n  3.683835\n  6\n  13.39\n  12\n  13.74\n  13\n\n\n  8xa100m40-baseline\n  3.691526\n  4\n  14.64\n  9\n  14.11\n  11\n\n\n  Cloud FineWeb, 8x H100 80 GiB\n  3.724507\n  4\n  13.84\n  10\n  13.84\n  12\n\n\n  Cloud FineWeb, 8x A100 80 GiB\n  3.729900\n  4\n  11.30\n  14\n  11.13\n  16\n\n\n  Cloud FineWeb, 8x B200 160 GiB\n  3.771478\n  4\n  11.82\n  13\n  11.22\n  15\n\n\n  Local FineWeb train\n  3.943522\n  7\n  8.93\n  16\n  8.73\n  18\n\n\n  Local FineWeb-Edu extended train\n  4.134991\n  7\n  17.10\n  7\n  17.42\n  9\n\n\n  Local FineWeb-Edu train\n  4.166892\n  7\n  17.28\n  6\n  17.61\n  7\n\n\n\n\n\n  \nA note on the numbers: in my previous post, I mentioned that different LLM judge\n  runs differ due to randomness in how \"strict\" the judge model is.  You can see that\n  showing up here -- most of the old/new IFT scores are pretty close, within a point or so,\n  but they do differ, some rising and some falling.\n  This is with exactly the same set of responses for each model going into the judging program -- I used the\n  same JSON files for this table as I did for the previous one for the models that were in there\n  -- the only difference was that the new JSON files for the new models were added.\nAs you can see, the new models scored better than the \"JAX, with MHA bias, no dropout\"\none, which is the most similar: it's the same model config, just trained for the\nChinchilla-optimal number of tokens.  The one long epoch model got a score that was\n1.22 higher than that one, and the two-epoch one scored 0.92 higher.\nHowever, my normal rule of thumb for comparing models in these evals is that differences\nof less than a point or two are probably in the noise.\nI did a second run of the LLM judge script -- it takes 20 minutes to run and costs\na couple of dollars each time, so I don't like to run it all that often -- and this time\naround (just looking at the JAX numbers) things were a bit closer:\n\n  IFT score\n\n\n\n\n  JAX, overtrained one long epoch\n  18.45\n\n\n  JAX, overtrained two normal epochs\n  19.45\n\n\n  JAX, with MHA bias, no dropout\n  18.30\n\n\n  JAX, no MHA bias, no dropout\n  21.04\n\n\n  JAX, no MHA bias, with dropout\n  17.33\n\n\n\n\nYou can also see that the two new models have swapped places.\nSo I think that the principled approach here is to say that the improvement is\nalmost certainly in the noise.  Perhaps if I did a very large number of runs of the judge\nI'd get something more solid -- but what I'm hoping for is something a little more\nunambiguous; some change that really moves the needle in an obvious way, clearly\noutside the noise.\nThat means that my second pre-registered prediction:\nBoth models would score better than my existing models in the IFT test (70%) but\n  would still be worse than GPT-2 small (90%).\n...was half wrong.  I got the \"worse than GPT-2 small\" bit right, at least.\nBut while the models did look a bit better than the most similar pre-existing model,\n(a) the difference was too small for me to be confident in it, and (b) they were\nstill worse than \"JAX, no MHA bias, no dropout\" and \"Cloud FineWeb, 8x A100 40 GiB\".\nWhat can we take away from this?\nConclusion\nThe hypothesis that I was trying to test was whether it was simply overtraining that\nmade the OpenAI weights better at this IFT evaluation than mine.  Frustratingly, I can't say that\nthe hypothesis was false.\nPerhaps there is an improvement gained by overtraining --\nand the apparent gains which, on this experiment, appeared to be in the noise,\nwould have been consolidated if I'd trained for even longer -- perhaps the 42 epochs\non 10B tokens I suspect that the original weights were trained on?\nBut equally, perhaps there is no benefit, and further training would have left the\nmodels exactly where they were in the ranking.\nIntuitively, you'd think that further training of a model would make it better at\nanswering questions, at least up until the point that its parameters were \"saturated\"\nand could not absorb new information without forgetting something else.  After all, a\nmodel that's never seen \"Jane Austen wrote 'Pride and Prejudice'\" will never be able to\nsuccessfully answer when it's asked who the book's author was.\nBut where that saturation point might be -- and indeed how much training you'd need to do to\nget there -- is not obvious.\nIt's an annoying place to finish this experiment, but I guess at least an inconclusive result\nis better than never having run it at all.  And it was at least good to see the test\nloss improvement that I expected.\nBut given the opportunity cost of tying up poppy in four-day training runs, I think I'll\nlook into other possibilities next.\nAs I was running this experiment, something came up -- and I'll post about that soon.\nLuckily, this time it won't involve training more base models...\nIt's also worth noting that by the same, um, token, the extra-large model, with\n1,542M parameters, was undertrained because the Chinchilla-optimal number of\ntokens would have been about 31B.  Though that said, see later regarding epochs. ↩\nYou might wonder whether training over the same tokens repeatedly over multiple epochs \"counts\" for\nChinchilla purposes.  Is training on 1.6B tokens over two epochs the same as\ntraining on 3.2B tokens over one?  \"Scaling Data-Constrained Language Models\"\npoked into that in 2023, and from the abstract, came to the conclusion that you could do up to\nfour epochs over the same data without losing much value, but after that\nreturns diminished.  If that holds for GPT-2, and they really did train for 42\nepochs, maybe they wasted a lot of time?  I'll need to read that paper in full\nat some point. ↩\nThere is a table of results later on in this post where you'll be able to\ncompare models easily. ↩",
+      "id": "fabca7aa705c2b766ea4b3bf8b3506e573c3b7079e55954e0008a580d379eb27",
+      "ref_id": "0",
+      "recommendationScore": 82,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "对GPT-2模型训练中“过拟合”现象的深度探索，提供了宝贵的实验见解。",
+      "reason": "文章深入探讨了LLM训练中的核心技术问题，对模型优化和理解有重要指导意义。",
+      "tags": [
+        "AI",
+        "GPT-2",
+        "模型训练",
+        "机器学习",
+        "过拟合"
+      ]
+    },
+    {
+      "title": "Show HN: BitBang – Reach machines behind NAT from a browser, no account",
+      "link": "https://github.com/richlegrand/bitbang-cli",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-31T14:41:13.000Z",
+      "summary": "Article URL: https://github.com/richlegrand/bitbang-cli\nComments URL: https://news.ycombinator.com/item?id=49123789\nPoints: 24\n# Comments: 2",
+      "id": "31bc1810ad2532a33571c6f4625adaaf443ead4341ad88fc208988036a5927af",
+      "ref_id": "1",
+      "recommendationScore": 80,
+      "popularityScore": 65,
+      "priority": "medium-high",
+      "comment": "一个无需账户即可从浏览器访问NAT后机器的创新解决方案。",
+      "reason": "对于需要简化远程访问和网络穿透的开发者和技术人员来说，这是一个极具潜力的工具。",
+      "tags": [
+        "网络穿透",
+        "NAT",
+        "WebRTC",
+        "远程访问",
+        "P2P",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "Rogue Amoeba: Unobtrusive Update Notifications",
+      "link": "https://weblog.rogueamoeba.com/2026/04/28/unobtrusive-update-notifications/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-30T20:33:59.000Z",
+      "summary": "Paul Kafasis, on the Rogue Amoeba blog back in April:\nThough Sparkle serves us very well, it has one notable downside.\nUpdate announcements are most likely to appear at the least\nconvenient time: right after you’ve launched the app. You want to\nstart recording with Audio Hijack, for instance, but the app is\ntelling you about a new version.\nWe’ve long wished to avoid these disruptions. With that in mind,\nwe’re making changes to how update notifications appear throughout\nour apps. In the future, when the software’s timed automated check\ndetects a newer version, it will no longer pop an obtrusive window\nlike the one seen above.\nInstead, a small “Update Available” indicator will be shown in the\napp’s interface.\nSuch a little thing, but like I wrote earlier this week, getting all the little things right is how you get to insanely great. Every Mac app using Sparkle ought to copy this. It’s so much nicer.\n ★",
+      "id": "b8c04a82a948057fb9f0ddc98a8e970d8b8317f3f3d24e5585f55bab59c49a47",
+      "ref_id": "0",
+      "recommendationScore": 80,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "巧妙的UI/UX改进建议，能有效提升Mac应用的用户体验。",
+      "reason": "文章提出了一个通用且实用的UI/UX问题解决方案，对Mac应用开发者具有良好的借鉴意义。",
+      "tags": [
+        "Apple生态",
+        "UI/UX",
+        "产品设计",
+        "软件更新"
+      ]
+    },
+    {
+      "title": "Investigating three real-world incidents in our cybersecurity evaluations",
+      "link": "https://simonwillison.net/2026/Jul/30/three-real-world-incidents/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-07-30T23:41:29.000Z",
+      "summary": "",
+      "id": "7c4f61301b3753094494f07ec0b327e37ba19ab16a7c26f57ada0cf8979e71f4",
+      "ref_id": "3",
+      "recommendationScore": 75,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "分析真实世界网络安全事件及评估，具有实践指导意义。",
+      "reason": "提供了宝贵的网络安全实践经验和案例分析，对开发者和企业有重要参考价值。",
+      "tags": [
+        "网络安全",
+        "安全评估",
+        "事件分析",
+        "实践经验"
+      ]
+    },
+    {
+      "title": "Getting 25 Gbps Thunderbolt Ethernet on my Mac Studio",
+      "link": "https://www.jeffgeerling.com/blog/2026/getting-25g-ethernet-mac-thunderbolt/",
+      "source": "jeffgeerling.com",
+      "publishedAt": "2026-07-31T14:00:00.000Z",
+      "summary": "I've been using the built-in 10 Gigabit Ethernet on my Mac Studio for a few years. It works fine: I can edit 4K video straight off my NAS over the network, and run backups at around 1 GB/sec.\nBut... I want more. I upgraded my rack and my NAS to 25 GbE a couple years ago, and wanted to upgrade my main workstation, too.",
+      "id": "2dfce6624abc658fb629d768c59b28c476fb02ff231e820d53158f60ea5c02ce",
+      "ref_id": "1",
+      "recommendationScore": 75,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "详细阐述了Mac Studio升级25GbE网络的实战经验。",
+      "reason": "对追求极致性能的Mac Studio专业用户和数据密集型工作流具有高度实用价值。",
+      "tags": [
+        "Mac Studio",
+        "25GbE",
+        "Thunderbolt",
+        "网络升级",
+        "Apple生态"
+      ]
+    },
+    {
+      "title": "Apple Releases iOS and MacOS 26.6, MacOS 15.7.8, and More",
+      "link": "https://arstechnica.com/gadgets/2026/07/ios-and-macos-26-6-arrive-today-paving-the-way-for-ios-and-macos-27/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-30T20:41:43.000Z",
+      "summary": "Samuel Axon, Ars Technica:\nApple has released iOS, iPadOS, macOS, watchOS, and tvOS 26.6.\nApart from potential security hotfixes, these are likely the last\nupdates before the arrival of iOS 27, macOS 27, and so on.\nAll of today’s releases include minor bug fixes, and there are\nnumerous security updates: more than 150 for macOS 26.6.\nApple also rolled out macOS 14.8.8 and macOS 15.7.8 for older\ndevices, also focused on security fixes.\nIn terms of new features, you won’t find many in these releases,\nas they mainly pave the way for the next major OS update, likely\nto hit sometime in September. Most notably, the release notes for\niOS and iPadOS 26.6 say the update “optimizes the Spotlight index\nto prepare for iOS 27.” This update will kick off some indexing\nwork that will then be leveraged in an ostensibly much more robust\nSpotlight search feature when iOS 27 launches next month.\nI don’t mean to pick nits, but there’s nothing “ostensible” about it. You can use the new Spotlight index via Siri AI in the OS 27 beta releases and it’s really good. The initial background indexing took almost a full week for me on iOS, I suspect because I have so much email archived, but anyone who upgrades to these 26.6 releases now shouldn’t have to wait at all after upgrading to 27.0 in September. Or even if you wait for the 27.1 releases — you won’t need to wait for Siri AI to have your full semantic index at hand.\n ★",
+      "id": "cbc1a846454a518cc462dac25079c0a0a55dceee2c30a9b9ea4868d3b16ed7d2",
+      "ref_id": "4",
+      "recommendationScore": 75,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "及时传达了Apple系统更新信息，特别是对iOS 27的准备工作。",
+      "reason": "对广大Apple用户而言是重要的安全和功能更新通知，实用性高，信息密度适中。",
+      "tags": [
+        "Apple",
+        "iOS",
+        "macOS",
+        "系统更新",
+        "安全补丁",
+        "Spotlight"
+      ]
+    },
+    {
+      "title": "The C ``Clockwise/Spiral Rule''",
+      "link": "https://c-faq.com/decl/spiral.anderson.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-31T13:56:31.000Z",
+      "summary": "Article URL: https://c-faq.com/decl/spiral.anderson.html\nComments URL: https://news.ycombinator.com/item?id=49123199\nPoints: 33\n# Comments: 9",
+      "id": "7287d885cd14b9c272e2533145d39525ff219af202b0e16e22a5dbe5cc024e84",
+      "ref_id": "4",
+      "recommendationScore": 72,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "详细解释了C语言中理解复杂声明的“顺时针/螺旋规则”。",
+      "reason": "对于C语言开发者，尤其是遇到复杂指针和函数声明时，这是一个经典的实用技巧。",
+      "tags": [
+        "C语言",
+        "编程",
+        "指针",
+        "声明",
+        "编程技巧"
+      ]
+    },
+    {
+      "title": "A GTK4 SSH-askpass in Zig",
+      "link": "https://xn--gckvb8fzb.com/a-gtk4-ssh-askpass-in-zig/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-31T15:40:13.000Z",
+      "summary": "Article URL: https://xn--gckvb8fzb.com/a-gtk4-ssh-askpass-in-zig/\nComments URL: https://news.ycombinator.com/item?id=49124496\nPoints: 33\n# Comments: 8",
+      "id": "b1f292817076f158d52b08a3a2e43aa7d8b2fb9330696c7d2fce692bb9a324fd",
+      "ref_id": "0",
+      "recommendationScore": 70,
+      "popularityScore": 30,
+      "priority": "medium",
+      "comment": "一篇关于使用Zig和GTK4实现SSH-askpass的深度技术文章，展示了新兴语言在系统工具开发中的应用。",
+      "reason": "文章技术细节丰富，涉及编程工具和系统安全，对特定开发者群体有较高价值，但受众相对小众。",
+      "tags": [
+        "Zig",
+        "GTK4",
+        "SSH",
+        "编程工具",
+        "系统安全"
+      ]
+    },
+    {
+      "title": "Arch Linux disables AUR package adoption",
+      "link": "https://lwn.net/Articles/1086489/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-31T13:57:35.000Z",
+      "summary": "Article URL: https://lwn.net/Articles/1086489/\nComments URL: https://news.ycombinator.com/item?id=49123208\nPoints: 62\n# Comments: 29",
+      "id": "99c7667d0b7f9681f9e2091796e0c2d9d156066d1c556d5b933a16bba7f70835",
+      "ref_id": "3",
+      "recommendationScore": 70,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "报道了Arch Linux关于AUR包领养机制的政策调整。",
+      "reason": "对Arch Linux用户和包维护者来说是重要的社区新闻和潜在的工作流程变化。",
+      "tags": [
+        "Arch Linux",
+        "AUR",
+        "Linux",
+        "包管理",
+        "开源社区",
+        "操作系统"
+      ]
+    },
+    {
+      "title": "Situational Awareness down 67% in July in AI stock rout",
+      "link": "https://www.wsj.com/finance/investing/situational-awareness-down-67-in-july-in-ai-stock-rout-cd19901f",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-31T13:37:36.000Z",
+      "summary": "Article URL: https://www.wsj.com/finance/investing/situational-awareness-down-67-in-july-in-ai-stock-rout-cd19901f\nComments URL: https://news.ycombinator.com/item?id=49122994\nPoints: 113\n# Comments: 108",
+      "id": "76189339663d02eb305648715639a5f30ebedd0dc6cdee6ea826b95e69ef0541",
+      "ref_id": "0",
+      "recommendationScore": 70,
+      "popularityScore": 38,
+      "priority": "high",
+      "comment": "分析了AI股票市场的波动，提供了宏观经济视角。",
+      "reason": "关注AI行业的金融动态，对市场观察者有较高参考价值，契合AI主题优先级。",
+      "tags": [
+        "AI",
+        "金融",
+        "市场分析",
+        "投资"
+      ]
+    },
+    {
+      "title": "AI models need moral support to make discoveries",
+      "link": "https://seangoedecke.com/ai-models-need-moral-support/",
+      "source": "seangoedecke.com",
+      "publishedAt": "2026-07-31T00:00:00.000Z",
+      "summary": "",
+      "id": "de2395514b09dd474a15ba6933476500236bdb2a210b1c3262e88d69f4717a1d",
+      "ref_id": "2",
+      "recommendationScore": 70,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "标题新颖引人入胜，但在内容缺失的情况下，无法全面评估其深度和实用性。",
+      "reason": "AI主题优先级最高，标题概念独树一帜，预示着潜在的高新颖性，但因无内容，实际价值待定。",
+      "tags": [
+        "AI",
+        "人工智能",
+        "新颖概念",
+        "伦理",
+        "缺失内容"
+      ]
+    },
+    {
+      "title": "AI: Considerations for people who make decisions",
+      "link": "https://berthub.eu/articles/posts/ai-for-decision-makers/",
+      "source": "berthub.eu",
+      "publishedAt": "2026-07-31T08:00:00.000Z",
+      "summary": "Recently I gave two presentations in quick succession to the Dutch Network of Government Service Providers and the Dutch Advisory Council for Science, Technology and Innovation about AI. In these two different and brief presentations, I hoped to share some insights that would be useful to the people currently at the helm, the people who can or must make decisions about AI policy. Many thanks to the NPD and AWTI for the invitations and the stimulating discussions!",
+      "id": "8d07820e8bc9e42ceeb70744ad961dce1abc279d4bd2ac598542561945f99776",
+      "ref_id": "4",
+      "recommendationScore": 70,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "面向决策者提供AI政策和战略层面的考量，具有重要的指导意义。",
+      "reason": "文章旨在为AI政策制定者提供实用洞察，有助于AI的负责任发展。",
+      "tags": [
+        "AI",
+        "政策",
+        "战略",
+        "决策"
+      ]
+    },
+    {
+      "title": "Premium: AI Is Getting Way Too Expensive",
+      "link": "https://www.wheresyoured.at/premium-ai-is-getting-way-too-expensive/",
+      "source": "wheresyoured.at",
+      "publishedAt": "2026-07-31T15:53:49.000Z",
+      "summary": "A great deal of the discussion of the so-called benefits or problems with AI comes down to the theoretical jobs that are (or are not) lost as a result of things LLMs can (or cannot do), or the equally theoretical productivity benefits that’ll come from using LLMs",
+      "id": "38543e6222681f08b1cc812b4371a0f80e69847029af2dd76bc3686310338d5f",
+      "ref_id": "2",
+      "recommendationScore": 65,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "从经济角度探讨AI成本及其影响，属于宏观层面的讨论。",
+      "reason": "触及AI发展的实际经济制约和广泛影响，对商业决策者有一定参考价值。",
+      "tags": [
+        "AI",
+        "经济",
+        "成本",
+        "社会影响"
+      ]
+    },
+    {
+      "title": "Elevators",
+      "link": "https://john.fun/elevators",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-31T15:17:28.000Z",
+      "summary": "Article URL: https://john.fun/elevators\nComments URL: https://news.ycombinator.com/item?id=49124218\nPoints: 336\n# Comments: 117",
+      "id": "d391748e5c28bf53bc9feb1412a67143e7ab98d48d14fb6163fc1f9ce16d4869",
+      "ref_id": "3",
+      "recommendationScore": 60,
+      "popularityScore": 90,
+      "priority": "low",
+      "comment": "标题简洁但内容未知，可能是一篇关于电梯的工程、历史或社会学探讨，在Hacker News上获得了极高关注。",
+      "reason": "文章主题不明确，未能直接匹配核心优先级，但其极高的讨论度和关注度暗示可能具有普遍吸引力或深度工程洞察。",
+      "tags": [
+        "通用兴趣",
+        "工程",
+        "社会观察"
+      ]
+    },
+    {
+      "title": "Mark Zuckerberg: ‘The AI Future Is for Everyone’",
+      "link": "https://www.wsj.com/opinion/the-ai-future-is-for-everyone-a0c24e20?st=T6AAwM",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-07-30T21:09:51.000Z",
+      "summary": "Mark Zuckerberg, in an op-ed Tuesday for The Wall Street Journal (gift link; and irony isn’t lost that “everyone” needs a paid WSJ subscription to read this):\nWe are fortunate to live at an incredible moment in history. In\nthe next few years, people will be able to use superintelligence\nbeyond human capacity to create and discover extraordinary new\nthings, build new businesses, express our ideas, learn new\nconcepts, and improve our lives, health, relationships and\ncareers.\nPerhaps we’ll be able to use it to build a metaverse too. Or to keep our attention on a major initiative for more than two or three years.\n ★",
+      "id": "bf40e37c69835b09fe0d34cd881248b794f440e975a7b05b04cdc7caf7e3a488",
+      "ref_id": "3",
+      "recommendationScore": 60,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "探讨扎克伯格对AI未来愿景的看法，内容更偏宏观展望。",
+      "reason": "提供了行业领袖对AI未来发展的观点，对宏观趋势关注者有价值，但技术深度和新颖性一般。",
+      "tags": [
+        "AI",
+        "人工智能",
+        "未来展望",
+        "行业观点",
+        "扎克伯格"
+      ]
+    },
+    {
+      "title": "Energizing a vacuum-tube flip-flop module from a 1948 IBM system",
+      "link": "http://www.righto.com/2026/07/ibm-604-trigger-tube-module.html",
+      "source": "righto.com",
+      "publishedAt": "2026-07-31T16:04:31.698Z",
+      "summary": "In 1948, IBM introduced the 604 Electronic Calculating Punch.\nThis machine was a programmable calculator, about the size of a double refrigerator.\nIt was not quite a computer, but was programmed by plugging wires into a plugboard.\nThis machine read numbers from a punch card, performed up to 60 calculations on these numbers,\nand then recorded the results by punching holes in the card.1\nIt processed 100 cards per minute—over one card per second—and IBM advertised it\nas the equivalent of 150 engineers.\nThe machine rented for $550 a month, making it very popular, with over 5600 units produced.2\n\nThe IBM 604 Electronic Calculating Punch. Photo from Ed Thelen's IBM 604 page.\n\nThe IBM 604 came out just after the transistor was invented, too early to use transistors.\nAt the time, calculators and computers were\nmoving from slow electromechanical components to fast vacuum tubes.\nOne of the innovations of the 604 was to combine a vacuum tube and its associated circuitry into a\npluggable module.\nAlong the left side of the photo above, you can see rows of these modules with the handles sticking out,\nmaking it easy to replace a faulty module.\nMore modules are behind the silver metal covers.\nIn total, the IBM 604 used about 1300 vacuum tubes.\nThe photo below shows a pluggable tube module, with a vacuum tube underneath the insulated handle.\nThe nine pins at the bottom of the module plugged into a socket in the 604, with the sockets connected by backplane wiring.\nThe vacuum tube was also socketed, so a bad tube could be quickly replaced. At the left, the resistors and capacitors are mounted\non insulating wafers.\nModules provided a dense way to implement circuits, packing components into three dimensions.\n\nThe TR-3 trigger module from the IBM 604 Electronic Calculating Punch.\n\nEach pluggable tube module implemented a specific function, such as an inverter, amplifier, or power driver.\nThe module above is a \"trigger\" module, type TR-3.\nA trigger is a circuit with two states—on and off—and can be\nswitched from one state to the other, providing one bit of temporary storage.\n(In modern terminology, this is called a flip-flop.)\nTriggers were important building blocks in the 604,\ngenerating timing signals and storing pulses.\nArithmetic in the IBM 604 was implemented with decimal counters, built from TR3 triggers.\n\n\nIn this article, I describe the circuitry of the TR-3 trigger module.\n(I recently wrote about a thyratron module in the 604; this is a different module.)\nAfter reverse-engineering the module, I powered it up.\nThe video above shows the module in operation. By pressing buttons, I switch the trigger from\none state to the other. Glowing orange neon bulbs show the state of the trigger module.\nThe fundamental feature of the trigger is that it stays in a state until I push the other button.\nThis might appear trivial, but the ability to store information is vitally important for\ncomputation.\nHow a vacuum tube works\nThe trigger module uses a common type of vacuum tube called a triode, which amplifies a\nweak signal to control a stronger signal.\nThe diagram below shows the construction of a triode vacuum tube.\nThe heater is a filament, similar to an incandescent light bulb, that heats the cathode to roughly 750 ºC.\nAt this high temperature, the cathode emits electrons.\nIf a large positive voltage (say, 150 volts) is put on the plate, the negatively charged electrons are attracted to the plate.\nThe stream of electrons from the cathode to the plate causes a current to flow through the tube.\nSince air would block the electrons, the fragile glass envelope holds a vacuum, giving the\nvacuum tube its name.\nThe current is controlled by the grid: if a small negative voltage is placed on the grid, it repels the negative\nelectrons, preventing them from reaching the plate and blocking the current through the tube.3\nThus, a small signal on the grid controls the large current through the tube.\n\nThe components of a triode vacuum tube. From IBM 604 Customer Engineering manual.\n\nThe advantage of vacuum tubes was that they could switch on and off millions of times per\nsecond, phenomenally faster than electromechanical devices such as relays.\nThe clock speed of the IBM 604 was 50 kilohertz, much below what a tube could handle,\nbut three orders of magnitude faster than the 50 hertz pulses in an electromechanical\naccounting machine like the contemporaneous IBM 407.\nThe tube that I used in the module is called a 2033.6\nThis tube is a dual triode, combining two triodes into one physical glass tube.\nDual triodes were very popular because they doubled the density of the circuitry.\nIn the photo below, the two vertical black structures are the plates of the\ntwo triodes; the other structures are not visible as they are inside the plates.\n\nThe 2033 dual-triode vacuum tube.\n\nThis tube is a \"miniature\" vacuum tube, about 5 cm long including the seven pins at the bottom\nof the glass envelope.4\nSince a single triode has five connections, you might\nwonder how a dual triode manages with seven pins instead of 10.\nThe trick is that both triodes share the cathode and heater connections, which limits the tube\nto applications that don't require separate cathodes.\nOne disadvantage of vacuum tubes is that the heater uses considerable power.\nThis tube's heater requires 6.3 volts at 300 milliamps—almost 2 watts per tube.\nUsing 6.3 volts may seem a bit random, but many vacuum tubes used this voltage for\nhistorical reasons: this was the typical voltage provided by a\n6-volt automobile battery.5\nIn the photo below, you can see the orange glow from the two heaters, mostly hidden by the plates\nbut visible at the top and bottom.\n\nThe tube powered up, showing the glowing filaments.\n\nInverters and the trigger circuit\nThe trigger circuit is based on two inverters, so I'll start by explaining the tube\ninverter circuit.7\nThe idea of an inverter is to amplify and invert the input signal: a \"low\" input results in a \"high\" output and vice versa.\nFirst, consider a low input:\nif a negative voltage is applied to the grid, the flow of electrons is blocked, turning off\nthe tube.\nIn this case, the resistor pulls the output high with 150 volts.\nHowever, if a positive voltage is applied to the grid, the tube turns on and conducts current.\nThis current pulls the output down, due to the voltage drop across the resistor,\nproducing a low output of 50 volts.\nThus, a low input causes a high (150 V) output, while a high input causes a low (50 V) output,\nproviding the desired inverter action.\nNote that the input signal has a swing of over 50 volts, very large compared to a transistor\ncircuit.\nMoreover, the output voltages are much higher than the input voltages, which is somewhat\ninconvenient when connecting circuits.\n\nAn inverter circuit. Adapted from IBM 604 CE Manual.\n\nA trigger is constructed from two inverters connected in a loop.\nThe output of the first inverter is fed into the\nsecond inverter, and the output of the second inverter is looped back to the first inverter.\nIf the first inverter has a high output, the second inverter has a low output, which is\nfed back to the first, maintaining the high output from the first inverter.\nThe situation is similar but opposite if the first inverter has a low output.\nThus, this circuit has two stable states, with one inverter on and the other off.8\nOnce the circuit is placed into a state, it will remain in that state until forced into\nthe other state.\n\nTwo inverters in a loop can store a 0 or a 1.\n\nI reverse-engineered the TR-3 module, creating the schematic below.9\nIt's a bit tricky to see the loop of inverters because the two inverters share one tube\nand are wired in a cross-coupled arrangement.\nIn brief, one inverter uses the left half of the tube and the other uses the right half.\nThe plate output from\none side is wired to the grid input on the other side, through 200K and 1K resistors.\nThe two module outputs (pins 7 and 8) are taken from the plates, but output 8 has a resistor\nbetween it and the plate.\nAs a result,\nthe two outputs provide different voltage levels, making the module more flexible to use.10\nThe two inputs force the trigger into one state or the other.\nThe inputs are connected through 40 pF capacitors, providing AC coupling so the inputs\ncan use different voltage levels from the outputs.\n\nReverse-engineered schematic of the TR-3 trigger module. Note that the pin numbers for the module are different from the pin numbers for the tube.\n\nOne tricky part is the connection between one inverter's output and the other inverter's\ninput. The problem is that the output voltage is 50 to 150 volts,\nbut the input grid voltage must be close to zero (a bit positive or a bit\nnegative).\nThe solution is to use a large negative voltage (-100 volts) and a resistor divider as\na level shifter.\nWith a large positive voltage from the plate and a large negative bias voltage, the resulting\ngrid voltage ends up being moderately positive or moderately negative.\nAs a result, the circuit requires both a high positive voltage (for the plate) and a high\nnegative voltage (for the bias), complicating the power supply requirements.\nThe inputs are fed into the grid through capacitors, allowing a pulse to pass through the\ncapacitor to the grid.\nYou might expect that a positive pulse would turn on the triode, but the module was used\nin the opposite way, with a negative pulse to turn off the triode. (This direction is more sensitive,\nbecause a tube has more gain when it is on.)\nThus, a negative pulse on the left input will turn off the left side. The plate output of\nthe left side goes high, pulling the gate of the right side high, turning the right side on.\nThe plate output from the right side goes low, pulling the gate of the left side low, keeping\nthe left tube off.\nSimilarly, a negative pulse on the right input turns off the right side, causing the left\nside to turn on.\nMultiple pulses have no effect; that side remains off. Positive pulses also have no effect;\nthe circuit is designed so a positive pulse is not sufficient to turn a triode on.11\nI found the trigger circuit to be somewhat temperamental: the trigger needs to be stable enough to\nstay in one state or the other, while also unstable enough that an input\npulse will\nreliably flip it to the other state.\nThe circuit depends on carefully balancing the grid voltages and the input voltages.\nI experimented with different supply voltages and found that in some cases the trigger\nwould oscillate, while in other cases, the trigger would get stuck in one state.\nInterestingly, the later IBM 650 computer abandoned this type of trigger circuit, instead\nusing diode logic (AND and OR gates) to set and reset a loop of two inverters.\nWith this type of trigger, the state is determined by reliable Boolean logic, rather than\nanalog interactions of changing voltages.\nConclusion\nThe development of the trigger is an under-appreciated step in the history of digital computers.\nBecause the trigger holds information—state—it can be used to create a state machine.\nThis allows a computer to perform operations step by step, rather than a jumble of actions\nall happening at the same time.\nThe trigger circuit dates back to 1918, when two British physicists, William Eccles and Frank Jordan,\ninvented a circuit that used two cross-coupled triodes to create a circuit with two stable\nstates.\nThey viewed this circuit as a type of relay, triggered by a small signal and retaining\nits state until it was reset.\nThey patented the circuit (Improvements in ionic relays)\nand wrote about it: A Trigger Relay Utilising Three-Electrode Thermionic Vacuum Tubes.\n(The Eccles-Jordan trigger circuit below is conceptually similar to the TR-3 trigger module, using\ncross-coupled triodes. One difference is that the input is coupled with a transformer.)\n\nA diagram of the Eccles-Jordan trigger relay, from their 1919 paper.\n\nThe Eccles-Jordan trigger eventually led to digital counters.\nIn 1939, the journal Electronics published an article Trigger Circuits, describing how trigger circuits\ncould be combined to construct high-speed counters.\nOne problem was that triggers can be easily combined to count in binary, but in the 1940s, calculating\nand accounting machines generally used decimal numbers, not binary.\nIn the groundbreaking ENIAC computer (1945), bulky counters were constructed by putting\nten triggers in a ring to count each decimal digit.\nIBM engineers invented a more efficient decimal counter that used four triggers instead of\nten, coming up with binary-coded decimal (BCD) and obtaining a 1946 patent:\nElectronic Counting Circuit.\nIBM used this counting circuit in the 603 Electronic Multiplier (1946), followed by\nthe 604 Electronic Calculating Punch (1948).\nModern computers use triggers—albeit under the modern name \"flip-flops\"—by the\nmillions, but now they are microscopic transistor circuits instead of vacuum-tube modules.\nFor updates, follow me on\n Bluesky (@righto.com),\nMastodon (@kenshirriff@oldbytes.space),\nor RSS.\nThanks to Robert Garner for providing the module and to CuriousMarc for hardware support.\nAI statement: Despite the presence of the em dash, no AI was used in the writing of this article (details).\n\nA 1951 advertisement for the IBM 604, describing how the system was like having 150 extra engineers. Slide rules were the common calculating tool at the time. Notice that diversity amongst engineers was limited to hairstyle. From Fortune, December 1951 via Wikimedia, scanned by Michael Holley.\n\nNotes and references\nThe punch cards were read and punched by a separate unit, the IBM 521 Card Reader/Punch,\nwhich was connected to the IBM 604 through a thick cable.\nThe 521 had a card magazine on the upper left to hold cards to be read. After cards were processed,\nthey were collected in the hopper in the middle of the 521.\nNote the plugboard control panels in both the 604 and the 521.\n\nThe IBM 521 Card Reader/Punch to the right of the IBM 604 Electronic Calculating Punch.\nPhoto from Customer Engineering Manual of Instruction.\n\nThe punch cards were standard IBM 80-column cards, introduced back in 1928.\nThe position of a hole in a column indicated the digit value for that column.\nFor a particular task, the 80 columns would be divided\ninto fields to hold various numbers. \nThe 604 only supported numbers, not other alphanumeric symbols.\nA negative number was indicated by punching an additional hole over the units digit,\nusing the second row from the top.\n(This was called an \"X-punch\", unrelated to the letter X.)\n\nPunch card code, from IBM 29 Card Punch Reference Manual. This code is somewhat later, with a variety of special characters.\n\n ↩\nAn interesting video showing the manufacturing and operation of the IBM 604 is here.\nFor information on the IBM 604, see the Operating Manual.\nThe Customer Engineering Manual of Instruction explains the 604 in detail, showing a TR-3 tube module on page 20.\nSee IBM's Early Computers for information on the development of the 604. ↩\nYou can think of a triode as analogous to an NPN transistor, with the grid as the base, the plate as the collector, and the cathode as the emitter. ↩\nThe IBM 604 also used dual-triode vacuum tubes with nine pins, rather than seven,\n   such as the type 5965.\n   (Seven and nine pins were standard sizes\n   for tubes.)\n   The nine-pin tubes had separate connections for each cathode; this allowed the tubes\n   to be used in circuits such as \"cathode followers\".\n   The two filaments were in series, sharing a common \"middle\" pin, which is why the tube used nine pins instead of 10. ↩\nFor a discussion of filament voltages, see Valves, 1939.\n   This article discusses how car radios motivated the use of 6.3 volt filaments in\n   the United States, where 6-volt car batteries were common. ↩\nThe 2033 tube is very similar to the popular 6J6 tube, but optimized for computer circuits.\nThe IBM 1684 tube is also very similar.\nThe tube module that I examined was missing its tube, so I can't guarantee that the 2033 is the correct tube. ↩\nThe standardized tube modules weren't as standardized as one might expect. For instance, the 604 used 27 different types of inverter modules in total. \nFor a detailed discussion of the tube inverter, see\nIBM 604 CE Manual, pages 26-41. ↩\nA trigger circuit is symmetrical, so how do you define whether a trigger circuit is on or off?\nIBM's convention was that if the left triode was conducting, the trigger was on, while\nif the right triode was conducting, the trigger was off.\nSee \nIBM 604 CE Manual, page 54. ↩\nThe 604 manual includes a schematic of the TR-3 module (and other modules).\nInconveniently, I didn't find this schematic until I had reverse-engineered the module;\nI made minor adjustments to my schematic based on this.\nThis schematic is a bit tricky to interpret. All the resistances are in thousands of\nohms (e.g. 1 is 1 KΩ), and capacitances are in \"micromicrofarads\" (i.e. pF).\nThe circled numbers indicate pins of the module,\nwhile numbers in square boxes indicate voltages according to an obscure standard: 2 is +150V, and\n5 is -100 V.\n\"2-110\" and \"300638\" are IBM part numbers. \"6J\" indicates that the tube is in the 6J family,\nwhere 6 indicates the heater voltage and J indicates a triode.\nThe 604 documentation used cryptic boxes as symbols for the modules, with the\narrows indicating the inputs and outputs; note that output 7 is at a lower position\nthan output 8, indicating a lower voltage level.\n\nSchematic from the CE Manual of Instruction, page 260.\n\n ↩\nThe two outputs from the trigger module are at different voltage levels.\nThe idea is that a circuit could use either output, depending on which voltage level was\nmore convenient.\nThe asymmetrical outputs caused me great trouble, however, since I wanted to attach neon\nbulb indicators to show the state of both outputs.\nI had to carefully adjust the voltages so that the bulbs had enough voltage in the \"on\"\nstate to turn on, but also a sufficiently low voltage in the \"off\" state to turn off.\n(When a neon bulb turns on, the neon gas ionizes, so it requires a significantly lower\nvoltage to turn the bulb off.)\nThe IBM 604 used neon bulbs to show the state of various circuits, both in the front\npanel and internally.\nHowever, unlike me, IBM used a single bulb for each trigger, either on or off, so the\ninconsistent voltage levels didn't cause problems. ↩\nThe 604 used 12 different types of trigger modules, from TR-1 through TR-42. \nThe different trigger circuits were similar, but had different component values to\ntune the characteristics, as well as different resistors for the output levels.\nA few types used resistive inputs instead of capacitively coupled inputs.\nThe trigger modules were used in a variety of different ways.\nBriefly removing the negative bias from one side would turn that side on; this was used\nfor reset circuits. \nSecond, a plate could be pulled low, turning off the tube on the other side.\nThird, the input could be connected directly to the input, rather than going through\na capacitor, with a negative voltage turning the triode off and a positive voltage turning\nthe triode on.\nOther triggers used a capacitor between the plate and grid on each side to filter out\nnoise and contact bounce.\nSome triggers used capacitor inputs (as in the module I described), but fed the same\nnegative input pulse to both sides. \nThe pulse is ignored by the triode that is on, but flips the triode that is off.\nThe result is that the trigger switches state on each pulse—analogous to a toggle\nflip-flop—and divides the input pulses by two. ↩",
+      "id": "8385aa493371389fbda01ba003bcfadc0fd27e12d649228c7e0df16aa848fd90",
+      "ref_id": "3",
+      "recommendationScore": 60,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "详细回顾了1948年IBM早期计算系统的历史和技术细节。",
+      "reason": "文章为计算机历史爱好者提供了有价值的怀旧内容和技术背景，但实用性对现代开发者较低。",
+      "tags": [
+        "计算机历史",
+        "硬件",
+        "自动化",
+        "IBM"
+      ]
+    },
+    {
+      "title": "The most official water costs $120k a gallon",
+      "link": "https://signoregalilei.com/2026/07/26/the-most-official-water-costs-120000-a-gallon/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-31T15:00:15.000Z",
+      "summary": "Article URL: https://signoregalilei.com/2026/07/26/the-most-official-water-costs-120000-a-gallon/\nComments URL: https://news.ycombinator.com/item?id=49124042\nPoints: 32\n# Comments: 5",
+      "id": "68e939ef79cf12279ae11418a3802134b661c520dd82ff5bdc6ed21ec00947bf",
+      "ref_id": "4",
+      "recommendationScore": 30,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "一篇关于“最官方的水”昂贵成本的经济或概念探讨，与科技主题的直接关联度较低。",
+      "reason": "文章主题偏离了设定的科技博客评估优先级，不具备足够的技术深度或实用性。",
+      "tags": [
+        "经济",
+        "奇闻异事",
+        "社会观察"
+      ]
+    },
+    {
+      "title": "Anti-fraud tools can't keep pace with scammers exploiting cheap internet calling",
+      "link": "https://broadbandbreakfast.com/how-to-fight-back-against-fraudulent-robocalls/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-31T13:28:05.000Z",
+      "summary": "Article URL: https://broadbandbreakfast.com/how-to-fight-back-against-fraudulent-robocalls/\nComments URL: https://news.ycombinator.com/item?id=49122882\nPoints: 26\n# Comments: 21",
+      "id": "ebdf5c5f5ce9a4005beeae477e8c2673f758fe562bdd123664b16a83188887fa",
+      "ref_id": "1",
+      "recommendationScore": 30,
+      "popularityScore": 9,
+      "priority": "low",
+      "comment": "探讨了反欺诈工具在应对网络电话诈骗时的挑战。",
+      "reason": "内容偏向普遍社会问题，与科技博客核心技术主题关联度较低，深度和新颖性一般。",
+      "tags": [
+        "网络安全",
+        "反欺诈",
+        "电信"
+      ]
+    },
+    {
+      "title": "The End of an Era",
+      "link": "https://hughhowey.com/the-end-of-an-era/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-31T11:51:46.000Z",
+      "summary": "Article URL: https://hughhowey.com/the-end-of-an-era/\nComments URL: https://news.ycombinator.com/item?id=49121980\nPoints: 299\n# Comments: 340",
+      "id": "fdd31e5a3ebc84d21d70260f4c27a28e3ef8d5b89f47583251a6d6be444b642f",
+      "ref_id": "4",
+      "recommendationScore": 20,
+      "popularityScore": 99,
+      "priority": "low",
+      "comment": "一篇个人情感色彩浓厚的文章，与科技内容关联度低但社区互动极高。",
+      "reason": "内容是个人叙事而非科技分析，与核心科技博客主题严重不符，尽管其社区热度值得注意。",
+      "tags": [
+        "个人反思",
+        "文化",
+        "非科技"
+      ]
+    },
+    {
+      "title": "Pluralistic: Better to beg forgiveness (31 Jul 2026)",
+      "link": "https://pluralistic.net/2026/07/31/just-do-it/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-07-31T11:56:12.000Z",
+      "summary": "Today's links Better to beg forgiveness: Don't ring the doorbell at the house of no unless you absolutely must. Hey look at this: Delights to delectate. Object permanence: RIP Poul Anderson; P2P at PC Forum; Waitress handed her own stolen ID by carded diner; PDX bans fixies; Digital Economy Bill was a stitch up; NZ copyright disconnection flowchart; Fry v Widdicombe on Catholic Church; Moxie Marlinspike profile; V&A bans sketching; Gernsback's intro to the first Amazing Stories; \"Simplicity.\" Upcoming appearances: Edinburgh, Sydney, Melbourne, Brighton, London, South Bend. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. Better to beg forgiveness (permalink) From its inception, I've loved Creative Commons. I hung out with Lisa Rein, Matt Haughey and Aaron Swartz while they coded up the first version of the site, and my first novel, Down and Out in the Magic Kingdom, was the first professionally published text ever released under a CC license, just weeks after CC itself launched: https://creativecommons.org/ In those early days, CC licenses were primarily of interest to people who were steeped in copyright law, lore and litigation; so many of the early debates about these licenses turned on esoteric (but important!) questions about copyright; for example, how CC would interact with copyright's \"limitations and exceptions.\" You see, copyright has never meant the absolute right to control all uses of a work. Every system of copyright includes a set of \"limitations and exceptions\" for people making use of copyrighted works without permission, even if the copyright holder objects to that use. The best-known example of this is \"fair use,\" a concept from American law. Fair use is (potentially) extremely broad, but it's also extremely \"fact-intensive\" – that's the phrase lawyers use to describe the kind of legal question whose answer is almost always \"it depends.\" Fair use might let you copy the entirety of a work, even for a commercial purpose. It might let you create new works based on existing works. It might let you do these things specifically to discourage people from buying the original. But…it depends. If you know anything about fair use, it's probably something about a \"four-step test\" used to determine if a usage is fair. These four steps are just questions a judge might ask of someone who's been sued for copyright infringement, but who claims that they were making a fair use. The questions are: I. What was the \"nature and purpose\" of your use? Were you doing something \"transformative?\" Were you criticizing the work? Were you using the work for educational purposes? II. What was the nature of the work you used? Was it primarily factual (like a news article) or creative (like a short story)? III. How much of the work did you take? Did you take more than you needed to transform the work, to accomplish your criticism, to teach someone? IV. What impact did your use have on the original? Did the copyright holder lose money as a result of your use? https://fairuse.stanford.edu/overview/fair-use/four-factors/ These questions are indeed enshrined in US copyright law, but (for better and for worse) you can't figure out if a use is \"fair\" just by asking these questions. Fair use is ultimately subject to \"the rule of reason,\" a legal principle meaning that the law shouldn't result in obviously stupid restrictions. What's \"obviously stupid?\" Well, that's the tricky part – you'll have to convince a judge! For example, the author of a book called The Wind Done Gone was sued for taking the characters, plot and setting of Gone With the Wind in order to tell the same story from the perspective of the enslaved Africans who were denied agency and moral consideration in the original. The court found for The Wind Done Gone: https://en.wikipedia.org/wiki/The_Wind_Done_Gone Wind Done Gone took the \"heart\" of Gone With the Wind (III), but then again, Done Gone was highly transformative (I), Gone With was also a work of fiction, entitled to the highest level of protection (II). Even worse, the point of Done Gone was to point out the gross defects in Gone With (I) and thus directly undermine sales and licensing for the original (IV). Anyone who claims you can answer fair use controversies by running through the four factors as though they were a checklist really doesn't understand fair use: https://pluralistic.net/2022/02/06/crypto-copyright-%f0%9f%a4%a1%f0%9f%92%a9/ But even after you've acquired an appreciation of the fact-intensive, nuanced flexibility of fair use, you still don't understand copyright's limitations and exceptions. Fair use is important, but there's also \"first sale,\" the doctrine that says that after you buy something, you own it, and copyright can't be used to interfere with your traditional property rights. That's why you can buy and sell used books, paintings, records, and other copyrighted work, even if they are sold with fine print that says you're not allowed to: https://en.wikipedia.org/wiki/Kirtsaeng_v._John_Wiley_%26_Sons,_Inc. When it comes to copyright's limitations and exceptions, \"fair use\" and \"first sale\" are the big ones, but just as important are the small ones – the really small ones. Like other laws, copyright is subject to the principle of \"di minimis\" (from a longer Latin phrase that translates as \"the law does not concern itself with trifles\"): https://en.wikipedia.org/wiki/De_minimis Technically, it may be trespassing to step on someone else's yard. But if your shoe brushes up against their lawn while you're walking on the sidewalk out front of their house, it's not trespassing. Or if it is trespassing, it's a di minimis trespass, too small to matter to the law. A lot of potential copyright violations – like taking a picture of a passage in a book and posting it to social media – are so small that we don't need to apply a fair use analysis to them. They're trifles, and \"the law does not concern itself with trifles.\" These limitations and exceptions all apply without permission from rightsholders. They apply even if they make rightsholders furious. They are your rights, as a member of the public, as a purchaser of a work, or just as someone who whistles a song that's stuck in your head. And that's where the esoteric early Creative Commons copyright debate comes in. Creative Commons is a way to formally codify and convey permission to use copyrighted works. Without Creative Commons, it's really hard – and expensive – to provide legally reliable permission to someone else to use something you've created. If I want to let you adapt one of my short stories for the stage, we should both probably hire copyright lawyers at several hundred dollars per hour to draft and review a contract setting out what my permission really means. Worse: even after we've paid the lawyers, neither of us will likely really understand the fine legal technicalities of the deal. We just have to take the lawyers' word for it that the complex jargon in the contract is sufficient for our purposes. Between the complexity and the expense, there are lots of potential creative collaborations that would cost so much to paper over that they're just not worth doing, even if they'd delight everyone involved. Creative Commons cuts through this with its standardized licenses, which spell out in plain language which permissions are being granted. Even better, these licenses are international, translated into the language and laws of dozens of countries. That means that you can take a CC licensed short story from Japan, animate it using CC licensed 3D models from Italy, set it to a CC licensed soundtrack from Indonesia and release it in Ukraine, and the whole thing just works. Those uses – turning a story into an animation, using a 3D model, syncing a soundtrack to a video – are all pretty ambitious uses, especially if you're going to make the final result indefinitely available to the general public. It makes sense to paper over these uses, and Creative Commons makes that legal work as simple as linking to your sources and their licenses in your final product. But there are plenty of uses that don't need licenses – even ambitious ones. Remember Wind Done Gone? There are circumstances when you can adapt someone else's story without permission, relying instead on a limitation or exception to copyright. And of course, there are plenty of trivial uses – pasting a photo into your groupchat, say – that are di minimis and also don't need permission. These copyright flexibilities are critical. Imagine if you could only criticize someone's work if they gave you permission to do so! From the founding of CC, copyfighters raised serious concerns that CC would teach people that they can only remix other people's work if they have a license, be it a CC license or the kind that you negotiate with a lawyer. Today – 25 years later!- CC is an unqualified success. Without CC, we wouldn't have Wikipedia! You find CC licenses on Youtube, Flickr, Bandcamp, the Internet Archive, and in many of the most important scholarly and scientific journals in the world. But, also, 25 years later, the world is even more convinced that you should always ask permission: \"better safe than sorry.\" I don't know if CC contributed to this culture of timidity. More likely, it was bullying copyright trolls who terrorized people into a reflex of asking permission for everything, always. As the creator of more than 30 books, hundreds of collages, and tens of thousands of essays and blog-posts, I am often on the receiving end of these permission requests. For example, people often ask me if they can use my CC licensed works in ways that the associated licenses clearly permit. I'm sure the people who email me for permission to do things I've already granted them permission to do think they're being polite, but I really wish they'd stop. When someone asks me if they can make a use permitted by my CC licenses, I need to carefully parse through their use to make sure they're not asking for something more. This is time-consuming work that often involves several volleys of email just to confirm that, no, they're just asking if they can do something I've already told them they can do. This is not a good use of anyone's time! By all means, drop me a note with a link to something you've remixed from my work. That's fun! It's a lot more fun than making me play detective in order to figure out if you're exceeding the license's permissions. There are also a lot of requests that clearly amount to fair use and/or di minimis usage. You don't need to email me to get my permission to read a brief passage from one of my books on your Youtube video! You don't need my permission to quote one of my stories in an English exam! What's more, the world would be a lot shittier if you did, so let's not act as though that's reasonable behavior, lest we shift the (already far too restrictive) norms, which might even lead to a legal change. Finally, there's the people who email me about their desire to make uses that are more (ahem) ambitious, but that no one could possibly find out about or get angry over…except for the fact that they emailed me to ask my permission. You want to make a tiny bootleg edition of one of my novels for your anarchist book fair? That's totally a copyright infringement, it's super-illegal, and if my publisher found out about it, I'm sure they'd send you a sphincter-puckering legal letter telling you to knock it off (and maybe even demanding that you disgorge the seven dollars, three bottlecaps and eleven cool feathers you took in trade for those pirate books). But my publisher won't ever find out about it – unless you email me asking for permission. I absolutely cannot give you permission to do this. I have a contract with my publisher promising that I will never authorize someone other than them to publish that book. Once you tell me about your intention to do this, I'm obliged to tell my publisher, so that they can tell you no in language that would strip paint off a barn. Buying a classroom set of books, but you also want to paste chunks of one of my books into your educational institution's classroom intranet for use as a teaching aid? There's no way my publisher would ever find out you did that, and if they did, sure, you'd also get a blood-curdling legal letter. But dude, all my books are DRM-free. You could have just pasted the text into your CMS. In what universe is my publisher going to pay one of their lawyers to review, adjudicate and paper over your request to make a use that you're not proposing to pay them for? Let's be clear: I'm not giving you permission to pirate my work. I already spend far too much of my time chasing down dickheads who sell competing editions of my books on Amazon and Audible. I'm sick to the back teeth of wrangling Ingram's takedown process to get rid of bootleg print editions of my books. What I'm saying is, all of your interactions with copyrighted works need not involve the author and publisher. There is a whole universe of uses that might technically violate copyright, might technically not fit into di minimis, first sale or fair use – but these are also uses that no one would ever find out. I get it. You may feel like you can't tell the difference between the kind of uses that no one would give a shit about; the uses that might attract a bone-chilling lawyer letter; and the uses that might land you in court. I'm sorry, but I can't help you figure that one out. I'm not a lawyer. Even if I was, I'm not your lawyer. This is one of those areas where I break with my friend, the wonderful John Hodgman. On his indispensable podcast \"Judge John Hodgman,\" he frequently admonishes people who are uncertain if they're overstepping a bound in a commercial establishment to ask an employee for permission. For example: should you fill up a water glass with soda water from a self-serve dispenser? https://maximumfun.org/podcasts/judge-john-hodgman/ John says you should always ask the cashier. But I've worked jobs like that, and I can tell you that there were plenty of jobs where my boss felt very strongly that taking $0.0000001 worth of water and bubbles without paying for it was theft…and where I thought my boss was a dick for thinking that. If I pretended I didn't see you getting a glass of fizzy water, the worst that would happen is my boss would tell me to keep a closer eye on the customers lest they steal his precious CO2. But if you asked me whether you could fill your glass, and my boss caught me saying yes, I'd be fired. There's a lot of normal, perfectly fine stuff that technically violates copyright that I can't give you permission to do, because I've signed a contract with my publisher. If you ask me, I'll have to ask my editor, who will say no, even though he thinks it's fine, too. If I push it, he'll have to ask the lawyers, who will almost certainly also say no, even if they think it's fine, because it doesn't make sense to spend hours papering over a legal agreement with someone who wants to sell seven copies of a book at an anarchist book-fair or upload a couple chapters of a book to a school's intranet. Are there instances in which you might misjudge which category your use falls under and end up in court? I guess so. But if that's your concern, asking my permission does no good, because I'm just gonna tell you no. Life is hard. Read books. Hey look at this (permalink) AOC Must Run For President https://www.hamiltonnolan.com/p/aoc-must-run-for-president Role confusion: one more reason we can’t trust LLMs https://designingsecuresoftware.com/writings/role-confusion/ Ida Tarbell: The Journalist Who Took Down Rockefeller https://prospect.org/2026/07/31/ida-tarbell-journalist-who-took-down-rockefeller/ Medusa Joins the Club https://longforgottenhauntedmansion.blogspot.com/2026/07/medusa-joins-club.html Hot Centrist Summer Was a Bust https://prospect.org/2026/07/31/democrats-donor-base-establishment-progressive-hot-centrist-summer-was-a-bust/ Object permanence (permalink) #25yrsago RIP, Poul Anderson https://www.locusmag.com/1997/Issues/04/Anderson.html #25yrsago Talking P2P at PC Forum https://web.archive.org/web/20010820163912/https://www.edventure.com/pcforum/transcript.cfm?Counter=13 #25yrsago CD DRM cracked in 2 weeks https://web.archive.org/web/20010803144120/http://www.oreillynet.com/cs/weblog/view/wlg/533 #20yrsago Waitress cards drinker, is handed her own stolen ID https://web.archive.org/web/20060901042515/http://www.thedenverchannel.com/news/9606436/detail.html #20yrsago How POWs in a Nazi camp got a Disney insignia https://web.archive.org/web/20061209200825/https://blog.modernmechanix.com/2006/08/01/wwii-pows-get-a-disney-designed-logo/ #20yrsago Fixies illegal in Portland https://bikeportland.org/2006/07/28/judge-finds-fault-with-fixies-1727 #15yrsago Freedom of Information requests show that UK copyright consultation was a stitch-up; Internet disconnection rules are a foregone conclusion https://torrentfreak.com/digital-economy-act-a-foregone-conclusion-110731/ #15yrsago What Murdoch’s media empire did: the big picture https://web.archive.org/web/20110805111419/http://blogs.alternet.org/speakeasy/2011/07/27/what-rupert-murdoch-means-for-you-personally/ #15yrsago Flowchart shows the complexity of NZ Internet Disconnection copyright law https://web.archive.org/web/20111105044005/https://lawgeeknz.posterous.com/copyright-infringing-file-sharing-amendment-a #15yrsago Married lesbian couple rescued 40 teenagers from drowning during Utøya shooting https://www.lgbtqnation.com/2011/07/married-lesbian-couple-saves-dozens-during-norway-shooting-rampage/ #15yrsago Stephen Fry debating Ann Widdecombe on the worth of the Catholic Church https://www.youtube.com/watch?v=9fN3zDtfivc #10yrsago Jacksonville police pension fund blows $1.8M worth of tax-dollars fighting open records requests https://web.archive.org/web/20160804040211/http://jacksonville.com/news/metro/2016-07-30/story/open-government-lawsuits-against-city-pension-fund-cost-taxpayers-more-2 #10yrsago A profile of Moxie Marlinspike: the seagoing anarchist cryptographer who brought private messaging to millions https://www.wired.com/2016/07/meet-moxie-marlinspike-anarchist-bringing-encryption-us/ #10yrsago Burying the past in glass coffins: Victoria & Albert museum bans sketching in temporary exhibitions https://www.theguardian.com/artanddesign/2016/apr/22/va-museum-no-sketching-signs-draconian?CMP=share_btn_tw #10yrsago Hugo Gernsback’s introduction to the first issue of Amazing Stories, 1926 https://brucesterling.tumblr.com/post/148297242233/a-new-magazine-announced-by-hugo-gernsback #10yrsago Afterbrexit: Scotland trolls Theresa May by passing laws she has ridiculed https://www.nakedcapitalism.com/2016/08/scotland-disses-theresa-may-by-reviving-anti-inequality-law-she-loathes.html #5yrsago Managing aggregate demand https://pluralistic.net/2021/08/01/managing-aggregate-demand-part-iv/ #1yrago Mattie Lubchansky's 'Simplicity' https://pluralistic.net/2025/08/01/ecosexuality/#nyc-ast Upcoming appearances (permalink) Virtual: EFFecting Change: Who the Machine Serves, Aug 12 https://www.eff.org/event/effecting-change-who-machine-serves Edinburgh International Book Festival with Jimmy Wales, Aug 17 https://www.edbookfest.co.uk/events/the-front-list-cory-doctorow-and-jimmy-wales Sydney: The Festival of Dangerous Ideas, Aug 23-24 https://festivalofdangerousideas.com/program/ Melbourne: Enshittification at the Wheeler Centre, Aug 25 https://www.wheelercentre.com/events-tickets/season-2026/cory-doctorow-enshittification Brighton: The Reverse Centaur's Guide to Life After AI with Carole Cadwalladr (Brighton Dome), Sep 8 https://brightondome.org/whats-on/LSC-cory-doctorow-the-reverse-centaurs-guide-to-life-after-ai/ London: The Reverse Centaur's Guide to Life After AI with Riley Quinn (Foyle's Picadilly), Sep 9 https://www.foyles.co.uk/events/enshittification-cory-doctorow-riley-quinn South Bend: An Evening With Cory Doctorow (Notre Dame), Oct 6 https://franco.nd.edu/events/2026/10/06/an-evening-with-cory-doctorow/ Recent appearances (permalink) Why AI Won't Replace Workers, But Will Crash The Economy (Smart Cookies) https://www.youtube.com/watch?v=rRRmUuxJolY AI and the Enshittification Era (The Weekly Show with Jon Stewart) https://www.youtube.com/watch?v=-dAIJRjb-Bw AI is not inevitable (Betakit) https://www.youtube.com/watch?v=DbiTVkq1WHo A Conversation with Lina Khan (Law and Economy Student Network) https://www.youtube.com/live/7Ak5LZllqwE Will AI ever come alive, and what happens if it does? (BBC News) https://www.youtube.com/watch?v=Lzk4o3fPZZE Latest books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/ \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Fourth draft completed. Submitted to editor. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "8cd7e66b05718a0e298a76d9cd410a13b4dc621be8726ab2ec1872ed4252298b",
+      "ref_id": "2",
+      "recommendationScore": 20,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "这是一篇链接集合与个人动态，缺乏具体的科技内容深度。",
+      "reason": "文章内容多为链接列表和个人动态信息，未能围绕特定科技主题提供深入的分析或有价值的见解。",
+      "tags": [
+        "杂项",
+        "链接聚合",
+        "个人博客"
+      ]
+    },
+    {
+      "title": "Y2K Will Be Quite Okay",
+      "link": "https://www.filfre.net/2026/07/y2k-will-be-quite-okay/",
+      "source": "filfre.net",
+      "publishedAt": "2026-07-31T16:06:39.000Z",
+      "summary": "Hi, folks… I’ll have the last article in the series on Maxis Software for you next week. Today, I’m happy to say that the new ebook, covering the historical year 1999, is available, and on a far more timely basis than the last one at that. My thanks go to Richard Lindner, for developing the […]",
+      "id": "eeb58998d69747ee69321a424340b75e7eae4c94adad71d377389f85d76abbb1",
+      "ref_id": "3",
+      "recommendationScore": 20,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "聚焦历史事件和软件公司，与当前科技主题关联度低。",
+      "reason": "内容为旧新闻和历史回顾，不符合科技博客的当前热点和实用性需求。",
+      "tags": [
+        "历史",
+        "软件",
+        "Y2K",
+        "Maxis Software"
+      ]
+    },
+    {
+      "title": "The Download: Montana’s new experimental drug rules",
+      "link": "https://www.technologyreview.com/2026/07/31/1140999/the-download-montanas-right-to-try-law-anthropic-hacks/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-07-31T12:16:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. Montana’s plan to become an experimental medical hub just pushed forward  As of this week in Montana, biotech companies whose drugs have been through preliminary testing—sometimes in as few as 10…",
+      "id": "75f986bbd1e7408f886055b049d0c063099abf36b087d0283fee3da4ef103301",
+      "ref_id": "0",
+      "recommendationScore": 15,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "关注蒙大拿州实验性药物规则的政策新闻。",
+      "reason": "内容与科技博客核心主题关联度低，主要涉及生物技术政策而非技术本身。",
+      "tags": [
+        "政策",
+        "生物技术",
+        "医疗"
+      ]
+    },
+    {
+      "title": "Big Food vs. the People",
+      "link": "https://www.lighthousereports.com/investigation/big-food-vs-the-people/",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-31T16:04:32.000Z",
+      "summary": "Article URL: https://www.lighthousereports.com/investigation/big-food-vs-the-people/\nComments URL: https://news.ycombinator.com/item?id=49124858\nPoints: 68\n# Comments: 18",
+      "id": "50fc014097fe9e9ba458b58d5cf11bd6d9b896e2d1f854eb014f0b7b81dd82bd",
+      "ref_id": "2",
+      "recommendationScore": 10,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "一篇关于食品行业的调查报告，不属于科技博客关注的主题范围。",
+      "reason": "文章主题严重偏离科技领域，缺乏技术深度和实用性，与本博客的关注主题优先级完全不符。",
+      "tags": [
+        "社会",
+        "食品工业",
+        "非技术"
+      ]
+    },
+    {
+      "title": "Montana’s new “right to try” law can’t come soon enough for some",
+      "link": "https://www.technologyreview.com/2026/07/31/1140945/montanas-new-right-to-try-law-cant-come-soon-enough-for-some/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-07-31T09:00:00.000Z",
+      "summary": "Kris DeVault is desperate. His son, Brody, was born in March 2023. It wasn’t long before he started to show signs of developmental delay, says DeVault. As time went on, Brody started missing key milestones in speech, movement, and coordination, he says. When Brody was around two and a half years old, a genetic test…",
+      "id": "277599f0924a5bf2cf3ee475642d896c40e0b689a6e988030f0b1a3e3f94fd5e",
+      "ref_id": "1",
+      "recommendationScore": 10,
+      "popularityScore": 5,
+      "priority": "low",
+      "comment": "围绕蒙大拿州“尝试权”法律的人文故事。",
+      "reason": "内容与科技主题无关，更侧重于个人经历和医疗政策，不适合科技博客。",
+      "tags": [
+        "人文",
+        "医疗",
+        "政策"
+      ]
+    },
+    {
+      "title": "Miso (YC S16) is hiring for U.S. expansion",
+      "link": "https://www.ycombinator.com/companies/miso/jobs/g2uAlMG-founding-business-lead-u-s-expansion",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-31T17:01:08.000Z",
+      "summary": "Article URL: https://www.ycombinator.com/companies/miso/jobs/g2uAlMG-founding-business-lead-u-s-expansion\nComments URL: https://news.ycombinator.com/item?id=49125785\nPoints: 0\n# Comments: 0",
+      "id": "05dfdc01c55279ca03ca31c918d8e272291cff80e6c8d70cf242c11a80082d5e",
+      "ref_id": "0",
+      "recommendationScore": 5,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "招聘信息，非科技内容，不适合作为科技博客文章。",
+      "reason": "此文章为公司招聘广告，与科技博客的核心内容和关注主题无直接关联，缺乏技术深度和普遍实用性。",
+      "tags": [
+        "招聘",
+        "公司新闻",
+        "非技术"
+      ]
+    },
+    {
+      "title": "The Art of Decision-Making (2019)",
+      "link": "https://www.newyorker.com/magazine/2019/01/21/the-art-of-decision-making",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-31T15:42:28.000Z",
+      "summary": "Article URL: https://www.newyorker.com/magazine/2019/01/21/the-art-of-decision-making\nComments URL: https://news.ycombinator.com/item?id=49124525\nPoints: 15\n# Comments: 2",
+      "id": "7ee7f4107d3ef69dc9c22ea964c12dbe9a59cd3fcaca5ed179f2e2931324a68f",
+      "ref_id": "4",
+      "recommendationScore": 5,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "一篇关于决策艺术的通用性文章，与科技博客主题无关。",
+      "reason": "文章内容属于通用管理或心理学范畴，与科技领域缺乏关联性，不具备技术深度和特定实用价值。",
+      "tags": [
+        "决策",
+        "心理学",
+        "非技术"
+      ]
+    },
+    {
+      "title": "Tasklet (YC P26) Is Hiring a Customer Success Engineer",
+      "link": "https://tasklet.ai/careers/customer-success-engineer",
+      "source": "Hacker News",
+      "publishedAt": "2026-07-31T12:00:59.000Z",
+      "summary": "Article URL: https://tasklet.ai/careers/customer-success-engineer\nComments URL: https://news.ycombinator.com/item?id=49122034\nPoints: 0\n# Comments: 0",
+      "id": "382d0e7773967fd46f23b043404f0b5df8225ecaadc967cab3431ce86eee1864",
+      "ref_id": "3",
+      "recommendationScore": 5,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "一则招聘广告，不属于科技博客文章评估范围。",
+      "reason": "内容是招聘信息，不提供科技知识或深度见解，不符合博客内容评估标准。",
+      "tags": [
+        "招聘",
+        "AI公司"
+      ]
+    },
+    {
+      "title": "Quoting Bruce Schneier",
+      "link": "https://simonwillison.net/2026/Jul/30/bruce-schneier/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-07-30T18:25:26.000Z",
+      "summary": "",
+      "id": "4aec8be12cee60237b133b80a7630479f29467dedc15120cb643591f28af271c",
+      "ref_id": "0",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "文章内容缺失，无法进行有效评估。",
+      "reason": "由于无文章内容，无法判断其主题、技术深度、新颖性或实用性。",
+      "tags": [
+        "缺失内容",
+        "无法评估"
+      ]
+    }
+  ]
+}
