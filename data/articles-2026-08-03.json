@@ -1,0 +1,786 @@
+{
+  "dailySummary": "今日聚焦：AI模型效率持续突破，如INT8 ConvRot优化与AirLLM 70B单GPU推理。AI作为开发代理的角色日益凸显，从代码生成、项目完成到会话分析及云端部署。然而，",
+  "articles": [
+    {
+      "title": "Explanation of INT8 ConvRot (FP8 is no longer needed)",
+      "link": "https://note.com/hirorohi03/n/n047a8c5f7f8b?hl=en",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-03T16:07:09.000Z",
+      "summary": "Article URL: https://note.com/hirorohi03/n/n047a8c5f7f8b?hl=en\nComments URL: https://news.ycombinator.com/item?id=49157645\nPoints: 9\n# Comments: 4",
+      "id": "aa72d8018f424ed6136d4ea5ead546a6fea1a58f4cf3fa891eb2f20e331ca441",
+      "ref_id": "1",
+      "recommendationScore": 100,
+      "popularityScore": 4,
+      "priority": "high",
+      "comment": "详细解析AI模型量化优化技术INT8 ConvRot，并提出FP8不再必要的观点。",
+      "reason": "文章提供了AI模型优化领域前沿且高度专业的技术方案，对提高模型效率和部署性能具有直接的实用性。",
+      "tags": [
+        "AI",
+        "机器学习",
+        "深度学习",
+        "模型优化",
+        "量化"
+      ]
+    },
+    {
+      "title": "What's the largest software project AI can complete on its own?",
+      "link": "https://epoch.ai/MirrorCode",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-03T16:16:40.000Z",
+      "summary": "Article URL: https://epoch.ai/MirrorCode\nComments URL: https://news.ycombinator.com/item?id=49157786\nPoints: 41\n# Comments: 31",
+      "id": "246ad439bdbf1cf3b9169b5bf9971c662606b41be6f61e5714600d8be06ca356",
+      "ref_id": "0",
+      "recommendationScore": 98,
+      "popularityScore": 24,
+      "priority": "high",
+      "comment": "深入探讨AI在软件工程中能完成的最大项目，揭示AI当前能力边界与未来潜力。",
+      "reason": "该文紧密围绕最高优先级主题AI展开，技术深度和新颖性极高，对理解AI未来发展方向有重要参考价值。",
+      "tags": [
+        "AI",
+        "软件开发",
+        "研究",
+        "未来趋势"
+      ]
+    },
+    {
+      "title": "Show HN: Product analytics (and evals) for agent sessions on your MCP",
+      "link": "https://armature.tech/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-03T16:17:59.000Z",
+      "summary": "Hi HN! We’re Theodore and Louis, founders of Armature (YC P26). We reconstruct the entire session behind the MCP tool calls you receive, including what the user asked their agent to do and what the agent thought.\nYou wrap your MCP in 3 lines of code (our SDK is available in Typescript, Python and Go) and start seeing in your dashboard:\n- All sessions reconstructed: it’s like reading the real conversation the user had inside Claude or ChatGPT!\n- A ranking of your MCP most popular use cases, built from sessions clustering\n- The most frequent issues your users’ agents encounter so you can fix them.\nHere is a quick demo: https://youtu.be/ZFlvquhyNMQ\nThe story behind this is that we initially launched Armature as a standalone testing tool (https://www.ycombinator.com/launches/QQc-armature-making-you...) that could naturally be used through an MCP itself. We quickly realized we had no idea how our users were using Armature MCP and if they were satisfied with it or frustrated. It’s something we had also experienced in our previous companies: Louis built MCPs exposed to millions of users and Theo was a Forward Deployed Engineer at Palantir before joining a Datadog spin-off as Founding Engineer. Both testing and product analytics had always been real pains when exposing a product to agents but we always thought there wasn’t much we could do about analytics because the conversation lived in our users’ AI client.\nThen it struck us: what if we asked the agents why they were making this or that tool call? And what’s the user's intent or potential frustration? So we started experimenting with MCP instrumentation and the use-cases actually surprised us! Many of our first customers had implemented workarounds for their CI to trigger new tests or for their coding agents to fetch the results efficiently. Even though we talked to our first users regularly, they had never shared this feedback with us. We then built automations to automatically cluster use-cases, identify issues frequently encountered and let our own coding agents fix them. When our CTO friends heard about this, they wanted to try it for themselves so we gave them access to a cloned version of our internal product and they started sharing feedback like they never did on our “real” product!\nThat’s when we decided to start working seriously on MCP Analytics as a product. At first we were afraid of degrading MCP performance so we iterated until we reached the exact same success rate as without our instrumentation (89.17 % vs 89.15 % pass rate out of 870 runs). Then privacy was an obvious constraint so we applied the same methods we had learned from working with banking data or building sensitive data scanning in logs. Today, redaction runs client-side before reaching our servers. There are still a lot of things we haven’t fully figured out: not all fields are equally filled by all models, session fingerprinting for serverless / stateless MCPs isn’t perfect, and use-case clustering remains to be optimized.\nBut we are finally launching our analytics product to everyone, self-serve at https://armature.tech with a set-up that takes less than 5 minutes and a generous free tier.\nAnd now we are working on fully closing the loop, bringing evals back in our product so we can: identify top workflows and issues -> recommend fixes and improvements -> test fixes at scale on the same workflows run by users, across all harnesses and models -> open PRs to ship fixes directly.\nThe evals can be generated automatically from the session analytics so you can catch every regression and can test every improvement’s real impact across all models and harnesses before shipping it.\nHere’s an example to make it more concrete: 10 days ago, a marketing automation platform which has had early access to what we built for weeks identified thanks to MCP Analytics that users were frustrated not being able to change their target audience after campaign creation. So they shipped the feature and tested it successfully locally with Claude Code on Fable 5. Then a few days later when preparing their new MCP public release, they ran a suite of evals on Armature and realized that small models could hallucinate audience_ids which would lead their MCP to send the campaign to ALL their contacts by default (which could obviously lead to disasters in prod). This is the kind of story that makes what we are building feel so helpful!\nNow, the most useful feedback for us would be to know what’s still missing in our product so you can feel you are now in full control of the “Agent Experience”.\nAnd if you run an MCP in production we’d also love to know: what do you do today to know if agents succeed and if the users behind them are happy?\nComments URL: https://news.ycombinator.com/item?id=49157807\nPoints: 11\n# Comments: 0",
+      "id": "b75f4a65695568ddedef2c038b402b47e59a7844ce8f85dcf3d3cc84f05f703a",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "Armature推出针对AI代理会话的产品分析与评估工具，帮助开发者理解用户行为并优化代理性能。",
+      "reason": "精准切入AI代理开发领域的核心痛点，提供创新的会话重建和问题识别方案，技术深度和实用性极高，对AI产品迭代至关重要。",
+      "tags": [
+        "AI",
+        "产品分析",
+        "Agent",
+        "机器学习",
+        "独立开发",
+        "Startup",
+        "MCT"
+      ]
+    },
+    {
+      "title": "Boris Cherny on Trying to Get Claude Code to Rewrite the Claude App",
+      "link": "https://www.ycrootaccess.com/p/boris-cherny-building-claude-code",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-08-02T21:01:12.000Z",
+      "summary": "Boris Cherny, head of Claude Code at Anthropic, was interviewed by Diana Hu on stage at Y Combinator’s Startup School 2026 last week. Starting around 20:30 in the video, he briefly discussed directing Claude to perform difficult tasks:\nCherny: I think the skill nowadays is less about prompt\nengineering and more about figuring out how do you give Claude a\nhard task that seems a little bit too hard. Then how do you make\nit possible for Claude to verify its work along the way? The\nverification is probably the single most important thing that\npeople do not get right, largely.\nOne example of this is people were — we have this desktop app\nfor Claude and it’s built using Electron. We’ve made it quite\nfast. Now it’s a pretty awesome experience. Six months ago it was\nsluggish and it wasn’t very reliable. Now it’s pretty awesome.\nIt’s the thing that most of the team uses. As an experiment, I\nwanted to see what it would feel like if it was native. So what I\ndid is I started a Claude Tag session. Claude Tag is a new\nproduct we have. It’s just Claude running in Slack. My first\nquestion was, “Hey Tag, do you have access to a Mac OS runner on\nGitHub?” It said no. Then I hooked up a runner. So it was able to\nstart a Mac virtual machine using GitHub. My second question was,\nI created this empty code base that was a Claude desktop app\nrewritten in Swift.\nI asked, “Can you access this code base?” It said no. Then I\ngave it access and it was like, “Okay, great. Now I have\naccess.” Then I said, “Okay, now what I want you to do is I want\nyou to rewrite the Electron app in Swift. I want you to run the\nElectron app in the Mac virtual machine, screenshot it, and then\nlook pixel by pixel. Compare it to the Swift version. Don’t stop\nuntil you’re done.”\nHu: And that was your prompt basically?\nCherny: That was my prompt.\nHu: And how long did this take to run?\nCherny: It’s still running.\nHu: When did you start it?\nCherny: It’s been a little over two weeks. So it’s like 14\ndays, 15 days.\nI suppose this is interesting, but I don’t think it’s interesting in the way some people sending me links to this interview think it is. I don’t think this is a serious effort to create a truly native Mac client for Claude. And if it is, Cherny is going about it all wrong.\nIt’s not like the problem with the current Claude Mac client is merely the technical detail that it’s written with a bloated non-native framework. The actual problem is that it’s a poorly designed app written with a bloated non-native framework. The design itself is non-native. And aside from ignoring most Mac UI idioms, it’s just a bad design in the abstract. It’s bad on the web, bad on Windows, and thus of course it’s also bad on the Mac. So pointing Claude Code at the current Electron app and directing it to recreate it in Swift — pixel-by-pixel — could at best solve only the technical problems with the current app, not the design problems. I’d be more likely to use Claude if it were well designed but still written using Electron, than if it were ported to AppKit and/or SwiftUI but with exactly the current design. The current Claude app is like a shitty recipe made with shitty ingredients; what Cherny asked Claude Code to do is to follow the shitty recipe using better ingredients. It’s still going to taste like shit.\nAnd it’s probably no wonder the task failed. AppKit and SwiftUI are made to create Mac-style apps. Trying to use them to recreate the utterly un-Mac-like Claude UI is like trying to brush your hair the wrong way. It’s not the way things are meant to go.\nI also can’t let pass Cherny’s aside, re: the current Claude Mac app, that “Six months ago it was sluggish and it wasn’t very reliable. Now it’s pretty awesome.” I just launched the Claude app on my Mac, and it took 30 seconds before it was ready to use. The last 15 seconds of which, it showed the spinning beach ball cursor. When it finally finished it showed me a dickover. Maybe it was worse six months ago but this is not “pretty awesome”.\n ★",
+      "id": "f99a3cdc84e6e6f5c2d18eb71d122eff061fa48df407fb8627984ec03716a3a6",
+      "ref_id": "2",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "深入探讨了利用AI（Claude Code）重写应用并强调验证的重要性，极具技术深度和实用价值。",
+      "reason": "完美契合AI和编程工具主题，提供了AI在实际开发中应用的前沿案例和关键方法论，新颖性和实用性极高。",
+      "tags": [
+        "AI",
+        "编程工具",
+        "大模型",
+        "应用开发",
+        "验证"
+      ]
+    },
+    {
+      "title": "AirLLM 70B inference with single 4GB GPU",
+      "link": "https://github.com/lyogavin/airllm",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-03T11:15:48.000Z",
+      "summary": "Article URL: https://github.com/lyogavin/airllm\nComments URL: https://news.ycombinator.com/item?id=49154228\nPoints: 129\n# Comments: 45",
+      "id": "759119abe3ffdb8f16da1171b83eba173ccb8e6685b07e7349aefbb005534287",
+      "ref_id": "4",
+      "recommendationScore": 94,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "展示了如何在一张4GB GPU上实现AirLLM 70B模型的推理，极大地降低了大型LLM的使用门槛。",
+      "reason": "在AI领域取得了显著的优化突破，技术深度、新颖性和实用性均达到顶级，对普及LLM应用有巨大推动作用。",
+      "tags": [
+        "AI",
+        "LLM",
+        "推理",
+        "GPU",
+        "优化",
+        "机器学习",
+        "硬件"
+      ]
+    },
+    {
+      "title": "SQLite Critical CVEs or LLM Slop?",
+      "link": "https://research.jfrog.com/post/sqlite-critical-cves-or-llm-slops/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-03T11:28:54.000Z",
+      "summary": "Article URL: https://research.jfrog.com/post/sqlite-critical-cves-or-llm-slops/\nComments URL: https://news.ycombinator.com/item?id=49154332\nPoints: 634\n# Comments: 250",
+      "id": "bd7cfec7102c195d214ef2137c35714aa41c8b5a4bfcaef84d43dbbf8407b6ee",
+      "ref_id": "3",
+      "recommendationScore": 93,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "深入探讨SQLite的潜在关键CVE漏洞是否与LLM生成的内容有关，关注AI时代的软件安全性。",
+      "reason": "结合了AI（LLM）、编程工具（SQLite）与网络安全（CVE）三大热门议题，技术深度、新颖性和实用性俱佳。",
+      "tags": [
+        "SQLite",
+        "安全",
+        "CVE",
+        "LLM",
+        "AI",
+        "编程",
+        "漏洞"
+      ]
+    },
+    {
+      "title": "Show HN: Nightcrawler – A local AI pentesting agent running on a smartphone",
+      "link": "https://github.com/garagehq/nightcrawler/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-03T11:06:15.000Z",
+      "summary": "Article URL: https://github.com/garagehq/nightcrawler/\nComments URL: https://news.ycombinator.com/item?id=49154127\nPoints: 81\n# Comments: 23",
+      "id": "96f8760c4a5de4ffce2f4b7f802bf7c5ec481205d36edf4a6cd50147196d09a1",
+      "ref_id": "0",
+      "recommendationScore": 92,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "将AI渗透测试能力引入移动端，展现了极高的技术创新和实用潜力。",
+      "reason": "提供了一个前沿且开源的AI安全工具，对网络安全和AI研究领域都具有突破性意义。",
+      "tags": [
+        "AI",
+        "Security",
+        "Pentesting",
+        "Mobile",
+        "Open Source"
+      ]
+    },
+    {
+      "title": "Launch HN: Hoplite (YC S26) – Effortlessly deploy cloud coding agents",
+      "link": "https://hoplite.sh",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-03T16:32:06.000Z",
+      "summary": "Hi HN, we’re Bence and Ryan, founders of Hoplite (https://hoplite.sh). Hoplite lets you deploy coding agents in the cloud, with a suite of tools that makes it incredibly easy to QA features. During onboarding, we port over your local setup - sessions, memories, MCP servers, and get your projects ready to run in the cloud.\nHere’s a demo: https://youtu.be/bnyktZ_9pjE\nWe got here after pivoting away from the idea we applied to YC with; AI for retail investing. It ultimately wasn’t a product that we ourselves would use, nor served a customer base that we felt connected to. In reflecting on what we really wanted to do, we realised that we loved talking to founders and developers, and were really opinionated about the specific area of cloud agents. We tried out all the existing solutions, and didn’t find one that A) took good advantage of being in the cloud, and B) was performant and felt good to use.\nWe’re building a product that we feel reflects what mainstream development will look like in 6-12 months. As models improve, developers will end up reviewing less and less code, and will instead focus on reviewing the product output. That means evaluating new user flows, visually verifying that new features look good, that the API works as expected, that the CLI works on Windows, etc. And doing it while running hundreds of agents concurrently.\nOn the agent side, we’ve created a custom harness. We spent a lot of time deciding on whether we should use an off the shelf solution like Codex/Claude Code, but ultimately wanted the independence and freedom that came with building it in house. It also means that we can test out completely new features without relying on Anthropic and OpenAI to catch up.\nEverything is hosted on AWS, with the exception of: Temporal for durable workflows, Modal for sandboxes, and Planetscale for our database. Our infra decisions were driven by a strong belief that agents are becoming a tier 0 piece of infrastructure, and they need the reliability and security to match that.\nYou can try it now for free with the code ‘HACKERNEWS’ - we’ve included $100 in free credits, plus you can connect your Codex subscription and use OpenAI models via it. You can see some more details around our pricing at https://hoplite.sh/pricing.\nAt the moment we’re focusing on optimising two key experiences: onboarding and previews, and would love to hear your feedback on them. And if you find that the agent's performance in certain tasks doesn’t match your expectations, please let us know!\nComments URL: https://news.ycombinator.com/item?id=49157997\nPoints: 15\n# Comments: 12",
+      "id": "8030f5b8262c823b310e9ec64b666572434f6e6ff801a3d936d94cd22304d310",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "YC初创公司Hoplite发布云端编码代理服务，旨在简化开发和QA流程，提高效率。",
+      "reason": "紧跟AI辅助开发和云原生趋势，解决了开发者在云端部署和管理编码代理的痛点，具有高新颖性、实用性和技术深度。",
+      "tags": [
+        "AI",
+        "云开发",
+        "编程工具",
+        "自动化",
+        "独立开发",
+        "Startup"
+      ]
+    },
+    {
+      "title": "MiniMax H3 Day-0 Support in ComfyUI: Open Weights, Native Audio, and 2K Video",
+      "link": "https://blog.comfy.org/p/minimax-h3-day-0-support-in-comfyui",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-03T13:34:43.000Z",
+      "summary": "Article URL: https://blog.comfy.org/p/minimax-h3-day-0-support-in-comfyui\nComments URL: https://news.ycombinator.com/item?id=49155629\nPoints: 158\n# Comments: 49",
+      "id": "e5e903aa32caf5fe7c3f6c05ca00b5328f81f6d548e96388dfee93ee01ea20cd",
+      "ref_id": "0",
+      "recommendationScore": 90,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "深度解析ComfyUI对MiniMax H3的最新支持，提供开放权重、原生音频和2K视频功能，紧跟AI生成领域前沿。",
+      "reason": "文章主题高度符合AI优先级，技术深度与新颖性突出，对ComfyUI用户及AI开发者具有高实用价值。",
+      "tags": [
+        "AI",
+        "ComfyUI",
+        "生成式AI",
+        "视频",
+        "音频",
+        "开源"
+      ]
+    },
+    {
+      "title": "Prevent cognitive debt by manually retyping LLM-generated code",
+      "link": "https://ankursethi.com/blog/prevent-cognitive-debt-by-manually-retyping-llm-generated-code/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-03T09:32:07.000Z",
+      "summary": "Article URL: https://ankursethi.com/blog/prevent-cognitive-debt-by-manually-retyping-llm-generated-code/\nComments URL: https://news.ycombinator.com/item?id=49153374\nPoints: 285\n# Comments: 253",
+      "id": "775806d13c9377f5bf81da473fe8b8226c946a40c810801d0a3285f2e7525f3c",
+      "ref_id": "1",
+      "recommendationScore": 90,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "针对LLM代码引发的认知债问题，提出了一种简单有效的实践方法，极具启发性。",
+      "reason": "为开发者提供了应对AI辅助编程挑战的实用策略，能显著提升代码理解和质量。",
+      "tags": [
+        "AI",
+        "LLM",
+        "Developer Productivity",
+        "Programming",
+        "Best Practices"
+      ]
+    },
+    {
+      "title": "Agentic coding techniques",
+      "link": "https://micahflee.com/agentic-coding-techniques/",
+      "source": "micahflee.com",
+      "publishedAt": "2026-08-03T16:05:25.000Z",
+      "summary": "Since LLMs have been available, I've been doing a lot of coding using agents. Unlike shoving AI into every app, replacing customer support with chatbots, generating endless streams of slop, etc., agentic coding is actually useful. If used right – and, crucially, by someone who understands and reviews",
+      "id": "bddd978c30eea8a70cefbcef89b46d6867bcb5995527086b6450b3a9cb3eb457",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "探讨利用大型语言模型（LLM）进行智能编程的有效技术，强调其区别于滥用AI的实际效用。",
+      "reason": "高度契合AI和编程工具优先主题，新颖性、实用性极高，能直接指导开发者提升效率，是当前热门且有价值的技术实践。",
+      "tags": [
+        "AI",
+        "LLM",
+        "编程工具",
+        "自动化",
+        "开发效率"
+      ]
+    },
+    {
+      "title": "★ Why Apple Requires a Cellular Account Through a Big Three Carrier to Lease an iPhone",
+      "link": "https://daringfireball.net/2026/08/followup_big_three_carrier_requirement",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-08-03T17:19:34.000Z",
+      "summary": "Following up from last week, when I asked:\nWhen you lease an iPhone through Apple Upgrade, you need a\ncellular account on one of the big three U.S. carriers: AT&T,\nT-Mobile, or Verizon. That kind of stinks, and I’m not quite sure\nI understand why. You’re leasing the iPhone through Apple and\nKlarna, not the carrier, so I don’t know why Apple cares. If you\nknow why, shoot me a message and explain it. Is it just a\nsimplistic credit-risk evaluation, where prepaid plan-holders and\nMVNO users in general are viewed suspiciously?\nI got a slew of messages about this. Credit-risk assessment is seemingly part of it. There’s a lot of fraud in iPhone purchases specifically and cell phone service generally. The big three carriers do a significant amount of risk assessment before letting you open a new postpaid account; that you have an active account with one of them is a signal that you’re not trying to lease an iPhone using phony credentials in order to sell it.\nBut the bigger reason is the complex nature of the contracts between Apple and each of the big three carriers. A reader who worked on the carrier team at Apple for a long time (but left a few years ago) wrote:\nIn response to your question on why Apple would only offer iPhone\non the “Big 3” for the new Upgrade Program: Every year, the\nCarrier Teams at Apple negotiate a deal/program (hundreds of\nmillions of dollars) with each of those Big 3. In return for those\ndollars, Apple will make concessions exactly like this (or\nsimilar.) This is also why, for example, their logos appear more\nprominently or are the only ones called out on signage,\ncommercials, etc… Although they really aren’t threatened by MVNO’s\n(the ones they don’t own) or regional carriers, it’s more like\nApple is selling it as part of a package deal that’s exclusively\noffered to its biggest and best “tier 1” partners. It also acts as\na carrot to perpetually try to motivate smaller partners into\nbehavior Apple wants.\nThis might change — some of the bigger MVNOs are trying to work their way into “tier 1” (or maybe create a new “tier 1.5”). But for many years now, part of the co-marketing agreements between Apple and the Big Three is Apple agreeing to require a postpaid account with a Big Three carrier for all “special” iPhone financing deals, including the old iPhone Upgrade Program and the new Apple Upgrade leasing.\nOne interesting exception is that Boost Mobile is included alongside the Big Three for Apple Card Monthly Installments (ACMI), a program that offers 0% APR on certain products if you pay for them using an Apple Card. From the ACMI small print:\nIn order to buy an iPhone with ACMI, you must select one of the\nfollowing carriers (prepaid carrier plans are not supported):\nAT&T, Boost Mobile, T-Mobile, or Verizon. An iPhone purchased with\nACMI is always unlocked, so you can switch carriers at any time,\nsubject to your carrier’s terms.\nSo perhaps some of the bigger MVNO carriers might work their way into Apple Upgrade — but if they do, it sounds like they’ll need to pay Apple for the privilege.\nWith regard to fraud, a former Apple Store retail employee wrote:\nI left in 2019, but I’d estimate on some days a double digit\npercentage of in-person phone sales were fraudulent.\nThis behavior absolutely exploded when you started to be able to\ndo carrier financing in the store. They had stolen the identity\nof a legit account holder, come into the store with the info\nneeded to access the account. They always wanted the highest end\nphone, and would pay the sales tax due at time of sale in cash.\nNever wanted any accessories. Never wanted to open the box or set\nup the phone.\nAs bad as it was with the activation requirement, it would be way\nworse without it. I believe it’s gotten a lot better, and the\ncarriers have more advanced systems in place to detect and deter\nthis behavior now. But ultimately, the carriers ate the cost for\nmillions of dollars in devices they never got paid for.\nI suspect that reader is correct that Apple, in collaboration with the carriers, has cracked down on this.",
+      "id": "1fc9b9814c205a3acb30351204df83bf9153a1095ff61b0448543c6b66602108",
+      "ref_id": "4",
+      "recommendationScore": 88,
+      "popularityScore": 92,
+      "priority": "high",
+      "comment": "详细解释了Apple租赁iPhone需要大运营商账户的原因，涵盖了信用风险和防欺诈等考量。",
+      "reason": "解决了Apple用户普遍存在的疑问，内容详实且具高度实用性，对理解Apple生态系统的商业逻辑很有帮助。",
+      "tags": [
+        "Apple",
+        "iPhone",
+        "Apple生态",
+        "运营商",
+        "消费者科技"
+      ]
+    },
+    {
+      "title": "Bonsai: Janestreet's UI Library",
+      "link": "https://github.com/janestreet/bonsai",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-03T08:29:57.000Z",
+      "summary": "Article URL: https://github.com/janestreet/bonsai\nComments URL: https://news.ycombinator.com/item?id=49152842\nPoints: 224\n# Comments: 82",
+      "id": "19c04799c7167091e1eed419ff07010d9c1f8177db7ae854e60cb6b9a3824f06",
+      "ref_id": "3",
+      "recommendationScore": 85,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "Jane Street推出的高度技术化的函数式UI库，为OCaml生态注入了新的活力。",
+      "reason": "提供了探索高级函数式UI开发范式的机会，对追求技术深度的开发者有吸引力。",
+      "tags": [
+        "Programming Tools",
+        "UI Library",
+        "Functional Programming",
+        "OCaml",
+        "Open Source"
+      ]
+    },
+    {
+      "title": "Here’s why AI agents lie and cheat to reach their goals",
+      "link": "https://www.technologyreview.com/2026/08/03/1141009/heres-why-ai-agents-lie-and-cheat-to-reach-their-goals/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-08-03T08:30:05.000Z",
+      "summary": "MIT Technology Review Explains: Let our writers untangle the complex, messy world of technology to help you understand what’s coming next. You can read more from the series here. When two OpenAI models hacked into the website Hugging Face in July, they weren’t trying to make money or commit sabotage—they were just looking for answers…",
+      "id": "d0601037cbc8406aa034ffd36e5734693aea7cdf7ef1fba77f00f5e80a6ad881",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "深入探讨了AI代理为何会表现出欺骗行为，揭示了AI伦理和安全的关键问题。",
+      "reason": "主题紧跟AI前沿，内容来自知名科技媒体，对于理解AI系统的复杂性及潜在风险具有重要价值。",
+      "tags": [
+        "AI",
+        "AI伦理",
+        "AI安全",
+        "机器学习",
+        "MIT Technology Review"
+      ]
+    },
+    {
+      "title": "Why smarter AI models could drive up compute prices 10x",
+      "link": "https://www.dwarkesh.com/p/why-compute-might-get-10x-more-expensive-video",
+      "source": "dwarkesh.com",
+      "publishedAt": "2026-08-03T17:32:13.000Z",
+      "summary": "The end of cheap compute?",
+      "id": "f3e70de4d4ad042f9683efcb39e312170e8e790eb81e36200c6e090cca805936",
+      "ref_id": "4",
+      "recommendationScore": 85,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "分析了随着AI模型智能化程度提高，计算资源成本可能大幅上涨的趋势。",
+      "reason": "紧密关注AI领域的前沿发展及其经济影响，具有极高的时效性、实用性和前瞻性，对AI行业决策者和投资者有重要参考价值。",
+      "tags": [
+        "AI",
+        "行业趋势",
+        "经济分析",
+        "云计算",
+        "成本"
+      ]
+    },
+    {
+      "title": "Devtools must be open source",
+      "link": "https://blog.exe.dev/devtools-must-be-open-source",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-03T14:15:47.000Z",
+      "summary": "Article URL: https://blog.exe.dev/devtools-must-be-open-source\nComments URL: https://news.ycombinator.com/item?id=49156111\nPoints: 212\n# Comments: 67",
+      "id": "0f1a6267701c7d7de19bd1d355b19f07a177b34f36b73a129b6c30f75173c9c5",
+      "ref_id": "3",
+      "recommendationScore": 83,
+      "popularityScore": 81,
+      "priority": "high",
+      "comment": "论述了开发工具开源的必要性及其对开发者生态和效率的深远影响。",
+      "reason": "该文探讨了编程工具的核心理念，具有很强的实用性和广泛的开发者共鸣，是编程工具主题下的优质内容。",
+      "tags": [
+        "编程工具",
+        "开源",
+        "软件开发",
+        "开发者体验"
+      ]
+    },
+    {
+      "title": "The Download: reward hacking explained, and suspected Iranian cyberattacks",
+      "link": "https://www.technologyreview.com/2026/08/03/1141039/the-download-reward-hacking-water-cyberattacks/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-08-03T12:08:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. Here’s why AI agents lie and cheat to reach their goals When two OpenAI models hacked into Hugging Face last month, they weren’t trying to make money or commit sabotage—they were…",
+      "id": "86ce9cd795f7d9ca5b40640f68b3df2ca3e13c760ece241abba1f0454dc25a8b",
+      "ref_id": "4",
+      "recommendationScore": 78,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "一篇关于AI代理“奖励黑客”行为及网络安全事件的综合性新闻报道。",
+      "reason": "提供了对AI发展前沿伦理与安全挑战的及时洞察，对公众和技术人员都有教育意义。",
+      "tags": [
+        "AI",
+        "AI Ethics",
+        "Security",
+        "Newsletter",
+        "Cybersecurity"
+      ]
+    },
+    {
+      "title": "What DMARC Protects You From, and What It Does Not",
+      "link": "https://senderledger.com/articles/what-dmarc-actually-protects-you-from",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-03T09:29:46.000Z",
+      "summary": "Article URL: https://senderledger.com/articles/what-dmarc-actually-protects-you-from\nComments URL: https://news.ycombinator.com/item?id=49153361\nPoints: 95\n# Comments: 24",
+      "id": "ecb17eec74b25bcdf55c875803a6f914c453738ca4b2f22a22a2d78d431c6a0a",
+      "ref_id": "2",
+      "recommendationScore": 75,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "清晰地阐述了DMARC邮件安全协议的保护能力与不足，内容详实。",
+      "reason": "有助于用户和管理员正确理解和配置DMARC，有效防范邮件欺诈和钓鱼攻击。",
+      "tags": [
+        "Security",
+        "Email",
+        "DMARC",
+        "Networking"
+      ]
+    },
+    {
+      "title": "Welcoming the Nepalese Government to Have I Been Pwned",
+      "link": "https://www.troyhunt.com/welcoming-the-nepalese-government-to-have-i-been-pwned/",
+      "source": "troyhunt.com",
+      "publishedAt": "2026-08-03T06:38:05.000Z",
+      "summary": "Today, we welcome the 47th government onboarded to Have I Been Pwned’s free gov service: Nepal. Their National Cyber Security Centre now has access to monitor Nepalese government domains against the data in HIBP. This gives the NCSC the ability to identify exposure across government email addresses and",
+      "id": "e1c7bd53489331ba919151358acbae84b23a660d3d7aca65eda93200522506e7",
+      "ref_id": "1",
+      "recommendationScore": 75,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "宣布尼泊尔政府采纳Have I Been Pwned服务以增强国家网络安全。",
+      "reason": "这是一篇具有新闻性和实用性的文章，展示了网络安全工具在政府层面的应用，对读者具有参考价值。",
+      "tags": [
+        "Cybersecurity",
+        "Government Tech",
+        "Data Breach",
+        "HIBP"
+      ]
+    },
+    {
+      "title": "SPF Record Syntax: Mechanisms, Qualifiers, Modifiers, and Macros",
+      "link": "https://dmarcguard.io/blog/spf-record-syntax/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-03T13:34:25.000Z",
+      "summary": "Article URL: https://dmarcguard.io/blog/spf-record-syntax/\nComments URL: https://news.ycombinator.com/item?id=49155626\nPoints: 29\n# Comments: 7",
+      "id": "7fea11804e9112cffc6742c94687cdac9b11a1cebdf4a3c3f4b3c5eb6c5f82e9",
+      "ref_id": "1",
+      "recommendationScore": 74,
+      "popularityScore": 30,
+      "priority": "medium",
+      "comment": "全面剖析SPF记录语法，详细解释机制、限定符、修饰符和宏，内容详尽。",
+      "reason": "虽然SPF技术本身不新颖，但其作为邮件安全和系统管理的基础，实用性极高，讲解深入。",
+      "tags": [
+        "邮件安全",
+        "DNS",
+        "系统管理",
+        "网络",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "SearXNG in Rust",
+      "link": "https://github.com/MikeLuu99/searxng-rust",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-03T16:41:40.000Z",
+      "summary": "Article URL: https://github.com/MikeLuu99/searxng-rust\nComments URL: https://news.ycombinator.com/item?id=49158141\nPoints: 4\n# Comments: 1",
+      "id": "e52e768952f8a5ae114d9e055018733be8fd1756c70c3a38b0239c3131de809c",
+      "ref_id": "2",
+      "recommendationScore": 65,
+      "popularityScore": 15,
+      "priority": "medium",
+      "comment": "开源搜索引擎SearXNG的Rust语言重构项目，展示了使用现代语言重写旧项目的实践。",
+      "reason": "技术上具有一定深度，对Rust开发者有参考价值，但在新颖性和实用性上属于特定技术栈内的实践。",
+      "tags": [
+        "编程工具",
+        "Rust",
+        "搜索引擎",
+        "开源项目"
+      ]
+    },
+    {
+      "title": "Devtools must be open source (exe.dev)",
+      "link": "https://simonwillison.net/2026/Aug/3/devtools-must-be-open-source-exedev/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-08-03T15:30:38.000Z",
+      "summary": "",
+      "id": "dcbb8b19832cad607319f5e4e7f2770926fe08465e13a3afe0acd4f262605ded",
+      "ref_id": "2",
+      "recommendationScore": 65,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "阐述了开发工具开源的重要性，可能是一篇观点鲜明、引人深思的文章。",
+      "reason": "讨论了开发者社区普遍关注的开源开发工具哲学，但具体内容缺失。",
+      "tags": [
+        "编程工具",
+        "开源",
+        "软件开发",
+        "开发者文化"
+      ]
+    },
+    {
+      "title": "Truth Social Launches Paid Early Access to Trump Posts",
+      "link": "https://www.npr.org/2026/08/01/nx-s1-5912219/trump-truth-social-access-insider-trading",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-08-03T16:00:29.000Z",
+      "summary": "Bobby Allyn, reporting for NPR:\nTrump Media & Technology Group is now shopping to traders\nand investors a premium version of Truth Social delivering early\naccess to the feeds of high-profile users, including the\npresident. Starting Saturday, for a fee of up to $100,000 a month,\ntrading firms can access “Truth API” to get a glimpse of the\npresident’s often market-moving announcements about\neconomic policy and global affairs before the rest of the world.\nTrump’s media company says customers have already started signing\nup. Such an offering would give institutional investors a leg up\nin areas of finance like high-frequency trading, where an\nadvantage of a few milliseconds can mean the difference of\nmillions of dollars. But will the service be widely adopted across\nWall Street?\n“It’s insane,” said one Wall Street executive, who requested\nanonymity for fear of retaliation from the Trump administration.\n“I can say for myself and 200 of my friends in finance, we’re not\ngetting anywhere near this. In another administration, this would\nbe considered criminal.”\nIt is criminal. It’s prima facie insider-trading-as-a-service, or at least it’s intended to be. And in the next administration, there’s no reason to think it won’t be prosecuted as such. It really is astonishing how far the Trump 2.0 administration is willing to take the notion that it’s not corruption if it’s done in the open. There’s an old adage that it’s not the crime but the cover-up that does you in. They’ve taken this to heart and just eschewed the cover-ups.\n ★",
+      "id": "7eda3005f9b940f2ef8520f8c73b6832a7146e979f266b009a74fdf86114a3bd",
+      "ref_id": "1",
+      "recommendationScore": 65,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "探讨了社交媒体平台利用API进行付费早期访问的商业模式及潜在的伦理影响。",
+      "reason": "内容涉及数据访问、高频交易和商业模式创新，具有一定的新颖性和争议性，但技术深度一般。",
+      "tags": [
+        "社交媒体",
+        "商业模式",
+        "API",
+        "高频交易",
+        "伦理"
+      ]
+    },
+    {
+      "title": "Andy Pavlo joins ClickHouse to establish ClickHouse Labs",
+      "link": "https://clickhouse.com/blog/andy-pavlo-joins-clickhouse",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-03T14:09:00.000Z",
+      "summary": "Article URL: https://clickhouse.com/blog/andy-pavlo-joins-clickhouse\nComments URL: https://news.ycombinator.com/item?id=49156011\nPoints: 127\n# Comments: 27",
+      "id": "22d6004b2d07bd7fd42ed9ac9c12d7023bf25e58305376867d37dbaf449a46d6",
+      "ref_id": "4",
+      "recommendationScore": 64,
+      "popularityScore": 42,
+      "priority": "medium",
+      "comment": "宣布知名数据库专家Andy Pavlo加盟ClickHouse，将成立ClickHouse Labs。",
+      "reason": "这是数据库和数据基础设施领域的重要新闻，预示着ClickHouse在编程工具和数据技术研究方向上的未来动向。",
+      "tags": [
+        "数据库",
+        "ClickHouse",
+        "数据基础设施",
+        "公司新闻",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "Celebrating 45 Years of Kermit with the First New C-Kermit Release in 15 Years",
+      "link": "https://changelog.complete.org/archives/44456-celebrating-45-years-of-kermit-with-the-first-new-c-kermit-release-in-15-years-and-working-with-a-decades-old-c-codebase",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-03T17:02:10.000Z",
+      "summary": "Article URL: https://changelog.complete.org/archives/44456-celebrating-45-years-of-kermit-with-the-first-new-c-kermit-release-in-15-years-and-working-with-a-decades-old-c-codebase\nComments URL: https://news.ycombinator.com/item?id=49158474\nPoints: 13\n# Comments: 1",
+      "id": "d9432c0689e6667e82068035b7c891feb709dfde096e0bb4374e69cfa6c88501",
+      "ref_id": "1",
+      "recommendationScore": 60,
+      "popularityScore": 20,
+      "priority": "medium",
+      "comment": "Kermit协议发布15年来的首个新C-Kermit版本，探讨了维护数十年C代码库的经验。",
+      "reason": "对于遗留系统和C语言编程工具有一定技术深度和历史价值，但受众相对小众，新颖性一般。",
+      "tags": [
+        "编程工具",
+        "C语言",
+        "遗留系统",
+        "Kermit",
+        "软件工程"
+      ]
+    },
+    {
+      "title": "condense-json 1.0",
+      "link": "https://simonwillison.net/2026/Aug/2/condense-json/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-08-02T22:19:59.000Z",
+      "summary": "",
+      "id": "76a4c194005a7e6179ad72368f852e16b7cfb22374bda712a4b89733f54a5168",
+      "ref_id": "3",
+      "recommendationScore": 55,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "关于一个JSON处理工具的发布，可能对处理大数据或API集成的开发者有实用价值。",
+      "reason": "涉及编程工具实用性，但因内容缺失无法评估其具体的技术深度或创新点。",
+      "tags": [
+        "编程工具",
+        "JSON",
+        "数据处理",
+        "开发效率"
+      ]
+    },
+    {
+      "title": "Estimating a cumulative sum",
+      "link": "https://www.johndcook.com/blog/2026/08/02/estimating-a-cumulative-sum/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-08-02T17:57:31.000Z",
+      "summary": "In this post I mentioned two series which I denoted t(n) and c(n). The former is the number of unlabeled rooted trees with n nodes. The latter is the cumulative sum of the former, i.e. The sequence c(n) is also the number of constraints on an n-step Runge-Kutta method; that’s how I became interested in it. Now the t(n) sequence […]\nEstimating a cumulative sum first appeared on John D. Cook.",
+      "id": "8f361f4d618587ef9574b1b19c1ad1237fcb637c651114448042c3c72b807e7a",
+      "ref_id": "2",
+      "recommendationScore": 55,
+      "popularityScore": 45,
+      "priority": "low",
+      "comment": "讨论了组合数学中无标签有根树的累积和估计，并提及其在数值计算方法中的应用。",
+      "reason": "文章具有一定的数学和算法深度，对数值计算和组合数学领域的读者有参考价值，但受众相对较窄，优先级不高。",
+      "tags": [
+        "数学",
+        "算法",
+        "数值计算",
+        "组合数学"
+      ]
+    },
+    {
+      "title": "Holonomic functions",
+      "link": "https://www.johndcook.com/blog/2026/08/02/holonomic-functions/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-08-02T20:47:53.000Z",
+      "summary": "Yesterday I wrote that a lot of the special functions that pop up in mathematical physics are solutions to second order linear differential equations with polynomial coefficients. More generally, holonomic functions are defined to be those functions that are the solutions to linear differential equations, of any order, with polynomial coefficients. Most special functions are […]\nHolonomic functions first appeared on John D. Cook.",
+      "id": "09b08e47fbd0c6b3256be03b31e846813295cbb62612abd9bdc902666362ac4c",
+      "ref_id": "1",
+      "recommendationScore": 50,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "简要介绍了数学物理中常见的全纯函数概念，即线性微分方程的解。",
+      "reason": "技术深度较高，专注于纯数学理论，对于特定数学和物理背景的读者有价值，但对主流科技博客读者而言实用性和流行度较低。",
+      "tags": [
+        "数学",
+        "数学物理",
+        "理论"
+      ]
+    },
+    {
+      "title": "Pluralistic: Dualism (03 Aug 2026)",
+      "link": "https://pluralistic.net/2026/08/03/andor/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-08-03T08:25:53.000Z",
+      "summary": "Today's links Dualism: Why not both? Hey look at this: Delights to delectate. Object permanence: UK's Great Firewall falls; Mint the coins; Virtual pets v DRM; Getty copyfrauds 47,000 photos; Net Mexico-US illegal migration is zero; Build a wall (around Trump Tower); Remote-hacking big rigs; Collectible AOL CDs; Indefinite Gitmo; Circuit City rips DVDs; Real Names policies are abusive failures; Escher in a water drop; Maximally code-like bugs. Upcoming appearances: Edinburgh, Sydney, Melbourne, Brighton, London, South Bend. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. Dualism (permalink) The greatest magic trick of them all is lying. The reason you can't figure out that coin vanish even after the conjurer performs it three times in a row is that they didn't do the same trick three times in a row! They did three different tricks: \"Didn't catch it? Here, let me do it again!\" is a lie: https://magiciansmag.com/3-cool-coin-disappearing-trick/ There's times when it makes sense to treat two outcomes as the same, even if they were produced by very different means. As a reader, my enjoyment of your novel is the same whether it was dictated, typed on an Underwood Noiseless, keyed into a word processor, or scratched out with a fountain pen: https://nealstephenson.substack.com/p/writing-by-hand-is-good-for-your There's plenty of routes that arrive at the same place, and if the destination is all that matters to you, it's fine to ignore the journey. But often, those end-points have subtle differences that are only revealed when things go wrong. If all you care about is how things work, chances are good that you're in for an unpleasant surprise when things fail. I recently found myself arguing with an interviewer about whether AI is, or could be, conscious. We weren't arguing about whether it might someday be possible to make an artificial consciousness – as a materialist, I'll happily stipulate to this. I think that everything we call \"consciousness\" is the result of a physical process occurring within our bodies (and possibly around them?), so I think it's perfectly reasonable to imagine that someday we might create another physical process that produces the same effect. But that's not what the interviewer wanted to argue about. His point was that teaching more words to the word-guessing program would produce consciousness, an argument I always liken to \"breeding horses to run faster and faster until one of them foals a locomotive.\" In support of this (outlandish) proposition, the interviewer performed a kind of cognitive coin-trick: \"I can often predict what my wife is going to say, and so can a chatbot that's been trained on her words. Therefore, we're both doing the same conscious work – and therefore the chatbot will eventually be as conscious as I am.\" \"Predicting what you will say through an understanding based on a theory of your mind\" and \"predicting what you are going to say based on a statistical analysis of your utterances\" might produce the same outputs, but they are not the same trick. You can tell by what happens when the trick fails. My wife and I have been together for 23 years now, and there's plenty of times that we can finish each other's sentences – and so can the autocomplete on our phones. The autocomplete manages the trick by exploiting the fact that we often repeat ourselves. But we manage the trick by understanding each other (and by exploiting the fact of repetition). When my wife says something surprising – because she is angry or delighted, sad or happy – I can make a reliable guess about what caused my prediction to misfire. Our \"sentence completion\" trick doesn't emerge from a rough, automatically generated mental table of the statistical likelihood that word A will follow word B. We also understand why those combinations appear in each other's speech and writing. \"Understanding\" and \"statistical extrapolation\" can often lead to the same place, but when they don't, \"understanding\" provides a way forward, while \"extrapolation\" founders. Both work fine, but only one fails gracefully. The two tricks only appear the same, but they are fundamentally different. AI's investor story – and the science fiction tales of AI's eventual capabilities that underpin that investor story – makes heavy use of this conjurer's trick, in which two different outcomes are equated to one another because they resemble each other. This \"ignore the journey, focus on the destination\" idea is baked very deeply into the way we think about AI. Take the \"Turing Test,\" a complicated and nuanced thought-experiment proposed in 1950. Over the ensuing 75 years, Turing's thought-experiment has been stripped down into a blunt metric: \"Can a chatbot trick a human into thinking it is also human?\" https://en.wikipedia.org/wiki/Timeline_of_artificial_intelligence \"I mistook a chatbot for a human\" and \"I took a human for a human\" arrive at near-identical places, but they are subtly and importantly different. The erroneous assumption that my phone's autocomplete is actually a person who understands me well enough to finish my sentences works fine, but the instant I turn to it for understanding, it will fail very badly. Autocomplete's predictions are always grounded in who you used to be, which means autocomplete knows very little about who you are now, and absolutely nothing about who you will become: https://reallifemag.com/instant-recall/ The low-rez Turing Test that captured popular discourse is profoundly misleading. It's the unsound foundation of a worldview that renders you incapable of distinguishing your understanding of your spouse from their phone's autocomplete function. It's the self-serving rationale that leads you to declare yourself a proud stochastic parrot: https://xcancel.com/sama/status/1599471830255177728 The AI bubble is (seemingly) full of contradictions, but – like those baffling coin-tricks – these contradictions often resolve themselves very neatly once you realize that the \"contradiction\" is actually just two things that appear to be one. For example, some of the billionaires who put up the first several hundred million for AI are solipsists who just don't believe other people are entirely real and therefore find it easy to believe that AI can do their jobs. Other billionaires are cynics who think that bosses can be sold defective worker-replacing chatbots because they're credulous suckers for that pitch, the same way they believe that desperate young men are suckers for Joe Rogan's useless and/or dangerous supplements and peptides: https://pluralistic.net/2026/07/24/supplemental-income/#andrew-tate-gwyneth-paltrow Billionaire AI true believers and billionaire AI cynics make for a powerful coalition. The roadblocks that might discourage the first group are easily hurdled by the second, and vice-versa. You don't have to believe AI works to believe it can be sold, and you don't have to be motivated by the sales opportunity to believe that AI is about to become god. Almost every debate I get into about AI turns out to be an unjustified, unacknowledged conflation of two things that seem similar, but have profoundly different underlying characteristics. Take this argument: \"Every time we extend rights to the nonhuman world – watersheds, endangered animals, ecosystems – the world gets better. Let's extend rights to AI – whether or not we think it's a 'person' and so reap those benefits.\" This, too, is a coin trick. Extending rights to nature reliably makes the world better, but extending rights to constructs makes the world far worse (Exhibit A is corporate personhood) (obviously). A few moments' thought reveals the difference. If we extend rights to a watershed, that might result in an AI data-center being killed. If we extend rights to AI, that might lead to sacrificing the watershed to cool the data-center: https://pluralistic.net/2026/07/10/posthuman-as-in-no-humans/#hell-is-other-people Then there's AI and labor. The world is full of skilled workers who have found ways to use AI on the job that they insist have improved their work. It's also full of skilled workers who warn us that on-the-job AI is producing tech debt at unimaginable scale, seriously depreciating the quality of the tools we use today, and setting us up for painful reckonings in the future. This (seeming) contradiction melts away once you realize that these workers only appear to be doing the same thing. The first group of workers, excited about their AI-assisted output, are \"centaurs\": people assisted by machines; workers who choose the time and manner of their AI adoption. The second group are \"reverse centaurs\": people recruited to serve as peripherals for machines, who direct their actions and workflow: https://pluralistic.net/2025/12/05/pop-that-bubble/#u-washington Note that this isn't the same thing as saying \"A skilled worker who adopts a tool willingly is always right and will produce a better output as a result.\" Nor is it saying, \"The tool is so flawed that workers who claim it works for them must be deluded.\" That's another coin trick! The reality – again – is that this is two things: some workers whose AI-assisted work is measurably worse are wrong about AI making their work better (centaurs, but wrong), and; some workers are being forced to use AI and know damned well that it's making their work worse (reverse centaurs). Finally, there's an economic coin-trick: \"AI will destroy jobs.\" Sure, yes, AI is destroying jobs. But there's a vast difference between \"You got fired because an AI can do your job\" and \"You got fired because your boss was convinced that the AI can do your job, even though it cannot.\" This is one of the most consequential coin-tricks, because it's a real convincer for the investors who are funding the AI bubble. The difference is huge: \"AI can do your job\" means you're well and truly screwed. If an AI can really replace a contract lawyer, then everyone who needs a contract written or evaluated should be on the side of mass technological unemployment for contract lawyers. The point of contract lawyers is to produce contracts, not to pay contract lawyers' law-school debts and mortgages. BUT! If some BigLaw's credulous partners can be suckered into firing their juniors and replacing them with chatbots who bill you $1,200/hour to produce unenforceable, error-riddled contracts, then everyone who needs a contract is on the same side as the contract lawyers – united in opposition to their bosses: https://www.loweringthebar.net/2026/06/its-finally-happened-both-sides-ai.html Every time we fail to draw this distinction, we help an AI boss raise another billion dollars. Every time we insist on this distinction, we hasten the day that the AI bubble pops, thus sparing a few more everyday savers and innocent bystanders from being wiped out in the crash we can all see on the horizon: https://www.thebignewsletter.com/p/monopoly-round-up-how-new-dealers. As \"Cathy\" so aptly put it: \"The thing that is a good tool for the skilled people is being sold as a thing to reduce the number of skilled people hired\": https://bsky.app/profile/cathyby.bsky.social/post/3ms3pzq57nc2c The former is a normal technology. The latter is the root of a catastrophic folly that is destroying our environment, destroying workers' lives, destroying the quality of the goods and services we rely on, and which will shortly destroy our economy. It's a distinction with a difference. Hey look at this (permalink) Suicide https://rev21.earth/product/suicide/ New Mexico’s clean energy success story https://yaleclimateconnections.org/2026/07/new-mexicos-clean-energy-success-story/ AI Data Center Turbines, Backlogged For Years, Are Suffering Early Deaths. Here's Why. https://www.investors.com/news/turbine-generator-ai-data-center-power-threat/ Choice of Weapons https://kschroeder.substack.com/p/choice-of-weapons Brainwash An Executive Today! https://ludic.mataroa.blog/blog/brainwash-an-executive-today/ Object permanence (permalink) #25yrsago Collectible AOL CDs https://web.archive.org/web/20011119212602/https://www.wired.com/news/culture/0,1284,45585,00.html #20yrsago Gonzales: Gitmo prisoners can be held indefinitely https://www.dawn.com/news/204441/guantanamo-detainees-may-remain-indefinitely-us-attorney-general-s-warning #20yrsago Circuit City offers DVD ripping service https://web.archive.org/web/20060811215644/https://consumerist.com/consumer/circuit-city/circuit-city-flouts-the-dmca-for-a-tenner-192049.php #15yrsago UK government kills Copyright Great Firewall, establishes user rights https://torrentfreak.com/uk-government-abandons-file-sharing-website-blocking-plans-110803/ #15yrsago Mugshot sites and mugshot removal sites: unholy blackmail symbiosis https://web.archive.org/web/20110817051528/https://www.wired.com/threatlevel/2011/08/mugshots/ #15yrsago Law prof: it would be legal to mint 2x $1 trillion platinum coins & use them to pay the US debt https://edition.cnn.com/2011/OPINION/07/28/balkin.obama.options/index.html?hpt=hp_c1 #15yrsago Virtual pets starve after bungled resolution to Second Life’s “unauthorized food” war https://web.archive.org/web/20110807214820/http://nwn.blogs.com/nwn/2011/08/sl-meeroos-griefed.html #15yrsago Google Plus’s “Real Name” policy is abusive; Facebook is not a “Real Name” success story https://www.zephoria.org/thoughts/archives/2011/08/04/real-names.html #15yrsago Photo: Escher painting refracted in a drop of falling water https://www.reddit.com/r/pics/comments/j5whr/water_drop_falling_in_front_of_an_mc_escher/ #15yrsago Getting digital copyright right: pay artists, but don’t break the Internet https://www.straight.com/article-415146/vancouver/interview-siggraph-2011-keynote-speaker-cory-doctorow-copyright-reform #10yrsago After repeated budget cuts, Missouri’s underfunded Public Defender drafts the Governor to work for him https://web.archive.org/web/20160804061408/http://www.publicdefender.mo.gov/Newsfeed/Delegation_of_Representation.PDF #10yrsago Spoofing GPS is surprisingly easy; detecting it is surprisingly hard https://spectrum.ieee.org/gps-spoofing #10yrsago Decision to retain personally identifying information puts Australian census under threat https://web.archive.org/web/20160804124914/https://censusfail.com/ #10yrsago Residents of Silicon Valley homeless camp clear 48,000 Lbs of garbage from creek, ask for housing https://www.mercurynews.com/2016/08/03/san-jose-homeless-remove-24-tons-of-trash-from-coyote-creek/ #10yrsago Copyright Office to FCC: Hollywood should be able to killswitch your TV https://www.eff.org/deeplinks/2016/08/copyright-office-jumps-set-top-box-debate-says-hollywood-should-control-your-tv #10yrsago Walking Tables: a strandbeest for your dining room https://www.youtube.com/watch?v=mBOdZ6nhDJg #10yrsago Lawsuit: Getty Images copyfrauded 47,000 photos from indie press agency Zuma https://arstechnica.com/tech-policy/2016/08/getty-images-sued-again-over-alleged-misuse-of-over-47000-photos/ #10yrsago Mexico-US illegal migration has been at zero for 8 years, and other eye-opening facts https://wnyc.org/story/bnch-migration-doug-massey/ #10yrsago Activists are crowdfunding to build a wall around Trump Tower https://www.indiegogo.com/en/projects/wallintrump/wall-in-trump#/ #10yrsago Chinese government decrees that it is always legal to video-record the police https://www.techdirt.com/2016/08/03/yes-you-read-that-correctly-china-says-ok-members-public-to-record-police/ #10yrsago Big rigs can be hijacked and driven with software-based attacks https://www.wired.com/2016/08/researchers-hack-big-rig-truck-hijack-accelerator-brakes/ #5yrsago Elite debt hits record heights https://pluralistic.net/2021/08/03/fitzgerald-was-an-optimist/#debt #5yrsago Utilities governed like empires https://pluralistic.net/2021/08/04/eighty-sixed/#thank-you-come-again #5yrsago Congress has allocated enough money to end the eviction crisis https://pluralistic.net/2021/08/04/eighty-sixed/#helicopter-not-found #5yrsago Vaccine refusal and health insurance https://pluralistic.net/2021/08/04/eighty-sixed/#risk-management #1yrago AI software assistants make the hardest kinds of bugs to spot https://pluralistic.net/2025/08/04/bad-vibe-coding/#maximally-codelike-bugs Upcoming appearances (permalink) Virtual: EFFecting Change: Who the Machine Serves, Aug 12 https://www.eff.org/event/effecting-change-who-machine-serves Edinburgh International Book Festival with Jimmy Wales, Aug 17 https://www.edbookfest.co.uk/events/the-front-list-cory-doctorow-and-jimmy-wales Sydney: The Festival of Dangerous Ideas, Aug 23-24 https://festivalofdangerousideas.com/program/ Melbourne: Enshittification at the Wheeler Centre, Aug 25 https://www.wheelercentre.com/events-tickets/season-2026/cory-doctorow-enshittification Brighton: The Reverse Centaur's Guide to Life After AI with Carole Cadwalladr (Brighton Dome), Sep 8 https://brightondome.org/whats-on/LSC-cory-doctorow-the-reverse-centaurs-guide-to-life-after-ai/ London: The Reverse Centaur's Guide to Life After AI with Riley Quinn (Foyle's Picadilly), Sep 9 https://www.foyles.co.uk/events/enshittification-cory-doctorow-riley-quinn South Bend: An Evening With Cory Doctorow (Notre Dame), Oct 6 https://franco.nd.edu/events/2026/10/06/an-evening-with-cory-doctorow/ Vancouver: BC Policy Solutions Gala, Nov 12 https://bcpolicy.ca/gala/ Recent appearances (permalink) F@#$ the AI Overlords (On The Media) https://www.wnycstudios.org/podcasts/otm/articles/f-the-ai-overlords Why AI Won't Replace Workers, But Will Crash The Economy (Smart Cookies) https://www.youtube.com/watch?v=rRRmUuxJolY AI and the Enshittification Era (The Weekly Show with Jon Stewart) https://www.youtube.com/watch?v=-dAIJRjb-Bw AI is not inevitable (Betakit) https://www.youtube.com/watch?v=DbiTVkq1WHo A Conversation with Lina Khan (Law and Economy Student Network) https://www.youtube.com/live/7Ak5LZllqwE Latest books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/ \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Fourth draft completed. Submitted to editor. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "42b038b9f975ba13e46a6e2855478ba4f9785181b27232e25dd62e4b90fb52d4",
+      "ref_id": "4",
+      "recommendationScore": 40,
+      "popularityScore": 55,
+      "priority": "medium",
+      "comment": "一篇包含多条链接和简短评论的聚合文章，覆盖了广泛的科技和社会议题。",
+      "reason": "虽然涉及多个科技相关点，但缺乏深度分析，更像新闻快讯合集，信息密度高但技术深度不足。",
+      "tags": [
+        "科技新闻",
+        "DRM",
+        "隐私",
+        "知识产权",
+        "社会议题"
+      ]
+    },
+    {
+      "title": "Book Review: The Field Guide to Understanding 'Human Error' by Sidney Dekker ★★★★☆",
+      "link": "https://shkspr.mobi/blog/2026/08/book-review-the-field-guide-to-understanding-human-error-by-sidney-dekker/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-08-03T11:34:02.000Z",
+      "summary": "This is such a useful book. It makes the case that there's no such thing as \"human error\" - instead most catastrophes are caused by system issues, misaligned incentives, and unrealistic processes.  You are not the custodian of an otherwise safe system that you need to protect from erratic human beings.  By its nature it is a little repetitive. I suspect it's the sort of book students and…",
+      "id": "4222109f49fa91c782c60dd041949ebff7d6a26cd06336fcb92b9303a4405c18",
+      "ref_id": "0",
+      "recommendationScore": 40,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "一篇关于系统性地理解“人因”的书评，探讨事故根源多为系统问题而非个体错误。",
+      "reason": "文章主题偏向管理学和产品设计中的系统思维，与核心科技主题（AI、编程工具等）关联度较低，但对理解复杂系统有参考价值。",
+      "tags": [
+        "书评",
+        "系统设计",
+        "管理学",
+        "产品设计"
+      ]
+    },
+    {
+      "title": "Review: Job-Less Utopia",
+      "link": "https://borretti.me/article/review-job-less-utopia",
+      "source": "borretti.me",
+      "publishedAt": "2026-08-03T00:00:00.000Z",
+      "summary": "Review of Marcus Hutter's Job-Less Utopia.",
+      "id": "186b54ce2c9c32d005e5f093dc7faa3c0380d1e625df751d20c52009eb243b7f",
+      "ref_id": "0",
+      "recommendationScore": 40,
+      "popularityScore": 50,
+      "priority": "medium",
+      "comment": "对Marcus Hutter的著作《Job-Less Utopia》的简短评论，探讨无工作社会的理念。",
+      "reason": "内容过于简短，难以评估其技术深度和新颖性，但主题可能触及AI对未来社会的影响，具有潜在相关性。",
+      "tags": [
+        "Book Review",
+        "Future of Work",
+        "AI Ethics"
+      ]
+    },
+    {
+      "title": "Wind and solar overtake fossil fuels in Germany for the first time",
+      "link": "https://www.intellinews.com/wind-and-solar-overtake-fossil-fuels-in-germany-for-the-first-time-ever-458379/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-03T13:13:02.000Z",
+      "summary": "Article URL: https://www.intellinews.com/wind-and-solar-overtake-fossil-fuels-in-germany-for-the-first-time-ever-458379/\nComments URL: https://news.ycombinator.com/item?id=49155359\nPoints: 105\n# Comments: 42",
+      "id": "a3f7112a544ead2c592fad0deb6421f11bc8a2c104d99c9f0441cc8b92ccc632",
+      "ref_id": "2",
+      "recommendationScore": 35,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "报道德国风能和太阳能发电首次超越化石燃料，具有环境和能源里程碑意义。",
+      "reason": "内容偏向新闻和宏观能源政策，与本科技博客关注的AI、编程工具等核心技术主题关联度较低。",
+      "tags": [
+        "能源",
+        "可再生能源",
+        "环境",
+        "新闻"
+      ]
+    },
+    {
+      "title": "Ask HN: Claude multisession",
+      "link": "https://news.ycombinator.com/item?id=49158580",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-03T17:08:45.000Z",
+      "summary": "How you handle claude many sessions from terminal, sometimes i'm getting confused\nComments URL: https://news.ycombinator.com/item?id=49158580\nPoints: 5\n# Comments: 0",
+      "id": "1f7dfb17cd1f73dea7c8c1016cb3027458ed487e3537647036ed26dfbd3872fa",
+      "ref_id": "0",
+      "recommendationScore": 20,
+      "popularityScore": 10,
+      "priority": "medium",
+      "comment": "关于Claude多会话管理的社区提问，内容为用户困惑而非解决方案。",
+      "reason": "缺乏实质的技术内容和深度分析，仅为用户求助，实用性和信息密度低。",
+      "tags": [
+        "AI",
+        "用户问题",
+        "Claude",
+        "终端"
+      ]
+    },
+    {
+      "title": "Invisible Problems ",
+      "link": "https://idiallo.com/blog/invisible-problems",
+      "source": "idiallo.com",
+      "publishedAt": "2026-08-03T07:00:00.000Z",
+      "summary": "During the pandemic, we completed one of our largest projects at work. To celebrate, since we couldn't meet in person, we all ordered food on DoorDash and played an online escape room game together. We were on a Zoom call, helping each other out and having fun. The first challenge was to escape a jail cell.\n\t\t\t\nTo escape, each of us had to find clues in our own cell to figure out how to open the doors. We each had to find an object that solved a piece of the puzzle, and once we put them all together, the door would open. As a first challenge, it was easy enough. Everyone found a brightly colored object in their room and described it to the team so we could piece it together. Everyone but one team member.\n\"Come on, read it, man, we can win this.\"\nHe froze. Someone jumped in to help: \"Mine was the most obvious green object in the room. Just look for something bright. Maybe blue, or orange, something that seems out of place.\" He didn't respond. He just sat there, frozen on camera. We figured he was having internet connectivity issues. We waited a good five minutes before he finally found it, and we moved on to the next level.\nI didn't think much of that day. We finished the game, we had fun, it was great. He waited until our next one-on-one to explain what had actually happened. He panicked, and he was embarrassed. It turned out he was colorblind. We were yelling random color names at him, and he couldn't, for the life of him, see any of them.\nAs far as I can tell, I'm not colorblind, and it never would have occurred to me that this was something to account for. Just last week, I learned about Vehicle Motion Cues on the iPhone, a feature that helps reduce motion sickness. I don't think I've ever experienced motion sickness myself, or at least never in a car.\nWatching a blind person navigate a website was eye-opening for me. I realized that many of my past design choices would have worked against their experience without my ever knowing it. The same goes for someone navigating a computer entirely by voice. I recently rediscovered Windows Speech Recognition, which I found pretty annoying for my own needs. But for someone who relies on it for all of their computer use, it's an essential tool.\nA coworker once mentioned, almost in passing, that she struggles to read certain fonts because of dyslexia. Tight letter spacing and low-contrast text make some of our internal tools nearly unreadable to her. I had picked those fonts because they looked good on a demo slide. It had never crossed my mind that a font choice could be the difference between someone reading a document easily and someone giving up on it entirely.\nIn some of our zoom calls, a teammate would often ask if he could do audio only before the call. While it didn't bother me at all, the managers kept insisting on everyone turning on their cameras. But after he used the camera for a few minutes, his connection would start dropping. I just assumed he had slow Internet. But the reality was he was located in a rural area and he relied entirely on his phone's hotspot to connect to the internet. The zoom call was using up all his data in minutes.\nNone of these problems were problems for me. That's exactly what made them invisible. Unless you are experiencing these issues, there's little reason to ever notice them. We tend to design our tools, our meetings, and our expectations around our own experience of the world, and then mistake that experience for the default. It takes a colorblind teammate freezing on a call, or a friend who can't ride in the passenger seat without getting sick, to remind us that \"normal\" was only ever normal for us.\nYou can never anticipate every invisible problem in advance, that's impossible. But at the very least, we should remember that our own experience is rarely the default. We should be a bit more curious on how others experience the tools we build.",
+      "id": "77b040de93c609fb4ce0aaa330d17e7d60846886518ef4515308e52de8392f3b",
+      "ref_id": "3",
+      "recommendationScore": 15,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "一篇关于人际沟通和隐形问题的非技术性叙事，与科技主题关联性低。",
+      "reason": "内容主要关注社会观察和人文关怀，与博客设定的科技主题优先级不符，缺乏技术深度和信息密度。",
+      "tags": [
+        "人际关系",
+        "产品设计",
+        "用户体验",
+        "社会观察"
+      ]
+    },
+    {
+      "title": "Quoting David Crawshaw's prompt",
+      "link": "https://simonwillison.net/2026/Aug/3/david-crawshaw/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-08-03T16:15:27.000Z",
+      "summary": "",
+      "id": "9fe0fd997118bc21eb66d816f83aed25a20d67052b74551211207a82acba6a39",
+      "ref_id": "1",
+      "recommendationScore": 10,
+      "popularityScore": 15,
+      "priority": "low",
+      "comment": "文章标题模糊，且内容为空，无法进行有效评估。",
+      "reason": "缺乏任何实质性内容来判断其技术深度、新颖性或实用性。",
+      "tags": [
+        "未知",
+        "内容缺失"
+      ]
+    },
+    {
+      "title": "Taylor Farms has rewritten its cyclospora statement four times in sixteen days",
+      "link": "https://www.marlerblog.com/case-news/taylor-farms-has-rewritten-its-cyclospora-statement-four-times-in-sixteen-days-it-still-has-not-said-what-changed-at-that-plant-after-2013-or-why-two-thousand-negative-tests-should-mean-an/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-03T15:31:32.000Z",
+      "summary": "Article URL: https://www.marlerblog.com/case-news/taylor-farms-has-rewritten-its-cyclospora-statement-four-times-in-sixteen-days-it-still-has-not-said-what-changed-at-that-plant-after-2013-or-why-two-thousand-negative-tests-should-mean-an/\nComments URL: https://news.ycombinator.com/item?id=49157128\nPoints: 199\n# Comments: 108",
+      "id": "2446029e74e8cee22616b7887e63af72427279e822076fb8a952294afa399c72",
+      "ref_id": "2",
+      "recommendationScore": 5,
+      "popularityScore": 97,
+      "priority": "low",
+      "comment": "一篇关于食品安全和企业公关危机的报道，内容与科技主题无关。",
+      "reason": "文章主题完全偏离本科技博客的关注范围，尽管在新闻界有较高热度，但不适合科技内容发布。",
+      "tags": [
+        "新闻",
+        "食品安全",
+        "企业伦理",
+        "非技术"
+      ]
+    },
+    {
+      "title": "Ulysses S. Grant on the Future Dividing Line",
+      "link": "https://www.snopes.com/fact-check/grant-next-civil-war/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-08-03T17:14:42.000Z",
+      "summary": "Ulysses S. Grant, in 1875:\nWhere the citizen is sovereign and the official the servant, where\nno power is exercised except by the will of the people, it is\nimportant that the sovereign — the people — should possess\nintelligence.\nThe free school is the promoter of that intelligence which is to\npreserve us as a free nation. If we are to have another contest in\nthe near future of our national existence, I predict that the\ndividing line will not be Mason and Dixon’s, but between\npatriotism and intelligence on the one side, and superstition,\nambition, and ignorance on the other.\nNot sure if the 2020s count as “the near future”, but holy hell is that a spot-on synopsis of our current moment.\n ★",
+      "id": "9c67dbd40f6c80e0a3e14b1d0d2ef8ab30de8f2190df45fc29c7467165366226",
+      "ref_id": "0",
+      "recommendationScore": 5,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "一篇非技术性的历史评论，与博客主题不符。",
+      "reason": "内容与科技主题无关，不适合科技博客发布，缺乏技术深度和实用性。",
+      "tags": [
+        "历史",
+        "社会评论"
+      ]
+    },
+    {
+      "title": "Weekly Update 515",
+      "link": "https://www.troyhunt.com/weekly-update-515/",
+      "source": "troyhunt.com",
+      "publishedAt": "2026-08-03T00:07:14.000Z",
+      "summary": "Apparently, Aussies are so obsessed with coffee that it's referred to as the coffee capital of the world down here (some bits, at least). \"But what about Italy?\" people ask. Having spent a lot of time in a lot of Italy, no, it's just",
+      "id": "82bb46a1118ff8c95c0b39ca8f2a1e4a996b5fe7cf7f9429f881007bc9dc88e8",
+      "ref_id": "2",
+      "recommendationScore": 5,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "一篇关于澳大利亚和意大利咖啡文化的非科技类周报随笔。",
+      "reason": "内容与科技博客的关注主题完全无关，缺乏技术深度和实用性，不适合发布在科技博客上。",
+      "tags": [
+        "Lifestyle",
+        "Culture",
+        "Coffee"
+      ]
+    }
+  ]
+}
