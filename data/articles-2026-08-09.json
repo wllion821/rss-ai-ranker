@@ -1,0 +1,599 @@
+{
+  "dailySummary": "今日速递：Zsh十年历史记录丢失漏洞终获修复，源于信号中断导致的历史文件截断。前沿AI模型如GPT和Claude已能有效诊断此类复杂代码问题。与此同时，咨询巨头正面临AI代币滥用难题，",
+  "articles": [
+    {
+      "title": "Tracking down a Zsh history data loss bug 🐞",
+      "link": "https://michael.stapelberg.ch/posts/2026-08-09-zsh-history-truncation-bug/",
+      "source": "michael.stapelberg.ch",
+      "publishedAt": "2026-08-09T08:13:00.000Z",
+      "summary": "For many years, I sometimes discovered that commands I was sure I had run were\nno longer present in my Z shell history\nfile (~/.zsh_history). In this article, I will show you how I tracked down the\nbug. Spoiler: ultimately, patching Zsh to make it crash loudly and analyzing the\ncrash’s core dump was the winning strategy!\nThe good news first\nZsh 5.9.2 (released July 12th, 2026) contains a fix for this issue — open it\nafter reading this investigation to not spoil the fun.\nSpoiler: link to the upstream fix\nZsh fix 53454\nThe symptom\nOccasionally, I noticed that commands I knew I executed the day before were\nnot findable in my shell history, meaning pressing Ctrl+R for backward history\nsearch yielded no results. Whenever I noticed this, my shell history file\ncontained only very old entries, with years of newer entries missing.\nThe first few times this happened I just restored my shell history from my daily\nbackup and did not bother investigating any further. But the issue kept happening.\nI noticed that there was no visible corruption in the .zsh_history (no\nnon-printable characters or incomplete lines of text), and that the number of\nlines in the file was not always the same.\nWhat was not clear to me was whether it was Zsh itself, or some other program,\nor perhaps the combination of multiple zsh(1)\n\nprocesses that caused the issue.\nMy Zsh history config\nI set the following history-related options in my ~/.zshrc:\n# Load 4000 lines of history (for Ctrl+R backward search), but save O(∞)\nHISTSIZE=4000\nHISTFILE=~/.zsh_history\nSAVEHIST=10000000\n\n# Do not save (adjacent) duplicate entries\nsetopt HIST_IGNORE_DUPS\n\n# Append history entries to `~/.zsh_history` when commands are run.\nsetopt INC_APPEND_HISTORY\n# …but do not share history (enabled by default in NixOS’s /etc/zshrc).\nunsetopt SHARE_HISTORY\n\nIn practice, this means my shells are separate sessions that all stream their\ncommands into a shared ~/.zsh_history. The history is intentionally not\nshared, so when I want to access entries that another shell wrote, I explicitly\nrun exec zsh.\nTracing the behavior\nWhen I asked for help on Mastodon in December\n2024 (mostly in the hope that\nsomebody else already encountered and diagnosed this problem), one suggestion I\ngot was to use file system change monitoring mechanisms like inotify or fsevents\nto find the culprit that truncates (or changes?) the Zsh history file.\nThe next sections walk through the available options on Linux which I tried.\ninotify\nThe inotify(7)\n Linux kernel subsystem is one of the\noldest file system change monitoring APIs available in Linux (released 2005). To\nget a good understanding of how Zsh modifies the history file, it is not\nsufficient to monitor just .zsh_history:\nmidna ~ % inotifywait --monitor .zsh_history\nSetting up watches.\nWatches established.\n.zsh_history OPEN\n.zsh_history ACCESS\n.zsh_history ACCESS\n[…]\n.zsh_history ACCESS\n.zsh_history CLOSE_NOWRITE,CLOSE\n.zsh_history ATTRIB\n.zsh_history CLOSE_WRITE,CLOSE\n.zsh_history DELETE_SELF\n^C\n\nThe file is opened, accessed (= read) and then… deleted?!\nBy monitoring the containing directory, we see the whole picture:\nmidna ~ % inotifywait --monitor ~\n/home/michael/ OPEN .zsh_history\n/home/michael/ ACCESS .zsh_history\n/home/michael/ ACCESS .zsh_history\n[…]\n/home/michael/ ACCESS .zsh_history\n/home/michael/ CLOSE_NOWRITE,CLOSE .zsh_history\n/home/michael/ CLOSE_WRITE,CLOSE .zsh_history\n/home/michael/ OPEN .zsh_history\n/home/michael/ CLOSE_WRITE,CLOSE .zsh_history\n/home/michael/ OPEN .zsh_history\n/home/michael/ ACCESS .zsh_history\n/home/michael/ CLOSE_NOWRITE,CLOSE .zsh_history\n/home/michael/ CREATE .zsh_history.new\n/home/michael/ OPEN .zsh_history.new\n/home/michael/ ATTRIB .zsh_history.new\n/home/michael/ MODIFY .zsh_history.new\n/home/michael/ CLOSE_WRITE,CLOSE .zsh_history.new\n/home/michael/ MOVED_FROM .zsh_history.new\n/home/michael/ MOVED_TO .zsh_history\n/home/michael/ CLOSE_WRITE,CLOSE .zsh_history\n\nSo Zsh reads the old history file contents, writes them to a new file, then\nrenames the new file over the old one, thereby deleting the old one. Now it\nmakes sense!\nUnfortunately, we do not see the process IDs (PIDs) of the responsible process\nfor the file system event, not even with the sibling utility fsnotifywait(1)\n, which uses fanotify(7)\n, an API that does provide this information! I checked, and the\nkernel does send the PID, but fsnotifywait does not display the PID.\nfatrace\nLuckily, there is fatrace(8)\n, which does display the\nprocess name and PID.\nHere is what Zsh’s history rewriting looks like with fatrace(8)\n:\nzsh(197994): CWO /home/michael/.zsh_history\nzsh(197994): O   /home/michael/.zsh_history\nzsh(197994): R   /home/michael/.zsh_history\nzsh(197994): R   /home/michael/.zsh_history\n[…]\nzsh(197994): R   /home/michael/.zsh_history\nzsh(197994): C   /home/michael/.zsh_history\nzsh(197994): +   /home/michael\nzsh(197994): O   /home/michael/.zsh_history.new\nzsh(197994): W   /home/michael/.zsh_history.new\nzsh(197994): W   /home/michael/.zsh_history.new\nzsh(197994): W   /home/michael/.zsh_history.new\n[…]\nzsh(197994): W   /home/michael/.zsh_history.new\nzsh(197994): CW  /home/michael/.zsh_history.new\nzsh(197994): <>  /home/michael\nzsh(197994): CW  (deleted)\nzsh(197994): C   /nix/store/80vwnjjgcrbp41pk927r8lzybjhy0k73-zsh-5.9.1/bin/zsh\n[…]\n\nThis gives us the PID, so now we can verify whether multiple processes were\ninvolved in corrupting the shell history. But, we don’t have any insight into\nhow much data each Zsh PID is reading/writing, so even with a fatrace log,\nit would still not be clear what happened.\nstrace\nOf course, one could use strace(1)\n, in particular\nwith its -k flag, to further look into Zsh behavior, but it seems like a\nlogistical nightmare to arrange for every (interactive) Zsh process to get a\ncorresponding strace run, and I was not sure if always-stracing a shell changes\nbehavior in subtle ways, so I did not pursue the strace route.\n(Once I had a reproducer, strace became easy enough to use and very helpful.)\nbpftrace\nTo get more visibility into Zsh’s read and write operations, we can reach for\nbpftrace(8)\n.\nTo get started, I created the following bpftrace program, which is run on every\nopen(2)\n syscall and logs which process opened the\n.zsh_history file, including the user stack trace:\ntracepoint:syscalls:sys_enter_open,\ntracepoint:syscalls:sys_enter_openat,\ntracepoint:syscalls:sys_enter_openat2\n/str(args.filename) == \"/home/michael/.zsh_history\" || str(args.filename) == \".zsh_history\"/\n{\n\tprintf(\"%-6d %-16s open(%s)%s\", pid, comm, str(args.filename), ustack);\n}\n\n\nOn NixOS 26.05, I can run the program as follows:\nmidna ~ % nix shell nixpkgs#bpftrace\nmidna ~ 2 % sudo bpftrace path.bt\nAttached 3 probes\n212030 zsh              open(/home/michael/.zsh_history)\n        __internal_syscall_cancel+142\n        __syscall_cancel+20\n        __libc_open64+87\n        lockhistfile+642\n        readhistfile+2213\n        zsh_main+1118\n        __libc_start_call_main+117\n        __libc_start_main_alias_2+136\n        _start+37\n212030 zsh              open(/home/michael/.zsh_history)\n        __internal_syscall_cancel+142\n        __syscall_cancel+20\n        __libc_open64+87\n        _IO_file_open+51\n        _IO_file_fopen@@GLIBC_2.2.5+303\n        __fopen_internal+134\n        readhistfile+2277\n        zsh_main+1118\n        __libc_start_call_main+117\n        __libc_start_main_alias_2+136\n        _start+37\n212030 zsh              open(/home/michael/.zsh_history)\n        __internal_syscall_cancel+142\n        __syscall_cancel+20\n        __libc_open64+87\n        lockhistfile+642\n        savehistfile+165\n        zexit+204\n        zsh_main+1522\n        __libc_start_call_main+117\n        __libc_start_main_alias_2+136\n        _start+37\n212030 zsh              open(/home/michael/.zsh_history)\n        __internal_syscall_cancel+142\n        __syscall_cancel+20\n        __libc_open64+87\n        savehistfile+752\n        zexit+204\n        zsh_main+1522\n        __libc_start_call_main+117\n        __libc_start_main_alias_2+136\n        _start+37\n212030 zsh              open(/home/michael/.zsh_history)\n        __internal_syscall_cancel+142\n        __syscall_cancel+20\n        __libc_open64+87\n        _IO_file_open+51\n        _IO_file_fopen@@GLIBC_2.2.5+303\n        __fopen_internal+134\n        readhistfile+2277\n        savehistfile+2498\n        zexit+204\n        zsh_main+1522\n        __libc_start_call_main+117\n        __libc_start_main_alias_2+136\n        _start+37\n^C\n\nEncouraged by this early success, I extended the program as follows to cover more system calls:\nFull zshhisttrace.bt bpftrace code\n\n#!/usr/bin/bpftrace\n#include <fcntl.h>\n#include <limits.h>\n\ntracepoint:syscalls:sys_enter_open /comm == \"zsh\"/ {\n     printf(\"%s(%d) open: %s flags %x mode %x\\n\", comm, pid, str(args->filename), args->flags, args->mode);\n}\n\ntracepoint:syscalls:sys_enter_openat {\n     if (!strcontains(str(args->filename), \"zsh_history\")) {\n         delete(@openfn[tid]);\n         return;\n     }\n     @openfn[tid] = 1;\n     printf(\"%s(%d) openat: \", comm, pid);\n     if (args->dfd < 0x7fffffff) { /* ought to be != AT_FDCWD, but that does not work !?!? */\n         printf(\"[at fd %d]\", args->dfd);\n     }\n     printf(\"%s flags %x mode %x\\n\", str(args->filename), args->flags, args->mode);\n}\n\ntracepoint:syscalls:sys_exit_openat /@openfn[tid]/ {\n     @reads[tid,(int64)args->ret] = 1; // TODO: bpftrace 0.22 introduces has_key\n     @writes[tid,(int64)args->ret] = 1; // TODO: bpftrace 0.22 introduces has_key\n}\n\ntracepoint:syscalls:sys_enter_close /@reads[tid,(int64)args->fd]/ {\n     printf(\"%s(%d) close %d (reads: %d, writes: %d)\\n\", comm, pid, args->fd, @reads[tid,(int64)args->fd]-1, @writes[tid,(int64)args->fd]-1);\n     delete(@reads[tid,(int64)args->fd]);\n     delete(@writes[tid,(int64)args->fd]);\n}\n\n// tracepoint:syscalls:sys_enter_openat2 /comm == \"zsh\"/ {\n//      printf(\"%s(%d) openat: \", comm, pid);\n//      if (args->dfd < INT_MAX) { /* ought to be != AT_FDCWD, but that does not work !?!? */\n//          printf(\"[at fd %d]\", args->dfd);\n//      }\n//      printf(\"%s \\n\", str(args->filename));\n// }\n\ntracepoint:syscalls:sys_enter_rename /comm == \"zsh\"/ {\n     printf(\"%s(%d) rename:\", comm, pid);\n     printf(\"%s -> %s\\n\", str(args->oldname), str(args->newname));\n}\n\ntracepoint:syscalls:sys_enter_symlink /comm == \"zsh\"/ {\n     printf(\"%s(%d) symlink \", comm, pid);\n     printf(\"%s -> %s\\n\", str(args->oldname), str(args->newname));\n}\n\ntracepoint:syscalls:sys_enter_unlink /comm == \"zsh\"/ {\n     printf(\"%s(%d) unlink \", comm, pid);\n     printf(\"%s\\n\", str(args->pathname));\n}\n\ntracepoint:syscalls:sys_enter_unlinkat /comm == \"zsh\"/ {\n     printf(\"%s(%d) unlinkat \", comm, pid);\n     printf(\"%s\\n\", str(args->pathname));\n}\n\ntracepoint:syscalls:sys_enter_lseek /comm == \"zsh\"/ {\n     printf(\"%s(%d) lseek fd %d offset %d whence %d\\n\", comm, pid, args->fd, args->offset, args->whence);\n}\n\ntracepoint:syscalls:sys_enter_read /@reads[tid,(int64)args->fd]/ {\n     // printf(\"%s(%d) read fd %d size %d\\n\", comm, pid, args->fd, args->count);\n     @reads[tid,(int64)args->fd] += args->count;\n}\n\ntracepoint:syscalls:sys_exit_read /comm == \"zsh\"/ {\n     if (args->ret <= 0) {\n          printf(\"%s(%d) read = %d\\n\", comm, pid, args->ret);\n     }\n}\n\ntracepoint:syscalls:sys_exit_write /comm == \"zsh\"/ {\n     if (args->ret <= 0) {\n          printf(\"%s(%d) write = %d\\n\", comm, pid, args->ret);\n     }\n}\n\ntracepoint:syscalls:sys_enter_write /@writes[tid,(int64)args->fd]/ {\n     // printf(\"%s(%d) write fd %d size %d\\n\", comm, pid, args->fd, args->count);\n     @writes[tid,(int64)args->fd] += args->count;\n}\n\n\nIn case you want to dive deeper into bpftrace, here are a few resources I found useful:\nThe upstream bpftrace docs\nThe blog post “First steps in system-wide Linux tracing” by Martin Pitt (2020)\nThe LSFMM presentation “BPF Observability” by Brendan Gregg (2019)\nI created a systemd unit to run this program in the background permanently\n(seems cheap enough), meaning I can check the logs like so:\nmidna % journalctl -fu zshhisttrace\ncp(2338700) close 3 (reads: 3407872, writes: 0)\nzsh(231222) symlink /pid-231222/host-midna -> /home/michael/.zsh_history.LOCK\nzsh(231222) openat: /home/michael/.zsh_history flags 541 mode 180\nzsh(231222) close 3 (reads: 0, writes: 0)\nzsh(231222) openat: /home/michael/.zsh_history flags 0 mode 0\nzsh(231222) lseek fd 3 offset 0 whence 1\nzsh(231222) read = 0\nzsh(231222) close 3 (reads: 52895744, writes: 0)\nzsh(231222) unlink /home/michael/.zsh_history.new\nzsh(231222) openat: /home/michael/.zsh_history.new flags c1 mode 180\nzsh(231222) close 3 (reads: 0, writes: 52888907)\nzsh(231222) rename:/home/michael/.zsh_history.new -> /home/michael/.zsh_history\nzsh(231222) unlink /home/michael/.zsh_history.LOCK\n\nOne day, I noticed my shell history was truncated and checked the logs. This is\nwhat I found. Note how there is no read = 0 line, i.e. Zsh does not read until\nEOF:\nzsh(231233) symlink /pid-231233/host-midna -> /home/michael/.zsh_history.LOCK\nzsh(231233) openat: /home/michael/.zsh_history flags 541 mode 180\nzsh(231233) close 3 (reads: 0, writes: 0)\nzsh(231233) openat: /home/michael/.zsh_history flags 0 mode 0\nzsh(231233) lseek fd 3 offset 0 whence 1\nzsh(231233) lseek fd 3 offset 0 whence 1\nzsh(231233) lseek fd 3 offset 11572944 whence 0\nzsh(231233) close 3 (reads: 11575296, writes: 0)\nzsh(231233) unlink /home/michael/.zsh_history.new\nzsh(231233) openat: /home/michael/.zsh_history.new flags c1 mode 180\nzsh(231233) close 3 (reads: 0, writes: 11572944)\nzsh(231233) rename:/home/michael/.zsh_history.new -> /home/michael/.zsh_history\nzsh(231233) unlink /home/michael/.zsh_history.LOCK\n\nMaking it crash!\nFrom the bpftrace output above we know that Zsh is rewriting my\n.zsh_history file incorrectly: it reads fewer lines than usual, and then\ncorrectly writes them to .zsh_history.new.\nAt this point I decided to study the code for reasons why readhistfile would\nnot read the full history file or why savehistfile would not write the full history file.\nThe control flow of\nsavehistfile\nis pretty hard to follow, but it is easy to modify the code (zsh-5.9.1) such\nthat it crashes after it writes a .zsh_history.new with fewer than 50000 lines\nand before it replaces my .zsh_history with that truncated new file:\n--- i/Src/hist.c\n+++ w/Src/hist.c\n@@ -2994,6 +2994,7 @@ savehistfile(char *fn, int err, int writeflags)\n     if (out) {\n \tchar *history_ignore;\n \tPatprog histpat = NULL;\n+\tint lines_written = 0;\n \n \tpushheap();\n \n@@ -3048,6 +3049,7 @@ savehistfile(char *fn, int err, int writeflags)\n \t\tret = fputc(' ', out);\n \t    if (ret < 0 || (ret = fputc('\\n', out)) < 0)\n \t\tbreak;\n+\t    lines_written++;\n \t}\n \tif (ret >= 0 && start && writeflags & HFILE_USE_OPTIONS) {\n \t    struct stat sb;\n@@ -3062,6 +3064,10 @@ savehistfile(char *fn, int err, int writeflags)\n \t}\n \tif (fclose(out) < 0 && ret >= 0)\n \t    ret = -1;\n+\tif (tmpfile && lines_written < 50000) {\n+\t    char *crashptr = (char*)0x23;\n+\t    *crashptr = 42;\n+\t}\n \tif (ret >= 0) {\n \t    if (tmpfile) {\n \t\tif (rename(tmpfile, unmeta(fn)) < 0) {\n\n\nOn Linux, the easiest way to ensure such a crash ends up somewhere useful is to\ninstall systemd-coredump(8)\n, after which systemd\nwill automatically collect core dumps. You can use coredumpctl(1)\n to list and work with them. Note that these core dumps contain\nyour shell history, so do not upload them to third-party services. Fedora’s\nABRT seems to only send micro\nreports (i.e. without\nyour full shell history), and Ubuntu’s Apport is\ndisabled-by-default,\nbut it’s worth double-checking.\nI installed my patched version of Zsh (with debug symbols enabled) and deferred\nfurther investigation until I had a core dump of the issue in action. Sure\nenough, when I checked with coredumpctl a few days later, I saw a crash! This\nwas the backtrace:\nmidna % coredumpctl debug\ngdb $ bt full\n#0  0x000056040d781e19 in savehistfile (fn=0x56040f7a76b0 \"/home/michael/.zsh_history\", err=1, writeflags=0) at hist.c:3086\n        crashptr = 0x23 <error: Cannot access memory at address 0x23>\n        history_ignore = 0x0\n        histpat = 0x0\n        lines_written = 45546\n        t = 0x5604102a1f59 \"\"\n        tmpfile = 0x5604100ec210 \"/home/michael/.zsh_history.new\"\n        start = 0x5604102a1f40 \"make -j32\"\n        out = 0x56040f939400\n        he = 0x0\n        xcurhist = 45546\n        extended_history = 0\n        ret = 10\n#1  0x000056040d781f72 in savehistfile (fn=0x56040f7a76b0 \"/home/michael/.zsh_history\", err=1, writeflags=32771) at hist.c:3121\n        remember_histactive = 0\n        history_ignore = 0x0\n        histpat = 0x0\n        lines_written = 0\n        t = 0x0\n        tmpfile = 0x0\n        start = 0x0\n        out = 0x56040f939400\n        he = 0x0\n        xcurhist = 51183\n        extended_history = 0\n        ret = 0\n#2  0x000056040d751197 in zexit (val=0, from_where=ZEXIT_NORMAL) at builtin.c:6055\n        writeflags = 32768\n#3  0x000056040d7888e2 in zsh_main (argc=2, argv=0x7ffd370c1758) at init.c:1950\n        errexit = 0\n        t = 0x7ffd370c1768\n        runscript = 0x0\n        zsh_name = 0x7ffd370c26bd \"zsh\"\n        cmd = 0x0\n        t0 = 162\n#4  0x000056040d735d89 in main (argc=2, argv=0x7ffd370c1758) at ./main.c:93\nNo locals.\n\nI returned to the source and realized that most likely, savehistfile is just\nwriting out a shorter history file because readhistfile left it a shorter\nhistory!\nThe control flow of\nreadhistfile\nis easier to follow. Reading through the function, there is one possibility of\nan early return: when Zsh receives a signal,\nthe read loop is aborted via a break;:\n\t// …\n\tif (errflag & ERRFLAG_INT) {\n\t\t/* Can't assume fast read next time if interrupted. */\n\t\tlasthist.interrupted = 1;\n\t\tbreak;\n\t}\n\t// …\n\n\nLet’s see what errflag and lasthist.interrupted contain in our crash:\ngdb $ p errflag\n$1 = 2\ngdb $ p lasthist.interrupted\n$2 = 1\n\nBingo! So some signal must be involved.\nFor reasons outside of the scope of this article, I am using a mosh session from\nwhich I am starting a long-running SSH session, over which I multiplex further\nsessions. When tearing down this setup at the end of each workday, I press\nCtrl+D in the multiplexed sessions (sends EOF, exits the session), then Ctrl+C\non the long-running SSH, then Ctrl+D to exit the mosh session.\n(If you don’t cleanly exit a mosh session, it sticks around on the server and\nsubsequent logins tell you about these orphaned sessions. I wanted to avoid\naccumulating orphaned sessions.)\nSo in practice I press Ctrl+D, Ctrl+C, Ctrl+D, Ctrl+C etc. until all windows are\ngone. As part of that sequence, most likely I am exiting a Zsh session (Ctrl+D)\nand then interrupting (Ctrl+C) its readhistfile if history rewriting takes\nlong enough.\nWith these clues, I built a standalone reproducer and sent a bug report to the\nzsh-workers mailing list in March\n2025. Bart Schaefer looked\ninto it and posted a fix in April\n2025 (thank you!).\nIt took a long time for the fix to actually be released because there was a long\ntime without any Zsh releases. And then, when the 5.9.1 release happened, it\nturns out Bart’s fix was missed by the release engineer! I pointed out this\noversight, and Zsh 5.9.2 thankfully includes the fix.\nI have been running Zsh 5.9 with Bart’s patch applied, and will keep that\nversion pinned until 5.9.2 lands on my computers. If you’re pinning zsh on\nDebian, pin both, the zsh and zsh-common packages. Otherwise, you might end\nup with no zsh package at all one day…\nWhat was the bug?\nWhen exiting, zexit calls savehistfile to compact the history: during a\nsession, history entries are appended incrementally, but at shell exit, the\nhistory file gets compacted (to apply a size limit, if configured, for example),\nso savehistfile reads the entire history (readhistfile) and writes it out\nagain.\nreadhistfile could be interrupted when a signal fires (it checks errflag & ERRFLAG_INT and short-circuits its read loop), but savehistfile did not check\nfor interruption when writing the shell history when exiting. Therefore,\nsavehistfile wrote the (incomplete) history, truncating the actual history.\nLet’s decipher the bpftrace output we collected earlier:\nzsh(231233) openat: /home/michael/.zsh_history flags 0 mode 0\nzsh(231233) lseek fd 3 offset 0 whence 1\n\n# […] reads are aggregated, see below […]\n# […] interrupt happens here […]\n\n# lseek(3, 0, SEEK_CUR) = query the current seek offset\nzsh(231233) lseek fd 3 offset 0 whence 1\n# SEEK_SET at fclose(), as POSIX mandates (see below)\nzsh(231233) lseek fd 3 offset 11572944 whence 0\n\nzsh(231233) close 3 (reads: 11575296, writes: 0)\nzsh(231233) unlink /home/michael/.zsh_history.new\nzsh(231233) openat: /home/michael/.zsh_history.new flags c1 mode 180\nzsh(231233) close 3 (reads: 0, writes: 11572944)\nzsh(231233) rename:/home/michael/.zsh_history.new -> /home/michael/.zsh_history\n\nWhy the lseek? From POSIX.1-2017 on fclose()\nIf the file is not already at EOF, and the file is one capable of seeking, the\nfile offset of the underlying open file description shall be set to the file\nposition of the stream if the stream is the active handle to the underlying\nfile description.\nZsh uses fopen() to get a stream, so glibc reads in chunks of 4096 bytes and\nwhen closing the stream, the underlying file descriptor needs to be sought back\nso that the already-read parts of the current 4096-byte chunk will be read\nagain, correctly by the next stream. (Zsh closes the file immediately, so the\nseek is pointless, but glibc cannot know.)\nConclusion\nIt’s remarkable that a bug like this one, which causes data loss, can remain\nunfixed for 10 years in a popular shell (did you know? Apple switched macOS’s\ndefault login shell to Zsh in 2019).\nGranted, most users probably don’t share my habit of killing shell sessions in a\nway that makes it likely that SIGINT is sent, but I have to imagine that some\nusers have lost parts of their history.\nI am very glad that this issue is now fixed! If you are also encountering\nhistory file truncation, and it isn’t the issue I described in this article,\nmaybe you managed to accidentally export HISTFILE? See appendix A for a\nHISTFILE bonus footgun that I ran into a few years before.\nAnother obvious question that came up as I was writing this post: I tracked down\nthis issue before LLMs got impressively good at coding and problem\nsolving. Would today’s AI coding agents be able to find this bug? See appendix B\nfor details, but the answer is: Yes, today’s frontier models can find this bug!\nAppendix A: Bonus Footgun: exported HISTFILE\nWhen you use Emacs’s TRAMP mode, by default\nit exports HISTFILE. For example, when using M-x shell after starting emacs /ssh:keep:/srv/keep, I see HISTFILE in the environment:\n/ssh:keep:/srv/keep/ #$ env | grep HISTFILE\nHISTFILE=/home/michael/.tramp_history\n/ssh:keep:/srv/keep/ #$\n\nThis is a footgun, because most shell configs don’t unexport HISTFILE, they\nonly change it. For example, in my ~/.zshrc, I set HISTFILE=~/.zsh_history.\nWhen running an interactive shell (by typing zsh followed by Enter), I end up\nwith HISTFILE in the environment:\n/ssh:keep:/srv/keep/ #$ zsh\nlocale: Cannot set LC_CTYPE to default locale: No such file or directory\n$ env | grep HISTFILE\nHISTFILE=/home/michael/.zsh_history\n$\n\n…which is not the case when I use ssh(1)\n to log in:\nmidna ~ % ssh keep\nLast login: Sat Aug  1 17:38:37 2026 from 100.64.1.1\nkeep ~ % env | grep HISTFILE\nkeep ~ %\n\nExporting a shell-specific HISTFILE is a footgun on machines where other\nshells are configured with other (default) settings. On my work computer, where\nthe Linux installation sets HISTSIZE=64000 and HISTFILESIZE=64000 for bash\nby default, I once inadvertently truncated my ~/.zsh_history file to 64000\nlines. My suspicion is that it was by running M-x shell, then zsh (to get my\nconfig), then bash (temporarily, to source a config and launch a script).\nTo prevent such issues in the future, I decided to actively unexport HISTFILE\nin my\n~/.zshrc.\nAppendix B: Bonus Question: Can AI find this bug?\nFor a while now, I felt that it would be useful to get my hands dirty with\ncreating my own evals. See Anthropic’s “Demystifying evals for AI\nagents”\nif you are unfamiliar with the term “eval”.\nI started with Simon Willison’s\nsmevals, but found it to be\ntoo minimalistic: without taking extra measures, agents would quickly escape\ntheir eval task and peek at the solution, or use the internet to discover that\nthe Zsh git version has this bug already fixed.\nI ended up with Inspect, an open-source eval\nframework by the UK AI Security Institute and\nMeridian Labs, and it worked better, though its web UI is very minimalistic.\nThis eval quickly got very expensive! I paid well over 300 USD in token cost for\nabout 3 attempts at this eval. The results below are from the latest attempt. A\npassing grade is awarded when the model explains the correct sequence of events:\nan interrupt sets errflag, which aborts readhistfile and results in a\ntruncated history file.\nEval setup: symptom + bpftrace\nFull prompt, including normal/truncated bpftrace\n\nwhen i log out, sometimes when i come back the next day my .zsh_history file is mysteriously truncated. why might that be?\nI’m on zsh 5.9.1 on Linux. Only zsh ever writes this file. I have a bpftrace\nprogram logging every syscall zsh makes against the history file.\nA NORMAL logout looks like this:\nzsh(231222) symlink /pid-231222/host-midna -> /home/michael/.zsh_history.LOCK\nzsh(231222) openat: /home/michael/.zsh_history flags 541 mode 180\nzsh(231222) close 3 (reads: 0, writes: 0)\nzsh(231222) openat: /home/michael/.zsh_history flags 0 mode 0\nzsh(231222) lseek fd 3 offset 0 whence 1\nzsh(231222) read = 0\nzsh(231222) close 3 (reads: 52895744, writes: 0)\nzsh(231222) unlink /home/michael/.zsh_history.new\nzsh(231222) openat: /home/michael/.zsh_history.new flags c1 mode 180\nzsh(231222) close 3 (reads: 0, writes: 52888907)\nzsh(231222) rename:/home/michael/.zsh_history.new -> /home/michael/.zsh_history\nzsh(231222) unlink /home/michael/.zsh_history.LOCK\n\nA logout that TRUNCATED the file looks like this:\nzsh(231233) symlink /pid-231233/host-midna -> /home/michael/.zsh_history.LOCK\nzsh(231233) openat: /home/michael/.zsh_history flags 541 mode 180\nzsh(231233) close 3 (reads: 0, writes: 0)\nzsh(231233) openat: /home/michael/.zsh_history flags 0 mode 0\nzsh(231233) lseek fd 3 offset 0 whence 1\nzsh(231233) lseek fd 3 offset 0 whence 1\nzsh(231233) lseek fd 3 offset 11572944 whence 0\nzsh(231233) close 3 (reads: 11575296, writes: 0)\nzsh(231233) unlink /home/michael/.zsh_history.new\nzsh(231233) openat: /home/michael/.zsh_history.new flags c1 mode 180\nzsh(231233) close 3 (reads: 0, writes: 11572944)\nzsh(231233) rename:/home/michael/.zsh_history.new -> /home/michael/.zsh_history\nzsh(231233) unlink /home/michael/.zsh_history.LOCK\n\nmy zshrc is in ./zshrc — the exact config in effect on the affected\nmachine, so you can see which options are (and aren’t) enabled.\nThe full zsh 5.9.1 source tree is available in ./zsh-5.9.1 — this is exactly\nthe version I’m running. Dig into it as much as you need.\nWhat’s going on, and what in the zsh source would cause it?\nWork only from the zsh 5.9.1 source provided and the evidence above. Do not\nconsult newer zsh versions, upstream commits, mailing-list threads, changelogs\nor release notes — the point is to derive the cause from this source, not to\nlook up how it was later fixed.\nEnd your reply with a section headed exactly ## Diagnosis containing\nyour final answer: the root cause, and the specific code responsible.\nscore\n\t\t\t\t\tmodel\n\t\t\t\t\ttokens\n\t\t\t\t\tduration\n\t\t\t\n✅ 3 of 3\n\t\t\t\t\topenai/gpt-5.6-sol\n\t\t\t\t\t497,040\n\t\t\t\t\t2m 29s\n\t\t\t\n✅ 3 of 3\n\t\t\t\t\tanthropic/claude-opus-5\n\t\t\t\t\t5,440,676\n\t\t\t\t\t26m 43s\n\t\t\t\n⚠️ 2 of 3\n\t\t\t\t\topenai/gpt-5.5\n\t\t\t\t\t659,050\n\t\t\t\t\t2m 43s\n\t\t\t\n⚠️ 1 of 3\n\t\t\t\t\topenai/gpt-5.6-terra\n\t\t\t\t\t673,336\n\t\t\t\t\t1m 57s\n\t\t\t\n⚠️ 1 of 3\n\t\t\t\t\tgoogle/gemini-3.1-pro-preview\n\t\t\t\t\t3,733,226\n\t\t\t\t\t9m 31s\n\t\t\t\n⚠️ 1 of 3\n\t\t\t\t\tanthropic/claude-sonnet-5\n\t\t\t\t\t9,323,989\n\t\t\t\t\t29m 18s\n\t\t\t\n⚠️ 1 of 3\n\t\t\t\t\tgoogle/gemini-3.5-flash\n\t\t\t\t\t6,746,305\n\t\t\t\t\t12m 38s\n\t\t\t\n⚠️ 1 of 3\n\t\t\t\t\tmoonshotai/kimi-k3 (open weight!) @ medium\n\t\t\t\t\t2,455,874\n\t\t\t\t\t45m 6s\n\t\t\t\n⚠️ 1 of 3\n\t\t\t\t\tmoonshotai/kimi-k3 (open weight!) @ high\n\t\t\t\t\t13,060,937\n\t\t\t\t\t52m 2s\n\t\t\t\n⚠️ 1 of 3\n\t\t\t\t\tgoogle/gemini-3-flash-preview\n\t\t\t\t\t19,370,711\n\t\t\t\t\t30m 14s\n\t\t\t\n❌\n\t\t\t\t\topenai/gpt-5.1\n\t\t\t\t\t118,948\n\t\t\t\t\t1m 12s\n\t\t\t\n❌\n\t\t\t\t\topenai/gpt-5.4\n\t\t\t\t\t286,288\n\t\t\t\t\t1m 10s\n\t\t\t\n❌\n\t\t\t\t\topenai/gpt-5.6-luna\n\t\t\t\t\t549,724\n\t\t\t\t\t1m 14s\n\t\t\t\n❌\n\t\t\t\t\tqwen/qwen3-coder\n\t\t\t\t\t623,110\n\t\t\t\t\t5m 2s\n\t\t\t\n❌\n\t\t\t\t\topenai/gpt-5.2\n\t\t\t\t\t1,306,586\n\t\t\t\t\t1m 49s\n\t\t\t\n❌\n\t\t\t\t\topenai/gpt-5\n\t\t\t\t\t2,858,548\n\t\t\t\t\t7m 14s\n\t\t\t\n❌\n\t\t\t\t\tanthropic/claude-opus-4-8\n\t\t\t\t\t3,402,954\n\t\t\t\t\t9m 5s\n\t\t\t\n❌\n\t\t\t\t\tdeepseek/deepseek-v4-flash-0731 (open weight!)\n\t\t\t\t\t5,570,798\n\t\t\t\t\t25m 6s\n\t\t\t\n❌\n\t\t\t\t\tgoogle/gemini-3.1-flash-lite\n\t\t\t\t\t6,945,359\n\t\t\t\t\t2m 7s\n\t\t\t\n❌\n\t\t\t\t\tqwen/qwen3.8-max (open weight!)\n\t\t\t\t\t6,307,959\n\t\t\t\t\t39m 32s\n\t\t\t\n❌\n\t\t\t\t\tdeepseek/deepseek-v4-pro (open weight!)\n\t\t\t\t\t8,577,105\n\t\t\t\t\t30m 7s\n\t\t\t\n❌\n\t\t\t\t\tanthropic/claude-haiku-4-5\n\t\t\t\t\t10,646,235\n\t\t\t\t\t7m 24s\n\t\t\t\n❌\n\t\t\t\t\tqwen/qwen3.6-max-preview\n\t\t\t\t\t19,689,360\n\t\t\t\t\t27m 12s\n\t\t\t\n❌\n\t\t\t\t\tminimax/minimax-m3 (open weight!)\n\t\t\t\t\t19,937,971\n\t\t\t\t\t46m 28s\n\t\t\t\n❌\n\t\t\t\t\tz-ai/glm-5.2 (open weight!)\n\t\t\t\t\t21,507,452\n\t\t\t\t\t29m 30s\n\t\t\t\nEval variant: habit-hinted\nIn this iteration, I am including this hint about pressing Ctrl+C and Ctrl+D\nrepeatedly, which is a nudge towards signals and interrupt handling:\nfwiw, my logout habit: i press ctrl+c / ctrl+d repeatedly until all my\nterminal windows are gone, and then see what’s left.\nThis measures how easily the models understand the problem, if at all.\nscore\n\t\t\t\t\tmodel\n\t\t\t\t\ttokens\n\t\t\t\t\tduration\n\t\t\t\n✅ 3 of 3\n\t\t\t\t\topenai/gpt-5.6-sol\n\t\t\t\t\t393,895\n\t\t\t\t\t1m 43s\n\t\t\t\n✅ 3 of 3\n\t\t\t\t\topenai/gpt-5.5\n\t\t\t\t\t622,081\n\t\t\t\t\t1m 31s\n\t\t\t\n✅ 3 of 3\n\t\t\t\t\tanthropic/claude-opus-5\n\t\t\t\t\t1,583,601\n\t\t\t\t\t7m 29s\n\t\t\t\n✅ 3 of 3\n\t\t\t\t\tanthropic/claude-opus-4-8\n\t\t\t\t\t2,338,905\n\t\t\t\t\t6m 4s\n\t\t\t\n✅ 3 of 3\n\t\t\t\t\tanthropic/claude-sonnet-5\n\t\t\t\t\t3,132,322\n\t\t\t\t\t14m 9s\n\t\t\t\n✅ 3 of 3\n\t\t\t\t\tmoonshotai/kimi-k3 @ medium (open weight!)\n\t\t\t\t\t4,642,764\n\t\t\t\t\t32m 25s\n\t\t\t\n✅ 3 of 3\n\t\t\t\t\tmoonshotai/kimi-k3 @ high (open weight!)\n\t\t\t\t\t9,631,629\n\t\t\t\t\t32m 17s\n\t\t\t\n✅ 3 of 3\n\t\t\t\t\tz-ai/glm-5.2 (open weight!)\n\t\t\t\t\t23,654,094\n\t\t\t\t\t22m 37s\n\t\t\t\n⚠️ 2 of 3\n\t\t\t\t\topenai/gpt-5\n\t\t\t\t\t2,345,526\n\t\t\t\t\t3m 38s\n\t\t\t\n⚠️ 2 of 3\n\t\t\t\t\tgoogle/gemini-3-flash-preview\n\t\t\t\t\t6,421,624\n\t\t\t\t\t16m 41s\n\t\t\t\n⚠️ 2 of 3\n\t\t\t\t\tgoogle/gemini-3.5-flash\n\t\t\t\t\t3,571,679\n\t\t\t\t\t9m 7s\n\t\t\t\n⚠️ 2 of 3\n\t\t\t\t\tqwen/qwen3.8-max (open weight!)\n\t\t\t\t\t4,289,195\n\t\t\t\t\t41m 49s\n\t\t\t\n⚠️ 1 of 3\n\t\t\t\t\topenai/gpt-5.6-luna\n\t\t\t\t\t426,974\n\t\t\t\t\t1m 26s\n\t\t\t\n⚠️ 1 of 3\n\t\t\t\t\topenai/gpt-5.6-terra\n\t\t\t\t\t728,604\n\t\t\t\t\t1m 31s\n\t\t\t\n⚠️ 1 of 3\n\t\t\t\t\tgoogle/gemini-3.1-pro-preview\n\t\t\t\t\t3,525,585\n\t\t\t\t\t6m 23s\n\t\t\t\n⚠️ 1 of 3\n\t\t\t\t\tdeepseek/deepseek-v4-flash-0731 (open weight!)\n\t\t\t\t\t3,628,997\n\t\t\t\t\t25m 37s\n\t\t\t\n⚠️ 1 of 3\n\t\t\t\t\tdeepseek/deepseek-v4-pro (open weight!)\n\t\t\t\t\t7,751,190\n\t\t\t\t\t30m 4s\n\t\t\t\n❌\n\t\t\t\t\topenai/gpt-5.4\n\t\t\t\t\t266,719\n\t\t\t\t\t45s\n\t\t\t\n❌\n\t\t\t\t\topenai/gpt-5.1\n\t\t\t\t\t287,721\n\t\t\t\t\t1m 9s\n\t\t\t\n❌\n\t\t\t\t\topenai/gpt-5.2\n\t\t\t\t\t1,097,940\n\t\t\t\t\t1m 30s\n\t\t\t\n❌\n\t\t\t\t\tqwen/qwen3-coder (open weight!)\n\t\t\t\t\t1,160,681\n\t\t\t\t\t8m 31s\n\t\t\t\n❌\n\t\t\t\t\tanthropic/claude-haiku-4-5\n\t\t\t\t\t5,663,995\n\t\t\t\t\t5m 47s\n\t\t\t\n❌\n\t\t\t\t\tgoogle/gemini-3.1-flash-lite\n\t\t\t\t\t5,839,696\n\t\t\t\t\t1m 39s\n\t\t\t\n❌\n\t\t\t\t\tminimax/minimax-m3 (open weight!)\n\t\t\t\t\t10,733,126\n\t\t\t\t\t27m 25s\n\t\t\t\n❌\n\t\t\t\t\tqwen/qwen3.6-max-preview\n\t\t\t\t\t13,322,764\n\t\t\t\t\t30m 4s\n\t\t\t\nAI Conclusion\nLatest frontier models like Claude Opus 5 or GPT 5.6 Sol can find the bug\nreliably with just a description of the symptom and a working/failing\nbpftrace. If you try it a couple of times, you can also get there with the\nGemini models. Of the Open Weight models, only Kimi K3 can find this bug without\nhinting.\nOnce the Ctrl+C + Ctrl+D habit is included in the prompt, more frontier models\nreliably find the issue (including Claude Sonnet 5!). Of the Open Weight models,\nGLM 5.2 and Kimi K3 are the first ones to reliably figure out the issue! If you\ntry it a couple of times, you can also get there with the Gemini or DeepSeek\nmodels. I could not get Qwen or Minimax models to pass.\nThis seems like a really nice eval, in particular for tracking which Open Weight\nmodel actually works as well as Opus or GPT (at least in this one specific\nregard). For now, Kimi K3 seems like the most capable Open Weight model, even\nthough it cannot reliably diagnose this issue. GLM 5.2 is much smaller and —\nwith hints — can at least make sense of the issue.\nIt is interesting to note that almost all models considered the correct\nhypothesis, including the Qwen and Minimax models. Only Gemini 3.1 Flash Lite\nnever articulated the correct hypothesis, presumably because it is a small model\n(in comparison).\nSo where did the models go wrong? In verifying/falsifying theories! For example,\nGLM 5.2 assumes the lseek in the bpftrace output must mean that\nSHAREHISTORY is set (it isn’t!):\nglm-5.2 enumerated exactly three causes of a short read — corruption,\nHFILE_FAST searching, errflag & ERRFLAG_INT — then ruled out the interrupt\nbecause “Options 1 and 3 don’t involve lseek to a non-zero offset. But the\ntrace shows lseek(offset, SEEK_SET), which is HFILE_FAST behavior. So\nSHAREHISTORY must be set” — overriding your zshrc’s unsetopt SHARE_HISTORY to keep the elimination alive.\nI verified that by making the eval use more orchestration (have one subagent\nproduce theories, another keep track and falsify / verify, etc.), the success\nrate increases. Similarly, I expect that by varying the prompt and harness,\nindividual models can be made to work much better.\nThe most common failure mode seems to be that the model picks the wrong theory\nand gets stuck on verifying it, never returning to the other theories. Perhaps\nthe better performing models have the better methodology, in that they adhere\nbetter to the scientific method?",
+      "id": "1a3ff720ce5768483ed58a38adc32ff7459d0b7c2896cd739d0e421ff577f28a",
+      "ref_id": "3",
+      "recommendationScore": 95,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "详尽地记录了Zsh历史记录数据丢失bug的追踪过程，技术深度和实用性极高。",
+      "reason": "文章深入探讨了高级调试技术和编程工具的深层问题解决，对编程工具用户和系统开发者具有极高的参考价值和实用性，符合编程工具的优先级。",
+      "tags": [
+        "编程工具",
+        "Zsh",
+        "调试",
+        "Bug Fix",
+        "系统编程",
+        "Linux"
+      ]
+    },
+    {
+      "title": "Reviving a four year old reMarkable 2",
+      "link": "https://oskrim.github.io/hardware/2026/08/09/remarkable-over-ssh.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-09T11:39:25.000Z",
+      "summary": "Article URL: https://oskrim.github.io/hardware/2026/08/09/remarkable-over-ssh.html\nComments URL: https://news.ycombinator.com/item?id=49230514\nPoints: 81\n# Comments: 63",
+      "id": "659157b7c72b01b7c97d66e6bcec692a53f9b5c5102f6d5c849d12f2146bbdfe",
+      "ref_id": "4",
+      "recommendationScore": 90,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "详细讲解如何通过SSH复活并定制Remarkable 2平板。",
+      "reason": "提供具体的硬件和软件定制方案，对设备爱好者和自动化实践者有很高的实用价值和操作指导。",
+      "tags": [
+        "Remarkable",
+        "硬件",
+        "Linux",
+        "定制化",
+        "自动化",
+        "实用教程"
+      ]
+    },
+    {
+      "title": "Maybe ‘Steal Underpants by Blowing a Fortune on AI Tokens’ Is, in Fact, Not a Good Business Plan",
+      "link": "https://www.404media.co/the-tokenpocalypse-is-here-companies-are-scrambling-to-stop-spending-so-much-on-ai/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-08-08T19:31:52.000Z",
+      "summary": "Joseph Cox, writing for 404 Media (paywalled, sans gift links, alas):\nConsulting giant Accenture is trying to figure out how to stop\nnon-technical workers from blowing through companies’ AI token\nbudget on trivial tasks like converting PDFs to presentation\nslides, according to leaked audio obtained by 404 Media. Across\nthe industry Accenture is seeing “soaring token spend,” according\nto the audio. [...] It also undercuts the narrative that\nsuperpowered engineers generating mountains of code are behind the\nAI boom. In many cases it is non-technical staff burning through\ntokens for non-specialized tasks. [...]\nAt one point in the meeting, Kwak and Eduardo Salamanca de\nDiego, senior manager of product management at the company’s\nCenter for Advanced AI, start presenting about what is described\nas “token ops.”\nKwak says he knows people aren’t using slides these days, but\nhe has some. As he appears to be preparing to present, Stuart\nHenderson, Accenture’s client group lead, interrupts. He\njokes he hopes Kwak didn’t just convert a PDF into images and\nthen into Markdown files. “I’m learning that’s one of the big\ntoken chewers,” Henderson says. “Turning PDFs into Markdown:\nis that right?”\nThat’s when Kwak says that’s what Accenture’s own data shows.\nMy impression of consulting giants like Accenture (McKinsey, Bain, Deloitte, KPMG...) has always been that they are very good at looking smart but in fact very bad at actually being smart. The idea that they’re spending serious money on AI tokens to turn PDFs and PowerPoint decks into Markdown only makes me think I’ve overestimated the median intelligence of the people who work there. I really thought Markdown couldn’t get more successful but this takes the cake. I love it that my little baby is helping burn these companies’ cash. This is so stupid it hurts to think about.\nMarkdown is something you start with because it’s easy to write and universally readable. You write Markdown and use that to make slides — like, say, with iA Presenter — not the other way around.\n(Via Simon Willison.)\n ★",
+      "id": "3cc580e81dd7c8b8c60869d28401f0522c6c3849b12b0f4c9a1f29efde244782",
+      "ref_id": "0",
+      "recommendationScore": 90,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "揭露了企业在AI落地中面临的真实成本控制挑战，对“Token Ops”概念的引入很及时。",
+      "reason": "文章深入探讨了企业AI代币消耗的实际问题，对关注AI成本管理和实际应用的企业具有高实用性，且符合AI这一最高优先级主题。",
+      "tags": [
+        "AI",
+        "企业AI",
+        "成本管理",
+        "Token Ops",
+        "商业策略"
+      ]
+    },
+    {
+      "title": "Show HN: A Project Oberon System version running on RISC-V instead of RISC-5",
+      "link": "https://github.com/rochus-keller/OberonSystem/tree/op2-rv32",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-09T12:43:16.000Z",
+      "summary": "Article URL: https://github.com/rochus-keller/OberonSystem/tree/op2-rv32\nComments URL: https://news.ycombinator.com/item?id=49230891\nPoints: 53\n# Comments: 15",
+      "id": "c4b2356a11fe096c2c5499a9e8f1a318cd2e95d931e2e6aea55693fd90aebba4",
+      "ref_id": "3",
+      "recommendationScore": 88,
+      "popularityScore": 60,
+      "priority": "high",
+      "comment": "将经典Oberon系统移植到RISC-V的深度技术实现。",
+      "reason": "结合了经典操作系统与现代开源硬件架构，对编程工具和嵌入式开发领域具有高参考价值和技术深度。",
+      "tags": [
+        "RISC-V",
+        "操作系统",
+        "嵌入式",
+        "编程工具",
+        "硬件"
+      ]
+    },
+    {
+      "title": "Every fast write moves work somewhere else",
+      "link": "https://www.shayon.dev/post/2026/220/every-fast-write-moves-work-somewhere-else/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-09T15:36:52.000Z",
+      "summary": "Article URL: https://www.shayon.dev/post/2026/220/every-fast-write-moves-work-somewhere-else/\nComments URL: https://news.ycombinator.com/item?id=49232410\nPoints: 5\n# Comments: 1",
+      "id": "6492cf93fcc76f8613685e83d6896e692479aa36832f96d974a5722ee79ae2fb",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 20,
+      "priority": "high",
+      "comment": "深入探讨了系统设计中数据写入与性能权衡的关键概念。",
+      "reason": "对理解高性能系统的数据一致性与工程权衡至关重要，技术深度与实用性极高，是后端或系统工程师的宝贵资源。",
+      "tags": [
+        "系统设计",
+        "性能优化",
+        "数据存储",
+        "编程技术",
+        "后端开发"
+      ]
+    },
+    {
+      "title": "Show HN: Airy – Free, fast, and simple voice content creation",
+      "link": "https://airy.so",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-09T09:29:32.000Z",
+      "summary": "Article URL: https://airy.so\nComments URL: https://news.ycombinator.com/item?id=49229848\nPoints: 22\n# Comments: 12",
+      "id": "89e5a2c706b2a32bf3b0447839fe0ac49a734e3b5e3480e137ae59100cbe1c56",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 18,
+      "priority": "high",
+      "comment": "展示了一款免费、快速、简单的AI语音内容创作工具，具有高实用性和新颖性，符合AI主题。",
+      "reason": "直接契合AI和独立开发主题，为内容创作者提供即时价值，是值得关注的新工具。",
+      "tags": [
+        "AI",
+        "语音合成",
+        "内容创作",
+        "独立开发",
+        "工具"
+      ]
+    },
+    {
+      "title": "I Wanted to Own the Harness. Then Codex Desktop Won",
+      "link": "https://jorypestorious.com/blog/portable-agent-factory/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-09T14:36:46.000Z",
+      "summary": "Article URL: https://jorypestorious.com/blog/portable-agent-factory/\nComments URL: https://news.ycombinator.com/item?id=49231838\nPoints: 7\n# Comments: 4",
+      "id": "abcf18d8ea7bee32eb73242de20bb6ad332bb2906467e6c92622ce0f2846f25f",
+      "ref_id": "2",
+      "recommendationScore": 80,
+      "popularityScore": 40,
+      "priority": "high",
+      "comment": "一篇关于作者在定制开发工具和AI辅助编程（Codex）方面的个人经验和反思。",
+      "reason": "深度探讨了编程工具、AI应用和独立开发者的实践，对开发者社区具有很高的参考价值，符合高优先主题。",
+      "tags": [
+        "Programming Tools",
+        "AI",
+        "Independent Development",
+        "Developer Experience"
+      ]
+    },
+    {
+      "title": "Mea Culpa – Dark Hours",
+      "link": "https://blog.terrygodier.com/2026/08/09/mea-culpa-dark-hours.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-09T13:20:43.000Z",
+      "summary": "Article URL: https://blog.terrygodier.com/2026/08/09/mea-culpa-dark-hours.html\nComments URL: https://news.ycombinator.com/item?id=49231154\nPoints: 258\n# Comments: 116",
+      "id": "0d16b5c04c4ebc49b09653cfa0cbf1e352bfb4588ba4f4e13f322309af67363c",
+      "ref_id": "2",
+      "recommendationScore": 80,
+      "popularityScore": 95,
+      "priority": "medium",
+      "comment": "一篇引起广泛共鸣的个人反思文章，人气极高。",
+      "reason": "虽非直接技术文，但其关于职业或个人成长的分享在科技社群中具有高传播价值和共鸣。",
+      "tags": [
+        "个人成长",
+        "职业发展",
+        "情感",
+        "反思",
+        "独立开发"
+      ]
+    },
+    {
+      "title": "Auto mode is now the default in Claude Code for Pro, Max, and Team plans",
+      "link": "https://simonwillison.net/2026/Aug/8/auto-mode/#atom-everything",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-08-08T22:36:03.000Z",
+      "summary": "",
+      "id": "6296a492575fb3b0f3dcf4b63043a8f99c8f4ec242733968cc94d1537c328b2a",
+      "ref_id": "0",
+      "recommendationScore": 80,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "Claude Code的默认自动模式更新，显著提升AI编程体验和效率。",
+      "reason": "作为AI开发工具的重要功能改进，对AI编程效率和用户流程有直接积极影响，是AI领域的热点更新。",
+      "tags": [
+        "AI",
+        "开发工具",
+        "Claude",
+        "产品更新"
+      ]
+    },
+    {
+      "title": "Show HN: Vibez – Open-Source Rust Based Digital Audio Workstation (DAW)",
+      "link": "https://alexanderwanyoike.github.io/vibez/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-09T15:31:49.000Z",
+      "summary": "Article URL: https://alexanderwanyoike.github.io/vibez/\nComments URL: https://news.ycombinator.com/item?id=49232369\nPoints: 6\n# Comments: 2",
+      "id": "b4ae327ff4b3bf6150b51a153491b34b817158a0cba4623aacddecbbc2d5f5ae",
+      "ref_id": "2",
+      "recommendationScore": 75,
+      "popularityScore": 25,
+      "priority": "high",
+      "comment": "一个新颖的基于Rust的开源数字音频工作站项目展示。",
+      "reason": "结合了热门编程语言Rust与特定应用领域，对于Rust开发者和音频爱好者有吸引力，展示了Rust在桌面应用开发的潜力。",
+      "tags": [
+        "Rust",
+        "开源项目",
+        "DAW",
+        "编程工具",
+        "音频开发"
+      ]
+    },
+    {
+      "title": "Cool URIs Don't Change (1998)",
+      "link": "https://www.w3.org/Provider/Style/URI",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-09T14:32:53.000Z",
+      "summary": "Article URL: https://www.w3.org/Provider/Style/URI\nComments URL: https://news.ycombinator.com/item?id=49231809\nPoints: 10\n# Comments: 1",
+      "id": "9d7238b4f951f3a4e6a0bd590000480ea77f1fc4cc950d43f649dbe87ee844b5",
+      "ref_id": "3",
+      "recommendationScore": 75,
+      "popularityScore": 30,
+      "priority": "medium",
+      "comment": "一篇来自1998年W3C的经典文章，强调了URI持久性和设计原则的重要性。",
+      "reason": "提供了关于Web基础架构和URI设计的永恒最佳实践，对现代开发者仍具指导意义，属于编程工具范畴。",
+      "tags": [
+        "Web Development",
+        "URI",
+        "Architecture",
+        "Best Practices",
+        "W3C"
+      ]
+    },
+    {
+      "title": "Microsoft Word for Windows 1.1a, Native X64 Port",
+      "link": "https://github.com/jmarshall23/msword",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-09T05:23:41.000Z",
+      "summary": "Article URL: https://github.com/jmarshall23/msword\nComments URL: https://news.ycombinator.com/item?id=49228663\nPoints: 129\n# Comments: 54",
+      "id": "ba8c052a66bf23c457ea24d5cef03e1ed78435fffd97548ee2d319ddfd337050",
+      "ref_id": "3",
+      "recommendationScore": 75,
+      "popularityScore": 94,
+      "priority": "high",
+      "comment": "将经典的Word 1.1a移植到X64架构，展示了极高的技术深度和逆向工程能力，社区关注度高。",
+      "reason": "属于编程工具类深度文章，对系统级编程和历史软件爱好者有极大吸引力，技术挑战性和话题性兼具。",
+      "tags": [
+        "编程工具",
+        "逆向工程",
+        "Windows",
+        "X64",
+        "复古计算"
+      ]
+    },
+    {
+      "title": "Advanced AI sycophancy",
+      "link": "https://seangoedecke.com/advanced-ai-sycophancy/",
+      "source": "seangoedecke.com",
+      "publishedAt": "2026-08-10T00:00:00.000Z",
+      "summary": "",
+      "id": "599944bb604f38e586c74e080c7e954b80f2ac54414f37bd7ea3a0387a09dfd4",
+      "ref_id": "1",
+      "recommendationScore": 75,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "深入剖析AI模型迎合性，揭示AI伦理与对齐挑战。",
+      "reason": "探讨AI模型的潜在缺陷及其对社会的影响，对负责任的AI开发和研究至关重要，是AI领域深层次的思考。",
+      "tags": [
+        "AI",
+        "AI伦理",
+        "模型对齐",
+        "AI安全",
+        "研究"
+      ]
+    },
+    {
+      "title": "Silicon Valley misreads science fiction and undermines democracy",
+      "link": "https://techcrunch.com/2026/08/09/historian-jill-lepore-says-the-tech-industry-is-led-by-bad-readers-who-are-undermining-democracy/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-09T15:18:25.000Z",
+      "summary": "Article URL: https://techcrunch.com/2026/08/09/historian-jill-lepore-says-the-tech-industry-is-led-by-bad-readers-who-are-undermining-democracy/\nComments URL: https://news.ycombinator.com/item?id=49232221\nPoints: 67\n# Comments: 30",
+      "id": "7a85f51126c3c4d74e11f9d9d5eaa4716cb367082f9654759d8ef025ec1585ce",
+      "ref_id": "4",
+      "recommendationScore": 70,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "从独特的视角批判硅谷对科幻的误读及其对民主的影响。",
+      "reason": "提供了对科技行业发展深刻的反思和批判，视角新颖，引发广泛讨论，有助于拓宽对科技社会影响的理解。",
+      "tags": [
+        "科技伦理",
+        "社会影响",
+        "科幻",
+        "民主",
+        "硅谷评论"
+      ]
+    },
+    {
+      "title": "★ Retraction: The App Store Rejection of the Week That Was, in Fact, a Correct Rejection",
+      "link": "https://daringfireball.net/2026/08/retraction_app_store_rejection_of_the_week",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-08-09T03:16:24.000Z",
+      "summary": "Yesterday I published an article titled “App Store Rejection of the Week: Dark Hours”. I have retracted it. Its premise was so fundamentally wrong that there’s no point merely correcting or editing it. Even the title, as I explain below, was inaccurate. Although the original is now retracted, I’m not memory-holing it. The text of the original story is available, for transparency and accountability, in plain text (Markdown, natch) and PDF (preserving original presentation). Both of those versions include a preface at the top linking to this retraction. The URL for the original story now redirects to this one that you are currently reading.\nTo the best of my recollection, this is the first post I’ve retracted in the 24 years I’ve been writing Daring Fireball. I hope it’s the last. I was misled, both overtly and through omissions, in several ways, but what I publish is my responsibility, and I apologize for the error.\nTerry Godier first came to my attention in February, when I linked to his excellent interactive essay on RSS feed reader design, “Phantom Obligation”, which essay introduced Current, Godier’s new RSS reader that he made to exemplify the ideas from his essay. Current is, deservedly, a bit of a breakout hit. (E.g., David Pierce, at The Verge, put it on a very short list of iOS-exclusive indie apps that keep him from switching to Android.) In March I linked to another interactive essay from Godier, “The Last Quiet Thing”, and again in April to a post regarding the App Store’s 5-star review system. I struck up an iMessage correspondence with Godier around when I first linked to his work.\nYesterday Godier posted “Browsers Have Standards, the App Store Has Judgment”. As originally published, that post contained these two paragraphs:\nA while ago I tried to submit an iOS app for Dark Hours, my\nastronomy website for normal people. It was rejected on the\ngrounds that it was astrology.\nIt has no tarot function, no horoscopes, and nothing that I, or\nanyone else I’ve asked, would associate with astrology.\nThose paragraphs, at this writing (August 8, 11:00 pm ET), have been deleted and replaced by this:\nNote: the original version of this post had a section here about an\nastronomy app I am working on that began as an astrology app and\nwas rejected after having the astrology content removed. App store [sic]\nreview reached out to me and let me know that they had apparently\nnever been given the updated build and that the app should be fine\nto submit now.\nYou can now see the problem that has led me to fully retract my original post, given that my post was entirely predicated on the premise that Godier’s original description of the rejected app was true — that the app “has no tarot function, no horoscopes, and nothing that I, or anyone else I’ve asked, would associate with astrology.” The truth is, the app, as originally submitted by Godier to the App Store (under the name “Asterly”, not “Dark Hours”), was entirely dedicated to astrology, not astronomy, and did in fact include a “Tarot card of the day” feature amongst other occultist horseshit.\nThe grounds of Apple’s original App Store rejection of the app, and the rejection’s upholding by the App Review Board, were correct.1 I wrongly took Godier at his word, both in his public blog post and in private iMessage correspondence yesterday, that the rejection wasn’t just merely debatable, but completely and rather preposterously ungrounded. Whether Godier ever submitted a build of “Asterly” to the App Store that contained no occult horseshit and only the hard-science astronomy features that were present in his “Dark Hours” website that was available for the last week, I don’t know. But I have no reason to believe that he did.\nMy disdain for astrology is so utter, and my esteem for Godier’s previous work so high, that it simply never occurred to me that he might have actually made and submitted to the App Store an astrology app, let alone that he’d then feign surprise and frustration that an astrology app was rejected for being an astrology app. I showed him a draft of my post before publication, to make sure I had the story straight, and he offered not a word of caution, only gratitude for my drawing attention to the matter.\nIt gets messier. Godier’s astrology app that he submitted to the App Store back in January was named “Asterly”. That was still the name when the App Review Board upheld its rejection in April. According to Godier, frustrated by the App Store’s rejection, he ported the astronomy version to the web, launching it last week under the name “Dark Hours” at the domain darkhours.io. (This is why it was incorrect for me, in the very title of my post, to claim that Apple had rejected an app named “Dark Hours”. They rejected an app named “Asterly” and had never seen an app from Godier named “Dark Hours”.) Yesterday, after I linked to Godier’s post and Hacker News then linked to my post, Godier’s “Dark Hours” (with a space) came to the attention (and justifiable surprise) of Miguel Beher, creator of an open-source “astrophotography and dark-sky planner” project named DarkHours (no space). Beher’s GitHub project contains the source code, and the actual web app is freely available at the domain darkhours.app. In an uncomfortable exchange between Beher and Godier on Bluesky, Beher pointed out that Godier’s Dark Hours had the same bug as Beher’s that routed people to “random fields in Mexico”. Earlier today, Godier took his web app down and redirected his darkhours.io domain to Beher’s darkhours.app.\nAt the end of my now-retracted post yesterday, assuming I had righteously and rightly skewered Apple for an egregiously erroneous App Store review rejection, I wrote:\nMistakes happen. But in a functioning system mistakes get\ncorrected, and mistakes as obvious as this one get corrected\nalmost instantly and include a quick apology for the conflation.\nObviously it was I who was mistaken. This article is my correction, and I apologize to all who read and believed my now-retracted post, and to the reviewers at the App Store whose competence (if not literacy) I besmirched. Sorry about that. Won’t happen again.\nRegardless of one’s opinion regarding pseudoscience and occultist horseshit — pro, con, or indifferent — one might reasonably think it wrong for Apple to disallow or discourage such apps from the App Store. In fact, there exist plenty of such apps in the App Store, and Apple has even run “Best Astrology Apps” editorial features. Apple’s stance is basically that the App Store has enough of these apps (and I suspect they’re a common source of scams, given that by their very nature they target the gullible). Guideline 4.3(b) states (emphasis added):\nCertain kinds of apps, such as dating, flashlight, sound effects,\nwallpaper, simple timers, and fortune telling, are well established\non the App Store and we will not accept new submissions unless they\noffer a meaningfully different or improved experience. We may\nremove these apps from the App Store going forward if they are not\nupdated, improved, or do not attract customers. Other kinds of\napps, such as drinking games, Kama Sutra, fart, and burp apps, are\nmediocre, low-quality, or low-effort and do not add value to the\nApp Store.\nThat serial comma, ever useful, gives hope to anyone hard at work on a “fart and burp” app. ↩︎",
+      "id": "ca10c0d1e9cfbe9e4ac158134772259c286e1d7c63c5f2b6167e699a029bba41",
+      "ref_id": "3",
+      "recommendationScore": 70,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "关于App Store审核误判的撤回声明，展现新闻诚信并提供审核洞察。",
+      "reason": "对Apple生态开发者了解App Store审核流程的复杂性有警示作用，同时体现了媒体的责任感，具有较高的参考价值。",
+      "tags": [
+        "Apple生态",
+        "App Store",
+        "应用审核",
+        "Daring Fireball",
+        "新闻评论"
+      ]
+    },
+    {
+      "title": "Windows 11's built-in Weather app wastes more than 1 GB of RAM",
+      "link": "https://www.notebookcheck.net/Windows-11-s-built-in-Weather-app-wastes-more-than-1-GB-of-RAM.1364205.0.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-09T15:11:20.000Z",
+      "summary": "Article URL: https://www.notebookcheck.net/Windows-11-s-built-in-Weather-app-wastes-more-than-1-GB-of-RAM.1364205.0.html\nComments URL: https://news.ycombinator.com/item?id=49232138\nPoints: 22\n# Comments: 8",
+      "id": "b0098774b8d87565f9193b563127c229a6245c559118d90ee80c49b9273373f8",
+      "ref_id": "0",
+      "recommendationScore": 65,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "揭示了Windows 11内置天气应用显著的内存占用问题，对用户体验有直接影响。",
+      "reason": "对Windows用户具有直接的实用价值，能帮助用户优化系统资源，但并非核心优先主题。",
+      "tags": [
+        "Windows 11",
+        "Performance",
+        "RAM",
+        "Bug",
+        "Operating System"
+      ]
+    },
+    {
+      "title": "Tech sucks: You have to vote with your wallet, or nothing will change",
+      "link": "https://82mhz.net/posts/2026/08/tech-sucks-you-have-to-vote-with-your-wallet-or-nothing-will-change/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-09T15:55:02.000Z",
+      "summary": "Article URL: https://82mhz.net/posts/2026/08/tech-sucks-you-have-to-vote-with-your-wallet-or-nothing-will-change/\nComments URL: https://news.ycombinator.com/item?id=49232570\nPoints: 54\n# Comments: 37",
+      "id": "cb7fa9b314026c59743a75b8bc4e81e810f5e89f49ce69282eaf1eb4f827e356",
+      "ref_id": "0",
+      "recommendationScore": 60,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "一篇引人深思的科技伦理与消费选择探讨。",
+      "reason": "文章呼吁读者通过消费行为影响科技发展方向，具有一定的社会意义和讨论价值。",
+      "tags": [
+        "科技伦理",
+        "消费者行为",
+        "社会评论",
+        "科技趋势"
+      ]
+    },
+    {
+      "title": "John C. Lilly on solid state intelligence and the elimination of man (1978)",
+      "link": "https://kibotronics.net/unlisted/lilly-machines/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-09T13:47:36.000Z",
+      "summary": "Article URL: https://kibotronics.net/unlisted/lilly-machines/\nComments URL: https://news.ycombinator.com/item?id=49231397\nPoints: 32\n# Comments: 13",
+      "id": "f544207e7c210d5686e01b6d9b248dc5d0de9549c999829479347d9726c9983f",
+      "ref_id": "1",
+      "recommendationScore": 60,
+      "popularityScore": 40,
+      "priority": "medium",
+      "comment": "早期AI哲学思想探讨，提供独特历史视角。",
+      "reason": "对理解AI的起源和发展有启发意义，但技术实用性较低，更多是思想层面的回顾。",
+      "tags": [
+        "AI历史",
+        "哲学",
+        "早期AI",
+        "思想",
+        "回顾"
+      ]
+    },
+    {
+      "title": "Tom Stanton's supersonic trebuchet breaks sound barrier with gravity alone",
+      "link": "https://www.techeblog.com/tom-stanton-supersonic-trebuchet/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-09T15:08:51.000Z",
+      "summary": "Article URL: https://www.techeblog.com/tom-stanton-supersonic-trebuchet/\nComments URL: https://news.ycombinator.com/item?id=49232110\nPoints: 39\n# Comments: 7",
+      "id": "23e0494f1c6b31398423b7a963af29a8e7c70663f5017d4d2603a8fee946fe47",
+      "ref_id": "1",
+      "recommendationScore": 55,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "报道了一个利用重力突破音障的超音速投石机项目，展示了非凡的工程创新。",
+      "reason": "尽管技术奇特且具有高度新颖性，但与本博客的核心AI、编程等主题关联度较低。",
+      "tags": [
+        "Engineering",
+        "Physics",
+        "Innovation",
+        "Trebuchet"
+      ]
+    },
+    {
+      "title": "Show HN: Today's cities on a globe of Earth's tectonic past and future",
+      "link": "https://douwe.com/projects/tectonic_globe",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-09T14:30:05.000Z",
+      "summary": "Article URL: https://douwe.com/projects/tectonic_globe\nComments URL: https://news.ycombinator.com/item?id=49231777\nPoints: 4\n# Comments: 0",
+      "id": "c66d140cd3b4ca604c075902fde9253427a9594623f74ca47d8e5cf03e7f373f",
+      "ref_id": "4",
+      "recommendationScore": 50,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "展示了一个创新的项目，将现代城市叠加在地球构造板块的过去和未来模型上。",
+      "reason": "尽管在数据可视化和创新性方面表现出色，但与博客的核心技术主题相关性较弱，实用性不高。",
+      "tags": [
+        "Data Visualization",
+        "Geology",
+        "Interactive Web",
+        "Show HN"
+      ]
+    },
+    {
+      "title": "Real-time MCP interceptor that blocks .env reads and dangerous commands agents",
+      "link": "https://marketnow.site/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-09T03:13:01.000Z",
+      "summary": "Article URL: https://marketnow.site/\nComments URL: https://news.ycombinator.com/item?id=49228086\nPoints: 12\n# Comments: 2",
+      "id": "9ef0ea0a25a1baedc3356d1172baf6914b696a066fdbe15710214cc79b5876ce",
+      "ref_id": "4",
+      "recommendationScore": 50,
+      "popularityScore": 7,
+      "priority": "medium",
+      "comment": "一个实时拦截`.env`读取和危险命令的安全工具，实用性高但社区关注度低。",
+      "reason": "涉及编程工具和自动化安全，对开发者有潜在价值，但目前缺乏足够的人气和讨论来证明其影响力。",
+      "tags": [
+        "安全",
+        "编程工具",
+        "自动化",
+        "开发工具",
+        "环境变量"
+      ]
+    },
+    {
+      "title": "Taxi drivers rarely die of Alzheimer's",
+      "link": "https://theconversation.com/taxi-drivers-rarely-die-of-alzheimers-how-complex-mental-maps-and-spatial-reasoning-protect-your-brain-286650",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-09T15:21:46.000Z",
+      "summary": "Article URL: https://theconversation.com/taxi-drivers-rarely-die-of-alzheimers-how-complex-mental-maps-and-spatial-reasoning-protect-your-brain-286650\nComments URL: https://news.ycombinator.com/item?id=49232253\nPoints: 19\n# Comments: 9",
+      "id": "147b31002816c2198fcc21cb87bd8360cf1893303d5e85db472139b73421719f",
+      "ref_id": "3",
+      "recommendationScore": 45,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "探讨空间推理与阿尔茨海默症之间关系的科普文章。",
+      "reason": "科学有趣，但与科技博客的侧重主题（AI、编程工具等）关联度较低，不属于核心关注范围。",
+      "tags": [
+        "神经科学",
+        "认知科学",
+        "脑健康",
+        "科普"
+      ]
+    },
+    {
+      "title": "The Alpha 21264 CPU: NT's Greatest RISC (1998)",
+      "link": "https://halfhill.com/byte/1998-12_alpha.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-09T10:06:37.000Z",
+      "summary": "Article URL: https://halfhill.com/byte/1998-12_alpha.html\nComments URL: https://news.ycombinator.com/item?id=49230022\nPoints: 54\n# Comments: 32",
+      "id": "42f517204bdd96fa5f327e8065611380fde0b71a3a3d7764eb9993fdfef96bd5",
+      "ref_id": "0",
+      "recommendationScore": 40,
+      "popularityScore": 45,
+      "priority": "low",
+      "comment": "对1998年Alpha 21264 CPU的深入回顾，技术深度高但主题历史性强，实用性有限。",
+      "reason": "适合对计算机体系结构历史有浓厚兴趣的读者，但对现代主流科技主题的关联度较低。",
+      "tags": [
+        "CPU",
+        "计算机体系结构",
+        "RISC",
+        "硬件历史"
+      ]
+    },
+    {
+      "title": "A partial digestion of the HRT counterexample",
+      "link": "https://terrytao.wordpress.com/2026/08/06/a-partial-digestion-of-the-hrt-counterexample/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-09T14:09:42.000Z",
+      "summary": "Article URL: https://terrytao.wordpress.com/2026/08/06/a-partial-digestion-of-the-hrt-counterexample/\nComments URL: https://news.ycombinator.com/item?id=49231586\nPoints: 4\n# Comments: 0",
+      "id": "b2c4aa18b232f4211ef3dacdf8297d34aa2f99022b0d1a1985bc8de7c8870be1",
+      "ref_id": "0",
+      "recommendationScore": 30,
+      "popularityScore": 5,
+      "priority": "low",
+      "comment": "极其专业的数学理论探讨，适合特定学术研究者。",
+      "reason": "内容过于学术和理论化，对大多数科技博客读者实用性不高，受众面极窄。",
+      "tags": [
+        "数学理论",
+        "学术研究",
+        "高深",
+        "小众"
+      ]
+    },
+    {
+      "title": "Against Doomerism",
+      "link": "https://shkspr.mobi/blog/2026/08/against-doomerism/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-08-09T11:34:12.000Z",
+      "summary": "There's a certain strain of commentator who is just sure that nothing can ever get better.  In amongst all the hullaballoo about the UK potentially banning under 16s from social media, I saw a prominent historian say:  i assume banning kids from social media will be accompanied by a huge investment in teen-friendly communtiy [sic] spaces (like youth clubs) and social activities?  No?  Huh.  But,…",
+      "id": "41c2fd1f0b2eefc91ffb0f00e80f4b04170c15c2b9c5d4f803f68e5967352403",
+      "ref_id": "2",
+      "recommendationScore": 25,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "一篇关于社会悲观主义的评论文章，与科技主题关联度低。",
+      "reason": "文章主要探讨社会思潮和政策，缺乏科技深度和实用性，不符合科技博客的定位，优先级较低。",
+      "tags": [
+        "社会评论",
+        "政策",
+        "哲学",
+        "社会媒体"
+      ]
+    },
+    {
+      "title": "There Are Magic Hexagons of Every Order",
+      "link": "https://gukov.dev/math/2026/08/02/new-magic-hexagons.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-09T07:19:58.000Z",
+      "summary": "Article URL: https://gukov.dev/math/2026/08/02/new-magic-hexagons.html\nComments URL: https://news.ycombinator.com/item?id=49229174\nPoints: 140\n# Comments: 19",
+      "id": "cf6dcd54db25e653e56eca03acf8f6a439283fe80060be99226b6e9e3f21eed8",
+      "ref_id": "2",
+      "recommendationScore": 20,
+      "popularityScore": 81,
+      "priority": "low",
+      "comment": "深入探讨了“魔幻六边形”的数学概念，技术深度和新颖性极高，但与科技博客主题关联度低。",
+      "reason": "虽是优秀的数学研究，但超出AI、编程工具等主要关注领域的范畴，不适合作为科技博客文章推荐。",
+      "tags": [
+        "数学",
+        "数论",
+        "几何"
+      ]
+    },
+    {
+      "title": "I got an email about resistance",
+      "link": "https://seangoedecke.com/i-got-an-email-about-resistance/",
+      "source": "seangoedecke.com",
+      "publishedAt": "2026-08-09T00:00:00.000Z",
+      "summary": "",
+      "id": "30199b8fd661eb0eb1b4e66c0d43a9b6a7f943d5c0692e92d67604a2c859a9ca",
+      "ref_id": "2",
+      "recommendationScore": 15,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "标题极其模糊，无法判断内容与科技主题的关联性及价值。",
+      "reason": "文章主题不明，无法评估其在技术深度、新颖性或实用性方面的表现，与科技博客定位严重不符。",
+      "tags": [
+        "未知",
+        "个人随笔"
+      ]
+    },
+    {
+      "title": "Corrupt Minds Think Alike",
+      "link": "https://www.nytimes.com/2026/08/06/business/fifa-world-cup-privatization.html?unlocked_article_code=1.3VA.4zqH.Pul7X9bQ2kv0&smid=bs-share",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-08-08T20:32:11.000Z",
+      "summary": "Tariq Panja, reporting for The New York Times:\nThe five men should have been in a celebratory mood. FIFA had just\npulled off a World Cup that broke records on a number of fronts.\nIts spectacular culmination, the final, was a day away from\nkickoff.\nBut their mood was anything but jubilant. The men, a group of top\ndirectors known as the FIFA bureau of the management board, had\nbeen summoned to a hastily organized meeting at the Waldorf\nAstoria hotel in Manhattan, according to three people familiar\nwith the discussions speaking on condition of anonymity because\nthe talks were private. The directors had until midnight to sign\noff on a plan that threatened to change soccer forever and would\nalmost certainly lead to a major schism among the sport’s leaders.\nThe project purported to sell a 20 percent stake in FIFA to a\ngroup of investors led by Joshua Kushner, the brother of President\nTrump’s son-in-law Jared Kushner. Such a move would put into\nprivate hands a portion of the World Cup, an event that has been\nrun and controlled by FIFA, a nonprofit in Zurich, for 96 years.\nI don’t know what’s dumber — this stupid corrupt scheme to privatize the World Cup, or me, for not assuming from the start that the Trump family was involved in it somehow.\n ★",
+      "id": "453cb872beeebb08bd420c3d6d4e53fa44bc7df9a306c7aa2e4c169f4675610b",
+      "ref_id": "4",
+      "recommendationScore": 10,
+      "popularityScore": 25,
+      "priority": "low",
+      "comment": "与科技主题完全无关，是一篇关于国际体育商业与腐败的深度报道。",
+      "reason": "文章内容属于体育新闻和调查报道范畴，与本科技博客关注的AI、Apple生态等主题毫无关联，不适合收录。",
+      "tags": [
+        "非科技",
+        "体育新闻",
+        "政治经济"
+      ]
+    },
+    {
+      "title": "Edinburgh Fringe: 4 Aussies For Aussies - The Raging Bull ★★⯪☆☆",
+      "link": "https://shkspr.mobi/blog/2026/08/edinburgh-fringe-4-aussies-for-aussies-the-raging-bull/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-08-09T16:00:04.000Z",
+      "summary": "Our first show at the Fringe! Caught by a rainstorm (in Scotland?!?!?) the app said this was the nearest comedy show to our sodden carcasses and it was free!  This is bang-average stand-up.  That isn't to disparage it at all. Four Australian blokes each doing 15 minutes of material - nothing particularly avant-garde or challenging. Just some decently funny (albeit well worn) observations about…",
+      "id": "3492fe9bbe48996edf4f40b1f8371485f12e32e8d70070560a22ffc16ff72ecf",
+      "ref_id": "1",
+      "recommendationScore": 10,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "一篇爱丁堡艺穗节的喜剧表演评论，与科技主题无关。",
+      "reason": "内容与科技博客的关注主题完全不符，不具备技术深度或实用性，不适合科技博客发布。",
+      "tags": [
+        "娱乐",
+        "文化",
+        "喜剧",
+        "评论"
+      ]
+    }
+  ]
+}
