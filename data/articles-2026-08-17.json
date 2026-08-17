@@ -1,0 +1,729 @@
+{
+  "dailySummary": "今日科技聚焦：Anthropic和Google推行AI文本水印，引发关于AI生成内容质量及用户控制权的争议。Voice AI领域，Speko推出优化STT/LLM/TTS模型组合的路由器。同时，",
+  "articles": [
+    {
+      "title": "Launch HN: Speko (YC S26) – OpenRouter for Voice AI",
+      "link": "https://news.ycombinator.com/item?id=49332751",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-17T15:36:18.000Z",
+      "summary": "Hi HN! I'm Bek, founder of Speko, a platform that finds an optimal combination of speech-to-text, LLM, and text-to-speech models, given your constraints, among all our public benchmarked options, and tells you why.\nDemo: https://youtu.be/no2LY2gRh-c\nLink: https://speko.ai/?utm_source=hn\nTypical production voice agent is an ensemble of three models: STT, an LLM, and TTS.\nEach of those layers offers a dozen credible vendors, and each month there are new models on the market. Almost everyone evaluates once, picks a stack of their choice, and never rechecks because switching from a vendor to another involves yet another integration and arguments about the numbers.\nThe result is that you use voice agents running last quarter's models while better and cheaper options are available.\nBefore founding Speko, I spent four years as cofounder and CTO building voice agents for enterprises across Asia in 10+ languages. Each time a new speech model would arrive, we repeated the same ritual: hire native-speaking raters, benchmark it against our existing stack, and update production if it improved. Speko turns this process into an API. A team running thousands of calls a day told us: \"we can literally go to this dashboard, switch the model, and it will do it for us.\"\nHow it works: you send a request with your optimization criteria (accuracy, latency, cost or balanced), language and region. The router filters to models which we measured for the given combination of constraints, benchmarks them, selects the winner, and returns a response with headers containing provider, model names, and the scores. The gateway prefetches signed session plans, so a new session dials the provider straight from memory; no control-plane round trip while a caller waits.\nFailover happens only during connection setup stage: if the provider refuses the connection attempt, we start connecting to the runners-up.\nSome of the customer stories: one founder came to us not knowing what to pick at all: he gave us his use case and now routes everything through the platform. A property management AI runs LiveKit in Python and had not updated STT or TTS since launch: they did not know their STT had high error rates on their calls, better options existed, and swapping always looked like an R&D project. One team did not know which models to pick for Spanish. A medical team did not know which STT handles medical vocabulary best. In every case we helped find the right stack from the benchmarks, and now they route through us.\nThe measuring part is public: we pass the same inputs to every model in one region in different dated runs and we publish the boards, including those where our selections perform worse than alternatives. A launch demo answers which 30-second clip sounds better; production asks which model survives minute eight, so we test spontaneous speech, money and dates, ten-minute takes, and the rankings change. We trained an automatic scorer for TTS naturalness on our blind head-to-head listening votes; on providers it has never seen a vote for, it picks the same winner our raters do about as often as raters agree with each other.\nWe don't train or sell models ourselves, that's precisely how we keep our rankings impartial.\nWe also open sourced the gateway for teams who want to avoid an extra network hop on the audio path and don't want to share keys with our cloud (https://github.com/SpekoAI/gateway, MIT): one Go binary, which is running as a sidecar in your agent's container, speaks one local protocol over Unix socket, pins provider hosts and attaches your keys. In BYOK mode it doesn't communicate with us at all.\nNotice that the anonymous, content-free telemetry is enabled by default, and one env var disables it.\nCost: the gateway and BYOK setup will be free forever, we charge for the hosted router and managed keys with consolidated billing. Since we started the batch in late June, external usage has grown about 25 percent per week on average, front-loaded toward the launch weeks.\nI would love feedback from the community: how do you pick speech models now, and what makes you trust the third-party benchmark?\nComments URL: https://news.ycombinator.com/item?id=49332751\nPoints: 13\n# Comments: 3",
+      "id": "3d4e4fd79cddb69878f413c135cbd7439d919d812510bd6e1f4e4289f75d4075",
+      "ref_id": "1",
+      "recommendationScore": 95,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "创新的语音AI模型优化平台，解决了开发者在多模型集成与选择中的痛点。",
+      "reason": "高度符合AI主题优先级，提供了极具实用性和新颖性的解决方案，对AI开发者有巨大价值。",
+      "tags": [
+        "AI",
+        "语音AI",
+        "模型优化",
+        "独立开发",
+        "编程工具",
+        "Launch HN"
+      ]
+    },
+    {
+      "title": "AI-Generated GitHub Copilot \"Autofix\" Allowed Compromise of Snowflake's Jira",
+      "link": "https://www.wiz.io/blog/red-agent-snowflake-copilot-cicd-bug",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-17T14:18:38.000Z",
+      "summary": "Article URL: https://www.wiz.io/blog/red-agent-snowflake-copilot-cicd-bug\nComments URL: https://news.ycombinator.com/item?id=49331423\nPoints: 84\n# Comments: 35",
+      "id": "76963b852e28c23f9b1be3422b8479721b08b01ceba4d5d7b05c2ce8fe7e09c4",
+      "ref_id": "1",
+      "recommendationScore": 95,
+      "popularityScore": 53,
+      "priority": "high",
+      "comment": "揭示了AI代码助手GitHub Copilot在安全方面可能引发的严重漏洞，导致企业系统被入侵。",
+      "reason": "深入分析AI辅助编程的实际安全风险，对开发者和企业极具警示和实用价值，主题优先级高。",
+      "tags": [
+        "AI",
+        "安全",
+        "GitHub Copilot",
+        "编程工具",
+        "漏洞",
+        "CI/CD"
+      ]
+    },
+    {
+      "title": "We Tracked a Shipment of Rare Books. It Ended at an Amazon AI Training Facility",
+      "link": "https://simonwillison.net/2026/Aug/17/we-tracked-a-shipment-of-rare-books-it-ended-at-an-amazon-ai-tra/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-08-17T15:21:29.000Z",
+      "summary": "",
+      "id": "8282daa933f2b91948bf36d7d0afd8f72ef3ac2a6270fb8b77c8c61729f432bd",
+      "ref_id": "3",
+      "recommendationScore": 95,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "极具话题性的调查报道，揭示AI训练数据来源的幕后故事，深度与新颖性俱佳。",
+      "reason": "以独特的调查视角追踪稀有书籍流向亚马逊AI训练设施，深度探讨AI数据伦理与行业实践，完美契合AI主题且引人入胜。",
+      "tags": [
+        "AI",
+        "数据伦理",
+        "亚马逊",
+        "AI训练",
+        "调查报道"
+      ]
+    },
+    {
+      "title": "★ Anthropic’s ‘Watermark’ Text Adulteration in Claude Is a Perversion of Writing",
+      "link": "https://daringfireball.net/2026/08/anthropics_watermark_text_adulteration_in_claude_is_a_perversion_of_writing",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-08-16T19:26:33.000Z",
+      "summary": "When I wrote this week about Anthropic’s announcement that all Claude models, worldwide, would soon begin “watermarking” everything they generate, including text, to comply with this EU regulation, we were left to speculate how this was going to work, because Anthropic offered not even a vague description of how it would work — despite the fact that the title of the announcement was, absurdly and insultingly, “How Claude Marks AI-Generated Content”.\nMy initial speculation was that maybe they’d hide invisible non-printing Unicode characters in the text. Just spitballing. Turns out that’s not what they’re going to do. What they’re going to do is apply a form of steganography, where the choice of words (or other token output) at inference time will leave fingerprints that can later, maybe, be detected probabilistically.\nI initially guessed “invisible characters” not because I didn’t think of the semantic word-choice technique, but because I was a fool who took Anthropic at its word in their description of what they would do. Their original support document claims:\nWhen a supported Claude model generates text, it weaves an\nimperceptible watermark directly into the text itself. You won’t\nsee it, and it doesn’t change the meaning, quality, or readability\nof Claude’s response.\nThey say “imperceptible” and “doesn’t change the meaning, quality, or readability”. Their words. Not almost imperceptible. Not slightly changes the meaning, quality, or readability. That made sense to me, because that’s absolutely what I want — nay, demand — from any tools I use personally. It’s unacceptable for a tool to sacrifice an iota of clarity, coherence, meaning, quality, etc. for the purpose of embedding hidden clues within the text to suggest its provenance. That’s what I would and will demand. And Anthropic’s (original) support document unambiguously claims that’s what their system will enable. So if that were true, I couldn’t see what was left other than hiding invisible characters within the text.\nMy error was believing Anthropic that their system wouldn’t adulterate and corrupt the semantics of the text their models generate. That is in fact exactly what they plan to do. I should have my head examined for believing a single word of a document titled “How Claude Marks AI-Generated Content” that doesn’t explain, at all, how Claude marks (or will mark) AI-generated content.\nHow It’s Actually Going to Work\nYesterday, on an entirely different website than the original “How Claude marks AI-generated content” article (the one that didn’t explain anything at all about how it works), Anthropic published “How Claude’s Text Watermark Works”, which does actually explain in layman-accessible terms how it’s going to work. I will return to Anthropic’s new highly euphemistic and slightly misleading description below.\nThere’s a bunch of research on this topic, some of which I have also linked to below. But the very best description of the general idea behind the technique is an interactive essay by James Padolsey, “How AI Text Watermarking Works”. It’s a wonderfully cogent read, and the interactive elements splendidly illustrate the main concepts. A+ work. If you have any interest in this at all, I dare say you must read — and play with — Padolsey’s piece.\nBut here’s my stab at a layman’s high-level summary. If you toss a coin N times and note the results, you can determine with a degree of certainty whether the coin is fair or biased. LLMs are, in their popular incarnations, non-deterministic. Ask the same question of the same model and you often get at least slightly different answers. Maybe the same meaning, but different phrasing. At each decision point for generating the next token, the model makes a choice. With these semantic watermarking techniques, they make different choices for some tokens based on word lists that could be called “green” and “red”. At each decision point, they’re a little more likely to pick a word from the green list than the red list. That doesn’t mean they never choose words from the red list. Just that they’re less likely to than they would if the adulterated marking technique weren’t in place. (Same way that a crooked 51-49 coin will still land “wrong” side up 49 times out of 100 on average.)\nWords or word phrases are sorted into the green and red lists deterministically on the fly, at each “next token” generation point. So sometimes a specific word will be on the green list, and other times it will be on the red list. Someone with the secret key can determine which list a word will be on at each token generation point (which is how the watermarking is detected); those without the secret key cannot. This means there will never be a list of words that Claude prefers or eschews.\nWith coin flipping, the higher N is — the more times you flip — the more confident you can be that the coin is fair or biased. So too with this semantic watermarking. The more words in the text, the more accurate the analysis will be that the text was generated by a specific AI model or not. With too few coin flips, you can’t achieve any confidence at all regarding a coin’s fairness. With too few words (or tokens), there’s no way to achieve any confidence whether a string of text was AI-generated or not.\nGiven a string of text to examine for signs of a specific watermarking system, if there are more words tagged as green and fewer tagged as red than would otherwise be expected, the text can be flagged — with some degree of confidence — as having been generated, or merely modified, by the AI system that applies the specific secret-key watermarking system. The amount of confidence in the determination will obviously vary, significantly, based on the size of the text string and randomized weights given to words on the green and red lists. But only Anthropic will be able to determine if text was seemingly generated by Claude, and Anthropic will only be able to detect the watermarks that are applied by Claude. Claude can’t detect the hidden watermark signals generated by, say, Gemini, and Gemini can’t detect the hidden watermark signals created by Claude, because each implementation is predicated on secret keys held only by the LLM provider.\nObjections to the Technical Premise\nOne of my fundamental problems with this is that no two synonyms carry the exact same meaning. “He leaped at the chance” and “He jumped at the opportunity” are very similar sentences expressing the same general sentiment, but they are not the same. The exact words we choose when writing matter. I want any LLM I use to choose the very best, most precise words at every single decision point. An obvious constraint that I accept is time and computation. Within the constraint of executing inference quickly, and at a certain cost per token, I want the best words. This constraint matches human writing. I could surely write a better column by taking longer to write it. I write with a sense of how much care I should put into every word and punctuation choice I make. I take more time with certain paragraphs, sentences, or even individual word choices when my gut feeling says I should.\nIn other words, these are necessary trade-offs. These factors are all in my interest: speed, cost, quality. Ideally I would like perfect writing, at instantaneous generation speed, at zero cost. None of those things are possible. Computation is not free of charge (and cloud-based LLM inference with leading models is actually expensive). Inference is not instantaneous. And great writing, whether natural or artificial, can only approach perfection.\nThe idea that anything other than my needs should factor into the generation of text for me is patently offensive.\nThis isn’t just about text one might generate with the intention of passing it off as their own natural work. This isn’t even about LLM proofreading of work written by hand. Anthropic is saying that all new Claude models are going to adulterate every single bit of text longer than 200 tokens (~150 words) they generate, including everything it presents to its users to read. So even in a private conversation between a user and Claude, which will never be read by anyone other than the user, Claude will begin making word choices in the name of marking its output in statistically predictable ways rather than maximizing clarity and precision.\nEven today’s so-called frontier models are already decidedly lacking in lucidity. Claude, ChatGPT, Grok, et al. are “better writers” than most humans and produce better prose than the median human. But: no shit. Most people are terrible writers. The “average person” is pretty stupid and half of all people are stupider than that. And there are many smart, interesting people who are miserable writers. So as impressive as LLMs are, the bar is low. The best writing I see come out of these models is worse than anything I would choose to read for pleasure. And now Anthropic is saying they’re going to make it worse, on purpose, for purposes that do not benefit me in any way? Even if only slightly worse?\nGet fucked.\nObjections to the EU Regulation\nSpeaking of objections, the relevant EU regulation motivating all of this, “Code of Practice on Transparency of AI-Generated Content”, is red-tape nanny-state pipe-dream nonsense. Here’s Ben Thompson’s summary from a paywalled Stratechery update this week:\nThe regulation applies to text longer than 200 tokens.\nThe provider must mandate in their terms-of-service that users\nnot remove the watermarking.\nThe solution should be robust in terms of evading “typical\nprocessing solutions” like screen shots, scanning and OCR,\ncopy-and-pasting, translations, etc.\nTaken literally, compliant LLM terms of service must forbid users from rephrasing the output from models that comply with this regulation, because the word choices are the marks. But it’s not the European Union that is trying to impose their absurd, impractical, witch-hunt-fueling regulation on the entire world. That falls on Anthropic.\nComplying with this, particularly with regard to text, is only going to create problems for honest users. Dishonest users attempting to pass off AI-generated text as their own writing (students, employees, whoever) will simply circumvent detection through non-compliant AI paraphrasing tools.\nJames Padolsey — whose interactive visual explanation of how these schemes work I linked to above — explains this in a post titled “Anthropic’s Weak Watermarks Appease a Weak Law” (which, if it rings a bell, I linked to in a standalone post earlier today):\nThe same thought that led to this law could have applied to\ncalculators at the time of their inception, had their outputs\nrevealed themselves through artefacts. Thankfully, a sum borne of\nthe brain is treated no differently from one produced by a\ncalculator. Likewise with spellcheckers. To make assistance\nsuspect only once the tool becomes capable enough to compose a\nwhole sentence is not a principled boundary. It is a moral premium\nplaced on difficulty itself.\nAnthropic has nevertheless chosen a blanket, model-level\nimplementation that appears broader than the law’s minimum\nrequirement. That may be convenient compliance engineering, but it\ndiscards distinctions the law expressly attempted to preserve. The\nresult is a signal broad enough to implicate harmless and\nassistive use, yet fragile enough to be removed by a motivated\nperson through substantial recomposition. It risks concentrating\nsuspicion on ordinary and assistive users while remaining weakest\nagainst deliberate deception.\nPadolsey is the creator of Declaude, a delightfully simple web app that allows you to “Paste in AI-flavored text and get the same content back as plain prose”. Declaude’s original purpose is cleaning the saccharine Claude personality stink from text (whether it was created by Claude or any other LLM), but, if Anthropic persists in its stated plan to begin adulterating all text Claude generates, Declaude will also serve as a copy-paste single-extra-step way to eliminates those marks. Declaude is interesting and useful already, but it exemplifies how ill-considered and futile this EU regulation is when it comes to prose.\nGoogle SynthID\nGoogle has a watermarking system in place that they call SynthID, which they apply to AI-generated images, video, audio, and text. I’m concerned in this article only with text. With multimedia, embedded watermarks can be metadata within files, and truly not affect the experiential quality of the work when viewed or listened to. With text, we are talking about the actual words that are chosen. From the “AI-generated text” section of Google DeepMind’s own description of SynthID:\nWe’ve expanded SynthID to watermarking and identifying text\ngenerated by the Gemini app and web experience. Large language\nmodels generate text one word (token) at a time. Each word is\nassigned a probability score, based on how likely it is to be\ngenerated next. So for a sentence like “My favorite tropical\nfruits are mango and…”, the word “bananas” would have a higher\nprobability score than the word “airplanes”. SynthID adjusts these\nprobability scores to generate a watermark. It’s not noticeable to\nthe human eye, and doesn’t affect the quality of the output.\nIn a group chat, a friend of mine quoted the above, and I responded that if a chatbot wrote “My favorite tropical fruits are mango and airplanes”, I’m pretty sure I’d fucking notice. Another friend then responded with this:\n\n\nDays later, that still cracks me up.\nBut Google’s absurd description puts the lie to their own claim that it isn’t noticeable, and it serves to show just how little regard the people behind these generated-text fingerprinting schemes have for the actual craft of writing. Of course bananas has a higher probability score than airplanes, because airplanes aren’t fruit. But what about pineapple? Should the sentence complete to “mango and bananas” or “mango and pineapple”? That’s a good question, and the only acceptable answer for why an LLM should choose bananas instead of pineapple (or coconut, or guava, or papaya...) is that it has determined that it’s the best fit for the intended meaning, tone, and sentiment of the text. Not because bananas is on the watermarking “green” list and pineapple is on the “red” list, even though pineapple might be the better fit. Google’s own supposedly jocular description of how SynthID works in fact captures how the scheme perverts the text it generates.\nThey’re saying you won’t notice because if it only chooses bananas over pineapple for these fingerprinting purposes, well, they’re both tropical fruits and who cares. But it’s utter nonsense that the difference is “not noticeable to the human eye”. The semantic difference between banana and pineapple is just as noticeable to the human eye as the taste of the two are to the human tongue.\nIf it did produce “My favorite tropical fruits are mango and airplanes”, it’d be incredibly stupid, but it wouldn’t be offensive because we’d all recognize that something completely off-key happened. What’s offensive is that with a system like SynthId in place, where the fingerprinting decisions are motivated by a secret key, we have no idea whether it completed to “mango and bananas” because bananas was determined to be the best next token, or because bananas is in the “green” bucket of words. It calls every single word choice into question.\nHere’s a paper published in Nature where Google’s team behind SynthID published their work, after putting it into production with Gemini (née Bard):\nWe analysed approximately 20 million watermarked and unwatermarked\nresponses and computed the thumbs-up and thumbs-down rates (both\nas a fraction of the total number of thumbs-up and thumbs-down\nfeedback received). We found that the thumbs-up rate for the two\nmodels differed by 0.01% (with the watermarked model being\nhigher); and the thumbs-down rate differed by 0.02% (with the\nwatermarked model being lower). We found both of these differences\nto be statistically insignificant, and well within the 95%\nconfidence intervals.\nFrom this experiment, we conclude that over a wide variety of real\nchatbot interactions, the difference in response quality and\nutility, as judged by humans, is negligible. Subsequently,\nnon-distortionary SynthID-Text has been productionized and is\ncurrently watermarking responses in Gemini and Gemini Advanced. To\nthe best of our knowledge, this evaluation represents the first\nsystematic watermarking investigation of its kind within a\nlarge-scale production system.\nTo this I say:\nGemini/Bard’s thumbs-up/thumbs-down buttons are not a good experiment for evaluating the effect on quality. If a chatbot tells me “My favorite tropical fruits are mango and bananas” instead of “mango and pineapple”, I’m not going to give the response a thumbs down because of the fruit it chose. I’d give it a thumbs down if it said “airplanes”, yes, but that’s a strawman. (The paper in Nature even uses “My favourite tropical fruit is ...” as an illustration, but in the paper, the only four next tokens considered are, in order of probability distribution, mango, lychee, papaya, and durian. No airplanes. And, conveniently, in the paper’s example, the “winner” of the watermarking “tournament” just happens to be mango, the one that would have been selected as the best if the watermarking weren’t in place.)\n\n\nA “difference in response quality and utility, as judged by humans” that is “negligible” does not mean imperceptible. What they really mean is that it’s only slightly worse and that everyone is either too stupid to notice or too indifferent to care.\n\n\nIt’s widely considered that Gemini is behind ChatGPT and Claude in quality. Perhaps the fact that they’ve put SynthID-text into production is one of many reasons why. I personally agree that Gemini’s prose is inferior. Maybe the use of SynthID has nothing to do with the fact that I, along with the general public consensus, consider Gemini to be a second-rate chatbot — but in that case, maybe it’s the fact that Gemini is a second-rate chatbot that makes the difference “negligible” when Google started mixing in SynthID-motivated tokens in its results. It’s a lot more likely that your restaurant customers won’t notice that you replaced your regular coffee with Folgers Crystals if your regular coffee is second-rate to start with.\n\n\n\nAnthropic\nNow, finally, back to Anthropic’s new “How Claude’s Text Watermark Works”, published yesterday. I have some comments.\nTo summarize:\nWe use a method of watermarking that does not have any practical\nimpact on the quality or content of Claude’s outputs;\n\n\nThe difference between watermarked and un-watermarked text will\nnot be distinguishable to readers;\n\n\n\n\nTranslation: Specific words do not matter and we don’t think anyone reads anything closely.\nNothing is added to the text and there are no hidden characters;\nThis would have been worth clarifying at the outset.\nWatermarking won’t be specific to Claude. As of August 2, the EU\nrequires AI providers serving its market to mark AI-generated\ncontent. Other major model developers have signed the same Code of\nPractice and will be implementing their own watermarks.\nNo other AI provider has stated that they will apply such marking, adulterating all generated text, outside the EU.\nTake the sentence “The weather today was cold and…”. The next word\nis very unlikely to be “sugary.” But it is quite likely to be\n“overcast” or “grey.” Under most circumstances, it doesn’t matter\nmuch to the reader which of these latter two words the model\nultimately chooses — the meaning of the sentence is largely the\nsame either way. In cases like this, the choice is settled by a\nrandom number.\nArguing that grey vs. overcast “doesn’t matter much to the reader” is the crux of my argument that this entire endeavor is a perverse adulteration of what it means to write — or to read. That it’s subtle in some ways makes it more perverse, because it’s sneaky.\nIn internal testing, we’ve seen no impact of watermarking on the\ncontent, level of creativity, or readability of Claude’s text. In\nthe SynthID-Text paper, which introduced the technique we\nuse, Google DeepMind tested this impact by serving a model that\nused watermarking to a portion of their Gemini traffic and\ncomparing thumbs-up and thumbs-down ratings. They found no\nstatistically significant differences from the unwatermarked\nmodel. And in a controlled study, human raters comparing\nwatermarked and unwatermarked answers side-by-side saw no\ndifference in quality.\nSee above for my argument that this thumbs-up/thumbs-down data is absolutely worthless in evaluating whether the SynthID-style word-bias watermarking makes text worse. By definition it must make text worse, unless the underlying LLM model’s scoring is wrong, because the nature of the watermarking algorithm requires it to sometimes increase the probability of selecting a worse word choice and decrease the probability of selecting the model’s best choice. It’s only a question of how much worse. What Google’s thumb-counting data shows is only that it isn’t so much worse as to make Gemini users click the thumbs-down button.\nWatermarking doesn’t change the meaning or experience for the\nperson reading it, but if you wanted to check after the fact\nwhether the text was likely generated by Claude, the watermark\nallows you to do so.\nNo, it does not. Because the entire scheme is tied to secret keys held only by the AI provider, it only allows Anthropic, not “you”, to check anything.\nWhen Claude proofreads text written by a person, what it gives\nback has generally only been lightly edited; because nearly all\nthe words are the person’s, there’s very little (if anything) for\nthe watermark to attach to. Depending on the length of the text\nand how heavily Claude has edited it, those changes might not be\nenough to make Claude’s involvement detectable. The more Claude\nwrites, the more decisions it has to make, and the more space\nthere is for a watermark.\nTranslation: No one can ever again use Claude for proofreading their own prose unless they’re willing to risk that the whole thing might be flagged as having been generated by Claude.\nFor example, once the model has written “2 + 2 =”, there is a very\nclear best choice for the next token (if the model is completing\nthe sum, there isn’t an answer that’s equally as good as “4”; if\nit’s talking about George Orwell’s Nineteen Eighty-Four, there\nisn’t an answer that’s equally as good as “5”). The “nudge” of the\nwatermark wouldn’t be applied here. For the same reason, code — which in very many cases has to be exact — has generally less\nwatermarking than some other forms of text.\nHaving said that, in areas where there is an arbitrary choice\nbetween particular words or terms within the code, the watermark\ncan be used, such as comments within code. But by definition, it\nwill have a negligible effect on the actual code produced.\nTranslation: We value precision in programming code; we do not in prose.\nAnd it is exceedingly rich to cite George Orwell’s Nineteen Eighty-Four, approvingly, in the context of justifying a text adulteration scheme premised on the notion that specific words do not matter. I mean what the actual fuck? Orwell!\nLastly, as to why they’re doing this:\nWe’re implementing watermarking to comply with the EU AI Act.\nAnthropic, along with several other major AI model providers and\naround 190 total signatories, signed the EU Code of\nPractice on Transparency of AI-Generated Content in July 2026.\nThis requires AI system providers to use methods of “marking”\nAI-generated text. We’re applying watermarking globally at launch\nbecause we don’t yet have a durable way to scope it by region.\nThis, from a company that the Financial Times just reported is weeks away from an IPO with an intended valuation of $2 trillion, which would make it one of the 10 highest-valued companies in the world — as of today, placing it at #7, between TSMC ($2.2T) and Broadcom ($1.9T).\nThis leaves us to believe that one of the following must be true:\nIt’s perfectly reasonable that a technology company valued on par with Amazon and TSMC is technically incapable of complying with an EU regional law only within the EU itself.1 Not a cause for concern at all.\n\n\nAnthropic is in over their heads, wields shockingly little control over their own tech stack, and their imminent IPO is likely to be remembered only as a new high-water mark in the manic global AI bubble.\n\n\n\nAlso, what happens if another major global market makes it unlawful for AI to secretly watermark generated text?\nOpenAI\nFrom an OpenAI support document titled “Provenance Signals (Content Credentials, SynthID) in OpenAI-Generated Content”:\nConsistent with our commitments under the European\nCommission’s Code of Practice on Transparency of AI-generated\ncontent, our goal is to expand provenance signals to all\nmodalities including text, so customers and developers have\nclear ways to meet their own transparency obligations as\nstandards and tooling continue to mature.\nThere’s a lot of wiggle room in this brief statement, and it could just as well mean that OpenAI models will only adulterate text with fingerprint markers when users or developers ask for it. Or that it will only be mandatory for users in the EU. If I were at OpenAI I’d go hard on this and publicly say that ChatGPT will never watermark text it generates unless you ask it to, and that if you want tools that secretly work behind your back without telling you how they work to flag your words in ways you can’t see, go ahead and use Claude.\nFurther Reading\nThree papers on ArXiv:\n“A Watermark for Large Language Models”, last revised May 2024.\n“Watermarks in the Sand: Impossibility of Strong Watermarking for Generative Models”, last revised May 2025.\n“Robust Text Watermarking for Large Language Models via Dual Semantic Embeddings”, last revised June 2026.\nI will admit that while I’m profoundly offended by the idea of personally using tools that attempt to leave such watermarks in text they produce or touch, the mathematics behind it are fascinating.\nMichael Lopp, at Rands in Repose, “RIP Claude”:\nAs a human who has had to wrangle with EU regulations in the past,\nI am abundantly clear what’s involved in the laborious\nbureaucratic process. I can guess what threats Anthropic is\nfacing. However, this is a tone-deaf, clumsy, and alarming opening\nsalvo in their watermark strategy. [...]\nMy writing is my work, and Anthropic’s current strategy is\naggressively writer-hostile.\nJeff Gamet, “Anthropic’s Claude Watermark Is Akin to an AI Poison Pill”:\nTo be clear, the watermarking is embedded in pretty much any text\nClaude touches. Along with text Claude generates, it also applies\nto text it processes, such as proofreading and summarizing. I\nexpect we’ll see too many inaccurate accusations of using Claude\nto write documents where the content was human-written, but\nAI-proofread.\nThe watermarking sticks with documents through copy-and-paste,\ntoo. Imagine copying text from a blog post or email only to have\nwhat you wrote tagged as potentially AI-generated. In fact, that\ncould very well happen with this post. I personally write all of\nmy content without AI tools, but I copied the quote at the top of\nthis piece directly from Anthropic’s website. Does that mean what\nI wrote here will show as AI-generated? If they used their own\nmodels to generate or edit what I quoted, then the answer is very\nlikely “yes.”\nOne of the papers published at ArXiv I cited above claims that such watermarking even persists when an article of text originally generated in English is translated into German.\nSecrets are the poison here. When only Anthropic holds the secret keys that both produce the watermarking and perform the probabilistic detection of those marks, we’re all left to wonder. To wonder if what we’re reading is secretly watermarked, what we’re quoting is secretly watermarked, and whether what we ourselves are writing will be unjustly accused of being AI-generated based on secrets we don’t know and can’t see. Poisonous is exactly the right word.\nOr should I say toxic? Or airplanes?\nThis is the side that noted savant Jim Cramer is on. ↩︎",
+      "id": "1b4b1216de83a61f7b22a1344b63d608351942e7d3126e12f94d7918bd923c26",
+      "ref_id": "2",
+      "recommendationScore": 92,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "深度批判Anthropic的Claude文本水印技术，剖析了其潜在的隐写术实现方式及其对“写作”本质的扭曲。",
+      "reason": "紧扣AI前沿热点，对AI内容生成伦理和技术实现细节进行了深入探讨，具有极高的技术深度、新颖性与实用性，引发行业深思。",
+      "tags": [
+        "AI",
+        "Anthropic",
+        "Claude",
+        "Watermarking",
+        "Ethics",
+        "Steganography",
+        "Content Generation"
+      ]
+    },
+    {
+      "title": "Qwen3.8-27B at 256K on a 24GB RTX PRO 4000 SFF (432 GB/s): 50 tok/s with MTP",
+      "link": "https://piszczek.pl/blog/qwen38-27b-256k-50-tps-24gb-gpu",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-17T14:29:18.000Z",
+      "summary": "Article URL: https://piszczek.pl/blog/qwen38-27b-256k-50-tps-24gb-gpu\nComments URL: https://news.ycombinator.com/item?id=49331607\nPoints: 27\n# Comments: 16",
+      "id": "eddd8be8521176b68d56e87b56c74c58d7b8235b15bc0b908abca3558c838fde",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 40,
+      "priority": "high",
+      "comment": "深入探讨了大型语言模型在消费级硬件上运行的性能优化，技术细节丰富。",
+      "reason": "紧扣AI主题，技术深度极高，为在有限硬件资源下部署LLM的开发者提供了宝贵的实践经验和性能指标。",
+      "tags": [
+        "AI",
+        "LLM",
+        "硬件",
+        "性能优化",
+        "大模型",
+        "技术深度"
+      ]
+    },
+    {
+      "title": "Apple's App Tracking Transparency treated its own apps better than rivals",
+      "link": "https://www.bundeskartellamt.de/SharedDocs/Meldung/EN/Pressemitteilungen/2026/08_17_2026_Apple_ATTF.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-17T14:07:59.000Z",
+      "summary": "Article URL: https://www.bundeskartellamt.de/SharedDocs/Meldung/EN/Pressemitteilungen/2026/08_17_2026_Apple_ATTF.html\nComments URL: https://news.ycombinator.com/item?id=49331222\nPoints: 157\n# Comments: 53",
+      "id": "542a76a9c63e47f353c2d7bb1faa30b2b0beb6e23affa96c8af2958bf50acc04",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 100,
+      "priority": "high",
+      "comment": "德国反垄断机构指出Apple的ATT政策可能存在偏袒自身应用的行为。",
+      "reason": "揭露Apple在隐私政策上的潜在不公，对App开发者和Apple生态的公平性有重要影响，属于高优先级主题。",
+      "tags": [
+        "Apple",
+        "隐私",
+        "ATT",
+        "反垄断",
+        "政策",
+        "App生态"
+      ]
+    },
+    {
+      "title": "A Preview of DuckDB v2.0",
+      "link": "https://duckdb.org/2026/08/17/duckdb-20-highlights",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-17T13:46:27.000Z",
+      "summary": "Article URL: https://duckdb.org/2026/08/17/duckdb-20-highlights\nComments URL: https://news.ycombinator.com/item?id=49330781\nPoints: 192\n# Comments: 23",
+      "id": "4f5a33c12fbbc92c85358d1d9a4416bd4f17d8ad9e18f794444160037296810e",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "DuckDB 2.0新版本预览，技术深度和新颖性兼具，对数据工程师和开发者非常实用。",
+      "reason": "作为流行分析型数据库的重要更新，内容具有高技术价值、实用性和广泛影响力。",
+      "tags": [
+        "数据库",
+        "数据分析",
+        "编程工具",
+        "DuckDB",
+        "新版本"
+      ]
+    },
+    {
+      "title": "Show HN: Sokoban AI Solver",
+      "link": "https://mkornreich.me/projects/sokoban/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-17T13:07:00.000Z",
+      "summary": "Article URL: https://mkornreich.me/projects/sokoban/\nComments URL: https://news.ycombinator.com/item?id=49330215\nPoints: 35\n# Comments: 26",
+      "id": "8f664b85206c3e1ed2cfd05b516fe592f69b924caecd1c5ef4800b66766f6f3d",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 48,
+      "priority": "high",
+      "comment": "一个AI解决Sokoban推箱子游戏的实现，展示了经典的AI搜索算法。",
+      "reason": "将AI算法应用于经典难题，不仅具有技术深度，也为学习和理解AI搜索策略提供了具象案例。",
+      "tags": [
+        "AI",
+        "Algorithms",
+        "Game AI",
+        "Pathfinding",
+        "Problem Solving",
+        "Show HN"
+      ]
+    },
+    {
+      "title": "‘Anthropic’s Weak Watermarks Appease a Weak Law’",
+      "link": "https://blog.j11y.io/2026-08-12_Anthropics-weak-watermarks-appease-a-weak-law/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-08-16T17:30:00.000Z",
+      "summary": "James Padolsey, on the Claude-text-watermarking-to-comply-with-an-EU-regulation imbroglio:\nThe same thought that led to this law could have applied to\ncalculators at the time of their inception, had their outputs\nrevealed themselves through artefacts. Thankfully, a sum borne of\nthe brain is treated no differently from one produced by a\ncalculator. Likewise with spellcheckers. To make assistance\nsuspect only once the tool becomes capable enough to compose a\nwhole sentence is not a principled boundary. It is a moral premium\nplaced on difficulty itself.\nAnthropic has nevertheless chosen a blanket, model-level\nimplementation that appears broader than the law’s minimum\nrequirement. That may be convenient compliance engineering, but it\ndiscards distinctions the law expressly attempted to preserve. The\nresult is a signal broad enough to implicate harmless and\nassistive use, yet fragile enough to be removed by a motivated\nperson through substantial recomposition. It risks concentrating\nsuspicion on ordinary and assistive users while remaining weakest\nagainst deliberate deception.\nPadolsey is the creator of Declaude, a delightfully simple web app that allows you to “Paste in AI-flavored text and get the same content back as plain prose”. Declaude’s original purpose is cleaning the cutesy Claude personality stink from text (whether it was created by Claude or any other LLM), but, if Anthropic persists in its stated plan to begin adulterating all text Claude generates, Declaude will also serve as a copy-paste single-extra-step way to eliminates those marks. Declaude is interesting and useful already, but goes to show how ill-considered this EU regulation is.\nPadolsey also wrote and programmed a splendid interactive essay that explains and illustrated how the “watermarking” scheme Anthropic is adopting (and Google Gemini has already adopted) works.\n ★",
+      "id": "3dfb0c29d43a1b639ad2bbdde4645d99e4a793362e105bc5d1070fe5325bf8f9",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "从监管和伦理角度评论Anthropic的弱水印技术，认为其既安抚了弱法，也揭示了法律本身的原则性缺陷。",
+      "reason": "文章将AI水印技术与欧盟法规、伦理原则相结合，提供了批判性视角，虽然技术细节不及前一篇，但信息密度和思考深度极高，对理解AI监管有重要价值。",
+      "tags": [
+        "AI",
+        "Anthropic",
+        "Watermarking",
+        "Regulation",
+        "Ethics",
+        "Law",
+        "Policy"
+      ]
+    },
+    {
+      "title": "Oops, Should’ve Thought of That",
+      "link": "https://blog.jim-nielsen.com/2026/oops-shouldve-thought-of-that/",
+      "source": "blog.jim-nielsen.com",
+      "publishedAt": "2026-08-16T19:00:00.000Z",
+      "summary": "Gordon Brander writes:\nThe thing about computers is that they can do anything you wish, so long as you specify your wish in exacting detail. However, LLMs relieve this constraint. An LLM can extrapolate what you mean (more or less) from just a few words. So computers can do vibes now.\nIt used to be that computers could only ever do exactly what you told them to do, nothing more.\nIf they did something unexpected (a.k.a. a bug), it was because you failed to 1) anticipate it could happen, or 2) specify with greater detail that it shouldn’t happen.\nBut in this new world, computers can extrapolate your intent.\nLLMS can act like a fill-in-the-gap machine, which alleviates you from the pedantic demands of coding from years past.\nThere’s going to be a lot more “Oops, I didn’t mean to do that” in the future.\nThis should be what separates professional practitioners from hobbyists. \nA good practitioner recognizes that leveraging some foresight is part and parcel of the job in order to mitigate unintended consequences.\nMeanwhile, a hobbyist or amateur doesn’t even have the capability or experience to understand the assumed intent of an LLM until it’s too late and users have been affected.\nSoftware we use everyday, software that many aspects of our lives increasingly depend on, needs less unintended consequences. Less “Oops, should’ve thought of that.”\nEmail\n      · Mastodon ·\n\n      Bluesky",
+      "id": "2a3a22cb8fbb8a4a1661bea39e7242e741a1e94dc61bd6eef8165f95a41b065e",
+      "ref_id": "4",
+      "recommendationScore": 90,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "对LLMs如何改变编程范式和开发者责任的及时且富有洞察力的分析。",
+      "reason": "文章直接切中优先级最高的AI主题，对编程工具领域的未来发展提供了新颖且实用的见解，信息密度高，引人深思。",
+      "tags": [
+        "AI",
+        "LLM",
+        "编程",
+        "软件开发",
+        "未来趋势"
+      ]
+    },
+    {
+      "title": "Show HN: LLMs each trading $100K vs. a frozen rulebook – the rulebook leads",
+      "link": "https://aitradingcompetition.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-17T13:20:01.000Z",
+      "summary": "Article URL: https://aitradingcompetition.com/\nComments URL: https://news.ycombinator.com/item?id=49330386\nPoints: 5\n# Comments: 0",
+      "id": "49b18b815bf47516b3a0ffce92b49be0bb388dfb9d380ae74e72ef6aa62d7c0c",
+      "ref_id": "1",
+      "recommendationScore": 88,
+      "popularityScore": 7,
+      "priority": "high",
+      "comment": "展示了LLM在量化交易中与传统规则的对比，揭示了当前LLM的局限性。",
+      "reason": "直接关联AI热门领域，以实证方式探讨LLM的实际应用与挑战，具有高新颖性和技术讨论价值。",
+      "tags": [
+        "AI",
+        "LLM",
+        "Algorithmic Trading",
+        "Competition",
+        "Financial Tech"
+      ]
+    },
+    {
+      "title": "How to disable or avoid intrusive AI",
+      "link": "https://www.librarian.net/notoai/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-17T14:07:56.000Z",
+      "summary": "Article URL: https://www.librarian.net/notoai/\nComments URL: https://news.ycombinator.com/item?id=49331220\nPoints: 60\n# Comments: 15",
+      "id": "050c872c2a5c7335abb67c16c8df0eb0bd79cda8044b6744211b6c9f774ec42f",
+      "ref_id": "4",
+      "recommendationScore": 85,
+      "popularityScore": 38,
+      "priority": "high",
+      "comment": "提供禁用或避免侵入性AI功能的实用指南。",
+      "reason": "直接解决用户对AI隐私和控制的痛点，具有很高的实用指导意义和即时价值，属于高优先级主题。",
+      "tags": [
+        "AI",
+        "隐私",
+        "用户控制",
+        "指南",
+        "工具"
+      ]
+    },
+    {
+      "title": "What happens when a kid’s robot best friend dies?",
+      "link": "https://www.technologyreview.com/2026/08/17/1141568/moxie-when-kids-robot-best-friend-dies/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-08-17T09:00:00.000Z",
+      "summary": "When Xander first met Moxie, she taught him that when he was anxious, he could calm down by exhaling through his lips so that he buzzed like a bee. They practiced breathing like dragons to manage feeling mad and sniffing like bunnies to boost his energy. But in the six years they’ve known each other,…",
+      "id": "f49ea2b45b71d6dd5defe39d9a044363bed49564140bdb4e3630edf049e03a34",
+      "ref_id": "2",
+      "recommendationScore": 85,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "深刻探讨AI在情感陪伴方面的伦理与社会影响，极具思考价值。",
+      "reason": "通过孩童与机器人关系破裂的故事，深度思考AI在人类生活中的情感角色及潜在伦理挑战，非常贴合AI主题的社会维度。",
+      "tags": [
+        "AI",
+        "机器人",
+        "伦理",
+        "情感计算",
+        "社会影响"
+      ]
+    },
+    {
+      "title": "Qwen 3.8 27B is excellent, but it defaults to wildly overthinking things",
+      "link": "https://simonwillison.net/2026/Aug/16/qwen-38-27b/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-08-16T22:00:39.000Z",
+      "summary": "",
+      "id": "79efbb054d4af9fc0fe98fd8d4b5c3ece82fe6c5c8ebc8cd86ca7158511b8b66",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 88,
+      "priority": "high",
+      "comment": "对Qwen 3.8 27B模型行为的观察与批判性分析，揭示了其“过度思考”的特性。",
+      "reason": "文章直接关注高优先级主题AI领域的核心模型，对Qwen 3.8 27B的深入分析为开发者和研究者提供了宝贵的洞察，技术深度和新颖性较高。",
+      "tags": [
+        "AI",
+        "LLM",
+        "Qwen",
+        "Model Behavior",
+        "Performance Analysis"
+      ]
+    },
+    {
+      "title": "Show HN: Saggar, a Mac terminal that keeps sessions and your attention organized",
+      "link": "https://saggar.marginalutility.dev/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-17T14:25:54.000Z",
+      "summary": "Hi HN, like many of you talented folk, I’ve been building more, faster than ever. I built Saggar after my terminal stopped feeling like a tool and started feeling like a tab-management problem. Let me know you think!\nComments URL: https://news.ycombinator.com/item?id=49331551\nPoints: 5\n# Comments: 1",
+      "id": "3d4b4eb8babd8a24dee8c841baad775e62bc21fa11c87e691ed63ff972d89bff",
+      "ref_id": "4",
+      "recommendationScore": 75,
+      "popularityScore": 15,
+      "priority": "medium",
+      "comment": "一个为Mac开发者设计的终端工具，专注于会话管理和注意力组织，提升开发效率。",
+      "reason": "属于Apple生态和编程工具范畴，解决了Mac开发者在终端使用中的实际痛点，具有一定的实用性和产品设计思考。",
+      "tags": [
+        "Apple生态",
+        "编程工具",
+        "终端",
+        "效率工具",
+        "独立开发",
+        "产品设计",
+        "Show HN"
+      ]
+    },
+    {
+      "title": "How to ship a database every day",
+      "link": "https://turbopuffer.com/blog/control-plane",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-17T13:56:38.000Z",
+      "summary": "Article URL: https://turbopuffer.com/blog/control-plane\nComments URL: https://news.ycombinator.com/item?id=49330978\nPoints: 24\n# Comments: 1",
+      "id": "8d5b5dd74d73b8fde001f409c73e5ef5389ce1e8fd98c829cb4cbd81a2c9dd6e",
+      "ref_id": "1",
+      "recommendationScore": 75,
+      "popularityScore": 15,
+      "priority": "medium",
+      "comment": "探讨数据库日常部署的实践，技术含量较高，对特定场景有指导意义，但社区关注度较低。",
+      "reason": "文章可能深入探讨数据库CI/CD或部署策略，对追求高效数据管理的开发者有重要参考价值。",
+      "tags": [
+        "数据库",
+        "DevOps",
+        "自动化",
+        "CI/CD",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "Speeding Up the Plush Garbage Collector",
+      "link": "https://pointersgonewild.com/2026-08-17-speeding-up-the-plush-garbage-collector/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-17T13:09:06.000Z",
+      "summary": "Article URL: https://pointersgonewild.com/2026-08-17-speeding-up-the-plush-garbage-collector/\nComments URL: https://news.ycombinator.com/item?id=49330246\nPoints: 9\n# Comments: 0",
+      "id": "561e4ffcc9527d89003f78df060f6f35be3769c96d464b0706a9faf1b533107e",
+      "ref_id": "2",
+      "recommendationScore": 75,
+      "popularityScore": 12,
+      "priority": "medium",
+      "comment": "深入探讨了Plush垃圾回收器的性能优化细节，适合资深系统编程人员。",
+      "reason": "提供关于底层编程工具的极高技术深度，尽管受众小众，但对特定领域开发者极具价值。",
+      "tags": [
+        "Programming Tools",
+        "Garbage Collection",
+        "Systems Programming",
+        "Optimization",
+        "Performance"
+      ]
+    },
+    {
+      "title": "Markdown SVG upgrades",
+      "link": "https://simonwillison.net/2026/Aug/16/markdown-svg-upgrades/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-08-16T23:59:37.000Z",
+      "summary": "",
+      "id": "b2b654098c8b61bdce7622b0f910be5edde4e407fd17280434093d5105d60d35",
+      "ref_id": "4",
+      "recommendationScore": 75,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "专注于Markdown与SVG的结合升级，对开发者和内容创作者具有很高的实用性。",
+      "reason": "提供关于Markdown和SVG结合的最新技术升级，对需要提升内容表达和开发效率的用户有直接帮助，符合编程工具主题。",
+      "tags": [
+        "编程工具",
+        "Markdown",
+        "SVG",
+        "Web开发"
+      ]
+    },
+    {
+      "title": "Ask HN: Alternatives to GitHub",
+      "link": "https://news.ycombinator.com/item?id=49331033",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-17T13:59:17.000Z",
+      "summary": "Github has been down consistently over the last few months - does it make sense to switch to alternatives?\nComments URL: https://news.ycombinator.com/item?id=49331033\nPoints: 166\n# Comments: 109",
+      "id": "17056c89af99d597e8d962b0432c45f4fae039a7eb56a7c33da1d4fcf11bee2a",
+      "ref_id": "0",
+      "recommendationScore": 70,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "讨论GitHub替代方案的帖子，实用性高，但缺乏具体技术深度。",
+      "reason": "在GitHub频繁宕机背景下，寻找替代方案对开发者具有直接实用价值和普遍关注度。",
+      "tags": [
+        "GitHub",
+        "编程工具",
+        "开发者工具",
+        "DevOps"
+      ]
+    },
+    {
+      "title": "Incident with Github.com",
+      "link": "https://www.githubstatus.com/incidents/zkxwbgr0cnmx",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-17T13:40:55.000Z",
+      "summary": "Article URL: https://www.githubstatus.com/incidents/zkxwbgr0cnmx\nComments URL: https://news.ycombinator.com/item?id=49330684\nPoints: 647\n# Comments: 472",
+      "id": "5fd5a81e698ca21f47db196397a8c37fe476edb7d85094ef74dd3c54433c91d9",
+      "ref_id": "3",
+      "recommendationScore": 65,
+      "popularityScore": 95,
+      "priority": "medium",
+      "comment": "GitHub服务中断事件报告，实时性高，但缺乏技术深度，主要关注状态和影响。",
+      "reason": "尽管信息本身不深，但其对开发者日常工作有即时且重大的实用影响，且广受关注。",
+      "tags": [
+        "GitHub",
+        "服务中断",
+        "DevOps",
+        "状态报告",
+        "编程工具",
+        "紧急"
+      ]
+    },
+    {
+      "title": "The Download: dead robot friends and the “censorship-industrial complex”",
+      "link": "https://www.technologyreview.com/2026/08/17/1142175/the-download-dead-robot-friends-censorship-industrial-complex/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-08-17T12:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. What happens when a kid’s robot best friend dies? When Xander first met Moxie, she taught him how to calm down when he was anxious or mad. Six years later, she…",
+      "id": "1fa7f7615de49cf0df1342000993632e3a1e2332058f95d472b3c81ea80b5473",
+      "ref_id": "0",
+      "recommendationScore": 65,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "综合性新闻摘要，涵盖AI与社会议题，但深度有限。",
+      "reason": "作为日常科技资讯摘要，能快速了解多个热门话题，其中机器人情感和AI伦理具有探讨价值。",
+      "tags": [
+        "AI",
+        "机器人",
+        "社会影响",
+        "新闻摘要"
+      ]
+    },
+    {
+      "title": "GitHub down again? no PR access",
+      "link": "https://news.ycombinator.com/item?id=49330632",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-17T13:37:28.000Z",
+      "summary": "Githubstatus.com currently says everything is working, but it isn't\nComments URL: https://news.ycombinator.com/item?id=49330632\nPoints: 257\n# Comments: 85",
+      "id": "5470cf5e76941ed9b71bd9f8d63327051bde2322c00bfe6b3877a88672768cdd",
+      "ref_id": "4",
+      "recommendationScore": 60,
+      "popularityScore": 80,
+      "priority": "medium",
+      "comment": "讨论GitHub宕机情况，用户反馈与官方状态不符，实时性强但技术内容浅。",
+      "reason": "反映了用户对关键编程工具可用性的担忧，具有即时实用性和社群讨论价值。",
+      "tags": [
+        "GitHub",
+        "服务中断",
+        "开发者工具",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "How much hydrogen awaits us underground?",
+      "link": "https://www.technologyreview.com/2026/08/17/1141560/how-much-hydrogen-awaits-underground/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-08-17T09:00:00.000Z",
+      "summary": "In the 1990s, Barbara Sherwood Lollar descended into the Kidd Creek mine in northern Ontario, which cuts more than three kilometers into the ancient root of North America. There her team of geochemists found water that had been confined underground for more than a billion years. This ancient brine turned out to be a habitat…",
+      "id": "0dfc6754cce6b39909dae44b5f0871a432969685d8d871687d22ee5dc6cf2803",
+      "ref_id": "1",
+      "recommendationScore": 60,
+      "popularityScore": 65,
+      "priority": "low",
+      "comment": "科学发现类文章，技术深度较高，但与核心科技主题关联度较低。",
+      "reason": "探索地下氢能源储量，具有重要的科学和未来能源意义，但与AI、编程等主题相关性较弱。",
+      "tags": [
+        "能源",
+        "地球科学",
+        "科学发现",
+        "环境科技"
+      ]
+    },
+    {
+      "title": "Trump Administration ‘Not in Favor’ of Apple Using Chinese RAM",
+      "link": "https://www.wsj.com/tech/apple-china-memory-chip-plan-57773a83?st=vfe1SA",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-08-16T16:34:12.000Z",
+      "summary": "The Wall Street Journal (gift link):\nTo help alleviate the supply crunch, Apple is looking to Chinese\nmanufacturers.\n“The Trump administration is not in favor of that,” Lutnick said\nin an interview after touring an Apple manufacturing facility in\nHouston. There have to be “other solutions to the memory issue,\nbut it’s not great American companies using Chinese memory.”\nAsked if he has relayed that message to Apple, Lutnick said\n“plainly.”\nBut:\nU.S. government rules require American companies to secure a\nlicense before sharing product information with CXMT and YMTC. The\nChinese chip makers would need such information if they were to\nmake customized chips for Apple. But Apple is free to buy\noff-the-shelf parts from the companies, and to negotiate prices\nwith them.\nApple’s chief operating officer, Sabih Khan, declined to confirm\nthat Apple was testing Chinese memory chips in an interview\nThursday. But he said that given the magnitude of the supply\nshortage, “we have to look at all options,” including working with\nexisting suppliers to increase U.S. production.\n ★",
+      "id": "829102f12b0988bea9e84b44dc4b95c407c91dc601424fe3364959a0e5a152ff",
+      "ref_id": "4",
+      "recommendationScore": 60,
+      "popularityScore": 80,
+      "priority": "medium",
+      "comment": "报道了美国政府对苹果使用中国RAM的反对立场，反映了科技供应链中的地缘政治紧张。",
+      "reason": "文章涉及Apple生态（优先级较高），但核心内容是地缘政治和供应链管理，而非技术创新或产品分析。对于科技博客而言，实用性和技术深度偏低，但话题本身具有较高关注度。",
+      "tags": [
+        "Apple",
+        "Supply Chain",
+        "Geopolitics",
+        "Trade",
+        "China",
+        "US Politics"
+      ]
+    },
+    {
+      "title": "Cialis is an erectile dysfunction drug. Could it also help you live longer?",
+      "link": "https://www.npr.org/2026/08/17/nx-s1-5928263/cialis-viagra-tadalafil-longevity-heart-health",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-17T13:24:55.000Z",
+      "summary": "Article URL: https://www.npr.org/2026/08/17/nx-s1-5928263/cialis-viagra-tadalafil-longevity-heart-health\nComments URL: https://news.ycombinator.com/item?id=49330456\nPoints: 62\n# Comments: 42",
+      "id": "9f40d2702e08a44664a39aab43c64e4237af8ac76ec9702ff888ffb7c851cbcc",
+      "ref_id": "0",
+      "recommendationScore": 35,
+      "popularityScore": 85,
+      "priority": "low",
+      "comment": "探讨药物与长寿的潜在联系，但并非典型的科技博客关注内容。",
+      "reason": "虽然话题有趣且有健康实用性，但与预设的科技主题优先级不符。",
+      "tags": [
+        "Health",
+        "Longevity",
+        "Medical Research",
+        "Science"
+      ]
+    },
+    {
+      "title": "How to put 170 atoms in an atom",
+      "link": "https://signoregalilei.com/2026/08/02/how-to-put-170-atoms-in-an-atom/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-17T14:21:25.000Z",
+      "summary": "Article URL: https://signoregalilei.com/2026/08/02/how-to-put-170-atoms-in-an-atom/\nComments URL: https://news.ycombinator.com/item?id=49331474\nPoints: 38\n# Comments: 4",
+      "id": "568edd02035970b56e43dc0b566465195aeff41a118423027dee757900154dd9",
+      "ref_id": "0",
+      "recommendationScore": 30,
+      "popularityScore": 24,
+      "priority": "low",
+      "comment": "探讨原子内部构造的理论物理研究。",
+      "reason": "内容偏向基础科学，与当前主流科技应用或产品开发关联度较低。",
+      "tags": [
+        "物理学",
+        "理论科学",
+        "基础研究"
+      ]
+    },
+    {
+      "title": "The Information Profiles Cami Clark — Dario Amodei’s Wife, Ivanka Trump’s Friend, One-Time Would-Be Pornographer, and Anthropic’s ‘First Lady’",
+      "link": "https://www.theinformation.com/articles/anthropics-first-lady-took-winding-road-top?rc=jfy0lk",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-08-16T19:30:00.000Z",
+      "summary": "Cory Weinberg, Jemima McEvoy, Jessica E. Lessin, and Stephanie Palazzolo, writing for the paywalled-without-gift-links The Information:\nAs Amodei has hopscotched the globe to preach about the potential\nand risks of AI — from New Delhi to Davos to Sun Valley — Clark\nhas almost always been near his side. Several people who know the\ncouple describe Clark as Amodei’s emotional ballast, someone he\nhas sought counsel from during the turbulence of Anthropic’s\ngrowth and clashes with Washington over the future of AI.\nClark may well be the most consequential person within Anthropic’s\norbit who doesn’t have a formal role at the startup. You might\neven call her the first lady of Anthropic. [...]\nAnd before Female Algorithm Technologies, Clark tried her hand at\nbuilding a pornographic film company, Eddice, that planned to make\nmovies with high-production values and female protagonists. She\nalso hoped it would have online shopping capabilities. In 2011,\nshe tried to raise money for Eddice from Jeffrey Epstein, who’d\npleaded guilty to charges of soliciting a minor for prostitution\nthree years earlier, according to emails made public as part of\nthe Epstein files released by the Department of Justice earlier\nthis year. She emailed Epstein the script for the first of a\nseries of films they hoped to make (title: “American Girl in\nParis”).\n“We thought you and the ladies might enjoy,” Clark wrote. She then\nappended a winking warning: “A little nsfw,” an acronym for “not\nsafe for work.” Epstein didn’t invest.\nWhile enormous attention has fallen on AI and the people\nbehind the companies developing it, Clark has largely flown\nunder the radar.\n ★",
+      "id": "374cc68d9d793f7af13e8f3d1d143c83e3dff71b9880ff7fd3a603121b131232",
+      "ref_id": "1",
+      "recommendationScore": 30,
+      "popularityScore": 65,
+      "priority": "low",
+      "comment": "一篇关于Anthropic创始人妻子的个人侧写，内容偏向八卦和个人经历，与技术主题关联度较低。",
+      "reason": "尽管提及了Anthropic，但文章焦点并非AI技术本身，而是人物传记和社交关系，缺乏技术深度和实用性，不适合核心科技博客。",
+      "tags": [
+        "Anthropic",
+        "Biography",
+        "AI Industry",
+        "Social Commentary"
+      ]
+    },
+    {
+      "title": "How do functions like alloca allocate memory from the stack?",
+      "link": "https://devblogs.microsoft.com/oldnewthing/20260817-40/?p=112617",
+      "source": "devblogs.microsoft.com/oldnewthing",
+      "publishedAt": "2026-08-17T15:54:40.000Z",
+      "summary": "The usual probing.\nThe post How do functions like <CODE>alloca</CODE> allocate memory from the stack? appeared first on The Old New Thing.",
+      "id": "9776cb0e654a796032a1561a161921e0c1b306c8c1a21d202f273e677420e4d0",
+      "ref_id": "2",
+      "recommendationScore": 30,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "标题指向一个重要的低级编程内存管理概念，但文章内容仅为引子，缺乏实际信息。",
+      "reason": "文章内容过于简短，无法评估技术深度和实用性，尽管标题所指主题对编程工具领域而言具有较高优先级和潜在价值。",
+      "tags": [
+        "编程",
+        "内存管理",
+        "C/C++"
+      ]
+    },
+    {
+      "title": "Proportion of 1s in a Hadamard matrix",
+      "link": "https://www.johndcook.com/blog/2026/08/16/proportion-of-1s-in-a-hadamard-matrix/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-08-17T01:16:39.000Z",
+      "summary": "The first post in the recent series of posts on Hadamard matrices describes a way of constructing new Hadamard matrices from two other Hadamard matrices by taking their Kronecker product. Starting with a Hadamard matrix H0 and a Hadamard matrix G, you can construct a sequence of Hadamard matrices by Hn+1 = G ⊗ Hn for  […]\nProportion of 1s in a Hadamard matrix first appeared on John D. Cook.",
+      "id": "67add3439a4ab48c84a74c494a9e608c2dea7d088f0f35e3c6fe54ca89a7d0ec",
+      "ref_id": "3",
+      "recommendationScore": 25,
+      "popularityScore": 35,
+      "priority": "low",
+      "comment": "一篇高度专业化的数学理论文章，关于Hadamard矩阵，对普通科技读者实用性不高。",
+      "reason": "内容属于纯理论数学范畴，与科技博客的核心主题（AI、编程工具等）直接关联度低，实用性和新颖性有限。",
+      "tags": [
+        "数学",
+        "算法",
+        "理论"
+      ]
+    },
+    {
+      "title": "Mexico Crackdown on Coastal Development Underway",
+      "link": "https://yucatanmagazine.com/mexico-crackdown-on-coastal-development/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-17T12:10:22.000Z",
+      "summary": "Article URL: https://yucatanmagazine.com/mexico-crackdown-on-coastal-development/\nComments URL: https://news.ycombinator.com/item?id=49329583\nPoints: 72\n# Comments: 13",
+      "id": "c4e710f774b64f15e279a6bc52b448fbdf0304255cd2a442e9194012cbe36f9e",
+      "ref_id": "4",
+      "recommendationScore": 20,
+      "popularityScore": 100,
+      "priority": "low",
+      "comment": "报道了墨西哥沿海开发监管的新闻，与科技博客关注的主题无关。",
+      "reason": "尽管有较高的大众关注度，但内容完全偏离科技博客的预设关注领域。",
+      "tags": [
+        "Geopolitics",
+        "Environment",
+        "Urban Development",
+        "News",
+        "Mexico"
+      ]
+    },
+    {
+      "title": "Pluralistic: Jennifer Jenkins' 'Music Copyright, Creativity, and Culture' (17 Aug 2026)",
+      "link": "https://pluralistic.net/2026/08/17/great-sousas-ghost/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-08-17T07:00:08.000Z",
+      "summary": "Today's links Jennifer Jenkins' 'Music Copyright, Creativity, and Culture': The definitive textbook (with comics!). Hey look at this: Delights to delectate. Object permanence: Hair-gel bombers v bras; Hair-gel bombers v chemistry; AOL digs for spammer's platinum; Stross on infosec in 2061; In-game Ponzi; Snowden on Shadow Brokers hack; Life v understanding advanced math; \"Greatest of Marlys!\"; Housing and precarity; LLMs as slot-machines for coders; Hypercard's backstory; Pirate Party; Fanbois' mental health v critics; Krugman calls for alien invasion; Trump x Serbian genocidaires; The last Sandman Slim; Muphry’s Law; NSA created the Shadow Brokers; DOJ kills private prisons; Walmart externalizes crime; \"Sgt Augmento\"; Zuckermuskian solipsism. Upcoming appearances: Sydney, Melbourne, Brighton, London, South Bend. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. Jennifer Jenkins' 'Music Copyright, Creativity, and Culture' (permalink) Nobody explains copyright like Jennifer Jenkins, the director of the Duke Center for the Public Domain, in which capacity she is responsible for the annual New Year's roundups of all the materials entering the public domain (a series that started in the decades during which the public domain was frozen by the Sonny Bono Copyright Act): https://pluralistic.net/2023/12/20/em-oh-you-ess-ee/#sexytimes Jenkins has a gift for making one of the most complicated, worst understood, most consequential areas of law not only comprehensible, but also fascinating. Her late 2023 explanation of what \"Mickey Mouse's copyright is expiring\" actually meant was the single best explainer on the subject, in a crowded field: https://pluralistic.net/2023/12/15/mouse-liberation-front/#free-mickey Small wonder that she's the go-to copyright and trademark expert for so many media outlets. Perhaps you heard her Planet Money segments on which superheroes are in the public domain: https://www.npr.org/transcripts/969512231 Jenkins' flair for legal communications carries over to her scholarly work, of course, which is why her Open Copyright Casebook is a standard text for American law schools: https://pluralistic.net/2024/07/30/open-and-shut-casebook/#stop-confusing-the-issue-with-relevant-facts Jenkins co-wrote the Casebook with her husband, the equally erudite and expert James Boyle. It's just one of their many fruitful collaborations; they are also the writing team behind THEFT! A History of Music, the greatest graphic novel ever created about the history of music, music law, music censorship, and the music industry: https://web.law.duke.edu/musiccomic/ Last year, Jenkins published Music Copyright, Creativity, and Culture, an Oxford University Press title that fuses her scholarly and popular work in a generalist textbook on the legal framework for music that will forever change how you think about music. Now, a second edition, with a lengthy section on new music litigation, AI copyright fights, and the issue of uncompensated labor is available as an open access download: https://web.law.duke.edu/cspd/musiccopyright/ Music Copyright weaves together the economic, cultural, political and artistic history of music, pulling on historic threads ranging from antiquity to medieval Europe to the age of mechanical reproduction to describe changing views of musicians, their audiences, and religious and political leaders on what constituted music, who was allowed to make music, and what music was for. In so doing, she firmly establishes the extremely contingent nature of our present-day norms around music, showing that the \"natural\" present-day assumptions about who gets paid, who pays, and when payment (or permission) is required are anything but, and are always in flux. For obvious reasons, much of Jenkins' text describes these changes in the context of the record, the radio, satellite transmission, P2P file-sharing, and digital sampling (along with a chapter on AI). These examples are liberally illustrated with links to musical excerpts that bring the subject to life (these are presented as hotlinks in the ebook; if you're reading the print edition, you can use the book's companion website:) https://web.law.duke.edu/cspd/musiccopyright/ Interspersed with these histories and analysis are lengthy, extremely on-point excerpts from THEFT!, her graphic novel history of music. These enliven the text as much as the music samples, making this textbook as entertaining as it is informative. Of especial interest – and importance – are the long sections on the courtroom battles of Ed Sheeran, Katy Perry, and Pharrell Williams over similar \"grooves\" and \"vibes\" to other songs, some of them well-known and some quite obscure: https://pluralistic.net/2022/04/08/oh-why/#two-notes-and-running These cases highlight the fundamental incoherence of music copyright, a system composed of improvised responses to new technologies, each layered atop the last in a messy pile that virtually no one understands. Jenkins understands it, though. I've been reading, writing, and debating about this stuff since the late 1990s, and I learned something new on every page of this delightful book. This should be required reading for anyone who makes music, loves music, or cares about musicians and the arts more generally. It's a towering accomplishment and a brilliant read. Hey look at this (permalink) The CEO who fired 900 people on Zoom just before Christmas wants his job back https://edition.cnn.com/2026/08/14/business/vishal-garg-better-ceo Who Crapped on Johnny Depp's Bed? https://www.youtube.com/watch?v=vGt7-WnWdhE No-One Makes You Shop at Amazon https://www.programmablemutter.com/p/no-one-makes-you-shop-at-amazon Paramount’s Merger Strategy: Empty Promises and Empty Threats https://prospect.org/2026/08/14/paramounts-merger-strategy-empty-promises-threats-justice-department-antitrust/ they_live_adblocker https://github.com/davmlaw/they_live_adblocker Object permanence (permalink) #25yrsago RIP, The Industry Standard, Palm buys BeOS https://web.archive.org/web/20010927192339/http://www.wired.com/news/business/0,1367,46113,00.html #25yrsago Smart dust sensors https://web.archive.org/web/20011112010004/http://www.smalltimes.com/document_display.cfm?document_id=1935 #25yrsago Pentagon patents onion-routing https://web.archive.org/web/20010912222427/http://www.wired.com/news/politics/0,1283,46126,00.html #25yrsago Coltan: the conflict mineral in our gadgets https://www.nytimes.com/2001/08/12/magazine/the-dirt-in-the-new-machine.html #25yrsago Danny Goodman Talks About HyperCard https://web.archive.org/web/20011214114614/http://www.oreillynet.com/pub/a/mac/2001/08/17/goodman.html #25yrsago Report an insecure website, win a visit from the FBI https://web.archive.org/web/20010820110330/http://www.linuxfreak.org/post.php/08/17/2001/134.html #20yrsago Copyright wars: film-makers eats themselves https://web.archive.org/web/20070318010544/https://www.laweekly.com/film+tv/film/freedom-of-information/14244/ #20yrsago RyanAir to UK govt: ease off on security or we sue https://www.theguardian.com/business/2006/aug/18/theairlineindustry.terrorism #20yrsago Federal court bans Bush’s warrantless spying on Americans https://edition.cnn.com/2006/POLITICS/08/17/domesticspying.lawsuit/index.html #20yrsago Western millionaires plotted Equatorial Guinea coup as a game https://web.archive.org/web/20071114211448/https://www.salon.com/books/review/2006/08/17/roberts/index_np.html #20yrsago Sweden’s Pirate Party – political arm of the pro-piracy groundswell https://web.archive.org/web/20060820093355/https://www.wired.com/news/technology/1,71544-0.html #20yrsago Hair-Gel Bombers win war on bras https://www.huffingtonpost.co.uk/entry/us-authorities-leave-gel_n_27402 #20yrsago Would a hair-gel bomb actually work? https://seclists.org/interesting-people/2006/Aug/86 #20yrsago The Pirate Bay’s backstory https://web.archive.org/web/20060901180116/https://www.wired.com/news/technology/1,71543-0.html #20yrsago AOL will dig for buried platinum and gold in spammer’s Mom’s yard https://www.nbcnews.com/id/wbna14365934 #15yrsago Charlie Stross on network security in 2061 https://www.antipope.org/charlie/blog-static/2011/08/usenix-2011-keynote-network-se.html #15yrsago Damning 2007 letter asserts that phone hacking was an open practice at News of the World https://www.theguardian.com/media/2011/aug/16/phone-hacking-now-reporter-letter #15yrsago In-game Ponzi nets US$50K https://web.archive.org/web/20110921052125/http://gamergaia.com/pc/1724-eve-online-space-heist-one-trillion-isk.html #15yrsago Copyright troll handed ass (again), tries saddest trick ever to get out of paying its victim’s legal bills https://arstechnica.com/tech-policy/2011/08/righthaven-rocked-owes-34000-after-fair-use-loss/ #15yrsago English cops arrest man for planning water-fight via Blackberry Messenger https://www.theguardian.com/media/2011/aug/15/essex-water-fight-blackberry-messenger #15yrsago Woman who recorded Massachusetts police beating charged with illegal wiretapping https://www.masslive.com/news/2011/08/videographer_of_alleged_melvin.html #15yrsago Criticism of a brand lowers the self-esteem of its adherents https://arstechnica.com/science/2011/08/users-treat-criticism-of-favorite-brands-as-threat-to-self-image/ #15yrsago Homeopathy multinational sues blogger over statements that its mythological curative had “no active ingredient” https://web.archive.org/web/20110930131033/http://www.blogzero.it/contatti/prova/ #15yrsago Edinburgh Fringe show asks audience to shred banknotes https://www.theguardian.com/culture/2011/aug/16/crunch-edinburgh-festival-shred-cash #15yrsago CCTV deterrence and the London uprising https://www.theguardian.com/technology/2011/aug/17/why-cctv-does-not-deter-crime #15yrsago Paul Krugman: save the economy by staging an alien invasion hoax https://comicsalliance.com/watchmen-paul-krugman-alien-invasion/ #15yrsago Minecraft creator challenges trademark belligerents to winner-take-all Quake deathmatch https://web.archive.org/web/20110817205045/http://notch.tumblr.com/post/9038258448/hey-bethesda-lets-settle-this #15yrsago Muphry’s Law: the inevitability of typos in discussions of typos https://web.archive.org/web/20101227141449/https://www.editorscanberra.org/muphrys-law/ #15yrsago Copyright complaint as phishing email https://memex.craphound.com/2011/08/18/copyright-complaint-as-phishing-email/ #15yrsago Rep Allen West pens “dumbest thing ever written on congressional stationery” https://web.archive.org/web/20110914030034/https://thinkprogress.org/security/2011/08/17/297619/allen-west-nuts/ #10yrsago The NSA’s program of tech sabotage created the Shadow Brokers https://web.archive.org/web/20160818132904/https://www.wired.com/2016/08/shadow-brokers-mess-happens-nsa-hoards-zero-days/ #10yrsago Walmarts are high-crime zones thanks to staff cuts, but America gets the bill https://web.archive.org/web/20160818000539/https://www.bloomberg.com/features/2016-walmart-crime/ #10yrsago DoJ says it will end private federal prisons https://www.motherjones.com/politics/2016/08/department-justice-plans-end-private-prison/ #10yrsago Fiction: Sgt. Augmento, Bruce Sterling’s robots-take-our-jobs story https://web.archive.org/web/20160818161624/https://motherboard.vice.com/read/sgt-augmento #10yrsago Las Vegas: high unionization rates mean smaller wage-gaps for women, especially older women https://www.nytimes.com/2016/08/17/opinion/how-unions-help-cocktail-servers.html #10yrsago The incredible true story of the Epcot Horizons superfans who ruled the ride https://web.archive.org/web/20160822031741/https://dangerousminds.net/comments/the_true_story_of_the_unauthorized_daredevil_documentation_of_the_horizons_/ #10yrsago Predictive policing predicts police harassment, not crime https://web.archive.org/web/20160821093834/https://link.springer.com/article/10.1007/s11292-016-9272-0 #10yrsago UC Davis Chancellor spent $400K+ to scrub her online reputation after pepper-spray incident https://www.sacbee.com/news/local/article94733812.html #10yrsago Reputation systems work because people are mostly good https://timharford.com/2016/08/the-meaning-of-trust-in-the-age-of-airbnb/ #10yrsago The guy who started Serbia’s ethnic cleansing led a pro-Trump rally in Belgrade https://web.archive.org/web/20160817022133/https://theintercept.com/2016/08/16/serb-inspired-ethnic-cleansing-bosnia-leads-vote-trump-rally-belgrade/ #10yrsago Europe’s banks want to store billions in cash to fight back against negative interest https://web.archive.org/web/20160817152157/https://www.cnbc.com/2016/08/16/banks-look-for-cheap-way-to-store-cash-piles-as-rates-go-negative.html #10yrsago Kill Rock Stars president explains why the radio plays the same songs over and over https://www.youtube.com/watch?v=ThrXkYwTBP8 #10yrsago Snowden explains the Shadow Brokers/Equation Group/NSA hack https://www.techdirt.com/2016/08/16/ed-snowden-explains-why-hackers-published-nsas-hacking-tools/ #10yrsago Hackers claim to have stolen NSA cyberweapons, auctioning them to highest bidder https://web.archive.org/web/20160816035711/https://motherboard.vice.com/read/hackers-hack-nsa-linked-equation-group #10yrsago What life is like when you really understand advanced mathematics https://www.quora.com/What-is-it-like-to-understand-advanced-mathematics-Does-it-feel-analogous-to-having-mastery-of-another-language-like-in-programming-or-linguistics #10yrsago Parents who can’t pay the bill for kids’ incarceration can still go bankrupt, a US court rules https://archive.thinkprogress.org/everything-wrong-with-how-our-justice-system-treats-poor-people-in-one-awful-case-bfd91a6fa114/ #10yrsago UK Intellectual Property Office grants trademark on “should’ve” https://www.bbc.co.uk/news/business-37092366 #10yrsago The Greatest of Marlys! is the Lynda Barry book we’ve been waiting for https://memex.craphound.com/2016/08/16/the-greatest-of-marlys-is-the-lynda-barry-book-weve-been-waiting-for/ #5yrsago Housing, money laundry, speculation and precarity https://pluralistic.net/2021/08/16/die-miete-ist-zu-hoch/#assets-v-human-rights #5yrsago Big Oil caught lying about methane https://pluralistic.net/2021/08/17/king-bullet/#methanescan #5yrsago Sandman Slim's final adventure https://pluralistic.net/2021/08/17/king-bullet/#sticking-the-dismount #5yrsago The Sacklers threaten us all with a good time https://pluralistic.net/2021/08/18/lets-make-a-deal/#art-of-the-deal #1yrago Zuckermuskian solipsism https://pluralistic.net/2025/08/18/seeing-like-a-billionaire/#npcs #1yrago LLMs are slot-machines https://pluralistic.net/2025/08/16/jackpot/#salience-bias Upcoming appearances (permalink) Edinburgh International Book Festival with Jimmy Wales, Aug 17 https://www.edbookfest.co.uk/events/the-front-list-cory-doctorow-and-jimmy-wales Sydney: The Festival of Dangerous Ideas, Aug 23-24 https://festivalofdangerousideas.com/program/ Melbourne: Enshittification at the Wheeler Centre, Aug 25 https://www.wheelercentre.com/events-tickets/season-2026/cory-doctorow-enshittification Brighton: The Reverse Centaur's Guide to Life After AI with Carole Cadwalladr (Brighton Dome), Sep 8 https://brightondome.org/whats-on/LSC-cory-doctorow-the-reverse-centaurs-guide-to-life-after-ai/ London: The Reverse Centaur's Guide to Life After AI with Riley Quinn (Foyle's Picadilly), Sep 9 https://www.foyles.co.uk/events/enshittification-cory-doctorow-riley-quinn Manchester: Take Back Big Tech with Jovan Owusu-Nepaul (House of Books and Friends), Sep 11 https://ma.to/event/cory-doctorow-house-of-books-and-friends-11-sep-2026 South Bend: An Evening With Cory Doctorow (Notre Dame), Oct 6 https://franco.nd.edu/events/2026/10/06/an-evening-with-cory-doctorow/ Victoria: Munro's Books (Oct 20) https://www.munrobooks.com/events/6113620261020 Vancouver: BC Policy Solutions Gala, Nov 12 https://bcpolicy.ca/gala/ Recent appearances (permalink) Technofeudal Enshittification (Fucking Cancelled) https://www.fuckingcancelled.com/p/technofeudal-enshittification-with Who The Machine Serves (EFF) https://archive.org/details/effecting-change-who-the-machine-serves Speculative Fiction for Social Change II (Cool People Who Did Cool Stuff) https://pocketcasts.com/podcast/cool-people-who-did-cool-stuff/08cbb840-a6ae-013a-d8aa-0acc26574db2/part-two-cory-doctorow-on-speculative-fiction-for-social-change/937e8800-9404-45a6-b5e3-90ebee2cfaea Speculative Fiction for Social Change I (Cool People Who Did Cool Stuff) https://pocketcasts.com/podcast/cool-people-who-did-cool-stuff/08cbb840-a6ae-013a-d8aa-0acc26574db2/part-one-cory-doctorow-on-speculative-fiction-for-social-change/15ad467c-0832-44c9-91ea-59defd783dba AI, automation and enshittification (Telecoms.com) https://www.telecoms.com/ai/the-telecoms-com-podcast-ai-automation-and-enshittification Latest books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/ \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: “Once Is Enemy Action,” a science fiction novel about the origins of modern technofascism. Friday's words: 564 (6039 total). \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Fourth draft completed. Submitted to editor. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "6c22ae094f4ebe424fa2282876f8aedcd17580c340dcf99fc48bb3d2839942d2",
+      "ref_id": "0",
+      "recommendationScore": 20,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "一篇缺乏焦点的链接集合和杂谈，未能深入探讨任何特定技术主题。",
+      "reason": "内容分散，主要为链接汇总和个人随笔，技术深度和信息密度极低，与核心科技博客主题相关性弱。",
+      "tags": [
+        "链接汇总",
+        "时事",
+        "杂谈"
+      ]
+    },
+    {
+      "title": "And then the men with guns tell you to do it anyway",
+      "link": "https://shkspr.mobi/blog/2026/08/and-then-the-men-with-guns-tell-you-to-do-it-anyway/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-08-17T11:34:24.000Z",
+      "summary": "In early February 2011 Egypt was in the middle of a political revolution. One morning, everyone's phones suddenly pinged with an alert.  The Armed Forces asks Egypt's honest and loyal men to confront the traitors and criminals and protect our people and honour and our precious Egypt.  A series of messages arrived all ostensibly from the network provider Vodafone. All pro-regime and all with the…",
+      "id": "eafa5f066671af1309f6870c9815b981a577da2115ded33a98c97dd338e37fcb",
+      "ref_id": "1",
+      "recommendationScore": 15,
+      "popularityScore": 25,
+      "priority": "low",
+      "comment": "讲述了一个政治事件中移动通信被利用的案例，更偏向社会评论而非技术分析。",
+      "reason": "侧重历史和社会政治事件，缺乏技术深度和对科技博客优先主题的直接关联。",
+      "tags": [
+        "政治",
+        "历史",
+        "移动通信"
+      ]
+    },
+    {
+      "title": "Universal Health Coverage Could Save $1T and 114,000 Lives a Year, Yale Study",
+      "link": "https://ysph.yale.edu/news-article/universal-health-coverage-could-save-one-trillion-dollars-and-114000-lives-every-year/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-17T15:49:57.000Z",
+      "summary": "Article URL: https://ysph.yale.edu/news-article/universal-health-coverage-could-save-one-trillion-dollars-and-114000-lives-every-year/\nComments URL: https://news.ycombinator.com/item?id=49332981\nPoints: 87\n# Comments: 53",
+      "id": "5f26ffd12cbe004da6a453498756804065e9bb39c0eb890f40bfd74f49ea4b47",
+      "ref_id": "0",
+      "recommendationScore": 10,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "与科技博客的核心关注主题不符，属于社会政策研究范畴。",
+      "reason": "内容虽有普遍兴趣，但与AI、编程工具、Apple生态等科技领域无关，不适合科技博客。",
+      "tags": [
+        "社会政策",
+        "医疗",
+        "研究"
+      ]
+    },
+    {
+      "title": "Show HN: Learn Flags Quiz",
+      "link": "https://flagquizzes.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-17T14:11:17.000Z",
+      "summary": "Article URL: https://flagquizzes.com/\nComments URL: https://news.ycombinator.com/item?id=49331288\nPoints: 11\n# Comments: 1",
+      "id": "b8834e9f34dc14a045d5d40e38643e0c71c5381f30095b035c620ca2f94054fb",
+      "ref_id": "2",
+      "recommendationScore": 10,
+      "popularityScore": 7,
+      "priority": "low",
+      "comment": "一个简单的学习世界各国国旗的在线小游戏。",
+      "reason": "娱乐性产品，缺乏技术深度和对科技领域读者的实用价值，不符合博客主题优先级。",
+      "tags": [
+        "娱乐",
+        "小工具",
+        "教育"
+      ]
+    },
+    {
+      "title": "The only known trebuchet casualty in history",
+      "link": "https://arstechnica.com/science/2026/08/meet-the-only-known-trebuchet-casualty-in-history/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-17T14:26:19.000Z",
+      "summary": "Article URL: https://arstechnica.com/science/2026/08/meet-the-only-known-trebuchet-casualty-in-history/\nComments URL: https://news.ycombinator.com/item?id=49331555\nPoints: 25\n# Comments: 5",
+      "id": "6132321fb435481b6a908d235606adad7faca82ce7f85df8e82bb24f5d1dd801",
+      "ref_id": "3",
+      "recommendationScore": 5,
+      "popularityScore": 35,
+      "priority": "low",
+      "comment": "一篇与科技领域完全无关的历史趣闻。",
+      "reason": "内容完全偏离了科技博客关注的AI、编程工具等核心主题，不具备任何技术相关性。",
+      "tags": [
+        "历史",
+        "趣闻"
+      ]
+    }
+  ]
+}
