@@ -1,0 +1,709 @@
+{
+  "dailySummary": "今日科技速递：Rust供应链遭恶意攻击警示开源安全；AI端侧钢琴伴奏模型、DiffusionGemma及PyTorch优化成热点。同时，开源支付替代Stripe，AliExpress被曝隐秘指纹追踪。",
+  "articles": [
+    {
+      "title": "Malicious Rust crate Arrayref runs a build-time payload",
+      "link": "https://safedep.io/arrayref-proc-macro1-rust-build-time-malware/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-20T13:23:12.000Z",
+      "summary": "https://blog.rust-lang.org/2026/08/20/supply-chain-attack-on...\nhttps://github.com/rustsec/advisory-db/issues/3161\nComments URL: https://news.ycombinator.com/item?id=49374269\nPoints: 229\n# Comments: 174",
+      "id": "36970f46cf3c618159846aa1d66a61cf9e53b8495148081fd50e5f6f631f3acc",
+      "ref_id": "2",
+      "recommendationScore": 98,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "针对Rust编程生态的严重供应链攻击警告，细节分析了恶意crate的构建时负载。",
+      "reason": "该文章揭示了一个关键的Rust供应链安全漏洞，对所有Rust开发者来说具有极高的实用性和阅读优先级。",
+      "tags": [
+        "Rust",
+        "供应链安全",
+        "编程工具",
+        "安全漏洞",
+        "开源"
+      ]
+    },
+    {
+      "title": "Show HN: Open-source Stripe Connect alternative",
+      "link": "https://zoneless.com",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-20T14:38:45.000Z",
+      "summary": "Hey, I'm Ben. I built Zoneless because I was paying so much to use Stripe Connect on my own marketplace. The fees were really, really bad, and it was also limiting in terms of the seller countries I could onboard. To give you an idea, I was paying around $9,000 per month in fees just to run payouts. Using Zoneless, that cost goes down to around $6.\nI've been using it personally for the past few months, and onboarded 5,000+ sellers and done 3,000+ payouts. 74% of new sellers on my marketplace choose Zoneless over Stripe, which is really interesting. I appreciate crypto and stablecoins are a bit of a touchy subject, but for this use case of sending global payouts cheaply, it's perfect.\nThe project is open source with an Apache 2.0 licence, which means there's the benefit of no lock-in and no risk of your account getting flagged or shut down. It also has an almost identical API and dashboard to Stripe.\nWould love to hear any feedback you may have in the comments.\nComments URL: https://news.ycombinator.com/item?id=49375244\nPoints: 21\n# Comments: 11",
+      "id": "deee4cc2fe70d8473402c70852eda60410a01c169b3430cf6d8b92926cb9f64a",
+      "ref_id": "0",
+      "recommendationScore": 97,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "革新性的Stripe Connect开源替代方案，显著降低支付成本，并支持更多卖家。",
+      "reason": "该项目解决了一个普遍的市场痛点，提供了颠覆性的成本效益和技术自由度，对独立开发者和平台所有者极具价值。",
+      "tags": [
+        "支付",
+        "开源",
+        "独立开发",
+        "编程工具",
+        "加密货币",
+        "SaaS"
+      ]
+    },
+    {
+      "title": "DiffusionGemma Technical Report",
+      "link": "https://arxiv.org/abs/2608.00146",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-20T13:24:32.000Z",
+      "summary": "Article URL: https://arxiv.org/abs/2608.00146\nComments URL: https://news.ycombinator.com/item?id=49374287\nPoints: 68\n# Comments: 11",
+      "id": "ffb2d30bbc94ba4a07c81fca66c844c526cd83630bbd8754a79c2ce2ecc71efb",
+      "ref_id": "1",
+      "recommendationScore": 95,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "Google DiffusionGemma的深度技术报告，探索最新扩散模型的架构与性能。",
+      "reason": "作为AI领域的核心技术报告，其深度和新颖性极高，是了解生成式AI前沿的必备资料。",
+      "tags": [
+        "AI",
+        "生成模型",
+        "扩散模型",
+        "Google",
+        "技术报告"
+      ]
+    },
+    {
+      "title": "Hacking with Claude on a $27 Smart Watch",
+      "link": "https://www.mikekasberg.com/blog/2026/08/19/hacking-with-claude-on-a-27-smart-watch.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-20T14:08:09.000Z",
+      "summary": "Article URL: https://www.mikekasberg.com/blog/2026/08/19/hacking-with-claude-on-a-27-smart-watch.html\nComments URL: https://news.ycombinator.com/item?id=49374772\nPoints: 41\n# Comments: 24",
+      "id": "acf4cd57263162cdc871398f61cedd56af2cb56108e197fd483a733501f8fb8a",
+      "ref_id": "4",
+      "recommendationScore": 92,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "利用AI助手Claude在廉价智能手表上进行创新性开发和探索。",
+      "reason": "完美结合了AI和硬件开发主题，展示了AI在实际编程和问题解决中的应用潜力，极具新颖性和启发性，符合AI主题高优先级。",
+      "tags": [
+        "AI",
+        "智能硬件",
+        "编程",
+        "Hacking",
+        "嵌入式"
+      ]
+    },
+    {
+      "title": "Every Model Cheats",
+      "link": "https://dreadnode.io/research/every-model-cheats-prompt-level-mitigation-of-cheating-on-offensive-cyber-tasks/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-20T13:56:59.000Z",
+      "summary": "Article URL: https://dreadnode.io/research/every-model-cheats-prompt-level-mitigation-of-cheating-on-offensive-cyber-tasks/\nComments URL: https://news.ycombinator.com/item?id=49374635\nPoints: 29\n# Comments: 15",
+      "id": "abdaab3b91cc1a2dee53157a440b6ec09f1ce8d66fc30dc5c34826b9dda80b1d",
+      "ref_id": "0",
+      "recommendationScore": 92,
+      "popularityScore": 40,
+      "priority": "high",
+      "comment": "深入探讨AI模型在网络安全任务中的作弊行为及缓解策略。",
+      "reason": "主题紧扣AI前沿安全，技术深度和实用性俱佳，对AI模型部署者有重要参考价值。",
+      "tags": [
+        "AI",
+        "大模型",
+        "网络安全",
+        "机器学习",
+        "攻防"
+      ]
+    },
+    {
+      "title": "Use the built-in GELU, don't roll your own!",
+      "link": "https://www.gilesthomas.com/2026/08/built-in-gelu",
+      "source": "gilesthomas.com",
+      "publishedAt": "2026-08-20T02:00:00.000Z",
+      "summary": "Unsurprisingly, PyTorch's own built-in GELU function\nis faster than the hand-rolled one I've been using to date.  But I was surprised at\nhow much faster using it made things when training my models.  I discovered this\naccidentally just now while working on something unrelated, but am logging the details\nhere for anyone else that might find it useful.\nThe headline numbers: the same code, training the same model on the same data, ran\nat about:\n21,000 tokens per second using the hand-rolled GELU from Sebastian Raschka's book\n\"Build a Large Language Model (from Scratch)\".\n25,000 tokens per second using PyTorch's built-in GELU with no arguments.\n25,000 tokens per second using the built-in GELU with approximate=\"tanh\", which\nuses the same maths as Raschka's version under the hood.\nThat's a 20% increase in throughput for both of the built-in versions -- definitely nothing to be sneezed at.\nAnd what is particularly\ninteresting is that there aren't that many GELUs going on -- it's a GPT-2 small-style\nmodel, with 12 layers.  So that's 12 GELUs handling tensors\nshaped (batch_size, seq_len, 4 * d_emb), which is (6, 1024, 3072) for my training setup.\nGiven that the rest of the model is doing all of the normal full attention stuff for GPT-2, it's\nreally surprising that the GELUs alone must have been taking up so much of the time.  The throughput\nnumbers mean that we must have been spending about 17% of our time on the extra overhead from the hand-rolled\nversion, so that sets a lower bound for how much time the GELUs were taking up.\nMore info below the fold.\nBack when I was doing the \"interventions\" part of my LLM from scratch series, training\ndozens of GPT-2 small-sized models in the cloud and on my local machines, to keep things simple I used\nthe original model code from Raschka's book.\nThat happens to have its own implementation of the GELU function --\nyou can see my copy here.\nI'm not that sure why the hand-rolled version is in there -- he covers the maths, but the specific implementation isn't explained\nin that much depth, and it seems rather like boilerplate, just a \"type this in and use it\"\nkind of thing.  By contrast, for example, while he does explain the maths behind cross-entropy loss in similar detail,\nwe use the built-in function for it rather than coding it up ourselves.\nWhen I switched to using JAX for my own from-scratch implementation,\nI decided to not bother porting the boilerplate, and just used JAX's own built-in version.\nI was revisiting the PyTorch code -- I'm in the process of extending it with mixture-of-experts\nsupport, about which more in a later post -- and decided to switch from the hand-written GELU to the PyTorch one just to\ntidy things up a bit.\nI noticed something interesting -- my new MoE code suddenly seemed to speed up.\nWas that a mirage?  Or had I discovered part -- or even all -- of the reason why the\nJAX code was so much faster than the PyTorch code?  With PyTorch, I was typically\ngetting training speeds of about 21,000 tokens per second, while in JAX I was getting 24,000 tps or so.\nI'd been chalking that up to JAX's JIT compilation, but could it have been just a result\nof a random implementation choice I'd made?\nI did three partial test training runs, letting each one run for 20 minutes to allow the\ntraining speed to settle down from any startup overhead.  Firstly, with the old\nhand-coded GELU:\ngiles@poppy:~/Dev/ddp-base-model-from-scratch ((HEAD detached at 16dd249))$ uv run torchrun --nproc_per_node=1 ddp_train.py 1xrtx3090-baseline datasets/\nFetching 4 files: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 3173.90it/s]\nStarting rank 0 training at global step 0\n  0%|                                                                                                                  | 0/33165 [00:04<?, ?it/s, loss=10.991, tps=19,982]\n\n\nCheckpoint\n\nContinuing training\n  1%|▊                                                                                                     | 257/33165 [20:07<42:53:57,  4.69s/it, loss=6.570, tps=20,920]\n\nSo it was getting 20,920 on average over those 257 global steps.  That speed was in line with the original run\nof the configuration I was using.\nNext, I introduced the built-in PyTorch GELU with no arguments:\n-\n-class GELU(nn.Module):\n-\n-    def forward(self, x):\n-        return 0.5 * x * (1 + torch.tanh(torch.sqrt(torch.tensor(2.0 / torch.pi)) * (x + 0.044715 * torch.pow(x, 3))))\n-\n-\n-\n class FeedForward(nn.Module):\n\n     def __init__(self, cfg):\n         super().__init__()\n         self.layers = nn.Sequential(\n             nn.Linear(cfg[\"emb_dim\"], cfg[\"emb_dim\"] * 4),\n-            GELU(),\n+            nn.GELU(),\n             nn.Linear(cfg[\"emb_dim\"] * 4, cfg[\"emb_dim\"])\n         )\n\nThat does the full calculations for GELU, rather than using the tanh-based approximation that\nthe hand-rolled code did.  After 20 minutes, it looked like this:\ngiles@poppy:~/Dev/ddp-base-model-from-scratch (main)$ uv run torchrun --nproc_per_node=1 ddp_train.py 1xrtx3090-baseline datasets/\nFetching 4 files: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 11222.22it/s]\nStarting rank 0 training at global step 0\n  0%|                                                                                                                  | 0/33165 [00:04<?, ?it/s, loss=10.991, tps=23,953]\n\n\nCheckpoint\n\nContinuing training\n  1%|▉                                                                                                     | 307/33165 [20:00<35:40:59,  3.91s/it, loss=6.331, tps=25,134]\n\nSo this time we were getting 25,134 tokens per second -- 20% faster!\nBy default, PyTorch's GELU uses an exact calculation of the function -- the hand-written\ncode from the book uses an approximation using tanh.  Luckily, you can get that same\napproximation from PyTorch:\n         super().__init__()\n         self.layers = nn.Sequential(\n             nn.Linear(cfg[\"emb_dim\"], cfg[\"emb_dim\"] * 4),\n-            nn.GELU(),\n+            nn.GELU(approximate=\"tanh\"),\n             nn.Linear(cfg[\"emb_dim\"] * 4, cfg[\"emb_dim\"])\n         )\n\nSo, training with that for 20 minutes:\ngiles@poppy:~/Dev/ddp-base-model-from-scratch (main)$ uv run torchrun --nproc_per_node=1 ddp_train.py 1xrtx3090-baseline datasets/\nFetching 4 files: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 4115.09it/s]\nStarting rank 0 training at global step 0\n  0%|                                                                                                                  | 0/33165 [00:04<?, ?it/s, loss=10.991, tps=23,875]\n\n\nCheckpoint\n\nContinuing training\n  1%|▉                                                                                                     | 307/33165 [20:00<35:39:42,  3.91s/it, loss=6.332, tps=25,142]\n\n25,142 tokens per second -- basically the same as the non-approximate version.\nSo: switching to the built-in GELU made my PyTorch code run 20% faster, at about 25,000 tps\nrather than 21,000.\nMy JAX code, which used JAX's built-in GELU, ran at around 24,000 tps.  I'd actually\nfound that rather surprising, because in JAX I was training in full-fat 32-bit floating point, while in PyTorch I was using\nAutomatic Mixed Precision (AMP) -- a special mode that allows it to use 16-bit calculations\nwhere it won't hurt the model much.\nI'd found that\nAMP gave PyTorch a huge speedup -- from 15,402 tps to 19,797 on one test.  So JAX without AMP\nbeing so much faster than PyTorch with AMP was a bit of a surprise.  Its JIT is pretty\namazing, but I didn't expect it to be that much faster.\nNow I think that we have at least part of an explanation.  I was using JAX's\nbuilt-in GELU (interestingly, with its default parameters, which means that it used the tanh\napproximation), but the PyTorch code was using the hand-rolled one, and that unduly\npenalised it and erased some of the gains it got from AMP.\nIf I really wanted to dig into this, I suppose I might try JAX with a hand-rolled GELU\nto see what happened.  My guess is that because of its JIT, it might actually handle it\nbetter -- the whole hand-rolled thing could be compiled into one thing on the GPU.  Perhaps\nit would also be interesting to try the non-AMP PyTorch code with the built-in GELU.\nBut I doubt that would really be the best use of my time (and my electricity bill),\nso I'll leave it here.\nOn the other hand, I do intend to have a look at torch.compile in the future, to see\nwhat kind of speedup I can get from it.  And it might be able to compile and fuse together\nthe hand-rolled GELU -- so that would be an interesting thing to experiment with in that\npost: does the built-in GELU advantage disappear if we're compiling?\nBut anyway, for now, lesson learned: use built-in PyTorch modules when you can.\nIt's a pretty obvious one ;-)\n[Update] On X, Sebastian Raschka noted that\nhe used the approximate version of GELU in his code so that the models were compatible with the\nOpenAI weights -- they were trained with that version, so they may behave slightly differently\nif you use the \"pure\" version.  That's a great point, and so I've updated my own copy of the\ncode to use approximate=\"tanh\".",
+      "id": "cd32209e5b44d8a06097c9f3e48cca007a9a73665858821ee2fbe35218d191b9",
+      "ref_id": "0",
+      "recommendationScore": 92,
+      "popularityScore": 88,
+      "priority": "high",
+      "comment": "文章揭示了PyTorch内置GELU函数比自定义实现能显著提升20%的LLM训练吞吐量。",
+      "reason": "对AI/LLM开发者而言，这是一项直接、高效且易于采纳的性能优化技巧，具有极高的实用价值。",
+      "tags": [
+        "AI",
+        "PyTorch",
+        "LLM",
+        "Optimization",
+        "Deep Learning",
+        "Performance"
+      ]
+    },
+    {
+      "title": "Show HN: I trained a 125M model to autocomplete piano on-device",
+      "link": "https://simedw.com/2026/08/20/midi-autocomplete/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-20T12:04:38.000Z",
+      "summary": "I trained a 125M-parameter transformer to autocomplete piano performances in real time (~108 notes/sec on an iPhone 15).\nThe idea is basically GitHub Copilot or Tabnine, except instead of prompting it with code, you prompt it by playing a few notes on a MIDI piano. The model then continues what you played, entirely on-device.\nThe app is free if anyone wants to try it. Happy to answer questions about the model, training, Core ML, or the many things that didn't work.\nComments URL: https://news.ycombinator.com/item?id=49373456\nPoints: 281\n# Comments: 70",
+      "id": "cba58727ea88e064aba5d3e17d40ecf05b2478ea67f245031589c585e0afc5b3",
+      "ref_id": "0",
+      "recommendationScore": 90,
+      "popularityScore": 45,
+      "priority": "high",
+      "comment": "AI在移动设备上的创新应用，将Copilot理念带入音乐创作。",
+      "reason": "该文章结合了AI模型、边缘计算与苹果生态，实现了实时钢琴自动补全，技术新颖且具有高实用价值，完美契合了我们的高优先级主题。",
+      "tags": [
+        "AI",
+        "Apple 生态",
+        "机器学习",
+        "独立开发",
+        "Core ML",
+        "音乐"
+      ]
+    },
+    {
+      "title": "Getting the Steam Deck LCD working on a Raspberry Pi",
+      "link": "https://www.jeffgeerling.com/blog/2026/steam-deck-lcd-pi-hat/",
+      "source": "jeffgeerling.com",
+      "publishedAt": "2026-08-20T14:00:00.000Z",
+      "summary": "The BOE TV070WXM-TV0 LCD used in the original Steam Deck can be had for around $30. It's a serviceable 7\" touchscreen with 400 nits of brightness and a resolution of 1280x800 (for a sharp 216 ppi).\n\n\n\nThe specs are a lot nicer than the Pi 7\" Touch Display, which costs twice as much, with giant bezels and half the resolution!\nUntil today, the Steam Deck LCD didn't work with a Raspberry Pi. But the folks at Scandent were trying to standardize on a mass-market touchscreen for one of their own devices, and built a Linux kernel driver for it which they intend to upstream.",
+      "id": "33b73044ac51d749689808e24426f5ee229d867ba7ff7c6fdd7b7299b04a68d9",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "极具实用性的硬件改造教程，为树莓派用户提供了高性价比显示方案。",
+      "reason": "解决了树莓派用户寻找高性价比显示屏的痛点，提供了详细的硬件改造和驱动开发思路，技术深度和实用性极高，符合自动化主题。",
+      "tags": [
+        "硬件",
+        "DIY",
+        "Raspberry Pi",
+        "Linux",
+        "驱动开发",
+        "自动化",
+        "嵌入式"
+      ]
+    },
+    {
+      "title": "A Sloppy Interface Is a Security Liability ￼",
+      "link": "https://blog.jim-nielsen.com/2026/sloppy-ui-is-security-liability/",
+      "source": "blog.jim-nielsen.com",
+      "publishedAt": "2026-08-20T19:00:00.000Z",
+      "summary": "In his talk “Why AI Is Breaking Software Security As We Know It” (my notes here), Feross Aboukhadijeh talks about the Axios npm incident and how the maintainer got phished by succumbing to (amongst other things) a faux Microsoft Teams interface:\nthis is the kind of thing that AI makes easy to do, because it can vibe code that whole fake Microsoft Teams interface pretty trivially\nYou’ve probably seen these: interfaces designed to look like some other product in order to provide a facade of authenticity and exploit someone.\nWhat struck me in listening to Feross was this idea of how the quality of your interfaces can be a protection mechanism against attackers.\nI don’t know if I’ve ever heard someone say that out loud — interface and interaction design as a security control — but I’m saying it.\nNow, of course, not everyone will consciously notice the level of polish that world-class professionals imbue in digital interfaces. But some will.\nPersonally, I’ve always used the quality and care of digital  experiences as a heuristic for judging authenticity — and competency to be honest, e.g. “If this UI is so bad, what else will surely be bad?”\nGranted, it was a much more dependable heuristic before AI came along. But even now, I can still suss out slop and carelessness which is a skill that continues to be a reliable, protective form of digital literacy (for me).\nThat’s all to say: a sloppy, careless approach to interface design  not only hurts your brand in terms of customer perception, but it can be an attack vector. The easier it is to sloppily reproduce what you sloppily ship, the easier it will be for your product or brand to be leveraged as a vehicle for exploiting your customers.\nIf everything you make was produced from a single prompt, then everyone else is one prompt away from imitating you. The easier something is to make, the more likely it’ll be in the genre of “easy to exploit”.\nOne way to protect yourself (it’s not the only one way, security is never a binary “you are / are not secure”) is to do that extra work to make your experiences go above and beyond what you can easily get out of an LLM.\nThe protection here is having an interface and experience that is hard to replicate with the same level of fidelity that discerning users will notice — things like micro-interactions, loading behavior, UI copy and voice, handling of edge-cases, etc. That’s the stuff that’s hard (and expensive) to fake because it’s hard (and expensive) to notice you need to fake it.\ntl;dr — Fidelity to craft is not only valuable from a product standpoint, but it’s also valuable from security standpoint. If attackers are going after low-hanging fruit, your fruit will be harder to reach if it’s up high.\nEmail\n      · Mastodon ·\n\n      Bluesky",
+      "id": "eca7c15f998fb59bfbfb5ffef66afc5a254240fa2a2e2982acf04c5980ac9ce0",
+      "ref_id": "3",
+      "recommendationScore": 89,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "文章提出新颖观点，强调粗糙的界面设计在AI助长虚假信息时代下是一种安全漏洞，界面质量本身即是一种安全控制。",
+      "reason": "将产品设计与网络安全、AI的潜在威胁相结合，提出了一个前瞻性且高度实用的安全防护维度，对多领域读者都有启发。",
+      "tags": [
+        "Product Design",
+        "Security",
+        "UI/UX",
+        "AI",
+        "Cybersecurity",
+        "Human Factors"
+      ]
+    },
+    {
+      "title": "AliExpress runs silent WebAudio fingerprinting that breaks Bluetooth multipoint",
+      "link": "https://blog.laserphile.com/2026/08/aliexpress-webpage-keeping-multipoint.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-20T10:08:52.000Z",
+      "summary": "Article URL: https://blog.laserphile.com/2026/08/aliexpress-webpage-keeping-multipoint.html\nComments URL: https://news.ycombinator.com/item?id=49372583\nPoints: 540\n# Comments: 181",
+      "id": "4d2c69fe91798f7293b33d3bc5dbf3de7c65b226c3f5b23b60e8a1168f8f71e1",
+      "ref_id": "2",
+      "recommendationScore": 88,
+      "popularityScore": 100,
+      "priority": "medium",
+      "comment": "揭露了AliExpress的WebAudio指纹识别技术及其对蓝牙连接的意外影响。",
+      "reason": "文章技术细节丰富，揭示了用户隐私风险与网页技术漏洞，具有极高的实用性与警示价值，且获得了非常高的社区关注度。",
+      "tags": [
+        "网络安全",
+        "隐私",
+        "Web技术",
+        "指纹识别",
+        "蓝牙"
+      ]
+    },
+    {
+      "title": "Clean up Claude 5's token vomit with a separate LLM",
+      "link": "https://github.com/zachahn/vomit",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-20T15:26:02.000Z",
+      "summary": "Article URL: https://github.com/zachahn/vomit\nComments URL: https://news.ycombinator.com/item?id=49375996\nPoints: 34\n# Comments: 21",
+      "id": "09523f683853cee9bea6d54d2e9d4b30c60ede5c01d348f3f8655a4a2bc40baa",
+      "ref_id": "3",
+      "recommendationScore": 87,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "提出了一种巧妙的方法，利用另一个LLM来清理Claude 5输出中的冗余token。",
+      "reason": "直接解决了当前LLM使用中的实际痛点，为AI开发者提供了即时可用的高级优化策略。",
+      "tags": [
+        "AI",
+        "LLM",
+        "Claude",
+        "提示工程",
+        "自然语言处理",
+        "AI开发"
+      ]
+    },
+    {
+      "title": "Turns are Better than Radians (2022)",
+      "link": "https://www.computerenhance.com/p/turns-are-better-than-radians",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-20T01:29:12.000Z",
+      "summary": "Article URL: https://www.computerenhance.com/p/turns-are-better-than-radians\nComments URL: https://news.ycombinator.com/item?id=49369408\nPoints: 310\n# Comments: 165",
+      "id": "766e85846204022f1dcf77fe72cd2006ae19c617d563d240025f5a42e9cbd3bf",
+      "ref_id": "4",
+      "recommendationScore": 85,
+      "popularityScore": 74,
+      "priority": "medium",
+      "comment": "一篇论证在编程和图形学中使用‘圈’（Turns）优于弧度（Radians）的文章。",
+      "reason": "文章对角度计量单位进行了深入探讨，提出了一种更直观、更具编程友好性的替代方案，对图形学和编程领域的开发者有很高参考价值和实用性。",
+      "tags": [
+        "编程",
+        "数学",
+        "图形学",
+        "计算机科学",
+        "API设计"
+      ]
+    },
+    {
+      "title": "Debates over AI consciousness are a trap",
+      "link": "https://www.technologyreview.com/2026/08/20/1142571/ai-consciousness-debate-trap/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-08-20T15:42:39.000Z",
+      "summary": "“Runaway” AI, “rogue” agents, and “autonomous” actors—the current rhetoric would have you believe that AI agents are not only awake and aware, but angry at their creators. Prominent tech leaders such as Demis Hassabis, Dario Amodei, and Sam Altman push for regulation of these seemingly “superhuman” systems, while a separate faction, led by policy organizations…",
+      "id": "c87f63873a8cf0514f1ca3921cceac8fe64631df2d1b89119a2cbe57e09e4ea4",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "提供对AI意识辩论的深刻批判性视角，挑战现有论调。",
+      "reason": "紧扣高优先级AI主题，提出独特且引人深思的观点，有助于读者理解AI伦理和政策讨论的本质。",
+      "tags": [
+        "AI",
+        "ethics",
+        "philosophy",
+        "policy"
+      ]
+    },
+    {
+      "title": "Bun 1.4",
+      "link": "https://bun.com/blog/bun-v1.4",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-20T14:10:12.000Z",
+      "summary": "Article URL: https://bun.com/blog/bun-v1.4\nComments URL: https://news.ycombinator.com/item?id=49374797\nPoints: 129\n# Comments: 59",
+      "id": "b548c2c9cc6c91ffb747c4084599fe8193ce9e413309ea2497755746d30d969a",
+      "ref_id": "3",
+      "recommendationScore": 82,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "JavaScript运行时Bun的最新版本1.4发布，带来了新的功能和性能提升。",
+      "reason": "这是一项重要的编程工具更新，直接面向广大开发者群体，对JavaScript生态系统具有高实用性和影响力。",
+      "tags": [
+        "编程工具",
+        "JavaScript",
+        "运行时",
+        "Web开发",
+        "更新"
+      ]
+    },
+    {
+      "title": "Generic Methods in Go 1.27",
+      "link": "https://dominik.info/blog/go-generic-methods",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-20T15:41:48.000Z",
+      "summary": "Article URL: https://dominik.info/blog/go-generic-methods\nComments URL: https://news.ycombinator.com/item?id=49376211\nPoints: 8\n# Comments: 1",
+      "id": "4712f2dfc1c5100dae211b58b99d20824dee6be27c69e5c7003cb49c9ac6e057",
+      "ref_id": "1",
+      "recommendationScore": 81,
+      "popularityScore": 20,
+      "priority": "medium",
+      "comment": "深入探讨Go 1.27中泛型方法的实现与使用。",
+      "reason": "对Go语言开发者而言，是了解和应用新语言特性不可多得的深度指南。",
+      "tags": [
+        "Go语言",
+        "泛型",
+        "编程工具",
+        "软件开发"
+      ]
+    },
+    {
+      "title": "Launch HN: Vendo (YC S26) – Let users build features on top of your product",
+      "link": "https://github.com/runvendo/vendo",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-20T15:29:52.000Z",
+      "summary": "Hi HN, we’re Yousef & Nour, founders of Vendo (https://vendo.run). Vendo lets users create new features inside the software they already use. A user describes the dashboard, workflow, or small app they need, and Vendo builds it on top of the product’s existing data, API, and interface.\nDemo: https://www.youtube.com/watch?v=VdpHehY64ls\nWe built Vendo because every SaaS eventually faces the same problem: every customer needs something slightly different. One wants a new report and another needs a workflow that only makes sense for their team. These requests either sit on the roadmap, become one-off engineering work, or force the customer into spreadsheets and external tools. We wanted the user to be able to create the missing feature themselves, without leaving the product.\nHere is how it works:\n- npx vendo init reads the product's API surface, theme, routes, and more. These are used so that the apps Vendo creates (1) look on-brand and native and (2) have the ability to read data and perform actions directly through the company's API\n- When a user asks for a feature, we have a custom Vendo harness that writes a React component with a bunch of Vendo add-ons and guardrails (ex. ability to make calls to the host API + our component library). Every save is compiled, type-checked, run against real API responses, and rendered before the user sees it. We just released a benchmark and write-up here with more info for anyone interested: https://vendo.run/blog/generating-product-ui-measured\n- We use QuickJS to make sure that anything the agent creates is sandboxed and can't mess with the company's site. Vendo compiles the component and runs it with Preact inside a QuickJS VM with no access to the DOM, network, or clock. The VM returns a UI tree, which the host renders using the product’s registered components. When the user clicks something, QuickJS emits a tool call; the host executes it through Vendo’s guard and passes the result back into the same VM, preserving the screen’s local state.\nThere's a lot of generative UI right now: streaming developer-written components into a chat (Vercel AI SDK, CopilotKit, Thesys), or rendering your app inside someone else's assistant (OpenAI Apps SDK, MCP Apps). We differ on two things. Vendo lives in your product and acts through your API as the signed-in user, so what it makes is durable: real apps users keep, pin, and run on triggers while they're away, and not components that are merely confined to a chat. Plus, it's not capped at putting together a bunch of prebuilt components: the agent can build arbitrary apps, from a quick dashboard out of your own components to real custom code running in a sandbox, and either way data only ever comes from tool calls to your API.\nHere are some things customers are using Vendo for today:\n- Letting their users create custom dashboards and reports. These are mainly UI-based and focused on letting the user see the exact graphs and metrics they care about\n- Letting their customers create recurring automations. A big thing as well that has been used for these automations is the fact that we connect to external connections, so users have been automating many of their inter-tool workflows (ex. an automation that sends a slack alert based off of something in the product)\n- B2B customers letting their customers customize the product with specific business logic. Often this is simple things like an extra field on a form, or an extra permission, but it is hard for a business to keep up with them otherwise.\n- Creating and sharing custom dashboards/apps across an organization. Since the apps Vendo creates are durable, they can be shared, reused, and forked (which can’t be done with many of the other in-chat generative UI solutions)\nWe've spent a lot of time thinking about how AI and agents will change the way people consume software. We think the answer is personal(ized) software: you see the UI you need to see, you tell an agent exactly what you need, and the product molds to how you work.\nThe key insights that have enabled the product to work are:\n- A rule in code always beats a rule in a prompt.\n- Invent as little syntax as possible. Generation got faster and more reliable when the output looked like what models already know (JSX-shaped markup) instead of a clever custom format.\n- Deterministic beats model wherever you can get away with it. Theme extraction is pure static analysis, and a remix starts as a copy of your component, no model call.\nVendo is completely open-source (Apache-2.0) and can be self-hosted, so feel free to check out all the source code here: https://github.com/runvendo/vendo.\nWould love you to try it out and give us your feedback: https://docs.vendo.run/. Or if you’re a company looking to embed Vendo in your product feel free to book a call here: https://cal.com/team/vendo/intro-call\nComments URL: https://news.ycombinator.com/item?id=49376038\nPoints: 9\n# Comments: 2",
+      "id": "cd5d17946e93023b166d8718e968ff2f5b0c67574132a375145fcfd5e9990923",
+      "ref_id": "2",
+      "recommendationScore": 81,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "一个革命性的平台，允许用户在现有产品上构建自定义功能，可能集成AI。",
+      "reason": "解决了SaaS产品共性痛点，通过用户赋能提升产品灵活性，对产品开发和独立开发者具高度参考价值。",
+      "tags": [
+        "SaaS",
+        "产品设计",
+        "独立开发",
+        "低代码",
+        "用户赋能",
+        "AI"
+      ]
+    },
+    {
+      "title": "smolmachines / smolvm as a sandbox for untrusted Python & JavaScript",
+      "link": "https://simonwillison.net/2026/Aug/19/smolmachines-untrusted-sandbox/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-08-19T23:16:00.000Z",
+      "summary": "",
+      "id": "606747c020460cc909a8c53ec6e33b5fe1b43e92ed2e97d0e27fef6cc0ab6337",
+      "ref_id": "0",
+      "recommendationScore": 80,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "深入探讨沙箱技术，对于运行不可信代码提供有价值的解决方案。",
+      "reason": "解决了在Python和JavaScript环境中安全执行不可信代码的实际需求，技术细节值得关注，符合编程工具的高优先级。",
+      "tags": [
+        "编程",
+        "沙箱",
+        "Python",
+        "JavaScript",
+        "虚拟机",
+        "安全",
+        "工具"
+      ]
+    },
+    {
+      "title": "Issues in the Repo",
+      "link": "https://nesbitt.io/2026/08/20/issues-in-the-repo.html",
+      "source": "nesbitt.io",
+      "publishedAt": "2026-08-20T09:00:00.000Z",
+      "summary": "GitHub had a rough Monday this week, with git operations, Actions, and the issue tracker all unavailable for several hours. Code being unreachable during a forge outage is annoying but survivable because every contributor already has a full clone. Issues and pull request threads going dark is a different matter, since for most projects those exist only in GitHub’s database and nowhere else. I asked on Mastodon about tools that keep issue and review data inside the repository so it clones and pushes with the code, and got pointed at more projects than I expected, spanning about twenty years of people having a go at this.\nThe projects sort by where they physically put the data, and each storage location brings its own answers to the same handful of questions: whether a plain git clone fetches it, what happens when two people edit the same issue offline and then both push, whether you can read it without the tool installed, whether it survives being pushed to a bare git host that has no support for the tool, and who counts as the author of an issue when there are no forge accounts. I wrote about git’s extension points last year and several of these tools use the custom-ref mechanism from that post, but here I’m looking at the data model rather than the plumbing.\nFiles in the working tree\nThe oldest approach is to make each issue a text file, or a directory of files, checked in next to the source. Bugs Everywhere did this in 2005 for Bazaar and later added git and Mercurial backends, and ditz stored issues as YAML from 2008. More recently GitRoot builds an entire self-hosted forge on the same idea, keeping issues as issues/<id>-<slug>.md with front-matter status fields, users and permissions as YAML under .gitroot/, and a small server that renders the lot as a web UI. Matthew Martin pointed at his own ticket directory that reuses keep-a-changelog fragments as lightweight work items with no tooling at all, which is about as minimal as this pattern gets.\nIn Diomidis Spinellis’s git-issue the .issues/ directory is itself a nested git repository with its own .git, sha-bucketed as issues/ef/1a04f.../description, .../tags, .../assignee and so on. That keeps the outer project’s history untouched, though the outer clone then doesn’t carry the issues at all.\nBecause the issues are ordinary tracked files, everything git already does works with no extra configuration: git clone fetches them, grep -r searches them, cat reads them, git bundle packs them, any dumb HTTP host or cgit instance serves them, and git log -p .issues/ shows who changed what and when. Concurrent edits to the same issue become a normal three-way text merge. That works cleanly when two people append separate comments to the bottom of a file, and produces a real conflict when they both change the title line, which you resolve the same way you’d resolve a conflict in code. The author of an issue is whoever git blame says created the file, backed by whatever commit signing the project already uses, so identity comes from git’s existing model rather than needing its own.\nThe drawback is that issue history and code history share one commit graph. On a busy project git log fills with “reword issue #34” interleaved with real changes, git bisect steps through issue-edit commits, and creating a feature branch forks the issue state along with the code, so an issue closed on the branch shows as open again the moment you switch back to main. Most of these tools work around the log noise by making each issue operation its own commit with a conventional prefix that’s easy to --invert-grep away, but the branching problem is unavoidable while mutable metadata is in the same tree as the code it describes.\nOrphan branch\nAn orphan branch is a ref under refs/heads/ whose root commit has no parent, so it shares no history with main and its files never appear in a normal checkout. Scott Chacon’s ticgit from 2008 and the later ticgit-ng fork keep issues on a branch literally called ticgit, with each issue as a directory in that branch’s tree, and GitHub’s old gh-pages convention used the same mechanism for documentation. The very new haxy forge from the xit project puts an event log on refs/heads/haxy/events where each commit has an empty tree and the commit message is a JSON event describing an issue creation, comment, or status change; the server replays the log to build its state.\nThe tool reads and writes the branch through plumbing or a second worktree, so git log on main stays free of issue noise, merging concurrent edits works the same as for any files on a branch, and the issue author is whoever authored the commit on the orphan branch. Because the ref is under refs/heads/ a default git clone fetches it automatically, which is the one clear advantage this has over the notes and custom-ref approaches below.\n\n$ git ls-tree ticgit\n040000 tree 9b721cc...  1206206148_add-attachment-to-ticket_138\n040000 tree 5d14214...  1206206166_download-attached-file_112\n\n$ git ls-tree ticgit:1206206148_add-attachment-to-ticket_138\n100644 blob cfdb466...  ASSIGNED_schacon@gmail.com\n100644 blob 3074cf0...  COMMENT_1206206148_schacon@gmail.com\n100644 blob f510327...  STATE_open\n100644 blob 6d44874...  TAG_attach\n100644 blob 9ebd07e...  TICKET_ID\n\n\nTicgit encodes almost everything in filenames (STATE_open, TAG_attach, ASSIGNED_<email>) so git ls-tree alone shows the state of an issue without reading any blobs. Haxy puts everything in the commit message instead, so git log haxy/events is the entire database, and in both cases the data is legible with stock git and no extra tool installed.\nThe trouble with an orphan branch is that it shows up in git branch -a looking like any other branch, so on a project with enough contributors someone will eventually delete the “stale” ticgit branch while tidying up. A git push --prune or git push --mirror from a clone made with --single-branch, or from a CI job that only fetched main, deletes it on the remote because the local side has no matching ref. Branch protection on most forges is pattern-based (main, release/*) and won’t cover a branch called ticgit unless someone remembers to add it.\nChecking the orphan out in your only working tree swaps every file for the issue files, which is why the tools read it through git show ticgit:path rather than git checkout. The objects are safe from git gc for as long as the ref exists, but once the ref is deleted the entire disconnected graph becomes unreachable and the next gc --prune removes it, and on a stock bare host there is no server-side reflog to recover from.\ngit notes\nGit ships with a notes facility that attaches arbitrary blobs to existing commits without rewriting them, stored under refs/notes/<namespace>. The notes ref points at an ordinary commit whose tree maps each annotated commit’s SHA to a blob, so adding a note is itself a commit and the full edit history is kept. Google’s now-archived git-appraise built distributed code review entirely on this: review requests are line-delimited JSON under refs/notes/devtools/reviews, threaded comments under refs/notes/devtools/discuss, and CI status under refs/notes/devtools/ci, all attached to the commit being reviewed.\n\n$ git for-each-ref refs/notes/\ne70fe480... commit  refs/notes/review\n\n$ git cat-file -p refs/notes/review^{tree}\n100644 blob 677b652c...  0a72c46f9a191c6097f708ccdabcd6af13eebede\n\n$ git cat-file -p 677b652c\n{\"timestamp\":\"2026-08-18T00:00:00Z\",\"reviewRef\":\"refs/heads/main\",\n \"targetRef\":\"refs/heads/master\",\"description\":\"Demo review request\",\n \"requester\":\"andrew@example.com\"}\n\n\nNotes are not fetched by a default clone; you add fetch = +refs/notes/*:refs/notes/* to the remote config once and then they travel with every pull and push. Merging has first-class support in git itself via git notes merge, and the cat_sort_uniq strategy concatenates and dedupes conflicting notes line by line, which is why git-appraise stores one JSON object per line rather than a single pretty-printed document. Any git host accepts the ref, git log --notes='*' shows notes inline under each commit, and git bundle create backup.bundle --all packs them. Identity is the author of the notes commit, plus whatever the payload records; git-appraise puts the requester’s email in the JSON. The structural limitation is that a note has to hang off an existing commit, which suits code review and CI results very well and suits a bug report that isn’t about any particular commit rather less.\nCustom ref namespaces\nThe approach most of the currently-active projects have settled on is to store data under a ref namespace outside refs/heads/, so nothing shows up in git branch, nothing touches the working tree, and the tool controls the object layout completely. git-bug is the most developed example: each bug is a chain of commits under refs/bugs/<id>, each commit’s tree holds an ops blob of JSON operations plus zero-byte marker files whose names encode Lamport clock values, and user identities are separate chains under refs/identities/<id>.\nGerrit’s NoteDb keeps every change’s review metadata as a commit graph at refs/changes/NN/NNNN/meta and has run Google’s own code review without a SQL database since Gerrit 3.0. Radicle stores issues and patches as collaborative objects under per-peer refs/namespaces/<nodeid>/refs/cobs/ and merges them over a gossip protocol rather than push. git-native-issue keeps each issue as a commit chain under refs/issues/<uuid> where the tree is empty and the metadata is carried in commit-message trailers (State: open, Labels: bug) rather than JSON, with a published format spec intended to be readable by any tool. Even the centralised forges use this layer for the code half of a pull request, exposing refs/pull/N/head on GitHub and refs/merge-requests/N/head on GitLab, though those are written by the forge and read-only to clients.\n\n$ git fetch origin 'refs/bugs/*:refs/bugs/*' 'refs/identities/*:refs/identities/*'\n$ git for-each-ref refs/bugs/ | head -1\naecc49e1... commit  refs/bugs/0066216d1e0cc97ad1c9eaa553459ca85a0d57e133e...\n\n$ git cat-file -p aecc49e1^{tree}\n100644 blob e69de29b...  create-clock-354\n100644 blob e69de29b...  edit-clock-2314\n100644 blob 588a2a80...  ops\n100644 blob e69de29b...  version-4\n\n$ git cat-file -p 588a2a80\n{\"author\":{\"id\":\"193531e4590156...\"},\n \"ops\":[{\"type\":1,\"timestamp\":1722433238,\n         \"title\":\"Issue running the example_test.go\",\n         \"message\":\"Hi y'all, I'm really excited...\",\"files\":null}]}\n\n\nA default clone skips these refs entirely, so the first thing every tool does is add its refspec to .git/config. After that the data pushes to and pulls from any git host that accepts arbitrary ref names, which today is all of the major ones. Every clone that adds the refspec carries the full issue history, which is 454 refs for git-bug’s own repo but would be considerably more on a project with the issue volume of rails or kubernetes.\nBecause each edit is appended as a new commit rather than modifying an existing blob, two people editing the same bug offline produce two divergent tips that the tool merges by replaying both operation logs against the Lamport clocks, and there is never a text-level conflict to resolve by hand. That also means that when two people set the same field offline the replay picks a winner by clock order without surfacing a conflict. The raw objects are inspectable with git cat-file as above but not really readable without the tool. Identity is handled inside the data model: git-bug stores name, avatar and login in a versioned identity object, and Radicle derives it from the node’s Ed25519 key.\ngit-bug also ships bridges that import from and export to GitHub, GitLab and Jira, so an existing tracker can be mirrored into refs/bugs/ and kept usable through exactly the kind of outage that started this post. Forgejo has an open feature request for storing its own issues this way, and one proposal in that discussion is to treat refs/issues/* as the canonical store with the forge’s SQL tables rebuilt from it as a query index.\nBuilt into the VCS\nFossil was designed from the start with tickets, wiki pages, forum threads and technotes as artifact types stored alongside check-ins in the same content-addressed store, all packed into a single SQLite database file per repository. A ticket exists as a set of immutable artifacts that each declare changes to named fields, and the current state of a ticket is computed by applying every artifact with a matching ticket id in timestamp order. SourceGear’s Veracity took a similar line around 2011 with a distributed bug database synced alongside the source DAG, though the project has since been discontinued.\n\n$ fossil artifact 94cd0c6265\nD 2026-08-18T06:37:37.865\nJ comment Something\\sis\\sbroken\nJ priority Medium\nJ status Open\nJ title Demo\\sbug\nJ type Code_Defect\nK 821e9e51da937dc2c37227ef8ed57c757e7530f0\nU andrew\nZ 1c440428fff5e32c7c5304e9f6cd5bec\n\n\nThe card format is one letter per line type: D is the timestamp, each J is a field assignment with spaces escaped as \\s, K is the id of the ticket this artifact modifies, U is the user, and Z is an MD5 of the preceding lines. Syncing exchanges any artifacts the other side lacks, concurrent edits to the same ticket both survive as separate artifacts, and because each J card sets one field the effective merge policy is last-writer-wins per field with no conflict markers.\nEverything travels with fossil sync or fossil clone because there is only one file. Identity is the U card backed by Fossil’s own login system, and the whole thing is readable with fossil ticket show or by opening the SQLite file directly. The obvious drawback is that none of this is git, so it composes with git-based tooling only through import and export.\ngit bundle\nAslak Raanes asked in the thread whether these approaches survive git bundle, which is the closest thing git has to Fossil’s single-file repository and the easiest way to get an offline backup onto a USB stick. I tried it: git bundle create backup.bundle --all on a clone of the git-bug repo with refs/bugs/* and refs/identities/* fetched packs all 454 bug refs and every identity into the bundle, and the same on a repo with refs/notes/review includes the notes ref. That works because --all to git rev-list means everything under refs/, and a bundle is just a packfile with a ref list on the front. So for every git-based approach here, files in tree, orphan branches, notes, and custom refs alike, one bundle file holds the code and the issue tracker together.",
+      "id": "4ff813bd10c9075484c643d09fa71302f3bf589d1b2aa3939b6c82bccae829f7",
+      "ref_id": "1",
+      "recommendationScore": 78,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "该文探讨了GitHub宕机时Issue数据丢失的风险，并分析了将问题跟踪数据存储在代码仓库内部的各种解决方案。",
+      "reason": "为寻求开发数据韧性、减少平台依赖的团队提供了关于编程工具和DevOps工作流的深入思考和替代方案。",
+      "tags": [
+        "Programming Tools",
+        "Version Control",
+        "GitHub",
+        "DevOps",
+        "Data Management",
+        "Resilience"
+      ]
+    },
+    {
+      "title": "AI-generated ASCII diagrams",
+      "link": "https://www.johndcook.com/blog/2026/08/20/ai-generated-ascii-diagrams/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-08-20T13:48:43.000Z",
+      "summary": "I like AI-generated ASCII diagrams. Because nobody would ask AI to generate ASCII diagrams, and so, it’s congruous. I like incongruity [1]. Aside from the incongruity of using a gazillion-parameter neural network to make 1970’s style ASCII art, ASCII diagrams have some uses. They’re absolutely tiny compared to image files. But more importantly they can […]\nAI-generated ASCII diagrams first appeared on John D. Cook.",
+      "id": "d9a6027558b3464810abd5772276b2e3602407970caaeb0b5b863fc980468aea",
+      "ref_id": "4",
+      "recommendationScore": 75,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "探讨了AI生成ASCII图的趣味性和其在特定场景下的优势。",
+      "reason": "结合了当前热门的AI技术与复古的ASCII艺术，提供了一个新颖有趣的AI应用视角，虽然技术深度一般但创意和话题性高。",
+      "tags": [
+        "AI",
+        "ASCII艺术",
+        "趣味",
+        "内容生成"
+      ]
+    },
+    {
+      "title": "Anti-AI fonts are useless and harmful",
+      "link": "https://blog.yaros.ae/anti-ai-fonts-are-useless-and-harmful/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-20T15:06:53.000Z",
+      "summary": "Article URL: https://blog.yaros.ae/anti-ai-fonts-are-useless-and-harmful/\nComments URL: https://news.ycombinator.com/item?id=49375719\nPoints: 12\n# Comments: 5",
+      "id": "06efc9452cce4315a2eb961ea20d662583ee41b8a47e8d583a6151047c5e5291",
+      "ref_id": "4",
+      "recommendationScore": 74,
+      "popularityScore": 35,
+      "priority": "high",
+      "comment": "批判性分析了所谓“抗AI字体”的无效性和潜在危害。",
+      "reason": "纠正了公众对AI识别技术的一些误解，提醒人们警惕不切实际的“防AI”方案，对AI伦理和内容保护有重要启示。",
+      "tags": [
+        "AI伦理",
+        "字体设计",
+        "信息安全",
+        "AI误解",
+        "内容保护"
+      ]
+    },
+    {
+      "title": "Show HN: Check if any of the $656M in unclaimed royalties at The MLC is yours",
+      "link": "https://pub.doub.ly/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-20T14:38:28.000Z",
+      "summary": "Hi HN, I built this. Quick background on why it exists:\nWhen music is streamed on digital streaming platforms (think Spotify, Apple Music, Pandora), there are two separate royalty streams: one for the recording, paid through your distributor (DistroKid, TuneCore, CDBaby), and one for the underlying work (generally known as publishing). The work side's mechanical royalties are collected by The MLC, a nonprofit that was created by the 2018 Music Modernization Act (MMA). If you haven't registered your songs with The MLC, there are issues with your metadata, or about half a dozen other reasons, that money will never reach you, it just collects in a big pile we call the \"black box\".\nThat pile is big. The MLC's own dashboard currently shows over $656M is held (themlc.com/blanket-royalties), and the biggest problem is the MMA dictates that The MLC cannot hold that money indefinitely. At some point, by law, The MLC must distribute this big pile of cash, and since they don't know who it's supposed to go to, they pay it out through a process called \"market share\" (themlc.com/marketshare). Market share means they pay it out, pro-rata, to the artists, songwriters and publishers that are in the system, which in practice means the largest publishers collect most of the leftovers.\nThis is slated to begin in January 2027 and will pay portions of the pool out monthly (themlc.com/unclaimed-accrued-royalties), as of this morning, the next 12 months of market share sums up to $76.61M, starting with $6.41M in January.\nFull disclosure: I run Doubly, which is an independent publishing administrator, so I have a commercial interest in this space. That being said, we're a team of two people and we don't have the bandwidth to directly assist the hundreds of thousands of artists and songwriters who are going to start losing this money in January 2027.\nThat's why I built this self-service tool, no signup, no email, no paywall, the reports are completely actionable without needing anything from us.\nThe tool: paste a Spotify artist link (or search for a Spotify artist by name). It pulls every release on that profile, checks each recording against The MLC's public bulk data, and tells you per-song whether it's fully claimed, partially claimed, registered but unmatched, or missing entirely. It then provides a link to the exact MLC tool that fixes each case. It also estimates the dollars stuck, as a rough range.\nEven if you're not an artist yourself, you probably know someone who is a musician, please share it with them.\nThanks for your time and I'm happy to answer any questions about the industry as a whole, The MLC, the tech, anything really.\nComments URL: https://news.ycombinator.com/item?id=49375237\nPoints: 23\n# Comments: 6",
+      "id": "07b1b8e0159752e8b217e37165ebdb627f248ca00e49db3237ebf22f8c221d71",
+      "ref_id": "1",
+      "recommendationScore": 70,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "帮助音乐人查找和领取其在The MLC中未支付版税的实用工具。",
+      "reason": "该工具解决了音乐行业中一个长期存在的财务问题，对独立音乐人具有直接的经济效益和实用性。",
+      "tags": [
+        "独立开发",
+        "音乐产业",
+        "工具",
+        "财务"
+      ]
+    },
+    {
+      "title": "Xorg-Server 26.0.99.901",
+      "link": "https://lists.x.org/archives/xorg-announce/2026-August/003741.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-20T12:50:16.000Z",
+      "summary": "Article URL: https://lists.x.org/archives/xorg-announce/2026-August/003741.html\nComments URL: https://news.ycombinator.com/item?id=49373932\nPoints: 53\n# Comments: 10",
+      "id": "dc9fcaafe4d2b44e7ff045c908cc297b694d9895d50e95df72185ef0daaa9744",
+      "ref_id": "4",
+      "recommendationScore": 70,
+      "popularityScore": 55,
+      "priority": "medium",
+      "comment": "Xorg-Server最新版本发布公告，包含系统底层图形服务的更新与改进。",
+      "reason": "对Linux开发者和桌面环境用户有实用价值，属于编程工具及系统底层更新范畴。",
+      "tags": [
+        "Linux",
+        "Xorg",
+        "图形系统",
+        "开源",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "The next big thing in hydrogen could be underground",
+      "link": "https://www.technologyreview.com/2026/08/20/1142512/geologic-hydrogen-hunt/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-08-20T10:00:00.000Z",
+      "summary": "There’s a hunt for new sources of hydrogen, and the gas (or at least the right conditions to make it) could be hiding beneath our feet. Hydrogen can be used as a fuel in everything from large trucks to planes to steelmaking. It’s often hailed as a climate solution because when burned, it produces water…",
+      "id": "aeec1e6c1df23ed21d98491a9459628edc71257bc875a558c85a0c218dce851b",
+      "ref_id": "2",
+      "recommendationScore": 70,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "探讨氢能的创新来源及其作为未来气候解决方案的潜力。",
+      "reason": "关注新兴技术创新（氢能），对能源和气候科技领域有一定深度，具有未来科技前瞻性。",
+      "tags": [
+        "energy",
+        "climate tech",
+        "innovation",
+        "hydrogen"
+      ]
+    },
+    {
+      "title": "How to compromise your system with a job interview",
+      "link": "https://www.codedge.de/posts/how-to-compromise-your-system-with-a-job-interview",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-20T15:50:57.000Z",
+      "summary": "Article URL: https://www.codedge.de/posts/how-to-compromise-your-system-with-a-job-interview\nComments URL: https://news.ycombinator.com/item?id=49376332\nPoints: 16\n# Comments: 3",
+      "id": "dacb60d23f6e429287277ac3e838f61854ac9bc212480fb0d0cf146534026449",
+      "ref_id": "0",
+      "recommendationScore": 65,
+      "popularityScore": 40,
+      "priority": "medium",
+      "comment": "警示求职者和招聘方潜在的安全风险。",
+      "reason": "提供了一个不常见但重要的安全视角，有助于提升用户防范意识。",
+      "tags": [
+        "网络安全",
+        "安全意识",
+        "招聘",
+        "社会工程"
+      ]
+    },
+    {
+      "title": "Unlocking hidden revenue streams with market models",
+      "link": "https://www.technologyreview.com/2026/08/20/1142070/unlocking-hidden-revenue-streams-with-market-models/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-08-20T09:47:22.000Z",
+      "summary": "Each day, an airline transports tens of thousands of passengers on hundreds of flights. Often these are not straightforward point-to-point routes, with passengers requiring multiple connections. The airline can consider potentially hundreds of variables to price each of these journeys: demand, season, time of day, current events, global markets, and competitor airline activity to name…",
+      "id": "e2a81dc7bf87eb31ef0d5d01246fed152a1d24645be7d487793786bad1dbd709",
+      "ref_id": "3",
+      "recommendationScore": 65,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "深入分析如何利用市场模型发现并优化隐藏的营收流。",
+      "reason": "提供数据驱动的商业策略洞察，对自动化、产品设计和商业增长有实际参考价值。",
+      "tags": [
+        "business strategy",
+        "data analytics",
+        "market models",
+        "revenue optimization"
+      ]
+    },
+    {
+      "title": "Conceptual integrity and counting lines of code",
+      "link": "https://simonwillison.net/2026/Aug/19/conceptual-integrity-and-counting-lines-of-code/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-08-19T22:46:07.000Z",
+      "summary": "",
+      "id": "e0c0c7d06c2b5539ee0a00e98ce03695d9be4d6f28f9d57889fd4749c8e476b6",
+      "ref_id": "2",
+      "recommendationScore": 65,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "探讨软件工程中的核心概念与衡量标准，引发对项目质量的思考。",
+      "reason": "从软件工程的宏观角度分析“概念完整性”与“代码行数”的关系，有助于提升项目管理和设计质量，属于产品设计/独立开发范畴。",
+      "tags": [
+        "软件工程",
+        "产品设计",
+        "代码质量",
+        "项目管理",
+        "架构"
+      ]
+    },
+    {
+      "title": "Windows brings out the Rorschach test in everyone (2003)",
+      "link": "https://devblogs.microsoft.com/oldnewthing/20030825-00/?p=42803",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-20T06:16:40.000Z",
+      "summary": "Article URL: https://devblogs.microsoft.com/oldnewthing/20030825-00/?p=42803\nComments URL: https://news.ycombinator.com/item?id=49371006\nPoints: 306\n# Comments: 106",
+      "id": "36b288decb0f15427bb0a67d73c2b2cc672b8cb3b697f70a56d1ef7ec2a747f3",
+      "ref_id": "3",
+      "recommendationScore": 48,
+      "popularityScore": 58,
+      "priority": "low",
+      "comment": "一篇经典的Windows开发博客文章，探讨用户对软件设计的不同解读。",
+      "reason": "文章提供软件设计与用户心理的独特视角，虽非前沿技术且发布时间较早，但具有一定启发性，但与当前高优先级主题关联度较低。",
+      "tags": [
+        "软件设计",
+        "Windows",
+        "历史",
+        "用户体验",
+        "哲学"
+      ]
+    },
+    {
+      "title": "An elliptic curve of rank ≥ 30",
+      "link": "https://elliptic-rank.icarm.cloud/curve/273",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-20T14:14:39.000Z",
+      "summary": "Article URL: https://elliptic-rank.icarm.cloud/curve/273\nComments URL: https://news.ycombinator.com/item?id=49374873\nPoints: 30\n# Comments: 10",
+      "id": "3f1ef0e65ac6c187f708511ddd95e251b7e3e85386574c4e82ceab3ffa3ba553",
+      "ref_id": "2",
+      "recommendationScore": 32,
+      "popularityScore": 15,
+      "priority": "low",
+      "comment": "高度专业的纯数学研究，关于高阶椭圆曲线的理论发现。",
+      "reason": "内容过于学术和理论，与科技博客关注的AI、编程工具等主题关联度低，实用性极弱，受众非常有限。",
+      "tags": [
+        "数学",
+        "理论研究",
+        "数论"
+      ]
+    },
+    {
+      "title": "The Download: polycrisis support networks and a hydrogen gold rush",
+      "link": "https://www.technologyreview.com/2026/08/20/1142579/the-download-polycrisis-support-networks-underground-hydrogen-gold-rush/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-08-20T12:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. Support networks aim to help kids through the polycrisis Sometime in the late 2000s, six-year-old Pim Sullivan-Tailyour was sitting in the back of a car in Thailand when she saw a…",
+      "id": "7940b23e3dede4f5e1c143a3a6b5bd577f7a66e5992a3e30957fe04846ad736b",
+      "ref_id": "1",
+      "recommendationScore": 30,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "一篇宽泛的科技新闻摘要，内容分散且缺乏深度。",
+      "reason": "主题过于分散，缺乏对核心科技主题的聚焦和深入探讨，作为单篇文章价值不高。",
+      "tags": [
+        "news digest",
+        "energy",
+        "social issues"
+      ]
+    },
+    {
+      "title": "Quoting Jeremy Morrell",
+      "link": "https://simonwillison.net/2026/Aug/19/jeremy-morrell/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-08-19T22:56:31.000Z",
+      "summary": "",
+      "id": "430ba0c7a24894d494679b09626cca746a295fadbc8d7d1174067e2293b7f5f4",
+      "ref_id": "1",
+      "recommendationScore": 30,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "简短引用，缺乏具体技术内容或深入分析。",
+      "reason": "内容信息不足，难以评估其技术或实用价值，不符合科技博客的重点，优先级较低。",
+      "tags": [
+        "观点",
+        "评论"
+      ]
+    },
+    {
+      "title": "Our Servants Will Do That For Us",
+      "link": "https://borretti.me/article/our-servants-will-do-that-for-us",
+      "source": "borretti.me",
+      "publishedAt": "2026-08-20T00:00:00.000Z",
+      "summary": "Why the post-scarcity utopia is unlikely.",
+      "id": "2ea4a754559e5f1a20b499efb8c9adf21bc313414b8df78a4d6d3969d14db7b2",
+      "ref_id": "2",
+      "recommendationScore": 25,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "文章标题涉及对后稀缺时代的反思，但提供的摘要过于简短，无法进行有效评估其技术深度和相关性。",
+      "reason": "内容信息密度极低，未提供足够的信息来判断其与科技博客主题的契合度及实际价值。",
+      "tags": [
+        "Philosophy",
+        "Sociology",
+        "Future",
+        "Speculation"
+      ]
+    },
+    {
+      "title": "Why the Ocean Cleanup hasn't solved the plastic pollution crisis",
+      "link": "https://therevelator.org/why-ocean-cleanup-has-not-solved-plastic-pollution/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-20T12:58:31.000Z",
+      "summary": "Article URL: https://therevelator.org/why-ocean-cleanup-has-not-solved-plastic-pollution/\nComments URL: https://news.ycombinator.com/item?id=49374036\nPoints: 51\n# Comments: 45",
+      "id": "e47276d30883161ff826d44c846ca37e6e4f79857b627a0fabb6886208c3ac6c",
+      "ref_id": "3",
+      "recommendationScore": 15,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "批判性分析海洋清理项目未能解决塑料污染危机的原因。",
+      "reason": "主题偏离科技博客核心关注点，虽然具有社会意义，但在技术维度上无明显价值。",
+      "tags": [
+        "环境",
+        "社会议题",
+        "评论",
+        "非技术"
+      ]
+    },
+    {
+      "title": "Support networks aim to help kids through the polycrisis",
+      "link": "https://www.technologyreview.com/2026/08/20/1141686/support-networks-help-kids-polycrisis/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-08-20T09:00:00.000Z",
+      "summary": "Sometime in the late 2000s, Pim Sullivan-Tailyour was sitting in the back of a car, headed toward her great-grandmother’s tiny town in the south of Thailand. She watched big mountains pass by out the window. She was just six years old but was about to be hit by an adult-size realization. “They were just quarried…",
+      "id": "70d1e8ff8eb834e0873c5e79ca7385c159481d9cd9a3c02e742915c552e0a045",
+      "ref_id": "4",
+      "recommendationScore": 10,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "关注社会议题和儿童支持网络，与科技博客主题无关。",
+      "reason": "内容完全偏离设定的科技博客主题范围，不适合发布。",
+      "tags": [
+        "social issues",
+        "community",
+        "children"
+      ]
+    },
+    {
+      "title": "Proof of Human (YC S23) Is Hiring a Member of Technical Staff",
+      "link": "https://www.ycombinator.com/companies/proof-of-human/jobs/ZTZHEbb-member-of-technical-staff",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-20T12:00:23.000Z",
+      "summary": "Article URL: https://www.ycombinator.com/companies/proof-of-human/jobs/ZTZHEbb-member-of-technical-staff\nComments URL: https://news.ycombinator.com/item?id=49373423\nPoints: 0\n# Comments: 0",
+      "id": "22c0fd26217fc960aa93c7ce3113957e63c705c8ee0210819fb4a17af0f0e569",
+      "ref_id": "1",
+      "recommendationScore": 5,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "一篇招聘广告，不属于科技博客文章评估范畴。",
+      "reason": "内容为招聘信息，缺乏技术深度、新颖性与信息密度，无法作为科技博客文章进行评估。",
+      "tags": [
+        "招聘",
+        "行业新闻"
+      ]
+    }
+  ]
+}
