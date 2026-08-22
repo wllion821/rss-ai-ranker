@@ -1,0 +1,659 @@
+{
+  "dailySummary": "",
+  "articles": [
+    {
+      "title": "Rust Glancer: Rust LSP using 100x less RAM",
+      "link": "https://rust-glancer.github.io/blog/hello-world/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-21T19:51:54.000Z",
+      "summary": "https://matklad.github.io/2026/08/21/rust-glancer.html\nComments URL: https://news.ycombinator.com/item?id=49393052\nPoints: 345\n# Comments: 70",
+      "id": "10778dfe314d89284ead960e8cd97a80ed93a866c2b6909500abd8799a3fe185",
+      "ref_id": "2",
+      "recommendationScore": 94,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "深度技术文章，详细介绍了如何将Rust LSP的内存占用减少100倍的创新方法。",
+      "reason": "技术深度高，具有显著的新颖性和实用性，解决了Rust开发者的实际痛点，高度符合编程工具主题。",
+      "tags": [
+        "Rust",
+        "LSP",
+        "编程工具",
+        "性能优化",
+        "内存管理"
+      ]
+    },
+    {
+      "title": "Concurrent Servers: Part 8 - Go",
+      "link": "https://eli.thegreenplace.net/2026/concurrent-servers-part-8-go/",
+      "source": "eli.thegreenplace.net",
+      "publishedAt": "2026-08-22T14:52:00.000Z",
+      "summary": "This is part 8 in a series of posts on writing concurrent network servers. In\nthis part, we'll switch to Go and see how it tackles the challenges described\nearlier in the series.\nAll posts in the series:\nPart 1 - Introduction\nPart 2 - Threads\nPart 3 - Event-driven\nPart 4 - libuv\nPart 5 - Redis case study\nPart 6 - Callbacks, Promises and async/await\nPart 7 - Rust\nPart 8 - Go (this part)\nThis post assumes a basic familiarity with the Go programming language.\nSequential state machine server\nAs before, we'll start with a sequential server for the basic state machine\nprotocol presented in part 1.\nThis is the main function:\nfunc main() {\n  port := \"9090\"\n  if len(os.Args) >= 2 {\n    port = os.Args[1]\n  }\n  log.Println(\"Serving on port\", port)\n\n  listener, err := net.Listen(\"tcp\", \":\"+port)\n  if err != nil {\n    log.Fatal(\"Error listening:\", err)\n  }\n  defer listener.Close()\n\n  for {\n    conn, err := listener.Accept()\n    if err != nil {\n      log.Printf(\"Error accepting connection: %v\", err)\n      continue\n    }\n    log.Println(\"connection received from\", conn.RemoteAddr())\n\n    if err := server.ServeSerialProtocol(conn); err != nil {\n      log.Printf(\"Error serving %v: %v\", conn.RemoteAddr(), err)\n    } else {\n      log.Println(\"peer done\", conn.RemoteAddr())\n    }\n  }\n}\n\nAs in the previous parts, the server is \"infinite\"; it never stops serving new\nconnections until it's explicitly killed.\nThis is the function implementing the protocol for a single client; it takes\na net.Conn value that represents a socket with a client connected on the\nother end:\ntype processingState int\n\nconst (\n  waitForMsg processingState = iota\n  inMsg\n)\n\n// ServeSerialProtocol serves our serial protocol to a single TCP connection.\nfunc ServeSerialProtocol(conn net.Conn) error {\n  defer conn.Close()\n\n  if _, err := conn.Write([]byte{'*'}); err != nil {\n    return err\n  }\n\n  var state processingState = waitForMsg\n  buf := make([]byte, 1024)\n  for {\n    n, err := conn.Read(buf)\n    for _, b := range buf[:n] {\n      switch state {\n      case waitForMsg:\n        if b == '^' {\n          state = inMsg\n        }\n      case inMsg:\n        if b == '$' {\n          state = waitForMsg\n        } else {\n          var bb byte = byte(b) + 1\n          if _, err := conn.Write([]byte{bb}); err != nil {\n            return err\n          }\n        }\n      }\n    }\n\n    // Check error after processing the bytes received along with it.\n    if err != nil {\n      if errors.Is(err, io.EOF) || errors.Is(err, net.ErrClosed) {\n        return nil\n      } else {\n        return err\n      }\n    }\n  }\n}\n\nOne goroutine per client\nRather than directly exposing OS threads, the Go runtime implements its own\nM:N scheduling of lightweight goroutines on top of OS threads. Using\ngoroutines in Go is cheap - both in terms of syntax and developer effort, and in\nterms of system resources.\nHere's a version of our serial protocol server that serves clients concurrently\nby launching a goroutine for each client. The part of the code that's different\nfrom the previous sample is highlighted:\nfunc main() {\n  port := \"9090\"\n  if len(os.Args) >= 2 {\n    port = os.Args[1]\n  }\n  log.Println(\"Serving on port\", port)\n\n  listener, err := net.Listen(\"tcp\", \":\"+port)\n  if err != nil {\n    log.Fatal(\"Error listening:\", err)\n  }\n  defer listener.Close()\n\n  for {\n    conn, err := listener.Accept()\n    if err != nil {\n      log.Printf(\"Error accepting connection: %v\", err)\n      continue\n    }\n    log.Println(\"connection received from\", conn.RemoteAddr())\n\n    go func() {\n      if err := server.ServeSerialProtocol(conn); err != nil {\n        log.Printf(\"Error serving %v: %v\", conn.RemoteAddr(), err)\n      } else {\n        log.Println(\"peer done\", conn.RemoteAddr())\n      }\n    }()\n  }\n}\n\nThe concurrent modification in this case is particularly simple because the\nserver is infinite; there's no point waiting for these goroutines to finish\n(and hence no need for a sync.WaitGroup).\nThe parameters for server.ServeSerialProtocol are lexically captured from\nthe enclosing scope and its return value is handled by the surrounding closure.\nBecause goroutines are very cheap, this server is very unlikely to run out\nof resources due to launching too many goroutines; in fact, it will probably\nrun out of something else - like file descriptors for sockets - first. However,\nsometimes it's still useful to limit the degree of concurrency - even\nin Go, and we'll discuss some approaches to do so in the following sections.\nLimiting concurrency with a semaphore\nHere are some scenarios in which it makes sense to limit the degree of\nconcurrency in Go programs, even though goroutines are cheap to launch and\noperate:\nTasks may be compute intensive, and the CPU capacity of any server is inherently\nlimited. If too many concurrent goroutines compete for limited CPUs, they\nwill all make very little progress. It may make more sense to have fewer tasks\nthat complete in a reasonable time.\nProtecting potentially limited downstream resources, such as concurrent\nDB connections or other services. For example, if the server has to send\nrequests to other services for each task, and these are rate-limited,\nconcurrency will have to be carefully managed.\nSecurity reasons when work is dictated by clients; malicious clients can\noverload and crash a service that's too eager to serve, making it unavailable\nfor legitimate clients.\nLet's switch to the primality testing server from part 4 for the rest of the\npost, because it represents a somewhat more realistic workload.\nAs a reminder: the server receives numbers, simulates blocking\nby sleeping, and returns \"prime\" or \"composite\". The unbounded\none-goroutine-per-client version looks almost identical\nto the previous code sample, except that the goroutine invocation calls another\nfunction:\ngo func() {\n  if err := server.ServePrimeProtocol(conn); err != nil {\n    log.Printf(\"Error serving %v: %v\", conn.RemoteAddr(), err)\n  } else {\n    log.Println(\"peer done\", conn.RemoteAddr())\n  }\n}()\n\nWhere ServePrimeProtocol is [1]:\n// ServePrimeProtocol serves our prime protocol to a single TCP connection.\nfunc ServePrimeProtocol(conn net.Conn) error {\n  defer conn.Close()\n  buf := make([]byte, 1024)\n\n  for {\n    n, readerr := conn.Read(buf)\n    if n > 0 {\n      // Parse the read buffer to an i64\n      num, err := strconv.ParseInt(strings.TrimSpace(string(buf[:n])), 10, 64)\n      if err != nil {\n        return err\n      }\n\n      response := \"composite\"\n      if isPrime(num, true) {\n        response = \"prime\"\n      }\n      if _, err := conn.Write([]byte(response + \"\\n\")); err != nil {\n        return err\n      }\n    }\n\n    if readerr != nil {\n      if errors.Is(readerr, io.EOF) || errors.Is(readerr, net.ErrClosed) {\n        return nil\n      }\n      return readerr\n    }\n  }\n}\n\n// isPrime returns true if n is prime, false otherwise. If delay is true, it\n// will sleep for n milliseconds before calculating.\nfunc isPrime(n int64, delay bool) bool {\n  if delay {\n    time.Sleep(time.Duration(n) * time.Millisecond)\n  }\n\n  if n < 2 {\n    return false\n  }\n  if n%2 == 0 {\n    return n == 2\n  }\n  for i := int64(3); i*i <= n; i += 2 {\n    if n%i == 0 {\n      return false\n    }\n  }\n  return true\n}\n\nThe simplest way to limit concurrency in Go is by using a counting semaphore,\nimplemented with a channel:\nfunc main() {\n  port := \"8070\"\n  if len(os.Args) >= 2 {\n    port = os.Args[1]\n  }\n  log.Println(\"Serving on port\", port)\n\n  listener, err := net.Listen(\"tcp\", \":\"+port)\n  if err != nil {\n    log.Fatal(\"Error listening:\", err)\n  }\n  defer listener.Close()\n\n  maxConcurrency := runtime.NumCPU()\n  sem := make(chan struct{}, maxConcurrency)\n\n  for {\n    conn, err := listener.Accept()\n    if err != nil {\n      log.Printf(\"Error accepting connection: %v\", err)\n      continue\n    }\n    log.Println(\"connection received from\", conn.RemoteAddr())\n\n    // Acquire a token from the semaphore to limit concurrency.\n    sem <- struct{}{}\n\n    go func() {\n      // Return the token when done serving the connection.\n      defer func() { <-sem }()\n\n      if err := server.ServePrimeProtocol(conn); err != nil {\n        log.Printf(\"Error serving %v: %v\", conn.RemoteAddr(), err)\n      } else {\n        log.Println(\"peer done\", conn.RemoteAddr())\n      }\n    }()\n  }\n}\n\nThe channel sem serves as a semaphore; note that it's a bounded channel\nwith a maximal size. A token is acquired by sending to the channel, and released\nby receiving from the channel. When the channel is full, the send operation\nsem <- struct{}{} blocks until a token was removed by some other goroutine\n[2].\nThe type of the channel is struct{} which means \"empty\", or \"no data\". This\nis idiomatic in Go for channels that are used solely for their semantics, not\nto send/receive any actual data.\nWorker pool\nSince launching goroutines is cheap and limiting concurrency is easy as shown\nabove, the \"worker pool\" pattern is often unnecessary for scenarios like our\nserver. Still, it has occasional uses (such as when workers have to maintain\nsome non-trivial state across tasks) so it's worth discussing it here.\nHere's a variant of our primality testing server that uses a worker pool:\nfunc worker(jobs <-chan net.Conn) {\n  for conn := range jobs {\n    if err := server.ServePrimeProtocol(conn); err != nil {\n      log.Printf(\"Error serving %v: %v\", conn.RemoteAddr(), err)\n    } else {\n      log.Println(\"peer done\", conn.RemoteAddr())\n    }\n  }\n}\n\nfunc main() {\n  port := \"8070\"\n  if len(os.Args) >= 2 {\n    port = os.Args[1]\n  }\n  log.Println(\"Serving on port\", port)\n\n  listener, err := net.Listen(\"tcp\", \":\"+port)\n  if err != nil {\n    log.Fatal(\"Error listening:\", err)\n  }\n  defer listener.Close()\n\n  // The channel is unbuffered, so it will block when there are no available\n  // workers to accept a new connection.\n  jobs := make(chan net.Conn)\n  maxConcurrency := runtime.NumCPU()\n  for i := 0; i < maxConcurrency; i++ {\n    go worker(jobs)\n  }\n\n  for {\n    conn, err := listener.Accept()\n    if err != nil {\n      log.Printf(\"Error accepting connection: %v\", err)\n      continue\n    }\n    log.Println(\"connection received from\", conn.RemoteAddr())\n\n    jobs <- conn\n  }\n}\n\nA fixed number of worker goroutines is launched; these goroutines all receive\n\"jobs\" from the same channel. In the Accept loop, each client connection\nis sent to this channel as a new job and is picked up by the next available\nworker. As mentioned before, you would typically see a sync.WaitGroup\nsomewhere to ensure clean shutdown of goroutines, but in our case it isn't\nnecessary because we have a server that never exits.\nAsync?\nDo programmers have to resort to async / event-driven programming in Go? In\nmy experience, almost never. Go was designed from the bottom up to be\nsuitable for large-scale concurrency; goroutines are very cheap to create, have a\ntiny memory footprint and switching happens very quickly, all in user space.\nMeasurements I ran back in 2018\nhave shown switching times of ~170 ns, as compared to 1-2 microseconds for threads\non Linux.\nMoreover, Go already uses event-driven loops like epoll underneath for I/O.\nGoroutines that wait for I/O like sockets are effectively \"parked\" and consume\nno resources (beyond their small memory footprint); they are woken up by\nGo's runtime when their I/O descriptors are ready - this is very similar to how\nasynchronous programming works!\nThat said, some people certainly do try to stretch their resources even more\nwith direct asynchronous programming in Go when millions of streams are\nhandled concurrently. All I'll say is that this is very rare, and an\noverwhelming majority of users never have to do this.\nConclusion\nIn 2018, I wrote a post named Go hits the concurrency nail right on the head,\nand after several more years of active coding, I fully stand behind that statement.\nGo is extremely powerful and ergonomic for concurrent programs; while other environments\ngo to great lengths to implement async-await style event loops in libraries,\nin Go it's already baked into the core language and runtime. You want\nevent-driven I/O with very lightweight green threads that can also execute\nblocking tasks without worrying about the function coloring problem?\nGo has you covered.\nCode\nAll the code for this post is available on GitHub.\n\n\n[1]\nCareful readers will note two issues with this code: (1) the protocol\nassumes the complete number is read from the socket in a single conn.Read\ncall, and there's no framing - separation between distinct numbers;\n(2) the prime checking loop uses i*i which may overflow for large\nnumbers.\nThese issues are consistent across all the versions of the prime server\nin C, Python, JavaScript and Rust in earlier parts, because my focus was\non the simplest possible code to demonstrate a point about concurrency.\n\n\n\n\n\n\n[2]Exercise: note that our semaphore protects the entire ServePrimeProtocol,\nmeaning that a malicious (or incompetent) client can connect and idle\nwithout sending any requests, thus reducing our concurrent capacity by 1.\nAdjust the code to move the semaphore around the prime calculation itself,\nso only this part is bounded.",
+      "id": "cc961a63e817b6ab6c265a5a97bf7283c77327262380fe613c7324c02b896748",
+      "ref_id": "1",
+      "recommendationScore": 92,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "高质量的系列技术文章，深入探讨了Go语言在并发网络服务器中的实现和挑战。",
+      "reason": "技术深度高，实用性强，聚焦于“编程工具”这一高优先级主题，对后端和Go开发者具有显著学习和参考价值。",
+      "tags": [
+        "Go",
+        "并发编程",
+        "网络服务器",
+        "编程工具",
+        "后端开发"
+      ]
+    },
+    {
+      "title": "Embedded AI",
+      "link": "https://nostarch.com/embedded-ai",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-22T09:07:26.000Z",
+      "summary": "Article URL: https://nostarch.com/embedded-ai\nComments URL: https://news.ycombinator.com/item?id=49397947\nPoints: 16\n# Comments: 5",
+      "id": "98eb2e54982166b2892539a9038099c685c06335508a4b3a193b17f4a3e869e8",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 20,
+      "priority": "high",
+      "comment": "专注于嵌入式AI的专业资源，探讨了将AI模型部署到边缘设备的复杂技术和实践。",
+      "reason": "直接切入AI前沿领域，具有极高的技术深度、实用价值和信息密度，是未来物联网和边缘计算的关键。",
+      "tags": [
+        "AI",
+        "嵌入式系统",
+        "边缘计算",
+        "深度学习",
+        "自动化"
+      ]
+    },
+    {
+      "title": "This Week in Package Management: 22 August 2026",
+      "link": "https://nesbitt.io/2026/08/22/this-week-in-package-management.html",
+      "source": "nesbitt.io",
+      "publishedAt": "2026-08-22T10:00:00.000Z",
+      "summary": "Week fourteen of the roundup, built from the package manager OPML feed collection and whatever I’ve posted or boosted on Mastodon.\nReleases\nGo 1.27 is out. On the module side, go mod tidy now consolidates duplicate require blocks into the canonical direct/indirect pair for modules declaring go 1.27 or later, go doc accepts package@version to fetch documentation for a specific module version, and the go command drops support for fetching modules from Bazaar repositories. A compress/flate encoder change also means archive/zip and compress/gzip produce different bytes than under Go 1.26, which is worth checking anywhere a Go-built tool’s archive output is hash-pinned downstream (forge tarball endpoints, module proxies, release pipelines).\nRust 1.98 ships Cargo with an unstable -Zmin-publish-age flag implementing RFC 3923: resolution filters out crate versions published more recently than a configured threshold. It also fixes a 1.96 Windows regression in cargo:token-from-stdout credential providers.\nBun 1.4 is the first release of the Rust rewrite, the bulk of which Jarred Sumner produced from the Zig codebase with Claude Code workflows. It fills out the package manager subcommands: bun pm diff shows un-minified source diffs between package versions and flags new install scripts, bun audit fix upgrades vulnerable dependencies, bun dedupe and bun prune clean up the lockfile and node_modules, GitHub and tarball dependencies now record SHA-512 hashes in the lockfile, and only packages from the npm registry are auto-trusted to run install scripts by default.\npnpm 11.22 shipped alongside a 11.21–11.22 recap: pnpm install now edits the lockfile in place for most everyday manifest changes without re-resolving the whole dependency graph, global installs switch over atomically, pnpm cache path prints the store location, and a project’s pnpm-workspace.yaml can no longer relocate machine-level state directories. pnpm 12 reached RC 8: the registries setting is now keyed by URL with scopes and tarball layout declared per entry, and packageImportMethod: auto tries hardlinks before reflinks on Linux, roughly halving the time to materialise node_modules from a warm store on btrfs.\nHex 2.5 surfaces security advisories during mix deps.get and mix deps.update, printing a summary of vulnerable packages at the end of the run. A cooldown setting withholds versions younger than a configured age from resolution, lifted automatically when the currently locked version is itself retired or has an advisory, and organisations can publish signed dependency policies that opted-in projects apply centrally.\nRenovate 44.33.0–44.39.1 adds PEP 691 JSON simple index support to the PyPI datasource and passes POETRY_SOLVER_MIN_RELEASE_AGE through to Poetry when minimumReleaseAge is configured.\nAlso out:\nGradle 9.7.1\nconda 26.7.1\nPDM 2.28.2\nHomebrew 6.0.18\nChocolatey 2.7.4\nVerdaccio 6.9.3\nDependabot Core 0.392.0\nmise 2026.8.10\nHarbor 2.15.2\nRPM 6.1.0\nRubyGems 4.0.19\nsnapd 2.76.3\nDNF5 5.4.4.0\nopam 2.6.0-beta1\ndiffoscope 329\nSecurity\ncrates.io removed malicious versions of arrayref, internment, append-only-vec and several typosquat crates published from a compromised maintainer account. The malicious versions carried a build script that downloaded a remote payload and were live for under two hours before deletion; the post gives a command to check the local Cargo cache for the affected versions.\nsbt 2.0.6 and 1.12.15 fix GHSA-m2pw-22cj-jq4v, a remote code execution via the sbt server when serverConnectionType is set to Tcp, and 2.0.7/1.13.0 fix the same class of bug in the BSP handler (GHSA-943m-f264-54p4). Builds using the default Unix domain socket connection type are unaffected.\nArticles\nWhat’s missing to have reproducible builds on PyPI (Brett Cannon) sets out three gaps: distributions don’t record the source location they were built from, sdists have no standard place to store build-environment SBOM data the way wheels do, and there’s no channel for independent verifiers to attest to PyPI that they reproduced a distribution.\nProtecting the Rust standard library from breakage (Predrag Gruevski): rust-lang/rust CI now runs cargo-semver-checks against core, alloc and std, treating #[stable] and #[unstable] attributes as the public-API boundary. Getting there meant new stability fields in rustdoc’s JSON output and threading them through the linter’s query layer without rewriting existing lints.\nSpinel dev log, July 2026: the Ruby tooling cooperative’s monthly update on rv (a Ruby version manager with its own precompiled Ruby builds), the Dyad shell helper, and brut-pack for bundling scripts.\nHow mature is this repository? (Alexandre Dulaunoy) introduces OSSTRL, which computes a 1–9 Technology Readiness Level for a GitHub repository from automatically gathered evidence across community, governance, development, support and security dimensions, with maturity gates so a single strong signal can’t inflate the overall level.\nPapers\nImplicit, Yet Impactful: Understanding Hidden Dependencies in Java Projects (Zhang et al., arXiv) measures transitive Maven dependencies whose classes are referenced directly by a project’s own code without being declared: across 972 GitHub modules, 34% contain at least one, 48% of those introduce breaking API changes, and 36 CVEs in the sample expose vulnerable methods that the root project calls directly.\nSMTpip: Interpreter-Aware SMT-Based Dependency Conflict Resolution (Sakib et al., arXiv) encodes both package version constraints and Python interpreter compatibility as SMT formulas so a solver can decide up front whether a satisfying environment exists, reporting a 6.9× speedup over pip’s backtracking resolver on their benchmark.\nElsewhere\nCommonhaus and HeroDevs launch OSSI (Josh Bressers, Open Source Security): an interview with Erin Schnabel and Rob Nalen on a partnership funding CVE remediation and extended support for end-of-life releases of Commonhaus-hosted projects, starting with Hibernate, Jackson and Quarkus.\nHow AWS powers PyPI and the PSF (PyPI blog): AWS’s open source credits programme covers PyPI’s infrastructure bill and its security sponsorship funds engineering time, but PyPI is currently maintained by roughly one and a half full-time engineers plus one on support. A line describing PyPI as a supply chain risk given that staffing was later reworded.\nInside Modern Software Engineering with Homebrew’s Mike McQuaid (Giant Robots podcast): an interview covering Homebrew’s history and open source maintainership.\nSustain #293 has Daniel Roe and Matias Capeletto on npmx, the community-built npm registry browser, covering how the project reached hundreds of contributors since January and its governance and funding.\ngit-pkgs\nI tagged 16 repos this week:\nartifacts v0.1.1 (new), a Go library that describes a completed package file as a canonical package URL, an OCI-form content digest and a byte count, with optional filename and media type carried alongside\nintegrity v0.1.1 (new), a Go library that parses Subresource Integrity metadata (SHA-256/384/512, standard or URL-safe base64) and verifies package byte streams against it as they are read\nbrief v0.11.0\nclone v0.5.0\ncooldown v0.2.0\nenrichment v0.7.0\nforge v0.9.0\nlicenses v0.6.0\nmanagers v0.11.0\nmanifests v0.10.0\npin v0.2.0\npom v0.1.7\npurl v0.1.17\nregistries v0.8.1\nsigstore v0.2.0\nvers v0.6.0\nSend links for next week to @andrewnez@mastodon.social.",
+      "id": "9a28a09ec70e93368da0265e6b9fb645c37aab4bbdc12067dd00b43751a9be08",
+      "ref_id": "4",
+      "recommendationScore": 90,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "详细汇总了Go和Rust编程语言在包管理方面的最新版本更新和重要技术变更。",
+      "reason": "针对高优先级主题“编程工具”，技术深度高，信息密度大，对Go和Rust开发者具有极强的实用性。",
+      "tags": [
+        "Package Management",
+        "Go",
+        "Rust",
+        "Programming Tools",
+        "Development Updates"
+      ]
+    },
+    {
+      "title": "The New MCP Roadmap",
+      "link": "https://blog.modelcontextprotocol.io/posts/mcp-roadmap/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-22T13:31:34.000Z",
+      "summary": "Article URL: https://blog.modelcontextprotocol.io/posts/mcp-roadmap/\nComments URL: https://news.ycombinator.com/item?id=49399591\nPoints: 80\n# Comments: 54",
+      "id": "8a4d5416ea3b9763cd779889bc0e096c1b226129e84cd281407950f074895ac2",
+      "ref_id": "2",
+      "recommendationScore": 85,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "深入解读Model Context Protocol的未来发展路线图，信息量大。",
+      "reason": "对于关注协议技术和未来趋势的开发者，该文章提供了重要的战略性洞察，可能与AI/ML模型管理相关。",
+      "tags": [
+        "协议",
+        "路线图",
+        "AI/ML (推测)",
+        "技术发展",
+        "软件工程"
+      ]
+    },
+    {
+      "title": "Munder Difflin – Agent harness to run an office of your clones",
+      "link": "https://munderdiffl.in/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-22T09:49:14.000Z",
+      "summary": "Article URL: https://munderdiffl.in/\nComments URL: https://news.ycombinator.com/item?id=49398152\nPoints: 170\n# Comments: 69",
+      "id": "c248308cd463dc290e0378a0d932538f197ecf2b15d1250a8a933eab93c54012",
+      "ref_id": "2",
+      "recommendationScore": 85,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "一个关于AI代理协调的新颖项目，旨在通过“克隆”自动化办公室任务，概念极具吸引力。",
+      "reason": "高度契合AI和自动化主题，概念新颖且具备高实用潜力，值得深入关注。",
+      "tags": [
+        "AI",
+        "Agent",
+        "自动化",
+        "生产力工具",
+        "独立开发"
+      ]
+    },
+    {
+      "title": "Optimizing meshoptimizer to process billions of triangles in minutes (2025)",
+      "link": "https://zeux.io/2025/09/30/billions-of-triangles-in-minutes/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-21T17:54:06.000Z",
+      "summary": "Article URL: https://zeux.io/2025/09/30/billions-of-triangles-in-minutes/\nComments URL: https://news.ycombinator.com/item?id=49391661\nPoints: 56\n# Comments: 0",
+      "id": "5864af6cae430f0d6790f0acf0d4163a7ada02664680b33444b531e651b18649",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 50,
+      "priority": "medium",
+      "comment": "一篇深度优化文章，探讨了处理海量3D网格数据的极致性能提升，面向图形编程专家。",
+      "reason": "文章可能提供了在图形渲染和游戏开发领域处理大规模几何数据的前沿优化技术和深入分析，对特定专业读者价值极高。",
+      "tags": [
+        "Graphics",
+        "Optimization",
+        "Performance",
+        "Algorithms",
+        "3D Modeling",
+        "Game Development"
+      ]
+    },
+    {
+      "title": "ElevenLabs, TwelveLabs, ThirteenLabs",
+      "link": "https://quantumi.sh/public/labs.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-22T14:54:07.000Z",
+      "summary": "Article URL: https://quantumi.sh/public/labs.html\nComments URL: https://news.ycombinator.com/item?id=49400408\nPoints: 25\n# Comments: 2",
+      "id": "f83cb012d1e02700cfeded73a7669e26162de1a7c76d457f7216b179780c7404",
+      "ref_id": "0",
+      "recommendationScore": 80,
+      "popularityScore": 20,
+      "priority": "high",
+      "comment": "深入探讨了AI领域新兴力量，具有较高的前瞻性。",
+      "reason": "聚焦AI前沿科技公司，对于关注人工智能发展的读者非常有价值。",
+      "tags": [
+        "AI",
+        "人工智能",
+        "新兴科技",
+        "行业分析"
+      ]
+    },
+    {
+      "title": "There's no reason for software to be slow anymore",
+      "link": "https://danluu.com/perf-opt/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-22T01:06:17.000Z",
+      "summary": "Article URL: https://danluu.com/perf-opt/\nComments URL: https://news.ycombinator.com/item?id=49395628\nPoints: 558\n# Comments: 400",
+      "id": "27b7e490bced9706f40c46848d1a761308840dc12fcdde8faecdd9087f78765a",
+      "ref_id": "4",
+      "recommendationScore": 80,
+      "popularityScore": 90,
+      "priority": "medium",
+      "comment": "一篇关于软件性能优化的深刻文章，挑战了现代软件运行缓慢的观念，并提供了优化见解。",
+      "reason": "对所有软件开发者都具有极高的实用价值和技术深度，有助于提升编程效率和系统性能。",
+      "tags": [
+        "编程工具",
+        "性能优化",
+        "软件工程",
+        "开发实践"
+      ]
+    },
+    {
+      "title": "Show HN: Rotation via Double Reflection",
+      "link": "https://static.laszlokorte.de/rotor-reflect/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-21T17:18:06.000Z",
+      "summary": "While studying Geometric Algebra I have built some interactive visualization to demonstrate how geometric transformations (rotation, scaling, translation) can be constructed by just composing reflections.\nAccepting reflection as the most elementary geometric operation was an eye opening moment for me. I think some of you might enjoy the interactive visuals.\nComments URL: https://news.ycombinator.com/item?id=49391168\nPoints: 20\n# Comments: 3",
+      "id": "9d17ec7241ac688bf9943a7dafc6559b9afdd28e94a0273861da23a671330cad",
+      "ref_id": "2",
+      "recommendationScore": 80,
+      "popularityScore": 40,
+      "priority": "medium",
+      "comment": "通过交互式可视化深入浅出地解释了几何变换，尤其适合计算机图形学和数学爱好者。",
+      "reason": "文章以独特且直观的方式呈现了复杂的几何代数概念，具有很高的教育和技术启发价值。",
+      "tags": [
+        "Geometric Algebra",
+        "Computer Graphics",
+        "Mathematics",
+        "Visualization",
+        "Education",
+        "Algorithms",
+        "Show HN"
+      ]
+    },
+    {
+      "title": "Dutch Regulator Fines Uber $1 Billion for Suspending Dishonest Drivers",
+      "link": "https://www.reuters.com/world/dutch-regulator-fines-uber-966-million-automating-driver-suspensions-document-2026-08-21/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-08-22T14:12:07.000Z",
+      "summary": "Toby Sterling, reporting for Reuters:\nThe Dutch Data Protection Authority has fined Uber €825 million\n($966 million) for deactivating driver accounts through automated\nsystems without adequately informing them, according to an August\n17 decision reviewed by Reuters.\nThe penalty would be the second-largest issued yet under Europe’s\nGeneral Data Protection Regulation. It is behind only a €1.2\nbillion fine imposed on Meta by Ireland in 2023 for unlawfully\ntransferring European ​Facebook users’ data to the United States.\nMeta is appealing.\nUber said it would also appeal. [...]\nThe Dutch authority confirmed the decision later on Friday. “Uber\nhas committed ​serious infringements,” in deactivating driver\naccounts without warning or human involvement, the organisation’s\ndeputy chair Monique Verdier said in a statement. “From one moment\n​to the next they no longer had any income ... A computer should\nnot make decisions on its own that have (such) major\nconsequences.”\nSaying that “a computer” made these decisions is like saying that when a company suspends or fires a habitually late employee, that “the time clock” made the decision. Managers at the company set the policies, and the devices measure employee compliance. Verdier’s statement is talking about this like it’s HAL 9000 deciding to kill the astronauts on the Discovery.\nGDPR rules ban decisions made solely by computer algorithms when\nthey have a significant impact on people’s lives, saying such\ndecisions require meaningful human review and a way to challenge a\ndecision.\nUber temporarily suspended accounts of some drivers who ​were\nsuspected of fraud, including ​when its systems concluded drivers\nhad taken unnecessary detours to inflate fares or accepted trips\nwithout intending to complete them. Uber said such suspensions\nwere usually brief, and it did not permanently deactivate such\naccounts without human review. Drivers with low ​customer ratings\nwere sometimes permanently deactivated by computer, the Dutch\nagency said. Uber disputed that, saying ​it had never automated\npermanent deactivation decisions.\nThe company said one reason it considers the fine disproportionate\nis that only a small number of drivers were affected, with 126\nhaving been deactivated in Europe as a result of low customer\nratings in 2021.\nIt’s possible that Reuters’s reporting is incomplete, but there’s no allegation here that the grounds for these suspensions were incorrect. Uber suspended drivers who were pulling long-haul scams against customers to run up fare prices, and doing the annoying thing where they accept a ride and then never show up, hoping the customer will eventually get frustrated and cancel the trip themselves. (My understanding is that drivers do this when they’re driving for, say, both Uber and Lyft. They’ll accept a ride from Uber and then if a more appealing offer comes from Lyft, they’ll accept that one too and just never pick up the customer they accepted from Uber.)\nPer this fine, it’s unlawful in the EU for Uber to monitor its drivers for pulling scams against customers, or just never picking riders up, leaving them stranded. I mean, I’m not a member of the “Uber Labor Practices” fan club, but one of the best things about Uber compared to taxis is that they monitor for and take action against scam drivers.\nThis isn’t a two-sided conflict between employees (drivers) and a big corporation (Uber). It’s three-sided. Where does customer experience factor into this? The drivers were scamming customers, and Uber took action to stop it. This sounds to me like a system that works. The EU regulation doesn’t seem to factor in customers at all.\n ★",
+      "id": "ad0c8f32b1cb5e1f5414f8ac52d2ca19c81477771f0af0f3e990d935af6cba59",
+      "ref_id": "4",
+      "recommendationScore": 80,
+      "popularityScore": 85,
+      "priority": "medium",
+      "comment": "一篇关于Uber因自动化系统处理司机账户不当而被罚款的报道，揭示了自动化伦理与法律的社会影响。",
+      "reason": "文章深入探讨了自动化系统在商业应用中面临的法律和伦理挑战，对科技公司的产品设计和合规性具有重要警示和参考价值。",
+      "tags": [
+        "自动化",
+        "伦理",
+        "GDPR",
+        "数据隐私",
+        "法律",
+        "Uber",
+        "产品设计"
+      ]
+    },
+    {
+      "title": "Walmart Finally Caves, Will Soon Support Apple Pay",
+      "link": "https://corporate.walmart.com/news/2026/08/21/more-ways-to-pay-tap-to-pay-is-coming-to-walmart-and-sams-club",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-08-21T19:34:55.000Z",
+      "summary": "Walmart:\nWhen we think about convenience, we think about a lot of things,\nbut making shopping feel simpler and more seamless from start to\nfinish is a big part. And one of the moments where that matters\nmost is at checkout.\nWe want customers and members to have choice in how they pay, so\nthey can check out in the way that works best for them. Now,\nbeginning Aug. 24, we will be adding Tap to Pay to our payment\noptions at select Walmart stores and Sam’s Club locations, with\nplans to roll it out to all U.S. stores and clubs by the end of\n2026 and to fuel stations by mid-2027.\nWhen I think about convenience, I think about CurrentC, scanning stupid-ass QR codes, and waiting 12 years to adopt Apple Pay.\n ★",
+      "id": "f00bcbbdbe05527d87354ec4a7d37191ee2181c593d3a2edd47c4c71bd0d42cd",
+      "ref_id": "1",
+      "recommendationScore": 75,
+      "popularityScore": 85,
+      "priority": "medium",
+      "comment": "沃尔玛宣布将最终支持Apple Pay，这对广大消费者来说是一个重要的支付便利性改进。",
+      "reason": "涉及高优先级主题“Apple 生态”，新闻性强，对大量用户具有直接实用价值和广泛影响力。",
+      "tags": [
+        "Apple Pay",
+        "Walmart",
+        "Retail Tech",
+        "Payment Systems",
+        "Apple Ecosystem"
+      ]
+    },
+    {
+      "title": "WorkOS: Agents Can Now Sign Up for Your App",
+      "link": "https://workos.com/auth-md?utm_source=daringfireball&utm_medium=newsletter&utm_campaign=q32026",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-08-22T14:18:29.000Z",
+      "summary": "My thanks to WorkOS for sponsoring the Daring Fireball weekly newsletter this week to promote their Agent Registration. Agents are hitting your signup flow and they’re bouncing off a browser login that was designed for humans. Every one that gives up is a signup you never see.\nWorkOS Agent Registration turns that traffic into signups. Enroll via the dashboard and AuthKit publishes an auth.md file that agents read to register for scoped, short-lived credentials you control.\nMake your app agent-ready today.\n ★",
+      "id": "ce7892b5f723b80b500248912a67f24a42045ab876b5a0a1a66ce69e17a0a2a4",
+      "ref_id": "3",
+      "recommendationScore": 70,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "一篇关于WorkOS代理注册功能的赞助文章，提供了针对自动化系统注册的实用解决方案。",
+      "reason": "文章介绍了实用的开发者工具，解决了自动化系统注册的特定痛点，信息清晰且具备一定实用性。",
+      "tags": [
+        "自动化",
+        "编程工具",
+        "API",
+        "认证",
+        "WorkOS",
+        "独立开发"
+      ]
+    },
+    {
+      "title": "A Friendly Introduction to Racket",
+      "link": "https://geometridae.bearblog.dev/a-friendly-introduction-to-racket/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-22T14:08:19.000Z",
+      "summary": "Article URL: https://geometridae.bearblog.dev/a-friendly-introduction-to-racket/\nComments URL: https://news.ycombinator.com/item?id=49399898\nPoints: 32\n# Comments: 3",
+      "id": "12970b18560139f6a141a9c31fac83f9382cc954f555fa07ca3bdc58742ec1b0",
+      "ref_id": "1",
+      "recommendationScore": 65,
+      "popularityScore": 25,
+      "priority": "medium",
+      "comment": "Racket语言的友好入门指南，适合初学者。",
+      "reason": "为对Racket或函数式编程感兴趣的读者提供了清晰易懂的入门路径。",
+      "tags": [
+        "编程语言",
+        "Racket",
+        "入门",
+        "函数式编程",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "Z80 – The 1970s Microprocessor Still Alive (2021)",
+      "link": "https://www.computer.org/csdl/magazine/mi/2021/06/09623402/1yJTvlRLmhi",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-22T09:49:57.000Z",
+      "summary": "Article URL: https://www.computer.org/csdl/magazine/mi/2021/06/09623402/1yJTvlRLmhi\nComments URL: https://news.ycombinator.com/item?id=49398158\nPoints: 74\n# Comments: 35",
+      "id": "e1a317553b63e42ad92566fbb1d40aa09d61abea60d0c4ba4a8b63bdf6f1edfc",
+      "ref_id": "1",
+      "recommendationScore": 65,
+      "popularityScore": 40,
+      "priority": "medium",
+      "comment": "深入探讨了1970年代经典Z80微处理器的历史及其在现代的持续生命力。",
+      "reason": "对计算机硬件历史和复古计算爱好者具有较高技术深度和信息密度，但新颖性和实用性有限。",
+      "tags": [
+        "硬件",
+        "微处理器",
+        "历史",
+        "嵌入式",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "Hook, hold, harvest and hide: Meta's alleged strategy laid out in first week",
+      "link": "https://www.theguardian.com/technology/2026/aug/22/meta-trial-children-privacy",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-22T12:07:06.000Z",
+      "summary": "Article URL: https://www.theguardian.com/technology/2026/aug/22/meta-trial-children-privacy\nComments URL: https://news.ycombinator.com/item?id=49398904\nPoints: 136\n# Comments: 79",
+      "id": "b7b0d526f8f1610bfcaef6ef606253c7593a82963063f6571a558ff50ed1d906",
+      "ref_id": "4",
+      "recommendationScore": 60,
+      "popularityScore": 85,
+      "priority": "low",
+      "comment": "揭露了Meta在儿童隐私方面的策略，引发行业深思。",
+      "reason": "讨论了重要的科技伦理和社会责任问题，对了解科技巨头行为有参考价值，但技术深度不高。",
+      "tags": [
+        "Meta",
+        "隐私",
+        "科技伦理",
+        "产品策略",
+        "社会影响",
+        "行业新闻"
+      ]
+    },
+    {
+      "title": "Galactic Compass 2: now with new augmented reality mode",
+      "link": "https://interconnected.org/home/2026/08/21/galactic",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-21T17:30:38.000Z",
+      "summary": "Show HN: Galactic Compass – an app that points to the galactic center - https://news.ycombinator.com/item?id=39389858 - Feb 2024 (60 comments)\nComments URL: https://news.ycombinator.com/item?id=49391348\nPoints: 22\n# Comments: 3",
+      "id": "f9a3c806e9af6a25d8bd7b78fb6da242c010b0dd421ca6ec5af9bdaf465befdd",
+      "ref_id": "1",
+      "recommendationScore": 60,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "一个有趣的AR应用更新，展示了独立开发者如何结合天文与增强现实技术。",
+      "reason": "文章展示了独立开发者的创新能力和AR技术的具体应用，对于关注独立开发和新奇应用的用户有吸引力。",
+      "tags": [
+        "App Development",
+        "Augmented Reality",
+        "Indie Dev",
+        "Mobile",
+        "Astronomy",
+        "Show HN"
+      ]
+    },
+    {
+      "title": "llm 0.32.1",
+      "link": "https://simonwillison.net/2026/Aug/21/llm/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-08-21T17:16:13.000Z",
+      "summary": "",
+      "id": "cf6af109a0ee1fd27ded8001f3d88d96b3db11fdb401331dc0c15bbefc3421e0",
+      "ref_id": "0",
+      "recommendationScore": 40,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "标题暗示是AI编程工具的更新，但文章内容缺失，无法进行深度评估。",
+      "reason": "标题涉及热门AI大模型相关工具，但因无具体内容，其技术深度和新颖性无法判断。",
+      "tags": [
+        "AI",
+        "编程工具",
+        "LLM",
+        "更新"
+      ]
+    },
+    {
+      "title": "llm-openrouter 0.7",
+      "link": "https://simonwillison.net/2026/Aug/21/llm-openrouter/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-08-21T16:58:19.000Z",
+      "summary": "",
+      "id": "866d80edbe878622449e5d2b6bb048ef45184310faf2569cb139b90b56aead34",
+      "ref_id": "1",
+      "recommendationScore": 40,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "标题指向与OpenRouter集成的LLM工具更新，但文章内容缺失，难以评估实际价值。",
+      "reason": "标题涉及AI模型集成工具的更新，但因无具体内容，其技术深度和实用性难以判断。",
+      "tags": [
+        "AI",
+        "编程工具",
+        "LLM",
+        "OpenRouter",
+        "更新"
+      ]
+    },
+    {
+      "title": "Scientists release biggest 2D map of the universe",
+      "link": "https://newscenter.lbl.gov/2026/08/10/scientists-release-biggest-2d-map-of-the-universe/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-21T18:36:34.000Z",
+      "summary": "Direct link to Legacy Survey Sky Viewer: https://viewer.legacysurvey.org\nComments URL: https://news.ycombinator.com/item?id=49392200\nPoints: 231\n# Comments: 63",
+      "id": "46b6a8516986c3e13d89605e114e13ca808ba5fdebdf684e9e7fcca9f2386754",
+      "ref_id": "3",
+      "recommendationScore": 35,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "报道科学家发布最大2D宇宙地图的科研成果，具有较高的科学探索价值。",
+      "reason": "虽具有科学前沿性，但主题偏向宇宙学，与科技博客侧重的人工智能、编程工具等主题关联度不高，实用性有限。",
+      "tags": [
+        "科学",
+        "宇宙学",
+        "数据可视化"
+      ]
+    },
+    {
+      "title": "Pluralistic: Born on technology's third base (21 Aug 2026)",
+      "link": "https://pluralistic.net/2026/08/21/world-historic-forces/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-08-22T01:19:10.000Z",
+      "summary": "Today's links Born on technology's third base: Material forces shape life-chances. Hey look at this: Delights to delectate. Object permanence: Glue; iPods v unions; RIP Jack Layton; Gibson on cities; Britain's sweatshop for terminally ill help-hcalls; NYPL's open CDN; Radical juries. Upcoming appearances: Sydney, Melbourne, Brighton, London, South Bend. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. Born on technology's third base (permalink) Any frank assessment of your own achievements starts with an equally frank assessment of the world-historic forces that attended those achievements. For example, I often tell young people who want to get into tech, \"Well, if you don't have the foresight and work ethic to be born in 1971, I can't really help you.\" When it comes to tech, being born in 1971 – to a computer scientist father, no less – conferred a tremendous advantage for my career chances. My dad – a refugee – came to Canada at a time when post-war public services meant that he could become the first person in his family to go to university, all the way to a doctorate. That set me up for life in a house where tech and education were all around me. Both my parents are teachers, both from working class families where no one had ever gone beyond high school, who found themselves in a time and place where it was easier than at any time in history for people from backgrounds like theirs to attend university. I got to go to university, too, at a time when education was cheap enough that I could drop out of four schools before figuring out that it wasn't for me, and still be debt-free, largely thanks to income from a series of part-time jobs. When I dropped out of my final degree program, it was to take a job in tech at a time when anyone with a little creativity, work ethic, aptitude and curiosity could walk into a career. Millions of us did it, and I ended up working as a freelancer, then founding a startup, and then going to EFF. I know I work hard, I know I apply myself to understanding the world around me, but also…when it comes to this kind of career, I was born on third base. There's plenty of this to go around. Think of boomers who bought their \"starter home\" with the income from their first job and traded it in for a succession of larger, nicer homes, each of which skyrocketed in value. Some of those people fancy themselves to be veritable Warren Buffets for having had the shrewd financial insight that buying a house and living in it was a good idea. The truly smart ones know that they just got lucky. There are world-historic forces all around us, creating moments and circumstances that contribute to the life-thriving of those of us who are lucky enough to be suited to the moment we find ourselves in. Take computing: for decades, computing was ruled by Moore's Law, an unbroken run in which computers got faster and cheaper every year. If you were interested in the kinds of computing applications that were well-suited to serial computation – programs that worked best when run on a single computer – you were in luck. Even if your application or field of study was expensive and difficult to realize on today's computer, you could just stand still for a year or two and a much faster computer would park itself on your doorstep, ready to solve your problems. When Moore's Law tapped out – when the pace at which transistors got smaller and computers got faster slowed and plateaued, and the expense of even modest performance gains climbed infinitywards – computing changed with it. Parallel computing – putting more cores on a chip, more chips on a board, more boards in a system – took off, as chipmakers and system builders switched from a focus on building their computers tall to building them wide. As parallel computing took off, so did parallel applications. This is the beginning of the graphics revolution, as GPUs – components made up of many, many low-powered computers – became more central to academic research and commercial product roadmaps. But it wasn't just graphics that saw a huge lift here: any task that could be parallelized got easier and cheaper to perform every year, in a steady trend that has run to this day. This is the era of performance gaming, VR and AR, cryptocurrency, and, of course, AI. In What Technology Wants, Kevin Kelly introduces the idea of the \"adjacent possible\" through the example of the helicopter. Da Vinci sketched a \"helicopter\" – blades in the shape of maple keys attached to a kind of wine-press screw – in the 15th century. In the centuries that followed, many other people had the insight that twirling blades of that shape on a screw of some type could provide lift for some kind of heavier-than-air craft. But it wasn't until strong alloys, internal combustion engines and light, energy-dense refined hydrocarbon fuels came on the scene that the helicopter became possible, whereupon it was all but inevitable, with several people independently inventing the helicopter all at once: https://memex.craphound.com/2010/10/13/kevin-kellys-what-technology-wants-how-technology-changes-us-and-vice-versa/ In the same way, the computing industry's focus on parallel computing made life easier for people who burned to do something parallelizable. Then the achievements of the parallel computing partisans drove more investment in improvements to parallel computing hardware and theoretical work on how to parallelize other problems. This feedback loop raised the profile of parallel computing applications, attracting more bright and ambitious people to those applications, whose even more impressive accomplishments brought more people into the field, more capital into hardware development, and more resources to parallelization research. The point being that world-historic forces, combined with accidents of history, shape the outcomes of individuals, companies and disciplines. It's much easier to be an accomplished graphics wizard in an era in which GPUs are doubling in power every year than it is in an era when linear computing is getting the lion's share of investment and improvement. These forces and accidents have acted on AI in ways that profoundly shaped its development. The latest AI boom started when a group of machine learning researchers tried a minor variation on existing techniques and saw a major improvement in the outcomes. This is one of the most exciting kinds of breakthrough: if tweaking a single variable in a small way produces a large improvement, then it may be that further tweaking will produce even more improvements. The minor variation that produced the major improvement in AI performance was scale. Prior to the \"deep learning\" era, AI research relied on a mix of hand-built models of reality and training data that computers fitted into those models. Deep learning swapped the painstaking work of describing reality in software for a brute-force approach: throw lots more training data at the system and then throw lots more (parallel) computing power at that data and let the computer figure it out without your having to explain how the world worked. The early gains from this approach were very exciting: they dangled the promise of software that could essentially \"teach itself\" how to do complicated, valuable things in a series of accelerating returns. The fact that the early improvements in AI systems that used this technique were so much greater than anyone would have expected based on AI research up to that point dangled an even more exciting promise: that the improvements would continue to scale faster than the inputs. Researchers and investors came to expect an AI that was \"untouched by human hands,\" that taught itself how the world worked. This was the self-licking ice-cream cone of machine learning, the world of \"theory-free inference\" that had fueled the Big Data industry. With theory-free inference, you don't have to figure out how the world works in order to act upon it: you can just gather up all the data about how things happen in the world, use statistical methods to find the correlations, and then intervene to change the outcomes. You don't have to know why a molecule improves a medical condition – it's enough to discover that fact, produce that molecule, and administer it to people with that condition. Lots of stuff in the world works this way. Our understanding of the causal relationships that make up reality has massive holes in it that we fill with mere correlation. Correlations are easier to discover than causes, and while correlation is (famously) not causation, causes and effects are correlated, and if you can evince the effect you're seeking without understanding precisely what happened to make that effect appear, well, at least you got the effect you were seeking. Theory-free inference is a very pragmatic way to approach the world: \"I don't need it good, I need it Thursday.\" Scientists burn to know why a molecule stopped you from dying, but you are likely satisfied to not be dead. What's more, our ability to observe correlations will always race ahead of our understanding of causality, so the power of theory-free inferences pushes out the frontier of things we can act on, beyond the realm of the understood. Which is all to say: it's reasonable to be excited about a breakthrough in theory-free inference. But just like a boomer who thinks that buying a house to live in makes them a shrewd real-estate speculator, someone who achieves great things through theory-free inference runs the risk of missing the limitations to those techniques. And they are limited. Theory-free inference is good at predicting what your spouse will type into their phone based on all the things they've ever typed into their phone. You are also good at guessing what your spouse will say based on the things they've said before. The difference is that when your spouse says something entirely unexpected and unprecedented to you (say, \"I want a divorce\"), the fact that you have a theory about why your spouse said all the things they said up to that moment can help you understand why they've said this new thing. But a machine learning model that relies on theory-free statistical modeling to predict your spouse's next words will be entirely at sea. Theory-free inference works well, but it fails badly. The problem is that the AI sector has raised literally trillions of dollars by assuring investors that the era of hand-made, causal world models that let computers act on the world is hopelessly inefficient and outdated. But there are many, many tasks that are vastly more efficient and reliable when done through conventional computer programs, rather than through \"AI.\" As Gary Marcus describes in a recent Organized Money interview, an LLM can recite the rules of chess, but it can't play chess because – lacking a theory of how chess works – it will just emit statistically likely chess moves, even if those moves cause pieces to illegally move through other pieces. The first conventional chess-playing programs ran on electromechanical proto-computers, and they played a better game of chess than an LLM that uses billions of times more computing power and energy: https://www.organizedmoney.fm/p/an-ai-expert-explains-the-hype The AI companies have proved that there are many domains and applications where we can swap scale for understanding. But, having ridden some world-historic forces and adjacent possibles to great fortunes and stature, they cannot be dissuaded from their conviction that theory-free inference and scale can do everything. They can't be convinced that in many cases, the things that scale and theory-free inference can do are much better accomplished through causal understandings and conventional computing techniques. From a research perspective, it is interesting to learn about the potential and limitations of a model trained on the entire internet. From a societal and industrial perspective, it is often grossly wasteful, inefficient and unreliable to swap scale for understanding. The AI sector was born of world-historical forces that favored massively parallel computing, forces that had also conjured up an internet with trillions of documents that could be fed into those massively parallel computers to conduct theory-free inference. Like every success, AI was born on third base. As rent-burdened millennials who abandoned avocado toast and fancy coffee and still can't afford a downpayment will tell you, the fact that being born in 1945 made it easy to trip and land on a couple million dollars' worth of real estate wealthy by the time you reached retirement age tells us nothing about how to solve the housing crisis of 2026. By the same token, continuing to give trillions to AI companies because they experienced early success with theory-free inference at scale tells us nothing about how to solve the vast range of problems that theory-free inference at scale sucks at. Doubling down on AI to overcome its increasingly obvious limitations is like doubling down on building post-war suburbs to fix today's housing market. It's possible to achieve impressive feats because you're smart and hard working and also because you were in the right place at the right time. Historical contingency produced the AI bubble, and it is producing the conditions for that bubble to pop. Hey look at this (permalink) Does copyright protect your AI-generated content in Europe? Let’s find out https://euobserver.com/232898/interview-does-copyright-protect-your-ai-generated-content-in-europe-lets-find-out/ FTC Says It Will Enforce Surveillance Pricing. It Won’t. https://prospect.org/2026/08/21/ftc-says-it-will-enforce-surveillance-pricing-it-wont/ Why shaming people about AI slop isn’t enough to stop Big AI https://www.anildash.com/2026/08/21/ai-slop-and-shame/ Object permanence (permalink) #25yrsago Glue anything to anything https://www.thistothat.com/ #20yrsago No unions in iPod City https://web.archive.org/web/20061123003816/https://www.wired.com/news/columns/0,71629-0.html?tw=wn_index_2 #15yrsago Credit scores are bullshit https://web.archive.org/web/20111013005626/https://a.wholelottanothing.org/2011/08/credit-scores-are-bullshit.html #15yrsago RIP, Jack Layton https://www.bbc.com/news/world-us-canada-14618943 #15yrsago William Gibson on cities and the future https://www.scientificamerican.com/article/gibson-interview-cities-in-fact-and-fiction/ #10yrsago Bronx cops can steal anything they want by calling it “evidence” https://www.theatlantic.com/technology/archive/2016/08/how-police-use-a-legal-gray-area-to-rob-suspects-of-their-belongings/495740/ #10yrsago Robert Moses wove enduring racism into New York’s urban fabric https://web.archive.org/web/20160402184527/http://www.hopesandfears.com/hopes/now/politics/216905-the-lingering-effects-of-nyc-racist-city-planning #10yrsago EFF takes a deep dive into Windows 10’s brutal privacy breaches https://www.eff.org/deeplinks/2016/08/windows-10-microsoft-blatantly-disregards-user-choice-and-privacy-deep-dive #10yrsago Inside the “sweatshop” terminally ill Britons must call to get benefits https://web.archive.org/web/20160820094907/https://www.theguardian.com/public-leaders-network/2016/aug/20/work-pensions-disability-claim-call-handler-benefits-dwp #10yrsago How the New York Public Library made ebooks open, and thus one trillion times better https://www.crummy.com/writing/speaking/2015-RESTFest/ #5yrsago Raiders of the lost ARC https://pluralistic.net/2021/08/22/raiders-of-the-lost-arc/ #1yrago Radical juries https://pluralistic.net/2025/08/22/jury-nullification/#voir-dire Upcoming appearances (permalink) Sydney: The Festival of Dangerous Ideas, Aug 23-24 https://festivalofdangerousideas.com/program/ Melbourne: Enshittification at the Wheeler Centre, Aug 25 https://www.wheelercentre.com/events-tickets/season-2026/cory-doctorow-enshittification London: AI and the Enshittification of the Media, NUJ (Sep 2) https://www.nuj.org.uk/learn/ems-event-calendar/ai-and-the-enshitification-of-the-media.html Brighton: The Reverse Centaur's Guide to Life After AI with Carole Cadwalladr (Brighton Dome), Sep 8 https://brightondome.org/whats-on/LSC-cory-doctorow-the-reverse-centaurs-guide-to-life-after-ai/ London: The Reverse Centaur's Guide to Life After AI with Riley Quinn (Foyle's Picadilly), Sep 9 https://www.foyles.co.uk/events/enshittification-cory-doctorow-riley-quinn South Bend: An Evening With Cory Doctorow (Notre Dame), Oct 6 https://franco.nd.edu/events/2026/10/06/an-evening-with-cory-doctorow/ Hudson, OH: Hudson Library, Oct 7 https://engagedpatrons.org/EventsExtended.cfm?SiteID=3850&amp;EventID=596952&amp;PK= Victoria: Munro's Books, Oct 20 https://www.munrobooks.com/events/6113620261020 Vancouver: BC Policy Solutions Gala, Nov 12 https://bcpolicy.ca/gala/ Recent appearances (permalink) Deflating the AI Bubble (Do Not Pass Go) https://www.donotpassgo.ca/p/deflating-the-ai-bubble-with-cory Technofeudal Enshittification (Fucking Cancelled) https://www.fuckingcancelled.com/p/technofeudal-enshittification-with Who The Machine Serves (EFF) https://archive.org/details/effecting-change-who-the-machine-serves Speculative Fiction for Social Change II (Cool People Who Did Cool Stuff) https://pocketcasts.com/podcast/cool-people-who-did-cool-stuff/08cbb840-a6ae-013a-d8aa-0acc26574db2/part-two-cory-doctorow-on-speculative-fiction-for-social-change/937e8800-9404-45a6-b5e3-90ebee2cfaea Speculative Fiction for Social Change I (Cool People Who Did Cool Stuff) https://pocketcasts.com/podcast/cool-people-who-did-cool-stuff/08cbb840-a6ae-013a-d8aa-0acc26574db2/part-one-cory-doctorow-on-speculative-fiction-for-social-change/15ad467c-0832-44c9-91ea-59defd783dba Latest books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/ \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: “Once Is Enemy Action,” a science fiction novel about the origins of modern technofascism. Today's words: 513 (8701 total). \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Fourth draft completed. Submitted to editor. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "727ddd34ec59e1242e93af146adce33cf1c55b968a9ad281a97f70464d5f785a",
+      "ref_id": "2",
+      "recommendationScore": 25,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "文章主要是链接汇总，并附有一段关于技术领域出身优势的社会评论。",
+      "reason": "内容偏向社会评论而非具体技术分析，与核心关注主题不符，缺乏技术深度和实用性。",
+      "tags": [
+        "Tech Culture",
+        "Sociology",
+        "Privilege",
+        "Social Commentary"
+      ]
+    },
+    {
+      "title": "Reading List 08/22/26",
+      "link": "https://www.construction-physics.com/p/reading-list-082226",
+      "source": "construction-physics.com",
+      "publishedAt": "2026-08-22T12:02:58.000Z",
+      "summary": "Los Angeles’ ADUs, electrical transformer manufacturing, gas turbine power plants, how water in the Colorado River is used, and more.",
+      "id": "eb39733466324e8d30aa3a9f0ee78d84bd5214deae1ef13660dc1858c24a1228",
+      "ref_id": "0",
+      "recommendationScore": 25,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "一个内容广泛且缺乏技术深度的阅读清单，不符合科技博客的专业定位。",
+      "reason": "文章主题过于发散，不聚焦于任何优先级主题，信息密度低，对专业技术读者价值有限。",
+      "tags": [
+        "阅读清单",
+        "杂项",
+        "能源",
+        "环境"
+      ]
+    },
+    {
+      "title": "Three important steps in my maturation process",
+      "link": "https://thomasdullien.github.io/posts/2026-08-21-three-important-steps-in-my-maturation-process/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-21T22:29:00.000Z",
+      "summary": "Article URL: https://thomasdullien.github.io/posts/2026-08-21-three-important-steps-in-my-maturation-process/\nComments URL: https://news.ycombinator.com/item?id=49394496\nPoints: 190\n# Comments: 87",
+      "id": "37043a392a5360c11118c17d767f139da8bf10fba22a995f3a4d1e9ffae7acaf",
+      "ref_id": "0",
+      "recommendationScore": 20,
+      "popularityScore": 78,
+      "priority": "low",
+      "comment": "一篇关于个人成长历程的分享，内容偏向职业与人生感悟。",
+      "reason": "内容属于个人反思范畴，与科技博客的核心主题（AI、编程工具等）相关性较低。",
+      "tags": [
+        "个人成长",
+        "职业发展",
+        "独立开发"
+      ]
+    },
+    {
+      "title": "You should never be angry at work",
+      "link": "https://seangoedecke.com/you-should-never-be-angry-at-work/",
+      "source": "seangoedecke.com",
+      "publishedAt": "2026-08-22T00:00:00.000Z",
+      "summary": "",
+      "id": "231986ec84d3ed211a34e16e60bafbff2beb3e7bdfd9fee9968b5165a72ca4bb",
+      "ref_id": "2",
+      "recommendationScore": 20,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "这是一篇关于职场情绪管理的非技术性文章，且内容缺失。",
+      "reason": "文章主题与科技博客核心关注点不符，且缺乏具体内容支撑其价值。",
+      "tags": [
+        "职场",
+        "软技能",
+        "非技术"
+      ]
+    },
+    {
+      "title": "The Fourth Horseman of the File-Format-Hegemony Apocalypse",
+      "link": "https://techcommunity.microsoft.com/blog/onedriveblog/introducing-markdown-support-in-sharepoint-and-onedrive/4512174",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-08-21T23:18:40.000Z",
+      "summary": "Microsoft’s iPhone app for OneDrive has long supported creating three new document types via a big “+” button right in its file viewer: Excel, Word, PowerPoint. It recently came to my attention that they’ve added a fourth document type, and they even gave it real Microsoft-style “they just have no taste” file icon. Just look at it. The whole world’s coming to an end, Mallory.\n ★",
+      "id": "7aab1c8a119944a68921628b5fb33175df6ef102b3d5e46766ae238e35fb28fe",
+      "ref_id": "0",
+      "recommendationScore": 20,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "文章观察了微软OneDrive在iPhone上新增文件类型的功能，并表达了作者的讽刺。",
+      "reason": "内容属于一般性科技产品观察，缺乏技术深度和实用性，与核心关注主题的优先级较低。",
+      "tags": [
+        "Microsoft",
+        "OneDrive",
+        "Mobile Apps",
+        "File Formats"
+      ]
+    },
+    {
+      "title": "A Kantian Critique of \"Sorry\" by Justin Bieber",
+      "link": "https://decodingvibes.com/blog/a-kantian-critique-of-sorry-by-justin-bieber/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-22T13:24:06.000Z",
+      "summary": "Article URL: https://decodingvibes.com/blog/a-kantian-critique-of-sorry-by-justin-bieber/\nComments URL: https://news.ycombinator.com/item?id=49399524\nPoints: 114\n# Comments: 44",
+      "id": "1557a1ae750ee77c002c4c2477e69110b612717be1ae6ecb650b9e09b9ce841f",
+      "ref_id": "3",
+      "recommendationScore": 10,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "一篇哲学评论，与科技博客主题无关。",
+      "reason": "内容完全偏离科技博客的关注方向，不适合推荐。",
+      "tags": [
+        "哲学",
+        "文化评论",
+        "非科技"
+      ]
+    },
+    {
+      "title": "Canada suspends trade negotiations with USA and match tariffs dollar for dollar",
+      "link": "https://www.pm.gc.ca/en/news/statements/2026/08/21/statement-prime-minister-carney-canada-us-trade-negotiations",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-22T10:26:09.000Z",
+      "summary": "Article URL: https://www.pm.gc.ca/en/news/statements/2026/08/21/statement-prime-minister-carney-canada-us-trade-negotiations\nComments URL: https://news.ycombinator.com/item?id=49398304\nPoints: 617\n# Comments: 552",
+      "id": "f837b8be029383b4ffe4c46aee73864a74e76fd138917823903cda7d899f3b53",
+      "ref_id": "0",
+      "recommendationScore": 10,
+      "popularityScore": 90,
+      "priority": "low",
+      "comment": "这是一篇与科技领域无关的政治经济新闻，不符合本博客的评估范围。",
+      "reason": "内容与科技主题优先级不符，不具备技术深度和实用性。",
+      "tags": [
+        "政治",
+        "经济",
+        "国际关系",
+        "非科技"
+      ]
+    },
+    {
+      "title": "LiteLLM (YC W23) Is Hiring – Rust / Performance Engineers",
+      "link": "https://jobs.ashbyhq.com/litellm/3f326076-7415-46a1-921e-8a1b1d6ee2b6",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-21T17:00:23.000Z",
+      "summary": "Article URL: https://jobs.ashbyhq.com/litellm/3f326076-7415-46a1-921e-8a1b1d6ee2b6\nComments URL: https://news.ycombinator.com/item?id=49390910\nPoints: 0\n# Comments: 0",
+      "id": "d6a811d5ad558c3aa20f27faf288d3fd431f82cffb89b3f855ce8491e65c8995",
+      "ref_id": "3",
+      "recommendationScore": 10,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "一篇关于LiteLLM公司招聘Rust/性能工程师的广告，而非技术内容分享。",
+      "reason": "这不是一篇技术文章，而是招聘信息；尽管公司聚焦AI领域，但作为博客内容评估价值不高。",
+      "tags": [
+        "Job Posting",
+        "AI",
+        "LLM",
+        "Rust",
+        "Hiring"
+      ]
+    },
+    {
+      "title": "Coming soon",
+      "link": "https://www.johndcook.com/blog/2026/08/22/coming-soon/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-08-22T15:34:11.000Z",
+      "summary": "There’s a pizza shop near my home with a sign out front that says “Coming Soon.” When I drove by it this morning I thought about how you would model the time until an event happens that is “coming soon.” Suppose I look at the sign one day and guess how many days until the […]\nComing soon first appeared on John D. Cook.",
+      "id": "d0881d96e29b4d9f4cdc0f96cc5921a6a8a2b5235b246e3a8faaa5f065db41e5",
+      "ref_id": "3",
+      "recommendationScore": 10,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "一篇关于如何建模“即将到来”事件的简短哲学性随笔。",
+      "reason": "内容过于简短且抽象，缺乏技术深度和实用价值，与博客的科技主题关联度极低。",
+      "tags": [
+        "Philosophy",
+        "Reflection"
+      ]
+    },
+    {
+      "title": "More than just code review",
+      "link": "https://simonwillison.net/2026/Aug/22/more-than-just-code-review/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-08-22T15:56:54.000Z",
+      "summary": "",
+      "id": "d548c978bd4efd1395ec84538a00ea55e1a90ad27bcf286ac7abdc2b22617527",
+      "ref_id": "4",
+      "recommendationScore": 5,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "无内容可供评估，仅有标题，无法判断其技术深度和价值。",
+      "reason": "文章主体内容缺失，无法进行有效的技术评估和推荐。",
+      "tags": [
+        "Unassessable",
+        "Code Review",
+        "Software Engineering"
+      ]
+    },
+    {
+      "title": "SalesPatriot (YC W25) Is Hiring Forward Deployed Engineers",
+      "link": "https://www.ycombinator.com/companies/salespatriot/jobs/M46X6YX-forward-deployed-engineer",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-21T21:00:48.000Z",
+      "summary": "Article URL: https://www.ycombinator.com/companies/salespatriot/jobs/M46X6YX-forward-deployed-engineer\nComments URL: https://news.ycombinator.com/item?id=49393733\nPoints: 0\n# Comments: 0",
+      "id": "fd85f85620f5a1e6177cec56b159f027aeccf9a3a2aef772997b48db6b5047a0",
+      "ref_id": "1",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "一篇招聘广告，不属于科技博客文章的评估范畴。",
+      "reason": "内容为职位招聘信息，并非技术文章或博客内容，不符合评估要求。",
+      "tags": [
+        "招聘",
+        "职业"
+      ]
+    },
+    {
+      "title": "How Thailand Resisted Colonization",
+      "link": "https://worksinprogress.co/issue/how-thailand-resisted-colonization/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-21T18:28:42.000Z",
+      "summary": "Article URL: https://worksinprogress.co/issue/how-thailand-resisted-colonization/\nComments URL: https://news.ycombinator.com/item?id=49392099\nPoints: 84\n# Comments: 29",
+      "id": "16d63aafccb03446a5785c4cbc5eac1227bd0db5e5fdbc03c93cc315e4517a13",
+      "ref_id": "4",
+      "recommendationScore": 0,
+      "popularityScore": 29,
+      "priority": "low",
+      "comment": "一篇关于泰国如何抵抗殖民历史的文章，属于历史文化范畴。",
+      "reason": "内容完全是历史人文主题，与科技博客的关注方向不符，不适合进行技术评估。",
+      "tags": [
+        "历史",
+        "文化"
+      ]
+    }
+  ]
+}
