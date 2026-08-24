@@ -1,0 +1,346 @@
+{
+  "dailySummary": "今日科技速递：LLM正成为高效定制工具利器，助力数据管理。AI在教育领域引发热议，儿童语言学习能力仍超越AI。行业巨头在文本水印及市场竞争中面临挑战，技术人员则在AI浪潮中思考职业未来，",
+  "articles": [
+    {
+      "title": "Getting an LLM to Make Me a Tool for Enriching the Color Metadata in My Icon Collection",
+      "link": "https://blog.jim-nielsen.com/2026/use-llm-to-add-color-metadata/",
+      "source": "blog.jim-nielsen.com",
+      "publishedAt": "2026-08-23T19:00:00.000Z",
+      "summary": "On my icon gallery sites, I have metadata I’ve manually added over the years to tag certain icons as being predominantly “blue” or “orange” or some other color.\nThen I use this metadata to present icons of (roughly) the same color. It’s kinda neat to be able to browse a wall of icons that  are all the same color.\n\n\n\nThe thing is: I know there are a lot of icons I’ve missed tagging over the years. But I have no idea how many, and figuring that out seems like a really arduous task. How do I go through 2,000+ icons and find all the ones that look predominantly “orange” but haven’t been tagged as such yet?\nSeems like a good task to throw at an LLM. But I don’t want to just say, “Go tag everything that’s missing” and blindly trust the output. I need to be able to make a decisions as to whether I think a particular color is “orange” or not.\nWhat I need is a tool for the job. I’m a very visual thinker, so to continue curating these color categorizations, I need some way for the computer to do its thing really, really fast, and then pull me into the loop to visually make decisions.\nHere’s how I am thinking about about accomplishing this task:\nCreate a page with a list of colors on the left (red, green, orange, blue, etc.)\nWhen a color is clicked, show two columns. 1) All icons I currently have tagged for that color, and 2) all icons that might be that color but aren’t tagged as such (you, computer, process all my icons and do the work to figure this out and make recommendations).\nAllow me to select one or more icon(s) in the “not yet tagged as this color” column. Once I have all the ones I perceive as missing, give me a button to say “Copy” which copies the IDs of those icons.\nI’ll paste the IDs back here in the chat and you go add the corresponding metadata.\nThat seems like it would be a good tool to put me in control of visual decision making around color categorization. So I tell the LLM to run with it.\nWe chat back and forth. I think, “You probably need to run all the icons through some model to make the correlation?” But it’s like, “Nah bro, just make a ‘hue histogram’.” It tells me how. For a color like “orange”, I can:\n[process] each PNG, skip transparent pixels, skip low-saturation gray, convert the rest to HSV, and score how much of the remaining mass sits in the orange hue band (roughly 15–45°). Rank icons that don’t already have colorId: orange.\nOk, sure. That sounds reasonable.\n[This] scores each icon PNG by share of opaque pixels per color bucket, then writes a standalone HTML page: tagged vs maybe-missing, per color.\nLet’s just make it, and then I’ll decide whether it’s good enough.\nAfter a few iterations, the computer going “brr…”, and me saying “explain that like I’m dumb”, I have a really effective little tool!\n\n\n\nThe little threshold slider is a nice touch. It lets me fiddle around with the fidelity of the matches. In some cases, sliding it down reveals more icons I would’ve otherwise missed. In other cases, I’m like “What are you thinking? I don’t see that as ‘yellow’ at all!”\n\nSupper effective little tool. I go through each color, select the ones I think are missing, paste the IDs back into the LLM, and then have it update each icon's metadata.\nBoom, done! That all would’ve taken so long before. I would’ve never done it.\nTakeaways:\nThe LLM is good at making throw-away code. This doesn’t need to be “production-grade” code I depend on. Just something that’s good enough for me to get a job done, then toss. The resulting metadata is the goal, not the tool I use to get to the goal.\nThe LLM is good at making one-off HTML pages for a specific task. In my case, all these images were hosted on a CDN, easy enough to just point at and have a standalone .html file that I can locate on my hard drive and open directly as a file:// URL. No bundling. No transpilation. None of that. I don’t even need a web server! Keeping things very basic on this project is paying off: I had really elemental building blocks that didn’t require additional third-party tooling. Just HTML, CSS, a little in-page JS, and images on a server!\nIt’s fun to say, “Don’t do the work for me. Instead, help me make a custom-fit tool that facilitates me doing the work in the most empowering, correct way possible.”\nEmail\n      · Mastodon ·\n\n      Bluesky",
+      "id": "5b62a533385cbeab5f93f6cc62da5c33fa0c50a559b8f255e704fa0d599f34d5",
+      "ref_id": "4",
+      "recommendationScore": 85,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "利用LLM开发工具自动化管理图标元数据，是AI实用应用的绝佳案例。",
+      "reason": "紧密结合AI和自动化主题，提供了LLM解决实际问题的创新且实用方法，具有极高的新颖性和实用性。",
+      "tags": [
+        "AI",
+        "LLM",
+        "自动化",
+        "编程工具",
+        "独立开发",
+        "数据管理"
+      ]
+    },
+    {
+      "title": "Fixing an eMachines EL1200 BIOS bug with Claude",
+      "link": "https://www.downtowndougbrown.com/2026/08/fixing-an-emachines-el1200-bios-bug-with-claude/",
+      "source": "downtowndougbrown.com",
+      "publishedAt": "2026-08-23T19:28:10.000Z",
+      "summary": "I’m no stranger to pushing hardware past its limits. For example, seven years ago, I tracked down an issue that prevented 16 GB of RAM being used in a motherboard that only supported 8. It ended up being a one-line GRUB hack to fix one of the ACPI tables that was mistakenly overlapping a PCI […]",
+      "id": "b5d51ff959b1b626ff27155d6afb05a2793ff805fbbac8d2a3d7c0401f9b429d",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "文章展示了利用AI工具Claude解决特定硬件BIOS问题的深度技术探索，方法新颖。",
+      "reason": "结合AI辅助解决低级硬件问题的案例非常独特，技术细节丰富，对追求极致硬件调试的用户有启发。",
+      "tags": [
+        "AI",
+        "硬件",
+        "BIOS",
+        "系统编程",
+        "故障排除"
+      ]
+    },
+    {
+      "title": "Your executable is a SQLite database",
+      "link": "https://simonwillison.net/2026/Aug/24/your-executable-is-a-sqlite-database/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-08-24T11:38:15.000Z",
+      "summary": "",
+      "id": "8ccf6a718866a13d7ba974b8c0df3ca4e4b34489a8835020e0b6b5ea167dcac1",
+      "ref_id": "3",
+      "recommendationScore": 82,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "标题引人入胜，暗示了一种将可执行文件集成到SQLite数据库的创新方法，但文章内容缺失。",
+      "reason": "若内容如标题所言，将为开发者提供独特且高效的工具使用思路，具有极高的技术新颖性和潜在实用性，但需补充内容以验证。",
+      "tags": [
+        "编程工具",
+        "SQLite",
+        "开发",
+        "创新"
+      ]
+    },
+    {
+      "title": "How to encourage smarter AI use in the classroom",
+      "link": "https://www.technologyreview.com/2026/08/24/1142630/ai-school-classroom-policies/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-08-24T14:20:19.000Z",
+      "summary": "This article is from Making AI Work, MIT Technology Review’s limited-run newsletter examining how to apply LLMs across industries. To receive it in your inbox, sign up here. Chatbots took many schools by surprise upon their release a few years ago. Suddenly, students carried an app in their phones that could magically answer almost any…",
+      "id": "84b8bf2811e5934e1c38cf040b50b0bf443ae22512008c521271c802d905a96b",
+      "ref_id": "0",
+      "recommendationScore": 80,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "文章探讨了如何在教育场景中更智能地应用AI，提供了实用的指导。",
+      "reason": "内容关注AI的实际应用和伦理，对教育界具有高度实用性和积极引导价值。",
+      "tags": [
+        "AI",
+        "教育",
+        "LLM",
+        "应用"
+      ]
+    },
+    {
+      "title": "Cooper Sharp Proves That American Cheese Can Be Great Cheese",
+      "link": "https://sixcolors.com/member/2026/08/this-week-in-apple-lets-fight/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-08-23T17:36:28.000Z",
+      "summary": "John Moltz, in his weekly members-only column for Six Colors (no gift links, but Moltz’s column is worth the subscription in and of itself):\nThis week Anthropic announced that in order to identify AI from\nhuman-generated content it would be watermarking all text it\ngenerates by subtly altering the randomness at which its models\npicked the next word. While this might seem a perfectly cromulent\nmeans of accomplishing a worthy goal, it really rubbed John Gruber\nthe wrong way, as if someone suggested putting autocomplete Swiss\non his Philly cheesesteak AI.\nCooper Sharp cheese is the way to go. The best new cheesesteak joint in town — Uncle Gus’s — only offers Cooper Sharp, in fact.\nSurely a fair number of the hundreds and hundreds of bees that\nhave nested in Gruber’s extremely fancy bonnet are a result of the\nfact that this all ostensibly in response to a mandate from the\nEU. But, as James Thomson has suggested, Anthropic might actually\nwant to watermark so that it doesn’t scoop up is own output to\ntrain its models, thereby degrading the results. In fact, the\ncompany would probably love to be able to figure out other\ncompanies’ watermarks and have them not be able to figure out its\nwatermark.\nFor the record, my opposition to Claude’s plan to begin watermark-adulterating all generated text, worldwide, has nothing to do with it ostensibly being to comply with a regulation from the EU. I do think the EU regulation is deeply ill-considered (and, having been drafted in 2024, already technically out of date), but I’d have written everything I wrote (and will continue to write) about the matter even if the EU had no AI-related regulations in place. In fact, while writing my initial piece, I really wished this had nothing to do with the EU, because pointing out the folly of the regulation (and the ridiculousness of a company supposedly worth $2 trillion being technically unable to comply with an EU regulation without applying the changes globally) seemed a distraction from my point, regarding the ramifications of watermarking text by way of detectable word choices. Moltz’s aside here confirms that.\nAlso, more and more, I do think this has little to do with the EU regulation and everything to do with Anthropic and Google wanting to watermark the text that Claude and Gemini generate for their own purposes, to identify text to avoid training future models on to avoid model collapse/AI inbreeding. I suspect blaming the decision on the EU “Code of Practice” regulation is just scapegoating on Anthropic’s part.\n(As a bonus, Moltz has a deliciously sharp (no cheese pun intended) take on the schadenfreude-rich saga of MacStories returning to Twitter/X.)\n ★",
+      "id": "519eaeb28146ebaa360e7b576b03e5c8516119dd1e54f40dded5b8cf682fdb73",
+      "ref_id": "2",
+      "recommendationScore": 80,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "文章以独特的方式结合了AI内容水印的技术讨论和美食评论，关注了Anthropic的AI水印策略。",
+      "reason": "聚焦于AI内容水印这一前沿且热门的AI话题，尽管行文风格跳跃，但信息具有较高的时效性和新颖性。",
+      "tags": [
+        "AI",
+        "Anthropic",
+        "内容水印",
+        "政策",
+        "评论"
+      ]
+    },
+    {
+      "title": "Weekly Update 518: IoT Doorlock Nirvana with UniFi",
+      "link": "https://www.troyhunt.com/weekly-update-518/",
+      "source": "troyhunt.com",
+      "publishedAt": "2026-08-24T04:19:51.000Z",
+      "summary": "I genuinely think I've nailed the IoT door lock situation! Well, Ubiquiti has, but I think I've worked out how to put it all into a residential house and have it make sense. There are a few basic tenets:\n\nMain power (never have to rely on",
+      "id": "caed6a0b28132789411eeace3b39e6ddc15213159a1f95b63516b0bc60a91417",
+      "ref_id": "1",
+      "recommendationScore": 80,
+      "popularityScore": 85,
+      "priority": "medium",
+      "comment": "详细介绍了利用UniFi实现理想IoT智能门锁系统的方案，强调可靠性和实用性。",
+      "reason": "智能家居自动化是热门话题，文章提供了具体且看似成熟的解决方案，对居家智能化用户有很高的参考价值。",
+      "tags": [
+        "IoT",
+        "智能家居",
+        "自动化",
+        "UniFi",
+        "安全"
+      ]
+    },
+    {
+      "title": "Kids outlearn AI—and we still don’t know why",
+      "link": "https://www.technologyreview.com/2026/08/24/1141740/kids-machines-language-learning/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-08-24T09:00:00.000Z",
+      "summary": "People have been talking to each other for at least 100,000 years, as best we can tell. And in all that time, there has been only one thing in the world that could learn a human language to perfect fluency: a human child.  Now there are two.  Four short years after the release of ChatGPT,…",
+      "id": "baf89b9624bd1b24bd13b50ffa248be98d73fd60ce96734dd1a72a669dfdcc83",
+      "ref_id": "2",
+      "recommendationScore": 77,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "深入探讨了人类儿童在语言学习方面为何远超AI的深层原因，提出了重要的科学疑问。",
+      "reason": "文章挑战了AI能力的边界，内容新颖且富有哲学深度，能激发广泛讨论。",
+      "tags": [
+        "AI",
+        "认知科学",
+        "LLM",
+        "语言学习",
+        "人类智慧"
+      ]
+    },
+    {
+      "title": "Anger, Anxiety and Agency",
+      "link": "https://lucumr.pocoo.org/2026/8/24/anger-anxiety-agency/",
+      "source": "lucumr.pocoo.org",
+      "publishedAt": "2026-08-24T00:00:00.000Z",
+      "summary": "Sean Goedecke wrote a post arguing that you should never be angry at\nwork — a post\nwith which I strongly agree.  Anger can be a useful signal, but being angry at\nwork rarely improves the situation.  More often, it makes life worse for the\npeople around you, many of whom have no more power over the source of your anger\nthan you do.  I did learn that lesson, but it did not come naturally.  One thing\nin particular that I learned is that in a company there is a shared vision, and\nif you don’t agree with it and are not in a position to change it, you should\nnot start a mutiny, not even a small-scale one.  Nothing good comes from that.\nIn the discussion around that topic, one of the most upvoted comments on the\nLobsters thread\nasked a question I had to think about quite a bit:\nHow can you work in tech right now and not be angry?\nIn the context of the thread, this was clearly also about AI and agents.  For\nme, the emotions I would expect in tech vis-a-vis these new developments are\ndisorientation and anxiety, but not anger.\nAnxiety as an emotion does not require someone to blame.  Right now, I find it\nreasonable to feel anxious about an uncertain future.  Who knows what our\nprofessions will turn into and what kind of world my kids will find themselves\nin when they enter the workplace?  And if you’ve been in the industry for a long\ntime, will the skills you’ve spent years acquiring still matter?\nBut anger is different from anxiety because anger needs to be directed\nsomewhere.  The feeling of anger suggests that somebody or something is doing\nsomething to you.\nWho are you going to be angry at and why are you angry in the first place?  One\nnarrative that is pretty pervasive is that if AI will usher in productivity\ngains, those gains are going to benefit companies rather than employees.  And\nwell at least someone at Meta\nwants\nthat.\nYet I also find that plenty of people in leadership positions express doubt\nabout AI.  They see that an increasing share of their costs is being funneled\ndirectly to some large AI labs.  They express worries about what will happen to\ntheir data and whether these large companies will step into their space instead\nof being partners.\nMy answer to the question of how you can not be angry in tech is that it’s by no\nway the most only possible feeling.  First of all, instead of being angry, you\ncan simply be unsure.  The feeling of uncertainty is a much more productive\nemotional state because it can lead to curiosity.  Even if you don’t find what’s\nhappening right now exciting, you can at least find it interesting.  We have\naccess to magic machines, and we can poke at them and see what happens.  The\nsecond way is to feel genuine excitement.  Once you move beyond curiosity, you\ncan come away with a newfound feeling of power and freedom.  A lot of the gains\nfrom AI aren’t turning into productivity gains that are reflected in company\nprofits but they’re showing up instead in the number of side projects shipped by\neverybody not on their company’s time.\nThe fact that this is happening shows us that owners and founders don’t\nnecessarily know what will happen.  Ownership comes with agency, but it does not\nprovide foresight, and this change is disorienting for everybody.  I engage with\nplenty of people who project confidence in public and are much less certain in\nprivate.  Many of them are placing bets, but they are talking with confidence\nabout those bets, trying to stay afloat while the ground moves under them.  They\nexperience that uncertainty from a position where they can act on it, and they\nare often standing somewhere with a megaphone to get others on their side to\nincrease their odds.\nI feel that contradiction myself.  I am simultaneously tremendously excited, but\nI am also unsure what will happen next.  I do not know what it will mean to be a\nprogrammer in the future, and, as the owner of a company, I am also not sure\nwhere the high ground will be when this all settles.  Much of what I learned\nover the years is changing rapidly, including ideas I considered fundamental to\nmy craft and business.  Some days that feels liberating, but on others I wake up\nfeeling like the ground is crumbling beneath me.\nAnxiety is an uncomfortable emotion because it acknowledges that you do not know\nwhat will happen and might not be able to stop it.  On the other hand, anger can\nfeel more actionable because, instead of saying “I don’t know,” you already have\nsomeone to blame.  It turns a loss of control into a comforting story with a\nvillain.  But I feel that particularly when it comes to AI, it’s easy to pick\nthe wrong villain because of how disruptive the change is for everyone.  Your\nengineering manager or leadership team might themselves feel uncertain about\ntheir future and just try to bolster their own confidence by projecting clarity\nand certainty.\nThat does not mean there are no villains.  When this all plays out, some will\nprofit and many will not.  I’m afraid we’re completely ignoring the impact this\nhas on society at large, the climate, and the balance of the world as a whole.\nAs excited as I am about the technology, I worry about Europe’s lack of ambition\nand growing dependence on other countries.  I have a lot of complex thoughts\nabout what we’re doing as an industry right now.\nI don’t know what the future of this industry will look like, and I don’t know\nwho will benefit from it and I don’t think I’m alone with that.  However I can\nonly urge anyone who feels anger and looks for a villain right to instead remain\ncurious instead.  To be curious enough to understand what is changing, excited\nenough to experiment with it.  And then, from what we learn, earn the right to\ndecide when resistance is warranted and where to direct it.",
+      "id": "d867f30dbc36216040cacef010705844ef2fc7990d695ccf1159f0cd1ec799cb",
+      "ref_id": "4",
+      "recommendationScore": 75,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "文章深入探讨了科技工作者在AI时代面临的愤怒和焦虑，提供了关于情绪管理和适应新变革的视角。",
+      "reason": "从人文和心理层面切入，讨论AI对科技行业从业者的深远影响，内容具有高度共鸣和现实意义。",
+      "tags": [
+        "AI",
+        "工作情绪",
+        "心理健康",
+        "科技行业",
+        "职业发展"
+      ]
+    },
+    {
+      "title": "The Download: kids outlearning AI, and space travel agents",
+      "link": "https://www.technologyreview.com/2026/08/24/1142863/the-download-kids-outlearning-ai-space-travel-agents/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-08-24T12:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. Kids outlearn AI—and we still don’t know why Teaching a computer to use human language requires an inhuman amount of data. An LLM can easily churn through a hundred thousand times…",
+      "id": "c090dee7d6805bc0d7bdc2ab9f525ab31932173e0af13d3e910f44782366629e",
+      "ref_id": "1",
+      "recommendationScore": 74,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "简述了儿童学习语言的能力超越AI的现象，并提及了太空旅行代理等其他科技新闻。",
+      "reason": "AI部分提出了一个引人入胜的认知科学问题，虽是概览但具有较强的新颖性。",
+      "tags": [
+        "AI",
+        "认知",
+        "学习",
+        "LLM",
+        "科技新闻"
+      ]
+    },
+    {
+      "title": "Anthropic’s best AI model struggles to attract users as cheaper tools thrive",
+      "link": "https://simonwillison.net/2026/Aug/23/anthropics-best-ai-model-struggles-to-attract-users-as-cheaper-t/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-08-23T20:24:52.000Z",
+      "summary": "",
+      "id": "99acd73254864f628ab7771a9df317e5ad7ee5d219426cf639c9e1df0fc19b14",
+      "ref_id": "4",
+      "recommendationScore": 70,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "标题揭示了领先AI模型Anthropic在用户吸引力上面临的挑战，暗示了市场竞争与价格因素的重要性，但文章内容缺失。",
+      "reason": "此主题涉及AI行业竞争格局和商业策略，对市场参与者具有重要参考价值，但文章内容有待补充以支持评估。",
+      "tags": [
+        "AI",
+        "市场分析",
+        "商业策略",
+        "Anthropic"
+      ]
+    },
+    {
+      "title": "More on TestFlight’s Screwy Sort Order",
+      "link": "https://daringfireball.net/2026/08/apple_testflight_list_sort_order",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-08-24T15:22:16.000Z",
+      "summary": "I complained last week that starting with an update last month, the list of apps I’m testing in Apple’s TestFlight app has been sorted alphabetically, rather than by recency. Whatever is going on with this sort order, it isn’t affecting everyone. John Siracusa, amongst many others, has the same problem I do — his list is now alphabetical, and it’s driving him nuts too. Ryan Booker, amongst many others, still has his list sorted by recency.\nThe weird thing is, back on August 13, the iPhone version of TestFlight started showing my lists in recency-of-last-update order once again. There was no update to the TestFlight app itself. I just started seeing the list in the correct order once again. It was only on my iPhone though — on my Macs and iPad, TestFlight continued to sort apps alphabetically. Then, two days later, my iPhone went back to alphabetical order, and it’s been stuck there ever since.\nWhen the list is sorted by recency, there’s also a “Currently Testing” header at the top of the list, and there are other (disclosable) categories like “Incompatible” and “Previously Tested” at the bottom of the list. When the list is sorted alphabetically, none of these category headers are visible.\n ★",
+      "id": "9df3c94d7e80127dd97ae0a162ffa9403039e8b23e851e49e8fef4fa3f090615",
+      "ref_id": "1",
+      "recommendationScore": 70,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "文章详细描述了TestFlight应用中排序逻辑的混乱和不一致性，对Apple生态圈的开发者和测试者具有相关性。",
+      "reason": "虽然技术深度有限，但解决了Apple开发者工具中一个常见且令人困扰的用户体验问题，具有实用性。",
+      "tags": [
+        "Apple生态",
+        "TestFlight",
+        "iOS开发",
+        "Bug",
+        "用户体验"
+      ]
+    },
+    {
+      "title": "The von Mises-Fisher distribution",
+      "link": "https://www.johndcook.com/blog/2026/08/24/von-mises-fisher/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-08-24T14:14:25.000Z",
+      "summary": "Probability density function must integrate to 1, and so if you know a density function up to a constant, the constant is determined. When you’re looking at a probability density f(x) for the first time, it helps to ignore the normalizing constant. Concentrate on the part of the function involving x and know that the normalizing […]\nThe von Mises-Fisher distribution first appeared on John D. Cook.",
+      "id": "63b7bb7efc50b589d370b8a32567b6bb95f094df79199ac1c3f902929c5e4f78",
+      "ref_id": "1",
+      "recommendationScore": 60,
+      "popularityScore": 35,
+      "priority": "low",
+      "comment": "详细阐述了 von Mises-Fisher 分布的统计学原理，技术深度高。",
+      "reason": "话题专业性过强，受众面窄，不符合主流科技博客的广泛兴趣。",
+      "tags": [
+        "统计学",
+        "概率",
+        "数学"
+      ]
+    },
+    {
+      "title": "Three-term recurrences",
+      "link": "https://www.johndcook.com/blog/2026/08/24/three-term-recurrences/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-08-24T14:14:55.000Z",
+      "summary": "There many examples of families of functions where each function can be computed as a linear combination of the two previous terms where a and b are functions of x but not on n. This is called a three-term recurrence formula. It’s amazing how often you can run into three-term recurrence formulas. There are theorems that give conditions […]\nThree-term recurrences first appeared on John D. Cook.",
+      "id": "cb1f091ba5e1c8157d0319917cf6964d82b3c2954e0506b2f303bdca5ee42319",
+      "ref_id": "0",
+      "recommendationScore": 55,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "深入探讨了三项递推公式的数学概念，内容学术性强。",
+      "reason": "话题过于纯数学化，与主流科技博客的受众兴趣不符，实用性较低。",
+      "tags": [
+        "数学",
+        "算法",
+        "理论"
+      ]
+    },
+    {
+      "title": "What exactly is modified about a modified Bessel function?",
+      "link": "https://www.johndcook.com/blog/2026/08/23/modified-bessel-function/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-08-23T18:40:57.000Z",
+      "summary": "Special functions often have arcane names that not very helpful without some context. The previous post goes into some reasons for this. This post will expand on a point at the end of the post about “modified” functions. Things are given their names for reasons. Discovering those reasons may help you understand their motivation and […]\nWhat exactly is modified about a modified Bessel function? first appeared on John D. Cook.",
+      "id": "ee0d3ad7745ba72fd877247ab09aa2c3586844c29ba2927e7ea917ed9750e2cf",
+      "ref_id": "2",
+      "recommendationScore": 55,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "解释了“修正贝塞尔函数”中“修正”的含义及特殊函数命名背景。",
+      "reason": "专注于数学函数命名起源，内容过于学术且小众，缺乏普遍实用性。",
+      "tags": [
+        "数学",
+        "特殊函数",
+        "历史"
+      ]
+    },
+    {
+      "title": "Why special function terminology is arcane",
+      "link": "https://www.johndcook.com/blog/2026/08/23/arcane-terminology/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-08-23T17:56:03.000Z",
+      "summary": "Special functions are special because they’re useful. They can also be shrouded in arcane terminology. These two facts are related. The more widely useful a function is, the more likely it is that the function will be discovered independently multiple times. Independent discoveries lead to varying definitions and notations. For example, there are two widely […]\nWhy special function terminology is arcane first appeared on John D. Cook.",
+      "id": "94c1f859d56f9742f226f426065ee8a6efc373782a678db2952e2168a62076dd",
+      "ref_id": "3",
+      "recommendationScore": 50,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "探讨了特殊函数术语晦涩难懂的原因，提供了有趣的背景知识。",
+      "reason": "虽有知识性，但主题仍围绕纯数学历史和命名，与核心科技主题距离较远。",
+      "tags": [
+        "数学",
+        "术语",
+        "历史",
+        "知识普及"
+      ]
+    },
+    {
+      "title": "Why do audience members choose specific shows at the Edinburgh Fringe?",
+      "link": "https://shkspr.mobi/blog/2026/08/why-do-audience-members-choose-specific-shows-at-the-edinburgh-fringe/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-08-24T11:34:45.000Z",
+      "summary": "On our recent trip to the Edinburgh Fringe, I was bemused by just how little effort performers put in to finding out why people had selected their show. Taking a show to the Edinburgh Fringe is ridiculously expensive with some performers paying tens of thousands of pounds. The way performers recoup the costs of performing is by getting people to pay to see a show.  Acts are spending huge amounts…",
+      "id": "9a23136c1fa59329c1ee8c6a7aed09231474101291c68c0c99c60fe1a49b3494",
+      "ref_id": "3",
+      "recommendationScore": 20,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "文章讨论了爱丁堡艺穗节观众选择节目的原因，与科技博客的关注主题不符。",
+      "reason": "内容与科技主题偏离度过高，不属于任何优先级关注领域。",
+      "tags": [
+        "文化",
+        "艺术",
+        "观众心理",
+        "市场营销"
+      ]
+    },
+    {
+      "title": "Quoting Drew Breunig",
+      "link": "https://simonwillison.net/2026/Aug/23/drew-breunig/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-08-23T19:55:30.000Z",
+      "summary": "",
+      "id": "71343321c7660b7a530a46a7758aa99ec030e0f973f6be76131df0f460c5dc41",
+      "ref_id": "0",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "这是一篇空白文章，无法进行任何评估。",
+      "reason": "文章无内容，不符合评估标准。",
+      "tags": []
+    }
+  ]
+}
