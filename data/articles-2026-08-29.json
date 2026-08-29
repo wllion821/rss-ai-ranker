@@ -1,0 +1,800 @@
+{
+  "dailySummary": "今日科技速递：GLM-5.3大模型开源并展示中国硬件性能，但与西方EUV差距仍存。Anthropic解除国防部黑名单。智能电视隐私、AI打假与数学发现受关注。同时，",
+  "articles": [
+    {
+      "title": "What GLM-5.3 Flash running on Chinese hardware actually means",
+      "link": "https://martinalderson.com/posts/glm-5-3-flash-chinese-hardware/?utm_source=rss&utm_medium=rss&utm_campaign=feed",
+      "source": "martinalderson.com",
+      "publishedAt": "2026-08-29T00:00:00.000Z",
+      "summary": "Z.AI ran a full model release on domestically manufactured Chinese chips. Impressive, but EUV lithography is a hard wall and the gap with Western inference hardware is more likely to widen than close.",
+      "id": "422fbd033068f9a3fb702dcc70d265ee1fa4f7bed6b58e7a05610860c3e6e669",
+      "ref_id": "3",
+      "recommendationScore": 98,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "深刻解读了中国AI模型在国产硬件上运行的现状及其面临的EUV光刻技术瓶颈。",
+      "reason": "文章紧扣AI热点，技术深度和新颖性极高，对理解当前AI硬件发展和地缘政治科技竞争至关重要。",
+      "tags": [
+        "AI",
+        "半导体",
+        "中国科技",
+        "硬件",
+        "EUV",
+        "地缘政治",
+        "芯片"
+      ]
+    },
+    {
+      "title": "Stopping the smart TV from being used against you",
+      "link": "https://www.s-config.com/stopping-a-smart-tv-from-being-used-against-you/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-28T20:27:57.000Z",
+      "summary": "Article URL: https://www.s-config.com/stopping-a-smart-tv-from-being-used-against-you/\nComments URL: https://news.ycombinator.com/item?id=49483816\nPoints: 137\n# Comments: 106",
+      "id": "b4f95ef47dd857a5cf48753c616aa9342d7d9e927b664c896a4b62242a534c93",
+      "ref_id": "3",
+      "recommendationScore": 95,
+      "popularityScore": 100,
+      "priority": "high",
+      "comment": "详细指导用户如何保护智能电视隐私，避免数据滥用。",
+      "reason": "实用性极高，解决大众普遍关心的隐私问题，用户参与度高，对个人自动化与安全有重要意义。",
+      "tags": [
+        "隐私",
+        "智能家居",
+        "物联网",
+        "网络安全",
+        "实用指南"
+      ]
+    },
+    {
+      "title": "GLM-5.3 is now open-weight",
+      "link": "https://huggingface.co/zai-org/GLM-5.3",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-28T15:20:13.000Z",
+      "summary": "https://twitter.com/Zai_org/status/2093354097122455713\nhttps://z.ai/blog/glm-5.3\nComments URL: https://news.ycombinator.com/item?id=49479878\nPoints: 569\n# Comments: 201",
+      "id": "4424584ee706d4b4f373e9458a7d307eab25a264f74f5e9c8c29e557d43e69cd",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "一个重要的AI模型GLM-5.3宣布开源，对AI社区影响巨大。",
+      "reason": "这是AI领域的一个重大进展，为研究人员和开发者提供了强大的开源工具，具有极高的实用性和关注度，符合AI主题高优先级。",
+      "tags": [
+        "AI",
+        "大语言模型",
+        "开源",
+        "机器学习",
+        "GLM"
+      ]
+    },
+    {
+      "title": "Boot a Virtual iPhone via Apple's Virtualization.framework",
+      "link": "https://github.com/Lakr233/vphone-cli",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-28T23:02:21.000Z",
+      "summary": "Article URL: https://github.com/Lakr233/vphone-cli\nComments URL: https://news.ycombinator.com/item?id=49485267\nPoints: 23\n# Comments: 7",
+      "id": "bd488c1cb70b7284a50610921ab6e557eb19c7dec0a7eabb943b41f3aecdcbc8",
+      "ref_id": "1",
+      "recommendationScore": 90,
+      "popularityScore": 40,
+      "priority": "high",
+      "comment": "利用Apple Virtualization.framework实现虚拟iPhone，对Apple生态开发者有极高价值。",
+      "reason": "紧密结合Apple生态和编程工具，技术深度和新颖性突出，对特定受众实用性强。",
+      "tags": [
+        "Apple",
+        "iOS",
+        "虚拟化",
+        "开发工具",
+        "Virtualization.framework"
+      ]
+    },
+    {
+      "title": "Building a mini Homelab that fits in my carry-on",
+      "link": "https://www.jeffgeerling.com/blog/2026/mini-homelab-network-fits-in-carry-on/",
+      "source": "jeffgeerling.com",
+      "publishedAt": "2026-08-28T15:00:00.000Z",
+      "summary": "I'm traveling to Chicago for VCF Midwest next month. I'll be demoing NTP time history on vintage Macs, with my own GPS-derived NTP service hosted on an Xserve G5, synced via NTP or a strange AppleTalk timing extension from the 1990s.\n\n\n\nSo I built a little 'portable homelab' (pictured above) that supports 1-10 Gbps networking, can run off a small battery for at least an hour, switches between multiple WANs (so I can get my own 5G Internet connection, in case I need it), and gives me 12 wired Ethernet connections.",
+      "id": "21aff4114adc90aba65d67f63dc8d1aff3920a9e4606e8488610aa01742356d3",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "一篇关于构建便携式家庭实验室的深度技术分享，包含复古Mac和自定义NTP服务。",
+      "reason": "文章展示了高技术深度和独特的项目创意，对硬件爱好者、系统管理员和复古计算玩家极具吸引力。",
+      "tags": [
+        "Homelab",
+        "Networking",
+        "Vintage Tech",
+        "DIY",
+        "NTP",
+        "Automation",
+        "Independent Development"
+      ]
+    },
+    {
+      "title": "U.S. Judge Blocks Trump Defense Department’s Anthropic Blacklisting",
+      "link": "https://www.reuters.com/legal/government/us-judge-blocks-pentagons-anthropic-blacklisting-2026-08-28/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-08-28T02:59:46.000Z",
+      "summary": "Jack Queen, Reuters:\nA U.S. judge on Thursday blocked the Pentagon’s blacklisting of\nAnthropic, ​the latest turn in the Claude maker’s high-stakes\nfight with the military over AI safety on the battlefield.\nAnthropic’s lawsuit in California federal court alleges that\nDefense Secretary Pete Hegseth overstepped his authority when\nhe designated Anthropic a national security supply-chain risk,\na label the government can apply to companies that expose\nmilitary systems to potential infiltration or sabotage by\nadversaries. [...]\nU.S. District Judge Rita Lin, an appointee of former Democratic\nPresident Joe Biden, ​made the ruling in a 59-page order where she\nfound that the Pentagon’s decision was “illegal and baseless.”\n“The empty invocation of national ​security is not a blank check\nto punish and retaliate against government critics,” she wrote.\nThe imperial aspects of Trump 2.0 are increasingly coming apart at the seams.\n ★",
+      "id": "49ffc49ef7ef221eeed2050249306cdc349feedf4c5c56318561a28fe939c499",
+      "ref_id": "1",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "报道了AI公司Anthropic与美国国防部之间关于AI安全和政策的法律纠纷及其最新裁决。",
+      "reason": "高度契合AI主题优先级，探讨了AI在军事和政策层面的重要影响，对关注AI发展的读者具有极高信息价值。",
+      "tags": [
+        "AI",
+        "政策",
+        "法律",
+        "公司新闻",
+        "国家安全"
+      ]
+    },
+    {
+      "title": "Migrating to HTTPX2",
+      "link": "https://github.com/openai/openai-python/blob/main/httpx2.md",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-28T11:51:20.000Z",
+      "summary": "Article URL: https://github.com/openai/openai-python/blob/main/httpx2.md\nComments URL: https://news.ycombinator.com/item?id=49477212\nPoints: 182\n# Comments: 78",
+      "id": "04411ad809f1e4cfb475e72c2bca859e1d6b523d1084f3e3bd664a6de11d7701",
+      "ref_id": "4",
+      "recommendationScore": 88,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "OpenAI Python库HTTPX2的迁移指南，对AI开发者极为实用。",
+      "reason": "内容直接面向编程工具，尤其与AI主题（OpenAI）相关联，提供具体的技术指导，实用性极高。",
+      "tags": [
+        "Python",
+        "HTTPX",
+        "OpenAI",
+        "API",
+        "编程工具",
+        "迁移"
+      ]
+    },
+    {
+      "title": "Identifying fake cosmetics using AI",
+      "link": "https://groverlab.org/hnbfpr/2026-08-26-ai-counterfeit-cosmetics.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-28T22:18:27.000Z",
+      "summary": "Article URL: https://groverlab.org/hnbfpr/2026-08-26-ai-counterfeit-cosmetics.html\nComments URL: https://news.ycombinator.com/item?id=49484925\nPoints: 16\n# Comments: 5",
+      "id": "4ffd2b68fb033f123eef30ebab19065a6db3cfc20fc0becd9b495b1ecaa47287",
+      "ref_id": "2",
+      "recommendationScore": 85,
+      "popularityScore": 30,
+      "priority": "high",
+      "comment": "创新性地将AI应用于识别假冒化妆品，展示AI的实际商业价值。",
+      "reason": "符合AI主题优先级，技术应用新颖且具实际社会价值和市场潜力。",
+      "tags": [
+        "AI",
+        "机器学习",
+        "计算机视觉",
+        "防伪",
+        "产业应用"
+      ]
+    },
+    {
+      "title": "Autonomous Mathematical Discovery in an Open-World Multi-Agent Environment",
+      "link": "https://arxiv.org/abs/2608.23691",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-28T17:01:12.000Z",
+      "summary": "Article URL: https://arxiv.org/abs/2608.23691\nComments URL: https://news.ycombinator.com/item?id=49481455\nPoints: 75\n# Comments: 16",
+      "id": "de58f2f7593a3307cb1abd573fd7f42ee92f17541e3e78423ea72dd761927d2e",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "一篇关于AI自主数学发现的深度研究论文，具有高度技术创新性。",
+      "reason": "深入探讨了AI在开放世界中进行数学发现的前沿能力，对AI研究和未来发展具有重要意义，符合AI主题高优先级。",
+      "tags": [
+        "AI",
+        "机器学习",
+        "数学发现",
+        "多智能体系统",
+        "前沿研究"
+      ]
+    },
+    {
+      "title": "Just the rumour of a bug is enough to find an exploit these days",
+      "link": "https://anil.recoil.org/notes/rumour-is-the-exploit",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-28T15:58:46.000Z",
+      "summary": "Article URL: https://anil.recoil.org/notes/rumour-is-the-exploit\nComments URL: https://news.ycombinator.com/item?id=49480466\nPoints: 244\n# Comments: 89",
+      "id": "a3d40848cd03fefda089033aa207044f75d9fa2864a4137adc51584fdeb139ab",
+      "ref_id": "3",
+      "recommendationScore": 85,
+      "popularityScore": 90,
+      "priority": "medium",
+      "comment": "深刻剖析了当前软件安全领域中漏洞发现的心理和技术机制。",
+      "reason": "揭示了软件安全漏洞被利用的新趋势，对开发者和安全团队具有重要的警示和指导意义，属于编程工具和安全领域。",
+      "tags": [
+        "网络安全",
+        "漏洞",
+        "软件工程",
+        "安全意识"
+      ]
+    },
+    {
+      "title": "Htmx 4.0",
+      "link": "https://four.htmx.org/announcements/2026-08-28-htmx-4.0.0-is-released",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-28T13:28:56.000Z",
+      "summary": "Article URL: https://four.htmx.org/announcements/2026-08-28-htmx-4.0.0-is-released\nComments URL: https://news.ycombinator.com/item?id=49478178\nPoints: 491\n# Comments: 121",
+      "id": "6b67b7c8437087610002d7d7ad7ba491bf78480fa0312761f9f679e0affa623e",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 90,
+      "priority": "medium",
+      "comment": "深入探讨Htmx 4.0新特性，为简化Web开发提供新思路。",
+      "reason": "作为重要的Web编程工具更新，Htmx 4.0在技术深度、新颖性和实用性上均表现出色，社区关注度高。",
+      "tags": [
+        "Htmx",
+        "Web开发",
+        "前端",
+        "编程工具",
+        "框架"
+      ]
+    },
+    {
+      "title": "GUIs should be fully keyboard-driven",
+      "link": "https://ckardaris.com/blog/2026/08/28/keyboard-driven-guis.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-28T15:17:09.000Z",
+      "summary": "Article URL: https://ckardaris.com/blog/2026/08/28/keyboard-driven-guis.html\nComments URL: https://news.ycombinator.com/item?id=49479837\nPoints: 576\n# Comments: 290",
+      "id": "07aca43e12d4379f0d6200724b438814c4e858a88860c31b315ffa6a9772cf51",
+      "ref_id": "0",
+      "recommendationScore": 80,
+      "popularityScore": 90,
+      "priority": "medium",
+      "comment": "深入探讨了键盘驱动GUI的重要性及其对用户体验和效率的提升。",
+      "reason": "为产品设计和开发提供了改进用户交互和无障碍性的重要视角。",
+      "tags": [
+        "UI/UX",
+        "Keyboard-driven",
+        "Productivity",
+        "Accessibility",
+        "Product Design"
+      ]
+    },
+    {
+      "title": "How to sign up for a virtual power plant—and decide whether you should",
+      "link": "https://www.technologyreview.com/2026/08/28/1142956/how-to-sign-up-for-a-virtual-power-plant-and-decide-whether-you-should/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-08-28T09:00:00.000Z",
+      "summary": "MIT Technology Review’s How To series helps you get things done.  Your thermostat may not look like a power plant. Neither does your electric vehicle, home battery, or HVAC system. But utility and energy companies increasingly want to treat them like one. A virtual power plant, or VPP, is a collection of household devices (such…",
+      "id": "97e305723092b476adb7f9aa21289e8d3a399f36f45b80063f2cadcb7bfb20c5",
+      "ref_id": "1",
+      "recommendationScore": 80,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "一篇关于如何参与虚拟电厂并评估其价值的实用指南。",
+      "reason": "文章提供了实用的操作指南和决策建议，对希望通过家庭设备优化能源消耗的读者非常有价值。",
+      "tags": [
+        "Automation",
+        "Energy Tech",
+        "Smart Home",
+        "How-To"
+      ]
+    },
+    {
+      "title": "Making the unnecessary easier",
+      "link": "https://www.johndcook.com/blog/2026/08/28/making-the-unnecessary-easier/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-08-28T14:35:36.000Z",
+      "summary": "I watched a few videos this morning, looking for ideas of what I could use AI to do. In one video, someone had an agent monitor tech news sites every 30 minutes to notify him of a variety of developments. No doubt that’s less effort than visiting a bunch of sites every half hour, but […]\nMaking the unnecessary easier first appeared on John D. Cook.",
+      "id": "f5b72c71b06af4394e3ee193fd1ea3135146471ea2529198121589af8e490dea",
+      "ref_id": "3",
+      "recommendationScore": 80,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "探讨了AI如何让“不必要”的事情变得更容易，并引发对这种实用性与价值的哲学反思。",
+      "reason": "直接与AI主题相关，文章虽然技术深度不高，但从更高层面思考了AI的实用性和社会影响，具有很强的讨论价值。",
+      "tags": [
+        "AI",
+        "哲学",
+        "自动化",
+        "效率",
+        "产品思维"
+      ]
+    },
+    {
+      "title": "How big are factorials?",
+      "link": "https://eli.thegreenplace.net/2026/how-big-are-factorials/",
+      "source": "eli.thegreenplace.net",
+      "publishedAt": "2026-08-28T01:52:00.000Z",
+      "summary": "The other day, I found myself wondering how big 52! (52 factorial) is,\nand that led me to ponder how these could be estimated without a\ncalculator or a computer.\nIt turns out there’s some fairly interesting math behind being able to\nestimate the size (number of digits) of a factorial reasonably\naccurately. This post will start by stating how to do the estimate, and\nif you’re curious you can read on for the math background.\nWithout further ado, the approximation is:\n\\[\\text{number of digits in n!}\\approx n\\log_{10}\\left(\\frac{n}{e}\\right)+2\\]\nAs an example, let’s use my original question, by estimating this for\n52!\nWell, 52 divided by e is... 20-ish? And \\log_{10}(20) is\nabout 1.3  [1]; therefore our estimate comes out to:\n\\[\\text{number of digits in 52!}\\approx 52\\cdot 1.3 +2 \\approx69\\]\nThe real answer is 68, so this is very close! In estimates like this -\nwhen you’re dealing with enormous numbers - being off by a couple of\ndigits usually isn't a big deal.\nThe Gamma function\nThe Gamma function for real n>0 is defined [2] as:\n\\[\\Gamma(n)=\\int_{0}^{\\infty}x^{n-1}e^{-x}dx\\]\nThis integral does not have an analytic expression in the general case,\nbut it does have a very useful property that we can take advantage of.\nLet’s see what \\Gamma(n+1) is:\n\\[\\Gamma(n+1)=\\int_{0}^{\\infty}x^{n}e^{-x}dx\\]\nAnd now use integration by parts with:\n\\[u=x^n\\qquad v=-e^{-x}\\]\nThen:\n\\[du=nx^{n-1} dx\\qquad dv=e^{-x}dx\\]\nSo:\n\\[\\begin{aligned}\n    \\Gamma(n+1)&=\\int_{0}^{\\infty}x^{n}e^{-x}dx\\\\\n    &=\\left. -x^n e^{-x}\\right|_{0}^{\\infty}-\\int_{0}^{\\infty}-e^{-x}n x^{n-1}dx\\\\\n    &=n\\int_{0}^{\\infty}x^{n-1}e^{-x}dx\n\\end{aligned}\\]\nBut notice that the last integral is just \\Gamma(n); therefore,\nwe’ve shown that:\n\\[\\Gamma(n+1)=n\\Gamma(n)\\]\nLet’s also calculate \\Gamma(1) - it’s a special case that has an\nanalytical solution:\n\\[\\Gamma(1)=\\int_{0}^{\\infty}e^{-x}dx=\\left. -e^{-x}\\right|_{0}^{\\infty}=1\\]\nThis helps establish an induction argument:\n\\[\\begin{aligned}\n    \\Gamma(2)=1\\cdot\\Gamma(1)&=1!\\\\\n    \\Gamma(3)=2\\cdot\\Gamma(2)&=2!\\\\\n    \\Gamma(4)=3\\cdot\\Gamma(3)&=3!\\\\\n    \\dots\\\\\n    \\Gamma(n+1)=n\\cdot\\Gamma(n)&=n!\n\\end{aligned}\\]\nIn other words - the Gamma function is an interpolation of the factorial\nover all positive reals. Here’s a plot of the Gamma function over a\nsmall range; note that the y axis is log-scale because of the function’s\nfast growth:\nStirling’s approximation\nYou may have encountered Stirling’s approximation before:\n\\[n!\\approx\\sqrt{2\\pi n}\\cdot\\left(\\frac{n}{e} \\right)^n\\]\nIt’s a great approximation that works reasonably well even for small\n. This section is a brief overview of how Stirling’s formula is\nderived from the Gamma function.\nTaking:\n\\[n!=\\Gamma(n+1)=\\int_{0}^{\\infty}x^n e^{-x}dx\\]\nWe’ll start by massaging the integrand a bit:\n\\[n!=\\int_{0}^{\\infty}x^n e^{-x}dx=\\int_{0}^{\\infty}e^{n \\ln x} e^{-x}dx\\]\nAnd making a change of variables x=ny, which means that\ndx=ndy:\n\\[\\begin{aligned}\n    n!&=\\int_{0}^{\\infty}ne^{n\\ln(ny) - ny}dy=n\\int_{0}^{\\infty}e^{n(\\ln n+\\ln y-y)}dy\\\\\n    &=ne^{n\\ln n}\\int_{0}^{\\infty}e^{n(\\ln y-y)}dy\n\\end{aligned}\\]\nThese steps make the integral amenable to applying Laplace’s\nmethod, which allows\nus to approximate definite integrals of the form:\n\\[\\int_{a}^{b}e^{nf(x)}dx\\]\nWhere  is a twice-differentiable function and  some\nlarge number. By Laplace’s method, such integrals can be approximated\nby:\n\\[\\int_{a}^{b}e^{nf(x)}dx\\approx\\sqrt{\\frac{2\\pi}{n|f''(x_0)|}}e^{n f(x_0)}\\]\nWhere  is the global maximum of .\nLet’s see how to apply this method [3] to the latest equation we have\nfor n! (renaming the dummy integration variable back to\nx):\n\\[n!=ne^{n\\ln n}\\int_{0}^{\\infty}e^{n(\\ln x-x)}dx\\]\nIn our case, f(x)=\\ln x - x. It’s easy to show that this\nfunction is twice differentiable and has a global maximum at\n. Moreover:\n\\[\\begin{aligned}\n    f(x_0)&=-1\\\\\n    f''(x_0)&=-1\\\\\n\\end{aligned}\\]\nSubstituting these into the proper places in Laplace’s approximation, we\nget:\n\\[\\begin{aligned}\n    n! &\\approx ne^{n\\ln n}\\sqrt{\\frac{2\\pi}{n}}e^{-n}\\\\\n    &\\approx \\sqrt{2\\pi n}\\cdot e^{n(\\ln n - 1)}\\\\\n    &\\approx \\sqrt{2\\pi n}\\cdot \\left(\\frac{n}{e}\\right)^n\\quad\\blacksquare\n\\end{aligned}\\]\n\n\nNumber of digits from Stirling’s approximation\nWe can calculate the number of digits in n! by taking the\nbase-10 logarithm of Stirling’s formula:\n\\[\\begin{aligned}\n\\text{number of digits in n!}&\\approx \\log_{10} \\left(\\sqrt{2\\pi n}\\cdot\n \\left(\\frac{n}{e}\\right)^n\\right)\\\\\n&\\approx \\log_{10}\\left(\\sqrt{2\\pi n}\\right)+ \\log_{10}\\left(\\frac{n}{e}\\right)^n\\\\\n&\\approx \\log_{10}\\left(\\sqrt{2\\pi n}\\right)+ n\\cdot \\log_{10}\\left(\\frac{n}{e}\\right)\n\\end{aligned}\\]\nNote that the first term is not multiplied by  itself;\ntherefore, as  grows, it will become less and less noticeable.\nThat said, it still adds a couple of digits - so you should take it into\naccount if you want a more accurate approximation [4]\n\n\n[1]Mental tricks for calculating \\log_{10} is a different topic,\nbut it really helps to remember that \\log_{10}2=0.3,\n\\log_{10}3=0.5, and from here using the various logarithm\nlaws to estimate multiples.\n\n\n[2]As a matter of fact, the Gamma function is defined for complex\nnumbers, but for our purpose talking about the reals is sufficient.\n\n\n[3]As much as I’d like to dive into why this approximation works, the\nrabbit hole in this post is already deep enough!\n\n\n[4]It adds up to 2 extra digits as long as  is less than 1600\nor so, and may add more than 2 after that, though no more than 3\nuntil n is 160000. It’s not clear why anyone would like to estimate\nthe number of digits of 1600! (about 4450, in case you were\nwondering), let alone 160000!",
+      "id": "0f260508ae8d825bbb064e826a934381c185aaa17227059e6d1e0e1042b59cb6",
+      "ref_id": "1",
+      "recommendationScore": 78,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "深入浅出地解释了如何用数学方法估算大数的阶乘位数，并提供了实用的近似公式。",
+      "reason": "文章技术深度高，内容严谨且实用，对于对数学原理和算法基础感兴趣的读者具有很高的价值。",
+      "tags": [
+        "数学",
+        "算法",
+        "阶乘",
+        "估算",
+        "编程基础",
+        "数据科学"
+      ]
+    },
+    {
+      "title": "Show HN: Sesame - a local-first, open-source password manager",
+      "link": "https://usesesame.app/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-28T19:14:14.000Z",
+      "summary": "I have been working on Sesame, an open-source password manager that keeps your vault local by default. You don't need an account to create or use a vault, and the hosted service never receives the vault itself.\nIt's still early software and the independent security review isn't finished yet, so I am mainly interested in feedback, testing, and people looking through the code.\n(Linux support is yet to be released on v0.1.2, but currently is in the works.)\nComments URL: https://news.ycombinator.com/item?id=49483038\nPoints: 32\n# Comments: 34",
+      "id": "eff17f29efac2e539a0d66b68c136ddbd59e6ad58327645c3501ac0f4f288b2c",
+      "ref_id": "0",
+      "recommendationScore": 75,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "一个致力于安全和隐私的本地优先开源密码管理器，值得关注。",
+      "reason": "提供了用户高度控制的本地优先开源方案，满足了对隐私和安全的普遍需求，属于独立开发和编程工具范畴。",
+      "tags": [
+        "密码管理器",
+        "开源",
+        "安全",
+        "独立开发",
+        "隐私保护",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "Verschlimmbesserung: The Word Your Software Updates Need",
+      "link": "https://geekyschmidt.com/post/2026-08-25-verschlimmbesserung/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-28T14:30:33.000Z",
+      "summary": "Article URL: https://geekyschmidt.com/post/2026-08-25-verschlimmbesserung/\nComments URL: https://news.ycombinator.com/item?id=49479072\nPoints: 103\n# Comments: 66",
+      "id": "5eaddba9a19fe946b03b590ba804f6c0a98889f6c9be924515998ae1eecfa254",
+      "ref_id": "2",
+      "recommendationScore": 75,
+      "popularityScore": 55,
+      "priority": "medium",
+      "comment": "巧妙地引入德语词“Verschlimmbesserung”来批判性分析软件更新中的常见问题。",
+      "reason": "对软件开发中的用户体验和质量管理提供了独特的视角和反思。",
+      "tags": [
+        "Software Updates",
+        "UX",
+        "Product Management",
+        "Development Culture"
+      ]
+    },
+    {
+      "title": "Inception-style curved map for turn-by-turn directions",
+      "link": "https://www.orbify.eu/demo/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-28T12:29:05.000Z",
+      "summary": "Article URL: https://www.orbify.eu/demo/\nComments URL: https://news.ycombinator.com/item?id=49477564\nPoints: 409\n# Comments: 138",
+      "id": "c323c9b581192b7ea73eaf18207f5b7d2f61a95a918823707d1bfc7c9a3bfd2f",
+      "ref_id": "3",
+      "recommendationScore": 75,
+      "popularityScore": 80,
+      "priority": "medium",
+      "comment": "极具创意的“盗梦空间”风格弧形地图导航，探索产品设计新范式。",
+      "reason": "在产品设计和UI/UX方面具有高度新颖性和实用性，尽管主题优先级较低，但其创新性足以引起关注。",
+      "tags": [
+        "地图",
+        "导航",
+        "UI/UX",
+        "产品设计",
+        "可视化"
+      ]
+    },
+    {
+      "title": "‘I’m the Guy Who Destroys Antique Books After We Scan Them Into Our Company’s Insatiable AI Platform’",
+      "link": "https://www.mcsweeneys.net/articles/im-the-guy-who-destroys-antique-books-after-we-scan-them-into-our-companys-insatiable-ai-platform",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-08-28T21:35:22.000Z",
+      "summary": "Jack Loftus, writing at McSweeney’s:\nPeople assume scanning is the exciting part. And, sure, it is\nimpressive. They shear off the spine, separate the pages, and run\neverything through these enormous machines so the computer can\nabsorb every sentence ever written and use it to create some\nfairly compelling LinkedIn posts. But then, boy oh boy, the\nwheeled cart carrying those decimated remains comes to me. That is\nwhere the human touch enters the process, assuming you count\nindustrial shredders and a giant burn pit out back as an extension\nof the hand, which I certainly do.\n(Via Michael Sippey.)\n ★",
+      "id": "9a854a8074b4816c0e1fbd079895c154f5ea7902e0462b1d274fcf41b3e64b29",
+      "ref_id": "0",
+      "recommendationScore": 75,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "以犀利的讽刺手法探讨AI数据收集与伦理的深层问题。",
+      "reason": "文章直接触及当前AI领域的核心伦理争议，其独特的讽刺视角和对技术破坏性后果的隐喻，使其在AI主题下具有高价值。",
+      "tags": [
+        "AI",
+        "伦理",
+        "数据",
+        "讽刺文学"
+      ]
+    },
+    {
+      "title": "Get your Windows license refund",
+      "link": "https://en.refund4freedom.org/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-28T13:42:40.000Z",
+      "summary": "Article URL: https://en.refund4freedom.org/\nComments URL: https://news.ycombinator.com/item?id=49478340\nPoints: 645\n# Comments: 268",
+      "id": "d56369a9ec491bac4a70ada03d31bb966a29058064eda69a395c0caf0e23a1d9",
+      "ref_id": "4",
+      "recommendationScore": 70,
+      "popularityScore": 95,
+      "priority": "medium",
+      "comment": "一份关于如何获得Windows许可退款的实用指南。",
+      "reason": "为科技产品消费者提供了重要的维权信息和操作步骤，具有较高的实用价值。",
+      "tags": [
+        "Windows",
+        "Licensing",
+        "Consumer Rights",
+        "Legal Tech",
+        "Practical Guide"
+      ]
+    },
+    {
+      "title": "From the DF Archive: ‘Golfo Del Gringo Loco’",
+      "link": "https://daringfireball.net/2025/02/golfo_del_gringo_loco",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-08-28T15:00:39.000Z",
+      "summary": "Yours truly back in February 2025:\nThe motivation behind the name change is simple as well. Trump\ndidn’t change the US’s officially recognized name of, say, the\nAtlantic Ocean or the continent of Africa. He just as easily\ncould, but he won’t.\nI’m starting to worry how well that’s going to hold up.\nAnd it’s not like “Gulf of Mexico” was on a list of “debatable or\ncontroversial names” until he created this controversy out of thin\nair. It’s just the one name on the globe that a president of the\nUnited States can change to stick it to Mexico, a country Donald\nTrump has objectively racist feelings toward. Trump\nnever campaigned on building a wall at our northern border with\nCanada, nor has he (yet?) attempted to rename Lake Ontario.\nThat “(yet?)” held up very well, alas. The rest of my essay holds up very well too, I think, especially pertaining to how Google and Apple present the change in their respective maps apps:\nSo whether Google and Apple should show the new name at all\nshouldn’t be the question we’re asking. The right question is\nnecessarily more nuanced: Who should see which names, where? And\nGoogle and Apple’s answers to that question are, alas,\ndisappointing and worrisome. I’ll repeat the seemingly identical\npolicy both companies are actually presenting today, by region:\nUnited States: “Gulf of America”.\nMexico: “Gulf of Mexico”.\nEverywhere else in the world: “Gulf of Mexico (Gulf of\nAmerica)”.\nThe best politically realistic option they could have chosen would\nbe (I’ll use italics to emphasize that these are my own\nsuggestions):\nUnited States: “Gulf of America (Gulf of Mexico)”.\nEverywhere else in the world: “Gulf of Mexico”.\nThere’s no good reason to even show “Gulf of America” in\nparentheses outside the US. We’re the ones with the stupid name\nchange on the books, so we’re the ones who should get stuck seeing\nthe stupid name. No one else should suffer the consequences of our\npolitical lunacy. But it is correct to show us, in America, the\nnew dumb “Gulf of America” name. Again, if it were up to me,\nAmerican users would see “Gulf of America (Gulf of Mexico)”, and\neveryone else would just see “Gulf of Mexico”. But that’s surely\nthe best we in the reality-based community could hope for.\nEarlier in the essay, I wrote:\nTo ignore political reality is to court political controversy. It\nis not in the interests of large multinational corporations to\ncourt controversy. But it’s not possible to avoid controversy.\nWhat is reasonable is to minimize controversy.\nTrump has delivered fresh “Lake America” shit sandwiches for Google and Apple to eat. I suggest that the path I recommended 18 months ago remains the path of eating the least shit, maintaining the most integrity, and courting the least collective controversy. Label it “Lake America (Lake Ontario)” to those of us here in the U.S., and keep it as “Lake Ontario” with no mention of Trump’s petulant fiat name anywhere else in the world.\n ★",
+      "id": "42ba170efcfe994c63b6259096bc52bb36589c21faa27cf44acc4ea815750725",
+      "ref_id": "4",
+      "recommendationScore": 65,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "回顾性文章，探讨科技巨头（Google, Apple）在地理命名政治化中的平台责任和地图呈现。",
+      "reason": "文章通过旧文重访，巧妙地将地缘政治争议与Google和Apple等科技平台处理地图信息的方式联系起来，触及了平台治理与社会责任的议题，对关注Apple生态和科技伦理的读者有启发。",
+      "tags": [
+        "Apple",
+        "Google",
+        "地图",
+        "平台责任",
+        "政治与科技"
+      ]
+    },
+    {
+      "title": "Premium: The Hater's Guide To Circular Financing (Part One)",
+      "link": "https://www.wheresyoured.at/premium-the-haters-guide-to-circular-financing-part-one/",
+      "source": "wheresyoured.at",
+      "publishedAt": "2026-08-28T15:55:36.000Z",
+      "summary": "[NVIDIA Company Meeting, the present day, YMCA playing]\nJENSEN HUANG: We love NVIDIA, don’t we folks? We’re the biggest, most-beautiful semiconductor company, we make the biggest, hottest GPUs for Clammy Sammy and Wario Amodei’s huge, beautiful AI labs, but they can’t",
+      "id": "6acf74699078a986f445e00915bacb80da65ed64e6a88b648be738a7bf511e07",
+      "ref_id": "0",
+      "recommendationScore": 65,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "一篇带有讽刺意味的文章，审视了AI行业巨头的财务运作及其背后的融资模式。",
+      "reason": "尽管技术深度有限，但文章对热门AI公司（NVIDIA）的批判性视角和对行业财务的洞察具有吸引力。",
+      "tags": [
+        "AI",
+        "NVIDIA",
+        "科技金融",
+        "行业评论",
+        "讽刺"
+      ]
+    },
+    {
+      "title": "Apple Announces Price Increase for Apple TV and Apple One Subscriptions",
+      "link": "https://9to5mac.com/2026/08/28/apple-announces-price-increase-for-apple-tv-and-apple-one-subscriptions/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-08-28T21:52:37.000Z",
+      "summary": "Chance Miller, 9to5Mac:\nHere are the full details on the price increases:\nApple TV (monthly): $14.99 (up from $12.99)\nApple TV (annual): $119 (up from $99)\nApple One Individual: $21.95 (up from $19.95)\nPrices for other Apple One plans are unchanged. When Apple\nincreased the price of Apple Music last month, it also raised\nthe Apple One Family and Apple One Premier plans, but not the\nIndividual plan.\nThe higher prices go into effect today for new subscribers. Apple\nsays existing subscribers will be notified of the price increase\nabout a month before they are charged the new price.\nSeems poetic that Tim Cook’s last action as CEO is a goose to services revenue.\n ★",
+      "id": "5d5c18d64d8fa0802647ad1f11b3b033b59abff4aa5323ba3a6a4dc346ec8daf",
+      "ref_id": "4",
+      "recommendationScore": 60,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "一份关于Apple TV和Apple One订阅服务价格上涨的新闻报告。",
+      "reason": "虽然技术深度不高，但直接关系到大量Apple生态用户，具有高实用性和广泛关注度。",
+      "tags": [
+        "Apple",
+        "Subscriptions",
+        "Pricing",
+        "Apple Ecosystem",
+        "News"
+      ]
+    },
+    {
+      "title": "\"iT woRKs BeTter in THe aPp!!\"",
+      "link": "https://shkspr.mobi/blog/2026/08/it-works-better-in-the-app/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-08-28T11:34:46.000Z",
+      "summary": "The monkey-punchers at Google never quite seem to finish any of their apps. There's always some useful bit of work left undone, or showstopping bug which remains unfixed, a thousand jagged edges as yet unsolved by the greatest minds of their generation.  I wanted to subscribe to an events calendar. I had a URl. I had my Google™ Pixel® phone running the latest Android© 17 with an updated calendar a…",
+      "id": "49a125937c6fa9f08a455a68a71ebcee6a6d3fa750b21bdc119c08800237b6e9",
+      "ref_id": "2",
+      "recommendationScore": 60,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "文章表达了对Google应用普遍存在的未完成、Bug多和用户体验不佳的强烈不满。",
+      "reason": "触及了广泛用户对软件质量的痛点，容易引发共鸣，但缺乏技术分析或解决方案，信息深度有限。",
+      "tags": [
+        "应用体验",
+        "软件质量",
+        "用户体验",
+        "Android",
+        "吐槽"
+      ]
+    },
+    {
+      "title": "The Download: a secretive antiaging drug and joining virtual power plants",
+      "link": "https://www.technologyreview.com/2026/08/28/1143113/the-download-antiaging-drug-joining-virtual-power-plants/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-08-28T12:35:27.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. A startup claims it’s found a drug to make your blood young —Antonio Regalado I knew I’d officially become a “longevity influencer” when a company called Generation Lab offered me the…",
+      "id": "dbb204013c8884a3017d9b9ac6618dc7c54570e3b733ae69ff4e14744b6acbd0",
+      "ref_id": "0",
+      "recommendationScore": 55,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "一篇涉及抗衰老药物和虚拟电厂的科技新闻摘要，内容有趣但深度有限。",
+      "reason": "作为新闻摘要，它涵盖了前沿科技概念，但未深入探讨，推荐给希望了解最新动态的读者。",
+      "tags": [
+        "Biotech",
+        "Longevity",
+        "Virtual Power Plant",
+        "News Digest"
+      ]
+    },
+    {
+      "title": "State of the Map 2026",
+      "link": "https://2026.stateofthemap.org/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-28T13:46:28.000Z",
+      "summary": "Article URL: https://2026.stateofthemap.org/\nComments URL: https://news.ycombinator.com/item?id=49478401\nPoints: 136\n# Comments: 50",
+      "id": "60a6227b5d803cd8eaf13b137b70be275ab448bf2466af685879078bce375687",
+      "ref_id": "3",
+      "recommendationScore": 45,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "2026年OpenStreetMap大会的活动概述。",
+      "reason": "仅对特定地理空间技术社区的成员具有参考价值，主题较为小众。",
+      "tags": [
+        "OpenStreetMap",
+        "Mapping",
+        "Geospatial",
+        "Conference"
+      ]
+    },
+    {
+      "title": "U.S. sanctions against the A/I Collective",
+      "link": "https://www.inventati.org/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-28T12:58:53.000Z",
+      "summary": "Earlier:\nUS Government designates host of noblogs.org a \"global terrorist\" - https://news.ycombinator.com/item?id=49464391 -  (131 comments)\nUS sanctions Italian hosting provider Autistici Inventati - https://news.ycombinator.com/item?id=49451343 - (219 comments)\nComments URL: https://news.ycombinator.com/item?id=49477854\nPoints: 457\n# Comments: 422",
+      "id": "0f50e8401ebe9e32006c0cfe8c7c6b54427392311c6341a9257764983ad6002f",
+      "ref_id": "1",
+      "recommendationScore": 30,
+      "popularityScore": 85,
+      "priority": "low",
+      "comment": "关注美国对A/I Collective的制裁，涉及科技伦理与地缘政治。",
+      "reason": "文章内容偏向政治和社会议题，与博客设定的AI、编程工具等核心技术主题关联较低，尽管Hacker News热度很高。",
+      "tags": [
+        "地缘政治",
+        "数字权利",
+        "科技伦理",
+        "审查"
+      ]
+    },
+    {
+      "title": "‘Not Sure How You Own Canada by Deleting Your Own History’",
+      "link": "https://x.com/MattWalshBlog/status/2093060290371870948",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-08-28T16:25:33.000Z",
+      "summary": "Matt Walsh, described by Wikipedia as “an American far-right political commentator and podcast host” (a description that sounds harsh, but I’d say is describing him euphemistically), on Twitter/X (retweeting the official White House account’s announcement of the name change):\nThis will be an unpopular opinion on the Right but I think this is\nkind of dumb, even as a troll. Lake Ontario was given that name on\nmaps by European explorers long before the Canadian province of\nOntario was named. There are several cities in America called\nOntario — at least one of them predating the Canadian province by\nlike 100 years — because the word originates with native tribes\nin North America. It’s not a Canadian invention. Canadians never\nuniquely owned the lake or the name. So in effect all you’re doing\nhere is actually giving them credit for a thing that wasn’t theirs\nto begin with. Yeah it’s funny when Canadians are upset I guess or\nwhatever, but Lake Ontario, the name itself, is American history\ndating back many centuries. Not sure how you own Canada by\ndeleting your own history.\nPolitically this is also stupid because the number one challenge\nRepublicans will face in the midterms is the charge that they\nhaven’t used their time in power to advance the interests of\neveryday Americans. This kind of thing will be used as evidence\nto make that case. That might not be fair. Sure technically you\ncan advance the interests of everyday Americans and also do dumb\nshit like this. But the fact is that far from “making liberal\nheads explore [sic],” you’re actually handing them a political gift. It\nhelps their case much more than it helps ours. And, like I said,\nthe historical logic here is totally confused. Lake Ontario was\nnot named after the Canadian province of Ontario. It’s the other\nway around.\nGood sign that the whole mad-king thing is running on fumes when even Daily Wire commentators agree that this is stupid and isn’t even an effective troll. Every deluded fool runs into reality eventually. (Via Oliver Darcy’s Status.)\nAlso: Applying a new name to the Gulf of Mexico is equally ahistorical — Mexico only achieved independence from Spain in 1821; the Gulf’s name is twice as old as Mexico as a nation and 150 years older than the United States.\n ★",
+      "id": "9360bad9ede966cbe66e38e0df30acd5de90e7639669e3cf7779755d94c6aef8",
+      "ref_id": "3",
+      "recommendationScore": 30,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "针对地名更改的政治和历史评论，与科技博客主题不符。",
+      "reason": "内容为政治评论，围绕历史地名和主权争议，与科技博客的评估维度如技术深度、实用性等几乎无关联，优先级低。",
+      "tags": [
+        "政治",
+        "历史",
+        "地名"
+      ]
+    },
+    {
+      "title": "Now Hiring: Senior Open Source Maintainer",
+      "link": "https://nesbitt.io/2026/08/28/now-hiring-senior-open-source-maintainer.html",
+      "source": "nesbitt.io",
+      "publishedAt": "2026-08-28T10:00:00.000Z",
+      "summary": "Location: Lincoln, Nebraska, USA\nEmployment type: Volunteer\nTerm: Permanent\nCompensation: $0\nReports to: The community\nDirect reports: None\nStart date: Immediate\nWe’re looking for a passionate, self-directed engineer to take full ownership of one of the most widely deployed libraries in the ecosystem. This is a rare opportunity to make a real impact on software that millions of developers depend on every single day. If you thrive on autonomy, love working in the open, and want to wear many hats in a fast-paced environment, we’d love to hear from you.\nAbout the role\nAs Senior Open Source Maintainer you will be the primary technical owner and public face of the project. You’ll drive the roadmap, ship releases, support a global user base, and champion the project across the wider industry. This is a highly visible individual contributor role with enormous scope. No two days are the same, and you’ll have full autonomy to decide how you spend your time.\nWhat you’ll do\nOwn the technical roadmap and long-term architectural direction\nReview and merge contributions from a diverse, global community of open source developers\nTriage and prioritise the issue tracker and feature request backlog\nMaintain comprehensive documentation, examples, migration guides, and API references\nEnsure project websites and documentation meet current accessibility standards\nCut releases across all supported major version lines and write the release notes\nOwn the CI pipeline, release automation, and package publishing infrastructure\nKeep dependencies current and promptly action automated update pull requests\nSupport users on GitHub, Discord, Slack, Stack Overflow, Mastodon, Bluesky, and email\nEnsure compatibility across all current runtimes, operating systems, and architectures\nPreserve backwards compatibility, including widely relied-upon undocumented behaviour\nCoordinate release timing with downstream distributions, registries, and redistributors\nYou’ll also\nParticipate in the on-call rotation for incidents at downstream production deployments\nSupport enterprise consumers where project issues block business-critical systems\nDefine and communicate support, deprecation, and end-of-life policies for all release lines\nProvide migration guidance to adopters upgrading from end-of-life releases\nCoordinate advisories, CVE records, disclosure timelines, and researcher credits\nShip embargoed CVE patches across all supported version lines within the disclosure window\nProduce SBOMs, VEX statements, and signed provenance attestations for every release\nMaintain reproducible builds and independently verifiable release artifacts\nComplete supplier security assessments and questionnaires for enterprise consumers\nRemediate findings from OpenSSF Scorecard, dependency scanners, and compliance platforms\nAs well as\nReview high volumes of contributions from AI coding agents and automated refactoring tools\nTriage vulnerability reports generated by commercial AI security scanners\nChampion the project at international conferences, on podcasts, and across social media\nModerate all community spaces and enforce the Code of Conduct\nEngage constructively with feedback shared on social media and public forums\nRepresent the project in working groups, standards bodies, and regulatory consultations\nPrepare grant applications and quarterly reports for current and prospective funders\nAdminister domains, trademarks, signing keys, cloud accounts, and social media\nAdvise enterprise legal teams on licensing, patent, warranty, and export control matters\nOwn the succession plan: identify, recruit, and onboard your replacement\nHow we’ll measure success\nGitHub stars\nTime to first response on issues and pull requests\nRelease cadence and mean time to patch for disclosed vulnerabilities\nOpen issue and stale pull request backlog\nDependency freshness\nOpenSSF Scorecard result and other automated project scoring\nCommunity sentiment across public channels\nDownstream adoption\nBus factor\nWhat we’re looking for\n8+ years of professional software engineering experience\nDeep expertise in one systems language and professional proficiency in at least four others\nWritten communication pitched to audiences from first-time contributors to Fortune 500 CISOs\nConsistent release cadence with minimal dependency churn and no breaking changes\nComfortable across engineering, support, security, community, marketing, finance, and legal\nBalances contributors, enterprises, security researchers, regulators, and automated systems\nComfortable receiving direct public feedback and turning it into improvements\nAvailability overlapping core business hours in AMER, EMEA, and APAC\nAble to respond to time-sensitive security matters outside normal working hours\nProvides own hardware, reliable internet, and test environments for all supported platforms\nNice to have\nPrior experience in technical writing, developer relations, or community management\nExperience migrating existing codebases to memory-safe languages\nWorking knowledge of licence compatibility and international trademark registration\nGrant writing and nonprofit financial reporting experience\nMedia training\nAn established personal audience on at least one major social platform\nConversational proficiency in a second and third language\nA second job\nWhat we offer\n100% remote, work from anywhere in the world\nComplete flexibility over your working hours\nHigh-impact work depended on by startups and Fortune 500 companies alike\nExceptional visibility and personal brand building opportunities\nRegular speaking slots at leading industry events\nThe opportunity to develop close working relationships with several national CERTs\nA passionate, highly engaged global user community\nGitHub Sponsors enabled on the repository\nHow to apply\nPlease submit a CV, a link to your GitHub profile, and a short cover letter telling us what ownership means to you. Our interview process consists of a recruiter screen, a technical interview, a system design round, a take-home exercise, and a final community panel.\nIf you don’t meet every requirement listed above, we’d still encourage you to apply.\nWe are committed to building a diverse and inclusive community and welcome applicants from all backgrounds. This position will remain open until filled. Due to the volume of applications received, we are unable to respond to every candidate individually.\nThis role is not eligible for relocation assistance or visa sponsorship.",
+      "id": "f00d4bb69ae432e48173132f9850baee98e7333cb301024c21f63a97c337c328",
+      "ref_id": "4",
+      "recommendationScore": 30,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "这是一则招聘高级开源维护者的广告，但强调这是一个无偿的志愿者职位。",
+      "reason": "内容本质是招聘信息而非技术文章，尽管与开源社区和编程工具相关，但对于一般博客读者信息价值有限。",
+      "tags": [
+        "开源",
+        "招聘",
+        "志愿者",
+        "社区",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "You Know GDPR Is Good Based on Who Hates It",
+      "link": "https://matduggan.com/you-know-gdpr-is-good-based-on-who-hates-it/",
+      "source": "matduggan.com",
+      "publishedAt": "2026-08-28T12:02:22.000Z",
+      "summary": "FDR has always been one of my favorite presidents, second maybe to Lincoln. Both were men the establishment assumed were one of them until, to their horror, they governed like they weren't. Both could trash the opposition in one breath and take the moral high ground in the",
+      "id": "8a135d9f7b5fc290abf15a27a80e44de1872b06f9005608713fa7ba5cd93358b",
+      "ref_id": "2",
+      "recommendationScore": 30,
+      "popularityScore": 45,
+      "priority": "low",
+      "comment": "一篇从政治和社会角度评论GDPR的文章，而非技术性解析。",
+      "reason": "内容偏向社会和政策评论，技术含量低，与科技博客的核心关注主题关联度不高。",
+      "tags": [
+        "GDPR",
+        "数据隐私",
+        "政策",
+        "社会评论"
+      ]
+    },
+    {
+      "title": "We Certainly Have Made a Hames Out of This",
+      "link": "https://daringfireball.net/linked/2026/08/28/trump-lake-ontario",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-08-28T19:42:59.000Z",
+      "summary": "I mentioned earlier that for anyone going along with the ruse that Lake Ontario is now named Lake America, the HOMES mnemonic no longer holds, the only two valid words in English with the new five letters are hames and shame, and that hames is rather too obscure.\nBut it’s not so obscure in Ireland, where they use it in an idiom: to make a hames of something is to make a mess of it. With that in mind, it’s hard to say which is more apt for this embarrassment, hames or shame.\n(The other longstanding Great Lakes mnemonic is the phrase “Super Man Helps Every One”, which I don’t love because neither Superman nor everyone ought to be treated as two words, but it does have the advantage of sorting the lakes geographically from west to east.)\n ★",
+      "id": "7b10c2d4508b041c4577c38b369705d312fec107bfd359726a2b8786adf61895",
+      "ref_id": "2",
+      "recommendationScore": 25,
+      "popularityScore": 35,
+      "priority": "low",
+      "comment": "一篇关于地名、语言和文化轶事的文章，与科技主题关联性低。",
+      "reason": "文章主要探讨语言学和地理文化，完全不涉及我们关注的AI、Apple生态、编程工具等科技主题，故推荐度低。",
+      "tags": [
+        "语言",
+        "文化",
+        "地理"
+      ]
+    },
+    {
+      "title": "Does the Sumerian King List Align with Paleoclimate Events?",
+      "link": "https://www.vectorian.be/articles/2026-06-07/sumerian-king-list-paleoclimate-alignment-explorer/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-28T23:46:10.000Z",
+      "summary": "Article URL: https://www.vectorian.be/articles/2026-06-07/sumerian-king-list-paleoclimate-alignment-explorer/\nComments URL: https://news.ycombinator.com/item?id=49485532\nPoints: 10\n# Comments: 2",
+      "id": "7efce9f5b42084d8f24869ccbe113fc14c265f8df07f85cb64946274d729cbd1",
+      "ref_id": "0",
+      "recommendationScore": 20,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "探讨苏美尔王表与古气候事件的关联，属于历史与数据分析交叉领域。",
+      "reason": "主题与科技博客核心关注点偏离，技术深度和实用性较低。",
+      "tags": [
+        "历史",
+        "数据分析",
+        "古气候"
+      ]
+    },
+    {
+      "title": "‘How Americans See E.U. Tech’",
+      "link": "https://www.youtube.com/watch?v=gGlpBuW6ZFc",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-08-28T21:27:21.000Z",
+      "summary": "I think at least half a dozen people have sent me a link to this video and now that I’ve watched it, I understand why. Perfect.\n ★",
+      "id": "d344ef0c8a9d6d2dc93757027f478113039aa974dc54c9e7c1bec9b039aa3bc5",
+      "ref_id": "1",
+      "recommendationScore": 15,
+      "popularityScore": 25,
+      "priority": "low",
+      "comment": "仅是对外部视频的简短推荐，缺乏实质内容无法评估。",
+      "reason": "文章内容极少，无法从中提取任何技术深度、新颖性、实用性或信息密度，不符合科技博客评估标准。",
+      "tags": [
+        "评论",
+        "外部链接"
+      ]
+    },
+    {
+      "title": "Aspirational Clownmaxxing and Joey's cadillac todo list",
+      "link": "https://charlesleifer.com/blog/aspirational-clownmaxxing-and-joey-s-cadillac-todo-list/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-28T19:18:22.000Z",
+      "summary": "Article URL: https://charlesleifer.com/blog/aspirational-clownmaxxing-and-joey-s-cadillac-todo-list/\nComments URL: https://news.ycombinator.com/item?id=49483080\nPoints: 17\n# Comments: 6",
+      "id": "f8ee97f988cf76ccd99e75168606c13a1682ad67dde4f1ef561c72e22b880606",
+      "ref_id": "4",
+      "recommendationScore": 10,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "探讨一种关于个人成长和待办事项清单的非主流哲学。",
+      "reason": "内容偏离科技主题，技术深度和实用性低，不符合科技博客的评估侧重点。",
+      "tags": [
+        "个人成长",
+        "生活方式",
+        "效率",
+        "哲学"
+      ]
+    },
+    {
+      "title": "Some conservationists are helping to restore Africa’s wild dog populations",
+      "link": "https://www.smithsonianmag.com/science-nature/africa-wild-dogs-most-hated-carnivores-continent-heres-why-conservationists-saving-them-anyway-180989287/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-28T14:44:51.000Z",
+      "summary": "Article URL: https://www.smithsonianmag.com/science-nature/africa-wild-dogs-most-hated-carnivores-continent-heres-why-conservationists-saving-them-anyway-180989287/\nComments URL: https://news.ycombinator.com/item?id=49479302\nPoints: 67\n# Comments: 28",
+      "id": "2fab98b6754c35a0f6c4a18e174586d3a4f52af246f05c577bd676fc2f7ac166",
+      "ref_id": "1",
+      "recommendationScore": 10,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "一篇关于非洲野狗保护的非技术类文章。",
+      "reason": "内容与科技博客关注的核心主题不符。",
+      "tags": [
+        "Conservation",
+        "Wildlife",
+        "Non-Tech"
+      ]
+    },
+    {
+      "title": "Just a rumour of a bug is enough to find a security exploit these days",
+      "link": "https://simonwillison.net/2026/Aug/28/just-a-rumour-of-a-bug/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-08-28T22:12:02.000Z",
+      "summary": "",
+      "id": "983102b3ea3b434051ffd5a865d623328fba21a53804a67afeea575676bff07b",
+      "ref_id": "2",
+      "recommendationScore": 10,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "文章内容缺失，无法进行有效评估。",
+      "reason": "文章内容为空，导致无法评估其技术深度、新颖性、实用性或信息密度。",
+      "tags": [
+        "Critical Error",
+        "Cybersecurity"
+      ]
+    },
+    {
+      "title": "An investigation into the state of corvid–human relations",
+      "link": "https://www.audubon.org/magazine/are-crows-really-our-friends",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-28T12:53:42.000Z",
+      "summary": "Article URL: https://www.audubon.org/magazine/are-crows-really-our-friends\nComments URL: https://news.ycombinator.com/item?id=49477813\nPoints: 106\n# Comments: 63",
+      "id": "3000911ccffc1f5aeb480316eb79c651bf6c07f2118ada6e9edbb3539610917d",
+      "ref_id": "2",
+      "recommendationScore": 5,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "一篇关于乌鸦与人类关系的生物学文章，与科技主题不符。",
+      "reason": "文章内容与本科技博客的任何关注主题完全无关，不具备技术深度或实用性。",
+      "tags": [
+        "生物学",
+        "自然",
+        "非科技"
+      ]
+    },
+    {
+      "title": "Trump Declares That Lake Ontario Is Now ‘Lake America’",
+      "link": "https://www.notus.org/trump-white-house/lake-america-ontario-canada-trade-war-trump-executive-order-rename",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-08-28T14:02:53.000Z",
+      "summary": "Jackie Llanos and Jenna Monnin, reporting for NOTUS:\nPresident Donald Trump on Thursday signed an executive order meant\nto rename Lake Ontario “Lake America,” taking his apparent jab\nat Canada one step further as a trade war between the two\ncountries escalates.\nThe president said the name change was “effective immediately”\nduring a signing ceremony in the Oval Office. The executive order\ndirects Interior Secretary Doug Burgum to update the Geographic\nNames Information Service to reflect the name change. When asked\nby reporters about the move, Trump said he was sending “no\nmessage” to Canada with the name change.\n“Lake of America was something I’ve been thinking about for a long\ntime,” the president said. “Actually, as you know, we took\nsomething called the Gulf of Mexico, we changed it, and now it’s\nvery routinely the Gulf of America.”\nAaron Rupar has video clips of Trump declaring the change in an Oval Office press event, here and here. In the second clip Trump ruminates, “So if you think about it, we have a gulf, and we have a lake, now all we need is an ocean, so maybe we’ll have to change the name of the Atlantic and/or the Pacific. Maybe we’ll change them both.” Those who deny that he’s a mad king slipping ever deeper into dementia might say, well, he’s obviously joking. But if I had told those same people just two years ago, in the run up to his reelection, that Trump was going to declare new names for the Gulf of Mexico and Lake Ontario, they’d have said I was crazy because that would be nutty.\nIt is nutty. Renaming these large bodies of water is nuts. He’s nuts. This is not complicated. Crazy people do crazy things and this is obviously crazy. I often use the phrase jokingly but Donald Trump is not hooked up right, and the proof is right before our eyes on camera every day.\nFactoid: HOMES is the longstanding mnemonic for recalling the five Great Lake names: Huron, Ontario, Michigan, Erie, Superior. “Hames”, technically, is a playable Scrabble/Wordle word (“a part of a horse collar”), but it’s far too obscure to serve as a mnemonic. That leaves one word in the English language consisting of the five necessary letters: SHAME.\n ★",
+      "id": "49e2e161ecd50f09f3c370d74e0ca0cb925aaee069d5909747923911274f777d",
+      "ref_id": "0",
+      "recommendationScore": 5,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "这是一篇与科技主题完全无关的政治讽刺新闻。",
+      "reason": "内容完全不属于科技博客的范畴，对科技读者没有信息价值，应直接排除。",
+      "tags": [
+        "政治",
+        "新闻",
+        "无关主题"
+      ]
+    },
+    {
+      "title": "Attimet (YC F24) Is Hiring Members of Technical Staff – Engineering and Research",
+      "link": "https://www.ycombinator.com/companies/attimet/jobs/6btZFDg-member-of-technical-staff-engineering",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-28T17:00:06.000Z",
+      "summary": "Article URL: https://www.ycombinator.com/companies/attimet/jobs/6btZFDg-member-of-technical-staff-engineering\nComments URL: https://news.ycombinator.com/item?id=49481423\nPoints: 0\n# Comments: 0",
+      "id": "d3b3464d6b51ed0a585fd79143300bf0f45c5bb4fe69abc9585304f4f2f3b686",
+      "ref_id": "2",
+      "recommendationScore": 0,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "这是一个招聘信息，不适合作为博客内容进行评估。",
+      "reason": "文章内容为招聘广告，而非技术分享或深度分析，不符合博客内容评估范畴。",
+      "tags": [
+        "招聘"
+      ]
+    }
+  ]
+}
