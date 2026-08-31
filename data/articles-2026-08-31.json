@@ -1,0 +1,514 @@
+{
+  "dailySummary": "今日科技速递：Almanac推智能企业助理，HFlow助机器人数据管理。AI安全漏洞频现，开源OS与视频编辑亦有更新。",
+  "articles": [
+    {
+      "title": "Launch HN: Hebbian Robotics (YC S26) – Build scalable robotics data pipelines",
+      "link": "https://github.com/Hebbian-Robotics/hflow",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-31T15:02:41.000Z",
+      "summary": "Hi HN, we’re Brandon and Kingston, the founders of Hebbian Robotics. We built HFlow (https://github.com/Hebbian-Robotics/hflow), an SDK that turns multimodal recordings from robots and human operators into standardized, quality-checked episodes and queryable dataset manifests. A recording can contain synchronized video, joint states, actions, timestamps, and metadata, and HFlow processes those streams together.\nHere’s a demo of HFlow in action: https://www.youtube.com/watch?v=xni0GwV-xAw\nRobotics data pipelines often begin as scripts: one transcodes video, another checks timestamps, another adds labels, and another copies selected recordings into a training set. This works until the corpus grows. Then it becomes difficult to know which code ran, why an episode was excluded, or whether a dataset can be reproduced. The first pain is usually quality control because frozen cameras, missing topics, timestamp drift, and duplicate recordings can quietly enter training data.\nBrandon first encountered this while training embodied AI models for two-arm industrial cleaning robots. Kingston had run into related problems while building high-throughput infrastructure at Jane Street. Later, while speaking with robotics data providers, we kept seeing teams rebuild similar processing and quality-control infrastructure. We learnt that processing robotics data is itself one of the bottlenecks to improving robotics models.\nAn HFlow pipeline consists of transformations, checks, labels, and enrichments. The SDK exposes them as plain Python functions that receive an episode and return measurements, artifacts, or transformed data. During development, the functions can run in-process. For scheduled corpus processing, HFlow packages the same registered steps as Airflow 3 DAGs, where teams can inspect task status, logs, retries, and reruns.\nHFlow currently accepts one MCAP file per episode. MCAP (https://mcap.dev/) is an open container format by Foxglove for timestamped multimodal recordings, similar in purpose to a ROS bag. It lets video, robot state, actions, and other sensor streams remain synchronized in one file. We use it because HFlow needs to process these streams together, and because the resulting recordings remain compatible with Foxglove and Rerun. HFlow writes a canonical MCAP with in-band H.264 video, grouped camera and state chunks, and provenance describing how the output was produced. Each step has an explicit behavior version, and catalog records connect its measurements and artifacts to the source episode and pipeline run.\nQuality checks store reusable evidence rather than imposing one universal definition of good data. Some failures, including black frames, frozen video, missing topics, timestamp drift, and impossible joint movements, can be measured deterministically without training a model. Others might be detected using VLMs and other models like MediaPipe Hands. But their meaning depends on the task. A smooth trajectory might indicate a successful demonstration in one setting and a stalled robot in another.\nHFlow writes measurements, metadata, version stamps, and artifact locations to an append-only Parquet catalog. Teams query it with DuckDB SQL and produce a version-pinned manifest without opening the recordings again. Critical checks can quarantine an episode, but HFlow does not delete data. This separates the evidence from the policy used to assemble a particular dataset.\nWe did not want to replace the tools robotics teams already use. HFlow connects MCAP for synchronized recordings, Airflow for scheduled execution, Parquet for catalog data, and DuckDB for curation. Compared with a general workflow orchestrator, it adds contracts for robotics episodes, processing provenance, quality evidence, quarantine, and dataset manifests. Compared with a training dataset format, it operates earlier and stops at curated episodes plus a manifest.\nHere are three examples of teams that would use HFlow:\n1. A data vendor or marketplace collecting egocentric recordings. They could use HFlow to detect black or frozen video, duplicate recordings, hand-object interaction, and other quality metrics before delivering the data, while retaining evidence of which checks ran on every episode.\n2. A robotics team collecting teleoperated demonstrations for its own models. They could use HFlow to standardize recordings, add labels and enrichments, and produce a reproducible training manifest.\n3. A team operating robots in the field. It could process incoming logs, quarantine incomplete or corrupted episodes, and query the catalog for particular robot versions, environments, or failure conditions.\nThe project is pre-v1, but the core lifecycle works end to end. You can try it without an account, Docker, or robot hardware by cloning the repository and following the quickstart.\nHFlow is free under the Apache-2.0 license. The open source deployment is currently a single-tenant workspace, and we have not built the hosted, multi-tenant control plane yet. We are considering making money through managed workspaces and enterprise support for teams that do not want to operate the runtime themselves.\nBecause this processing layer is software and data, people can contribute without owning a robot. We would especially like feedback from people who have built pipelines for robotics, video, or other sensor-heavy systems. We are curious where our data model is wrong, which integrations are missing, and what would fail first on your workloads.\nComments URL: https://news.ycombinator.com/item?id=49510632\nPoints: 32\n# Comments: 10",
+      "id": "c5d31b731e2b133d383a5498c764100733719950a337a944a878ffbb034c21a3",
+      "ref_id": "4",
+      "recommendationScore": 98,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "一个用于构建可扩展机器人数据管道的SDK，解决多模态数据处理和质量控制难题。",
+      "reason": "针对机器人AI开发中的核心痛点，技术深度极高，提供强大的编程工具和自动化能力，极具行业价值。",
+      "tags": [
+        "机器人",
+        "数据管道",
+        "AI",
+        "机器学习",
+        "编程工具",
+        "自动化",
+        "开源",
+        "Launch HN"
+      ]
+    },
+    {
+      "title": "Launch HN: Almanac (YC S26) – AI that knows your company",
+      "link": "https://usealmanac.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-31T15:34:34.000Z",
+      "summary": "Hi HN, I'm Kushagra, one of three founders of Almanac, a Hermes with a brain that knows everything about your company.\nWe started our journey with setting up Hermes for our company, thinking it must be easy. We wanted an agent that would know every context about our company, so we could ask questions and get context-appropriate responses to.\nThis started a very annoying and difficult journey. Setting up Hermes, getting it to talk right, building OAuth apps for every connector myself, then feeding it context myself, and ultimately struggling with Hermes's default memory. At the same time, we saw our YC batchmates struggling with the same problem, and we saw an opportunity.\nSo we built Almanac. This is how it works. You sign up, you get a Hermes agent straight out of the box. You have a one-click connect to any account (Gmail, Calendar, Granola, PostHog, etc). You have personal accounts (only accessible by you) and also shared accounts (accessible by everyone in the company). The consequence being I can never see my cofounders' accounts.\nThe “brain” of this agent is wikis. We pull in information from your connected sources, and start organizing this information in two wikis. A personal one, for you, which understands who you are, what your preferences are, the people in your life, and the things going on in your life. The second wiki is a company wiki, which includes what the company is, what you’re working on, what the roadmap is, and what the blockers of the company are. Your agent ultimately has access to these two wikis and the original accounts, which invoke the feeling of “it just knows you.”\nHere’s a demo: https://www.youtube.com/watch?v=ajXP5PHuK18\nWe're three cofounders, Rohan, Kushagra, and Divit, and we've been friends for 11 years, since studying for the IIT-JEE. We all did Electrical Engineering (Rohan at IIT Delhi, me at IIT Kharagpur, Divit at BITS Pilani, Hyderabad), and Rohan and I later went to Harvard, where this pre-compilation layer became our capstone thesis. We have built multiple products around the idea of a pre-compiled knowledge layer.\nOur main differentiating point is the way we approach memory and context in general. Most AI assistant tools treat memory as an afterthought. We have worked on wikis for AI for more than a year now, building products for Harvard and NASA. The one thing we have learnt is that one needs to spend a lot more compute upfront, in the pre-compilation of this knowledge base, to get it right.\nHaving this pre-compiled knowledge base enables a lot of interesting ideas. First is a proactive agent. Since I have compiled what’s going on in both my company and my current life, Almanac can start completing tasks on its own. Concretely, we run a background worker which takes a look at tasks that could be completed, pings the main agent, who then pings me, suggesting which tasks it could automate. As a result, I wake up to proactive notifications which look like “I already prepared a draft of your fundraising pitch deck, want to take a look?”\nSecond, long-horizon tasks. In our wikis, we maintain a section on ongoing projects, so Almanac can pick a task back up days later without losing the thread. Most agents are session-bound: they run once, finish, and forget. But a lot of real work isn't one shot; it plays out over hours and days with people in the loop. The clearest example is anything that involves waiting on a human, like scheduling a meeting, following up on a sales thread, or chasing a document. Almanac can send an email on your behalf, and because it's always on and remembers the project, it notices the reply four hours later and drafts the right follow-up in context.\nSince launching, we've seen a lot of use cases for Almanac. One person runs her dog-rescue operation through it: finding available fosters, tracking pickups, and sending reminders for consent forms. Another researches Polymarket strategies with Almanac, where its memory holds what past strategies were, proposes new ones, and compares them against what went right or wrong last time. Another builds marketing campaigns on it without having to re-explain the business and the whole campaign every single time.\nRegarding privacy and security, Almanac only accesses accounts you explicitly connect. Your OAuth credentials are held by our connection provider, not in Almanac’s database. We only store the wiki and the source behind its citations. So an email used as a citation may be retained as Markdown.\nWe’re live: https://usealmanac.com. We have a 7-day trial on all of our plans. Happy to hear if people have done similar setups, and what new features they’d like in Almanac. If you’re a company that wants to get an agent that actually gets tasks done, I would love to talk: https://cal.com/team/almanac/demo.\nComments URL: https://news.ycombinator.com/item?id=49511007\nPoints: 30\n# Comments: 36",
+      "id": "dc4741c62467685f218fe7b2b811adf42a7a072f8f7a0f0000ac3f50f847e3ec",
+      "ref_id": "3",
+      "recommendationScore": 95,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "一个面向企业的AI代理，能够理解公司内部所有上下文并提供精准回答。",
+      "reason": "解决了企业知识管理的痛点，AI技术深度高且实用性极强，是当前AI应用的热点。",
+      "tags": [
+        "AI",
+        "企业级应用",
+        "知识管理",
+        "SaaS",
+        "自动化",
+        "Launch HN"
+      ]
+    },
+    {
+      "title": "Breaking Claude Code Opus 5 Auto Mode",
+      "link": "https://embracethered.com/blog/posts/2026/breaking-claude-code-opus-5-and-automode/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-31T07:49:18.000Z",
+      "summary": "Article URL: https://embracethered.com/blog/posts/2026/breaking-claude-code-opus-5-and-automode/\nComments URL: https://news.ycombinator.com/item?id=49506819\nPoints: 315\n# Comments: 105",
+      "id": "ec3f36b4902a2296def78dbddff849a4b08d71bcd40eb4ed1579ca9038ca153d",
+      "ref_id": "2",
+      "recommendationScore": 95,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "深入探讨了如何测试并“突破”Claude Code Opus 5的自动模式，揭示其能力与局限性。",
+      "reason": "紧跟AI前沿，为理解和利用大型语言模型提供了极高价值的实战经验和技术分析，优先级最高。",
+      "tags": [
+        "AI",
+        "大语言模型",
+        "Claude",
+        "提示工程",
+        "AI安全",
+        "深度技术"
+      ]
+    },
+    {
+      "title": "ravynOS: Pre-alpha open-source OS based on Darwin, FreeBSD, Apple open-source",
+      "link": "https://ravynos.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-31T16:19:36.000Z",
+      "summary": "Article URL: https://ravynos.com/\nComments URL: https://news.ycombinator.com/item?id=49511534\nPoints: 119\n# Comments: 80",
+      "id": "30cbe227f51e3fd30172291fc014f5f92db4aff8866cc6fa83803d4d1b59f7c7",
+      "ref_id": "1",
+      "recommendationScore": 92,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "一个基于Darwin和FreeBSD的预alpha开源操作系统项目，旨在提供类似Apple的体验。",
+      "reason": "对Apple生态系统和操作系统开发领域具有高度技术深度和新颖性，是值得关注的独立开源项目。",
+      "tags": [
+        "操作系统",
+        "开源",
+        "Apple生态",
+        "编程工具",
+        "独立开发",
+        "Darwin"
+      ]
+    },
+    {
+      "title": "I turned my security cameras into an automatic bird identification system",
+      "link": "https://jasontucker.blog/how-i-turned-my-security-cameras-into-an-automatic-bird-identification-system-with-birdnet-go/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-31T16:47:11.000Z",
+      "summary": "Article URL: https://jasontucker.blog/how-i-turned-my-security-cameras-into-an-automatic-bird-identification-system-with-birdnet-go/\nComments URL: https://news.ycombinator.com/item?id=49511856\nPoints: 263\n# Comments: 73",
+      "id": "001d0ddadc40419334be8cdc2fcae213868a888b5a68bbc33c198014ca1522ba",
+      "ref_id": "0",
+      "recommendationScore": 88,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "一篇关于利用现有摄像头和AI技术实现鸟类自动识别的DIY项目。",
+      "reason": "将AI与智能家居自动化结合，提供了有趣且实用的独立开发案例，技术深度适中且新颖。",
+      "tags": [
+        "AI",
+        "自动化",
+        "智能家居",
+        "独立开发",
+        "计算机视觉",
+        "DIY"
+      ]
+    },
+    {
+      "title": "OpenShot 4.0 – Open-source video editor",
+      "link": "https://www.openshot.org/blog/2026/08/30/openshot-40-record-edit-color-like-never-before/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-31T09:59:05.000Z",
+      "summary": "Article URL: https://www.openshot.org/blog/2026/08/30/openshot-40-record-edit-color-like-never-before/\nComments URL: https://news.ycombinator.com/item?id=49507822\nPoints: 490\n# Comments: 110",
+      "id": "0093bb3cdd1db22ad6ce1e4a632cff54ee57f93f5de766b17b4178e1ff3fc902",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 90,
+      "priority": "medium",
+      "comment": "宣布开源视频编辑器OpenShot 4.0发布，带来了录制、编辑和调色等多项重大功能改进。",
+      "reason": "对开源工具爱好者和视频创作者极具实用价值，是编程工具领域的重要更新，关注度高。",
+      "tags": [
+        "视频编辑",
+        "开源软件",
+        "工具",
+        "更新",
+        "生产力"
+      ]
+    },
+    {
+      "title": "Hugging Face hack could indicate cultural issues at OpenAI",
+      "link": "https://www.technologyreview.com/2026/08/31/1143180/hugging-face-hack-could-indicate-cultural-issues-at-openai/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-08-31T18:00:00.000Z",
+      "summary": "This story originally appeared in The Algorithm, our weekly newsletter on AI. To get stories like this in your inbox first, sign up here. By now you’ve probably heard about last month’s major AI security incident, in which OpenAI agents escaped their sandbox and hacked into the AI platform Hugging Face while trying to cheat on…",
+      "id": "5e194712572c623b353f5b36b6e67bbc2b7f762010df3411841458433a45501f",
+      "ref_id": "0",
+      "recommendationScore": 78,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "深度探讨AI安全事件，揭示行业潜在风险和文化影响。",
+      "reason": "文章聚焦AI领域的重大安全事件及其深层影响，符合最高优先级，且具有高度时事性和讨论价值。",
+      "tags": [
+        "AI",
+        "Security",
+        "OpenAI",
+        "HuggingFace",
+        "Cybersecurity",
+        "Ethics"
+      ]
+    },
+    {
+      "title": "'Stunning' percolation proof solves decades-old puzzle about phase transitions",
+      "link": "https://www.quantamagazine.org/stunning-percolation-proof-solves-decades-old-puzzle-about-phase-transitions-20260831/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-31T17:22:43.000Z",
+      "summary": "Article URL: https://www.quantamagazine.org/stunning-percolation-proof-solves-decades-old-puzzle-about-phase-transitions-20260831/\nComments URL: https://news.ycombinator.com/item?id=49512311\nPoints: 32\n# Comments: 4",
+      "id": "9cc6e313651b74f06deaeff7bed8f645a2c231474d0ac4996d88fc9073434d68",
+      "ref_id": "3",
+      "recommendationScore": 75,
+      "popularityScore": 16,
+      "priority": "medium",
+      "comment": "一项关于渗流和相变理论的重大数学物理突破，内容深度极高。",
+      "reason": "虽然不直接是软件技术，但其科学深度和新颖性对有求知欲的科技读者仍有吸引力。",
+      "tags": [
+        "数学",
+        "物理",
+        "理论科学",
+        "科学突破",
+        "Quanta Magazine"
+      ]
+    },
+    {
+      "title": "A walkable ASCII cyberpunk city in one HTML file [video]",
+      "link": "https://www.youtube.com/watch?v=3YtygAx_C6A",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-31T18:21:33.000Z",
+      "summary": "ASCII City: Traffic and Detail Update - https://www.youtube.com/watch?v=DSRooHo_HSI\nASCII City Update: Interiors, Elevation and Skyscrapers - https://www.youtube.com/watch?v=UCKEDWowc0o\nComments URL: https://news.ycombinator.com/item?id=49512975\nPoints: 122\n# Comments: 25",
+      "id": "c63d155c4f4411a87eda81f40f7f98575ee0de2de8a633879785874266bb8604",
+      "ref_id": "1",
+      "recommendationScore": 70,
+      "popularityScore": 68,
+      "priority": "medium",
+      "comment": "一个极具创意的编程艺术项目，展示了纯前端技术的惊人潜力。",
+      "reason": "新颖性高，在编程技巧和独立开发项目方面具有很强的启发性和观赏性。",
+      "tags": [
+        "编程艺术",
+        "前端",
+        "独立开发",
+        "创意",
+        "视频"
+      ]
+    },
+    {
+      "title": "I think the military commissary's freezers were hacked",
+      "link": "https://signalandsilence.substack.com/p/i-think-someone-hacked-the-commissary",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-31T11:45:48.000Z",
+      "summary": "Article URL: https://signalandsilence.substack.com/p/i-think-someone-hacked-the-commissary\nComments URL: https://news.ycombinator.com/item?id=49508506\nPoints: 171\n# Comments: 102",
+      "id": "c1b0b4a70d7f1b0a00121311e2c877b677d459cc179bbba39255144afafba7f3",
+      "ref_id": "0",
+      "recommendationScore": 70,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "分析了一起疑似军事基地冷库被黑的事件，引发对物联网安全的深度思考。",
+      "reason": "文章内容独特，对物联网安全提供了警示性案例分析，具有一定的社会关注度和技术讨论价值。",
+      "tags": [
+        "网络安全",
+        "IoT",
+        "自动化",
+        "供应链安全",
+        "安全漏洞"
+      ]
+    },
+    {
+      "title": "Internet centralization and the original sin of NAT",
+      "link": "https://dreamstation.systems/personal/ntppost.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-31T02:23:03.000Z",
+      "summary": "Article URL: https://dreamstation.systems/personal/ntppost.html\nComments URL: https://news.ycombinator.com/item?id=49504905\nPoints: 134\n# Comments: 96",
+      "id": "f8abdfcd34dcaeb4e40ff39b19b176427030e0b426f874031435de57067269bc",
+      "ref_id": "3",
+      "recommendationScore": 70,
+      "popularityScore": 65,
+      "priority": "low",
+      "comment": "从历史角度分析了NAT（网络地址转换）对互联网中心化趋势的影响及其“原罪”。",
+      "reason": "对网络架构和互联网演进提供了深刻的技术剖析，但与本博客当前高优先级主题关联度较低。",
+      "tags": [
+        "网络",
+        "互联网架构",
+        "NAT",
+        "历史",
+        "去中心化"
+      ]
+    },
+    {
+      "title": "Here's a good way to present AI videos ",
+      "link": "https://idiallo.com/blog/a-good-way-to-present-ai-videos-on-youtube",
+      "source": "idiallo.com",
+      "publishedAt": "2026-08-31T07:30:00.000Z",
+      "summary": "The YouTube tag marking a video as AI-generated is as insignificant as the little \"Sponsored\" text in search ads.\n\t\t\t\nI've taught my mother and her friends to check for that tag, but most, if not all, of the videos they share with me don't even have it. Even though they're clearly AI-generated.\nIf deception is something we want to prevent, and our parents can't tell real videos from fake ones, wouldn't it make sense to put a warning where it's actually effective? Just like movies have warnings beforehand, why not add one before these videos? It would take no more than two or three seconds, and it's entirely controlled by the platform. If someone is willing to watch the content after the warning, more power to them. But for those being deceived, this would actually help.\nThose are the words YouTube places on videos where it detects AI, but they're buried somewhere in the description. Why not make that notice prominent when the video starts, the same way some videos open with a \"Viewer discretion is advised\" notice? On YouTube or whichever platform hosting the video, the warning is not embedding into the video, just displayed before. The uploader has no control over it. \nWhile I know most people think AI videos are just fun or slop, but I argue that they can be harmful when they deceive us. They are a profitable vector for scammers, and despite YouTube's effort to curb it, they are actively promoting it in their creative studio.\nIf YouTube actually wants to prevent fraud and scams, they can do something about it. Let users know what they are about to watch.",
+      "id": "21a80894ae57fb2cc5b5f7b3dee310218e1ff61dfdaab3e71a3359c2f5c8fc61",
+      "ref_id": "3",
+      "recommendationScore": 66,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "深刻探讨AI视频内容的伦理与平台警示机制，提出实用的用户体验改进建议。",
+      "reason": "文章切中AI内容监管的痛点，结合用户体验提出解决方案，具有高度社会讨论价值和实用性，符合AI和产品设计优先级。",
+      "tags": [
+        "AI",
+        "Ethics",
+        "Misinformation",
+        "Platform Policy",
+        "Product Design",
+        "User Experience"
+      ]
+    },
+    {
+      "title": "Before NTP there were Time and Daytime",
+      "link": "https://www.jeffgeerling.com/blog/2026/rfc-867-868-time/",
+      "source": "jeffgeerling.com",
+      "publishedAt": "2026-08-30T22:09:00.000Z",
+      "summary": "In building an NTP time demo on old Macs for VCF Midwest, I came across RFC 867 and RFC 868, for the 'Daytime' and 'Time' Protocols, respectively.\n\n\n\nMy first exposure to any form of network time was when I upgraded from a used PowerBook 180c to my first 'new' computer, a Power Mac G3, in 2000. With the introduction of Mac OS 8.5, Apple added a 'Network Time Server' option in the Date & Time Control Panel.",
+      "id": "81ee1281dae4ed0e7ec7309186b3a32e3b5cd42e1db84e586d3c86b4f59908ae",
+      "ref_id": "2",
+      "recommendationScore": 64,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "深入挖掘早期网络时间协议的历史，对复古计算和网络历史爱好者有吸引力。",
+      "reason": "文章技术深度高，但主题非常小众且实用性较低，主要服务于对历史协议和复古Apple设备感兴趣的特定读者群。",
+      "tags": [
+        "Networking",
+        "Protocols",
+        "NTP",
+        "Historical Tech",
+        "Apple Ecosystem",
+        "Retro Computing"
+      ]
+    },
+    {
+      "title": "Understanding ChatGPT Work",
+      "link": "https://simonwillison.net/2026/Aug/30/understanding-chatgpt-work/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-08-30T23:59:47.000Z",
+      "summary": "",
+      "id": "ac6e7e3c37d7027f73be144725271ec93518275890f1acf5a8e2c7cc2f2461b4",
+      "ref_id": "1",
+      "recommendationScore": 60,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "标题表明对ChatGPT工作原理的探讨，但内容缺失无法具体评估。",
+      "reason": "文章主题属于最高优先级的AI领域，尽管内容缺失，但标题表明其对基础概念的普及具有广泛需求。",
+      "tags": [
+        "AI",
+        "ChatGPT",
+        "LLM",
+        "Explanation",
+        "Fundamentals"
+      ]
+    },
+    {
+      "title": "Konrad Zuse Museum shutting down due to lack of funding",
+      "link": "https://www.heise.de/en/news/Zuse-Computer-Museum-ZCOM-in-Hoyerswerda-faces-closure-11344513.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-31T16:52:35.000Z",
+      "summary": "https://www.mdr.de/nachrichten/sachsen/bautzen/bautzen-hoyer... (auf Deutsch)\nComments URL: https://news.ycombinator.com/item?id=49511917\nPoints: 130\n# Comments: 62",
+      "id": "ab7eed5c9a62a8dd6a239889be341de65780c1caf56397088019457f2516038c",
+      "ref_id": "4",
+      "recommendationScore": 45,
+      "popularityScore": 100,
+      "priority": "medium",
+      "comment": "关于康拉德·祖斯博物馆因资金问题关闭的新闻，具有计算机历史意义。",
+      "reason": "虽然不是技术分析，但涉及计算机科学先驱，对了解行业历史有一定价值。",
+      "tags": [
+        "计算机历史",
+        "博物馆",
+        "新闻",
+        "文化遗产"
+      ]
+    },
+    {
+      "title": "Show HN: Corporate Mind Games – logic puzzles with a sarcastic corporate theme",
+      "link": "https://corporatemindgames.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-31T16:08:08.000Z",
+      "summary": "I have always enjoyed building and playing puzzles. I am a regular user of NYT Games and LinkedIn Games. I thought it would be fun to create some corporate-themed puzzles as a silly alternative to LinkedIn Games.\nSo, I built Corporate Mind Games. The games are intended to be a little bit sassy and sarcastic, but I hope they are enjoyable and challenging.\nI was planning to post this on HN last week. However, many years ago, I made a game called Don't Wordle, which unexpectedly appeared on the front page last week. I ended up getting distracted by that, and I also figured it was more appropriate to post this game on HN on a Monday morning given the theme. So here we are.\nComments URL: https://news.ycombinator.com/item?id=49511400\nPoints: 29\n# Comments: 11",
+      "id": "cb262358597d058708a7b2e39590fde7775f62a799c6cd25cb3cd8aca6d05169",
+      "ref_id": "2",
+      "recommendationScore": 45,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "一个带有讽刺企业主题的逻辑解谜游戏。",
+      "reason": "作为独立开发的小游戏，娱乐性强，但技术深度和主题优先级相对较低。",
+      "tags": [
+        "游戏",
+        "独立开发",
+        "产品设计",
+        "娱乐"
+      ]
+    },
+    {
+      "title": "Accidental Aesthetics and Romance of Power Wires",
+      "link": "https://www.governance.fyi/p/accidental-aesthetics-and-romance",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-30T23:00:15.000Z",
+      "summary": "Article URL: https://www.governance.fyi/p/accidental-aesthetics-and-romance\nComments URL: https://news.ycombinator.com/item?id=49503672\nPoints: 28\n# Comments: 12",
+      "id": "285f12babd44e4f23a950f9c114c0cd4ff4779eff3e173fac2bf3278fabb381b",
+      "ref_id": "4",
+      "recommendationScore": 40,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "探讨了输电线偶然形成的美学及其浪漫意蕴，从非技术角度解读基础设施。",
+      "reason": "内容偏向人文艺术，与本科技博客的关注主题和技术深度要求不符，实用性和信息密度较低。",
+      "tags": [
+        "美学",
+        "基础设施",
+        "文化观察",
+        "非技术"
+      ]
+    },
+    {
+      "title": "Autonomous (YC F25) Is Hiring Engineers",
+      "link": "https://news.ycombinator.com/item?id=49514781",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-31T21:00:09.000Z",
+      "summary": "Comments URL: https://news.ycombinator.com/item?id=49514781\nPoints: 0\n# Comments: 0",
+      "id": "8121c4840abcaea1b36d4b7910c9dba1a602e4750cf9a0e7434cc2d91ddeda78",
+      "ref_id": "0",
+      "recommendationScore": 5,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "一份简短的招聘信息，不含实质性技术内容。",
+      "reason": "作为科技博客，其内容价值低，不符合主要关注点。",
+      "tags": [
+        "招聘",
+        "创业公司"
+      ]
+    },
+    {
+      "title": "Kids These Days",
+      "link": "https://smallpotatoes.paulbloom.net/p/kids-these-days",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-31T17:50:37.000Z",
+      "summary": "Article URL: https://smallpotatoes.paulbloom.net/p/kids-these-days\nComments URL: https://news.ycombinator.com/item?id=49512618\nPoints: 39\n# Comments: 51",
+      "id": "ae9e0e1252dc41bc3f38832bd3d89b53c614d2c25eea4fbe1bb4b44ba3dcf656",
+      "ref_id": "2",
+      "recommendationScore": 5,
+      "popularityScore": 56,
+      "priority": "low",
+      "comment": "一篇社会评论文章，与科技博客主题不符。",
+      "reason": "内容不属于任何设定的科技主题范畴。",
+      "tags": [
+        "社会评论",
+        "非技术"
+      ]
+    },
+    {
+      "title": "Playa Phone",
+      "link": "https://playaphone.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-31T14:52:26.000Z",
+      "summary": "Article URL: https://playaphone.com/\nComments URL: https://news.ycombinator.com/item?id=49510514\nPoints: 395\n# Comments: 156",
+      "id": "63994c0b6655e700b30c94f8aa177b0de97790a4091feaab9f6ba05b1d75f095",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "C++26: Standard Library Hardening Experiments",
+      "link": "https://www.cppstories.com/2026/hardening-experiments/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-31T14:52:24.000Z",
+      "summary": "Article URL: https://www.cppstories.com/2026/hardening-experiments/\nComments URL: https://news.ycombinator.com/item?id=49510511\nPoints: 74\n# Comments: 39",
+      "id": "43b7b7ff4080baec4bde0e73cb587563850cd370739bc95a8ee63ac6c04caac5",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "The Snow/Leavis ‘two cultures’ clash",
+      "link": "https://aeon.co/essays/at-the-heart-of-the-snow-leavis-two-cultures-clash",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-31T14:50:24.000Z",
+      "summary": "Article URL: https://aeon.co/essays/at-the-heart-of-the-snow-leavis-two-cultures-clash\nComments URL: https://news.ycombinator.com/item?id=49510489\nPoints: 59\n# Comments: 32",
+      "id": "b6eec732c56cb13113b547544e505ab2774837f38ada39161fdbe2ce1e5185e9",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "ChatGPT Work Tool and Skill Reference",
+      "link": "https://codex-tool-reference.simonw.chatgpt.site/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-31T14:07:15.000Z",
+      "summary": "Article URL: https://codex-tool-reference.simonw.chatgpt.site/\nComments URL: https://news.ycombinator.com/item?id=49510000\nPoints: 150\n# Comments: 46",
+      "id": "a3f40d92ed89c939fb7e274863f7e16c90fc160f36241d42404514a4c014a616",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Apple caught off guard by AI demand for Mac Mini and Mac Studio",
+      "link": "https://www.macrumors.com/2026/08/30/apple-unexpected-mac-mini-and-studio-demand/",
+      "source": "Hacker News",
+      "publishedAt": "2026-08-31T12:41:22.000Z",
+      "summary": "Article URL: https://www.macrumors.com/2026/08/30/apple-unexpected-mac-mini-and-studio-demand/\nComments URL: https://news.ycombinator.com/item?id=49508982\nPoints: 212\n# Comments: 231",
+      "id": "252ce094ce4553bdba40b2feb3acdd7b131eafea8f1ce5d7a4108eea00fa42eb",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Review: Ruined Theatre's A Midsummer Night's Dream ★★★★☆",
+      "link": "https://shkspr.mobi/blog/2026/08/review-ruined-theatres-a-midsummer-nights-dream/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-08-31T11:34:08.000Z",
+      "summary": "The whole point about Shakespeare is that you can set the play on an intergalactic space station or an American high school and keep virtually the rest unchanged. What happens when you transpose Dream from a proscenium arch to a living wood? As the sun sets over the trees, what sprites will come out to entertain us?  Ruined Theatre brings a brilliant cast of seasoned West End performers to strut…",
+      "id": "e1124fe280f246e6b2ebb6c93f9e689da7872b2711a691d5b3efb4aa8d338e8a",
+      "ref_id": "4",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "与科技博客主题完全无关，属于戏剧评论。",
+      "reason": "文章内容为戏剧评论，不属于科技领域，完全偏离本科技博客的评估主题。",
+      "tags": [
+        "Off-topic",
+        "Theatre Review",
+        "Arts & Culture"
+      ]
+    },
+    {
+      "title": "Cancelation Terminology",
+      "link": "https://matklad.github.io/2026/08/31/cancelation-terminology.html",
+      "source": "matklad.github.io",
+      "publishedAt": "2026-08-31T00:00:00.000Z",
+      "summary": "Cancelation Terminology\nAug 31, 2026\n\nA short note explaining the difference between synchronous cancelation,\nasynchronous cancelation, and graceful shutdown. I am not too attached to these\nspecific three terms, but I want to call your attention to the three\nthings behind them, which are important not to confuse with each other.\nsynchronous cancelation is an (often implicit) control flow structure.\nIt unwinds the stack and looks like this:\ntask.cancel();\n// The task will have finished by this point.\nSynchronous cancelation is a bit like Molière’s prose — we do it all the time,\nbut not necessarily in full consciousness. The primary source of synchronous\ncancelation is error handling — every time an Exception is thrown or an\nerror returned, the code promptly breaks out of all the loops, ifs, and\nblocks, invoking the necessary cleanup actions via RAII, finally, with/try\nwith resources or defer.\nasynchronous cancelation is a communication protocol between two\nparties. One party requests cancelation (synchronously), but then it has to wait\nuntil the other party acknowledges it and winds down. It looks like this:\ntask.request_cancelation();\n// The task could still be running here.\ntask.join().await;\n// After the requisite wait, the task is finished.\nLike synchronous cancelation, this is a relatively low-level concern when\nimplementing a concurrent program in a way that doesn’t crash or hang. I know\ntwo central example where an asynchronous cancelation is required.\nFirst is the CPU thread pool. Imagine you have offloaded encrypting a buffer to\na separate thread as a part of handling user’s request. Some time later, you\nlearn that the request must be canceled (perhaps the user had left). You can’t\njust abandon the encrypting thread. First, it would be smart not to waste CPU\ncycles for useless work, but, more importantly, the underlying buffer must\nremain tied up. If it were to be freed as a result of request cancelation,\nsomething else might re-use that memory, leading to data races.\nBut you also can’t just cancel that thread synchronously! It’s in the middle of a\nhyper-optimized SIMD loop, and you really don’t want it to check the cancelation\nflag before reading every byte. What you’d want is to split the buffer into\nreasonably-sized chunks, and check the cancelation status after every chunk. But\nthat means that the party that requested the cancelation must wait for at least\none chunk’s worth of work!\n\n\nFor the curious, there’s actually a bit more leeway with canceling CPU work\nnon-cooperatively, see\nhttps://go.dev/src/runtime/preempt.go\nAnother example here is io_uring. It has exactly the same shape: if you submit\na write with a buffer to the kernel, that buffer must remain tied up until the\nwrite finishes (and you can cancel the write to make it finish faster). While\nio_uring is still at least a somewhat exotic technology (though, arguably,\nit’s the interfaces we have had before which are byzantine), the thread pool\nexample demonstrates that the phenomenon of asynchronous cancelation itself is\nrather mundane.\nAsynchronous cancelation comes up all the time when writing concurrent software.\nBecause it affects the overall shape of the code, it’s useful to identify it\nearly. Conversely, it is useful to ask yourself whether you need asynchronous\ncancelation at all, and whether synchronous one can be made to work. This is\nespecially important in Rust, which makes synchronous cancelation too easy, and\ndoesn’t provide great mechanisms for asynchronous one.\nFinally, graceful shutdown is an application programming pattern for\nhandling connections. It lives on a higher level of abstraction than the two\ncancelations. If you are implementing a web service, you can implement shutdown\nby stopping your accept loop (rejecting new connections), but continuing to\nserve all existing connections until their respective clients disconnect. If the\nload balancer is configured to route new connection requests to different\ninstances of the service, this pattern allows you to do rolling upgrades without\nservice disruptions.\nAs a bonus point, a related idea is that of\ncrash-only software.\nCancelation is all good, but your entire program can get SIGKILLed arbitrarily\nby an OOM killer, and the entire computer might get rebooted on powerloss.\nReliable software has to handle ungraceful shutdown without losing data. But, if\nyou can survive powerloss, you might as well implement the Quit button\nby SIGKILLing yourself, simultaneously simplifying the implementation and\nincreasing testing coverage for powerloss scenarios.\nTo give some examples from TigerBeetle,\nGrid.cancel\nis an asynchronous cancelation. It takes a callback to notify the caller when\nthe cancelation is done. This API is used during state sync. When a replica\ndetermines that that cluster is so far ahead that event based transfer doesn’t\nwork, and that a state transfer is required to catch up, it must cancel all\noutstanding grid read operations. A read can be backed either by replica’s local\ndisk, or by transparent fetch of the data from a neighboring replica. In the\nfirst case, we have to wait until the read is done. In the second case, we need\nto abandon the read — remote read getting stuck is probably the reason for\nus to state sync in the first place.\nStateMachine.reset\nis an example of a synchronous cancelation. This is the part of the same flow as\nGrid.cancel, and is an example of how you can simplify the code if you think\nclearly about asynchronous vs synchronous cancelation. Ultimately,\nStateMachine sits on top of the Grid, but there’s a bunch of intermediate\nlayers (Forest, Tree, Compaction, Scan, etc). A naive approach would be\nto notice that Grid requires asynchronous cancelation and propagate asynchrony\nthroughout the stack. What we do instead is asynchronously canceling just the\nGrid directly, and then synchronously reseting everything else.\nAnother example of asynchronous cancelation is\nClient.shutdown.\nWhen an application using TigerBeetle “drops” the Client object, we need to\nfree all OS resources. Our client also uses io_uring, so we must first wait for\nall outstanding syscalls to complete. In the comment, we call it “graceful\nshutdown”, but I think this is wrong, and this is the motivation for writing\ndown this article. We don’t do graceful shutdown at TigerBeetle — it’s crash\nonly all the way. Tail latency tolerance (asking several nodes for an answer and\npicking the fastest one) is a more general solution, as it handles not only\ncrash faults, but also\ngray failures.\nIn a distributed system, a very slow node looks exactly the same as a crashed\none. A crash is just a degree of slowness.\nTake aways:\n\n\nSynchronous cancelation is control flow operator\n\n\nAsynchronous cancelation is a communication protocol\n\n\nGraceful shutdown is an application-level design pattern",
+      "id": "56b312e6a7a8652991548c8f4f562e152e29a26d330cce962462ee992f08ad30",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "The rise and fall of agent civilizations",
+      "link": "https://www.dwarkesh.com/p/openai-huggingface-narration",
+      "source": "dwarkesh.com",
+      "publishedAt": "2026-08-31T20:36:53.000Z",
+      "summary": "The OpenAI/Hugging Face attack, clearly explained",
+      "id": "dcb566ece7cfb7881e801dc0860af1aedb0585715bebdb9f4b86e47eb3e2b832",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "My Experience Has Nuance, Yours Is a Data Point",
+      "link": "https://blog.jim-nielsen.com/2026/nuance-for-me-none-for-you/",
+      "source": "blog.jim-nielsen.com",
+      "publishedAt": "2026-08-31T19:00:00.000Z",
+      "summary": "Eric Bailey has a fun little post about how we need more than a few icons to express the nuance of our shared human experience.\nFor example, he suggests Netflix provide some feedback buttons to indicate the kinds of experiences we all share consuming and rating media:\n“Just because I expressed interest in this show does not mean I want to be inundated with recommendations for its genre”\n“Disregard [that I pressed ‘thumbs up’] my cat walked over the keyboard”\n“I am making bad choices and hatewatching this” (which reminds me of )\nWhat’s great about the examples in Eric’s post is how familiar they are. We can read them and laugh because we’ve had the same thought — “I’m pressing ‘thumbs up’ here, but what I really mean is…” \nWe know when we click that button that it’s a reductive expression of our experience that’ll be erroneously interpreted, but we do it anyway. As Bryan Cantrill shared from his experience:\nThere's no way to indicate, “I’m engaging with this, but I hate myself for doing it.” I need another mouse button that is like, “I’m clicking on this, but I’m rage clicking on it and for my own mental health could you not drag more of this in front of me please?”\nWe know these feedback mechanisms are often a misrepresentation of our actual experience.\nYet we turn around in our professional contexts and see numbers like “142,432 users gave this a ‘thumbs up’” and we forget everything we knew about our own individual experience with these systems. We make it mean what we want it to mean, what’s convenient for measurement and reporting e.g. “Wow, what a great insight about our offerings! Let’s restructure our entire catalog around this new, objective, (pseudo)scientific fact that so many people obviously like this thing!”\nWe reduce the experiences of others to mere data, but grant ourselves exemption from such oversimplifications.\nWhere’s the conversation around:\nValues, e.g. “Should we provide more of this? We can say no to the data…”\nNuance, e.g. “What do people really mean when they click ‘thumbs up’ in this interface?”\nVision, e.g. “If we provide more of this, where will that lead us?”\nBut that’s too introspective. Introspection is slow. Ain’t nobody got time for that.\nEmail\n      · Mastodon ·\n\n      Bluesky",
+      "id": "29183ed70a4b10394478b82ae042b8e6f3fd68f673c36e2659bb2cf537cb6376",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Reducing codebase cognitive debt through... quizzes?",
+      "link": "https://martinalderson.com/posts/codebase-cognitive-debt-quizzes/?utm_source=rss&utm_medium=rss&utm_campaign=feed",
+      "source": "martinalderson.com",
+      "publishedAt": "2026-08-31T00:00:00.000Z",
+      "summary": "A simple technique for keeping up with a codebase that coding agents are changing faster than you can read: ask the agent to quiz you on it.",
+      "id": "2de6a5059469c6f3735f0df78980c90dcbb618731a9bc0db1814e06e150f06a2",
+      "status": "score_failed",
+      "recommendationScore": 0
+    }
+  ]
+}
