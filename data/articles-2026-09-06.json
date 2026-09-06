@@ -1,0 +1,614 @@
+{
+  "dailySummary": "今日科技速递：AI领域动态频繁，OpenAI探讨对齐与研究加速，“A/I”项目关停引关注。Go语言借助SIMD技术大幅提升Debian代码搜索性能。同时，",
+  "articles": [
+    {
+      "title": "A/I shuts down – Stay human",
+      "link": "https://keepitfree.ai/announcements/a/i-shuts-down-stay-human/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-06T14:34:34.000Z",
+      "summary": "Article URL: https://keepitfree.ai/announcements/a/i-shuts-down-stay-human/\nComments URL: https://news.ycombinator.com/item?id=49586898\nPoints: 317\n# Comments: 200",
+      "id": "a871c7441d09de4dd276d70f3a1de873bdc4229964713cc0c4acd8f41ed55083",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 100,
+      "priority": "high",
+      "comment": "一个AI项目关闭，并引发对AI伦理和人性的深刻反思。",
+      "reason": "高度关注AI伦理和社会影响，以独特的事件引发广泛讨论，是AI领域当前极具热度和重要性的主题，且社区参与度极高。",
+      "tags": [
+        "AI",
+        "伦理",
+        "社会影响",
+        "创业反思",
+        "热门讨论"
+      ]
+    },
+    {
+      "title": "QBittorrent breaks out of sandbox to commit crimes",
+      "link": "https://beige.party/@intransitivelie/117057396732763183",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-06T13:02:41.000Z",
+      "summary": "Article URL: https://beige.party/@intransitivelie/117057396732763183\nComments URL: https://news.ycombinator.com/item?id=49586171\nPoints: 833\n# Comments: 153",
+      "id": "db2851b15f07d068d766992e8d001fd5280ec7c639be954949ab3380216463f8",
+      "ref_id": "2",
+      "recommendationScore": 95,
+      "popularityScore": 100,
+      "priority": "high",
+      "comment": "QBittorrent沙盒逃逸漏洞被披露，对用户安全构成严重威胁。",
+      "reason": "涉及广泛使用的编程工具的安全漏洞，技术深度高，实用性极强，且社区关注度极高，具有高度警示性。",
+      "tags": [
+        "安全",
+        "QBittorrent",
+        "漏洞",
+        "软件",
+        "编程工具",
+        "自动化"
+      ]
+    },
+    {
+      "title": "AI, Tools and Transformation",
+      "link": "https://www.ben-evans.com/benedictevans/2026/9/3/ai-tools-and-transformation",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-06T02:12:46.000Z",
+      "summary": "Article URL: https://www.ben-evans.com/benedictevans/2026/9/3/ai-tools-and-transformation\nComments URL: https://news.ycombinator.com/item?id=49582656\nPoints: 133\n# Comments: 60",
+      "id": "ebdbf0f6db65b302a9f839049978e069a46a50af6e072ba05d80b520ea268dfa",
+      "ref_id": "3",
+      "recommendationScore": 95,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "深度解析AI对工具和行业变革的战略影响，具有前瞻性和高度洞察力。",
+      "reason": "紧密贴合AI这一最高优先级主题，来自知名分析师，内容预计具有前瞻性和深度思考价值。",
+      "tags": [
+        "AI",
+        "技术战略",
+        "未来趋势",
+        "工具",
+        "变革"
+      ]
+    },
+    {
+      "title": "Debian Code Search: Fast TurboPFor with Go SIMD",
+      "link": "https://michael.stapelberg.ch/posts/2026-09-06-dcs-fast-turbopfor-go-simd/",
+      "source": "michael.stapelberg.ch",
+      "publishedAt": "2026-09-06T07:00:00.000Z",
+      "summary": "This August, I accomplished what I wanted for many years: I deleted the last cgo\ndependency in Debian Code Search! This was made possible by Go’s recently\nintroduced SIMD support, because now we can implement the TurboPFor integer\ncompression format as efficiently — more efficiently, in fact, by using the\nnewer AVX512 instruction set! — as the reference implementation.\nBackground: Why does DCS need a fast Integer Codec?\nDebian Code Search (DCS) is a search engine that allows searching all the Open\nSource source code within Debian, with either literal search expressions or\nregular expression search queries.\nA search engine uses an inverted index: a map from term to documents containing\nthe term. Each document is typically represented most efficiently by using an\nid, so the index consists of many lists of document ids.\nWhen searching, it is important to quickly decode these lists to answer the\nsearch query. However, there is a point of diminishing returns where the\ndecoding speed, even though it can still be measurably improved quite a bit, no\nlonger influences the overall query duration.\nFrom 2012 (its inception) to 2019, Debian Code Search used to use a small index\nformat, and queries were fast because the index was kept entirely in RAM. In\n2019, I implemented the new index\nformat, which adds an\non-disk positional index. For literal queries (78.2% of DCS queries), querying\nthe positional index on disk is faster than querying the non-positional index in\nRAM.\nThe efficient encoding of the TurboPFor format makes it possible to fit such an\nindex on a mid-sized Hetzner server, which I rent with two 1 TB SSD disks. The\noptimized decoder of the C TurboPFor library is what made decoding fast at query\ntime.\nIf you want to dive deeper into the algorithm, see this blog post from February\n2019:\nTurboPFor: an analysis\n\n      \nRead more →\n\t  \n\t\nIf you want to learn more about the positional index, see this blog post from\nSeptember 2019:\nDebian Code Search: positional index, TurboPFor-compressed\n\n      \nRead more →\n\t  \n\t\nSIMD in Go\nFor many years, you had the following options for using SIMD instructions in Go:\nHand-writing Go assembler code. This is only doable for\nsmall functions, for example\nbytes.IndexByte is implemented with\nhand-written Go\nassembly\n(including AVX2).\nGenerating Go assembler code with tools like Michael McLoughlin’s\n“Avo”. This is how\ncrypto/internal/fips140/sha256 uses\nAVX2. While\nAvo generator code definitely is higher-level than hand-written assembly, it\nis still too close to assembly for my taste.\nUse a C library via cgo so gcc or clang compiles\nSIMD code. Debian Code Search used to use the\npowturbo/TurboPFor\nC library via cgo for the last 7 years.\nThe C TurboPFor library has served us well, but Debian Code Search was always\nintended to be a project using Go, so I would prefer it if I did not have any C\ncode in the project.\nGo 1.26 (released in February 2026) introduced the simd/archsimd package:\nGo 1.26 introduces a new experimental simd/archsimd\npackage, which can be enabled by setting\nthe environment variable GOEXPERIMENT=simd at build time. This package\nprovides access to architecture-specific SIMD operations. It is currently\navailable on the amd64 architecture and supports 128-bit, 256-bit, and\n512-bit vector types, such as Int8x16 and Float64x8, with operations such\nas Int8x16.Add. The API is not yet considered stable.\n— Go 1.26 Release Notes\nFor my 2019 TurboPFor analysis, I implemented goturbopfor, a native Go\nteaching decoder (without any SIMD),\nbecause I find Go code easier to follow than C code, especially optimized C\ncode. My implementation was intentionally not optimized so that the code was\neasier to study.\nThe TurboPFor format/algorithm has a vector-optimized part: bitpacking comes in\na scalar variant (bitunpack32) and a vector variant\n(bitunpack256v32),\nwhere the vector variant is used for full blocks (256 values) and the scalar\nvariant is used for remainder blocks (< 256 values).\nWhen Go 1.26 was released, I used Claude Code to explore whether my native Go\ndecoder’s bitunpack256v32 function (for the vertical vector layout) could be\nimplemented using Go SIMD, and the answer was yes, it was possible and it was\nfaster than without SIMD, but not quite at the level of C TurboPFor. If you let\nClaude Code try for long enough, it eventually finds enough optimizations (about\n10) to match C performance.\nI don’t want to vibe-code Debian Code Search, though, so I figured I would find\nsome time to review the SIMD code at some point and see if I could implement\nsomething similar myself.\nBefore I found enough time and motivation to complete said review, I discovered\nthat to not regress real-life query performance by more than 10 to 100\nmilliseconds (which seems acceptable), I don’t actually need to add SIMD code to\nmy teaching decoder at all; it would be sufficient to reduce allocations in my\nteaching decoder and specialize it per bit width.\nEncouraged by the possibility of using the optimized native Go decoder in Debian\nCode Search, I explored whether I could also implement a native Go encoder so\nthat I could get rid of the C TurboPFor dependency entirely. The answer is yes,\nit is doable in a few days, and it isn’t even that much slower: Go is at 76% of\nC, see Debian/dcs commit\ne920dc7.\nThe goal I set myself at that point was to see if I could learn enough SIMD to\noptimize the native Go encoder such that its performance would match how DCS\nuses C TurboPFor (via cgo).\nBeating C TurboPFor was possible in 2-3 commits (SIMD and bit width\nspecialization). To my surprise, Claude Fable 5 pointed out that the encoder’s\nblock scanning could be done more efficiently using a technique called\npositional popcount, and that is another 2x speed-up! 😲\nTo be clear: I am not saying the Go compiler beats C here. Certainly, the C\ncompiler can also produce fast AVX512 code and can be used to implement\npositional popcount.  When comparing apples to apples, i.e. backporting the\nAVX512 kernels and positional popcount technique to C TurboPFor, Go benchmarks a\nlittle slower at ≈1.4x C.\nThis spectacular result (much faster than what DCS had before) got me curious\nhow far I could push the decoder with SIMD after all. I ended up\nmatching/exceeding the cgo version here, too!\nThe rest of this article explains a few classes of optimizations I encountered\nalong the way.\nStarting Point\nWhen I wrote my goturbopfor teaching\ndecoder, I named its functions to\nmatch the upstream C TurboPFor library, but now I want to get away from names\nlike p4ndec256v32 — they make sense from the TurboPFor perspective, but for\nDebian Code Search, we can use cleaner names.\nBefore writing any code, I audited how DCS uses integer compression /\ndecompression.\nAPI design: BlockEncoder, BlockDecoder and streaming\nIn Debian Code Search, we have the following usage patterns:\nPartial Indexing: When a new package (or package version) enters Debian,\nall of its (text) files are indexed. If the hello-2.12.3-1\npackage (hypothetically) contained\nonly hello.c with printf(\"hello!\\n\");, we would assign document ID 1 to\nhello.c and store in the partial index that trigrams pri, rin, int,\nntf, etc. are all found in doc 1 (hello.c).\nFull Index Merging: The many thousands of partial index files (for each\nDebian package) are combined into a small handful of large index files: When\nsearching, it would be expensive to consult thousands of indexes. To merge\nmultiple partial index files into one larger index (which can then be\nefficiently queried), we need to re-encode the partial index files: what used\nto be document ID 1 in the partial index might be document ID 2531 in the\nfull index.\nQuerying (searching): When users enter search queries, these queries need\nto be answered as quickly as possible. The relevant entries in the full\nindexes are decoded (in parallel).\nFor reading the index, we do keep the decoded uint32s fully in memory, so we\nonly need DecodeN(input []byte, output []uint32) (read int), a function that\nreads len(output) values (uint32) from input and returns how many bytes it\nconsumed.\nFor writing the index (both in partial indexing, and when merging), keeping the\nentire index in memory is prohibitively expensive, so we need a streaming API,\nfor decoding and for encoding.\nUltimately, I converged on the following API:\npackage pforenc\n\ntype BlockEncoder struct {\n    // scratch buffers can go here\n}\n\n// EncodeBlock encodes len(vals)<=256 uint32s into dest (one TurboPFor block).\nfunc (*BlockEncoder) EncodeBlock(dest []byte, vals []uint32) []byte {}\n\n// EncodeN calls EncodeBlock in a loop.\nfunc (*BlockEncoder) EncodeN(dest []byte, vals []uint32) []byte {}\n\ntype StreamEncoder struct {\n  be   BlockEncoder\n  vals [256]uint32\n  // scratch buffers\n}\n\n// if full, you need to call [EncodeBlock]\nfunc (*StreamEncoder) Add(val uint32) (full bool)\n\n// EncodeBlock must be called after all data was [Add]ed.\n//\n// Write the returned buffer to file or send it over the network;\n// it is only valid until the next [EncodeBlock] call.\nfunc (*StreamEncoder) EncodeBlock() []byte {\n  if se.n == 0 { return nil } // turn an extra EncodeBlock into a no-op\n  // …\n}\n\n\nThis API (the decoder works similarly) allows us to process data in TurboPFor\nformat without any memory allocations. The types are not safe for concurrent use\nby multiple goroutines. The zero value is ready to be used. For the streaming\nAPI, the result only stays valid until the next call.\nInitial Implementation\nBefore we can optimize anything, we need a working decoder and encoder. The\ndecoder already exists: my goturbopfor teaching decoder. Next up, I needed an\nencoder.\nWriting a TurboPFor encoder has a delightfully simple starting point: You can\nencode all values at bit width 32, in little endian, at which point you only\nneed to add a one-byte TurboPFor block header every 256 values and you’re done:\nfunc (be *BlockEncoder) EncodeN(dest []byte, vals []uint32) []byte {\n  for len(vals) > 0 {\n    chunk := min(len(vals), 256)\n    dest = be.EncodeBlock(dest, vals[:chunk])\n    vals = vals[chunk:]\n  }\n  return dest\n}\n\nfunc (be *BlockEncoder) EncodeBlock(dest []byte, vals []uint32) []byte {\n  const bitWidth = 32\n  dest = append(dest, bitWidth)\n  for _, val := range vals {\n    dest = binary.LittleEndian.AppendUint32(dest, val)\n  }\n  return dest\n}\n\n\nOf course, this is a terribly inefficient compressor, so after the first commit,\nthe real work starts: implement each block type until the compression matches\nthe original C TurboPFor implementation (same output file size), or in other\nwords: do the reverse of the decoder.\nThe TurboPFor bitpacking block type (bitpacking implementation\ncommit)\nencodes a bit stream of variable bit width (where the bit width is in range\n0 ≤ bitWidth ≤ 32) in little\nendian byte order. By scanning all\nvalues and choosing the smallest bit width that allows representing all\nvalues, this technique saves disk space (compresses).\nThe bitpacking with exceptions block type (bitpacking with exceptions\nimplementation\ncommit)\ndetermines two bit widths: one for values, the other bit width for encoding\nexceptions. This allows choosing a lower bit width (that does not cover all\nvalues) compared to the bitpacking block type. A bitmap encodes whether a\nvalue has an exception or not.\nThe bitpacking with VB exceptions block type (bitpacking with VB\nexceptions implementation\ncommit)\nis a variant which does not use an exception bitmap and encodes exceptions\nusing a variable byte integer encoding. This is more efficient when there are\nfew exceptions (less than 20) or the exceptions are very different in bit\nwidth compared to the other values.\nLastly, the constant block type (constant implementation\ncommit)\nstores just one value on disk. This is useful for all-zero or all-one blocks,\nfor example.\nI found it interesting to realize that the main work of the encoder is to scan\nthe input values and choose the optimal block type, whereas the actual encoding\nitself is cheap in comparison.\nAt this point, we can look at\nperformance\nand see that the Go encoder is at 76% of the C encoder.\nIn all honesty, I could have probably stopped here, but now that the milestone\nof a viable replacement was reached, I got curious to see how far it would be\npossible to push the encoder (how much work to reach C speeds?) and afterwards,\nthe decoder, too.\nSetup\nThe microarchitecture level: set GOAMD64\nThe microarchitecture of a CPU determines which instructions it provides, and\nthat includes not just SIMD instruction sets (like AVX2), but also other useful\ninstructions like LZCNT (Leading Zero Count), which can be used to implement\nmath/bits.Len32 more efficiently, which\nthe TurboPFor encoder needs to call on every input value to determine the ideal\nbit width.\nLet’s walk through how to set the microarchitecture level when using Go on\n64-bit x86 (x86-64).\nGo uses the GOARCH environment\nvariable to configure the target\ncompilation architecture, and I am using the value amd64 to select 64-bit x86\n(AVX2 and AVX512 are instruction sets found on x86-64 CPUs). With\nGOARCH=amd64, the architecture-specific variable\nGOAMD64 configures the\nmicroarchitecture level for which to compile and Go 1.18 introduced these 4\ndifferent levels:\nGOAMD64=v1 (default): The baseline. \nGOAMD64=v2: all v1 instructions, \nGOAMD64=v3: all v2 instructions, \nAVX2, BMI1, BMI2, F16C, FMA, LZCNT, MOVBE, OSXSAVE.\nGOAMD64=v4: all v3 instructions, \nAVX512F, AVX512BW, AVX512CD, AVX512DQ, AVX512VL.\nIn 2026, I generally recommend compiling with GOAMD64=v3 so that functions\nlike bits.OnesCount8 are\ncompiled into intrinsics\n(POPCNT)\ninstead of using a lookup table.\nFor Intel CPUs, setting GOAMD64=v3 means your programs will only start on\nHaswell CPUs (2013) or newer; for AMD CPUs that means Zen 1 (2017) or newer.\nIn this specific case (DCS), I am even compiling with GOAMD64=v4. The v4\nmicroarchitecture level requires AVX512, which means AMD Zen 4, Zen 5 or newer\n(Intel’s story is… complicated). Luckily, both my main development PC (Zen 5)\nand the Debian Code Search server (Zen 4) are recent enough. Setting\nGOAMD64=v4 has little effect on Go 1.27 itself: the only change is that maps\nuse one less instruction (VPBROADCASTB instead of PSHUFB). But compiling\nwith GOAMD64=v4 allows us to move one more feature check from runtime to\ncompile time, see SIMD build tags.\nIt makes sense to set the microarchitecture level in your benchmark setup so\nthat you don’t measure the slow fallback implementations. I use export GOAMD64=v4 in my Makefile.\nBenchmarking setup\nGo’s built-in testing package contains support for\nbenchmarks which are written in\nfunctions of the form func BenchmarkXxx(b *testing.B). The simplest way to run\nsuch benchmarks is go test -bench=., but I ended up configuring a few\nconvenience make targets, which write results to bench.txt and compare\nagainst baseline.txt (the previous commit’s results, usually), using the very\nuseful benchstat tool.\nGOTEST=go test\n\n# -count=6 gives p≤0.002 in benchstat:\n# https://pkg.go.dev/golang.org/x/perf/cmd/benchstat\nBENCHFLAGS=-run=^$$ -bench=. -benchtime=200000x -count=6\n\n# use taskset -c1 to always pin to the same single core,\n# avoiding accidental scheduling on different cores on\n# mixed-core CPUs like the Ryzen 9 9950X3D.\nTASKSET=taskset -c 1\nBENCH=$(TASKSET) $(GOTEST) $(BENCHFLAGS)\n\n.PHONY: all test bench bench-baseline bench-relative\n\nall: test\n\nbench: test\n\t$(BENCH) | tee bench.txt\n# Compares compression ratio between C and Go implementation\n\tbenchstat -col /impl -row '/n /vals' -filter '-/impl:go-stream .unit:(encoded-bytes)' bench.txt\n# Compares performance between C (cgo) and Go implementation\n\tbenchstat -col /impl -row '/n /vals' -filter '.unit:(Mval/s)' bench.txt\n\nbench-baseline: test\n\t$(BENCH) | tee baseline.txt\n\nbench-relative: test\n\t$(BENCH) | tee bench.txt\n\tbenchstat -filter '-/impl:go-stream .unit:(encoded-bytes)' baseline.txt bench.txt\n\tbenchstat -filter '/impl:go .unit:(Mval/s)' baseline.txt bench.txt\n\n\nThe encoded-bytes and Mval/s units are custom metrics I am reporting from\nthe various sub-benchmarks, which are arranged\nsuch that I can filter / report them with benchstat.\nThe main encoder (and decoder) benchmarks compare 3 different implementations\n(cgo, Go, Go with the StreamEncoder API) with a number of benchmark\ncases\nthat are designed to cover the different block types and contain a similar mix\nof values as what we see in Debian Code Search:\n// reportMetrics adds Mval/s and encoded-bytes metrics to all benchmarks.\nfunc reportMetrics(b *testing.B, n int, nencoded int) {\n   b.ReportMetric(float64(nencoded), \"encoded-bytes\")\n   b.ReportMetric(float64(b.N*n)/1e6/b.Elapsed().Seconds(), \"Mval/s\")\n}\n\n// BenchmarkEncode/n=<N>/vals=<testcase>/impl=<c|go|go-stream>\n//\n// e.g. BenchmarkEncode/n=2048/vals=one-constant/impl=go-stream\nfunc BenchmarkEncode(b *testing.B) {\n   for _, tc := range allBenchCases() {\n     n := len(tc.vals)\n     b.Run(fmt.Sprintf(\"n=%d/vals=%s\", n, tc.name), func(b *testing.B) {\n       b.Run(\"impl=c\", func(b *testing.B) {\n         b.ReportAllocs()\n         var encoded []byte\n         buf := make([]byte, turbopfor.EncodingSize(n))\n         for b.Loop() {\n           encoded = turbopfor.P4nenc256v32Buf(buf, tc.vals)\n         }\n         reportMetrics(b, n, len(encoded))\n       })\n       b.Run(\"impl=go\", func(b *testing.B) {\n         b.ReportAllocs()\n         var be BlockEncoder\n         var encoded []byte\n         buf := make([]byte, 0, turbopfor.EncodingSize(n))\n         for b.Loop() {\n           encoded = be.EncodeN(buf, tc.vals)\n         }\n         reportMetrics(b, n, len(encoded))\n       })\n       b.Run(\"impl=go-stream\", func(b *testing.B) {\n         b.ReportAllocs()\n         var se StreamEncoder\n         var encoded int\n         for b.Loop() {\n           encoded = 0\n           for _, val := range tc.vals {\n             if se.Add(val) {\n               encoded += len(se.EncodeBlock())\n             }\n           }\n           encoded += len(se.EncodeBlock())\n         }\n         reportMetrics(b, n, encoded)\n       })\n     })\n   }\n}\n\n\nCPU counters: perf\nGo has included excellent performance tooling for many years, see the\n“Profiling Go Programs” blog post (2011) for an\nexample of how to use pprof, a sampling profiler. This profiler can help track\ndown which part of a program runs slow, or where memory allocations happen.\nOnce you identified the slow part of a program, how do you know why it’s slow?\nTo learn more about the specific bottlenecks your program encounters, you can\nconsult your CPU’s hardware performance\ncounters. For\nexample, you could check the branch\npredictor counters to see if\nyour program is slow due to a high number of branch mispredicts.\nOn Linux, the perf tool is the best way to access the CPU hardware performance\ncounters. A good starting point for working with perf is the documentation on\n“Top-down analysis with the perf\ntool”, which describes the\noptimization method that Intel established.\nIn my Makefile, I set up two perf targets:\n# GOTEST and TASKSET like shown in the earlier benchmarking setup section:\nGOTEST=go test -pgo=encode.cpuprof\nTASKSET=taskset -c 1\nPERFBENCHFLAGS=-test.bench='Encode/n=2048/vals=debian-mix/impl=go$$' -test.benchtime=200000x\n\n# Use perf(1) to capture AMD IBS (the equivalent to Intel PEBS)\n# PipelineL1 is roughly equivalent to Intel TopdownL1\nperf:\n\t$(GOTEST) -c\n\t$(TASKSET) perf stat -M PipelineL1 ./pforenc.test -test.run=^$$ $(PERFBENCHFLAGS)\n\tsudo perf record -F 4999 -e ibs_op// --call-graph fp ./pforenc.test -test.run=^$$ $(PERFBENCHFLAGS)\n\tsudo chmod 644 perf.data\n\n# 488281 iterations × 2048 values = 1.000e9 values, so counter/1e9 = per value.\nperf-per-value:\n\t$(GOTEST) -c\n\t$(TASKSET) perf stat -x, -e cycles:u,instructions:u,branches:u,branch-misses:u ./pforenc.test -test.run=^$$ -test.bench='Encode/n=2048/vals=debian-mix/impl=go$$' -test.benchtime=488281x 2>&1 >/dev/null | awk -F, '{printf \"%-16s %6.2f /val\\n\", $$3, $$1/1e9}'\n\n\nThe perf-per-value numbers are high level numbers that indicate how much work\nthe implementation is doing. Reducing the number usually increases speed.\nTo see the counters for each instruction (and source code lines), I use make perf, followed by perf report. A quick shortcut is perf annotate, which\ndirectly shows the hottest function.\nOptimizations (scalar)\nLet’s first see how far we can get without reaching for SIMD instructions.\n(The examples are not necessarily in commit order, but cherry-picked for clarity.)\nProfile-Guided Optimization (PGO)\nPGO stands for Profile-Guided Optimization and is a feature that Go introduced\nas a preview in Go 1.20 (released in February 2023) and shipped as ready for\ngeneral production use in Go 1.21 (released in August\n2023).\nThe idea is to capture a CPU profile that records where your program spends most\nof its CPU time, which you then provide to the Go compiler to give it more data\nto make better decisions.\nMost importantly, this way the Go compiler can inline functions much more\naggressively than its usual heuristics allow,\nwhich does have a measurably positive effect in my series of optimization\ncommits. Another optimization that a PGO profile allows the compiler to do is\nconditional devirtualization — but\nour TurboPFor code does not use any interfaces.\nMy strategy is to enable PGO before doing any other optimizations, so that we\nhave the full inlining budget available that PGO gives us, and can measure the\neffect of other commits clearly.\nSurprisingly, turning on PGO actually decreases our\nperformance\n(-13% geomean), but a closer investigation reveals that we just got unlucky. Let\nme explain.\nAside from inlining and conditional devirtualization, PGO also influences\nalignment: The Go compiler sets PCALIGNMAX(64, 31) on the first block of a\nloop (the “loop body”) for all loops in hot functions (per the PGO profile),\ni.e. Go will insert up to 31 bytes of padding to make the block land on a\n64-byte boundary. Documentation like AMD’s “Software Optimization Guide for the\nAMD Zen5 Microarchitecture” (2024,\n#58455) explicitly recommends aligning hot loops that way:\n[…] for hot loops, some further knowledge of trade-offs can be\nhelpful. Because the processor can read an aligned 64-byte fetch block every\ncycle, it is suggested to either align the start of the loop to the beginning\nof a 64-byte cache line […]\nIndeed, when compiling with -gcflags=all=-d=alignhot=0 to disable the\nalignment, performance remains as good as without PGO. How can the padding hurt\nmore than help?  The answer is: It’s not the padding itself! It’s a side-effect\nof the padding moving instructions to different addresses.\nIn the unlucky arrangement, a macro-fused CMPQ+JGE instruction pair now ends\nup exactly on a 32-byte boundary. However, the Go compiler ensures fused\nbranch sequences must never cross or end at a 32-byte boundary to fix Intel\nerratum\nSKX102\n(discussion: Go issue #35881) by\ninserting NOPs.\nThis NOP padding, unlike the loop alignment padding, is not free; these extra\ninstructions slow down our otherwise dispatch-bound loops.\nBecause the commits after the PGO enabling commit change the code, this unlucky\nsituation is avoided for the rest of the optimization series (by chance).\nReducing memory allocations\nMemory allocations are quite expensive, at least in comparison to\nencoding/decoding integers, so I followed my usual strategy of first reducing\nmemory allocations as much as possible.\nIn my goturbopfor teaching decoder, whenever the code needed a scratch buffer,\nit would allocate it right then and there with make():\n// p4dec32 decodes one block of TurboPFor-encoded 32 bit ints\nfunc (d *decoder) p4dec32(input []byte, output []uint32) (read int) {\n    // …\n  switch blockType {\n  case blockBitpackingExceptions:\n    bx, input := input[0], input[1:]\n    n := len(output)\n\n    exmap := input\n    nex := 0 // number of exceptions\n    for i := 0; i < n; i++ {\n      if exmap[i/8]&(1<<uint(i%8)) != 0 {\n        nex++\n      }\n    }\n    input = input[(n+7)/8:]\n\n    exceptions := make([]uint32, nex)\n    input = input[bitunpack32(input, exceptions, bx):]\n    input = input[d.bitunpack(input, output, b):]\n\n    for i := 0; i < n; i++ {\n      if exmap[i/8]&(1<<uint(i%8)) != 0 {\n        output[i] += exceptions[0] << b\n        exceptions = exceptions[1:]\n      }\n    }\n\n    return before - len(input)\n  }\n}\n\nThe Go compiler can turn make(T, n) calls into stack allocations, if n is\nknown at compile-time. But, in this case nex is not known at compile-time. We\ncan verify that Go calls into the runtime (runtime.makeslice) by dumping the\nobject code (assembly) with source annotated (-S):\n% cd ~/go/src/github.com/stapelberg/goturbopfor\n% git reset --hard 49b7c05cc61e77f0257568eb73833467714d2b4a\n% go test -c  # go1.27.0\n% go tool objdump -S goturbopfor.test | perl -nlE 'say if /p4dec32/ .. /^$/'\nTEXT github.com/stapelberg/goturbopfor.(*decoder).p4dec32(SB) /home/michael/go/src/github.com/stapelberg/goturbopfor/goturbopfor.go\nfunc (d *decoder) p4dec32(input []byte, output []uint32) (read int) {\n  0x549f60\t\t4c8da42460ffffff\tLEAQ 0xffffff60(SP), R12\n  0x549f68\t\t4d3b6610\t\tCMPQ R12, 0x10(R14)\n  0x549f6c\t\t0f86d9070000\t\tJBE 0x54a74b\n  0x549f72\t\t55\t\t\tPUSHQ BP\n  0x549f73\t\t4889e5\t\t\tMOVQ SP, BP\n  0x549f76\t\t4881ec18010000\t\tSUBQ $0x118, SP\n  0x549f7d\t\t48899c2430010000\tMOVQ BX, 0x130(SP)\n  0x549f85\t\t4889b42448010000\tMOVQ SI, 0x148(SP)\n\tif len(output) == 0 {\n  0x549f8d\t\t4d85c0\t\t\tTESTQ R8, R8\n  0x549f90\t\t0f84a7030000\t\tJE 0x54a33d\n  0x549f96\t\t660f1f840000000000\tNOPW 0(AX)(AX*1)\n  0x549f9f\t\t90\t\t\tNOPL\n[…]\n\t\texceptions := make([]uint32, nex)\n  0x54a4be\t\t488d057bec1700\t\tLEAQ 0x17ec7b(IP), AX\n  0x54a4c5\t\t4c89fb\t\t\tMOVQ R15, BX\n  0x54a4c8\t\t4889d9\t\t\tMOVQ BX, CX\n  0x54a4cb\t\te8f0ddf3ff\t\tCALL runtime.makeslice(SB)\n[…]\n\nAn easy speed-up was to avoid allocations through\nreuse\n(in goturbopfor). In the DCS pfordec package (with the improved\nAPI design), I ended up with a vals [256]uint32 field in the StreamDecoder\ntype, which brings us from 773 Mval/s to 858 Mval/s on the debian-mix:\n% benchstat -filter '/impl:go /vals:debian-mix .unit:(Mval/s)' \\\n  baseline.txt bench.txt\ngoos: linux\ngoarch: amd64\npkg: github.com/Debian/dcs/internal/turbopfor/pfordec\ncpu: AMD Ryzen 9 9950X3D 16-Core Processor\n           │ baseline.txt │             bench.txt              │\n           │    Mval/s    │   Mval/s     vs base               │\nn=2048        1.089k ± 1%   1.175k ± 0%   +7.85% (p=0.002 n=6)\nn=2039         974.7 ± 0%   1046.0 ± 0%   +7.32% (p=0.002 n=6)\nn=160          434.9 ± 1%    513.6 ± 5%  +18.11% (p=0.002 n=6)\ngeomean        772.9         857.7       +10.98%\n\nAside from the speed-up, avoiding memory allocations is generally nice in\nbenchmarks because it removes the garbage collector from the equation and makes\nit less likely that your benchmarks get other processes OOM-killed on the same\nmachine.\nGenerics for bit width specialization\nIn general, we want to make it easy for the compiler to understand as much as\npossible about our algorithm. Consider this bitpack implementation:\nfunc bitpack(dest []byte, vals []uint32, bitWidth int) []byte {\n  mask := uint32(1<<bitWidth - 1)\n  var acc uint64\n  var have int\n  for _, val := range vals {\n    acc |= uint64(val&mask) << have\n    have += bitWidth\n    for have >= 32 {\n      dest = binary.LittleEndian.AppendUint32(dest, uint32(acc))\n      acc >>= 32\n      have -= 32\n    }\n  }\n  for have > 0 {\n    dest = append(dest, byte(acc))\n    acc >>= 8\n    have -= 8\n  }\n  return dest\n}\n\n\nLet’s think through what determines the iterations and control flow this\nfunction uses:\nThe number of input values (vals), but not their actual value.\nThe bit width to pack into (bitWidth).\nWith a bit of careful rearrangement, we can provide the compiler with both, a\nfixed number of input values (say, 32), and a bit width, both known at compile\ntime. Why is this worthwhile? Because we can manually unroll the loop, let the\ncompiler eliminate much of the repetition and get much faster compiled code as a\nresult!\nLet’s first fix the number of input values to 32 and rewrite the loop to\ncalculate the position offsets within dest instead of changing dest on each\nvalue (with AppendUint32):\nfunc bitpack32Unrolled(dest []byte, vals *[32]uint32, bitWidth int) {\n  // only one bounds check for 32 values\n  dest = dest[: 4*bitWidth : 4*bitWidth]\n  mask := uint32(1<<bitWidth - 1)\n  var acc uint64\n  var have, pos int\n  // Manually unrolled loop starts here.\n  // Each iteration is identical except for the vals[x] index.\n  acc |= uint64(vals[0]&mask) << have\n  have += bitWidth\n  if have >= 32 {\n    binary.LittleEndian.PutUint32(dest[pos:pos+4], uint32(acc))\n    pos += 4\n    acc >>= 32\n    have -= 32\n  }\n\n  // vals[1] .. vals[30] elided for brevity\n\n  // Each loop iteration is 8 lines of Go code, so for 32 input values,\n  // bitpack32Unrolled contains 8*32 = 256 lines of code.\n\n  acc |= uint64(vals[31]&mask) << have\n  have += bitWidth\n  if have >= 32 {\n    binary.LittleEndian.PutUint32(dest[pos:pos+4], uint32(acc))\n    pos += 4\n    acc >>= 32\n    have -= 32\n  }\n\n  // have == 0; for all bitWidths\n}\n\nNext, we want to specialize not just for 32 input values, but also for each of\nthe 32 bit widths.\nCan we do better than hand-copying bitpack32Unrolled 32 times (= 8192 lines of Go code)?\nYes, we can use Go generics to help us with the code generation!\nIn Go, array types like [4]byte (not\nslices like []byte!)  contain the length of the array as part of their type,\nmeaning [1]byte (an array of length 1) is a different type than [2]byte.\nInstead of passing the bit width as a function parameter, we can declare 32\ndifferent types (one for each bit width) and recover the bit width (at compile\ntime!) from the type system:\ntype bitWidthT interface {\n  [1]byte | [2]byte | [3]byte | [4]byte | [5]byte |\n  [6]byte | [7]byte | [8]byte | [9]byte | [10]byte |\n  [11]byte | [12]byte | [13]byte | [14]byte | [15]byte |\n  [16]byte | [17]byte | [18]byte | [19]byte | [20]byte |\n  [21]byte | [22]byte | [23]byte | [24]byte | [25]byte |\n  [26]byte | [27]byte | [28]byte | [29]byte | [30]byte |\n  [31]byte | [32]byte\n}\n\nfunc bitpack32Unrolled[T bitWidthT](dest []byte, vals *[32]uint32) {\n  var zero T\n  bitWidth := len(zero)                  // known at compile time\n  dest = dest[: 4*bitWidth : 4*bitWidth] // make cap known at compile time\n  mask := uint32(1<<bitWidth - 1)\n  var acc uint64\n  var have, pos int\n  // Manually unrolled loop starts here.\n  // Each iteration is identical except for the vals[x] index.\n  acc |= uint64(vals[0]&mask) << have\n  have += bitWidth\n  if have >= 32 {\n    binary.LittleEndian.PutUint32(dest[pos:pos+4], uint32(acc))\n    pos += 4\n    acc >>= 32\n    have -= 32\n  }\n\n  // vals[1] .. vals[31] elided for brevity\n}\n\nWhen we instantiate bitpack32Unrolled[bitWidthT] with all 32 different types\n([1]byte, [2]byte, …, [32]byte), the compiler substitutes the bitWidthT\ntype parameter and produces 32 copies of the function, which we can find in our\ncompiled executable with names like\ngithub.com/Debian/dcs/internal/turbopfor/pforenc.bitpack32Unrolled[go.shape.[12]uint8]. The\n“shape” of a generic type is based on its memory layout, so a shape for\n[1]byte must be different than the shape for [2]byte.\nBecause the bitWidth is now known at compile time, the Go compiler can\ngenerate close to the optimal machine code for each bit width, which we can\nconfirm using go tool objdump.\nThe code is branchless (after the one bounds check per 32 values) and aside from\nthe loads and stores (from/to memory) consists only of shifts and bit\noperations, all with constant operands:\n% go test -c && go tool objdump -S pforenc.test\n[…]\nTEXT github.com/Debian/dcs/internal/turbopfor/pforenc.bitpack32Unrolled[go.shape.[28]uint8](SB) /home/michael/dcs/internal/turbopfor/pforenc/bitpackunroll.go\nfunc bitpack32Unrolled[T bitWidthT](dest []byte, vals *[32]uint32) {\n  0x660580              55                      PUSHQ BP\n  0x660581              4889e5                  MOVQ SP, BP\n  0x660584              48895c2418              MOVQ BX, 0x18(SP)\n        dest = dest[: 4*bitWidth : 4*bitWidth] // make cap known at compile time\n  0x660589              4883ff70                CMPQ DI, $0x70\n  0x66058d              0f820b030000            JB 0x66089e\n        acc |= uint64(vals[0]&mask) << have\n  0x660593              8b06                    MOVL 0(SI), AX\n  0x660595              25ffffff0f              ANDL $0xfffffff, AX\n        acc |= uint64(vals[1]&mask) << have\n  0x66059a              8b4e04                  MOVL 0x4(SI), CX\n  0x66059d              81e1ffffff0f            ANDL $0xfffffff, CX\n  0x6605a3              48c1e11c                SHLQ $0x1c, CX\n  0x6605a7              4809c8                  ORQ CX, AX\n                acc >>= 32\n  0x6605aa              4889c1                  MOVQ AX, CX\n  0x6605ad              48c1e820                SHRQ $0x20, AX\n                binary.LittleEndian.PutUint32(dest[pos:pos+4], uint32(acc))\n  0x6605b1              90                      NOPL\n        b[0] = byte(v)\n  0x6605b2              890b                    MOVL CX, 0(BX)\n        acc |= uint64(vals[2]&mask) << have\n  0x6605b4              8b4e08                  MOVL 0x8(SI), CX\n  0x6605b7              81e1ffffff0f            ANDL $0xfffffff, CX\n  0x6605bd              48c1e118                SHLQ $0x18, CX\n  0x6605c1              4809c1                  ORQ AX, CX\n                acc >>= 32\n  0x6605c4              4889c8                  MOVQ CX, AX\n  0x6605c7              48c1e920                SHRQ $0x20, CX\n                binary.LittleEndian.PutUint32(dest[pos:pos+4], uint32(acc))\n  0x6605cb              90                      NOPL\n        b[0] = byte(v)\n  0x6605cc              894304                  MOVL AX, 0x4(BX)\n\nNow we need to actually call bitpack32 from the general bitpack function:\nfunc bitpack(dest []byte, vals []uint32, bitWidth int) []byte {\n  if bitWidth == 0 {\n    return dest // no payload, sparse block with only exceptions\n  }\n  if len(vals) >= 32 {\n    size := 4 * bitWidth\n    for len(vals) >= 32 {\n      existing := len(dest)\n      dest = slices.Grow(dest, size)[:existing+size]\n      bitpack32(dest[existing:] /*append*/, (*[32]uint32)(vals), bitWidth)\n      vals = vals[32:]\n    }\n  }\n  mask := uint32(1<<bitWidth - 1)\n  var acc uint64\n  var have int\n  for _, val := range vals {\n    acc |= uint64(val&mask) << have\n    have += bitWidth\n    for have >= 32 {\n      dest = binary.LittleEndian.AppendUint32(dest, uint32(acc))\n      acc >>= 32\n      have -= 32\n    }\n  }\n  for have > 0 {\n    dest = append(dest, byte(acc))\n    acc >>= 8\n    have -= 8\n  }\n  return dest\n}\n\nfunc bitpack32(dest []byte, vals *[32]uint32, bitWidth int) {\n  switch bitWidth {\n  case 1: bitpack32Unrolled[[1]byte](dest, vals)\n  case 2: bitpack32Unrolled[[2]byte](dest, vals)\n  case 3: bitpack32Unrolled[[3]byte](dest, vals)\n  case 4: bitpack32Unrolled[[4]byte](dest, vals)\n  case 5: bitpack32Unrolled[[5]byte](dest, vals)\n  case 6: bitpack32Unrolled[[6]byte](dest, vals)\n  case 7: bitpack32Unrolled[[7]byte](dest, vals)\n  case 8: bitpack32Unrolled[[8]byte](dest, vals)\n  case 9: bitpack32Unrolled[[9]byte](dest, vals)\n  case 10: bitpack32Unrolled[[10]byte](dest, vals)\n  case 11: bitpack32Unrolled[[11]byte](dest, vals)\n  case 12: bitpack32Unrolled[[12]byte](dest, vals)\n  case 13: bitpack32Unrolled[[13]byte](dest, vals)\n  case 14: bitpack32Unrolled[[14]byte](dest, vals)\n  case 15: bitpack32Unrolled[[15]byte](dest, vals)\n  case 16: bitpack32Unrolled[[16]byte](dest, vals)\n  case 17: bitpack32Unrolled[[17]byte](dest, vals)\n  case 18: bitpack32Unrolled[[18]byte](dest, vals)\n  case 19: bitpack32Unrolled[[19]byte](dest, vals)\n  case 20: bitpack32Unrolled[[20]byte](dest, vals)\n  case 21: bitpack32Unrolled[[21]byte](dest, vals)\n  case 22: bitpack32Unrolled[[22]byte](dest, vals)\n  case 23: bitpack32Unrolled[[23]byte](dest, vals)\n  case 24: bitpack32Unrolled[[24]byte](dest, vals)\n  case 25: bitpack32Unrolled[[25]byte](dest, vals)\n  case 26: bitpack32Unrolled[[26]byte](dest, vals)\n  case 27: bitpack32Unrolled[[27]byte](dest, vals)\n  case 28: bitpack32Unrolled[[28]byte](dest, vals)\n  case 29: bitpack32Unrolled[[29]byte](dest, vals)\n  case 30: bitpack32Unrolled[[30]byte](dest, vals)\n  case 31: bitpack32Unrolled[[31]byte](dest, vals)\n  case 32: bitpack32Unrolled[[32]byte](dest, vals)\n  }\n}\n\nEncoding remainder blocks is quite a bit faster (full blocks use the vertical\nlayout anyway):\n% benchstat -filter '/impl:go /n:160 .unit:(Mval/s)' baseline.txt bench.txt\ngoos: linux\ngoarch: amd64\npkg: github.com/Debian/dcs/internal/turbopfor/pforenc\ncpu: AMD Ryzen 9 9950X3D 16-Core Processor\n                         │ baseline.txt │             bench.txt              │\n                         │    Mval/s    │   Mval/s     vs base               │\nvals=bitpacking-bw1          751.2 ± 3%   1120.5 ± 0%  +49.15% (p=0.002 n=6)\nvals=bitpacking-bw2          716.8 ± 2%   1176.0 ± 0%  +64.07% (p=0.002 n=6)\nvals=bitpacking-bw7          700.0 ± 1%   1078.5 ± 0%  +54.08% (p=0.002 n=6)\nvals=bitpacking-bw1-exc      524.8 ± 1%    736.8 ± 0%  +40.40% (p=0.002 n=6)\nvals=bitpacking-bw2-exc      543.7 ± 1%    758.2 ± 0%  +39.46% (p=0.002 n=6)\nvals=bitpacking-bw7-exc      566.7 ± 1%    787.7 ± 0%  +38.99% (p=0.002 n=6)\nvals=bitpacking-vb-exc       442.6 ± 1%    616.5 ± 0%  +39.29% (p=0.002 n=6)\nvals=sparse-exc              532.4 ± 0%    787.8 ± 0%  +47.97% (p=0.002 n=6)\nvals=sparse-vb-exc           408.9 ± 1%    597.8 ± 0%  +46.20% (p=0.002 n=6)\nvals=debian-mix              559.5 ± 0%    783.8 ± 9%  +40.09% (p=0.002 n=6)\n\nThis performance win comes at the cost of binary size increase. In this case,\nthe .text section (executable code) grows by about 20 KB and the .gopclntab\nsection grows by another 26 KB. Definitely a price I am very willing to pay, but\nthe case might not be as clear in all circumstances.\nOptimization: Bigger strides with SIMD\nEven without reaching for SIMD instructions, a TurboPFor implementation can be\nmade faster by making it work bigger strides. Take this code from the\ngoturbopfor teaching decoder which counts the number of exceptions by checking\nif each value’s bit is set in the exception bitmap:\ncase blockBitpackingExceptions:\n  bx, input := input[0], input[1:]\n  n := len(output)\n\n  exmap, input := input, input[(n+7)/8:]\n  nex := 0 // number of exceptions\n  for i := range n {\n    if exmap[i/8]&(1<<uint(i%8)) != 0 {\n      nex++\n    }\n  }\n  exceptions := d.scratch[:nex]\n\nWe can use the bits.OnesCount64\nfunctions to count ones bits in the exception bitmap, 64 values at a time. For\nremainder blocks, the rest is processed 8 values (1 byte) at a time:\ni := 0\nfor ; i+8 <= n/8; i += 8 {\n  xm8 := binary.LittleEndian.Uint64(exmap[i:])\n  nex += bits.OnesCount64(xm8)\n}\nfor ; i < (n+7)/8; i++ {\n  xmb := exmap[i]\n  // Clear the bits which do not belong to the exception map:\n  if rem := n - i*8; rem < 8 {\n    xmb &= 1<<rem - 1\n  }\n  // Go compiles OnesCount32 into an intrinsic,\n  // but not OnesCount8, so we convert to uint32:\n  nex += bits.OnesCount32(uint32(xmb))\n}\n\n\nOnesCount64 uses a 64-bit register. For comparison, AVX2 SIMD instructions use\n256-bit registers (= 8 uint32) and AVX512 SIMD instructions use 512-bit registers.\nIn the following sections, we will first set up our build tags for conditional\ncompilation to use a trivial SIMD instruction, then walk through an AVX2 and\nAVX512 SIMD kernel.\nSIMD build tags\nLet’s assume we have the following scalar code:\nconstant.go:\npackage pfordec\n\nfunc fillConstant(output []uint32, val uint32) {\n  for i := range output {\n    output[i] = val\n  }\n}\n\n\nTo increase throughput, we can use AVX2 instructions if they are available on the CPU on which the program runs, i.e. using runtime dispatch. We’ll first rename fillConstant to fillConstantScalar (it’s now the fallback path):\nconstant.go:\npackage pfordec\n\nfunc fillConstantScalar(output []uint32, val uint32) {\n  for i := range output {\n    output[i] = val\n  }\n}\n\n\nNext, we’ll supply two different implementations (constant_nosimd.go and constant_amd64.go), the latter of which is selected when compiling for GOARCH=amd64 with GOEXPERIMENT=simd (the latter will hopefully be dropped in a later version of Go). The nosimd variant just dispatches to the fillConstantScalar, which will likely be inlined:\n//go:build !goexperiment.simd || !amd64\n\npackage pfordec\n\nfunc fillConstant(output []uint32, val uint32) {\n  fillConstantScalar(output, val)\n}\n\n\nThe constant_amd64.go variant assigns the hasAVX2 global variable by doing a CPUID check and then jumps to the scalar fallback if !hasAVX2, i.e. the CPU is too old:\n//go:build goexperiment.simd && amd64\n\npackage pfordec\n\nimport \"simd/archsimd\"\n\nvar hasAVX2 = archsimd.X86.AVX2()\n\nfunc fillConstant(output []uint32, val uint32) {\n  if !hasAVX2 {\n    fillConstantScalar(output, val)\n    return\n  }\n  val8 := archsimd.BroadcastUint32x8(val)\n  i := 0\n  for ; i+8 <= len(output); i += 8 {\n    val8.StoreArray((*[8]uint32)(output[i : i+8]))\n  }\n  // use the scalar implementation for the last <= 7 elements\n  fillConstantScalar(output[i:], val)\n}\n\n\nWe can go one step further by conditionally compiling const hasAVX2 = true\nwhen GOAMD64 is set to v3 or higher (i.e. the amd64.v3 build tag is\nset). As a practical example from Debian Code Search, we currently need the\nfollowing checks / dispatches:\ncode\n\t\t\t\t\tfunction\n\t\t\t\t\tvector instruction set\n\t\t\t\t\tGOAMD64\n\t\t\t\nencoder\n\t\t\t\t\tbitpack256v\n\t\t\t\t\tAVX2\n\t\t\t\t\tGOAMD64=v3\n\t\t\t\nencoder\n\t\t\t\t\texbitmap\n\t\t\t\t\tAVX512\n\t\t\t\t\tGOAMD64=v4\n\t\t\t\nencoder\n\t\t\t\t\tscan\n\t\t\t\t\tAVX512+VBMI+GFNI+BITALG\n\t\t\t\t\tn/a\n\t\t\t\ndecoder\n\t\t\t\t\tbitunpack\n\t\t\t\t\tAVX2\n\t\t\t\t\tGOAMD64=v3\n\t\t\t\ndecoder\n\t\t\t\t\tbitunpack256v32\n\t\t\t\t\tAVX2\n\t\t\t\t\tGOAMD64=v3\n\t\t\t\ndecoder\n\t\t\t\t\tbitunpack256v32Ex\n\t\t\t\t\tAVX512\n\t\t\t\t\tGOAMD64=v4\n\t\t\t\nIn DCS, the effect is measurably positive, but\nsmall.\nThe 256 uint32 vertical layout\nFirst, here is the layout explanation from my 2019 TurboPFor analysis blog\npost:\nIn regular (non-SIMD) bitpacking, integers are stored on disk one after\nthe other, padded to a full byte, as a byte is the smallest addressable unit\nwhen reading data from disk. For example, if you bitpack only one 3 bit int,\nyou will end up with 5 bits of padding.\nSIMD bitpacking works like regular bitpacking, but processes 8 uint32\nlittle-endian values at the same time, leveraging the AVX instruction\nset. The following\nillustration shows the order in which 3-bit integers are decoded from disk:\nThe scalar implementation uses an array of 8 uint64 to process 8 values at a\ntime:\nfunc bitunpack256v32(input []byte, dest []uint32, bitWidth int) (read int) {\n  mask := uint64(1)<<bitWidth - 1\n  orig := len(input)\n  var bits uint\n  var acc [8]uint64 // accumulator: current+next bits\n  for op := 0; op < len(dest); {\n    if bits < uint(bitWidth) {\n      // read 8 more uint32s\n      for i := range 8 {\n        acc[i] |= uint64(binary.LittleEndian.Uint32(input)) << bits\n        input = input[4:]\n      }\n      bits += 32\n    }\n    for i := range 8 {\n      dest[op] = uint32(acc[i] & mask)\n      op++\n      acc[i] >>= bitWidth\n    }\n    bits -= uint(bitWidth)\n  }\n  return orig - len(input)\n}\n\nThe SIMD version also processes 8 values, but without a for i := range 8 loop!\nOne difference is that we no longer have the luxury of using uint64 for acc\n(holding rest and current bits); because AVX2 registers only fit 8 uint32 (not\n8 uint64). Instead, we split acc into rest8 and cur8.\nfunc bitunpack256v32(fullinput []byte, fulldest []uint32, bitWidth int) (read int) {\n  dest := fulldest[:256]\n  if bitWidth == 0 {\n    clear(dest)\n    return 0\n  }\n  n := 32 * int(bitWidth)\n  input := fullinput[:n] // tell the Go compiler how long the input is\n  mask8 := archsimd.BroadcastUint32x8(uint32(1)<<bitWidth - 1)\n  bitWidth8 := archsimd.BroadcastUint32x8(uint32(bitWidth))\n  var bits uint\n  pos := 0\n  // var acc [8]uint64\n  var rest8 archsimd.Uint32x8\n  var cur8 archsimd.Uint32x8\n  for op := 0; op < 256; op += 8 {\n    if bits < uint(bitWidth) {\n      // read 8 more uint32s\n      // acc[i] |= uint64(binary.LittleEndian.Uint32(input)) << bits\n      next := archsimd.LoadUint8x32(input[pos : pos+32]).ReshapeToUint32s()\n      pos += 32  // input = input[4:]\n      cur8 = rest8.Or(next.ShiftAllLeft(uint64(bits)))\n      // acc[i] >>= bitWidth\n      rest8 = next.ShiftAllRight(uint64(uint(bitWidth) - bits))\n      bits += 32\n    } else {\n      cur8 = rest8\n      // acc[i] >>= bitWidth\n      rest8 = rest8.ShiftRight(bitWidth8)\n    }\n    // dest[op] = uint32(acc[i] & mask)\n    cur8.And(mask8).Store(dest[op : op+8])\n    bits -= uint(bitWidth)\n  }\n  return n\n}\n\n\nThe SIMD version benchmarks about 3x as fast as the scalar version.\nAnother significant speedup is to use generics for bit width\nspecialization for this SIMD kernel so that\nbitWidth becomes a compile-time constant and the compiler can generate better\ncode.\nPositional Popcount\nFor my TurboPFor encoder, I implemented the same techniques as described above:\nBitpack full blocks with SIMD (AVX2)\nGather exceptions using SIMD (AVX512)\nUse generics to specialize per bit width\nThese changes are sufficient to roughly match the cgo performance, but then\nClaude Fable 5 found another 2x speed-up on top of that!\nThe key observation is that once encoding blocks is fast, the preceding step of\nscanning the input values to decide which block type to use becomes the\nbottleneck. Here is the encoder’s main encode function, which first does one\npass over the input values (scan) and then prices all different block types at\nall relevant bit widths (requires fast access to the scan histogram):\nfunc (be *BlockEncoder) encode(dest []byte, vals []uint32, layout blockLayout) []byte {\n  var stats stats\n  scan(&stats, vals) // gathers statistics from every value in vals\n  bitWidth := bits.Len32(stats.or)\n  if stats.or == stats.and {\n    return be.encodeConstant(dest, vals, bitWidth)\n  }\n  n := len(vals)\n  // bitpacking is the default, unless we find a more efficient block type.\n  bestType := blockBitpacking\n  bestB := bitWidth\n  best := priceBitpack(n, bitWidth, layout)\n\n  // Walk from high bitWidths to low: to break ties, we prefer\n  // the encoding with fewer exceptions (for faster decoding).\n  for b := bitWidth - 1; b >= 0; b-- { // up to 32 iterations\n    nex := int(stats.cnt[b])\n    size := priceBitpackExceptions(n, b, bitWidth, nex, layout)\n    if size < best {\n      bestType = blockBitpackingExceptions\n      bestB = b\n      best = size\n    }\n    // Over-approximate the number of VB bytes.\n    vb := nex + // exceptions using 1, 2, 3, 4, or 5 VB bytes\n      int(stats.cnt[b+7]+ // exceptions using 2, 3, 4, or 5 VB bytes\n        stats.cnt[b+14]+ // exceptions using 3, 4, or 5 VB bytes\n        stats.cnt[b+19]+ // exceptions using 4 or 5 VB bytes\n        stats.cnt[b+24]) // exceptions using 5 VB bytes\n    size = headerBytes + headerExBytes + payloadBytes(n, b, layout) + vb + nex\n    if size < best {\n      bestType = blockBitpackingVBExceptions\n      bestB = b\n      best = size\n    }\n  }\n  switch bestType {\n  case blockBitpacking:\n    return be.encodeBitpack(dest, vals, layout, bitWidth)\n  case blockBitpackingExceptions:\n    return be.encodeBitpackExc(dest, vals, layout, bestB, bitWidth-bestB)\n  case blockBitpackingVBExceptions:\n    return be.encodeBitpackVBExc(dest, vals, layout, bestB, int(stats.cnt[bestB]))\n  default:\n    panic(\"BUG: bestType not implemented\")\n  }\n}\n\nI’ll show you a slightly shortened version of scan, the function which is the bottleneck:\ntype stats struct {\n  // cnt[n] = how many values where bits.Len32(val)>n,\n  // i.e. how many exceptions are required for bitWidth=n.\n  // Padded so that cnt[b+24] is always in bounds.\n  cnt [32 + 24]uint32\n}\n\nfunc scan(output *stats, vals []uint32) {\n  for _, val := range vals {\n    for b := range bits.Len32(val) {\n      output.cnt[b]++ // b bits are not enough to store val\n    }\n  }\n}\n\nLet’s consider the following 3 example values to understand the resulting cnt:\ninput\n\t\t\t\t\tinput (bin)\n\t\t\t\t\tbits.Len32\n\t\t\t\n23\n\t\t\t\t\t0b0000010111\n\t\t\t\t\t5\n\t\t\t\n5\n\t\t\t\t\t0b0000000101\n\t\t\t\t\t3\n\t\t\t\n666\n\t\t\t\t\t0b1010011010\n\t\t\t\t\t10\n\t\t\t\nThe resulting cnt exception count histogram would contain (cnt shortened to c):\nc[0]\n\t\t\t\t\tc[1]\n\t\t\t\t\tc[2]\n\t\t\t\t\tc[3]\n\t\t\t\t\tc[4]\n\t\t\t\t\tc[5]\n\t\t\t\t\tc[6]\n\t\t\t\t\tc[7]\n\t\t\t\t\tc[8]\n\t\t\t\t\tc[9]\n\t\t\t\t\tc[10]\n\t\t\t\n3\n\t\t\t\t\t3\n\t\t\t\t\t3\n\t\t\t\t\t2\n\t\t\t\t\t2\n\t\t\t\t\t1\n\t\t\t\t\t1\n\t\t\t\t\t1\n\t\t\t\t\t1\n\t\t\t\t\t1\n\t\t\t\t\t0\n\t\t\t\nIn words, this means that at bit width 10, we could encode all the values\nwithout any exceptions.\nBut most values do not need 10 bits, so a bit width of 5 would be more\nefficient, but requires storing one exception. Encoding at bit width 4 requires\n2 exceptions, and so on.\nThe scan function above is intentionally kept simple for illustration. We can\nmake it faster by moving the per-bit-width loop outside the per-element\nloop.\nThe fast version still needs about 12 instructions per value. With SIMD, we can\nreduce this to by 8x to only 1.5 instructions per value!\nThe trick: smear masks enable positional popcount\nThe trick is to turn each input value into its “smear mask” (imagine taking the\nfirst 1 bit and smearing it across the remaining positions). Here are the smear\nmasks for our example:\ninput\n\t\t\t\t\tinput (bin)\n\t\t\t\t\tbits.Len32\n\t\t\t\t\t“smear mask”\n\t\t\t\n23\n\t\t\t\t\t0b0000010111\n\t\t\t\t\t5\n\t\t\t\t\t0b0000011111\n\t\t\t\n5\n\t\t\t\t\t0b0000000101\n\t\t\t\t\t3\n\t\t\t\t\t0b0000000111\n\t\t\t\n666\n\t\t\t\t\t0b1010011010\n\t\t\t\t\t10\n\t\t\t\t\t0b1111111111\n\t\t\t\nTurning a value into its smear mask is computationally cheap:\nGo implements BitLen(x) (functions like bits.Len32) by calculating 32 - LZCNT(x). We can calculate the “smear mask” of a value with ^uint32(0) >> LZCNT(x), i.e. starting with a 32-one-bits mask and shifting it by the number\nof leading zeros.\nNow, to obtain e.g. cnt[4], we can count the 1 bits at bit position 4 of all\ninput values.\nThe POPCNT instruction counts bits very efficiently, but it counts one bits\nwithin a register, so it counts rows, not columns. Counting columns is called\nPositional Population Count.\nI found the following papers that describe positional popcount with SIMD:\n2019: “Efficient Computation of Positional Population Counts Using SIMD\nInstructions” (Klarqvist, Muła, Lemire)\nintroduces an AVX512 implementation using Carry-Save Adder\n(CSA) networks, but in my\ntesting, that approach is slower for TurboPFor encoding.\n2024: “Histogramming bytes with positional popcount (GF2P8AFFINEQB\nedition)”\n(Harold Aptroot) shared a C++\nimplementation illustrating the\ntechnique I am using. If you are not familiar with how C++ vector intrinsics\nlook, take a look at this example.\n2025: “Faster Positional-Population Counts for AVX2, AVX-512, and\nASIMD” (Clausecker, Lemire, Schintke)\nimproves performance over the 2019 paper, but cites the Aptroot blog post as\n“Future Work”, promising even faster processing for smaller inputs.\nPositional Popcount: a visual explanation\nTo understand the AVX512 implementation of positional popcount, I found it most\nhelpful to visualize an AVX512 register (512 bits, i.e. 64 bytes). The graphic\nbelow uses the Uint64x8 layout, meaning it divides the register into 8 lanes\nof 64 bits (= 8 bytes) each.\nThis illustration shows the whole process: how uint32s are loaded into an\nAVX512 register (all 4 of its bytes, in sequence) and where we end up, i.e. the\n32 positional popcounts:\n\n\n\nLet’s break down this process into its individual steps.\nFirst, we turn each loaded value into its smear mask as explained above.\nThe VPOPCNTB vector instruction calculates POPCNT (1 byte) of 64 bytes at\nonce, but first we need to shuffle the bytes inside the register: in load\norder, we have a full uint32 (4 bytes), followed by another uint32, per\nlane. First, we permute the bytes (VPERMB) such that all the first bytes of\neach value end up in one lane (“transpose the bytes”):\n\n\n\nNext, we “transpose the bits” using the GF2P8AFFINEQB instruction, which\nsounds scary but turns out to be quite flexible for bit manipulation of all\nkinds. The GF2P8AFFINEQB instruction is also “the star of the show” in Go’s\nGreen Tea Garbage Collector (2025). Here is the\nbit transpose, shown in the AVX512 register layout (see below for a different\nlayout):\n\n\n\nI found it easier to understand the transpose step when arranging the 8 bytes of\nlane 0 from top-to-bottom (instead of left-to-right), because then it looks like\na 90 degree clockwise rotation:\n\n\n\nNow we can use VPOPCNTB to count the bits in all 64 bytes at once:\n\n\n\nAfter all loop iterations (processing 16 values each) are done, we add the two\ngroups (first 8 values, second 8 values) to obtain the 32 exception counts:\n\n\n\nPositional Popcount: Go SIMD\nHere is the Go code that implements what I described visually above:\nfunc scanSIMD(output *stats, vals []uint32) {\n  ones16 := archsimd.BroadcastUint32x16(^uint32(0)) // 16 32-one-bits masks\n  shuffle := archsimd.LoadUint8x64Array(&scanShuffle)\n  units := archsimd.LoadUint8x64Array(&scanUnits)\n  var acc archsimd.Uint8x64\n  idx := 0\n  for ; idx+16 <= len(vals); idx += 16 {\n    v := archsimd.LoadUint32x16(vals[idx : idx+16])\n    // Replace all values with their smear masks.\n    smear := ones16.ShiftRight(v.LeadingZeros()).ReshapeToUint8s()\n    // Transpose: shuffle the bytes, then transpose the bits.\n    matrices := smear.Permute(shuffle).ReshapeToUint64s()\n    transposed := units.GaloisFieldAffineTransform(matrices, 0)\n    // Popcount 64 bytes at once into the accumulator.\n    acc = acc.Add(transposed.OnesCount())\n  }\n  // Store the accumulator into output.cnt:\n  // Widen the two groups of byte counts to uint16 lanes (so that\n  // 128+128 = 256 fits), fold them into cnt[b] for b=0..31,\n  // then widen again to the uint32 lanes of output.cnt.\n  sum := acc.GetLo().ExtendToUint16().Add(acc.GetHi().ExtendToUint16())\n  sum.GetLo().ExtendToUint32().Store(output.cnt[0:16])\n  sum.GetHi().ExtendToUint32().Store(output.cnt[16:32])\n  // scalar tail for the 0..15 remaining values\n  for _, val := range vals[idx:] {\n    for b := range bits.Len32(val) {\n      output.cnt[b]++\n    }\n  }\n}\n\n\nHave a look at the commit introducing positional popcount to\nDCS\nfor the full code (including shuffle tables and ISA checks) as well as the\ndetailed benchmark results.\nGo even faster?\nThe SIMD optimizations I showed above beat the cgo TurboPFor library that Debian\nCode Search used before. When comparing apples to apples, i.e. backporting the\nAVX512 kernels and positional popcount technique to C TurboPFor, Go benchmarks a\nlittle slower at ≈1.4x C.\nCould we make my Go TurboPFor implementation even faster, to truly match the C\nspeed?\nYes! But also no. Let me explain:\nWe could use more SIMD instructions to remove all code that still processes\none value at a time. For example, in my encoder’s encodeBitpackVBExc\nfunction. Or we could price all bit widths concurrently in encode. Or in\nthe decoder’s exception apply code path. \nA big part of the performance gap is due to Go’s bounds\nchecks. While it costs\nperformance, bounds checking is great for safety, so I will not turn off\nbounds checking. The Go compiler eliminates a number of bounds checks when it\nunderstands it’s safe to do so. One optimization avenue could be to make the\nprove pass in the Go compiler smarter to eliminate more bounds checks.\nWhen doing mid-stack inlining (proposal\n#19348)\n(2017), Go sometimes needs to put NOP instructions into the binary so that\nit can attach inlining markers. For dispatch-bound functions, these extra\nNOPs can measurable slow down execution.\nThe Go compiler currently allows specifying the architecture (GOARCH=amd64)\nand microarchitecture (GOAMD64=v3), but not a specific CPU architecture\n(like AMD Zen 4). Therefore, CPU-specific workarounds for one vendor affect\nall the generated code. The specific one I encountered in my code is that the\nGo compiler emits XORL CX,CX before every POPCNT to break a\nfalse-output-dependency from the Intel Sandy Bridge Skylake era, which is\nunnecessary on AMD Zen CPUs. \nAfter all of the above points are addressed, what remains is better code\ngeneration in specific cases. To illustrate what I mean, consider the example\nof incrementing a loop variable, where Go re-derives an index every time: \nPOPCNTL; ADDQ DI,CX; LEAQ (base)(CX*4) (3 instructions) \npopcnt; lea rax,[rax+4*rdi] (2 instructions) \nConclusion\nGo’s SIMD support makes available — in Go code without having to resort to cgo\nor assembly — a powerful part of modern CPUs which allows speeding up the kind\nof computation that TurboPFor needs by an order of magnitude! 😲\nI found it very valuable to use a coding agent (Claude Code, with Opus 5 and\nFable 5 in this case) to help with the many tedious parts of such performance\nwork (and still it took me weeks!). The LLM can read objdump output much faster\nthan I can, can see patterns and correlations I might never identify, never\nbecomes frustrated after a compiler error or runtime panic, and never runs out\nof patience to run one more experiment, as long as I give it measurable and\nreachable goals.\nThe performance of the SIMD code which one can get from the Go compiler is\npretty close to what a good C compiler like clang provides. The CPU performance\ncounters show value decoding speeds of 7 instructions/cycle (IPC) on a machine\nwhere the maximum is 8 IPC.\nTo me, SIMD support is a very welcome addition to Go.",
+      "id": "9df960d52a02ad36ff0230bf988d424741f130f21bb81d992fa0ac14d1baaf30",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "深入探讨Go SIMD在Debian代码搜索中实现高性能整数压缩的实践，技术深度极高。",
+      "reason": "展示了Go语言的前沿特性和系统级优化技巧，对高性能计算和编程领域有重要参考价值，符合编程工具主题优先级。",
+      "tags": [
+        "Go语言",
+        "SIMD",
+        "性能优化",
+        "数据压缩",
+        "搜索引擎",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "We monitor internal coding agents for misalignment",
+      "link": "https://openai.com/index/how-we-monitor-internal-coding-agents-misalignment/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-06T16:37:55.000Z",
+      "summary": "Article URL: https://openai.com/index/how-we-monitor-internal-coding-agents-misalignment/\nComments URL: https://news.ycombinator.com/item?id=49588214\nPoints: 30\n# Comments: 17",
+      "id": "0d4c9325e15ebfd9daad3e6443fc9f387f4a5a352316844e21c41c744051fef9",
+      "ref_id": "1",
+      "recommendationScore": 90,
+      "popularityScore": 60,
+      "priority": "high",
+      "comment": "深入探讨了OpenAI如何监控内部编码AI代理的对齐问题。",
+      "reason": "核心AI主题，内容具有高技术深度和新颖性，对AI领域从业者和研究人员极具价值。",
+      "tags": [
+        "AI",
+        "AI安全",
+        "对齐",
+        "OpenAI",
+        "编程代理"
+      ]
+    },
+    {
+      "title": "Research acceleration: The view inside OpenAI",
+      "link": "https://openai.com/index/research-acceleration-view-inside-openai",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-06T15:08:44.000Z",
+      "summary": "Article URL: https://openai.com/index/research-acceleration-view-inside-openai\nComments URL: https://news.ycombinator.com/item?id=49587217\nPoints: 41\n# Comments: 13",
+      "id": "3784d7aba9718af9aa1923cc7e21d6332b37aba7cf0db2607f02e2b6f30a7e79",
+      "ref_id": "1",
+      "recommendationScore": 90,
+      "popularityScore": 11,
+      "priority": "high",
+      "comment": "深度揭示OpenAI内部研究加速策略，极具洞察力。",
+      "reason": "文章来自顶尖AI机构，提供了AI研究方法论和未来方向的宝贵见解，是AI领域必读。",
+      "tags": [
+        "AI",
+        "OpenAI",
+        "研究方法",
+        "技术战略",
+        "深度学习"
+      ]
+    },
+    {
+      "title": "Asahi Linux Now Officially Supports Apple M3 Macs – With Caveats",
+      "link": "https://www.phoronix.com/news/Asahi-Linux-Official-M3",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-06T14:08:59.000Z",
+      "summary": "Article URL: https://www.phoronix.com/news/Asahi-Linux-Official-M3\nComments URL: https://news.ycombinator.com/item?id=49586698\nPoints: 164\n# Comments: 99",
+      "id": "65e8057c918af6530b3eff9dfbe324d23e110172742e6e2c64d87f4c8f0df772",
+      "ref_id": "0",
+      "recommendationScore": 90,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "Asahi Linux在Apple M3 Mac上实现官方支持，对Apple生态用户是重要进展。",
+      "reason": "该文直接关联Apple生态主题，技术挑战大，对特定用户群有高实用性，且具有新闻价值和前沿性。",
+      "tags": [
+        "Apple",
+        "Linux",
+        "M3",
+        "Asahi Linux",
+        "操作系统",
+        "硬件兼容性"
+      ]
+    },
+    {
+      "title": "Cloud in a Bottle: making self-hosting accessible to everyone",
+      "link": "https://cloudinabottle.org/blog/launch-post",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-06T00:03:29.000Z",
+      "summary": "Article URL: https://cloudinabottle.org/blog/launch-post\nComments URL: https://news.ycombinator.com/item?id=49582000\nPoints: 559\n# Comments: 277",
+      "id": "6a2258e1c0b90d7f67169f922c2e1b5b8a6c421c99c54307bd235e9dc1f145db",
+      "ref_id": "4",
+      "recommendationScore": 90,
+      "popularityScore": 98,
+      "priority": "high",
+      "comment": "一个革新自托管体验的创新项目，为开发者和个人用户提供高度实用的解决方案。",
+      "reason": "极具实用性，解决了大量用户的痛点，且社区反响热烈，完全符合编程工具、自动化和独立开发主题。",
+      "tags": [
+        "自托管",
+        "自动化",
+        "开发工具",
+        "独立开发",
+        "云计算"
+      ]
+    },
+    {
+      "title": "An Alien Mind",
+      "link": "https://openai.com/index/an-alien-mind/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-06T16:27:05.000Z",
+      "summary": "Article URL: https://openai.com/index/an-alien-mind/\nComments URL: https://news.ycombinator.com/item?id=49588080\nPoints: 91\n# Comments: 53",
+      "id": "1f0643794f0c78a697d9ef7c8977aa27ead502afb3256b6cea1f77435222ba5c",
+      "ref_id": "2",
+      "recommendationScore": 85,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "一篇来自OpenAI关于AI智能本质的哲学性探讨。",
+      "reason": "作为AI领域的顶级优先级内容，文章来自权威机构且受到高度关注，对拓展AI思维边界有重要启发意义。",
+      "tags": [
+        "AI",
+        "哲学",
+        "智能",
+        "未来科技",
+        "OpenAI"
+      ]
+    },
+    {
+      "title": "Isar Aerospace reaches orbit and deploys payloads on second flight",
+      "link": "https://isaraerospace.com/press/history-for-european-spaceflight-isar-aerospace-reaches-orbit-and-deploys-payloads-on-second-flight",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-06T07:21:06.000Z",
+      "summary": "Article URL: https://isaraerospace.com/press/history-for-european-spaceflight-isar-aerospace-reaches-orbit-and-deploys-payloads-on-second-flight\nComments URL: https://news.ycombinator.com/item?id=49584083\nPoints: 450\n# Comments: 133",
+      "id": "6c45c914258f8293b2f2916c72e57bf1af33cb7ecb9ea78e442445d3fbcc1fdf",
+      "ref_id": "2",
+      "recommendationScore": 85,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "欧洲航天领域取得的重大技术突破，展示了先进的自动化与工程能力。",
+      "reason": "报道了高科技工程领域的里程碑式进展，具有重要的新闻价值和鼓舞人心的技术启示，符合自动化主题。",
+      "tags": [
+        "航天",
+        "工程",
+        "自动化",
+        "新闻",
+        "高科技"
+      ]
+    },
+    {
+      "title": "Gurman on Schiller’s Departure and Ternus’s Goals for the App Store",
+      "link": "https://www.bloomberg.com/news/newsletters/2026-09-06/apple-s-new-ceo-like-cook-pay-package-shows-he-s-going-nowhere-sept-9-event-mtpvpcj1?accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzb3VyY2UiOiJTdWJzY3JpYmVyR2lmdGVkQXJ0aWNsZSIsImlhdCI6MTc4ODcwNTgwOCwiZXhwIjoxNzg5MzEwNjA4LCJhcnRpY2xlSWQiOiJUS1k0ODFLR0NURlEwMCIsImJjb25uZWN0SWQiOiJDNEVEQ0FFMUZBMDU0MEJFQTI0QTlGMjExQzFFOTA4MCJ9.VPVLP03ZWjEbH48efjq8Q7n0_vk4t7OynYeaUbOfYzU&leadSource=article-gifting",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-09-06T17:00:01.000Z",
+      "summary": "Mark Gurman, in his weekend Power On column at Bloomberg (gift link):\nThe Schiller exit is a bit more notable. Unlike Maestri, he still\nhad a real job: The veteran executive ran the App Store and Apple\nEvents. The App Store portion alone is no joke. It generates an\nestimated $30 billion a year and can be very challenging to\nmanage. Apple’s app marketplace is loved by many consumers, but\noften criticized by developers and subjected to increasingly\nonerous regulations. It was a busy, all-encompassing gig and\nnowhere near a semiretirement. Apple Events, meanwhile, is how the\ncompany communicates its new product launches to customers. It’s\nalso nothing close to fun and games.\nNow, Schiller is 66 and clearly wanted to have some semblance of\nretirement. He can focus on philanthropy and spend more time with\nfamily. But there’s a bit more to the story, I’m told. Ternus and\nservices chief Eddy Cue want to make even more money from the App\nStore and figure out ways to raise margins and squeeze additional\nrecurring revenue from the platform. Schiller, on the other hand,\nseems to believe that such moves will only further irk developers\nand governments. While there was no internal blowup or anything\nlike that, it’s something he wanted no part of.\nI sure hope that’s not true, because that would be awful — making a bad situation worse — and pretty much the exact opposite of what Apple ought to do.\nFrom the archive: Schiller, in a 2011 email to Cue and Steve Jobs:\nJust as one thought, once we are making over $1B a year in profit\nfrom the App Store, is that enough to then think about a model\nwhere we ratchet down from 70/30 to 75/25 or even 80/20 if we can\nmaintain a $1B a year run rate? I know that is controversial, I\njust tee it up as another way to look at the size of the business,\nwhat we want to achieve, and how we stay competitive. Again, just\nfood for thought.\n ★",
+      "id": "8b0c30684ea60032af0ccd03bde19f61f3d0454b16066b896b731dd47966a96a",
+      "ref_id": "4",
+      "recommendationScore": 85,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "深度分析Apple高管变动及其对App Store未来策略的影响，对Apple生态开发者和行业观察者具有高度参考价值。",
+      "reason": "文章紧密契合Apple生态主题，信息密度高，提供了关于平台策略、商业模式和开发者关系的独到见解。",
+      "tags": [
+        "Apple",
+        "App Store",
+        "管理层",
+        "开发者生态",
+        "行业分析"
+      ]
+    },
+    {
+      "title": "Litterbox: Safari Extension for Viewing X Tweets",
+      "link": "https://andadinosaur.com/launch-litterbox",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-09-06T16:19:31.000Z",
+      "summary": "In the wake of Nitter/XCancel’s demise, here’s a delightful new Safari extension from Zhenyi Tan (of And a Dinosaur fame):\nBut sometimes people still post X content. Maybe you want to see\nGruber roast Google Design. Maybe you want to see posts by\nFederico Viticci who recently returned to X. So I made\nLitterbox, a Safari extension that opens x.com links in a\npopup. The idea is you open it, take a look, gag a little, then\nclose the lid. [...]\nLitterbox doesn’t send your cookies when you open those popups,\nbecause of course. It uses the same API X uses for its website\nembeds. I don’t think they’ll kill the website embed feature. But\nif they do, it will be very funny.\nI love it. I’ve got it installed even though I don’t avoid visiting X.com. It’s just faster and nicer to view tweets in Litterbox’s popup. And if I do want to proceed to X.com, there’s a link at the bottom of the popup. Perfect.\n ★",
+      "id": "76eccfe083601eb8dc22d71b7bf274f2ecdc492482f9e4ba915cf19acdd10c96",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "针对Safari用户的实用工具，通过扩展提升X内容浏览的隐私性和体验。",
+      "reason": "解决了特定用户群体（Apple生态用户）的隐私痛点，提供了巧妙且实用的解决方案，符合主题优先级。",
+      "tags": [
+        "Safari",
+        "浏览器扩展",
+        "隐私保护",
+        "X/Twitter",
+        "Apple生态"
+      ]
+    },
+    {
+      "title": "Show HN: Kadō – open-source habit tracker, with non-binary habit score, for iOS",
+      "link": "https://github.com/scastiel/kado",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-06T14:34:46.000Z",
+      "summary": "Article URL: https://github.com/scastiel/kado\nComments URL: https://news.ycombinator.com/item?id=49586902\nPoints: 39\n# Comments: 17",
+      "id": "8526bc07699b8e26dfd02f6e144d79dd22b357c0ce780e70aaf0382b0aa578a9",
+      "ref_id": "3",
+      "recommendationScore": 80,
+      "popularityScore": 11,
+      "priority": "high",
+      "comment": "开源iOS习惯追踪器，创新性地引入非二元习惯评分。",
+      "reason": "结合了独立开发、iOS生态和开源特性，且产品设计有独特之处，对用户和开发者都有参考价值，符合高优先级主题。",
+      "tags": [
+        "独立开发",
+        "iOS",
+        "开源",
+        "习惯追踪",
+        "产品设计",
+        "Apple生态"
+      ]
+    },
+    {
+      "title": "The purpose of DNS is to spread scams",
+      "link": "https://shkspr.mobi/blog/2026/09/the-purpose-of-dns-is-to-spread-scams/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-09-06T11:34:20.000Z",
+      "summary": "I imagine everyone here has received an unsolicited message telling them that their tax is overdue and that they urgently need to visit Genuine-Tax-Payment-Website.fart or that a parcel is delayed at customs and you can pay a small sum for its release at Almost-The-Right-Acronym.ak  You know it is a scam. Most people just mark as spam and move on with their day. But a significant number of people …",
+      "id": "4bb1bdc0475a80d247f1e2a06071c95d8e6722423975a050b9a8073b475bdda7",
+      "ref_id": "3",
+      "recommendationScore": 80,
+      "popularityScore": 85,
+      "priority": "medium",
+      "comment": "以挑衅性标题探讨DNS在网络诈骗中的作用，具有较高的实用性。",
+      "reason": "揭示了网络安全中的重要问题，有助于读者识别和防范诈骗，话题具有广泛的关注度。",
+      "tags": [
+        "网络安全",
+        "DNS",
+        "诈骗",
+        "互联网基础"
+      ]
+    },
+    {
+      "title": "Recreating Minecraft Is Not a Benchmark",
+      "link": "https://kuber.studio/blog/Reflections/Recreating-Minecraft-is-Not-a-Benchmark",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-06T14:52:07.000Z",
+      "summary": "Article URL: https://kuber.studio/blog/Reflections/Recreating-Minecraft-is-Not-a-Benchmark\nComments URL: https://news.ycombinator.com/item?id=49587040\nPoints: 23\n# Comments: 19",
+      "id": "f7a38bfeadd1bebd219e11316932d5cc6a7d9166746d94320f291c86014801a5",
+      "ref_id": "2",
+      "recommendationScore": 75,
+      "popularityScore": 8,
+      "priority": "medium",
+      "comment": "对“重写Minecraft”作为基准的常见误区进行了深刻批判。",
+      "reason": "引导开发者进行更理性、更有效的项目评估和基准测试，避免盲目跟风，具有较强的实用性和反思价值。",
+      "tags": [
+        "软件开发",
+        "编程哲学",
+        "基准测试",
+        "游戏开发",
+        "反思"
+      ]
+    },
+    {
+      "title": "I'm teaching an introductory 12 week course on Quantum Oracle Engineering",
+      "link": "https://shukla.io/quantum-oracle-engineering/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-06T13:00:34.000Z",
+      "summary": "Article URL: https://shukla.io/quantum-oracle-engineering/\nComments URL: https://news.ycombinator.com/item?id=49586151\nPoints: 33\n# Comments: 10",
+      "id": "25b57bdfc22ad04b40f49c21ad26a85e54f93c9acfa3e639ffdb965cf4316370",
+      "ref_id": "3",
+      "recommendationScore": 75,
+      "popularityScore": 25,
+      "priority": "medium",
+      "comment": "介绍量子预言机工程的入门课程，探索前沿量子计算领域。",
+      "reason": "内容涉及未来AI和编程工具的前沿技术，技术深度极高，对特定领域专家具有吸引力，但受众较窄。",
+      "tags": [
+        "量子计算",
+        "AI",
+        "前沿技术",
+        "课程",
+        "编程"
+      ]
+    },
+    {
+      "title": "Research carried out using NetBSD",
+      "link": "https://www.netbsd.org/gallery/research.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-06T16:10:05.000Z",
+      "summary": "Article URL: https://www.netbsd.org/gallery/research.html\nComments URL: https://news.ycombinator.com/item?id=49587903\nPoints: 28\n# Comments: 1",
+      "id": "b50d156a71a120c242dad168a7d11116ed94bf4c3c552d07fe0f4279876cd8be",
+      "ref_id": "3",
+      "recommendationScore": 65,
+      "popularityScore": 55,
+      "priority": "medium",
+      "comment": "汇总了使用NetBSD操作系统进行的各项研究成果。",
+      "reason": "对操作系统和系统级编程有较强技术深度，但受众相对小众，优先级属于中等。",
+      "tags": [
+        "操作系统",
+        "NetBSD",
+        "研究",
+        "系统开发",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "Your intellectual fly is open (2025)",
+      "link": "https://bcantrill.dtrace.org/2025/12/05/your-intellectual-fly-is-open/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-06T11:56:43.000Z",
+      "summary": "Article URL: https://bcantrill.dtrace.org/2025/12/05/your-intellectual-fly-is-open/\nComments URL: https://news.ycombinator.com/item?id=49585644\nPoints: 324\n# Comments: 206",
+      "id": "d0e645f9ae1a95ae0034ab68baa3236e2edbc1610818da1c6c6125eb435f29f2",
+      "ref_id": "0",
+      "recommendationScore": 65,
+      "popularityScore": 80,
+      "priority": "medium",
+      "comment": "一篇可能引发深思的未来观点文章，探讨普遍的认知盲点。",
+      "reason": "虽不属核心技术范畴，但内容可能提供独特的智力洞察，吸引部分高级读者，且讨论度较高。",
+      "tags": [
+        "观点",
+        "思考",
+        "趋势",
+        "认知"
+      ]
+    },
+    {
+      "title": "NetBSD 9.5 released and EOL for NetBSD-9",
+      "link": "https://blog.netbsd.org/tnf/entry/netbsd_9_5_released_and",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-06T15:44:24.000Z",
+      "summary": "Article URL: https://blog.netbsd.org/tnf/entry/netbsd_9_5_released_and\nComments URL: https://news.ycombinator.com/item?id=49587636\nPoints: 51\n# Comments: 2",
+      "id": "8f6fb59c7a259082d0cbfbcb2c91671364256fd0ee54e574469026b1db7deeb7",
+      "ref_id": "0",
+      "recommendationScore": 60,
+      "popularityScore": 12,
+      "priority": "low",
+      "comment": "NetBSD 9.5发布详情，对该OS的用户和开发者有价值。",
+      "reason": "提供了系统更新和生命周期结束的重要信息，但受众相对小众，且主题优先级不高。",
+      "tags": [
+        "操作系统",
+        "NetBSD",
+        "发布",
+        "技术更新"
+      ]
+    },
+    {
+      "title": "Doomscrolling Ourselves to Death",
+      "link": "https://www.edwest.co.uk/p/doomscrolling-ourselves-to-death",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-06T11:53:40.000Z",
+      "summary": "Article URL: https://www.edwest.co.uk/p/doomscrolling-ourselves-to-death\nComments URL: https://news.ycombinator.com/item?id=49585627\nPoints: 251\n# Comments: 168",
+      "id": "067e3cf2352b98bd0de07ced075449923ff99d84e00e502555710462d6a6536d",
+      "ref_id": "1",
+      "recommendationScore": 40,
+      "popularityScore": 75,
+      "priority": "low",
+      "comment": "一篇关于数字时代“末日滚动”现象的社会观察文章，旨在提升个人福祉。",
+      "reason": "内容侧重社会心理而非技术，与本科技博客的优先主题关联度较低，不推荐作为核心内容。",
+      "tags": [
+        "社会观察",
+        "心理健康",
+        "数字生活",
+        "生活方式"
+      ]
+    },
+    {
+      "title": "Introducing GPT-6 Astra for developers",
+      "link": "https://simonwillison.net/2026/Sep/5/introducing-gpt-6-astra-for-developers/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-09-05T23:27:48.000Z",
+      "summary": "",
+      "id": "9f6de6a442ea3eb6b5ca934aeae24466ca72149580ceeb0c5dd1ce72dcc226f5",
+      "ref_id": "2",
+      "recommendationScore": 40,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "主题为AI领域的最新模型发布，具有极高的行业关注度和潜力，但因内容缺失无法评估其技术细节和实用指导。",
+      "reason": "主题紧扣AI热点，符合最高优先级，但内容缺失导致无法深入评估其具体价值。",
+      "tags": [
+        "AI",
+        "GPT",
+        "开发者工具",
+        "新模型"
+      ]
+    },
+    {
+      "title": "The pencil case model of creativity",
+      "link": "https://dub.uu.nl/en/column/pencil-case-model-creativity",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-06T12:05:34.000Z",
+      "summary": "Article URL: https://dub.uu.nl/en/column/pencil-case-model-creativity\nComments URL: https://news.ycombinator.com/item?id=49585703\nPoints: 40\n# Comments: 15",
+      "id": "c8d4c910e7ee007371a2dae74a07b38949af46e1b69b06958c2347fc5736995e",
+      "ref_id": "4",
+      "recommendationScore": 30,
+      "popularityScore": 25,
+      "priority": "low",
+      "comment": "探讨创造力模型，间接影响产品设计和独立开发思维。",
+      "reason": "虽然涉及创意，但与科技博客的核心技术主题关联度较低，缺乏技术深度和直接的实用性。",
+      "tags": [
+        "创意",
+        "产品设计",
+        "方法论",
+        "心理学"
+      ]
+    },
+    {
+      "title": "Cultivating Trust",
+      "link": "https://kaeruct.github.io/posts/2026/09/06/conquering-entropy-cultivating-trust/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-06T16:02:37.000Z",
+      "summary": "Article URL: https://kaeruct.github.io/posts/2026/09/06/conquering-entropy-cultivating-trust/\nComments URL: https://news.ycombinator.com/item?id=49587833\nPoints: 5\n# Comments: 1",
+      "id": "b8f2c8096a7f78b99ec42eac0c928950bbf1007844f0a43ad2413ea8d31b4b3a",
+      "ref_id": "4",
+      "recommendationScore": 25,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "一篇关于建立信任和克服挑战的通用性博文。",
+      "reason": "主题与科技博客核心优先级关联度较低，缺乏技术深度和新颖性，且社区反响不佳。",
+      "tags": [
+        "通用",
+        "管理",
+        "哲学"
+      ]
+    },
+    {
+      "title": "Trump Administration Launches Rip-Off Video Games at Arcade.gov",
+      "link": "https://x.com/WhiteHouse/status/2095615734567100766",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-09-06T17:51:09.000Z",
+      "summary": "A handful of Temu-style knockoffs of games like Flappy Birds, Snake (that’s the one where you round up border-crossing migrants), and, most notably, Tetris (the one where you “build a wall” to keep border-crossing migrants out) — the copyright to which is held by the notoriously litigious The Tetris Company, which tweeted:\nAt Tetris we believe in the power of connection and bringing\npeople together, not dividing them. To our fans everywhere: we\nlove you, we see you, and we’re grateful to have you in our\ncommunity.\nP.S. The Tetris Company was not involved in the creation of\n     ‘Build the Wall’.\nP.P.S. We take copyright infringement very seriously.\nWhatever you think of these games, just like with the rebranding of Lake Ontario, Trump Arcade shows American voters that this administration is focused on their problems and concerns.\n ★",
+      "id": "9caa42887ba9047e848993d104b95b19f8a6688f433c22f29300928773663710",
+      "ref_id": "3",
+      "recommendationScore": 20,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "内容聚焦政治讽刺和版权争议，科技深度极低，与科技博客的核心主题关联性弱。",
+      "reason": "文章侧重社会政治评论而非技术分析，不符合科技博客的评估标准。",
+      "tags": [
+        "政治",
+        "版权",
+        "游戏",
+        "评论"
+      ]
+    },
+    {
+      "title": "Dickover of the Week: Slashdot Put One in Their RSS Feed",
+      "link": "https://discourse.netnewswire.com/t/dickover-in-the-slashdot-rss-feed/372",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-09-06T16:30:00.000Z",
+      "summary": "How does this even happen? Who is this for? What possible purpose could by served by injecting a “We value your privacy” dickover into an RSS feed via iframes in the entry bodies?\n ★",
+      "id": "c90490880f3d70b3d20f929458ddd1aa520d4004d6b1915d7d2e1cf5a66dbb28",
+      "ref_id": "0",
+      "recommendationScore": 20,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "对Slashdot在RSS中嵌入iframe表示不满，缺乏实质性技术洞察。",
+      "reason": "内容偏向个人吐槽，技术深度和实用性较低，不符合博客主题优先级。",
+      "tags": [
+        "RSS",
+        "用户体验",
+        "网络抱怨"
+      ]
+    },
+    {
+      "title": "Opalite Health (YC W26) Is Hiring – Founding GTM",
+      "link": "https://www.ycombinator.com/companies/opalite-health/jobs/bNedVAD-founding-gtm",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-06T17:00:28.000Z",
+      "summary": "Article URL: https://www.ycombinator.com/companies/opalite-health/jobs/bNedVAD-founding-gtm\nComments URL: https://news.ycombinator.com/item?id=49588466\nPoints: 0\n# Comments: 0",
+      "id": "e49d8c802a7a2ac8299351529efc1f1c658c0dfc792473b050b40a5d78d33a39",
+      "ref_id": "0",
+      "recommendationScore": 10,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "这是一篇与技术内容无关的招聘广告。",
+      "reason": "缺乏技术深度和普遍性，不符合科技博客的核心内容定位。",
+      "tags": [
+        "招聘",
+        "创业",
+        "GTM"
+      ]
+    },
+    {
+      "title": "The many mysteries and lessons of the Bayeux tapestry",
+      "link": "https://economist.com/interactive/culture/2026/09/03/the-many-mysteries-and-lessons-of-the-bayeux-tapestry",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-06T13:38:07.000Z",
+      "summary": "Article URL: https://economist.com/interactive/culture/2026/09/03/the-many-mysteries-and-lessons-of-the-bayeux-tapestry\nComments URL: https://news.ycombinator.com/item?id=49586435\nPoints: 38\n# Comments: 5",
+      "id": "19c6008516cedbda08f15a010a026f451e357b645ab4efc7e8d52ecf732948b8",
+      "ref_id": "1",
+      "recommendationScore": 10,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "这是一篇关于历史文化的文章，与科技博客的主题不符。",
+      "reason": "内容严重偏离科技博客核心关注点，缺乏技术深度和实用性。",
+      "tags": [
+        "历史",
+        "文化"
+      ]
+    },
+    {
+      "title": "The purpose of DNS is to spread scams",
+      "link": "https://simonwillison.net/2026/Sep/6/the-purpose-of-dns-is-to-spread-scams/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-09-06T14:40:07.000Z",
+      "summary": "",
+      "id": "515093155ed7b7080151154d8c88d7cd444bb2887ad448a90cf94b74be355e1b",
+      "ref_id": "0",
+      "recommendationScore": 10,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "标题具有争议性，但因内容缺失无法进行有效评估其技术深度和实用性。",
+      "reason": "内容缺失，无法判断文章的实际价值和贡献。",
+      "tags": [
+        "网络安全",
+        "评论"
+      ]
+    },
+    {
+      "title": "Quoting Zach Kehs",
+      "link": "https://simonwillison.net/2026/Sep/6/zach-kehs/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-09-06T08:42:49.000Z",
+      "summary": "",
+      "id": "014cb684b895db4d2044effa39109fcd2d684dac7402e1eedc2492bb7bfe1d93",
+      "ref_id": "1",
+      "recommendationScore": 5,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "内容缺失，无法进行任何形式的评估。",
+      "reason": "无具体内容可供分析。",
+      "tags": [
+        "引用"
+      ]
+    },
+    {
+      "title": "Gloria Steinem’s Final Essay",
+      "link": "https://www.newyorker.com/culture/life-and-letters/gloria-steinems-final-essay?cndid=66114350",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-09-05T19:42:43.000Z",
+      "summary": "Gloria Steinem, in a posthumous essay for The New Yorker:\nFor me, saying that I am a feminist has always meant that I\nbelieve in the social, economic, and political equality of all\nmales and females of all races and groups. I know this sounds too\nsimple to need a word, but equality is still the exception, not\nthe rule.\nMaybe we should call it egalitarianism, or even humanism. The\nproblem with humanism is that it is often interpreted as being\nanti-religion, so I don’t think it’s inclusive enough. Regardless\nof what we call it, it just means treating each of us as uniquely\nhuman. The experiences of race and gender and class are very real\nand important, but they are also constructed and changeable. Our\nhumanity is consistent and sacred.\nStill, for some, it remains a mystery why women need a movement to\ndistinguish our efforts toward equality. For me, it seems quite\nobvious.\n ★",
+      "id": "fa8ede6fed386d43e4a17b10bbf4eb2c0f2f46793f32a4af8da5379faf6bb7d0",
+      "ref_id": "2",
+      "recommendationScore": 5,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "一篇关于女权主义和平等的哲学性文章，与科技博客主题无关。",
+      "reason": "内容完全偏离科技博客的关注点和主题优先级，不适合本平台发表。",
+      "tags": [
+        "社会评论",
+        "女权主义",
+        "哲学"
+      ]
+    }
+  ]
+}
