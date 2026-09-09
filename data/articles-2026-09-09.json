@@ -1,0 +1,805 @@
+{
+  "dailySummary": "OpenAI在数学难题上取得突破引争议；自托管AI企业OS、本地AI模型及GPT-6等AI技术持续创新，预示AI应用深度拓展。同时，苹果iPhone新机评测揭示了未来硬件设计趋势。",
+  "articles": [
+    {
+      "title": "Show HN: Self-hosted company OS, Claude Code and Codex agents in departments",
+      "link": "https://github.com/OtoDock/oto-dock",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-09T17:57:55.000Z",
+      "summary": "Hi HN, I am Dimitris. \nThis is a company OS that I built and use to run my business and anyone can install it and self host it for free. Think of it as Claude Code, Cowork and the cloud sessions in one self hosted application.\nIt is a Multi-tenant application by design where many people can collaborate on the company agents with 4 different modes of collaboration, and it runs with your Anthropic or OpenAi subscription or even with local models.\nEvery agent can run on Claude Code or Codex CLI running as a persistent process on your server in a kernel sandbox (bubblewrap) with network isolation always on (pasta), with its own workspace, memory, schedules and tools. The same agents can also be configured to run identical on any remote computer through one outbound WebSocket (no inbound ports, no VPN needed).\nThe agent already have lots of built in features, as an example they can answer and place phone calls through Twilio or your own Asterisk, they can edit videos and excel, word, ppt files and preview them directly inside the chat with collabora and many more.\nTrying it is one install script and a docker compose, no signup. The license is Fair Source, all the code is public and self hosting is free up to 5 users. 1.6.0 went out today.\nAI Disclaimer: large parts of OtoDock are written using OtoDock itself, running Claude Code.\nI would love people to read the code, take a look in the sandbox model, and tell me what would stop you from running this on your own hardware.\nGitHub: https://github.com/OtoDock/oto-dock\nWebsite: https://otodock.io\nComments URL: https://news.ycombinator.com/item?id=49630606\nPoints: 9\n# Comments: 1",
+      "id": "5821ed47a8049e2f8a32932697f05c722ec56955a0084489ec6eed3fcc925ea1",
+      "ref_id": "3",
+      "recommendationScore": 95,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "一个创新的自托管公司操作系统，深度整合了AI代理，具有极高的技术深度和实用价值。",
+      "reason": "文章紧密结合了AI（Claude Code, Codex）、自动化、编程工具和独立开发等高优先级主题，提供了详细的技术细节和实际应用方案，非常符合博客的关注方向。",
+      "tags": [
+        "AI",
+        "自托管",
+        "公司操作系统",
+        "自动化",
+        "编程工具",
+        "独立开发",
+        "Show HN"
+      ]
+    },
+    {
+      "title": "What OpenAI’s latest controversy tells us about the future of math",
+      "link": "https://www.technologyreview.com/2026/09/08/1143747/what-openais-latest-controversy-tells-us-about-the-future-of-math/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-09-09T03:10:08.000Z",
+      "summary": "OpenAI’s latest mathematical milestone has quickly become mired in controversy. Today, the company announced that its agents have solved one of the Millennium Prize Problems, some of the most important open problems in mathematics. Under normal circumstances, that solution would be a huge feather in OpenAI’s cap. But the announcement has been overshadowed by accusations…",
+      "id": "0a4b07bbaef556bc2f4ea194ca6d4f8b81dffc5d761ac08723b253892eec3ee3",
+      "ref_id": "3",
+      "recommendationScore": 95,
+      "popularityScore": 98,
+      "priority": "high",
+      "comment": "深度探讨了OpenAI在数学千禧年难题上取得的突破性进展及其引发的争议，并展望了AI在数学领域的未来。",
+      "reason": "完美契合AI主题优先级，内容兼具高技术深度、极高新颖性和当前热点争议，对AI发展和未来科技有深刻启示。",
+      "tags": [
+        "AI",
+        "OpenAI",
+        "数学",
+        "争议",
+        "研究突破",
+        "未来科技",
+        "深度分析"
+      ]
+    },
+    {
+      "title": "Introducing ChatGPT Images 2.5",
+      "link": "https://simonwillison.net/2026/Sep/8/introducing-chatgpt-images-25/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-09-08T22:46:33.000Z",
+      "summary": "",
+      "id": "78524e1fb74fd82c7f20dc9bc1804a8187c86ac01f0c0f4fc0220396d7134ca5",
+      "ref_id": "1",
+      "recommendationScore": 95,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "紧跟AI前沿，聚焦热门产品ChatGPT的图像功能更新，极具时效性和吸引力。",
+      "reason": "主题优先级最高，围绕AI热点产品更新展开，预计内容将兼具新颖性、实用性和高信息密度，能迅速吸引大量读者。",
+      "tags": [
+        "AI",
+        "ChatGPT",
+        "图像生成",
+        "新产品",
+        "机器学习"
+      ]
+    },
+    {
+      "title": "★ The iPhone Air and iPhone 17 Pro",
+      "link": "https://daringfireball.net/2026/09/the_iphone_air_and_iphone_17_pro",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-09-09T00:55:53.000Z",
+      "summary": "Last year, an unplanned personal hiatus coincided with the time when I should have been reviewing the then-new iPhones 17 and iPhone Air. In my brief note explaining my absence, I wrote:\nI look forward to getting back to writing very soon. I can feel\nit: I will be back soon. I’m itching to go. I mean, jiminy, it’s\nnew iPhones week. But it’ll be a few more days before I get those\nreviews out.\n354 days is arguably more than a few, but given that I missed the window for reviewing them when they were new, I thought it might be interesting to consider the iPhone 17 Pro and iPhone Air on the cusp of their being obviated by the next generation of iPhones.\nThe iPhone Air\nThe iPhone Air is the nicest phone Apple has ever made, and probably the nicest device Apple has ever made, period. It’s just so goddamn nice. Over the years, Apple has gone back and forth with its treatment of the metal side rails on iPhone hardware: some years polished like jewelry, other years, matte like a tool. The iPhone Air is polished, and the effect is luxe. (And it stands in contrast to the matte iPhones 17 Pro.)\nThe whole point of the device is that it is absurdly thin. A year later, it still feels remarkably thin and light in hand — and, even better, thin and light in pocket. It is delightful to hold and carry. The screen is terrific. The buttons are perfect: they stick out just enough and have just the right clickiness.\nThe big concern most people have regarding the Air is battery life. I used my Air review unit extensively and battery life was never once a problem. Yes, battery life is shorter than with other iPhone models, but it’s more than long enough. When you know you might need to top it off, you just do it here and there throughout the day. I not only never once ran out of battery by the end of the day with the Air, I never once came all that close. It’s fine.1 I mean, if you’re the sort of person who struggles to get through the day battery-life-wise with a regular (thicker) iPhone, the iPhone Air obviously isn’t for you. But that’s really obvious.\nMy biggest concern going into it was the camera system. The iPhone Air has only a single rear-facing camera, with non-interpolated 1× and 2× zoom factors.2 In practice, yes, sometimes while carrying the Air I regretted not having either the ultra wide 0.5× lens or telephoto lens, both of which I’m accustomed to having at my disposal. But ultimately I didn’t miss either of those lenses enough that I regretted having the Air in my pocket that day. And conversely, there’s something mentally freeing about having just one lens. There’s no question which lens you should use. Zoom with your feet.\nAnd the one lens the iPhone Air has is excellent. It’s not quite as good as the main 1×/2× lens on the Pro models, but it’s much closer to the Pro models in image quality than it is to the single-lens iPhone 17e. (But even the 17e is a damn good camera for a phone.) One thing you miss by not having a 0.5× ultra wide lens is a true macro mode. But because it uses a slightly smaller sensor, the camera on the iPhone Air has a closer minimum focus distance than the iPhone 17 Pro’s main camera (15 cm vs. 20 cm — those 5 cm often make a big difference). I like the iPhone Air camera so much that it didn’t factor all that much into my decision whether to buy one to use as my personal iPhone for the last year. It’s that good.\nBut I did not buy one to use as my personal iPhone for the last year. I bought an iPhone 17 Pro. The reason is size.\nThe iPhone 17 Pro comes in two sizes: regular and Max. I find the Max sizes too big — unpleasant to hold, unpleasant to pocket. The iPhone Air comes in only one size — a sort of one-size-fits-all midway point between the regular iPhone models and Max models.\n\n\n.table-BD81DA9A-8BB8-41EE-A176-9F781C68AAFB th:nth-child(1) { text-align: left }\n.table-BD81DA9A-8BB8-41EE-A176-9F781C68AAFB td:nth-child(1) { text-align: left }\n.table-BD81DA9A-8BB8-41EE-A176-9F781C68AAFB th:nth-child(2) { text-align: center }\n.table-BD81DA9A-8BB8-41EE-A176-9F781C68AAFB td:nth-child(2) { text-align: center }\n.table-BD81DA9A-8BB8-41EE-A176-9F781C68AAFB th:nth-child(3) { text-align: center }\n.table-BD81DA9A-8BB8-41EE-A176-9F781C68AAFB td:nth-child(3) { text-align: center }\n.table-BD81DA9A-8BB8-41EE-A176-9F781C68AAFB th:nth-child(4) { text-align: center }\n.table-BD81DA9A-8BB8-41EE-A176-9F781C68AAFB td:nth-child(4) { text-align: center }\n.table-BD81DA9A-8BB8-41EE-A176-9F781C68AAFB th:nth-child(5) { text-align: center }\n.table-BD81DA9A-8BB8-41EE-A176-9F781C68AAFB td:nth-child(5) { text-align: center }\n\n\nWidthHeightThicknessWeight\n\n\n\niPhone 17 Pro Max78mm163mm8.75mm233g\n\n\niPhone Air75mm156mm5.64mm165g\n\n\niPhone 17 Pro72mm150mm8.75mm206g\n\n\n\nWidth- and height-wise, the Air is pretty much halfway between the Pro and Pro Max. For me, in practice, the factor that really matters is width — and I find the Air too wide. Just holding the phones as objects to admire, the dramatic thinness and lighter weight make the iPhone Air the nicest, by far. But holding them to actually use, I find the Air feels too wide. Specifically, too wide to use with one hand, gripping it with my palm and fingers and swiping and tapping with my thumb. If I had my druthers, the regular-sized iPhones would be slightly smaller, footprint-wise. The regular iPhone 17 Pro is pretty much as wide as can be for me to use it one-handed. The Air is too wide for that — it’s a two-handed device for me. And that was the dealbreaker.3 I use my iPhone one-handed frequently, often while walking around the city carrying a bag or beverage in my other hand.\nIf the iPhone Air came in two sizes, regular and Max, corresponding to the widths and heights of the two Pro sizes, I would have bought the regular-sized Air model and, I’m convinced, been delighted with it for the past year. But the iPhone Air only comes in one size, and that size is too wide for my taste, and in practical use, that factor overrides everything I love about the Air.\nIf you use your iPhone two-handed almost exclusively — perhaps because you find even the regular-sized models too wide to use one-handed — there’s a good chance you’d be happier with the Air than whatever model you’re currently carrying. It’s so goddamn nice.\nThe iPhone 17 Pro\nThe iPhone 17 Pro is the best phone Apple has ever made, and perhaps the best device Apple has ever made, period.\nAfter two years of titanium side rails and full-glass backs \n(the 15/16 Pro generations), the 17 Pro went back to aluminum, and the metal is now more of an entire frame for the device than just a side rail. There remains a matte glass panel on the back, but only for the bottom three-quarters or so, underneath the camera plateau. (Inductive MagSafe/Qi charging doesn’t work through metal.) The camera plateau is now aluminum, and, most noticeably, extends across the full width of the device, even though the three camera lenses (0.5×, 1×/2×, 4×/8×) remain in a triangle arrangement in the corner.\nThis new full-width plateau is a winning design. I think it looks good, but more importantly, feels great. It looks more balanced and feels more balanced too. It still wobbles when placed on a table, but it wobbles less. The camera capabilities, to me, are the defining aspect of the Pro models. It thus feels correct for them to be so physically prominent on the devices.\nThe iPhone 17 Pro was offered in three colors: cosmic orange, deep blue, and silver. All three colors are excellent, and each of them tempted me to some extent. I’m not sure why silver didn’t get an adjective — it’s a very nice colorway. But cosmic orange is the eyecatcher. For years, Apple has been releasing non-pro iPhones in fun colors, and Pro iPhones only in no-fun (or at best low-fun) colors. It really seemed like a mystery why Apple never released an iPhone Pro model in a vibrant fun color. Now that they finally did it, it seems like even more of a mystery why it took them so long — anecdotally, cosmic orange has been an incredibly popular choice. I see orange iPhone 17 Pros in use every day, often in clear cases to show off the color.\nMy personal rule has been to always buy black, or the nearest to black offered. Deep blue isn’t all that near to black, but it was the nearest, so that’s what I bought. I wouldn’t call it fun but I liked it when I bought it and I’m not tired of it now, nearly a year later. It’s a serious blue. After 10+ months of near-daily use, the anodization is beginning to wear away at the top corner of my iPhone’s camera plateau, where there’s a bit of a sharp corner. I find this to be a charming patina, not a flaw, and looking at that wear increases my affection for this little guy.\n\n  \n(Photo taken with the iPhone Air, using Halide Mark III.)\nI’ve shot (and kept) 5,365 photos and 97 videos with the iPhone 17 Pro. (Perhaps I should shoot more videos.) The iPhone camera has long been the best camera in the sense of “The best camera is the one you have with you.” With each successive year, they come closer and closer to being the best camera I’ve ever owned, period. It’s really quite remarkable how good a camera it is.\nBattery life has been excellent. I charge to 100 percent every night while I sleep, and never worry about it during the day. Very seldom is the battery under 25 percent by the end of the day. According to the statistics in Settings → Battery → Battery Health, maximum battery capacity remains at 96 percent after 230 cycles. That seems pretty good.\nDurability has been terrific as well. I mentioned a month ago that Apple’s “Ceramic Shield 2” process seems to be the real deal. Even under close inspection, there’s seemingly not a single micro abrasion on the front glass. I used a Nomad leather back during the very coldest weeks of the East Coast winter, but otherwise have never used a case. Despite near-daily use for 10-ish months, it’s in near-mint condition. I’ve also found that the phone, naked, is about as grippy as one could hope in most weather conditions, the frigid cold being the one exception.\nDust and fuzz accumulates in the USB-C port — just like every phone with a USB port. I clean it out every few months. Some sort of crud also accumulates in the very thin, easily overlooked slit for the speaker at the top of the display. That requires something like a pin or needle to clean. I don’t know what that crud is and I don’t want to know. I also don’t know what Apple could do about this crud accumulation, but I need to reach deep to find anything at all to complain about regarding this iPhone. I look forward to a future hermetically sealed iPhone which has no crevices in which to accumulate crud.\nOne year later and it feels like both the iPhone 17 Pro and iPhone Air could be announced tomorrow, not a year ago, and would seem fresh and exciting.\nApple also created a battery pack exclusively for the Air: the $100 iPhone Air MagSafe Battery. Like Apple’s late great Lightning MagSafe Battery Pack, the Air MagSafe Battery is a much better product than any third-party battery pack I’ve ever tried, and I’ve tried an embarrassing number of them. It sticks better magnetically, and there’s software integration with iOS that shows the battery pack’s remaining power when you first connect it, and in the Battery widget. iOS also seems smarter about when to draw power from it, making it last longer. It’s a no-brainer recommendation for anyone who buys an iPhone Air. You won’t need it most days, but on the days when you need it, it’s perfect. \nMy only gripe about the iPhone Air MagSafe Battery remains the same from the day it was announced last year: it has “Air” in the name because it’s designed exclusively for the iPhone Air. Apple’s old Lightning MagSafe Battery Pack was designed to fit any iPhone. (In fact, it debuted in 2020 alongside the iPhone 12 Mini, an iPhone that actually needed help getting through the day on a single charge.) The old Lightning battery pack remains so good that I continue to use mine (I own two) instead of the numerous third-party ones I’ve blown money on in the intervening years. The old Lightning ones don’t pack much of a punch, juice-wise — particularly because they’re now several years old — but no matter how much I use my iPhone, it’s always enough to extend me through the day. (The key is not to start using it until your iPhone drops under 30 percent — it takes less energy to recharge a mostly depleted battery.) I continue using them because they stick to the back of the iPhone so strongly, and, once attached, are so comfortable. It’s the last Lightning device I actively use, but unless Apple comes out with a proper USB-C replacement that works on iPhones other than the Air, I don’t foresee retiring mine until they’re completely shot. ↩︎\nThe front-facing camera on the iPhone Air is the new (for 2025) Center Stage camera. It’s exactly the same front-facing camera as the iPhone 17 Pro and non-pro models, and uses a square sensor with a wider field of view. ↩︎︎\nThis, of course, makes me wonder about the one-handed usability of the passport-sized foldable iPhone that Apple is expected to unveil tomorrow. ↩︎︎",
+      "id": "29a87bb3abb80b76035ed55bb2ee79f91180e23b0d961de99031013ce56bee8c",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "以独特的复盘视角回顾iPhone产品，内容深入体验与设计细节，对Apple粉丝极具吸引力。",
+      "reason": "主题优先级高，以个人化且有时间跨度的视角评测Apple产品，情感和细节丰富，能引起忠实用户共鸣并提供购买参考。",
+      "tags": [
+        "Apple",
+        "iPhone",
+        "产品评测",
+        "设计",
+        "智能手机",
+        "用户体验"
+      ]
+    },
+    {
+      "title": "The part of Navier-Stokes no one is talking about",
+      "link": "https://www.johndcook.com/blog/2026/09/09/formal-method-revolution/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-09-09T12:43:36.000Z",
+      "summary": "Yesterday OpenAI announced a proof that settled a long-standing question about the Navier-Stokes equations from fluid dynamics. The announcement has created a lot of buzz, as one would expect. But there’s an aspect of OpenAI’s work that I haven’t seen anyone talk about: they posted a Lean 4 formal proof at the same time as […]\nThe part of Navier-Stokes no one is talking about first appeared on John D. Cook.",
+      "id": "0c423cdb6ebab28ce651f3cdcec64fce7c558de71bb67a7d0ab2014d2eebc6e9",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "深入剖析OpenAI关于纳维-斯托克斯方程证明中鲜为人知的Lean 4形式化证明细节。",
+      "reason": "结合了AI领域的重大突破和尖端编程工具（Lean 4），技术深度和新颖性极高，为读者提供了独特的视角和洞察。",
+      "tags": [
+        "AI",
+        "数学",
+        "形式化证明",
+        "Lean 4",
+        "OpenAI",
+        "流体力学"
+      ]
+    },
+    {
+      "title": "Better AI code comment detector",
+      "link": "https://entropicthoughts.com/better-ai-comment-classifier",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-09T15:45:43.000Z",
+      "summary": "Article URL: https://entropicthoughts.com/better-ai-comment-classifier\nComments URL: https://news.ycombinator.com/item?id=49628454\nPoints: 27\n# Comments: 17",
+      "id": "5a2b2b0a84018ddb8eb61cccc254985c1a9aa2a5c601dda1c50423a4d1d9cb00",
+      "ref_id": "2",
+      "recommendationScore": 92,
+      "popularityScore": 55,
+      "priority": "high",
+      "comment": "探讨了如何利用AI技术更有效地检测和改进代码注释，对提升代码质量有直接帮助。",
+      "reason": "完美契合AI和编程工具两大最高优先级主题，为开发者提供了实用的AI赋能代码审查方案。",
+      "tags": [
+        "AI",
+        "代码分析",
+        "机器学习",
+        "编程工具",
+        "软件工程"
+      ]
+    },
+    {
+      "title": "Desert Ant Labs: local, fast models that run on device",
+      "link": "https://desertant.com/blog/introducing-desert-ant-labs/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-09T11:39:46.000Z",
+      "summary": "Article URL: https://desertant.com/blog/introducing-desert-ant-labs/\nComments URL: https://news.ycombinator.com/item?id=49624823\nPoints: 309\n# Comments: 83",
+      "id": "0a27670444c9f7284a364da134050e6795b95f2545324b5ba0de5a63fc207986",
+      "ref_id": "4",
+      "recommendationScore": 92,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "介绍Desert Ant Labs，一个专注于开发在设备端高效运行的本地AI模型的实验室。",
+      "reason": "聚焦边缘AI和设备端模型部署这一关键技术趋势，对AI应用落地和隐私保护有重要指导意义。",
+      "tags": [
+        "AI",
+        "边缘计算",
+        "本地模型",
+        "设备端AI",
+        "机器学习"
+      ]
+    },
+    {
+      "title": "GNU Radio in the browser",
+      "link": "https://gnuradioworld.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-09T15:53:06.000Z",
+      "summary": "Article URL: https://gnuradioworld.com/\nComments URL: https://news.ycombinator.com/item?id=49628576\nPoints: 94\n# Comments: 14",
+      "id": "51f9d36828970757eccf599d2a8ad379ad734da35b6e4e90138f066b5ce9896f",
+      "ref_id": "1",
+      "recommendationScore": 90,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "实现了将强大的GNU Radio软件定义无线电工具带入浏览器，极具技术创新。",
+      "reason": "显著降低了SDR的学习和使用门槛，是Web技术和编程工具结合的优秀范例，符合高优先级主题。",
+      "tags": [
+        "编程工具",
+        "SDR",
+        "WebAssembly",
+        "信号处理",
+        "浏览器技术"
+      ]
+    },
+    {
+      "title": "GPT-6 Astra, looped transformers, and hidden reasoning",
+      "link": "https://magazine.sebastianraschka.com/p/gpt-6-astra-looped-transformers-and",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-09T14:37:47.000Z",
+      "summary": "Article URL: https://magazine.sebastianraschka.com/p/gpt-6-astra-looped-transformers-and\nComments URL: https://news.ycombinator.com/item?id=49627370\nPoints: 210\n# Comments: 76",
+      "id": "4ef1fa7cd05791656365a83ff9c2abe5e5a4fe9c3cab5d9b55773bac430e7f43",
+      "ref_id": "0",
+      "recommendationScore": 90,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "深入探讨GPT-6 Astra、循环Transformer等未来AI模型的技术原理和潜在发展。",
+      "reason": "文章紧贴AI前沿研究，对于理解大型语言模型未来架构及推理机制具有极高的参考价值。",
+      "tags": [
+        "AI",
+        "大语言模型",
+        "Transformer",
+        "未来趋势",
+        "机器学习"
+      ]
+    },
+    {
+      "title": "Why we should anthropomorphize AI agents",
+      "link": "https://seangoedecke.com/why-we-should-anthropomorphize-ai-agents/",
+      "source": "seangoedecke.com",
+      "publishedAt": "2026-09-09T00:00:00.000Z",
+      "summary": "",
+      "id": "91e9112f28e45241b362b64588aa976985808a16db4f800770499daf18b9b9e4",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "深入探讨AI与人类交互的哲学思考，为读者提供独特的视角和启发。",
+      "reason": "主题优先级高，内容涉及AI伦理、人机交互等深层次问题，有助于读者理解AI的社会影响，引发高质量的讨论。",
+      "tags": [
+        "AI伦理",
+        "人机交互",
+        "AI哲学",
+        "思考",
+        "社会影响"
+      ]
+    },
+    {
+      "title": "Microsoft Plugs Nearly 1,000 Security Holes",
+      "link": "https://krebsonsecurity.com/2026/09/microsoft-plugs-nearly-1000-security-holes/",
+      "source": "krebsonsecurity.com",
+      "publishedAt": "2026-09-08T21:44:22.000Z",
+      "summary": "Microsoft Corp. today issued updates to plug at least 974 security holes in its Windows operating systems and other software, by far its biggest single patch batch ever. Microsoft says artificial intelligence is helping to speed the discovery of vulnerabilities, but security experts warn that many organizations already are struggling to prioritize the more human-intensive endeavor of testing and deploying so many fixes each month.",
+      "id": "6e80b0fb56bfd77a87050d9e1b5184ccb91bc36df799a998668eb064eba4463f",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "全面报道微软大规模安全更新，揭示AI在安全领域的应用及企业面临的实际挑战。",
+      "reason": "内容兼顾AI在漏洞发现中的应用与IT管理中的实用性问题，信息密度高，对企业和个人用户都具有重要参考价值。",
+      "tags": [
+        "网络安全",
+        "微软",
+        "漏洞修复",
+        "AI应用",
+        "自动化",
+        "IT管理"
+      ]
+    },
+    {
+      "title": "Better AI code comment detector",
+      "link": "https://entropicthoughts.com/better-ai-comment-classifier",
+      "source": "entropicthoughts.com",
+      "publishedAt": "2026-09-08T22:00:00.000Z",
+      "summary": "When I trained the previous AI comment classifier, I used partially personal\nprivate data to do it, and built it on a somewhat shaky foundation, so I\ncouldn’t share the code or data. I rebuilt it on public data and a better\nfoundation!\n\n\n\n\n\nFirst off, you might want to try it out. Nothing you paste into that web page\nleaves your browser, so you can safely try it with whatever you like. I have\ninvited some testers to try out an earlier version of it, and they had mainly\npositive feedback to give.\n\n\n\n\n\nWe won’t break down robot-isms the way we broke down Claude-isms in the previous\narticle, because in the UI of the new classifier you can just click any part\nof the text being classified to see which features activate on that portion of\nthe text, and how they contribute to the overall judgment. Here’s an example of\nthe expanded feature activation view.\n\n\n\n(Continue reading the full article on the web.)",
+      "id": "5a2b2b0a84018ddb8eb61cccc254985c1a9aa2a5c601dda1c50423a4d1d9cb00",
+      "ref_id": "0",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "详细介绍了其AI代码注释检测器的改进，包括使用公共数据、透明化特性激活视图，并强调了实用性和安全性。",
+      "reason": "文章深入探讨了AI在编程工具中的实际应用，技术深度适中，且对开发者具有较高实用价值。",
+      "tags": [
+        "AI",
+        "编程工具",
+        "机器学习",
+        "代码质量",
+        "独立开发"
+      ]
+    },
+    {
+      "title": "Procedural Graphs: Self-Evolving Execution Structures for LLM Agents",
+      "link": "https://academy.dair.ai/papers/procedural-graphs-self-evolving-execution-structures-for-llm-agents-2609.09153",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-09T17:13:52.000Z",
+      "summary": "Article URL: https://academy.dair.ai/papers/procedural-graphs-self-evolving-execution-structures-for-llm-agents-2609.09153\nComments URL: https://news.ycombinator.com/item?id=49629868\nPoints: 10\n# Comments: 1",
+      "id": "d647aa045876c2850b138d9ea2cb331bf3ed558c2e034a6b03ba23000c276636",
+      "ref_id": "2",
+      "recommendationScore": 88,
+      "popularityScore": 30,
+      "priority": "high",
+      "comment": "一篇关于LLM智能体前沿研究的论文，技术深度和新颖性极高。",
+      "reason": "AI领域最前沿的研究，尽管流行度低，但对技术博客来说是高质量的深度内容，优先级最高。",
+      "tags": [
+        "AI",
+        "LLM",
+        "研究",
+        "算法",
+        "智能体"
+      ]
+    },
+    {
+      "title": "How I advertise malicious software on Google Ads",
+      "link": "https://xlii.space/eng/malicious-software-on-google-ads/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-09T11:43:21.000Z",
+      "summary": "Article URL: https://xlii.space/eng/malicious-software-on-google-ads/\nComments URL: https://news.ycombinator.com/item?id=49624856\nPoints: 293\n# Comments: 174",
+      "id": "46815a9fce93b9d55150598ee0aa4ae5b5f84c9959a2052ced6b8ef5756fcea9",
+      "ref_id": "3",
+      "recommendationScore": 88,
+      "popularityScore": 82,
+      "priority": "medium",
+      "comment": "详细揭露了在Google Ads平台上投放恶意软件的具体策略和技术手段。",
+      "reason": "提供了对网络安全漏洞和广告平台滥用机制的深刻洞察，具有警示和教育意义。",
+      "tags": [
+        "网络安全",
+        "Google Ads",
+        "恶意软件",
+        "漏洞利用",
+        "广告技术"
+      ]
+    },
+    {
+      "title": "AI is an intelligence multiplier",
+      "link": "https://www.johndcook.com/blog/2026/09/09/ai-multiplier/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-09-09T14:17:20.000Z",
+      "summary": "A rising tide may lift all boats, but the AI tide lifts some boats much more than others. By all accounts, the best programmers have had the biggest productivity boost from AI. And top tier mathematicians are using AI to settle long-standing mathematical conjectures. AI is a powerful tool, but tools don’t come to life […]\nAI is an intelligence multiplier first appeared on John D. Cook.",
+      "id": "687c738ac16ebc61a605ae444ecc1ac46732e9ec3f7673f99af4be505c13e31d",
+      "ref_id": "3",
+      "recommendationScore": 88,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "深入探讨AI如何作为智能乘数，显著提升顶尖程序员和数学家的生产力。",
+      "reason": "直接聚焦AI主题（最高优先级），观点新颖且具有高实用性，能引发读者对AI未来影响的思考。",
+      "tags": [
+        "AI",
+        "生产力",
+        "软件开发",
+        "数学",
+        "技术趋势"
+      ]
+    },
+    {
+      "title": "Qwen 3.8 follows GPT-5.5 Pro reasoning prefills",
+      "link": "https://gist.github.com/wsxiaoys/e0286dc6bb624ff5fdf49e7f4c528ba3",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-09T17:24:28.000Z",
+      "summary": "Article URL: https://gist.github.com/wsxiaoys/e0286dc6bb624ff5fdf49e7f4c528ba3\nComments URL: https://news.ycombinator.com/item?id=49630026\nPoints: 61\n# Comments: 13",
+      "id": "a76cf7777d6decb4b3d2cb99e7d680cb38b38e1824b72a20347e8f25826a6e9e",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "深入分析LLM最新进展，对Qwen 3.8与GPT-5.5 Pro的推理能力进行比较。",
+      "reason": "AI主题优先级最高，内容具有高技术深度和新颖性，对AI开发者和研究者极具价值。",
+      "tags": [
+        "AI",
+        "LLM",
+        "Qwen",
+        "GPT",
+        "技术分析"
+      ]
+    },
+    {
+      "title": "Tailwind Labs is joining Shopify",
+      "link": "https://tailwindcss.com/blog/tailwind-is-joining-shopify",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-09T13:27:11.000Z",
+      "summary": "Article URL: https://tailwindcss.com/blog/tailwind-is-joining-shopify\nComments URL: https://news.ycombinator.com/item?id=49626190\nPoints: 637\n# Comments: 266",
+      "id": "cc50efc6763b3c92ab32cc71393a4f44a21711af592d80249f4164c788473b72",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 98,
+      "priority": "medium",
+      "comment": "宣布流行的CSS框架Tailwind Labs被电商巨头Shopify收购的行业大新闻。",
+      "reason": "对前端开发社区和编程工具生态产生重要影响，值得关注其后续发展及整合效应。",
+      "tags": [
+        "前端开发",
+        "编程工具",
+        "行业新闻",
+        "Tailwind CSS",
+        "Shopify"
+      ]
+    },
+    {
+      "title": "The Download: OpenAI’s turning point for math and a battery record",
+      "link": "https://www.technologyreview.com/2026/09/09/1143767/the-download-openai-math-future-battery-record/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-09-09T12:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. What OpenAI’s latest controversy tells us about the future of math OpenAI says its agents have solved one of the most important open problems in mathematics. Under normal circumstances, that would…",
+      "id": "b641462453db06c38b2bf82a775e90b894627a3c1499aa0a500b702efde0be4b",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "这是一篇概括性的科技新闻简报，涵盖了OpenAI在数学领域的突破性进展与争议，以及电池技术的新纪录。",
+      "reason": "文章内容涉及当前最热门的AI前沿话题及其争议，同时兼顾其他重要科技进展，具有很高的时效性和广泛的关注度。",
+      "tags": [
+        "AI",
+        "OpenAI",
+        "数学",
+        "电池",
+        "科技新闻",
+        "热门话题"
+      ]
+    },
+    {
+      "title": "Understanding the thermal ceiling in portable power",
+      "link": "https://www.technologyreview.com/2026/09/09/1143279/understanding-the-thermal-ceiling-in-portable-power/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-09-09T08:18:13.000Z",
+      "summary": "Plug a phone into a modern charger and the first 10 minutes are impressive. The next 20 are not. This is not a defect. It’s the connected device protecting itself. As temperature rises during charging, a smartphone’s battery management system reduces the current it will accept, because heat accelerates the chemical degradation that permanently reduces…",
+      "id": "5fe74b08a2bd5d445252b7518587fb2794d7e53ee5e14c36dbb70ddfb7f5453f",
+      "ref_id": "2",
+      "recommendationScore": 80,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "深入解释了便携设备在充电过程中因热管理系统而限制充电速度的原理。",
+      "reason": "文章提供了实用的技术科普，帮助用户理解智能设备的电池保护机制和充电行为，提升了设备的实用知识。",
+      "tags": [
+        "电池",
+        "充电",
+        "热管理",
+        "智能手机",
+        "技术原理",
+        "实用技巧"
+      ]
+    },
+    {
+      "title": "Apple Introduces AirPods 5",
+      "link": "https://www.apple.com/newsroom/2026/09/apple-introduces-airpods-5-with-best-in-class-open-ear-active-noise-cancellation/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-09T17:39:24.000Z",
+      "summary": "Article URL: https://www.apple.com/newsroom/2026/09/apple-introduces-airpods-5-with-best-in-class-open-ear-active-noise-cancellation/\nComments URL: https://news.ycombinator.com/item?id=49630253\nPoints: 131\n# Comments: 113",
+      "id": "5b32cdc139a2d9709fe2459735264134ab572051ac599fc561dda7b4aab936b1",
+      "ref_id": "0",
+      "recommendationScore": 75,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "及时报道Apple新品发布，市场关注度极高，但技术细节待深入。",
+      "reason": "作为苹果生态重要新闻，对消费者和行业有广泛影响，属于高优先级主题。",
+      "tags": [
+        "Apple",
+        "硬件",
+        "新品发布",
+        "消费电子"
+      ]
+    },
+    {
+      "title": "Understanding the recent DDoS attack against Read the Docs",
+      "link": "https://about.readthedocs.com/blog/2026/09/2026-ddos-attack/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-09T15:55:53.000Z",
+      "summary": "Article URL: https://about.readthedocs.com/blog/2026/09/2026-ddos-attack/\nComments URL: https://news.ycombinator.com/item?id=49628614\nPoints: 81\n# Comments: 23",
+      "id": "5cdb0d2e968b26ea63a347a6fb961453694be8ff3d1d63178f8ee31749110217",
+      "ref_id": "0",
+      "recommendationScore": 75,
+      "popularityScore": 78,
+      "priority": "medium",
+      "comment": "详细剖析了Read the Docs近期遭受DDoS攻击的来龙去脉和应对措施。",
+      "reason": "提供了一份宝贵的DDoS攻击案例分析及防御经验，对运维和网络安全团队有较高参考价值。",
+      "tags": [
+        "网络安全",
+        "DDoS",
+        "基础设施",
+        "运维"
+      ]
+    },
+    {
+      "title": "Batteries just broke another record in the US",
+      "link": "https://www.technologyreview.com/2026/09/09/1143680/batteries-us-record/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-09-09T09:00:00.000Z",
+      "summary": "Battery installations hit a new record in the US in the second quarter of 2026. In total, 20.2 gigawatt-hours of new capacity came online, according to a new report. That’s enough to supply the daily electricity needs of about 700,000 homes. The surge is putting the country on a trajectory to see 71 gigawatt-hours of…",
+      "id": "361603d092d911ac12ee227158bac6348526d6ed250842b1a5b51f6e276c005e",
+      "ref_id": "1",
+      "recommendationScore": 75,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "详细报道了美国电池安装量创下新纪录的数据和趋势。",
+      "reason": "提供了能源和可持续发展领域的重要数据和行业趋势，对关注相关领域的用户具有参考价值。",
+      "tags": [
+        "电池",
+        "能源",
+        "可持续发展",
+        "自动化",
+        "行业报告"
+      ]
+    },
+    {
+      "title": "Cancer Capital: It sucks for founders, too!",
+      "link": "https://anildash.com/2026/09/09/cancer-capital-founders/",
+      "source": "anildash.com",
+      "publishedAt": "2026-09-09T00:00:00.000Z",
+      "summary": "So, we've been breaking down the way venture capital has evolved over the last two decades or so (spoilers: it got worse!), but a lot of that has been kind of theoretical. Now it's time for us to talk about how that impacts players in the real world, at a practical level.\nLet's take founders, the entrepreneurs who actually build companies and invent new technologies. Now, what I mean here are people who have a great idea for a product or a service, and who want to get it out to the world in order to make something amazing happen. (These days there's also a cohort of people who call themselves \"founders\", but who basically just identified a pile of money that they wanted to grab, and decided that they were willing to suck up to whatever investors they had to in order to get that pile of money. Let's file these horrid people away for later — we'll come back to them.)\nThe deal for founders used to be pretty straightforward. You'd have an idea you were obsessed with, you would build it out as far as you could with whatever resources you were able to scrape together yourself, or with the help of your friends and family, and then if you absolutely had to have more money to make your idea succeed, you might seek out some investors to help you get to the next level. The conventional wisdom was that investors were a bunch of predators (everyone called them \"vulture capital\", often to their faces), and that founders should go in extremely skeptical about them, but at times they were a necessary evil in order to achieve one's goal.\nWhat about the investors?\nOn the other side of the table, investors knew the deal, and the best of them understood their role within the ecosystem. Here in New York City, we had influential firms like Union Square Ventures priding themselves on how founder-friendly they could be, both by trying to be straightforward in their communication with founders and by having an understandable thesis for their investments, which would let founders anticipate whether their company would be of interest or not. This avoided wasting time on the part of both founders and investors.\nThere was also a norm with real teeth, because it actually cost firms money: a VC would generally refuse to invest in a company that competed with one of their existing portfolio companies. Not as a favor, but because the conflict was obvious to everybody involved — you can't sit on two boards in the same market and be honest with either of them, and you can't ask a founder to open their books to somebody who's already funding their rival. Firms would tell you up front that they were out because of a conflict, and that early no was understood to be the professional thing to do. Part of why a legible thesis mattered so much is that it let you find those conflicts before you'd spent three months preparing a pitch.\nBy the time I pitched a company to Bloomberg Beta here in New York in 2013, they had published their operating manual on GitHub in order to be more transparent to founders — and they let us publish our term sheet on GitHub as well, for the same reason.\nAfter the Good Old Days\nI share all this history to give some sense of how, as recently as a dozen years ago, venture capital firms were striving to compete by showing how founder-friendly they could be, and in the following years many even made a lot of noise about how inclusive they wanted their portfolios to be, inviting underrepresented founders in to pitch. (To their credit, many of the most prominent investors in our NYC tech community have not succumbed to the Cancer Capital values yet, though it has meant that they're stuck as smaller players in deals where those giant firms dominate.)\nIn recent years, though, the mask has fully come off for the giant firms, and even many smaller firms that are aligned with their agenda. It's not merely that they've adopted extremist political positions — though they have — it's that they now regularly collude against founders.\nThat's going to sound shocking to people who haven't been involved in pitching these firms. But I'll say it again, and then I'll explain how it works: major venture capital firms now routinely collude against founders, which means those founders end up with worse terms for their deals.\nStacking the deck\nFounders who are aggressive and enthusiastic about their companies will try to pitch a range of firms on the merits of their startup, often coming in with a well-polished pitch deck and presentation, sometimes tailoring each pitch to the specific preferences that they've researched about that firm or partner. It can take months and months of preparation to get ready for these meetings, and they're often among the most stressful and high-stakes meetings of a founder's career. I've helped many founders prepare for these meetings, and have seen folks break into tears or wake up with panic attacks ahead of them — people take them extremely seriously. (I never got stressed about these pitches, but I have a fairly atypical attitude about VCs and their firms.)\nA bit of important context here: for decades, VCs have said that they don't sign NDAs. Decent guys like Brad Feld, Mark Suster and Fred Wilson wrote their blog posts about this many years ago back in the early days of VC blogging, because it would have added a bit of absurd overhead to ordinary conversations, and they genuinely wouldn't have entertained investing in competitive companies within the same portfolio. But a once-benign policy takes on pretty sinister implications in today's environment.\nSo look at what the actual arrangement is now. You are expected to hand over a complete financial model, your customer pipeline, a product roadmap, probably your unit economics or cost of go-to-market, and some version of an assessment of where you're weakest or how you stack up to your competitors — to a group of people who have explicitly refused to keep it confidential. And they declined before you walked in the room, as a condition for you getting to pitch them at all. They're exploiting the power imbalance from the start, in a way that no other industry considers normal.\nWhich brings us to the peculiar thing that I've seen happen to a number of founders who went through the process of pitching multiple investors: they would commonly find that the partner they were speaking to could speak with some familiarity and fluency about the details of their businesses, even before they'd gotten to that part of the presentation. Sometimes, the partner would openly say, \"I was talking to [X] over at [other venture firm], and he thinks this is really interesting.\" It would almost always be when they were saying something positive (at least superficially), but they would routinely reveal that they had spoken to other investors, at other firms, about a company that was pitching them.\nThis was a casual point that came up in conversation! A few times, investors would even say it like it was a service they were rendering for the founder: \"We were thinking we might team up with that other firm and we'll go in together on your next round.\"\nHere's the issue with that kindly offer: it's colluding against the founder! I couldn't tell if the investors didn't know, or didn't care that they were admitting to working together with the other venture capital firms to discuss the proprietary, confidential details of a company that they hadn't even invested in. And all of this was happening years ago, before they had extremely advanced AI tools to help them analyze the details of the company data for startups that they were considering investing in.\nTo draw an important distinction here: syndication during a funding round is normal. Firms routinely co-invest, with rounds filled by multiple investors. As founders, we frequently want two or more firms to come in together to reach the desired amount of capital we're trying to raise. But that's not the phenomenon I'm describing. Syndication happens after a firm has consent, in collaboration with the startup's founders and executives. What happens in these meetings is a different thing entirely: firms that have not committed, may never commit, and in many cases are about to pass on your startup entirely, are comparing (confidential!) notes on your business while you're still in the middle of pitching them.\nOne of the most striking parts of this collusion is, from a legal and market standpoint, these venture firms are supposed to be competitors! I noticed this twenty years ago, back when it was merely funny: VCs are as obsessed with what the other guy is doing as anybody in fashion or entertainment. If you ask regulators or lawmakers, they would likely insist that venture capital is a healthy market where there is lots of thriving competition. But if you're a small startup trying to get funded, it can look a lot more like the entire industry is just one big company with a lot of little branches that operate under different names. (Back when regulators still pursued this stuff, the DOJ quietly pushed a dozen directors off nine company boards because the way they were intertwined was against the law, mostly at private equity firms. But that's the board-level version of the problem. Nobody's looking at the pitch meeting.)\nCancer Capital colludes against you\nSo we've seen how VC firms would team up against founders, even before the rise of the hyper-scale Cancer Capital firms. But how has it gotten worse since they took over? Well, there are a few ways.\nThe first is pretty straightforward: Pretty much everybody feels like they have to pitch the mega-firms, at some point. If it's not in the initial round of funding, then certainly by the time a company has reached a valuation of about $100M or so, they will have been expected to pitch one of the small handful of Cancer Capital funds, and it would be considered a glaring negative signal if they hadn't at least gotten one of them to sign on as an investor.\nWhat's more, since they will have had to pitch all of the mega-firms in order to get to that level, all of those firms will now have gotten a full overview of the entire business plan and financial details of that startup (since that's a core part of the pitch) — as well as every one of their competitors, since all those companies had to pitch the same firms, too. And remember: not one of those firms signed anything.\nThe second way is that the conflict rule is simply gone. Firms now routinely take pitches from companies that directly compete with each other, and will invest in more than one, or even several of them. In the hottest categories it's just described as their strategy — they're taking a position on the category rather than simply investing in a company.\nThink about what that does to the information problem. It's one thing for a firm to have every competitor's pitch deck. It's another for them to have every competitor's deck and board seats or information rights for multiple companies in the space. (Information rights include actual monthly numbers, real churn, staffing plans and compensation, and much more sensitive data that wouldn't be included in a pitch.) At that point the extractive VCs aren't just investing in the market — they're the only party that can see it. Not even regulators have access to this breadth of data.\nWhere that leaves the market is that the Cancer Capital firms often have nearly complete information about a nascent market, acting as an information tollgate that every startup has to pass through at a certain scale. They suck in the pitch decks from every player in a market, and sometimes far more data than that, all without an obligation to invest in any of them.\nAnd it gets worse.\nBecause these firms are committed to their ideological agendas, if they do see an idea they like, but they don't like the morals of the founder who pitched it (i.e. the founder has morals), they could elect to merely choose someone in their network to create a clone of the idea, and then hyper-fund that clone in order to kill the company that just pitched them. If that sounds awful to you, imagine how it feels to the multiple founders that this has happened to over the years. I've heard about it firsthand, though nobody will go on the record, because they are convinced it would be the end of their careers. The receipts I've seen make me 100% convinced, though.\nAnd this is where those horrid money-chasing fake founders come back into the story. It's not just that the industry tolerates them. It's that an industry shaped by Cancer Capital now produces them. If you're a firm choosing between an obsessive builder who's got a clear vision for what they want in the world, and is going to fight you on terms, or a sycophant who'll take whatever you offer and execute the ideas laid out in the manifesto on your fund's homepage, the second one is the obvious choice. And there's no shortage of folks in that second category.\nThe Cancer Capital firms are now operating with something like X-ray vision over entire markets, being fed detailed information on emerging spaces by founders who are effectively coerced into handing over all of their most sensitive business data.\nMeanwhile the other 99% of venture capital firms, who are still operating in the old world, are at a massive disadvantage, because their \"deal flow\" (the number of startups that come to pitch them on investing) is more constrained as they don't have the name recognition or coercive power that the hyper-scale firms do. The network effects are a lot like social media platforms — the giant ones are toxic, but a lot of people go there because they feel like everybody else is there. This isn't coincidence; the guys running the Cancer Capital firms made a huge part of their fortunes by investing in the biggest, worst social networking platforms.\nAny way out?\nIt's easy to see the way the deck is stacked and to feel a sense of despair if you're trying to build a business or a product. But there are lots of ways out. The first few here are about staying out of the trap in the first place; the last two are about going after the trap itself. No individual action can solve a systemic problem, but all of these tactics together can begin to change these systems.\nBootstrap. First, there's a big reason that the conventional wisdom in the early days of the web was to caution against ever taking venture capital funding: you often don't need it! As I noted in my last piece, legendary companies like Microsoft and Apple got to the launch of their earliest milestone products without any VC dollars, and your business will be more robust and resilient for having gotten on its feet without taking on those burdens. Put simply: Live within your means, don't raise VC.\nBuild more efficiently. Many startups are finding that contemporary tools (for some, including LLMs) are letting them build products and go to market much more efficiently than before, obviating the need for raising giant amounts of money just to get something launched. By staying lean and remaining closely connected to a community that can support you, you eliminate the need to rely on outside funding. Open source and open communities can be a superpower here.\nLeak-proof the deck. If you're going to pitch anyway, pitch like everything in your deck is going to end up in front of your competitors, because there's a decent chance that it will. Founders often get coached to be exhaustive with every detailed number, every roadmap item, every honest weakness, but that's advice that only made sense when you could trust the people across the table. Give them only what they need in order to make a decision, and then hold the rest for later meetings once there's an actual commitment. Or: build your business to be fully transparent, where there are no secrets, and you don't have to worry about anything leaking, and there isn't any advantage to them having access to the data. Either way: protect yourself. And always, always compare notes with other founders. The VCs are already comparing notes about you. (I have a lot more advice about pitching VCs, but that's an entire other series of posts.)\nOther VCs. Finaly, one last investor option: work with the more conventional VC firms. This remains technically possible, albeit dangerous. There are many firms in the \"99%\" of the venture world that haven't fully embraced the toxicity of the Cancer Capital funds. Earlier I gave credit to the folks in our NYC tech community who've held the line, and I meant it — but their decency can't protect you from the structure they're operating inside. The challenge is, even though these may be run by thoughtful or decent people, if your company succeeds, you may well end up having to do a follow-on round of funding, and that increases the likelihood that you will have to do business with one of the bad actors. Plenty of folks are trying this path, but I would caution against it.\nPush for regulation. This option is hard at the federal level in the United States, due to the level of corruption under an authoritarian regime, but some limited wins, especially at state or local levels, may be possible. In the longer run, this has been the only mechanism that has truly held these kinds of abuses in check during prior historical precedents. Some state regulators may be willing to enforce rules against the worst behaviors that violate anticompetitive or anti-collusion laws.\nEncourage limited partners to divest. Many of the Cancer Capital firms rely on funds from sources like public retirement funds which often still have responsible investment commitments. These may still offer some possibility of accountability or leverage which could be used to get them to divest from these firms, and put some pressure on others to discourage them from enabling these kinds of bad behaviors.",
+      "id": "1bb5ea34e0c876a1d3012e3b03f8cadf53614e32b5c65d282859dab687411285",
+      "ref_id": "3",
+      "recommendationScore": 75,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "深入批判了风险投资的负面演变及其对创始人的实际影响，提供了对创业生态系统的独特视角。",
+      "reason": "对独立开发者和创业者有很强的实用指导意义，探讨了科技行业商业运作的深层问题。",
+      "tags": [
+        "独立开发",
+        "创业",
+        "风险投资",
+        "商业模式"
+      ]
+    },
+    {
+      "title": "Planet Labs' open satellite feed",
+      "link": "https://tech.marksblogg.com/planet-labs-open-satellite-feed.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-09T15:44:09.000Z",
+      "summary": "Article URL: https://tech.marksblogg.com/planet-labs-open-satellite-feed.html\nComments URL: https://news.ycombinator.com/item?id=49628429\nPoints: 78\n# Comments: 17",
+      "id": "1546ced409840ef36f9bc4fd8cef4a42d7dd5e520ad43272191119603d19e34a",
+      "ref_id": "3",
+      "recommendationScore": 70,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "介绍了Planet Labs提供的开放卫星数据接口及其潜在应用，为地理空间爱好者带来便利。",
+      "reason": "为地球观测和数据分析领域提供了宝贵的资源，但与核心AI、编程工具等主题的关联度稍弱。",
+      "tags": [
+        "卫星图像",
+        "地理空间",
+        "开放数据",
+        "数据科学"
+      ]
+    },
+    {
+      "title": "A 50-year-old computer-assisted proof",
+      "link": "https://www.johndcook.com/blog/2026/09/09/four-colors/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-09-09T14:59:48.000Z",
+      "summary": "The idea of using computers to assist with proofs is not new. The first major computer-assisted proof was published in 1976, the proof of the four color theorem by Kenneth Appel and Wolfgang Haken. The authors reduced the proof of the four color theorem to verifying calculations on 1,834 configurations, each checked by a computer […]\nA 50-year-old computer-assisted proof first appeared on John D. Cook.",
+      "id": "d1c578e6c6b3333ff0d8b8e04721b9f7fbc0c704677ee32d16a44df9bc159005",
+      "ref_id": "2",
+      "recommendationScore": 68,
+      "popularityScore": 58,
+      "priority": "medium",
+      "comment": "回顾计算机辅助证明的历史性里程碑，特别是四色定理的应用。",
+      "reason": "内容具有一定的技术深度和历史意义，涉及计算数学领域，对理解计算机在数学中的应用有价值。",
+      "tags": [
+        "计算数学",
+        "历史",
+        "证明",
+        "计算机科学"
+      ]
+    },
+    {
+      "title": "iPhone Duo",
+      "link": "https://www.apple.com/iphone-duo/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-09T18:15:43.000Z",
+      "summary": "Article URL: https://www.apple.com/iphone-duo/\nComments URL: https://news.ycombinator.com/item?id=49630931\nPoints: 268\n# Comments: 368",
+      "id": "227061d064a98d5fdf91ed9a643495da505a8f4885878df0f08d636bf0facdad",
+      "ref_id": "2",
+      "recommendationScore": 65,
+      "popularityScore": 100,
+      "priority": "medium",
+      "comment": "关于iPhone Duo的产品详情页面，引发了极高的社区讨论和关注度。",
+      "reason": "虽然内容可能与新闻稿类似，但其极高的社区热度和评论数量表明其对读者的巨大吸引力。",
+      "tags": [
+        "Apple",
+        "iPhone",
+        "智能手机",
+        "硬件",
+        "产品详情"
+      ]
+    },
+    {
+      "title": "Why Emacs Consult async searches feel slow and how to speed them up",
+      "link": "https://www.jamescherti.com/emacs-consult-speed-async-searche-grep-ripgrep-fd-find/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-09T17:13:43.000Z",
+      "summary": "Article URL: https://www.jamescherti.com/emacs-consult-speed-async-searche-grep-ripgrep-fd-find/\nComments URL: https://news.ycombinator.com/item?id=49629865\nPoints: 16\n# Comments: 1",
+      "id": "ec2ff24e3c43f8062a9ce5e28912e125a04104970cc96a0a4fde9bb1191b8fc7",
+      "ref_id": "3",
+      "recommendationScore": 65,
+      "popularityScore": 35,
+      "priority": "medium",
+      "comment": "为Emacs用户提供了实用的性能优化指南，解决异步搜索的痛点。",
+      "reason": "针对特定编程工具的实用技巧，对Emacs社区有直接价值，但受众相对小众。",
+      "tags": [
+        "编程工具",
+        "Emacs",
+        "性能优化",
+        "开发效率"
+      ]
+    },
+    {
+      "title": "Apple Unveils iPhone Duo",
+      "link": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-09T18:17:06.000Z",
+      "summary": "Article URL: https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/\nComments URL: https://news.ycombinator.com/item?id=49630964\nPoints: 182\n# Comments: 159",
+      "id": "e2137401cab38c45344dd87ce502630ea83d8938d017818d0ae53523381ccd73",
+      "ref_id": "1",
+      "recommendationScore": 55,
+      "popularityScore": 68,
+      "priority": "medium",
+      "comment": "一份关于iPhone Duo发布的标准新闻稿，读者互动性高。",
+      "reason": "iPhone作为Apple核心产品线，其新品发布具有广泛的市场关注度和较高的讨论热度。",
+      "tags": [
+        "Apple",
+        "iPhone",
+        "智能手机",
+        "硬件",
+        "新闻"
+      ]
+    },
+    {
+      "title": "Apple Watch Series 12",
+      "link": "https://www.apple.com/newsroom/2026/09/introducing-apple-watch-series-12-with-the-all-new-health-sensing-system/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-09T17:56:17.000Z",
+      "summary": "Article URL: https://www.apple.com/newsroom/2026/09/introducing-apple-watch-series-12-with-the-all-new-health-sensing-system/\nComments URL: https://news.ycombinator.com/item?id=49630566\nPoints: 87\n# Comments: 76",
+      "id": "707b25cf57041ba7f6608633c24366cd836e0c62cb4768ebb757c53e4a800b1c",
+      "ref_id": "4",
+      "recommendationScore": 50,
+      "popularityScore": 32,
+      "priority": "medium",
+      "comment": "Apple Watch Series 12的发布信息，重点关注其全新的健康传感系统。",
+      "reason": "Apple Watch作为可穿戴设备的代表，其健康技术创新值得关注，但文章仍属产品发布范畴，深度有限。",
+      "tags": [
+        "Apple",
+        "Smartwatch",
+        "硬件",
+        "健康科技",
+        "新品发布"
+      ]
+    },
+    {
+      "title": "Apple Watch Ultra 4",
+      "link": "https://www.apple.com/apple-watch-ultra-4/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-09T18:21:40.000Z",
+      "summary": "Article URL: https://www.apple.com/apple-watch-ultra-4/\nComments URL: https://news.ycombinator.com/item?id=49631121\nPoints: 27\n# Comments: 8",
+      "id": "9e253fa4a25065fe2a38f8b59870e9af61814ee0b733e4f3becc79cf648dccce",
+      "ref_id": "0",
+      "recommendationScore": 40,
+      "popularityScore": 10,
+      "priority": "medium",
+      "comment": "一篇关于Apple Watch Ultra产品发布的基本报道，内容深度和新颖性一般。",
+      "reason": "作为Apple生态的新品发布，具有一定的关注度，但缺乏深入的技术分析或独特见解。",
+      "tags": [
+        "Apple",
+        "Smartwatch",
+        "硬件",
+        "新品发布"
+      ]
+    },
+    {
+      "title": "We accidentally built a synthetic cell factory",
+      "link": "https://bnext.bio/post/we-accidentally-built-a-synthetic-cell-factory",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-09T15:34:51.000Z",
+      "summary": "Article URL: https://bnext.bio/post/we-accidentally-built-a-synthetic-cell-factory\nComments URL: https://news.ycombinator.com/item?id=49628290\nPoints: 48\n# Comments: 3",
+      "id": "72e16b46dc6d8b4edbc153a99462aee76955bac24b73dd2c716ba1752f7b0fc6",
+      "ref_id": "4",
+      "recommendationScore": 40,
+      "popularityScore": 45,
+      "priority": "low",
+      "comment": "报道了一项在合成生物学领域的意外突破，成功构建了合成细胞工厂。",
+      "reason": "内容虽然极具科学价值和新颖性，但其主题与我们关注的IT科技领域优先级（AI、编程工具等）相距较远。",
+      "tags": [
+        "生物科技",
+        "合成生物学",
+        "科学突破",
+        "生物工程"
+      ]
+    },
+    {
+      "title": "Don’t Let Anyone Take Away Your Big Box of Cables",
+      "link": "https://blog.jim-nielsen.com/2026/hands-off-my-cables/",
+      "source": "blog.jim-nielsen.com",
+      "publishedAt": "2026-09-09T19:00:00.000Z",
+      "summary": "Speaking of being on the internet and finding things that make you go, “Hey! It’s not just me!” I scrolled across this skeet from Tyler Gaw:\nI just dug to the bottom of my Big Box of Cables to find two cables that I needed for something. They've been in the bottom for 10+ years. So, \"when are you ever gonna use these?\" was today. Don't ever let anyone take your Big Box of Cables away.\nI laughed. I cried. I felt inspired.\nSo inspired, in fact, that I decided I was gonna do something about it.\nSomething that would make me forever remember the value of that advice.\nI screenshotted that skeet.\nI printed it (in black and white with the ole’ trusty Brother).\nI cut it out.\nI pulled out my big box of cables (the one my wife lovingly labeled “FAMILY TECHNO BOX”).\nI cut some clear packing tape.\nAnd I plastered that thing on the front on my box.\n\n\n\nNow every time I pull that box out to add YAC (yet another cable), instead of asking myself, “Why do I keep this box?” I’ll see that skeet and I’ll be reminded why I do what I do. I’ll feel a spark of joy, motivation, and purpose rekindled. (Not to mention the fact that it will serve as a warning to anyone in the family who thinks “I should just throw this away…”)\nOne day my kids will find that box in the attic amongst my other belongings. I hope they will pay heed to the timeless advice lovingly taped on the outside.\nEmail\n      · Mastodon ·\n\n      Bluesky",
+      "id": "62d04695dab0ddbafb786e8e1e57f73ccc15efb2b78d622a2364e9ca71ffd38a",
+      "ref_id": "1",
+      "recommendationScore": 40,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "一篇轻松幽默的个人随笔，分享了保留旧线缆的趣事和感悟，缺乏科技主题深度。",
+      "reason": "内容更偏向个人情感和生活哲学，与科技博客的核心主题关联度较低。",
+      "tags": [
+        "个人感悟",
+        "生活",
+        "技术文化"
+      ]
+    },
+    {
+      "title": "I haven't lost a customer service fight in seven months",
+      "link": "https://www.sudomoin.com/p/consumer-claims",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-09T16:18:38.000Z",
+      "summary": "Article URL: https://www.sudomoin.com/p/consumer-claims\nComments URL: https://news.ycombinator.com/item?id=49628982\nPoints: 32\n# Comments: 29",
+      "id": "464ece3505b60190ef4226f5081cf38176bbdb88e39fe613680b06173f073350",
+      "ref_id": "4",
+      "recommendationScore": 25,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "一篇关于客户服务技巧的文章，与科技博客主题关联度较低。",
+      "reason": "虽然内容具有个人实用性，但严重偏离科技博客的核心关注领域和主题优先级。",
+      "tags": [
+        "生活技巧",
+        "客户服务",
+        "非技术"
+      ]
+    },
+    {
+      "title": "Pluralistic: Anti-vax/anti-trust (09 Sep 2026)",
+      "link": "https://pluralistic.net/2026/09/09/when-it-dont-rain/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-09-09T10:28:57.000Z",
+      "summary": "Today's links Anti-vax/anti-trust: Remembering saves lives. Hey look at this: Delights to delectate. Object permanence: Disneyland prisoner; HOAs v xeriscaping; Copyright Office x regulatory capture; The women held a vote; Open licenses v uncopyrightable subjects; Largest prison strike in history; Largest strike in history; Fingerspitzengefühl; CDT v DRM; BNL v DRM; Sugar v logos; Knit a Princess Leia wig; RIP Gutenberg founder Michael Hart; Best bitters; HK refugees x Snowden; Wells Fargo's massive fraud; EU v links; Trump x noncompetes. Upcoming appearances: London, Manchester, Budapest, Edmonton, South Bend, Hudson, Calgary, Winnipeg, Vancouver, Victoria, Ottawa. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. Anti-vax/anti-trust (permalink) As once-extinct diseases sweep through America, sickening, maiming and killing, the wild lunacy of anti-vax superstition grows ever more difficult to excuse. Even the most uncomfortable vaccinations are nothing compared to the agony of the diseases they stave off. The worst I've ever felt after a jab was when I insisted – against doctor's orders – on getting the shingles, flu and covid jabs at the same time (I was about to leave on a complex trip where I'd be in a lot of enclosed spaces with a lot of different people, and I'd just had a cancer diagnosis and didn't want to get sick in case that foreclosed on my oncologist's therapeutic plans). I felt like dogshit for about a day, and it didn't matter. Every time I felt like groaning and complaining, I thought about Rusty, my grandmother's wonderful boyfriend (they shacked up after my grandfather died, but didn't get married because she would have lost her widow's benefits). Rusty was the toughest guy I knew, an ex-bodybuilder who never showed any sign of discomfort, not even after his knee-replacements. The only time Rusty ever lost his composure in my presence was when he had shingles, when the agony reduced him to uncontrollable weeping. I knew that no matter how ooky all those vaccines made me feel, it was better than going through what Rusty had experienced. There was no way I'd handle it nearly so well as he did. Rusty's shingles experience was the best case. He didn't end up with years of crippling nerve pain. He didn't lose his sight or hearing, didn't experience brain damage, didn't die of encephalitis. Fuck yeah I'll get a shingles vax. As many people have observed, the problem with vaccines is that they work too well. The incredible, astounding, profound wonders of vaccines led many people to think of measles as a rash, the flu as a bad cold, mumps as a thing that makes you look like Brando playing Don Corleone. Vaccines worked so well to eliminate a terror that stalked the land and stole people's lives and loved ones and little children, an achy arm or an infinitesimal chance of a few days of feeling like shit seemed worse by comparison. Now that we've turned our backs on this miracle, now that vaccination is in retreat and long-forgotten diseases are taking our babies, millions of people are still insisting that vaccines are a hoax. That's infuriating and frustrating, but it's understandable. The cause-and-effect relationship between herd immunity and disease elimination is complex, and it plays out over a long timescale. It's notoriously hard to reason well about phenomena whose causal relationships are attenuated and multifactorial. It's one thing to learn to hit a ball by swinging at it and watching where it goes – it's another altogether to swing blindfolded, go home, and then, eight years later, have someone tell you where the ball ended up. No one would start smoking if the first puff caused you to break out in visible tumors. The attenuated, complex relationship between smoking and cancer creates a space where death merchants could instill profitable doubt and the more our institutions fail us, the easier it is to spread that doubt. After all, nearly all of us lack the technical expertise to sort through the claims and counterclaims of tobacco lobbyists and public health authorities. To a large extent, we have to trust the process: trust it to be a well-administered truth-seeking exercise that does its best to find the correct answer to complex, technical questions. When the state is manifestly bad at doing its job, we still have to answer these complex, technical questions, but (lacking both the expertise to draw an informed conclusion and a reliable process by which expert disagreements can be settled), we're left helpless to do so. It's enough to drive you to despair: https://pluralistic.net/2024/03/25/black-boxes/#when-you-know-you-know This is an essay about anti-trust. 135 years ago, monopolists were such a destructive force – ruining workers' lives; corrupting politicians; pauperizing, swindling and poisoning their customers – that we created the first anti-monopoly laws: https://pluralistic.net/2022/02/20/we-should-not-endure-a-king/ It took a quarter of a century to really start putting those laws into effect, but we eventually dismantled the robber barons' vast, destructive machines: https://pluralistic.net/2025/11/20/if-you-wanted-to-get-there/#i-wouldnt-start-from-here The World Wars helped: two consecutive orgies of capital destruction left oligarchs' treasuries so bare that we were finally able to realize some of our most utopian dreams of mutual aid and care, and all around the world, we won labor rights, state pensions, public medicine, all the wonders of the era the French call \"Les Trente Glorieuses\" (the 30 glorious years): https://en.wikipedia.org/wiki/Trente_Glorieuses But because antitrust worked, we forgot how corrosive monopolies were. When the neoliberal economists of the Reagan/Thatcher era told us that we were missing out on the \"efficiencies\" of vast corporations, we blundered into their trap, letting them define the debate, so that instead of talking about how monopolies could clobber workers, customers and governments, we talked about whether monopolies might reduce prices. Sure, a monopoly can reduce prices – but as soon as it eliminates its competitors and captures its government, it's going to raise those prices, safe in the knowledge that a company that's too big to fail is too big to jail: https://pluralistic.net/2024/08/14/the-price-is-wright/#enforcement-priorities The dismantling of anti-monopoly law and the growth of the monopolies happened gradually, and then all at once. The decision to kill antitrust enforcement took place a half-century ago, but it was only in the past few years that the relationship of monopoly to our political, environmental and social dysfunction has entered our politics. The causal relationship between pro-monopoly policies and the harms of monopoly is even more complex and attenuated than the causal relationship between anti-vax and kids dying from measles in Texas. Monopolies are especially hard on policymaking. Large, concentrated industries find it easier to arrive at a common lobbying position. They are aslosh in cash, thanks to their ability to cooperate (rather than eroding one another's margins through \"wasteful competition\") (h/t P. Thiel): https://mastersofscale.com/peter-thiel-escape-the-competition/ To live in an age of monopolies is to live in an age of regulatory capture, in which your government routinely fails you in terrible ways to benefit elites and insiders. When that happens, it's easy to conclude that government is incapable of regulating, and to insist that we might as well do away with the state altogether. This is a self-reinforcing belief, because the weaker the state is, the more monopolists can steal from you: https://pluralistic.net/2022/06/05/regulatory-capture/ It's easy to understand how someone who lived through the murder of an addicted loved one at the hands of the billionaire Sacklers, who were abetted by their putative regulators and got to keep billions of dollars even after they declared \"bankruptcy\" might conclude that they can't trust pharmaceutical companies' or their regulators when they swear vaccines are safe and effective: https://pluralistic.net/2021/08/18/lets-make-a-deal/#art-of-the-deal In the same way, once you've forgotten that we decided to let monopolists run amok, despite regulatory capture that would obviously follow as a consequence, you might well conclude that governments are part of the problem, and therefore can't be the solution. We forget that things used to be better, and we forget how things were made better, and we forget how they got worse. Like vaccines, antitrust worked too well. By the time Jimmy Carter and Ronald Reagan decided to welcome \"efficient\" monopolies, it had been so long since the world had been brought to the brink of ruin by oligarchs that it was easy to sell the pain of \"lost efficiency\" as worse than the distant horrors of the Gilded Age. As the old joke goes, \"When it don't rain the roof don't leak; when it's raining, I can't hardly fix it.\" We got rid of antitrust because it had been so long since oligarchs ran the world, we forgot how bad they'd made everything. Now that oligarchs are driving civilization off a cliff, we can't imagine fighting these seemingly omnipotent monsters. We can fix this, just as our not-so-distant ancestors did when they tamed their robber barons. It won't be easy. It starts with remembering. (Image: Atomicdragon136, CC BY 3.0, modified) Hey look at this (permalink) TiVo Plans to End Free Automatic Commercial Skipping in November, Tests Paid Premium Replacement Service https://cordcuttersnews.com/tivo-plans-to-end-free-automatic-commercial-skipping-in-november-tests-paid-premium-replacement-service/ Stand up to union busters https://search.laborlab.us/ Estimate the cost of an anti-union campaign. https://calculator.laborlab.us/ Labor Day 2026: Record-High Popularity, Record-Low Power for America’s Unions https://prospect.org/2026/09/07/labor-day-2026-record-high-popularity-record-low-power-for-americas-unions/ 216,000,000 Spy TVs | The LG Smart TV Problem https://www.youtube.com/watch?v=6IFVTcM28KA Object permanence (permalink) #25yrsago Garry Trudeau gets hoaxed http://news.bbc.co.uk/2/hi/americas/1530220.stm #25yrsago Publishers v radical librarians https://web.archive.org/web/20010713171001/http://news.cnet.com/news/0-1005-201-6545588-0.html #20yrsago Podcasters act now to stop anti-podcasting UN treaty! https://web.archive.org/web/*/https://www.eff.org/IP/WIPO/broadcasting_treaty/podcasting.php #20yrsago Why CDT’s report on DRM falls short of the mark https://craphound.com/cdtdrmresponse.txt #20yrsago Barenaked Ladies guy on Universal’s DRM SpiralFrog service https://web.archive.org/web/20061110205411/http://www.bnlblog.com/entry.asp?dDate=8/30/2006 #20yrsago HOWTO Use sugar to sand away logos on your phone https://web.archive.org/web/20061006153939/http://www.instructables.com/id/EFHU5V6TKYERIE2SMP/?ALLSTEPS #20yrsago HOWTO Knit a Princess Leia wig https://web.archive.org/web/20061020092941/https://bleuarts.blogspot.com/2006/09/free-pattern-leia-hat.html #20yrsago Prisoner statue smuggled into Disneyland ride http://www.woostercollective.com/post/breaking-the-story-disneyland-doesnt-want-you-to-know #15yrsago RIP, Project Gutenberg founder Michael Hart https://web.archive.org/web/20111008024157/http://news.cnet.com/8301-30685_3-20103356-264/e-book-pioneer-michael-hart-dies/ #10yrsago Supermaker John Edgar Park shares his bitters recipe https://makezine.com/projects/ultimate-bitters-recipe/ #10yrsago How Hong Kong’s vulnerable, reviled refugee community saved Edward Snowden https://srilankafoundation.org/newsfeed/how-snowden-escaped/ #10yrsago Leaked catalog from UK surveillance arms-dealer full of gadgets sold to US cops https://theintercept.com/2016/09/01/leaked-catalogue-reveals-a-vast-array-of-military-spy-gear-offered-to-u-s-police/ #10yrsago Wells Fargo fires 5,300 employees for opening 2M fake accounts in customers’ names https://web.archive.org/web/20160908200030/https://money.cnn.com/2016/09/08/investing/wells-fargo-created-phony-accounts-bank-fees/index.html #10yrsago European court rules that making a link can be copyright infringement https://www.eff.org/deeplinks/2016/09/european-copyright-ruling-ushers-new-dark-era-hyperlinks #10yrsago Indian workers staged one of the largest strikes in human history and no one in the USA noticed https://theintercept.com/2016/09/06/indians-staged-one-of-the-largest-strikes-in-history-but-no-one-on-u-s-cable-news-covered-it/ #10yrsago Homeowners’ associations are not allowed to ban drought-tolerant landscaping https://www.latimes.com/business/la-fi-associations-landscaping-plans-20160831-snap-story.html #10yrsago Blackballed by machine learning: how algorithms can destroy your chances of getting a job https://www.theguardian.com/science/2016/sep/01/how-algorithms-rule-our-working-lives #10yrsago The US Copyright Office is the poster child for regulatory capture https://web.archive.org/web/20160909001439/https://www.publicknowledge.org/assets/uploads/blog/Final_Captured_Systemic_Bias_at_the_US_Copyright_Office.pdf #10yrsago The women held a vote, and you’re not allowed to talk to anyone ever again https://web.archive.org/web/20160908124630/http://ursulav.livejournal.com/1680540.html #10yrsago Open licenses don’t work for uncopyrightable subjects: 3D printing edition https://michaelweinberg.org/post/150123246460/the-cost-of-a-successful-creative-commons-and-open/ #10yrsago Tomorrow: largest prison strike in US history https://thenib.com/inmates-are-planning-the-largest-prison-strike-in-us-history/ #10yrsago If DRM is so great, why won’t anyone warn you when you’re buying it? https://www.theguardian.com/technology/2016/sep/08/drm-product-labelling-ftc-electronic-frontier-foundation?CMP=share_btn_tw #1yrago Fingerspitzengefühl https://pluralistic.net/2025/09/08/process-knowledge/#dance-monkey-dance #1yrago Trump steals $400b from American workers https://pluralistic.net/2025/09/09/germanium-valley/#i-cant-quit-you Upcoming appearances (permalink) London: The Reverse Centaur's Guide to Life After AI with Riley Quinn (Foyle's Picadilly), Sep 9 https://www.foyles.co.uk/events/enshittification-cory-doctorow-riley-quinn Manchester: City of Literature, Sep 11 https://www.manchestercityofliterature.com/event/the-reverse-centaurs-guide-to-life-after-ai-by-cory-doctorow/ Budapest: Brain Bar, Sep 17 https://brainbar.com/munkatars/cory-doctorow Edmonton: Elbows Up (Edmonton Public Library), Sep 28 https://www.epl.ca/blogs/post/elbows-up-with-cory-doctorow/ South Bend: An Evening With Cory Doctorow (Notre Dame), Oct 6 https://franco.nd.edu/events/2026/10/06/an-evening-with-cory-doctorow/ Hudson, OH: Hudson Library, Oct 7 https://engagedpatrons.org/EventsExtended.cfm?SiteID=3850&amp;EventID=596952&amp;PK= Calgary: Wordfest, Oct 8 https://wordfest.com/2026/show/wordfest-presents-cory-doctorow-2026/ Winnipeg: McNally Robinson, Oct 9 https://www.mcnallyrobinson.com/event-18991/An-Evening-with-Cory-Doctorow Vancouver: Read, Resist, Repair, Rejoice (Vancouver Writers Festival), Oct 19 https://writersfest.bc.ca/festival-event-2026/01 Victoria: Munro's Books, Oct 20 https://www.munrobooks.com/events/6113620261020 Vancouver: Life After AI (Vancouver Writers Festival), Oct 22 https://writersfest.bc.ca/festival-event-2026/46 Ottawa: Life After AI (Ottawa Writers Festival), Oct 24 https://writersfestival.org/event/life-after-ai Kilkenny: Kilkenomics, Nov 6-8 https://kilkenomics.com/ Vancouver: BC Policy Solutions Gala, Nov 12 https://bcpolicy.ca/gala/ Recent appearances (permalink) Fisher-Price Management (Does A Frog Have Scorpion Nature?) https://www.youtube.com/watch?v=OVYS4l8M5UI Downstream with Michael Walker (Novara) https://www.youtube.com/watch?v=nTqCVJFr7XM The future of the tech crisis (How the Light Gets In) https://iai.tv/video/the-future-of-the-tech-crisis?_auid=2020 How Tech Platforms Took Over the Economy (Dystopia Now) https://sites.libsyn.com/566555/enshittification-and-reverse-centaurs-cory-doctorow-on-how-tech-platforms-took-over-the-economy Hope, AI, Fixing the Internet and the Reverse Centaur of it all (Wilosophy) https://podcastaddict.com/everyone-relax/episode/231414816 Latest books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/ \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: “Once Is Enemy Action,” a science fiction novel about the origins of modern technofascism. Today's words: 505 (13405 total). \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Fourth draft completed. Submitted to editor. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "3c6300d10896f9230c4736102616e79b4b4b422b181e84b12a92b883e268810b",
+      "ref_id": "1",
+      "recommendationScore": 25,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "每日链接集合，涵盖广泛的社会政治和文化主题，非技术性内容为主。",
+      "reason": "内容过于分散且主要为非技术性链接摘要，缺乏深度分析，不符合科技博客的重点。",
+      "tags": [
+        "社会",
+        "政治",
+        "文化",
+        "新闻摘要"
+      ]
+    },
+    {
+      "title": "On the Navier–Stokes Millennium Prize Problem",
+      "link": "https://simonwillison.net/2026/Sep/8/on-navier-stokes/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-09-08T23:55:12.000Z",
+      "summary": "",
+      "id": "33eea6358b5494ae15f8ab6f5a4f9d71a6b00b9e06a9c588056088c0104331a8",
+      "ref_id": "0",
+      "recommendationScore": 15,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "标题所示主题过于理论化，与主流科技博客受众兴趣点相去甚远。",
+      "reason": "内容缺失，但仅从标题判断，该数学千禧年难题对科技博客读者而言过于专业和学术，缺乏实用性和大众吸引力。",
+      "tags": [
+        "数学",
+        "物理",
+        "理论科学",
+        "千禧年问题"
+      ]
+    },
+    {
+      "title": "‘Modern Day Typographer’",
+      "link": "https://www.youtube.com/watch?v=0Ck-NPqf2c8",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-09-08T22:57:00.000Z",
+      "summary": "There are good Elle Cordova videos, and there are great ones. (Last mentioned here for her “Fonts Hanging Out” trilogy.)\n ★",
+      "id": "e0bcdb1786c5200f5827e63ad75dc93fbf9e8beee68b36c3304d9d82bcc78e59",
+      "ref_id": "0",
+      "recommendationScore": 15,
+      "popularityScore": 25,
+      "priority": "low",
+      "comment": "简短提及一位视频创作者，内容与科技主题关联度低。",
+      "reason": "缺乏技术深度和实用价值，信息密度极低，不符合科技博客的评估标准。",
+      "tags": [
+        "影音",
+        "文化"
+      ]
+    },
+    {
+      "title": "Roame (YC S23) Is Hiring Viral Content Editor",
+      "link": "https://www.ycombinator.com/companies/roame/jobs/KuVVqSh-content-systems-builder-editor",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-09T12:01:38.000Z",
+      "summary": "Article URL: https://www.ycombinator.com/companies/roame/jobs/KuVVqSh-content-systems-builder-editor\nComments URL: https://news.ycombinator.com/item?id=49625110\nPoints: 0\n# Comments: 0",
+      "id": "775dcccdb09c386c64f8f4060be75917fc33bca31ec36c2ee991980f5f7c29be",
+      "ref_id": "2",
+      "recommendationScore": 5,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "YC孵化公司Roame发布的招聘信息，并非科技博客内容。",
+      "reason": "该内容为招聘广告，不属于科技博客文章范畴，缺乏技术深度和普遍实用性。",
+      "tags": [
+        "招聘"
+      ]
+    },
+    {
+      "title": "Quoting Terence Tao",
+      "link": "https://simonwillison.net/2026/Sep/9/terence-tao/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-09-09T00:20:17.000Z",
+      "summary": "",
+      "id": "93334b7607d9e35ba7160888394ddc30df10d37f93b46599491f1ed1a9f3e9df",
+      "ref_id": "4",
+      "recommendationScore": 0,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "文章内容为空，无法进行有效评估。",
+      "reason": "文章缺乏任何实质性内容，不具备发表或推荐价值。",
+      "tags": [
+        "无效文章",
+        "空白内容"
+      ]
+    },
+    {
+      "title": "Analysing 2048 on a 3×3 board",
+      "link": "https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/small2048/",
+      "source": "chiark.greenend.org.uk/~sgtatham",
+      "publishedAt": "2026-09-09T00:00:00.000Z",
+      "summary": "",
+      "id": "9f946c954e10f003c7a0651ce8183b747c5da7ac282ba74dfd697984dc0838b9",
+      "ref_id": "2",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "文章内容缺失，无法进行评估。",
+      "reason": "缺少实际内容，无法判断其技术深度、新颖性、实用性和信息密度。",
+      "tags": [
+        "无法评估"
+      ]
+    }
+  ]
+}
