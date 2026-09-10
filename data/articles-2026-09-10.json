@@ -1,0 +1,712 @@
+{
+  "dailySummary": "今日科技速递：Cognition发布SWE-2模型，性能比肩顶级LLM；MultiMatte推出可提示的图像背景移除工具。同时，",
+  "articles": [
+    {
+      "title": "Forgejo <=16.0.3 Critical RCE",
+      "link": "https://codeberg.org/forgejo/forgejo/src/branch/forgejo/release-notes-published/16.0.4.md",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-10T15:57:40.000Z",
+      "summary": "Article URL: https://codeberg.org/forgejo/forgejo/src/branch/forgejo/release-notes-published/16.0.4.md\nComments URL: https://news.ycombinator.com/item?id=49645907\nPoints: 53\n# Comments: 25",
+      "id": "fa7bd8e6fd84b6ff63920ab5d6288ef77c190374aa77b5ebd5799ec79f6e8ba6",
+      "ref_id": "4",
+      "recommendationScore": 98,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "紧急安全通告，详细揭示了Forgejo中的关键远程代码执行漏洞。",
+      "reason": "这是一个具有高度实用性和紧迫性的安全警报，对使用Forgejo的用户而言必须立即关注并采取行动。",
+      "tags": [
+        "安全",
+        "漏洞",
+        "开源",
+        "编程工具",
+        "Forgejo"
+      ]
+    },
+    {
+      "title": "Cognition's SWE-2 achieves 92.8 on Terminal-Bench 2.1",
+      "link": "https://tokenstead.ai/models/swe-2",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-10T16:52:11.000Z",
+      "summary": "Article URL: https://tokenstead.ai/models/swe-2\nComments URL: https://news.ycombinator.com/item?id=49646778\nPoints: 15\n# Comments: 4",
+      "id": "579e626a254093ef77420a05b1f95b051e33a535847db337ec4130e0cd7236a2",
+      "ref_id": "2",
+      "recommendationScore": 95,
+      "popularityScore": 30,
+      "priority": "high",
+      "comment": "报道了Cognition SWE-2模型在代码基准测试上取得的突破性表现。",
+      "reason": "该文章直接关注AI领域的最新进展，对关注AI在软件开发中应用的用户极具价值和前瞻性。",
+      "tags": [
+        "AI",
+        "大模型",
+        "软件工程",
+        "基准测试"
+      ]
+    },
+    {
+      "title": "Show HN: MultiMatte, a Promptable Image Background Removal Model",
+      "link": "https://usefeyn.com/blog/multimatte/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-10T15:50:25.000Z",
+      "summary": "Hey HN, I'm Shreyash from Feyn. We help companies build custom models from their data.\nToday we're releasing MultiMatte, a background removal model you can aim with words. Name an object in your image. MultiMatte keeps just that thing, and removes everything else.\nTry it out on your images: https://usefeyn.com/multimatte/.\nDemo video: https://youtu.be/XZ5BJWAkOjs\nMultiMatte is open source. Build with it using our NoBg library https://github.com/feyninc/nobg. Model card here: https://hf.co/feyninc/multimatte\nMultiMatte is the second iteration of our background removal models. The first was FeyNoBg, which we released here https://news.ycombinator.com/item?id=49072462.\nThe big upgrade is promptability. Most models keep all foreground elements when cutting the background. MultiMatte lets you prompt the exact objects you want to keep and remove everything else. For example, If you have an image with a dog and a bowl, you can ask MultiMatte to keep just the dog.\nMultiMatte is built on Meta's SAM 3, a concept-promptable detector that already understands phrases. Our biggest change was in masking. Instead of binary masks that classify each pixel as being inside or outside an object, MultiMatte uses alpha mattes that assign an opacity value to each pixel, with respect to an object. This allows us to better represent hair, fur, motion blur, and other kinds of fuzzy boundaries.\nAcross all our measured benchmarks, MultiMatte shows a step improvement over SAM 3. On DIS5K, S-measure rises from 0.674 to 0.908 (a 34.6% relative gain), and on DUT-OMRON from 0.792 to 0.901 (13.7%).\nOur blog covers more of the training details and results https://usefeyn.com/blog/multimatte.\nHappy to answer any questions!\nComments URL: https://news.ycombinator.com/item?id=49645803\nPoints: 10\n# Comments: 4",
+      "id": "5be41d31baf99ed3799823c118339c1c6264bec97b48e5ebbdca44650e80fd50",
+      "ref_id": "1",
+      "recommendationScore": 95,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "创新的可提示式图像背景移除AI模型，技术深度和实用性俱佳。",
+      "reason": "完美契合AI主题，新颖的“promptability”特性和开源性质使其具有高度关注价值。",
+      "tags": [
+        "AI",
+        "图像处理",
+        "机器学习",
+        "开源",
+        "产品发布"
+      ]
+    },
+    {
+      "title": "More questions about whether researchers can trust OpenAI with unpublished math",
+      "link": "https://mathstodon.xyz/@andreasthom/117240535270608201",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-10T06:49:43.000Z",
+      "summary": "https://mathstodon.xyz/@andreasthom/117240536885387540\nhttps://mathstodon.xyz/@andreasthom/117240537520615623\nhttps://x.com/ValerioCapraro/status/2097791836269977996, https://xcancel.com/ValerioCapraro/status/209779183626997799...\nhttps://bsky.app/profile/did:plc:ckaz32jwl6t2cno6fmuw2nhn/po...\nComments URL: https://news.ycombinator.com/item?id=49639408\nPoints: 263\n# Comments: 396",
+      "id": "d194009aff36389e561b620503bc121ec1dce469e8e80a58c6164ac7751ce0f8",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "文章质疑研究人员在使用OpenAI处理未发表的数学研究时，是否能充分信任其数据安全和隐私。",
+      "reason": "直接触及AI时代研究伦理、数据隐私和知识产权的核心问题，具有极高的现实意义和警示价值，是当前AI领域的热点议题。",
+      "tags": [
+        "AI",
+        "OpenAI",
+        "研究伦理",
+        "数据隐私",
+        "知识产权"
+      ]
+    },
+    {
+      "title": "Cognition launches new SWE-2 model, Rivaling Fable 5.1 and GPT-Astra",
+      "link": "https://cognition.com/blog/swe-2",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-10T15:29:47.000Z",
+      "summary": "Article URL: https://cognition.com/blog/swe-2\nComments URL: https://news.ycombinator.com/item?id=49645443\nPoints: 165\n# Comments: 89",
+      "id": "403f674bcee8f9ccc517614366eaf750f1784cbad08bad08befbae2201c56e89",
+      "ref_id": "0",
+      "recommendationScore": 92,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "重磅AI模型发布，有望革新软件开发流程。",
+      "reason": "直接关联高优先级AI主题，且内容具有极高的新颖性、技术深度和潜在实用性，社区关注度高。",
+      "tags": [
+        "AI",
+        "大模型",
+        "软件工程",
+        "技术前沿"
+      ]
+    },
+    {
+      "title": "Neki",
+      "link": "https://planetscale.com/blog/introducing-neki",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-10T15:43:49.000Z",
+      "summary": "Article URL: https://planetscale.com/blog/introducing-neki\nComments URL: https://news.ycombinator.com/item?id=49645686\nPoints: 111\n# Comments: 42",
+      "id": "d5b330bed085b59913517348b1a51dc486a06120ebdd3a8c88cfcd863b22ee29",
+      "ref_id": "4",
+      "recommendationScore": 90,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "PlanetScale官方发布关于Neki（分片Postgres）的介绍，信息最全面。",
+      "reason": "作为官方发布，信息最权威且详细，对关注编程工具和数据库扩展的读者有极高价值。",
+      "tags": [
+        "数据库",
+        "Postgres",
+        "分片",
+        "编程工具",
+        "新品发布"
+      ]
+    },
+    {
+      "title": "Powering AI is an architecture problem",
+      "link": "https://www.technologyreview.com/2026/09/10/1141649/powering-ai-is-an-architecture-problem/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-09-10T11:00:00.000Z",
+      "summary": "On July 22, 2026, a transmission line fault in Ashburn, Virginia—the heart of the world’s largest data center cluster—knocked more than 3 gigawatts of load off the grid in seconds. And it wasn’t the first time. Two years earlier, a single failed surge arrester dropped roughly 60 Virginia facilities and 1,500 megawatts at once. No…",
+      "id": "321672b4ff708a9daeb94012648c02cd58297793adf8e72da7464aa869c38e92",
+      "ref_id": "1",
+      "recommendationScore": 90,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "深入剖析了AI基础设施的电力挑战，强调了架构层面的重要性。",
+      "reason": "文章直接聚焦于AI发展面临的核心瓶颈，技术洞察力强，信息密度高，对AI行业决策者和技术人员极具参考价值。",
+      "tags": [
+        "AI",
+        "基础设施",
+        "数据中心",
+        "电力架构"
+      ]
+    },
+    {
+      "title": "Healthcare AI’s next test is integration",
+      "link": "https://www.technologyreview.com/2026/09/10/1141421/healthcare-ais-next-test-is-integration/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-09-10T08:58:01.000Z",
+      "summary": "The entrance of major AI companies into healthcare is a meaningful and welcome development, accelerating the technical foundation available to the industry. Their models are increasingly capable of processing long clinical records, interpreting complex terminology, comparing documentation against evidence and generating coherent summaries from large volumes of information. For clinicians, operators, and administrative teams who…",
+      "id": "7b78e94d885bee4f58ebb806072e960991256bf5c2db63609521d9f887892bae",
+      "ref_id": "0",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "深入探讨AI在医疗领域整合的挑战与前景，具有重要的行业指导意义。",
+      "reason": "文章主题紧扣AI在关键行业的实际应用与落地，内容专业且具前瞻性，对相关从业者极具价值。",
+      "tags": [
+        "AI",
+        "Healthcare AI",
+        "医疗",
+        "集成",
+        "技术落地"
+      ]
+    },
+    {
+      "title": "Shopify moves back to Native from React Native",
+      "link": "https://shopify.engineering/back-to-native",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-10T14:09:31.000Z",
+      "summary": "Article URL: https://shopify.engineering/back-to-native\nComments URL: https://news.ycombinator.com/item?id=49643982\nPoints: 509\n# Comments: 361",
+      "id": "ccf40ae115f1048ce5415b240c551c97b2a1608193c14afa7555d81f8bf96b42",
+      "ref_id": "0",
+      "recommendationScore": 88,
+      "popularityScore": 95,
+      "priority": "medium",
+      "comment": "Shopify从React Native转向原生开发的深度技术分析，揭示了大型企业在框架选择上的关键考量。",
+      "reason": "对移动开发决策者和开发者提供了宝贵的实践经验和技术权衡 insights，具有较高的实用性和信息密度。",
+      "tags": [
+        "移动开发",
+        "React Native",
+        "Native",
+        "架构",
+        "性能优化"
+      ]
+    },
+    {
+      "title": "Neki is sharded Postgres by PlanetScale",
+      "link": "https://neki.dev/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-10T15:48:14.000Z",
+      "summary": "Article URL: https://neki.dev/\nComments URL: https://news.ycombinator.com/item?id=49645763\nPoints: 80\n# Comments: 21",
+      "id": "56c33bf373a138864fcf555cf71c418628f3e004c33a81f16c32d1da32706a43",
+      "ref_id": "2",
+      "recommendationScore": 85,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "PlanetScale的Postgres分片解决方案，对数据库架构和开发人员非常有价值。",
+      "reason": "解决数据库扩展性难题，技术性强，属于重要的编程工具领域。",
+      "tags": [
+        "数据库",
+        "Postgres",
+        "分片",
+        "编程工具",
+        "扩展性"
+      ]
+    },
+    {
+      "title": "Show HN: Syq – copy files between machines fast (better than rsync)",
+      "link": "https://greaber.github.io/syq/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-10T15:01:27.000Z",
+      "summary": "I got frustrated with the slowness of rsync and made an alternative that works faster by using multiple parallel connections, direct encrypted TCP when available, and other optimizations. I also added cool features like the ability to maintain a persistent ssh connection to the server for fast one-offs, the ability to download to your laptop while working in an ssh shell on a server, and the ability to do direct remote-remote transfers without forwarding your ssh agent (by using restricted ssh keys on the receiver that will only execute a specific request signed with the key on your laptop). It is also designed to be more robustly/flexibly scriptable than alternatives.\nComments URL: https://news.ycombinator.com/item?id=49644955\nPoints: 21\n# Comments: 25",
+      "id": "068732eab6f9f681f61bcc9fdfded07aac13f730833645a71926a677e3da43f3",
+      "ref_id": "2",
+      "recommendationScore": 85,
+      "popularityScore": 50,
+      "priority": "medium",
+      "comment": "全新的文件传输工具Syq，以多项创新超越rsync的性能和功能。",
+      "reason": "针对开发者日常痛点，提供了高效实用的编程工具，技术细节丰富，具有较高实用价值，符合编程工具优先级。",
+      "tags": [
+        "编程工具",
+        "自动化",
+        "文件传输",
+        "SSH",
+        "开发效率"
+      ]
+    },
+    {
+      "title": "Package Manager Trends",
+      "link": "https://nesbitt.io/2026/09/10/package-manager-trends.html",
+      "source": "nesbitt.io",
+      "publishedAt": "2026-09-10T10:00:00.000Z",
+      "summary": "I’m on holiday this week, so I’m phoning it in and doing a roundup of the trends I’ve seen across sixteen weeks of This Week in Package Management. Those posts are built from about eighty RSS feeds and whatever I’ve boosted on Mastodon. The short version: the same defensive features keep shipping in tool after tool, and the same three bug classes keep getting fixed.\nFeatures\nRelease-age cooldowns appeared in more tools than any other feature: Deno 2.8 added min-release-age to its .npmrc handling in May, and by early September equivalent gates had shipped in Bundler, npm, Yarn, mise, Hex, Mamba, and Cargo via the nightly -Zmin-publish-age flag. Dependabot made a three-day cooldown its unconditional default in August. The interaction between cooldowns and security updates recurred as a special case: Dependabot, Renovate and Hex each added a way to lift the gate when an advisory is published against the held-back version. The Nx compromise postmortem noted an old pnpm ignoring minimum-release-age, and both npm 12 and pnpm 12 now error on unrecognised config keys rather than skip them.\nInstall-script blocking became the default in the JavaScript tools. npm 12 blocks lifecycle scripts by default with an allowScripts allowlist, Bun 1.4 restricts auto-trust to packages fetched from the npm registry, and pnpm extended allowBuilds to git-hosted dependencies. Related install-source restrictions shipped alongside: npm 12’s allow-git and allow-remote default to none, and Composer 2.10 disables the fallback from dist to source on download failure.\nMalware checks at install and publish time shipped in Composer 2.10 (native filtering against an Aikido-supplied feed, on by default), uv (via UV_MALWARE_CHECK and later a config setting), and the npm registry, which now scans at publish time and can attach a contentPolicy verdict to package metadata. Five tools added or expanded a built-in audit command: Deno (deno audit fix), uv (uv audit, later uv tool audit), Homebrew (brew vulns merged into core), Bun (bun audit fix), and Hex, which now surfaces advisories during mix deps.get.\npnpm and mise separated checked-in project config from machine-level trust across several releases each. pnpm progressively stopped project-level .npmrc and pnpm-workspace.yaml from redirecting credentials, expanding environment variables, influencing self-update, or relocating machine-level state directories. mise made credential_command global-only, added a MISE_SAFE=1 inert-reader mode, and Renovate adopted it for lockfile updates.\npnpm made tarball integrity mismatch a hard failure and started rejecting lockfile entries missing an integrity field, while uv 0.12 enforces --require-hashes and refuses MD5-only sources. Bun 1.4 records SHA-512 for GitHub and tarball dependencies.\nRegistry-side controls tightened at npm (staged publishing, 2FA-bypass token restrictions), Packagist (immutable versions, transparency log), PyPI (rejecting new files added to releases older than fourteen days), NuGet.org (API key lifetime cut from 365 to 30 days), and AUR, which disabled orphaned-package adoption after two takeover incidents starting with alvr.\nOutside the security cluster, workspace and monorepo support shipped or graduated in PDM, Conan, pixi, Hatch, uv and mise, and the pnpm 12 Rust rewrite reached stable. GitHub Actions references started being treated as managed dependencies: pnpm, Dependabot and Renovate each added update or lockfile support for workflow uses: entries.\nVulnerabilities\nPath traversal on archive extraction or install was fixed at least once in fourteen of the sixteen weeks, across uv, pnpm, RubyGems, Podman, Composer, Guix, opam, ORAS, Docker, Flatpak and Poetry. Symlinks pointing outside the target directory, ../ in package names or lockfile keys, hardlinks with relative targets, and bin entries resolving outside the package all appeared. pnpm alone shipped four separate traversal fixes; Docker shipped three and Composer two.\nCredentials sent to the wrong host or output came up almost as often: Cargo 1.96 fixed authentication against normalised registry URLs; Dependabot fixed npm registry credentials sent to sibling paths on the same host; ORAS 1.3.4 fixed mTLS certificates presented to any HTTPS peer, custom headers forwarded across origins, and pre-signed URLs logged in debug output; Composer 2.10.3 fixed GitLab URL matching that could send credentials to the wrong domain; Renovate disclosed four exfiltration paths via malicious Link headers and TLS private key exposure in logs. The RubyGems.org CDN served one account’s legacy API key to another via a caching misconfiguration.\nCommand injection via a VCS URL or reference appeared in pnpm (git commit field allowing --upload-pack injection), Docker (git bundle checkout), and Composer (Perforce URL). Four of the ten Renovate advisories fell into this class as well.\nSustainability\nAlpha-Omega funded security-engineer residencies at the PHP Foundation and Ruby Central, and the Rust Foundation launched a Maintainers Fund that named its first residents in August with backing from Google, AWS and OpenAI. The Sovereign Tech Agency invested €508,640 in Flatpak and appears in the new Composer sponsorship programme via the PHP Foundation. NYU Tandon launched a Software Supply Chain Security Operations Center placing master’s students in open source projects for year-long security work.\nThe Python Software Foundation announced the first Python Packaging Council election, with seventeen candidates by mid-August. On the deprecation side, Helm v3 set an EOL schedule ending February 2027, Go dropped Bazaar VCS support, pip deprecated the legacy resolver for 2027 removal, the Nixpkgs core team disbanded, and Maven 3.8.x reached end of life.",
+      "id": "bff4375ee60418946197d05bf377904a52c264c5a1c396f181c31723dd481e3e",
+      "ref_id": "3",
+      "recommendationScore": 84,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "全面总结了近期包管理器在安全和功能上的发展趋势。",
+      "reason": "为软件开发者提供了宝贵的行业动态和安全实践，信息密度高、实用性极强，属于高优先级主题。",
+      "tags": [
+        "编程工具",
+        "包管理器",
+        "自动化",
+        "软件开发",
+        "安全性"
+      ]
+    },
+    {
+      "title": "Rust is tier-1 language at Microsoft",
+      "link": "https://rustfoundation.org/media/guest-post-rust-is-tier-1-language-at-microsoft/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-10T13:39:16.000Z",
+      "summary": "Article URL: https://rustfoundation.org/media/guest-post-rust-is-tier-1-language-at-microsoft/\nComments URL: https://news.ycombinator.com/item?id=49643546\nPoints: 404\n# Comments: 215",
+      "id": "c3aba4d13cd3eb24eaac3268c49bc297ebb54f5f9615f7f2145168da294f4acf",
+      "ref_id": "1",
+      "recommendationScore": 82,
+      "popularityScore": 85,
+      "priority": "medium",
+      "comment": "微软将Rust提升为一级支持语言的官方声明，进一步巩固了Rust在企业级应用中的地位。",
+      "reason": "反映了编程语言发展趋势和大型科技公司的战略选择，对关注Rust生态和系统编程的开发者具有重要意义。",
+      "tags": [
+        "Rust",
+        "编程语言",
+        "微软",
+        "系统编程"
+      ]
+    },
+    {
+      "title": "I have a theory that software drives people insane",
+      "link": "https://graybeard.ing/software-drives-people-insane/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-10T16:13:42.000Z",
+      "summary": "Article URL: https://graybeard.ing/software-drives-people-insane/\nComments URL: https://news.ycombinator.com/item?id=49646181\nPoints: 132\n# Comments: 62",
+      "id": "97da0e57f6ea24f1b216f0c3b47b26c67534ed3b7c9c6715d85d1d72095aa447",
+      "ref_id": "3",
+      "recommendationScore": 80,
+      "popularityScore": 90,
+      "priority": "medium",
+      "comment": "一篇关于软件开发对个人心理影响的深度思考，引发了广泛共鸣。",
+      "reason": "尽管技术深度不高，但文章内容引起了广泛共鸣和讨论，对开发者的心态和行业文化有启发意义。",
+      "tags": [
+        "软件开发",
+        "开发者文化",
+        "心理健康",
+        "独立开发"
+      ]
+    },
+    {
+      "title": "JEP 544: Ahead-of-Time Code Compilation",
+      "link": "https://openjdk.org/jeps/544",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-10T17:30:39.000Z",
+      "summary": "Article URL: https://openjdk.org/jeps/544\nComments URL: https://news.ycombinator.com/item?id=49647404\nPoints: 13\n# Comments: 9",
+      "id": "5e851ed2e066750348bbf21208bece25db9485833dff33c0e1be134466f93935",
+      "ref_id": "0",
+      "recommendationScore": 75,
+      "popularityScore": 25,
+      "priority": "medium",
+      "comment": "深入探讨了Java Ahead-of-Time (AOT) 编译的重要进展及其技术细节。",
+      "reason": "对关注Java生态系统和性能优化的开发者而言，这是一篇具有高技术深度和实用价值的文章。",
+      "tags": [
+        "Java",
+        "编程工具",
+        "编译",
+        "性能优化"
+      ]
+    },
+    {
+      "title": "AI 2027 (2025)",
+      "link": "https://ai-2027.com",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-10T14:27:00.000Z",
+      "summary": "Article URL: https://ai-2027.com\nComments URL: https://news.ycombinator.com/item?id=49644294\nPoints: 20\n# Comments: 9",
+      "id": "cf709a60227b47b21c3ef32189c5e9943b02e37aea8d655e66dd034fb1d53b49",
+      "ref_id": "4",
+      "recommendationScore": 75,
+      "popularityScore": 40,
+      "priority": "high",
+      "comment": "对2027年AI发展趋势的展望与分析。",
+      "reason": "紧密围绕高优先级AI主题，提供了对未来趋势的思考和预测，具有战略参考价值，但信息密度和具体技术深度可能因文章类型而异。",
+      "tags": [
+        "AI",
+        "未来趋势",
+        "行业分析",
+        "战略"
+      ]
+    },
+    {
+      "title": "Bayesian OCR",
+      "link": "https://www.johndcook.com/blog/2026/09/10/bayesian-ocr/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-09-10T12:32:31.000Z",
+      "summary": "The Greek letter β (beta) and the German letter ß (eszett) look similar, especially in some fonts. Now suppose an OCR program sees some character that could be a beta or could be an eszett. It could calculate some kind of distance between between the pixel pattern of the character and the pixel patterns of […]\nBayesian OCR first appeared on John D. Cook.",
+      "id": "ea3fc4273f9ead2f6e8155efcafe575d96673b44d5af537fbe3b0157b1db4762",
+      "ref_id": "1",
+      "recommendationScore": 75,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "简明扼要地介绍了贝叶斯OCR在区分相似字符上的应用。",
+      "reason": "技术深度高，直接切入AI领域核心算法，对相关开发者有启发且信息密度极高。",
+      "tags": [
+        "AI",
+        "OCR",
+        "贝叶斯",
+        "计算机视觉",
+        "机器学习"
+      ]
+    },
+    {
+      "title": "NASA Color Trick Was Meant for Mars. Now It's Unveiling Rock Art on Earth",
+      "link": "https://gizmodo.com/this-nasa-color-trick-was-meant-for-mars-now-its-unveiling-rock-art-on-earth-2000809844",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-10T15:29:30.000Z",
+      "summary": "Article URL: https://gizmodo.com/this-nasa-color-trick-was-meant-for-mars-now-its-unveiling-rock-art-on-earth-2000809844\nComments URL: https://news.ycombinator.com/item?id=49645437\nPoints: 109\n# Comments: 16",
+      "id": "2076cbdbd673e236e0ebdac163b8127daf8ffb370f5864245e055314a23869b0",
+      "ref_id": "1",
+      "recommendationScore": 65,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "跨领域技术应用，利用NASA火星成像技术揭示地球岩画。",
+      "reason": "科学与技术结合，展示了技术的创新应用，但与核心主题优先级关联度不高。",
+      "tags": [
+        "科学",
+        "图像处理",
+        "跨领域应用",
+        "考古"
+      ]
+    },
+    {
+      "title": "Can the US battery market untangle from China?",
+      "link": "https://www.technologyreview.com/2026/09/10/1143791/us-china-batteries/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-09-10T10:00:00.000Z",
+      "summary": "The US is hitting records for the rapid growth of its energy storage market. That’ll go a long way to shoring up the grid, increasing reliability and also cutting emissions, since batteries can help store energy from intermittent renewables like wind and solar. Crucially, this is all happening with the help of cheap Chinese batteries,…",
+      "id": "1efb32d5462008458567433aad2b188b5967cda1c3d0c4042a0e74be334d4ea6",
+      "ref_id": "3",
+      "recommendationScore": 65,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "探讨美国电池市场如何摆脱对中国供应链的依赖，兼顾能源转型与地缘政治。",
+      "reason": "聚焦能源产业供应链和地缘政治，虽有科技背景但非纯技术文章，实用性更偏向商业和政策层面，与核心科技主题优先级不高。",
+      "tags": [
+        "能源",
+        "电池",
+        "供应链",
+        "地缘政治",
+        "市场分析"
+      ]
+    },
+    {
+      "title": "Silicon Valley Is Transforming the Military-Industrial Complex",
+      "link": "https://costsofwar.watson.brown.edu/paper/how-big-tech-and-silicon-valley-are-transforming-military-industrial-complex",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-10T15:47:50.000Z",
+      "summary": "Article URL: https://costsofwar.watson.brown.edu/paper/how-big-tech-and-silicon-valley-are-transforming-military-industrial-complex\nComments URL: https://news.ycombinator.com/item?id=49645754\nPoints: 60\n# Comments: 82",
+      "id": "a51420107f54805783b5652dcd2c7832f2c31a297ba1866edac7ce2832f4647a",
+      "ref_id": "3",
+      "recommendationScore": 60,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "探讨硅谷科技对军工复合体的宏观影响，属于科技社会学范畴。",
+      "reason": "虽涉及科技，但侧重宏观社会经济影响而非技术本身，与博客核心主题有所偏离。",
+      "tags": [
+        "科技伦理",
+        "行业分析",
+        "社会影响",
+        "宏观趋势"
+      ]
+    },
+    {
+      "title": "This road map could help us decide whether to deploy solar geoengineering",
+      "link": "https://www.technologyreview.com/2026/09/10/1143804/this-road-map-could-help-us-decide-whether-to-deploy-solar-geoengineering/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-09-10T11:00:00.000Z",
+      "summary": "A San Francisco nonprofit has published a detailed road map of the experiments, studies, and infrastructure that it says would be needed to make informed decisions about the use of solar geoengineering, MIT Technology Review can reveal. Scientists have now spent half a century exploring the possibility that we could counteract climate change by releasing…",
+      "id": "8ee5cc2f7cec548a119d057a020bc747859886ffe051a3e9197edd2d9ad32582",
+      "ref_id": "2",
+      "recommendationScore": 60,
+      "popularityScore": 55,
+      "priority": "low",
+      "comment": "介绍了太阳能地球工程决策的路线图，为气候干预提供了科学决策框架。",
+      "reason": "主题偏向环境科技与政策研究，技术深度中等，与AI等高优先级主题关联度较低，但对气候决策有一定意义。",
+      "tags": [
+        "环境科技",
+        "气候变化",
+        "太阳能地球工程",
+        "政策研究"
+      ]
+    },
+    {
+      "title": "AI Is Breaking This Thing We Call Trust",
+      "link": "https://terriblesoftware.org/2026/09/10/ai-is-breaking-this-thing-we-call-trust/",
+      "source": "terriblesoftware.org",
+      "publishedAt": "2026-09-10T14:18:06.000Z",
+      "summary": "AI-generated work can look finished without being understood. That uncertainty erodes trust, slows reviews, and leaves colleagues doing the missing work.",
+      "id": "198b0cd352f0f7dd2b7e44e7b624b7381bdeff50bd35c152e97fc1d7bcd20490",
+      "ref_id": "2",
+      "recommendationScore": 60,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "探讨AI工作对信任机制的侵蚀及其带来的实际问题。",
+      "reason": "深入探讨AI的社会影响，对AI开发者和使用者都具有重要警示意义，具有较高的实用性和新颖性。",
+      "tags": [
+        "AI",
+        "信任",
+        "人机协作",
+        "产品设计",
+        "伦理"
+      ]
+    },
+    {
+      "title": "We own the Glass ",
+      "link": "https://idiallo.com/byte-size/",
+      "source": "idiallo.com",
+      "publishedAt": "2026-09-09T20:55:02.000Z",
+      "summary": "This was so casually uttered by LG executives in their sales pitch to advertising companies. \nWe own the glass.\nWhat they mean is, they own your tv. They own everything on it. You may have paid for the box, but they own the glass. They can run anything they want on it, and you have agreed, in the terms and conditions, that you will inform anyone entering your household that the TV may record them without warning.\nTVs come equipped with microphones, wifi radio, and tracking software. That’s enough to monitor everything that’s happening around it.\nIf you haven't watched the research video essay published by Gamer Nexus, I highly recommend it. I've said it many times before, TVs are cheap because you aren't simply watching them, they are watching you and listening, and reporting back to the mothership. This info is then used to sell you more stuff.\nWhat scares me in all this is that the solution I often tell people may no longer be true. I often tell people, just disconnect your TV from the network and you are all set. Now imagine just for a second. What if they add a cellular radio to the device? One with an esim. Then that is it. You can no longer disconnect your device from the internet. They now own the glass in your house, and have a permanent connection that you cannot disable. \nThey own the glass. We are merely vessels to their business.",
+      "id": "d15626f879ebc0b3a4201716a6e0b1d6c8e984e750c3246c23c00f9d1ebd42b2",
+      "ref_id": "0",
+      "recommendationScore": 56,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "揭露智能电视的隐私风险，警示消费者注意数据收集。",
+      "reason": "对消费者极具实用价值，提醒人们关注智能设备的潜在隐私威胁，但技术深度一般且主题优先级不高。",
+      "tags": [
+        "隐私",
+        "智能电视",
+        "物联网",
+        "消费电子"
+      ]
+    },
+    {
+      "title": "God told them to sell crypto. Their investors lost everything.",
+      "link": "https://www.technologyreview.com/2026/09/10/1143588/indxcoin-god-regalados-sell-crypto-investors-lost-everything/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-09-10T09:00:00.000Z",
+      "summary": "This article was produced in partnership with Type Investigations and with support from the Fund for Investigative Journalism. When Eli Regalado first heard God speak to him, he wondered whether he was hallucinating. Now he likens the experience to having “a thought that is not my thought.” Divine words echo in his mind like a…",
+      "id": "c62659d18b0237beab14571c783ead2997fbb9bd3b07bfd90510bb49f4f2ab07",
+      "ref_id": "4",
+      "recommendationScore": 50,
+      "popularityScore": 85,
+      "priority": "low",
+      "comment": "深度调查了利用宗教名义进行的加密货币诈骗，警示投资者风险。",
+      "reason": "虽是引人入胜的调查报道，社会关注度高，但技术深度不足，且主题偏离核心科技博客的优先级。",
+      "tags": [
+        "加密货币",
+        "诈骗",
+        "调查报道",
+        "金融风险",
+        "消费者警示"
+      ]
+    },
+    {
+      "title": "List of references on Sony websites to players \"owning\" their digital games",
+      "link": "https://consumerrights.wiki/w/Sony_PlayStation_digital_game_ownership_lawsuit",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-10T12:18:06.000Z",
+      "summary": "Article URL: https://consumerrights.wiki/w/Sony_PlayStation_digital_game_ownership_lawsuit\nComments URL: https://news.ycombinator.com/item?id=49642531\nPoints: 268\n# Comments: 89",
+      "id": "41b4e5a6ca97dead846b999d9f8e839150bc1df9a993b37fe398a05755417914",
+      "ref_id": "2",
+      "recommendationScore": 45,
+      "popularityScore": 65,
+      "priority": "low",
+      "comment": "整理了索尼网站上关于玩家数字游戏所有权措辞的引用，关注数字版权争议。",
+      "reason": "内容偏向法律和消费者权益而非技术深度，与核心科技博客主题优先级不符，但对特定群体有一定关注度。",
+      "tags": [
+        "数字版权",
+        "游戏",
+        "消费者权益",
+        "索尼"
+      ]
+    },
+    {
+      "title": "Automattic Minus Matt",
+      "link": "https://feed.tedium.co/link/15204/17444080/matt-mullenweg-automattic-leave-absence",
+      "source": "tedium.co",
+      "publishedAt": "2026-09-10T05:29:30.000Z",
+      "summary": "Matt Mullenweg takes an involuntary leave of absence from Automattic, the company behind WordPress. Let’s hope he uses his time away thoughtfully.\n\nWhat’s the bigger tragedy? That a creator gets separated from their life’s work, or that the effort to assert control over that work just alienates the creator from the community they built?\nIn the past two years, WordPress founder Matt Mullenweg has let both situations play out in his name. The first, which kicked off two years ago with a fiery speech at WordCamp, put the open-source project at odds with some of its largest supporters, while forever tarnishing Mullenweg’s good-guy reputation. The target of Mullenweg’s ire was WP Engine, a company that had built successful brand in the WordPress ecosystem, arguably upstaging Automattic, the company that has traditionally led the WordPress project.\nMullenweg believed WP Engine didn’t do enough to support the open-source project. WP Engine disagreed. Everyone sued one another, and it became perhaps the biggest tech story in the months before everyone became obsessed with AI.\nThings quieted down for a bit, only to pick up in a big way this week after Automattic’s board suspended Mullenweg from his CEO role and put the WordPress creator on a leave of absence. The news, which our pals at 404 Media broke, suggests that whatever had gotten into Mullenweg in 2024 had now extended to the company’s board.\n“I received the resolution 50 minutes before the meeting start, and requested repeatedly for time to have it reviewed by independent legal counsel, even a few hours, which was denied,” Mullenweg wrote in a company Slack channel, according to the report. He’s now been temporarily replaced by the man he claims conspired against him, Automattic CFO Mark Davies.\n(Mullenweg still has a role on the board, but given that the board just removed him from the CEO role, something tells me that the only thing working in his favor there are Robert’s Rules of Order.)\n\n\n\n\n Sponsored By Computer Chronicles Revisited \n\nComputer Chronicles Revisited is a monthly subscription newsletter that reviews the people, products, and companies featured on the PBS series that aired from 1983 to 2002. Available for download or mailed directly to your address. Subscribe today.\n\n\nMullenweg, as seen at last year’s European edition of WordCamp. Side note: He may be one of the most photographed celebrities on Flickr. He literally has hundreds of Creative Commons photos going back to the very beginning of that service, including at least one photo with Jeff Bezos and another wearing a cool hat. (WCEU/Flickr)\nThe dramatic, sudden removal leaves a lot of questions up in the air about Mullenweg, particularly what might have been happening behind the scenes and whether he had done anything to necessitate such a dramatic move beyond what’s already public knowledge. There may be some personal issues behind the scenes that we’re not privy to. It‘s possible that the controversies of the past two years have created a financial hole that we can’t personally see because Automattic is a private company. We don’t know.\nBut what we do know suggests that a leader that many believed held a Zuckerberg-like iron grip around his company is in fact at risk of negative performance reviews just like anyone else in the organization. I mean, after all, his first name is literally in the name of the company.\nIt’s not to be forgotten just what sort of chaos he wrought in the months after the WP Engine blowup. His employees were pushed to take a generous severance if they weren’t behind his public actions. He began sparring with online foes, no matter if they were important to the history of the WordPress project, like plugin-maker Joost de Valk. He intentionally stopped progress on WordPress feature updates, and blocked WP Engine from using a plugin repository that, up to that point, had been free—and that a court eventually forced Mullenweg to walk back. And in an effort to prevent leaks, the company even took the step of putting unique watermarks on a private chat platform to tie any leaks to a specific individual.\nIt wasn’t that Mullenweg disagreed with the way WP Engine made money off of WordPress that was the problem. It was the fact that he turned this disagreement into a my-way-or-the-highway fork in the road even for passive observers. He forced his open-source community to choose a side. That cost talented people jobs, and that discouraged people who hadn’t already invested in WordPress to look elsewhere.\nIn that light, it would be completely reasonable for a board to look at the damage wrought, ask themselves, “Why are we letting this guy run our business into the ground,” and take action.\nYes, Mullenweg made this tool and fostered the environment that made it valuable. But he also let other people build on top of it, and eventually, a community flourished. And seemingly overnight, he forgot that he was simply a steward of a community. It was everyone else that made the community important. All because he couldn’t stand the idea that someone else was making lots of money from the idea that he personally chose to open source.\nThat this is only a leave of absence speaks to the fact that he matters to the WordPress community, even if he’s not exactly that community’s favorite person right now. But it was clear to even a casual observer that he needed to be kept in check two years ago. Now that there’s smoldering wreckage in the form of the consequences of his actions, is it too late to get some of that goodwill back?\n\nInterim Links\nThis is a Nathan Fielder household, and right now we’re really amazed about the existence of You Can See Everything, the documentary featuring Elizabeth Holmes just days before she goes to prison. There’s Oscar talk for the thing—including a possible Best Picture showing, which a documentary has never received in the history of the Academy Awards. Can’t wait.\n\nOld game, new tricks: There’s a new Super Mario Bros. glitch that involves a vine that can be dropped into any level … if you’re playing a two-player game. Speedrunner Kosmic shows it off here. While Mullenweg is taking some time away from Automattic, maybe he can get into speedrunning.\nShout-out to Asahi Linux, which finally released an M3-compatible version. May all Macs someday have Linux support out of the box.\n--\nFind this one an interesting read? Share it with a pal! And thanks to Computer Chronicles Revisited for sponsoring. (On a personal note, I’m psyched to promote a printed newsletter. We need more of those!)",
+      "id": "8f052566922991cc52f485a107cf86140580fa3f5f1729158376fe1f8b5fe70f",
+      "ref_id": "4",
+      "recommendationScore": 44,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "探讨了WordPress创始人Matt Mullenweg离职事件及其背后的社区与公司控制权之争。",
+      "reason": "内容偏向行业八卦和社区政治，与科技博客的核心技术主题关联度较低，缺乏技术深度和广泛实用性。",
+      "tags": [
+        "开源",
+        "WordPress",
+        "独立开发",
+        "社区",
+        "公司管理"
+      ]
+    },
+    {
+      "title": "The Four-Color Theorem Gets a Rare New Proof",
+      "link": "https://www.quantamagazine.org/the-four-color-theorem-gets-a-rare-new-proof-20260910/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-10T14:46:08.000Z",
+      "summary": "Article URL: https://www.quantamagazine.org/the-four-color-theorem-gets-a-rare-new-proof-20260910/\nComments URL: https://news.ycombinator.com/item?id=49644647\nPoints: 20\n# Comments: 5",
+      "id": "8c4c7fc4c8be0489d380012988997877f02f041a2018b816def43e65764ccf3f",
+      "ref_id": "3",
+      "recommendationScore": 40,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "四色定理新证明，纯数学领域的重要突破。",
+      "reason": "纯数学理论文章，技术深度极高，但对科技博客受众的直接实用性较低，与核心主题优先级关联度不高。",
+      "tags": [
+        "数学",
+        "理论",
+        "计算机科学基础"
+      ]
+    },
+    {
+      "title": "The Download: a “God-driven” cryptocurrency and a solar engineering roadmap",
+      "link": "https://www.technologyreview.com/2026/09/10/1143828/the-download-christian-cryptocurrency-scandal-solar-engineering-roadmap/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-09-10T12:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. God told them to sell crypto. Their investors lost everything. When Eli Regalado first heard God speak to him, he wondered whether he was hallucinating. According to Eli and his wife,…",
+      "id": "022e3eb5160edd0aff9491cb4224100c26484f5aac55925765569a08eee259cc",
+      "ref_id": "0",
+      "recommendationScore": 40,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "一份日常新闻摘要，简要涵盖了加密货币诈骗和太阳能地球工程的最新进展。",
+      "reason": "作为新闻摘要，文章深度和集中度不足，对特定科技主题的贡献有限。",
+      "tags": [
+        "新闻摘要",
+        "加密货币",
+        "环境科技",
+        "每日速览"
+      ]
+    },
+    {
+      "title": "They really do think AI might kill everyone",
+      "link": "https://seangoedecke.com/they-really-do-think-ai-might-kill-everyone/",
+      "source": "seangoedecke.com",
+      "publishedAt": "2026-09-10T00:00:00.000Z",
+      "summary": "",
+      "id": "2f4eb8bbe8774d34321fa6aa307dc0ed4dd2e2e98c16c8bdc88703bfe3425caf",
+      "ref_id": "3",
+      "recommendationScore": 40,
+      "popularityScore": 80,
+      "priority": "medium",
+      "comment": "标题涉及AI安全与伦理热点，但文章内容缺失，无法判断论证质量。",
+      "reason": "尽管主题具有高优先级和大众关注度，但内容缺失导致无法评估其深度和客观性，推荐度受限。",
+      "tags": [
+        "AI",
+        "AI安全",
+        "AI伦理",
+        "未来AI"
+      ]
+    },
+    {
+      "title": "What algorithm did Windows XP use to choose your initial user picture?",
+      "link": "https://devblogs.microsoft.com/oldnewthing/20260909-00/?p=112683",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-10T09:04:14.000Z",
+      "summary": "Article URL: https://devblogs.microsoft.com/oldnewthing/20260909-00/?p=112683\nComments URL: https://news.ycombinator.com/item?id=49640646\nPoints: 289\n# Comments: 143",
+      "id": "7040bcc06f184be986edf9604c55c060549e3e87b704df24023319f74fd3d063",
+      "ref_id": "3",
+      "recommendationScore": 35,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "探索了Windows XP选择初始用户图片的算法，是一篇技术怀旧文章。",
+      "reason": "内容属于技术考古和趣味性范畴，缺乏当前技术实用性和前瞻性，对普通读者吸引力有限。",
+      "tags": [
+        "Windows XP",
+        "历史",
+        "用户界面",
+        "算法"
+      ]
+    },
+    {
+      "title": "Joanna Stern on the iPhone Duo",
+      "link": "https://youtu.be/VNzl-q0EGfg",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-09-10T17:29:30.000Z",
+      "summary": "One thing I learned from this video is that I’m way, way too careful when playing with the hands-on area demo units. I handle them like museum pieces; Stern treats them like hot dog buns.\n ★",
+      "id": "fa289528e071c37c463b7ca3de4c5ace62205b798175a033e3efcab43bb98ab4",
+      "ref_id": "4",
+      "recommendationScore": 20,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "一则关于iPhone演示机体验的个人随笔，缺乏技术分析和深入洞察。",
+      "reason": "文章内容过于个人化且篇幅短小，未能提供有价值的科技评论或信息。",
+      "tags": [
+        "Apple",
+        "iPhone",
+        "个人体验",
+        "科技评论"
+      ]
+    },
+    {
+      "title": "Music Theory for the 21st-Century Classroom",
+      "link": "https://musictheory.pugetsound.edu/mt21c/MusicTheory.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-10T17:14:12.000Z",
+      "summary": "Article URL: https://musictheory.pugetsound.edu/mt21c/MusicTheory.html\nComments URL: https://news.ycombinator.com/item?id=49647134\nPoints: 21\n# Comments: 5",
+      "id": "9e03277e88518b27d3b92b415bc617b386f63cf5d8659ed973a844343e3a2822",
+      "ref_id": "1",
+      "recommendationScore": 10,
+      "popularityScore": 35,
+      "priority": "low",
+      "comment": "这是一篇与科技博客核心主题不符的音乐理论教育资源。",
+      "reason": "该内容与设定的科技博客主题优先级不符，因此不作为主要推荐。",
+      "tags": [
+        "音乐理论",
+        "教育"
+      ]
+    },
+    {
+      "title": "Casablanca: How an unproduced play marched into movie history",
+      "link": "https://www.thecollector.com/casablanca-unproduced-play-movie-history/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-10T15:52:02.000Z",
+      "summary": "Article URL: https://www.thecollector.com/casablanca-unproduced-play-movie-history/\nComments URL: https://news.ycombinator.com/item?id=49645826\nPoints: 33\n# Comments: 10",
+      "id": "286b9039ee8af92c132f2dfcbe2e446b81f461316684ce26a707d2ff2e3aaecf",
+      "ref_id": "0",
+      "recommendationScore": 5,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "与科技博客主题无关，不建议收录。",
+      "reason": "文章内容为电影历史，与AI、编程工具等核心主题无关联。",
+      "tags": [
+        "电影",
+        "历史",
+        "非技术"
+      ]
+    },
+    {
+      "title": "Quoting Calif Research",
+      "link": "https://simonwillison.net/2026/Sep/10/calif-research/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-09-10T00:56:41.000Z",
+      "summary": "",
+      "id": "8bb8a5d2f8afb2a832e571452b41380772a91fdf3edc4e0ab75d00e1f13057d2",
+      "ref_id": "1",
+      "recommendationScore": 5,
+      "popularityScore": 5,
+      "priority": "low",
+      "comment": "内容缺失，无法进行有效评估。",
+      "reason": "文章内容为空，不具备任何评估价值。",
+      "tags": [
+        "缺失内容",
+        "无法评估"
+      ]
+    },
+    {
+      "title": ".blend URL Viewer",
+      "link": "https://simonwillison.net/2026/Sep/9/blender-viewer/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-09-09T23:58:32.000Z",
+      "summary": "",
+      "id": "46bc2da24ce54d4e93060863fe3f9afb9fecad0fb59424587ac3dbc27d2bd927",
+      "ref_id": "2",
+      "recommendationScore": 5,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "标题指向Blender工具，但内容缺失，无法进行评估。",
+      "reason": "文章内容为空，无法提供任何有效信息，无法判断其潜在价值。",
+      "tags": [
+        "Blender",
+        "工具",
+        "缺失内容"
+      ]
+    }
+  ]
+}
