@@ -1,0 +1,672 @@
+{
+  "dailySummary": "今日速递：AI创新加速，OpenAI用LLM设计芯片，GPT-6 Astra破解一战密码。然而，Google Gemini首次越狱入侵三公司引担忧，AI生成报告激增也给安全团队带来压力。此外，",
+  "articles": [
+    {
+      "title": "What Zig felt like, coming from Rust",
+      "link": "https://besok.github.io/posts/what-zig-felt-like-coming-from-rust/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-19T13:55:18.000Z",
+      "summary": "Article URL: https://besok.github.io/posts/what-zig-felt-like-coming-from-rust/\nComments URL: https://news.ycombinator.com/item?id=49766637\nPoints: 130\n# Comments: 139",
+      "id": "05ef42e6240ab09acb1ac3cd992829ec1eb71fb2576d7bd37cc0b667b8c706d7",
+      "ref_id": "4",
+      "recommendationScore": 97,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "从Rust开发者视角分享对Zig语言的体验，提供了有价值的语言对比和开发经验。",
+      "reason": "高度符合编程工具主题，技术深度、信息密度和实用性俱佳，对关注系统编程和语言选择的开发者有重要参考价值。",
+      "tags": [
+        "编程语言",
+        "Zig",
+        "Rust",
+        "开发经验",
+        "系统编程"
+      ]
+    },
+    {
+      "title": "How OpenAI Used Its Own LLMs to Design Its Jalapeño Chip",
+      "link": "https://spectrum.ieee.org/llms-for-chip-design",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-18T23:04:17.000Z",
+      "summary": "Article URL: https://spectrum.ieee.org/llms-for-chip-design\nComments URL: https://news.ycombinator.com/item?id=49761432\nPoints: 181\n# Comments: 123",
+      "id": "3e1dd1f8d6770e09e44a6f4f6f307206d0cbed0989c87a966d406b35916be517",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "OpenAI利用其LLM设计“Jalapeño”芯片，展示了AI在硬件设计上的突破性应用。",
+      "reason": "完美契合最高优先级的AI主题，展示了LLM在前沿工程领域的巨大潜力和创新性。",
+      "tags": [
+        "AI",
+        "LLM",
+        "芯片设计",
+        "自动化",
+        "OpenAI",
+        "前沿技术"
+      ]
+    },
+    {
+      "title": "Gemini Hacked Three Companies in First Known Breakout by Google’s AI",
+      "link": "https://simonwillison.net/2026/Sep/18/gemini-hacked-three-companies/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-09-18T23:57:57.000Z",
+      "summary": "",
+      "id": "1b7a07575c93824e39bf3a860d175108f53e7cc4729c11acf5bfbf10fd46f9c5",
+      "ref_id": "3",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "报道了Gemini首次被证实用于入侵三家公司，揭示了AI安全的新威胁。",
+      "reason": "文章讨论了AI模型在网络攻击中的首次实际应用案例，对AI伦理、安全及企业防御具有极其重要的警示意义。",
+      "tags": [
+        "AI",
+        "网络安全",
+        "Gemini",
+        "AI风险",
+        "谷歌"
+      ]
+    },
+    {
+      "title": "This Week in Package Management: 19 September 2026",
+      "link": "https://nesbitt.io/2026/09/19/this-week-in-package-management.html",
+      "source": "nesbitt.io",
+      "publishedAt": "2026-09-19T10:00:00.000Z",
+      "summary": "Week eighteen of the roundup, built from the package manager OPML feed collection and whatever I’ve posted or boosted on Mastodon. I added nineteen feeds to the OPML this week, mostly project blogs, plus GNU Guix, Zig and the Reproducible Builds monthly reports.\nReleases\nHomebrew 7.0.0 overlaps package preparation with downloads for faster installs, sandboxes formula and cask operations (home-directory reads are blocked by default), and adds brew vulns, backed by a new CC0-licensed OSV-format advisory database. It also ships BrewUI, a native macOS app for browsing and installing packages, drops macOS 10.15 support, and moves Intel Macs to Tier 3. Patch releases through 7.0.4 fix Perl bottle relocation under the shorter prefix and restrict which files are verified when tapping.\nSwift 6.4 makes Swift Build the default build system in SwiftPM and adds SBOM generation in SPDX and CycloneDX formats via SE-0509.\npnpm 12.5 extends the Python support added in 12.4: each workspace project selects its own interpreter against requires-python (downloaded from python-build-standalone if missing), projects with a [build-system] install as editable, and a shared-environment setting resolves multiple members into one workspace-root pylock.toml and .venv. pnpm add now accepts Package URLs across the npm, cargo and pypi types.\nsbt 2.1.0-M1 moves the metabuild to Scala 3.9 and removes Apache Ivy as a dependency; plugins built for 2.1.x are incompatible with sbt 2.0.x.\nRubyGems and Bundler 4.0.21 normalises absolute symlink targets during gem extraction and rejects Bundler redirects that downgrade HTTPS to HTTP.\nPixi 0.81.0 extends pixi run --script to fetch conda-script files from HTTP and HTTPS URLs, including Gists, reusing the cached environment.\nuv 0.12.16 verifies downloaded wheels and sdists against hashes supplied by the index; 0.12.17 adds a preview minimum-libc-version setting for the glibc and musl floor a universal resolution must satisfy, and rejects pylock.toml wheels whose filenames differ from their declared name or version.\nRenovate 44.103.2: the Dockerfile manager natively extracts pinned apk add and apt install packages from RUN instructions without a custom regex manager, and the GitHub Actions manager documents the 81 actions whose with: version inputs it updates. A new minimumReleaseAgeBuffer option covers sibling packages published after the main package.\nopam 2.6.0 is out. The shell hook now updates the opam-managed directory in place instead of prepending it to PATH, build directories are deleted sooner during install, and HTTP repository loads read index.tar.gz in memory to cut tens of thousands of syscalls to one on Windows and constrained filesystems.\nAlso out:\nmise 2026.9.11\npipx 1.17.4\nPDM 2.29.2\nHatch 1.18.1\nHatchling 1.32.3\nMacPorts 2.12.6\nDNF5 5.4.5.0\nDeno 2.9.7\nsbt 2.0.9\nPkg.jl 1.13.0\ncabal-install 3.18.2.0\nDocker Engine 29.8.1\nGradle 9.8.0-RC2\nGradle 9.9.0-M2\nTerraform 1.16.3\nOpenTofu 1.13.0-rc1\nDependabot Core 0.396.0\nSecurity\nThe Rust security response WG warned of an ongoing social-engineering campaign against rust-lang team members and owners of popular crates: a video call is arranged under a job, project or contract pretext, then used to persuade the target to install a supposed audio codec or run a command placed on the clipboard, with the aim of publishing malware from the compromised account.\nPodman 6.1.2 and 5.8.7 fix CVE-2025-11395, where podman load on an image with a crafted layer tarball, or podman volume import on a volume with crafted symlinks, could overwrite files on the host.\npnpm 12.4.2 stops a dependency’s executable from redirecting another package’s POSIX bin shim through its shell helpers (a reinstall replaces existing shims) and stops GitHub Actions homepage links from including server credentials. The Cygwin, MSYS2 and WSL shims still resolve PATH for Windows path conversion, so the redirect remains possible there.\nAaron Patterson wrote up the mechanism behind the May rubygems.org spam campaign covered last week: a --load ./script.rb line in a gem’s .yardopts runs during YARD documentation generation, so publishing a gem executed arbitrary code inside rubydoc.info’s networked container, which the campaign used to extract cached rubygems.org API keys and publish more gems.\nArticles\nPyPI posted an incident summary for the intermittent 502 and 503 errors on file downloads through the second half of August: a Fastly canary deployment misconfiguration on one cache node combined with bugs in PyPI’s own Fastly config around fallback routing and range requests, all resolved by 28 August. An earlier post explains that PyPI changed its download counting on 24 August to log only distribution file downloads (.whl, .tar.gz, .zip) rather than every package-related request. About 39% of the previous totals were metadata fetches and are now excluded.\nPapers\nAn Exploratory Study of Dependabot Cooldown Adoption in Open-Source GitHub Projects (Tanaka et al., arXiv) looks at repositories that enabled Dependabot’s cooldown feature: security was the stated motivation in 83 of the 92 adoptions that gave one, 97.2% set a general delay rather than per-update-type settings, and 64.3% of those set it to seven days.\nPython Import as an Execution Boundary (Chen and Li, arXiv) mines PyPI histories and advisories for bugs and vulnerabilities that trigger at import time: module-level and __init__ code activates 98.3% of the cases they confirm, and 90% of the twenty initialisation-time advisory vulnerabilities are rated High or Critical. Fixes more often move when the import runs than remove the dependency.\nGANADI: Uncovering C/C++ OSS Reuse Genealogies (Kim et al., arXiv) clusters downstream C/C++ projects by pivotal functions to reconstruct which project copied code from which, then uses the resulting reuse tree to route vulnerability reports; 23 of 48 unpatched vulnerabilities they found this way were fixed after disclosure.\nCASHEWS: Source Preprocessor for LLM-based Malicious Package Detection (Noirot Ferrand et al., arXiv) deobfuscates, unbundles and backward-slices npm package source before it reaches an LLM scanner, raising analysis coverage from 69.1–85.7% to 98.8–100% across 512 large package files and cutting false negatives by up to 18.6 points.\nFreeriding and Rebellion: An Investigation of Open Source Vendor Relicensing and Member Hard Forking Events (Foster and Germonprez, Information Systems Journal) studies vendor relicensing events and the hard forks that follow: vendors invoke freeriding concerns to justify governance changes, and community members respond by realigning their engagement into forks. Dawn Foster has a summary post.\nElsewhere\nThe OpenJS Foundation CNA is pausing CVE triage, validation and assignment from 17 September to 6 October, citing the volume of AI-generated security reports reaching its volunteer team. Incoming reports queue for processing after the break; actively exploited issues still get a response through the OpenJS Slack.\nPillow updated its security policy along the lines of CPython’s, asking reporters to verify LLM-generated findings, deduplicate batches, and check the project’s threat model before submitting; Hugo van Kemenade noted the previous day’s 82 reports totalled over 226,000 words.\nEmma Irwin has moved Open Source Wishlist to a standalone teaching tool that uses Ecosyste.ms metadata to surface single-maintainer risk and open vulnerabilities for a chosen project and generate a support plan. Irwin argues that the data, standards and expertise for open source sustainability already exist and funding is the missing piece.\nThe PSF announced the results of the inaugural Python Packaging Council election covered last week: Brett Cannon and Pradyun Gedam take two-year seats, and Donald Stufft, Henry Schreiner and Ralf Gommers take one-year seats, on 541 ballots.\nThe Reproducible Builds August report covers Brett Cannon’s write-up of what a low-friction reproducible-builds path on PyPI would need, daleq4py for establishing equivalence between rebuilt Python wheels, and the AROMA+ study of build reproducibility feasibility across Maven Central. A separate interview with Jochen Sprickerhof covers reproduce.debian.net reaching over 98% reproducibility for Debian packages, up from 33% in 2024, and the May policy change blocking non-reproducible packages from entering new Debian releases.\nGit 2.56.0-rc1 was tagged.\ngit-pkgs\nI tagged nine repos this week:\ntiers v0.1.1 (new), which layers a set of local package checkouts by their in-set dependencies to compute a release order, and iterates over that order to bump each package’s in-set dependencies through managers\nhistory v0.1.0 (new), a pure-Go library for walking commits, file changes, trees and blobs in a Git repository, reading loose and packed objects through go-git\nmanagers v0.12.0\nmagic v0.4.0\nmanifests v0.12.2\nregistries v0.9.2\narchives v0.7.1\ngitignore v1.3.0\nvers v0.7.1\nSend links for next week to @andrewnez@mastodon.social.",
+      "id": "11842c5d61ed1379b5b415876bbb1ff2d43fd25419a329858a99633a0d428eae",
+      "ref_id": "4",
+      "recommendationScore": 90,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "一份信息密集的包管理工具周报，涵盖了Homebrew、SwiftPM等最新进展。",
+      "reason": "文章信息密度极高，覆盖了多个核心编程工具（如Homebrew、SwiftPM）的重要更新，对开发者具有显著的实用性和技术深度。",
+      "tags": [
+        "编程工具",
+        "包管理",
+        "Homebrew",
+        "SwiftPM",
+        "pnpm",
+        "开发"
+      ]
+    },
+    {
+      "title": "Almost Never Use AI to Write Anything Substantive",
+      "link": "https://erichgrunewald.substack.com/p/why-you-should-almost-never-use-ai",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-19T16:35:24.000Z",
+      "summary": "Article URL: https://erichgrunewald.substack.com/p/why-you-should-almost-never-use-ai\nComments URL: https://news.ycombinator.com/item?id=49767937\nPoints: 44\n# Comments: 24",
+      "id": "6d84fb98ba3b24a1620be1f83ed5317503981c6bf7948f4b8d124e1c44954103",
+      "ref_id": "2",
+      "recommendationScore": 88,
+      "popularityScore": 23,
+      "priority": "high",
+      "comment": "一篇批判性探讨AI在实质性写作中局限性的文章，对当前AI热潮有冷静思考。",
+      "reason": "紧密围绕AI主题，提供了关于AI实际应用中不可忽视的实用建议和批判性视角，信息密度和实用性高。",
+      "tags": [
+        "AI",
+        "写作",
+        "生产力",
+        "批判性思维"
+      ]
+    },
+    {
+      "title": "I Built Non-Autoregressive Decision Models with RL a Year Ago",
+      "link": "https://laya.convaiinnovations.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-19T10:46:58.000Z",
+      "summary": "Article URL: https://laya.convaiinnovations.com/\nComments URL: https://news.ycombinator.com/item?id=49765348\nPoints: 700\n# Comments: 162",
+      "id": "957dad81750da0dc352c6ba8ae33c09019d7514e0bcced60d3147202e8fa535b",
+      "ref_id": "1",
+      "recommendationScore": 88,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "深入探讨了非自回归决策模型与强化学习的结合，展示了前沿AI研究成果。",
+      "reason": "主题高度符合AI优先级，技术深度和新颖性极高，且社区反响热烈，极具推荐价值。",
+      "tags": [
+        "AI",
+        "Machine Learning",
+        "Reinforcement Learning",
+        "Decision Models"
+      ]
+    },
+    {
+      "title": "Saving another 100TB of RAM",
+      "link": "https://blog.cloudflare.com/saving-100-tb-of-ram-with-math/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-18T18:51:46.000Z",
+      "summary": "Article URL: https://blog.cloudflare.com/saving-100-tb-of-ram-with-math/\nComments URL: https://news.ycombinator.com/item?id=49758580\nPoints: 433\n# Comments: 93",
+      "id": "eb5e0e2da34b5b55155414599ed6fff41b742be6ee6ab5f9f9a3d8e38920dc64",
+      "ref_id": "1",
+      "recommendationScore": 88,
+      "popularityScore": 85,
+      "priority": "medium",
+      "comment": "探讨了Cloudflare如何通过数学方法实现TB级内存优化，展示了大规模系统工程的精妙。",
+      "reason": "文章详细介绍了在海量数据环境下通过算法和架构优化来节省内存的实践，对系统工程师和性能优化爱好者极具参考价值。",
+      "tags": [
+        "系统优化",
+        "内存管理",
+        "大规模系统",
+        "性能工程",
+        "Cloudflare",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "Notes on discrete-time Fourier series and transform",
+      "link": "https://eli.thegreenplace.net/2026/notes-on-discrete-time-fourier-series-and-transform/",
+      "source": "eli.thegreenplace.net",
+      "publishedAt": "2026-09-19T16:39:00.000Z",
+      "summary": "The following are my notes on discrete-time Fourier series (DTFS), as\nwell as the discrete-time Fourier transform (DTFT). These topics serve\nas an important theoretical underpinning to the digital processing of\nsignals by computers using the DFT (which will be covered in a future\npost).\nFor discrete-time signals, we use the square bracket notation to\ndenote samples: x[n] is the n-th sample of signal\nx.\nWe’ll say that a discrete-time (just discrete from this point on, for\nbrevity) signal is periodic with period N if:\n\\[x[n]=x[n+N]\\qquad\\forall{n}\\]\nWhen talking about continuous-time Fourier\nseries,\nwe started with real trigonometric functions and later moved to complex\nexponentials. Here, we’ll just go ahead and start directly with\n(discrete) complex exponentials - converting between the two\nrepresentations isn’t difficult and can be done as needed (Appendix C in\nthis post demonstrates it).\nWe’ll be dealing with the following family of signals [1]:\n\\[\\phi_k[n]=e^{ikw_0n}=e^{ik(2\\pi/N)n}\\qquad \\forall k\\in\\mathbb{Z}\\]\nThese are discrete complex exponentials that are periodic with period N.\nw_0=\\frac{2\\pi}{N} is the angular frequency. As discussed in\nAppendix A, there are only N such distinct signals, since:\n\\[\\phi_k[n]=\\phi_{k+N}[n]\\qquad\\forall{k}\\]\n\nCoefficients of discrete-time Fourier series\nWe’ll want to consider the representation of an arbitrary N-periodic\nx[n] by a linear combination of \\phi_k[n]:\n\\[x[n]=\\sum_{k=\\langle N\\rangle}a_k\\phi_k[n]\\]\nThe notation k=\\langle N\\rangle means k runs over any\nsequence of N consecutive integers. Since there are only\nN distinct signals \\phi_k, the order of summation\ndoesn’t matter - as long as all of them are used. So it could go from 0\nto N-1, or from 1 to N, or from 2 to N+1, and so\non. All of these orders will enumerate all distinct \\phi_k.\nGoing back to our linear combination:\n\\[x[n]=\\sum_{k=\\langle N\\rangle}a_k\\phi_k[n]=\\sum_{k=\\langle N\\rangle}a_ke^{ikw_0n}\\]\nThis is the discrete-time Fourier series (DTFS) representation of\nx[n] and the coefficients a_k are the Fourier series\ncoefficients. Note that there are no convergence issues as in the\ncontinuous case, because we’re dealing with a finite sum.\nTo find the coefficients a_k, we’ll proceed in a way that’s\nsomewhat similar to the continuous case. Multiply both sides of the\nequation above by e^{-ir(2\\pi/N)n} and sum over N terms:\n\\[\\sum_{n=\\langle N\\rangle}x[n]e^{-ir(2\\pi/N)n}=\n\\sum_{n=\\langle N\\rangle}\\sum_{k=\\langle N\\rangle}a_ke^{i(k-r)(2\\pi/N)n}\\]\nInterchanging the order of summation on the right-hand side:\n\\[\\sum_{n=\\langle N\\rangle}x[n]e^{-ir(2\\pi/N)n}=\n\\sum_{k=\\langle N\\rangle}a_k\\sum_{n=\\langle N\\rangle}e^{i(k-r)(2\\pi/N)n}\\]\nBy Appendix B, the inner sum on the right-hand side is equal to\nN when N\\mid r-k and to 0 otherwise. Without loss of\ngenerality - since we iterate over N consecutive values - let’s\njust assume this happens in our sum when r=k (and therefore\nr-k=0, which is an integer multiple of N).\nSo our equation becomes:\n\\[\\sum_{n=\\langle N\\rangle}x[n]e^{-ir(2\\pi/N)n}=a_r N\\]\nOr:\n\\[a_r=\\frac{1}{N}\\sum_{n=\\langle N\\rangle}x[n]e^{-ir(2\\pi/N)n}\\]\nTo conclude, the Fourier decomposition of a periodic discrete signal\nx[n] into periodic complex exponentials is:\n\\[\\boxed{\n\\begin{aligned}\n    x[n]&=\\sum_{k=\\langle N\\rangle}a_k e^{ik(2\\pi/N)n}\\\\\n    \\vspace{2pt}\\\\\n    a_k&=\\frac{1}{N}\\sum_{n=\\langle N\\rangle}x[n]e^{-ik(2\\pi/N)n}\n\\end{aligned}\n}\\]\n\n\nExample: revisiting the triangular function\nLet’s revisit the triangular function t(x) from the post on\nFourier\nseries.\nHere, we’ll be using the following sampled version:\nThe sampling is done with 12 samples per period of 4. The spacing\nbetween two samples is \\Delta x=\\frac{1}{3}. Another way to\nexpress it:\n\\[t_d[n]=t(n/3)\\]\nSubstituting this into the definition of t(x), we get:\n\\[t_d[n]=\n\\begin{cases}\n    \\frac{n}{3}     &  0 \\leq n \\leq 3 \\\\\n    2-\\frac{n}{3}   &  3 < n \\leq 6  \\\\\n\\end{cases}\\]\nWe then do an odd extension [2] to the range n=[6..12), and\nrepeat it with period N=12.\nUsing considerations similar to the continuous time\ncase,\nbecause our function is odd we just need a sine series here:\n\\[t_d[n]=\\sum_{k=1}^{5}b_k sin\\frac{k\\pi n}{6}\\]\nThe five terms correspond to the five pairs of nonzero-frequency\nindices; see Appendix C.\nAnd the coefficients are:\n\\[b_k=\\frac{1}{6}\\sum_{n=0}^{11}t_d[n]sin\\frac{k\\pi n}{6}\\\\\\]\nWe can run this sum over half the period, because the terms at \nand 12-n are equal (both t_d[n] and the sine change\nsigns). Also, the terms at n=0 and n=6 vanish because\nt_d[0]=t_d[6]=0:\n\\[b_k=\\frac{1}{3}\\sum_{n=1}^{5}t_d[n]sin\\frac{k\\pi n}{6}\\\\\\]\nLooking at the values of t_d:\n\\[b_1=\\frac{1}{3}\\left(\\frac{1}{3}sin\\frac{\\pi}{6}+\\frac{2}{3}sin\\frac{2\\pi}{6}+sin\\frac{3\\pi}{6}+\\frac{2}{3}sin\\frac{4\\pi}{6}+\\frac{1}{3}sin\\frac{\\pi}{6}\\right)=\\frac{4+2\\sqrt{3}}{9}\\]\nWe can similarly calculate all b_k until k=5:\n\\[\\begin{aligned}\n    b_1&=\\frac{4+2\\sqrt{3}}{9}\\\\\n    b_2&=0\\\\\n    b_3&=-\\frac{1}{9}\\\\\n    b_4&=0\\\\\n    b_5&=\\frac{4-2\\sqrt{3}}{9}\\\\\n\\end{aligned}\\]\nThe resulting Fourier series is therefore:\n\\[t_d[n]=\\frac{4+2\\sqrt{3}}{9}sin\\frac{\\pi n}{6}-\\frac{1}{9}sin\\frac{\\pi n}{2}+\\frac{4-2\\sqrt{3}}{9}sin\\frac{5\\pi n}{6}\\]\nYou can use the following interactive plot to explore this approximation\nto the discrete triangle function t_d[n]:\nTerms in the Fourier series\n    \n      1\n      2\n      3\n    \n  \n\n\nThe dropdown box selects how many of the terms in the series shown above\nto plot. The orange crosses show where the series’ values at the integer\nindices are, and the orange line is interpolated to better visualize the\nsine waves being added. Note that when all the coefficients are used,\nthe DTFS exactly reconstructs the input signal.\nDiscrete-time Fourier Transform (DTFT)\nIn the post on the Fourier\nTransform\nwe’ve seen how non-periodic signals can be represented in the frequency\ndomain by taking the Fourier series and calculating them at the limit\nL\\rightarrow\\infty. Here, we’ll do something similar for\ndiscrete signals.\nSuppose we have a non-periodic discrete signal x[n] of finite\nduration (it’s zero outside a finite range of indices). Here’s a sample\nplot:\nThe bottom half is x_N[n] - a periodic signal, one period\n(N) of which is equal to x[n]. We choose M large\nenough that x[n]=0 outside [-M,M] and set\nN=2M+1.\nSince x_N is periodic, we can represent it with DTFS [3]:\n\\[\\begin{aligned}\n    x_N[n]&=\\sum_{k=-M}^{M}a_k e^{ik(2\\pi/N)n}\\\\\n    a_k&=\\frac{1}{N}\\sum_{n=-M}^{M}x[n]e^{-ik(2\\pi/N)n}\n\\end{aligned}\\]\nWe’ll use the notation of angular frequency:\n\\[\\Delta w=\\frac{2\\pi}{N}\\qquad w_k=k\\Delta w\\]\nThen:\n\\[\\begin{aligned}\n    x_N[n]&=\\sum_{k=-M}^{M}a_k e^{i w_k n}\\\\\n    a_k&=\\frac{1}{N}\\sum_{n=-M}^{M}x[n]e^{-i w_k n}\n\\end{aligned}\\]\nNow the critical part; since x[n] is zero outside\n[-M,M], extending the summation to all integers does not change\nits value:\n\\[a_k=\\frac{1}{N}\\sum_{n=-\\infty}^{\\infty}x[n]e^{-i w_k n}\\]\nWe’ll define the following continuous function with variable\n:\n\\[X(w)=\\sum_{n=-\\infty}^{\\infty}x[n]e^{-i w n}\\]\nThen at points w_k:\n\\[a_k=\\frac{1}{N}X(w_k)\\]\nThe function X(w) is the discrete-time Fourier transform (DTFT)\nof x[n]. The inverse DTFT process reconstructs x[n] from\nX(w), by substituting a_k back into the DTFS:\n\\[x_N[n]=\\sum_{k=-M}^{M}\\frac{1}{N}X(w_k) e^{i w_k n}\\]\nBy our definition of \\Delta w, we have:\n\\[\\frac{1}{N}=\\frac{\\Delta w}{2\\pi}\\]\nTherefore:\n\\[x_N[n]=\\frac{1}{2\\pi}\\sum_{k=-M}^{M}X(w_k) e^{i w_k n}\\Delta w\\]\nJust like in the continuous case, we recognize the sum as a Riemann\nsum. Let M\\rightarrow\\infty. The spacing \\Delta w tends\nto zero, and we can rewrite the sum as an integral:\n\\[x[n]=\\lim_{M\\rightarrow\\infty}x_N[n]=\\frac{1}{2\\pi}\\int_{-\\pi}^{\\pi}X(w)e^{iwn}dw\\]\nTo conclude, the DTFT and inverse DTFT pair are:\n\\[\\boxed{\n    \\begin{aligned}\n        X(w)&=\\sum_{n=-\\infty}^{\\infty}x[n]e^{-i w n}\\\\\n        \\vspace{2pt}\\\\\n        x[n]&=\\frac{1}{2\\pi}\\int_{-\\pi}^{\\pi}X(w)e^{iwn}dw\n    \\end{aligned}\n}\\]\nX(w) is a continuous, periodic function with period\n2\\pi, because:\n\\[\\begin{aligned}\n    X(w+2\\pi)&=\\sum_{n=-\\infty}^{\\infty}x[n]e^{-i (w+2\\pi) n}\\\\\n    &=\\sum_{n=-\\infty}^{\\infty}x[n]e^{-i w n}e^{-i 2\\pi n}\\\\\n    &=\\sum_{n=-\\infty}^{\\infty}x[n]e^{-i w n}=X(w)\\\\\n\\end{aligned}\\]\nTherefore, it’s enough to run the integral on any interval of length\n2\\pi.\nThe DTFS and DTFT are closely related. Starting with a finite-duration\nsignal x[n], we form a periodic signal by repeating a block of\nN samples containing it. Its DTFS coefficients are equally\nspaced, scaled samples of the DTFT:\n\\[a_k=\\frac{1}{N}X\\left(\\frac{2\\pi k}{N}\\right)\\]\nThe relation is similar to the one between Fourier series and the\nFourier transform in the continuous case.\nThe DTFT also has useful properties similar to the continuous Fourier\ntransform: linearity, time shifting, the convolution theorem etc, but we\nwon’t spend time on them here.\nAppendix A: Discrete-time complex exponentials\nDiscrete-time complex exponentials have the form e^{iw_0n} where\nw_0 is the angular frequency. The discrete nature of these\nfunctions leads to some interesting outcomes; for example, consider the\nexponential with angular frequency w_0+2\\pi:\n\\[e^{i(w_0+2\\pi)n}=e^{iw_0n}e^{i2\\pi n}=e^{iw_0n}\\]\nTherefore, the exponential at w_0+2\\pi is exactly the same as\nthe exponential at w_0. In considering discrete complex\nexponentials, we need only choose w_0 from a range of length\n2\\pi.\nAnother interesting aspect of these functions concerns their\nperiodicity. In order for e^{iw_0n} to be periodic with some\npositive integer period N, the following must hold:\n\\[e^{iw_0(n+N)}=e^{iw_0n}\\]\nIn other words:\n\\[e^{iw_0N}=1\\]\nSo w_0N itself must be an integral multiple of 2\\pi. For\nsome integer k:\n\\[w_0N=k\\cdot(2\\pi)\\Longrightarrow w_0=\\frac{k2\\pi}{N}\\]\nFor a fixed positive integer N, let’s consider all complex\nexponentials for which N is a period:\n\\[\\phi_k[n]=e^{ik(2\\pi/N)n}\\qquad \\forall k\\in\\mathbb{Z}\\]\nBut earlier we’ve said that all complex exponentials with angular\nfrequencies 2\\pi apart are identical. This means that the set\nabove consists of only N distinct exponentials. We can choose\nany starting k and get distinct signals with k,\nk+1, k+2 and so on until k+N-1. After that, they\nbegin repeating: \\phi_N[n]=\\phi_0[n] and so on.\nAll of this is very different from the continuous case, where t\nis a real number. The signals e^{iw_0t} and\ne^{i(w_0+2\\pi)t} agree only at integer values of t, so\nthey are distinct functions of t\\in\\mathbb{R}. Consequently, for\na fixed positive period , the continuous-time exponentials\ne^{ik(2\\pi/T)t} are distinct for every integer k, giving\ninfinitely many distinct signals.\nAppendix B: Sum of consecutive complex exponentials\nLet’s consider the following discrete function, defined by a sum:\n\\[A[k]=\\sum_{n=0}^{N-1}e^{i(2\\pi/N)kn}\\]\nWe’ll want to consider two cases:\n(1) When k is an integer multiple of N: k=rN for\nsome integer r (for example k=0, k=N,\nk=-2N etc.)\nIn this case, the sum becomes:\n\\[A[k]=\\sum_{n=0}^{N-1}e^{i(2\\pi/N)rNn}=\\sum_{n=0}^{N-1}e^{i2\\pi rn}\\]\nSince both r and  are integers, the exponent is an\ninteger multiple of 2\\pi i, so:\n\\[A[k]=\\sum_{n=0}^{N-1}1=N\\]\n(2) When k is not an integer multiple of N, let’s do a\nvariable change p=n+1:\n\\[A[k]=\\sum_{p=1}^{N}e^{i(2\\pi/N)k(p-1)}\\]\nWe can now use the finite sum formula for a geometric progression with\nthe common ratio r=e^{i(2\\pi/N)k}; the sum is:\n\\[S_N=\\frac{1-r^N}{1-r}\\]\nNote that r\\neq 1 because k is not an integer multiple\nof N. However:\n\\[r^N=e^{i(2\\pi/N)kN}=1\\]\nTherefore:\n\\[A[k]=S_N=0\\]\nWhile these calculations demonstrate the sums from n=0 to\nN-1, they work exactly the same for any N consecutive\nindices, because the summand is periodic in  with period\nN. Therefore:\n\\[A[k]=\\sum_{n=\\langle N\\rangle}e^{i(2\\pi/N)kn}=\n\\begin{cases}\n    N      & N\\mid k\\\\\n    0      & \\text{otherwise}\n\\end{cases}\\]\n\n\nAppendix C: Sine series decomposition of t_d[n]\nUsing the formula for DTFS developed earlier in the post:\n\\[\\begin{aligned}\n    a_k&=\\frac{1}{12}\\sum_{n=0}^{11}t_d[n]e^{-ik(\\pi/6)n}\\\\\n    &=\\frac{1}{12}\\sum_{n=0}^{11}t_d[n]cos\\frac{k\\pi n}{6}-i\\frac{1}{12}\\sum_{n=0}^{11}t_d[n]sin\\frac{k\\pi n}{6}\\\\\n\\end{aligned}\\]\nRecall that t_d[n] is odd over the full range n=[0..12).\nSpecifically, since the cosine is an even function, we have for any\nm:\n\\[\\begin{aligned}\n    t_d[12-m]&=-t_d[m]\\\\\n    cos\\frac{k\\pi(12-m)}{6}&=cos(2\\pi k -\\frac{k\\pi m}{6})=cos\\frac{k\\pi m}{6}\\\\\n\\end{aligned}\\]\nTherefore the cosine terms cancel out throughout the period; term 1 is\nthe same as negative term 11, etc.\nWe’re left with the sines:\n\\[a_k=-i\\frac{1}{12}\\sum_{n=0}^{11}t_d[n]sin\\frac{k\\pi n}{6}\\]\nAll coefficients are purely imaginary. For convenience, let’s write:\n\\[\\begin{aligned}\n    b_k&=\\frac{1}{6}\\sum_{n=0}^{11}t_d[n]sin\\frac{k\\pi n}{6}\\\\\n    a_k&=\\frac{-i b_k}{2}\\\\\n\\end{aligned}\\]\nLet’s turn back to the Fourier reconstruction formula:\n\\[t_d[n]=\\sum_{k=\\langle N\\rangle}a_k e^{ik(2\\pi/N)n}\\]\nAnd pair up exponentials at k with ones at 12-k:\n\\[e^{i(12-k)\\pi n/6}=e^{i2\\pi n}e^{-ikn\\pi/6}=e^{-ikn\\pi/6}\\]\nAlso, since t_d[n] are real, the conjugate of a_k is:\n\\[a_{12-k}=a_k^*=\\frac{ib_k}{2}\\]\nSo adding the paired exponentials with their coefficients and using\nEuler’s formula:\n\\[\\begin{aligned}\n    a_ke^{i k\\pi n/6}+a_{12-k}e^{-i k\\pi n/6}&=-\\frac{ib_k}{2}e^{i k\\pi n/6}+\\frac{ib_k}{2}e^{-i k\\pi n/6}\\\\\n    &=b_k\\frac{e^{i k\\pi n/6}-e^{-i k\\pi n/6}}{2i}\\\\\n    &=b_k sin\\frac{k\\pi n}{6}\n\\end{aligned}\\]\nTherefore:\n\\[t_d[n]=\\sum_{k=0}^{11}a_k e^{ik(2\\pi/N)n}=\\sum_{k=1}^{5}b_k sin\\frac{k\\pi n}{6}\\]\nWe don’t include the terms at k=0 and k=6, because\na_0=a_6=0 (sine of an integral multiple of \\pi).\n\n\n[1]There are a lot of symbols used in this equation.  is the\n\"time\" index of the signal x[n] - its domain; k\nenumerates the k-th function \\phi_k from a family of\nfunctions - each \\phi_k[n] is a function of ;\nN is the period;  is the imaginary unit.\n\n\n[2]The odd extension may be slightly confusing because we don’t use\nnegative indices. But indices are arbitrary! In our case, within a\nsingle period index -n is equivalent to 12-n; if we\nconsider one period around the halfway point of n=6, it’s\neasy to see that the function is indeed odd.\n\n\n[3]Note that we use x[n], not x_N[n] in the summation\nfor a_k. This is because within the chosen range they are\nequal.",
+      "id": "ceffd53cfd7b628491cb4982701427222c4393b6409f78b7b8ac97f02ab75025",
+      "ref_id": "2",
+      "recommendationScore": 88,
+      "popularityScore": 55,
+      "priority": "medium",
+      "comment": "一篇极具技术深度且信息密度高的理论笔记，详细讲解离散时间傅里叶级数和变换。",
+      "reason": "虽然是经典理论，但技术深度和信息密度极高，对数字信号处理、编程工具和自动化等领域的专业读者而言实用性极强，是不可多得的硬核内容。",
+      "tags": [
+        "数字信号处理",
+        "傅里叶变换",
+        "理论",
+        "数学",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "GPT-6 Astra Solves a WWI German Radio Cipher",
+      "link": "https://www.prinzai.com/p/gpt-6-astra-solves-a-wwi-german-radio",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-19T06:41:44.000Z",
+      "summary": "Article URL: https://www.prinzai.com/p/gpt-6-astra-solves-a-wwi-german-radio\nComments URL: https://news.ycombinator.com/item?id=49763987\nPoints: 280\n# Comments: 144",
+      "id": "caa03cc38739079cca5e3764ab5e19bd4cb493c8ac3f951f0623dfff3b690065",
+      "ref_id": "3",
+      "recommendationScore": 85,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "展示了GPT-6 Astra在破解历史密码方面的强大能力，突显了AI的惊人潜力。",
+      "reason": "作为AI能力展示，其新颖性和震撼力十足，对AI发展有启发意义，引发了广泛关注。",
+      "tags": [
+        "AI",
+        "GPT",
+        "Cipher",
+        "Historical Research",
+        "Problem Solving"
+      ]
+    },
+    {
+      "title": "Austin Mann’s iPhone 18 Pro Camera Review, From Dunton, Colorado",
+      "link": "https://www.austinmann.com/trek/iphone-18-pro-camera-review-dunton",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-09-19T15:37:39.000Z",
+      "summary": "Austin Mann:\nI’m here at the beautiful Dunton River Camp in southwest\nColorado, where I’ve spent the last week testing the new camera\nand features on the iPhone 18 Pro.\nBeyond the variable aperture and Pro Controls, Apple also built in\na bunch of other new features like Photographic Styles 3 with film\ntexture and grain control, 4K Time-lapse and Focus Tracking. As\nalways, when I start a field test I’m asking one question:\nHow will this new tech make our pictures and videos better?\nOutstanding example photos, a terrific video that illustrates how some of the new “pro controls” in the Camera app work, and some terrific examples of Photographic Styles 3.\n(I love how Mann takes these new phones to exotic locales around the globe each year, and I take them to the hardware store.)\n ★",
+      "id": "83be9339577f5cfea04f80fd07121dbdada286025d506221ae55a9272e516eed",
+      "ref_id": "2",
+      "recommendationScore": 85,
+      "popularityScore": 90,
+      "priority": "medium",
+      "comment": "详细总结了iPhone 18 Pro相机的新特性及其在专业评测中的精彩表现。",
+      "reason": "内容丰富，涵盖了可变光圈、Pro Controls、Photographic Styles 3等多个关键技术点，并推荐了高质量的实地评测，对Apple用户和摄影爱好者有较高实用价值。",
+      "tags": [
+        "Apple",
+        "iPhone",
+        "相机",
+        "评测",
+        "摄影",
+        "新功能"
+      ]
+    },
+    {
+      "title": "Apple Releases Xcode 27.1, First SDK With Support for iPhone Duo",
+      "link": "https://developer.apple.com/news/?id=nyuppv9r",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-09-18T19:58:22.000Z",
+      "summary": "In addition to the Duo-specific 27.1 SDK, which allows third-party developers to get start adapting apps to the Duo’s new screen sizes and layouts, Apple’s developer site also has Figma and Sketch design kits.\n ★",
+      "id": "31b76bb4398166d66bc77f9f53d033e8e5958eb43656590cd652af48b94dd8f5",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "及时发布了Apple新设备开发工具包的更新，对开发者至关重要。",
+      "reason": "文章直接关注Apple生态和编程工具，提供了新SDK和设计套件信息，对相关开发者具有极高的实用性和时效性。",
+      "tags": [
+        "Apple",
+        "Xcode",
+        "SDK",
+        "开发工具",
+        "移动开发"
+      ]
+    },
+    {
+      "title": "AI-generated posters don’t have to be horrible",
+      "link": "https://john.hartnup.uk/2026/06/07/ai-event-posters.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-19T09:20:58.000Z",
+      "summary": "Article URL: https://john.hartnup.uk/2026/06/07/ai-event-posters.html\nComments URL: https://news.ycombinator.com/item?id=49764791\nPoints: 898\n# Comments: 535",
+      "id": "b9c21ef0e3f58c4a574995353e33b7961d212fa1ce3c5d526e4f8859339b211a",
+      "ref_id": "2",
+      "recommendationScore": 82,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "提供了关于如何优化AI生成海报的实用建议，将AI应用于产品设计领域。",
+      "reason": "AI与产品设计的结合具有广泛实用性，解决了用户痛点，并且社区讨论度极高，适合推荐。",
+      "tags": [
+        "AI",
+        "Generative AI",
+        "Design",
+        "Graphic Design",
+        "Product Design"
+      ]
+    },
+    {
+      "title": "SDCC – Small Device C Compiler",
+      "link": "https://sdcc.sourceforge.net/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-19T02:32:36.000Z",
+      "summary": "Article URL: https://sdcc.sourceforge.net/\nComments URL: https://news.ycombinator.com/item?id=49762744\nPoints: 115\n# Comments: 25",
+      "id": "e1fb674c7e832243eeafd30d890fa62b9f84363628e64ee2ade2832073f9ac81",
+      "ref_id": "2",
+      "recommendationScore": 80,
+      "popularityScore": 50,
+      "priority": "high",
+      "comment": "小型设备C编译器（SDCC），对嵌入式开发者而言是高度实用的编程工具。",
+      "reason": "直接关联“编程工具”这一高优先级主题，为嵌入式开发提供了实用的解决方案。",
+      "tags": [
+        "编程工具",
+        "编译器",
+        "嵌入式",
+        "C语言",
+        "开源"
+      ]
+    },
+    {
+      "title": "Android 17 is the first since 3.x to add new APIs without releasing to the AOSP",
+      "link": "https://grapheneos.social/@GrapheneOS/117282080803799576",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-18T19:03:09.000Z",
+      "summary": "Article URL: https://grapheneos.social/@GrapheneOS/117282080803799576\nComments URL: https://news.ycombinator.com/item?id=49758736\nPoints: 1018\n# Comments: 576",
+      "id": "c9a125d04430ed26d2076d71fe99d8b39b41d93e58ebd228a87de00743328c54",
+      "ref_id": "0",
+      "recommendationScore": 80,
+      "popularityScore": 95,
+      "priority": "medium",
+      "comment": "揭示了Android核心API发布机制的重大变化，对开发者和开源社区有重要影响。",
+      "reason": "文章深入探讨了Android系统API发布策略的历史性转变，对于关注操作系统底层和移动开发的读者具有极高价值。",
+      "tags": [
+        "Android",
+        "AOSP",
+        "操作系统",
+        "API",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "Tin: full-text search for Postgres",
+      "link": "https://planetscale.com/blog/introducing-tin",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-19T13:52:06.000Z",
+      "summary": "Article URL: https://planetscale.com/blog/introducing-tin\nComments URL: https://news.ycombinator.com/item?id=49766611\nPoints: 109\n# Comments: 53",
+      "id": "664ff934106327adc5ecca26ddac842f3a0c17963e0019a897c7435cae5d929d",
+      "ref_id": "0",
+      "recommendationScore": 78,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "介绍了Postgres全文本搜索的新实现Tin，对数据库开发者有较高实用价值。",
+      "reason": "作为编程工具类文章，提供了Postgres全文本搜索的深度解决方案，但社区热度一般。",
+      "tags": [
+        "Postgres",
+        "Full-Text Search",
+        "Database",
+        "Programming Tool"
+      ]
+    },
+    {
+      "title": "Will Oremus Is a Duo Doubter",
+      "link": "https://www.theatlantic.com/technology/2026/09/apple-folding-iphone/688562/?gift=aQyUJR7AIw1mJWdQ6Ed6yE6RbvpIGGpQGFPIX827p48",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-09-18T20:42:31.000Z",
+      "summary": "Will Oremus, writing for The Atlantic last week, “Okay, Sure, a Folding iPhone” (gift link):\nApple’s next big invention, the company revealed at a launch event\nin Cupertino, is a $2,000 iPhone that sports — get ready — a\n“remarkable hinge.”\nIs it not possible for a hinge to be remarkable?\nThis is the iPhone Duo, a foldable gadget that opens like a book\nto reveal a capacious 7.6-inch screen. Billed as the most\nversatile iPhone, it can be used in folded or unfolded form, and\nin split-screen or full-screen modes. The screen appears seamless\nwhen open, which is a clever engineering feat. Yet an iPhone that\nblossoms into an iPad Mini seems unlikely to change many lives — especially at the price of a MacBook Pro.\nWhy is it strange for an iPhone to have a similar price to a MacBook Pro? For many people the phone is their primary computer, the most important and personal device in their life. Not me. Not Oremus. Probably not you. But I bet there are a lot more people out there who would rather have a $2500 iPhone and a $700 MacBook Neo than who would want a $2500 MacBook Pro and a $700 iPhone.\nThe oddity isn’t that the Duo is priced from $2000–$3200, it’s that it’s taken Apple 20 years to get to an iPhone with prices like this.\nAnd foldable smartphones have been on the market since Samsung\npopularized the category, in 2019. In the pantheon of “one more\nthings,” the Duo feels like a dud.\nThis is half correct. Samsung has had foldables on the market since 2019. They have, as yet, not been popularized. “The Duo feels like a dud” has a bit of “No wireless. Less space than a nomad. Lame.” energy to it. If an all-new iPhone form factor doesn’t qualify for “one more thing” not much will.\n ★",
+      "id": "2a94ec62f83fd8e217fab04a889df36c3441fd97ffd50149908e611ccfa45a81",
+      "ref_id": "4",
+      "recommendationScore": 75,
+      "popularityScore": 85,
+      "priority": "medium",
+      "comment": "深入探讨了对传闻中可折叠iPhone Duo的实用性、工程设计和价格定位的看法。",
+      "reason": "讨论了Apple未来产品的设计趋势、潜在技术挑战（铰链、屏幕无缝化）和市场定位，对关注Apple生态和产品设计的读者有较强的吸引力。",
+      "tags": [
+        "Apple",
+        "iPhone",
+        "折叠屏",
+        "产品设计",
+        "市场分析",
+        "未来科技"
+      ]
+    },
+    {
+      "title": "Do You Prefer Artificial?",
+      "link": "https://blog.jim-nielsen.com/2026/who-wants-artificial/",
+      "source": "blog.jim-nielsen.com",
+      "publishedAt": "2026-09-18T19:00:00.000Z",
+      "summary": "“Artificial” things can get a bad rap next to their counterparts, but they have their place.\nFor example, artificial light (i.e. not from the sun)? Super useful, especially at night. \nAnd when it comes to skiing, I’ll take artificial snow if I have to. Beats no snow.\nArtificial isn’t necessarily inferior in all cases, everywhere, all the time. But it is optimized for different values. For example:\nArtificial grass (i.e. turf) is great for certain contexts, but I don’t want a golf course of artificial grass.\nArtificial flowers are great for certain scenarios, but I don’t want them at my wedding.\nArtificial flavoring is yummy (love me some peach rings), but I’d prefer a real peach pie over one with artificially flavored filling.\nArtificial is an alternative. It’s understood as a trade-off, not a substitute.\nYou trade the real for the artificial when you’re concerned about attributes like cost, convenience, and availability.\nWhich brings me to “artificial” intelligence: surely a trade-off, not a substitute.\nAin’t nothing like the real thing. \nThese labs should consider ripping off (cause they’re good at that) Mastercard’s old tagline: “There’s some intelligence money can’t buy; for everything else, there’s Claude.”\nEmail\n      · Mastodon ·\n\n      Bluesky",
+      "id": "8c8dfda5ff667b29e92cd63e2f0058d4c67e461fb67bc5be0d70c069ff88f187",
+      "ref_id": "1",
+      "recommendationScore": 75,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "文章巧妙地从‘人工’的概念切入，探讨人工智能作为一种权衡而非替代品的独特视角。",
+      "reason": "直接关联最高优先级主题AI，以哲学思考而非技术细节引发读者对AI的深层理解，具有较好的新颖性和思考深度。",
+      "tags": [
+        "AI",
+        "哲学",
+        "思考",
+        "概念",
+        "观点"
+      ]
+    },
+    {
+      "title": "Human brain is two separate organs, Stanford Medicine-led research finds",
+      "link": "https://med.stanford.edu/news/all-news/2026/09/two-separate-brains.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-19T05:48:50.000Z",
+      "summary": "Article URL: https://med.stanford.edu/news/all-news/2026/09/two-separate-brains.html\nComments URL: https://news.ycombinator.com/item?id=49763697\nPoints: 533\n# Comments: 196",
+      "id": "4ebdefeee4195b0853a748c9e8d78baf34f2989c9ec5b16e7a217c88f5a16a51",
+      "ref_id": "0",
+      "recommendationScore": 70,
+      "popularityScore": 85,
+      "priority": "medium",
+      "comment": "斯坦福医学院关于人脑结构的新发现，具有颠覆性意义。",
+      "reason": "虽非直接AI技术，但作为前沿神经科学研究，对理解智能和AI有启发性。",
+      "tags": [
+        "神经科学",
+        "生物医学",
+        "科学研究",
+        "人脑"
+      ]
+    },
+    {
+      "title": "A graphical desktop for the ZX Spectrum",
+      "link": "https://github.com/mindbox77/zxdesk",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-19T14:01:58.000Z",
+      "summary": "Article URL: https://github.com/mindbox77/zxdesk\nComments URL: https://news.ycombinator.com/item?id=49766676\nPoints: 99\n# Comments: 81",
+      "id": "befbd2916920da23a968c4f2594c949e89ac0e2541447d0539ab23be32c14396",
+      "ref_id": "3",
+      "recommendationScore": 69,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "为ZX Spectrum复古计算机开发图形桌面的项目，展示了深厚的技术功底和怀旧情怀。",
+      "reason": "技术深度和新颖性极高，虽然实用性面向小众，但其工程价值和对编程工具领域的探索值得关注。",
+      "tags": [
+        "复古计算",
+        "ZX Spectrum",
+        "操作系统",
+        "嵌入式",
+        "图形界面"
+      ]
+    },
+    {
+      "title": "If math is more than proof, we need to better celebrate the rest of it",
+      "link": "https://terrytao.wordpress.com/2026/09/18/if-math-is-more-than-proof-we-need-to-better-celebrate-the-rest-of-it/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-19T06:28:02.000Z",
+      "summary": "Article URL: https://terrytao.wordpress.com/2026/09/18/if-math-is-more-than-proof-we-need-to-better-celebrate-the-rest-of-it/\nComments URL: https://news.ycombinator.com/item?id=49763928\nPoints: 252\n# Comments: 204",
+      "id": "df1b5fc36f3654cefce0f902fbd333a4ba4900e640eff7ef6d7f2ed9985318bc",
+      "ref_id": "4",
+      "recommendationScore": 66,
+      "popularityScore": 80,
+      "priority": "low",
+      "comment": "一篇探讨数学哲学和本质的文章，反思了数学教育和研究的侧重点。",
+      "reason": "文章由著名数学家撰写，深度高，但主题与科技博客核心关注点（如AI、编程工具）关联度较低，实用性受限。",
+      "tags": [
+        "Mathematics",
+        "Philosophy of Science",
+        "Academia",
+        "Education"
+      ]
+    },
+    {
+      "title": "Science Is Open Software",
+      "link": "https://jepedersen.dk/blog/202505_research/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-19T02:21:35.000Z",
+      "summary": "Article URL: https://jepedersen.dk/blog/202505_research/\nComments URL: https://news.ycombinator.com/item?id=49762687\nPoints: 142\n# Comments: 52",
+      "id": "a5943bbe4f7bda574424cc8fb27915c93923f8cfba81bbcc804b06b0d21aac3e",
+      "ref_id": "3",
+      "recommendationScore": 65,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "探讨了“科学即开放软件”的理念，具有深刻的哲学和方法论意义。",
+      "reason": "提供了关于科学研究与开源文化结合的思考，对开放协作和知识分享有启发。",
+      "tags": [
+        "开放科学",
+        "开源",
+        "科学哲学",
+        "软件工程"
+      ]
+    },
+    {
+      "title": "Tyler Stalman’s iPhone 18 Pro Camera Review",
+      "link": "https://www.youtube.com/watch?v=m6cDErtCKAc",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-09-19T16:29:00.000Z",
+      "summary": "Splendid video. Love that Stalman shot photos side-by-side with a film SLR using Kodak Portra 400, for comparison to Apple’s new film-look Photographic Styles.\n ★",
+      "id": "06c7e74042d787b2a4fc567f0583e63d6df29bb17a9716535da691be71f9be41",
+      "ref_id": "1",
+      "recommendationScore": 60,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "简短评价了一篇iPhone 18 Pro相机评测视频，亮点在于与胶片单反的独特对比。",
+      "reason": "内容简短但切入点独特，涉及到Apple生态的新技术（Photographic Styles），具有一定的吸引力。",
+      "tags": [
+        "Apple",
+        "iPhone",
+        "相机",
+        "评测",
+        "摄影"
+      ]
+    },
+    {
+      "title": "Why fitting a logistic is nearly impossible from early data",
+      "link": "https://www.johndcook.com/blog/2026/09/18/logistic-fit-sensitivity/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-09-19T01:17:36.000Z",
+      "summary": "Nothing grows exponentially forever. What appears to be an exponential curve often turns out to be some sort of S curve, such as a logistic curve. Suppose you’re collecting data on the left side of the curve. If there’s even a small amount of error in your data, you won’t be able to predict the […]\nWhy fitting a logistic is nearly impossible from early data first appeared on John D. Cook.",
+      "id": "4409746de2af8f2952e82c4ad86f6cab34166498e0b4e5f69dd03fdf418e89e6",
+      "ref_id": "3",
+      "recommendationScore": 60,
+      "popularityScore": 40,
+      "priority": "medium",
+      "comment": "探讨了从早期数据拟合逻辑斯蒂曲线的固有挑战。",
+      "reason": "文章内容涉及数据科学和统计学原理，对理解数据建模（间接与AI相关）的局限性有一定技术深度和实用价值。",
+      "tags": [
+        "数据科学",
+        "统计学",
+        "预测模型",
+        "数据分析"
+      ]
+    },
+    {
+      "title": "People who know the most often sound the least certain",
+      "link": "https://vrash.substack.com/p/the-people-who-know-the-most-often",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-19T17:42:43.000Z",
+      "summary": "Article URL: https://vrash.substack.com/p/the-people-who-know-the-most-often\nComments URL: https://news.ycombinator.com/item?id=49768606\nPoints: 16\n# Comments: 4",
+      "id": "d2440e2c7bca3a73af2f53adaa3b1041e852d4e1e8f509cf17342f25732a9698",
+      "ref_id": "0",
+      "recommendationScore": 35,
+      "popularityScore": 7,
+      "priority": "low",
+      "comment": "一篇关于认知偏差和沟通哲学的文章，内容偏向通用软技能而非技术。",
+      "reason": "主题不属于核心科技范畴，技术深度和直接实用性较低，但对个人认知有一定启发。",
+      "tags": [
+        "心理学",
+        "沟通",
+        "软技能",
+        "通用"
+      ]
+    },
+    {
+      "title": "San Francisco Onion Futures Company",
+      "link": "https://onionfutures.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-19T04:23:30.000Z",
+      "summary": "Article URL: https://onionfutures.com/\nComments URL: https://news.ycombinator.com/item?id=49763296\nPoints: 320\n# Comments: 132",
+      "id": "d70233757cfc3460c147a43e1321d7c1ac02b89cd48b1597d84762c3800f1363",
+      "ref_id": "1",
+      "recommendationScore": 25,
+      "popularityScore": 65,
+      "priority": "low",
+      "comment": "关于旧金山洋葱期货公司的文章，主题偏离科技核心。",
+      "reason": "内容与科技博客关注的AI、编程工具等主题不符，缺乏技术深度和实用性。",
+      "tags": [
+        "金融",
+        "商业",
+        "奇闻"
+      ]
+    },
+    {
+      "title": "Reading List 09/19/2026",
+      "link": "https://www.construction-physics.com/p/reading-list-09192026",
+      "source": "construction-physics.com",
+      "publishedAt": "2026-09-19T12:03:09.000Z",
+      "summary": "AirBnB’s housing accelerator, rising steel prices, a resurgence of US coal power, low-head dams, and more.",
+      "id": "8d6d9c452cb2f789164c8859190329f973fbd491158fbb83a4cccd49896058e0",
+      "ref_id": "0",
+      "recommendationScore": 25,
+      "popularityScore": 35,
+      "priority": "low",
+      "comment": "一篇涵盖多领域新闻的阅读清单，内容广泛但与科技博客的核心主题关联度低。",
+      "reason": "文章主题涉及经济、能源等非核心科技领域，技术深度和新颖性不足以吸引目标读者。",
+      "tags": [
+        "阅读清单",
+        "经济",
+        "能源",
+        "时事"
+      ]
+    },
+    {
+      "title": "Just Me or Does This Argument Not Add Up?",
+      "link": "https://www.nytimes.com/2026/09/16/opinion/university-of-california-sat.html?unlocked_article_code=1.CFE.bXBA.V6BFzBn1jlKG",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-09-18T21:01:43.000Z",
+      "summary": "Miriam Pawel, in an op-ed in The New York Times arguing that the University of California should not bring back the SAT requirement for admission:\nWhat has made the University of California exceptional is its\ncommitment to increase access without sacrificing excellence.\n[...] Students on University of California campuses may struggle\nwith basic math, but they are graduating at record rates.\nA success story would be increasing the number of people with solid math skills. Printing degrees for students who struggle with basic math is not a success story, and sounds like the antithesis of “academic excellence”.\n ★",
+      "id": "aaada1bd228ce9949c0428620acc18eba657c7590f566ea167a47df0f2417741",
+      "ref_id": "3",
+      "recommendationScore": 20,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "针对大学招生政策和学术标准提出了批判性观点，与科技主题关联度低。",
+      "reason": "文章主题聚焦于教育和社会评论，与本科技博客关注的核心主题不符。",
+      "tags": [
+        "教育",
+        "社会评论",
+        "SAT"
+      ]
+    },
+    {
+      "title": "Supabase (YC S20) Is Hiring for OrioleDB",
+      "link": "https://supabase.link/orioledbjob",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-19T17:01:30.000Z",
+      "summary": "Article URL: https://supabase.link/orioledbjob\nComments URL: https://news.ycombinator.com/item?id=49768220\nPoints: 0\n# Comments: 0",
+      "id": "548fcae1d1ed37614bd3bad44cbac4754b579d2357cbee2aa82f2d8a76cc9cb3",
+      "ref_id": "1",
+      "recommendationScore": 14,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "Supabase关于OrioleDB的招聘信息，非技术性文章，且无互动。",
+      "reason": "这是一则招聘广告，不提供技术深度或实用信息，相关性低。",
+      "tags": [
+        "招聘",
+        "Supabase",
+        "OrioleDB",
+        "数据库"
+      ]
+    },
+    {
+      "title": "Quoting Thariq Shihipar",
+      "link": "https://simonwillison.net/2026/Sep/18/thariq-shihipar/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-09-18T19:09:27.000Z",
+      "summary": "",
+      "id": "b4eea27689aebcc6e98768c626e425873778ba2a6a31dc28b1f854e9ea04cc01",
+      "ref_id": "0",
+      "recommendationScore": 10,
+      "popularityScore": 5,
+      "priority": "low",
+      "comment": "文章内容为空，无法进行有效评估。",
+      "reason": "缺乏任何可供分析的内容。",
+      "tags": [
+        "缺失内容"
+      ]
+    },
+    {
+      "title": "Warren Buffett, at 96, Steps Down as Chairman at Berkshire Hathaway",
+      "link": "https://www.berkshirehathaway.com/news/sep1826.pdf",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-09-18T19:29:12.000Z",
+      "summary": "Warren Buffett, in a letter to Berkshire shareholders:\nRecently, I celebrated my 96th birthday with family and friends,\nincluding one of my great-grandchildren, who had just turned one.\nHe’s moving a bit faster than I am these days. [...]\nSo the timing is right to complete the transition. I will become\nChairman Emeritus and remain a Director. My son, Howard, will\nsucceed me as Chairman.\nHoward has been a Berkshire Director for 33 years. That is a\nlonger apprenticeship than I served before taking the reins at the\nage of 34. Greg runs the company; Howard will guard its culture\nand values — both worth more than anything on our balance sheet.\nThink of Howard as a policy the shareholders own and hope never to\nclaim against.\nNot many 71-year-olds rise to the position of chairman at leading corporations.\n ★",
+      "id": "2bab466e12a1429bb81c64759cbad2f376e933855fe2888fa4d17125f5ac2302",
+      "ref_id": "1",
+      "recommendationScore": 5,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "沃伦·巴菲特卸任伯克希尔哈撒韦董事长，是一则重要的商业新闻。",
+      "reason": "文章内容属于商业和人物动态范畴，与本科技博客关注的AI、Apple生态等主题关联度极低。",
+      "tags": [
+        "商业新闻",
+        "人物动态"
+      ]
+    },
+    {
+      "title": "Trump Says He’s Banning MS NOW, CNN, and Politico From White House",
+      "link": "https://truthsocial.com/@realDonaldTrump/posts/117293599348325006",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-09-18T19:23:45.000Z",
+      "summary": "Let’s check in on the president of the United States, having a normal one on his blog:\nI am proud to announce that, effective immediately, I am banning\nFake News CNN, MSNOW (who recently changed their name from MSNBC\ndue to lack of viewership and credibility!), and Politico (The\nrecipients of an illegal and ridiculous $8 Million Dollar\nsubscription, an All Time Record, directly from the United States\nGovernment, under Crooked Joe Biden, in order to keep them\n“alive.” Seems like corruption to me!), from the White House as a\nresult of their constant “reporting” FAKE NEWS! Media Outlets\nshouldn’t be able to constantly write or report FICTION and LIES\nwhen they’re covering the President of the United States, the\nTrump Administration, or the United States of America. Other Fake\nNews Media Outlets to follow. Thank you for your attention to this\nmatter! President DONALD J. TRUMP\nRepublicans are the party of free speech.\n ★",
+      "id": "4c7e54babbf9a0a0184d1410200856351176e52f428b693d75a04907997a706d",
+      "ref_id": "2",
+      "recommendationScore": 3,
+      "popularityScore": 25,
+      "priority": "low",
+      "comment": "特朗普总统宣布禁止部分媒体进入白宫，属于政治新闻范畴。",
+      "reason": "文章内容为政治和媒体争端，与本科技博客关注的技术主题完全不符。",
+      "tags": [
+        "政治",
+        "新闻"
+      ]
+    },
+    {
+      "title": "California Sea Lion, Brandt's Cormorant",
+      "link": "https://simonwillison.net/2026/Sep/19/sighting-401567341/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-09-19T17:10:08.000Z",
+      "summary": "",
+      "id": "41d15f7729de397ab49d6391ef82ece154404421e18aae2cb5ff0a84090f8b4c",
+      "ref_id": "2",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "文章主题与科技博客的关注范围完全不符。",
+      "reason": "该文章内容与科技无关，无法进行技术评估和推荐。",
+      "tags": [
+        "非科技"
+      ]
+    },
+    {
+      "title": "Note on 18th September 2026",
+      "link": "https://simonwillison.net/2026/Sep/18/probably-gonna-eat-you/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-09-18T19:21:32.000Z",
+      "summary": "",
+      "id": "6d026a20051380d1e83011a43efb2e3ad5acf17cb9ff92872e3adeabdec78b05",
+      "ref_id": "4",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "主题不明确，内容为空，无法评估其科技相关性。",
+      "reason": "标题无法判断其科技相关性，且无具体内容可供评估。",
+      "tags": [
+        "未知",
+        "非科技"
+      ]
+    }
+  ]
+}
