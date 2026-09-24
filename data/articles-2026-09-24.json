@@ -1,0 +1,629 @@
+{
+  "dailySummary": "",
+  "articles": [
+    {
+      "title": "Show HN: Air-gapped file encryption as self-decrypting HTML page",
+      "link": "https://cms-sfx-demo.apeleg.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-24T07:22:17.000Z",
+      "summary": "Air-gapped file encryption packed into a single, self-decrypting HTML page. Repo: https://github.com/ApelegHQ/ts-cms-ep-sfx\nI was inspired by self-extracting archives. I wanted to share files with basically no dependencies. The goal was:\n  1. Something that didn't require any installation (assuming a web browser)\n  2. Have a single file with no network that could self-decrypt\n  3. Be fully auditable\n\nThe first point is made by cleverly manipulating the HTML structure so that it can decrypt without breaking the PGP signature. It can even decrypt using bare openssl (which was a design goal too, though getting the exact structure right took some work and bug reports).\nThe third point is accomplished by the first two, and by the source being freely available.\n(*) Depends on the OS at the moment.\nComments URL: https://news.ycombinator.com/item?id=49827375\nPoints: 21\n# Comments: 8",
+      "id": "dabd36d6ac350fc5a9cbcd70909eec0f17f25969d8da417f95a8ab7b78753179",
+      "ref_id": "4",
+      "recommendationScore": 98,
+      "popularityScore": 40,
+      "priority": "high",
+      "comment": "创新性地将空隙文件加密打包成自解密HTML页面，实现无依赖安全文件分享。",
+      "reason": "该方案在技术深度、新颖性和实用性上表现出色，为安全文件传输提供了一个独特且高效的解决方案，兼具编程工具和独立开发的特性。",
+      "tags": [
+        "加密",
+        "空隙安全",
+        "HTML",
+        "文件分享",
+        "独立开发",
+        "编程工具",
+        "安全"
+      ]
+    },
+    {
+      "title": "Show HN: Whiteboard (YC W26) – An open-source IDE for thoughtful software design",
+      "link": "https://github.com/devdotfast/whiteboard",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-24T17:21:36.000Z",
+      "summary": "Hello! We’re Sid, Alex, Ketan, and Milan. We’re building Whiteboard, an open-source desktop app where humans and agents can architect software together in a common workspace. Here’s our repo: https://github.com/devdotfast/whiteboard and our homepage: https://whiteboard.dev.fast/\nWe were missing the feeling of a “whiteboard session” with another dev where you leave with a deep understanding of a system, so we built this app for ourselves. Whiteboard plugs into the tools you already use - e.g. Claude Code, Codex, etc. – and gives your agent an SDK to draw on an in-app canvas to describe its work. We began with an MVP based on HTML artifacts and started rethinking the app as we ran into limitations:\n1. Built on top of CodeOSS: We found that in pure HTML tools it was hard to connect a spec or diagram to code. In Whiteboard, when you click on visualizations like a sequence diagram, an entity relationship diagram, or a quote from the agent’s trace, you can jump to the underlying code directly. When navigating code, you get keybindings and LSP support from VSCode out of the box. We’ve found this is especially valuable because tradeoffs are often only discovered after a first pass at implementation (re: slop)\n2. Semantic diff viewer: we wrote a semantic, AST-aware diff viewer in Rust so you can only view the code changes which are relevant to you [1]. We’ve set up some sane defaults: large added functions are summarized as pseudocode, and things like unit tests and large documentation changes are collapsed / hidden. This is all customizable with a WASM-based plugin system.\n3. Decision Log: We found it difficult to reason about what set of decisions our agents made autonomously. So we built tools for agents to query and link their own traces to the Whiteboard, so you can understand how the requirements that you set were implemented, and understand what decisions your agent made autonomously.\nHere’s a quick demo video explaining more: https://www.youtube.com/watch?v=ChPn3ftULWE\nFolks at companies like Salesforce and Modal are using Whiteboard today as a review tool for architecture or spec-level changes – really any change where they want to be involved:\n1. Reviewing your own coding agent’s work: because Whiteboard makes it easier to review large amounts of code, folks will typically have their AI agents create a prototype and a corresponding Whiteboard session so they can iterate on the design.\n2. Reviewing other people’s changes: We’ve found that Whiteboard is particularly helpful when composed with tools like Greptile. For example, you can run an automated code reviewer on small changes and escalate to a Whiteboard session for the changes that require human judgement.\nWhy we built this: we’re four buddies from college who quit our jobs as tech leads right before agentic coding became industry standard. As we iterated towards an MVP for a previous idea, we struggled to maintain a comprehensible codebase while reaping all the velocity benefits of agentic coding. As more PRs were merged without our understanding, we felt a ‘cognitive debt’ begin to seep in, until it became difficult for us to even contribute to the system [2].\nWe’re releasing our desktop app under an MIT license. Please poke through and feel free to contribute! Eventually we’ll charge companies for a hosted web version that manages whiteboard session creation alongside features like trajectory storage and multiplayer reviews. Everything will always remain self-hostable.\nThanks for reading, and we hope you try it out! We would love to hear any feedback and to learn from your expertise.\nHere’s are the project links again: https://github.com/devdotfast/whiteboard, and you can install (for MacOS + Linux) at https://install.dev.fast\n[1] diffs library: https://github.com/devdotfast/diffr\n[2] Credit for the term ‘cognitive debt’ goes to  https://www.geoffreylitt.com/2026/07/02/understanding-is-the...\nComments URL: https://news.ycombinator.com/item?id=49833867\nPoints: 103\n# Comments: 30",
+      "id": "70359c27b4e5e0d8185411a12d50032e8781d4a89e6d38dde0171252a348cdf6",
+      "ref_id": "0",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "AI与人类协作的开源IDE，为软件架构设计带来了创新的工作流。",
+      "reason": "该项目紧密结合AI和编程工具两大高优先级主题，提出了新颖的软件设计协作模式，技术深度和实用性俱佳。",
+      "tags": [
+        "AI",
+        "编程工具",
+        "独立开发",
+        "开源",
+        "产品设计",
+        "软件架构"
+      ]
+    },
+    {
+      "title": "A Million Agents Is a Distributed System Problem",
+      "link": "https://www.instacloud.com/blogs/a-million-agents-is-a-distributed-systems-problem",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-24T17:26:23.000Z",
+      "summary": "Article URL: https://www.instacloud.com/blogs/a-million-agents-is-a-distributed-systems-problem\nComments URL: https://news.ycombinator.com/item?id=49833958\nPoints: 8\n# Comments: 1",
+      "id": "dc6d6d66649336111b7f636cb3c32723e804a6326300863260d9d76f432a6f92",
+      "ref_id": "4",
+      "recommendationScore": 90,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "文章深入剖析了大规模AI代理部署中的分布式系统难题，提供了前瞻性的技术解决方案和思考。",
+      "reason": "内容将高优先级AI主题与复杂的分布式系统工程紧密结合，具有卓越的技术深度和极强的未来实用指导意义。",
+      "tags": [
+        "AI Agents",
+        "Distributed Systems",
+        "Scalability",
+        "Infrastructure",
+        "Technical Architecture"
+      ]
+    },
+    {
+      "title": "Forging 1024-bit RSA signatures in nearly SNFS time [pdf]",
+      "link": "https://eprint.iacr.org/2026/2131.pdf",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-24T14:26:32.000Z",
+      "summary": "https://arstechnica.com/security/2026/09/theres-a-new-way-to...\nComments URL: https://news.ycombinator.com/item?id=49831098\nPoints: 28\n# Comments: 2",
+      "id": "78891cca59565b2592a214514afae02a4f2778459d0c1463c5791b40121c167a",
+      "ref_id": "0",
+      "recommendationScore": 90,
+      "popularityScore": 30,
+      "priority": "high",
+      "comment": "深度探讨1024位RSA签名伪造的学术突破，对密码学领域影响深远。",
+      "reason": "文章揭示了RSA签名的新型伪造方法，对信息安全研究和实践具有重要的技术警示价值。",
+      "tags": [
+        "密码学",
+        "信息安全",
+        "RSA",
+        "学术研究",
+        "安全漏洞"
+      ]
+    },
+    {
+      "title": "Two-tier encryption in the UK",
+      "link": "https://macanorak.com/two-tier-encryption-in-the-uk/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-24T10:39:19.000Z",
+      "summary": "Article URL: https://macanorak.com/two-tier-encryption-in-the-uk/\nComments URL: https://news.ycombinator.com/item?id=49828731\nPoints: 311\n# Comments: 318",
+      "id": "a43f4e47e13a0e40719edcc4af1d4b04dcfe27bdd3dba1b7089d8a7b8552b577",
+      "ref_id": "1",
+      "recommendationScore": 90,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "深入探讨英国双层加密政策对用户隐私和数据安全的影响。",
+      "reason": "文章引发了对公民隐私权和政府数据访问权限的广泛讨论，具有重要的社会和技术意义，与Apple生态和编程工具的使用场景息息相关。",
+      "tags": [
+        "加密",
+        "隐私",
+        "英国政策",
+        "数据安全",
+        "法律"
+      ]
+    },
+    {
+      "title": "AI is dominating the conversation at Climate Week",
+      "link": "https://www.technologyreview.com/2026/09/24/1145048/ai-climate-week/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-09-24T10:00:00.000Z",
+      "summary": "This week, world leaders descended on Manhattan for the UN General Assembly. It’s also New York Climate Week—investors, policymakers, advocates, and journalists are colliding at panels, talks, and fancy dinners. With so many climate voices in one place, the discourse can feel a little louder than usual. This year, the unavoidable topic is artificial intelligence.…",
+      "id": "a7b74187f674b93de50126df761df0dd71695f6f34fe05d4786d458561fb2c27",
+      "ref_id": "4",
+      "recommendationScore": 90,
+      "popularityScore": 60,
+      "priority": "high",
+      "comment": "深入分析了AI在气候周会议中占据主导地位的现象及其影响。",
+      "reason": "直接关联最高优先级的“AI”主题，内容聚焦AI的宏观影响和行业趋势，对理解AI的社会语境和未来发展方向非常有价值，具有很强的实用性和新颖性。",
+      "tags": [
+        "AI",
+        "Climate Change",
+        "Policy",
+        "Sustainability",
+        "Industry Trends"
+      ]
+    },
+    {
+      "title": "Ed Zitron’s AI Prediction Track Record",
+      "link": "https://danluu.com/zitron/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-09-24T17:10:56.000Z",
+      "summary": "Dan Luu serves up some copiously documented claim chowder:\nAfter this point, most further predictions that I saw were either\nnon-falsifiable or resolve in the future. Note that I didn’t\nattempt to catalogue statements that are nonsensical or were\nsimply factually incorrect statements at the time, such as his\nDecember 2024 claim that “Generative AI’s products have\neffectively been trapped in amber for over a year.” January 2026\nclaim that “[models are] basically the same as they were a year\nago. They have the same efficacy”. Zitron has not only made\nforward-looking statements that AI capabilities will not improve,\nhe’s also consistently made backwards-looking statements that\ncapabilities have not improved which, while obviously false at the\ntime, seem to play well to his base (along with his other false\nstatements). If you connect all his statements together, it’s\nimplied that AI had the same capabilities in January 2026 as they\ndid in December 2023 (and if you connect later statements, it’s\nactually implied that capabilities in August 2026 are the same as\nin December 2023, though to be fair to Zitron he frequently\ncontradicts himself and has also admitted to limited improvement\nin mid 2026).\n ★",
+      "id": "e82667920f5ed02b238fc2ec14a007bf24ed47937edc74735883ce080ec23681",
+      "ref_id": "1",
+      "recommendationScore": 90,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "深入批判性地评估了Ed Zitron关于AI发展趋势的预测记录，并提供了详实的事实依据。",
+      "reason": "文章聚焦于当前热门的AI话题，通过具体事例对专家言论进行严谨的验证，信息密度和新颖性高，对读者理解AI发展及批判性思维极具价值。",
+      "tags": [
+        "AI",
+        "预测",
+        "批判性思维",
+        "科技趋势",
+        "行业分析"
+      ]
+    },
+    {
+      "title": "‘Prepare to Ship’ Is a Clever Software Solution That Allows iPhone 18 Pro Max to Ship With a Battery That Would Otherwise Exceed International Shipping Regulations",
+      "link": "https://support.apple.com/en-us/127848",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-09-23T20:12:16.000Z",
+      "summary": "Apple Support:\niPhone 18 Pro Max offers a huge increase in battery life, in part\ndue to increasing the battery capacity to over 20 watt-hours (Wh).\nDevices with a single-cell battery over 20 Wh have additional\nshipping requirements in most countries and regions. To address\nthese requirements, iPhone 18 Pro Max uses an innovative\nbattery-firmware solution that limits battery capacity to below 20\nWh from the time it’s manufactured through its transport from the\nfactory. When you activate your iPhone, the limit is removed and\nthe battery’s full charging capacity is available.\nAfter activation, if you need to ship your iPhone 18 Pro Max for a\nrepair, trade-in, return, or as a gift for example, use the\nPrepare to Ship feature in Settings. This feature discharges your\nbattery to below 20 Wh and sets a charge limit so your iPhone\nstays below this limit while shipping. This can be reversed and\nyou can reset your charge limit after shipping.\nThe battery in iPhone 18 Pro Max is safe, including for shipping\nand air travel. This process is needed only to meet shipping\nrequirements and isn’t required while traveling or for any other\niPhone model.\n(Via The Verge.)\n ★",
+      "id": "464c22ed254fe243fdd40c8dc55420982e92da5d0eded7c724991f60131d9a96",
+      "ref_id": "4",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "揭示了iPhone 18 Pro Max如何通过巧妙的软硬件结合方案，解决大容量电池的国际运输法规限制问题。",
+      "reason": "文章展示了Apple在产品设计和工程上的创新思维，通过智能解决方案规避技术限制，新颖性高且具有启发性，体现了软硬件结合的巧妙。",
+      "tags": [
+        "Apple",
+        "iPhone",
+        "硬件",
+        "软件",
+        "电池技术",
+        "创新",
+        "产品设计"
+      ]
+    },
+    {
+      "title": "Package Manager Sandboxing",
+      "link": "https://nesbitt.io/2026/09/24/package-manager-sandboxing.html",
+      "source": "nesbitt.io",
+      "publishedAt": "2026-09-24T09:00:00.000Z",
+      "summary": "Homebrew 7.0.0 shipped on September 13th with “stronger sandboxing” in the opening line of the release notes. Installation is being split into a fetch phase that has network access and writable caches, and an install phase that runs offline with read-only caches. Sandboxed builds are blocked from reading your home directory by default. Cask install hooks run confined, and a cask sandbox escape via LaunchServices was closed in the same release by denying app launching, Mach services, and Unix socket connections. Formula post_install and cask flight blocks, which are arbitrary Ruby today, are deprecated in favour of declarative *_steps delivered as signed data, with a removal deadline of December 2027.\nHomebrew, which I help maintain, has run macOS formula builds under sandbox-exec since 2015. The last four months turned that from a build-hygiene measure into a stated security programme. 6.0.0 in June brought a Linux build sandbox based on Bubblewrap and made third-party taps require explicit trust before their Ruby is evaluated. By July the Bubblewrap implementation had been replaced with Landlock, which is built into the kernel and works inside unprivileged Docker, and by August Bubblewrap was removed. The 7.0.0 deprecation table lists the Linux sandbox opt-out variable as removed, with “no replacement opt-out”. A pull request opened four days before the release extends the sandbox to archive extraction and disk-image handling, and sandbox rule changes now require security review.\n“Tap trust remains the primary protection against malicious third-party casks; sandboxing mainly limits accidental damage and adds installation safeguards. It cannot make untrusted software safe to run,” per the release notes. Vendor .pkg installers still execute outside the sandbox, and installed applications run with your privileges.\nInstall-time code can be gated (an allowlist controls whether it runs), confined (a sandbox restricts what it can reach), or replaced with data that is interpreted rather than executed. The past year’s allowlist rollout was gating. The sandbox proposals now open across issue trackers are confinement, and Homebrew’s *_steps migration pairs confinement with replacement. All three responses leave the same job open: validating the confined phase’s output.\nAgents\nHomebrew’s sandbox mechanisms come from the same small set of primitives the LLM coding agent vendors adopted over the past year. Claude Code’s sandboxed bash tool uses Seatbelt on macOS and bubblewrap on Linux, open-sourced as sandbox-runtime. Codex CLI uses Seatbelt and Landlock plus seccomp, and OpenAI built a custom restricted-token sandbox for Windows after evaluating and rejecting AppContainer. Cursor’s agent terminal uses Seatbelt and Landlock and runs the Linux sandbox inside WSL2 on Windows. Gemini CLI offers Seatbelt profiles or a container. The motivation is the one package manager maintainers cite: these tools run unreviewed code, and asking permission each time stopped working. Anthropic reports that users approve about 93% of permission prompts.\nThe two problems overlap beyond sharing a mechanism, because agents install packages. The Shai-Hulud worm that hit npm in September 2025 spread through postinstall scripts, and one of its persistence tricks was writing a hook into Claude Code’s settings file so it survived cache cleanup with the agent’s privileges. The nx compromise a month earlier shipped a postinstall payload that attempted to use locally installed AI tools to scan for credentials. Mandiant has since reported an attacker hijacking a coding assistant session and spreading Shai-Hulud across roughly 100 internal repositories through poisoned package recommendations; an agent that installs dependencies on your behalf multiplies both the install rate and the blast radius.\nThe crossover back into package managers is explicit in Homebrew’s brew sandbox-exec, which exposes its formula sandbox for arbitrary commands, and in its nested-sandbox handling, which exists, per the code comment, for running brew “inside an existing macOS sandbox (e.g. an agent’s)”. pnpm’s lead maintainer opened an issue in August proposing to wrap dependency lifecycle scripts in bubblewrap or Landlock on Linux and Seatbelt on macOS, the agent vendors’ exact stack, and the issue body ends with the note that it was written by an agent. A Deno maintainer’s hardening proposal from July names Landlock, seccomp, and Seatbelt as the planned follow-up.\nShipped\nThe list of package managers with OS-level confinement on by default is short, and most of it predates the agents. opam has sandboxed by default since 2.0 in 2018: every package’s build and install commands run under bubblewrap on Linux with the network cut and writes limited to the build directory, and under sandbox-exec on macOS with a deny-write, deny-network policy. Downloads happen outside the sandbox, which is the same fetch/build split Homebrew is now migrating to. opam on Windows runs unsandboxed, and this month opam’s maintainers opened an issue to investigate Landlock as a bubblewrap replacement, for the same Docker-compatibility reasons Homebrew switched.\nSwift Package Manager compiles and runs Package.swift manifests inside a Seatbelt sandbox, and SE-0303 and SE-0332 gave plugins a no-network, temp-writes-only sandbox with declared permissions on top. The implementation file states what happens elsewhere: “On platforms that don’t support sandboxing, the command line is returned unmodified.” On Linux the sandbox is a no-op, a gap flagged in the tracker and acknowledged in the accepted proposal text.\nNix has run Linux builds in namespaces by default since 2.2 in 2019, and Guix builds in an equivalent isolated environment. Both projects document why: a 2024 Nix advisory states the sandbox “is not primarily intended as a security mechanism, but as an aid to improve reproducibility and purity of Nix builds”, and a 2025 pair of CVEs let a local user escalate through the build users of Nix, Lix, and Guix alike. The macOS Nix sandbox exists and is still off by default. Bazel is in the same category: build actions run in a namespace sandbox on Linux and under sandbox-exec on macOS, restricted to their declared inputs, the strictest read confinement in this section, with reproducibility as the stated goal.\nThe oldest example is Gentoo’s Portage sandbox, an LD_PRELOAD shim from the early 2000s whose own README calls it a QA measure, since static binaries and anything that clears the environment bypass it. Alongside it, Portage’s default FEATURES now include network, PID, and IPC namespace isolation for ebuild phases, and those are kernel boundaries.\napt splits the same way: download methods have run as a dedicated _apt user since apt 1.1, while the seccomp filter added in 1.6 has been disabled by default since 2018 for compatibility. dpkg maintainer scripts run as root, and confinement so far amounts to a wiki ideas page.\npacman 7.0 (2024) runs downloads as a dedicated user under Landlock and seccomp, a narrower confinement than the build sandboxes above, and 7.1 tightened it with syscall restrictions and finer-grained configuration. Alpine’s abuild rootbld builds packages in a bubblewrap sandbox where networking is granted only to packages declaring options=net, though it is opt-in. mise shipped opt-in Landlock and Seatbelt sandboxing for its task runner this year. RPM 4.20 added an unshare plugin that can strip network and filesystem access from scriptlets, and it ships disabled in every distribution.\nCocoaPods shipped sandbox-pod in 2013, a wrapper that ran the whole pod install under sandbox-exec. The generated profile still contains (allow network-outbound) with a “TODO make this stricter if possible” comment, the revisit issue was closed by a stale bot in 2017, and the binary, shipped thirteen years before the current proposals and long abandoned, is still listed in the gemspec.\nDeno is the only JavaScript package installer with any confinement, and its deny-by-default permission model is enforced in-process by the runtime rather than by the OS, with FFI as a documented way around it and a steady stream of permission-bypass advisories. The maintainers concede in their own hardening issue that an approved npm lifecycle script currently “executes with essentially full host access”, because the node shim inside it spawns deno run -A.\nAllowlists\nThe run of supply chain attacks from nx through Shai-Hulud 2.0 produced a lot of shipped security work in JavaScript, all of it controlling which code runs rather than confining it. Every major client now blocks dependency lifecycle scripts by default behind an allowlist: pnpm led in January 2025, Bun had gated scripts since 2023, Yarn flipped the default in April 2026, and npm 12 followed in July. Cooldowns on newly published versions went from a proposal to on-by-default at pnpm, Yarn, and Deno within about a year, with most other ecosystems shipping opt-in equivalents.\nAn RFC titled “Make npm install scripts opt-in” was opened in November 2021, collected around 369 thumbs-up, and stayed open for four and a half years before being closed in favour of the 2026 RFC that npm 12 implements. GitHub’s immediate response to Shai-Hulud was entirely credential and publishing hardening; the default flip on scripts came eight months after the worm and five years after the original RFC.\nI surveyed the allowlist mechanisms in June; an allowlist controls which packages get to run code, while a sandbox limits what that code can reach once it runs. The pnpm sandbox issue makes the case for the second axis directly: an allowlist is binary, and most packages with build scripts need to compile something in their own directory, which is a permission you can grant while withholding your SSH keys and the network; approving esbuild’s postinstall today extends that trust to every future version of it.\nProposals\nThe open proposals all date from the last fourteen months and specify the same primitives. Beyond pnpm’s and Deno’s, RubyGems has a December proposal to split bundle install into a download phase in which only Bundler’s own code runs, and an install phase that could run sandboxed with credentials stripped, and it has a maintainer in support: “I think this makes sense.” Spack’s April issue proposes Landlock and Seatbelt applied in-process between fetch and build, on a tracker whose original sandbox request from 2017 opened with “I could easily sneak a rm -rf ~ into a package.” Arch has a draft merge request giving install scriptlets a private network namespace, which CachyOS already ships.\nCargo’s sandbox issue has been open since 2018. The intervening years produced watt, Cackle, a pre-RFC from dtolnay written after serde_derive briefly shipped a precompiled binary, and an official 2024 project goal that ended with a specific negative result: WASI lacks process spawning, and build scripts exist to spawn pkg-config, C compilers, and git, so the WebAssembly approach fails. Then in August 2026 the arrayref attack delivered a typosquatted proc-macro dependency whose build.rs downloaded and ran a remote binary, with infrastructure Wiz links to DPRK campaigns. The issue filed in response was closed the same day as a duplicate of the 2024 allowlist thread. Zig’s proposal, from Andrew Kelley himself, is the most radical design on any tracker, compiling every build.zig to WebAssembly so it can only emit a build graph as data, on top of a fetch step that is already inert, and it has been open since January 2023.\npip’s “Sandbox the running of setup.py” was opened in 2017 by a PyPA maintainer and cites Homebrew’s sandbox.rb as the model to copy. It is still open, along with a 2022 privilege-drop issue and a 2026 AppArmor one. Poetry’s maintainers gave the flattest refusal in the survey: a post-xz request for Landlock or seccomp self-sandboxing was closed as out of scope on portability grounds. uv’s threat model places the local machine inside the trust boundary and leaves confinement out of scope, and its maintainers decline on principle to add install hooks in the first place. The only Python-adjacent tool with a sandbox on its public roadmap is pixi, which already ships conda link scripts disabled by default behind a setting whose opt-in value is spelled insecure.\nGradle’s sandbox mode issue has been open since 2019, Maven’s security page states that “the Maven security model assumes you trust the pom.xml” and isolation is your job, and JEP 486 permanently disabled the Security Manager in JDK 24, which removed the platform’s in-process sandbox primitive in the same year demand for one returned. NuGet’s 2020 issue about warning on code execution in MSBuild target files got a maintainer reply that removing it “will break many packages”, and was revived this July citing Shai-Hulud, with a commenter pointing at Yarn as the existence proof that fail-closed defaults are survivable. The C++ managers are absent from every category above: Conan recipes and vcpkg portfiles run arbitrary Python and CMake at install time, and I found no sandbox proposal on either tracker.\nRemoval\nA second strategy has a better shipping record than sandboxing: removing the code execution entirely. Go and Elm omitted install hooks from the start. NuGet deleted install.ps1 with PackageReference in 2017, though MSBuild targets from packages still execute at build time, which real malware has used. Composer runs only the root project’s scripts and put plugins behind an allowlist in 2021. Julia’s Artifacts system replaced most build.jl usage with declarative content-addressed downloads. CPAN’s practical mitigation is x_static_install, which skips executing Makefile.PL for pure-Perl distributions. Cabal’s Hooks build type narrows arbitrary Setup.hs replacement to named hook points. The distributions are doing the same for scriptlets, with Fedora replacing useradd scripts with declarative sysusers.d metadata and Arch surveying scriptlet usage with declarative hooks as the goal. Homebrew’s *_steps migration combines removal with confinement: the hook becomes signed data, and the remaining executable steps run inside the sandbox.\nDart is the counterexample: pub’s install step historically consisted of placing files on disk. The native-assets build hooks stabilised this year add execution to that path, deferred to build time, in an environment the docs describe as semi-hermetic, with reproducibility as the sole stated goal.\nPrimitives\n2026’s proposals name the same primitives because few exist. On Linux, Landlock is in default kernels across the major distributions, runs unprivileged without a daemon or container runtime, and versions its ABI so a client can apply whatever protections the running kernel offers, which is the compatibility posture a package manager needs. Homebrew, pacman, and mise ship it. opam and Spack have open proposals to adopt it, and every agent vendor’s Linux sandbox is built on Landlock, namespaces, or both. On macOS, Homebrew, Claude Code, and Chrome all run on Seatbelt, which Apple deprecated in 2016 and has neither removed nor replaced, a situation developers have formally asked Apple to resolve. Windows lacks a directly comparable primitive, which is why Codex built a custom sandbox from restricted tokens, Cursor and Claude Code confine through WSL2, and the pnpm proposal may add Windows support only later.\nThe agent problem and the package manager problem meet in CI, where a GitHub-hosted Actions job gets a virtual machine of its own and isolation ends at that boundary: every uses: step (itself a package install) and every package manager invoked inside the job shares the runner’s filesystem, environment, and secrets. The VM protects GitHub’s infrastructure, and everything the job values, secrets included, is inside it, so an install script runs with the same reach as the workflow that invoked it. Self-hosted runners are frequently persistent and shared, which removes even the per-job boundary. The shipped control is an allowlist over which actions may run, and confinement exists as Harden-Runner, a third-party agent that monitors and filters runner egress. CI is also where kernel sandboxes compose worst: inside a container: job, bubblewrap fails for want of privileged namespaces (opam has had the issue open since 2020), which is why Homebrew switched to Landlock and why Spack’s proposal applies restrictions in-process. The nx compromise started this way, with a workflow injection leaking the npm token that published the malicious versions.\nThe open boundary is the one I keep coming back to from the threat model work: the hand-off. A sandboxed build that writes an install manifest, a cache entry, or a step list which the package manager then acts on with full privileges has moved the trust decision to whatever validates that output, and Homebrew’s LaunchServices escape was a hand-off bug. The removal strategy is one answer: a signed step list or a build graph emitted as data has a schema, and the package manager interprets it instead of executing it. The proposals now open at pnpm, RubyGems, Deno, and Spack still have to specify what validates a sandboxed build’s output.",
+      "id": "fcf780cffcc9e89cad006a737facafa744a8130b1c98e037dd4fdc122f1286b3",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "详细阐述Homebrew包管理器的沙盒安全增强，技术性强且实用。",
+      "reason": "深入探讨流行编程工具的安全机制，技术深度和实用性极高，对开发者具有重要参考价值。",
+      "tags": [
+        "Homebrew",
+        "Package Manager",
+        "Sandboxing",
+        "Security",
+        "Programming Tools",
+        "macOS",
+        "Linux"
+      ]
+    },
+    {
+      "title": "Show HN: Radix – Visual UI for agentic programming",
+      "link": "https://radix-os.com",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-24T18:35:20.000Z",
+      "summary": "Hey HN, I'm Jordan from Radix.\nRadix is a UI tool for programming agents. You prompt your agent to generate a workspace for a task you're working on and get an interactive widget that persists locally on disk.\nI built Radix because I always needed tools while I was writing code: tools to test little experiments, to play around with UI, to visualise results etc. Sometimes these would end up as python tools that read and plotted data, or separate React apps spun up just to test a single feature. Lately obviously I've been using Claude artifacts but these are quite limited.\nI wanted a system where it was easy to leave comments or adapt an artifact without having to give vague descriptions back to the agent, and where ideally I could actually shift away from a chat window as the main interface.\nI've got a pro version of Radix which I will launch soon. This current version is entirely free and is definitely a beta -- there will be rough edges!\nNote: There's no telemetry or data captured. Your messages run entirely through your own agent. I require a key but that's just to get an idea of how many people are using it. Everything is stored locally (the workspaces are actually just React apps which you can edit \"artisanally\" if you want).\nIf you have any questions please reply here or email me hello@radix-os.com\nThank you!\nComments URL: https://news.ycombinator.com/item?id=49834964\nPoints: 8\n# Comments: 6",
+      "id": "38c32af152f6e098a6595d2656c6acf62dc549dc8da9ab3618f5499f897a10fd",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "Radix为AI代理编程提供创新的可视化UI，显著改善了开发者的交互和测试体验。",
+      "reason": "该工具直接解决了AI代理开发中的核心痛点，具有高度新颖性和实用性，且紧密贴合AI前沿。",
+      "tags": [
+        "AI",
+        "Agentic Programming",
+        "UI Tool",
+        "Developer Tools",
+        "Innovation"
+      ]
+    },
+    {
+      "title": "Changes to App Tracking Transparency in the E.U.",
+      "link": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-09-23T23:41:46.000Z",
+      "summary": "Apple Developer:\nAs part of agreements with select European competition\nauthorities, Apple is introducing changes to its App Tracking\nTransparency framework in the European Union. Beginning with iOS\n27.2 and iPadOS 27.2, developers will have the option to use an\nalternative version of the App Tracking Transparency system prompt\nin the EU. The requirements for when you must seek permission to\ntrack users will remain the same. Due to legal requirements, only\nthe alternative version of the system prompt is available for apps\ndistributed in Germany, France, Italy, Poland, and Romania.\nIn addition, for users in the European Union, you can reprompt\n[sic] a user via the App Tracking Transparency system prompt one\nyear after the user’s previous choice in your app’s App Tracking\nTransparency system prompt, regardless of whether that choice was\nto accept or reject. A user cannot be re-prompted if they have\ndisabled “Allow Apps to Request to Track” (renamed to “Allow Apps\nto Request to Link Your Activity Across Companies” in the EU) in\ntheir device’s Settings.\nAs Benjamin Mayo notes, “Allow Apps to Request to Link Your Activity Across Companies” is catchy.\nThe gist of this is that there are three constituent groups: Apple, users, and third-party developers. I’ve long argued that Apple prioritizes those groups in that order. What DMA/EU proponents have fooled themselves into believing is that the European Commission works to move users into, or at least closer to, the top spot. The truth is that they (and national regulatory authorities in Europe) work to move third-party developers and publishers into a more privileged position, at the expense of users’ privacy and experience. Users don’t want to be tracked without permission. Apple doesn’t want users to be tracked without their permission. But an awful lot of third-party developers and publishers want to track users without their permission or knowledge.\nJust getting the term changed from “tracking” (one word, easily understood) to “linking your activity across companies” (five words, obfuscated) tells you all you need to know.\nSee also: Nick Heer has a different take at Pixel Envy.\n ★",
+      "id": "b05aae00c492cacc22a9385d9a4ffab37cc19fa649b5a15c047ee678c243b9c4",
+      "ref_id": "2",
+      "recommendationScore": 85,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "详细阐述了Apple为适应欧盟法规，对App Tracking Transparency框架所做的具体调整。",
+      "reason": "对Apple生态的开发者而言，文章提供了极其重要的政策更新和操作指南，实用性极强，信息密度高，直接影响应用开发和合规性。",
+      "tags": [
+        "Apple",
+        "ATT",
+        "欧盟法规",
+        "开发者",
+        "隐私政策"
+      ]
+    },
+    {
+      "title": "Search – A small, fast WebKit browser for macOS",
+      "link": "https://github.com/driceroland/Search",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-24T09:11:52.000Z",
+      "summary": "Article URL: https://github.com/driceroland/Search\nComments URL: https://news.ycombinator.com/item?id=49828120\nPoints: 47\n# Comments: 12",
+      "id": "c0e5caaa6935981148957601f6bd3819054ddf0775990614bb7dbb59ca0ad751",
+      "ref_id": "3",
+      "recommendationScore": 81,
+      "popularityScore": 50,
+      "priority": "medium",
+      "comment": "一个针对macOS的轻量级WebKit浏览器项目，代码开源，值得技术用户关注。",
+      "reason": "文章介绍了一个专注于速度和简洁性的macOS浏览器，对Apple生态系统开发者和用户具有参考价值，属于编程工具和Apple生态范畴。",
+      "tags": [
+        "macOS",
+        "WebKit",
+        "浏览器",
+        "开源项目",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "Ideas on modernizing the open-source desktop",
+      "link": "https://lwn.net/SubscriberLink/1095425/2d9f411252325784/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-24T02:52:09.000Z",
+      "summary": "Article URL: https://lwn.net/SubscriberLink/1095425/2d9f411252325784/\nComments URL: https://news.ycombinator.com/item?id=49825642\nPoints: 363\n# Comments: 449",
+      "id": "f936f1287ec538eb0231b1c0558cff05e2d9ed11cf1a1193fc4f834234e37214",
+      "ref_id": "0",
+      "recommendationScore": 78,
+      "popularityScore": 90,
+      "priority": "medium",
+      "comment": "深入探讨了开源桌面现代化方向的挑战与机遇，具有很强的技术分析性。",
+      "reason": "文章来自权威来源，主题对开源社区和软件开发具有重要意义，且社群讨论度极高，信息密度大。",
+      "tags": [
+        "Open Source",
+        "Desktop",
+        "Software Development",
+        "Linux",
+        "Operating System"
+      ]
+    },
+    {
+      "title": "Programming Tutorials Are Dead",
+      "link": "https://robrace.dev/blog/programming-tutorials-are-dead/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-24T18:22:10.000Z",
+      "summary": "Article URL: https://robrace.dev/blog/programming-tutorials-are-dead/\nComments URL: https://news.ycombinator.com/item?id=49834781\nPoints: 11\n# Comments: 0",
+      "id": "7f87d7d9eb750ff7cf1027bc6ddd2e8c0ccc5a849493da75e5e9b0ca183e675d",
+      "ref_id": "3",
+      "recommendationScore": 75,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "文章以独到视角探讨了编程教程在AI时代面临的挑战，引发了对学习方法和工具的反思。",
+      "reason": "内容对编程学习和工具使用方式提出深刻见解，对开发者社群具有高度实用性和讨论价值。",
+      "tags": [
+        "Programming",
+        "Education",
+        "Learning",
+        "Developer Culture",
+        "Opinion Piece"
+      ]
+    },
+    {
+      "title": "F-Droid 2.0",
+      "link": "https://f-droid.org/2026/09/24/f-droid-2.0-a-new-chapter-for-android-freedom.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-24T15:26:12.000Z",
+      "summary": "Article URL: https://f-droid.org/2026/09/24/f-droid-2.0-a-new-chapter-for-android-freedom.html\nComments URL: https://news.ycombinator.com/item?id=49831968\nPoints: 578\n# Comments: 177",
+      "id": "74bfdf1e70f01c200ae55ec905f6976f8d14ac7f433097d1d69ba754a51513d3",
+      "ref_id": "4",
+      "recommendationScore": 75,
+      "popularityScore": 578,
+      "priority": "medium",
+      "comment": "F-Droid 2.0 发布，为重视隐私和开源的Android用户带来新体验。",
+      "reason": "文章关注Android生态中的开源应用商店，对关注移动开发、开源精神及去中心化分发的读者具有较高实用价值和信息密度。",
+      "tags": [
+        "Android",
+        "开源",
+        "移动开发",
+        "应用商店",
+        "自由软件"
+      ]
+    },
+    {
+      "title": "So yeah it was written using AI",
+      "link": "https://berthub.eu/articles/posts/so-yeah-it-is-written-using-ai/",
+      "source": "berthub.eu",
+      "publishedAt": "2026-09-24T15:45:00.000Z",
+      "summary": "As of this week, I’m suddenly seeing people dismiss points made in otherwise readable articles because Pangram says these were (partially) AI authored. I hate the origins and consequences of GenAI more than almost anyone. I can’t wait for the bubble to burst also. I presented in Amsterdam on how AI has killed my professional field.\nAND YET.\nIf you discover that an opinion piece was authored with or by GenAI, by all means feel free not to engage with it.",
+      "id": "b6215cdfc1f494c4da44f02bcef39ff4178abf00f741be69bf30b23057dc3449",
+      "ref_id": "4",
+      "recommendationScore": 75,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "对AI生成内容的讨论，反思AI在创作中的角色及其社会影响。",
+      "reason": "紧扣AI热点，提供独特的批判性视角，引发读者思考，是当前AI主题下重要的社会与伦理讨论。",
+      "tags": [
+        "AI",
+        "Generative AI",
+        "Content Creation",
+        "Ethics",
+        "Social Impact"
+      ]
+    },
+    {
+      "title": "Show HN: Make cursed fonts like Times New Bastard",
+      "link": "https://bastardica.mitpit.com",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-23T22:53:28.000Z",
+      "summary": "A joke tool that abuses OpenType's ligature feature to mix fonts. It works pretty fast on client-side by loading Python in WASM.\nComments URL: https://news.ycombinator.com/item?id=49823738\nPoints: 150\n# Comments: 25",
+      "id": "f03b8aa461cf74976d5ebab569935c1a15fe4c231983790243ad7b1fc0bad427",
+      "ref_id": "1",
+      "recommendationScore": 70,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "一个利用 OpenType 和 WASM 实现创意字体效果的工具，技术实现巧妙且具有娱乐性。",
+      "reason": "展示了独特且富有创造性的技术应用，尤其是在 WebAssembly 中运行 Python 的方法，对编程工具爱好者有吸引力。",
+      "tags": [
+        "Programming Tools",
+        "Web Development",
+        "WASM",
+        "OpenType",
+        "Fonts",
+        "Creative Tech"
+      ]
+    },
+    {
+      "title": "Some thoughts on HTML's proposed previewsrc attribute",
+      "link": "https://shkspr.mobi/blog/2026/09/some-thoughts-on-htmls-proposed-previewsrc-attribute/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-09-24T11:34:54.000Z",
+      "summary": "One of the great things about modern HTML is that it tries to standardise stuff that developers are already doing. If there are a myriad ways of, for example, loading video onto a page - then browsers and other interested parties should work out how to make a standard <video> element.  An interesting new proposal has been brought forth by Microsoft. There are a dozen ways to show a preview of an…",
+      "id": "f966b7c8d65a599829e2b8393ec434c52cd7bc4251333c5c971ac4264c0cb9f5",
+      "ref_id": "0",
+      "recommendationScore": 70,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "探讨HTML新属性提案，对前端开发有潜在影响。",
+      "reason": "关注Web标准演进，提供前端开发实用洞察，符合编程工具主题。",
+      "tags": [
+        "HTML",
+        "Web Standards",
+        "Frontend Development",
+        "Programming Tools"
+      ]
+    },
+    {
+      "title": "GitHub has not removed malicious imitation software after 3 weeks",
+      "link": "https://successfulsoftware.net/2026/09/24/github-has-not-removed-malicious-imitation-software-after-3-weeks/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-24T15:50:26.000Z",
+      "summary": "Article URL: https://successfulsoftware.net/2026/09/24/github-has-not-removed-malicious-imitation-software-after-3-weeks/\nComments URL: https://news.ycombinator.com/item?id=49832406\nPoints: 207\n# Comments: 85",
+      "id": "52f077ec166a5f7c654574901bb26fbc97dc439c88b7eee02836529df07292ff",
+      "ref_id": "2",
+      "recommendationScore": 65,
+      "popularityScore": 207,
+      "priority": "medium",
+      "comment": "关于GitHub平台存在恶意软件且处理不及时的问题，涉及开发者信任与平台安全。",
+      "reason": "虽然文章围绕核心编程工具GitHub，但侧重于平台治理和安全警示，技术深度一般，对开发者有一定实用性。",
+      "tags": [
+        "GitHub",
+        "安全",
+        "平台治理",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "The Download: a bid to scrap the virtual wall and AI hits Climate Week",
+      "link": "https://www.technologyreview.com/2026/09/24/1145064/the-download-bid-scrap-virtual-wall-ai-climate-week/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-09-24T12:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. A congressional representative just proposed killing America’s border tower program Delia Ramirez, a Democratic US representative from Illinois, has announced plans to introduce legislation to terminate the surveillance tower program along…",
+      "id": "6aa4503b1ddc911cef9f4054782df29d6a527ce41a7b4d55842ac26f23ef129b",
+      "ref_id": "3",
+      "recommendationScore": 65,
+      "popularityScore": 50,
+      "priority": "medium",
+      "comment": "科技新闻摘要，涵盖了边境监控技术和AI在气候周上的讨论等热点。",
+      "reason": "作为日报提供了快速了解科技领域动态的入口，其中包含与高优先级主题“AI”相关的时事信息，但深度有限。",
+      "tags": [
+        "Newsletter",
+        "Tech News",
+        "AI",
+        "Climate",
+        "Policy",
+        "Surveillance"
+      ]
+    },
+    {
+      "title": "Shrinking a Fedora virtual disk",
+      "link": "https://entropicthoughts.com/shrinking-fedora-virtual-disk",
+      "source": "entropicthoughts.com",
+      "publishedAt": "2026-09-23T22:00:00.000Z",
+      "summary": "I have a weird setup for my laptop. In summary, I have been irrationally scared\nof running Fedora on bare, dual-GPU metal, so I run it in a virtual machine\nwith Hyper-V on Windows as a hypervisor. The idea was to let Windows manage\nGPUs and power management stuff like hibernation, and then use Fedora as my main\nUI to the computer.\n\n\n\n\n\nThis has worked surprisingly well, but that’s only because my expectations were\nlow to begin with. The VM can barely access the hardware of the underlying\nmachine: it can’t use the GPU, it can’t use the front-facing camera,\nLinux starts thrashing weirdly when the VM runs out of memory, among other quirks I’ve learned to work around. Thus, I’ve wanted\nto re-install on bare metal for a while, but! problem!\n\n\n\n\n\nCome on a journey with me. It’s got a hero with hubris, mistakes, tension, and a\ncliffhanger.\n\n\n\n(Continue reading the full article on the web.)",
+      "id": "b214e3d5170e8decde24ea9df31cc238317168cb6f2d44974f0ca35c446c71ca",
+      "ref_id": "3",
+      "recommendationScore": 65,
+      "popularityScore": 55,
+      "priority": "medium",
+      "comment": "描述在Hyper-V中运行Fedora的挑战和解决思路，对VM用户有参考价值。",
+      "reason": "提供虚拟机管理和OS安装的实践经验，虽为小众场景但有一定实用性，属于自动化范畴。",
+      "tags": [
+        "Virtualization",
+        "Fedora",
+        "Hyper-V",
+        "Windows",
+        "Linux",
+        "Automation"
+      ]
+    },
+    {
+      "title": "★ The iPhone 4 ‘Antennagate’ Press Conference Q&A — Finally",
+      "link": "https://daringfireball.net/2026/09/iphone_4_antennagate_q_and_a",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-09-23T22:15:05.000Z",
+      "summary": "The most extraordinary Apple event in the company’s modern history was the emergency press conference on Friday, 16 July 2010 to address “antennagate” — the out-of-control media narrative that the iPhone 4 had a defective antenna design. The event was only scheduled one day in advance — I got invited around noon ET on July 15 and was on my way to the airport about an hour later. It remains one of the most interesting press events I’ve ever attended.\nThe event was held in Apple’s Town Hall auditorium at the old Infinite Loop headquarters. Town Hall is a tiny venue but it wasn’t full. It opened with Jonathan Mann’s “The iPhone 4 Antenna Song” (refrain: “If you don’t want an iPhone 4, don’t buy it; if you bought one and you don’t like it, bring it back”), then Steve Jobs took the stage for what he said would be a 15-minute presentation but which took 30 minutes. Then Jobs had COO Tim Cook and hardware chief Bob Mansfield join him on stage to answer questions from the assembled members of the media.\nApple itself hosted video of the presentation — minus the Q&A — for some time after the event. But after a few years they took their copy down. There have been copies on YouTube, but the only one that seems to be left is this 14-year-old copy from the YouTube account Tech Knowology. It’s got Mann’s opening song and Jobs’s half-hour prepared presentation, but it cuts off right as Jobs invites Cook and Mansfield to join him on stage. To my recollection this is where Apple’s own official video cut off too — I think this version on YouTube is just a copy of Apple’s.\nThe Q&A was on the record (which is the entire point of a Q&A), and was reported widely, but I don’t think there’s ever been video of it. Here’s a report by Jeff Carlson at TidBITS, published the day the event was held, which states, “The video omits a long and interesting Q&A at the end.”\nThen, yesterday, video of the Q&A hit YouTube. I don’t know what truck it fell off the back of, why it took 16 years, or how it came into the hands of “Sir Mix-A-Lot Rare Music”,1 but I’m sure glad it did. There are parts of this Q&A that I remembered, and parts I didn’t. Carlson was exactly right: it was long and it was interesting. \nOne part I remembered was my own question, asked at the 18:45 mark, which was answered — by all three executives — visually, not verbally. It really was an answer best shown not told, but heretofore I’m not sure anyone who wasn’t in the room has seen this. There were photographs (e.g. AllThingsD and MacRumors), but not video. Now you can watch.\nMy main takeaway, though, watching the whole thing for the first time since I was in the room, is how goddamn thoughtful Steve Jobs was. He takes a long time to think before answering many of the questions. A few minutes after my question, Jobs was asked what he’s learned from this experience. Jobs takes several seconds to think and then his answer lasts five minutes. It’s a good answer.\nI seldom suggest you spend 47 minutes watching a video, but this one is worth your time. (And, given that it clearly fell off the back of a truck, you might want to put a copy on your own truck sooner rather than later.) A lot of times with a long Q&A the whole thing gets repetitive, with the same questions asked in rephrased ways, and the same answers (or, worse, non-answers) regurgitated from the same set of prepared talking points. Not this one. In fact, one of Jobs’s most interesting answers comes over 40 minutes into the Q&A segment, when he re-articulates what Horace Dediu coined “The Cook Doctrine”. (Which Cook deserves credit for, having expressed it a year prior while Jobs was on a medical leave of absence.) Here’s part of that answer:\nTo understand Apple, it helps to realize that one of our biggest\ninsights came about eight years ago. We didn’t want to get into\nany business where we didn’t own or control the primary\ntechnology. Because if somebody else owns the primary technology,\nthey’re going to beat you in the end. Because you’re going to\nhave to buy that from them and add your stuff on top. But if\ntheir technology is the most important one, they’re going to beat\nyou in the end. So we wanted to own or control the primary\ntechnology for those businesses that we’re in. And in the\ncomputer business, even though we didn’t make our own\nmicroprocessors, we thought software was the most important\ntechnology. And we made our own operating system.\nOur big insight about eight years ago was that for most areas of\nconsumer electronics going forward, it was going to shift from big\ndisplays being the most important component, or electro-optical\nlaser pickup heads for DVD drives being the most important\ncomponent, or radios and cell phones being the most important\ncomponent, to software being the most important component. And we\nrealized that we were pretty good at software.\nWatch the whole thing, I implore you. I mean if you’re only going to watch a minute, sure, skip to my question. But you should watch the whole thing — if only to hear Jobs pronounce “component”.\n\nChannel description: “A somewhat poorly named channel which used to constantly upload Sir Mix-A-Lot’s rare videos, music. Now it’s a lot of everything else except that.” He’s got a few other Steve Jobs-era bootlegs, including a 1998 interview about the just-released iMac, in which Jobs is wearing a blue checked button-down flannel shirt, and a 2008 interview about the iPhone 3G and its new features geared toward the business market. ↩︎",
+      "id": "ea90ed4399cd7e7506f5f41abfb7b1b8dfef7e2d3721dfc31f21263baa2c736e",
+      "ref_id": "3",
+      "recommendationScore": 60,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "回顾了iPhone 4“天线门”事件中，Apple召开紧急新闻发布会的详细过程。",
+      "reason": "作为Apple公司历史上的重要事件回顾，文章提供了丰富的现场细节，对了解Apple的危机公关和公司文化有一定历史参考价值，但实用性不高。",
+      "tags": [
+        "Apple",
+        "iPhone",
+        "历史",
+        "危机公关",
+        "产品缺陷"
+      ]
+    },
+    {
+      "title": "‘Apple Opens Apple Music Hall, a State-of-the-Art Live Music Venue in London’",
+      "link": "https://www.apple.com/newsroom/2026/09/apple-opens-apple-music-hall-a-state-of-the-art-live-music-venue-in-london/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-09-24T17:29:49.000Z",
+      "summary": "Apple Newsroom:\nApple today announced the opening of Apple Music Hall, a brand-new\nstate-of-the-art live music venue in London’s storied Battersea\nPower Station, designed to connect artists and fans through\nbespoke, intimate performances unlike anywhere else.\nApple might be the most interesting architecture company in the world this century. They have a core look and feel they apply to their own facilities built from the ground up (e.g., Apple Park, certain flagship retail stores), but they also have tremendous respect for historic buildings they take over.\nThe balconies in Apple Music Hall are bronze, but the lighting (at least in Apple’s photos) is so warm that the balconies look a little like giant Mac Minis.\n ★",
+      "id": "14921bba306bbc2176c68ddfd1abff7ef4c3609dcc57c5c5dbb87da55e099de6",
+      "ref_id": "0",
+      "recommendationScore": 55,
+      "popularityScore": 65,
+      "priority": "low",
+      "comment": "介绍了Apple在伦敦新开设的音乐厅，侧重于其建筑设计与品牌体验。",
+      "reason": "文章内容主要为品牌新闻和建筑评价，技术深度和实用性较低，对核心科技博客读者的价值有限。",
+      "tags": [
+        "Apple",
+        "Apple Music",
+        "建筑设计",
+        "品牌新闻"
+      ]
+    },
+    {
+      "title": "Nokia Design Archive (2025)",
+      "link": "https://repo.aalto.fi/index.php?name=SO_b66a9391-dcf8-4399-8e87-611f84c3fc4c",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-24T09:49:33.000Z",
+      "summary": "Article URL: https://repo.aalto.fi/index.php?name=SO_b66a9391-dcf8-4399-8e87-611f84c3fc4c\nComments URL: https://news.ycombinator.com/item?id=49828385\nPoints: 193\n# Comments: 102",
+      "id": "8ab7abbc717c5cd79292ab240fc6a8837dd22eea4271e9669460e355254c6e34",
+      "ref_id": "2",
+      "recommendationScore": 50,
+      "popularityScore": 75,
+      "priority": "low",
+      "comment": "诺基亚设计档案回顾了经典设计，对产品设计爱好者具有吸引力。",
+      "reason": "作为产品设计历史的宝贵资料，文章展示了诺基亚在设计领域的遗产，但与核心技术主题优先级较低。",
+      "tags": [
+        "产品设计",
+        "诺基亚",
+        "设计历史",
+        "档案",
+        "工业设计"
+      ]
+    },
+    {
+      "title": "Geothermal heat map of US hot springs",
+      "link": "https://www.soakingsprings.com/hot-springs/geothermal-map",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-23T20:12:10.000Z",
+      "summary": "Article URL: https://www.soakingsprings.com/hot-springs/geothermal-map\nComments URL: https://news.ycombinator.com/item?id=49821835\nPoints: 35\n# Comments: 13",
+      "id": "78ab49eb73ec67604c3b4cb26c091369ef595ef935ab6666aa3333f99ebec215",
+      "ref_id": "2",
+      "recommendationScore": 15,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "关于美国地热温泉的地图展示，与科技博客的核心主题关联度较低。",
+      "reason": "内容不属于AI、编程工具等核心科技范畴，对本科技博客的目标读者实用性不高。",
+      "tags": [
+        "Geography",
+        "Geothermal",
+        "Data Visualization",
+        "Environment"
+      ]
+    },
+    {
+      "title": "Creatine uptake enhances antitumor immunity",
+      "link": "https://www.cell.com/iscience/fulltext/S2589-0042(26)00811-4",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-24T18:24:52.000Z",
+      "summary": "Article URL: https://www.cell.com/iscience/fulltext/S2589-0042(26)00811-4\nComments URL: https://news.ycombinator.com/item?id=49834825\nPoints: 88\n# Comments: 96",
+      "id": "7d6c8157090ab7c14b3931eedf74d1340db05685d2de711068b3b6702efe332b",
+      "ref_id": "2",
+      "recommendationScore": 10,
+      "popularityScore": 75,
+      "priority": "low",
+      "comment": "这是一篇高质量的生物医学研究论文，但与科技博客的核心主题不符。",
+      "reason": "文章内容专注于生物医学研究，与AI、编程工具等科技主题无关，不适合本博客发布。",
+      "tags": [
+        "Biology",
+        "Immunology",
+        "Scientific Research"
+      ]
+    },
+    {
+      "title": "Why is the liver so weirdly regenerative?",
+      "link": "https://dynomight.substack.com/p/liver",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-24T16:23:00.000Z",
+      "summary": "Article URL: https://dynomight.substack.com/p/liver\nComments URL: https://news.ycombinator.com/item?id=49832938\nPoints: 76\n# Comments: 67",
+      "id": "3179c5de5974307ad0f47e603ff9f815b6abb2b6ecbfc18a413e6f9af4fd59ce",
+      "ref_id": "1",
+      "recommendationScore": 10,
+      "popularityScore": 76,
+      "priority": "low",
+      "comment": "一篇关于生物学肝脏再生的文章，与本科技博客的主题无关。",
+      "reason": "主题与设定的科技博客关注方向（AI、Apple生态、编程工具等）完全不符，不具备技术内容。",
+      "tags": [
+        "生物学",
+        "科学"
+      ]
+    },
+    {
+      "title": "Why is the human body so crap except for the liver?",
+      "link": "https://dynomight.net/liver/",
+      "source": "dynomight.net",
+      "publishedAt": "2026-09-24T00:00:00.000Z",
+      "summary": "[Epistemic Status: Speculative unifying theory of biology.]\nI don’t know about you, but I greatly resent having to be a biological organism and subject to all the poor engineering and design decisions that entails. This has many manifestations. A recent one is often wondering, why is the entire body such garbage except for the liver?\nTake the kidneys. Once you reach adulthood, they start to slowly decay. You can damage them through not-obviously-dangerous stuff like taking too much vitamin D or taking ibuprofen while dehydrated. Significant damage typically leads to scarring and a permanent reduction in function. Or take the gums. If you brush too hard or don’t floss enough, they may retreat down your teeth, never to return. Most of the body is like that.\nBut the liver. My friends, the liver! If it’s injured, it will usually heal without scars. As you age, it typically maintains near full strength. You can give half of your liver to someone else and it will regrow to full size and function in a few months. I’d like to find whoever designed the liver and have them make me a full body.\nExcept here’s a theory: It’s good that most of the body is fragile crap. It would be better if some parts of the body were more fragile.\nSome other ways the body would appear to be poorly designed\nMenopause. We’re still struggling to reconcile modernity with the short human reproductive interval. But did you know that menopause is almost unknown outside of humans? Even the other great apes remain fertile for almost their entire lives. The only known exceptions are (1) killer whales, (2) pilot whales, (3) beluga whales, (4) false killer whales, (5) narwhals, and (6) one specific population of chimpanzees in Uganda.\nInuries. If your leg gets chopped off, that’s it, no more leg. Your body will try to grow scar tissue over the wound and then you’re on your own. But if you chop off the leg of a salamander it… grows a new leg. Isn’t that the obvious to do? Why don’t we do that?\nTelomeres. The ends of your chromosomes have a little repetitive sequence called a telomere. When cells divide, the body tries to copy the DNA, but good-old DNA polymerase can’t quite copy all the way to the end, meaning the telomeres slowly get shorter. After dividing 50-70 times, the telomeres are gone, and the cells stop dividing and then slowly stop working. This is one of the many ticking clocks of aging.\nTransplants. If you need a new kidney, and someone is nice enough to give you one of theirs, your body will respond by trying to kill it, meaning you have to take horrible immunosuppressants for the rest of your life. And even after taking them, there’s a 30% chance the kidney will be rejected within 10 years. This is not helpful.\nDiabetes. Some day, your immune system may decide to attack your pancreas. After a while, your pancreas will stop making insulin, meaning that unless you reorient your entire life around keeping your blood sugar in check, your eyes, kidneys, nerves, and heart will constantly accumulate damage. Your immune system should not attack your pancreas.\nBrains. After you reach adulthood, neurons don’t divide. If some of your neurons die—which happens every day—then they’re gone. If you get a brain injury, the other neurons will try to “learn around” the injury, but the neurons themselves are never replaced.\nJunk. All cells build up various “junk” over time. As they divide, the junk is diluted. But some cells (neurons, various cells in the eyes) never divide, so the amount of junk (e.g. lipofuscin) just goes up and up. This is another ticking clock.\nBlood. Your flesh needs blood, which your body delivers through blood vessels. Over time, these can get clogged with plaque. The thing to do in this situation is to sprout new blood vessels. Your body knows how to do that. But by default it maintains high levels of various inhibitors (angiostatin, endostatin, THBS1) that tell your cells not to do so. If your heart or brain get starved of blood, your body will try to reverse all this inhibition, but the process is slow and clumsy and can only produce tiny blood vessels.\nWhat’s going on here?\nAs always in biology, the correct answer is: A lot, it’s complicated. But I think there’s a common thread.\nThe clearest case is probably telomeres wearing down as you get older. At first glance, you might ask, why does this problem exist at all? Bacteria—because they aren’t idiots—have circular DNA, which doesn’t have ends or telomeres. Eukaryotes like us evolved from bacteria. Who decided to replace circular DNA with linear DNA?\nOr, you might ask, why doesn’t the body re-lengthen the telomeres? Well, actually it does! We have an enzyme designed specifically for that purpose, called telomerase. But, after embryonic development, the body doesn’t bother to use it, except in stem cells, reproductive cells, and certain parts of the immune system. Huh?\nThe reason we have linear DNA instead of circular DNA is contested.1 But whatever. If the body wanted to re-lengthen the telomeres, it could easily do that. Your cells already have DNA to make telomerase. They just don’t use it. Instead, they let the telomeres get shorter until they stop dividing and stop working. Why?\nBecause…\n…\n\nCancer.\n(That’s our answer to the question in the title of this post: The human body is so crap except for the liver because cancer. As we’ll see, this answer is only semi-correct, and even then only with several caveats. But what do you expect from biology?)\nLetting the telomeres get shorter is not a mistake. It is a deliberate design decision.2 Often, in your body, the following happens:\nSome cells get a mutation that causes them to start reproducing too fast.\nYour immune system decides they’re suspicious and kills them.\nYou’re fine. 👍\nBut sometimes this happens:\nSome cells get a mutation that causes them to start reproducing too fast.\nThey grow for a while, but then (for complicated reasons3) they stop increasing in number.\nBut they aren’t just sitting there, they’re constantly reproducing and dying, much faster than normal cells.\nEventually, they develop another mutation that allows them to overcome whatever was stopping them from growing.\nThis continues for a while, with the cells gradually acquiring more of the mutations they need to grow to a large size.\nBut wait!\nWith all this reproduction, at some point the mutated cells ran out of telomeres and stopped being able to reproduce.\nHa! Screw you, mutated cells! 👍\nTo be clear, this also sometimes happen:\n(Steps 1-6 above)\nWith all this reproduction, at some point the mutated cells figured out how to turn telomerase back on.\nThis re-lengthens their telomeres, so they can reproduce indefinitely.\nThey either stop growing for other reasons (👍) or you use our modern technological civilization to kill/remove them (👍) or they grow so slowly that something else kills you first (🤌) or there is a less desirable outcome (👎).\n(If you’re a biologist who is outraged at the above description, I’ve written a footnote which I beg you read before yelling at me.4)\nHaving telomeres that wear down is good, because it slows down cancer. It’s also bad, because it means our bodies slowly stop working. Evolution decided the good outweighed the bad, and I expect that evolution was right.\nSeveral of the other ways in which the human body is “crap” can be explained in the same way. Why can’t you re-grow your leg if it gets chopped off? Well, that would require that all your cells have a “begin rapid growth mode” button on them, with some external trigger. In a sense, it would require your body to leave your cells sitting around in a state that’s closer to being cancer. Not doing that is good, because it slows down cancer, and bad, because you can’t grow a new leg. Evolution apparently doesn’t like that tradeoff, and again I assume evolution is right.5\nFragile kidneys are much the same. We could have kidneys that try harder to repair themselves. That’s probably biologically possible. But it would likely mean more kidney cancer. Arguably, the question isn’t, “Why are the kidneys such fragile crap?” but rather, “Why is the liver so weirdly regenerative?”\nOK, so why is the liver so weirdly regenerative?\nThat question has two standard answers. Answer #1 is that the liver has a hard job. It sits directly downstream of the gut. If you eat toxins or bacterial products or viruses or parasites, the liver sees them at high concentrations before the rest of the body. Not only that, it’s the liver’s job to detoxify stuff, and detoxification chemistry is often self-damaging: The liver breaks toxic stuff down into even-more toxic stuff, and then deals with that stuff recursively. The liver is constantly getting damaged, as part of its job description, so it must be able to regenerate. Evolution designed it to do that, and it just pays the cancer tax.\nAnswer #2 is that the liver isn’t unusual. Your skin can survive wounds. And your intestines can survive exposure to digestive enzymes, bile, and bacteria. The surface layers of both of these are constantly turning over. And, lo and behold, skin cancer and colorectal cancer are both very common.\nAt the other end of the spectrum, neurons and cardiac muscle cells don’t reproduce after childhood. If they die, they’re gone.6 As a result, “heart cancer” is almost unheard of. (The very term “heart cancer” almost sounds ungrammatical.) Brain cancer is a thing, but it’s essentially always in other types of brain cells, not neurons.\nSo maybe we can think of different parts of the body as making different tradeoffs between regeneration and cancer risk:7\nOrgan\n      Regeneration\n      Cancer risk\n    \nColon / rectum\n      Extremely high\n      High\n    \nBone marrow\n      Extremely high\n      High\n    \nSkin\n      High\n      High\n    \nLiver\n      High\n      High-ish\n    \nBladder\n      High\n      High-ish\n    \nThyroid\n      Medium\n      Medium?\n    \nKidneys\n      Low\n      Low-ish\n    \nCardiac muscle\n      Near zero\n      Very low\n    \nNeurons\n      Near zero\n      Near zero\n    \nAt first glance, we seem to have a cute little story: Evolution pays the cancer tax for organs that need to interface with the environment, because it’s a harsh world out there. And it pays the fragility tax for organs that can be tucked away so that regeneration isn’t as necessary.\nWouldn’t that be nice? Let’s formalize that as a theory.\nTheory:\nMore regeneration implies more cancer risk.\nEvolution tunes organs that encounter the environment for more regeneration and more cancer. It turnes organs that don’t for the opposite.\nOf course, it’s not that simple.\nComplexities\nOne problem with the above theory is that it isn’t clear that regeneration is always an option. The skin and guts are pretty homogeneous (at least in each layer). The liver can be approximated as a big blob of repeated functional units. If you give half your liver away, those functional units get larger, which is how your liver grows back to near full size and function.\nBut other organs are highly “structured”. Your neurons are a complex circuit encoding all your memories and learned behaviors. If neurons were reproducing, that circuit might be unstable.\nYour heart is also highly structured. And even if your heart could re-grow, if you lost half of it, you wouldn’t survive long enough to do so. (Do not attempt to donate half your heart.) In principle, it’s surely physically possible to design a heart where you can remove half and it will still pump enough blood to keep you alive while it re-grows. But evolution either didn’t figure that out, or didn’t think it was worth the trouble. Either way, with the current heart design, high regeneration doesn’t look like an option.\nSo it’s not as simple as evolution choosing to pay the cancer tax for some organs and choosing to pay the fragility tax for others. Some organs need to maintain a stable complex structure to keep working, meaning there may not be much of a cancer/fragility knob to turn.\nRevised theory:\nMore regeneration implies more cancer risk.\nEvolution tunes organs that encounter the environment for more regeneration and more cancer. It turnes organs that don’t for the opposite.\nBut for highly structured organs, regeneration might not be an option.\nFine. But there are several organs I didn’t include in the above table. For example, look at this:\nOrgan\n      Regeneration\n      Cancer risk\n    \nLungs\n      Low-ish\n      High\n    \nThe lungs are the worst of all possible worlds, with low regeneration and high cancer. As far as I can tell, this is a consequence of the physical fact that gas diffusion is slow. To work around that, your lungs have a delicate fractal geometry that crams ~100 square meters of surface area into a ~5 liter volume. That’s impressive, but it makes regeneration hard. At the same time, the lungs need to interface with all sorts of random toxins and pathogens in the air, meaning lots of ways for mutations to happen.\nRevised theory v2:\nMore regeneration implies more cancer risk.\nEvolution tunes organs that encounter the environment for more regeneration and more cancer. It turnes organs that don’t for the opposite.\nBut for highly structured organs, regeneration might not be an option.\nAnd if highly structured organs encounter the environment, cancer risk is still high.\nAnd now, ladies and gentlemen, the stupid pancreas:\nOrgan\n      Regeneration\n      Cancer risk\n    \nPancreas\n      Low-ish\n      Moderate\n    \nSuperficially, this looks less exceptional than the lungs, with low-ish regeneration and merely moderate cancer risk. But the pancreas is more problematic for our theory, because that moderate cancer risk exists despite not being exposed to the outside world.\nBiologically, the reasons that the pancreas sometimes develops cancer seem understood, although complex. But as far as I can tell, there is no convincing explanation for why the pancreas is designed that way. Is it an evolutionary fluke? Is there some other subtle tradeoff? It’s unclear. So there’s no satisfying big-picture evolutionary trade-off to point to.\nRevised theory v3:\nMore regeneration implies more cancer risk.\nEvolution tunes organs that encounter the environment for more regeneration and more cancer. It tunes organs that don’t for the opposite.\nBut for highly structured organs, regeneration might not be an option.\nAnd if highly structured organs encounter the environment, cancer risk is still high.\nAnd the pancreas is weird.\nBut we still need to face the final boss, the strangest organ of all.\nThe small intestine\nOrgan\n      Regeneration\n      Cancer risk\n    \nSmall intestine\n      Extremely high\n      Very low\n    \nBad news for our theory, good news for you as a biological organism. The small intestine does interface with the environment, and it replaces all its surface-level cells every few days. Yet it very rarely develops cancer. That’s despite the fact that it’s quite similar to the cancer-crazed colon. It’s also despite the fact that the “small” intestine makes up ~90% of the digestive tract’s surface area. What the hell?\nBiologically, the main explanation seems to be that the small intestine uses an ingenious defense strategy. My new favorite part of the body:\n\nWhile the surface cells of the small intestine are continuously being replaced, they aren’t themselves reproducing. Instead, carefully protected stem cells tucked into the valleys between the intestinal villi slowly produce “transit-amplifying cells”. Those transit-amplifying cells divide 4-6 times as they migrate to the surface, each eventually yielding 16-64 mature epithelial cells. Those spend a few days doing epithelial stuff, meanwhile sliding along with their siblings from the bottom to the top of whichever villus they happen to be on. When they reach the tip, they’re ejected into the digestive stream to die, merry Christmas. So, even if a mutation arises somewhere, it doesn’t really matter, because the cells are all on a conveyor belt towards death anyway.\nClever, no? Turns out, the real hero isn’t the liver. It’s the small intestine.\n(The small intestine also uses a few other tricks: The surface cells are programmed to commit suicide if damaged even a little bit. The immune system is tuned to kill anything that looks even slightly funny. And it hosts huge amounts of detoxifying enzymes. But villi seem to be the really unique bit.)\nThis is a huge challenge for our theory. Not only does the small intestine have low cancer and high regeneration, it has low cancer because of high regeneration. If the small intestine can do that, then why not the rest of the body?\nOne answer is that it takes a ton of energy. Your guts shed ~40 billion epithelial cells every day, amounting to ~⅓ kg of tissue every week. Like the brain, your guts consume ~20% of total energy, despite making up only ~2% of body mass. Evolution doesn’t want to do that everywhere, because evolution doesn’t want you to starve to death.\nSo, there isn’t just a trade-off between regeneration and cancer. There’s a three-way tradeoff between regeneration, cancer, and energy usage.\n\nBut even if energy weren’t an issue, other organs couldn’t easily copy the small intestine’s strategy. For example, the colon is similar in many ways to the small intestine, but the colon doesn’t have villi. It needs to be flat, because the colon’s job is to extract water. If there were villi dangling everywhere, they’d be ripped off by the solid waste. The colon also hosts far more bacteria that produce toxic byproducts, meaning the colon’s cells need to be tuned to try to resist damage, instead of committing suicide. This also means that the immune system needs to be more relaxed about killing foreign entities. So even though the colon also replaces the epithelial cells (a bit more slowly) cancer is still common.\n(Or, imagine your skin was covered in tiny fragile villi. You’d look awesome, but they’d be constantly getting ripped off. If you wanted that to work, you’d need to make the villi stronger and more disposable, and… we just invented fur.)\nRevised theory v4 final (actually final) updated (2):\nMore regeneration implies more cancer risk.\nEvolution tunes organs that encounter the environment for more regeneration and more cancer. It tunes organs that don’t for the opposite.\nBut for highly structured organs, regeneration might not be an option.\nAnd if highly structured organs encounter the environment, cancer risk is still high.\nAnd the pancreas is weird.\nAnd actually, it’s not just a trade-off between regeneration and cancer, it’s a three-way trade-off between regeneration and cancer and energy usage, and various parts of that space may or may not be available depending on the job an organ has to do.\nSo, a cancer vs. fragility tradeoff definitely doesn’t explain everything. But it does explain some things, somewhat, sort of. In biology, that’s pretty good.\nIs this bad?\nWe’ve discussed various ways in which the body might appear to be crap. Let’s revisit those, and ask if the right tradeoff is being made for the modern world.\nInjuries.\nYour skin is calibrated for constant wounds, which most of us today don’t get. This leaves lots of repair pathways sitting around to be hijacked by skin cancer. Similarly, your bone marrow is calibrated to be able to recover from catastrophic blood loss. Today we don’t experience as much catastrophic blood loss, and we have blood transfusions, but all that generative capacity is still there to be used by leukemia and lymphoma. And whatever benefit there might have been to re-growing a limb is probably lower today, when we less often lose limbs.\nBest guess: It would be better if the body tried less hard to recover from injuries.\nBrains.\nDo modern people suffer fewer brain injuries than our evolutionary ancestors? It’s hard to say for sure, because brains are soft tissue. But the fossil record for upper paleolithic humans suggests between 2% and 34% suffered skull fractures, more than modern people.\nSo you might think it would be better if the brain was tuned more towards fragility rather than cancer. But brain injuries are still common today. Around ⅓ of people experience a concussion sometime in their lifetime, because we love to drive cars at high speed, play dangerous sports, and survive to old age where stairs and bathrooms pose a risk. Also, for whatever reason, the brain is already tuned quite strongly towards fragility.\nBest guess: Maybe the current tradeoff is about right?\nTelomeres.\nShould the body re-lengthen the telomeres? On the one hand, we’re more likely to survive to ages where this is actually an issue. On the other hand, we’re also more likely to survive to ages where cancer is a danger, which is precisely where telomeres not getting re-lengthened is an issue.\nBest guess: Maybe the current tradeoff is about right?\nLivers.\nIt seems that the liver is so regenerative because it needed to be. Ancestral humans were constantly dealing with parasites and bacteria and rotting food. When I started writing this essay, I figured this meant the liver was “over-specced” for the modern world. Today we have refrigerators and food inspectors and pasteurization. Our lives are much less harsh and involve fewer toxins than our ancestors. So, if calibrated for the modern environment, I figured that it would be better if the liver was a bit more fragile, but also marginally less prone to cancer.8\nBut… it’s not clear that this is actually true. Liver failure remains extremely common today. While we don’t ingest nearly as many toxins, we eat diets that lead to metabolic dysfunction, and we consume tons of alcohol, and many of us live in dense conditions where hepatitis can easily spread. We’re also more likely to live to an age where liver failure is an issue.\nBest guess: Unclear. We should stop doing stuff that causes liver failure.\nMenopause.\nWhy do humans have menopause, unlike almost all other mammals? The most common theory is the grandmother hypothesis. The general idea is that reproducing becomes more and more risky as you get older. For most animals, evolution doesn’t care, because evolution’s goal isn’t to make you happy, it’s to maximize reproductive fitness. So, screw it, try to reproduce and let the dice fall where they may. But even after reproducing, humans can help the survival of their genes by providing resources for their offspring. So, for humans, evolution decided to turn reproduction off, so you can spend more time with your grandkids.\nIn particular, with cancer, some theorize that continued cycles of estrogen cause damage to the ovaries, womb, and breasts. Menopause shuts this down,which may decrease the odds of ovarian / uterine / breast cancer.\nIt’s a cute theory. But again:\nMenopause: Humans, killer whales, pilot whales, beluga whales, false killer whales, narwhals one group of chimps in Uganda.\nNo menopause: Everything else, including elephants, other whales, lions, horses, zebras, dogs, rats, wolves, birds, reptiles, amphibians, fish.\nSome of this makes sense. Unlike toothed whales, Blue/Humpback whales are mostly solitary or live in loose groups. Mice don’t babysit for their grandkids. But what about elephants? Or hyenas? Or bonobos? Or orangutans? Or lions? Or sperm whales? All of these have social organizations where females contribute to the survival of their offspring, and yet they don’t have menopause.\nAnyway, is menopause the right tradeoff for the modern age? It’s hard to say. On the one hand, modern people live much longer, meaning the marginal cost of cancer is higher. On the other hand, people want to reproduce more at older ages, meaning menopause has a higher cost. (Both “to evolution” and “to us”.) Also, an ancestral woman began menstruating in her late teens, and then likely underwent many pregnancies, each followed by years-long periods of breastfeeding (which suppresses menstruation). An average modern woman experiences 3-5 times as many menstrual cycles. It’s very confusing.\nBest guess: No idea.\nCell junk / diabetes / transplants.\nAs far as I can tell, these are mostly unrelated.\nTLDR\nCancer is bad because cancer is bad. Cancer is also bad because evolution made gruesome realpolitik compromises in the design of every part of the body to try to hold cancer in check. If we lived in a universe where cancer was impossible, we wouldn’t just not get cancer, our bodies would also be enormously more regenerative and longer lasting.\nIn a sense, even if you don’t get cancer, cancer still hurts you, because your body was forced to take costly preventative actions. (Even if the barbarians never get over your city wall, you still had to build the wall.) Even if we someday completely defeat cancer, its legacy will live on in our genes until the point that we re-design ourselves. Screw cancer.\nSome people think linear DNA is easier to copy. Others think that linear DNA just happened by accident, but when it happened it was survivable because we happened to have retrotransposons, i.e. bits of DNA that build little machines to create new copies of their DNA and insert it into the genome. After the break in the circular chromosome, those machines started putting copies of their DNA on the end, because that’s what they do, and this made the break survivable. Those retrotransposons later became telomerase. ↩\nThis is teleological; let’s not let it come between us. ↩\nThis could happen because your immune system contains them. Or because oxygen and nutrients can’t diffuse inside the clump of mutated cells. Or because they run into a barrier of different cell types that they can’t outcompete. Or for other reasons. ↩\nHello biologists!\nYou might be thinking, “Well actually, 90% of cancers turn telomerase back on; clearly telomeres don’t help that much; Dynomight why are you so bad?”\nThat is approximately what the Dynomight Biologist thought, when pressed into service to review this post.\nTrue, having telomeres that wear down is not a magic bullet that makes cancer impossible. And yes, most cancers figure out how to turn telomerase on. But that is a linguistic fact. Your body has lots of mutated cells all over the place, most of which will never hurt you. Conceivably, we could have defined all mutated cells as “cancer”, with subcategories of “low risk to health” and “significant risk to health”. Then, telomeres would seem great, because it’s hard for cells to move from “low risk” to “high risk” without figuring out how to turn telomerase on. That’s hard to do through blind random mutation, which is one reason most of your mutated cells are in the “low risk” category. Cells do sometimes succeed in turning telomerase on, but it’s still a useful layer in body’s layered cancer defense strategy.\nWe didn’t happen to define our words that way. Instead, we defined “cancer” to mean approximately “mutated cells that pose a significant risk to health” and we’ve invented other categories for other mutated cells (benign neoplasm, clonal expansion, hyperplasia, etc.) The “cancer” category excludes most cells that don’t turn telomerase on because telomere shortening is a good (albeit leaky) barrier between mutated cells and risks to your health. Just because Vikings sometimes get past your city wall doesn’t mean that a city wall is not worth having.\nThank you for visiting my footnote.\n↩\nThe precise reasons that salamanders can regrow limbs but most species can’t is somewhat unclear. You could speculate that salamanders tend to lose limbs more frequently, so it’s more worth it for them to pay the “cancer tax”. Or you could speculate that cancer isn’t as much of an issue due to their short lifetime. But do they actually have an unusually high frequency of needing to regrow limbs? And are they paying some kind of cancer tax? What would we even look at to determine that? Cancer rates vary in different animals for all kinds of reasons. ↩\nDead cardiac muscle is replaced with scar tissue. Dead neurons are replaced with a “brain scar” made of glial cells. ↩\nThyroid cancer risk is hard to rate, because it’s common but has a very low fatality rate. ↩\nYou wouldn’t want to make the liver unable to regenerate, but there are several “knobs” that might be tuned. Broadly speaking, the liver could be designed to regenerate more slowly, with more careful “proofreading” and slower/stricter cell-cycle checkpointing. Then liver injuries would take longer to heal, but would result in fewer mutated cells. ↩",
+      "id": "a80cc87b07991dc8b4cf5f8d7b1730b905bf0047ac2411a1290136daae61f6ce",
+      "ref_id": "1",
+      "recommendationScore": 10,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "科技博客不相关，纯生物哲学探讨。",
+      "reason": "内容与科技主题无关，不符合博客定位，无法进行技术评估。",
+      "tags": [
+        "Biology",
+        "Philosophy",
+        "Speculation"
+      ]
+    },
+    {
+      "title": "Experiencing writing at our recent Chinese calligraphy workshop",
+      "link": "https://viewsproject.wordpress.com/2026/09/06/chinese-calligraphy-workshop/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-24T15:40:03.000Z",
+      "summary": "Article URL: https://viewsproject.wordpress.com/2026/09/06/chinese-calligraphy-workshop/\nComments URL: https://news.ycombinator.com/item?id=49832231\nPoints: 17\n# Comments: 1",
+      "id": "adfb94e8f7a25c494237a9be1612c6546cb633a1f53636352143775a3d4a3ae2",
+      "ref_id": "3",
+      "recommendationScore": 5,
+      "popularityScore": 17,
+      "priority": "low",
+      "comment": "一篇关于中国书法工作坊的文化体验文章，与科技博客主题完全不符。",
+      "reason": "主题与设定的科技博客关注方向完全不符，不具备任何技术或行业相关性。",
+      "tags": [
+        "文化",
+        "艺术",
+        "生活"
+      ]
+    },
+    {
+      "title": "Stable (YC W20) Is Hiring Product Engineers",
+      "link": "https://www.usestable.com/careers/product-engineer",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-24T18:29:18.000Z",
+      "summary": "Article URL: https://www.usestable.com/careers/product-engineer\nComments URL: https://news.ycombinator.com/item?id=49834893\nPoints: 0\n# Comments: 0",
+      "id": "b203fe90512413472d9f8ddfd8d6dddfb53bec0b65e41ce16399adcec154b648",
+      "ref_id": "1",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "这仅是一篇招聘信息，不包含技术内容。",
+      "reason": "文章内容不属于科技博客评估范畴，缺乏技术深度和信息。",
+      "tags": [
+        "Recruitment",
+        "Job Posting"
+      ]
+    }
+  ]
+}
