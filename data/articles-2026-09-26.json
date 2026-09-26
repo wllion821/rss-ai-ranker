@@ -1,0 +1,645 @@
+{
+  "dailySummary": "今日速递：OpenAI代理成功攻破Hugging Face细节曝光，凸显AI代理强劲能力与潜在安全风险。同时，AI正深刻影响编程范式及开发者体验，从视觉编码到大模型封装，并引发AI硬件品牌策略调整。",
+  "articles": [
+    {
+      "title": "How to keep enjoying programming in a world of LLMs",
+      "link": "https://discourse.haskell.org/t/how-to-keep-enjoying-programming-in-a-world-of-llms/14705",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-26T09:41:58.000Z",
+      "summary": "Article URL: https://discourse.haskell.org/t/how-to-keep-enjoying-programming-in-a-world-of-llms/14705\nComments URL: https://news.ycombinator.com/item?id=49854875\nPoints: 78\n# Comments: 135",
+      "id": "e266205743ce16bd34473dcf2bdecac2d7d158cf9e4b8a60b86b7ce8a6b47f0a",
+      "ref_id": "1",
+      "recommendationScore": 96,
+      "popularityScore": 29,
+      "priority": "high",
+      "comment": "深入探讨了在LLM时代，程序员如何保持热情并适应新工作流的指导性文章。",
+      "reason": "紧扣AI热点，为开发者提供了面对LLM影响的心理调适和职业发展策略，实用性极强且话题具有高优先级。",
+      "tags": [
+        "AI",
+        "LLM",
+        "编程",
+        "开发者心态",
+        "职业发展"
+      ]
+    },
+    {
+      "title": "Drawgent: Coding agent on a live Excalidraw canvas",
+      "link": "https://tangled.org/yanndegat.tngl.sh/drawgent",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-26T15:56:34.000Z",
+      "summary": "Article URL: https://tangled.org/yanndegat.tngl.sh/drawgent\nComments URL: https://news.ycombinator.com/item?id=49857729\nPoints: 37\n# Comments: 16",
+      "id": "b716be8129cd3d8fd01e29dc67a38a432acb63aed7f4dcfc068c34948a8b6c21",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "一个创新的AI编码代理，可以直接在Excalidraw画布上生成和修改代码。",
+      "reason": "完美结合了AI、编程工具和可视化设计，技术深度和新颖性高，实用性强，高度符合AI主题优先级。",
+      "tags": [
+        "AI",
+        "编程工具",
+        "自动化",
+        "产品设计",
+        "独立开发",
+        "可视化"
+      ]
+    },
+    {
+      "title": "Revealing the details of how OpenAI agents hacked Hugging Face",
+      "link": "https://swarmtraces.org/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-25T21:09:27.000Z",
+      "summary": "Article URL: https://swarmtraces.org/\nComments URL: https://news.ycombinator.com/item?id=49849985\nPoints: 645\n# Comments: 413",
+      "id": "9973f8e7ebb5939a587ed163958ef7e7449742952df845b8c3a44cf31053d9aa",
+      "ref_id": "2",
+      "recommendationScore": 95,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "详细揭露OpenAI智能体如何攻破Hugging Face，AI安全领域重大事件。",
+      "reason": "直接关乎AI安全前沿，技术细节丰富，具有极高的新颖性、实用性和紧迫性，以及超高关注度，是必读的AI领域文章。",
+      "tags": [
+        "AI",
+        "Security",
+        "OpenAI",
+        "Hugging Face",
+        "Vulnerability",
+        "Agents"
+      ]
+    },
+    {
+      "title": "Reverse-engineering the vintage Intel 8087's tangent algorithm: more than CORDIC",
+      "link": "http://www.righto.com/2026/09/8087-tangent-cordic.html",
+      "source": "righto.com",
+      "publishedAt": "2026-09-26T16:20:56.564Z",
+      "summary": "I hope you're not tired of the 8087, because I have another article about\nIntel's floating-point chip.1\nIn 1980, Intel introduced the 8087, making floating-point operations much faster\nin the IBM PC and other systems.\nIn this article, I look at the algorithm behind the chip's tangent instruction.\nOne popular approach for trigonometric functions is an algorithm called CORDIC.\nAnother approach is a polynomial approximation. The 8087 combined the two\nto obtain both high accuracy and high performance.\nThe 8087 provided an enormous speedup over the 8086 microprocessor, computing a tangent in\n90 microseconds rather than 13,000 microseconds.2\nBy examining the circuitry and microcode of the 8087,\nI can explain the algorithm behind the tangent instruction, called FPTAN.\nTo explore the 8087's circuitry, I popped the lid off a chip with a chisel\nand created a high-resolution image with a microscope.\nThe microcode ROM is the large rectangular region in the center of the die, holding the 1648 micro-instructions that control the chip.\nThe bottom half of the chip (red box) is the datapath, the circuitry that performs floating-point calculations on 80-bit values.3\n\nA close-up of the 8087's datapath, showing functional blocks that are used by FPTAN. Click this image (or any other) for a larger version.\n\nZooming in on the datapath shows the relevant functional units.\nThe exponent ROM holds fixed exponent values that the algorithms need.\nThe constant ROM holds constants, including the constants used by the CORDIC algorithm.\nThe shifter is a large component; it shifts a 64-bit value left or right by arbitrary amounts.\nThe adder is the heart of the 8087's calculations; as well as providing addition and subtraction, it is used in a loop for multiplication, division, and square roots.\nThe B register holds one input to the adder, while multiple sources can provide the other input. The sum register holds the adder's output.\nThe eight stack registers and the temporary registers hold floating-point numbers.\nFinally, the shift register holds 16 status bits for the CORDIC calculations.\nThe CORDIC algorithm\nCORDIC is a clever algorithm for quickly computing transcendental functions\nwith simple hardware: it uses shift and add instructions along with table lookups,\nbut doesn't need multiplication or division.\nThis algorithm dates back to 1956, when it was developed for the B-58 Hustler,\nthe first bomber capable of flying at Mach 2.\nThe aircraft had an analog navigation computer, but analog components provided limited accuracy.\nEngineer Jack Volder was given the task of designing a digital computer to replace\nthe analog computer.7\nOne key problem was that an analog computer can easily generate sines and cosines\nwith an electromechanical device called a resolver.\nBut trigonometric functions are difficult to produce digitally, especially with the\nslow transistors of that era.\n\nA Convair B-58A Hustler, on display in San Antonio, TX (details).\n\nJack Volder came up with a fast way to calculate trigonometric functions\nwith simple hardware.\nHe called the algorithm—and the computer that implemented it—CORDIC: \"COordinate Rotation DIgital Computer\".\nCORDIC converts an angle to a vector, where\nthe vector's coordinates provide the necessary trig functions.\nThe trick is to break down the angle into a sequence of special angles, angles that\nmake vector rotation easy.\nThese special angles are precomputed and stored in a table, so the CORDIC calculation\ncan be performed quickly, even on 1950s hardware.\nEach CORDIC iteration provides an additional bit of accuracy, so the algorithm converges\nrapidly. CORDIC became popular, including in scientific calculators, which used decimal CORDIC instead of binary.\nSome trigonometry\nI'll try to keep the math to a minimum, but in this section I'll give a quick explanation\nof how CORDIC works.\nThe diagram below reviews how trig functions are related to the coordinates of a point.\nSuppose you have an angle θ; it specifies a point (X, Y) on the unit circle. \nThe basic formulas are X=cos θ, Y=sin θ, and Y/X = tan θ.\nThus, if you can determine the coordinate (X, Y), then you can determine the value of the\ntrig functions.\nIf the point is not on the unit circle, e.g. (X', Y'), then you can still easily determine\ntan θ. (Spoiler: this is what the 8087 does.) However, sin θ and cos θ become messy.4\n\nThe relationship between an angle, the X and Y coordinates, and the trig functions.\n\nIf you've done any computer graphics, you've probably seen how a rotation matrix can rotate a point by an angle. (If you're not familiar with rotation matrices, you can read about them here or just trust that it works.)\nMultiplying a point (X, Y) by the rotation matrix yields the new point (X', Y') as shown below.\n\nA point can be rotated by using a rotation matrix.\n\nUnfortunately, since the rotation matrix (1, below) requires sin and cos, it doesn't seem like it helps solve our problem.\nHowever, we can divide the matrix by cos θ; this seems even less helpful since now the matrix (2) needs tan, which is what we want to evaluate. (Moreover, the vector's length will grow.)\nBut the key to CORDIC is to use special angles, αn = arctan(2-n).\nWhen we substitute one of these special angles into the matrix, we get matrix (3), which is easy to evaluate in hardware: multiplying by a power of 2 can be done by shifting the bits.\n\nSimplifying the rotation matrix.\n\nApplying matrix (3) to the point (X,Y) gives the equations (4).\nThese are key equations for the CORDIC process.\nThe important thing is that these equations are fast and easy to compute in machine language or\nhardware, as the only operations are addition, subtraction, and binary shifting.\nWith that background, we can see how CORDIC works.\nFirst, we break down the desired input angle into a combination of special angles that\nadds up to the desired angle.5\nThen we apply the rotation formula above for each special angle, \nstarting with the unit vector (1, 0). The result is a point\n(X, Y) at the desired angle, and then the desired tangent is simply Y/X.6\nSince the table of special angles is precomputed, the arctan operations don't slow down the process.\nAs an aside, after the first few terms, the special angles approach 2-n,\nso they shrink by roughly a factor of 2 at each step.\nTo summarize, the CORDIC algorithm consists of looping through a table of stored angles.\nIf the stored angle is less than the desired angle, the stored angle is subtracted from the\ndesired angle to yield a new desired angle and the equations above (shifts, add, and subtract) are applied to yield a new vector.\nAt the end, the tangent of the original angle is given by Y/X.\nThe rational polynomial approximation\nThe accuracy of CORDIC depends on the number of terms that are used. With 16 terms, the\naccuracy is approximately 2-16, or 16 bits of accuracy.\nTo get 64 bits of accuracy would require calculating 64 terms (and a table of 64 special angles).\nTo get an answer faster, the 8087 uses 16 bits of CORDIC and uses another algorithm for\nthe remaining angle.\n(The remaining angle is the gap between the sum of special CORDIC angles and the desired angle,\nso it is very small, around 2-16.)\nFor the remaining angle, the 8087 uses a Padé approximant, which is the ratio of two polynomials.\nThere's a whole family of Padé approximations, depending on the order of the polynomials.\nThe 8087 uses a simple formula: 3x/(3-x2).8\nAlthough this approximation is simple, it is very accurate for small values; its error is proportional to x4.\nSince x<2-16, the error will be less than 2-64, meeting the 64-bit accuracy\nrequirement for the 8087.\nMoreover, the 8087 doesn't need to perform the division in the rational polynomial since\nFPTAN returns a separate numerator and denominator. Thus, the division is \"free\".\n\nThe tangent function (red), rational approximation (blue), and Taylor series (green).\nDisclaimer: The Taylor series isn't as bad as it appears, since the relevant range is very close to 0.\nGraph generated with Desmos.\n\nIf you've studied calculus, you might think that a Taylor series polynomial is the way to go,\nbut the ratio of two polynomials is better.\n(One reason is that tangent blows up to infinity at π/2.\nA polynomial won't blow up, but the ratio of polynomials can, so it fits the tangent function better.)\nThe graph above compares the tangent function (red), the rational approximation (blue),\nand the third-order Taylor series (green).\nPutting the pieces together: the 8087 algorithm\nThe 8087's tangent algorithm has three parts: determining the CORDIC decision bits (called pseudo-division),\ncomputing the rational approximation, and applying the rotation equations based on the\nCORDIC decision bits (called pseudo-multiplication).9\nIn more detail, the first step determines which special angles to add to approximate the\ninput angle. \nEach special angle is compared to the remaining input angle and subtracted if it is smaller.\nIf the angle is subtracted, a 1 is recorded; otherwise, a 0 is recorded.\nSince this process is similar to how long division subtracts (or doesn't subtract) successive\nshifted versions of the divisor, generating 1s or 0s for the quotient, the process is known as pseudo-division.\nNote that the rotations are not applied in this step. Instead, this step decides which rotations\nto apply later.\nThe diagram below shows this process applied to the input angle 0.95 radians.10\nThe process generates the sequence of bits\n[1,0,0,1,0,1,0,1,0,0,1,0,0,1,1,1],\nwhere the leftmost bit indicates arctan(20) and so forth.\nThe angle is reduced by roughly a factor of 2 at each step, so the residual angle is\nvery small.\n\nIn the first phase of the CORDIC algorithm—pseudo-division—the input angle is reduced by special angles, leaving a residual angle at the end. (\"rad\" is radians, not the unit of radiation.)\n\nNext, the tangent of the remaining angle is calculated with the rational approximation\nfunction, 3x/(3-x2).\nThe result is used as the initial vector for the next step.\nThe division is not performed here; instead, the numerator becomes Y in the initial vector\nand the denominator becomes X. Thus, the expensive division step is avoided, since it\nhappens implicitly in the answer.\nMultiplying by 3 is easy (shift left and add), so the only expensive operation at this\nstep is squaring the angle, which requires a full 64-bit multiplication.\nThe final step applies each CORDIC rotation if the corresponding decision bit from the first step is\n1.\nSince this is somewhat analogous to binary multiplication, which adds the multiplicand\nat each step if the multiplier bit is 1, this step is known as pseudo-multiplication.\nAs described earlier, each rotation is computed with shifts, addition, and subtraction,\nso each rotation is inexpensive.\nEach rotation in this step corresponds to an angle reduction in the first step.\nThe rotations are applied in\nreverse order—the smallest one first—to reduce rounding error.\nTo accomplish this, the decision bits are stored in a 16-bit shift register in the\nfirst step, and shifted out in opposite order in this step.\n\nIn the last phase of the CORDIC algorithm—pseudo-multiplication—a vector is rotated multiple times by applying shifts and adds. The final vector provides the tangent.\n\nThe diagram above shows the process applied to the input 0.95. \nThe initial vector (green) comes from the rational approximation function; it is very close to\n(3, 0), but slightly rotated due to the tiny residual angle.\nEach rotation step generates a new vector that matches the angle from the corresponding\nstep in the first part; I show two of the rotation matrices.\nNote that the vectors diverge from the circle—a consequence of dividing each matrix by cos θ—but this doesn't\naffect the tangent.\nThe FPTAN instruction is somewhat peculiar as it doesn't return the tangent directly.\nInstead, it returns the Partial Tangent: the two coordinate values\n(X and Y) that can be divided to produce the tangent.\nOne might wonder why the chip didn't do the division automatically.\nThe motivation was that division\nwas slow back then, and omitting the division allowed for optimizations in some cases.\nRelevant hardware details of the 8087\nIn this section, I'll explain some features of the 8087 that are important for the microcode implementation of FPTAN.\nThe 8087 supports a variety of data types,\nbut internally, everything is stored as an 80-bit floating-point number called a \"temporary real\".\nA number has three parts: a sign bit, a 15-bit exponent, and a 64-bit significand (the fractional part),\nIn most cases, a floating-point number is represented by sign × significand × 2exponent.\nThe advantage of floating-point numbers is that the exponent allows them to cover a huge range, from very small to very large.\nThe significand is a 64-bit binary number of the form 1.bbb…:\na leading 1, followed by the binary point (the binary equivalent of the decimal point) and the rest of the bits.11\nOne important detail is that the exponent is stored with a \"bias\" of 16383 added to it. Thus, the stored exponent is always positive, even if the real\nexponent is negative. For instance, an exponent of 1 is stored as 0x4000, and an exponent of -16 is stored as 0x3fef.\n\nThe 80-bit temporary real format and the register formats. The dot indicates the binary point, analogous to the decimal point.\n\nTo use the 8087, a programmer stores values in its eight internal registers, organized as a stack. Each register holds an 80-bit floating-point number.\nTo optimize performance,\neach value in the register stack also has an associated \"tag\" value:\nzero, valid, special, or empty.\nA value of zero is tagged as zero.\nA \"normal\" floating-point value is tagged as valid. If the value is infinity, Not a Number (NaN), or a denormalized value,\nthen it is tagged as special.\nFinally, an empty tag indicates that a register does not hold a value; this allows detection of\nstack underflow (reading an empty register) or stack overflow (storing to a non-empty\nregister).\nThe 8087 also has temporary registers that it uses internally: tmpA, tmpB, and tmpC.\n(These registers are heavily used for the tangent calculation.)\ntmpA and tmpB are 80-bit registers, along\nwith two tag bits.\nHowever, tmpC is different: it doesn't have a sign, exponent, or tag.\nMoreover,\nthe significand is 68 bits; tmpC has an additional\nbit to prevent overflow and three additional low-order bits for rounding, known as\nguard, round, and sticky.\nIn the microcode,\neach 16-bit micro-instruction performs one low-level operation.\nMany of the operations move data from one register to another.\nOther operations provide conditional jumps, subroutine calls, and returns.\nA bit shift operation takes two micro-instructions: the first moves a value to the shifter and\nconfigures the direction and amount of shift. The second micro-instruction (which may be\na distance after the first) moves the result from the shifter to a destination.\nSimilarly, addition takes two micro-instructions. The first micro-instruction\nspecifies the first argument to add and selects various options such as\ncarry and rounding.\n(For subtraction, an option complements the second argument.)\nThe second argument always comes from the B register, which confusingly is\nunrelated to the tmpB register.\nThe second micro-instruction moves the result from the sum register to a destination.\nImplementation of the tangent algorithm in microcode\nIn this section, I'll discuss some highlights of the tangent microcode.\nThe listing below shows the 8087's microcode, along with my comments.\nEach line indicates a 16-bit micro-instruction.\nThe control flow is a bit complicated, so I've put a flowchart in the footnotes.12\nFPTAN:\n#1039 st(0) -> tmpA        store argument in tmpA\n#1040 stackPtr--           check if room on stack to push result\n#1041 stack overflow?\n#1042 jmp #1022 if tmp empty/special/overflow/div exit if bad argument or stack overflow\n#1043 jmp #1045 if tmpA:tag ZERO is argument 0?\n#1044 except:precision     precision exception except for 0\n#1045 expconst 0x3ff0      Test if exponent >= -16\n#1046 adder: tmpA:exp + 0 cin=1 argument exponent + 1\n#1047 expConst -> Breg\n#1048 adder: sumreg:frac - Breg cin=1 subtract -15\n#1049 jmp #1061 if adder pos CORDIC if exponent >= -16\n#1050 expconst 0x3fff      non-CORDIC path:\n#1051 tmpA:exp -> Breg     check original exponent\n#1052 expConst -> tmpB:frac against exponent 0\n#1053 adder: tmpB:frac - Breg cin=1 subtract\n#1054 sumreg:frac -> expConv 3fff - exp (i.e. -exp unbiased)\n#1055 sumreg:frac -> shiftcount\n#1056 jmp #1082 if exponent[6:14] != 0 if exp > -64 goto rational approximation\n#1057 high bit -> tmpB:frac otherwise return original argument\n#1058 expConst -> tmpB:sign,exp push 1 for X (denom): result is orig angle\n#1059 tmpB -> st(0)\n#1060 RNI\n#1061 expconst 0x0010      CORDIC path\n#1062 sumreg:frac -> loopcounter loopcounter = exp + 16\n#1063 tmpA:frac -> tmpC    tmpC = original angle\n#1064 trig const -> Breg/rnd\n#1065 adder: tmpC - Breg cin=1, roundmode subtract first CORDIC angle\n#1066 adder sign -> cordic, shl save bit  in shift register\n#1067 jmp #1079 if not adder pos\n#1068 sumreg:frac,rnd -> tmpC\n#1069 adder: tmpA:exp + 0 cin=1 increment exp if first angle used\n#1070 sumreg:frac -> tmpA:exp\n#1071 jmp #1079\n#1072 shift tmpC L 0 bytes, 1 bits top of CORDIC scan loop\n#1073 shift L -> tmpC      shift angle left\n#1074 trig const -> Breg/rnd\n#1075 adder: tmpC - Breg cin=1, roundmode subtract CORDIC angle\n#1076 adder sign -> cordic, shl save decision bit in shift register\n#1077 jmp #1079 if not adder pos\n#1078 sumreg:frac,rnd -> tmpC\n#1079 jmp #1072 if not const latch zero bottom of CORDIC scan loop\n#1080 tmpC -> tmpA:frac    update tmpA, tmpB\n#1081 expConst -> shiftcount 16 -> shiftcount (otherwise based on exponent)\n#1082 tmpA:frac -> tmpB:frac Padé approximation\n#1083 tmpA:frac -> Breg    tmpA = ang\n#1084 call SQUARE          square the angle\n#1085 shift sumreg:frac R count byte bit\n#1086 shift R -> sumreg:frac shift twice to scale square\n#1087 shift sumreg:frac R count byte bit\n#1088 shift R -> Breg      Breg = ang^2\n#1089 1.1 -> tmpB:frac     3 (with exp 1)\n#1090 adder: tmpB:frac - Breg cin=0\n#1091 sumreg:frac -> tmpB:frac tmpB (X) = 3-ang^2\n#1092 shift tmpA:frac R 0 bytes, 1 bits\n#1093 shift R -> Breg/rnd\n#1094 adder: tmpA:frac + Breg cin=0, roundmode ang + ang/2\n#1095 sumreg:sign,frac,rnd -> tmpC tmpC (Y) = 3×ang with appropriate exponent\n#1096 expconst 0x3ff0      exponent -15\n#1097 expConst -> Breg\n#1098 adder: tmpA:exp - Breg cin=1\n#1099 jmp #1118 if not adder pos skip if exponent too small\n#1100 shift tmpC R 0 bytes, 1 bits CORDIC pseudo-multiplication path\n#1101 #15 -> loopcounter\n#1102 shift R -> tmpC\n#1103 jmp #1113 if not cordic[0] CORDIC: if saved decision bit...\n#1104 shift tmpC R loopcount send tmpC (Y) to shifter\n#1105 tmpC -> Breg/rnd     send tmpC to adder\n#1106 adder: tmpB:frac + Breg cin=0, roundmode tmpB (X) not shifted because tmpC scaled\n#1107 sumreg:sign,frac,rnd -> tmpC tmpC = tmpC + tmpB (implicit >>n)\n#1108 shift R -> sumreg:frac,rnd shifted old tmpC to sumreg\n#1109 shift sumreg:frac,rnd R loopcount shift right again because tmpC scaled\n#1110 shift R -> Breg/rnd  and send to B reg\n#1111 adder: tmpB:frac - Breg cin=1, roundmode\n#1112 sumreg:frac,rnd -> tmpB:frac tmpB = tmpB - tmpC>>n\n#1113 cordic shr           shift out shift register bit\n#1114 shift tmpC R 0 bytes, 1 bits start shift of tmpC (Y)\n#1115 jmp #1118 if cordic==0 done if shift register empty\n#1116 shift R -> tmpC      shift tmpC (Y) right\n#1117 jmp #1103 if not const latch zero done if counter at zero\n#1118 expconst 0x3fff      CORDIC done\n#1119 tmpB:frac -> sumreg:frac Test top bit of tmpB (X)\n#1120 jmp #1124 if reg bit 63 If set, use exponent 0\n#1121 expconst 0x3ffe      Otherwise, use exponent -1 and\n#1122 shift sumreg:frac L 0 bytes, 1 bits shift left one bit to normalize\n#1123 shift L -> tmpB:frac\n#1124 expConst -> tmpB:sign,exp store exponent in tmpB\n#1125 tmpC -> tmpA:frac    store tmpC (Y) in tmpA\n#1126 tmpC -> sumreg:frac,sign\n#1127 jmp #1132 if not sumreg[64] test overflow bit\n#1128 shift tmpC R 0 bytes, 1 bits if set, normalize by shifting right\n#1129 shift R -> tmpA:frac\n#1130 adder: tmpA:exp + 0 cin=1 and increment exponent by 1\n#1131 sumreg:frac -> tmpA:exp\n#1132 tmpB -> st(0)        tmpB to top of stack: X (denom)\n#1133 stackPtr++\n#1134 tmpA -> st(0)        tmpA to st(1): Y (numerator)\n#1135 stackPtr--\n#1136 RNI                  End of FPTAN\n\n\nThe FPTAN microcode starts at address #1039 (decimal).\nThe microcode starts by moving the argument from the top of the stack to the tmpA register.\nIf the top value is empty, this indicates a stack underflow. If the next element on\nthe stack (the position that will hold the result) is not empty, this indicates a stack\noverflow. In either case, the microcode indicates an \"invalid\" exception and ends the instruction.\nOne peculiar feature of the 8087 is that it flags a result with a \"precision\" exception if\nthe result is not exact. (This happens very frequently, even for, say, 1/10.)\nThe only tangent that the 8087 can compute precisely is tan(0), so all other inputs\nresult in a precision exception (#1044).\nNext, the argument's exponent is tested, splitting the execution into three paths.\nIf the exponent is -64 or less, the argument is so small that\nthe tangent equals the argument, within the accuracy of the system.13\nIn this case (#1057), the original argument is returned unchanged (with the denominator 1 pushed), and the code ends.\nThe second case is if the argument's exponent is -17 or less. In this case,\nthe CORDIC step is skipped, and the routine jumps directly to the rational approximation (#1082).\nCORDIC pseudo-division\nThe most interesting case is the CORDIC path (#1061), taken if the exponent is between -1 and -16.\nConceptually, the code performs 16 CORDIC steps, using 16 stored angles.\nHowever, the code is optimized, skipping the large angles for smaller\ninputs.\nSpecifically, the loop counter is initialized based on the\nexponent of the input angle (#1062).\nThe CORDIC pseudo-division loop (#1061-#1080) tests the angles, subtracting ones that aren't too big.14\nThe decision results are recorded in a 16-bit shift register, located on the far right side of the die.\nPresumably, this is where the layout had some unused space.\nSince the shift register is loaded and unloaded serially, it doesn't need access to the\ninternal fraction bus, just two lines to shift the bits in and out, so the shift\nregister could be located in otherwise unused space.\nThe code is optimized to use 64-bit integer arithmetic rather than floating-point arithmetic.\nThis makes it tricky to understand the code since values\nmust be viewed more as fixed-point numbers with\nimplicit exponents.\nThese exponents are not stored anywhere, but can be determined by analyzing the algorithm.\nEven the angle constants in the ROM do not have explicit exponents.15\nMoreover, the implicit exponents change for each step through the loop to preserve accuracy.\nRoughly speaking, each cycle of the loop reduces the values by a factor of 2, and the\nangle constants shrink accordingly.\nIf the values had a fixed exponent, they would end up with 16 leading zeros, wasting\nprecision. But by scaling the values each cycle (with a left shift),\nthe numbers continue to use the full 64 bits.\nIn other words, the hardware is performing fast integer arithmetic, but mathematically\nyou can think of it as fixed-point with exponents that don't physically exist in the chip.\nSee the table in the footnotes16 for details on how the implicit exponents change through\nthe loop.\nRational polynomial approximation\nAfter the CORDIC pseudo-division loop, the microcode calculates the rational polynomial\napproximation (#1082).\nThe small-angle path rejoins the execution flow here.\nThe microcode to calculate the polynomial approximation has a few interesting features.\nThe most time-consuming part is the SQUARE routine, which multiplies a fixed-point number by itself.\nMultiplication is complicated, so I'll give the details in a later post.\nBut in brief, the 8087 uses Booth's Algorithm to\nmultiply by two bits at a time (radix 4), so it is twice as fast as regular binary\nmultiplication.\nThe loop to perform the shifts and adds is implemented in hardware, rather than microcode.\nThat is, one microcode instruction performs 32 additions: the hardware tests the\nbits, does the appropriate add or subtract, updates the loop counter, and loops.\nFor performance, the shifting is done with specialized shifters, not the 8087's general-purpose\nshifter.\nExcept for the square, the polynomials are calculated with additions rather than multiplications.\nThe constant 3 doesn't come from the constant ROM, but from special-purpose transistors that\nset the top two bits of the significand; this is usually used to supply an NaN.\n(If the implicit exponent is 1, this corresponds to 3.)\nSubtracting the square yields the numerator. For the denominator, the angle is shifted\nright (i.e. divided by 2) and added to itself. \nThis performs a multiplication by 3 (technically by 1.5, but increasing the implicit\nexponent to 1 turns this into 3).\nIt would be expensive to divide the numerator by the denominator; instead, the numerator\nand denominator are used as the initial Y and X values for the following CORDIC steps.\nCORDIC pseudo-multiplication\nNext is the CORDIC loop where the rotations are applied to the vector (#1100).\nThe rotations are applied in the reverse order from how they were computed in the first step:\nthe smallest rotations are applied first to preserve accuracy.\nBits are shifted out of the shift register to indicate if the rotation should be applied or\nnot. As soon as the shift register is all zeros, the loop stops.\nIn other words, smaller angles go through the loop just a few times, not the full 16 times.\n\nA close-up of the microcode ROM under the microscope. A transistor is formed where a vertical polysilicon line crosses doped silicon (pink). The 8087's ROM is unusual: it uses four transistor sizes, so it stores two bits per transistor, twice the density of a regular ROM.\n\nThe rotations are applied by shifts and adds (or subtracts), but keeping track of the\nimplicit exponents is a bit tricky.\nSince the vector starts almost horizontal, the X value is approximately 3, and the Y value\nis around 2-16.\nAs the vector rotates, X remains roughly 3, but Y potentially increases by a factor of 2\neach time.\nTo provide the maximum accuracy for each number,\nthe exponent for X (tmpB) is 1, while the exponent for Y (tmpC) starts off at\n-14 and increases by 1 each loop as Y is shifted right.\n(Remember that these exponents are not stored anywhere but are implicit.)\nSince the two registers have different (implicit) exponents, the values must be shifted\nbefore adding.\nThe shift amounts aren't intuitive; the table16 in the\nfootnotes may help clarify.\nAfter the CORDIC loop, \nthe final part of the code (#1118) normalizes the X and Y values, creating the floating-point\nvalues that are returned from the instruction.\nRecall that these aren't \"real\" floating-point values at this point, so they\nmay need adjustment.\nSpecifically, if X doesn't have a\nleading 1, it is shifted left one position, while if Y has two leading digits, it\nis shifted right one position. In either case, the exponent is adjusted accordingly.\nThe X and Y values are put on the stack (#1132) to complete the instruction.\nConclusions\nThe FPTAN instruction is fairly slow as 8087 instructions go, due to its complexity.\nThe documentation says that it takes typically 450 clock cycles.\n(The time has a large range; depending on the value, it can take 30 to 540 clock cycles.)\nFor the value I examined (0.95), 33% of the time is in the CORDIC\npseudo-division, 15% in the rational polynomial (mostly the squaring operation), 47% in the CORDIC pseudo-multiplication, and 5% overhead.\nCORDIC is a popular way to compute trig functions, but there are alternatives such as polynomials.\nThe 8087 is unusual because it combines CORDIC and a rational polynomial.\nFor the Pentium, Intel moved from CORDIC to polynomial approximations;\nthe Pentium's fast multiplication circuitry made polynomials practical.\nNowadays, Intel has libraries such as MKL (Math Kernel Library)\nand \nShort Vector Math Library (SVML) that provide highly optimized implementations tailored\nto Intel hardware. These libraries are said to use polynomial approximations,\nusing parallel instructions (SIMD) for performance, rather than specialized hardware.\nWith these libraries, x87 operations and 80-bit floats are mostly obsolete.\nNonetheless, I hope you've enjoyed this look at an original 8087 algorithm.\nI plan to continue reverse-engineering the 8087 microcode;\nfor updates, follow me on\n Bluesky (@righto.com),\nMastodon (@kenshirriff@oldbytes.space),\nor RSS.\nI've been working on this with the members of the \"Opcode Collective\", especially Smartest Blob and Gloriouscow, who converted the\nROM images to microcode data and extensively analyzed the contents.\nSee the 8087 repository on GitHub for more.\nAI statement: Despite the presence of the em dash, no AI was used in the writing of this article (details). The Opcode Collective used an ML algorithm to classify each ROM cell to extract the microcode.\nNotes and references\nIf you want more on the 8087, here's a list of my previous 8087 posts, newest to oldest:\nMicrocode in Intel's 8087 floating-point chip: the scale instruction\nThe adder at the heart of Intel's 8087 floating-point chip\nMicrocode inside the Intel 8087 floating-point chip: register exchange\nInstruction decoding in the Intel 8087 floating-point chip\nConditions in the Intel 8087 floating-point chip's microcode\nThe stack circuitry of the Intel 8087 floating point chip, reverse-engineered\nDie analysis of the 8087 math coprocessor's fast bit shifter\nExtracting ROM constants from the 8087 math coprocessor's die\nTwo bits per transistor: high-density ROM in Intel's 8087 floating point chip\nInside the die of Intel's 8087 coprocessor chip, root of modern floating point\n ↩\nIntel's documentation\nprovides a performance comparison of the 8087 versus floating-point operations emulated on the 8086.\nThe speedup varies depending on the instruction, but is typically almost a factor of 100.\nThis speedup made the 8087 chip highly desirable for numerical applications such as CAD and spreadsheets. ↩\nInternally, the 8087 uses 80 bits to hold floating-point values: one bit for the sign,\n15 bits for the exponent, and 64 bits for the significand.\nHowever, the 8087 uses three extra low-order bits for rounding, called Guard, Round, and Sticky. These bits ensure that a value is always rounded in the right direction.\nSome parts of the datapath have additional bits for sign or overflow: the shifter is 68 bits wide, and the adder is 69 bits wide.\nFor the most part, I'll ignore these extra bits and refer to the datapath as 64 bits wide. ↩\nTo compute sin θ from the 8087's X and Y values, the typical formula\nis sin θ = Y/sqrt(X2+Y2); cos θ is similar. ↩\nThe special angles (in degrees) are approximately\n45°, 26.6°, 14°, 7.1°, 3.6°, 1.8°, 0.9°, … \nYou might wonder if adding up the special angles will always converge to\nthe desired angle θ.\nA proof can be found here.\nNote that arctan(2-n) rapidly approaches 2-n (in radians), so it's kind of\nlike a binary fraction expression, cutting the gap approximately in half each time. ↩\nThe CORDIC implementation in the 8087 is somewhat different from the\ntypical use of CORDIC, which finds sin and cos.\nIn this approach, all the special angles are used, but an angle is either added or\nsubtracted at each step, resulting in convergence to the desired angle.\nRecall that since the matrix is scaled by 1/sin αi at each step, the ending\nvector is no longer a unit vector. As a result, cos and sin don't match\nthe final vector (X, Y).\nThe trick is that if all the special angles are used, the overall scaling factor ends\nup being the same, simply the product of all the cos αi factors.\n(It doesn't matter if the rotation is positive or negative because\ncos αi = cos -αi.)\nThus, the overall scaling factor can be precomputed and the initial unit vector can be\nprescaled by this amount. \nThe result is that the final vector (X, Y) yields (cos θ, sin θ) directly, which is what we\nwant.\nThe key point is that there are two CORDIC approaches: using positive and negative angles,\nor using or omitting angles. (The first case multiplies each angle by +1 or -1, while the\nsecond case multiplies each angle by 1 or 0.) Most CORDIC implementations use the\nfirst approach, while the 8087 uses the second approach. ↩\nJack Volder, the creator of CORDIC, wrote an article,\nThe Birth of CORDIC, that describes the history in detail, as well as\nincluding photos of the B-58 navigation computer.\nVolder's original articles from 1959 are The CORDIC Computing Technique and The CORDIC Trigonometric Computing Technique.\n\nThe CORDIC-II digital computer system. Photo by General Dynamics, from \"The Birth of CORDIC\".\n\nThe photo above shows the CORDIC II computer that was used on the B-58 aircraft. It was a 30-bit serial computer, running at 198.4 kHz and weighing a hefty 134 pounds.\nIt was implemented with diode-transistor logic (DTL) gates, using 2498 transistors and 4265 diodes, and had a drum memory (visible at the top) for storage, holding the equivalent of 39 kilobytes.\nInterestingly, the CORDIC operations were implemented as basic instructions in the\ninstruction set, rather than subroutines; a CORDIC instruction took 5 ms, the same speed as a \nmultiplication or division. ↩\nThis Padé approximation is called the [1,2] approximation since the numerator is a\nfirst-order polynomial and the denominator is a second-order polynomial.\nPadé approximations can be derived from the continued fraction expansion of tan.\nSee Constructing Padé Approximates.\nBy the way, if you've taken calculus, you might think that a Taylor series is a good\nway to approximate a function.\nUnfortunately, a Taylor series is bad at approximating a function over an interval,\nrather than a point.\nYou're much better off using a polynomial that minimizes the maximum error over the\ninterval, as in the Pentium. ↩\nThe 8087's algorithm is described in\nImplementation of transcendental functions on a numerics processor by Rafi Nave, who led the hardware design of the 8087. ↩\nThe valid argument range for FPTAN is documented as 0<θ<π/4, so the demonstration value that I use, 0.95, is outside\nthe documented range.\nI find the range puzzling, since the first CORDIC constant is arctan(1), π/4,\nwhich will only be useful for inputs above π/4.\nThus, the 8087 uses a scarce ROM entry and an extra loop cycle to handle values outside\nthe permitted range.\nI have two hypotheses about this. Perhaps the 8087 was implemented for a larger\nargument range, but the numerical error was larger than expected, so the range\nwas truncated.\nAlternatively, the FPATAN arctan instruction might need the first CORDIC constant\nand it was easier to use the same constant loop for FPTAN and FPATAN.\n(I haven't examined FPATAN yet to confirm this.)\nIn any case, the code works with 0.95; I use it as an example because\nthe angles are larger and more visible.\nAnother peculiarity is that the documentation is inconsistent about whether 0 is\nin the range or not. The book The 8087 Primer by\nthe principle architects of the 8087 and 8086 states that the argument range excludes\n0, a decision that was made to simplify the microcode.\nHowever, looking at the microcode (#1044) shows that the code explicitly checks for\na zero input and handles the case.\nFPTAN appears to work for values almost up to π/2, with\nsome accuracy loss as the result approaches infinity near π/2.\nHowever, the values from 1 to π/2 (which are outside the defined range and have an exponent of 0) probably work by coincidence,\nnot by design.\nThe larger exponent results in an additional loop iteration;\nthe lookup of trig constants wraps around the algorithm starts with the last constant, atan(2-15).\nBut due to scaling, this value ends up being interpreted as approximately 2. Since this CORDIC angle is\ngreater than π/2, it is skipped.\nThe algorithm then proceeds with the remaining constants, executing properly.\nFootnote to the footnote:  Although the mathematical meaning of \"range\" is the output of a function,\nIntel uses it to describe the input of a function, which mathematicians call the domain. ↩\nOne difference between the 8087's temporary real format and the external formats is that\nin the temporary real, the leading 1 digit is explicitly stored in the number.\nIn the external formats, the leading 1 is implicit and not stored in the number,\nproviding one additional bit of accuracy, but making arithmetic more complicated. ↩\nThe flowchart below shows the control flow for the FPTAN microcode.\nThe main blocks are the CORDIC pseudo-division, the rational approximation,\nand the CORDIC pseudo-multiplication. (Click it for a large image.)\n\nFlowchart of the FPTAN microcode.\n\n ↩\nThe comparisons take multiple micro-instructions, for example, selecting a constant such as 0x3ff0 (recall that exponents are biased by 16383 or 0x3fff, so 0x3ff0 corresponds to -15), moving the constant to the adder,\nsubtracting the constant from the exponent, and branching on the result. ↩\nThe first step of the CORDIC algorithm (#1061-#1068) is handled separately.\nIt took me a while to figure out why the first step of the CORDIC algorithm is special.\nThe cause is that the CORDIC angles are close to 2-n, but not exactly.\nThus, the number of CORDIC cycles does not change exactly when the exponent of the input angle changes.\nThis is a problem because the number of pseudo-division cycles depends on the exponent,\nbut the number of pseudo-multiplication cycles depends on the largest CORDIC angle used.\nSince the numbers are scaled in both loops, a mismatch in the number of cycles leaves\nthe result off by a factor of 2. The first CORDIC step tests if the first CORDIC constant\nis used and increments the tmpA exponent by 1 to counteract this.\n(Don't worry if this doesn't make sense.) ↩\nThe constant ROM in the 8087 holds the significands, but not the exponents.\nWhen I originally extracted the constants from the constant ROM, back in 2020 (link),\nI couldn't find the exponents, so I came up with plausible exponents that resulted in meaningful\nvalues.\nThe 8087 has a separate exponent ROM.\nNow that I've examined the microcode, I can see that the exponents in the exponent ROM\nare unrelated to the significands in the constant ROM.\nI'm glad I didn't waste much time trying to figure out the exponents back then :-) ↩\nThe following table shows the calculations at each step of the algorithm, using\n0.95 as the input.\nNote that the calculations are done with integer arithmetic;\nthe exponents (gray) are not stored as part of the numbers, but\nare implied by the algorithm.\nThe exponents change in each step, so as the values get smaller during the pseudo-division stage, the exponents\nget smaller too, ensuring that the values can use most of the available bits.\nThe opposite happens during pseudo-multiplication: the values start off small and\ngrow as the vector is rotated; the exponent is increased each step to counteract this.\nUnlike \"real\" floating-point numbers, the bit representations are not normalized; sometimes\nthey have two 1 digits to the left of the binary point, and sometimes they\nhave leading zeros.\nThat is, the exponents are fixed for each step; they don't change based on the\nvalue.\n\ndiv.cordic { height: 300px; width: fit-content; overflow-y: scroll; resize:vertical;}\ndiv.cordic p { display: none;}\ntable.cordic {border-collapse: collapse; border: 1px solid #ccc;}\ntable.cordic th {border-bottom: 2px solid #ccc; padding: 0 5px 5px 5px; position: sticky;\n  top: -1px; background-color: #fff; z-index: 1;}\ntable.cordic td {padding: 0 10px;}\ntable.cordic tr.top td {border-top: 1px solid #ccc;}\ntable.cordic tr.top1 td {border-top: 3px solid #ccc;}\ntable.cordic tr.bot1 td {border-bottom: 3px solid #ccc;}\n\n\n\noperationbitsvalueflagreg\n\n\nload with θ 1.1110011…×2-10.9500tmpC\ncmp atan(20) 1.1001001…×2-10.78541const\nsub angle 0.0101010…×2-10.1646tmpC\nshift left 0.1010100…×2-20.1646tmpC\ncmp atan(2-1) 1.1101101…×2-20.46360const\nshift left 1.0101000…×2-30.1646tmpC\ncmp atan(2-2) 1.1111010…×2-30.24500const\nshift left10.1010001…×2-40.1646tmpC\ncmp atan(2-3) 1.1111110…×2-40.12441const\nsub angle 0.1010010…×2-40.04025tmpC\nshift left 1.0100100…×2-50.04025tmpC\ncmp atan(2-4) 1.1111111…×2-50.062420const\nshift left10.1001001…×2-60.04025tmpC\ncmp atan(2-5) 1.1111111…×2-60.031241const\nsub angle 0.1001001…×2-60.009007tmpC\nshift left 1.0010011…×2-70.009007tmpC\ncmp atan(2-6) 1.1111111…×2-70.015620const\nshift left10.0100111…×2-80.009007tmpC\ncmp atan(2-7) 1.1111111…×2-80.0078121const\nsub angle 0.0100111…×2-80.001195tmpC\nshift left 0.1001110…×2-90.001195tmpC\ncmp atan(2-8) 1.1111111…×2-90.0039060const\nshift left 1.0011100…×2-100.001195tmpC\ncmp atan(2-9) 1.1111111…×2-100.0019530const\nshift left10.0111001…×2-110.001195tmpC\ncmp atan(2-10) 1.1111111…×2-110.00097661const\nsub angle 0.0111001…×2-110.0002181tmpC\nshift left 0.1110010…×2-120.0002181tmpC\ncmp atan(2-11) 1.1111111…×2-120.00048830const\nshift left 1.1100100…×2-130.0002181tmpC\ncmp atan(2-12) 1.1111111…×2-130.00024410const\nshift left11.1001001…×2-140.0002181tmpC\ncmp atan(2-13) 1.1111111…×2-140.00012211const\nsub angle 1.1001001…×2-140.00009604tmpC\nshift left11.0010010…×2-150.00009604tmpC\ncmp atan(2-14) 1.1111111…×2-150.000061041const\nsub angle 1.0010010…×2-150.00003500tmpC\nshift left10.0100101…×2-160.00003500tmpC\ncmp atan(2-15) 1.1111111…×2-160.000030521const\nsub angle 0.0100101…×2-160.000004482tmpC\nX approx 1.0111111…×213.0000tmpB\nY approx 0.0011100…×2-140.00001345tmpC\nY += 2-15X 1.1011100…×2-140.00010501tmpC\nX -= 2-15Yold 1.0111111…×213.0000tmpB\nshift right 0.1101110…×2-130.0001050tmpC\nY += 2-14X10.0101110…×2-130.00028811tmpC\nX -= 2-14Yold 1.0111111…×213.0000tmpB\nshift right 1.0010111…×2-120.0002881tmpC\nY += 2-13X10.1010111…×2-120.00065431tmpC\nX -= 2-13Yold 1.0111111…×213.0000tmpB\nshift right 1.0101011…×2-110.0006543tmpC\nshift right 0.1010101…×2-100.00065430tmpC\nshift right 0.0101010…×2-90.00065430tmpC\nY += 2-10X 1.1101010…×2-90.0035841tmpC\nX -= 2-10Yold 1.0111111…×213.0000tmpB\nshift right 0.1110101…×2-80.003584tmpC\nshift right 0.0111010…×2-70.0035840tmpC\nshift right 0.0011101…×2-60.0035840tmpC\nY += 2-7X 1.1011101…×2-60.027021tmpC\nX -= 2-7Yold 1.0111111…×213.0000tmpB\nshift right 0.1101110…×2-50.02702tmpC\nshift right 0.0110111…×2-40.027020tmpC\nY += 2-5X 1.1110111…×2-40.12081tmpC\nX -= 2-5Yold 1.0111111…×212.9991tmpB\nshift right 0.1111011…×2-30.1208tmpC\nshift right 0.0111101…×2-20.12080tmpC\nY += 2-3X 1.1111101…×2-20.49571tmpC\nX -= 2-3Yold 1.0111110…×212.9840tmpB\nshift right 0.1111110…×2-10.4957tmpC\nshift right 0.0111111…×200.49570tmpC\nshift right 0.0011111…×210.49570tmpC\nY += 20X 1.1011110…×213.47971tmpC\nX -= 20Yold 1.0011111…×212.4884tmpB\nfinal X 1.0011111…×212.4884tmpB\nfinal Y 1.1011110…×213.4797tmpA\n ↩↩",
+      "id": "e8ec240f9c9229ff570d03111c93ee8afa37f893fef69a4fee7910dfc5c282ee",
+      "ref_id": "2",
+      "recommendationScore": 95,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "对Intel 8087协处理器切线算法的深度逆向工程分析。",
+      "reason": "文章技术深度极高，通过逆向工程详细揭示了经典硬件的底层算法，对计算机体系结构和算法爱好者极具价值。",
+      "tags": [
+        "逆向工程",
+        "CPU",
+        "算法",
+        "Intel 8087",
+        "计算机体系结构",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "A single function Jev-like wrapper for LLMs, including vision models",
+      "link": "http://allanrbo.blogspot.com/2026/09/a-jev-like-wrapper-for-llms-including.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-26T04:20:58.000Z",
+      "summary": "Article URL: http://allanrbo.blogspot.com/2026/09/a-jev-like-wrapper-for-llms-including.html\nComments URL: https://news.ycombinator.com/item?id=49853175\nPoints: 124\n# Comments: 40",
+      "id": "0966d3f1308faae05d0fa437c5a0681a25a7b1e256d1f51db51ae7eb77bed62b",
+      "ref_id": "0",
+      "recommendationScore": 88,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "提供LLM和视觉模型的高效单函数封装，极具开发实用性。",
+      "reason": "高度相关的AI工具文章，技术深度和新颖性兼具，对AI开发者有直接帮助，符合最高优先级主题。",
+      "tags": [
+        "AI",
+        "LLM",
+        "Programming",
+        "Tools"
+      ]
+    },
+    {
+      "title": "Is your Postgres migration safe or not safe?",
+      "link": "https://safenotsafe.dev/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-26T07:33:12.000Z",
+      "summary": "Article URL: https://safenotsafe.dev/\nComments URL: https://news.ycombinator.com/item?id=49854161\nPoints: 108\n# Comments: 38",
+      "id": "9af4b41d41c50dd863919c0f82b1ba832716eee02f2a22b633cddafe154bf546",
+      "ref_id": "4",
+      "recommendationScore": 86,
+      "popularityScore": 19,
+      "priority": "high",
+      "comment": "探讨了Postgres数据库迁移的安全性问题，并可能提供了避免风险的策略或工具。",
+      "reason": "解决了数据库管理中一个核心且高风险的问题，为确保数据迁移安全提供了关键指导，实用性与技术深度兼备。",
+      "tags": [
+        "数据库",
+        "Postgres",
+        "数据迁移",
+        "编程工具",
+        "DevOps"
+      ]
+    },
+    {
+      "title": "Show HN: Reladraw – A diagram language where you decide where to place things",
+      "link": "https://github.com/reladraw/reladraw",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-26T17:10:40.000Z",
+      "summary": "I love making diagrams to help understand, plan, etc. However, the options are (A) auto-placement languages like Mermaid or Graphviz (which don't let me decide how the diagram looks), or (B) software like Draw.io which are powerful but are very time consuming (and inefficient for agents to manipulate).\nI wanted to have the benefits of both, where you can define a diagram in a diagram language, but also retain a high degree of control over what the diagram looks like.\nI also wanted this to work well for humans and agents.\nOn the Github link, there's a playground where you can try it out without installation. There's also instructions for a simple npm install and for installing a skill you can use with Claude or other agents.\nComments URL: https://news.ycombinator.com/item?id=49858513\nPoints: 8\n# Comments: 0",
+      "id": "334a6646400953ddb11c164b22ae36a66bb7987fd72bae057e0b9f8e97a6c4ec",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "一个结合了图表语言灵活性和手动控制精度的创新工具，并支持AI agent集成。",
+      "reason": "解决了现有图表工具的痛点，技术有深度且实用，并兼具AI应用潜力，符合编程工具和产品设计主题。",
+      "tags": [
+        "编程工具",
+        "图表",
+        "产品设计",
+        "AI",
+        "独立开发"
+      ]
+    },
+    {
+      "title": "Show HN: A Claude Code skill to analyze your chess games",
+      "link": "https://github.com/brumar/chess-postmortem-skills",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-26T15:34:53.000Z",
+      "summary": "Hello HN,\nIt started as an experiment: can Claude play chess properly if it uses vision instead of PGN notation? Somehow it can.\nThe next experiment was to see whether Claude + Stockfish could explain a game. Somehow it can too.\nA few sessions later, I had a system that takes my live audio notes (or text, for that matter) and a vague instruction like \"analyze my last lichess game\", and gives me a commented video of the game. The result is not perfect and it takes time to deliver (an hour or so), but for me it is a much more pleasant and memorable experience than clicking around Stockfish branches. It burns tokens, so make sure you have enough quota. From the session logs, the last analyzed game would have cost around $15 at API prices.\nThe fact that it reflects on my own thinking during the game makes it interesting from a teaching point of view, so I thought it was worth sharing.\nComments URL: https://news.ycombinator.com/item?id=49857528\nPoints: 56\n# Comments: 34",
+      "id": "4b894348badcd9a58474a8394a3815c98b0cd4bf3aa2c832549ea41f6684772a",
+      "ref_id": "2",
+      "recommendationScore": 85,
+      "popularityScore": 37,
+      "priority": "high",
+      "comment": "一个利用Claude AI视觉和Stockfish分析国际象棋游戏的创新项目，提供了独特且个性化的学习体验。",
+      "reason": "技术深度和新颖性突出，将AI和编程工具应用于具体场景，具有很强的实用性和启发性，完美契合AI主题。",
+      "tags": [
+        "AI",
+        "Claude",
+        "国际象棋",
+        "编程工具",
+        "机器视觉",
+        "独立开发"
+      ]
+    },
+    {
+      "title": "Floci: Locally emulating any cloud service",
+      "link": "https://floci.io",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-26T08:31:02.000Z",
+      "summary": "Article URL: https://floci.io\nComments URL: https://news.ycombinator.com/item?id=49854416\nPoints: 118\n# Comments: 25",
+      "id": "c63b1c7ece30ab44f18eb460a71845d0190301efe02038f020fc4429e013e3aa",
+      "ref_id": "3",
+      "recommendationScore": 85,
+      "popularityScore": 18,
+      "priority": "high",
+      "comment": "介绍了一个强大的工具Floci，能实现本地云服务仿真，极大提升开发效率。",
+      "reason": "该工具为云原生开发和测试提供了高效的本地仿真解决方案，具有显著的技术深度和实用性，属于高价值编程工具。",
+      "tags": [
+        "编程工具",
+        "云原生",
+        "自动化",
+        "DevOps",
+        "本地开发"
+      ]
+    },
+    {
+      "title": "Microsoft Took the ‘Copilot+ PC’ Brand Out Behind the Shed",
+      "link": "https://www.windowscentral.com/microsoft/windows-11/the-copilot-pc-brand-is-dead-microsoft-and-pc-makers-quietly-pull-back-on-tarnished-windows-11-ai-pc-branding",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-09-26T16:53:14.000Z",
+      "summary": "Zac Bowden, Windows Central:\nIn 2024, Microsoft and Qualcomm kicked off a new category\nof Windows hardware it called “Copilot+ PCs” that set the\nbaseline for a new wave of AI-first computers, and launched with\nexclusive features that would not be made available on PCs that\ndidn’t meet a new set of system requirements.\nThe launch didn’t go smoothly. [...]\nI’ve noticed that none of the Surface PCs launched in 2026\ninclude the Copilot+ PC moniker in their product names, unlike\nthe Surface PCs that launched in 2025 and before. Now, you have\nto go digging to find any mention of Copilot+ compatibility in\nspecification sheets.\nMicrosoft’s had to dig a lot of holes in the ground behind that shed over the years. The lesson here is that good devices are just good devices. A good PC is going to be a good PC for AI too. Wasting time with special branding is a distraction from the core task of just making the devices good.\n ★",
+      "id": "f428104ad2768df6fa4e99f174a65cd56cf00c3d2001649a2d773081d9829b57",
+      "ref_id": "2",
+      "recommendationScore": 85,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "批判性地分析了微软“Copilot+ PC”品牌策略的失败，强调了AI PC时代核心产品质量的重要性。",
+      "reason": "直接触及最高优先级的“AI”主题，提供了对行业趋势和产品策略的深刻洞察和批判性分析，信息密度高，新颖性强。",
+      "tags": [
+        "AI",
+        "Microsoft",
+        "Hardware",
+        "Branding",
+        "Product Strategy",
+        "Copilot+ PC"
+      ]
+    },
+    {
+      "title": "Rusty thoughts on \"Parse, don't validate\"",
+      "link": "https://eli.thegreenplace.net/2026/rusty-thoughts-on-parse-dont-validate/",
+      "source": "eli.thegreenplace.net",
+      "publishedAt": "2026-09-26T15:25:00.000Z",
+      "summary": "Like many programmers, I find Alexis King's Parse, don't validate\narticle fascinating, because it gives a name to an idiom that seems familiar and\nimportant - one I've observed and used in the past without naming it explicitly.\nThis post is a review of the \"Parse, don't validate\" pattern applied to the Rust\nprogramming language (the original post uses Haskell). I was particularly\ninterested in finding educational examples of this pattern in the Rust standard\nlibrary and other well-known projects.\nWithout repeating the original article (please read it first!), here's the\ngist of it.\nConsider the venerable Vec; its first method returns Option<&T>.\nWhy? Because a vector is not guaranteed to have any elements in it, so what\nto do if first is invoked on an empty one? Returning an Option in this\ncase is idiomatic in Rust [1], with convenient syntax sugar for accepting\nthe result of functions that return Option and deciding what to do next.\nSo what's the issue?\nImagine we have a function to read some configuration paths from an env var,\nwhile enforcing the invariant that the list can't be empty:\nuse anyhow::{Result, ensure};\n\nfn get_configuration_directories() -> Result<Vec<PathBuf>> {\n    let value = env::var(\"CONFIG_DIRS\").context(\"could not read CONFIG_DIRS\")?;\n\n    let directories: Vec<PathBuf> = value\n        .split(',')\n        .map(str::trim)\n        .map(PathBuf::from)\n        .collect();\n\n    ensure!(!directories.is_empty(), \"empty CONFIG_DIRS\");\n    Ok(directories)\n}\n\nSo far, so good. Now let's take a typical usage of this function:\nfn main() -> Result<()> {\n    let config_dirs = get_configuration_directories()?;\n\n    match config_dirs.first() {\n        Some(cache_dir) => initialize_cache(cache_dir),\n        None => unreachable!(\"already checked that CONFIG_DIRS is non-empty\"),\n    }\n\n    Ok(())\n}\n\nOnce get_configuration_directories returns a successful result,\nwe are guaranteed that the vector isn't empty. And yet, if we want to get the\nfirst element of this vector, we have to use the first method that returns\nOption<&T>. We are therefore forced - again - to handle a potentially\nempty case (where the option is None).\nAs the original article states, this has a number of problems with code clarity,\npotential performance implications and a ticking time bomb if the invariant\nis ever changed in get_configuration_directories.\nThe core issue is that Vec is fundamentally a type that can be empty; we\ncan carry along a \"This one can't be empty, pinky promise!\" comment on all the\nrelevant code, but it's not formally checked by anything.\nA type for \"non-empty\" vector\nThe solution is leveraging the type system to enforce a newly established\ninvariant. We can use a separate type for \"a vector that cannot be empty\";\nin fact, such types already exist in several Rust crates - for example\nnonempty:\npub struct NonEmpty<T> {\n    pub head: T,\n    pub tail: Vec<T>,\n}\n\nThis type has no constructor that permits \"no elements\"; its new takes\none element, and its first method returns &T without an Option:\npub const fn new(e: T) -> Self {\n    Self::singleton(e)\n}\n\npub const fn singleton(head: T) -> Self {\n    NonEmpty {\n        head,\n        tail: Vec::new(),\n    }\n}\n\npub const fn first(&self) -> &T {\n    &self.head\n}\n\nThe rest of the crate deals with making NonEmpty behave as close as possible\nto a normal Vec, by implementing many useful traits, as well as conversions\nlike:\npub fn from_vec(mut vec: Vec<T>) -> Option<NonEmpty<T>> {\n    if vec.is_empty() {\n        None\n    } else {\n        let head = vec.remove(0);\n        Some(NonEmpty { head, tail: vec })\n    }\n}\n\nLet's see how our get_configuration_directories function would look if it\nreturned a NonEmpty instead of a plain Vec:\nfn get_configuration_directories() -> Result<NonEmpty<PathBuf>> {\n    let value = env::var(\"CONFIG_DIRS\").context(\"could not read CONFIG_DIRS\")?;\n\n    let directories = value\n        .split(',')\n        .map(str::trim)\n        .map(PathBuf::from)\n        .collect();\n\n    let Some(directories) = NonEmpty::from_vec(directories) else {\n        bail!(\"CONFIG_DIRS cannot be empty\");\n    };\n\n    Ok(directories)\n}\n\nNote the use of NonEmpty::from_vec here - this is where the invariant is\nestablished. Now a successful result is NonEmpty, not just Vec. The\nclient code looks like:\nfn main() -> Result<()> {\n    let config_dirs = get_configuration_directories()?;\n\n    initialize_cache(config_dirs.first())?;\n    Ok(())\n}\n\nThere's no need to check if the returned value is empty again; this is enforced\nby the type system!\nThis is where the parse vs. validate terminology of the original article comes\nfrom. When get_configuration_directories returned a Vec, it simply\nvalidated it. But when it returns a NonEmpty - the vector is transformed\ninto another entity which carries additional meaning. If we treat the concept\nof parsing in the most generic sense - \"transforming data from one format to\nanother\", this fits.\nTo mention a less artificial example, the\nRust rewrite of core POSIX utilities\nuses NonEmpty in several places [2]. For example, when constructing a\nshell pipeline:\npub struct Pipeline {\n    pub commands: NonEmpty<Command>,\n    pub negate_status: bool,\n}\n\nThe command parser's code:\nfn parse_pipeline(&mut self, alias_table: &AliasTable) -> ParseResult<Option<Pipeline>> {\n    // pipeline = \"!\" command (\"|\" linebreak command)*\n    let negate_status = self.match_alternatives(&[CommandToken::Bang])?.is_some();\n    let mut commands = if let Some(command) = self.parse_command(alias_table)? {\n        NonEmpty::new(command)\n    } else {\n        return Ok(None);\n    };\n\n    // ...\n\nA valid Pipeline is only returned if there are some commands in the\nparsed AST. Otherwise, it just returns None. Once this is done, the client\ncode can use commands.first() without having to worry about the\npossibility of it returning None.\nGradual parsing and type refinement\nA somewhat more interesting example can be found in the source code of\nrust-analyzer. This project\nhas a type that represents an absolute filesystem path:\npub struct AbsPathBuf(Utf8PathBuf);\n\nInstead of carrying around a regular path, the absoluteness is recorded in\nthe type once the initial parsing and validation is done:\nimpl TryFrom<Utf8PathBuf> for AbsPathBuf {\n    type Error = Utf8PathBuf;\n    fn try_from(path_buf: Utf8PathBuf) -> Result<AbsPathBuf, Utf8PathBuf> {\n        if !path_buf.is_absolute() {\n            return Err(path_buf);\n        }\n        Ok(AbsPathBuf(path_buf))\n    }\n}\n\nSubsequent code doesn't have to validate the the path is absolute. The type\nenforces it.\nNote also that AbsPathBuf wraps Utf8PathBuf, not PathBuf.\nUtf8PathBuf is itself a custom, \"parsed\" type refinement from the\ncamino crate. Regular paths in the\nRust standard library aren't guaranteed to be valid UTF-8, so they cannot be\neasily converted to a String (which has to be valid UTF-8 in Rust);\ncamino::Utf8PathBuf establishes validity on construction, and can then\nbe converted to a string with just:\nfn as_str(&self) -> &str {\n  ...\n}\n\nSo we have an example of gradual parsing and type refinement here:\nstd::path::PathBuf\n\n      |\n      |   prove UTF-8\n      |\n      V\n\ncamino::Utf8PathBuf\n\n      |\n      |   prove absolute\n      |\n      V\n\nrust-analyzer's paths::AbsPathBuf\n\nNon-zero integers\nRust has a generic type called NonZero,\nto describe unsigned numeric quantities that are known to be non-zero.\nFor example, thread::available_parallelism is defined as:\npub fn available_parallelism() -> Result<NonZero<usize>>\n\nIf the call is successful, it returns a NonZero<usize>, which is like\na normal usize with the restriction that it's not zero. Client code doesn't\nhave to keep checking whether the parallelism is 0 - it's enshrined in the type\nsystem.\nRust defines the division operator\nwith NonZero<usize> in the denominator as an operation that \"cannot panic\".\nNonZero has an additional advantage: zero is an invalid value for the\ntype, so Rust can use the zero bit pattern to represent None. Consequently,\nOption<NonZeroUsize> is guaranteed to have the same size and alignment as\nNonZeroUsize itself (and as usize). This can avoid the extra storage\nthat an Option<usize> would generally require.\nParsing JSON\nA common example of the \"parse, don't validate\" idiom appears in deserializing\ndata from a JSON string. Rust's serde crate enables us to do the parsing,\nwith validated decisions encoded into the type system, e.g.:\n#[derive(Debug, Deserialize)]\nstruct Config {\n    name: String,\n    workers: NonZeroUsize,\n    mode: Mode,\n}\n\n#[derive(Debug, Deserialize)]\n#[serde(rename_all = \"snake_case\")]\nenum Mode {\n    Fast,\n    Safe,\n}\n\nAnd then later:\nlet input = r#\"\n     {\n         \"name\": \"compiler\",\n         \"workers\": 4,\n         \"mode\": \"fast\"\n     }\n \"#;\n\n let config: Config = serde_json::from_str(input)?;\n\nThere is a lot happening behind the scenes:\nThe types of all fields are enforced (e.g. \"name\" cannot be an array).\nThe mode is validated to be one of the enum values of Mode.\nworkers is validated to be a non-zero integer, because of the\nNonZeroUsize field type.\nWe take code like this for granted these days, but it's still a great example\nof the pattern discussed in this post. Once the parser converted mode into\nthe Mode enum, no further validation is required.\nIn dynamic languages like Python and JS, the process is usually much more\nmanual. Python's json.loads gives us a dictionary, and it's up to the user\nto validate its contents. Libraries like Pydantic permit an approach closer to\nRust's, but they're not universally used.\n\n\n[1]Other languages - like Go or Python - have a runtime check that raises\nsome sort of exception or panic when lst[0] is accessed on an empty\nlist or slice.\n\n\n[2]The project implements its own NonEmpty, without relying on the\nnonempty crate, but all the points in this post apply.",
+      "id": "381c22846ca0587cefc56a1d89a46fdcaa819c8b1adf250f13132aac2a86e914",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "深入探讨了Rust中'Parse, don't validate'模式的应用，提供了实用的代码设计思路。",
+      "reason": "文章将经典编程模式与Rust语言特性结合，解释清晰，对Rust开发者具有较高的实用性和指导价值。",
+      "tags": [
+        "Rust",
+        "编程模式",
+        "设计模式",
+        "代码质量",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "This Week in Package Management: 26 September 2026",
+      "link": "https://nesbitt.io/2026/09/26/this-week-in-package-management.html",
+      "source": "nesbitt.io",
+      "publishedAt": "2026-09-26T10:00:00.000Z",
+      "summary": "Week nineteen of the roundup, built from the package manager OPML feed collection and whatever I’ve posted or boosted on Mastodon.\nReleases\npnpm 12.6 adds an autoDedupe setting that resolves compatible dependency versions to a single one during install, and pnpm add --save-types for the matching @types/* package. 12.7 has the global node shim read .nvmrc and .node-version when devEngines.runtime is unset, and adds pnpm publish --publish-wait-timeout to block until a published package is available before dependents publish.\nRubyGems 4.1.0.beta1 adds content-addressable gems, an opt-in OS credential store for gem and Bundler credentials, ML-DSA post-quantum signatures for the signed-gem workflow, and a --cooldown flag on gem install, update and outdated.\nnpm 12.1.0 supports read-write-stage-only granular access tokens for staged publishing, and npm stage reports the status of packages held in staging. A --provenance-file argument now takes precedence over OIDC-generated provenance.\nPoetry 2.5.0 adds an installer.builtin-uninstall setting that removes packages itself instead of calling pip, supports Python 3.15, and stops sending credentials configured for an HTTPS repository over plain HTTP. 2.5.1 fixes a TypeError in the new uninstaller.\nTerraform 1.17.0-beta2 allows variables and locals in provider requirements and adds a -minimal-refresh planning option that only refreshes resources with proposed changes. Terraform Policy is now generally available and no longer requires the experimental-features flag.\nWindows Package Manager 1.29.380 adds an experimental source priority setting: sources can be assigned a numeric priority via winget source add or source edit and are ordered by it in results.\nmise 2026.9.14 lets registry entries require a verified GitHub attestation before a tool installs, and fetches release metadata for any public GitHub repo from mise-versions rather than the GitHub API.\nAlso out:\nHomebrew 7.0.6\npipx 1.17.6\nHatchling 1.32.4\nuv 0.12.19\npnpm 11.28\nYarn 4.18.1\nasdf 0.20.2\nsbt 2.1.0-M2\nMaven 4.0.0-rc-7\nGradle 9.8.0\nvcpkg 2026-09-26\nDNF5 5.4.6.0\nTerraform 1.16.4\nHarbor 2.15.3-rc2\nRenovate 44.115.10\nDependabot Core 0.397.0\nsetup-uv 10.2.0\ndiffoscope 331\nSecurity\nThe Rust security response WG reported that Miri wrote every environment variable to target/, so caching that directory in GitHub Actions could expose job secrets to pull requests that read from the cache. The nightly dated 2026-09-22 restricts persisted variables to CARGO_* (excluding CARGO_*_TOKEN) and OUT_DIR; the post recommends clearing existing caches and rotating any secrets that were in scope.\nuv 0.12.18 fixes GHSA-2cv4-cqwr-gwf7, a path traversal during wheel installation on Windows. It also adds --check and --output-format json to uv pip install and uv pip sync, so planned changes can be reported while leaving the environment unchanged.\nFlatpak 1.18.3 updates its vendored bubblewrap to 0.12.0 for CVE-2026-87766, where sandbox setup could follow a parent symlink through /oldroot to write files on the host, and its vendored xdg-dbus-proxy to 0.1.8 for CVE-2026-93676, where D-Bus broadcast filtering ignored the configured path, interface and member restrictions.\nElsewhere\nThe Rust project announced Scott Schafer as a full-time Maintainer in Residence for the Cargo team, funded through the Rust Foundation Maintainers Fund with additional money from the Rust Leadership Council’s Project Priorities budget and AWS. Separately the Rust Foundation added CodSpeed, Haevek and Perplexity as Silver members and the Software Stewardship Lab as an Associate member.\nJamie Tanna reviewed his first year as Renovate project lead: 1,813 releases, managers up from 110 to 118, datasources from 76 to 82, and external commits up 48% in the first half of 2026. Discussion-forum help requests fell 43% over the same period as users turned to LLM tools instead.\nJosh Bressers interviewed Daniel Stenberg and Stefan Eissing about curl’s month-long pause on accepting vulnerability reports and the volume of AI-generated submissions that prompted it.\nFarid Zakaria wrote up omnibin, a FUSE filesystem that presents every binary nixpkgs has shipped since 2013, 881,933 in total, by looking up store paths in Hydra’s published metadata and fetching them on first access; a cold python3@3.6.2 start takes about 2.7 seconds.\nTrustBOM: A Scalable Architecture for Confidentiality-Preserving SBOMs Across Organizations (Nguyen et al., arXiv) proposes a CI/CD-integrated attestation scheme in which a supplier proves that a given vulnerability or restricted licence is absent from its software while keeping the dependency graph private.\nGit 2.56.0-rc2 was tagged.\ngit-pkgs\nI tagged eight repos this week:\ncitation v0.1.0 (new), a pure-Go library for parsing and validating CITATION.cff files that preserves source positions, unknown fields and numeric spelling\nscan v0.1.0 (new), a pure-Go library that matches many regular expressions against byte blocks by compiling patterns into shared literal filters and regex automata along Hyperscan lines\nsecrets v0.1.0 (new), which scans Git history for leaked credentials by running the Betterleaks rule corpus over every blob and attributing findings to the commits and paths that introduced them\nspam v0.1.0 (new), an offline library for measuring promotional text in package manifests and READMEs\narchives v0.8.0\nclone v0.7.4\nhistory v0.1.1\nroles v0.1.1\nSend links for next week to @andrewnez@mastodon.social.",
+      "id": "c6daf18098be1bcd74402cdb4233bb3de0e793db80485fecaf09b554269a70f9",
+      "ref_id": "3",
+      "recommendationScore": 80,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "包管理工具（pnpm, RubyGems, npm）最新进展的周报汇总。",
+      "reason": "为开发者提供了及时且实用的包管理工具更新信息，有助于他们掌握最新特性和保持开发环境最新。",
+      "tags": [
+        "包管理",
+        "pnpm",
+        "RubyGems",
+        "npm",
+        "编程工具",
+        "开发工具"
+      ]
+    },
+    {
+      "title": "Stock UI in MacOS 27 Eschews Clarity",
+      "link": "https://mastodon.design/@thibault/117320401426286497",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-09-25T20:54:34.000Z",
+      "summary": "“Thibault”, in post on Mastodon responding to Brent Simmons’s “stock Mac UI” post that I just linked to:\nIt reminded me of my own explorations with the macOS design\nlanguage, especially the modern title/toolbar which I believe is\none of the most foundational design regression on the platform.\nI played with the idea of redesigning the Finder with the\noriginal hierarchy but keeping the current Liquid Glass styling.\nThough it’s still far from what I’d like to see on my Mac, I\nthought I’d share.\nHere’s his subtle mockup:\n\n\nThe changes in Thibault’s redesign, if you describe them verbally, sound minor. But looking at the differences feels like a huge — and much needed — breath of fresh air. It relaxes my nervous system to see obvious differentiation for window chrome at the top. The hierarchy is clear: this area is the window, this area is the content of the window.\nApple’s MacOS 27 Golden Gate stock UI deliberately does away with that differentiation, for no good reason. I crave clarity, and Apple’s current MacOS design language rejects clarity. Like: where exactly can you click to drag a window around? That ought to be obvious; instead it’s literally a guessing game. And Thibault’s simple example also shows that the problem has nothing to do with “Liquid Glass” controls.\n ★",
+      "id": "e7f296a5df2d10e0c0675d435a19828720a0bb6274da92fed9e7f55ea5afae9c",
+      "ref_id": "0",
+      "recommendationScore": 75,
+      "popularityScore": 80,
+      "priority": "medium",
+      "comment": "对macOS UI设计的一次深刻批判与优化探讨。",
+      "reason": "文章通过具体对比展示了UI清晰度对用户体验的重要性，对关注macOS设计的读者有启发。",
+      "tags": [
+        "MacOS",
+        "UI/UX",
+        "设计",
+        "Apple生态",
+        "产品设计"
+      ]
+    },
+    {
+      "title": "Analyzing Frontier Model Progress with My Favourite Game: Prince of Persia",
+      "link": "https://blog.priyan.in/2026/09/analyzing-frontier-model-progress-with.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-25T20:53:54.000Z",
+      "summary": "Article URL: https://blog.priyan.in/2026/09/analyzing-frontier-model-progress-with.html\nComments URL: https://news.ycombinator.com/item?id=49849820\nPoints: 32\n# Comments: 23",
+      "id": "c18095a3053a7dc4adfc6a9989688c5ddf1ab182343ee67c0434a4c7248360bd",
+      "ref_id": "3",
+      "recommendationScore": 72,
+      "popularityScore": 40,
+      "priority": "medium",
+      "comment": "以《波斯王子》为喻分析前沿AI模型进展，视角独特。",
+      "reason": "AI主题，虽非直接技术实现，但其独特新颖的分析角度有助于理解AI发展，具有一定的启发性。",
+      "tags": [
+        "AI",
+        "Frontier Models",
+        "Analysis",
+        "Analogy",
+        "Gaming"
+      ]
+    },
+    {
+      "title": "OpenAI bots meddled with multiple US Government agency sites",
+      "link": "https://www.bbc.com/news/articles/cw62jje658dlo",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-26T14:03:54.000Z",
+      "summary": "Article URL: https://www.bbc.com/news/articles/cw62jje658dlo\nComments URL: https://news.ycombinator.com/item?id=49856665\nPoints: 51\n# Comments: 63",
+      "id": "cc84393d765fa60b1b6623c8d8ef2b3646f7247d6d355bbb2b94c5b4a60fa8fb",
+      "ref_id": "4",
+      "recommendationScore": 71,
+      "popularityScore": 44,
+      "priority": "high",
+      "comment": "这篇报道揭露了OpenAI机器人干预政府网站事件，突显了AI伦理和网络安全的重要问题。",
+      "reason": "紧密围绕AI主题，具有高度新颖性和实用性（安全警示），是AI发展中值得关注的重要新闻和潜在风险探讨。",
+      "tags": [
+        "AI",
+        "OpenAI",
+        "网络安全",
+        "政府",
+        "机器人",
+        "伦理",
+        "新闻"
+      ]
+    },
+    {
+      "title": "US jury says Apple owes record $5.7B in haptic technology patent case",
+      "link": "https://www.reuters.com/legal/litigation/us-jury-says-apple-owes-record-57-billion-haptic-technology-patent-case-2026-09-26/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-26T16:46:24.000Z",
+      "summary": "Article URL: https://www.reuters.com/legal/litigation/us-jury-says-apple-owes-record-57-billion-haptic-technology-patent-case-2026-09-26/\nComments URL: https://news.ycombinator.com/item?id=49858253\nPoints: 37\n# Comments: 34",
+      "id": "56b99e225ee757f42a539238a34b7a8ea4907bd1b9e511541df5f933203fa91e",
+      "ref_id": "2",
+      "recommendationScore": 70,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "关于苹果公司因触觉技术专利纠纷被判赔巨额罚款的新闻报道。",
+      "reason": "与Apple生态系统相关，涉及重要的法律判决，对关注科技巨头动态的读者有吸引力。",
+      "tags": [
+        "Apple",
+        "专利",
+        "法律",
+        "科技新闻"
+      ]
+    },
+    {
+      "title": "International Standard Paper Sizes",
+      "link": "https://www.cl.cam.ac.uk/~mgk25/iso-paper.html",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-09-26T18:46:24.000Z",
+      "summary": "Markus Kuhn:\nIn the ISO paper size system, the height-to-width ratio of all\npages is the square root of two (1.4142 : 1). In other words, the\nwidth and the height of a page relate to each other like the side\nand the diagonal of a square. This aspect ratio is especially\nconvenient for a paper size. If you put two such pages next to\neach other, or equivalently cut one parallel to its shorter side\ninto two equal pieces, then the resulting page will have again the\nsame width/height ratio.\nSame principle as the using the square root of 2 to achieve a very similar aspect ratio on both the iPhone Duo’s inner and outer displays. With the international paper system, you can do things like scale up 2× or scale down 0.5× without changing the relative margins. E.g. print or photocopy at 50 percent to get two virtual pages per printed page of output. It’s an elegant system.\n ★",
+      "id": "7f2eef83b67fbf329594bfe4740d52879fce772fe48c17d2b7ea16a9b706b4dd",
+      "ref_id": "1",
+      "recommendationScore": 70,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "阐释了ISO标准纸张尺寸背后优雅的数学原理及其在设计中的应用，并简要提及iPhone显示器。",
+      "reason": "文章清晰解释了重要的设计原则及其在现代科技（Apple生态）中的相关性，具有一定的技术趣味性和信息密度。",
+      "tags": [
+        "Design Principles",
+        "Mathematics",
+        "ISO",
+        "Product Design",
+        "Apple Ecosystem"
+      ]
+    },
+    {
+      "title": "Fifteen years later, the Apple Cards origin story",
+      "link": "https://lexontech.org/fifteen-years-later-the-apple-cards-origin-story",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-26T09:13:41.000Z",
+      "summary": "Article URL: https://lexontech.org/fifteen-years-later-the-apple-cards-origin-story\nComments URL: https://news.ycombinator.com/item?id=49854693\nPoints: 270\n# Comments: 53",
+      "id": "694d66cc71d806e63494f24d290a5aa659a96074d9382bfeb450930cb83d7b53",
+      "ref_id": "2",
+      "recommendationScore": 65,
+      "popularityScore": 42,
+      "priority": "high",
+      "comment": "追溯了Apple Card背后十五年的故事，为苹果生态爱好者提供了独特的历史视角。",
+      "reason": "详细介绍了苹果一个重要产品的诞生历程，对了解苹果产品设计与生态发展有价值，且主题属于高优先级。",
+      "tags": [
+        "Apple",
+        "历史",
+        "产品设计",
+        "生态系统"
+      ]
+    },
+    {
+      "title": "We're gonna need a lot more mathematicians",
+      "link": "https://terrytao.wordpress.com/2026/09/24/were-gonna-need-a-lot-more-mathematicians/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-26T02:46:54.000Z",
+      "summary": "Article URL: https://terrytao.wordpress.com/2026/09/24/were-gonna-need-a-lot-more-mathematicians/\nComments URL: https://news.ycombinator.com/item?id=49852717\nPoints: 297\n# Comments: 393",
+      "id": "67c50f59b62251aa3cc86f89c89f6be3fa9ad2bc00e35912c2685f5c5575fb73",
+      "ref_id": "1",
+      "recommendationScore": 62,
+      "popularityScore": 85,
+      "priority": "medium",
+      "comment": "数学大师对未来数学人才需求的深刻洞察，引发广泛讨论。",
+      "reason": "探讨了AI时代数学基础的重要性，虽非直接技术，但具有长远战略意义和高关注度，值得关注。",
+      "tags": [
+        "Mathematics",
+        "AI",
+        "Future of Tech",
+        "Education",
+        "Society"
+      ]
+    },
+    {
+      "title": "Breaking Up with Google Play: Why Conversations Is Now Free",
+      "link": "https://gultsch.de/posts/breaking-up-with-google-play/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-26T10:55:56.000Z",
+      "summary": "Article URL: https://gultsch.de/posts/breaking-up-with-google-play/\nComments URL: https://news.ycombinator.com/item?id=49855315\nPoints: 551\n# Comments: 213",
+      "id": "fef3d86a310799acb7876b66cae44bdbba1092adfffbc6e6d7a4569898f7166c",
+      "ref_id": "0",
+      "recommendationScore": 60,
+      "popularityScore": 100,
+      "priority": "medium",
+      "comment": "一篇关于独立应用脱离主流平台，探讨开源和可持续性的深度文章。",
+      "reason": "文章揭示了独立开发者面临的平台依赖挑战，对开源和应用分发策略有启发性，且社区讨论热度高。",
+      "tags": [
+        "独立开发",
+        "开源软件",
+        "应用分发",
+        "商业模式"
+      ]
+    },
+    {
+      "title": "No errors, no warnings, no gods, no masters - HTML Purity is a Fetish",
+      "link": "https://shkspr.mobi/blog/2026/09/no-errors-no-warnings-no-gods-no-masters-html-purity-is-a-fetish/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-09-26T11:34:02.000Z",
+      "summary": "\"The problem with defending the purity of the HyperText Markup Language is that HTML is about as pure as a cribhouse whore. The standard doesn't just borrow concepts from better languages; on occasion, HTML has pursued other programming languages down alleyways to beat them unconscious and rifle their pockets for new syntax.\"    Englitch is an pretty goode langwidge. even you no grok all the…",
+      "id": "3768fff7a78eb4727a2f35f3a6424d8b1696efaca55952625cd8cb93a58d3106",
+      "ref_id": "1",
+      "recommendationScore": 55,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "一篇对HTML“纯粹性”持批判态度的观点文章。",
+      "reason": "文章以其独特的观点和强烈的语言风格，可能引发读者对HTML规范和Web开发哲学的思考。",
+      "tags": [
+        "HTML",
+        "Web开发",
+        "编程哲学",
+        "标准"
+      ]
+    },
+    {
+      "title": "Banks and Credit Unions to Team Up Against Apple Pay Fees",
+      "link": "https://www.macrumors.com/2026/09/25/apple-pay-antitrust-lawsuit-advances/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-26T15:48:18.000Z",
+      "summary": "Article URL: https://www.macrumors.com/2026/09/25/apple-pay-antitrust-lawsuit-advances/\nComments URL: https://news.ycombinator.com/item?id=49857651\nPoints: 59\n# Comments: 29",
+      "id": "babd16f0030a7cf3952ee88df716aa0d2440fef23d1c3266558cd653ae953813",
+      "ref_id": "0",
+      "recommendationScore": 48,
+      "popularityScore": 37,
+      "priority": "medium",
+      "comment": "这篇报道揭示了Apple Pay在支付领域的反垄断挑战，对关注苹果生态的用户有一定参考价值。",
+      "reason": "内容紧贴Apple生态系统，是了解Apple Pay商业策略和市场竞争格局的重要新闻。",
+      "tags": [
+        "Apple",
+        "Apple Pay",
+        "反垄断",
+        "支付",
+        "新闻"
+      ]
+    },
+    {
+      "title": "The Talk Show: ‘I’m Thinking X, Not X’",
+      "link": "https://daringfireball.net/thetalkshow/2026/09/25/ep-455",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-09-26T16:21:38.000Z",
+      "summary": "Andru Edwards returns to the show to discuss Apple’s big September event and their new products: the iPhones 18 Pro and Duo, AirPods 5, and Apple Watch Series 12/Ultra 4.\n\nSponsored by:\nFactor: Healthy eating, made easy. Get 50% off and one free breakfast item per box for one year, while supplies last, with code talkshow50off.\nNotion: The collaborative AI workspace where teams and\nagents work side by side, with a developer platform teams can build on.\n ★",
+      "id": "bc256a2ca863cdcdbfa3bca28cb621686d865df6815fa6dcb4006bcd62267cb8",
+      "ref_id": "3",
+      "recommendationScore": 40,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "一则关于播客节目讨论苹果最新产品发布会的宣传预告。",
+      "reason": "尽管涉及热门的Apple生态（高优先级），但内容本身仅为播客推广，缺乏实际的技术内容或实用价值，信息密度低。",
+      "tags": [
+        "Apple Ecosystem",
+        "Product Launch",
+        "Podcast",
+        "iPhone",
+        "AirPods",
+        "Apple Watch"
+      ]
+    },
+    {
+      "title": "Automattic has a new board after failed attempt to put CEO on leave",
+      "link": "https://techcrunch.com/2026/09/25/automattic-has-a-new-board-after-failed-attempt-to-put-ceo-on-leave/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-26T15:40:27.000Z",
+      "summary": "Article URL: https://techcrunch.com/2026/09/25/automattic-has-a-new-board-after-failed-attempt-to-put-ceo-on-leave/\nComments URL: https://news.ycombinator.com/item?id=49857572\nPoints: 57\n# Comments: 59",
+      "id": "0cd99ef8e5a1ef855483cdd2e1d15f6acf8932561bdfa0d28fe386e6d4d3a276",
+      "ref_id": "1",
+      "recommendationScore": 30,
+      "popularityScore": 45,
+      "priority": "low",
+      "comment": "这是一篇关于Automattic公司治理的行业新闻，与博客主要关注的技术主题关联度较低。",
+      "reason": "内容偏向企业管理而非技术本身，不符合博客对技术深度、新颖性或实用性的高要求。",
+      "tags": [
+        "公司治理",
+        "行业新闻",
+        "Automattic"
+      ]
+    },
+    {
+      "title": "Plunging test scores are a slow-moving catastrophe",
+      "link": "https://www.economist.com/leaders/2026/09/10/plunging-test-scores-are-a-slow-moving-catastrophe",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-26T15:24:08.000Z",
+      "summary": "https://archive.ph/n8Akh\nComments URL: https://news.ycombinator.com/item?id=49857442\nPoints: 106\n# Comments: 160",
+      "id": "2c42d5c226678ca235a62e41264815f8a7f936e244053ff721f358a3ee18e403",
+      "ref_id": "3",
+      "recommendationScore": 30,
+      "popularityScore": 100,
+      "priority": "low",
+      "comment": "一篇关于教育和考试成绩下降的社会议题文章，虽然关注度高，但与科技博客主题关联度较低。",
+      "reason": "内容属于宏观社会讨论，缺乏技术性或与核心主题的直接关联，不适合作为科技博客的主要推荐。",
+      "tags": [
+        "教育",
+        "社会问题",
+        "评论"
+      ]
+    },
+    {
+      "title": "U.S. Soldier Gets 70 Months in Prison for AT&T, Verizon Extortions",
+      "link": "https://krebsonsecurity.com/2026/09/u-s-soldier-gets-70-months-in-prison-for-att-verizon-extortions/",
+      "source": "krebsonsecurity.com",
+      "publishedAt": "2026-09-25T21:44:40.000Z",
+      "summary": "A U.S. Army soldier who pleaded guilty to hacking into multiple telecommunications companies and stealing mobile call and text metadata for more than 100 million AT&T customers in 2024 was sentenced to 70 months in federal prison today and ordered to pay nearly $300,000 in restitution to victims.",
+      "id": "5569bca5352ec422aa826492d7dc6c6964c6c3d30eda5bd85a4297c63260b901",
+      "ref_id": "0",
+      "recommendationScore": 30,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "一篇关于美国士兵因电信公司黑客入侵和勒索被判刑的简短新闻报道。",
+      "reason": "缺乏技术深度和实用见解，更偏向一般性科技新闻而非深度分析或教程，与优先主题相关性低。",
+      "tags": [
+        "Cybersecurity",
+        "Hacking",
+        "News",
+        "Legal"
+      ]
+    },
+    {
+      "title": "Reading List 2026-09-26",
+      "link": "https://www.construction-physics.com/p/reading-list-2026-09-26",
+      "source": "construction-physics.com",
+      "publishedAt": "2026-09-26T10:17:46.000Z",
+      "summary": "ASML’s lack of European sales, a California distributed power plant, Starlink as a planetary barometer, and more.",
+      "id": "d11fe88d622e88212450a4589b3b9b92d289475179f2c80c3b609632f96dcdab",
+      "ref_id": "4",
+      "recommendationScore": 20,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "一个简短的阅读列表预告，主题广泛但内容极少。",
+      "reason": "提供的信息过少，无法进行有效评估，仅列出了一些热门话题，缺乏实际内容支持。",
+      "tags": [
+        "阅读列表",
+        "科技新闻",
+        "ASML",
+        "Starlink"
+      ]
+    },
+    {
+      "title": "Advice to a beginning software engineer",
+      "link": "https://seangoedecke.com/advice-to-a-beginning-software-engineer/",
+      "source": "seangoedecke.com",
+      "publishedAt": "2026-09-26T00:00:00.000Z",
+      "summary": "",
+      "id": "ec1cbf0722837c044d108c5a816ad93574c73c032c27d5643926a2d44d2fb4f4",
+      "ref_id": "4",
+      "recommendationScore": 18,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "标题泛泛，且无具体文章内容，无法进行有效评估。",
+      "reason": "文章主体内容缺失，无法判断其技术深度、新颖性与实用性，主题优先级也较低。",
+      "tags": [
+        "Software Engineering",
+        "Career Advice",
+        "Untriaged"
+      ]
+    },
+    {
+      "title": "Japan moves to tighten rules for foreigners, throwing futures into doubt",
+      "link": "https://www.aljazeera.com/economy/2026/9/25/japan-moves-to-tighten-rules-for-foreigners-throwing-futures-into-doubt",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-26T17:43:11.000Z",
+      "summary": "Article URL: https://www.aljazeera.com/economy/2026/9/25/japan-moves-to-tighten-rules-for-foreigners-throwing-futures-into-doubt\nComments URL: https://news.ycombinator.com/item?id=49858810\nPoints: 20\n# Comments: 11",
+      "id": "02340bd8d13f0a86926997f3051a34c870fc3e2e48f6a5e51d53034e6a473a7c",
+      "ref_id": "0",
+      "recommendationScore": 5,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "一篇与科技领域无关的社会经济新闻。",
+      "reason": "内容不符合科技博客的关注主题，缺乏技术深度和实用性。",
+      "tags": [
+        "新闻",
+        "社会经济",
+        "国际关系"
+      ]
+    },
+    {
+      "title": "Mr. Choyka Is Apparently Doing Well",
+      "link": "https://www.usatoday.com/story/sports/golf/2020/02/02/golf-amateur-gary-choyka-sinks-two-holes-one-same-round/4639969002/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-09-25T23:50:45.000Z",
+      "summary": "A reader asked if this Gary Choyka who hit two holes-in-one in the same round of golf back in 2020 is the same Gary Choyka who was my history teacher 30+ years ago. Indeed it is. He looks good. (He was a hell of a basketball player too.)\n ★",
+      "id": "3a6c85d1e4da68397656c08e3032ce3c5f11fff9be52e492f9b2b04d5a706d06",
+      "ref_id": "4",
+      "recommendationScore": 5,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "一篇与科技无关的个人轶事，讲述了作者的一位前老师的近况。",
+      "reason": "内容与科技博客的主题完全无关，没有任何技术深度、新颖性、实用性或信息密度。",
+      "tags": [
+        "Personal Story",
+        "Off-topic"
+      ]
+    },
+    {
+      "title": "I'm the mom in that viral Giants clip. Let me tell you about my husband",
+      "link": "https://themomoftheyear.substack.com/p/im-the-mom-in-that-viral-giants-clip",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-26T16:12:18.000Z",
+      "summary": "Article URL: https://themomoftheyear.substack.com/p/im-the-mom-in-that-viral-giants-clip\nComments URL: https://news.ycombinator.com/item?id=49857899\nPoints: 243\n# Comments: 106",
+      "id": "e190b885f10823fed82cde2410f2a823499f876d423333801a2604893821c944",
+      "ref_id": "3",
+      "recommendationScore": 0,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "一篇关于网络热点事件的个人故事，与科技内容无关。",
+      "reason": "不符合科技博客的关注主题，内容偏向个人生活分享，缺乏技术相关性。",
+      "tags": [
+        "新闻",
+        "个人故事",
+        "社会热点"
+      ]
+    }
+  ]
+}
