@@ -1,0 +1,471 @@
+{
+  "dailySummary": "今日科技速递聚焦AI前沿：大模型优化加速，AI代理竞技与未来个人智能助手成焦点，并引发AI伦理与数据安全讨论。此外，一款创新型跨平台Markdown编辑器凭借其独特功能和设计亮相，受开发者广泛关注。",
+  "articles": [
+    {
+      "title": "Show HN: Building a Markdown editor for Mac, iOS and web",
+      "link": "https://www.markdown.beauty/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-27T13:44:45.000Z",
+      "summary": "I've spent the last 10 months building Beauty: a local, powerful greco-roman Markdown editor where the page looks finished while you type. It runs on the Mac, iPhone and in the browser, and the browser version opens without an account: https://app.markdown.beauty\nI was frustrated with writing apps, and like most I used Apple Notes. After 2+ years immersed in Cursor, Codex and CC, I wished some interactions existed in a text editor.\nThe Markdown renders in place as you write it, including tables (which you can drag and resize without lining up pipes), KaTeX math and Mermaid diagrams. A lot of thought went into typography and the writing experience.\nYour notes on the Mac are plain .md files in a folder with images next to them, so they open in anything else too. Each note keeps 200 versions. If you share a note with a link it syncs peer to peer over WebRTC while someone has it open, and the server that connects you only ever sees a random room id.\nMost of the ~1,000 commits went into the editor itself. It's a contenteditable, and I don't let the browser restructure the document at all, which was a lot more work than I expected. Building this to be performant and cross-platform required some novel approaches, which I'll later open source. The editor is free with no account or ads, and there's an optional subscription for sync through your own iCloud.\nhttps://www.markdown.beauty\nComments URL: https://news.ycombinator.com/item?id=49866597\nPoints: 44\n# Comments: 28",
+      "id": "b86eca7e8cf0916a55435f6a615c682fc9c988e5b583df1924966438cbeec302",
+      "ref_id": "1",
+      "recommendationScore": 95,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "一款为Mac、iOS和Web精心打造的Markdown编辑器，提供无缝的写作和实时渲染体验。",
+      "reason": "完美契合Apple生态、编程工具和独立开发主题，兼具创新功能和实用性，技术深度和产品设计思考突出。",
+      "tags": [
+        "Markdown",
+        "Editor",
+        "Mac",
+        "iOS",
+        "Web Development",
+        "Independent Development",
+        "Productivity",
+        "Show HN"
+      ]
+    },
+    {
+      "title": "On caring for user data: NeoVim caused Vim undo files to be deleted",
+      "link": "https://unsung.aresluna.org/they-had-no-concept-of-a-duty-of-care-to-their-users/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-27T14:45:07.000Z",
+      "summary": "Article URL: https://unsung.aresluna.org/they-had-no-concept-of-a-duty-of-care-to-their-users/\nComments URL: https://news.ycombinator.com/item?id=49867067\nPoints: 294\n# Comments: 255",
+      "id": "b6f3c988b4d6f1191803d92ff0d4735598fae7eabd6952f11adebcc0790deb86",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "深入探讨了NeoVim导致Vim撤销文件丢失的事件及其对用户数据的责任。",
+      "reason": "涉及核心编程工具的数据安全和开发者责任，讨论了软件开发中的重要伦理问题，具有极高的实用性和信息密度。",
+      "tags": [
+        "Programming Tools",
+        "Data Integrity",
+        "Vim",
+        "NeoVim",
+        "Software Development",
+        "Ethics"
+      ]
+    },
+    {
+      "title": "Faster prompt lookup drafting in llama.cpp",
+      "link": "https://jadidbourbaki.github.io/blog/prompt-lookup-llama-cpp/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-26T19:57:24.000Z",
+      "summary": "Article URL: https://jadidbourbaki.github.io/blog/prompt-lookup-llama-cpp/\nComments URL: https://news.ycombinator.com/item?id=49859982\nPoints: 34\n# Comments: 3",
+      "id": "cf8a692268d7b087b06ede07e23b5370ae1745497258b0bb4f1dc916987a1eeb",
+      "ref_id": "0",
+      "recommendationScore": 90,
+      "popularityScore": 60,
+      "priority": "high",
+      "comment": "深入探讨llama.cpp性能优化，对AI开发者极具价值。",
+      "reason": "文章提供了AI模型推理的具体性能优化方案，技术深度和实用性高，符合AI和编程工具主题优先级。",
+      "tags": [
+        "AI",
+        "大模型",
+        "性能优化",
+        "llama.cpp",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "Ember-1",
+      "link": "https://fireworks.ai/blog/ember-1",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-27T17:31:53.000Z",
+      "summary": "Article URL: https://fireworks.ai/blog/ember-1\nComments URL: https://news.ycombinator.com/item?id=49868830\nPoints: 121\n# Comments: 56",
+      "id": "ee0a4957fb506dcdf5ee313104b402f3de90f33e8aff5695210078050b6fe110",
+      "ref_id": "3",
+      "recommendationScore": 85,
+      "popularityScore": 43,
+      "priority": "high",
+      "comment": "Fireworks.ai 发布新模型Ember-1，是AI领域的重要进展和潜在技术突破。",
+      "reason": "高优先级的AI主题，预示着新的AI模型发布，具备高技术深度、新颖性和实用性，值得重点关注。",
+      "tags": [
+        "AI",
+        "模型发布",
+        "深度学习",
+        "Fireworks AI",
+        "大模型"
+      ]
+    },
+    {
+      "title": "Show HN: TinyAIArena watch AI agents battle it out",
+      "link": "https://tinyaiarena.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-27T15:51:28.000Z",
+      "summary": "Did you ever click on an “AI Arena” expecting glorious battle and instead get a boring benchmark? If so, this project is for you: proper life-or-death fights between four models on a picturesque 8×8 grid. May the most intelligent one win!\nClick on any of the matches to spectate them.\nCode: https://github.com/hp6/ai-arena\nComments URL: https://news.ycombinator.com/item?id=49867775\nPoints: 57\n# Comments: 31",
+      "id": "feb8ab8ab26f328db71455f67b7f6b386390c92d5475e9aae6a02698d3585356",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "一个将AI代理对战可视化的有趣项目，提供了实际代码。",
+      "reason": "直接契合AI主题，概念新颖，提供了代码，具有较高的可玩性和学习价值。",
+      "tags": [
+        "AI",
+        "Simulation",
+        "Interactive",
+        "Project"
+      ]
+    },
+    {
+      "title": "Alexandr Wang: ‘Why I’m Building Muse’",
+      "link": "https://x.com/alexandr_wang/status/2103551714536439951",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-09-26T20:34:54.000Z",
+      "summary": "Alexandr Wang, blogging on X:\nNow imagine every person on earth with a second mind beyond their\nown. A general manager whose whole job is to find out what you\nwant and make sure it happens. Someone that hears the\nhalf-sentence, “I feel like there’s something more I could be\ndoing,” and helps fill in the blanks. This might not be a genie in\na bottle, but it can be someone that says, “This is the thing\nyou’ve been dreaming of your whole life. Let’s go get it. Here’s\nhow.” And then builds a plan. Sends the email. Makes the phone\ncall. Finds the funding. Keeps you on schedule. Clears the way and\nsolves all the problems it can until the human part, the wanting\nand the dreaming, is all that’s left.\nVia Manton Reece, who writes:\nThis is a mission statement. It’s ambitious and clear. Compared to\nMeta’s usual “connecting people” pitch — which we just translate\nto “scale to everyone and serve ads” — this new statement from\nAlexandr feels almost shockingly personal and new.\n ★",
+      "id": "f67cbbfbea9e48884c420d0319fe863c333ea7b451910b6b63fec6448ae0db71",
+      "ref_id": "4",
+      "recommendationScore": 85,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "Alexandr Wang对未来AI个人助手的宏大愿景，极具启发性和战略意义。",
+      "reason": "文章来自AI领域知名人物，清晰阐述了AI应用的未来愿景和产品理念，对读者理解AI发展方向有重要价值。",
+      "tags": [
+        "AI",
+        "AI应用",
+        "未来趋势",
+        "产品愿景",
+        "独立开发"
+      ]
+    },
+    {
+      "title": "There are no \"rogue\" AI agents",
+      "link": "https://eoinhiggins.substack.com/p/there-are-no-rogue-ai-agents",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-27T16:19:46.000Z",
+      "summary": "Article URL: https://eoinhiggins.substack.com/p/there-are-no-rogue-ai-agents\nComments URL: https://news.ycombinator.com/item?id=49868083\nPoints: 226\n# Comments: 170",
+      "id": "b62a94f3911c0d7f348c85d6177e8777279ce1dc296e893e902479849ac43bc3",
+      "ref_id": "4",
+      "recommendationScore": 82,
+      "popularityScore": 100,
+      "priority": "high",
+      "comment": "深度探讨了“流氓AI代理”概念的误区，提供了对AI安全和伦理的独特视角。",
+      "reason": "AI领域的热点议题，内容具有深刻的思辨性与重要性，有助于理解AI伦理和未来发展方向，引发广泛讨论。",
+      "tags": [
+        "AI",
+        "AI伦理",
+        "AI安全",
+        "观点评论",
+        "哲学"
+      ]
+    },
+    {
+      "title": "Human-AI partnerships are for alignment, not capability",
+      "link": "https://seangoedecke.com/human-ai-partnerships-are-for-alignment-not-capability/",
+      "source": "seangoedecke.com",
+      "publishedAt": "2026-09-27T00:00:00.000Z",
+      "summary": "",
+      "id": "ca4a005faa8fd6f4053bf52349b8d3157f828d314934f3fbb34dfd5ece3eb000",
+      "ref_id": "2",
+      "recommendationScore": 80,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "探讨人机协作的AI对齐重要性，具有深刻的战略和伦理意义。",
+      "reason": "文章涉及AI领域的核心议题——AI对齐和人机关系，对AI的未来发展有重要指导价值。",
+      "tags": [
+        "AI",
+        "AI伦理",
+        "AI战略",
+        "人机协作"
+      ]
+    },
+    {
+      "title": "The Normalization of Inexplicable Failures",
+      "link": "https://www.ihatethefuture.com/2026/09/the-normalization-of-inexplicable.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-27T15:26:40.000Z",
+      "summary": "Article URL: https://www.ihatethefuture.com/2026/09/the-normalization-of-inexplicable.html\nComments URL: https://news.ycombinator.com/item?id=49867486\nPoints: 187\n# Comments: 67",
+      "id": "bb4a647c437a23adbca87f53a3b5ad86e892a0f2581618c7b6de9d9dbe968601",
+      "ref_id": "2",
+      "recommendationScore": 75,
+      "popularityScore": 85,
+      "priority": "medium",
+      "comment": "对技术产品中“莫名其妙的故障”常态化现象的批判性分析。",
+      "reason": "引人深思，对产品设计、系统可靠性和用户体验有重要启发，信息密度较高。",
+      "tags": [
+        "System Design",
+        "Failure Analysis",
+        "User Experience",
+        "Opinion"
+      ]
+    },
+    {
+      "title": "Ten lines of code that changed my world",
+      "link": "https://pixelambacht.nl/2026/ten-lines-of-code/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-27T13:33:03.000Z",
+      "summary": "Article URL: https://pixelambacht.nl/2026/ten-lines-of-code/\nComments URL: https://news.ycombinator.com/item?id=49866534\nPoints: 96\n# Comments: 28",
+      "id": "4b950d28dcc7b2d3567425687a0c22c800fa444a36c0d847f97be1ed01ff5ce2",
+      "ref_id": "2",
+      "recommendationScore": 70,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "一篇关于某段代码如何深刻影响作者世界观的启发性文章。",
+      "reason": "虽未展示具体代码，但标题引发思考，属于编程工具范畴下的启发性内容，具有一定深度和实用性。",
+      "tags": [
+        "Programming",
+        "Inspiration",
+        "Coding Philosophy"
+      ]
+    },
+    {
+      "title": "Apple’s Other Recent ‘Duo’",
+      "link": "https://support.apple.com/en-us/111812",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-09-26T19:41:39.000Z",
+      "summary": "I keep mentioning Apple’s 1992 groundbreaking PowerBook Duo series as a precedent for the iPhone Duo’s name. But of course in 2020, Apple released the MagSafe Duo Charger, a wonderful Lightning peripheral for charging an iPhone and Apple Watch at the same time. It even folded.\nA brief note on the PowerBook Duo, while I’m at it. I got an email this month from Dave Rothschild, a now-retired former Apple employee who helped spearhead that project, and he emphasized that the internal motto was always “Best of Both Worlds”, abbreviated internally to just “BOBW”. At the time, laptops were just profoundly less powerful than desktop computers, but desktop computers of course were the opposite of “portable”. The Macintosh Duo was a terrific success, because it really did achieve that “best of both worlds” experience. Here’s a 2015 retrospective on the PowerBook Duo by Christopher Phin that captures and illustrates just how groundbreaking it was.\nBOBW is exactly what the iPhone Duo needs to be. It needs to be a great iPhone on the outside, and a great mini tablet on the inside.\nBonus link: Rothschild’s daughter Gabby made a nice “This is not Apple’s first Duo” video, including footage of her dad doing the initial on-stage demo back in 1992.\n ★",
+      "id": "afb3643c9a455dfa2bf2ae3d005f580a74912dbf56949a567f8751b3325f3771",
+      "ref_id": "0",
+      "recommendationScore": 70,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "这篇文章回顾了苹果PowerBook Duo和MagSafe Duo充电器的历史，并将其“BOBW”理念与潜在的“iPhone Duo”联系起来。",
+      "reason": "文章对苹果产品设计理念的探讨具有启发性，尤其对苹果生态爱好者有吸引力，符合优先级高的主题。",
+      "tags": [
+        "Apple",
+        "Apple Ecosystem",
+        "Product Design",
+        "History",
+        "Speculation"
+      ]
+    },
+    {
+      "title": "In an $80 motel room, a discovery to shed light on the origins of life",
+      "link": "https://www.nytimes.com/2026/09/26/science/motel-science-discovery.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-27T14:30:55.000Z",
+      "summary": "Article URL: https://www.nytimes.com/2026/09/26/science/motel-science-discovery.html\nComments URL: https://news.ycombinator.com/item?id=49866951\nPoints: 141\n# Comments: 54",
+      "id": "6672b7a93d127084cf77c0cfcd012c5b2df50a673a99b7373d43bb0990d2b48b",
+      "ref_id": "0",
+      "recommendationScore": 60,
+      "popularityScore": 75,
+      "priority": "low",
+      "comment": "一篇引人入胜的科学发现报道，探讨了生命起源的奥秘。",
+      "reason": "虽然不属于核心科技主题，但其科学深度、新颖性以及在Hacker News上的关注度使其值得一读。",
+      "tags": [
+        "Science",
+        "Discovery",
+        "Biology",
+        "General Interest"
+      ]
+    },
+    {
+      "title": "Show HN: Trail – new kind of logic game",
+      "link": "https://trail.franzai.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-27T07:02:20.000Z",
+      "summary": "Article URL: https://trail.franzai.com/\nComments URL: https://news.ycombinator.com/item?id=49864105\nPoints: 13\n# Comments: 7",
+      "id": "3488691bcda7b404362ad6ff5e3f49f67c7eb0a30e327dd22e79831a631c7072",
+      "ref_id": "4",
+      "recommendationScore": 60,
+      "popularityScore": 25,
+      "priority": "medium",
+      "comment": "一款名为Trail的全新逻辑游戏，展现了独立开发者的创新精神。",
+      "reason": "作为'Show HN'项目，它代表了独立开发和产品设计领域的新尝试，尽管初期人气不高，但新颖性值得关注。",
+      "tags": [
+        "Game",
+        "Logic Game",
+        "Independent Development",
+        "Show HN"
+      ]
+    },
+    {
+      "title": "Replacing the old battery on rechargeable bike lights",
+      "link": "https://jvns.ca/blog/2026/09/27/replacing-the-old-battery-on-rechargeable-bike-lights/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-27T13:30:11.000Z",
+      "summary": "Article URL: https://jvns.ca/blog/2026/09/27/replacing-the-old-battery-on-rechargeable-bike-lights/\nComments URL: https://news.ycombinator.com/item?id=49866515\nPoints: 100\n# Comments: 49",
+      "id": "f86fb9777ea6f7628bac32fce4012b9f733f4254b6c3fa809ab5fb8d01414de2",
+      "ref_id": "3",
+      "recommendationScore": 55,
+      "popularityScore": 68,
+      "priority": "low",
+      "comment": "一篇实用的DIY指南，教你如何更换充电式自行车灯的旧电池。",
+      "reason": "尽管实用性强且倡导可持续发展，但主题与AI、Apple生态等核心优先级关联度较低。",
+      "tags": [
+        "DIY",
+        "Repair",
+        "Electronics",
+        "Sustainability"
+      ]
+    },
+    {
+      "title": "PostmarketOS is rebranding as Nura",
+      "link": "https://nura.eco/blog/2026/09/27/nura-rename/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-27T15:31:15.000Z",
+      "summary": "Article URL: https://nura.eco/blog/2026/09/27/nura-rename/\nComments URL: https://news.ycombinator.com/item?id=49867553\nPoints: 115\n# Comments: 18",
+      "id": "ffeb91c3891ab848231497b5380434f027fb743001a95d06cd055b46636afa08",
+      "ref_id": "1",
+      "recommendationScore": 50,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "PostmarketOS宣布品牌重塑为Nura。",
+      "reason": "主要是一个品牌更名消息，技术深度和新颖性较低，与核心技术主题相关性一般。",
+      "tags": [
+        "Operating System",
+        "Open Source",
+        "Rebranding"
+      ]
+    },
+    {
+      "title": "Show HN: Lofi Cities – Pixel-art city nights with browser-generated lofi",
+      "link": "https://loficities.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-27T18:44:30.000Z",
+      "summary": "Article URL: https://loficities.com/\nComments URL: https://news.ycombinator.com/item?id=49869574\nPoints: 25\n# Comments: 4",
+      "id": "f16fc592d4331b290952886f6f24d05d26986a03fd9bbb5fea63cd5798af8063",
+      "ref_id": "0",
+      "recommendationScore": 40,
+      "popularityScore": 7,
+      "priority": "low",
+      "comment": "一个结合像素艺术和Lofi音乐的独立项目，视觉与听觉体验独特。",
+      "reason": "创意虽好但技术深度和实用性一般，主题优先级较低，适合娱乐性浏览。",
+      "tags": [
+        "独立开发",
+        "产品设计",
+        "创意项目",
+        "前端",
+        "Lofi音乐"
+      ]
+    },
+    {
+      "title": "SNL Weekend Update: Anthropic CEO Dario Amodei on A.I.'S Threat to Humanity [video]",
+      "link": "https://www.youtube.com/watch?v=-Nvne3LzBls",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-27T17:32:02.000Z",
+      "summary": "Article URL: https://www.youtube.com/watch?v=-Nvne3LzBls\nComments URL: https://news.ycombinator.com/item?id=49868831\nPoints: 143\n# Comments: 40",
+      "id": "87450867153b72cb1ea4c03fcd7fb72b83710f89b62df0e787826fbe4dd274a1",
+      "ref_id": "2",
+      "recommendationScore": 35,
+      "popularityScore": 43,
+      "priority": "medium",
+      "comment": "SNL恶搞Anthropic CEO谈AI威胁论，娱乐性强，但技术内容稀少。",
+      "reason": "虽然涉及AI高优先级主题，但以喜剧形式呈现，缺乏深度技术洞察和实际参考价值。",
+      "tags": [
+        "AI",
+        "娱乐",
+        "社会评论",
+        "Anthropic",
+        "AI安全"
+      ]
+    },
+    {
+      "title": "Oral history of John Chowning, inventor of FM synthesis [video]",
+      "link": "https://www.youtube.com/watch?v=e1Xn3030IvM",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-27T18:02:43.000Z",
+      "summary": "https://en.wikipedia.org/wiki/John_Chowning\nComments URL: https://news.ycombinator.com/item?id=49869142\nPoints: 4\n# Comments: 0",
+      "id": "0b9f6b441cdb7e7ced74b6c7a17e8e9269a1af0c7cec11538d1e14c113295a72",
+      "ref_id": "1",
+      "recommendationScore": 25,
+      "popularityScore": 1,
+      "priority": "low",
+      "comment": "记录了FM合成技术发明者John Chowning的口述历史，对音乐技术史研究有价值。",
+      "reason": "内容偏向历史与文化，而非当前技术前沿，实用性和新颖性较低，受众较窄。",
+      "tags": [
+        "历史",
+        "音频技术",
+        "音乐",
+        "人物传记",
+        "FM合成"
+      ]
+    },
+    {
+      "title": "Reelizer Returns",
+      "link": "https://www.reelizer.com/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-09-26T21:08:08.000Z",
+      "summary": "Back in 2011 I linked to Reelizer, a splendid archive of movie posters curated by Roger Erik Tinch. Reelizer went away for a few years, but Tinch has brought it back, seemingly better than ever. Huzzah.\n ★",
+      "id": "a049831b59a9fa88cc01a0d5b76e9f797a6501ab835668c79fad97d3b4128a80",
+      "ref_id": "3",
+      "recommendationScore": 20,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "一个电影海报档案网站的回归公告，与科技博客主题关联度较低。",
+      "reason": "文章内容偏文化艺术领域，缺乏技术深度和实用性，不符合科技博客主题优先级。",
+      "tags": [
+        "文化",
+        "设计",
+        "电影",
+        "回顾"
+      ]
+    },
+    {
+      "title": "Fragment of oldest known peace treaty found in Turkey",
+      "link": "https://www.livescience.com/archaeology/ancient-egyptians/we-have-found-traces-of-peace-thousands-of-years-old-fragment-of-worlds-oldest-known-peace-treaty-found-in-turkey",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-27T14:35:10.000Z",
+      "summary": "Article URL: https://www.livescience.com/archaeology/ancient-egyptians/we-have-found-traces-of-peace-thousands-of-years-old-fragment-of-worlds-oldest-known-peace-treaty-found-in-turkey\nComments URL: https://news.ycombinator.com/item?id=49866988\nPoints: 23\n# Comments: 3",
+      "id": "b59ed7f9db82489013bf3f5e7c9c63c4c07b0749752d9b26595d8b1962faef18",
+      "ref_id": "4",
+      "recommendationScore": 5,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "一篇关于考古发现的非科技新闻。",
+      "reason": "完全不属于科技主题范畴。",
+      "tags": [
+        "Archaeology",
+        "History",
+        "News"
+      ]
+    },
+    {
+      "title": "Kākāpō Party",
+      "link": "https://simonwillison.net/2026/Sep/26/kakapo-party/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-09-26T23:39:06.000Z",
+      "summary": "",
+      "id": "669d8cd0cb0cb12c40c2fd95563c4a3ff7c7f108b7363befe8af61105f34f62c",
+      "ref_id": "1",
+      "recommendationScore": 5,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "无内容，无法评估其技术相关性或价值。",
+      "reason": "文章内容缺失，无法进行有效评估，假定与科技博客主题不符。",
+      "tags": [
+        "其他",
+        "无内容"
+      ]
+    },
+    {
+      "title": "Gig Review: Public Service Broadcasting's Race For Space at Alexandra Palace ★★★★⯪",
+      "link": "https://shkspr.mobi/blog/2026/09/gig-review-public-service-broadcastings-race-for-space-at-alexandra-palace/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-09-27T11:34:08.000Z",
+      "summary": "Ahhh! PSB's RFS! A delightfully indulgent soundscape of melodic wonder, performed here on its 10th (ish) anniversary. Is it really nostalgia if an album is only a decade old? It feels like it has been in the air forever.    For something which is seemingly made up of samples, it would have been easy for them to half-arse it and basically just play the CD. Instead we got a full band, guest…",
+      "id": "3c3f51c16df4f41540a641b4de08e6bb9093c6f7547d7ac4065a8d9f4e94b9b7",
+      "ref_id": "1",
+      "recommendationScore": 5,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "这是一篇关于音乐会评论的文章，与科技主题无关。",
+      "reason": "内容与科技博客的关注主题完全不符，不具备任何技术深度或实用性。",
+      "tags": [
+        "Music",
+        "Review"
+      ]
+    },
+    {
+      "title": "Combo Platter",
+      "link": "https://feed.tedium.co/link/15204/17475461/combos-snack-food-history",
+      "source": "tedium.co",
+      "publishedAt": "2026-09-27T16:05:10.000Z",
+      "summary": "Admit it, you were wondering where the hell the gas-station staples Combos came from just as much as I was. Anyway, I figured it out. At one point a drill was involved.\n\nToday in Tedium: As snack foods go, Combos I would describe as the perfect B-minus food. It’s a combination of crunchy and cheesy, nothing more, nothing less. They are the closest a road-tripper is going to get to chips and dip without stopping. But it’s not like the best food you’ve ever had. It’s the kind of thing that gets stuck in your teeth, and if you eat too many at once, it’s salty to the point of annoyance. But admit it: You’re in a gas station looking for sustenance, and it’s not like you walked into a Sheetz or a Wawa. Your options are limited, and as a result, you might just grab something you would never otherwise grab. You are the perfect customer for Combos, the snack food that didn’t reshape America, but instead is a reflection on your current circumstances. You are here. You need a bag of salty food. Combos is there, ready for you. Today’s Tedium answers the ever-lingering question about where Combos came from, why you can’t remember any of its commercials, and why that might actually be for the best. — Ernie @ Tedium\n\n\n Sponsored By Computer Chronicles Revisited \n\n\nA Monthly Tour Through Computer History\nFrom 1983 to 2002, the PBS series \"Computer Chronicles\" covered the people, products, and companies that made up the PC industry. Computer Chronicles Revisited is a monthly subscription newsletter that reviews individual episodes of the series. Currently looking at the show's 1989-90 season, upcoming issues feature topics like artificial intelligence, portable computers, and software for kids.\nInspired by the computer industry newsletters of the time period, Computer Chronicles Revisited is a print publication. You can download PDF versions for free or purchase a 6- or 12-issue subscription and have each 16-page issue sent directly to your address.\n\n\nThey had to fit the cheese into these things somehow. (DepositPhotos.com)\nDrilling holes in pretzels: The forgotten Battle Creek company that eventually nailed Combos\nThere hasn’t exactly been many dedicated tomes written on the history of Combos, a food that isn’t the main entree on any normal person’s plate. It’s mass-manufactured snack food, and it’s been produced by one of the world’s largest food companies, Mars, since the late 1970s.\nBut there was a time when it was thought to require a literal drill to produce. Yes, the signature hole that makes Combos unlike any food on grocery store shelves was originally produced with a drill. The overworked Dunkin’ guy says “time to make the donuts” as a camera crew catches his every move. The overworked Combos guy says “time to drill the pretzels,” as he takes a pretzel and cores it like a freaking apple.\nOK, I’m getting ahead of myself here, but I needed you to know about the drill thing, because it really just highlights how strange producing a food like Combos really is.\nThe story of Combos starts with a pair of brothers, Richard and Walter Nelson. The brothers, based in Battle Creek, Michigan, were active entrepreneurs starting in the 1950s, when, with their father Walter Sr., they launched Wal-Rich Enterprises, which made toy guns, at Kellogg Field, a modern-day corporate airport that was used as a training base during World War II.\nThis bread is not surviving without a lobotomy, or let’s be honest, a doughbotomy. (Google Patents)\nBy the 1970s, the brothers had shifted to contract work for various manufacturers, including General Motors and nearby Kellogg’s. But gradually, the brothers, now working under the Nelbros umbrella, started developing the patents for an unusual product: A pretzel filled with cheese. The first such patent filing, 1970s’s “Method of making a filled food item,” describes an attempt to solve the problem of putting a filling inside a fairly solid product, like a cracker:\n\nIt is well-known practice to pierce a food item having a relatively open and porous interior, such as a cream puff or doughnut of pillow shape, and directly inject into such food item through the piercing member, a thick but flowable filling such as whipped cream, custard, fruit preserves, and jelly. The filling of hollow ice cream conetype items by various filling procedures, such as with soft ice creamlike material flowing from a faucet has also been proposed. Such procedures do not lend themselves to the filling of relatively solid items, and especially the solid and relatively brittle, sticklike, hard-crust items, and it was a recognition of the marketing possibilities of such items and a special method and apparatus for producing them, not commercially available, which led to the conception and development of the present invention.\nAccordingly, among the objects of the present invention is the provision of a new product in the form of an initially solid, relatively brittle, sticklike, crust-covered product which has been subsequently mechanically hollowed and filled with a suitable filler, and the method and apparatus for producing such product.\n\nTheir solution to this problem they’ve found? Drill baby, drill:\n\nAnother object of this invention is to provide an apparatus which will cut a bread stick to length, drill it substantially from the cut end to the other, fill same from the inside of said drilled opening, starting adjacent the bottom of same, with a suitable thick but extrudable filling material, and deliver same for further processing, using or packaging.\n\nIf you’re a longtime reader of Tedium, you may know that this is kind of a wasteful process for producing a snack. The best snacks, such as cheese curls, come about because of happy accidents and byproducts. But this drilled-breadstick approach nonetheless was enough for Nelbros to launch this idea into a sellable product, which they, of course, called … shotzels.\nI’m not saying that it’s a bad name, but it certainly wasn’t good enough to win over the gas stations of the world. I was trying to figure out just how far idea of a cheese-filled pretzel shotzel reached beyond Battle Creek, and I found a lot of newspaper ads that suggest the company saw uptake for the product at a number of small delis around the country.\nWonder if they rotated between Pop Tarts, Raisin Bran, and other Battle Creek favorites at these concerts.\nHow far did the shotzel get in Battle Creek? One of the few references I could find to shotzels in the city’s newspaper emerged around 1977 when it was promoted as one of the appetizers made available before a concert by the Battle Creek Symphony Orchestra. Combos may be low culture, but shotzels were apparently a hit with the city’s NPR crowd.\nAround this time, Nelbros was struggling with its factory situation, attempting to move facilities as it navigated a growing business. A 1978 article described a company in flux, along with a few others who were moving into a then-new industrial park.\n“It will take about six months to complete the building and get equipment in. We’re planning a 60,000-square-foot building that will accommodate a new 300-foot oven we have on order,” Richard Nelson told the newspaper. “We’ve outgrown our plant at Green and Jay streets and must relocate to expand.”\nThe patent through which a million road trips were made bearable.\nMeanwhile, the brothers were continuing to develop the shotzel idea into something plainly recognizable to any modern snackhound. The strategy, as highlighted by a patent published in 1979: Get rid of the drilling.\n\nThe objects of the invention are accomplished by apparatus and a method for making tubular food products wherein dough pieces in tubular shape are extruded onto supporting die members that hold the tubular dough piece during the time that it is raising and is being baked. Thereafter, the baked member is removed from the die member and is moved relative to a filling apparatus so that filler of a relatively softer food material can be deposited within the cavity formed in the baked tubular member. In one embodiment of the invention the supporting die members are transferred from separated conveyors for extruding, proofing, cooking and baking.\n\nEseentially, rather than creating a single pretzel, filling it with cheese and cutting it up, this edition of the shotzel instead extrudes the bread onto tiny loops that already have holes in the middle, ensuring that they can easily be stuffed with cheese or some other kind of filling.\nNaturally, the candy manufacturing giant Mars got wind of this development, acquired it from Nelbros in 1979, gave it a name better than “shotzel,” and marketed it in gas stations nationwide. The rest is history.\n\n\nseven\n\nThe number of current Combos flavors that the brand promotes on its website, a mixture of different breadings and different fillings. (Pretzel bread was first; the plainer cracker-style bread came half a decade later.) The brand also periodically sells some limited edition flavors, for folks who must eat Combos with sriracha flavoring or a faux-tortilla shell. As taste testing for this issue, I noshed a Garlic Parmesan flavor during a road trip, and, well, it felt like I was eating Combos.\n\n\nIt’s so weird to me that there were no non-pretzel flavors of Combos for the first few years of its existence. Also, this ad screams “we don’t understand our target audience yet, so let’s aim super-broad.”\nThe 2006 Combos marketing campaign that didn’t age particularly well\nCombos are not really a product that needs advertising so much as distribution. They exist in a 7-Eleven. You pick them up instead of a bag of Bugles, and you’re on your way. Road trip commences.\nBut that hasn’t stopped Mars from trying to market these things on television. The first such attempt came in 1982 in a format I’d call “Big Red”-core. It leaned heavily on the pretzel inspiration, rather than its bite-sized nature, which was really the selling point that mattered.\n\nBut despite their lasting popularity, Combos have never been a favorite of advertisers. There’s not really a “Combos jingle” that people associate with the company. That meant that, when advertisers took steps to attempt to explain the appeal of Combos, they did so with the then-current language of hipness. This 1994 Combos ad, clearly riffing off of Bill Hicks and his close copycat Denis Leary, emphasizes the point. (At least it talks about the product!)\nBeyond quirky ad campaigns like the mid-1990s Combo Man comic-book campaign with Marvel, nothing seemed to really stick to the brand culturally.\nWhich meant that in the mid-2000s, when cable channels like Adult Swim and Spike TV were specifically targeting young men, Combos was something of an open canvas upon which big advertising firms could place their imprint.\nWhat if we put a middle-aged fat guy in a dress? Peak comedy, my friends. (Internet Archive)\nAnd given our cultural evolution since, it reads as particularly gnarly. The slogan says what they were going for: “What Your Mom Would Feed You If Your Mom Were A Man.”\nBasically, they got someone who looks very much like a man (played by E.J. Carroll, best known for a recurring role on the HBO show The Deuce), put him in a dress, and gave him some clearly adult sons. The visual effect comes off somewhat like John Carroll Lynch’s cross-dressing character in The Drew Carey Show, without the ahead-of-its-time progressive elements that eventually (and unfortunately) led that story line to be dropped.\n\nThe ads were designed for maximum absurdity (giving Combos to a sick son, saying grace over a bag of Combos), and to hit you with that in-your-face slogan right at the end. We’re a long way from handing these things out at the Battle Creek Symphony Orchestra.\nIt was the brainchild of TBWA\\Chiat\\Day, the firm famed for much of Apple’s iconic advertising, most notably its then-recent “Get A Mac” campaign. And the campaign even won awards for its radio advertising.\nIn an era when at least some have questioned whether late character actor Tim Curry’s career-making role in The Rocky Horror Picture Show is transphobic, even considering that film’s lasting relevance with the LGBTQ+ community, the ad hits a lot differently today. Less Tim & Eric fodder, more extremely misguided attempt at making a gender-role joke.\nI get that some will probably defend this ad campaign, but it just feels like it would have worked just as well without putting E.J. Carroll in a dress. Mr. Mom never had to pull the gender reversal to make effectively the same joke. And other media properties that did lean into cross-dressing, such as Mrs. Doubtfire and Kids in the Hall, at least set up a framework for why the gender reversal was happening. The joke in this specific campaign was crass even then, but now it just feels gratuitous.\n\nYou might be wondering, did Combos do better later on? Arguably, yes, though still attempting to present these gas station standbys in a way that appealed to the Slim Jims crowd. A 2012-era ad campaign, called “Bad Combos,” instead leaned into absurd “bad combination” situations. (This “witch doctor” variation is also fairly edgy.)\n\nThat may be the its sweet spot from a marketing standpoint. It was ground the brand mined in the early ’90s as well.\nWas this the right approach for Combos’ target audience of people who just got gas at a place they’ll never visit again? Who’s to say. But it’s telling that I can’t seem to find any recent examples of Combos ads that appeared on television. The Instagram account that gets updated a few times a year is probably enough.\nHonestly, they sell themselves—without the transphobic tropes.\n\nIf Combos represents anything, it might be the sharp differences between how a creator perceives the product they developed, and how its acquirer approaches it.\nCurrently, Combos are manufactured far from Battle Creek, Michigan, at a factory in Albany, Georgia. That’s right, friends. Combos are made in the U.S.A. The brand even sponsors a marathon in Albany, though admittedly I could not imagine eating Combos after a run. The salty flavor doesn’t exactly scream “runner-friendly food.”\nI understand why companies often feel compelled to lean into edgy marketing for the products they sell, but I secretly wonder if Combos would have been better off it it stuck to the marketing it had in the late ’80s and early ’90s. Nobody needed a version of Combos that tried to come off like Carl’s Jr. It is food you buy at a convenience store and don’t think about until the next time you’re on a road trip.\n(In some cases, you could argue that the marketing goes against how the founders would have perceived it. Fitting their Battle Creek roots, the Nelsons were devout Seventh Day Adventists, and Richard L. Nelson’s obit described him as a “prayer warrior.”)\nWhat if Combos, I don’t know, promoted its brand as the thing that its distribution network has long positioned it as? Nothing more, nothing less. It’s tasty, it’s portable. It sells itself. Nothing wrong with letting some other product have the “edgy” lane.\n--\nCombos did not need edgy marketing to be awesome. I stand by that. Find this one an interesting read? Share it with a pal!\nAnd thanks again to Computer Chronicles Revisited for sponsoring.\nUpdate 09/27/2026\nAdded a mention of Combo Man, Combos’ short-lived Marvel superhero persona. Thanks Marc Quill for calling it out!",
+      "id": "134390540dfd8668fa4f0b3bbf34386c7bddbcef1c7f4c5e0b4240e9a8a0a33f",
+      "ref_id": "2",
+      "recommendationScore": 5,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "这篇文章是对零食Combos的起源和特性的讨论，与科技主题无关。",
+      "reason": "内容与科技博客的关注主题完全不符，不具备任何技术深度或实用性。",
+      "tags": [
+        "Food",
+        "Snacks",
+        "Culture"
+      ]
+    }
+  ]
+}
