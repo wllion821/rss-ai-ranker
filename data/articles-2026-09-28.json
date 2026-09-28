@@ -1,0 +1,775 @@
+{
+  "dailySummary": "今日科技速递：Anthropic发布Sonnet 5.5大模型，家用及微型AI模型亦持续创新。Vespper推出高效AI Word文档编辑方案。同时，AI代理责任及对AI实验室的监管呼声渐高，",
+  "articles": [
+    {
+      "title": "Jeff – Jev-compatible 0.8B decision models, trained at home, ~30 ms",
+      "link": "https://github.com/firelex/jeff",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-28T20:23:36.000Z",
+      "summary": "Article URL: https://github.com/firelex/jeff\nComments URL: https://news.ycombinator.com/item?id=49883844\nPoints: 40\n# Comments: 6",
+      "id": "dcae03d826e6a913e617e1d7951c6e5ae34f18ead5abf2ee282e0df917fb314d",
+      "ref_id": "2",
+      "recommendationScore": 95,
+      "popularityScore": 71,
+      "priority": "high",
+      "comment": "一个可在本地训练和运行的高效小型AI决策模型，极具实用价值。",
+      "reason": "技术深度高，在AI领域具有创新性，且能够在家训练并低延迟运行，实用性强，对开发者非常有吸引力。",
+      "tags": [
+        "AI模型",
+        "边缘AI",
+        "机器学习",
+        "开源"
+      ]
+    },
+    {
+      "title": "Sonnet 5.5",
+      "link": "https://www.anthropic.com/claude-sonnet-5-5",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-28T17:58:11.000Z",
+      "summary": "Article URL: https://www.anthropic.com/claude-sonnet-5-5\nComments URL: https://news.ycombinator.com/item?id=49881850\nPoints: 422\n# Comments: 290",
+      "id": "4e3ca8a95d36633072bd77285767813ca85390ba65b7f2620d8350c617b7240e",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 100,
+      "priority": "high",
+      "comment": "Anthropic发布Sonnet 5.5新版本，是AI领域的重要进展和最新动态。",
+      "reason": "属于AI最高优先级主题，是大型AI模型的重要更新，技术深度、新颖性、实用性及信息密度均极高，且社区关注度非常高。",
+      "tags": [
+        "AI",
+        "LLM",
+        "Anthropic",
+        "Claude",
+        "模型更新",
+        "机器学习"
+      ]
+    },
+    {
+      "title": "Launch HN: Vespper (YC F24) – SOTA Docx MCP",
+      "link": "https://www.vespper.com/blog/launching-vespper-docx-mcp",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-28T17:34:36.000Z",
+      "summary": "Hey HN! We're Dudu and Topaz from Vespper (https://vespper.com). Vespper is an MCP that lets AI agents efficiently edit Word documents, powered by our fine-tuned model. It's currently 3× faster, 2× cheaper and more accurate than the closest alternative. Check out an overview of how the product works here: https://youtu.be/odKxsgPjzzw\nWe came to work on this problem after spending a year building an AI document editor for pharma companies. Before that, Topaz(myself) was a senior SWE at Snyk, working on distributed systems, and Dudu was a deep learning engineer at Viz.ai, building computer vision models for stroke detection.\nOur editor helped pharma companies generate regulatory documents (e.g. CSRs) to speed up their submissions. Initially, the output was Markdown, displayed in a WYSIWYG editor. However, users preferred working with their own Word templates. That's when the problems began.\nAI agents aren't great at editing Word documents. A Word document is a zip file of verbose XML files following the OOXML spec. Even \"small\" changes require backflips, for example: adding a numbered list requires creating an entry in numbering.xml with a fresh ID and linking it back in document.xml, bolding a sentence requires splitting it into 3+ run elements. The list goes on.\nThis makes editing the zip directly (unzip + grep + sed) a bad idea for agents because they burn a lot of time + tokens on these mechanics.\nIn practice, today's tooling falls into roughly three categories. You can let the agent write code against low-level libraries like python-docx or the Open XML SDK, you can give it an MCP with opinionated editing tools (SuperDoc, Office CLI, Adeu, etc), or you can round-trip the file through Markdown/HTML with something like pandoc/mammoth.js.\nNone of them really work. The first two categories still burn the agent's context on Word mechanics instead of the task at hand (MCPs also introduce a new DSL to learn), and the third is very lossy (pandoc/mammoth.js/etc don't preserve enough fidelity).\nFrom firsthand experience, these problems hurt performance in downstream tasks.\nWhen we tried having our agent fill large documents, things broke quickly. The context window was already packed with customer data (files, user context, global rules, etc.), and the agent burned tokens + time on exploring the document and debugging failed edits. Filling a single CSR (clinical study report) took ~50 minutes, and the result was bad (missed fields/sections, broken styling, etc.). Harvey.ai's team reached similar conclusions: https://www.harvey.ai/blog/building-an-agent-for-complex-doc...\nThat's when we shifted our focus. We designed an MCP that lets agents edit Word docs as if they were editing HTML. The agent receives HTML, makes find-and-replace edits, and we reconcile those edits back into the original .docx file.\nWe picked HTML over Markdown because it's structurally much closer to OOXML and because CSS associates styles with elements roughly the way OOXML does. We had to write our own DOCX→HTML converter, since pandoc and mammoth.js didn't preserve enough fidelity.\nTo be clear, our DOCX → HTML conversion is lossy too. That's fine though, because we never convert the HTML back to DOCX. The HTML is just a projection for the agent, so it only needs enough fidelity for the agent to understand the structure and styling of what it's editing. The original file stays the source of truth, and we mutate it in place.\nThis also means the agent doesn't need to learn a new DSL. Editing a Word document feels just like editing an HTML file on the file system, something agents are already great at. A lot of DOCX MCPs hand agents dozens or even hundreds of tools to figure out on the fly. Our MCP exposes just three tools (read, search, edit). The Word document is completely abstracted.\nAfter an agent sends us an edit request (an \"old_html\" and \"new_html\" pair), we reconcile it to the original .docx file. The reconciliation is powered by our fine-tuned model, a 3-8B base with a LoRA adapter. It takes the HTML diff as input along with the original localized OOXML block and emits the new OOXML. The \"localization\" is done deterministically: we take the anchors the agent specifies and we try to find their XML twins, so the reconciler model has a single responsibility.\nOn this narrow task a small model reaches the level of a frontier, well prompt-tuned model, while being small and fast enough to sit in the hot path.\nThis project turned into months of work, but we're happy to release our v1. Our internal benchmark shows it's more accurate than the DOCX skill and raw python-docx while being ~2x cheaper and ~3x faster, mostly because it takes 3 tool calls (p50) per task whereas the DOCX skill takes 10 and Office CLI takes 13.\nThings aren't perfect yet. For example, we don't support manipulating images or comments at the moment. That said, we're already seeing people use our MCP in various ways:\n- Legal tech companies powering their live-editing flow in Office.js.\n- AI startup optimizing people’s resumes and applying on their behalf.\n- Govtech who need to draft policy memos.\n- A life sciences startup using long-running agents to complete regulatory forms.\nA note on privacy: our MCP runs in the cloud, so users send us their .docx files. We don't train on user data, and teams can opt for ZDR or self-hosting.\nThere's a free tier with 500 edits a month, and we’d love you all to try. We want to bump that later, but we're a small team and running a fine-tuned model isn't cheap :(\nWe'd love to hear your ideas and comments about docx editing in general! We'll be in the comments for the next few hours to respond\nComments URL: https://news.ycombinator.com/item?id=49881505\nPoints: 24\n# Comments: 8",
+      "id": "9480bf3ba69c779f7ed91b73fc56d06f41332da817dd52473012e9aa8bee015d",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "Vespper推出了一个利用AI智能体高效编辑Word文档的创新解决方案。",
+      "reason": "该方案在AI处理复杂文档方面具有显著的技术深度、新颖性和实用性，解决了行业痛点，高度符合AI主题。",
+      "tags": [
+        "AI",
+        "Document Processing",
+        "Automation",
+        "NLP",
+        "Startup",
+        "Word Documents",
+        "API"
+      ]
+    },
+    {
+      "title": "Who’s liable when AI agents go rogue?",
+      "link": "https://www.technologyreview.com/2026/09/28/1145197/whos-liable-when-ai-agents-go-rogue/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-09-28T08:06:22.000Z",
+      "summary": "MIT Technology Review Explains: Let our writers untangle the complex, messy world of technology to help you understand what’s coming next. You can read more from the series here. Over the past few months, a cascade of cyberattacks by AI agents has stunned the world. In July, OpenAI disclosed that a swarm of its agents…",
+      "id": "9b8486475fb0050a0634475152f743461bf2618bd54f3097e811b7471809e414",
+      "ref_id": "2",
+      "recommendationScore": 92,
+      "popularityScore": 92,
+      "priority": "high",
+      "comment": "对AI代理责任问题的权威深度解读，对于理解AI风险至关重要。",
+      "reason": "文章由知名科技媒体出品，预期能提供全面、深入且具洞察力的分析，是AI治理的必读内容。",
+      "tags": [
+        "AI",
+        "伦理",
+        "法律",
+        "AI代理",
+        "MIT Technology Review"
+      ]
+    },
+    {
+      "title": "It's Time to Investigate the AI Labs",
+      "link": "https://calnewport.com/its-time-to-investigate-the-ai-labs/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-28T19:53:35.000Z",
+      "summary": "Article URL: https://calnewport.com/its-time-to-investigate-the-ai-labs/\nComments URL: https://news.ycombinator.com/item?id=49883471\nPoints: 42\n# Comments: 4",
+      "id": "d2e20e0276b7fef9b07e3ce3c46ed9be6cfa75eba68ba2af964f7e72853e2886",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 57,
+      "priority": "high",
+      "comment": "Cal Newport撰文呼吁对AI实验室进行调查，引发对AI伦理与监管的思考。",
+      "reason": "紧密契合AI主题优先级，探讨AI的社会影响与监管，具有高度讨论价值和前瞻性。",
+      "tags": [
+        "AI",
+        "政策",
+        "伦理",
+        "评论",
+        "社会影响"
+      ]
+    },
+    {
+      "title": "When can we say AI made a scientific discovery?",
+      "link": "https://www.technologyreview.com/2026/09/28/1145230/when-can-we-say-ai-made-a-scientific-discovery/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-09-28T17:03:16.000Z",
+      "summary": "This story originally appeared in The Algorithm, our weekly newsletter on AI. To get stories like this in your inbox first, sign up here. Last Wednesday, Anthropic announced that earlier this year it had launched a molecular biology lab, where Claude agents read and conjecture about hard biology problems and human scientists run experiments on what…",
+      "id": "d48a25f5ace55f9c0119545788bb3db73c921fd1b4d3f3a029b1cf15927da803",
+      "ref_id": "0",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "探索AI在科学发现中的前沿应用，内容极具启发性。",
+      "reason": "文章聚焦AI与基础科学研究的结合，新颖性强，且是AI领域的重要发展方向。",
+      "tags": [
+        "AI",
+        "科学发现",
+        "科研AI",
+        "Anthropic"
+      ]
+    },
+    {
+      "title": "MicroLLM Lab – Try 7 tiny LLM's in the browser",
+      "link": "https://stateofutopia.com/experiments/microllmlab/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-28T18:58:53.000Z",
+      "summary": "Article URL: https://stateofutopia.com/experiments/microllmlab/\nComments URL: https://news.ycombinator.com/item?id=49882781\nPoints: 76\n# Comments: 22",
+      "id": "32404e2b12d649c9c4b162871462b2a1e43ceca92bdf69799a336ef778e2bd90",
+      "ref_id": "1",
+      "recommendationScore": 88,
+      "popularityScore": 18,
+      "priority": "high",
+      "comment": "提供在浏览器中体验多种小型LLM的实验室，实用性强且主题前沿。",
+      "reason": "直接命中AI高优先级主题，为用户提供了低门槛的LLM交互体验，具有较高的新颖性和实用性。",
+      "tags": [
+        "AI",
+        "LLM",
+        "浏览器",
+        "实验",
+        "机器学习"
+      ]
+    },
+    {
+      "title": "The Download: rogue agent liability and the AI Hype Index",
+      "link": "https://www.technologyreview.com/2026/09/28/1145202/the-download-rogue-agent-liability-and-the-ai-hype-index/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-09-28T12:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. Who’s liable when AI agents go rogue? Over the past few months, a cascade of cyberattacks by AI agents has stunned the world. In July, OpenAI disclosed that a swarm of its agents…",
+      "id": "403fbce0d7a377e69e2848e11711b82d547deb757c781dc3cc241a665ed7566d",
+      "ref_id": "1",
+      "recommendationScore": 88,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "探讨AI代理失控后的责任问题，切中AI发展面临的关键挑战。",
+      "reason": "文章涉及AI伦理与法律的紧迫议题，对AI技术的健康发展有直接指导意义。",
+      "tags": [
+        "AI",
+        "伦理",
+        "法律",
+        "AI代理",
+        "网络安全"
+      ]
+    },
+    {
+      "title": "World Labs Is Joining AMD",
+      "link": "https://www.worldlabs.ai/blog/amd-announcement",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-28T20:18:05.000Z",
+      "summary": "Article URL: https://www.worldlabs.ai/blog/amd-announcement\nComments URL: https://news.ycombinator.com/item?id=49883760\nPoints: 56\n# Comments: 10",
+      "id": "c05735ac6fea208f936e476637fd51b61a28139454fd2338c55986f47dbbb8dc",
+      "ref_id": "4",
+      "recommendationScore": 85,
+      "popularityScore": 100,
+      "priority": "high",
+      "comment": "AMD收购World Labs，对AI硬件和生态系统发展具有重要意义。",
+      "reason": "这是一个具有行业影响力的AI领域新闻，涉及硬件巨头与AI公司的结合，对AI生态的未来发展有重要启示。",
+      "tags": [
+        "AI行业",
+        "并购",
+        "AMD",
+        "AI硬件"
+      ]
+    },
+    {
+      "title": "2026 in LLMs (so far)",
+      "link": "https://simonwillison.net/2026/Sep/27/2026-in-llms-so-far/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-09-27T23:54:15.000Z",
+      "summary": "",
+      "id": "7db4974c11ebd58e1ae2427945088c38a8f6bf96c4ff4ba319988d5a055a42b8",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "对未来LLM趋势的预测和分析，极具前瞻性和战略指导意义。",
+      "reason": "主题高度契合当前AI热点，讨论2026年的展望使得文章新颖性极高，能吸引大量关注AI发展趋势的读者。",
+      "tags": [
+        "AI",
+        "LLM",
+        "Future Tech",
+        "Speculation",
+        "Trends"
+      ]
+    },
+    {
+      "title": "The World Outside the Classroom Changed, The Class Didn’t",
+      "link": "https://steveblank.com/2026/09/28/the-world-outside-the-classroom-changed-the-class-didnt/",
+      "source": "steveblank.com",
+      "publishedAt": "2026-09-28T13:00:57.000Z",
+      "summary": "This post previously appeared in Poets and Quants This is the third of four posts on how AI has impacted our Lean LaunchPad class and what we did about it. Part 1: The Year AI Came For Us Part 2: AI Killed the MVP – Long Live the IUP Part 3: This Post Part 4: […]",
+      "id": "6298251f1b04295678bfd6b8ef7c7c78d66b76f88145e4c3d35e4ae7f5d71fbe",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "紧扣AI如何重塑教育和精益创业实践的热门话题，提出了“AI杀死MVP”的独特观点。",
+      "reason": "探讨了AI对传统方法的颠覆性影响，对教育者、创业者和产品经理具有极高的实用价值和思考启发。",
+      "tags": [
+        "AI",
+        "教育",
+        "精益创业",
+        "MVP",
+        "产品管理",
+        "创新"
+      ]
+    },
+    {
+      "title": "I made a visual workspace for AI Automations",
+      "link": "https://www.biom.dev/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-28T17:53:14.000Z",
+      "summary": "Article URL: https://www.biom.dev/\nComments URL: https://news.ycombinator.com/item?id=49881777\nPoints: 19\n# Comments: 17",
+      "id": "8cfbfaf6828a37d0afb0f2ead4c4745966173dc22133b0456ee69ee003383ccd",
+      "ref_id": "0",
+      "recommendationScore": 80,
+      "popularityScore": 40,
+      "priority": "high",
+      "comment": "这篇博文介绍了一个为AI自动化设计的可视化工作区，旨在简化复杂AI任务的构建。",
+      "reason": "它将AI与自动化结合，提供潜在的实用工具，符合AI和自动化高优先级主题。",
+      "tags": [
+        "AI",
+        "Automation",
+        "Visual Programming",
+        "Tooling",
+        "Independent Development"
+      ]
+    },
+    {
+      "title": "Edge Is Pretending to Be Chrome ",
+      "link": "https://idiallo.com/blog/edge-imitates-chrome",
+      "source": "idiallo.com",
+      "publishedAt": "2026-09-28T07:30:00.000Z",
+      "summary": "I don't think there was any official announcement, but I'm pretty sure Microsoft is secretly trying to trick you into using Edge. Well, it has always been trying to trick us, but this time it's even more aggressive. You can no longer tell Edge from Chrome. Just go ahead and try.\n\t\t\t\nJust last week, I wrote about Edge trying to get users to launch it automatically at boot time. Shortly after, I noticed that Chrome was asking for the exact same thing. Today, I clicked on the weather app on my Windows machine, and of course it opened Edge and asked me to set it as the default. I dismissed the popup and noticed that the website was pushed down from the top by another browser message, this one asking to transfer my data from my other browser to Edge.\nBring your favorites, passwords, history, cookies and more from other browsers each time you browser in Microsoft Edge.\nI visited a few other pages and saw a bunch of ads, which reminded me to switch back to Chrome. I did, but I noticed something odd: when I tabbed between the two browsers, I couldn't tell which was which.\n\nCan you tell the difference\n\nI know they are both built on Chromium, but until fairly recently Edge had a distinct Microsoft look. It seems Microsoft is aggressively pursuing the fight for the front page of the internet.\nOn my mobile device, I use the Outlook app for one of my email accounts. I noticed that when I click a link, instead of opening it directly in my browser, the app asks whether I want to open it with Microsoft Edge. Note that Edge isn't even installed on my device. Microsoft is trying every tactic in the book to get in front of the user.\nThe front page of the internet is still the only race that matters for large tech companies. It doesn't matter whether your product is good or bad; your success largely depends on how many eyes you can get on your app. Google owns prime real estate. It is the default search engine on most desktop browsers. It is the default on all Android devices, with a negligible margin of error. It is the default on all iOS devices, for a cool $20 billion a year. And of course, it owns the largest ad network in the world.\nIf Microsoft owned the front page today, it wouldn't be able to monetize it as well as Google does. It's one thing to own the front page; it's another to consolidate data from every branch of our web activity. For example, if I look up a product on YouTube on my TV, Google can later retarget me with an ad for that product while I'm reading an article on my iPhone. Microsoft has little to no presence on my iPhone.\nThis mesh of front pages is what makes it worthwhile for Google to be the front page on every device. Even OpenAI has started tracking user web activity outside its own website in an effort to better monetize its position.\nGoogle continues to win even though its language models don't top the benchmarks and are often beaten by much smaller models. Meanwhile, Microsoft still doesn't have a model to its name, so it is trying to look enough like Google that people won't notice.\n\nGoogle Search and Bing Search play with the same theme.\n\nPS: It was a challenge to take screenshots for this post because half the time I didn't know which browser I was using.\nPS2: Edge makes it so hard to navigate between browsers because it puts each browser tab you open in its own ALT+TAB menu.",
+      "id": "f51eef3f5b70c8b49696c77fa615bccae3ff7fb4446206c1ff5b9249be5a6ddf",
+      "ref_id": "1",
+      "recommendationScore": 80,
+      "popularityScore": 85,
+      "priority": "medium",
+      "comment": "揭露了Microsoft Edge浏览器通过伪装和强制手段诱导用户使用的行为。",
+      "reason": "内容贴近用户日常痛点，具有警示作用，易引发广泛共鸣，属于用户体验和软件策略的范畴。",
+      "tags": [
+        "浏览器",
+        "用户体验",
+        "软件策略",
+        "Windows"
+      ]
+    },
+    {
+      "title": "SB 923 is Law: CCPA deletion rights now reach third-party data",
+      "link": "https://www.getprivisy.com/blog/sb-923-ccpa-right-to-delete-signed",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-28T19:44:49.000Z",
+      "summary": "Article URL: https://www.getprivisy.com/blog/sb-923-ccpa-right-to-delete-signed\nComments URL: https://news.ycombinator.com/item?id=49883345\nPoints: 35\n# Comments: 11",
+      "id": "972202bb9ae7988ab692de6459c01e8d372b2e6e371411b1858fd7f5a888a745",
+      "ref_id": "3",
+      "recommendationScore": 75,
+      "popularityScore": 61,
+      "priority": "medium",
+      "comment": "加州SB 923法案生效，CCPA数据删除权正式扩展至第三方数据。",
+      "reason": "对所有处理用户数据的科技公司和开发者而言，这是重要的法律合规更新，实用性极高。",
+      "tags": [
+        "数据隐私",
+        "CCPA",
+        "法律",
+        "政策",
+        "合规"
+      ]
+    },
+    {
+      "title": "★ Spitballing Predictions for Apple’s October",
+      "link": "https://daringfireball.net/2026/09/spitballing_predictions_for_apples_october",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-09-28T18:43:48.000Z",
+      "summary": "On the new episode of The Talk Show that dropped over the weekend, Andru Edwards and I talked first about the September event Apple held three weeks ago at Apple Park, and then moved on to speculate about what they might do in October. The rumor mill says Apple has a bunch of as-yet-unannounced products coming: a new iPad Mini (8th generation), new Apple TV hardware (4th generation — maybe they’ll give it a better name than “Apple TV 4K”?), new HomePod Mini (2nd generation), and an altogether new HomePod-type hub with a display. Also, October is the usual month for new Mac hardware, like maybe M6 iMacs and a new high-end MacBook lineup with OLED displays that (ugh) are also touchscreens.\nThat’d be a lot to introduce all at once. Maybe they hold one event/keynote movie for all of it, or maybe they split it in two — one for “home” stuff, and one for new Mac stuff. (Not sure where the iPad Mini would go in that split.) Or maybe they announce it all in one keynote but split the product availability, like they did with the iPhones 18 Pro and Duo at the keynote three weeks ago. Maybe the new MacBooks, if they really do have touchscreens, get announced in October but won’t ship until November to give developers time to adopt touch APIs — just like with the Duo. Apple is secretive, but they stick to predictable patterns if you pay attention.\nThe dates we do know are those for the iPhone Duo, with pre-orders beginning on Friday, October 16 and shipments beginning one week later on October 23. Apple, in my experience, sticks to a very predictable schedule for review units. They typically go into reviewers’ hands mid-week (Tuesday or Wednesday) during the week when pre-orders begin (usually a Friday, sometimes a Saturday, like this month, when the iPhones 18 Pro and new Apple Watches went on sale Saturday, September 12). Reviewers typically get only six or seven days with hardware before the embargo lifts for publishing reviews. (Most reviewers have their reviews ready to publish by that time; others enjoy the whooshing sound the embargo deadline makes as it goes by.) The review embargo thus typically lifts on the Tuesday or Wednesday of the same week when the product is set to begin shipping to customers on Friday.\nI have been told absolutely nothing about when, or even if, Apple plans to seed advance units of the iPhone Duo to reviewers. In my experience, even off the record, Apple never talks about these things in advance, nor offers hints. But if they do seed review units of the Duo, I would expect that to start on Tuesday, October 13 or Wednesday the 14th, with the embargo lifting on October 20 or 21, two or three days ahead of the Duo reaching customers on Friday the 23rd. It’s also my experience that Apple does not like shipping review units of high-profile new products like the Duo before they are released to the public. They prefer handing review units like the Duo to reviewers in person. You sign the embargo agreement in person, and they hand you the product in person. One natural way to hand reviewers iPhone Duo units in person would be to hold a media event, for other new products, on October 13 or 14. Kill two birds with one stone.\nIf they hold such an event in New York that week, it would be really nice if it coincided with a Yankees home game in the ALCS. But now I’m really getting ahead of myself.",
+      "id": "31af07913ff26eabc0a4240d4bd584546c19bde161fced7f52ef6b07c36f4aa0",
+      "ref_id": "4",
+      "recommendationScore": 75,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "对Apple十月潜在新品发布会进行了详细的预测和讨论。",
+      "reason": "高度关注Apple生态系统，对即将发布的新硬件和活动安排的猜测极具时效性和话题性，能引发Apple粉丝的广泛讨论和关注。",
+      "tags": [
+        "Apple",
+        "Predictions",
+        "Rumors",
+        "Hardware",
+        "iPad",
+        "Mac",
+        "HomePod",
+        "Apple TV"
+      ]
+    },
+    {
+      "title": "SmartOS: The illumos Way of Thinking About Servers",
+      "link": "https://it-notes.dragas.net/2026/09/28/smartos-the-illumos-way-of-thinking-about-servers/",
+      "source": "it-notes.dragas.net",
+      "publishedAt": "2026-09-28T08:45:00.000Z",
+      "summary": "As I often say, I like simplicity and predictability. My servers are generally built around that principle: the server itself (physical or virtual) is just a coordinator of containers. When it's based on FreeBSD, those containers take the form of jails and VMs. In case of disaster, restoring is simple, and I talked about it at EuroBSDCon 2026 in Brussels.\nBut there's another operating system that I appreciate and have been using for quite some time, and it's perfect for this purpose: illumos.\nBorn as a fork of OpenSolaris, it incorporates everything the brilliant minds at Sun designed and built. Many of those minds still work on illumos (and its distributions) today, making it a modern and extremely mature operating system.\nZFS was born at Sun, and illumos is the proof: it's not just its file system, everything is designed around it, with a level of integration that goes beyond even FreeBSD's. There are also technologies like Crossbow (network virtualization), DTrace, very advanced resource controls and, above all, something very dear to me: zones. Inspired by FreeBSD jails, zones strictly separate all the components and create secure and isolated compartments. There's also good support for LX (Linux) zones, so it can run software compiled for Linux inside them. I'll come back to this in detail later. On top of that, it supports virtualization with both bhyve and KVM, giving the (practically unique, in the open source world) possibility of using both the efficiency of bhyve and the broad compatibility of KVM. SMF, five years older than systemd, is extremely powerful, even if not particularly intuitive for those who don't know it.\nAs you can guess, there are many similarities between illumos and the BSDs, and it's no coincidence: the licenses and the minds are compatible, and so is the philosophy, and there's a lot of exchange of ideas, code and solutions. bhyve, born on FreeBSD, performs excellently on illumos and, in some areas, has even surpassed the FreeBSD implementation. Tests I ran myself about a year ago showed that a nearly idle VM still used some (little) host CPU on FreeBSD, while it used zero (ZERO!) on illumos.\nillumos has several distributions. Among them there's OpenIndiana, general purpose and comparable to Linux distributions, and Tribblix, which \"blends a retro style with modern components\", developed and maintained by Peter Tribble with constancy and regularity. Then there's OmniOS, a traditional server distribution, and SmartOS, the one I use the most and the one this post is mainly about.\nSmartOS, in fact, was born for servers. Its concept is simple and powerful: the hardware (or the VM) is a pure \"hypervisor\" of zones or VMs. VMs themselves run inside dedicated zones, one per VM, so even in case of a VM escape, you still end up inside a zone, so there's another layer. This \"onion\" approach increases security. LX zones are considered very important in SmartOS, so they get the best possible support. Today it's possible to run complete Debian zones because, unlike FreeBSD jails (but this is changing), they can run systemd too. I've given clients entire Debian systems in LX zones and they never noticed the difference. Also, unlike jails, a zone only sees the resources assigned to it: while a FreeBSD jail will still see all the host's RAM (and gets blocked when it exceeds the assigned RAM), illumos zones (native or LX) will only see the assigned resources as their limit. An Alpine LX zone on illumos with 512 MB of RAM assigned will show, with the free command, only 512 MB total.\nSmartOS is also designed as a live, mostly read-only operating system. It's normally booted from external media, although it can also boot directly from the ZFS pool. Upgrading is simply... booting a new platform image. On first boot, it will ask to create a ZFS pool to store configurations, logs and zones, but the whole OS is immutable. This increases both security and reliability. It can also be installed but, in practice, the approach doesn't change: a ZFS dataset will be created on the local pool and used to boot and to read the OS files. For a traditional installation, other distributions are a better fit.\nIn this post I'll show a basic SmartOS installation (on a physical host or a VM) and the creation of a couple of services. The goal is to show some of its peculiarities and hopefully spark some curiosity about this fantastic OS (and about our illumos.cafe).\nThe first thing to do is download the SmartOS ISO (or USB image, depending on how you'll boot it). On average there's a release every two weeks, with its changelog (only if there's something to release - nobody here ships updates just to shout that there's been an update). So go to https://docs.smartos.org/download-smartos/ and:\nDownload the ISO if you're booting from a CD-ROM (physical or virtual)\nDownload the USB image if you're booting from it or from a USB stick. This USB image only contains the read-only OS, so you'll need another disk for the ZFS pool.\nOnce booted, the first question will be the IP address of the \"admin\" interface. SmartOS normally expects to live in a datacenter, with one interface dedicated to administration and another one to workloads. In this example we'll use the same one, assuming we're on a LAN. It will then ask for the DNS servers and the NTP server, and complete the network setup. Next it will propose a disk for the ZFS pool - careful, make sure it's the right disk, because it will wipe everything. At that point it will ask whether you want to boot from a pool (like that one) or keep booting from the device you just booted from. When possible, I keep booting from a separate device. When my SmartOS runs in a bhyve VM on FreeBSD, I have a config like this:\nloader=\"uefi\"\ncpu=\"8\"\nmemory=\"16G\"\nnetwork0_type=\"virtio-net\"\nnetwork0_switch=\"public\"\ndisk0_type=\"nvme\"\ndisk0_name=\"smartos.img\"\ndisk1_type=\"nvme\"\ndisk1_name=\"disk0.img\"\n[...]\n\nThat is, one disk for SmartOS (the downloaded \"USB image\") and one for the zones pool. Upgrading SmartOS means downloading a new image from the website, replacing smartos.img and rebooting the VM. Profit.\nNext it will ask whether we want to install pkgsrc, NetBSD's package manager which, yes, is native here too. It's not strictly needed on the hypervisor itself, but I usually install it anyway. Then it will ask for the root password and the system hostname. Yes, the root password: no sudo, etc. The idea is that, in theory, root should only log in from the dedicated interface and only to manage the hypervisor. Because, remember, workloads aren't supposed to run on the \"base\" SmartOS, but inside zones.\nThe installation will be very fast because it's basically the creation of a ZFS pool, some swap space, a few small configuration files and, if requested, pkgsrc. You can then reboot and the system will start.\nSmartOS doesn't boot fast. It's a server OS, it's not expected to reboot often, but it performs all the necessary checks.\nillumos isn't merely Unix-like. It is Unix by lineage, derived directly from Unix, although it isn't UNIX-certified. And some commands aren't even remotely comparable to the Linux or BSD ones. That's one of the reasons why, in the late '90s and early 2000s, I looked sideways at the Sun SPARCstations at university: I didn't know the commands and considered them \"weird\". It took me years to understand their power. \nThere's no top, there's prstat. prstat -Z 1, for example, will also show the per-zone load, very useful to understand what's going on.\nSmartOS provides native tools to list, download and install ready-made disk images (for zones or VMs), and to create, start and access the console of zones and VMs - and the commands are the same for both. So whether it's a zone or a VM, there isn't much difference. There's also a web UI, which can help (at least partially) with creating and managing zones and VMs, easy to install following the instructions on its page: https://docs.smartos.org/web-interface/\nThe goal of SmartOS is to provide, in the \"global zone\" (the hypervisor itself), only the tools to manage the host and to create more zones. Everything should go into zones. Even a simple DHCP server. A concrete example, which gives an idea of how everything is supposed to work, is this one: https://docs.smartos.org/nat-using-etherstubs/\nWith imgadm avail, for example, you can see all the disk images available on the servers. They're divided into zone-dataset (native illumos zones), lx-dataset (LX, that is Linux, zones) and zvol (actual VMs). For example, I want to see all the ready-made Alpine Linux images:\n[root@sos01 ~]# imgadm avail|grep alpine\nf48e3bf4-6d02-11e5-9a1f-53a8ab833767  alpine-3                        20151007      linux    lx-dataset    2015-10-07\n96bb1fac-c87d-11e5-b5bf-ff4703459205  alpine-3                        20160201      linux    lx-dataset    2016-02-01\n712f1436-0311-11e6-b4d4-139262136691  alpine-3                        20160415      linux    lx-dataset    2016-04-15\nd8830f1e-3680-11e6-be72-2ba188e02d31  alpine-3                        20160620      linux    lx-dataset    2016-06-20\n77bc3f50-8f4c-11e6-90b6-f7b69b9dcf20  alpine-3                        20161011      linux    lx-dataset    2016-10-11\ne7b557c2-b2a8-11e6-b2c1-7f681aa61371  alpine-3                        20161125      linux    lx-dataset    2016-11-25\n0c8b0b40-c0ce-11e6-81ce-f74ad6815a5d  alpine-3                        20161213      linux    lx-dataset    2016-12-13\n4d3ed29a-c851-11e6-b5a9-639aada4a9c8  alpine-3                        20161222      linux    lx-dataset    2016-12-22\n212c8962-ec06-11e6-8cee-5b0a09ebef00  alpine-3                        20170206      linux    lx-dataset    2017-02-06\n19aa3328-0025-11e7-a19a-c39077bfd4cf  alpine-3                        20170303      linux    lx-dataset    2017-03-03\nb5d89e30-128d-4ea4-824f-8e36fd7e3703  alpine-3                        20230721      linux    lx-dataset    2023-07-21\n029a1752-71c8-4d30-a2aa-dcdc4ee32008  alpine-3                        20231121      linux    lx-dataset    2023-11-21\n632a25ad-15dc-42f0-a23b-743b37f62cbb  alpine-3                        20240726      linux    lx-dataset    2024-07-26\n0b7d45d9-be8c-439f-9a24-bd6223199c2b  alpine-3                        20250120      linux    lx-dataset    2025-01-20\nc38b1b62-6d89-41f1-bd1d-5342b2d783d7  alpine-3.21.3                   20250407      linux    lx-dataset    2025-04-07\n2ab26a8c-616b-4b2f-9a30-b121c044c278  alpine-3.23-nocloud             20260311      linux    zvol          2026-03-26\n95766d4b-a225-4755-b630-1eae6b34b447  alpine-3.23-nocloud             20260501      linux    zvol          2026-05-01\n\nThe latest Alpine Linux LX image available is 3.21 - it's possible to create custom ones, but that's outside the scope of this guide.\nFirst, let's use imgadm to import the image we need, using its UUID:\nimgadm import c38b1b62-6d89-41f1-bd1d-5342b2d783d7\n\nIn a short time, the image will be installed and will populate its dataset.\nI usually keep configurations in a dedicated dataset. It's not necessary, but it's useful to find them later, remember what I did and, if needed, create similar zones.\nI won't cover IPv6 in this example, since its setup depends heavily on the host, the network topology, and the addressing model provided by the upstream network.\nTo keep things simple and reproducible, I'll stick to a basic IPv4 setup with the zone behind the existing NAT on the LAN. IPv6 can certainly be added, but it deserves to be treated separately rather than squeezed into an example whose purpose is simply to show the fundamentals.\nzfs create zones/jsons\ncd /zones/jsons\n\nIn that directory, create a file called lx_alpine.json:\n{\n  \"brand\": \"lx\",\n  \"resolvers\": [\n    \"8.8.8.8\",\n    \"8.8.4.4\"\n  ],\n  \"kernel_version\": \"5.10.0\",\n  \"ram\": 1024,\n  \"alias\": \"alpine01\",\n  \"customer_metadata\": {\n  },\n  \"nics\": [\n    {\n      \"nic_tag\": \"admin\",\n      \"ips\": [\n        \"192.168.1.2/24\"\n      ],\n      \"gateway\": \"192.168.1.1\"\n    }\n  ],\n  \"image_uuid\": \"c38b1b62-6d89-41f1-bd1d-5342b2d783d7\",\n  \"quota\": 10\n}\n\nNetwork settings will obviously vary, but here I've basically created an Alpine Linux LX zone with 1 GB of RAM assigned and a 10 GB disk quota. The image_uuid matches the one we downloaded with imgadm - just run imgadm list to see all the images on the system.\nThe command to create the zone is:\nvmadm create -f lx_alpine.json\n\nThe system will create an LX zone based on the downloaded Alpine 3.21 image.\nTo access the zone, once it's ready (check with vmadm list), use the zlogin command. Careful: zlogin doesn't want the alias but the zone name, which is a UUID. But it supports tab completion, so just type zlogin alp and press tab - it will first complete to alpine01 and then, at the second tab, replace it with the correct UUID of the zone.\nOnce inside, you can update packages, install software, etc. Just one caveat: Alpine Linux changed some things with apk 3.x (so from 3.23 on) and it seems that, without IPv6, updates can cause problems. The workaround that worked for me was adding a line like 151.101.66.132 dl-cdn.alpinelinux.org to /etc/hosts (it's a CDN address, so it may change over time) and, at that point, you can move directly to Alpine 3.24, the latest currently available.\nCommands like top, free, df, etc. will work and return the assigned values, almost as if it were a VM.\nIn this example I used Alpine, but many distributions are available and supported.\nBut LX zones are a compatibility layer. SmartOS also has native zones, usually created from the base images, and we can easily add one:\nimgadm avail | grep base | tail\n\n85d0f826-0131-11ed-973d-2bfeef68011c  base-64-lts                     21.4.1        smartos  zone-dataset  2022-07-11\n93bdf06a-01ef-11ed-81ff-bf0efad842c7  base-64-lts                     20.4.1        smartos  zone-dataset  2022-07-12\ne44ed3e0-910b-11ed-a5d4-00151714048c  base-64-lts                     22.4.0        smartos  zone-dataset  2023-01-10\ne6b8e342-c19d-11ed-b9d1-00151714048c  base-64-trunk                   20230313      smartos  zone-dataset  2023-03-13\n0b13305e-4fe1-11ee-b322-00151714048c  base-64-trunk                   20230910      smartos  zone-dataset  2023-09-10\ndb382b98-822e-11ee-992e-00151714048c  base-64-trunk                   20231113      smartos  zone-dataset  2023-11-13\n8adac45a-aca7-11ee-b53e-00151714048c  base-64-lts                     23.4.0        smartos  zone-dataset  2024-01-06\n8925400d-ff66-441e-ab5c-340505636ff8  base-64-trunk                   20240116      smartos  zone-dataset  2024-01-16\n2f1dc911-6401-4fa4-8e9d-67ea2e39c271  base-64-lts                     24.4.1        smartos  zone-dataset  2025-01-06\nb933df4b-b8f4-4bef-ad1e-236a20304496  base-64-lts                     25.4.0        smartos  zone-dataset  2026-01-09\n\nSo:\nimgadm import b933df4b-b8f4-4bef-ad1e-236a20304496\n\nThat's the latest one, 25.4.0. Then we need a proper JSON for native zones (the brand is joyent, a legacy of the company that created SmartOS). Let's make one for nginx, for example - nginx.json:\n{\n  \"brand\": \"joyent\",\n  \"image_uuid\": \"b933df4b-b8f4-4bef-ad1e-236a20304496\",\n  \"ram\": 512,\n  \"hostname\": \"nginx\",\n  \"resolvers\": [\n    \"9.9.9.9\",\n    \"1.1.1.1\"\n  ],\n  \"alias\": \"nginx\",\n  \"nics\": [\n    {\n      \"nic_tag\": \"admin\",\n      \"ips\": [\n        \"192.168.1.254/24\"\n      ],\n      \"gateway\": \"192.168.1.1\"\n    }\n  ],\n  \"customer_metadata\": {\n  },\n  \"quota\": 5\n}\n\nThen:\nvmadm create -f nginx.json\n\nOnce the zone is ready, just use zlogin as usual. Once inside, we can install nginx (and useful packages like certbot, etc., if needed) with pkgin (pkgin search certbot will show the exact package names):\npkgin in nginx py314-certbot-nginx\n\nAt the end, the banner will tell us how to start nginx at zone boot:\n/usr/sbin/svcadm enable -r svc:/pkgsrc/nginx:default\n\nAt this point we'll have two zones - one native, one with Alpine Linux - ready to run our workloads. The same principle can be used to create VMs, with both bhyve and KVM, but that will be the topic of a future article.",
+      "id": "c57dddc5bddff8b817577d232f57b23187c52f4a98ebbfcbfb4f2abd7b94f381",
+      "ref_id": "0",
+      "recommendationScore": 75,
+      "popularityScore": 55,
+      "priority": "medium",
+      "comment": "深入探讨了SmartOS和illumos作为服务器操作系统在容器化和ZFS集成方面的独特优势。",
+      "reason": "对寻求强大且可预测的服务器解决方案（尤其是基于Solaris血统技术）的系统管理员和高级技术人员具有较高参考价值。",
+      "tags": [
+        "SmartOS",
+        "illumos",
+        "服务器",
+        "操作系统",
+        "ZFS",
+        "虚拟化",
+        "DTrace"
+      ]
+    },
+    {
+      "title": "S3 Is the Future, S3 Is the Past",
+      "link": "https://simonwillison.net/2026/Sep/27/hn-49871741/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-09-27T23:09:19.000Z",
+      "summary": "",
+      "id": "97397d7fa75c50842dda10c031f033b93521632e4c75b14cecdbf738f8f9b99e",
+      "ref_id": "1",
+      "recommendationScore": 73,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "以独特视角探讨了S3作为云存储过去与未来的重要性。",
+      "reason": "S3是核心云基础设施，文章从辩证的角度分析其演变和地位，对开发者和架构师具有较高的实用价值。",
+      "tags": [
+        "Cloud",
+        "AWS",
+        "S3",
+        "Storage",
+        "Infrastructure",
+        "Evolution"
+      ]
+    },
+    {
+      "title": "First Steps of the PLC Organization – Independent Public Ledger of Credentials",
+      "link": "https://blog.plcred.org/3mwlphq42d227",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-28T19:27:45.000Z",
+      "summary": "Article URL: https://blog.plcred.org/3mwlphq42d227\nComments URL: https://news.ycombinator.com/item?id=49883159\nPoints: 25\n# Comments: 12",
+      "id": "fa89006798dcfb0391524cf9010eca3be2f71515f26b0eb4c3cbeec020a4e9b4",
+      "ref_id": "4",
+      "recommendationScore": 70,
+      "popularityScore": 51,
+      "priority": "medium",
+      "comment": "介绍独立公共凭证账本组织（PLC）的初步进展，旨在构建去中心化凭证体系。",
+      "reason": "探讨去中心化身份和区块链技术，是未来数字凭证领域的重要方向，具有一定技术深度和创新性。",
+      "tags": [
+        "区块链",
+        "去中心化身份",
+        "Web3",
+        "凭证管理"
+      ]
+    },
+    {
+      "title": "GrapheneOS – When an app is slow",
+      "link": "https://blog.wirelessmoves.com/2026/09/grapheneos-when-an-app-is-slow.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-28T18:21:31.000Z",
+      "summary": "Article URL: https://blog.wirelessmoves.com/2026/09/grapheneos-when-an-app-is-slow.html\nComments URL: https://news.ycombinator.com/item?id=49882208\nPoints: 64\n# Comments: 29",
+      "id": "199351736c0abdba92e4c67a1b0e052062c601a26bde15d33de64540ce3a8137",
+      "ref_id": "2",
+      "recommendationScore": 68,
+      "popularityScore": 15,
+      "priority": "medium",
+      "comment": "探讨GrapheneOS上的应用性能问题，对特定用户群有较高实用价值。",
+      "reason": "关注移动操作系统性能优化和隐私系统GrapheneOS，具有一定的技术深度和实用性，符合编程工具/自动化相关主题。",
+      "tags": [
+        "GrapheneOS",
+        "Android",
+        "隐私",
+        "性能优化",
+        "移动操作系统"
+      ]
+    },
+    {
+      "title": "Pacing the Frontier is not the actual goal for AI labs",
+      "link": "https://www.lesswrong.com/posts/Nm4ewbYovtjq69dvH/pacing-the-frontier-is-not-the-actual-goal-for-ai-labs",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-28T20:47:26.000Z",
+      "summary": "Article URL: https://www.lesswrong.com/posts/Nm4ewbYovtjq69dvH/pacing-the-frontier-is-not-the-actual-goal-for-ai-labs\nComments URL: https://news.ycombinator.com/item?id=49884119\nPoints: 3\n# Comments: 0",
+      "id": "0c46b1cdb1c23528d476156664c88d394fc068833aceb19acb434ec3b3ca2424",
+      "ref_id": "1",
+      "recommendationScore": 65,
+      "popularityScore": 5,
+      "priority": "medium",
+      "comment": "对AI实验室的战略目标进行深度思考，提供独特视角。",
+      "reason": "文章主题直接聚焦AI策略，具有较高的思辨性和新颖性，尽管初始热度不高，但对AI领域有价值。",
+      "tags": [
+        "AI策略",
+        "AI研究",
+        "观点"
+      ]
+    },
+    {
+      "title": "Duo-Man",
+      "link": "https://x.com/viditb/status/2104103592726765722",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-09-28T16:35:02.000Z",
+      "summary": "Vidit Bhargava (developer of Lookup and Movie Buzz):\nDuo-Man offers the complete walkman experience on the iPhone Duo.\nOpen the Duo to pick and “insert” the cassette, Close the Duo to\nstart listening.\nYes, I actually recorded the button clicks and static noise from a\nreal Walkman!\nMore like this, please.\n ★",
+      "id": "1869bf9553d0d969cde672663de4109c92fee1431a531a111f610af8cdd80e7a",
+      "ref_id": "0",
+      "recommendationScore": 65,
+      "popularityScore": 55,
+      "priority": "medium",
+      "comment": "一款在iPhone Duo上重现Walkman体验的创意应用，利用了设备独特形态。",
+      "reason": "产品设计新颖，属于Apple生态和独立开发范畴，但文章内容技术深度和信息量有限。",
+      "tags": [
+        "Apple生态",
+        "独立开发",
+        "产品设计",
+        "怀旧应用"
+      ]
+    },
+    {
+      "title": "Muse, Instagram, and VLC Lookalike Rip-Offs in the Mac App Store",
+      "link": "https://lapcatsoftware.com/articles/2026/9/8.html",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-09-28T19:50:19.000Z",
+      "summary": "Jeff Johnson:\nIn other words, Muse AI is a blatant copy of Muse from Meta, the\nlatter of which is currently the #1 iOS App Store download in the\nUnited States. I don’t know where Muse AI ranks in the iOS App\nStore, but I do know that it’s currently the #20 Mac App Store\ndownload in the US.\nIt wasn’t languishing in obscurity — it had risen to #20 in the Mac App Store. A lot of Mac users are very confused when they’re told that Mac apps are available but they’re not in the Mac App Store, so it’s a rife opportunity for scammers. In the same post Johnson also documents an app named “App for Instagram º” and another named “Video Player for VLC”, both of which use rip-off icons in addition to their rip-off names. “Muse AI” is now gone, but “App for Instagram °” and “Video Player for VLC” are both still there. \nI do wonder what the guy who made Muse AI was thinking. How long did he think he was going to get away with this? \n ★",
+      "id": "2ebf0ed5c412af7ba735db4fbbff7ffee673eec76ff62420b0a2c93e722fe1c8",
+      "ref_id": "3",
+      "recommendationScore": 63,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "揭露了Mac App Store中存在的山寨应用问题，对用户具有警示作用。",
+      "reason": "关注Apple生态系统中的用户体验和安全问题，为Mac用户提供了重要的消费警示和平台洞察，实用性较高。",
+      "tags": [
+        "Apple",
+        "Mac App Store",
+        "Scams",
+        "App Store",
+        "Security",
+        "Consumer Awareness"
+      ]
+    },
+    {
+      "title": "Dutch Police Arrest ‘Reformed’ Hacker in Shiny Hunters Investigation",
+      "link": "https://krebsonsecurity.com/2026/09/dutch-police-arrest-reformed-hacker-in-shiny-hunters-investigation/",
+      "source": "krebsonsecurity.com",
+      "publishedAt": "2026-09-28T15:08:57.000Z",
+      "summary": "Authorities in the Netherlands have arrested a 23-year-old convicted cybercriminal on suspicion of aiding in data thefts and extortions by the prolific hacker group ShinyHunters. In the days immediately following the suspect's arrest, remaining ShinyHunters members dramatically escalated their attacks, stealing highly sensitive data from the FBI and extorting the Russian ransomware group Cl0p.",
+      "id": "c919c2b059f3ef35aa5e3da323c65bd698b11c0ee0b4797a38d719c82b6b7215",
+      "ref_id": "2",
+      "recommendationScore": 57,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "报道了网络犯罪领域的一则时事新闻，信息及时。",
+      "reason": "虽然具有一定新闻价值和普遍关注度，但技术深度较低，且与核心主题（AI、Apple生态等）的直接关联性不强。",
+      "tags": [
+        "Cybersecurity",
+        "Cybercrime",
+        "News",
+        "Hacking",
+        "ShinyHunters"
+      ]
+    },
+    {
+      "title": "So long Google, and thanks for all the nudes",
+      "link": "https://lecaro.me/20260921-google-less.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-28T18:04:47.000Z",
+      "summary": "Article URL: https://lecaro.me/20260921-google-less.html\nComments URL: https://news.ycombinator.com/item?id=49881951\nPoints: 163\n# Comments: 63",
+      "id": "cdf341c80bbb0b16eece8c157a6474bd626d298633f792c089884fc5c6e2b5b9",
+      "ref_id": "3",
+      "recommendationScore": 55,
+      "popularityScore": 39,
+      "priority": "medium",
+      "comment": "一篇关于脱离Google生态的个人经历分享，具有较强的社会话题性和一定实用建议。",
+      "reason": "内容涉及数字隐私和个人数据管理，是普遍关注的社会科技话题，但技术深度相对较低，更多是经验分享。",
+      "tags": [
+        "隐私",
+        "Google",
+        "数字生活",
+        "去中心化"
+      ]
+    },
+    {
+      "title": "Windows 11½",
+      "link": "https://definitelynotwindows.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-28T17:51:24.000Z",
+      "summary": "Article URL: https://definitelynotwindows.com/\nComments URL: https://news.ycombinator.com/item?id=49881747\nPoints: 363\n# Comments: 103",
+      "id": "c845131f70cbde54ffc1c1a037cf4ad1c2daff7d457c1ec1ac81d1452b5c3207",
+      "ref_id": "1",
+      "recommendationScore": 55,
+      "popularityScore": 90,
+      "priority": "medium",
+      "comment": "该文章以独特的视角或批判性方式探讨了Windows操作系统。",
+      "reason": "虽然不是核心技术开发主题，但其高热度表明了广泛的社区兴趣和讨论价值。",
+      "tags": [
+        "Operating System",
+        "Windows",
+        "Commentary",
+        "Product Design",
+        "Satire"
+      ]
+    },
+    {
+      "title": "Open State praatje: zonder transparantie geen democratie",
+      "link": "https://berthub.eu/articles/posts/openstate-zonder-transparantie-geen-democratie/",
+      "source": "berthub.eu",
+      "publishedAt": "2026-09-28T11:40:00.000Z",
+      "summary": "Eerst de korte versie van mijn praatje onlangs bij de Open State Foundation: Openheid is helend, het is veel lastiger foute of kwalitatief slechte dingen te doen als iedereen mee kan kijken. Ondertussen gaat de openheid van de overheid drastisch achteruit, zowel door technische problemen als door ideologische overwegingen: men heeft er niet zoveel zin meer in. “Vind de informatie nog maar eens”. En dat is pijnlijk, omdat onze rechtsstaat recent danig aan het afkalven is.",
+      "id": "b38ff998a650008795a068f096a124940eae3b883c0c83b0afeb9870894900e9",
+      "ref_id": "4",
+      "recommendationScore": 45,
+      "popularityScore": 55,
+      "priority": "low",
+      "comment": "探讨政府透明度下降对民主的影响，强调开放的重要性。",
+      "reason": "文章侧重社会和政治评论，技术细节不足，与核心科技博客主题关联度不高。",
+      "tags": [
+        "政府透明度",
+        "社会议题",
+        "公民科技"
+      ]
+    },
+    {
+      "title": "Scientists solve 1840s space weather mystery",
+      "link": "https://arstechnica.com/science/2026/09/scientists-solve-1840s-space-weather-mystery/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-28T20:00:03.000Z",
+      "summary": "Article URL: https://arstechnica.com/science/2026/09/scientists-solve-1840s-space-weather-mystery/\nComments URL: https://news.ycombinator.com/item?id=49883536\nPoints: 17\n# Comments: 5",
+      "id": "50db72957cee6b6e19a789dd93721c29230b685ed4243b3fe66e70d64db9d6ea",
+      "ref_id": "1",
+      "recommendationScore": 35,
+      "popularityScore": 29,
+      "priority": "low",
+      "comment": "科学家们成功揭示了19世纪40年代的太空天气之谜。",
+      "reason": "尽管是深度科学研究，但与我们关注的科技主题实用性较远，优先级不高。",
+      "tags": [
+        "科学",
+        "太空",
+        "历史",
+        "研究"
+      ]
+    },
+    {
+      "title": "Pluralistic: Priceful (28 Sep 2026)",
+      "link": "https://pluralistic.net/2026/09/28/cost-of-everything/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-09-28T17:48:26.000Z",
+      "summary": "Today's links Priceful: So worthless we can tell you what it's worth. Hey look at this: Delights to delectate. Object permanence: Nasdaq allows post-9/11 penny stocks; USAF can shoot down civilian aircraft; TSA bans calling Kip Hawley an idiot; Wells Fargo sued for firing fraud-refusing tellers; The real AI apocalypse; Encryption didn't cause 9/11; Bat-person costume; British Library on DRM and CC; NYT v OWS; \"The Brave Little Toaster\"; Bounty for Trump's tax return; Chinese real-estate bubble; Corbyn's Labour conference speech; HP blinks; \"Are you calling me a racist?\"; \"Yuge\"; Debts that can't be paid won't be paid. Upcoming appearances: Edmonton, Boston, Brighton, Virtual, South Bend, Hudson, Calgary, Winnipeg, Paris, OVancouver, Victoria, Ottawa, Kilkenny, Montreal. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. Priceful (permalink) Digital rights activists have long railed at the use of the term \"IP,\" criticizing it for being deceptively imprecise and also rhetorically dishonest. I get where these objections are coming from, but I think they're misguided. Start with \"deceptively imprecise.\" \"IP\" covers a lot of legal ground, from the \"big three\" of copyright, trademark and patent, to a whole arcane bestiary: anticircumvention, noncompete, trade secrecy, nondisparagement, database and publicity rights, and more. Each of these has a radically different policy basis and radically different contours. Take copyright and trademark. Copyright is designed to allow companies (and the creators they hire or contract with) to commercially exploit creative works. In the US, copyright is a creature of the Constitution, Article 1, Section 8, Clause 8: https://constitution.congress.gov/browse/essay/artI-S8-C8-3-2/ALDE_00013064/ Fun fact: there are only two clauses in the Constitution that include a rationale: the Second Amendment (\"A well regulated Militia\") and the copyright clause (\"To promote the Progress of Science and useful Arts\"). Everything else is one of those \"truths\" that the framers \"held to be self-evident.\" In these two cases, they decided to explain their thinking. So the point of copyright is to incentivize investment in creative works, and its mechanism is a set of limited rights over those works, for limited times. Copyright expires, and it is subject to \"limitations and exceptions,\" including \"fair use,\" a very broad set of highly situational rights to use works even if the rightsholder objects: https://pluralistic.net/2026/02/07/aimsters-revenge/#effective-means-of-access-control Now consider trademark: trademark could not be more different from copyright! Trademark is a consumer protection rule: it empowers companies to sue competitors who engage in deceptive conduct that could confuse their customers. The idea here is that if you get a pair of fake Nikes that fall apart within a matter of days, or eat at a fake McDonald's whose food is (somehow?) even worse than regular McDonald's food, you are unlikely to take action. You're not going to hire a lawyer over a hamburger. So trademark deputizes companies to sue on behalf of customers who have been or might be deceived by unscrupulous competitors whose merchandising and marketing are likely to confuse the public. Unlike copyright's \"fair use,\" trademark has other defenses, like \"nominative use\" (\"This case fits an iPhone\" is not a trademark violation, provided it's true). Also, many trademark claims can be dispensed through simple disclaimers: for example, my debut novel Down and Out in the Magic Kingdom features a prominent notice informing readers that it wasn't endorsed by the Walt Disney Company. No confusion, no problem. Unlike copyright, which (eventually) expires, a trademark can carry on for so long as it is associated with a company's products or services. Procter & Gamble's moon logo has enjoyed trademark protection since the mid-19th century, 50 years before the first federal trademark law, and 100 years before the Lanham Act, the current federal trademark law. This is where the imprecision comes in. There are many activities that are legal under trademark and prohibited under copyright, and vice-versa. By claiming an \"IP\" violation, you can induce confusion in your target's mind about which rule you're discussing. If you say, \"That's my copyrighted image and your use of it is confusing my customers,\" I might reply, \"Well, that sounds like a trademark issue. Do you have a trademark, too?\" Whereas if you say, \"That's my IP and you're confusing my customers,\" that's some tactically useful ambiguity. I can't know if you're talking about copyright, patent, trademark, or, you know, a sui generis broadcaster's right under the Treaty of Rome. I might walk away from my creative, expressive activity even though it's totally legal, because you've got me to conflate the restrictions of copyright and trademark. This makes \"IP\" a kind of bully's charter, whose imprecision lets you invoke all weird rights we call \"IP,\" no matter whether they apply to the situation at had. That's the first objection, then: this deceptive and corrosive imprecision. It's a fair point. But then there's the other objection: the use of the world \"property\" to describe this motley assortment of regulatory fiats. \"Property\" is the established catechism of the Church of Late-Stage Capitalism. \"Property\" is the most sacrosanct right in public orthodoxy, elevated above every other right. My property right lets me destroy perfectly good food while you starve outside my door: https://pluralistic.net/2026/07/08/wilhoitian/#human-rights-v-property-rights Before \"IP\" came into wide usage, we didn't generally try to group this miscellany under one umbrella, but when we did, the term we used wasn't \"IP,\" it was monopolies. These regulatory fiats were (correctly) considered to be government-granted, government-enforced monopolies. The adoption of IP was a branding exercise, a very successful attempt to transform the public's perception of these rules as natural, freestanding property rights that the law merely ratified – not a set of regulatory gifts designed to protect the self-interest of commercial firms. I get it. Between the tactical confusion and the invocation of \"property,\" \"IP\" feels like terrain worth fighting over. Once you let your adversary frame the debate in terms of property, you've already lost half the battle. For many years, I bought into this. But lately, I've grown more skeptical of this matter. Back in 2020, I published a long essay proposing that far from being confusing or ambiguous, \"IP\" has a crisp, widely understood meaning: \"Any law that lets me reach beyond the walls of my company to exert control over my competitors, critics and customers\": https://locusmag.com/feature/cory-doctorow-ip/ This is the common factor that binds together that mess of legal oddments, from trademark/copyright/patent to nondisparagement and noncompetes to anticircumvention and personality rights. I think this is both true and a powerful framing. It correctly puts IP in the category of \"things corporations do to control you and the rest of the world.\" I've been trying this out for six years now, and I think it's a winner. But it was only a month or two ago that I realized there was a way in which the use of \"property\" can also be used to undermine the bullying, censorship and extraction of corporations wielding their IP. Property rights may be our state religion, but they are also the worst tool for several important jobs that need doing. Think of privacy: the standard for privacy is for you to click through an \"agreement\" that nominally trades your privacy rights for some product or service. Google spies on you constantly for ad-targeting, you get to see Youtube videos (after watching a bunch of ads). This is a catastrophe. Virtually every vendor you engage with, from your landlord to your corner deli, wants you to install an app whose terms of service requires you to sign away all of your privacy rights, forever, in exchange for nothing. You get the same sandwich, but you \"pay\" more, in the form of all your private data, which is flushed into the unregulated data-broker sector to be weaponized against you in a thousand ways, including higher prices and lower wages: https://pluralistic.net/2026/07/11/your-risk/#my-reward Worse: because you have \"entered into a contract\" to \"sell\" your privacy rights, anything you do to claw those rights back is violation of your end of the contract. Using a tracker blocker like Privacy Badger makes you the cheater: https://privacybadger.org/ Even if you could get actually paid for the use of your private information, the sums involved would round to zero. Companies like Facebook make pennies from your private data, and inflict harm on you that totals up to hundreds of times more than they actually make. The commercial surveillance industry are poster children for corruption: concentrated gains that are far exceeded by diffuse harms: https://locusmag.com/feature/cory-doctorow-zucks-empire-of-oily-rags/ But just because privacy doesn't fit well into a property rights framework, it doesn't follow that there's no way to do privacy well. We have lots of other rights frameworks besides property, and it's taken the concerted work of generations to get us to forget that these rights exist at all. Imagine if our privacy regime was modeled on the human rights system we rely on when it comes to sex, bodily autonomy and consent. In this framework, no one is allowed to do anything to you unless you give your continuous, informed consent, which you can withdraw at any time. \"I changed my mind\" is a perfectly valid thing to say in the middle of a sexual encounter. It's not a violation of your contract. Quite the opposite: someone who ignores your withdrawal of consent is guilty of criminal assault. If we apply a consent regime (not a property regime) to privacy rights, then the entire commercial surveillance industry would cease to exist. There's no way you can give \"informed consent\" to a laundry-list of terms of service that are as impenetrable as they are lengthy, and even if you did, you could withdraw that consent at any time, and Facebook et al would have to immediately stop processing your private information and disgorge it. Like all forms of property rights, \"IP\" has severe limitations that can only be addressed by applying a different framework to your disputes. Think of the way that the expansion of copyright has failed creative workers. For 50 years, we've monotonically expanded copyright in every dimension, so that today, copyright covers more works, restricts more uses and inflicts higher statutory penalties. Over those 50 years, media companies have gotten richer and more profitable while the creative workers whose art these media companies sell have gotten poorer, both in real terms and as a share of the earnings our labor generates for our bosses. This seems like a paradox at first, but really, it's just a built-in feature of property law: that people who have assets but lack bargaining leverage end up selling those assets for peanuts. In a market dominated by five publishers, four studios, three labels, two app companies and one ebook/audiobook company, giving a creative worker more to bargain with is just giving them more to bargain away. Giving us more copyright is like giving a bullied schoolkid more lunch money: no amount of lunch money will get that kid fed. This is why arguments about copyright and AI training are such a dead-end. Even if you stipulate that AI training isn't fair use (far from a certainty), or if you want legislative action to establish that every creator gets to decide whether their work can be used to train an AI, you won't help creative workers win the class struggle against AI companies. Remember the Hollywood writers' strike? It's the only time in history that creative workers have defeated AI, so it's worthy of close study. Specifically, remember that workers on those picket lines weren't striking against the AI companies, they were striking against the studio bosses, artist-hating billionaires like Warner's David Zaslav and Disney's Bob Iger, whose careers have been defined by a relentless quest for ways to pay creative workers less. It was studio bosses, not AI bosses, who wanted to replace screenwriters with AI. These are the same studio bosses who are now suing AI companies for copyright infringement. That's not because the studio bosses want to get rid of AI models or keep them out of the writers' room. They absolutely want to fire writers and replace us with AI. The studio lawsuits over AI training want to make training a licensable activity so that the studios can get paid for the use of \"their\" training data to make models that they absolutely want to use to fire most of their writers and then knock down the wages of the survivors of the AI layoffs. Many creative workers have cheered on these media companies as they chase the AI companies through the courts, and some artists' groups have even submitted amicus briefs on their behalf. But the New York Times – a company that has repeatedly used the dirtiest union-busting tactics imaginable against its workers – is not suing OpenAI to ensure that creative workers don't lose wages to AI. They're suing to make sure that the Times gets a bigger piece of the action when that happens. If the Times, Disney and Warner prevail, they will immediately amend their standard, non-negotiable contracts to require every creative worker who does any work for them to exclusively and irrevocably sign over the right to train AI with our labor, and the resulting models will be used to attack our jobs and wages. In other words, the media company/AI company lawsuits are a fight to see who gets the biggest piece when creative workers get eaten for dinner. We don't want either side to win: we want to be taken off the menu altogether. Which is exactly what the Hollywood writers accomplished, and they didn't use copyright to do it. They used something far more important and powerful: labor rights. Like all the Hollywood guilds, the Writers Guild of America has a nearly unheard-of labor right. They are able to engage in something called \"multi-employer bargaining,\" itself a weak form of \"sectoral bargaining,\" which is when all the workers in a sector bargain with all the bosses in that sector. Sectoral bargaining was made practically illegal under the 1947 Taft-Hartley Act, and its last vestiges are to be found in Hollywood. But as vestigial as Hollywood's unique labor rights system may be, it was still enough to let thousands of freelancers beat back AI in their writers' rooms. Indeed, they even retained the right to use (or not use) AI if they chose, without any threat to their wages or headcount: https://pluralistic.net/2023/10/01/how-the-writers-guild-sunk-ais-ship/ This is something you can only get with labor rights, not copyright and certainly not property rights. If we limit ourselves to property rights, the only question we need to ask is \"Who owns that writers' room?\" And since the answer is \"the studio\" then whatever the studio says goes. It's precisely because labor rights get workers benefits at their bosses' expense (and copyright cannot) that we have been subjected to generations of pro-copyright messaging, told that we aren't workers at all – we're small businesses, LLCs with MFAs! Creative workers have been taken for a ride. We've been told that we're not workers, so we shouldn't advocate for labor rights. We've been told that copyright is better than labor rights, because copyright is a property right. It puts a price on your work, which means you can get paid. But prices are things we assign to things that are so worthless that we can say what they're worth. The most valuable things in the world aren't property, and describing them as property would cheapen them. Human beings aren't property. The fact that we're not property doesn't mean we're worthless, it means we're priceless. That's why \"murder\" isn't \"theft of life\" and \"rape\" isn't \"theft of sex.\" Your life and bodily integrity are worth too much to be bought and sold. Property rights have a role to play in the assertion of human rights and other rights, but it is a subordinate role. Property rights might someday end the barbaric practice of homeless encampment sweeps and the confiscation of all the worldly goods of the poorest, most vulnerable people in our midst: https://projects.propublica.org/impact-of-homeless-sweeps-lost-belongings/ But property rights must be subordinate to human rights, otherwise they'll let landlords evict tenants willy-nilly. Which is all to say, by all means, let our adversaries claim \"IP.\" Let them admit that they have this doctrine by which they attempt to assert control over their critics, customers and competitors. They can assert control, and we'll keep autonomy and consent. Let them say that they have property rights, things so cheap they can have a price. They can be priceful, we can be priceless. Hey look at this (permalink) Chop up your books https://attainablefelicity.mattkirkland.com/20260915/cut-up-your-books.html Levyra-deepsound https://github.com/LUC4N3X/Levyra-deepsound I Saw the Best Minds of My Generation Destroyed by Google https://bruces.medium.com/i-saw-the-best-minds-of-my-generation-destroyed-by-google-by-bruce-sterling-2006-57683dc6f902 Weave — Open, public-purpose digital infrastructure https://weave.coop/ Common Circuits https://commoncircuits.sh/ Object permanence (permalink) #25yrsago Nasdaq allows sub-$1 shares to avoid mass delisting after 9/11 https://www.nytimes.com/2001/09/28/business/moratorium-by-nasdaq-on-listing-rules.html #25yrsago USAF makes it much easier to shoot down civilian aircraft https://www.chicagotribune.com/2001/09/28/rules-revised-for-downing-airliners/ #25yrsago Don't blame encryption for 9/11 https://web.archive.org/web/20010930005338/http://news.cnet.com/news/0-1272-210-7320099-1.html #20yrsago Disneyland parking structure repeatedly robbed at gunpoint https://web.archive.org/web/20061031031505/https://www.ocregister.com/ocregister/homepage/abox/article_1291046.php #20yrsago HOWTO: Make a bat-person costume out of an old umbrella https://www.evilmadscientist.com/2006/how-to-build-a-better-bat-costume/ #20yrsago American Airlines bans in-flight kissing https://web.archive.org/web/20061004214421/https://www.newyorker.com/talk/content/articles/060925ta_talk_collins #20yrsago British Library takes on Creative Commons and DRM https://web.archive.org/web/20061022143612/https://www.bl.uk/news/pdf/ipmanifesto.pdf #20yrsago TSA: calling Kip Hawley an idiot is not allowed https://www.flyertalk.com/forum/checkpoints-borders-policy-debate/606142-i-detained-tsa-checkpoint-about-25-minutes-today.html#post6440005 #15yrsago Who’s occupying Wall Street, and why is the NYT only interested in the kooks? https://www.nytimes.com/2011/09/25/nyregion/protesters-are-gunning-for-wall-street-with-faulty-aim.html?_r=2&amp;hp #15yrsago Podcast: my story “The Brave Little Toaster” https://dn710605.ca.archive.org/0/items/Cory_Doctorow_Podcast_212/Cory_Doctorow_Podcast_212_Brave_Little_Toaster.mp3 #10yrsago The dubious upsides of having a Syrian passport https://globalvoices.org/2016/09/29/i-am-lucky-to-have-a-syrian-passport/ #10yrsago State of California imposes 12-months’ worth of sanctions on Wells Fargo https://web.archive.org/web/20161003194157/http://www.treasurer.ca.gov/news/releases/2016/20160928.asp #10yrsago 2600 Magazine offers $10K for Trump’s tax return https://web.archive.org/web/20160930162135/https://motherboard.vice.com/read/hacker-zine-says-it-will-pay-10000-for-trumps-tax-returns #10yrsago Black voter registration is inversely correlated with black death at police hands https://www.wired.com/2016/09/intriguing-link-police-shootings-black-voter-registration/ #10yrsago Chinese real estate bubble is “biggest in history” https://web.archive.org/web/20160929135157/http://money.cnn.com/2016/09/28/investing/china-wang-jianlin-real-estate-bubble/ #10yrsago Notes from Jeremy Corbyn’s barn-burning speech at the Labour Party conference https://www.mirror.co.uk/news/uk-news/8-key-points-jeremy-corbyns-8936364 #10yrsago Douglas County, OR using dirty ballot tricks to finish off the slow murder of its libraries https://web.archive.org/web/20160930155357/https://action.everylibrary.org/douglascounty #10yrsago HP blinks, says it will restore printer functionality, but there’s a LOT more it needs to do https://www.eff.org/deeplinks/2016/09/dont-hide-drm-security-update #10yrsago The Doonesbury Trump retrospective proves that Garry Trudeau had Drumpf’s number all along https://memex.craphound.com/2016/09/29/the-doonesbury-trump-retrospective-proves-that-garry-trudeau-had-drumpfs-number-all-along/ #10yrsago Ex-Wells employees who were fired for NOT committing fraud launch $2.6B lawsuit https://www.npr.org/sections/thetwo-way/2016/09/26/495454165/ex-wells-fargo-employees-sue-allege-they-were-punished-for-not-breaking-law #10yrsago Inside a multimillion dollar fake Kindle book scam https://www.zdnet.com/article/exclusive-inside-a-million-dollar-amazon-kindle-catfishing-scam/ #10yrsago Wells Fargo execs will lose a few millions out of the hundreds of millions they got for abetting massive fraud https://www.nakedcapitalism.com/2016/09/wells-fargo-ceo-stumpf-hit-with-41-million-in-clawbacks-head-of-community-bank-dinged-19-million.html #10yrsago Youtube’s new “offline first” product for India treats telcos as damage and routes around them https://blog.youtube/news-and-events/youtube-go-youtube-reimagined-for-next/ #5yrsago Shelter is a toxic asset https://pluralistic.net/2021/09/27/lethal-dysfunction/#yimby #5yrsago Democrats, health care monopolies, and market failures https://pluralistic.net/2021/09/27/lethal-dysfunction/#luxury-bones #5yrsago Wells Fargo can't stop criming https://pluralistic.net/2021/09/29/jubilance/#too-big-to-jail #5yrsago \"Are you calling me a racist?\" https://pluralistic.net/2021/09/29/jubilance/#tolerable-racism #5yrsago Debts that can't be paid, won't be paid https://pluralistic.net/2021/09/29/jubilance/#debt #1yrago The real (economic) AI apocalypse is nigh https://pluralistic.net/2025/09/27/econopocalypse/#subprime-intelligence #1yrago Plenty of room at the bottom (of the tech stack) https://pluralistic.net/2025/09/28/works-well/#fails-well Upcoming appearances (permalink) Edmonton: Elbows Up (Edmonton Public Library), Sep 28 https://www.epl.ca/blogs/post/elbows-up-with-cory-doctorow/ Boston: The Post-American Internet: Possibilities for a new internet created by an American Hermit Kingdom (MIT Media Lab), Sep 30 https://www.media.mit.edu/events/the-post-american-internet-possibilities-for-a-new-internet-created-by-an-american-hermit-kingdom/ Boston: Rethinking Our Relationship with AI, Sep 30 (Emtech) https://event.technologyreview.com/emtech-future-2026/detailed-agenda Boston: The Paradox of Enshittification and Reverse Centaurs (Harvard Berkman Klein), Sep 30 https://cyber.harvard.edu/events/running-harder-falling-faster-paradox-enshittification-and-reverse-centaurs Brighton: Digital Sovereignty and the Post-American Internet (Green Party Conference), Oct 3 https://www.openrightsgroup.org/events/digital-sovereignty-and-the-post-american-internet/ Virtual: How to govern technology in a multipolar digital world (Connecting Current), Oct 6 https://connectingcurrent.tech/how-to-govern-technology-a-multipolar-digital-world/ South Bend: An Evening With Cory Doctorow (Notre Dame), Oct 6 https://franco.nd.edu/events/2026/10/06/an-evening-with-cory-doctorow/ Hudson, OH: Hudson Library, Oct 7 https://engagedpatrons.org/EventsExtended.cfm?SiteID=3850&amp;EventID=596952&amp;PK= Calgary: Wordfest, Oct 8 https://wordfest.com/2026/show/wordfest-presents-cory-doctorow-2026/ Winnipeg: McNally Robinson, Oct 9 https://www.mcnallyrobinson.com/event-18991/An-Evening-with-Cory-Doctorow Paris: Slow Tech Summit, Oct 15 https://slowtechsummit.com/ Vancouver: Read, Resist, Repair, Rejoice (Vancouver Writers Festival), Oct 19 https://writersfest.bc.ca/festival-event-2026/01 Victoria: Munro's Books, Oct 20 https://www.munrobooks.com/events/6113620261020 Vancouver: Life After AI (Vancouver Writers Festival), Oct 22 https://writersfest.bc.ca/festival-event-2026/46 Ottawa: Life After AI (Ottawa Writers Festival), Oct 24 https://writersfestival.org/event/life-after-ai Kilkenny (Kilkenomics), Nov 6-8 https://kilkenomics.com/ Vancouver: Enshittification (Sid Williams Theatre Society), Nov 10 https://www.sidwilliamstheatre.com/events/cory-doctorow-talks-enshittification/ Vancouver: BC Policy Solutions Gala, Nov 12 https://bcpolicy.ca/gala/ Montreal: World Science Fiction Convention, Sep 2-6 https://montreal2027.ca/en Recent appearances (permalink) How to Think About AI—Before It’s Too Late (Daniel Solove) https://www.youtube.com/watch?v=_0xR3uEgGcc Could Tech Bosses Destroy Life As We Know It? (Politics JOE) https://www.youtube.com/watch?v=PL4VktU0SgY Are 'AI Apocalypse' Warnings Just Marketing? (What's Left) https://www.youtube.com/watch?v=IXd9HwIE5bo The Real AI Threat Isn’t What You’ve Been Told (The Tea with Myriam François) https://www.youtube.com/watch?v=Vc8It00fRsA Fascists may come after the AI bubble bursts (You&AI) https://www.youtube.com/watch?v=J2WN64aQeYQ What Would a Normal Person Do (Trashfuture) https://www.patreon.com/trashfuture/posts/what-would-do-169247456 Latest books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/ \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: “Once Is Enemy Action,” a science fiction novel about the origins of modern technofascism. Friday's words: 525 (19747 total). \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Fourth draft completed. Submitted to editor. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "6ec198bf305f2ce1fcdf3bc07e289295e44cea058cc15babefc646b16d9055cd",
+      "ref_id": "2",
+      "recommendationScore": 35,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "一篇涵盖政治、金融、科技等多领域链接的聚合文章，缺乏深度分析。",
+      "reason": "内容过于宽泛且分散，虽然标题提到AI，但未深入探讨，与专业科技博客主题关联度低。",
+      "tags": [
+        "新闻聚合",
+        "时事评论",
+        "AI趋势"
+      ]
+    },
+    {
+      "title": "Weekly Update 523: Live From a Norwegian Fjord",
+      "link": "https://www.troyhunt.com/weekly-update-523/",
+      "source": "troyhunt.com",
+      "publishedAt": "2026-09-28T07:24:49.000Z",
+      "summary": "How's that view?! With NDC Oslo now done, it's a little bit of sightseeing before heading to Denmark for GOTO in Copenhagen for Scott's and my \"Cyber-broken\" talk. In the meantime, this week is mostly about the ShinyHunters trajectory targeting both",
+      "id": "fcddb4c0d8585657c1bd0875b80338a599b38b86b43c19179a4614da80e2a18e",
+      "ref_id": "2",
+      "recommendationScore": 25,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "一篇常规的个人会议与旅行周报，缺乏实质性的技术内容。",
+      "reason": "内容更偏向个人动态分享，对专业技术读者提供的价值有限。",
+      "tags": [
+        "周报",
+        "会议",
+        "个人动态"
+      ]
+    },
+    {
+      "title": "Best of British Design",
+      "link": "https://best-of-british-design.vercel.app/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-28T20:21:22.000Z",
+      "summary": "Article URL: https://best-of-british-design.vercel.app/\nComments URL: https://news.ycombinator.com/item?id=49883817\nPoints: 15\n# Comments: 7",
+      "id": "78c691d6ee0a7e12b1115b0097dd32d7768f04413d41d2b74f8dcf7817ae6db8",
+      "ref_id": "3",
+      "recommendationScore": 20,
+      "popularityScore": 27,
+      "priority": "low",
+      "comment": "一份关于英国设计的展示，与科技主题关联度不高。",
+      "reason": "内容属于产品设计范畴，且侧重于展示而非技术分析或实用工具，与博客核心关注点优先级较低。",
+      "tags": [
+        "产品设计",
+        "设计展示",
+        "灵感"
+      ]
+    },
+    {
+      "title": "California Farmers Are Struggling to Sell Grapes as Demand for Wine Drops",
+      "link": "https://www.kqed.org/news/12101534/california-farmers-are-struggling-to-sell-grapes-as-demand-for-wine-drops",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-28T20:00:06.000Z",
+      "summary": "Article URL: https://www.kqed.org/news/12101534/california-farmers-are-struggling-to-sell-grapes-as-demand-for-wine-drops\nComments URL: https://news.ycombinator.com/item?id=49883539\nPoints: 25\n# Comments: 28",
+      "id": "f133673085c04df9661f34721f3ba5e9285319af0ba84e3c7faa8661076b7b49",
+      "ref_id": "0",
+      "recommendationScore": 20,
+      "popularityScore": 80,
+      "priority": "low",
+      "comment": "一篇关于加州葡萄酒行业因需求下降而面临葡萄销售困境的社会经济新闻。",
+      "reason": "与科技博客的核心受众和优先主题关联度低，技术深度和实用性不符。",
+      "tags": [
+        "社会经济",
+        "农业",
+        "新闻"
+      ]
+    },
+    {
+      "title": "Book Review: Bobiverse Books 1-3 by Dennis E. Taylor ★★★☆☆",
+      "link": "https://shkspr.mobi/blog/2026/09/book-review-bobiverse-books-1-3-by-dennis-e-taylor/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-09-28T11:34:52.000Z",
+      "summary": "Like sticky popcorn, this is a moreish but ultimately unsatisfying set of stories. After I flamed out of Dungeon Crawler Carl, someone suggested I try this series. I can see why! It's campy sci-fi fun, with enough tropes to keep you chuckling and enough tension to keep you turning the pages.    Bob's brain is uploaded to a computer post-mortem. Awoken in a dystopian future, he has to pilot a…",
+      "id": "ae242018fe5eb27f49567bda4f9ef94180787848771e75a3f9b0ac216990ac42",
+      "ref_id": "3",
+      "recommendationScore": 20,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "一篇科幻小说书评，主要评价文学作品而非技术内容。",
+      "reason": "文章性质为文学评论，与科技博客关注的技术深度和实用性主题无关，优先级最低。",
+      "tags": [
+        "科幻",
+        "书评"
+      ]
+    },
+    {
+      "title": "Neal Stephenson responds with wit and humor (2004)",
+      "link": "https://slashdot.org/story/04/10/20/1518217/neal-stephenson-responds-with-wit-and-humor",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-28T19:06:16.000Z",
+      "summary": "Article URL: https://slashdot.org/story/04/10/20/1518217/neal-stephenson-responds-with-wit-and-humor\nComments URL: https://news.ycombinator.com/item?id=49882894\nPoints: 43\n# Comments: 14",
+      "id": "d6bdb81660ce3961fc1eb5130246004b6deda1606b42cedef84a7e241612e952",
+      "ref_id": "0",
+      "recommendationScore": 15,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "一篇2004年的旧文，与科技主题关联度低，主要关于文学作家访谈。",
+      "reason": "文章内容与当前科技热点不符，且发布时间久远，技术深度和新颖性几乎为零。",
+      "tags": [
+        "文化",
+        "访谈",
+        "历史"
+      ]
+    },
+    {
+      "title": "Palantir founder purchases large swath of forest in Sweden",
+      "link": "https://www.arctictoday.com/palantir-founder-purchases-large-swath-of-forest-in-sweden/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-28T20:51:47.000Z",
+      "summary": "Article URL: https://www.arctictoday.com/palantir-founder-purchases-large-swath-of-forest-in-sweden/\nComments URL: https://news.ycombinator.com/item?id=49884169\nPoints: 38\n# Comments: 36",
+      "id": "9ca249a1be1380bb145f15b8a89c3f5b325165e184d7bbcbf670201a170802fd",
+      "ref_id": "0",
+      "recommendationScore": 10,
+      "popularityScore": 68,
+      "priority": "low",
+      "comment": "与核心科技博客主题关联度较低，更偏向商业新闻。",
+      "reason": "虽然涉及科技公司创始人，但内容为非技术性的房地产投资新闻，与AI、编程等主题不符。",
+      "tags": [
+        "商业",
+        "投资",
+        "新闻"
+      ]
+    },
+    {
+      "title": "Who wrote Elizabeth I's most scathing letters?",
+      "link": "https://www.smithsonianmag.com/history/who-wrote-elizabeth-is-most-scathing-letters-new-research-suggests-the-tudor-queens-male-secretaries-revised-her-correspondence-to-emphasize-her-temper-180989565/",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-28T17:47:08.000Z",
+      "summary": "Article URL: https://www.smithsonianmag.com/history/who-wrote-elizabeth-is-most-scathing-letters-new-research-suggests-the-tudor-queens-male-secretaries-revised-her-correspondence-to-emphasize-her-temper-180989565/\nComments URL: https://news.ycombinator.com/item?id=49881692\nPoints: 25\n# Comments: 16",
+      "id": "f8b4c6af4b0347a4af4a334501701ba5c24a50492da62d02005c489e727a18f4",
+      "ref_id": "2",
+      "recommendationScore": 10,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "这是一篇关于伊丽莎白一世信件历史研究的文章。",
+      "reason": "该文章主题与科技博客关注的AI、编程工具等核心领域无关，不适合推荐。",
+      "tags": [
+        "History",
+        "Elizabeth I",
+        "Research"
+      ]
+    },
+    {
+      "title": "Joseph Szabo’s pictures of American adolescents",
+      "link": "https://www.newyorker.com/culture/photo-booth/the-teen-portraits-that-captivated-sofia-coppola",
+      "source": "Hacker News",
+      "publishedAt": "2026-09-28T17:41:28.000Z",
+      "summary": "Article URL: https://www.newyorker.com/culture/photo-booth/the-teen-portraits-that-captivated-sofia-coppola\nComments URL: https://news.ycombinator.com/item?id=49881606\nPoints: 59\n# Comments: 23",
+      "id": "5d61da5bdde217537c45dfe8c1af717ba51693f78042ae033a65220821bfe5f1",
+      "ref_id": "3",
+      "recommendationScore": 10,
+      "popularityScore": 45,
+      "priority": "low",
+      "comment": "文章介绍了摄影师Joseph Szabo关于美国青少年的摄影作品。",
+      "reason": "该文章主题属于艺术与文化范畴，与科技博客的核心关注点不符。",
+      "tags": [
+        "Photography",
+        "Art",
+        "Culture"
+      ]
+    },
+    {
+      "title": "Quoting @joedaroo",
+      "link": "https://simonwillison.net/2026/Sep/28/joedaroo/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-09-28T19:11:42.000Z",
+      "summary": "",
+      "id": "ddc53f40aa2256bac4bde24bd6bcff417bac3e3dfdcaa38051c3df32dcd1e83a",
+      "ref_id": "3",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "内容缺失，无法评估。",
+      "reason": "文章内容为空，不具备评审条件。",
+      "tags": [
+        "无法评估"
+      ]
+    },
+    {
+      "title": "Quoting Muse AI Agent",
+      "link": "https://simonwillison.net/2026/Sep/28/muse-ai-agent/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-09-28T04:01:30.000Z",
+      "summary": "",
+      "id": "1fb466641ec80a8dc13c7b964b6015713ac1134f0b202039ec49b83fdd127f91",
+      "ref_id": "4",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "内容缺失，无法评估。",
+      "reason": "文章内容为空，不具备评审条件。",
+      "tags": [
+        "无法评估"
+      ]
+    }
+  ]
+}
