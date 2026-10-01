@@ -1,0 +1,652 @@
+{
+  "dailySummary": "今日科技速递：AI领域热点频现。大模型研究聚焦数据质量与训练策略；AI“读心术”实现从脑部扫描重建视觉图像的突破。Cloudflare发布开源决策模型与强化学习平台，",
+  "articles": [
+    {
+      "title": "Pi 1.0",
+      "link": "https://earendil.com/posts/pi-1-0/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-01T19:33:05.000Z",
+      "summary": "Article URL: https://earendil.com/posts/pi-1-0/\nComments URL: https://news.ycombinator.com/item?id=49926069\nPoints: 236\n# Comments: 88",
+      "id": "9b9edebdd384270d819a4a2eeb04e5431e9609e582f85d6a95df9bf922cde349",
+      "ref_id": "2",
+      "recommendationScore": 95,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "介绍一个新颖的文件系统“Pi 1.0”及其核心理念。",
+      "reason": "主题属于核心关注的编程工具领域，且在Hacker News社区获得高度关注，可能提供突破性技术。",
+      "tags": [
+        "File System",
+        "Programming Tools",
+        "System Design",
+        "Novelty",
+        "Release"
+      ]
+    },
+    {
+      "title": "Clef: Open-source decision models, and new RL fine-tuning platform",
+      "link": "https://blog.cloudflare.com/clef-decision-models/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-01T16:18:57.000Z",
+      "summary": "Article URL: https://blog.cloudflare.com/clef-decision-models/\nComments URL: https://news.ycombinator.com/item?id=49923692\nPoints: 323\n# Comments: 131",
+      "id": "c0a0a5f5affd26928d0fd340f88982d915a498730c34226ffd0e46dc16ea882a",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 100,
+      "priority": "high",
+      "comment": "介绍了Cloudflare在开源决策模型和强化学习微调平台的最新进展。",
+      "reason": "紧密贴合AI前沿，技术深度、新颖性和实用性极高，是AI开发者和研究者的必读内容，且具备开源价值。",
+      "tags": [
+        "AI",
+        "机器学习",
+        "强化学习",
+        "决策模型",
+        "开源",
+        "自动化"
+      ]
+    },
+    {
+      "title": "Why do OpenAI's GPT-2 weights beat mine?  Part five: data quality",
+      "link": "https://www.gilesthomas.com/2026/10/why-do-openai-gpt2-weights-beat-mine-5-data-quality",
+      "source": "gilesthomas.com",
+      "publishedAt": "2026-10-01T17:30:00.000Z",
+      "summary": "When I finished learning how to build an LLM from scratch,\nI was left with a mystery: my own models were not as good as OpenAI's original\nGPT-2 models, despite being based on the same architecture.\nMy models all had 163M parameters, and followed the design from\nSebastian Raschka's book\n\"Build a Large Language Model (from Scratch)\".\nThat meant that they were pretty much the same as the setup for the OpenAI GPT-2 \"small\" instance,\nexcept that they did not use weight-tying or bias on the QKV matrices.  Weight-tying means that you re-use\nthe initial embedding matrix as the output head at the end, and using it means that GPT-2 small\nsaved quite a few parameters -- it was 124M rather than 163M -- at, at least in my\nown experiments, a cost in quality;\nsimilarly, while I found that QKV bias made a tiny improvement in loss terms, I'd\nfelt it was likely within the noise.\nBut GPT-2 small consistently beat my models on an instruction\nfine-tuning (IFT) task -- also adapted from Raschka's book.   That test fine-tunes the model\non a subset of the Alpaca dataset, until\nvalidation loss starts rising, and then runs a test set through the resulting model.\nThe responses to the test set questions are stored, and then I run all of the responses\nfrom all of the models under test past GPT 5.5 in one go to get an aggregate score;\nmore details here.\nGPT-2 small\nalways did better than any of my models on this.\nAdditionally, it did surprisingly\nwell on a simpler eval -- one that just measured the cross entropy loss it got on a\ntest set.  It scored close to my own best models, and better than many of them.\nWhat made this result particularly interesting was that the test set\nin question was a split of my own training data; my models would not have seen it when\ntraining (at least, in theory), but it seems likely that it would be much more similar to their\nown training data than it was to OpenAI's.\nI've checked two things while probing this mystery:\nIt seems very likely that the GPT-2 models were overtrained by modern standards; would\novertraining my own models\nget them closer?  It turned out that no, it probably didn't help with the IFT eval (though there might\nhave been some signal there).  It did help quite a lot with the test loss eval, though.\nThe way I was handling dropout in the IFT test might\nhave been unduly benefiting some models while working against others.  I decided\nto standardise on not using dropout during this eval, as (counter-intuitively for me) it seemed\nto harm the results of most models, even those that had been pre-trained with dropout.\nIn particular, the OpenAI weights were harmed by using dropout, and making a change\nthat benefited them (along with some of my own models) seemed the most conservative\napproach to take in investigating this.\nThe next thing I wanted to look into was the training data.\nThe exact dataset that the various GPT-2 models were trained on has never been released;\nall we know about it\nis from the paper,\nwhere they say:\n[W]e created a new web scrape which emphasizes\n  document quality. To do this we only scraped web pages\n  which have been curated/filtered by humans. Manually\n  filtering a full web scrape would be exceptionally expensive\n  so as a starting point, we scraped all outbound links from\n  Reddit, a social media platform, which received at least 3\n  karma. This can be thought of as a heuristic indicator for\n  whether other users found the link interesting, educational,\n  or just funny.\nThey called it \"WebText\".  There is an OpenWebText\nthat tries to replicate it, but although they tried to follow the same procedure as the\noriginal, there's no guarantee that it is all that similar.\nBy comparison, I'd normally been training against FineWeb.\nWhile this is a general web-scraping dataset, without the \"curation\" provided by\nusing only stuff that was linked from upvoted Reddit posts, it has been refined to\nremove any obvious junk.  I had felt that it was\npretty much equivalent.\nBut what if I were wrong about that?  I decided to see if I could get better models by using better data.\nThe starting point\nHere's a table of all of the models I've been comparing to date.  The \"Test loss\"\ncolumn shows how well the model in question did on that held-back cross entropy loss\nevaluation.  The \"IFT epochs\" column shows how many epochs of fine-tuning the model\nneeded before its validation loss started rising, the \"IFT score\" the score that\nGPT 5.5 gave the model's responses to the test set of my Alpaca data, and the \"IFT rank\"\nthe model's rank in terms of that score.  The OpenAI small model is in there in bold,\nand I've also included the OpenAI medium model for comparison purposes.\n\n  Test loss\n  IFT epochs\n  IFT score\n  IFT rank\n\n\n\n\n  OpenAI weights: medium\n  3.231442\n  2\n  43.75\n  1\n\n\n  JAX, overtrained one long epoch\n  3.324953\n  3\n  19.77\n  4\n\n\n  JAX, overtrained two normal epochs\n  3.326482\n  4\n  19.72\n  5\n\n\n  JAX, with MHA bias, no dropout\n  3.418784\n  4\n  18.69\n  6\n\n\n  JAX, no MHA bias, no dropout\n  3.420089\n  5\n  21.46\n  3\n\n\n  JAX, no MHA bias, with dropout\n  3.476802\n  5\n  13.22\n  15\n\n\n  OpenAI weights: small\n  3.499677\n  2\n  26.00\n  2\n\n\n  1xrtx3090-stacked-interventions\n  3.538161\n  4\n  13.77\n  14\n\n\n  8xa100m40-stacked-interventions-1\n  3.577761\n  4\n  10.76\n  18\n\n\n  Cloud FineWeb, 8x A100 40 GiB\n  3.673623\n  3\n  17.72\n  7\n\n\n  1xrtx3090-baseline\n  3.683835\n  4\n  15.74\n  8\n\n\n  8xa100m40-baseline\n  3.691526\n  3\n  14.19\n  13\n\n\n  Cloud FineWeb, 8x H100 80 GiB\n  3.724507\n  4\n  14.33\n  12\n\n\n  Cloud FineWeb, 8x A100 80 GiB\n  3.729900\n  3\n  11.34\n  17\n\n\n  Cloud FineWeb, 8x B200 160 GiB\n  3.771478\n  4\n  14.67\n  11\n\n\n  Local FineWeb train\n  3.943522\n  5\n  12.31\n  16\n\n\n  Local FineWeb-Edu extended train\n  4.134991\n  5\n  15.04\n  9\n\n\n  Local FineWeb-Edu train\n  4.166892\n  5\n  14.99\n  10\n\n\n\n\nYou can see that the OpenAI small model did pretty well in terms of the test loss,\nwhen you consider that it has 39M fewer weights than my models and was being tested against a\ndataset that differs more from its likely training data than it does from my own models'.   Additionally, the specific models that did better than\nOpenAI's small one were all trained with JAX rather than PyTorch -- my hypothesis for that\nis that it's a result of the JAX ones getting better initial weights by pure chance.\nBut the big difference was in the IFT score.  In the specific run that gave\nthe results in this table, the OpenAI small model got 26.00 -- the closest of my own models was more than\n4.5 points lower, at 21.46.\nThis difference was consistent over all of my other test runs.  The GPT-2 small model\nwas always ahead of mine.  (GPT-2 medium, of course, beat GPT-2 small and all of my models,\nbut given that it is twice the size of mine, that's not a big surprise.)\nNow, quite some time ago, I had tried looking into data quality as a lever to pull\nfor model performance.  At the bottom of the table, with the worst test loss of all\nmodels, you can see two models:\n\"Local FineWeb-Edu train\"\n\"Local FineWeb-Edu extended train\"\nThese two were (as you might guess from the names) trained on the FineWeb-Edu\ndataset, which includes just the most \"educational\" data from FineWeb.  They\nscored very badly on the test loss score.  Given that the test dataset is from FineWeb,\nthat's not a big surprise -- as I've written previously:\nIf you train a model\n  on Jane Austen and then evaluate against Chuck Tingle, then\n  you're not going to get amazing results.\nBut again, GPT-2 had the same issue, and did perfectly well on the test\nloss eval.\nOn the other hand, while these FineWeb-Edu models' performance on the IFT eval wasn't stellar -- there are\nplenty of my other models ahead of them -- they did seem to punch above their weight.  Consistently\nacross all of the IFT evals I've done, they have scored higher than many of the others --\ndespite their poor loss on the test eval.\nAdditionally: they were amongst the first models that I trained, before I'd spent\ntime learning about how to optimise my hyperparameters and training loop.\nThey did not use gradient clipping, they did use dropout, their batch size was just \"whatever\nI could squeeze into the GPU\", and I didn't set the learning\nrate to the right kind of value or schedule it over the course of the training run.\nSo maybe a new training run on FineWeb-Edu plus my training improvements would help?\nAnd maybe some other tweaks to the training data would be worth looking into?\nThe plan\nI decided to see what would happen if I trained some models with better-quality\ndata.  Specifically, I would train models with my current optimised loop and hyperparameters on\nfour different datasets:\nFineWeb-Edu -- essentially the same as \"Local FineWeb-Edu train\" but with a better\ntraining setup.  This would test the \"more educational -> better\" hypothesis.\nA 50:50 split of FineWeb and FineWeb-Edu.  I've read that LLMs can be helped by\nhaving a decent amount of lower-quality data in their training loop, as it helps them to generalise.\nPerhaps having some FineWeb in there in addition to the FineWeb-Edu stuff would improve that test loss score while\nalso helping the IFT test?\nA \"curated\" dataset containing 45% of its contents from FineWeb, 45% from FineWeb-Edu, and 10% from the\nSimple English Wikipedia.  The full\nWikipedia is huge, and full of obscure facts -- while the Simple English one is\nsmall and hopefully richer in useful information on a per-token basis.  And conveniently,\nAnswer.ai have made a snapshot of it available on Hugging Face Hub.\nMight deliberately putting a bunch of encyclopaedic data into the training set make the model\nbetter at the IFT eval (which has lots of factual questions in it, like\n\"who wrote Pride and Prejudice\")?\nOpenWebText.  Even though I was unsure how well it matched the original WebText,\ngiven that it was there, it seemed silly to not try training something\non it and see how it matched up.\nI would train each model on 3.2B tokens of the chosen dataset; that's the Chinchilla-optimal\namount for my 163M-parameter models.  If there were any interesting results, then I might\nconsider doing overtrained models later on.\nI decided to be at least vaguely scientific about this, and to pre-register some\npredictions:\nThe FineWeb-Edu-only model would do pretty badly on the test loss, but better than\nmy older FineWeb-Edu models (90%).  It would also punch above its weight on the IFT\neval (90%).\nThe 50:50 split: I expected it to do worse on the test eval than my JAX FineWeb-only models (70%), but better than\nthe FineWeb-Edu one (90%).  I wasn't sure about how it would do on the IFT eval, but\nthought it might be somewhere in between the two groups (60%).\nThe curated dataset I had high hopes for in terms of the IFT eval -- let's say 80% chance\nof it being the best of all of my models.  For the test loss eval, I expected it to\ndo about as well as the 50:50 split, maybe a little bit worse (70%).\nI had no idea how the OpenWebText eval would do!  Could be worse, could be better.\nHere's how things turned out.\nThe FineWeb-Edu model\nI already had a dataset based on FineWeb-Edu\nready to go, from when I trained those two original models.  It is just the 10B-token sample of the original\ndataset at the time I generated it last December, formatted appropriately for my training\nscript (details on the dataset card).\nI kicked off a training run with my JAX code (which I've been using for the other\nposts in this series):\ngiles@poppy:~/Dev/jax-gpt2-from-scratch (main)$ XLA_PYTHON_CLIENT_MEM_FRACTION=0.95 uv run train.py full-llm-full-train-with-mha-output-bias-fineweb-edu datasets/\n2026-09-11 18:11:47.991583 Downloading dataset\nFetching 4 files: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 1772.93it/s]\nDownload complete: : 0.00B [00:00, ?B/s]                                                                                                            | 0/4 [00:00<?, ?it/s]\n2026-09-11 18:11:48.226273 Loading dataset into RAM\nDownload complete: : 0.00B [00:00, ?B/s]\n2026-09-11 18:16:29.507646 Creating model\n2026-09-11 18:16:33.042509 Creating optimizer\n2026-09-11 18:16:34.138990 Start train\n  0%|                                                                                                                                           | 0/33165 [00:00<?, ?it/s]\n2026-09-11 18:17:38.486288 Saving checkpoint\n  1%|▌                                                                                                     | 173/33165 [13:22<39:17:03,  4.29s/it, loss=6.897, tps=21,201]\n\n...and just less than 40 hours later, I had a model:\nTraining complete in 142,912.226 seconds\n2026-09-13 09:58:26.437276 Tokens seen: 3,260,252,160\n2026-09-13 09:58:26.437284 Throughput: 22,813 tokens/second\n2026-09-13 09:58:26.437302 Final train loss: 3.342\n2026-09-13 09:58:26.437309 Done\n\nI converted the saved JAX safetensors file from the last checkpoint into a format\nthat would be compatible with my PyTorch eval code, and ran my smoke test: how would\nit complete the sentence \"Every effort moves you\"?\nEvery effort moves you closer to God’s Kingdom, and even closer to Him.\nAs we can see in\n\nThat was nice and coherent -- if unusually religious! -- so that was promising.\nI ran the test eval:\ngiles@perry:~/Dev/ddp-base-model-from-scratch (main)$ uv run test_loss.py datasets/ ../jax-gpt2-from-scratch/runs/full-llm-full-train-with-mha-output-bias-fineweb-edu/model.json ../jax-gpt2-from-scratch/runs/full-llm-full-train-with-mha-output-bias-fineweb-edu/checkpoints/latest/pytorch-model.safetensors\nFetching 4 files: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 2758.50it/s]\n100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 3200/3200 [03:52<00:00, 13.74it/s]\nLoss against our test dataset: 3.632900\n\nThat was pretty good, putting it at a better test loss than all of the models I had trained\nwithout optimised hyperparameters, and worse than all of the ones I had trained on\nFineWeb with optimised hyperparameters.  So that fit in with my prediction that it\nwould be better than the old FineWeb-Edu models; the fact that it was also better than\nthe non-optimised training runs with FineWeb seemed sensible enough\nthat I felt silly for not having predicted that it would have fallen exactly there :-)\nI decided to leave the IFT eval until the end so that I could check all of the models\nfrom these experiments together, so it was time to upload this one to Hugging Face,\nand move on to the next model.\n50:50 FineWeb to FineWeb-Edu\nI put together a new repo with\na script to prepare datasets specifically for my training setup.\nYou provide it with config that specifies some source datasets along with information about\nhow to process them and how to mix them together, and it uploads a new dataset to\nHugging Face Hub with the required characteristics.\nFor example, for the 50:50 FineWeb to FineWeb-Edu split, the config looked like this:\n{\n    \"seed\": 42,\n    \"tokens_desired\": 10000000000,\n    \"upload_dataset_name\": \"gpjt/fw-fwedu-5050-gpt2-tokens\",\n    \"sources\": [\n        {\n            \"name\": \"FineWeb\",\n            \"hf_id\": \"HuggingFaceFW/fineweb\",\n            \"hf_name\": \"sample-10BT\",\n            \"hf_split\": \"train\",\n            \"item_field\": \"text\",\n            \"weight\": 50\n        },\n        {\n            \"name\": \"FineWeb-Edu\",\n            \"hf_id\": \"HuggingFaceFW/fineweb-edu\",\n            \"hf_name\": \"sample-10BT\",\n            \"hf_split\": \"train\",\n            \"item_field\": \"text\",\n            \"weight\": 50\n        }\n    ]\n}\n\nThe way the script works is pretty simple: it works out (based on those weights and the\ntokens_desired) how many tokens it wants from each source dataset, shuffles the items in the sources, then it loops until\nit has the desired number of tokens or more stored in an output.  In the loop, it works out which source is\ncurrently most under-represented, grabs an item from it, tokenises it, and adds it to the output.\nRunning it with that 50:50 config seemed to work fine:\ngiles@perry:~/Dev/prepare-llm-training-dataset (main)$ uv run prepare-dataset.py runs/fw-fwedu-5050/\nResolving data files: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 27468/27468 [00:00<00:00, 89875.56it/s]\nLoading dataset shards: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████| 102/102 [00:00<00:00, 133.75it/s]\nResolving data files: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████| 2410/2410 [00:00<00:00, 87461.48it/s]\nLoading dataset shards: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 98/98 [00:00<00:00, 200.09it/s]\n2026-09-13 20:13:22.000187: Generating dataset; per-source counts\n2026-09-13 20:13:22.000217: FineWeb: 5,000,000,000\n2026-09-13 20:13:22.000221: FineWeb-Edu: 5,000,000,000\nFineWeb: 100%|████████████████████████████████████████████████████████████████████████████████████████████████▉| 4999999705/5000000000 [1:01:33<00:00, 1353639.33token/s]\nFineWeb-Edu: 5000000363token [1:01:33, 1353639.47token/s]\n2026-09-13 21:14:55.747239:\n\n\nDone generating tokens\n2026-09-13 21:14:55.748480: FineWeb: 4,999,999,705 / 5,000,000,000 (1.000, 1 iterators)\n2026-09-13 21:14:55.748487: FineWeb-Edu: 5,000,000,363 / 5,000,000,000 (1.000, 1 iterators)\n2026-09-13 21:14:55.748489: Total: 10,000,000,068\n2026-09-13 21:14:55.748491: Catting...\n2026-09-13 21:16:29.565152: Catted into a tensor of shape torch.Size([10000000068])\n2026-09-13 21:16:29.566663: Saving...\n2026-09-13 21:16:36.006267: Saved\n2026-09-13 21:16:36.009413: Uploading to gpjt/fw-fwedu-5050-gpt2-tokens\nProcessing Files (1 / 1)      : 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████| 20.0GB / 20.0GB,  117MB/s\nNew Data Upload               : 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████| 14.6GB / 14.6GB, 98.1MB/s\n  ...du-5050/train.safetensors: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████| 20.0GB / 20.0GB\n2026-09-13 21:17:59.545875: Done\n\nSo we had almost-perfect 50:50 balance between the datasets, and it saved\nthis dataset on Hugging Face.\nI ran a script to double-check that it looked sane,\nand it did, so it was time to spin up a training run:\ngiles@perry:~/Dev/jax-gpt2-from-scratch (main)$ XLA_PYTHON_CLIENT_MEM_FRACTION=0.90 uv run train.py full-llm-full-train-with-mha-output-bias-fw-fwedu-5050 datasets/\n2026-09-13 21:20:59.880918 Downloading dataset\nFetching 2 files: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2/2 [01:13<00:00, 36.70s/it]\nDownload complete: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████| 20.0G/20.0G [01:13<00:00, 1.24GB/s]\n2026-09-13 21:22:13.521745 Loading dataset into RAM\nDownload complete: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████| 20.0G/20.0G [01:13<00:00, 272MB/s]\n2026-09-13 21:22:33.787720 Creating model\n2026-09-13 21:22:35.501063 Creating optimizer\n2026-09-13 21:22:36.043837 Start train\n  0%|                                                                                                                                           | 0/33165 [00:00<?, ?it/s]\n2026-09-13 21:23:11.437206 Saving checkpoint\n  0%|                                                                                                       | 26/33165 [02:20<38:07:05,  4.14s/it, loss=9.308, tps=18,246]\n\nThat was running on perry, my normal workstation, and I kicked it off in parallel\nwith the \"curated\" model training run below on poppy my training box, but I'll\nkeep the runs separate for the purposes of this writeup.\nWhen this had been running for an hour or so, our power went out.  My guess is that\nhaving the tumble dryer running, the car charging, the kettle boiling, the electric hob\nswitched on, and two machines doing training runs is a bit too much for our electrics...\nwhich might be a problem in the future, especially if (as planned) I make poppy a\nmulti-GPU machine.\nHowever, as things stand, I was able to kick it off again after switching the circuit breaker back on, and things held up.\nAgain, about 40 hours later:\nTraining complete in 136,060.457 seconds\n2026-09-15 12:05:26.432638 Tokens seen: 3,227,516,928\n2026-09-15 12:05:26.432642 Throughput: 23,721 tokens/second\n2026-09-15 12:05:26.432650 Final train loss: 3.793\n2026-09-15 12:05:26.432653 Done\n\n(Note that the numbers reported at the end of a restarted run like this only include\nwhat happened after the restart.)\nI converted it to PyTorch-compatible tensors, and did the smoke test:\nEvery effort moves you on to other options—in fact, it’s not even worth that effort. Just make\n\nLooking good!  Time for the loss test:\ngiles@perry:~/Dev/ddp-base-model-from-scratch (main)$ uv run test_loss.py datasets/ ../jax-gpt2-from-scratch/runs/full-llm-full-train-with-mha-output-bias-fw-fwedu-5050/model.json ../jax-gpt2-from-scratch/runs/full-llm-full-train-with-mha-output-bias-fw-fwedu-5050/checkpoints/latest/pytorch-model.safetensors\nFetching 4 files: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 1192.07it/s]\n100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 3200/3200 [03:53<00:00, 13.72it/s]\nLoss against our test dataset: 3.462454\n\nThat was almost in keeping with my prediction that it would do worse than the JAX\nFineWeb-only models, except that it was better than the\nworst of those, \"JAX, no MHA bias, with dropout\": it was actually better than I predicted.\nSo, a promising model.   Time to upload it to Hugging Face -- and now let's move on\nto the next one.\nThe \"curated\" dataset\nWith my dataset-preparation script, this was easy enough to set up:\n{\n    \"seed\": 42,\n    \"tokens_desired\": 10000000000,\n    \"upload_dataset_name\": \"gpjt/fw-fwedu-simplewiki-gpt2-tokens\",\n    \"sources\": [\n        {\n            \"name\": \"FineWeb\",\n            \"hf_id\": \"HuggingFaceFW/fineweb\",\n            \"hf_name\": \"sample-10BT\",\n            \"hf_split\": \"train\",\n            \"item_field\": \"text\",\n            \"weight\": 45\n        },\n        {\n            \"name\": \"FineWeb-Edu\",\n            \"hf_id\": \"HuggingFaceFW/fineweb-edu\",\n            \"hf_name\": \"sample-10BT\",\n            \"hf_split\": \"train\",\n            \"item_field\": \"text\",\n            \"weight\": 45\n        },\n        {\n            \"name\": \"Simple English Wikipedia\",\n            \"hf_id\": \"answerdotai/simplewiki\",\n            \"hf_name\": \"articles\",\n            \"hf_split\": \"train\",\n            \"item_field\": \"md\",\n            \"weight\": 10\n        }\n    ]\n}\n\nRunning that worked nicely:\ngiles@perry:~/Dev/prepare-llm-training-dataset (main)$ uv run prepare-dataset.py runs/fw-fwedu-simplewiki/\nResolving data files: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 27468/27468 [00:00<00:00, 90196.13it/s]\nLoading dataset shards: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████| 102/102 [00:00<00:00, 358.90it/s]\nResolving data files: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████| 2410/2410 [00:00<00:00, 88254.11it/s]\nLoading dataset shards: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 98/98 [00:00<00:00, 589.23it/s]\n2026-09-13 18:59:04.106327: Generating dataset; per-source counts\n2026-09-13 18:59:04.106387: FineWeb: 4,500,000,000\n2026-09-13 18:59:04.106407: FineWeb-Edu: 4,500,000,000\n2026-09-13 18:59:04.106422: Simple English Wikipedia: 1,000,000,000\nFineWeb: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████▉| 4499997964/4500000000 [59:41<00:00, 1256362.56token/s]\nFineWeb-Edu: 4500000607token [59:41, 1256363.31token/s]\nSimple English Wikipedia: 1000002889token [59:41, 279192.58token/s]\n2026-09-13 19:58:45.874744:\n\n\nDone generating tokens\n2026-09-13 19:58:45.876043: FineWeb: 4,499,997,964 / 4,500,000,000 (1.000, 1 iterators)\n2026-09-13 19:58:45.876048: FineWeb-Edu: 4,500,000,607 / 4,500,000,000 (1.000, 1 iterators)\n2026-09-13 19:58:45.876052: Simple English Wikipedia: 1,000,002,889 / 1,000,000,000 (1.000, 6 iterators)\n2026-09-13 19:58:45.876054: Total: 10,000,001,460\n2026-09-13 19:58:45.876056: Catting...\n2026-09-13 20:00:18.811748: Catted into a tensor of shape torch.Size([10000001460])\n2026-09-13 20:00:18.813169: Saving...\n2026-09-13 20:00:22.773873: Saved\n2026-09-13 20:00:22.773936: Uploading to gpjt/fw-fwedu-simplewiki-gpt2-tokens\nProcessing Files (1 / 1)      : 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████| 20.0GB / 20.0GB,  143MB/s\nNew Data Upload               : 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████| 19.8GB / 19.8GB,  142MB/s\n  ...plewiki/train.safetensors: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████| 20.0GB / 20.0GB\n2026-09-13 20:01:59.270021: Done\n\nOne thing that is worth noting in that output is the \"6 iterators\" for the Simple English Wikipedia.\nIf a source dataset runs out of items while we're building up the results in this script,\nwe start iterating over it again (with a different seed for the shuffle so that the ordering\nis different).   The \"6 iterators\" means that it needed to do that 6 times -- the original\ncreation of the iterator at the start of the script, and five more.  So that means that\nthe Simple English Wikipedia is repeated (oversampled) somewhere between five and six\ntimes in the dataset.\nThat's not a bad thing!  From what I've read, it's actually quite standard to oversample\nhighly educational content in LLM training datasets.  And anyway, the dataset the\nscript generated was 10B tokens, of which we're only using 3.2B for the training run in\nthis post, so it would only appear somewhere between one and two times.  The repetition would\nlikely only really cut in if and when we did an overtrained model on the dataset.\nAnyway, I ran my check against the uploaded dataset -- the first few items were clearly from\nFineWeb, FineWeb-Edu, and the Simple English Wikipedia.\nIt was time to kick off a training run:\ngiles@poppy:~/Dev/jax-gpt2-from-scratch (main)$ XLA_PYTHON_CLIENT_MEM_FRACTION=0.95 uv run train.py full-llm-full-train-with-mha-output-bias-fw-fwedu-simplewiki datasets/\n2026-09-13 20:24:48.037024 Downloading dataset\nDownloading (incomplete total...): 0.00B [00:00, ?B/s]                                                                                                                   Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.            | 0/2 [00:00<?, ?it/s]\nWARNING:huggingface_hub.utils._http:Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\nFetching 2 files: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2/2 [02:51<00:00, 85.85s/it]\nDownload complete: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████| 20.0G/20.0G [02:51<00:00, 435MB/s]\n2026-09-13 20:27:39.934884 Loading dataset into RAM\nDownload complete: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████| 20.0G/20.0G [02:51<00:00, 116MB/s]\n2026-09-13 20:31:20.492877 Creating model\n2026-09-13 20:31:24.054143 Creating optimizer\n2026-09-13 20:31:25.100832 Start train\n  0%|                                                                                                                                           | 0/33165 [00:00<?, ?it/s]\n2026-09-13 20:32:29.650379 Saving checkpoint\n  0%|▎                                                                                                     | 107/33165 [08:38<39:05:39,  4.26s/it, loss=7.631, tps=20,293]\n\nAgain, this was interrupted by the power outage that hit the 50:50 training run, but\nI was able to restart from a checkpoint.\nAfter another 22 hours, it crashed with an error that I've seen\nbefore:\njax.errors.JaxRuntimeError: INTERNAL: CUDA error: Failed to end stream capture: CUDA_ERROR_STREAM_CAPTURE_INVALIDATED: operation failed due to a previous error during capture [executable_name='jit_train_step']\n\nI put it aside as a one-off oddity when I hit it last time, but this time I dug in\na bit more.  I noted that it had not ever happened on perry, but seemed to be an\nissue on poppy, and that poppy had an older version of CUDA and the Nvidia drivers\n-- might that be the cause?  I decided to upgrade those before kicking off the next\nrun, but for now just restarted the run from the most recent checkpoint.  (Note for\nanyone who is hitting the same error: it has not occurred since the upgrade, so that's worth\ntrying.)\nThis time it completed OK:\nTraining complete in 59,564.515 seconds\n2026-09-15 15:56:52.909888 Tokens seen: 1,367,212,032\n2026-09-15 15:56:52.909894 Throughput: 22,953 tokens/second\n2026-09-15 15:56:52.909912 Final train loss: 3.332\n2026-09-15 15:56:52.909959 Done\n\nAgain, these numbers just show what happened after the most recent restart.\nI copied it over to perry, converted it into a format that was compatible\nwith my PyTorch code, and ran the smoke test:\nEvery effort moves you by the air, for it will make you a better athlete, so your body becomes bigger and stronger\n\nCoherent enough -- time for the loss eval:\ngiles@perry:~/Dev/ddp-base-model-from-scratch (main)$ uv run test_loss.py datasets/ ~/Dev/jax-gpt2-from-scratch/runs/full-llm-full-train-with-mha-output-bias-fw-fwedu-simplewiki/model.json ~/Dev/jax-gpt2-from-scratch/runs/full-llm-full-train-with-mha-output-bias-fw-fwedu-simplewiki/checkpoints/latest/pytorch-model.safetensors\nFetching 4 files: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 1007.64it/s]\n100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 3200/3200 [03:57<00:00, 13.48it/s]\nLoss against our test dataset: 3.542460\n\nAgain, in line with my predictions -- worse than the JAX FineWeb-only models, and\nindeed than the very best PyTorch one, 1xrtx3090-stacked-interventions, and also worse\nthan the 50:50 split, but better than the FineWeb-Edu one.\nI uploaded it to Hugging Face,\nand it was time to move on to what was meant to be the final model for this set of experiments.\nThe OpenWebText run\nAgain, this was a simple enough config to set up:\n{\n    \"seed\": 42,\n    \"tokens_desired\": 10000000000,\n    \"upload_dataset_name\": \"gpjt/openwebtext-gpt2-tokens\",\n    \"sources\": [\n        {\n            \"name\": \"OpenWebText\",\n            \"hf_id\": \"Skylion007/openwebtext\",\n            \"hf_name\": \"plain_text\",\n            \"hf_split\": \"train\",\n            \"item_field\": \"text\",\n            \"weight\": 50\n        }\n    ]\n}\n\n...and the build and upload process worked well (and took much less time -- for some\nreason, sampling randomly from a single dataset is faster than sampling from two or three):\ngiles@perry:~/Dev/prepare-llm-training-dataset (main)$ uv run prepare-dataset.py runs/openwebtext/\nResolving data files: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 80/80 [00:00<00:00, 32723.26it/s]\nResolving data files: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 80/80 [00:00<00:00, 97940.55it/s]\nLoading dataset shards: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████| 80/80 [00:00<00:00, 1200.13it/s]\n2026-09-15 13:16:47.622617: Generating dataset; per-source counts\n2026-09-15 13:16:47.622645: OpenWebText: 10,000,000,000\nResolving data files: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 80/80 [00:00<00:00, 45602.65it/s]\nResolving data files: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 80/80 [00:00<00:00, 67650.06it/s]\nLoading dataset shards: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 80/80 [00:00<00:00, 307.11it/s]\nOpenWebText: 10000000024token [31:46, 5246208.64token/s]\n2026-09-15 13:48:33.761350:\n\n\nDone generating tokens\n2026-09-15 13:48:33.762021: OpenWebText: 10,000,000,024 / 10,000,000,000 (1.000, 2 iterators)\n2026-09-15 13:48:33.762026: Total: 10,000,000,024\n2026-09-15 13:48:33.762028: Catting...\n2026-09-15 13:49:33.115508: Catted into a tensor of shape torch.Size([10000000024])\n2026-09-15 13:49:33.115923: Saving...\n2026-09-15 13:49:36.365978: Saved\n2026-09-15 13:49:36.366027: Uploading to gpjt/openwebtext-gpt2-tokens\nProcessing Files (0 / 1)      : 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████▉| 20.0GB / 20.0GB,  147MB/s\nNew Data Upload               : 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████| 19.9GB / 19.9GB,  147MB/s\n  ...webtext/train.safetensors: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████▉| 20.0GB / 20.0GB\n2026-09-15 13:51:16.202890: Done\n\nNote that it needed to oversample -- that \"2 iterators\".  OpenWebText is about 40 GiB\nuncompressed, and so that's about 10B GPT-2 tokens -- presumably just a little bit less.\nAgain, given that I was planning to use just the first 3.2B tokens of the dataset, I\ndidn't feel that it would matter.\nI ran the check script on the newly-uploaded Hugging Face dataset\nand all looked well, so that was all set for the training run.\nI upgraded poppy first with a sudo pacman -Syu to see if that helped with the\nweird error that I got in the previous run (which, as I said, it looks like it did), then kicked it off:\ngiles@poppy:~/Dev/jax-gpt2-from-scratch (main)$ XLA_PYTHON_CLIENT_MEM_FRACTION=0.95 uv run train.py full-llm-full-train-with-mha-output-bias-openwebtext datasets/\n2026-09-15 16:42:32.606185 Downloading dataset\nFetching 2 files: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:00<00:00, 941.38it/s]\nDownload complete: : 0.00B [00:00, ?B/s]                                                                                                            | 0/2 [00:00<?, ?it/s]\n2026-09-15 16:42:32.879987 Loading dataset into RAM\nDownload complete: : 0.00B [00:00, ?B/s]\n2026-09-15 16:45:40.438791 Creating model\n2026-09-15 16:45:43.840269 Creating optimizer\n2026-09-15 16:45:44.848351 Start train\n  0%|                                                                                                                                           | 0/33165 [00:00<?, ?it/s]\n2026-09-15 16:46:50.632075 Saving checkpoint\n  1%|█                                                                                                     | 332/33165 [24:33<38:45:54,  4.25s/it, loss=6.623, tps=22,154]\n\nAbout 31 hours in, it crashed again, but this time it was my own dumb fault: poppy\nhas a relatively small disk and I ran out of space.  I fixed that and kicked it off\nagain from the most recent checkpoint, and this time it completed:\nTraining complete in 33,927.995 seconds\n2026-09-17 11:25:10.835989 Tokens seen: 779,747,328\n2026-09-17 11:25:10.835994 Throughput: 22,982 tokens/second\n2026-09-17 11:25:10.836012 Final train loss: 3.165\n2026-09-17 11:25:10.836018 Done\n\nI converted it to PyTorch for the smoke test:\nEvery effort moves you through each phase, so it's not a complete picture.\n\nI'm sure your story was\n\n...which looked solid, so it was time for the test loss eval:\ngiles@perry:~/Dev/ddp-base-model-from-scratch (main)$ uv run test_loss.py datasets/ ~/Dev/jax-gpt2-from-scratch/runs/full-llm-full-train-with-mha-output-bias-openwebtext/model.json ~/Dev/jax-gpt2-from-scratch/runs/full-llm-full-train-with-mha-output-bias-openwebtext/checkpoints/latest/pytorch-model.safetensors\nFetching 4 files: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 674.76it/s]\n100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 3200/3200 [03:59<00:00, 13.37it/s]\nLoss against our test dataset: 4.045255\n\nOur worst score yet in this experiment!  Worse than any of my models so far, apart\nfrom the two FineWeb-Edu ones I did without optimised hyperparameters.\nNow, the first draft of this post went straight to the results from here, but the story wasn't\nquite over yet...\nTest set contamination\nGPT-6 Astra is relentless.  Before I publish any of these posts, I run them past\nan editorial board of LLMs to look for issues.  GPT-6 Astra not\nonly checked the text, it also visited the code I'd linked to to check that out too,\nand spotted something problematic.\nIt's obvious in retrospect, but my code to build the new datasets had a high risk\nof including the contents of the -- in theory held-back -- test set.  The way that\nthe test set was generated was that\nI downloaded the 10B sample of FineWeb back in December,\nsplitting it into 99% training data and 1% \"validation\".  That validation split\nwas about 100M tokens, and I was only using the first 19M or so for actual validation\nruns during training, so I (somewhat arbitrarily) designated about 19M other tokens\nstarting at position 50M in there as my test set.\nNow, my new dataset-generation code was just sampling randomly from the complete\n10B sample of FineWeb.  So there was nothing stopping it from pulling in data that\nwas in that old validation split!  That meant that it was quite likely that my new\n\"curated\" and \"50:50\" datasets contained at least some of the test set that was meant to have\nbeen held back from the models during training.\nOn reflection, the problem was potentially even worse.  FineWeb-Edu is a subset of\nFineWeb; my existing FineWeb-Edu dataset came from the 10B sample of the Hugging Face\noriginal, and so it also could potentially contain documents that I'd put into the test\nset.\nThe first thing to do was to establish the size of the problem.  I wrote\na script to\ntake in a \"forbidden\" dataset and split; this was assumed to be formatted as one big tensor of GPT-2 tokens,\nwhich is what all of my datasets are.  It would then split it by end-of-text tokens, and\ngenerate a hash and a token count for each resulting \"document\".  Optionally, you could\nrestrict it to only considering a subset -- the n tokens starting at position p -- and\nit would then generate hashes/lengths for the documents inside that slice, or that overlapped\nit at the start or the end.\nI ran that to generate a list of hashes for the entire validation set -- the validation\nsplit of gpjt/fineweb-gpt2-tokens -- and then\nused a second script\nto check my various training sets (and the validation set itself) to see how much\nof a contamination problem there was.  I got these results:\nDataset\n  Split\n  Contamination with validation set\n\n\n\n\n  gpjt/fineweb-gpt2-tokens\n  validation\n  102163003 out of 102163003 tokens (100.00%)\n\n\n  gpjt/fineweb-gpt2-tokens\n  train\n  636166 out of 102163003 tokens (0.62%)\n\n\n  gpjt/fineweb-edu-gpt2-tokens\n  train\n  672189 out of 102163003 tokens (0.66%)\n\n\n  gpjt/fw-fwedu-5050-gpt2-tokens\n  train\n  49224580 out of 102163003 tokens (48.18%)\n\n\n  gpjt/fw-fwedu-simplewiki-gpt2-tokens\n  train\n  44233824 out of 102163003 tokens (43.30%)\n\n\n  gpjt/openwebtext-gpt2-tokens\n  train\n  212 out of 102163003 tokens (0.00%)\n\n\n\n\nSo:\nThe validation set was 100% \"contaminated\" with itself, which was a useful sanity\ncheck.\nThe training set of gpjt/fineweb-gpt2-tokens had what I felt was a small level\nof contamination.  It was interesting that there was any at all -- I think that must\nmean that there are some repeated documents in the original dataset, and some of\nthem wound up with copies in both my training and validation splits.\nThe gpjt/fineweb-edu-gpt2-tokens dataset also had what felt like a reassuringly\nlow level of contamination.\nBoth gpjt/fw-fwedu-5050-gpt2-tokens and gpjt/fw-fwedu-simplewiki-gpt2-tokens,\nhowever, looked problematic.  In both cases, the training datasets had more than 40% of\nthe validation/test set in them.\ngpjt/openwebtext-gpt2-tokens was, as you'd expect, almost completely uncontaminated.\nIt looks like maybe one document happened to have been picked up by both the\nOpenWebText and the FineWeb crawls and then included in the bit of FineWeb\nI was using for validation.\nHowever, these numbers -- while scary, at least for the 50:50 and the curated datasets -- were not quite the ones to use.  They showed\nhow much of the full validation set showed up in the full training set; what I actually\ncared about was how much of the test set -- those 19M tokens starting at position 50M in\nthe validation split -- was in the actual subset of the training datasets that I actually\ntrained on -- the first ~3.2B of them.\nI re-ran the script to generate hashes for just the test set, and then re-ran the\ncontamination-checking script, telling it just to look at the appropriate subset\nof the training tokens, and got this:\nDataset (first 3.2B tokens only)\n  Split\n  Contamination with test set\n\n\n\n\n  gpjt/fineweb-gpt2-tokens\n  train\n  26557 out of 19632681 tokens (0.14%)\n\n\n  gpjt/fineweb-edu-gpt2-tokens\n  train\n  32079 out of 19632681 tokens (0.16%)\n\n\n  gpjt/fw-fwedu-5050-gpt2-tokens\n  train\n  2986889 out of 19632681 tokens (15.21%)\n\n\n  gpjt/fw-fwedu-simplewiki-gpt2-tokens\n  train\n  2682430 out of 19632681 tokens (13.66%)\n\n\n  gpjt/openwebtext-gpt2-tokens\n  train\n  None\n\n\n\n\nIt was clear that there was a problem -- certainly with gpjt/fw-fwedu-5050-gpt2-tokens\nand gpjt/fw-fwedu-simplewiki-gpt2-tokens.  They'd seen what felt like a significant amount\nof the test set while training, so their results on the test loss eval were dubious\nat best.\nI decided to train those two models afresh, and see what the result was in terms of loss.\nIf the difference was huge, I'd look into the risks of the (much smaller) contamination\nof gpjt/fineweb-gpt2-tokens and gpjt/fineweb-edu-gpt2-tokens.  But if it was pretty\nsmall, I'd not worry about that too much.\nI extended the script that prepared datasets\nso that the config file could specify a forbidden_dataset.  Any documents in the\nsource datasets that matched forbidden ones would be excluded from the output.  I then\nupdated the config for gpjt/fw-fwedu-5050-gpt2-tokens and gpjt/fw-fwedu-simplewiki-gpt2-tokens\nso that the whole validation split of gpjt/fineweb-gpt2-tokens was forbidden, and\nre-generated them.  You can see the updated datasets here\nand here.\nRunning the contamination-checker script against them showed that they were clear.\nI then re-did the full training runs for those models; the uncontaminated version\nof the 50:50 split model is here,\nand the curated one is here.\nAnd the good news: both of them actually did very slightly better at the test\nloss eval than their equivalents that had been trained on the contaminated data:\nModel\n  Contaminated\n  Test loss\n\n\n\n\n  JAX, FineWeb/FineWeb-Edu 50:50\n  No\n  3.449257\n\n\n  JAX, FineWeb/FineWeb-Edu 50:50\n  Yes\n  3.462454\n\n\n  JAX, curated\n  No\n  3.534068\n\n\n  JAX, curated\n  Yes\n  3.542460\n\n\n\n\nThere are a number of possibilities that come to mind; perhaps learning from the\ntest set just doesn't happen with tiny 163M models like this, or perhaps while the\ncontaminated models were learning, the benefit they got from that was outweighed by\nthe data that they got instead of the test set data being in some way better for\ntraining purposes, at least in terms of the loss eval.\nBut anyway, I felt that if the effect of seeing more than 10% of the test set data\nduring training was so tiny, then the effect of seeing less than 0.2% -- which is what\nthe FineWeb-Edu model in this set of training runs had, as did all of my other FineWeb-only\nmodels from previous experiments -- would be even smaller and I'd disregard it.\nThat was excellent news!  I didn't need to start all of my experiments from scratch.\nFor the rest of this post, I will include the numbers and results for the contaminated\nmodels as well as the uncontaminated ones -- they're interesting for several reasons --\nbut for future posts I'll skip the contaminated ones.\nSo -- finally! -- let's start digging into the final results.\nResults\nFirstly, I think it's worth taking a look at all of the test loss results in\ncontext.  Here they are in a table, with the new models in bold:\n\n  Test loss\n\n\n\n\n  OpenAI weights: medium\n  3.231442\n\n\n  JAX, overtrained one long epoch\n  3.324953\n\n\n  JAX, overtrained two normal epochs\n  3.326482\n\n\n  JAX, with MHA bias, no dropout\n  3.418784\n\n\n  JAX, no MHA bias, no dropout\n  3.420089\n\n\n  JAX, FineWeb/FineWeb-Edu 50:50 (uncontaminated)\n  3.449257\n\n\n  JAX, FineWeb/FineWeb-Edu 50:50 (contaminated)\n  3.462454\n\n\n  JAX, no MHA bias, with dropout\n  3.476802\n\n\n  OpenAI weights: small\n  3.499677\n\n\n  JAX, curated (uncontaminated)\n  3.534068\n\n\n  1xrtx3090-stacked-interventions\n  3.538161\n\n\n  JAX, curated (contaminated)\n  3.542460\n\n\n  8xa100m40-stacked-interventions-1\n  3.577761\n\n\n  JAX, FineWeb-Edu\n  3.632900\n\n\n  Cloud FineWeb, 8x A100 40 GiB\n  3.673623\n\n\n  1xrtx3090-baseline\n  3.683835\n\n\n  8xa100m40-baseline\n  3.691526\n\n\n  Cloud FineWeb, 8x H100 80 GiB\n  3.724507\n\n\n  Cloud FineWeb, 8x A100 80 GiB\n  3.729900\n\n\n  Cloud FineWeb, 8x B200 160 GiB\n  3.771478\n\n\n  Local FineWeb train\n  3.943522\n\n\n  JAX, openwebtext\n  4.045255\n\n\n  Local FineWeb-Edu extended train\n  4.134991\n\n\n  Local FineWeb-Edu train\n  4.166892\n\n\n\n\nI think there's something very clear here: with the new models, the more FineWeb that was in the training\nmix, the better the model did on this eval.  I think I might have been subconsciously\nexpecting that in the predictions I did before running these experiments, but\nin retrospect it's so incredibly obvious that I feel silly for not mentioning it\nexplicitly!\nBut that tells us something interesting.  From the description in the paper, whatever OpenAI\ndid the GPT-2 training run on, it was not like FineWeb.  It was probably more\nsimilar to OpenWebText -- and yet, that model was the one that performed the worst on\nthis test eval, so if it is more like OpenWebText, there must be some other factor involved.\nBut moving on for now: how about the IFT test -- the one that kicked off all of\nthis work in the first place?\nI generated a set of IFT responses for all of the new models, and then ran them\n(plus responses for all of the other models on that table above) past GPT 5.5, and\nfound that one of my new models was getting quite close to the original GPT-2 small\nweights!  So I did four more runs, so that I could get an average.\nHere are the results -- the \"IFT score\" is the average\nacross all five runs of the judge, and the \"IFT rank\" is based on that.  The \"IFT epochs\"\nwas from the original result-generation script.\n\n  Test loss\n  IFT epochs\n  IFT score\n  IFT rank\n\n\n\n\n  OpenAI weights: medium\n  3.231442\n  2\n  42.36\n  1\n\n\n  JAX, overtrained one long epoch\n  3.324953\n  3\n  18.67\n  7\n\n\n  JAX, overtrained two normal epochs\n  3.326482\n  4\n  18.71\n  6\n\n\n  JAX, with MHA bias, no dropout\n  3.418784\n  4\n  17.90\n  8\n\n\n  JAX, no MHA bias, no dropout\n  3.420089\n  5\n  20.50\n  4\n\n\n  JAX, FineWeb/FineWeb-Edu 50:50 (uncontaminated)\n  3.449257\n  4\n  17.69\n  9\n\n\n  JAX, FineWeb/FineWeb-Edu 50:50 (contaminated)\n  3.462454\n  4\n  19.30\n  5\n\n\n  JAX, no MHA bias, with dropout\n  3.476802\n  5\n  13.02\n  21\n\n\n  OpenAI weights: small\n  3.499677\n  2\n  25.19\n  2\n\n\n  JAX, curated (uncontaminated)\n  3.534068\n  4\n  16.63\n  10\n\n\n  1xrtx3090-stacked-interventions\n  3.538161\n  4\n  13.51\n  19\n\n\n  JAX, curated (contaminated)\n  3.542460\n  4\n  13.58\n  18\n\n\n  8xa100m40-stacked-interventions-1\n  3.577761\n  4\n  10.19\n  24\n\n\n  JAX, FineWeb-Edu\n  3.632900\n  4\n  24.56\n  3\n\n\n  Cloud FineWeb, 8x A100 40 GiB\n  3.673623\n  3\n  16.59\n  11\n\n\n  1xrtx3090-baseline\n  3.683835\n  4\n  15.15\n  12\n\n\n  8xa100m40-baseline\n  3.691526\n  3\n  13.64\n  16\n\n\n  Cloud FineWeb, 8x H100 80 GiB\n  3.724507\n  4\n  13.59\n  17\n\n\n  Cloud FineWeb, 8x A100 80 GiB\n  3.729900\n  3\n  10.79\n  23\n\n\n  Cloud FineWeb, 8x B200 160 GiB\n  3.771478\n  4\n  13.70\n  15\n\n\n  Local FineWeb train\n  3.943522\n  5\n  11.87\n  22\n\n\n  JAX, openwebtext\n  4.045255\n  4\n  13.28\n  20\n\n\n  Local FineWeb-Edu extended train\n  4.134991\n  5\n  14.29\n  14\n\n\n  Local FineWeb-Edu train\n  4.166892\n  5\n  14.69\n  13\n\n\n\n\nIf you want to see the full numbers, they're below.\nThe number that initially surprised me, and made me decide to do multiple LLM-judge runs was the one for the \"JAX, FineWeb-Edu\" model.  In my\nfirst run it came in at 24.35 vs the OpenAI small weights' 24.93 -- so close that I wondered\nif it might even beat them on a re-run.  However, in the further four runs its score was\nconsistently lower than the OpenAI model's, and the gap extended a bit in some.\nSo, was FineWeb-Edu the clear winner here?  Perhaps.  If you look at the contaminated/uncontaminated pairs,\nsomething interesting pops out.  For the 50:50 mix, the model trained with the contaminated\ndataset got 19.30, and the one trained on the uncontaminated one got 17.69 -- a difference\nof 1.61.  For the \"curated\" dataset, the situation was even more interesting: uncontaminated\ngot 16.63, while contaminated got 13.58, a delta of 3.05 points.\nRemember, the contamination issue is about whether or not the model saw the held-back\ntest set during training.  It was an issue for the test loss that is based on that test set,\nbut is entirely orthogonal to the IFT test.\nFrom the IFT perspective, both contaminated and uncontaminated models in each case saw\ntraining data that was -- in theory, at least -- essentially the same in terms of quality.\nIndeed, the uncontaminated run saw almost the same data in the same order as the contaminated one,\nexcept that some items were omitted, and then extra ones were added to the end.\nThe purpose of this set of experiments was to see how data quality affected the results\non the IFT test set.  But in the case of the curated model, something that should be\nunrelated to data quality changed the results by 3.05 points!\nIf something as simple as changing which data of the same quality the model is trained with can affect\nthe IFT score so drastically, it makes it a bit harder to be certain as to whether or not data quality\nreally had the effect we were looking for.\nOn the other hand, the FineWeb-Edu model came in at 24.56, which is 4.06 points better than\nthe 20.50 that the closest other model got -- more than the 3.05 points we see in difference\nbetween the two curated dataset models.  And it's worth noting that the model with 20.50 is\n\"JAX, no MHA bias, no dropout\", which has a subtly different architecture -- no bias on the\noutput projection of the multi-head attention blocks.  A better comparison might be\n\"JAX, with MHA bias, no dropout\", which got a score of 17.90, for a whacking great difference\nof 6.66 points.\nI think that without doing a very large number of training runs on different datasets with\ndifferent mixes, each one created with a different seed, it would be hard to work\nout exactly what is in the noise here and what is not.\nHowever, that would cost a lot in terms of time.  I think that the best thing here\nis to chalk this up as a fairly decent indication that FineWeb-Edu improves matters for the IFT eval,\nbut far from a certainty.  But it's certainly worth noting that whatever the noise is,\nit has a range of at least 3.05 points -- and the FineWeb-Edu model is just 0.63 points short of GPT-2 small!\nSo there could well be something there.  Of course, we don't know whether that model\ngot (by chance) the best possible balance of FineWeb-Edu tokens, and could never win -- or\nwhether it got a bad balance and would actually beat GPT-2 with a better one.  So that's\ncertainly worth keeping in mind.\nAs an aside, the result for the curated dataset really surprised me.  I had expected that it would be the best one,\nsimply because it almost certainly contained more facts.  I took a look at its answers to the questions --\none possibility that came to mind might be that it would get better responses to\nquestions like \"What is the chemical symbol for chlorine\" or \"Who wrote Pride and Prejudice\"\nthan the others, but would fail on less knowledge-based tasks.  But it was terrible\nat fact-based questions too:\nName the author of 'Pride and Prejudice'.\nWhat is the periodic symbol for chlorine?\nAs I understand it, many real-world training runs do include (often oversampled)\namounts of highly educational training data like this model's dataset did.  But perhaps\nthe models that I'm training are just too small to be able to make use of the data they gained that\nway -- maybe doing things this way and expecting\ngood results is like asking six-year-old children to memorise stuff before they've learned enough\nto be able to make use of it 1.  It's worth noting that the GPT-2 small model also\nfailed on those factual questions.\nWell, anyway: I think we have some useful results here, so let's work out what\nthat means for next steps.\nConclusion\nThe results we got in these experiments point in two interesting directions.\nThe perfect connection between the amount of FineWeb in the training set and the\nresult on the (FineWeb-based) test loss eval, while perfectly obvious in retrospect,\nreally does highlight how mysterious it is that the OpenAI small weights do so well\non that test.\nThe fact that FineWeb-Edu did well on the IFT test tells us that there\ndoes seem to be value in using richer training data -- though the less-spectacular\nresults of the 50:50 mix and the curated one weaken that a bit, as does the indicator\nof what the noise due to data selection from equivalently high-quality datasets might be.  The OpenWebText\nresult I think I'll ignore, given that -- while in theory it should be similar to\nwhat OpenAI trained on -- there are no guarantees, and it might differ in non-obvious\nways for non-obvious reasons.\nI think that the right direction to take this going forward is to separate these two\nangles.\nI should chase a higher IFT score, and then once I have nailed that down, I should see what (if anything) might\nallow me to get the resulting model to improve its test score.  But I will need to make\nsure that whatever dataset I use, I use various \"mixes\" of it -- versions created\nwith different random seeds.\nIn my earlier experiments\nwith overtraining, I did find that it didn't seem to improve the IFT results -- but it\ndid improve the test loss.  So perhaps identifying the right combination of other factors\nto boost the IFT score, then overtraining the result, might help?\nOf course, my\novertraining tests were with FineWeb, so the connection might not hold up as well if\nthe starting model (as seems likely) was trained on a different dataset.\nAlso, while working through the results here, I've come to the conclusion that the set of\nmodels I'm using is a bit confusing -- there are now different hyperparameter settings,\nsmall architectural differences (the MHA bias thing), dropout settings during the pre-training,\nand now datasets.   I think that's OK for now; I should see this part of this series\nas more ideation than actually running the proper experiments.  But at the end, when I\nhave some solid hypotheses with a reasonable amount of backup, I should start from scratch:\na baseline model, then staged interventions to build up to what (hopefully) will be a model\nas good as GPT-2 small.\nAnyway, I'll wrap this one up here.  I think that the next lever to pull is (perhaps\nsurprisingly) going to be weight tying.  I had previously kind of disregarded that as\na possibility, but while I was working on this post, something popped into my mind.\nThe OpenAI models were originally trained with weight tying.  My codebase does actually\nsupport doing it -- but because I got the OpenAI weights I'm using from the code in\n\"Build a Large Language Model (from Scratch)\",\nwhen I'm running the IFT test, the weights are not actually tied!  We load up a model\nthat has separate but identical embedding and output head matrices, and then we fine-tune\nthat.  So those two matrices can vary independently during fine-tuning -- to put it\nanother way, while GPT-2 small was pre-trained with 124M parameters, the IFT test is\nbeing done on a 163M-parameter version.  Does that\ngive them some non-obvious advantage?  And would adding weight-tying to my own models\nhelp, either with or without the output heads being independent at fine-tuning time?\nStay tuned :-)\nAppendix: all IFT judge runs\nHere are the numbers for all of the IFT judge runs, included for completeness.  You\ncan see that the LLM judge ranks models very consistently between runs, but there is variation --\nthat is, on some runs it's in what I think of as a \"better mood\" than others, and\nif that's the case, it will give better scores -- but it will give them almost consistently\nbetween models, so all of the models do better.  Note that (unlike the table above)\nthis one is sorted by the average IFT score rather than the test loss.\nModel\n  Run 1\n  Run 2\n  Run 3\n  Run 4\n  Run 5\n  Average\n\n\n\n\n  OpenAI weights: medium\n  42.24\n  42.16\n  42.95\n  41.83\n  42.61\n  42.36\n\n\n  OpenAI weights: small\n  24.93\n  24.96\n  25.39\n  25.01\n  25.66\n  25.19\n\n\n  JAX, FineWeb-Edu\n  24.35\n  24.55\n  24.3\n  24.68\n  24.9\n  24.56\n\n\n  JAX, no MHA bias, no dropout\n  20.5\n  19.9\n  20.76\n  21.25\n  20.07\n  20.50\n\n\n  JAX, FineWeb/FineWeb-Edu 50:50 (contaminated)\n  19.16\n  18.86\n  19.61\n  19.17\n  19.7\n  19.30\n\n\n  JAX, overtrained two normal epochs\n  18.47\n  18.29\n  19.17\n  18.69\n  18.91\n  18.71\n\n\n  JAX, overtrained one long epoch\n  18.04\n  18.71\n  19.62\n  18.41\n  18.57\n  18.67\n\n\n  JAX, with MHA bias, no dropout\n  17.49\n  17.35\n  18.33\n  17.73\n  18.62\n  17.90\n\n\n  JAX, FineWeb/FineWeb-Edu 50:50 (uncontaminated)\n  17.37\n  17.73\n  17.53\n  18.01\n  17.83\n  17.69\n\n\n  JAX, curated (uncontaminated)\n  16.77\n  16.03\n  17.3\n  16.08\n  16.96\n  16.63\n\n\n  Cloud FineWeb, 8x A100 40 GiB\n  16.44\n  16.23\n  17.14\n  16.62\n  16.54\n  16.59\n\n\n  1xrtx3090-baseline\n  14.85\n  15.07\n  15.19\n  15.14\n  15.51\n  15.15\n\n\n  Local FineWeb-Edu train\n  14.37\n  14.23\n  15.08\n  14.79\n  15\n  14.69\n\n\n  Local FineWeb-Edu extended train\n  14.4\n  14.07\n  13.82\n  14.56\n  14.61\n  14.29\n\n\n  Cloud FineWeb, 8x B200 160 GiB\n  13.37\n  13.05\n  13.85\n  13.67\n  14.57\n  13.70\n\n\n  8xa100m40-baseline\n  13.64\n  13.36\n  13.9\n  13.32\n  13.97\n  13.64\n\n\n  Cloud FineWeb, 8x H100 80 GiB\n  13.45\n  13.32\n  13.6\n  13.51\n  14.07\n  13.59\n\n\n  JAX, curated (contaminated)\n  13.09\n  13.48\n  13.95\n  13.23\n  14.15\n  13.58\n\n\n  1xrtx3090-stacked-interventions\n  13.37\n  13.11\n  14.04\n  13.84\n  13.17\n  13.51\n\n\n  JAX, openwebtext\n  12.88\n  12.7\n  13.74\n  13.53\n  13.53\n  13.28\n\n\n  JAX, no MHA bias, with dropout\n  13.19\n  12.86\n  12.98\n  12.85\n  13.24\n  13.02\n\n\n  Local FineWeb train\n  11.75\n  11.75\n  12.21\n  11.46\n  12.19\n  11.87\n\n\n  Cloud FineWeb, 8x A100 80 GiB\n  10.68\n  10.2\n  11.03\n  10.55\n  11.49\n  10.79\n\n\n  8xa100m40-stacked-interventions-1\n  9.44\n  9.79\n  10.84\n  10.2\n  10.66\n  10.19\n\n\n\n\n\n\n\n\n\n  \nA small boy asleep on his right side, the right arm stuck out, the right hand hanging limp over the edge of the bed. Through a round grating in the side of a box a voice speaks softly.\n\"The Nile is the longest river in Africa and the second in length of all the rivers of the globe. Although falling short of the length of the Mississippi-Missouri, the Nile is at the head of all rivers as regards the length of its basin, which extends through 35 degrees of latitude …\"\nAt breakfast the next morning, \"Tommy,\" some one says, \"do you know which is the longest river in Africa?\" A shaking of the head. \"But don't you remember something that begins: The Nile is the …\"\n\"The - Nile - is - the - longest - river - in - Africa - and - the - second - in - length - of - all - the - rivers - of - the - globe …\" The words come rushing out. \"Although - falling - short - of …\"\n\"Well now, which is the longest river in Africa?\"\nThe eyes are blank. \"I don't know.\"\n\"But the Nile, Tommy.\"\n\"The - Nile - is - the - longest - river - in - Africa - and - second …\"\n\"Then which river is the longest, Tommy?\"\nTommy burst into tears. \"I don't know,\" he howls.\nBrave New World, Aldous Huxley ↩",
+      "id": "ecee476909e173109a5d4a70571697bf0e9e29a7a4114e6358a4c376368ccfa7",
+      "ref_id": "1",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "深度探讨了自建LLM与GPT-2性能差距的原因，特别是数据质量的影响，技术深度和实用性极高。",
+      "reason": "文章直接聚焦于AI领域（LLM构建与优化），提供了宝贵的实践经验和技术细节，是AI从业者和研究者的极佳参考。",
+      "tags": [
+        "AI",
+        "LLM",
+        "机器学习",
+        "深度学习",
+        "模型训练",
+        "数据质量",
+        "GPT-2"
+      ]
+    },
+    {
+      "title": "Context Language Models",
+      "link": "https://arxiv.org/abs/2609.37725",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-01T14:51:33.000Z",
+      "summary": "Article URL: https://arxiv.org/abs/2609.37725\nComments URL: https://news.ycombinator.com/item?id=49922437\nPoints: 69\n# Comments: 13",
+      "id": "fc69f990d2b1e0b18fd93c7f2a87023f72f35c8dfe86f8a6a5b42346ec161705",
+      "ref_id": "4",
+      "recommendationScore": 92,
+      "popularityScore": 60,
+      "priority": "high",
+      "comment": "一篇关于上下文语言模型的arXiv研究论文，高度契合AI主题。",
+      "reason": "技术深度和新颖性极高，直接关注最高优先级的AI主题，是优秀的科技博客内容源。",
+      "tags": [
+        "AI",
+        "语言模型",
+        "深度学习",
+        "研究"
+      ]
+    },
+    {
+      "title": "An AI “mind-reading” tool can reconstruct what you’re looking at from a brain scan",
+      "link": "https://www.technologyreview.com/2026/10/01/1145588/ai-mind-reading-reconstructs-what-youre-looking-at/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-10-01T10:32:24.000Z",
+      "summary": "A new AI tool can guess what you’re looking at just by analyzing your brain scans—and re-create that image with remarkable precision. It can go the other way, too, and predict a person’s brain activity based on what they’re looking at.  In the image above, for example, the left-hand image of each pair is what…",
+      "id": "12325ef966b0033ae0d22b042996225c10a4601f561314e01cad61d86ab9959e",
+      "ref_id": "1",
+      "recommendationScore": 92,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "深入探讨AI脑部扫描图像重建，技术前沿且引人入胜。",
+      "reason": "纯粹的AI主题，概念震撼，技术细节比概览更丰富，极具传播潜力。",
+      "tags": [
+        "AI",
+        "脑机接口",
+        "计算机视觉",
+        "前沿科技"
+      ]
+    },
+    {
+      "title": "Identity Management for Agentic AI [pdf] (2025)",
+      "link": "https://openid.net/wp-content/uploads/2025/10/Identity-Management-for-Agentic-AI.pdf",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-01T15:11:10.000Z",
+      "summary": "Article URL: https://openid.net/wp-content/uploads/2025/10/Identity-Management-for-Agentic-AI.pdf\nComments URL: https://news.ycombinator.com/item?id=49922736\nPoints: 59\n# Comments: 18",
+      "id": "8018ff04bdb75716f83a231b4406a93da3d8aa2ad4b128f2c86216c8e9fcb314",
+      "ref_id": "3",
+      "recommendationScore": 91,
+      "popularityScore": 58,
+      "priority": "high",
+      "comment": "探讨Agentic AI的身份管理，为未来AI系统的安全与合规奠定基础。",
+      "reason": "AI领域的前沿议题，技术深度和前瞻性极高，对构建安全、可信赖的AI Agent至关重要。",
+      "tags": [
+        "AI",
+        "身份管理",
+        "安全",
+        "AI Agent",
+        "未来技术",
+        "OpenID"
+      ]
+    },
+    {
+      "title": "Understanding the AI That Drives Robots",
+      "link": "https://www.construction-physics.com/p/understanding-the-ai-that-drives",
+      "source": "construction-physics.com",
+      "publishedAt": "2026-10-01T12:04:36.000Z",
+      "summary": "An Explanation of Vision-Language-Action Models",
+      "id": "ef80a011de3290fc99cd52dd812baa5a4cedff1e4b6999bbae1efec1db53210f",
+      "ref_id": "4",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "一篇关于驱动机器人的视觉-语言-动作模型的解释性文章，主题前沿且重要。",
+      "reason": "文章紧密贴合最高优先级的AI主题，尤其是前沿的机器人AI技术，预计具有很高的技术深度和新颖性，对相关领域读者极具吸引力。",
+      "tags": [
+        "AI",
+        "机器人",
+        "视觉-语言-动作模型",
+        "机器学习",
+        "深度学习"
+      ]
+    },
+    {
+      "title": "Bez: Generating a browser engine from specs and tests",
+      "link": "https://tangled.org/burrito.space/bez",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-01T18:08:03.000Z",
+      "summary": "Article URL: https://tangled.org/burrito.space/bez\nComments URL: https://news.ycombinator.com/item?id=49925036\nPoints: 54\n# Comments: 16",
+      "id": "a698b79619728662d23c9356df448e9537d67e2ba7a463332534b81ed19ade9b",
+      "ref_id": "1",
+      "recommendationScore": 88,
+      "popularityScore": 37,
+      "priority": "high",
+      "comment": "深入探讨了从规范和测试自动生成浏览器引擎的前沿技术。",
+      "reason": "技术深度极高，新颖性强，对底层开发、编程工具和自动化领域有重要参考价值。",
+      "tags": [
+        "浏览器引擎",
+        "编程工具",
+        "自动化",
+        "底层技术",
+        "Web开发"
+      ]
+    },
+    {
+      "title": "Manyfold's Agents.md Is Based",
+      "link": "https://github.com/manyfold3d/manyfold/blob/main/AGENTS.md",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-01T20:23:41.000Z",
+      "summary": "Article URL: https://github.com/manyfold3d/manyfold/blob/main/AGENTS.md\nComments URL: https://news.ycombinator.com/item?id=49926630\nPoints: 7\n# Comments: 3",
+      "id": "b32a23bbcc6444ac1fc8d026ee81d91aa00a1998fe1c128d77f433263d648fa4",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 20,
+      "priority": "high",
+      "comment": "这是一篇关于AI代理设计与实现的潜力文档。",
+      "reason": "主题高度契合AI优先关注，可能提供深入的技术见解和框架。",
+      "tags": [
+        "AI",
+        "Agents",
+        "Programming Tools",
+        "Framework"
+      ]
+    },
+    {
+      "title": "Pi Durable",
+      "link": "https://earendil.com/posts/pi-durable/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-01T19:24:08.000Z",
+      "summary": "Article URL: https://earendil.com/posts/pi-durable/\nComments URL: https://news.ycombinator.com/item?id=49925969\nPoints: 18\n# Comments: 0",
+      "id": "53a64e1e9ed9436a0edf07899b89abc2d4f89f10bca704acdf169da08baa7291",
+      "ref_id": "3",
+      "recommendationScore": 85,
+      "popularityScore": 40,
+      "priority": "medium",
+      "comment": "深入探讨“Pi”文件系统在持久性方面的设计与实现细节。",
+      "reason": "作为“Pi 1.0”的补充，提供了重要技术细节，属于编程工具领域的深度内容。",
+      "tags": [
+        "File System",
+        "Programming Tools",
+        "Durability",
+        "System Design",
+        "Deep Dive"
+      ]
+    },
+    {
+      "title": "RIP, vector database",
+      "link": "https://turbopuffer.com/blog/rip-vector-database",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-01T16:01:56.000Z",
+      "summary": "Article URL: https://turbopuffer.com/blog/rip-vector-database\nComments URL: https://news.ycombinator.com/item?id=49923466\nPoints: 219\n# Comments: 60",
+      "id": "ed68526f7a15f49a5107c6c991e1e0e04bdad645e6c78fbf8669552aead13fa6",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 88,
+      "priority": "high",
+      "comment": "对向量数据库的现状和未来发展趋势进行了深度批判性分析。",
+      "reason": "紧密关联AI领域的热门话题，观点新颖且可能引发行业思考，对AI架构设计者有重要参考价值。",
+      "tags": [
+        "AI",
+        "数据库",
+        "向量数据库",
+        "技术趋势",
+        "LLM",
+        "RAG"
+      ]
+    },
+    {
+      "title": "Various Projects Find Hidden SDR Capabilities in ESP32 Microcontrollers",
+      "link": "https://www.rtl-sdr.com/various-projects-independently-find-hidden-sdr-capabilities-in-esp32-microcontrollers/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-01T15:07:42.000Z",
+      "summary": "Article URL: https://www.rtl-sdr.com/various-projects-independently-find-hidden-sdr-capabilities-in-esp32-microcontrollers/\nComments URL: https://news.ycombinator.com/item?id=49922674\nPoints: 111\n# Comments: 15",
+      "id": "fa1babfc72ffdf5a30dd4693d2ecd8df5ddf178e460f45609f6b9a89033ebd84",
+      "ref_id": "4",
+      "recommendationScore": 85,
+      "popularityScore": 68,
+      "priority": "medium",
+      "comment": "揭示ESP32芯片隐藏的SDR（软件定义无线电）能力，为嵌入式开发带来新可能。",
+      "reason": "硬件黑客的福音，技术发现极具新颖性，对自动化和嵌入式领域的低成本解决方案有较高实用价值。",
+      "tags": [
+        "ESP32",
+        "SDR",
+        "硬件",
+        "嵌入式",
+        "自动化",
+        "无线电"
+      ]
+    },
+    {
+      "title": "The Download: AI “mind-reading” and creative uses for small batteries",
+      "link": "https://www.technologyreview.com/2026/10/01/1145592/the-download-ai-mind-reading-small-batteries/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-10-01T12:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. An AI “mind-reading” tool can reconstruct what you’re looking at based on a brain scan A new AI tool can guess what you’re looking at just by analyzing your brain scans—and…",
+      "id": "3cc286caf68eb69ad4bdfbc7bca14dad29d732de14f05577e4ecefc58cf9828a",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "涵盖AI脑机接口和分布式储能，主题新颖且具前瞻性。",
+      "reason": "AI读心术概念极具吸引力，结合能源创新，内容广受欢迎。",
+      "tags": [
+        "AI",
+        "脑机接口",
+        "能源",
+        "自动化",
+        "新闻综述"
+      ]
+    },
+    {
+      "title": "Software Heritage Identifiers",
+      "link": "https://nesbitt.io/2026/10/01/software-heritage-identifiers.html",
+      "source": "nesbitt.io",
+      "publishedAt": "2026-10-01T11:00:00.000Z",
+      "summary": "I spent Monday at the Software Heritage offices in Paris speaking at the CodeCommons plenary, and the slides are on GitHub. The talk was about connecting package identities to archived source code. Getting ready for it meant a couple of weeks poking at the SWH archive and its identifier scheme with a to-do list that kept growing, and I’ve ended up with a small pile of tools that are now feeding into ecosyste.ms, starting with the research software service.\nSoftware Heritage\nSoftware Heritage has been building a universal archive of source code since Inria launched the project in 2016. It crawls GitHub, GitLab, Bitbucket and a long tail of smaller forges, plus package registries and distro sources, and stores what it finds in one deduplicated Merkle DAG. As I write this that DAG holds about 30 billion source files, 23 billion directories and 6 billion commits from 445 million origins.\nA file that turns up in both an npm tarball and a Debian source package is stored once, addressed by the hash of its bytes, and the graph records every place it was seen. The Vault reconstructs any snapshot, commit or directory on request as a git bundle or tarball you can download, so retrieval is by content rather than by whichever URL the code was hosted at.\nSWHIDs\nEvery object in the archive has a SoftWare Hash IDentifier of the form swh:1:<type>:<sha1>. The five types are cnt for a file’s bytes, dir for a directory tree, rev for a commit, rel for a tag and snp for a snapshot of a repository’s refs at one point in time. Optional qualifiers after a semicolon pin an origin URL, a visit, a path inside a directory or a line range inside a file. Version 1.2 of the spec was published as ISO/IEC 18670 last year, the first ISO standard for intrinsic software identifiers.\nA SWHID is intrinsic, computed from the bytes with no registry and no issuing authority, and because the hashes are git’s own object hashes any git checkout on your disk is already full of valid SWHIDs whether or not Software Heritage has crawled it yet. A purl like pkg:pypi/astropy@7.1.0 is at a different corner of Zooko’s triangle: a human can read it and it’s unique within PyPI’s namespace, but resolving it to actual bytes depends on PyPI still being there to serve that release. I spend a lot of time in ecosyste.ms holding both kinds of identifier for the same software, and that mapping was the subject of the CodeCommons talk.\nswh-git\nThe most direct way I’ve found to get code back out is swh-git, a git remote helper that adds an swh:: transport. With git-remote-swh on your PATH you can clone by origin URL or by SWHID:\n\ngit clone swh::github.com/octocat/Hello-World\ngit clone swh::swh:1:snp:f72e9d06dd0e58236a34328f094ca894a809f230\n\n\nThe first form resolves to the origin’s most recent archived snapshot, and the second pins a specific one and produces the same bytes on every run. Behind the transport, the helper requests a git-bare bundle from the Vault, polls while it’s prepared (which can take several minutes for a large repository the first time), downloads it into your user cache directory, and serves the clone from there with git upload-pack.\nFetch, ls-remote and shallow clones all work against the cached bundle, and push is refused since the archive is append-only from the crawler side. There’s also an HTTP proxy mode for tooling that expects a plain URL rather than a custom transport, so git clone http://127.0.0.1:8080/github.com/octocat/Hello-World.git does the same thing through git http-backend.\nI built this for the recovery case, where an origin URL now 404s or the forge it was on has shut down, and git clone swh::<the old url> gets you back to a working repository with full history and tags. The helper also accepts rev, rel and dir identifiers, so a directory SWHID from a paper citation or an SBOM component becomes a checkout in the same way.\nComputing SWHIDs\nSince a SWHID is derived from content, you can compute one anywhere you have the bytes, and I wanted that in the two languages I use most. The swhid gem covers Ruby with parsing, qualifiers and generation for all five object types, and it’s what the ecosyste.ms services use. swhid-go does the same in Go with a CLI on top and SHA-1 collision detection built in. Both are wired into the upstream conformance test suite that the SWHID working group maintains, so they’re checked against the reference vectors alongside the Python and Rust implementations.\nCompiling swhid-go to WebAssembly gives you swhid-wasm, a browser page that fetches a package by name from npm, PyPI, crates.io, RubyGems or pub.dev, or takes a local archive you drop onto it, then unpacks and hashes the whole tree client-side. You get content and directory SWHIDs for every file, executable bits, symlinks and duplicate detection, and the package bytes stay on your machine. Once the tree is hashed the page batch-posts the identifiers to the archive’s /api/1/known/ endpoint to colour in which ones are already preserved, and there’s a button to submit the package’s public URL to Software Heritage for archival.\nEarly builds of the wasm page needed a same-origin relay for that lookup, because the browser’s CORS preflight for a JSON POST was reaching the Anubis bot-protection layer in front of the archive and getting an HTML challenge back instead of CORS headers. I reported it and the SWH team have since adjusted the Anubis configuration so preflights pass through, and the page can now call the archive directly, though by that point the identifiers are already computed and the lookup itself is optional.\nWeb API\nAll of the above ends up calling archive.softwareheritage.org/api/1, which SWH document thoroughly in prose. There’s no machine-readable spec yet, though it’s something the team are interested in, so swh-openapi is my stopgap, generating an OpenAPI description from the same docstring data the published reference is built from. swh-go is a Go client generated from that with pagination, auth and rate-limit handling written by hand, and both should be retired once there’s an official spec.\nCritical package coverage\nWith a client in hand I ran a coverage check, swh-critical, over the roughly 9,800 packages in the packages.ecosyste.ms critical set and their 7,000-odd source repositories on 23 and 24 September. Of those repositories, 71.3% had their current default-branch commit already in the archive, and 89.9% of matched release tags were present as revisions.\nAmong the repositories whose current commit was missing, 95.1% still had an older snapshot once I checked the former URLs ecosyste.ms records across renames as well as the current one. The 46 hardest cases in the audit had no snapshot at any URL I tried and no matching release objects either, and drilling into those with full clones and tree hashes from the published package tarballs still turned up archived content for every one. Across the whole audit the pattern was older history already in the archive with only recent commits missing.\nI think ecosyste.ms can be most useful to Software Heritage as a partner on that last part, since the archive tracks over 445 million origins, far more than the crawler can revisit at a uniform cadence, while ecosyste.ms has dependent counts, download numbers and a criticality score for each package that give a decent signal for which repositories matter most to keep fresh. Feeding that back as a ranked stream of Save Code Now requests means the crawler’s next visit goes to the source of something with a hundred thousand dependents rather than an abandoned fork.\nscience.ecosyste.ms\nThe first place that feedback loop is running in production is science.ecosyste.ms, the ecosyste.ms service that tracks research software. For each project with a high enough science score, a background job clones the repository, computes revision and directory SWHIDs with the Ruby gem, and posts them in batches to /api/1/known/. Projects with objects missing from the archive get their origin submitted through Save Code Now, another job polls the visit until it completes, and any SWHID newly known after our request is recorded as a confirmed contribution.\nThe stats page rolls those up every six hours with a JSON API alongside, and individual project pages now show SWHIDs next to the DOIs and citation metadata they already had. Research software was the right place to start because that community already cares about persistent identifiers and long-term reproducibility.\npackages.ecosyste.ms\nThe next step is doing the same for package versions on packages.ecosyste.ms, which means computing directory SWHIDs for published tarballs as well as git checkouts and storing the purl-to-SWHID mapping as a first-class field. At that point an SBOM component like pkg:npm/lodash@4.17.21 resolves through ecosyste.ms to a swh:1:dir: you can verify against the tarball you downloaded and fetch from the archive independently of npm. It also turns the one-off swh-critical audit into a rolling measurement, with coverage tracked per registry and new gaps fed back through the same Save Code Now route.\nScanning the archive\nThe scanners I’ve been building under git-pkgs can also treat the archive as a corpus rather than a backup, since they already run against any checkout. manifests parses package-manager manifest and lockfiles across ecosystems, licenses does fast SPDX detection against the ScanCode rule corpus, and brief reports a project’s whole toolchain and conventions as structured JSON.\nWith swh-git in front of them the checkout comes from the archive by SWHID instead of a live forge, and any of their outputs anchored to a swh:1:rev: is reproducible by anyone with the same identifier. Longer term I’d like to try running these against the SWH graph dataset export directly rather than one Vault checkout at a time, which would make questions about lockfile adoption or license drift across whole registries answerable from preserved source rather than whatever happens to still be online.\nSoftware Heritage has already built the archive and standardised the identifier; what I’ve been doing is plumbing to reach it from the package-management side and to point ecosyste.ms data at the repositories where another crawl would help most. All of it is MIT or Apache-2.0 licensed, and I’d be very happy to see any of it picked up or replaced by something better.",
+      "id": "a369ca1e9fb06a4c672cdce692781e05aea387a4f3a551816203820a8f2e23c3",
+      "ref_id": "3",
+      "recommendationScore": 85,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "深入介绍了Software Heritage及其源码归档技术（如Merkle DAG），并分享了相关工具开发经验。",
+      "reason": "文章在编程工具和软件基础设施方面具有较高的技术深度和新颖性，对关注代码管理和开放源码的开发者具有实用价值。",
+      "tags": [
+        "编程工具",
+        "软件遗产",
+        "开源",
+        "代码归档",
+        "基础设施",
+        "数据管理"
+      ]
+    },
+    {
+      "title": "ParadeDB Search Performance Improvements",
+      "link": "https://www.paradedb.com/blog/opening-a-closed-tin",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-01T17:05:01.000Z",
+      "summary": "Article URL: https://www.paradedb.com/blog/opening-a-closed-tin\nComments URL: https://news.ycombinator.com/item?id=49924275\nPoints: 52\n# Comments: 9",
+      "id": "94b90fe55da05dd1e11a1f022f8edb86acc69a901352abd5d27b9e4d30ab187f",
+      "ref_id": "3",
+      "recommendationScore": 80,
+      "popularityScore": 37,
+      "priority": "high",
+      "comment": "详细分析了ParadeDB的搜索性能优化，提供了实际技术解决方案。",
+      "reason": "对数据库性能优化和后端开发人员具有很高的实用价值和技术参考意义，信息密度高。",
+      "tags": [
+        "数据库",
+        "性能优化",
+        "编程工具",
+        "后端开发",
+        "自动化"
+      ]
+    },
+    {
+      "title": "How smaller, distributed batteries could help the grid",
+      "link": "https://www.technologyreview.com/2026/10/01/1145435/distributed-batteries/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-10-01T10:00:00.000Z",
+      "summary": "If you want to install a big battery in New York City, you have to cut through a notoriously tough tangle of regulations. That’s made it difficult to get large energy storage projects on the grid. Faced with those obstacles, some startups are getting creative, finding ways to use relatively small batteries in unexpected places,…",
+      "id": "a12347319abe5a66afdde449ac4d097d4c86cf61dff04c6b6b0a4144c235476e",
+      "ref_id": "2",
+      "recommendationScore": 80,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "探讨分布式电池如何解决城市电网难题，实用性强。",
+      "reason": "提供具体可行的能源存储解决方案，对行业和政策制定者有参考价值。",
+      "tags": [
+        "能源",
+        "自动化",
+        "智能电网",
+        "可持续发展",
+        "法规"
+      ]
+    },
+    {
+      "title": "Lightweight PDF parser with layout, tables, formulas and bounding boxes",
+      "link": "https://github.com/beatrizalmeidaf/papero-pdf-text-extractor",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-01T16:14:40.000Z",
+      "summary": "Article URL: https://github.com/beatrizalmeidaf/papero-pdf-text-extractor\nComments URL: https://news.ycombinator.com/item?id=49923638\nPoints: 48\n# Comments: 7",
+      "id": "b7012febbbfcf345f3c034cae01dcae0c23f7226d8249df4aeac61368184c58f",
+      "ref_id": "0",
+      "recommendationScore": 78,
+      "popularityScore": 45,
+      "priority": "medium",
+      "comment": "一个高效的PDF内容解析工具，能够处理复杂的布局、表格和公式。",
+      "reason": "对需要从PDF提取结构化数据的开发者非常实用，技术实现具有一定挑战性和新颖性。",
+      "tags": [
+        "PDF",
+        "解析",
+        "编程工具",
+        "数据提取",
+        "开源"
+      ]
+    },
+    {
+      "title": "Ask HN: Who is hiring? (October 2026)",
+      "link": "https://news.ycombinator.com/item?id=49922569",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-01T15:02:07.000Z",
+      "summary": "Please state the location and include REMOTE for remote work, REMOTE (US)\nor similar if the country is restricted, and ONSITE when remote work is not an option.\nPlease only post if you personally are part of the hiring company—no\nrecruiting firms or job boards. One post per company. If it isn't a household name,\nexplain what your company does.\nPlease only post if you are actively filling a position and are committed\nto replying to applicants.\nCommenters: please don't reply to job posts to complain about\nsomething. It's off topic here.\nReaders: please only email if you are personally interested in the job.\nSearchers: try https://hnwork.app, https://nthesis.ai/public/hn-who-is-hiring, https://dheerajck.github.io/hnwhoishiring/,\nhttp://nchelluri.github.io/hnjobs/, https://hnjobs.emilburzo.com.\nDon't miss this other fine thread: Who wants to be hired? https://news.ycombinator.com/item?id=49922568\nComments URL: https://news.ycombinator.com/item?id=49922569\nPoints: 112\n# Comments: 107",
+      "id": "50e888fb9132ba0987b24629b10e552f860ee7cc322dc8a67a1b816ec3e58cfb",
+      "ref_id": "1",
+      "recommendationScore": 65,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "Hacker News 的招聘帖，实用性高，但并非技术内容文章。",
+      "reason": "为编程社区提供高实用性的招聘信息，但文章本身缺乏技术深度和新颖性。",
+      "tags": [
+        "招聘",
+        "职业发展",
+        "社区",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "Car Is a Smartphone on Wheels. Here's Who's Listening",
+      "link": "https://automatictransmission.khoury.northeastern.edu/index.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-01T20:23:27.000Z",
+      "summary": "Article URL: https://automatictransmission.khoury.northeastern.edu/index.html\nComments URL: https://news.ycombinator.com/item?id=49926628\nPoints: 5\n# Comments: 2",
+      "id": "9b136a20e472933b7c0920481ad988b93e69f8ef558968c0e5e3370cc607e60c",
+      "ref_id": "1",
+      "recommendationScore": 60,
+      "popularityScore": 15,
+      "priority": "low",
+      "comment": "讨论智能汽车作为“带轮子的智能手机”带来的数据隐私问题。",
+      "reason": "涉及用户隐私和智能汽车自动化，但技术深度和新颖性可能一般，且主题优先级不高。",
+      "tags": [
+        "Privacy",
+        "Automotive",
+        "IoT",
+        "Data Security"
+      ]
+    },
+    {
+      "title": "Ask HN: Who wants to be hired? (October 2026)",
+      "link": "https://news.ycombinator.com/item?id=49922568",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-01T15:02:07.000Z",
+      "summary": "Share your information if you are looking for work. Please use this format:\n  Location:\n  Remote:\n  Willing to relocate:\n  Technologies:\n  Résumé/CV:\n  Email:\n\nReaders: please only email these addresses to discuss work opportunities.\nSearchers: try https://nthesis.ai/public/hn-wants-to-be-hired, https://www.wantstobehired.com.\nComments URL: https://news.ycombinator.com/item?id=49922568\nPoints: 69\n# Comments: 216",
+      "id": "88a1de970ec6cee530d4e7d27450c58d5c07e8ab3d0ba04a732e67ef2c21e84a",
+      "ref_id": "2",
+      "recommendationScore": 60,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "Hacker News 的求职帖，为求职者提供展示平台。",
+      "reason": "对求职者具有高实用性，但作为社区资源而非技术文章，内容深度有限。",
+      "tags": [
+        "求职",
+        "职业发展",
+        "社区",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "RacketCon Is Saturday",
+      "link": "https://con.racket-lang.org/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-01T14:58:13.000Z",
+      "summary": "Article URL: https://con.racket-lang.org/\nComments URL: https://news.ycombinator.com/item?id=49922515\nPoints: 108\n# Comments: 27",
+      "id": "c5ded43a5945a075f23f0fc223c46454b145a001bb36f7697fb42af6b11fc45f",
+      "ref_id": "3",
+      "recommendationScore": 55,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "Racket编程语言的会议公告，对相关社区有价值。",
+      "reason": "属于编程工具范畴，对Racket用户有实用性，但文章本身缺乏技术深度和新颖性。",
+      "tags": [
+        "编程语言",
+        "会议",
+        "Racket",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "iPod of 2026",
+      "link": "https://sudo.music/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-01T18:25:46.000Z",
+      "summary": "Article URL: https://sudo.music/\nComments URL: https://news.ycombinator.com/item?id=49925261\nPoints: 23\n# Comments: 29",
+      "id": "8836868f1a929c094a67a655ae9c68b1b05a13020d18aa648e6ed481ad71494a",
+      "ref_id": "0",
+      "recommendationScore": 50,
+      "popularityScore": 30,
+      "priority": "medium",
+      "comment": "对未来苹果产品的一次概念性展望，侧重产品设想而非具体技术实现。",
+      "reason": "文章探讨苹果生态的未来趋势，对关注苹果产品的用户有一定吸引力，但技术深度和实用性一般。",
+      "tags": [
+        "Apple",
+        "产品设想",
+        "未来科技",
+        "消费电子"
+      ]
+    },
+    {
+      "title": "Red Hat being phased out of existence?",
+      "link": "https://techrights.org/n/2026/10/01/Red_Hat_Being_Phased_Out_of_Existence_Like_Many_Other_Companies.shtml",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-01T15:33:26.000Z",
+      "summary": "Article URL: https://techrights.org/n/2026/10/01/Red_Hat_Being_Phased_Out_of_Existence_Like_Many_Other_Companies.shtml\nComments URL: https://news.ycombinator.com/item?id=49923056\nPoints: 144\n# Comments: 81",
+      "id": "9241073192d445077e3c889ffa7630e8390b7a4f752a374043cb5ea45ff2aa4a",
+      "ref_id": "2",
+      "recommendationScore": 43,
+      "popularityScore": 78,
+      "priority": "low",
+      "comment": "关于Red Hat未来命运的行业观察与预测，引发了广泛讨论。",
+      "reason": "主要围绕行业新闻和公司策略，技术深度不足，与设定的AI、编程工具等主题优先级较低。",
+      "tags": [
+        "开源",
+        "企业",
+        "行业新闻",
+        "Red Hat",
+        "Linux"
+      ]
+    },
+    {
+      "title": "Polyedergarten: Garden of Paper Polyhedron Models",
+      "link": "https://www.polyedergarten.de/e_index.htm",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-01T15:02:51.000Z",
+      "summary": "Article URL: https://www.polyedergarten.de/e_index.htm\nComments URL: https://news.ycombinator.com/item?id=49922594\nPoints: 40\n# Comments: 5",
+      "id": "8dedafde4befb993ae7327aae40c0918d982cf16567d475737a446f625587cf7",
+      "ref_id": "0",
+      "recommendationScore": 25,
+      "popularityScore": 35,
+      "priority": "low",
+      "comment": "关于纸多面体模型的网站，内容与科技博客主题关联度低。",
+      "reason": "主题不符合科技博客的优先关注方向，更偏向艺术和手工。",
+      "tags": [
+        "手工",
+        "几何",
+        "非科技"
+      ]
+    },
+    {
+      "title": "Pluralistic: Voting is to politics as shopping is to boycotts (01 Oct 2026)",
+      "link": "https://pluralistic.net/2026/10/01/data-centers/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-10-01T17:22:48.000Z",
+      "summary": "Today's links Voting is to politics as shopping is to boycotts: The big P only matters if the small p is in play. Hey look at this: Delights to delectate. Object permanence: Gilberto Gil v WIPO; Censored Apple wifi hacker talk; Wells Fargo crime-spree started in 1998; Stencils \"may not be reproduced\"; DVD Jon v Apple DRM; Unpaid diplomatic parking tickets as index of corruption; Tortured Canadian was not a terrorist; Decarbonization at a distance. Upcoming appearances: Brighton, Virtual, South Bend, Hudson, Calgary, Winnipeg, Paris, Vancouver, Victoria, Ottawa, Kilkenny, Montreal. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. Voting is to politics as shopping is to boycotts (permalink) Here's a funny thing about the right to vote: it wasn't won by voting. From the Magna Carta to the US Constitution to the Emancipation Proclamation to 19th Amendment, voting rights (what you might call \"Big P\" Politics) were always downstream of protests, riots, petitions, mass movements, strikes and good, old fashioned community organizing (that is, \"small p\" politics). Which is to say, Big P politics matter, but to make them matter, we need a lot of small p politics. That means that democracy isn't something you do every couple of years with a ballot paper (though that's an important aspect of the process). Democracy is continuous. If you've ever wondered why your vote seems to accomplish so little, I think you can blame the near-abolition of small p politics by Big P politicians of every stripe. Indeed, Obama's genius was summoning up an army of door-knocking, phone-banking small p political activists and then euthanizing that organization after he won the election: https://newrepublic.com/article/140245/obamas-lost-army-inside-fall-grassroots-machine For Obama, the grassroots were useful for one thing: getting out the vote. The last thing he wanted was for millions of activated voters to turn into activists who'd flame him and harangue him and picket him if they didn't like his compromises. Boy, did Obama ever compromise. He let the bank executives who created the Great Financial Crisis off the hook and encouraged them to foreclose on the homes of millions of Americans, the very same public that had bailed them out: https://theweek.com/articles/624777/obamas-biggest-failure He shielded the CIA's torturers from scrutiny and prosecution: https://journals.law.harvard.edu/ilj/2009/04/obama-publishes-torture-memos-immunizes-cia-staff/ He reneged on his promise to shut down Gitmo: https://www.pbs.org/newshour/show/obama-failed-close-guantanamo And his promise to hold the phone companies to account for their complicity in the NSA's mass domestic surveillance: https://www.pbs.org/wgbh/frontline/article/obama-on-mass-government-surveillance-then-and-now/ He stepped up secret drone warfare: https://www.cfr.org/articles/obamas-final-drone-strike-data And unconstitutional domestic surveillance: https://www.eff.org/deeplinks/2017/01/obama-expands-surveillance-powers-his-way-out Whenever I raise this, Obama's apologists come out of the woodwork to tell me that \"the president isn't the Green Lantern,\" and that Obama couldn't act without help from Congress and the Senate, who wouldn't back his plays. I think that Trump's presidency has shown us how much power the president really has even when the legislature won't play ball. But even if you accept the Green Lantern apologetics, the fact remains that Obama could have had a clamoring army of ardent supporters in the streets, defending his agenda against recalcitrants in his own party and wreckers in the GOP. He chose not to have that army. He sent that army home. It's like Obama heard the story about post-election FDR telling civil rights leaders, \"I want to do it, now make me do it,\" and concluded, \"I don't want to do it, so I'd better not let anyone make me do it\": https://www.quora.com/Did-Franklin-Roosevelt-ever-say-I-agree-with-you-I-want-to-do-it-now-make-me-do-it Of course, Trump is doing everything he can to extinguish both small p politics and Big P Politics. It's not just his wildly illegal voter suppression tactics. He's banning and prosecuting political groups, invoking anti-terror laws (which Obama supported and promised would only be used proportionately and wisely) to chase his grassroots opposition underground: https://www.whitehouse.gov/presidential-actions/2025/09/designating-antifa-as-a-domestic-terrorist-organization/ Liberals are often contemptuous of grassroots movements (cf \"basket of deplorables,\" \"Green Lantern\" scolding), but the right is terrified of them. The right's political leadership is terrified of its own grassroots, and rightly so, because those people are maniacs, and they're the reason the GOP has been pushed into its most extreme positions. The right's grassroots, meanwhile, are afraid of the left's grassroots. The last thing they want is a militant, organized, mobilized base pushing Dem politicians to take the stands that are wildly and widely popular in America, from Medicare for All to an end to ICE – the Mamdani agenda, in other words. Mamdani is the anti-Obama. He shows what happens when a progressive candidate nurtures and co-governs with their base after the election, using millions of passionate, committed, everyday people to steamroller anyone who gets in the way of his agenda: https://www.nyc.gov/content/100days/pages/ Of course the downside of this is that when Mamdani reneges on his pledges, he is loudly and furiously held to account for it: https://www.thecityreporter.nyc/2026/02/19/mamdani-budget-parks-libraries/ Mamdani understood that he would be corralled into compromises if he won the mayoralty and that when he made those compromises, his base would come after him with the unmistakable fury of betrayed idealists. He also understood that any comfort he enjoyed by sidelining his base while in office would come at a price far higher than being yelled at by his supporters: it would cost him the ability to get anything done. Voting for Mamdani was important. It got him elected. But staying organized – in unions, neighborhood clubs, affinity groups, DSA chapters and mutual aid groups – is what's letting him get stuff done, and stopping him from bailing on his promises as politically infeasible. In other words, voting only matters if it's the final stage of a sustained campaign to build and mobilize popular power. Without that, voting will get you precious little. The right's leadership understands this very well, which is why they've spent years attacking unions, community organizers like Acorn, and activist institutions like Planned Parenthood. We must defend voting rights – Big P Politics – to the bitter end, but we need to defend organizing – small p politics – just as ferociously. The reduction of politics to voting is part of the 50 year neoliberal project whose foremost goal is to make you think of yourself as an atomized individual and not as a member of a polity. Turning \"politics\" into \"voting\" is absolutely in line with Margaret Thatcher's dictum that \"there is no such thing as society.\" It's the same move that convinced workers that the answer to bad working conditions is looking your boss in the eye and threatening to change jobs (not forming a union and striking). It's also the same move that transformed \"boycotts\" into \"shopping.\" Boycotts are a collective enterprise. Before a boycott takes place, small-p political groups hold meetings, organize alternatives and communicate their demands. During a boycott, organizers work to insulate participants from reprisals, like the Montgomery Bus Boycott organizers who reasoned and remonstrated with employers who disciplined workers whose participation made them late for work. And yes, as part of a boycott, you make some consumption choices. You buy X instead of Y. But \"shopping\" by itself isn't a boycott. You can't \"vote with your wallet\" (especially not when billionaires get to vote against you with their wallets): https://pluralistic.net/2025/09/13/consumption-choices/#marginal-benefits Shopping isn't politics, and while voting is Politics (Big P), it's also not politics (small p). A boycott, on the other hand, is politics. What's more, \"shopping\" has the same relationship to \"boycotts\" that \"voting\" has to \"politics.\" It's a step you take, after you've laid a lot of groundwork with other people, as part of a mass movement. I understand why shopping and voting are more attractive than boycotts and politics. Meetings suck. Hell is other people: https://locusmag.com/feature/commentary-cory-doctorow-hell-is-other-people/ But changing the system requires systemic work. Hell is other people because other people are great but it's so hard to get them to do things your way. That takes time and understanding and togetherness and arguing and forgiving. Not everyone has time or capacity for that, and at any given time, we don't all have to be doing that work. We can take turns, spelling each other off at times in our lives when we have more or less slack. But lots of us have to be in the fight, or all of us will get screwed. There aren't enough of us doing politics right now. We can tell, because our politicians are so contemptuous of the grassroots that they will sell us out without a moment's hesitation, smugly certain that they will face no consequences for doing so: https://pluralistic.net/2026/09/22/happy-chudmas/#baloney-in-our-slacks Oligarchs have it easy. Where we have to convince people to fight, they can pay or threaten people to bring them into line. But oligarchs' power is wearing thin. The data-center uprising shows how much fury there is out there, looking for a productive outlet: https://www.bloodinthemachine.com/p/with-the-backlash-to-data-centers Data centers are very bad and very visible, so they make for good targets. But data centers are only the physical extrusion of a vast, brutal, extractive system. The most important way to fight data centers is to take everyone you meet protesting one and organize with them to scare the shit out of \"your\" politicians so they don't dare compromise on anything. Hey look at this (permalink) The Facebook Fake-out https://www.anildash.com/2026/09/29/facebook-fake-out/ Anatomy Unzipped: John of Arderne’s Sweden Scroll (ca. 1425–35) https://publicdomainreview.org/collection/arderne-scroll/ Inside McDonald’s push to have AI price your Big Mac https://www.reuters.com/business/inside-mcdonalds-push-have-ai-price-your-big-mac-2026-09-29/ what is going on with ceiling fans https://mcmansionhell.com/post/829127919552151552/what-is-going-on-with-ceiling-fans From Shitpost to Bullshit https://www.unpopularfront.news/p/from-shitpost-to-bullshit Object permanence (permalink) #25yrsago GWB's press secretary to media: \"watch what you do, watch what you say\" https://web.archive.org/web/20010926223602/https://www.whitehouse.gov/news/releases/2001/09/20010926-5.html#BillMaher-Comments#BillMaher-Comments #20yrsago Stencils kit “may not be reproduced in any form” https://web.archive.org/web/20061022000842/http://www.fairuseday.com/index.php/2006/10/01/copyright-is-broken/ #20yrsago DVD Jon selling Apple DRM to Apple’s competitors https://web.archive.org/web/20061004191106/https://featured.gigaom.com/2006/10/02/dvd-jon-fairplays-apple/ #20yrsago Unpaid diplomatic parking tickets as index of national corruption https://web.archive.org/web/20130719065306/https://www.theatlantic.com/magazine/archive/2006/10/primary-sources/305203/ #20yrsago Canadian deported to Syria for torture is cleared https://www.theguardian.com/world/2006/oct/02/worlddispatch #20yrsago Gilberto Gil slams WIPO https://fromgeneva.blogspot.com/2006/09/wipo-general-assembly-impressions-from.html #20yrsago Speech given by censored Apple WiFi hacker at ToorCon https://craphound.com/cache_toorcon_2006.txt #10yrsago Company suspected of blame in Office of Personnel Management breach will help run new clearance agency https://www.reuters.com/article/us-usa-security-background-idUSKCN1202M6/ #10yrsago Wells Fargo started demanding fraud of its employees in 1998; Illinois cuts Wells off from state business https://www.citizen.org/wp-content/uploads/wells-fargo-king-of-cross-sell.pdf #10yrsago Google: if you support Amazon’s Echo, you’re cut off from Google Home and Chromecast https://variety.com/2016/digital/news/google-home-amazon-echo-chromecast-1201874125/ #5yrsago How the IMF loan-sharks the global south https://pluralistic.net/2021/10/02/debt-trap/#global-arm-breakers #1yrago Decarbonization at a distance https://pluralistic.net/2025/10/02/there-goes-the-sun/#carbon-shifting Upcoming appearances (permalink) https://www.epl.ca/blogs/post/elbows-up-with-cory-doctorow/ Brighton: Digital Sovereignty and the Post-American Internet (Green Party Conference), Oct 3 https://www.openrightsgroup.org/events/digital-sovereignty-and-the-post-american-internet/ Virtual: How to govern technology in a multipolar digital world (Connecting Current), Oct 6 https://connectingcurrent.tech/how-to-govern-technology-a-multipolar-digital-world/ South Bend: An Evening With Cory Doctorow (Notre Dame), Oct 6 https://franco.nd.edu/events/2026/10/06/an-evening-with-cory-doctorow/ Hudson, OH: Hudson Library, Oct 7 https://engagedpatrons.org/EventsExtended.cfm?SiteID=3850&amp;EventID=596952&amp;PK= Calgary: Wordfest, Oct 8 https://wordfest.com/2026/show/wordfest-presents-cory-doctorow-2026/ Winnipeg: McNally Robinson, Oct 9 https://www.mcnallyrobinson.com/event-18991/An-Evening-with-Cory-Doctorow Paris: Slow Tech Summit, Oct 15 https://slowtechsummit.com/ Vancouver: Read, Resist, Repair, Rejoice (Vancouver Writers Festival), Oct 19 https://writersfest.bc.ca/festival-event-2026/01 Victoria: Munro's Books, Oct 20 https://www.munrobooks.com/events/6113620261020 Vancouver: Life After AI (Vancouver Writers Festival), Oct 22 https://writersfest.bc.ca/festival-event-2026/46 Ottawa: Life After AI (Ottawa Writers Festival), Oct 24 https://writersfestival.org/event/life-after-ai Kilkenny (Kilkenomics), Nov 6-8 https://kilkenomics.com/ Vancouver: Enshittification (Sid Williams Theatre Society), Nov 10 https://www.sidwilliamstheatre.com/events/cory-doctorow-talks-enshittification/ Vancouver: BC Policy Solutions Gala, Nov 12 https://bcpolicy.ca/gala/ Montreal: World Science Fiction Convention, Sep 2-6 https://montreal2027.ca/en Recent appearances (permalink) Terms of Service with Clare Duffy (CNN) https://www.cnn.com/audio/podcasts/terms-of-service-with-clare-duffy/episodes/458ce968-af5d-11f0-b539-13ed2afe25f8 AI, Work, and Power (Software Engineering Daily) AI, Work, and Power https://softwareengineeringdaily.com/podcasts/cory-doctorow-on-ai-work-and-power/ AI, Corporate Power, and the Fight for Worker Control (Plutopia) https://plutopia.io/cory-doctorow-ai-corporate-power-and-the-fight-for-worker-control/ How to Think About AI—Before It’s Too Late (Daniel Solove) https://www.youtube.com/watch?v=_0xR3uEgGcc Could Tech Bosses Destroy Life As We Know It? (Politics JOE) https://www.youtube.com/watch?v=PL4VktU0SgY Latest books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/ \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: “Once Is Enemy Action,” a science fiction novel about the origins of modern technofascism. Today's words: 509 (20770 total). \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Fourth draft completed. Submitted to editor. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "ef9846439a21273f21ebab55f03b164b97272cd3c2caf24b3e3dfd93fda05430",
+      "ref_id": "0",
+      "recommendationScore": 20,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "这是一篇包含政治、版权和社会观点的文章合集，与科技博客的主题相关性较低。",
+      "reason": "内容缺乏核心技术焦点，且涉及主题多为非优先关注领域，不符合科技博客的评估标准。",
+      "tags": [
+        "政治",
+        "版权",
+        "社会评论",
+        "杂谈"
+      ]
+    },
+    {
+      "title": "Oxygen-deprived underwater zones may not be \"dead zones\" but clue to early life",
+      "link": "https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2026AV002570",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-01T19:03:42.000Z",
+      "summary": "Article URL: https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2026AV002570\nComments URL: https://news.ycombinator.com/item?id=49925742\nPoints: 36\n# Comments: 1",
+      "id": "324038cf3add70ccab6c153e28091c7b17aee130402797d1a0d5fd7f15a6b563",
+      "ref_id": "4",
+      "recommendationScore": 10,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "一篇关于缺氧水域与早期生命线索的海洋生物学研究。",
+      "reason": "主题与科技博客关注的AI、编程、自动化等领域不符，不适合本博客发布。",
+      "tags": [
+        "Science",
+        "Biology",
+        "Geology",
+        "Research",
+        "Oceanography"
+      ]
+    },
+    {
+      "title": "SlutCon",
+      "link": "https://www.thenewcritic.com/p/safe-at-slutcon",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-01T17:12:15.000Z",
+      "summary": "Article URL: https://www.thenewcritic.com/p/safe-at-slutcon\nComments URL: https://news.ycombinator.com/item?id=49924354\nPoints: 59\n# Comments: 4",
+      "id": "d12449d8b5cdb62823f9ce30bee7751b54984dce472e2e7293ec56869c230314",
+      "ref_id": "2",
+      "recommendationScore": 10,
+      "popularityScore": 38,
+      "priority": "low",
+      "comment": "一篇与科技博客主题无关的社会文化文章。",
+      "reason": "内容与科技博客的核心关注点不符，缺乏技术深度和实用价值，不适合科技博客发布。",
+      "tags": [
+        "非科技",
+        "社会",
+        "文化"
+      ]
+    },
+    {
+      "title": "Why Americans Stopped Throwing Dinner Parties",
+      "link": "https://www.theatlantic.com/ideas/2026/10/americans-socialization-dinner-decline-hosting/688846/?utm_source=feed",
+      "source": "derekthompson.org",
+      "publishedAt": "2026-10-01T11:00:00.000Z",
+      "summary": "The share of adults who say they regularly have friends over has declined dramatically since 1975.",
+      "id": "13abe05468a04dc2e86737be415c43e61154d5a1361997819245a08768376e26",
+      "ref_id": "2",
+      "recommendationScore": 5,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "一篇关于社会生活趋势的文章，与科技内容完全不符。",
+      "reason": "文章主题与科技博客的任何优先关注领域均不相关，无技术深度或实用性。",
+      "tags": [
+        "社会趋势",
+        "文化",
+        "生活"
+      ]
+    },
+    {
+      "title": "Si Sheppard – How did a few hundred Spanish soldiers topple two empires?",
+      "link": "https://www.dwarkesh.com/p/si-sheppard",
+      "source": "dwarkesh.com",
+      "publishedAt": "2026-10-01T15:28:28.000Z",
+      "summary": "Fall of the Incas & Aztecs.",
+      "id": "5a5b19102292d48de42735da0b798aff6ebe71ab8051abcf6326f26a4ad985a4",
+      "ref_id": "0",
+      "recommendationScore": 5,
+      "popularityScore": 15,
+      "priority": "low",
+      "comment": "这是一篇关于历史事件的非科技文章，与科技博客主题不符。",
+      "reason": "文章内容完全脱离科技主题，不具备任何技术深度、新颖性或实用性。",
+      "tags": [
+        "历史",
+        "非科技"
+      ]
+    },
+    {
+      "title": "Summary of reading: July - September 2026",
+      "link": "https://eli.thegreenplace.net/2026/summary-of-reading-july-september-2026/",
+      "source": "eli.thegreenplace.net",
+      "publishedAt": "2026-10-01T00:05:00.000Z",
+      "summary": "\"Wuthering Heights\" by Emily Brontë - good writing, but the protagonists are\nquite something. There's barely a likable character in the whole story - they\nare all either crazy, evil, stupid or a combination of these. It's also\nremarkable to consider how small the world of some people in those times was\n(pre-Victorian England); whole lives spent within a tiny area, interacting\nwith a handful of other people. And that's for members of the nobility, not\nsome bumpkin on a remote farm.\n\"The Pickled City: The Story of New York pickles\" by Paul Van Ravenstein and\nMonique Mulder - yes, a book about pickles, with lots of cool photos! That's\nwhat you get while randomly browsing in the local public library while your\nkids are picking out their books. All you wanted to know about the history\nof pickles, with particular emphasis on NYC in the early 20th century and\nthe connection to Jewish immigration to that city.\n\"Rebel Island: the incredible history of Taiwan\" by Jonathan Clements - a\ndetailed history of Taiwan, focusing mostly on the early years (pre-modern\ntimes). The writing is a bit academic and dry, but it's very comprehensive.\nI wish the book spent more time on the modern era, though.\n\"The Old Ways: A Journey on Foot\" by Robert Macfarlane - an ode to taking\nlong walks (from hours to multi-day hikes). The writing is very beautiful,\nbut much of it feels pointless; the author describes friends and obscure\nhistorical poets in a lot of detail which has little to do with the main\nthesis of the book. I'd say the first 1/4 of the good is very good, and the\nrest is unnecessary.\n\"After Rain\" by William Trevor - I'm on a quest to find additional authors\nthat write evocative short stories that stay with you, and Trevor was\nrecommended as someone to try since my current favorites are Steinbeck\nand Lahiri. \"After Rain\" is a collection of 12 stories, mostly about love\nand relationships - between partners but also parents and children; the\nsettings are usually in 1980s Ireland or England. Very good stories overall,\nI'm glad I tried this author and should try something else by him.\n\"Spoonhandle\" by Ruth Moore - a novel about the lives of Maine natives living\nthrough changing times, seeing their picturesque coastal area become a magnet\nfor \"summer people\" - rich vacationers from the big cities. There's no single\nprotagonist in the book and the writing is very warm and human. I enjoyed it.\n\"The Almighty Dollar: 500 Years of the World's Most Powerful Money\" by\nBrendan Greeley - a history-oriented exploration of the importance of the\ndollar in world economy, from its beginnings as the Joachimsthaler in 16th\ncentury Bohemia and until modern times. This book has some interesting\nideas but I found it to be quite academical and not easy to digest.\n\"Behave: The Biology of Humans at Our Best and Worst\" by Robert M. Sapolsky\n- the scope of this (very long) book is huge: explaining how human behavior\nworks starting from basic biological principles. Our understanding of the\nactual biological underpinnings of behavior is so nascent, however, that\nthe vast majority of the book focuses on the usual things - the psychological\nstudies (including all the well known ones like prisoner's dilemma, the\nStanford prison experiment, etc) and comparison with other animals. Having\nread several other books on this topic in the past, I haven't found much\nnew in this one.\n\"Humorous short stories\" by Anton Chekhov (read in Russian) - a collection of\nshort stories with a humorous angle. The stories are typically very short,\njust 2-3 pages each, but the character building is superb. I should try\nreading something longer by Chekhov.\n\"Plainsong\" by Kent Haruf - describes a year in the life of several loosely\nconnected people in a remote farm town in eastern Colorado. A wholesome\nstory, without a specific beginning or end - just the lives of ordinary\nfolks.\n\"Behind the Beautiful Forevers: Life, Death, and Hope in a Mumbai Undercity\"\nby Katherine Boo - investigative journalism of the lives of several connected\nfamilies in Annawadi - one of Mumbai's most miserable slums - roughly from\n2007 to 2010. The only thing more shocking than the squalor in which these\npeople live is the degree of corruption, fraud and exploitation surrounding\nthem. A very poignant read.\n\"The Dispossessed\" by Ursula K. Le Guin - science fiction only in the sense\nof 1984; it's always amusing to examine how unambitious the futuristic vision\nof some authors is. The book was written in the early 1970s, and it presents\nlife thousands of years in the future as one that's pretty much identical to\nwhat it was in the early 1970s, except for close-to-speed-of-light travel. But\nscience is not the point of this book anyway; it's more of a political or\nphilosophical fiction, examining an anarchist-communist society and comparing\nit to a capitalist, \"propertarian\" one. Overall, this book gave me very\nstrong vibes of the famous Soviet kids story \"Dunno on the moon\" (Незнайка\nна Луне), which I recall reading as a kid.\n\"The Lion Women of Tehran\" by Marjan Kamali - a multi-generational novel\nfocusing on the life of young women in Iran from the early 1950s to the early\n1980s, in the context of the various authoritarian governments of those\neras (from Mohammad Reza Pahlavi's rule to after the Islamic revolution of\n1979). Nice book showing that a good story can be told without too many\nunnecessary twists and classical attention-grabbing dramas.\nRe-reads:\n\"The Old Way: A story of the first people\" by Elizabeth Marshall Thomas\n\"Interpreter of Maladies\" by Jhumpa Lahiri\n\"Norwegian Wood\" by Haruki Murakami\n\"Cannery Row\" by John Steinbeck",
+      "id": "245a9ce608a8c159dcc581cb91638d1e864b2530b445d9039b72472594a818b2",
+      "ref_id": "1",
+      "recommendationScore": 5,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "这是一篇个人阅读总结，涵盖文学和历史书籍，与科技博客的关注点无关。",
+      "reason": "文章内容为个人书评和阅读分享，与科技博客设定的任何主题优先级均不匹配。",
+      "tags": [
+        "阅读总结",
+        "书评",
+        "非科技"
+      ]
+    },
+    {
+      "title": "Quoting Matthew Green",
+      "link": "https://simonwillison.net/2026/Oct/1/matthew-green/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-10-01T06:29:01.000Z",
+      "summary": "",
+      "id": "e48a7f736f56ad596c7cd7f99a10613729b6d866b22d9895b5a9d9f55fae0643",
+      "ref_id": "3",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "内容为空，无法评估。",
+      "reason": "文章内容缺失，无法提供任何有效信息。",
+      "tags": []
+    },
+    {
+      "title": "He Built This City",
+      "link": "https://simonwillison.net/2026/Sep/30/he-built-this-city/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-09-30T21:54:19.000Z",
+      "summary": "",
+      "id": "b28db22be2dee5fac2e8c843809ba698696a71f9aed6104c645d8be43bb42830",
+      "ref_id": "4",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "内容为空，无法评估。",
+      "reason": "文章内容缺失，无法提供任何有效信息。",
+      "tags": []
+    }
+  ]
+}
