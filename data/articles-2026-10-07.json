@@ -1,0 +1,709 @@
+{
+  "dailySummary": "今日科技速递：Anthropic发布Claude Haiku 5.5，OpenAI展望GPT-6及智能UI。AI在数学证明中显身手，但“流氓”代理活动与AI工具评价平台Agent.reviews引关注。",
+  "articles": [
+    {
+      "title": "Claude Haiku 5.5",
+      "link": "https://www.anthropic.com/claude-haiku-5-5",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-07T18:01:32.000Z",
+      "summary": "Article URL: https://www.anthropic.com/claude-haiku-5-5\nComments URL: https://news.ycombinator.com/item?id=49996437\nPoints: 440\n# Comments: 209",
+      "id": "cdb1d51fae0431106fedcd9b04b5f3c39e2b73ba97f1a80fa573c763d8f96f73",
+      "ref_id": "2",
+      "recommendationScore": 95,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "Anthropic发布了Claude Haiku 5.5，预计将大幅提升其轻量级AI模型的性能和响应速度。",
+      "reason": "这是AI领域的重要产品升级，直接影响AI模型的使用者和开发者，具有高度实用性。",
+      "tags": [
+        "AI",
+        "大模型",
+        "Claude",
+        "产品发布",
+        "Anthropic"
+      ]
+    },
+    {
+      "title": "AI-assisted proof of optimal packing for 11 squares",
+      "link": "https://github.com/Queuingtheorydotcom/11SquaresFormalized",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-07T14:10:55.000Z",
+      "summary": "Article URL: https://github.com/Queuingtheorydotcom/11SquaresFormalized\nComments URL: https://news.ycombinator.com/item?id=49993121\nPoints: 93\n# Comments: 43",
+      "id": "d5683ffff7ecda8c3b608f139e0aa715c82e75641b38461997a41f50417ad556",
+      "ref_id": "3",
+      "recommendationScore": 95,
+      "popularityScore": 60,
+      "priority": "high",
+      "comment": "展示了AI辅助数学证明的最新进展，技术深度和新颖性极高。",
+      "reason": "深入探讨AI在复杂数学问题和形式化验证中的应用，极具前瞻性和研究价值。",
+      "tags": [
+        "AI",
+        "数学",
+        "形式化验证",
+        "算法",
+        "研究"
+      ]
+    },
+    {
+      "title": "OpenAI “rogue” agent activities found on Wikimedia projects",
+      "link": "https://simonwillison.net/2026/Oct/7/openai-rogue-agents-wikimedia/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-10-07T00:16:45.000Z",
+      "summary": "",
+      "id": "a919ba35a5e056c2278ba024862c09052a8b0e23df4c4932675faf972b48ed1b",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "基于标题，文章揭示了OpenAI代理在维基媒体项目中的异常活动，深入探讨AI伦理和安全前沿问题。",
+      "reason": "主题紧密围绕最高优先级AI，探讨了其潜在风险和实际影响，具有极高的时效性、重要性和深度。",
+      "tags": [
+        "AI",
+        "OpenAI",
+        "AI伦理",
+        "AI安全",
+        "大模型应用"
+      ]
+    },
+    {
+      "title": "On Git Refs",
+      "link": "https://matklad.github.io/2026/10/07/git-ref.html",
+      "source": "matklad.github.io",
+      "publishedAt": "2026-10-07T00:00:00.000Z",
+      "summary": "On Git Refs\nOct 7, 2026\n\nI have recently improved my mental model of Git. Consider these two git commands:\n$ git fetch origin master\n$ git switch -c my-feature origin/master\nDo you understand why is it origin master in one command, and origin/master\nin the other? I didn’t, until a few weeks ago!\nMy understanding was that git is a content-addressable database. Git stores\ncommits, a commit is identified by the hash of its content, and the content\nof a commit is, primarily:\nThat was enough git for me to understand git log output and get me out of any\nbotched rebase without having to re-clone the repo (For roughly half of my\ncareer, I was re-cloning the repo. No shame in that! Learning git is useful,\nbut it’s not the highest priority thing to learn when you start).\nI now understand that git not only comes with an append-only (“immutable”)\ncontent-addressable database, but is also a boring mutable key-value store.\nGit has a mutable map whose keys are strings, and whose values are\ncontent-addressed objects. The keys are conventionally formatted as file system\npaths, and you can usually inspect the state of the mapping by listing\n.git/refs directory:\n$ eza -T .git/refs\n.git/refs\n├── heads\n│   ├── make\n│   ├── master\n│   ├── my-feature\n│   └── pbd-adt\n├── origin\n├── remotes\n│   └── origin\n│       ├── context-switches\n│       ├── gh-pages\n│       ├── HEAD\n│       ├── make\n│       └── master\n└── tags\n\n$ cat .git/refs/heads/master\nb59148228e52f7c615ead7fdd4e91001994ad50f\n\n$ git show-ref refs/heads/master\nb59148228e52f7c615ead7fdd4e91001994ad50f refs/heads/master\nWhat makes this refs KV infrastructure confusing is that:\nalmost invisible in the\nday-to-day usage.\n\n\nGit CLI uses shorthand notation for refs and many default arguments, which\nmakes it not obvious that a particular CLI argument is a ref.\n\n\nAnd, as usual, git likes to give several names to one thing, and re-uses the\nsame name for distinct things.\n\n\nBranches, tags, and git notes are all just refs!\nThe structure becomes much more obvious once you elaborate all CLI shortcuts. The original command\n$ git fetch origin master\nthen becomes\n$ git fetch \\\n    https://github.com/matklad/matklad.github.io \\\n    refs/heads/master:refs/remotes/origin/master\nThe first argument of fetch (https://...) is a location of a remote\nrepository. Git will “dial” that address, and will transfer some data from that\ncomputer locally over the network.\nThe second argument is a source:target pair of string keys (refs). The\nsource is a key on the remote repo, the target is the name of a local key,\nand fetch as a whole asks git to read a value from a remote repository and save\nit locally under a different name.\nTo avoid typing repository URLs all the time, git assigns them symbolic names,\nwith origin being the conventional name for the primary remote repository:\n$ git fetch origin \\\n    refs/heads/master:refs/remotes/origin/master\nrefs/heads/master is a fully elaborated name of a branch on the remote repo.\nThat is, branch my-feature is just a\nrefs/heads/my-feature\nref. It could\nhave been\nrefs/branch/my-feature,\nbut it isn’t :)\nI don’t know the specific shorthand rules, but, generally, git allows you to\nspell only the suffix of a ref:\n$ git fetch origin \\\n    master:refs/remotes/origin/master\nrefs/remotes/origin/master is the name of the local ref we’ll use to store the\nresult. It would seem natural to just use the same name locally as the one on\nthe remote, but this only works if there’s a single remote. If there are two\nupstream repositories (for example, your fork, and the original repo you forked\nfrom), their ref names will collide. That’s why we want to namespace the refs\nfor remote called foo under refs/remotes/foo. And origin is just a\nconventional name for the remote in simple setups.\nAgain, it would be more natural to directly mirror remote ref structure\nlocally:\nrefs/ heads/my-branch -> refs/ remotes/origin/ heads/my-branch\nbut git strips the redundant heads component. And this -heads,\n+remotes/$remote mapping is built in, which compresses the command to\n$ git fetch origin master\nIt’s worth reflecting why it works this way. Git model is offline first.\nWhat’s more, it assumes explicit synchronization points. Rather than\nsynchronizing with the remote repository in background when there’s\nconnectivity, git requires explicit fetch and push operations to transfer\nbytes over the wire. In this paradigm, it is useful to model the state of the\nremote party at the moment when we talked to them the last time. Theory of mind!\nThis hopefully deconfuses git’s concept of local and remote branches. Consider\nthe main branch. It exists on the remote named origin as refs/heads/main.\nWhen you synchronize your local repository with origin, you get\nrefs/remotes/origin/main —\nyou current best knowledge about the the state of\nmain on the origin.\nAnd then there’s your local refs/heads/main. It typically starts pointing at\nthe same commit as\nrefs/remotes/origin/main.\nBut, when you make a commit, refs/heads/main advances, but\nrefs/remotes/origin/main\nstays the same.\nWhen you try to push your local commit to origin, you will get a conflict, if\nthe main branch on the origin advanced in the meanwhile. In that case, git\nautomatically updates\nrefs/remotes/origin/main\n(as that’s just a local mirror of the remote state), but then it’s on you to\nupdate refs/heads/main and push it again.\nRevisiting the full example:\n$ git fetch origin master\n$ git switch -c my-feature origin/master\nThe first command looks up the URL for the origin remote in .git/config and\nmakes a network request to that machine. As a result, the local\nrefs/remotes/origin/master gets updated to the same commit as\nrefs/heads/master remotely (the commit and its ancestors are transferred\nlocally as a result).\nThe second command creates a refs/heads/my-feature ref (a branch), whose\nstarting point is refs/remotes/origin/master. It is an example of a leaky\nabstraction.\nThe second argument there is a (shorthand of a) ref, so you can do\n$ git switch -c my-feature \\\n    refs/remotes/origin/master\nBut, although the first argument creates a ref, it isn’t a ref itself. In\nother words, if you try to elaborate it as well\n$ git switch -c refs/heads/my-feature \\\n    refs/remotes/origin/master\nyou’ll get\nrefs/heads/refs/heads/my-feature\nThat’s all! I am pretty sure this isn’t particularly useful, but maybe it is\ninteresting!",
+      "id": "3b0ef5f64eed169f5ded191f339e2f5a6ccff104ae8cf004efe73493a19ec1c4",
+      "ref_id": "2",
+      "recommendationScore": 95,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "深入浅出地解释了Git引用（refs）的底层机制，解决了许多Git用户的常见困惑。",
+      "reason": "文章技术深度高，实用性极强，直接解决了编程工具中的常见痛点，对开发者非常有价值，且符合编程工具的优先主题。",
+      "tags": [
+        "Git",
+        "版本控制",
+        "编程工具",
+        "开发技巧"
+      ]
+    },
+    {
+      "title": "The Mathocalypse",
+      "link": "https://scottaaronson.blog/?p=10169",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-07T19:33:40.000Z",
+      "summary": "Article URL: https://scottaaronson.blog/?p=10169\nComments URL: https://news.ycombinator.com/item?id=49997718\nPoints: 67\n# Comments: 42",
+      "id": "9b955ce8af2763d0997a43e3b56894e7fe836da4b22dbde734bd62f639326d98",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "Scott Aaronson的这篇文章深度探讨了AI对数学领域可能产生的颠覆性影响。",
+      "reason": "紧密贴合最高优先级主题AI，内容具有极高的技术深度和前瞻性，引发对未来科技的深入思考。",
+      "tags": [
+        "AI",
+        "数学",
+        "理论计算机科学",
+        "未来科技",
+        "AI哲学"
+      ]
+    },
+    {
+      "title": "GPT‑6 and Intelligent UI for everyone",
+      "link": "https://openai.com/index/gpt-6-for-everyone/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-07T18:00:58.000Z",
+      "summary": "Article URL: https://openai.com/index/gpt-6-for-everyone/\nComments URL: https://news.ycombinator.com/item?id=49996425\nPoints: 320\n# Comments: 151",
+      "id": "d66b18709c4ba948d6fa072722e27f8bdafce2864bf51d83f97769268114c206",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "OpenAI展望了GPT-6及其对普及智能用户界面（Intelligent UI）的潜在变革和愿景。",
+      "reason": "作为AI领军者的未来愿景，对行业发展趋势和智能应用前景具有重要的指导意义。",
+      "tags": [
+        "AI",
+        "GPT",
+        "未来科技",
+        "OpenAI",
+        "人机交互",
+        "产品愿景"
+      ]
+    },
+    {
+      "title": "SynthID Detector",
+      "link": "https://synthid.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-07T14:16:44.000Z",
+      "summary": "https://blog.google/innovation-and-ai/models-and-research/go...\nComments URL: https://news.ycombinator.com/item?id=49993188\nPoints: 69\n# Comments: 60",
+      "id": "e8e7a8f2af0a845725ddf95fca8ce71f2579353eac87649c6f1707d9938adcd0",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 50,
+      "priority": "high",
+      "comment": "介绍了Google的AI内容水印和检测工具，对AI生成内容的真实性验证至关重要。",
+      "reason": "紧跟AI前沿，解决了AI内容信任度的核心问题，实用性高且技术深度足。",
+      "tags": [
+        "AI",
+        "内容检测",
+        "机器学习",
+        "信息安全",
+        "Google"
+      ]
+    },
+    {
+      "title": "Introducing Claude Haiku 5.5",
+      "link": "https://simonwillison.net/2026/Oct/7/claude-haiku-5-5/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-10-07T20:56:21.000Z",
+      "summary": "",
+      "id": "231befe88d753d0247c6f00f2b741e2a9ffdb254a9681c1fb308792afc321c01",
+      "ref_id": "1",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "基于标题，这是一篇关于Anthropic新一代AI模型Claude Haiku 5.5的发布介绍，预期包含其新特性和更新。",
+      "reason": "主题高度契合最高优先级AI，且作为新模型发布具有极高的新颖性和行业关注度，实用性强。",
+      "tags": [
+        "AI",
+        "大模型",
+        "Claude",
+        "Anthropic",
+        "新产品发布"
+      ]
+    },
+    {
+      "title": "Show HN: Agent.reviews – Where AI agents read and write reviews on tools",
+      "link": "https://agent.reviews/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-07T16:59:11.000Z",
+      "summary": "Hi HN!\nI’m Louis, Co-Founder of Armature (YC P26), where we help teams make their product discoverable and usable by coding agents. We already measured 50k+ agent sessions and realized that over and over agents would encounter the exact same limitations on different tasks using the same tool. So we wondered why these weren’t fixed. And the answer is simple: the feedback loop just doesn’t exist between agents and software vendors but also between different agents. Humans can share their experience on platforms like https://g2.com and https://trustpilot.com, but agents have nowhere to.\nSo we created: https://agent.reviews: the G2 for agents.\nIt works with a set of skills and an npm CLI (@armature-tech/agent-reviews) connecting agents to our API endpoints. Anyone can ask their agent (Claude Code, Codex, Cursor, etc.) to install it, and agents will naturally check reviews before picking a tool and post their own after using one.\nAs usual, privacy was our main concern, so we added 3 layers before a review gets posted:\nDeterministic rules filtering secrets, PII, URLs, etc.\nA Jev classifier trained to detect any leak after the first check\nA small LLM checking each review to make sure nothing was missed\nWe've been sharing this project around for a few weeks now and gathered thousands of reviews already. There are already interesting ones, for example:\n- A Claude Code agent noticed that the Stripe SDK systematically crashed when the API key was missing on the health check page (while it’s this page’s role to actually return an “API key missing” error)\n- 2 agents mentioned that Prisma required a DATABASE_URL variable even when it wasn’t connecting to any database. They both put fake URLs as a workaround, and it worked.\nWe truly think the agent experience needs the same community effect user experience has, so everyone benefits from it: agents can pick the tools that are best optimized for them and software companies can improve their product based on real feedback. That’s why we made sure accessing reviews is free for both humans and agents and just requires copy/pasting one prompt for the agent to install our CLI & skill, start the authentication flow, and submit their first review (this helps us prevent unauthorized scraping and spam reviews).\nWould you let your agents submit and read reviews too?\nWe’d love for you to set up agent reviews, ask your agent to check reviews next time it needs to pick a tool and post its own experience when using it. Then tell us how it went!\nComments URL: https://news.ycombinator.com/item?id=49995539\nPoints: 18\n# Comments: 20",
+      "id": "b856de0518197d6e33476c27b8041def6c4b4c6e6b6d7d7f8f9474de250c1adb",
+      "ref_id": "0",
+      "recommendationScore": 88,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "一个为AI智能体提供工具评论和反馈的创新平台，旨在完善AI工具生态的反馈机制。",
+      "reason": "紧扣最高优先级的AI主题，概念新颖、技术深度适中且实用性极强，对AI工具开发者和生态建设具有重要价值。",
+      "tags": [
+        "AI",
+        "Agents",
+        "Tools",
+        "Platform",
+        "独立开发"
+      ]
+    },
+    {
+      "title": "Package Management RFCs",
+      "link": "https://nesbitt.io/2026/10/07/package-management-rfcs.html",
+      "source": "nesbitt.io",
+      "publishedAt": "2026-10-07T11:00:00.000Z",
+      "summary": "Package registries, manifest formats, lockfiles, version ranges and identifiers all have written specifications of some kind, spread across six kinds of venue. Specifications show up in package management mostly as an invisible layer of the dependency tree, where an HTTP library is built against RFC 9110 and a JSON parser against ECMA-404, and the documents covering package management itself are spread just as thinly.\nI went looking for the IETF’s share, since wire protocols between independently written implementations are what the RFC series exists for, and found nine documents, most of them concerned with firmware updates on IoT devices. The rest is distributed among Ecma, ISO, CNCF and OASIS, the enhancement proposal processes individual ecosystems run for themselves, and for a couple of registries a service’s own API reference. Which venue a document is published in determines whether a second client, a mirror or an archival reconstruction can rely on it, since each of those requires specified behaviour rather than whatever a given server returns this week.\nVenues\nPackage management specifications are published in six kinds of venue: the IETF, the industry standards bodies, the software foundations, a single ecosystem’s enhancement proposal process, a service operator’s own API documentation, and a third party’s description of observed behaviour. The IETF handles protocols that independently written implementations have to interoperate under, while Ecma, ISO/IEC and OASIS cover formats consumed across industries, which is also what gets them cited in procurement rules and regulation.\nCNCF, the OCI and the Linux Foundation publish the same kinds of format with a lighter process and faster revisions, while the ecosystem processes, PEPs and Rust RFCs and conda CEPs and Gentoo GLEPs among them, produce documents binding on a single language community. The last two slots are weaker: API documentation describes one running service rather than a contract others can implement against, and a third-party description is written by whoever needed the behaviour recorded when the operator had published none.\nIETF\nA title search for “package” across the whole RFC series returns 42 documents, 41 of them about something else entirely: SIP event packages, MGCP media gateway packages, and CMS symmetric and asymmetric key packages. The one exception, RFC 4108 from 2005 on using CMS to protect firmware packages, is the first of the nine. Searching for “software” returns mostly ARPANET-era host notes and SDN terminology. The series covers inventory and attestation instead, nearly all of it produced by the IoT firmware update effort.\nConcise Software Identification Tags, the CBOR encoding of SWID, is RFC 9393, with RFC 8412 covering Software Inventory Message and Attributes for reporting installed software over PA-TNC. There is a YANG data model for reporting SBOMs and vulnerability information in RFC 9472. The SUIT working group accounts for two more, RFC 9019 giving a firmware update architecture for IoT devices and RFC 9124 the manifest information model that goes with it.\nSCITT’s architecture for trustworthy and transparent digital supply chains became RFC 9943 in June 2026, the newest of the set and the closest to current SBOM and attestation deployments. The last two are RFC 8240, a report from the 2016 IoT Software Update workshop, and RFC 1805 from 1995, describing a Location-Independent Data/Software Integrity Protocol.\nThe document that would actually specify a package format is draft-ietf-suit-manifest, the CBOR serialization of the manifest described abstractly in RFC 9124. Revision 00 went up in October 2019, the individual draft it was derived from in October 2017, and revision 37 arrived in June 2026 with the usual six month expiry on it. Nearly nine years in, it is the IETF’s one software update wire format, scoped to firmware on constrained devices rather than to registry clients.\nThe series supplies more than that count suggests: every registry protocol here runs over HTTP, and Python’s core metadata began as PEP 241 in 2001, defining PKG-INFO as a single set of RFC 822 headers parseable by the rfc822.py module. The current specification still describes the format as based on email headers, and notes that in the absence of a precise definition the practical standard is whatever email.parser accepts under its compat32 policy.\nDebian’s deb822 field folding is documented as similar to RFC 5322, enough that control files of a single stanza parse with RFC 5322 parsers. Maven Central requires OpenPGP signatures, the .asc files that appear in its published layout, and OpenPGP is now RFC 9580 from July 2024, which obsoleted RFC 4880 along with the Camellia and ECC extensions. apt verifies Release files against the same format, inline as InRelease or detached as Release.gpg. RubyGems signs with X.509 certificates instead, which its own security guide calls rarely used for want of an established chain of trust.\nStandards bodies\nThe cross-ecosystem pieces, the ones several language communities and most compliance tooling have to share, are nearly all published at Ecma, whose TC54 was established with OWASP in September 2023. Package URL became ECMA-427 with its first edition published on 10 December 2025, and TC54’s second task group is putting a second edition to the December 2026 General Assembly. CycloneDX was ratified earlier, version 1.6 as ECMA-424 1st edition in June 2024 and 1.7 arriving as the 2nd edition in December 2025. Common Lifecycle Enumeration, which records releases, end of support dates and component transitions, is ECMA-428 as of December 2025.\nSPDX went to ISO instead and is ISO/IEC 5962:2021, whose text describes SPDX 2.2.1 while the project itself is on 3.x, so a contract or a procurement rule citing ISO/IEC 5962:2021 is naming 2.2.1 regardless of what whoever wrote it had in mind. CycloneDX has shipped a second edition through Ecma over the same period, so Ecma’s published text tracks the implementation more closely than ISO’s does for SPDX.\nOutside Ecma and ISO, CSAF is an OASIS standard for machine-readable security advisories, and the attestation layer is at CNCF, as TUF, in-toto and Sigstore. The OCI distribution spec is this group’s one registry protocol, implemented by Docker Hub, GHCR, ECR, Harbor, Quay, Zot and Artifactory, and since adopted by Homebrew for bottles and Helm for charts.\nEcosystem specs\nPublished registry protocols come out of a single ecosystem’s own process, each in its own client’s vocabulary, which is what sent me looking for a reference model above them in January. Python has the longest paper trail, with the simple repository API now a living specification the PyPA maintains, consolidating nine PEPs: 503 for the original HTML format in 2015, 592 for yanking, 629 for API versioning, 691 for the JSON format, 700 for project versions and file sizes and upload times, 714 for renaming the metadata field, 740 for provenance, 792 for project status markers, and 833, from June 2026, which freezes the HTML representation. PEP 503 established, and every later document preserved, that a directory of files on a static web server is a valid index, so devpi, Artifactory, Nexus, CodeArtifact and an S3 bucket all serve pip.\nNuGet covers more of the protocol than any of them, documented by Microsoft as a service index listing named resources, four of them required: PackageBaseAddress for package content, RegistrationsBaseUrl for metadata, PackagePublish for pushes and SearchQueryService for search. A separate implementation guide in the same documentation is addressed to anyone building a NuGet repository. Composer documents its repository format the same way, with packages.json, the metadata-url template and the HTTP caching requirements written out, and Satis generates static repositories from it.\nRubyGems documents its compact index as three endpoints, /versions, /info/<gem> and /names, served as append-only text with ETags and HTTP Range support so a client fetches only what changed since its last request. The format came out of the 2012 RubyGems.org capacity crisis and took four years to ship. Cargo’s sparse index cites it as prior art, quoting Bundler’s path from a full index to a centralized query API to an incrementally downloaded flat file.\nCargo’s sparse index came through RFC 2789 in the Rust process, with the motivation stated in the document: a git clone of the full index reported 215MiB against 10MiB for the same content under xz -6, and CI was downloading all of it to use a fraction. Its design constraint was static files behind a CDN using HTTP/2 alone, the same constraint Python’s format has, and the Cargo book documents a registry web API on top of the index format, covering publish, yank, owners and search for alternate registries. Go specified the GOPROXY protocol in the module reference with endpoints written out, /@v/list and /@v/$version.info among them, and ships one client that implements it.\nDebian’s repository format is documented on the wiki, outside the policy manual, and the page is labelled a work in progress covering the structure of the official repository and the format clients accept, with the goal of becoming a sub-policy eventually. dak, reprepro and aptly produce that format and apt reads it, so the wiki page is treated as normative whatever the label says.\nRegistries\nnpm and Maven Central both publish documentation that omits the part a client installs from. npm’s registry API documentation ships an OpenAPI file for publishing, search, tokens, organisations, access control and trusted publishers, leaving out GET /{package} and tarball downloads, which together are the read path every install runs through. Older endpoint documentation is in npm/registry as an archived collection and in npm/api-documentation, and the fullest public account of the read path is a third-party OpenAPI file assembled from observed behaviour.\nnpm-registry-couchapp was the last publicly readable server and GitHub archived it on 11 August 2021, with a deprecation notice that names the internal micro-services now serving the API. Verdaccio and cnpm implement a compatible API by matching observed behaviour, a weakness in an ecosystem with five clients in npm, yarn, pnpm, bun and Deno.\nMaven publishes the repository layout and the POM reference, with maven-metadata.xml defined by the Repository Metadata Model, so the storage format is specified. What stays de facto is the resolver’s conflict and ordering behaviour, defined by what ComparableVersion and the resolver in maven-artifact compute. The Gradle team derived those semantics from observed behaviour and then shipped Gradle Module Metadata alongside the POM as its own specification. Sonatype has operated Maven Central since 2008, GitHub operates npm, and each publishes what it chooses to document. ecosyste.ms maintains OpenAPI schemas for more than 25 registry APIs. Two of those registries publish an official schema themselves, crates.io and open-vsx.org, and the rest are generated from the mapping code in packages.ecosyste.ms.\nVersioning\nEvery ecosystem has its own versioning rules, and version comparison is the least settled part of the whole business. Semantic Versioning 2.0.0 is a self-published document on semver.org by Tom Preston-Werner under CC BY 3.0, and its one IETF reference is RFC 2119, cited for MUST and SHOULD. It specifies version syntax and precedence only, so range syntax comes from each client: node-semver’s README is the operative document for npm, Cargo’s caret default is in the Cargo book, Ruby’s ~> is in the RubyGems documentation, and Python’s are in PEP 440 and PEP 508.\nOrdering rules split the same way: Debian Policy section 5.6.12 gives the comparison algorithm for epoch, upstream_version and debian_revision in the policy text itself, PEP 440 does the same for Python, and Go’s pseudo-versions and +incompatible suffix are described in the module reference. RPM’s ordering is rpmvercmp inside librpm and Maven’s is ComparableVersion in maven-artifact, with the implementation as the reference in both cases. univers exists because of that spread: one library that reimplements every ecosystem’s comparison rules behind a single interface.\nThe cross-ecosystem attempt is vers, from the purl project, which defines a URI syntax for version ranges together with the semantics for interpreting each notation, so an npm caret range comes out as vers:npm/>=1.0.2|<2.0.0. It was developed alongside purl and is due to be proposed to Ecma later in 2026, which would put ranges in the same venue as identifiers and lifecycle events. Ecma would then hold the identifier, the bill of materials, the lifecycle record and the version range, four of the pieces that have to mean the same thing in every ecosystem, within three years of TC54’s founding, while the protocol layer remains inside the ecosystems and with the registry operators.",
+      "id": "338e3adb8aa0edc11cd734077525fd07704c468ff190b4614a24352e32668785",
+      "ref_id": "3",
+      "recommendationScore": 88,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "系统性地梳理了包管理相关RFC和规范的来源与作用，揭示了其底层设计原理。",
+      "reason": "技术深度高，揭示了编程工具生态的重要基础知识，对理解软件架构和系统设计有帮助，符合编程工具的优先主题。",
+      "tags": [
+        "包管理",
+        "RFC",
+        "标准",
+        "编程工具",
+        "软件架构"
+      ]
+    },
+    {
+      "title": "Docker Agent",
+      "link": "https://github.com/docker/docker-agent",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-07T17:48:38.000Z",
+      "summary": "Article URL: https://github.com/docker/docker-agent\nComments URL: https://news.ycombinator.com/item?id=49996259\nPoints: 95\n# Comments: 43",
+      "id": "286c732492720fc1292ac0691d116ef8764644af3fee9134fe856ab04a63b4b8",
+      "ref_id": "4",
+      "recommendationScore": 85,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "Docker发布了一款新的代理工具（Docker Agent），旨在优化容器管理和自动化工作流。",
+      "reason": "这款新工具为Docker用户和DevOps工程师提供了提升效率和简化容器管理的新途径。",
+      "tags": [
+        "Docker",
+        "容器",
+        "编程工具",
+        "自动化",
+        "DevOps",
+        "GitHub"
+      ]
+    },
+    {
+      "title": "Push ifs up and fors down: The idiom, its algebra, and its limits",
+      "link": "https://debasishg.github.io/blog/push-ifs-up-fors-down/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-07T18:43:18.000Z",
+      "summary": "Article URL: https://debasishg.github.io/blog/push-ifs-up-fors-down/\nComments URL: https://news.ycombinator.com/item?id=49997073\nPoints: 41\n# Comments: 6",
+      "id": "9e9c9bd1f0b8333743ed632dcd44b9477c1322a982dff4e95566bd6dca1b1459",
+      "ref_id": "1",
+      "recommendationScore": 80,
+      "popularityScore": 35,
+      "priority": "medium",
+      "comment": "文章深入探讨了函数式编程中“上推if，下推for”这一代码组织原则的代数基础及其应用边界。",
+      "reason": "为追求代码质量和可维护性的开发者提供了深刻的编程范式指导和理论支撑。",
+      "tags": [
+        "编程",
+        "软件工程",
+        "代码质量",
+        "函数式编程"
+      ]
+    },
+    {
+      "title": "Meta and Microsoft take steps to reduce employee usage of Claude AI",
+      "link": "https://www.rswebsols.com/news/meta-and-microsoft-take-steps-to-reduce-employee-usage-of-claude-ai/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-07T18:49:40.000Z",
+      "summary": "Article URL: https://www.rswebsols.com/news/meta-and-microsoft-take-steps-to-reduce-employee-usage-of-claude-ai/\nComments URL: https://news.ycombinator.com/item?id=49997161\nPoints: 143\n# Comments: 142",
+      "id": "f912fde3e281653a57834799a923ed6a1e135367ed5e6e770a5e5a2f645dacd4",
+      "ref_id": "0",
+      "recommendationScore": 75,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "此新闻报道揭示了Meta和Microsoft在企业内部谨慎管理AI工具使用的策略。",
+      "reason": "文章反映了大型科技公司在AI工具治理方面的行业趋势和数据安全考量，对企业IT策略制定者有参考价值。",
+      "tags": [
+        "AI",
+        "行业新闻",
+        "企业策略",
+        "数据安全"
+      ]
+    },
+    {
+      "title": "Animated ASCII Art for Web Pages",
+      "link": "https://ascii.rest/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-07T15:05:37.000Z",
+      "summary": "Article URL: https://ascii.rest/\nComments URL: https://news.ycombinator.com/item?id=49993857\nPoints: 215\n# Comments: 54",
+      "id": "43badd105dbceefef09c979d9fa422cd670744b499263998298e0b63286949fc",
+      "ref_id": "1",
+      "recommendationScore": 75,
+      "popularityScore": 85,
+      "priority": "medium",
+      "comment": "探讨了在网页中实现动画ASCII艺术，兼具创意和前端技术。",
+      "reason": "提供了有趣的网页开发技巧和视觉效果实现，属于编程工具相关范畴。",
+      "tags": [
+        "Web开发",
+        "前端",
+        "ASCII艺术",
+        "编程工具",
+        "创意编程"
+      ]
+    },
+    {
+      "title": "Anti-Patterns in Software Blogging",
+      "link": "https://simonwillison.net/2026/Oct/7/anti-patterns-in-software-blogging/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-10-07T14:53:51.000Z",
+      "summary": "",
+      "id": "4c30b4b05fcb88bec2dc3e399de385c5e012fb8012b9f651411b18bac4698d5a",
+      "ref_id": "2",
+      "recommendationScore": 75,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "基于标题，这篇文章探讨了软件博客写作中常见的不良模式和实践，对内容创作者有指导意义。",
+      "reason": "对从事软件开发或科技内容创作的读者具有实际指导意义，但主题优先级低于AI和Apple生态。",
+      "tags": [
+        "软件开发",
+        "博客",
+        "写作指南",
+        "内容创作",
+        "独立开发"
+      ]
+    },
+    {
+      "title": "Show HN: gtlds.fyi – All the proposed new gTLDs",
+      "link": "https://gtlds.fyi/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-07T19:53:17.000Z",
+      "summary": "Article URL: https://gtlds.fyi/\nComments URL: https://news.ycombinator.com/item?id=49997971\nPoints: 21\n# Comments: 17",
+      "id": "864cbfe55cb5547f9ff36f176e0c5fe621225dc7459b45ca711b4b8e37681270",
+      "ref_id": "1",
+      "recommendationScore": 65,
+      "popularityScore": 40,
+      "priority": "medium",
+      "comment": "该网站展示并汇总了所有拟议中的新通用顶级域名（gTLDs）。",
+      "reason": "作为一份互联网基础设施资源，对Web开发者和域名策略制定者具有较高实用性和信息密度。",
+      "tags": [
+        "互联网",
+        "域名",
+        "gTLD",
+        "Web开发",
+        "资源"
+      ]
+    },
+    {
+      "title": "Show HN: Bigwords.page – Turn any screen into a sign. The URL is the app",
+      "link": "https://bigwords.page/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-07T15:44:21.000Z",
+      "summary": "Article URL: https://bigwords.page/\nComments URL: https://news.ycombinator.com/item?id=49994443\nPoints: 222\n# Comments: 76",
+      "id": "3e1fccb6ce25ce749a14e7dcf9b483a803b7dbf08d2793b8a8eefd483b16b8ea",
+      "ref_id": "1",
+      "recommendationScore": 65,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "一个将任意屏幕转化为标牌的极简网页应用，以URL即App的理念提供便利。",
+      "reason": "简洁优雅的独立开发产品，产品设计理念突出实用性，虽然技术深度有限，但对特定场景有价值。",
+      "tags": [
+        "Web App",
+        "Utility",
+        "产品设计",
+        "独立开发"
+      ]
+    },
+    {
+      "title": "Anti-Patterns in Software Blogging",
+      "link": "https://refactoringenglish.com/blog/anti-patterns-software-blogging/",
+      "source": "refactoringenglish.com",
+      "publishedAt": "2026-10-07T00:00:00.000Z",
+      "summary": "In software development, we collect anti-patterns to recognize common traits that lead to poor outcomes in our software. I thought it would be helpful to do the same for software blogging, so I’ve catalogued the most frequent mistakes I see from beginner bloggers.\nThe meandering intro\n\nPreamble still counts as meandering\n“The reader knows everything I know except this one thing”\nOverreliance on links\nThe sequel injection bug\nExcessive formality\nFumbling on the basics of rendering HTML\n\nPage overflow on mobile\nUnreadable font\nSummary\nThe meandering intro\nThe most common mistake in software blogging, by far, is meandering. I constantly find myself several paragraphs into a post with no idea what the author is trying to tell me.",
+      "id": "4947297bbfe7b42d45195017aace58e4fa3178c61ad7e09ac008adc0622f2c08",
+      "ref_id": "4",
+      "recommendationScore": 65,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "列举了软件博客写作中常见的反模式，为技术博主提供了实用的写作建议。",
+      "reason": "实用性高，能帮助提升技术文章质量，但技术深度较低，与核心技术主题（如AI、编程工具）关联度较弱，更偏向独立开发或产品设计范畴。",
+      "tags": [
+        "博客写作",
+        "内容创作",
+        "独立开发",
+        "沟通技巧"
+      ]
+    },
+    {
+      "title": "ICANN Reveals 2026 Round Applications for New Generic Top-Level Domains",
+      "link": "https://www.icann.org/en/announcements/details/icann-reveals-2026-round-applications-for-new-generic-top-level-domains-07-10-2026-en",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-07T19:01:45.000Z",
+      "summary": "Article URL: https://www.icann.org/en/announcements/details/icann-reveals-2026-round-applications-for-new-generic-top-level-domains-07-10-2026-en\nComments URL: https://news.ycombinator.com/item?id=49997301\nPoints: 16\n# Comments: 17",
+      "id": "e1bc0fc4043a9aa6521130186b6038e9cf1f7d0b65d6016fbb4c744a179ee98f",
+      "ref_id": "4",
+      "recommendationScore": 60,
+      "popularityScore": 35,
+      "priority": "medium",
+      "comment": "ICANN发布了2026年新通用顶级域名申请轮次的重要公告。",
+      "reason": "这是关于互联网治理和域名市场的重要新闻，对相关行业的决策者具有较高实用性。",
+      "tags": [
+        "ICANN",
+        "域名",
+        "gTLD",
+        "互联网治理",
+        "新闻",
+        "政策"
+      ]
+    },
+    {
+      "title": "Anti-patterns in software blogging",
+      "link": "https://refactoringenglish.com/blog/anti-patterns-software-blogging/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-07T13:08:26.000Z",
+      "summary": "Article URL: https://refactoringenglish.com/blog/anti-patterns-software-blogging/\nComments URL: https://news.ycombinator.com/item?id=49992257\nPoints: 161\n# Comments: 92",
+      "id": "4947297bbfe7b42d45195017aace58e4fa3178c61ad7e09ac008adc0622f2c08",
+      "ref_id": "4",
+      "recommendationScore": 60,
+      "popularityScore": 75,
+      "priority": "low",
+      "comment": "为软件博客作者提供了避免常见写作误区的实用建议。",
+      "reason": "对提升科技内容质量有帮助，但技术深度较低且非核心技术主题。",
+      "tags": [
+        "博客",
+        "写作",
+        "内容创作",
+        "独立开发",
+        "产品设计"
+      ]
+    },
+    {
+      "title": "ShinyHunters Extorted Boeing Spin-Off Prior to Arrests",
+      "link": "https://krebsonsecurity.com/2026/10/shinyhunters-extorted-boeing-spin-off-prior-to-arrests/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-07T15:15:36.000Z",
+      "summary": "Article URL: https://krebsonsecurity.com/2026/10/shinyhunters-extorted-boeing-spin-off-prior-to-arrests/\nComments URL: https://news.ycombinator.com/item?id=49993997\nPoints: 57\n# Comments: 14",
+      "id": "2c4e6a4177d19a1d8c4aed8fb2438d684208cc979711213a43b299bcedbb8e77",
+      "ref_id": "3",
+      "recommendationScore": 58,
+      "popularityScore": 45,
+      "priority": "medium",
+      "comment": "关于网络犯罪组织ShinyHunters勒索波音子公司事件的调查报道。",
+      "reason": "网络安全新闻事件，具有重要的警示教育意义，但文章本身不提供技术深度的编程或AI见解，偏向新闻报道。",
+      "tags": [
+        "Cybersecurity",
+        "News",
+        "安全"
+      ]
+    },
+    {
+      "title": "The Download: weight-loss drugs slowing aging and carbon dioxide batteries",
+      "link": "https://www.technologyreview.com/2026/10/07/1145895/the-download-weight-loss-drugs-slow-aging-carbon-dioxide-batteries/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-10-07T12:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. Weight-loss drugs show signs of slowing biological aging, say drugmakers Popular weight-loss drugs may do more than help people shed pounds. They might also slow the aging process. Drugmakers Eli Lilly…",
+      "id": "da9c28d8b55f5166af387e736aa2086ad7e7808a8ee4c202fb238b1e42f2b65a",
+      "ref_id": "0",
+      "recommendationScore": 55,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "这篇新闻简报涵盖了减肥药与衰老以及碳电池等前沿科技进展，内容较为宽泛。",
+      "reason": "内容偏向综合性科技新闻，与本科技博客关注的AI、Apple生态等核心优先级主题契合度较低。",
+      "tags": [
+        "科技新闻",
+        "生物科技",
+        "能源技术",
+        "科普"
+      ]
+    },
+    {
+      "title": "ShinyHunters Extorted Boeing Spin-off Prior to Arrests",
+      "link": "https://krebsonsecurity.com/2026/10/shinyhunters-extorted-boeing-spin-off-prior-to-arrests/",
+      "source": "krebsonsecurity.com",
+      "publishedAt": "2026-10-07T13:48:45.000Z",
+      "summary": "A teenager from Amman, Jordan suspected of leading the prolific data theft and extortion group ShinyHunters has been detained and is reportedly cooperating with the FBI to identify other members of the hacking gang. KrebsOnSecurity has learned that the suspect, who uses the hacker handle \"Rey,\" was detained as ShinyHunters was in the process of extorting a business unit recently divested by the global aerospace company Boeing, which manufactures the fleet of planes used by the employer of Rey's father -- Royal Jordanian Airlines.",
+      "id": "2c4e6a4177d19a1d8c4aed8fb2438d684208cc979711213a43b299bcedbb8e77",
+      "ref_id": "4",
+      "recommendationScore": 30,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "一篇关于网络安全事件和黑客逮捕的新闻报道，具有一定时效性。",
+      "reason": "内容是关于重要的网络安全新闻，具有普遍吸引力，但技术深度不足，且不直接符合博客的最高优先级主题。",
+      "tags": [
+        "网络安全",
+        "新闻",
+        "数据泄露",
+        "黑客"
+      ]
+    },
+    {
+      "title": "Lissajous and Bowditch",
+      "link": "https://www.johndcook.com/blog/2026/10/06/lissajous-and-bowditch/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-10-07T00:21:52.000Z",
+      "summary": "I was skimming through David Well’s book The Penguin Dictionary of Curious and Interesting Geometry and was surprised by this entry: Lissajous figures or Bowditch curves First discussed by Nathaniel Bowditch in 1815, and later by Jules Antoine Lissajous in 1857 … I wrote a couple posts about Lissajous curves years ago, and recently I wrote […]\nLissajous and Bowditch first appeared on John D. Cook.",
+      "id": "57d5276c6f4c529187cb792b1e4f387b55b623285249f35c3fdc65a1b7878cad",
+      "ref_id": "1",
+      "recommendationScore": 30,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "探讨了数学几何中的李萨如图形和鲍迪奇曲线，内容偏学术且小众。",
+      "reason": "主题过于学术和理论，与现代科技博客的优先主题（如AI、编程工具）关联度不高，实用性有限。",
+      "tags": [
+        "数学",
+        "几何",
+        "历史",
+        "理论"
+      ]
+    },
+    {
+      "title": "Navier–Stokes Lost in Translation",
+      "link": "https://arxiv.org/abs/2610.08144",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-07T15:24:38.000Z",
+      "summary": "Article URL: https://arxiv.org/abs/2610.08144\nComments URL: https://news.ycombinator.com/item?id=49994145\nPoints: 173\n# Comments: 129",
+      "id": "d9ae5a9e80693cef139c5eb0b68f25516019cd858d06e5fe70ba7d054a6fa848",
+      "ref_id": "2",
+      "recommendationScore": 25,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "一篇关于纳维-斯托克斯方程的深度学术论文，探讨其在理解上的挑战。",
+      "reason": "内容过于学术和专业，与科技博客关注的AI、编程工具等核心主题关联度低，受众范围窄。",
+      "tags": [
+        "Physics",
+        "Mathematics",
+        "Research"
+      ]
+    },
+    {
+      "title": "Despite what Watson said, Rosalind Franklin understood structure of DNA first",
+      "link": "https://link.springer.com/article/10.1007/s10739-026-09866-7",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-07T19:56:16.000Z",
+      "summary": "Article URL: https://link.springer.com/article/10.1007/s10739-026-09866-7\nComments URL: https://news.ycombinator.com/item?id=49998006\nPoints: 7\n# Comments: 1",
+      "id": "b3b0408880158b0797c6f8966c0d7ca01a64ef6d710a09ecba2c7e96ab37194f",
+      "ref_id": "0",
+      "recommendationScore": 20,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "这是一篇探讨DNA结构发现历史及其人物贡献的学术文章。",
+      "reason": "内容偏向科学史，与核心科技博客的AI、编程等主题关联度低，实用性不强。",
+      "tags": [
+        "科学史",
+        "DNA",
+        "生物科学"
+      ]
+    },
+    {
+      "title": "Pluralistic: Disloyalty (07 Oct 2026)",
+      "link": "https://pluralistic.net/2026/10/07/gouged/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-10-07T13:58:46.000Z",
+      "summary": "Today's links Disloyalty: Air Canada's frequent flier fuckery. Hey look at this: Delights to delectate. Object permanence: Indie booksellers v internet; Coke pays dieticians to astroturf soda taxes; Voting in a voter-suppression state; Facebook v your use of Facebook. Upcoming appearances: Hudson, Calgary, Winnipeg, Paris, Vancouver, Victoria, Ottawa, Kilkenny, Sheffield, Oxford, Montreal. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. Disloyalty (permalink) Up until very recently indeed, airlines were the only businesses that I dealt with regularly that practiced \"price discrimination,\" charging different customers different prices for the same seats. Economists broadly like this \"second-order\" price discrimination, where a company charges customers different prices based on the circumstances of the purchase, such as a bakery discounting bread at the end of the day. When an airline cranks up the price of an itinerary that doesn't include a Saturday stay, they're using that fact as a proxy for \"price-insensitive\" business travelers whose bosses can afford to pay more for a ticket, rather than paying a worker overtime to spend a weekend away from home after a meeting. Despite the arguments about \"efficiency,\" it's safe to say that *fliers* hate this. The airlines' pricing algorithms are so opaque and capricious that anyone who buys a ticket at *any* price inevitably feels like they got a bad deal. This situation is only exacerbated by the airlines' extreme and aggressive secrecy over their pricing strategies, which includes lawsuits against websites that use historical pricing data to predict when a plane ticket will be the cheapest to buy: https://www.eff.org/document/preliminary-injunction-american-airlines-v-farechase-inc When a company wants the government to intervene to prohibit third parties from publishing factual information about its prices, that's a bad look. Hard to believe that they're so sure that you, the customer, will be delighted by these pricing tactics that they can't bear to have these third parties ruin the surprise. But this second-order discrimination is *so* 20th century. Here in the 21st century, we have *first-order* price discrimination, in which AI-powered pricing algorithms use commercial surveillance data about *you*, personally, to predict the highest price you're willing to pay. In this world of \"surveillance pricing,\" every traveler (or customer) sees a different price, in a kind of cod-Marxist dystopia whose motto is \"from each according to their ability (to pay), to each according to their (desperate) needs\": https://pluralistic.net/2025/01/11/socialism-for-the-wealthy/#rugged-individualism-for-the-poor Airlines *love* this kind of pricing, and they have means, motive and opportunity to practice it. All over the world, airlines have acquired or entered into joint ventures with surveillance pricing companies. These deals put the airlines on the horns of a dilemma: they love to boast to their shareholders about the way that surveillance pricing will let them gouge fliers, but inevitably the public finds out about these investor calls and breaks out the pitchforks and torches. This triggers embarrassing climbdowns, like Delta's fiasco of summer 2025, when CEO Ed Bastian bragged to shareholders that his deal with the Israeli surveillance pricing company Fetcherr would boost profits by 50% (!) by figuring out which customers could be safely gouged. When fliers, civil society groups and members of Congress got wind of this and raised a ruckus, Fetcherr publicly disavowed Bastian's remarks, insisting that it wasn't even capable of the kind of price-fixing he'd promised. Then Delta launched a smear campaign against its critics, claiming that Bastian never said the thing he *absolutely said* and accusing surveillance pricing activists of peddling \"misinformation\": https://groundworkcollaborative.org/news/amid-deltas-ai-pricing-scheme-groundwork-applauds-congressional-action-to-crack-down-on-surveillance-pricing-schemes/ Meanwhile, airlines all over the world have quietly switched their frequent flier reward programs from \"mileage-based\" rewards to \"revenue-based\" rewards. That means that you get points and status based on how much you spend on your ticket, not how far you fly. What may not be obvious from this move is that it forces frequent fliers to buy their tickets directly from the airlines, who claim that they can't tell how much you've spent on your ticket otherwise. So tickets bought on sites like Expedia or through travel agents often qualify for insultingly small points awards, or no points at all. For example, British Airways once gave me *12 points* on a $2,000 Alaska Air ticket because I didn't buy it through British Airways' site (attaining BA's gold status requires *50,000* points). Forcing frequent fliers to buy their tickets directly from the airline's website sets things up beautifully for surveillance-driven, first-order price discrimination. Airlines you do business with regularly can augment the personal information you provide to them and the data they collect from you with sensitive information purchased from the unregulated data-broker industry, which will cheerfully disclose your salary, credit card debts, or even if you've recently lost a parent and might be flying out for a funeral. The airlines strenuously deny that they're doing this, of course, but they continue to make investor-facing announcements about their exciting deals with surveillance pricing companies…and things are getting *weird* for frequent travelers. Thanks to a lot of book-related travel over the past couple of years, I have \"Elite\" status with Air Canada. Yesterday, I needed to book a last-minute, one-way fare on a route that is only serviced by Air Canada (AC enjoys a monopoly over many Canadian routes, even between major Canadian cities). I checked it out on Google Flights and found a fare for the eye-watering sum of USD829.73. Now, my normal daily-use browser is Firefox, but I know from long experience that I can't log in to my Air Canada frequent flier account on any browser except Chromium, which I keep installed on my system for just this kind of hostile garbage website. So I tabbed over to Chromium and pasted the Google Flights outbound link that would take me to a pre-populated reservation form on aircanada.com. To my amazement, that same flight was showing as a USD1200 fare! These were identical trips, loaded via identical referrer URLs. The difference was that in the browser where Air Canada knew that I was an extremely loyal and prolific customer, they had whacked me with a *44.8% premium* to punish me for my loyalty! I couldn't believe it. I actually called Air Canada's customer service line for \"Elite\" fliers, and the customer service rep was at a loss for an explanation and could only apologise and suggest that I write a letter to the company. I'm publishing this instead, because a) this will do more to punish Air Canada for trying to screw me over; and b) this can help you book your tickets in the future. Yesterday, I finished buying the ticket in my logged-out Firefox window (Air Canada's website will work with Firefox to buy tickets provided you don't try to log in to your Aeroplan account first), paying $829. Then I flipped back to Chromium, where I was still logged into my Air Canada Aeroplan account, located the reservation, and added my frequent flier number to it. I guess this is how I'm buying my plane tickets from now on. Hey look at this (permalink) * PM Mark Carney pledged to ‘Buy Canadian.’ Since then, $7.8 billion in contracts went to American corporations https://archive.is/zDBfX#selection-3576.0-3576.3 * Tracing the rogue ideology of the frontier labs to their product choices https://buttondown.com/apperceptive/archive/tracing-the-rogue-ideology-of-the-frontier-labs/ * Have you heard of the term \"enshittification?\" https://www.youtube.com/watch?v=nJ5V3pk6PEA&t=1220s * Window display at TYPE Books Toronto to honour David Byrne’s new book https://stopmakingsense.info/window-display-at-type-books-toronto-to-honour-david-byrnes-new-book/ * Red Vienna Is Still Alive https://www.thenation.com/article/society/vienna-public-housing-urban-cities/ Object permanence (permalink) #20yrsago Indie booksellers in the age of the Internet https://web.archive.org/web/20061026112859/https://www.wired.com/news/wireservice/1,71924-0.html #10yrsago Wells Fargo whistleblower describes bank’s culture of blackballing threats and coerced corruption https://www.npr.org/sections/money/2016/10/07/497084491/episode-728-the-wells-fargo-hustle #10yrsago Coca-Cola is paying dietitians to tweet scare-stories about soda taxes https://medium.com/cokeleak/is-coke-paying-dietitians-to-tweet-against-soda-tax-12d130d73b9a#.dw8udqccy #10yrsago What it’s like to register to vote in states with voter suppression law https://www.bbc.com/news/election-us-2016-37569855 #5yrsago Facebook shouldn't be in charge of how you use Facebook https://pluralistic.net/2021/10/08/unfollow-everything/#shut-the-zuck-up Upcoming appearances (permalink) * Hudson, OH: Hudson Library, Oct 7 https://engagedpatrons.org/EventsExtended.cfm?SiteID=3850&EventID=596952&PK= * Calgary: Wordfest, Oct 8 https://wordfest.com/2026/show/wordfest-presents-cory-doctorow-2026/ * Winnipeg: McNally Robinson, Oct 9 https://www.mcnallyrobinson.com/event-18991/An-Evening-with-Cory-Doctorow * Paris: Slow Tech Summit, Oct 15 https://slowtechsummit.com/ * Vancouver: Read, Resist, Repair, Rejoice (Vancouver Writers Festival), Oct 19 https://writersfest.bc.ca/festival-event-2026/01 * Victoria: Munro's Books, Oct 20 https://www.munrobooks.com/events/6113620261020 * Vancouver: Life After AI (Vancouver Writers Festival), Oct 22 https://writersfest.bc.ca/festival-event-2026/46 * Ottawa: Life After AI (Ottawa Writers Festival), Oct 24 https://writersfestival.org/event/life-after-ai * Kilkenny (Kilkenomics), Nov 6-8 https://kilkenomics.com/ * Vancouver: Enshittification (Sid Williams Theatre Society), Nov 10 https://www.sidwilliamstheatre.com/events/cory-doctorow-talks-enshittification/ * Vancouver: BC Policy Solutions Gala, Nov 12 https://bcpolicy.ca/gala/ * Sheffield: Reverse Centaur at Juno Books, Nov 25 https://www.outsavvy.com/event/40274/cory-doctorow-in-conversation * Oxford: Bennett Oxford Symposium on Open Code in Science, Dec 9 https://www.bennett.ox.ac.uk/events/2026-bennett-institute-symposium/ * Montreal: World Science Fiction Convention, Sep 2-6 https://montreal2027.ca/en Recent appearances (permalink) * Terms of Service with Clare Duffy (CNN) https://www.cnn.com/audio/podcasts/terms-of-service-with-clare-duffy/episodes/458ce968-af5d-11f0-b539-13ed2afe25f8 * AI, Work, and Power (Software Engineering Daily) AI, Work, and Power https://softwareengineeringdaily.com/podcasts/cory-doctorow-on-ai-work-and-power/ * AI, Corporate Power, and the Fight for Worker Control (Plutopia) https://plutopia.io/cory-doctorow-ai-corporate-power-and-the-fight-for-worker-control/ * How to Think About AI—Before It’s Too Late (Daniel Solove) https://www.youtube.com/watch?v=_0xR3uEgGcc * Could Tech Bosses Destroy Life As We Know It? (Politics JOE) https://www.youtube.com/watch?v=PL4VktU0SgY Latest books (permalink) * \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/ * \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce * \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ * \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). * \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). * \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). * \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). * \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. * \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) * \"The Post-American Internet,\" a geopolitical sequel of sorts to *Enshittification*, Farrar, Straus and Giroux, 2027 * \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 * \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2027 * \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: * “Once Is Enemy Action,” a science fiction novel about the origins of modern technofascism. Today's words: 529 (22924 total). * \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Fourth draft completed. Submitted to editor. * A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "54b224d88c2cb093e4442079e2245e7b818c59637cbdbe17983773b6b6b6f6d9",
+      "ref_id": "0",
+      "recommendationScore": 20,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "一篇个人博客，内容涉及消费者权益和互联网社会议题，与科技主题关联度低。",
+      "reason": "主题与技术博客的核心关注点（AI, 编程工具等）不符，技术深度和实用性较低。",
+      "tags": [
+        "消费者权益",
+        "社会议题",
+        "个人博客"
+      ]
+    },
+    {
+      "title": "Visa, Mastercard, major banks facing new litigation over 'anticompetitive' fees",
+      "link": "https://www.classaction.org/news/visa-mastercard-major-banks-facing-new-litigation-over-anticompetitive-merchant-credit-card-transaction-fees",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-07T15:09:59.000Z",
+      "summary": "Article URL: https://www.classaction.org/news/visa-mastercard-major-banks-facing-new-litigation-over-anticompetitive-merchant-credit-card-transaction-fees\nComments URL: https://news.ycombinator.com/item?id=49993914\nPoints: 397\n# Comments: 249",
+      "id": "80bbf9b00ca18f190748f4bbc37a49fecdb5034337bee48b28aa267a62b57fe5",
+      "ref_id": "4",
+      "recommendationScore": 15,
+      "popularityScore": 80,
+      "priority": "low",
+      "comment": "关于Visa、Mastercard等主要银行面临反垄断诉讼的商业法律新闻。",
+      "reason": "主题为金融与法律新闻，与科技博客的核心主题（AI、Apple生态、编程工具等）关联度极低。",
+      "tags": [
+        "Finance",
+        "Legal",
+        "Business"
+      ]
+    },
+    {
+      "title": "Quoting Jake Boggan",
+      "link": "https://simonwillison.net/2026/Oct/7/jake-boggan/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-10-07T04:47:55.000Z",
+      "summary": "",
+      "id": "56224676afd39a97cbcee0d6b95a62c8021b031b4adfd85623c56ff7c2b117be",
+      "ref_id": "3",
+      "recommendationScore": 15,
+      "popularityScore": 5,
+      "priority": "low",
+      "comment": "标题过于模糊，且无内容，无法评估其具体主题、价值和与科技领域的关联性。",
+      "reason": "缺乏足够信息判断其与任何优先级主题的关联性或实用性，因此推荐度极低。",
+      "tags": [
+        "未知",
+        "引用"
+      ]
+    },
+    {
+      "title": "llm-openai-decisions 0.1a0",
+      "link": "https://simonwillison.net/2026/Oct/6/llm-openai-decisions/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-10-06T23:04:13.000Z",
+      "summary": "",
+      "id": "62c509640c5df97d86096bb9841c3726697f5a9e552cf7cec442e678fd13253c",
+      "ref_id": "1",
+      "recommendationScore": 15,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "标题指向AI和LLM工具开发，主题优先级极高，但内容缺失。",
+      "reason": "文章主题（LLM、OpenAI、编程工具）高度符合最高优先级，但因无实际内容，无法评估其质量，推荐分数低但潜在受欢迎度高。",
+      "tags": [
+        "AI",
+        "LLM",
+        "OpenAI",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "llm-mistral 0.16",
+      "link": "https://simonwillison.net/2026/Oct/6/llm-mistral/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-10-06T21:32:34.000Z",
+      "summary": "",
+      "id": "1244a96b60ce187188fe2460b09dd9e958288e86ebd6dd8ab8fb4f19bf629b83",
+      "ref_id": "2",
+      "recommendationScore": 15,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "标题明确关于AI领域的LLM模型，主题优先级极高，但内容缺失。",
+      "reason": "文章主题（LLM、Mistral）高度符合最高优先级，但因无实际内容，无法评估其质量，推荐分数低但潜在受欢迎度高。",
+      "tags": [
+        "AI",
+        "LLM",
+        "Mistral",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "Why were Victorian elites so effective?",
+      "link": "https://worksinprogress.co/issue/the-seven-vices-of-highly-effective-victorians/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-07T15:09:33.000Z",
+      "summary": "Article URL: https://worksinprogress.co/issue/the-seven-vices-of-highly-effective-victorians/\nComments URL: https://news.ycombinator.com/item?id=49993908\nPoints: 45\n# Comments: 90",
+      "id": "3983fbb72a3c3a77b6c7484c253bd1f18c7d08b2ccedb222e17e7b3a820f690f",
+      "ref_id": "0",
+      "recommendationScore": 10,
+      "popularityScore": 25,
+      "priority": "low",
+      "comment": "这是一篇与科技主题无关的历史社会学文章。",
+      "reason": "内容不符合关注的科技主题优先级。",
+      "tags": [
+        "历史",
+        "社会学",
+        "文化研究"
+      ]
+    },
+    {
+      "title": "How to read code",
+      "link": "https://seangoedecke.com/how-to-read-code/",
+      "source": "seangoedecke.com",
+      "publishedAt": "2026-10-07T00:00:00.000Z",
+      "summary": "",
+      "id": "9fba824383c28abf118635050388020881073af526eb96eaf0105cd2a07760b4",
+      "ref_id": "3",
+      "recommendationScore": 10,
+      "popularityScore": 50,
+      "priority": "medium",
+      "comment": "标题涉及编程技巧，但内容为空，无法评估。",
+      "reason": "文章主题与编程工具和技能相关，优先级中等，但内容缺失，无法进行有效评估。",
+      "tags": [
+        "编程",
+        "学习指南"
+      ]
+    },
+    {
+      "title": "The Mathocalypse",
+      "link": "https://scottaaronson.blog/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-07T19:42:14.000Z",
+      "summary": "Article URL: https://scottaaronson.blog/\nComments URL: https://news.ycombinator.com/item?id=49997831\nPoints: 6\n# Comments: 0",
+      "id": "b7160de8b18f07e7e1c3eae168b58137c657e0f8fb12b867c51ce45e98db0f1c",
+      "ref_id": "2",
+      "recommendationScore": 5,
+      "popularityScore": 5,
+      "priority": "low",
+      "comment": "此文章链接指向博客主页且热度极低，疑似为重复提交的次优链接。",
+      "reason": "与ref_id '3'内容相同，但链接不准确且缺乏互动，建议忽略此版本。",
+      "tags": [
+        "AI",
+        "重复内容",
+        "理论计算机科学"
+      ]
+    },
+    {
+      "title": "Quoting Victoria Kim",
+      "link": "https://simonwillison.net/2026/Oct/6/victoria-kim/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-10-06T23:58:56.000Z",
+      "summary": "",
+      "id": "d1e512dab3854dc0079a01499cd095ecdf8c54eba36099bcec2ed22adc80ae33",
+      "ref_id": "0",
+      "recommendationScore": 5,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "内容为空，无法进行任何有效评估。",
+      "reason": "文章内容缺失，无法判断其技术深度、新颖性、实用性或信息密度。",
+      "tags": [
+        "未知"
+      ]
+    }
+  ]
+}
