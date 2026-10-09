@@ -1,0 +1,725 @@
+{
+  "dailySummary": "今日速递：AI前沿引关注。斯坦福学生利用AI设计微型病毒，引发伦理担忧。微软推出AI决策模型，LoRE技术探索大模型参数优化与效率提升。同时，Cloudflare收购Deno，",
+  "articles": [
+    {
+      "title": "Roundtables: A Conversation With the Creator of AI-Designed Viruses",
+      "link": "https://www.technologyreview.com/2026/10/08/1146224/roundtables-a-conversation-with-the-creator-of-ai-designed-viruses/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-10-09T00:08:24.000Z",
+      "summary": "Friday, October 16, 2026 Can AI design new life forms? In 2025, Stanford University PhD student Samuel King came up with a preliminary answer when he used a generative AI model to propose genetic blueprints for microscopic viruses. It isn’t yet an example of AI-generated life, but that could be next. Join senior AI reporter…",
+      "id": "feab0ad4868e3e2ec005e5a61422d345f34eaf3bf567c3b1760ab5bf90e91480",
+      "ref_id": "4",
+      "recommendationScore": 98,
+      "popularityScore": 98,
+      "priority": "high",
+      "comment": "深度聚焦AI在生物工程领域的尖端突破与伦理挑战，开创性极强。",
+      "reason": "内容高度新颖、技术深度极高，涉及AI前沿应用及伦理辩论，具有极高的阅读和讨论价值。",
+      "tags": [
+        "AI",
+        "生成式AI",
+        "生物技术",
+        "伦理",
+        "前沿科学",
+        "AI安全"
+      ]
+    },
+    {
+      "title": "Microsoft-Decision-1, our model for fast decision-making",
+      "link": "https://commandline.microsoft.com/microsoft-decision-1-model-foundry/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-09T18:38:44.000Z",
+      "summary": "Article URL: https://commandline.microsoft.com/microsoft-decision-1-model-foundry/\nComments URL: https://news.ycombinator.com/item?id=50024913\nPoints: 49\n# Comments: 15",
+      "id": "fb900a38eb855015e847ac591032aa6747ce663f78c9fbc01a056d2eedd64913",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 56,
+      "priority": "high",
+      "comment": "微软推出的用于快速决策的AI模型介绍。",
+      "reason": "直接契合AI主题，技术深度高，来自知名大厂的实际应用案例，具有极高的参考价值和实用性。",
+      "tags": [
+        "AI",
+        "决策模型",
+        "微软",
+        "机器学习",
+        "产品管理"
+      ]
+    },
+    {
+      "title": "Show HN: Carrier-Explode: iPhone, Pixel and Galaxy carrier settings decoded",
+      "link": "https://carrierexplode.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-09T18:10:55.000Z",
+      "summary": "Showing off carrier-explode, one of my side projects that continuously archives carrier settings for all major phone brands.\ncarrier-explode also contains decoders and explanations for all the common baseband configurations, etc.\nThere’s still quite a bit of work to be done in checking my assumptions, but the tool has already been proven useful for a few enthusiast groups.\nComments URL: https://news.ycombinator.com/item?id=50024499\nPoints: 104\n# Comments: 13",
+      "id": "64581bfda36978c6945c89f02ed3f16ee1b15e52288dbc7da963334c2cebb48b",
+      "ref_id": "1",
+      "recommendationScore": 90,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "一个深入探索手机运营商设置的独特工具，对技术爱好者和开发者极具价值。",
+      "reason": "技术深度高，新颖性强，对Apple生态和编程工具主题有直接关联，且实用性突出。",
+      "tags": [
+        "Apple生态",
+        "编程工具",
+        "手机技术",
+        "逆向工程",
+        "自动化"
+      ]
+    },
+    {
+      "title": "Cloudflare acquires Deno",
+      "link": "https://deno.com/blog/cloudflare",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-09T13:03:48.000Z",
+      "summary": "Article URL: https://deno.com/blog/cloudflare\nComments URL: https://news.ycombinator.com/item?id=50019911\nPoints: 889\n# Comments: 481",
+      "id": "212e9120a76a6fc27002c51fd07aba2a4b0425372a3d150a7c758e5d8b0c03c2",
+      "ref_id": "4",
+      "recommendationScore": 90,
+      "popularityScore": 100,
+      "priority": "medium",
+      "comment": "Cloudflare收购Deno的消息震动了开发者社区，对编程工具和云原生生态有重要影响。",
+      "reason": "这篇新闻具有高新颖性和实用性，直接关联编程工具和自动化主题，对开发者和行业有重要意义。",
+      "tags": [
+        "编程工具",
+        "收购",
+        "Deno",
+        "Cloudflare",
+        "前端",
+        "后端",
+        "云原生"
+      ]
+    },
+    {
+      "title": "Fun with low-rank vocab matrices (and a bonus test loss reduction?)",
+      "link": "https://www.gilesthomas.com/2026/10/low-rank-vocab-matrices",
+      "source": "gilesthomas.com",
+      "publishedAt": "2026-10-09T16:00:00.000Z",
+      "summary": "I was nerdsniped!  On the HF discussion page for one of the\nmodels I created for my previous post,\nAndrewThompson1233\nasked if I'd considered trying out factorised embeddings\n-- something he's using for his model, Maba, and which was previously used in some other models, like\nALBERT.\nIt's a really nifty idea; you use a similar trick to LoRA as a way of reducing the\nnumber of parameters used for your embeddings and your output head.  And for small\nmodels, those can be  a disproportionate number of the total.\nFor example, with my 163 million parameter GPT-2 small-style models, the embeddings\nare about 39 million of them; the output head is\nthe same size, so with those two taken together,\nthat's half the model just getting stuff in and out rather than actually doing the\nthinking.  Even if you use weight tying, like the original GPT-2 models did, you'll\nwind up spending 30% of your \"budget\" on the single matrix shared between embeddings\nand the output head.\nSimilarly, while larger models have a smaller percentage spent that way, even medium-sized MoE models\ncan wind up spending a lot of the active\nparameters on embeddings; I calculated\nthat for Qwen 3.6 35B MoE, with 3B active parameters, there were about 1B of them used\nacross both the input embeddings and the output head.\nSo anything that can reduce that -- so long as it doesn't come at a high cost in terms\nof the model's capabilities -- is worth considering.  You save on your parameter count,\nwhich either means smaller models and potentially quicker training, or allows you to \"invest\" the savings\nin more thinking parameters -- that is, a wider network with a higher embedding dimensionality,\nor a deeper one with more layers.\nAndrew reported that the impact of using this trick was minimal:\nAt rank 128 on a 50k vocabulary, the penalty on validation cross-entropy is\n  negligible (typically within +0.02 to +0.04 loss, or <0.5 perplexity delta).\nNow, that suggests that he's getting a loss of around 2.5 (that being the point\nwhere a loss increase of 0.04 implies a perplexity change of 0.5), which is much lower than\nI typically get with my\nGPT-2 architecture (3.5 is more like it for me), but still, perhaps I'd get good numbers too?\nI decided to train a few models to see what happened.\nThe results were interesting!  I found that using this trick on both the embeddings\nand the output head caused a somewhat larger increase in loss than Andrew described\n -- about 0.07 in my first test, 0.10 in the second, and\n0.14 in the third.  Those are relatively large,\nthough potentially recoverable from further training or larger models.\nBut more surprisingly, I found that using the trick on the input embeddings only\nseemed to reduce test loss.  Before I'd started, I'd expected it to be less harmful\non the input side than it was on the output side, but seeing an improvement was certainly\nunexpected.  Getting loss down by reducing your number of parameters is not what normally\nhappens!\nSo, it's definitely worth digging in a bit.  Let's start with the theory: what are these factorised embeddings, and how do they work?  Like LoRA, they rely on\nlow-rank factors, so firstly I'll define those.\nLow-rank factors\nOur models are made up of a large set of matrices -- embeddings, output heads, attention\nweights, FFN linear layers, and so on.  Making them smaller obviously reduces the number\nof parameters for the model, though you would expect it to come at a cost.  The idea behind\nlow-rank factors is that you can replace a larger matrix with two smaller ones that will\ncontain most of the important information.\nImagine that you've got a matrix of size m×n.  Now, from matrix multiplication,\nwe know that if you multiply an m×r matrix by an r×n one, you'll get\na result that is m×n.  If we do that, then we've factorised the matrix (in the\nsame way as we might factorise 12 into 3 and 4 because 3×4=12), and the value r is referred to (logically enough) as the rank of the factorisation.\nIf r is sufficiently smaller than m and n, then\nthese two matrices -- the low-rank factors -- combined will contain fewer parameters than the full matrix.\nLet's make this specific, using the output head of\na GPT-2 style model without weight tying.  It takes in the embeddings that result from\nthe Transformer layers (after normalisation), and converts them into logits across\nthe vocabulary.  For the GPT-2 small size, our embeddings are 768-dimensional, and the\nvocab size is 50,257 tokens.  So when we use a linear layer to do that mapping, it\nhas 768×50257=38597376 parameters.\nIf we were to replace it with two matrices -- say, one of 768×128 and one\nof 128×50257, then combined they would take\nup 768×128+50257×128=98304+6432896=6531200 parameters.  That\nis almost six times smaller!\nSo: the idea is that instead of creating our model with an m×n matrix, we\ncreate it with a pair, m×r and r×n, and train those instead.  If all goes\nwell, that pair will be almost as capable of learning what we want as the full one would\nhave been, so we'll get results that are close enough.\nThe maths and the implementation work out simply, too.  For a linear layer with no bias,\nwe can write the matrix multiplication that takes our inputs X and a weight matrix W, and\nproduces an output Z, like this: 1\nZ=XW\n\nNow, if we're using a pair of low-rank factor matrices A and B instead of a full one, W, we can say the\n\"virtual\" weights we want to use for the calculation are W′ such that:\nW′=AB\n\nSo that means that our calculation for this neural network is this:\nZ=X(AB)\n\nMatrix multiplication is associative, which means that you can rewrite that as:\nZ=(XA)B\n\n...which hopefully you can see is the same as feeding X through a layer\nusing A as its weights, and then feeding the result through a second one using B.  In\ncode, you've taken something like this:\n        out_head = nn.Linear(d_emb, vocab_size, bias=False)\n        ...\n        logits = out_head(embeddings)\n\n...and replaced it with this:\n        out_head_A = nn.Linear(d_emb, r, bias=False)\n        out_head_B = nn.Linear(r, vocab_size, bias=False)\n        ...\n        intermediate = out_head_A(embeddings)\n        logits = out_head_B(intermediate)\n\nIt's probably intuitively obvious, though, that this comes at a cost.  If you have\nfewer parameters then you can store less information, so this part of your model\nis \"dumber\".  If it's not clear, though, imagine that r in the code above was one.\nYou would be taking the (for GPT-2 small) 768-dimensional embedding, converting it\nto a single number, and then expanding that single number out to a 50,257-dimensional\nset of logits.  Stuff is going to get lost -- the idea behind low-rank factors is that,\nso long as you choose an appropriate value for r (which is often referred to as the\nwidth of the low-rank bottleneck), you won't lose the important stuff.\nThis works surprisingly well in many cases -- in particular, LoRA, which allows you to\nfine-tune models that are too hard to fully train on your hardware, or to fine-tune them faster,\nuses it to easily train something like low rank factor \"diffs\" to your weight matrices 2.\nBut for this post, we'll try the simplest version: what if we replace both the input embeddings and the output head -- the vocabulary\nmatrices -- in their entirety with low-rank bottlenecks?\nIntroducing LoRE\nLow-rank factorisation of the vocabulary matrices is a bit of a\nmouthful, so based on the name \"LoRA\", I decided to call this trick LoRE, for low-rank embeddings.\nIt's not strictly accurate (after all, we're doing it both to the embedding matrix\nat the start of the LLM and to the output head at the end), and I don't expect it\nto take off, but I rather like it and will use it in this post :-)\nThe argument behind it is that the embeddings are just a simple lookup table, so are\nexactly the kind of place you'd expect to be able to make savings by only considering\nthe important parts of our huge matrix; the same might apply to the output head at\nthe end, though personally I was less convinced by this part.\nIt's worth looking into that asymmetry a bit.  My intuition was that while embeddings\nreally are a lookup table, the output head is doing something a bit more subtle.  It's\nprojecting from the continuous embeddings that come out of our Transformer layers into\nlogits, which we interpret (via softmax) as a probability distribution over possible next\ntokens.  That's a significantly less simple job than mapping from \"cat\" to\nthe appropriate embedding: as a (simplified) example, if you have an embedding that means\nsomething adjacent to \"cat\", \"dog\", \"gerbil\", \"household pet\" and so on, then projecting\nthat to the appropriate values for the next token is non-trivial. 3\nStill, implementation-wise, it was really simple.  I decided to extend the PyTorch code that\nI had from Sebastian Raschka's book\n\"Build a Large Language Model (from Scratch)\",\nby adding an optional lore section to the model config JSON.  This would allow us\nto switch on LoRE mode for the input embeddings and the output head independently,\nand would specify the rank -- that is, the r in the section above, which says how wide\nthe low-rank bottleneck between matrices A and B would be.\nSo, in code, my first cut changed this:\n        self.tok_emb = nn.Embedding(cfg[\"vocab_size\"], cfg[\"emb_dim\"])\n\n...to this:\n        if \"lore\" in cfg and cfg[\"lore\"].get(\"input_embeddings\", False):\n            self.tok_emb = nn.Sequential(\n                nn.Embedding(cfg[\"vocab_size\"], cfg[\"lore\"][\"rank\"]),\n                nn.Linear(cfg[\"lore\"][\"rank\"], cfg[\"emb_dim\"], bias=False)\n            )\n        else:\n            self.tok_emb = nn.Embedding(cfg[\"vocab_size\"], cfg[\"emb_dim\"])\n\n...and this:\n        self.out_head = nn.Linear(\n            cfg[\"emb_dim\"], cfg[\"vocab_size\"], bias=False\n        )\n\n...became this:\n        if \"lore\" in cfg and cfg[\"lore\"].get(\"output_head\", False):\n            self.out_head = nn.Sequential(\n                nn.Linear(\n                    cfg[\"emb_dim\"], cfg[\"lore\"][\"rank\"], bias=False\n                ),\n                nn.Linear(\n                    cfg[\"lore\"][\"rank\"], cfg[\"vocab_size\"], bias=False\n                ),\n            )\n        else:\n            self.out_head = nn.Linear(\n                cfg[\"emb_dim\"], cfg[\"vocab_size\"], bias=False\n            )\n\nThat in itself was a perfectly reasonable implementation of the underlying concept.\nBut it had a problem.  I wanted to compare the loss with and without LoRE, and also\nfind out what the effects of input embedding-only and output-head-only LoRE would be.\nBut I've found in other experiments that the initial random weights that my models start with\ncan have a significant effect on the loss that the resulting model gets.  The code\nabove would give quite different random weights with different configurations.  The fix was\nsimple, though:\n        if \"lore\" in cfg:\n            lore_tok_emb = nn.Sequential(\n                nn.Embedding(cfg[\"vocab_size\"], cfg[\"lore\"][\"rank\"]),\n                nn.Linear(cfg[\"lore\"][\"rank\"], cfg[\"emb_dim\"], bias=False)\n            )\n        normal_tok_emb = nn.Embedding(cfg[\"vocab_size\"], cfg[\"emb_dim\"])\n        if \"lore\" in cfg and cfg[\"lore\"].get(\"input_embeddings\", False):\n            self.tok_emb = lore_tok_emb\n        else:\n            self.tok_emb = normal_tok_emb\n\n        ...\n\n        if \"lore\" in cfg:\n            lore_out_head = nn.Sequential(\n                nn.Linear(\n                    cfg[\"emb_dim\"], cfg[\"lore\"][\"rank\"], bias=False\n                ),\n                nn.Linear(\n                    cfg[\"lore\"][\"rank\"], cfg[\"vocab_size\"], bias=False\n                ),\n            )\n        normal_out_head = nn.Linear(\n            cfg[\"emb_dim\"], cfg[\"vocab_size\"], bias=False\n        )\n        if \"lore\" in cfg and cfg[\"lore\"].get(\"output_head\", False):\n            self.out_head = lore_out_head\n        else:\n            self.out_head = normal_out_head\n\nWith that code, so long as there is any LoRE config, we create the same weights\nregardless of whether it's used in the input embeddings or the output head.  I would\nneed to train a baseline which had config for LoRE but just had both input_embeddings and\noutput_head set to False there -- that would actually be a normal, non-LoRE model\nbut would have the same initial random weights in any parts that it shared with an\nequivalent model that did use LoRE.\nAdditionally, Andrew had said that we need to be careful about initialisation:\nThe main failure mode to watch for during training is early gradient spikes:\n  scaling the bottleneck projection initialization to 1 / sqrt(r) keeps variance\n  uniform and ensures training dynamics match the full-rank baseline from step 1.\n...and later:\nKeep standard GPT-2 init on the embedding table, but scale the inner linear projection matrices by std = 1.0 / math.sqrt(128).\n(The 128 in there is because we were talking about a setup with r=128, which is\nactually what I wound up using.)\nNow, I was using PyTorch's default initialisation rather than the classic GPT-2\nsetup, but I went ahead and added a smart_initialize flag to handle the scaling as\nAndrew described: if it was set, then right at the\nend of the model creation I applied the initialisation\nto the low rank factor matrices that were innermost in my model (as in, closest to\nthe Transformer layers):\n        if \"lore\" in cfg:\n            if cfg[\"lore\"].get(\"smart_initialize\", False):\n                nn.init.normal_(\n                    lore_tok_emb[1].weight,\n                    mean=0.0,\n                    std=1.0 / math.sqrt(cfg[\"lore\"][\"rank\"])\n                )\n                nn.init.normal_(\n                    lore_out_head[0].weight,\n                    mean=0.0,\n                    std=1.0 / math.sqrt(cfg[\"lore\"][\"rank\"])\n                )\n\nEven though that was not run for every configuration, because it happened right at\nthe end of the model creation, it would not affect the other weights, so I figured\nthat it would be safe.\nYou can see the full diff from the normal GPT-2 code here.\nThose changes looked correct to me, and I asked GPT-6 Astra (on \"extra high\" thinking)\nto confirm that it looked right to it in the context\nof the discussion, which it did.  That done, I double-checked with Andrew,\nas I really wanted this to be a clean attempt at a repro of his results.  He confirmed,\nso it was time to train some models!\nThe first training runs\nI decided that I wanted five training runs to check this out thoroughly:\nA baseline.  As I said earlier, the LoRE stuff would have an effect on the randomness\nused for the initial weights, so I wanted to train one model with LoRE \"enabled\"\nbut not actually used.  Config: model.json,\ntrain.json.\nA model trained with LoRE enabled on both the input embeddings and the output\nhead, but without the smart initialisation of the low-rank matrices.  This was\nsimply to confirm to myself that it was required.   Config: model.json,\ntrain.json.\nA model with LoRE on both ends, with the smart initialisation -- essentially,\nwhat Andrew had described.   Config: model.json,\ntrain.json.\nA model with LoRE on the input embeddings only, using smart initialisation if that had\nturned out to be necessary, and not using it if it had not.  I deliberately made\nthe config invalid, using TODO instead of true or false for the\nsmart_initialize flag, so that I'd be reminded to fill those in later.\nConfig: model.json,\ntrain.json.\nA model with LoRE on the output head only, with smart initialisation the same as with (4).\nConfig: model.json,\ntrain.json.\nTo save time, I decided to train them in the cloud: the first three, and then the last two,\nin two batches of parallel runs.  I used 8x A100 machines with 40 GiB VRAM per GPU on Lambda.  I'll break\nwith my normal tradition of giving detailed runthroughs of each training run,\nas there are (spoiler) quite a lot of them in this post!  However, for reproducibility,\nthe commands I ran for each one looked like this:\ngit clone https://github.com/gpjt/ddp-base-model-from-scratch.git\ncd ddp-base-model-from-scratch/\ngit checkout lore-experiment\n./setup_lambda.sh\nuv sync\nuv run torchrun --nproc_per_node=8 ddp_train.py 8xa100m40-lore-1-baseline-disabled datasets\n\n...with the run ID, 8xa100m40-lore-1-baseline-disabled, replaced with the appropriate\none for the given run settings.\nHere are the results from the first three runs: the baseline, and the ones with\nLoRE at both ends, with and without smart initialisation.  The model name links go to\nthe uploaded models on Hugging Face.\nModel\n  Parameters\n  Training time (s)\n  Initial training loss\n  Final training loss\n  Test loss\n  Cost (US$)\n\n\n\n\n  8xa100m40-lore-1-baseline-disabled\n  163,009,536\n  9,339\n  10.992\n  3.579\n  3.599611\n  43.96\n\n\n  8xa100m40-lore-2-both-ordinary-init\n  98,877,184\n  8,057\n  10.89\n  3.703\n  3.723328\n  38.55\n\n\n  8xa100m40-lore-3-both-smart-init\n  98,877,184\n  est. 8,100\n  11.865\n  unknown\n  3.671585\n  41.44\n\n\n\n\nYou can see that I had some issues with the last run; there were shortages of available\ninstances, and I wound up starting one in Japan.  Connectivity to it from my home in\nPortugal was really slow and unreliable; when I tried to download the model after the training run,\nscp was predicting 10 hours (which at the machine's cost of US$15.92/hour would have been insane).  However,\nI was able to copy it to my PythonAnywhere account\nquickly, perhaps because that is in a US Amazon datacenter and had better connectivity to Japan, and then I could copy it from\nthere to my machine, again quite quickly.  Unfortunately while scrabbling around with that I didn't capture\nall of the output.\nStill, the important data at this stage was in the test loss column.  As expected,\nusing LoRE made the test loss worse.  And smart initialisation did seem to help reduce that\npenalty.\nThe loss delta, at +0.07, was worse than the +0.02 to +0.04 that Andrew described\nin his message, but not wildly different -- certainly small enough that it seemed\nplausible that you could recover it, and perhaps more, by investing the 64M parameter\ndifference in a deeper or wider model.  Promising!\nThe cost and time savings were real, too: the\nrun in Japan had its cost bumped up by all of the woes I had copying the model down,\nso the 8xa100m40-lore-2-both-ordinary-init one is the best indication: US$38.55 rather than\nUS$43.96, so a saving of more than 10%.  And while going down from a bit more than 2h30m\nto 2h14m might not seem like much, with a larger model or a longer training run, an almost 14% reduction\ncould be valuable in and of itself.  (And that's not even considering the alternative of\n\"reinvesting\" the saved parameters in larger models.)\nSo that was pretty good news!  It was time to do the ablation runs to see whether\nhaving LoRE just on the token embeddings, or just on the output head, made things\nany different.  I switched the smart_initialize setting for the remaining two\nmodels to true, and kicked them off.\nModel\n  Parameters\n  Training time (s)\n  Initial training loss\n  Final training loss\n  Test loss\n  Cost (US$)\n\n\n\n\n  8xa100m40-lore-4-input-only\n  130,943,360\n  9,225\n  10.978\n  3.505\n  3.526610\n  44.83\n\n\n  8xa100m40-lore-5-output-only\n  130,943,360\n  8,202\n  11.817\n  3.717\n  3.737128\n  41.59\n\n\n\n\nNow, there's a bunch of interesting stuff in there, but let's focus on the test\nloss.  My lab notes for this bit say \"well, that's a bit of a shocker!\"\nQuite amazingly -- at least to me -- we got lower test loss with the input-only LoRE,\nwith 3.526610, than we did with the no-LoRE baseline, which got 3.599611.\nThings get even more interesting when you compare the different versions (excluding\nthe non-smart-init) against each other, in terms of their difference from the no-LoRE\nbaseline (which I'll call the delta for conciseness below).  Rounding to 3dps:\n\n  Output LoRE off\n  Output LoRE on\n\n\n\n\n  Input LoRE off\n  -\n  0.138\n\n\n  Input LoRE on\n  -0.073\n  0.072\n\n\n\n\nIf you add the two single-LoRE loss deltas together -- the 0.138 and the -0.073 --\nyou get 0.065, which is surprisingly close to the delta of 0.072 for the dual-LoRE option, just\n0.007 away.\nCould we be looking at two almost independent effects, one for each option of where to\napply the LoRE?  And was that apparent benefit of the input-only LoRE a real thing?\nOr was it due to chance -- perhaps we had \"good luck\" when initialising the LoRE weights,\nand \"bad luck\" when initialising the non-LoRE ones.  If there was an overlap between\nthe best loss you could get with LoRE and the worst loss you could get without, then\nthis result could be within the noise.\nI decided I was going to do a second batch of training runs to see if I could get\nevidence one way or the other.  But before we get into that, it's worth taking a look at\nsome of the other numbers in those two tables.\nFirstly, let's take a look at the training time.  The training machines looked\nlike they were running at close to 100% during all of the runs, so tentatively let's\nassume that time taken is proportional to compute.  Unsurprisingly, the baseline run\ncame in with the longest time, at 9,339s.  And equally unsurprisingly, the full-LoRE run\nthat we have timing for was much faster, at 8,057s.\nIt certainly makes sense that replacing big matrices with pairs of (much)\nsmaller low-rank factors will mean fewer calculations on both the forward and the backward\npass, meaning that the training run is faster.\nThere was something that initially surprised me with the single-LoRE runs.  Using\nLoRE on the output head sped things up quite a lot, but input embedding LoRE had much\nless effect.\nHowever, after thinking about it a bit, it became clear what was going on.  An embedding\nmodule in a network is actually really quick to run, both on the forward and backward pass.\nWhile I like to think of embeddings as conceptually being a projection of a one-hot\nvector in vocab space into embedding space via a matrix multiplication, and I still think\nthat's an excellent model of interpreting what's going on, in practice it's just something\nmuch more like an array lookup, with almost zero cost.  Likewise on the backward pass,\nwe only need to work out gradients for the chosen embedding, so that should be faster too.\nIndeed, with that all in mind, it might not have been surprising if input-only LoRE\nhad turned out to be a bit slower than the baseline, as it, at least, needed to do\nforward and backward passes through actual matrices, even though they were fairly small.\nDoing another of those delta tables, the time difference in seconds (using the\n\"ordinary init\" run for the both-on number):\n\n  Output LoRE off\n  Output LoRE on\n\n\n\n\n  Input LoRE off\n  -\n  -1,137\n\n\n  Input LoRE on\n  -114\n  -1,282\n\n\n\n\nYou can see that if you add the delta of the single-LoRE options, you get -1,251,\nwhich is pleasingly close to the delta of the dual-LoRE one.  And that is much less\nsurprising than the loss result -- with training compute, you really would expect\nimprovements like this to be additive.\nFinally, there was something interesting in the initial training loss.  Because my\ntraining code prints out the loss it got on the first global step, I decided to note it down.\nThere's something in this data that will become important later: in both of the training\nruns with LoRE on the output head and smart initialisation, it went up noticeably.\nNormally, the initial training loss on my GPT-2-style models is a bit less than 11.  This\nfits in well with the architecture; you'd expect that a model that was predicting tokens\npurely randomly (well, strictly, uniformly) would have a perplexity roughly equal to the vocab size; the vocab\nsize for the GPT-2 tokeniser is 50,257, and loss is the natural logarithm of perplexity,\nso that implies a loss of roughly 10.82.\nBut both of those smart-init models with LoRE on the output head had an initial loss about\none point higher, at 11.865 and 11.817, meaning that they were significantly worse than\nrandom.  What might be going on here?  We'll find out later :-)\nAnyway, for now, that was an interesting set of results.  I wanted to dig in more; in particular, would that\nsurprising improvement of test loss for the input-only LoRE model reproduce if I tried\nagain with a different random seed?\nThe second set of models\nI had two working hypotheses at this point; either\nWhat we were seeing was due to luck of the draw with the random initialisation\nof the weights -- good luck with LoRE, bad luck without.\nThere really was an effect here: input-only LoRE actually improved test loss in the\nresulting model.\nA solid and simple test to try to distinguish between these was just to train another\nset of models, with a different random seed.  If I got the same kind of results, input LoRE beating\nnon-LoRE, that\nwould be evidence in favour of (2) rather than (1), whereas if\nthings changed, it would work the other way.\nI decided not to bother with a non-smart-init model this time, so I set things up for\nfour new models.  My training code uses a random seed of 42\nby default, but allows it to be overridden in the train.json config file, so I decided\nto use 123 for these, and created:\nA new baseline with no LoRE.  Config: model.json,\ntrain.json.\nAn input-only LoRE.  I wanted to run this one as the first non-baseline one, because\nif it got worse (higher) loss than the baseline, then it would look rather\nlike the effect I'd previously seen was due to random weight initialisation,\nso I might want to consider stopping there.\nConfig: model.json,\ntrain.json.\nIf I decided to continue, the next one would be LoRE on both the input and output sides.\nConfig: model.json,\ntrain.json.\nFinally, I'd do an output head LoRE only one.  Config: model.json,\ntrain.json.\nOnce I had the config together, it was time to train the models -- but it was hard to\nget available instances on Lambda.  I wound up having to use my lambda-manager\nscript to start things up, but after a few hours I got an alert on my phone that I had\ninstances running, and could kick things off.\nThe second training run with input-only LoRE came in with a test loss that once again\nbeat the baseline, so I did the full set of runs, and here are the results:\nModel\n  Parameters\n  Training time (s)\n  Initial training loss\n  Final training loss\n  Test loss\n  Cost (US$)\n\n\n\n\n  8xa100m40-lore-6-new-seed-baseline-disabled\n  163,009,536\n  9,409\n  11.006\n  3.577\n  3.597584\n  45.03\n\n\n  8xa100m40-lore-7-new-seed-input-only\n  130,943,360\n  9,163\n  10.989\n  3.563\n  3.584511\n  43.03\n\n\n  8xa100m40-lore-8-new-seed-both-smart-init\n  98,877,184\n  8,102\n  11.829\n  3.678\n  3.698644\n  37.91\n\n\n  8xa100m40-lore-9-new-seed-output-only\n  130,943,360\n  8,192\n  11.806\n  3.693\n  3.712537\n  38.32\n\n\n\n\nAnother matrix of deltas against the baseline:\n\n  Output LoRE off\n  Output LoRE on\n\n\n\n\n  Input LoRE off\n  -\n  0.115\n\n\n  Input LoRE on\n  -0.013\n  0.101\n\n\n\n\nSo, once again, input-only LoRE improved test loss (though at -0.013, it\nwas a smaller effect than the -0.073 the previous set of models had).\nAnd once again, the sum of the input-only and output-only LoRE deltas was close\nto the combined-LoRE model's -- indeed it was even closer, 0.102 being just\n0.001 away from 0.101.\nThe training time results and the higher initial training loss for models with\nLoRE on the output head also held up, which was good to see.  So at this point it\nwas time to wrap things up -- or was it?\nThe smart_initialize problem\nWhile I was doing the second batch of training runs, I started writing up this\nexperiment.  As I normally do, I ran a draft past various AI\nmodels, and Claude Opus 5.5 on max thinking spotted something.\nAndrew had written:\nKeep standard GPT-2 init on the embedding table, but scale the inner linear projection matrices by std = 1.0 / math.sqrt(128).\nI'd interpreted that \"inner\" as meaning that the \"innermost\" matrices in our low rank\nfactors -- the ones that were closest to the Transformer layers -- should be initialised\nas he said, with values drawn from a normal distribution with a\nstandard deviation of 1/r, and a mean of zero.\nSo that implied the second matrix in the\nembeddings, and the first one in the output head:\n        if \"lore\" in cfg:\n            if cfg[\"lore\"].get(\"smart_initialize\", False):\n                nn.init.normal_(\n                    lore_tok_emb[1].weight,\n                    mean=0.0,\n                    std=1.0 / math.sqrt(cfg[\"lore\"][\"rank\"])\n                )\n                nn.init.normal_(\n                    lore_out_head[0].weight,\n                    mean=0.0,\n                    std=1.0 / math.sqrt(cfg[\"lore\"][\"rank\"])\n                )\n\nClaude felt that it should be the second low-rank factor in both cases -- that is,\nwe should change\n                    lore_out_head[0].weight,\n\n...to\n                    lore_out_head[1].weight,\n\nIt made a very good case for doing things that way, and digging into that is useful because\nit changes this \"smart\" initialisation from being a blindly-implemented \"secret sauce\"\ninto something actually meaningful.\nLet's imagine that we're not using LoRE, and consider the output head only.  It is\na PyTorch nn.Linear,\nwhich means that:\n...the values are initialized from 𝒰(−k,k),\n  where k=1in_features\nSo, we have a matrix, which we can call W, that is full of numbers drawn from that probability distribution --\na uniform (flat) distribution within the range from −k to k.\nFor LoRE, we're replacing W with two separate matrices, which we'll call A and B:\n            self.out_head = nn.Sequential(\n                nn.Linear(\n                    cfg[\"emb_dim\"], cfg[\"lore\"][\"rank\"], bias=False\n                ),\n                nn.Linear(\n                    cfg[\"lore\"][\"rank\"], cfg[\"vocab_size\"], bias=False\n                ),\n            )\n\nLet's say that W is shaped m×n, which means that A is m×r,\nand B is r×n.  We want the combined effect of those two\nmatrices W′=AB to start off with random numbers that look like -- in terms of\ntheir randomness -- the full matrix W.\nBut what do the numbers actually look like in our \"virtual\" matrix W′ with the code above?  On the face of it,\nit sounds unlikely to be anything like the probability distribution for W.  After\nall, W was initialised based on a formula that used in_features.\nYou can see that A will have been initialised using the same distribution, as it has\nthe same number of input features, but the\nnumber of input features for B is r, so its random numbers will have been based on\nthat instead.  Their combination into W′ will presumably blend something from each of\nthose two different probability distributions.\nWe can actually work out what that will be.  Maths incoming: click here to skip.\nPer Wikipedia,\nthe variance of the product of two independent random scalar variables (so, not matrices, but\nwe'll come back to that) X and Y is this:\nVar(XY)=(σX2+μX2)(σY2+μY2)−μX2μY2\n\n...where σX2 is X's variance, μX is its mean, and likewise for Y.\nNow, let's say that the mean is zero for both X and Y (like it is for PyTorch's distribution for the initial weights, 𝒰(−k,k)).\nThat simplifies the above:\nVar(XY)=σX2·σY2\n\nHow does that apply to our matrices?\nWell, let's write out how we calculate W′ by multiplying A and B, assuming that m=3, n=4, and r=2:\nW′=AB\n\n=[a0,0a0,1a1,0a1,1a2,0a2,1][b0,0b0,1b0,2b0,3b1,0b1,1b1,2b1,3]\n\nBy normal matrix maths, the value at position 0,0 in the result will be the dot product of the zeroth\nrow in the first matrix (taken as a vector) and the zeroth column in the second:\nW0,0′=(a0,0a0,1)·(b0,0b1,0)\n\n=(a0,0·b0,0)+(a0,1·b1,0)\n\nWe can rewrite that for an arbitrary low rank bottleneck r like this:\nW0,0′=∑x=0r−1a0,x·bx,0\n\n...and even more generally, we can define all of the items in W′ like this:\nWi,j′=∑x=0r−1ai,x·bx,j\n\nSo, every element is the sum of r products, where each product multiplies a number from\nwhatever distribution was used to initialise A's elements by a number from whatever was used\nfor B's.\nUsing the notation from above, A's elements have variance σA2 and B's have variance σB2.\nSo that means that the variance of each component of that sum is σA2·σB2.\nThere are r of them; if you add together independent variables, their variances add,\nso that means that the variance of the elements of our resulting W′ is:\nVar(W′)=r·σA2·σB2\n\nNow, let's remember that our matrix A actually already was initialised in the way\nwe would have liked our non-LoRE version W to have been done.  The distribution of the random initial weights for an nn.Linear is\ndependent entirely on the number of input features -- and of course A has the same number\nof input features as W.\nSo how can we make Var(W′) be σA2?  We need to\nmake σB2=1/r, and then the equation above drops out like this:\nVar(W′)=r·σA2·1r=σA2\n\nNow, let's look at the code (with Claude's correction in there):\n                nn.init.normal_(\n                    lore_out_head[1].weight,\n                    mean=0.0,\n                    std=1.0 / math.sqrt(cfg[\"lore\"][\"rank\"])\n                )\n\nWe're setting the weights on our B matrix to be drawn from a distribution with a standard deviation of 1/r.  SD is, of course,\nthe square root of the variance (which is why we've been using things\nlike σB2 with that squaring in there to represent variance -- σ on its\nown is used for standard deviation).  So the variance of the matrix after we've called\nthat normal_ on it will be 1/r as desired, and W′ will have random initial weights\nwith the same variance as W would have done if we'd created it directly.\nThat's rather satisfying :-)\nSo that's the output head.  How about the input embeddings?  They're\nnn.Embeddings,\nwhich are initialised somewhat differently:\ninitialized from 𝒩(0,1)\nThat's a normal distribution, with a mean of 0 and a variance (and thus also a\nstandard deviation) of 1.  The maths above applied to any distribution with a mean\nof zero -- so the smart initialisation should work for those too.  Our A matrix would\nhave the correct variance, 1, and a mean of zero, and therefore so would AB, given that\n(for embeddings) B already had the smart initialisation.\nSo does that mean that our W′ \"virtual\" matrix created by\nmultiplying A and B is identical in terms of randomness to the matrix W that\nit's replacing?   Well, not quite.\nRemember that the output head had numbers drawn from a uniform distribution, and\nthe embeddings from a normal distribution.  We're multiplying the A matrices that are the\n\"input\" low rank factor matrices by Bs that are initialised from a normal distribution.\nThe variance of the A matrices is maintained by the smart initialisation, as we've\nshown, and the mean (being zero) is going to come through cleanly too.  But the shape will change.\nI did a bit of digging around and it started to feel like\na bit of a rabbit hole, but the one thing I was able to be certain of is that a variable\ndrawn from a uniform distribution multiplied by another from a normal distribution gives a\nresult that is neither uniform nor normal, and that normal times normal gives something\ncalled a normal product distribution (or also a product-normal distribution), which is also\nneither uniform nor normal.\nRemember that each element of our W′ matrix is defined by this:\nWi,j′=∑x=0r−1ai,x·bx,j\n\nSo each one is a sum of r numbers, each of which is drawn from a product normal distribution\n(for embeddings) or from whatever the uniform × normal distribution is called.  What shape\nwould that be?  Again: rabbit hole, but the central limit theorem states (per Wolfram MathWorld):\nthe normalized sum of independent random variates with finite variances approaches a normal distribution\nSo, for large r, we can say that the result is going to be close to a normal distribution. 4\nWhat the smart initialisation does is make sure that our \"virtual\"\nweights, W′=AB, have the same mean and variance as the ones we're trying to\napproximate, W.  But it won't keep the same shape for the distribution that they're drawn from -- certainly not for the output head,\nwhich goes from uniform to normal-ish.  The embeddings are less impacted (though not\ncompletely untouched) because they were normal and are still almost so.\nStill, it's a neat trick!  Was it what Andrew had actually meant?\nCorrecting the smart initialisation\nHaving convinced myself that the smart initialisation code I'd been using was wrong,\nI decided to check with Andrew.  My first thought was that perhaps he was using weight\ntying -- remember, with weight tying, the embedding matrix is just re-used in transposed\nform for the output head.  That would mean that the embeddings would be W′=AB, and\nyou'd use the smart initialisation on B, but the output head -- being that transpose --\nwould use W′T=BTAT for the same B and A, so the smart initialisation would be\nthe other way around.\nBut as it turned out, it was just a miscommunication.\nHe said that he keeps his weights untied, and had been using the word\n\"inner\" in \"inner linear projection matrices\" to mean something different to what I'd\ninterpreted it as.  He confirmed that the real smart init code should always be\napplied to the second matrix, as the maths (and Claude) suggested.\nSo that was a simple change.  You can see the diff here,\nbut in short:\nI changed the smart_initialize config parameter so that instead of just being\nFalse or True, it could be False, \"original\" for the original incorrect\ninterpretation, or \"corrected\" for the fixed one.\nI updated all of the existing training configurations that had smart_initialize set\nto True to be \"original\".\nI added on yet more config for some more training runs to test this, setting\nsmart_initialize to the new \"corrected\" option.\nNow, the good news (both for my own sanity and my wallet) was that testing this fix\nwas not going to require another four training runs.   My training code is essentially deterministic\n-- no dropout or any other randomness is used after the model is created 5.\nBecause the smart initialisation code was at the end of the model creation, and\nsmart initialisation of the output head was right at the end, that meant that changing\nit would not affect any other code that used randomness.\nSo if I did two training\nruns -- with LoRE switched on for the output head only, and with it switched on for both\nembeddings and output -- then those would be \"compatible\" with earlier training\nruns that had no LoRE at all, and that only had it on the embeddings.  You can see\nthe configs here (with no explicit random seed, so they'd use my default of 42):\nBoth: model.json,\ntrain.json.\nOutput-only: model.json,\ntrain.json.\nHere are the results; I've put them into a table with their counterparts from the\noriginal seed-42 training run:\nModel\n  Parameters\n  Training time (s)\n  Initial training loss\n  Final training loss\n  Test loss\n  Cost (US$)\n\n\n\n\n  8xa100m40-lore-1-baseline-disabled\n  163,009,536\n  9,339\n  10.992\n  3.579\n  3.599611\n  43.96\n\n\n  8xa100m40-lore-10-both-corrected-smart-init\n  98,877,184\n  8,069\n  10.987\n  3.722\n  3.741209\n  37.65\n\n\n  8xa100m40-lore-4-input-only\n  130,943,360\n  9,225\n  10.978\n  3.505\n  3.526610\n  44.83\n\n\n  8xa100m40-lore-11-output-only-corrected-smart-init\n  130,943,360\n  8,194\n  10.986\n  3.766\n  3.785209\n  38.19\n\n\n\n\nBefore we look at the test loss, check out that \"Initial training loss\" column.  The\nweirdness that I'd noticed earlier, where that value was much worse than uniform, is gone!\nThat actually makes some kind of sense.  With the smart initialisation on the wrong\npart of the low-rank output head, our variance was completely wrong, and so the model\nwas initially producing particularly bad results. 6\nSo that was promising!  But the test loss results were even more interesting.  In\nour original seed-42 results with the incorrect init, the output-head-LoRE-only model got a test loss of\n3.737128, but here we got 3.785209.  It was actually worse with the corrected smart\ninitialisation!  And that carried through to the result for models with LoRE on both\ninput and output; the original model with the incorrect init got 3.671585, and here\nwe got 3.741209 -- an even bigger worsening.\nCombining those two together, an image I like in terms of the loss landscape is that\npreviously we were starting on a mountain that was near a deep valley -- we started with high loss,\nbut there was a low-loss place nearby.  But with the smart initialisation fixed,\nwe were now starting on a hill with a less-deep valley nearby.\nSo what happens if we do one of our test loss delta tables showing\nhow each model performed against the baseline?\n\n  Output LoRE off\n  Output LoRE on\n\n\n\n\n  Input LoRE off\n  -\n  0.186\n\n\n  Input LoRE on\n  -0.073\n  0.142\n\n\n\n\nIf we add up the effect of the input-only test loss delta of -0.073 and the\noutput-only delta of 0.186, we get 0.113 -- quite different to the delta of\n0.142 that we actually got with them both.  That nice \"additive\" property that\nwe had, where the delta from input LoRE only plus the delta from output LoRE only\nsummed to almost exactly the same as the delta for LoRE on both ends, appears to have\ngone away :-(\nStill, an interesting set of results!  Let's bring everything together.\nThe results\nHere are all of the training runs together in one table.  I've removed the columns for\nthe cost, the end training loss, and the training time to keep things manageable,\nand I've sorted it by the test loss.\nModel\n  Parameters\n  Input LoRE\n  Output LoRE\n  Seed\n  Smart init\n  Initial training loss\n  Test loss\n\n\n\n\n  8xa100m40-lore-4-input-only\n  130,943,360\n  yes\n  no\n  42\n  original\n  10.978\n  3.526610\n\n\n  8xa100m40-lore-7-new-seed-input-only\n  130,943,360\n  yes\n  no\n  123\n  original\n  10.989\n  3.584511\n\n\n  8xa100m40-lore-6-new-seed-baseline-disabled\n  163,009,536\n  no\n  no\n  123\n  none\n  11.006\n  3.597584\n\n\n  8xa100m40-lore-1-baseline-disabled\n  163,009,536\n  no\n  no\n  42\n  none\n  10.992\n  3.599611\n\n\n  8xa100m40-lore-3-both-smart-init\n  98,877,184\n  yes\n  yes\n  42\n  original\n  11.865\n  3.671585\n\n\n  8xa100m40-lore-8-new-seed-both-smart-init\n  98,877,184\n  yes\n  yes\n  123\n  original\n  11.829\n  3.698644\n\n\n  8xa100m40-lore-9-new-seed-output-only\n  130,943,360\n  no\n  yes\n  123\n  original\n  11.806\n  3.712537\n\n\n  8xa100m40-lore-2-both-ordinary-init\n  98,877,184\n  yes\n  yes\n  42\n  none\n  10.89\n  3.723328\n\n\n  8xa100m40-lore-5-output-only\n  130,943,360\n  no\n  yes\n  42\n  original\n  11.817\n  3.737128\n\n\n  8xa100m40-lore-10-both-corrected-smart-init\n  98,877,184\n  yes\n  yes\n  42\n  corrected\n  10.987\n  3.741209\n\n\n  8xa100m40-lore-11-output-only-corrected-smart-init\n  130,943,360\n  no\n  yes\n  42\n  corrected\n  10.986\n  3.785209\n\n\n\n\nA few things stand out:\nThe input-only LoRE models lead the pack -- though it's a close-run thing,\nand the gap between 8xa100m40-lore-7-new-seed-input-only and\n8xa100m40-lore-6-new-seed-baseline-disabled could well be\nwithin the noise\nat 0.013.  In that post, I trained three models with different weight initialisation seeds,\nand got models that differed by up to ~0.017.\nThe two models with the corrected smart initialisation are the worst -- even worse\nthan the model with no extra initialisation, 8xa100m40-lore-2-both-ordinary-init.\nSo what does that all tell us?\nWrapping up\nThe numbers above suggest three things -- with important caveats below:\nLoRE can reduce the number of parameters in these models dramatically even if\nonly applied to the input embeddings, and that comes with potentially an\nimprovement in test loss (0.073 in one test, 0.013 in a second).\nWhen applied to the output head, it has the same size of reduction in the parameter\ncount, and causes a worsening in test loss (over three tests,\n0.115, 0.138 and 0.186).\nThe results with LoRE on both ends seemed to come in somewhere around (in two of the\nthree cases, very close to) the sum of the input-only and output-only deltas,\nthough it doesn't seem to be a strictly additive relationship.\nEven more caveated, we might say:\nThe mathematically cleaner implementation of what I've been calling \"smart initialisation\"\nactually worked worse than the mistaken version I used originally, though this\nwas only tested with one seed, so the evidence is much weaker.\nNeither the larger of the two apparent improvements from input-only LoRE nor the worsening from output-only\nwere small -- when I was trying various\ninterventions into\nmy GPT-2 models (like removing dropout, scheduling the learning rate, gradient clipping and\nso on), many of them had a similar or smaller level of effect.  Similarly, training a comparable non-LoRE model on double the number\nof Chinchilla-optimal tokens (ie. on 40 per parameter rather than 20) improved loss\nby 0.09, while investing the same compute resources to do a Chinchilla-optimal training\nrun on a larger model improved it by roughly 0.13 over the baseline (see this post\nfor the raw numbers).\nSo, is input-only LoRE One Weird Trick To Improve Your Test Loss?  Of course not.  Are output-only LoRE\nand both-ends LoRE Bad Things?  Not necessarily.\nThe first thing to remember is that this is a really limited set of experiments.\nAlthough I wound up spending about US$450 on training runs (I really should be investing\nin building my machine poppy up as a better\ntraining box to save on Lambda costs), I was only able to test:\nAgainst my own GPT-2 style model (important differences from the original: no weight\ntying or bias on the QKV weights, no dropout, and PyTorch default weight initialisation).\nWith two seeds.\nWith two options for smart initialisation, and one of them only with one seed.\nOver a number of tokens chosen to be Chinchilla-optimal for the baseline non-LoRE model. 7\nEven in order to say anything definitive about whether LoRE works for this specific\narchitecture, it would be necessary to do tests over a much larger number of random\nseeds and different lengths (in terms of number of tokens) of training run:\nMaybe the effect was just limited to the seeds I tested?  Two is better than one,\nbut three would be better still, four even better, and so on.\nMaybe the effect disappears in longer training runs?  Perhaps LoRE causes some kind\nof loss in capacity that stops models from improving past some point.  Intuitively\nthat could make sense -- if you imagine training as being in some sense compressing information\nfrom the training data into the parameters, having fewer parameters is clearly going\nto limit your capacity in some sense.\nTo get solid results on whether smart initialisation is a good thing, you'd need to try\na number of seeds to see whether the poor performance of the \"correct\" smart initialisation\nagainst the \"incorrect\" one worked out as a general result.  And if it did, why might that\nbe?\nBeyond that: the apparent improvement in the loss from input-only LoRE is something\nthat came up in these experiments.  Maybe it would turn out to be a real thing, maybe not,\nbut the real benefit that Andrew mentioned in his original message\nwas about something quite different: LoRE saves a lot of parameters and only (as he\nsaid later) costs a small amount of loss.  If you reinvest those saved parameters in\na deeper network with more layers, you can hopefully gain back the loss that you,\num, lost, and then some -- and wind up with a more capable model.\nSo important further tests (which I think I will do, but later on) would be:\nIsoparameter tests:\n\nInput-only LoRE saves 32M parameters, so what happens if you\n\"spend\" that on extra layers?  Or alternatively make the model wider (in terms\nof its embedding dimension)?  Or some combination of both?\nOutput-only LoRE likewise.\nAnd, of course, both input and output.\n\nIsocompute tests.  Notably, input-only LoRE doesn't save you much compute, as\nI mentioned earlier -- embedding layers are cheap in terms of compute, if not in terms\nof parameters.  So here perhaps it would be more interesting to see what happens\nif you did output-only LoRE, but trained the model on more data so that the total\ntraining compute budget matched.  Would you gain back the lost loss?\nIt's worth noting that in my Chinchilla experiments, I scaled up the model by 2.\nThat's about a 41% increase, which is quite close to the 39% we save by using LoRE on\nboth ends.  So if the loss improvements\ncarried over, perhaps it might work?  On the other hand, those\nmodels were also trained on 41% more tokens, so...\nSo there's a huge number of further experiments that would be needed to build out these\nresults -- and that's even before we move beyond this specific architecture.  Andrew\nreports solid results with his setup, and his model Maba does appear to be quite different.\nBut would it extend to a Qwen-style one?  Or Mistral?\nNext, there's what happens with scaling.  LoRE is valuable in small models because\nembeddings and the output head are such a large proportion of the total parameter\ncount.  My guess is that it would become increasingly unhelpful as models got larger.\nTo take an extreme case, looking at the Kimi K3 paper, it has a vocab size\nof 160k, and its hidden dimension (which I'll assume is what the embeddings are using)\nis 7,168.  That means that the embedding layer uses something like 1,146,880,000 parameters, as\ndoes the output head, for a total of ~2.3B parameters (assuming they're not using weight tying,\nwhich seems likely for a monster like this).\nIt has 104.2B active parameters\nper token, so if it were to use LoRE you'd save something of the order of 2% of the active parameter\ncount.  But for purposes of \"reinvesting\" in further layers, the real comparison point is the\ntotal number of parameters, not the active ones, and with about 2.8T total, the\nnumber used for embeddings is less than 0.1%.  It doesn't sound\nlike it would help much.\nUnless, of course, the benefit of the input-only LoRE loss improvement actually turned\nout to be a real thing, and didn't weaken as the model was scaled...\nBut anyway, that's speculation.  I think a good set of experiments for that would\nbe to try the same training runs as before, but for larger models.  Maybe just trying\nGPT-2 medium and large sizes would be a good start?\nLots of work.  If I had access to Google's resources then I think I'd be kicking\noff a bunch of training runs.  OTOH if I had access to Google's resources I probably\nwouldn't be blogging about this...\nI think that there's one thing I'm going to take away from this.  LoRE is an\ninteresting intervention -- and I think is well worth trying out on any new model\nwhere vocab matrices are a significant fraction of the parameters,\njust to see if it helps.  I'll be doing that in future.\nAnd if anyone else out there wants to try LoRE-style training runs, I'd love to hear\nfrom you.  Any results, positive or negative, would be really interesting.\nThanks for reading!  And many, many thanks to Andrew for suggesting this as an idea\nto play around with -- it's been fun :-)\nThis is often written Z=XWT to reflect the fact that weights are generally\nkept in dout×din format, at least in PyTorch, but that's\nreally an implementation detail. ↩\nI'll write more about LoRA in the future -- I've been playing with it a bit -- but\nessentially, what you do is:\nFreeze all of the matrices that make up your parameters (eg. in PyTorch, set\nrequires_grad to False).\nFor each matrix that you want to train (which might not be all of them -- for fine-tuning,\npeople often only train a subset), you add on a low-rank adapter, which\nis a pair of matrices like our A and B above, and which sits \"beside\" the\nexisting one, like this:\n\nGradient tracking is enabled on the matrices in the low-rank adapter, and\nits results are added to the results of the original weights.\n\n\n\nThe idea is that the adapter pair learns to create a \"diff\" to the results of\nthe original weights, which allows a certain amount of training of that part of\nyour model.\nAnd it works surprisingly well.  Again: I'll write about this in more depth in the future. ↩\nWhen I was discussing this with an LLM -- sadly I've forgotten which -- the\nsoftmax bottleneck came up here, as it did in later correspondence with Andrew.\nThat's a reference to this paper.  I'll need to\nwork through it carefully at some later point, but the relevant point appears to be\nthat the rank (which we can loosely read as how many independent ways the predictions can vary from one context to another) of the values coming out of softmax\nis limited by the rank of what is going into it.  If we force our (in my GPT-2\nsmall case) 768-dimensional embeddings through a 128-dimensional bottleneck, we're\nreducing their inherent rank, and it's that reduced rank that will drive softmax's,\nso the results will be worse than what you'd get with the original 768.  Seems logical enough.\nLinkrot-proof reference: Yang, Z., Dai, Z., Salakhutdinov, R., & Cohen, W. W. (2018). Breaking the\nsoftmax bottleneck: A high-rank RNN language model. In International Conference on Learning Representations (ICLR). ↩\nThanks to Claude Opus 5.5 for pointing me at the central limit theorem.  I definitely need to brush\nup on my statistics, and I'm sure I knew about it at some point back in the\n90s... ↩\nModulo CUDA jitter of various flavours -- though even then, a while back I did\ntwo training runs on 8x A100 machines with the same config, months apart, and\nthe Safetensors files were identical bit-for-bit.  So I think the effect of that\nin my setup is minuscule. ↩\nThe temptation to dig into the details of why, and exactly what the mistaken\nsmart initialisation did to the variance of the \"virtual\" weights W′, is strong.\nBut I will resist. ↩\nWhen I ran a draft of this post past my editorial board of LLMs,\nGrok made the point that perhaps the apparent benefit of having LoRE\nonly on the input embeddings might have been due to that model seeing significantly\nmore tokens per parameter.  It's an interesting thought!  If we do the maths,\nthe input-only and output-only LoRE models were trained on ~25 tokens per parameter\nand the both-ends ones were trained on about 33, vs 20 for the non-LoRE ones.\nHowever, in my Chinchilla\nexperiments, I only got 0.09 improvement in loss by training on 40 tokens per parameter\nrather than 20.  Now, I'm sure that gain mostly happened early in the run -- overtraining\nis subject to diminishing returns -- but the result of 0.073 for input-only LoRE would\nimply that almost all of it happened in the first extra 5 tokens per parameter, which seems dubious.\nThose are different training runs with different seeds, and were using my JAX code, which has a\nbetter baseline loss than my PyTorch code, so we can't compare\nthem directly.  But it feels unlikely that the effect would be drastically different.\nAlso, if we use reductio ad absurdum on Grok's logic, it does sound a bit weak --\nif we get rid of parameters but train on the same number of\ntokens, the higher tokens per parameter will not in general counteract the damage from the smaller model.\nImagine, for example, removing 32M parameters worth of Transformer layers and training\non the Chinchilla-optimal tokens for the size of the model before you did that.  I'm not\ngoing to run the experiment, but I'd be... somewhat more than surprised if it improved the model. ↩",
+      "id": "f5a6858494376276e8406346bb846f02746a36d79777d324196db1ade834cc3d",
+      "ref_id": "0",
+      "recommendationScore": 90,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "深度分析了LLM参数优化前沿技术，具有极高的专业价值和实验性探索。",
+      "reason": "文章详细剖析了低秩词汇矩阵和因子化嵌入等技术，对减少大型AI模型参数和提升效率提供了深刻洞察和实践参考，完全符合AI主题优先级。",
+      "tags": [
+        "AI",
+        "大模型",
+        "机器学习",
+        "模型优化",
+        "深度学习"
+      ]
+    },
+    {
+      "title": "Show HN: Let your AI agents paint big arrows, boxes and text on your screen",
+      "link": "https://github.com/franzenzenhofer/big-arrow-on-the-screen",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-09T11:03:48.000Z",
+      "summary": "Article URL: https://github.com/franzenzenhofer/big-arrow-on-the-screen\nComments URL: https://news.ycombinator.com/item?id=50018817\nPoints: 336\n# Comments: 143",
+      "id": "bf2149b8045ec7a8d0e94d4d7d36648c8774f6d52b31e9aed273185bb5e418e5",
+      "ref_id": "1",
+      "recommendationScore": 88,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "提供了一种新颖的AI代理与用户交互及可视化操作的方式。",
+      "reason": "作为Show HN项目，它为AI代理的调试和人机协作提供了高度实用的工具，具有创新性。",
+      "tags": [
+        "AI",
+        "工具",
+        "人机交互",
+        "可视化",
+        "开发"
+      ]
+    },
+    {
+      "title": "We’re putting too much faith in AI’s ability to say no",
+      "link": "https://www.technologyreview.com/2026/10/09/1145728/we-are-putting-too-much-faith-in-ai-to-say-no/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-10-09T09:00:00.000Z",
+      "summary": "Ever since people first seriously contemplated giving machines an intelligence modeled on our own, there has never been any question that they would, like us, be able to say no. The sci-fi canon is full of stories of robotic disobedience. Most of these capers are, of course, cautionary.  But recently, the idea that AI shouldn’t…",
+      "id": "56b2964b69beea5b19e427c1b0bd239971fb41fa007375f6a4b680e52449de18",
+      "ref_id": "1",
+      "recommendationScore": 88,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "深入剖析AI拒绝问题的深层逻辑与历史根源，引人思考。",
+      "reason": "专注于AI伦理和安全的核心议题，内容富有深度和思辨性，极具探讨价值。",
+      "tags": [
+        "AI",
+        "AI伦理",
+        "AI安全",
+        "社会影响"
+      ]
+    },
+    {
+      "title": "open-slopware – Alternatives to FOSS projects choosing to use LLMs/AI",
+      "link": "https://codeberg.org/ethical-foss/open-slopware",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-09T19:50:16.000Z",
+      "summary": "Article URL: https://codeberg.org/ethical-foss/open-slopware\nComments URL: https://news.ycombinator.com/item?id=50025767\nPoints: 5\n# Comments: 0",
+      "id": "b4a1803a796234401d95413da10acff57155a95ea8f2535a26eebfc449be6768",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 6,
+      "priority": "high",
+      "comment": "探讨FOSS项目在AI/LLM选择上的伦理与技术替代方案。",
+      "reason": "直接关注AI主题，具有高度新颖性和实用性，对开源社区和AI伦理讨论意义重大，尽管初期关注度不高但潜力巨大。",
+      "tags": [
+        "AI",
+        "FOSS",
+        "LLM",
+        "伦理",
+        "开源",
+        "软件工程"
+      ]
+    },
+    {
+      "title": "Pointing AI at archives found a forgotten meteorite, lost rhinos, and more",
+      "link": "https://jessewaites.com/blog/post/i-pointed-ai-at-400-years-of-archives/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-09T11:36:20.000Z",
+      "summary": "Article URL: https://jessewaites.com/blog/post/i-pointed-ai-at-400-years-of-archives/\nComments URL: https://news.ycombinator.com/item?id=50019056\nPoints: 57\n# Comments: 28",
+      "id": "0c22ba88d1257169379c481c12f8d2112e829b56e073800cae13b97776ad03b4",
+      "ref_id": "0",
+      "recommendationScore": 83,
+      "popularityScore": 55,
+      "priority": "high",
+      "comment": "探索AI在历史档案中发现遗失信息的新颖应用。",
+      "reason": "文章展示了AI解决实际世界问题的巨大潜力，具有极高的创新性和启发性。",
+      "tags": [
+        "AI",
+        "应用",
+        "历史",
+        "创新"
+      ]
+    },
+    {
+      "title": "Typesafe AI raises $870M at $7.5B",
+      "link": "https://typesafe.ai/blog/series-ai",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-09T17:02:31.000Z",
+      "summary": "Article URL: https://typesafe.ai/blog/series-ai\nComments URL: https://news.ycombinator.com/item?id=50023450\nPoints: 140\n# Comments: 109",
+      "id": "917825c0315309567de60f7fe954da62a99d9eb6209eae549a3a5b445320c69e",
+      "ref_id": "3",
+      "recommendationScore": 80,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "一篇关于AI公司巨额融资的重要新闻，反映了AI领域的市场热度和投资趋势。",
+      "reason": "直接关联最高优先级主题AI，且在HN上引发大量讨论，对关注行业动态的读者具有重要参考价值。",
+      "tags": [
+        "AI",
+        "融资",
+        "行业新闻",
+        "市场趋势"
+      ]
+    },
+    {
+      "title": "Once: Cache CLI commands",
+      "link": "https://github.com/alex0ptr/once",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-09T09:43:06.000Z",
+      "summary": "Article URL: https://github.com/alex0ptr/once\nComments URL: https://news.ycombinator.com/item?id=50018239\nPoints: 81\n# Comments: 37",
+      "id": "55ca6d06f45cd7e409552dd83170d3fae3b959ed7adf39cfd8301c656d4e188b",
+      "ref_id": "4",
+      "recommendationScore": 79,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "一个用于缓存CLI命令的实用工具，旨在提高开发效率。",
+      "reason": "对命令行使用者和开发者而言，这是一个能显著提升工作效率的实用工具，技术实现简洁有效。",
+      "tags": [
+        "编程工具",
+        "自动化",
+        "CLI",
+        "效率",
+        "开发"
+      ]
+    },
+    {
+      "title": "Radxa's Q8B has 2x the performance and expansion of the Pi 5",
+      "link": "https://www.jeffgeerling.com/blog/2026/radxa-q8b-double-pi-5/",
+      "source": "jeffgeerling.com",
+      "publishedAt": "2026-10-09T20:00:00.000Z",
+      "summary": "There was a time I'd look at a board like the Radxa Dragon Q8B (at left, above) and be like, \"there's no way I'd spend $209 on an SBC with 8 gigs of RAM\". But we're in 2026, and seeing the 8 gig Raspberry Pi 5 going for almost the same amount, I figured I'd give it a shot.\nOn paper, the Q8B beats the Pi 5 in pretty much every way. A lot of that is thanks to this Snapdragon 8cx Gen 3 chip, which is the same chip I tested on Microsoft's Windows Dev Kit 2023.",
+      "id": "f571e976d0165880fdcc9523b5f267e5155f9947ce7f6db85ebfcb7b1c653a04",
+      "ref_id": "0",
+      "recommendationScore": 75,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "一篇详细评估新型单板计算机Radxa Q8B性能和扩展性的文章，并与树莓派5进行对比。",
+      "reason": "为硬件爱好者和嵌入式开发者提供了有价值的参考，符合“自动化”和“编程工具”的泛主题。",
+      "tags": [
+        "硬件",
+        "SBC",
+        "性能评估",
+        "嵌入式开发"
+      ]
+    },
+    {
+      "title": "You might want to try being less creative",
+      "link": "https://blog.bawolf.com/p/you-might-want-to-try-being-less",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-09T18:39:47.000Z",
+      "summary": "Article URL: https://blog.bawolf.com/p/you-might-want-to-try-being-less\nComments URL: https://news.ycombinator.com/item?id=50024927\nPoints: 38\n# Comments: 20",
+      "id": "d73d433a92c68c10e60b750f511e010bf4c4337ba959c9b2ebdf256cfce501e5",
+      "ref_id": "2",
+      "recommendationScore": 70,
+      "popularityScore": 43,
+      "priority": "medium",
+      "comment": "一篇关于提高工作效率和实用主义思维的观点型文章。",
+      "reason": "标题吸引人，观点新颖，为开发者和产品人员提供了不同的问题解决视角，具有一定的实用性。",
+      "tags": [
+        "生产力",
+        "创造力",
+        "方法论",
+        "思维模式",
+        "产品设计"
+      ]
+    },
+    {
+      "title": "The Download: AI’s refusal problem and weight-loss drug side effects",
+      "link": "https://www.technologyreview.com/2026/10/09/1146250/the-download-ai-refusal-problem-weight-loss-drug-side-effects/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-10-09T12:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. We’re putting too much faith in AI’s ability to say no Today’s AI models are trained to refuse a vast number of prompts. If you ask your chatbot how to poison…",
+      "id": "2b5bee13006e92b5a6398372d3531c18c667f6dbcacecfafd9f2d657338f3c06",
+      "ref_id": "0",
+      "recommendationScore": 70,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "作为日报摘要，该文混合了AI安全问题和非科技的健康话题，AI部分值得关注。",
+      "reason": "AI主题优先级高，但文章内容分散且信息密度受制于摘要形式。",
+      "tags": [
+        "AI",
+        "AI安全",
+        "日报摘要",
+        "综合新闻"
+      ]
+    },
+    {
+      "title": "Job titles of the future: Delivery drone air traffic controller",
+      "link": "https://www.technologyreview.com/2026/10/09/1145737/job-titles-delivery-drone-air-traffic-controller-trevor-wischnewsky/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-10-09T09:00:00.000Z",
+      "summary": "The moment Trevor Wischnewsky heard that drones were delivering pizza and sushi around his Texas neighborhood, his mind was made up. “It was super fascinating,” he says. “I just immediately wanted to be a part of it.” Wischnewsky is now an RPIC, or “remote pilot in command,” at a company called FlyTrex. An RPIC is…",
+      "id": "d36d46f1a6430bc093fc2304ec001a7aac4160b346205467545445798d81585a",
+      "ref_id": "2",
+      "recommendationScore": 68,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "趣味性地展望了自动化背景下未来职业发展的新趋势。",
+      "reason": "内容通俗易懂，能引发读者对未来社会和职业变化的兴趣，但技术性不强。",
+      "tags": [
+        "自动化",
+        "无人机",
+        "未来职业",
+        "科技趋势"
+      ]
+    },
+    {
+      "title": "Triple-A Minesweeper",
+      "link": "https://minesweeper.mikelacher.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-09T15:51:05.000Z",
+      "summary": "Article URL: https://minesweeper.mikelacher.com/\nComments URL: https://news.ycombinator.com/item?id=50022292\nPoints: 270\n# Comments: 64",
+      "id": "5f84afa7a273882a799e9c5223fe7e8a5e2fc1db17250443fcfaeca0a66250a4",
+      "ref_id": "4",
+      "recommendationScore": 65,
+      "popularityScore": 95,
+      "priority": "low",
+      "comment": "一个高质量的扫雷游戏项目，因其趣味性和怀旧感获得了极高关注。",
+      "reason": "尽管技术深度和实用性不高，但其极高的用户热度和讨论度表明它具有广泛的娱乐价值和吸引力。",
+      "tags": [
+        "游戏",
+        "独立开发",
+        "娱乐"
+      ]
+    },
+    {
+      "title": "Our $445M Series D",
+      "link": "https://oxide.computer/blog/our-445m-series-d",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-09T13:12:47.000Z",
+      "summary": "Article URL: https://oxide.computer/blog/our-445m-series-d\nComments URL: https://news.ycombinator.com/item?id=50020014\nPoints: 493\n# Comments: 206",
+      "id": "e04d9f55940a523a4be29b2b19f09695a2b3afe457d8ef03e8c8d2c3d58f00af",
+      "ref_id": "3",
+      "recommendationScore": 65,
+      "popularityScore": 49,
+      "priority": "medium",
+      "comment": "Oxide Computer宣布其获得4.45亿美元的D轮融资，反映了科技行业的商业动态。",
+      "reason": "作为科技公司融资新闻，它具有行业关注度，但文章本身技术深度有限，主要聚焦商业层面。",
+      "tags": [
+        "商业",
+        "融资",
+        "科技公司",
+        "基础设施"
+      ]
+    },
+    {
+      "title": "OpenAI fires three safety researchers for \"mishandling research information\"",
+      "link": "https://techcrunch.com/2026/10/08/fired-openai-safety-researchers-dispute-misconduct-claims-warn-of-chilling-effect/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-09T10:00:26.000Z",
+      "summary": "Later: https://www.cnbc.com/2026/10/09/openai-fired-researchers-ai-...\nComments URL: https://news.ycombinator.com/item?id=50018350\nPoints: 268\n# Comments: 171",
+      "id": "0d8c74eec04dc0baad67974a38e9d7e01fea672383ac18bd5e7828dc360726d0",
+      "ref_id": "3",
+      "recommendationScore": 64,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "报道了OpenAI解雇安全研究员的事件，引发对AI伦理与公司治理的关注。",
+      "reason": "尽管是新闻而非技术教程，但它触及AI领域核心公司的重要事件和AI安全伦理，对了解行业动态至关重要。",
+      "tags": [
+        "AI",
+        "新闻",
+        "伦理",
+        "OpenAI",
+        "行业动态"
+      ]
+    },
+    {
+      "title": "No Man Is an Island",
+      "link": "https://borretti.me/article/no-man-is-an-island",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-09T20:04:00.000Z",
+      "summary": "Article URL: https://borretti.me/article/no-man-is-an-island\nComments URL: https://news.ycombinator.com/item?id=50025935\nPoints: 27\n# Comments: 6",
+      "id": "83299127c3afec3e51dcd7576e7f1ace8d3c20707fc8a70d885c90b35c3e0e3e",
+      "ref_id": "0",
+      "recommendationScore": 55,
+      "popularityScore": 31,
+      "priority": "low",
+      "comment": "探讨协作与个人发展的职业哲学文章。",
+      "reason": "尽管主题不直接是硬核技术，但对职业成长和团队协作有普遍参考价值，属于通用软技能范畴。",
+      "tags": [
+        "软技能",
+        "职业发展",
+        "社区",
+        "思维模式"
+      ]
+    },
+    {
+      "title": "Ideas aren't getting harder to find, anyone who tells you otherwise is a coward",
+      "link": "https://www.experimental-history.com/p/ideas-arent-getting-harder-to-find",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-09T18:16:03.000Z",
+      "summary": "Article URL: https://www.experimental-history.com/p/ideas-arent-getting-harder-to-find\nComments URL: https://news.ycombinator.com/item?id=50024571\nPoints: 42\n# Comments: 15",
+      "id": "364267b012f4ea40b25a8de54d9b6904796150e36f40755f0d761b203d4f44f3",
+      "ref_id": "0",
+      "recommendationScore": 50,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "一篇关于寻找创新思想的哲学性文章，对独立开发者有一定启发。",
+      "reason": "文章主题偏向产品设计或独立开发，技术深度不高，但提供了一种鼓励创新的独特视角。",
+      "tags": [
+        "独立开发",
+        "思维",
+        "产品设计"
+      ]
+    },
+    {
+      "title": "A statement on the Tor Project's relationship with Mullvad",
+      "link": "https://blog.torproject.org/on-tor-relationship-with-mullvad/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-09T15:49:31.000Z",
+      "summary": "Article URL: https://blog.torproject.org/on-tor-relationship-with-mullvad/\nComments URL: https://news.ycombinator.com/item?id=50022266\nPoints: 63\n# Comments: 109",
+      "id": "aee58cc26b95d2987cca09ffc5999f8fba9f87b1855aaaefc1d7d6b956a386fa",
+      "ref_id": "0",
+      "recommendationScore": 45,
+      "popularityScore": 15,
+      "priority": "low",
+      "comment": "这篇博文讨论了Tor项目与Mullvad的关系，关注网络隐私和匿名技术。",
+      "reason": "内容涉及互联网隐私和政策，但与AI或编程工具等核心主题优先级关联度不高，技术深度适中。",
+      "tags": [
+        "隐私",
+        "网络安全",
+        "Tor",
+        "Mullvad"
+      ]
+    },
+    {
+      "title": "An Ion Storm!, Part 1: The Ascent to Gamer Paradise",
+      "link": "https://www.filfre.net/2026/10/an-ion-storm-part-1-the-gamers-penthouse/",
+      "source": "filfre.net",
+      "publishedAt": "2026-10-09T16:10:11.000Z",
+      "summary": "This article tells part of the story of John Romero. At id, the company was rolling in millions of dollars and we just had walls. It was the whole Carmack idea of, “I don’t need anything on my walls, all I need is a table and a computer and a chair,” instead of, “Okay, we’ve […]",
+      "id": "ad43445207dd71e0c4cbb2ff8d8259f93bdc2f6099c42800dbb308ba0d8c0b55",
+      "ref_id": "2",
+      "recommendationScore": 45,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "回顾了游戏开发先驱John Romero的职业生涯，充满行业情怀和早期创业精神。",
+      "reason": "文章通过讲述id Software的创立故事，为读者提供了了解早期软件开发文化和独立开发者精神的独特视角，虽然技术深度有限，但对独立开发和编程文化有启发意义。",
+      "tags": [
+        "游戏开发",
+        "历史",
+        "人物传记",
+        "独立开发",
+        "编程文化"
+      ]
+    },
+    {
+      "title": "Show HN: The rarest tech books and docs you've probably never read",
+      "link": "https://readrare.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-09T17:39:44.000Z",
+      "summary": "Article URL: https://readrare.com/\nComments URL: https://news.ycombinator.com/item?id=50024055\nPoints: 7\n# Comments: 2",
+      "id": "876449a0944e93d0a72196e6ed45e76ecc7d41e0ab2eae638b24f20200de4642",
+      "ref_id": "2",
+      "recommendationScore": 35,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "一个展示稀有技术书籍和文档的网站，适合对技术历史和收藏感兴趣的读者。",
+      "reason": "实用性和信息密度对主流读者较低，主题与核心优先级关联度不高，且HN热度极低。",
+      "tags": [
+        "技术历史",
+        "资源分享",
+        "收藏"
+      ]
+    },
+    {
+      "title": "We’re still figuring out the side effects of GLP-1 weight-loss drugs",
+      "link": "https://www.technologyreview.com/2026/10/09/1146094/were-still-figuring-out-the-side-effects-of-glp-1-weight-loss-drugs/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-10-09T09:00:00.000Z",
+      "summary": "This week my colleague Antonio Regalado had an interesting update on GLP-1 weight-loss drugs. According to research presented at an aging meeting in Boston, these drugs seem to affect at least some measures of biological age. Overweight and diabetic people who take GLP-1s have a biological age around two to three years younger than similar…",
+      "id": "835ab57e0c2f1edd465fa449214c6af5c8bc8fb3d45202f35ebb4e25566b3d05",
+      "ref_id": "3",
+      "recommendationScore": 25,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "一篇关于减肥药副作用的医学健康报道，与本科技博客主题关联度较低。",
+      "reason": "内容不属于本科技博客关注的AI、编程等核心领域，推荐度极低。",
+      "tags": [
+        "健康",
+        "医药",
+        "科学研究"
+      ]
+    },
+    {
+      "title": "Pluralistic: Thwarted (09 Oct 2026)",
+      "link": "https://pluralistic.net/2026/10/09/impunitism/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-10-09T19:48:39.000Z",
+      "summary": "Today's links Thwarted: Behold the awesome destructive power of a fully operational billionaire. Hey look at this: Delights to delectate. Object permanence: Anthrax v National Inquirer; Grey goo v Second Life; Predictive policing v actual crime; Spooky cookies; California v algorithmic price-fixing; Tivo self-destructs; Disney exec endorses piracy; TSA v geologists; Handheld printer; Mandatory DRM for all Canadian music sales; Iceweasel; \"Snuff\"; \"Shade the Changing Girl\"; Latam surveillance; Scotland Yard brands encryption terrorism; RBS slaughtered 10k small businesses to seize and sell their assets; Dead Letters. Upcoming appearances: Calgary, Winnipeg, Paris, Vancouver, Victoria, Ottawa, Kilkenny, Sheffield, Oxford, Montreal. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. Thwarted (permalink) There are many ways in which every billionaire is a policy failure, but the most corrosive and destructive way in which billionaires are policy failures is this: billionaires, despite being unelected and unaccountable, possess the power to control – and ruin – millions of peoples' lives. If you'd like an essay-formatted version of this thread to read or share, here's a link to it on pluralistic.net, my surveillance-free, ad-free, tracker-free blog: https://pluralistic.net/2026/10/09/impunitism/#rats-eating-my-face Despite what the Prosperity Gospel and the Efficient Market Hypothesis would have you believe, having billions of dollars is in no way a reliable predictor that you also possess the wisdom to unilaterally dictate how thousands or millions of other people must live their lives, and that dictatorial power is most the tangible effect of being a billionaire. Billionaireism is many things, but above all else, it is the power to do whatever *you* want to do, at the expense of whatever *other* people want to do. To be a billionaire is to live a life unthwarted, above the power of your workers, your neighbors, or your government and its laws. It is the right to get high on your own supply. It is the right to live a life in which no one ever calls you on your bullshit. Billionaires aspire to live a one-sided libertarian fantasy in which they have the unlimited right to do whatever they want, and *you* have the right to do whatever they tell you to do. There has always been a group of people who refused to acknowledge that other people have perfectly valid reasons for wanting to pursue their own goals rather than theirs. We call most of those people \"toddlers\" and devote sizable social effort to helping them outgrow this belief. Billionaires, on the other hand, command resources that allow *them* to devote sizable effort to getting *us* to acknowledge that *they* should be able to tell *us* what to do. This is why billionaires love neoclassical economics, with its doctrine of \"revealed preferences,\" which holds that the only true way to understand someone's preferences is to ignore what they *say* and only pay attention to what they *do*. It's a belief that can only be adopted by people who suffer the self-inflicted neurological injury you get from doing an economics degree, which renders the victim incapable of perceiving or reasoning about power. To believe in \"revealed preferences\" is to observe someone who has sold their kidney to pay the rent and marvel at this person who has a revealed preference for only having one kidney: https://pluralistic.net/2026/03/30/players-of-games/#know-when-to-fold-em \"Revealed preferences\" is the economist's version of the bully who grabs your arm and starts whacking you with your own hand while shouting, \"stop hitting yourself!\" The ideological purpose that \"revealed preferences\" fills is letting billionaires live a life unthwarted. It's a life where they thwart everyone else, but still claim to be believers in \"freedom.\" This is what Peter Thiel meant when he wrote that \"democracy is incompatible with freedom.\" In a democracy, the people who you exercise coercive power over are able to band together to create public institutions that act as a check on your power. For Thiel to maximize his freedom (to do things like spying on us and crushing our journalistic outlets), he must prevent all of *us* from voting, lest we vote to take away those cherished freedoms of his: https://www.cato-unbound.org/2009/04/13/peter-thiel/education-libertarian/ We're told that as mere mortals, we must inevitably submit to \"death and taxes.\" Billionaires have long since so corrupted our political system that they need not pay taxes: https://press.uchicago.edu/ucp/books/book/chicago/S/bo256019296.html They have (practically speaking) infinite wealth, which means that they have practically infinite power, including the power to block any democratic attempt to limit their wealth (and thus their power): https://www.hamiltonnolan.com/p/the-war-against-accumulated-capital Having vanquished taxes, the ultra-rich are now committed to defeating death as well, making themselves easy marks for the world's weirdest cult leaders and grifters, who promise them a mix of physical and digital immortality: https://www.youtube.com/watch?v=0oVSnaINJ30 The fact that billionaires are such suckers, so often, is the strongest argument against billionaireism. Billionaires aren't just powerful, they're also *fallible*. We're *all* fallible, of course, but only billionaires get to impose their foolish ideas on so many other people, who have no say in the matter. Henry Ford thought that he was so rich that he could build Brazilian worker housing whose windows faced the same direction as the worker housing he'd built in Dearborn, Michigan. He literally thought that being rich meant that he could ignore the entire concept of *the Earth's axial tilt* (he was wrong): https://memex.craphound.com/2010/06/02/fordlandia-novelistic-history-of-henry-fords-doomed-midwestern-town-in-the-amazon-jungle/ Of course that was the least of Ford's follies. Ford also believed in a secret Jewish conspiracy to control humanity: https://www.pbs.org/wgbh/americanexperience/features/henryford-antisemitism/ And despite the fact that Ford was so often demonstrably as thick as pigshit, no one was able to stop him from hiring soldiers to literally slaughter anyone who tried to limit his ability to tell other people how to live their lives: https://en.wikipedia.org/wiki/Battle_of_the_Overpass Ford is no exception. Elon Musk believes in the same racist garbage as Henry Ford…but he also believes that if you're rich enough, you can simply wish away *geometry* and *physics*: https://pluralistic.net/2025/07/24/geometry-hates-cars/#dogshit-unit-economics More than anyone else, Musk illustrates the way that being insulated from people who can thwart you leads to absolute ruination. Every terrible idea Musk has, he gets to act on. This has all kinds of negative impacts, including the very real possibility that some day your house will be crushed by his flaming rocketry debris: https://www.vice.com/en/article/texas-residents-are-suing-spacex-over-terrestrial-bombardment/ That's small potatoes, though: Musk's wrong ideas, combined with his billionaire's impunity, also allowed him to murder hundreds of thousands of the world's poorest children: https://hsph.harvard.edu/news/usaid-shutdown-has-led-to-hundreds-of-thousands-of-deaths/ Billionaireism is fractally terrible. By definition, the kind of person who will inflict the kinds of harms needed to amass billions of dollars in pursuit of total impunity is someone who will use that impunity to hurt even more people. Anyone who fails to outgrow a toddler's insistence on subordinating others to their will *should not be allowed to subordinate anyone to their will*. Billionaire dilettantes aren't like regular dilettantes. Anyone can be a crank, but billionaire cranks have the force-multiplier of money and the impunity it brings. These allow a billionaire to turn his crackpot ideas into an unstoppable force that crushes public education: https://pluralistic.net/2026/03/09/autocrats-of-trade-2/#witness-the-firepower-of-this-fully-armed-and-operational-battle-station It also lets billionaires (including the billionaire ruining public education) kidnap and rape more than a thousand girls on a private island: https://www.pbs.org/newshour/politics/what-to-know-about-bill-gates-relationship-with-jeffrey-epstein-as-he-is-interviewed-in-house-probe Whatever crank whim a rich person has, we all have to live with. Take Barre Seid: the 94 year old billionaire made his fortune manufacturing electronics, and then donated $1.6b to fund \"attack philanthropy\" in order to undermine belief in climate change and prevent any action from being taken to avert it: https://www.propublica.org/article/barre-seid-heartland-institute-hillsdale-college-gmu Seid is one of the main reasons we're experiencing the super El Nino. He's not just in the top 0.1% of wealth-horders, he's also in the top 0.1% of people we can blame for the *twelve foot sea-level rise* that is currently wiping Long Beach off the map: https://ktla.com/news/local-news/long-beach-boardwalk-collapse-rachel-surf/ Henry Ford didn't believe in the planet's axial tilt. Elon Musk doesn't believe in geometry. Barre Seid doesn't believe in climate change. But Barre Seid *does* believe something: Barre Seid believes in *rats*. For *three years*, Seid has paid a small army of goons to wander the area around Chicago's Lincoln Park, scattering handfuls of high-grade nuts on the ground, which have drawn flocks of pigeons and swarms of rats. Rats are everywhere. Everything is covered in pigeon shit. Seid has been repeatedly fined and cited and warned, and he's carried on turning the neighborhood into an uncontrolled vermin breeding facility: https://gizmodo.com/a-billionaire-is-fueling-a-rat-explosion-in-a-chicago-park-in-the-stupidest-way-possible-2000823641 Whether or not the people who live, work and play in Lincoln Park want to be swarmed by rats and slip in thick slicks of pigeon shit is irrelevant. Seid can afford to pay any fine the city levies against him (a fine is a price, and he's a billionaire), which means there's no practical reason Seid has to ever stop. He has the freedom to operate unthwarted in his every desire, including his desire to carpet an entire neighborhood in feces, so everyone else lacks the freedom to live without pigeon shit and rats. That's the thing about billionaires: as Peter Thiel wrote, democracy *is* incompatible with freedom (to be a billionaire). The fact that Barre Seid's desire to transform Lincoln Park into a pigeon-shit manure lagoon is wildly unpopular with Chicagoans is irrelevant. You can't vote Barre Seid out of office, because no one elected him Pigeon Shit Czar. He has assumed that office by right of conquest. Our lives are full of horrible, extremely unpopular things that we can't vote away because billionaires like them. Take the decision to allow Larry Ellison and his failson to buy and kill Warner Studios. That's an incredibly unpopular idea, especially in California, where Warner, Paramount and the Ellisons are all based. Despite the fact that we all hate this idea, Ellison gets to do it, because he is unthwartable: https://pluralistic.net/2026/09/22/happy-chudmas/#baloney-in-our-slacks Some of California's most powerful Democrats promised to stop the merger. Instead, they signed away California's future because they decided that they weren't powerful enough to thwart a billionaire: https://prospect.org/2026/10/08/democrats-who-let-trumps-oligarchs-buy-hollywood-warner-bros-david-ellison-gavin-newsom/ The Warnermount disaster demonstrates the fundamental flaw in libertarianism. Even if you're the kind of Musk-addled libertarian who can't open your copy of *Atlas Shrugged* anymore because the pages are all stuck together and you think the only role for the state is enforcing contracts, you *still need the state to be able to enforce those contracts*. If corporations or even individual billionaires amass more power than the state, then they can always tell the state's contract enforcers to fuck off. The ref must be more powerful than the players on the field, so the smallest government you can have is determined by the size of the largest corporation and the wealth of the richest billionaire you're willing to tolerate. The world is in *really* bad shape right now, but it doesn't have to be. As Mamdani has shown us, it's not that hard to run a well-administered, advanced technological civilization. Fixing potholes and making transit work and enforcing housing rules isn't rocket surgery. We know how to do those things – we just don't do them because billionaires don't want us to, and they are unthwartable: https://yourlocalepidemiologist.substack.com/p/the-revolutionary-art-of-fixing-the We let the most greedy, most ruthless people among us pursue their toddler's quest for an unthwarted life to the expense of any semblance of competent administration, and now we are *fucked*. That's why people are so angry about AI: there's nothing wrong with the idea of automating some tasks through advanced statistical techniques, but the reason so much of the world's scarce resources have been allocated to the AI buildout is that billionaires are infinitely horny for a technology that will let them sideline expertise in favor of money: https://pluralistic.net/2026/10/06/nonfungible/#theory-free After all, experts get to thwart billionaires. They can refuse to apply their expertise to a billionaire's folly. The kind of AI that the industry is pursuing today is predicated on the idea that you can just ask a computer to come up with \"theory-free inferences\" that will let it run a factory, drive a car, or perform medicine, without knowing *anything*, just by pulling statistical correlations out of unimaginably vast data-sets. At some level, people get this. They understand that AI and billionaireism are intimately connected – that the reason the sector is on track to lose about a trillion dollars this year is that for billionaires, a trillion bucks is a small price to pay for an unthwartable life. Hey look at this (permalink) * McSWEENEY’S ISSUE 84 (ARTISAN’S TOOL ROLL) https://store.mcsweeneys.net/products/mcsweeney-s-issue-84?taxon_id=3 * Trump’s Cascade of Canceled Corporate Enforcement Against Over 200 Corporations https://www.citizen.org/article/trump-cascade-canceled-enforcement-200-corporations/ * FEAR OF MUSIC (SUPER DELUXE EDITION) https://store.talkingheadsofficial.com/collections/fear-of-music * The Monopoly on the Open Road https://prospect.org/2026/10/07/monopoly-on-the-open-road-patrick-industries-rv/ * Paramount Stock CRUSHED After Merger with Warner Discovery Closes https://www.thebignewsletter.com/p/raises-for-me-layoffs-for-thee-the Object permanence (permalink) #25yrsago National Inquirer shuts offices after anthrax delivery https://web.archive.org/web/20011221185744/https://www.etonline.com/celebrity/a6975.htm #20yrsago Grey Goo melting online world Second Life https://web.archive.org/web/20061023190111/http://blog.secondlife.com/2006/10/08/grid-set-back-to-linden-login-only-some-goo-missed/ #20yrsago TiVo’s “self-destruct button” destructs https://web.archive.org/web/20061014132917/http://reviews.cnet.com/4531-10921_7-6650194.html #20yrsago Disney exec: Piracy is just a business model https://www.netribution.co.uk/stories/cross-media/disney-co-chair-recognises-piracy-is-a-business-model #20yrsago TSA confiscates geologist’s rock https://web.archive.org/web/20061019132853/https://www.courant.com/news/opinion/op_ed/hc-thorson1005.artoct05,0,777555.column?coll=hc-headlines-oped #20yrsago Handheld printer made from a toner cartridge https://spritesmods.com/?art=inker&page=4 #20yrsago Panicked chefs propose copyrighted food https://megnut.com/2006/10/10/keep-recipes-free/ #20yrsago Canadian music proposal would *require* DRM for online tunes https://web.archive.org/web/20061022201913/https://www.jeremydebeer.ca/content/view/95/2/ #20yrsago Iceweasel, a free-as-in-speech version of Firefox https://en.wikipedia.org/wiki/Debian–Mozilla_trademark_dispute #15yrsago Pratchett’s Snuff: a rural/nautical tale of drawing-room gentility, racism, and justice https://memex.craphound.com/2011/10/10/pratchetts-snuff-a-rural-nautical-tale-of-drawing-room-gentility-racism-and-justice/ #10yrsago Shade the Changing Girl: amazing, gorgeous new comic about aliens and mean girls https://memex.craphound.com/2016/10/10/shade-the-changing-girl-amazing-gorgeous-new-comic-about-aliens-and-mean-girls/ #10yrsago Massive report details the surveillance powers of 12 Central and South American nations https://necessaryandproportionate.org/principles/ #10yrsago Scotland Yard charge: teaching people to use cryptography is an act of terrorism https://arstechnica.com/tech-policy/2016/10/cops-charge-cardiff-man-with-terrorist-crypto-training-offence/ #10yrsago RBS deliberately crushed more than 1,000 healthy UK businesses to seize and sell their assets https://www.buzzfeed.com/heidiblake/dash-for-cash?utm_term=.iq9ndLB5#.udNbypOJ #10yrsago Though crime happens everywhere, predictive policing tools send cops to poor/black neighborhoods https://www.mic.com/articles/156286/crime-prediction-tool-pred-pol-only-amplifies-racially-biased-policing-study-shows #10yrsago Bake: spooky chocolate chip cookies https://www.instructables.com/Creepy-Chocolate-Chip-Cookies/ #5yrsago Dead letters https://pluralistic.net/2021/10/10/dead-letters/ #1yrago A disenshittification moment from the land of mass storage https://pluralistic.net/2025/10/10/synology/#how-about-nah #1yrago California bans algorithmic price-fixing https://pluralistic.net/2025/10/09/pricewars/#adam-smith-communist Upcoming appearances (permalink) * Calgary: Wordfest, Oct 8 https://wordfest.com/2026/show/wordfest-presents-cory-doctorow-2026/ * Winnipeg: McNally Robinson, Oct 9 https://www.mcnallyrobinson.com/event-18991/An-Evening-with-Cory-Doctorow * Paris: Slow Tech Summit, Oct 15 https://slowtechsummit.com/ * Vancouver: Read, Resist, Repair, Rejoice (Vancouver Writers Festival), Oct 19 https://writersfest.bc.ca/festival-event-2026/01 * Victoria: Munro's Books, Oct 20 https://www.munrobooks.com/events/6113620261020 * Vancouver: Life After AI (Vancouver Writers Festival), Oct 22 https://writersfest.bc.ca/festival-event-2026/46 * Ottawa: Life After AI (Ottawa Writers Festival), Oct 24 https://writersfestival.org/event/life-after-ai * Kilkenny (Kilkenomics), Nov 6-8 https://kilkenomics.com/ * Vancouver: Enshittification (Sid Williams Theatre Society), Nov 10 https://www.sidwilliamstheatre.com/events/cory-doctorow-talks-enshittification/ * Vancouver: BC Policy Solutions Gala, Nov 12 https://bcpolicy.ca/gala/ * Sheffield: Reverse Centaur at Juno Books, Nov 25 https://www.outsavvy.com/event/40274/cory-doctorow-in-conversation * Oxford: Bennett Oxford Symposium on Open Code in Science, Dec 9 https://www.bennett.ox.ac.uk/events/2026-bennett-institute-symposium/ * Montreal: World Science Fiction Convention, Sep 2-6 https://montreal2027.ca/en Recent appearances (permalink) * Terms of Service with Clare Duffy (CNN) https://www.cnn.com/audio/podcasts/terms-of-service-with-clare-duffy/episodes/458ce968-af5d-11f0-b539-13ed2afe25f8 * AI, Work, and Power (Software Engineering Daily) AI, Work, and Power https://softwareengineeringdaily.com/podcasts/cory-doctorow-on-ai-work-and-power/ * AI, Corporate Power, and the Fight for Worker Control (Plutopia) https://plutopia.io/cory-doctorow-ai-corporate-power-and-the-fight-for-worker-control/ * How to Think About AI—Before It’s Too Late (Daniel Solove) https://www.youtube.com/watch?v=_0xR3uEgGcc * Could Tech Bosses Destroy Life As We Know It? (Politics JOE) https://www.youtube.com/watch?v=PL4VktU0SgY Latest books (permalink) * \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/ * \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce * \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ * \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). * \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). * \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). * \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). * \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. * \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) * \"The Post-American Internet,\" a geopolitical sequel of sorts to *Enshittification*, Farrar, Straus and Giroux, 2027 * \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 * \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2027 * \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: * “Once Is Enemy Action,” a science fiction novel about the origins of modern technofascism. Today's words: 537 (23966 total). * \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Fourth draft completed. Submitted to editor. * A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "06e3bb9bd50ed3abb5a8624bc6f69f297a415148591fdcfb3f21b461113bf708",
+      "ref_id": "3",
+      "recommendationScore": 20,
+      "popularityScore": 45,
+      "priority": "low",
+      "comment": "一篇包含多领域链接和社论的综合性文章，科技元素零散且非核心。",
+      "reason": "主题过于分散，缺乏明确的科技主线，更偏向于社会和政治评论，不符合优先级。",
+      "tags": [
+        "链接聚合",
+        "社会",
+        "政治",
+        "数字版权管理"
+      ]
+    },
+    {
+      "title": "M7.6 Earthquake in Panama",
+      "link": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u18k/executive",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-09T18:22:20.000Z",
+      "summary": "Article URL: https://earthquake.usgs.gov/earthquakes/eventpage/us6000u18k/executive\nComments URL: https://news.ycombinator.com/item?id=50024669\nPoints: 88\n# Comments: 31",
+      "id": "113a70303c759bf194497749a11c37b2d7971fdac689274d787cd18e8cb155ea",
+      "ref_id": "4",
+      "recommendationScore": 10,
+      "popularityScore": 100,
+      "priority": "low",
+      "comment": "巴拿马地震新闻报道。",
+      "reason": "与科技博客的评估主题完全不符，不具备技术深度、新颖性或实用性，属于通用新闻范畴。",
+      "tags": [
+        "新闻",
+        "地理",
+        "自然灾害"
+      ]
+    },
+    {
+      "title": "Germany transforms former coal mines into Europe's largest lake landscape",
+      "link": "https://www.euronews.com/2026/04/14/almost-like-lake-como-germany-transforms-former-coal-mines-into-europes-largest-lake-lands",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-09T15:05:24.000Z",
+      "summary": "Article URL: https://www.euronews.com/2026/04/14/almost-like-lake-como-germany-transforms-former-coal-mines-into-europes-largest-lake-lands\nComments URL: https://news.ycombinator.com/item?id=50021540\nPoints: 155\n# Comments: 80",
+      "id": "2b5521e8d7dcd391b4273518d7240364d2d20e31d81f23c1c928cfbcdcf80460",
+      "ref_id": "1",
+      "recommendationScore": 10,
+      "popularityScore": 17,
+      "priority": "low",
+      "comment": "一篇关于德国将废弃煤矿改造成湖泊景观的报道，属于环境和地理范畴。",
+      "reason": "主题与科技博客的设定优先级完全不符，不具备技术深度或实用性。",
+      "tags": [
+        "环境",
+        "地理",
+        "欧洲"
+      ]
+    },
+    {
+      "title": "20 Minutes of Political Debate, Brought to You by Commercial Breaks ",
+      "link": "https://idiallo.com/byte-size/20-minutes-of-political-debate",
+      "source": "idiallo.com",
+      "publishedAt": "2026-10-09T04:59:23.000Z",
+      "summary": "\"I'm sorry, you're out of time, we have to move on. Senator, what's your response? You have three minutes.\"\nWatching a political debate these days feels useless. Candidates get two minutes to make their case, and their opponents get even less time to reply. I'm reminded of Amusing Ourselves to Death by Neil Postman, where he argues that what passes for debate on TV is nothing more than an audition or a performance review. It is only an opportunity to come up with catchy sound bites or to appear likable.\nOn the other hand, if you want long-form, one-sided podcasts where politicians can babble uninterrupted for hours without being challenged, you can tune into Joe Rogan, Lex Fridman, or whichever pseudo-comedian is trending. \nOur choices seem locked between traditional media, where you barely have time to clear your throat, and one-sided online echo chambers.\nSo why not a third option? Two candidates sitting down in a long-form podcast format. Debate the issues, prove your point, and take turns. No commercial breaks required. If it takes three hours, it takes three hours.\nThis format isn't new, in fact, it plagues social media right now. The problem is that it's mostly driven by influencers, or people of no consequence, chasing viral moments. They are either doing gender wars, or arguing whether it was a Nazi salute or not. When you switch to traditional media, the talking heads on CNN, Fox, or Piers Morgan's show are just that. Talking heads.\nOf course, this might never happen because candidates have almost zero incentive to subject themselves to it. If they're unprepared or rely on weak arguments that don't hold up past a 15-second clip, a three-hour deep dive could destroy their campaign.\nStill, it would be nice to see Michiganders give this a shot in the coming month.",
+      "id": "e661ce3cf9aa143c210794f47c358fe0377d55c3556a7486538193fe41c58840",
+      "ref_id": "2",
+      "recommendationScore": 10,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "对政治辩论形式的批判性分析，提出新的媒体形式，但并非科技文章。",
+      "reason": "文章侧重于媒体和政治批判，偏离了科技博客的核心关注点。",
+      "tags": [
+        "政治",
+        "媒体评论",
+        "社会观察"
+      ]
+    },
+    {
+      "title": "'Wallace and Gromit,' 90% Alone",
+      "link": "https://animationobsessive.substack.com/p/wallace-and-gromit-90-alone",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-09T13:49:31.000Z",
+      "summary": "Article URL: https://animationobsessive.substack.com/p/wallace-and-gromit-90-alone\nComments URL: https://news.ycombinator.com/item?id=50020533\nPoints: 93\n# Comments: 11",
+      "id": "459c78019c2b37a3e52d7de82085b5afda196ce6b435ebee31407b96988a4bde",
+      "ref_id": "2",
+      "recommendationScore": 5,
+      "popularityScore": 6,
+      "priority": "low",
+      "comment": "一篇关于《超级无敌掌门狗》动画的评论文章，属于文化艺术领域。",
+      "reason": "与科技博客主题完全无关，不符合任何设定的内容优先级或技术关注点。",
+      "tags": [
+        "动画",
+        "文化评论"
+      ]
+    },
+    {
+      "title": "Nobel Peace Prize for 2026 to Navanethem Pillay",
+      "link": "https://www.nobelprize.org/prizes/peace/2026/press-release/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-09T10:12:11.000Z",
+      "summary": "Article URL: https://www.nobelprize.org/prizes/peace/2026/press-release/\nComments URL: https://news.ycombinator.com/item?id=50018420\nPoints: 392\n# Comments: 194",
+      "id": "b405effee4998d94d222639a9c330f129f54c78eef086384b0e6c92be8e82d12",
+      "ref_id": "2",
+      "recommendationScore": 5,
+      "popularityScore": 95,
+      "priority": "low",
+      "comment": "宣布了2026年诺贝尔和平奖的得主，与科技主题无关。",
+      "reason": "文章内容与科技博客的关注主题完全不符，不适合纳入评估范围。",
+      "tags": [
+        "新闻",
+        "社会",
+        "非技术"
+      ]
+    },
+    {
+      "title": "Let’s Check In on Trump’s Blog",
+      "link": "https://truthsocial.com/@realDonaldTrump/posts/117406176604364910",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-10-08T22:52:35.000Z",
+      "summary": "An actual post from the sitting president of the United States:\nThe White House considers anyone that uses the term, “Artificial\nIntelligence,” as opposed to the highly accepted new and more\naccurate term, “Super Intelligence,” THE ENEMY! President DONALD\nJ. TRUMP\nThis, from the self-professed “party of free speech”. Trump’s screws are so loose you can hear them rattling around.\n ★",
+      "id": "8e08242f169d0d8d9e7a8f32fbc91577763b2a25b8ca199e96e6978d674e8aff",
+      "ref_id": "1",
+      "recommendationScore": 5,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "一篇纯粹的政治评论文章，与科技博客主题完全不符。",
+      "reason": "内容与科技主题无关，不具备技术深度、新颖性或实用性。",
+      "tags": [
+        "政治",
+        "评论"
+      ]
+    },
+    {
+      "title": "Concert Review: London Voices - Video Games Go Choral ★★★★☆",
+      "link": "https://shkspr.mobi/blog/2026/10/concert-review-london-voices-video-games-go-choral/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-10-09T11:34:09.000Z",
+      "summary": "London's musical entertainment scene has something for everyone - from long-running blockbuster shows to no-name bands in dingy basements. Somewhere in the middle is monophonic plainchant versions of the Halo theme sung in a church.  The acoustics at St Martin in the Field are echoey. That makes it rather hard to hear the amplified announcement to turn off our phones, but makes an a cappella…",
+      "id": "76f23989d1c5d70a3cf6b9d5c4ee6f3c5dc4db451a8c7015cf819a2ef4afbeb2",
+      "ref_id": "4",
+      "recommendationScore": 5,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "一篇关于视频游戏主题合唱音乐会的评论，与科技主题无关。",
+      "reason": "内容完全属于艺术和娱乐领域，不属于科技博客的范畴。",
+      "tags": [
+        "音乐",
+        "游戏",
+        "文化评论"
+      ]
+    },
+    {
+      "title": "Premium: The Hater's Guide To Junk",
+      "link": "https://www.wheresyoured.at/premium-the-haters-guide-to-junk/",
+      "source": "wheresyoured.at",
+      "publishedAt": "2026-10-09T15:53:00.000Z",
+      "summary": "Ladies and gentlemen, we are in a glorious, splendiferous, outrageous era of crap! \nSome call it “high-yield,” some call it “speculative-grade,” but to those of us living in the real world, we know them as junk bonds, the formerly-sleepy world of below-",
+      "id": "aa93d529acc6e44e64fb5c8085660819174ff28c1236052865afdc8cb2cde6cd",
+      "ref_id": "1",
+      "recommendationScore": 5,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "一篇与科技主题完全无关的金融评论，不适合本博客发布。",
+      "reason": "内容涉及金融产品（垃圾债券），与科技博客关注的AI、Apple生态等主题严重不符，没有技术深度和实用性。",
+      "tags": [
+        "金融",
+        "经济评论"
+      ]
+    },
+    {
+      "title": "Quoting Matthew Green",
+      "link": "https://simonwillison.net/2026/Oct/9/matthew-green/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-10-09T15:02:29.000Z",
+      "summary": "",
+      "id": "7af93f3f2c1476c300e884340760c2abcc6a525f44d832e93e22466550c656bc",
+      "recommendationScore": 0,
+      "priority": "low",
+      "comment": "Score mapping failed",
+      "status": "score_failed"
+    },
+    {
+      "title": "A new feature for my blog, built using my voice",
+      "link": "https://simonwillison.net/2026/Oct/9/built-using-my-voice/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-10-09T12:54:06.000Z",
+      "summary": "",
+      "id": "305ba874f36ffe291e11411a5f4e77be7b09db6dff8ee08ce33ef50aae33bea5",
+      "recommendationScore": 0,
+      "priority": "low",
+      "comment": "Score mapping failed",
+      "status": "score_failed"
+    },
+    {
+      "title": "ttok 1.0",
+      "link": "https://simonwillison.net/2026/Oct/9/ttok/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-10-09T00:34:43.000Z",
+      "summary": "",
+      "id": "4531aaeb11d6a46bc2567ac4f44dafb27caa2da19e0a9534a8bfe121e6b5b22e",
+      "recommendationScore": 0,
+      "priority": "low",
+      "comment": "Score mapping failed",
+      "status": "score_failed"
+    },
+    {
+      "title": "ttok 0.4",
+      "link": "https://simonwillison.net/2026/Oct/8/ttok/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-10-08T23:34:28.000Z",
+      "summary": "",
+      "id": "f242adb232a8919dd94035cc76b273ea2f1bcb6cc64b2ebba127390f22fe5d02",
+      "recommendationScore": 0,
+      "priority": "low",
+      "comment": "Score mapping failed",
+      "status": "score_failed"
+    },
+    {
+      "title": "Quoting Carson Gross",
+      "link": "https://simonwillison.net/2026/Oct/8/carson-gross/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-10-08T21:05:44.000Z",
+      "summary": "",
+      "id": "ed14048bb9127b900e68489f03c8074b3dd51e27764598e5b82ae495d390143f",
+      "recommendationScore": 0,
+      "priority": "low",
+      "comment": "Score mapping failed",
+      "status": "score_failed"
+    }
+  ]
+}
