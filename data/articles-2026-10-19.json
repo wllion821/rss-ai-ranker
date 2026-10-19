@@ -1,0 +1,862 @@
+{
+  "dailySummary": "今日科技速递：Mistral发布Timestral时间序列模型，MiniMax推出M3.1 Flash。AI领域涌现“爆炸性”研究进展，或颠覆神经网络认知。Laminar提供高效AI代理错误追踪方案，",
+  "articles": [
+    {
+      "title": "Launch HN: Laminar (YC S24) – RL-trained model that finds errors in agent traces",
+      "link": "https://news.ycombinator.com/item?id=50154029",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-19T16:00:18.000Z",
+      "summary": "Hi HN, we’re Robert and Din from Laminar (https://laminar.sh). We’ve been building open-source observability for AI agents since 2024. Recently, we released flow-1, a model trained with RL to find errors in agent traces. On our benchmark (https://laminar.sh/blog/flow-1), it matches GPT-6-sol in detection quality while being 23x cheaper. This makes it affordable to analyze every production agent trace, without sampling.\nHere’s a one-minute walkthrough: https://youtu.be/KJa3h6ZJNLQ\nWe also put together a post with example traces and analyses from flow-1 and other models: https://laminar.sh/blog/flow-1-in-action\nAgent observability is crowded, so instead of a bullet list of how Laminar differs from X, we’ll explain how we’re solving agent observability from first principles.\nAgents now run for many steps and fail implicitly. An agent can click the wrong button or cite the wrong document while every call completes successfully. These errors are the most useful ones to catch and understand. To find them, you need to understand what the agent was trying to do and inspect its LLM calls and tool results. Simply looking at the final agent output is not enough.\nCollecting traces alone doesn’t solve this. A lot of agent observability platforms are still data collectors at their core. You can end up paying to store traces that nobody has time to read or extract value from.\nUsing another LLM to inspect traces is THE solution, but capable models are expensive at scale and cheaper ones often miss errors or flag unrelated things.\nSo we built our model to solve exactly this problem. We finetuned a small OSS model and then post trained it with RL on thousands of synthetic investigations of realistic agent workflows in software, legal, customer support, etc. We got a model that is both good at agent trace analysis and very cheap to run.\nflow-1 runs inside a harness we call Signals. It acts as a coding agent, treating an agent trace like a repo, with each span (an LLM call, tool call, etc.) as a file. It starts from a compressed string representation of a full agent trace and a user prompt, then greps across spans and reads the relevant ones in full.\nThe beauty of Signals is that it can respond to a general prompt. You can ask it to identify user frustration, check whether your browser agent completed a checkout, and so on. It’s not limited to raw error detection. It returns findings as JSON in a schema users can freely define. We call these signal events.\nOnce you’re analyzing every trace, you also have too many individual events to read. That’s why we automatically group similar signal events into clusters. You can see recurring problems and how often they happen, then drill into individual events and the traces behind them.\nYou can use traces from a cluster to build an eval dataset for that type of failure. You can then use your favourite coding agent to hillclimb on those evals and check that the fix works across these cases before shipping it to prod.\nTrace → analyze → catch errors and form clusters → fix → release. Making this loop easy is why we built Laminar.\nWe’ve put the same thought into the rest of Laminar. Our blog (https://laminar.sh/blog) explains how looking closely at how agents actually work led us to build 20x trace compression, a custom SQL query engine and automatic task extraction.\nLaminar is Apache 2.0 and self-hostable (https://github.com/lmnr-ai/lmnr). We make money from the managed cloud.\nWe’d love to hear how you track your agents’ performance today. How much do you learn from user feedback versus your own monitoring? And when you fix something, how do you check that it hasn’t introduced a different failure?\nComments URL: https://news.ycombinator.com/item?id=50154029\nPoints: 36\n# Comments: 15",
+      "id": "6a23445afa1896da32789b0b0db527d66ce0eb486b7f25c2545cdb79f160a392",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "Laminar推出基于RL训练的模型flow-1，用于高效检测AI agent trace中的错误，成本效益显著。",
+      "reason": "高度契合AI主题，技术深度和新颖性突出，解决了AI agent开发和部署中的实际痛点，实用性极强，是当前AI前沿领域的重要创新。",
+      "tags": [
+        "AI",
+        "Agent",
+        "可观测性",
+        "机器学习",
+        "RL",
+        "创业"
+      ]
+    },
+    {
+      "title": "Timestral: Mistral's time-series foundation models",
+      "link": "https://mistral.ai/news/timestral/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-19T09:59:32.000Z",
+      "summary": "Article URL: https://mistral.ai/news/timestral/\nComments URL: https://news.ycombinator.com/item?id=50150434\nPoints: 481\n# Comments: 91",
+      "id": "51edf4c643816e6fc69aba606f22e49e530ea0b14e4cd171d8658ddbb9eb6a75",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 98,
+      "priority": "high",
+      "comment": "Mistral发布了专门用于时间序列数据的基础模型Timestral，是AI领域的一项重要技术突破。",
+      "reason": "作为AI领域领先公司的最新技术突破，该模型专注于时间序列数据处理，对AI研究者和工程师具有极高的技术深度和实用价值。",
+      "tags": [
+        "AI",
+        "机器学习",
+        "时间序列",
+        "Mistral AI",
+        "基础模型"
+      ]
+    },
+    {
+      "title": "“We were looking at it wrong”: The explosive claim that’s upended the AI world",
+      "link": "https://www.technologyreview.com/2026/10/19/1147149/we-were-looking-at-it-wrong-the-explosive-claim-thats-upended-the-ai-world/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-10-19T17:45:55.000Z",
+      "summary": "“I think I have good news about the nature of neural networks.” With those simple words of optimism, Nick Cammarata, a researcher at the AI startup Goodfire, kicked off a 26,000-word blog post that has knocked the AI world on its head, sparking wild speculation as well as cautious (and not-so-cautious) celebration. Cammarata’s claim is…",
+      "id": "58a40be5309dae3173ac26e1f08600c05f3751b023e0791d7152408b23d37eef",
+      "ref_id": "1",
+      "recommendationScore": 95,
+      "popularityScore": 98,
+      "priority": "high",
+      "comment": "报道了AI领域一项可能颠覆性发现，对神经网络本质提出全新见解，引发广泛关注。",
+      "reason": "涉及AI核心理论的重大突破，技术深度和新颖性极高，对AI研究和未来发展方向具有极高的启发和阅读价值。",
+      "tags": [
+        "AI Research",
+        "Neural Networks",
+        "AI Breakthrough",
+        "Fundamental AI"
+      ]
+    },
+    {
+      "title": "Mercury 3: Diffusion at scale",
+      "link": "https://www.inceptionlabs.ai/blog/introducing-mercury-3",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-19T17:27:11.000Z",
+      "summary": "Article URL: https://www.inceptionlabs.ai/blog/introducing-mercury-3\nComments URL: https://news.ycombinator.com/item?id=50155245\nPoints: 168\n# Comments: 70",
+      "id": "614a0336a7737e51afb3b077cdb47d041cfcc6e0785f6808a08729d3ded841df",
+      "ref_id": "4",
+      "recommendationScore": 92,
+      "popularityScore": 84,
+      "priority": "high",
+      "comment": "深入探讨大规模扩散模型的最新进展及其工程挑战。",
+      "reason": "高度聚焦AI核心技术（扩散模型），内容专业且具前沿性，对AI领域的研究者和工程师极具价值。",
+      "tags": [
+        "AI",
+        "扩散模型",
+        "机器学习",
+        "深度学习",
+        "模型优化"
+      ]
+    },
+    {
+      "title": "AI researchers stranded Claude on a virtual desert island. It started to “play.”",
+      "link": "https://www.technologyreview.com/2026/10/19/1147095/ai-stranded-claude-virtual-desert-island-play/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-10-19T09:08:05.000Z",
+      "summary": "What do AI agents do if you don’t tell them to do anything? The answer looks a lot like play. Researchers repeatedly stranded them alone on a virtual desert island for 30 hours in an experiment reminiscent of the movies Cast Away or Home Alone. The agents—copies of Claude Opus 4.7 nicknamed Eko—were able to…",
+      "id": "d67eff0903799e5f15a465ee97dd41c08f2d6224c165699303e9149786d319e1",
+      "ref_id": "4",
+      "recommendationScore": 92,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "报告了一项创新实验，揭示AI代理在无指令情境下表现出的“玩耍”等自主行为。",
+      "reason": "揭示了AI代理的潜在高级认知能力和自主性，新颖性和技术深度极高，对AI设计和理解具有重要启发意义。",
+      "tags": [
+        "AI Agents",
+        "AI Research",
+        "Emergent Behavior",
+        "Cognitive AI",
+        "Claude"
+      ]
+    },
+    {
+      "title": "Detecting model weight tampering in GPU memory (Rome attacks)",
+      "link": "https://stealthium.io/blog/hands-off-detecting-model-weight-tampering",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-19T14:31:27.000Z",
+      "summary": "Article URL: https://stealthium.io/blog/hands-off-detecting-model-weight-tampering\nComments URL: https://news.ycombinator.com/item?id=50152976\nPoints: 5\n# Comments: 0",
+      "id": "0460ada4af965b74b9b5e832db0661e7c6a71716516fe753e7481171963ad967",
+      "ref_id": "1",
+      "recommendationScore": 90,
+      "popularityScore": 1,
+      "priority": "high",
+      "comment": "深入探讨GPU内存中AI模型权重篡改的检测方法，技术前沿且关键。",
+      "reason": "涉及AI模型核心安全，技术深度和新颖性极高，对AI安全领域至关重要，是高优先级AI主题下的关键研究。",
+      "tags": [
+        "AI安全",
+        "GPU",
+        "模型攻击",
+        "深度学习",
+        "安全检测"
+      ]
+    },
+    {
+      "title": "Ask HN: How to deal with shipping AI-written code you don't understand?",
+      "link": "https://news.ycombinator.com/item?id=50151036",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-19T11:24:34.000Z",
+      "summary": "I saw this LinkedIn post from a Meta engineer and it resonated with me:\nhttps://www.linkedin.com/posts/ali-hamie_im-an-engineer-at-m...\n> I'm an engineer at Meta and I never felt this uncomfortable doing my job. I'm writing code these days and it all feels like a black box. This new standard of shipping with AI is moving so fast that if we're going to spend our time checking each line of code, it's going to take forever. That means you can end up with systems you've built where you don't truly understand how all the code works. You understand the high level, but not every detail. And maybe this is becoming the new standard. It goes against every instinct of being a software engineer. I'm used to understanding what I'm building. Now I'm trying to figure out how much I need to understand before I'm comfortable moving forward. Are other engineers feeling this too?\nHow are you handling this?\nComments URL: https://news.ycombinator.com/item?id=50151036\nPoints: 101\n# Comments: 172",
+      "id": "71094174f326b71b13f90e809970b8e5e28a9bcd436ecf1c43c556dbda3de783",
+      "ref_id": "1",
+      "recommendationScore": 90,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "探讨了工程师在使用AI生成代码时遇到的理解和信任困境，反映了AI时代软件工程的新挑战。",
+      "reason": "该主题深刻反映了AI时代软件工程实践的痛点，对所有使用AI工具的开发者都具有极高的讨论和参考价值。",
+      "tags": [
+        "AI",
+        "软件工程",
+        "编程工具",
+        "开发者经验",
+        "伦理"
+      ]
+    },
+    {
+      "title": "How far can we push computing?",
+      "link": "https://www.technologyreview.com/2026/10/19/1145904/tr-explains-how-far-can-we-push-computing/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-10-19T09:00:00.000Z",
+      "summary": "MIT Technology Review Explains: Let our writers untangle the complex, messy world of science and technology to help you understand what’s coming next. You can read more from the series here. On the evening of December 29, 1959, at an American Physical Society meeting at Caltech, the physicist Richard Feynman gave a lecture called “There’s…",
+      "id": "3eb787031792b1b2d938292658edffe32ee2131b890b2260c38d37a27f78040c",
+      "ref_id": "0",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "一篇来自MIT Technology Review的深度文章，探讨了计算的极限与未来展望，极具启发性。",
+      "reason": "文章主题宏大且与AI发展息息相关，内容权威且信息密度高，对理解技术发展方向有重要价值。",
+      "tags": [
+        "计算",
+        "未来科技",
+        "AI基础",
+        "MIT Technology Review",
+        "科普"
+      ]
+    },
+    {
+      "title": "Show HN: Open-source early-reading reader with phonics help",
+      "link": "https://github.com/finereli/yarareads",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-19T17:58:54.000Z",
+      "summary": "My kid is 6 y/o and she is learning to read. She's moved through the basic phonics with Teach Your Monster to Read but was struggling with how repetitive it was. I wanted to give her some stories to read, but she still needed help sounding words out - and I wanted her to have the experience of sitting and reading by herself.\nSo I built this book reader app to allow her to click on the words, sound out the phonemes, and read by herself.\nMy 12 year old son wrote the first story, there's a cliffhanger at the end and he's working on the next section.\nWe're going to release more chapters and more stories in the near future.\nAnd there's one other thing -\nThe reader has an MCP connection, so you can connect your Claude or ChatGPT or Grok, give them a PDF of a book you like (or even a set of scans done quickly with a phone camera) and have them import your favorite books into the app (private to your account, for your own kid, if you own the book of course).\nThe reader is free to use on its website and open source if you want to tinker and create your own version.\nThe included stories are under Creative Commons.\nComments URL: https://news.ycombinator.com/item?id=50155647\nPoints: 15\n# Comments: 2",
+      "id": "9b7792345eadd29857582491bb0e9e0549d2d53a9c0e05a92e4ee682ef6f80a5",
+      "ref_id": "3",
+      "recommendationScore": 88,
+      "popularityScore": 60,
+      "priority": "high",
+      "comment": "一款结合AI（LLM）实现内容导入的开源儿童阅读应用，极具创新和实用性。",
+      "reason": "完美结合AI和独立开发，解决了实际的教育痛点，创新性地利用LLM提升了产品的体验和内容丰富度。",
+      "tags": [
+        "AI",
+        "独立开发",
+        "教育科技",
+        "开源",
+        "LLM应用",
+        "产品设计"
+      ]
+    },
+    {
+      "title": "MiniMax M3.1 Flash",
+      "link": "https://www.minimax.io/blog/minimax-m31f",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-19T16:39:09.000Z",
+      "summary": "Article URL: https://www.minimax.io/blog/minimax-m31f\nComments URL: https://news.ycombinator.com/item?id=50154540\nPoints: 269\n# Comments: 103",
+      "id": "b984a5c544e6313764ddbb1cb0dab8320a3a820a9c198b515761e8a455c480cc",
+      "ref_id": "2",
+      "recommendationScore": 85,
+      "popularityScore": 84,
+      "priority": "high",
+      "comment": "MiniMax发布M3.1 Flash模型，是AI领域的重要进展和模型性能更新。",
+      "reason": "直接关联AI这一最高优先级主题，预计技术深度和创新性高，对AI开发者和研究者具有重要的参考价值和实用性。",
+      "tags": [
+        "AI",
+        "大模型",
+        "MiniMax",
+        "模型更新"
+      ]
+    },
+    {
+      "title": "CERN and Mistral sign a statement of intent to establish a strategic partnership",
+      "link": "https://home.cern/cern-and-mistral-join-forces-to-accelerate-ai-for-science/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-19T15:28:24.000Z",
+      "summary": "Article URL: https://home.cern/cern-and-mistral-join-forces-to-accelerate-ai-for-science/\nComments URL: https://news.ycombinator.com/item?id=50153630\nPoints: 258\n# Comments: 51",
+      "id": "4040b794061a9405ebcc4576e2adb2b036224025c94e7cf72159c121ab99c693",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 48,
+      "priority": "high",
+      "comment": "CERN与Mistral的战略合作预示着AI在科学研究领域的新突破。",
+      "reason": "顶级科研机构与领先AI公司强强联手，对AI应用前景具有深远意义，且属于高优先级AI主题。",
+      "tags": [
+        "AI",
+        "科学研究",
+        "合作",
+        "Mistral"
+      ]
+    },
+    {
+      "title": "Making the internet better for AI agents might make it worse for everyone else",
+      "link": "https://www.technologyreview.com/2026/10/19/1147186/making-the-internet-better-for-ai-agents-might-make-it-worse-for-everyone-else/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-10-19T18:22:47.000Z",
+      "summary": "This story originally appeared in The Algorithm, our weekly newsletter on AI. To get stories like this in your inbox first, sign up here. Until recently, you could divide internet users into just two categories: bots and people. Websites have long allowed bots to perform automated tasks, like capturing the content of web pages, but rules…",
+      "id": "c93e63abfb94a4dcc142ae0241ff1d33f6d2d57fa35923a8f57120b4982e68d1",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "深入探讨了AI代理对互联网未来和人类用户体验的潜在负面影响。",
+      "reason": "提供了关于AI代理与互联网发展之间复杂关系的独特视角，具有重要的社会和政策讨论价值，技术深度和新颖性适中。",
+      "tags": [
+        "AI Ethics",
+        "Internet Policy",
+        "Societal Impact",
+        "AI Agents"
+      ]
+    },
+    {
+      "title": "A frivolous problem with a deeper lesson",
+      "link": "https://www.johndcook.com/blog/2026/10/19/regex-backtracking/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-10-19T12:00:43.000Z",
+      "summary": "About 14% of English words can be spelled by stringing together chemical symbols. For example, sarcasm can be written S Ar Ca Sm using the symbols for sulfur, argon, calcium, and samarium. How would you write a program to determine whether a word can be written by stringing together chemical element abbreviations ignoring case? Obviously […]\nA frivolous problem with a deeper lesson first appeared on John D. Cook.",
+      "id": "7a523852782bbcb10762873d47208d3886eee3e05a36ea960f34e4ae91f8b34f",
+      "ref_id": "4",
+      "recommendationScore": 85,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "提出了一个利用化学符号拼写英文单词的趣味编程问题，暗示了其背后的算法和数据结构挑战。",
+      "reason": "这是一个高度实用且富有创造性的编程挑战，能够有效吸引并锻炼读者的算法设计和字符串处理能力。",
+      "tags": [
+        "编程挑战",
+        "算法",
+        "字符串匹配",
+        "趣味编程",
+        "动态规划"
+      ]
+    },
+    {
+      "title": "Cairn: Open windows into AI-driven cyber operations",
+      "link": "https://norforge.com/blog/inside_cairn",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-19T13:35:12.000Z",
+      "summary": "https://www.reuters.com/legal/government/how-one-hacker-used...\nhttps://www.theverge.com/ai-artificial-intelligence/1013643/...\nComments URL: https://news.ycombinator.com/item?id=50152302\nPoints: 22\n# Comments: 6",
+      "id": "b34ad4f974df9541cc8210c1d59eda3fbf5ef30ea00dfe218b99667043891f2c",
+      "ref_id": "4",
+      "recommendationScore": 82,
+      "popularityScore": 5,
+      "priority": "high",
+      "comment": "探讨AI在网络空间行动中的应用，揭示未来网络安全格局的演变。",
+      "reason": "融合了AI和国家安全主题，尽管信息密度可能不高，但其战略重要性和新颖性使其成为高优先级内容。",
+      "tags": [
+        "AI",
+        "网络安全",
+        "国家安全",
+        "网络战"
+      ]
+    },
+    {
+      "title": "Towards Company World Models",
+      "link": "https://www.beaconholdings.com/research/towards-company-world-models",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-19T18:51:09.000Z",
+      "summary": "Article URL: https://www.beaconholdings.com/research/towards-company-world-models\nComments URL: https://news.ycombinator.com/item?id=50156332\nPoints: 16\n# Comments: 0",
+      "id": "f921e9da923396a4da8c62310feaa8ac3dbcfdcaad218e94f494433e39ba64a6",
+      "ref_id": "1",
+      "recommendationScore": 80,
+      "popularityScore": 8,
+      "priority": "high",
+      "comment": "探索AI在构建企业世界模型方面的应用，具有较高的研究价值。",
+      "reason": "文章紧密贴合AI主题，概念新颖且具深度，为企业AI应用提供了前瞻性视角。",
+      "tags": [
+        "AI",
+        "企业AI",
+        "世界模型",
+        "研究"
+      ]
+    },
+    {
+      "title": "Android apps running native on macOS",
+      "link": "https://github.com/kksimp/Mac.apk",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-19T16:45:30.000Z",
+      "summary": "Article URL: https://github.com/kksimp/Mac.apk\nComments URL: https://news.ycombinator.com/item?id=50154624\nPoints: 177\n# Comments: 57",
+      "id": "379accb38d21583f9cf481d5117a3eb52cb304b68f04fc15869a11b6c38310df",
+      "ref_id": "1",
+      "recommendationScore": 80,
+      "popularityScore": 55,
+      "priority": "medium",
+      "comment": "探讨了在macOS上原生运行Android应用的创新方案，具有较高的技术新颖性和实用性。",
+      "reason": "该主题结合了Apple生态和编程工具，技术实现复杂且有显著的用户或开发者价值，社区关注度较高。",
+      "tags": [
+        "macOS",
+        "Android",
+        "跨平台",
+        "开发工具",
+        "开源项目"
+      ]
+    },
+    {
+      "title": "Wine ported to OpenBSD",
+      "link": "https://marc.info/?l=openbsd-ports&m=179236125692175",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-19T13:35:34.000Z",
+      "summary": "Article URL: https://marc.info/?l=openbsd-ports&m=179236125692175\nComments URL: https://news.ycombinator.com/item?id=50152307\nPoints: 432\n# Comments: 140",
+      "id": "67faafe4c9b4a947aba08a668aa7d32cf45e1cf111b53ced9542bd7f27b72880",
+      "ref_id": "3",
+      "recommendationScore": 80,
+      "popularityScore": 100,
+      "priority": "medium",
+      "comment": "Wine成功移植到OpenBSD是操作系统兼容性领域的重要里程碑。",
+      "reason": "尽管面向小众系统，但其技术挑战和对OpenBSD社区的实用性极高，且在Hacker News上人气旺盛，属于编程工具/操作系统主题。",
+      "tags": [
+        "OpenBSD",
+        "Wine",
+        "操作系统",
+        "兼容性",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "Let's Encrypt is adding two additional remote perspectives for domain validation",
+      "link": "https://community.letsencrypt.org/t/lets-encrypt-is-adding-two-additional-remote-perspectives-for-domain-validation/252166",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-19T10:53:39.000Z",
+      "summary": "Article URL: https://community.letsencrypt.org/t/lets-encrypt-is-adding-two-additional-remote-perspectives-for-domain-validation/252166\nComments URL: https://news.ycombinator.com/item?id=50150809\nPoints: 221\n# Comments: 70",
+      "id": "01069e3023f3209509663c056462f708f28c6c83479e1517837dc5f07168f99a",
+      "ref_id": "3",
+      "recommendationScore": 80,
+      "popularityScore": 85,
+      "priority": "medium",
+      "comment": "Let's Encrypt通过增加两个额外的远程视角来提升域名验证的安全性与可靠性。",
+      "reason": "这是重要的网络安全基础设施更新，对网站开发者和系统管理员具有直接的实用价值，属于编程工具和自动化范畴。",
+      "tags": [
+        "网络安全",
+        "Let's Encrypt",
+        "基础设施",
+        "Web开发",
+        "自动化"
+      ]
+    },
+    {
+      "title": "Plex vulnerabilities being exploited in the wild to drop a cryptominer",
+      "link": "http://www.boredhackerblog.info/2026/10/plex-vulnerabilities-being-exploited-in.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-19T13:36:43.000Z",
+      "summary": "Article URL: http://www.boredhackerblog.info/2026/10/plex-vulnerabilities-being-exploited-in.html\nComments URL: https://news.ycombinator.com/item?id=50152321\nPoints: 100\n# Comments: 36",
+      "id": "65347ca450d8708c101eb8a706322f4715666224a6eead6c2355e29c751ede4d",
+      "ref_id": "2",
+      "recommendationScore": 78,
+      "popularityScore": 24,
+      "priority": "medium",
+      "comment": "提醒Plex用户注意正在被利用的漏洞，以防范加密货币挖矿攻击。",
+      "reason": "针对热门应用的即时安全预警，实用性高，对用户有直接的指导价值，属于重要的自动化/安全主题。",
+      "tags": [
+        "安全漏洞",
+        "Plex",
+        "加密挖矿",
+        "网络安全"
+      ]
+    },
+    {
+      "title": "Feds Suspect Ransom Negotiator Ran ShinyHunters Extortion Site",
+      "link": "https://krebsonsecurity.com/2026/10/feds-suspect-ransom-negotiator-ran-shinyhunters-extortion-site/",
+      "source": "krebsonsecurity.com",
+      "publishedAt": "2026-10-19T13:48:56.000Z",
+      "summary": "U.S. federal investigators pursuing the ShinyHunters hacking group that recently stole highly sensitive data from the FBI have identified executives at two different ransomware negotiation firms who maintained unusually close relations with the extortion group, KrebsOnSecurity has learned. Sources close to the investigation say one of the executives in the United States even helped ShinyHunters operate a website that pressured victims into paying a ransom.",
+      "id": "3e43e08eb436698d5b82061e1131043cc5b926d4cf09728c8d40c81e8ab80270",
+      "ref_id": "4",
+      "recommendationScore": 75,
+      "popularityScore": 90,
+      "priority": "low",
+      "comment": "一篇来自KrebsOnSecurity的调查性报道，揭露了勒索谈判方与黑客团伙的勾结内幕。",
+      "reason": "新闻价值和信息密度高，揭示了网络安全领域新的风险和伦理困境，虽然不直接符合核心优先级，但具有广泛的社会关注度。",
+      "tags": [
+        "网络安全",
+        "勒索软件",
+        "黑客",
+        "调查报道",
+        "科技新闻"
+      ]
+    },
+    {
+      "title": "Verizon Is Going to Charge $10/Month for iPhone Handoff",
+      "link": "https://www.verizon.com/about/news/iphone-duo-verizon-offers",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-10-18T22:20:06.000Z",
+      "summary": "Verizon, in a post headlined “Switch to Verizon and Get the New iPhone Duo Now. No Trade-In Needed.”:\nVerizon will support iPhone Handoff, giving customers the\nflexibility to use a single Verizon phone number seamlessly\nacross two compatible iPhone models. Whether using the pocketable\niPhone Duo on the go or iPhone 18 Pro for work, customers can\nswitch active status between devices at any time while keeping\nfull access to Verizon’s 5G network. iPhone Handoff will be\navailable from Verizon for $10/month on compatible iPhones models\nrunning iOS 27.\nFirst, the word “now” is doing a lot of work in that headline, given the current January 25 estimate for new Duo orders.\nSecond, we all know Verizon is the most expensive competent carrier in the U.S. (Maybe AT&T is just as expensive, but I said “competent”.) It feels like a rip that T-Mobile is charging $5/month. Verizon charging double is on-brand but irritating.\n ★",
+      "id": "21a3efef026ebf802da9040a733b1165a36f1002a1dc157c0a423f4b65411cae",
+      "ref_id": "4",
+      "recommendationScore": 70,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "讨论了Verizon对一项（虚构的）iPhone Handoff功能收费的问题，巧妙地对运营商收费策略进行了评论。",
+      "reason": "文章利用虚构场景深刻评论了运营商的定价策略和苹果生态中的用户体验，具有很高的现实讨论价值和话题性。",
+      "tags": [
+        "Verizon",
+        "Apple",
+        "Carrier Pricing",
+        "iPhone",
+        "Consumer Issues",
+        "Commentary"
+      ]
+    },
+    {
+      "title": "Refactoring factorials",
+      "link": "https://www.johndcook.com/blog/2026/10/19/refactoring-factorials/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-10-19T14:55:22.000Z",
+      "summary": "Splitting N! into N factors is trivial. It’s defined as the product of N integers, the integers 1 through N. Can you still split N! into N factors if you put a minimum size requirement on the factors? You can’t split 3! into three factors unless one of the factors is 1, but you can split 4! into factors ≥ 2: 4! […]\nRefactoring factorials first appeared on John D. Cook.",
+      "id": "8a51df4b79e3b7e52161309ff71a1ca734984646d2930e80be393cd8d28f71e1",
+      "ref_id": "3",
+      "recommendationScore": 70,
+      "popularityScore": 55,
+      "priority": "medium",
+      "comment": "探讨了将阶乘分解为具有最小尺寸限制的因数这一有趣的数学/算法问题。",
+      "reason": "提供了一个引人入胜的编程挑战和数学难题，有助于激发读者在算法设计和逻辑思维方面的兴趣。",
+      "tags": [
+        "数学",
+        "算法",
+        "编程挑战",
+        "阶乘分解",
+        "逻辑训练"
+      ]
+    },
+    {
+      "title": "The reverts will continue until morale improves",
+      "link": "http://peter.eisentraut.org/blog/2026/10/09/the-reverts-will-continue-until-morale-improves",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-19T18:42:32.000Z",
+      "summary": "Article URL: http://peter.eisentraut.org/blog/2026/10/09/the-reverts-will-continue-until-morale-improves\nComments URL: https://news.ycombinator.com/item?id=50156206\nPoints: 78\n# Comments: 9",
+      "id": "796dded33c261e29f82feb365641e0d7d3815c2bef8e9df62dfd1b0bf55bba61",
+      "ref_id": "2",
+      "recommendationScore": 65,
+      "popularityScore": 39,
+      "priority": "medium",
+      "comment": "探讨软件开发中常见的代码回滚与团队士气问题。",
+      "reason": "文章触及编程工具和团队管理痛点，对广大开发者具有普遍的实用参考价值。",
+      "tags": [
+        "编程工具",
+        "开发实践",
+        "团队管理",
+        "版本控制"
+      ]
+    },
+    {
+      "title": "The obscure trust looming over Anthropic's IPO",
+      "link": "https://www.wsj.com/tech/ai/anthropic-ipo-private-trust-188f41f7?st=RtdGHg&reflink=desktopwebshare_permalink",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-19T12:06:03.000Z",
+      "summary": "Article URL: https://www.wsj.com/tech/ai/anthropic-ipo-private-trust-188f41f7?st=RtdGHg&reflink=desktopwebshare_permalink\nComments URL: https://news.ycombinator.com/item?id=50151376\nPoints: 107\n# Comments: 62",
+      "id": "a203933f1b321d04a58c60eae76631a07f9224254363ce6be2b7fe78d4574d68",
+      "ref_id": "0",
+      "recommendationScore": 65,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "揭露了Anthropic IPO背后独特的股权结构及其潜在影响，是一篇关于AI产业的商业分析。",
+      "reason": "虽然是商业而非纯技术文章，但深入分析了AI巨头Anthropic的运作模式，对关注AI产业发展和投资的读者有价值。",
+      "tags": [
+        "AI",
+        "产业分析",
+        "投资",
+        "Anthropic"
+      ]
+    },
+    {
+      "title": "Netflix Lays Off 6 Percent of Staff",
+      "link": "https://www.wsj.com/business/media/netflix-eliminates-about-6-of-staff-in-biggest-cuts-since-2022-0a2d8ec3?st=NtEg5v&reflink=desktopwebshare_permalink",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-10-19T16:32:06.000Z",
+      "summary": "Joe Flint and Jessica Toonkel, reporting for The Wall Street Journal last week:\nNetflix is cutting 6% of its staff, or roughly 1,000 positions\nglobally, its biggest round of layoffs since 2022, as it struggles\nwith slowing growth and customer engagement. Co-Chief Executives\nGreg Peters and Ted Sarandos said in an email to employees\nWednesday morning that the bulk of the cuts would be in the\nstreaming giant’s product, tech, legal and human-resources teams.\nThe layoffs may have hit those teams (including some of the talent that created the excellent Duo support for Netflix’s iOS app), but Peters and Sarandos seem to know where the fundamental problem lies: Netflix has peaked and their content blows.\nFlint, in a follow-up report the next day, “Netflix Replaces Content Chief as It Struggles to Engage Viewers”:\nNetflix’s Chief Content Officer Bela Bajaria is leaving the\ncompany, as it struggles with slowing growth and falling customer\nengagement.\nYours truly, back in August: “Netflix Has Peaked”.\n ★",
+      "id": "6fd5aee32d76e76cea9a84bcf8ed4b118187f650c2bdf40f780f9a9a5a706450",
+      "ref_id": "1",
+      "recommendationScore": 65,
+      "popularityScore": 80,
+      "priority": "medium",
+      "comment": "报道了Netflix的大规模裁员及其背后增长放缓和内容策略的挑战。",
+      "reason": "提供了重要的行业动态和商业分析，对关注科技行业发展趋势的读者具有较高参考价值。",
+      "tags": [
+        "Netflix",
+        "Industry News",
+        "Business Strategy",
+        "Layoffs"
+      ]
+    },
+    {
+      "title": "Gurman on HomeView: ‘Finished Units Have Been Sitting Boxed Up in Warehouses for the Better Part of a Year’",
+      "link": "https://www.bloomberg.com/news/newsletters/2026-10-18/apple-homeview-with-robotic-arm-new-mac-ipad-mini-nov-6-release-iphone-duo?accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzb3VyY2UiOiJTdWJzY3JpYmVyR2lmdGVkQXJ0aWNsZSIsImlhdCI6MTc5MjMzMjQwNiwiZXhwIjoxNzkyOTM3MjA2LCJhcnRpY2xlSWQiOiJUTjNXODFLR1pBSjQwMCIsImJjb25uZWN0SWQiOiJDNEVEQ0FFMUZBMDU0MEJFQTI0QTlGMjExQzFFOTA4MCJ9.eu94lgz5qU35YdXhWFRwjbVBeJEKzpwFqF-pzh_GPJU&leadSource=article-gifting",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-10-18T21:58:33.000Z",
+      "summary": "Mark Gurman, today, in his weekly Power On column for Bloomberg (gift link):\nWithout a serviceable version of the new assistant, Apple couldn’t\ndeliver the experience it had envisioned. That left the hardware\nready to go, but the software nowhere near finished.\nSo Apple postponed the HomeView repeatedly — first until spring\n2025, then summer, then fall, and then again throughout 2026\nbefore finally unveiling it this past week. And the hardware\nbetrays its age. With thick bezels, an A18 processor and 8\ngigabytes of memory, this is clearly a product conceived years\nago. Finished units have been sitting boxed up in warehouses for\nthe better part of a year, waiting for the software to catch up.\nThe A18 chip and 8 GB of RAM aren’t a sure sign of delay; this year’s MacBook Neo has the 18 Pro chip and only 8 GB RAM, and wasn’t delayed. And if a kick-ass MacBook can get by with an A18-class chip and 8 GB RAM, surely a HomeView can too. HomeView only does a fraction of what a Mac can do, and the MacBook Neo is perhaps Apple’s best new product in years, full stop.\nBut I have no reason to doubt Gurman that this hardware was finished and production started long ago. His reporting on this product has proven out going back two years. Parts of Apple clearly — and disastrously — believed that a credible version of Siri AI would ship in early 2025. You might recall my writing about that. HomeView clearly depends on having a credible version of Siri AI behind it. But Siri AI didn’t ship until last month.\nOne revealing sign of how long this thing has been in development:\nI spotted several posts on social media from former Apple\nemployees proudly touting their work on the HomeView. These\nweren’t people who had just left the company, either. Some hadn’t\nworked at Apple in quite a while, yet were still able to point to\nthe newly announced device as something they helped create. That\ntells you plenty about how long ago much of the work was\ncompleted.\nThat’s juicy, but it might have been good to include some links here?\n ★",
+      "id": "5c33898ee5df325149d9c29cf15059adb36ba6077c1f690844f99f3d5d4136dc",
+      "ref_id": "0",
+      "recommendationScore": 65,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "Mark Gurman独家爆料苹果HomeView产品因软件问题和过时硬件导致长期延期。",
+      "reason": "提供了苹果生态系统内新品发布的最新动态和幕后分析，对关注苹果产品线的读者具有较高的信息价值。",
+      "tags": [
+        "Apple",
+        "HomeView",
+        "产品延期",
+        "Mark Gurman",
+        "硬件分析"
+      ]
+    },
+    {
+      "title": "The Lean Educator Conference",
+      "link": "https://steveblank.com/2026/10/19/the-lean-educator-conference/",
+      "source": "steveblank.com",
+      "publishedAt": "2026-10-19T13:00:20.000Z",
+      "summary": "Announcing a Lean Educators Conference. Teaching Lean in the Age of AI. November 18-19th at K&S Ranch, California. When AI hit our spring Lean Launchpad for Deep Tech class, our teaching team was unprepared for the impact it made on the class. What I didn’t realize was that other Lean educators (Hacking for Defense, NSF […]",
+      "id": "fff5249fea1a2a543d13a195e0ae29be62ea281abd5ed97e5aa57f60ea94f53d",
+      "ref_id": "0",
+      "recommendationScore": 65,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "一篇关于AI时代下精益教育者会议的公告，探讨AI对教学的影响。",
+      "reason": "文章主题与AI高度相关，但作为会议公告，其信息密度和直接技术深度有限，主要面向教育领域。",
+      "tags": [
+        "AI",
+        "教育",
+        "会议",
+        "精益方法论"
+      ]
+    },
+    {
+      "title": "I no longer care to work on any Ruby gems so I've archived all my repositories",
+      "link": "https://po-ru.com/2026/10/18/why-im-no-longer-updating-this-repository",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-19T16:37:10.000Z",
+      "summary": "Article URL: https://po-ru.com/2026/10/18/why-im-no-longer-updating-this-repository\nComments URL: https://news.ycombinator.com/item?id=50154518\nPoints: 320\n# Comments: 288",
+      "id": "d94b9e0dc933b61ed22aa4911e166f4f6561b2c41f74915c3d7024c62b7168b2",
+      "ref_id": "3",
+      "recommendationScore": 60,
+      "popularityScore": 100,
+      "priority": "medium",
+      "comment": "一位Ruby开发者宣布停止维护所有Ruby gems，引发了关于开源社区和开发者可持续性的讨论。",
+      "reason": "虽然技术深度不高，但文章触及了开源生态、开发者士气和项目维护等重要议题，在开发者社区中引起强烈共鸣，实用性体现在对行业现象的思考。",
+      "tags": [
+        "Ruby",
+        "开源",
+        "开发者经验",
+        "社区",
+        "维护",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "The Download: preserving the Arctic permafrost, and playful AI agents",
+      "link": "https://www.technologyreview.com/2026/10/19/1147103/the-download-preserving-the-arctic-permafrost-and-playful-ai-agents/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-10-19T12:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. Inside the quest to combat Arctic fires and save the planet’s frozen carbon —James Temple In July 2021, a wildfire burned through a forest on the University of Alaska, Fairbanks campus,…",
+      "id": "4c406691d5f918fe5a2821e71755efdd2621c4f2c5f7911e79be3e70184142f2",
+      "ref_id": "2",
+      "recommendationScore": 60,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "一份科技新闻摘要，涵盖了北极冻土保护和AI代理的初步研究等多个主题。",
+      "reason": "作为新闻摘要，信息广但不深，且AI主题在内容摘要中并非主要焦点，实用性和技术深度较低，综合优先级不高。",
+      "tags": [
+        "Newsletter",
+        "Environmental Tech",
+        "Climate Change",
+        "AI Agents (briefly)"
+      ]
+    },
+    {
+      "title": "llm-tools-datasette 0.1.1",
+      "link": "https://simonwillison.net/2026/Oct/18/llm-tools-datasette/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-10-18T23:43:09.000Z",
+      "summary": "",
+      "id": "ae7b31dc246e27601c9853584b216a22afa45030743693b540b19f254b54b3a5",
+      "ref_id": "1",
+      "recommendationScore": 55,
+      "popularityScore": 40,
+      "priority": "high",
+      "comment": "标题指明是一款关于LLM和Datasette的编程工具，但文章内容缺失，无法进行详细评估。",
+      "reason": "主题高度符合AI和编程工具的优先级，但因缺少具体内容，其深度和实用性无法体现，推荐分有所保留。",
+      "tags": [
+        "AI",
+        "LLM",
+        "编程工具",
+        "Datasette"
+      ]
+    },
+    {
+      "title": "llm-echo 0.5",
+      "link": "https://simonwillison.net/2026/Oct/18/llm-echo/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-10-18T23:16:16.000Z",
+      "summary": "",
+      "id": "9d2417f40cde50f04449dce634da1b80f95c91368ab885e5da40c31359ed21bb",
+      "ref_id": "2",
+      "recommendationScore": 55,
+      "popularityScore": 40,
+      "priority": "high",
+      "comment": "涉及LLM相关的“echo”工具，潜在实用，但同样因内容缺失而难以判断其具体价值。",
+      "reason": "作为AI编程工具，其主题优先级高，然而缺少正文使得无法评估其新颖性、技术深度和实际用途。",
+      "tags": [
+        "AI",
+        "LLM",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "Time Magazine Profiles John Ternus",
+      "link": "https://time.com/collection/best-inventions/2026/apple-iphone-duo/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-10-19T16:17:14.000Z",
+      "summary": "Andrew Chow, writing for Time:\nJust below the broad smile he’s been wearing all morning, John\nTernus’ hands are shaking.\nOn this September day in Silicon Valley, Apple’s new CEO is\nsurrounded by celebrities, tech enthusiasts, and reporters who\nhave flocked to Apple Park from around the world to catch a\nglimpse of the company’s new and long-awaited foldable phone, the\nDuo. After Ternus takes a few photos with the device, an Apple PR\nrep pulls the influencer known as IShowSpeed out of the\ncrowd to meet him. Winning over the 21-year-old isn’t exactly the\ntoughest assignment Ternus has faced in his 25-year Apple career:\nSpeed barks when he sees the phone and then gleefully\nsprings into a backflip.\nBut IShowSpeed also happens to be livestreaming the encounter to\nhis 61 million subscribers on YouTube. And as Ternus thumbs\nthrough the $1,999-and-up phone, attempting to drag a photo into a\ntext-message box, eagle-eyed viewers notice his hands quivering.\nTernus later explains that he didn’t sleep much the night before.\n“I was on such a moment of adrenaline and caffeine and excitement\nfor the day,” he tells Time.\nThere’s only a glimpse of Ternus’s personality revealed here. To date he’s more of a cipher than even Cook. He’s Apple’s San Francisco sans serif typeface brought to life. Handsome, distinctive, decidedly “Apple” — but plain. That, surely, is not the real John Ternus.\nSo it’s fitting that his ascension coincided with the announcement\nof the Duo, Apple’s most radical design change to the iPhone since\nits 2007 release. Apple has been exploring the concept for years.\nIn 2011, when many people still carried around flip phones, Ternus\nand five other engineers filed a patent application for\nfoldable electronic devices, exploring what kind of batteries and\ncircuit boards might be needed for such an idea. “It felt clear\nthat we were going to eventually get to a place where OLED\ndisplays were going to be flexible,” Ternus says.\nThe Ternus profile is the cover story for Time’s “Best Inventions of 2026”, which is led by the iPhone Duo. Let us not forget that this esteemed accolade was awarded to Humane’s AI Pin in 2023.\nAt the end of September, Apple was conspicuously absent when\nPresident Donald Trump hosted a luncheon for AI power\nplayers like SpaceX’s Elon Musk, Meta’s Mark Zuckerberg, and\nGoogle’s Sundar Pichai, who lobbied him on their visions\nfor America’s tech future.\nBut Ternus and other Apple executives say they aren’t concerned.\nIn the midst of a populist AI backlash, they contend that\nthey are building a modest but personalized and privacy-preserving\nform of AI that will actually help ordinary people as opposed to\nmerely dazzling Silicon Valley’s “lunatic fringe,” as Greg\nJoswiak, senior vice president of worldwide marketing, puts it.\nAnd besides, Ternus argues, even if other companies succeed in\ntheir mission of building super-intelligence, users will still\nwant to talk to it on Apple devices.\nThis is, I’m convinced, the correct strategy for Apple. They’re smart not even to be ankle-deep in the wild capex spending pool that has all of their peer companies way out in the deep end, where their feet no longer touch the bottom. But this is a bet, and bets carry risk.\nAlso, I’d bet my bottom dollar that Joswiak is, in fact, a decades-long fan of Lunatic Fringe.\n ★",
+      "id": "ffa77326da8ec186fae44411a6c06822fab8df11f3443671d451530dbed7c6e0",
+      "ref_id": "2",
+      "recommendationScore": 55,
+      "popularityScore": 90,
+      "priority": "medium",
+      "comment": "一篇虚构的报道，描绘了苹果新CEO John Ternus发布可折叠iPhone Duo的场景，具有强烈的讽刺和猜测意味。",
+      "reason": "尽管是虚构内容，但对苹果的未来产品和领导层进行了富有想象力的设想，能引发广泛讨论和兴趣。",
+      "tags": [
+        "Apple",
+        "Speculation",
+        "Satire",
+        "iPhone Duo",
+        "Foldable Phone",
+        "Product Design"
+      ]
+    },
+    {
+      "title": "Inside the quest to combat Arctic fires and save the planet’s frozen carbon",
+      "link": "https://www.technologyreview.com/2026/10/19/1146832/inside-the-quest-to-combat-arctic-fires-and-save-the-planets-frozen-carbon/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-10-19T09:22:17.000Z",
+      "summary": "In the middle of an especially warm July in 2021, a wildfire ignited in a thick forest of black spruce and peeling paper birch trees on the northern campus of the University of Alaska, Fairbanks.  The blaze, possibly sparked by lightning, burned across the dry carpet of feather mosses and lichen before climbing into the…",
+      "id": "7d79453ed1d6ee5955a4657e48a369aa7de77587900b1cf6a3bb44ed12d497b6",
+      "ref_id": "3",
+      "recommendationScore": 45,
+      "popularityScore": 65,
+      "priority": "low",
+      "comment": "详细探讨了北极野火对永久冻土和全球碳储存的影响及应对措施。",
+      "reason": "虽然是重要的环境议题，但与AI、Apple生态等核心技术主题的相关度较低，技术深度和实用性不符合主要关注点。",
+      "tags": [
+        "Environmental Tech",
+        "Climate Change",
+        "Arctic",
+        "Conservation"
+      ]
+    },
+    {
+      "title": "Claim Chowder: The Information on HomeView Having a ‘Robotic Swiveling Base’",
+      "link": "https://www.theinformation.com/articles/apple-developing-ai-wearable-pin",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-10-18T21:26:32.000Z",
+      "summary": "Wayne Ma and Qianer Liu, reporting, wrongly, for The Information in January this year (paywalled; here’s MacRumors’s summary)\nApple’s pin joins a growing portfolio of AI-powered products the\ntech giant has under development, including AirPods equipped with\nenhanced sensors, a security camera, smart glasses and augmented\nreality glasses, according to multiple people familiar with the\nprojects. Apple is also working on a home product featuring a\nsmall display, speakers and a robotic swiveling base, designed\nwith a heavy emphasis on AI features. That device could be\nreleased as soon as this spring, according to two of the people.\nWrong. So I’d say that the stupid-sounding “AI pin” that these same “people familiar with the matter” told Ma and Liu about is probably equally wrong. (That supposed “AI pin” was the main thrust of the article.)\nI love to point out when Mark Gurman is wrong, which is not infrequently, but in the case of HomeView he’s seemingly been right about everything going back to 2025. He reported back in April 2025, with codenames, that the initial HomeView (J490) had no robotics but that a subsequent version (J595) would — or at least might. Two dinguses heard a rumor about J595 and told The Information it might ship six months ago, when in fact it’s something that won’t ship until 2027 or 2028 at the earliest. But The Information ran with it.\nThe phrase “familiar with the matter” often just means “who heard something about it from someone who goes to the same gym as a guy whose wife works at Apple”. Substitute that longer phrase whenever you see “people familiar with the matter”.\n ★",
+      "id": "4ddf0d92414ab512c4ff608fdd35c7babc0c7dc5531faf371de7d6706b14e307",
+      "ref_id": "1",
+      "recommendationScore": 45,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "文章驳斥了此前关于苹果HomeView将配备“机械旋转底座”及“AI Pin”的传闻，强调Gurman报道的准确性。",
+      "reason": "作为对苹果产品传闻的澄清和媒体报道准确性的反思，对追踪产品动态和科技媒体的读者有一定参考价值。",
+      "tags": [
+        "Apple",
+        "HomeView",
+        "传闻澄清",
+        "媒体评论",
+        "AI产品"
+      ]
+    },
+    {
+      "title": "Alternatives to animal testing are finally taking off",
+      "link": "https://spectrum.ieee.org/alternatives-to-animal-testing",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-19T11:10:54.000Z",
+      "summary": "Article URL: https://spectrum.ieee.org/alternatives-to-animal-testing\nComments URL: https://news.ycombinator.com/item?id=50150927\nPoints: 274\n# Comments: 83",
+      "id": "a8e036c9038bdc443b6a7e4ac42891adc924dd75e72f7b45e28a2a9849d64a3c",
+      "ref_id": "2",
+      "recommendationScore": 30,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "介绍了动物实验替代方案的最新进展及其在科学伦理中的意义，属于生物科技领域。",
+      "reason": "尽管是重要的科学进展，但与本科技博客关注的AI、编程等核心主题关联度较低，实用性不高。",
+      "tags": [
+        "生物科技",
+        "科学",
+        "伦理",
+        "替代方案"
+      ]
+    },
+    {
+      "title": "What requirements don't you have?",
+      "link": "https://seangoedecke.com/what-requirements-dont-you-have/",
+      "source": "seangoedecke.com",
+      "publishedAt": "2026-10-19T00:00:00.000Z",
+      "summary": "",
+      "id": "46dd4773a719bed2dac6a05bd409767e6ada6f4bc02d4b76b72955194954d49f",
+      "ref_id": "3",
+      "recommendationScore": 30,
+      "popularityScore": 35,
+      "priority": "low",
+      "comment": "探讨产品或项目管理中需求分析的反向思维，但文章内容为空白，无法提供具体信息。",
+      "reason": "主题属于产品设计范畴，优先级较低，且缺乏实际内容支持，推荐价值受限。",
+      "tags": [
+        "产品设计",
+        "需求管理",
+        "项目管理"
+      ]
+    },
+    {
+      "title": "Weekly Update 526: Building HIBP AI/SI First",
+      "link": "https://www.troyhunt.com/weekly-update-526/",
+      "source": "troyhunt.com",
+      "publishedAt": "2026-10-19T06:47:58.000Z",
+      "summary": "I have this sense that we've passed the point where \"vibe coding\" is a derogatory term. I have no empirical evidence for this; it's more a feeling that those weaponising the term have now accepted the inevitability and are just getting with the program.",
+      "id": "8967e4bbf4b8f0199364171ba4ec620da951bf0a1b4f47ab5ea4ca8e6b9b6470",
+      "ref_id": "1",
+      "recommendationScore": 30,
+      "popularityScore": 45,
+      "priority": "low",
+      "comment": "一段关于“vibe coding”是否已摆脱贬义的简短思考，缺乏具体技术内容。",
+      "reason": "尽管标题提及AI，但文章内容过于简短且偏向个人感想，缺乏实质性的技术深度或实用价值。",
+      "tags": [
+        "编程文化",
+        "个人感想",
+        "AI (Title Only)"
+      ]
+    },
+    {
+      "title": "Ex-Apple Employee Fred Potter on HomeView",
+      "link": "https://www.linkedin.com/posts/frpotter_tonight-im-looking-back-through-the-photo-share-7515791565718454272-ue-R/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-10-19T18:05:38.000Z",
+      "summary": "Fred Potter, on LinkedIn:\nSo if you ever meet someone who tells you, “At Apple, I’m the one\nwho did this,” take it with a grain of salt. They were probably\npart of the team that made it happen, and that’s already something\nto be proud of.\nSometimes, when the final product finally comes out, you can\nrecognize a few of the personal touches you contributed along the\nway. And that, in itself, is immensely rewarding.\nWishing HomeView every success!\nPotter’s LinkedIn bio lists his time at Apple as July 2021 through June 2024, and describes it only a “Worked on HomeView”. (Via Christophe Laporte at iGeneration.)\n ★",
+      "id": "18c785e745af1282f1f9800817c7794b2098daf167325f58e8761161607b10ab",
+      "ref_id": "0",
+      "recommendationScore": 25,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "一篇关于前苹果员工对HomeView产品的个人感慨，内容较为零散。",
+      "reason": "缺乏技术深度和实用价值，主要是一则个人感想，对科技博客读者吸引力有限。",
+      "tags": [
+        "Apple",
+        "Industry Insight",
+        "Personal Story",
+        "HomeView"
+      ]
+    },
+    {
+      "title": "Pluralistic: The technopolitics of ad-tech (19 Oct 2026)",
+      "link": "https://pluralistic.net/2026/10/19/spying-v-context/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-10-19T07:08:31.000Z",
+      "summary": "Today's links The technopolitics of ad-tech: Spying is good for tech, context is good for publishers. Hey look at this: Delights to delectate. Object permanence: PNH x Mike Ford; Singapore v Far East Economic Review; Publishing v bestsellers; Architecture v security; Vista v everyone; Free Bieber; Belarus sells the sugar bowls; OCCUPY GEORGE; Grey type sucks; Spinal Tap v studio math; Terry Pratchett x $10t coin; Boy Scouts x copyright maximialism; Canadian Tories x DRM; Herman Cain's 9-9-9 plan; ACLu v secret laws; Fined for suing the cops who shot you; Chicago PD steals millions for cop toys; Turing's Law; Copyleft v Vizio; Trump's killswitch. Upcoming appearances: Vancouver, Victoria, Ottawa, Vienna, Kilkenny, Oxford, Sheffield, Virtual, Oxford, Montreal. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. The technopolitics of ad-tech (permalink) \"Technopolitics\" are the politics embedded in technology. The Ur-text of technopolitics is \"Do Artifacts Have Politics?\" by the rock critic turned scholar Langdon Winner: https://faculty.cc.gatech.edu/~beki/cs4001/Winner.pdf With \"Do Artifacts,\" Winner demands that we move beyond the idea of technologies having \"intended consequences\" and \"unintended consequences\" and towards a political economy of tech. In service to this, he divides the politics of artifacts into three categories: I. Artifacts that have politics embedded in them by their creators, like Robert Moses's infamous bridges over the Long Island parkways. According to Moses biographer Robert Caro, Moses deliberately specified that these bridges must be too low for a city bus to pass under, in a bid to block Black people from traveling from New York City to the beaches he'd developed on Long Island. Today those bridges are more than a century old, and they are still too low for city buses to pass under them, and this continues to mean that people who don't own private vehicles find it more difficult to get to the beach, and as it's still the case that race is a predictor of low incomes, those are still racist bridges. II. Artifacts whose politics are accidental but unavoidable. Winner cites a kind of tomato harvester that vastly improved the efficiency of tomato pickers. These harvesters became very popular, which allowed tomato farmers to lay off large numbers of agricultural workers, and also allowed them to price the mechanically harvested tomatoes so cheaply that they crowded out other kinds of tomatoes. Because these machines created a large pool of unemployed workers, they shifted power from labor to capital, and because these picking machines were too rough for all but the hardest varietals of tomato, they changed the flavor profile of tomatoes in America for the worse, towards a bland, tough tomato. These picking machines were not designed to make workers poorer, nor were they designed to make tomatoes taste worse, but because of their technical characteristics, this was the unavoidable outcome, the inextricable politics of these machines. III. Artifacts whose politics are intrinsic to their design. Here, Winner contrasts solar panels with nuclear reactors. Solar panels may require highly centralized industrial systems to produce, but once they are in the field, solar panels are compatible with looser, less coordinated political arrangements. A world of small anarchist communes is fully compatible with solar energy. Contrast this with nuclear reactors: the prudent ongoing operation of a reactor requires a highly centralized state that is capable of fielding reliable, trustworthy independent inspectors. This state must also be capable of exercising the coercive power to shut down badly maintained or incompetently operated reactors. The politics of nukes are the politics of a centralized, powerful state; the politics of solar are less determined. Solar is compatible with a wide variety of political systems, including (but not limited to) weak, decentralized states. (For a further exploration of \"Do Artifacts Have Politics?\" I highly recommend Ginger Coons' reading guide:) https://www.not-so-obvious.net/reading-do-artifacts-have-politics/ I really like Winner's framework for exploring technopolitics, but I have my own gloss on it. Winner's framework doesn't explicitly contemplate the idea of technological countermeasures. For example, what if someone were to design a city bus that was low enough to fit under Robert Moses's bridges? At that point, they'd cease to be \"racist bridges,\" and merely become \"bridges built by a racist\": https://locusmag.com/feature/commentary-cory-doctorow-technopolitics/ Which brings me to the technopolitics of ad-tech. Lots of people think that advertising is \"the original sin of the internet,\" setting in motion the surveillance dystopia that is closing in on us from all sides today: https://pluralistic.net/2026/10/17/mercenary-spyware/#discover-tech I think this is wrong. I think that finding ways to communicate ideas and pitches to the general public is fine. Without some channel for reaching people with ideas and propositions they may not be familiar with, it would be infinitely harder to reach people for political causes. It would also be harder for new books, movies and music to find new audiences. It would be much harder to get people out to your independent craft fair, your zine show, or your No Kings march. For me, the internet's original sin isn't advertising, it's surveillance. Contrary to what you have been told – and pax Winner's framework – the internet is fully compatible with privacy: https://pluralistic.net/2025/10/31/losing-the-crypto-wars/#surveillance-monopolism It wasn't the internet's technopolitics that made it a surveillance nightmare. It was just plain politics. Specifically, our politicians decided to stop enacting and enforcing privacy laws. The last consumer privacy law we got in America was a bill that made it illegal for video store clerks to disclose your VHS rentals: https://en.wikipedia.org/wiki/Video_Privacy_Protection_Act (As I type these words, the Supreme Court is poised to eliminate even that dried-up old crumb of privacy protection:) https://slate.com/news-and-politics/2026/10/supreme-court-privacy-rights-case-bork-kavanaugh.html The widespread phenomenon of ad-tech companies spying on us is the result of the decision to allow them to do so. That decision has had innumerable negative downstream effects, such as skyrocketing \"surveillance prices\": https://pluralistic.net/2025/12/11/nothing-personal/#instacartography And collapsing \"surveillance wages\": https://pluralistic.net/2024/12/18/loose-flapping-ends/#luigi-has-a-point It's created vast surveillance databases that are critical to Trump's racist pogroms, providing dossiers and precise location data on the people ICE kidnaps to Salvadoran slave-labor camps: https://pluralistic.net/2026/03/10/ice-tech/#foreseeable-outcomes Surveillance also promotes oligarchy. Without surveillance, oligarchs must give up more of their fortunes to keep the public happy, because the alternative is spending even more money on guards to keep the public from building guillotines on their lawns. Surveillance lets oligarchs make targeted strikes on restive radicals, which is much cheaper than broad-spectrum policies that make us all better off and neutralize the case for guillotines: https://pluralistic.net/2025/06/26/autostabilizer/#slicey-bois These are the technopolitics of surveillance, not advertising. There is nothing about advertising that demands surveillance. For centuries, advertising was not meaningfully linked to surveillance. The decision to fuse surveillance with advertising was just that – a decision, not an inevitability. Any time we forget this, we let spying tech bosses off the hook. After all, if advertising demands surveillance, then tech bosses are just the avatars of the great forces of history, prisoners of the imperative to spy in order to advertise. By remembering that surveillance advertising is a choice, we put the blame squarely where it belongs: on the guillotineable oligarchs who made that choice, and amassed spectacular fortunes thereby. Surveillance is political, but surveillance advertising has its own distinct technopolitics, and to understand those technopolitics, we must contrast them with the technopolitics of contextual advertising. Up until a decade or two ago, contextual advertising was simply called \"advertising.\" Contextual advertising is the practice of running refrigerator ads next to articles on cooking and kitchen remodeling; ads for roadside restaurants on highway billboards; ads for Disney vacations in parenting magazines. Your intuition probably insists that context advertising is less effective than surveillance advertising. After all, surveillance advertising allows a running shoe company to target users who are training for a marathon no matter where they are and no matter what they're doing. Surely this translates into increased \"conversions\" (clicks and/or purchases, depending on who you're talking to)? It does, but not by much. Advertisers get about 5% more value from surveillance ads than they do from context ads: https://weis2019.econinfosec.org/wp-content/uploads/sites/6/2019/05/WEIS_2019_paper_38.pdf Partly, that's because surveillance ad companies grossly overrate the efficacy of surveillance advertising: https://peoples-things.ghost.io/youre-doing-it-wrong-notes-on-criticism-and-technology-hype/ But surveillance advertising's anemic returns to advertisers are down to another aspect of the system: its tendency towards monopolization: https://en.wikipedia.org/wiki/United_States_v._Google_LLC_(2023) Surveillance is a capital-intensive activity: spying on billions of people as they move through the digital and physical world is incredibly expensive. That is a good part of the reason that online advertising has collapsed into the Meta/Google duopoly, who control about 80% of display advertising. The harms of surveillance monopolies have a severely distorting effect on policy debates. For example, it's led some anti-monopolists to call for government-issued surveillance identifiers that follow us from birth to death in order to facilitate commercial spying to foster more competition in surveillance: https://www.thesling.org/what-to-do-about-googles-dominance-of-online-advertising/ Here's the thing about monopolists: they cheat. Google and Meta have an illegal, collusive arrangement to rig the advertising market, overcharging advertisers and underpaying publishers: https://en.wikipedia.org/wiki/Jedi_Blue The ad-tech giants have taken in hundreds of billions that they simply can't account for. It's disappeared down a fraud-hole: https://pluralistic.net/2026/05/25/lying-spies/#spying-liars All of this has driven the majority of web users to install a privacy-blocker (like EFF's Privacybadger.org), meaning that surveillance ads are disproportionately likely to not even show up in a reader's browser: https://doc.searls.com/2023/11/11/how-is-the-worlds-biggest-boycott-doing/ So while it's possible that, in a state of nature, a surveillance ad would outperform a context ad, delivering more sales for advertisers and more revenue for publishers, the monopolistic tendency of ad-tech means that publishers earn less from surveillance ads (because more users block them, and because monopolistic ad-tech platforms extract higher commissions), and advertisers see fewer sales from them (because more users block them, and because monopolistic ad-tech platforms extract higher prices). Context ads, meanwhile, are always going to give power to publishers, because publishers will always understand the materials they publish better than any ad-tech platform could. Commissioning, editing and publishing an article, podcast or video gives a publisher unique and inalienable insight into that material. Surveillance data about audiences is a kind of ambient vapor floating around websites and places and payments that has to be condensed through a heroic and expensive effort that gives power to whichever company can muster the capital and infrastructure to do so. Meanwhile, information about the content of publishers' offerings arrives pre-refined into ingots that are already in publishers' own possession. It's possible to run \"programmatic ads\" without surveillance. Rather than building an ad-tech stack through which publishers transmit sensitive information about their audiences (\"Who will pay me to advertise to this 18-34 year old man-child from the outer boroughs who owns an Xbox and has recently researched gonorrhea symptoms?\"), we can build systems through which publishers transmit information about their own materials (\"Who will advertise to a user with a New York IP address who is reading an article comparing running shoe brands?\"). Not only is this possible, but it actually generates more revenues for publishers than the surveillance-based ad-tech stack: https://techcrunch.com/2020/07/24/data-from-dutch-public-broadcaster-shows-the-value-of-ditching-creepy-ads/ On top of that, publishers who don't gather personal information about users also don't need to show their users those awful pop-up ads asking their permission to gather their data. Everyone hates those notices, and they are yet another negative aspect of surveillance advertising that disappears with the switch to context ads. An ad-tech stack for context ads is far less prone to monopolization. Such a stack can be \"federated,\" with multiple \"demand-side platforms\" (the part of the system that advertisers use to place bids for the right to show their ads) all communicating with the same \"supply-side platform\" (the part of the system publishers use to transmit opportunities to place ads). This is also in the technopolitics of context ads: they do not tend toward the \"efficiencies of scale\" that lead to abusive monopolistic middlemen who steal from publishers and advertisers and sell out the public to fascists who want to arrest them and deport them to Salvadoran slave-labor camps. When the ad-tech sector is composed of smaller companies that are more competitive with one another, it is much harder for any of them to collude to rig the market. That fierce competition also means it's harder to create a cozy conspiracy to lobby together to block privacy laws, and it leaves the companies with lower margins and less retained earnings to spend on those lobbying efforts. Surveillance ads also promote all kinds of parasitic businesses. The fact that a publisher can serve ads related to users rather than the subject of their media means that sensationalistic and deceptive websites can sell ads that run against content that's totally unrelated to advertisers' products and services. And because it's cheaper to produce lies and garbage, these publishers can undercut the ad prices demanded by high quality outlets and let advertisers reach the same users. This is the whole reason that \"chumboxes\" exist: https://en.wikipedia.org/wiki/Chumbox Just as nuclear power favors a centralized state, surveillance advertising: favors middlemen over publishers and advertisers; tends toward monopoly; favors low-quality media over high-quality production; impedes the passage of privacy laws; provides authoritarian states with an off-the-books, warrantless source of surveillance data. And just as solar allows for decentralized, anti-authoritarian societies, context advertising: favors publishers over middlemen and advertisers; tends towards pluralism and diversity of voices; favors high-quality media by reserving the lion's share of the rewards to the producers; does not rely on a weak privacy environment; does not militate for \"democratizing spying\" by issuing every person with a permanent advertising identifier. There's nothing (necessarily) wrong with building systems to tell people about things you want them to know. There's nothing (necessarily) wrong with paying for media with ads. It's possible for both of these things to go awry, but they are not in and of themselves bad. They have contingent technopolitics. But surveillance ads have completely unavoidable, absolutely ghastly technopolitics. Surveillance ads are bad for publishers, for advertisers, and for democracy. We should ban surveillance ads: https://www.eff.org/deeplinks/2023/05/save-news-we-must-ban-surveillance-advertising (Image: Jess, CC BY-SA 4.0, modified). Hey look at this (permalink) Trump DOJ Launches Bogus TV News Antitrust Probe https://economicpopulist.substack.com/i/220751828/trump-doj-launches-bogus-tv-news-antitrust-probe US Rep proposes bill to give video game buyers “ownership,” not “a license” https://arstechnica.com/gaming/2026/10/us-rep-proposes-bill-to-give-video-game-buyers-ownership-not-a-license/ Saviour or Scoundrel? https://scholarsphere.psu.edu/resources/14308c3b-4f2a-4f39-a365-192c0206f886 Tiny Little Office https://tinylittleoffice.com/ Future? No Thanks! – an ecosocialist game https://futurenothanks.com/ Object permanence (permalink) #25yrsago Patrick Nielsen Hayden interviews Mike Ford https://user.well.com/engaged.cgi?c=inkwell.vue&f=0&t=126 #20yrsago Singapore bans Far East Economic Review https://web.archive.org/web/20061010002951/https://www.feer.com/articles1/2006/0610/free/p006.html #20yrsago Publishing isn’t bestseller-driven https://www.nielsenhayden.com/makinglight/conventional_un/ #20yrsago Why architecture and security don’t mix https://www.schneier.com/blog/archives/2006/10/architecture_an.html #20yrsago Vista licence: Microsoft’s abusive relationship with you https://wendy.seltzer.org/blog/archives/2006/10/19/forbidding_vistas_windows_licensing_disserves_the_user.html #20yrsago Boy Scouts of America Concerned About Copyright https://web.archive.org/web/20061110065012/http://sfgate.com/cgi-bin/article.cgi%3Ffile%3D/news/archive/2006/10/20/entertainment/e110452D84.DTL #15yrsago Canadian Tories admit that Canadians don’t want DRM rules, push for them anyway https://web.archive.org/web/20111022210131/http://www.michaelgeist.ca/content/view/6071/125 #15yrsago Visualizing Herman Cain’s 9-9-9 plan to redistribute wealth from the poor to the rich https://web.archive.org/web/20111021103517/http://jaredbernsteinblog.com/9-9-9-in-one-really-long-graph/ #15yrsago Free Bieber: campaign to kill proposed law that would send you to prison for 5 years for singing copyrighted music on YouTube https://web.archive.org/web/20111020145336/http://freebieber.org/ #15yrsago Belarusian central bank auctions off its sugar bowls https://www.theguardian.com/world/2011/oct/19/belarus-central-bank-sells-office-furniture #15yrsago Dataviz as defacement: OCCUPY GEORGE https://web.archive.org/web/20111022022046/http://www.occupygeorge.com/ #15yrsago HOWTO avoid a copyright shakedown legal threat: be famous, a politician, a cop, a soldier or a corpse https://torrentfreak.com/undercover-cops-and-politicians-escape-bittorrent-lawsuit-111013/ #10yrsago Popular design guides are responsible for plague of grey type https://web.archive.org/web/20170914051800/https://www.wired.com/2016/10/how-the-web-became-unreadable/ #10yrsago Digital Defenders: a free open-licensed booklet for kids about privacy and cryptography https://edri.org/files/privacy4kids_booklet_web.pdf #10yrsago Public universities and even the US Navy have sold hundreds of patents to America’s most notorious troll https://www.eff.org/deeplinks/2016/10/inside-intellectual-ventures-portfolio-nearly-500-university-patents #10yrsago Airportraits: composite photos of all the daily takeoffs from the world’s airports https://mikekelley.art/?category=airportraits #10yrsago Rich people can afford to buy more sleep than poor people https://arstechnica.com/science/2016/10/the-rich-can-sleep-in-thanks-to-better-transit/ #10yrsago Harry Shearer sues studio over Spinal Tap, says he’s received $98 in royalties over 30 years https://web.archive.org/web/20161224224142/https://www.yahoo.com/movies/harry-shearer-files-125-million-spinal-tap-fraud-suit-copyright-termination-150031664.html #10yrsago ACLU asks court to reveal 23 secret surveillance laws https://web.archive.org/web/20161019224447/https://theintercept.com/2016/10/19/aclu-wants-secret-surveillance-laws-made-public/ #10yrsago Montana judge unrepentant after sentencing man to 60 days for repeatedly raping his own 12 year old daughter https://edition.cnn.com/2016/10/19/us/montana-judge-incest-case-trnd/index.html #10yrago Turkish court fines bystander/tourist who sued police for shooting out his eye https://www.hurriyetdailynews.com/kyrgyz-tourist-wounded-in-gezi-protests-ordered-to-pay-debt-to-turkish-state–104964 #10yrsago By stealing from innocents, Chicago PD amassed tens of millions in a secret black budget for surveillance gear https://web.archive.org/web/20160929143255/https://chicagoreader.com/chicago/police-department-civil-forfeiture-investigation/Content?oid=23728922 #10yrsago Turing’s law: UK to retroactively pardon thousands of men prosecuted for having sex with men https://www.bbc.co.uk/news/uk-37711518 #5yrsago The monopoly strategy behind the Google/Microsoft mobile patent wars https://pluralistic.net/2021/10/20/vizio-vs-the-world/#capital-as-power #5yrsago Copyleft lawsuit against Vizio will allow anyone to defend the commons https://pluralistic.net/2021/10/20/vizio-vs-the-world/#dumbcast #5yrsago The true, Terry Pratchett-esque origins of the trillion-dollar coin https://pluralistic.net/2021/10/19/moist-von-lipwig/#gimmick-v-gimmick #1yrago The mad king's digital killswitch https://pluralistic.net/2025/10/20/post-american-internet/#huawei-with-american-characteristics Upcoming appearances (permalink) Vancouver: Read, Resist, Repair, Rejoice (Vancouver Writers Festival), Oct 19 https://writersfest.bc.ca/festival-event-2026/01 Victoria: Munro's Books, Oct 20 https://www.munrobooks.com/events/6113620261020 Vancouver: Life After AI (Vancouver Writers Festival), Oct 22 https://writersfest.bc.ca/festival-event-2026/46 Ottawa: Life After AI (Ottawa Writers Festival), Oct 24 https://writersfestival.org/event/life-after-ai Vienna: TED AI, Oct 28-30 https://tedai-vienna.ted.com/ Kilkenny (Kilkenomics), Nov 6-8 https://kilkenomics.com/ Vancouver: Enshittification (Sid Williams Theatre Society), Nov 10 https://www.sidwilliamstheatre.com/events/cory-doctorow-talks-enshittification/ Vancouver: BC Policy Solutions Gala, Nov 12 https://bcpolicy.ca/gala/ Oxford: Ministry of the Future, Nov 23 https://ministryforthefuture.co.uk/events.html Sheffield: Reverse Centaur at Juno Books, Nov 25 https://www.outsavvy.com/event/40274/cory-doctorow-in-conversation Virtual: Enshittification, AI, and the Future of Technology (UBC Master of Educational Technology), Nov 28 https://met.ubc.ca/2026/09/met-speaker-series-cory-doctorow-enshittification-ai-and-the-future-of-technology/ Oxford: Bennett Oxford Symposium on Open Code in Science, Dec 9 https://www.bennett.ox.ac.uk/events/2026-bennett-institute-symposium/ Montreal: World Science Fiction Convention, Sep 2-6 https://montreal2027.ca/en Recent appearances (permalink) Life After AI (Brain Bar) https://www.youtube.com/watch?v=IPPa43-n0vI Terms of Service with Clare Duffy (CNN) https://www.cnn.com/audio/podcasts/terms-of-service-with-clare-duffy/episodes/458ce968-af5d-11f0-b539-13ed2afe25f8 AI, Work, and Power (Software Engineering Daily) AI, Work, and Power https://softwareengineeringdaily.com/podcasts/cory-doctorow-on-ai-work-and-power/ AI, Corporate Power, and the Fight for Worker Control (Plutopia) https://plutopia.io/cory-doctorow-ai-corporate-power-and-the-fight-for-worker-control/ How to Think About AI—Before It’s Too Late (Daniel Solove) https://www.youtube.com/watch?v=_0xR3uEgGcc Latest books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/ \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: “Once Is Enemy Action,” a science fiction novel about the origins of modern technofascism. Today's words: 574 (7730 total). \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Fourth draft completed. Submitted to editor. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "44e8b23d2be08131dd9ad9564d894e27221ade772aa36e2bae14a83940fea9b9",
+      "ref_id": "2",
+      "recommendationScore": 20,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "一篇以“广告技术的技术政治”为主题的链接合集，内容分散且缺乏深入分析。",
+      "reason": "文章主体为链接列表，缺乏原创性的深入内容和技术细节，对追求技术深度和实用性的读者价值较低。",
+      "tags": [
+        "广告技术",
+        "数字版权",
+        "信息聚合",
+        "科技政治",
+        "链接集"
+      ]
+    },
+    {
+      "title": "Germany's far-right AfD: half a million internal documents leaked",
+      "link": "https://hexane.cc/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-19T20:31:05.000Z",
+      "summary": "Article URL: https://hexane.cc/\nComments URL: https://news.ycombinator.com/item?id=50157664\nPoints: 8\n# Comments: 1",
+      "id": "e06bcd68179539fae61c7b9eda1850fad715a3ad7b0a6aa002bb109789d6777b",
+      "ref_id": "0",
+      "recommendationScore": 10,
+      "popularityScore": 4,
+      "priority": "low",
+      "comment": "这是一篇政治新闻，与科技博客的主题无关。",
+      "reason": "文章内容完全偏离科技范畴，不符合本博客的关注方向。",
+      "tags": [
+        "政治",
+        "新闻"
+      ]
+    },
+    {
+      "title": "Evidence (YC S21) Is Hiring Software Engineers",
+      "link": "https://evidence.dev/jobs",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-19T17:21:33.000Z",
+      "summary": "Article URL: https://evidence.dev/jobs\nComments URL: https://news.ycombinator.com/item?id=50155172\nPoints: 0\n# Comments: 0",
+      "id": "fed2c06baf961f78695d702fef77332af4325256ac82a0033c70888744b35f60",
+      "ref_id": "0",
+      "recommendationScore": 10,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "这是一篇招聘信息，而非技术文章，内容不符合技术博客的评估范畴。",
+      "reason": "作为技术博客内容，其技术深度和信息密度均极低，不具备常规文章的阅读价值。",
+      "tags": [
+        "招聘",
+        "公司新闻"
+      ]
+    },
+    {
+      "title": "Tom the Dancing Bug’s Inner Hive, and Harvey Richards, the Greatest Lawyer in the History of Fiction",
+      "link": "https://tomthedancingbug.com/the-inner-hive/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-10-18T22:53:00.000Z",
+      "summary": "Ruben Bolling’s long-running Tom the Dancing Bug is one of my favorite comic strips. I’ve been a huge fan since the early 1990s, when I started reading it in alternative newspapers. (Newspapers were sort of like websites, excepted they were printed daily or weekly. I swear.) Back in 2012 Bolling — noting that the comic was more widely read than ever yet generating less money than ever — started a subscription membership called The Inner Hive. I love it. Not just because I’m supporting work that I adore and value, but because the extras that members get are so fun. If you’re even half as big a fan of Tom the Dancing Bug as I am, you should join too. There are several options — Patreon, MailChimp, Substack — but in my opinion Patreon is the simplest and the best, and it gets you everything.\nI was reminded to re-endorse The Inner Hive after I wrote a post last night referencing Harvey Richards, lawyer for children — one of the comic’s longest running recurring characters. Tom the Dancing Bug’s entire schtick is premised on a wide array of recurring characters and premises, but Richards is probably my favorite. Here’s an early one regarding the doctrine of “He Who Smelt It, Dealt It” that ran in National Lampoon in 1990. Here’s one from 2012 at Boing Boing (where Bolling is a contributor), and here’s one from 2018 where Richards joins the Trump 1.0 White House, and specifically invokes the “I’m Rubber, You’re Glue, Everything You Say Bounces Off Me and Sticks to You” doctrine that I mentioned as a Richards specialty in my post yesterday.\nBut the thing is, my earliest memory of Harvey Richards was regarding the “I’m Rubber, You’re Glue” doctrine. It’s the foundation of all of children’s law, obviously. In my memory, it’s the first thing I remember about Harvey Richards in the strip. But I searched the web, and couldn’t find any old strips with it. I asked the LLM robots to search, and they came up with nothing. So I wrote to Bolling, with whom I’ve exchanged occasional correspondence for many years. Bolling not only confirmed that my memory isn’t entirely shot, but he graciously granted me permission to reproduce it here. It’s from 1993, when I know I was already a weekly reader of the strip.\n\n\n ★",
+      "id": "53a37e9b574df58b234e4f12f635442a3a416c86ae4b216d6ac54bbf93a43830",
+      "ref_id": "3",
+      "recommendationScore": 10,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "一篇个人推荐知名漫画作品及其订阅模式的文章，与科技主题无关。",
+      "reason": "内容与科技博客的核心主题和读者群体完全不符，缺乏任何技术或行业相关性。",
+      "tags": [
+        "Comics",
+        "Culture",
+        "Personal Recommendation"
+      ]
+    }
+  ]
+}
