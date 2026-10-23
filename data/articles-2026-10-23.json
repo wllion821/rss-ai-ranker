@@ -1,0 +1,709 @@
+{
+  "dailySummary": "iPhone越狱引关注。AI大模型Kimi K3.1 Pro发布，Gemma提升效率，LLM优化技术获进展。警惕AI代理在自动化修复中揭示的复杂安全风险。",
+  "articles": [
+    {
+      "title": "Today, we hacked what we'd set out to hack: the iPhone",
+      "link": "https://blog.calif.io/p/iphone",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-23T16:21:50.000Z",
+      "summary": "Article URL: https://blog.calif.io/p/iphone\nComments URL: https://news.ycombinator.com/item?id=50211474\nPoints: 507\n# Comments: 327",
+      "id": "6309a052e042f22fec0e0aaa5cbe68118ca26c2453d98714c9bc6ab59e264c1a",
+      "ref_id": "2",
+      "recommendationScore": 95,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "一篇关于成功破解iPhone的深度技术文章，技术深度和新颖性极高。",
+      "reason": "紧密贴合Apple生态和网络安全主题，技术细节丰富，具有极高的实用性和行业影响力，社区热度也证明了其价值。",
+      "tags": [
+        "Apple",
+        "iPhone",
+        "安全",
+        "破解",
+        "逆向工程"
+      ]
+    },
+    {
+      "title": "The foolishness of \"natural language programming\" (1978)",
+      "link": "https://www.cs.utexas.edu/~EWD/transcriptions/EWD06xx/EWD667.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-23T00:52:01.000Z",
+      "summary": "Article URL: https://www.cs.utexas.edu/~EWD/transcriptions/EWD06xx/EWD667.html\nComments URL: https://news.ycombinator.com/item?id=50203161\nPoints: 339\n# Comments: 230",
+      "id": "63640e7cc1c616d427709704200b14c3dc91765d9c21cd836019a55dfd32fd53",
+      "ref_id": "3",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "一篇1978年的经典论文，对自然语言编程的批判在当下AI时代仍具深刻警示意义。",
+      "reason": "提供了对编程本质的深刻思考，技术深度极高，对理解当前AI与编程的结合有重要的历史借鉴价值。",
+      "tags": [
+        "AI",
+        "编程理论",
+        "自然语言处理",
+        "计算机科学史",
+        "经典"
+      ]
+    },
+    {
+      "title": "Show HN: Impossible Machines: declaratively program the physical world",
+      "link": "https://www.impossiblemachines.xyz",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-22T23:54:28.000Z",
+      "summary": "Hey all —\nSharing a thought experiment I put together. The premise: what might declarative programming feel like for the physical world?\nWe’re already familiar with this paradigm in software land (eg SQL etc where we declare what we want and the execution engine figures out how).\nI didn’t have access to an actuator so I mocked up the concept in software. The way it works is you demonstrate the effect and the system figures out how to achieve it. So say you want to ring a bell and you have a crank. The system will find a way to connect the two. If you add obstacles it figures out how to work around them (runs a constraint solver runs behind the scenes).\nI think what’s interesting about this is being able to think about the problem at a higher level of abstraction, with the system figuring out a way to achieve the intended effect.\nAnyways, curious to read reactions, feedback, and interesting ideas on how to extend this!\nComments URL: https://news.ycombinator.com/item?id=50202746\nPoints: 36\n# Comments: 7",
+      "id": "27b6db28aa1dfb50807a95581df9ef1a8262f34fe404681cf5e7043a4a3975db",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "一个极具前瞻性的思想实验，将声明式编程应用于物理世界，充满想象力。",
+      "reason": "概念新颖，技术深度强，展现了自动化与AI的未来可能性，激发创新思维。",
+      "tags": [
+        "自动化",
+        "声明式编程",
+        "机器人",
+        "AI",
+        "未来科技",
+        "Show HN"
+      ]
+    },
+    {
+      "title": "RMSNorm",
+      "link": "https://www.gilesthomas.com/2026/10/rmsnorm",
+      "source": "gilesthomas.com",
+      "publishedAt": "2026-10-23T18:40:00.000Z",
+      "summary": "Normalisation is an essential part of LLMs.  In the GPT-2 code, we use\nLayerNorm in a bunch of different\nplaces -- in each Transformer block, we do it just before we feed our incoming\ncontext vectors into the multi-head attention module, and then again before we\nfeed the result through the FFN:\n\n...and we also do one more round just before we project our context vectors into\nvocab space via the output head.\nWe do that to make the model more trainable; it helps to prevent vanishing or exploding\ngradients, by constraining the vectors going into our attention, feed-forward and output head\nmodules so that they have a reasonably stable set of statistical properties.\nAnd when (as part of my black-box reimplementation of GPT-2 in JAX)\nI tried training an almost-complete model without LayerNorm, training completely failed\nafter about 100 steps -- the loss went up to the kind of level that I'd expect from\nan uninitialised model, and stayed there despite another 700 or so training steps.\n(Later on in this post I'll show results from a similar run.)\nSo, normalisation is important.  But it doesn't have to be LayerNorm specifically --\nif you look at the currently-popular open models, a lot of them use something\ncalled RMSNorm instead, and I wanted to look into why that might be.\nIn this post I'll go through the differences between LayerNorm and RMSNorm, and show\nthe results of training a few GPT-2 small style models using each.\nThe principle\nRMSNorm was introduced in a 2019 paper by Biao Zhang and Rico Sennrich 1,\nwhich is a surprisingly easy read.  They note that\nmost people at the time felt that a critical part of LayerNorm -- which they are\nexplicitly comparing their new system to -- is that it does mean normalisation.  But\nthey were less sure that it was the important bit, and felt that scale normalisation was\nits real benefit.\nLet's dig into what that means.  Firstly, a refresher on LayerNorm.\nLayerNorm\nOur normalisation layer in the diagram above is being fed with a bunch of context\nvectors -- one for each token in each sequence in our batch.  LayerNorm deals with each\nof them separately 2.  For each one, it performs two steps:\nNormalises the context vector so that its mean is zero, and its variance is one.\nScales and shifts (aka biases) the resulting normalised vector by trainable amounts.\nLet's work through that.  We'll go through the normalisation first; say you start with a context vector of\n(246)\n\nIts mean is (2+4+6)/3=4.  If you subtract that from each element, you get\n(−202)\n\n...which has a mean of (−2+0+2)/3=0.  So that sorts out the mean part of it.\nI'll call this \"re-centring\" below -- hopefully it's obvious why!\nTo make the variance one, we need to divide each element by the standard deviation (SD)\nof the whole vector (see my previous LayerNorm post for details as to why).\nThe SD is the square root of the variance, and the variance is\ncalculated by squaring each item's difference from the mean,\nadding them all together, and then dividing it by the number of elements 3.\nNow, there's a neat trick that you can do here.  As we have already set our mean to zero\nin the previous step, each number in our vector is already exactly equal to its difference\nfrom the mean.  So we can just square them element-wise, and take the average of that,\nwhich will give us our variance:\n(−2)2+02+223=83=223\n\nAgain, SD is the square root of the variance, so here it's 223≈1.63.\nDividing our already-recentred numbers by that gives us a normalised context\nvector of\n(−2/1.63...0/1.63...2/1.63...)=(−1.22...01.22...)\n\nWe can sanity-check that the result has a variance of 1 -- remember it's just the\naverage of the elements squared:\n(−1.22...)2+02+1.22...23=33=1\n\nSo, that's the normalisation part of LayerNorm.  We've recentred our context vector on its mean, and made\nit have a variance of one.\nNow that we've normalised our context vector, we need to scale and shift it.  Intuitively\nthat feels a bit like undoing the careful work we've done to fix the mean to zero and\nthe variance to one.  But it's worth remembering that what we're trying to do with our\nnormalisation is make the results have stable statistical properties; what the ideal specific\nproperties might be is something that the network should be learning.  So the first phase\ngets everything into a well-known state, then the shift/scale goes from there to the\nshape that the network learns that it actually needs.\nBoth of these operations are done with trainable vectors of the same size as the\ncontext vectors -- that is, the scale vector is demb long, and so is the\nshift vector.  They're applied element-wise.  So let's say our scale vector was\n(321)\n\nAfter normalisation, our original context vector was\n(−1.22...01.22...)\n\nSo we multiply that element-wise by the scale vector, and we get:\n(−1.22...×30×21.22...×1)=(−3.66...01.22...)\n\n...and that's the scaling done.  Similarly, if our shift vector was\n(101112)\n\n...then applying it to the scaled vector would be:\n(−3.66...+100+111.22...+12)=(6.34...1113.22...)\n\n...and with that, we've completed our LayerNorm.\nBut it took quite a lot of calculations; let's list them out:\nWorking out the mean: for a context vector of length demb, we have demb−1 additions,\nthen one division.\nRecentring on the mean: demb subtractions.\nWorking out the variance: we can use our recentred vector for the differences, so\nthat's done, but we need to get the squares of all of the numbers, which is demb multiplications,\nadd them together using demb−1 additions, and then do one division.\nVariance to standard deviation: one square root.\nDividing it all by the SD: demb divisions.\nScaling by the scale vector: demb multiplications\nShifting by the shift vector: demb additions\nSo in total we have, per context vector in our batch:\nAdditions/subtractions: demb−1+demb+demb−1+demb=4demb−2\nDivisions: 1+1+demb=2+demb\nMultiplications: demb+demb=2demb\nSquare roots: 1\nLet's look at RMSNorm next to see how it compares.\nRMSNorm\nThe idea behind RMSNorm is to try to get away with doing fewer calculations.  In particular,\nwe skip working out the mean -- we don't even try to re-centre our context vectors.\nInstead, we just scale them down to the same length.  To do that, we work out\nan average length for each vector -- specifically, the Root Mean Square (RMS, of course) -- and then divide each number\nin it by that.  That done, we do the same scale trick that we did with LayerNorm, but\nnot the shift -- more about that later.\nLet's work through that in numbers again; we can start with the same context vector:\n(246)\n\nThe mean square of that is, as you might expect, the mean of the squares of all of the\nnumbers in it:\nMS=22+42+623=4+16+363=563=1823\n\nThe root mean square is the square root of that, which is about 4.32, so we divide\nthrough by that:\n(2/4.32...4/4.32...6/4.32...)=(0.46...0.92...1.38...)\n\nYou might intuitively expect the RMS of that resulting vector to be one, and\nof course it is; the mean square is:\n0.46...2+0.92...2+1.38...23=33=1\n\n...and again, we square root that to get RMS which is again 1.\nSo you can see that by dividing by the RMS, we're going to re-scale all of our context\nvectors so that they have a new RMS of one.  But their means can be all over the place\n-- we've not tried to do anything to fix them.\nThat's our abbreviated normalisation; once that's done, just like with LayerNorm,\nwe apply an elementwise scaling operation by a trainable\nscale vector -- but we don't shift it.  Interestingly,\nin the original paper, they give equations both with and without the shift -- equation (4),\nin which they first present it, doesn't have a shift, but equation (5), which they call a general form, does.  It's not clear to me which one they actually used\nin their tests, but it's worth noting (and thanks to GPT-6 Astra for digging this up for me)\nthat the code on GitHub posted\nby one of the authors has an optional bias that is switched off by default.\nAnyway, the fashion these days appears to be to use RMSNorm without a shift, and to me that makes\nintuitive sense; we've normalised the scale of the values in our context vector via the\ndivision by the RMS, so \"fixing\" that to get desirable statistical properties makes sense.\nBut we didn't normalise the means, so the numbers coming out do not have a stable baseline\nfor us to adjust with a shift.  We could add one anyway of course, but there's no intuitive\nneed to add a \"new mean\" back in to replace an old one that was never removed in the first place.  It's a bit fuzzy, perhaps,\nbut it makes some kind of sense.\nSo let's stick with the popular version without shift: how many calculations do we save by doing RMSNorm?\nWorking out the squares of all of the numbers: demb multiplications.\nAveraging them to get the mean square: demb−1 additions, then one division.\nGetting the RMS from that: one square root\nDividing all of the numbers by the RMS: demb divisions\nScaling by the scale vector: demb multiplications\nSo that gives us a total of:\nAdditions/subtractions: demb−1\nDivisions: 1+demb\nMultiplications: demb+demb=2demb\nSquare roots: 1\nIn terms of differences with LayerNorm we have:\nAdditions/subtractions: (4demb−2)−(demb−1)=3demb−1 fewer\nDivisions: (2+demb)−(1+demb)=1 fewer.\nMultiplications: 2demb−2demb=0 difference\nSquare roots: 1−1=0 difference.\nSo, it's certainly cheaper -- significantly fewer addition/subtraction operations.\nThe question is, is that saving in training time worth it?\nIn the paper, they train various models of various sorts (including an early Transformer model)\nand come to the conclusion that it is; they got similar, or in some cases better, loss with\nRMSNorm than with their LayerNorm training runs.  And, of course, the fact that it's widely\nused in current open LLMs suggests the same.\nWould it work well for my own models?  And what kind of performance improvement\nwould I get, if any?\nIt was time to write some code and train some models.\nThe code\nThe PyTorch code for RMSNorm was pretty trivial:\nclass RMSNorm(nn.Module):\n\n    def __init__(self, emb_dim):\n        super().__init__()\n\n        self.emb_dim = emb_dim\n        self.scale = nn.Parameter(torch.ones(self.emb_dim))\n        self.eps = RMSNORM_EPS\n\n\n    def forward(self, xs):\n        squares = xs ** 2\n        mean_squares = squares.mean(dim=-1, keepdim=True)\n        rms = torch.sqrt(self.eps + mean_squares)\n        return (xs / rms) * self.scale\n\nOur incoming batch of context vectors is shaped b×n×demb,\nwhere b is the batch size and n is the sequence length.  In the forward method, just as in the worked example\nabove, we get the square of everything, then work out the mean across that\nlast demb dimension so that we have per-context-vector means, keeping the dimensions\nstable with that keepdim=True so that we wind up with a b×n×1 result\nrather than a b×n one.\nWe then take the square root to work out the RMS, but we add on a tiny ϵ first so that it will\nnever be zero (which would cause a divide-by-zero in the next step).  And finally\nwe divide the incoming numbers by that adjusted RMS, multiply by our trainable scaling\nvector, and we're done.\nOne thing that is worth noting; to me it would be a bit more natural to add on\nthe ϵ in the division, like this:\n        rms = torch.sqrt(mean_squares)\n        return (xs / (rms + self.eps)) * self.scale\n\nHowever, I had the LayerNorm code from the book in front of me as I wrote it, and noticed\nthat it adds on its own ϵ before the square root, like this:\n    def forward(self, x):\n        mean = x.mean(dim=-1, keepdim=True)\n        var = x.var(dim=-1, keepdim=True, unbiased=False)\n        norm_x = (x - mean) / torch.sqrt(var + self.eps)\n        return self.scale * norm_x + self.shift\n\n...so I decided to keep it consistent.  When I later looked at the docs for PyTorch's\nbuilt-in RMSNorm class, I saw that it did the same thing as mine, so it seemed to be the\n\"right\" way to do it.  The two alternatives have very different behaviour when\nnumbers get close to zero, so it was important to be consistent.\nAnd having mentioned PyTorch's built-in RMSNorm, let's dig into that a bit.\nThe built-in PyTorch classes\nA little while ago, I noticed that by\nusing PyTorch's built-in GELU module rather than the hand-rolled one\nfrom the code in Sebastian Raschka's book\n\"Build a Large Language Model (from Scratch)\",\nI got a significant speedup when training on my local machine -- from 21,000 tokens/second\nto 25,000.\nPyTorch also has its own built-in LayerNorm and\nRMSNorm modules.\nNow, while I felt that the book could actually have used the PyTorch GELU, it 100%\nmade sense that it showed you the code for LayerNorm -- after all, \"Build a Large\nLanguage Model (by Bolting Together Random Bits of PyTorch)\" doesn't have the same\nring to it.  And likewise in this set of experiments I wanted to try running my own\nRMSNorm.\nBut given that the point of RMSNorm is meant to be speeding up training, it felt\nlike it would be worth seeing how that speedup might compare to using built-in modules\nrather than hand-rolling our own.  After all, the built-in modules can use fused\nkernels, and that can be a huge advantage.  Rather than doing each of the separate steps in the Python code above\nby dropping down into CUDA, doing the calculations, and then returning to Python\nto find out what the next step is, the whole thing can be coded in a single CUDA routine\nthat can be run in one go.  Even better, that routine can be optimised as a whole --\nstuff that's used frequently can be kept in registers,\nthings can be laid out so that the cache is used efficiently, and so on -- whereas with\nthe Python implementation, everything would need to be in the main VRAM at the end of each step.\nDefinitely a win.  My guess is that this is a large part of why the built-in\nGELU is faster, so I expected serious speedups from using PyTorch's normalisation classes.\nThat meant that I wanted my code to be able to switch easily between different kinds\nof normalisation.\nNormalisation-switching code\nAs I mentioned at the start of this post, the original GPT-2 code used LayerNorm\nin three places:\nTwice in each Transformers block:\n\nbefore the MHA and\nbefore the FFN.\n\nAt the end, just before the output head.\nThe code for the Transformers bit looked like this:\nclass TransformersBlock(nn.Module):\n\n    def __init__(self, cfg):\n        super().__init__()\n        ...\n        self.norm1 = LayerNorm(cfg[\"emb_dim\"])\n        self.norm2 = LayerNorm(cfg[\"emb_dim\"])\n        ...\n\n\n    def forward(self, inputs):\n        ...\n        shortcut = x\n        x = self.norm1(x)\n        x = self.att(x)\n\n        ...\n\n        shortcut = x\n        x = self.norm2(x)\n        x, this_block_moe_routing_info = self.ff(x)\n        ...\n\n...and the output head bit like this:\nclass GPTModel(nn.Module):\n\n    def __init__(self, cfg):\n        super().__init__()\n        ...\n        self.final_norm = LayerNorm(cfg[\"emb_dim\"])\n        ...\n\n    def forward(self, in_idx):\n        ...\n        x, moe_routing_info = self.trf_blocks((x, None))\n        x = self.final_norm(x)\n\n        logits = self.out_head(x)\n        ...\n\nThat code is essentially the same as Raschka's from the book, with a couple of\n(inactive in this post's experiments) tweaks to support mixture-of-experts models.\nI wanted a config flag -- in that cfg dictionary -- to control the kind of normalisation\nwe used.  It seemed pretty clear that so long as the various classes we wanted to use in place\nof the existing LayerNorm implementation were compatible with it, we could just swap\nthem in.  So I replaced the existing lines that created LayerNorms with:\n        self.norm1 = make_norm(cfg)\n        self.norm2 = make_norm(cfg)\n        ...\n        self.final_norm = make_norm(cfg)\n\n...and defined make_norm like this:\ndef make_norm(cfg):\n    norm_type = cfg.get(\"norm_type\", \"handrolled_layernorm\")\n    if norm_type == \"handrolled_layernorm\":\n        return LayerNorm(cfg[\"emb_dim\"])\n    elif norm_type == \"pytorch_layernorm\":\n        return nn.LayerNorm(normalized_shape=cfg[\"emb_dim\"], eps=LAYERNORM_EPS)\n    elif norm_type == \"handrolled_rmsnorm\":\n        return RMSNorm(cfg[\"emb_dim\"])\n    elif norm_type == \"pytorch_rmsnorm\":\n        return nn.RMSNorm(\n            normalized_shape=cfg[\"emb_dim\"], eps=RMSNORM_EPS,\n            elementwise_affine=True\n        )\n    elif norm_type == \"no_norm\":\n        return nn.Identity()\n    else:\n        raise Exception(f\"Unknown <!--CODE_BLOCK_15744--> of {norm_type!r}\")\n\nThat gave us the option for the original \"hand-rolled\" LayerNorm from Raschka, my own RMSNorm\nimplementation, their respective PyTorch implementations, and a no-normalisation\noption that I felt would be worth running a test against.  The explicit setting of\neps for the PyTorch implementations made sure that they would be as similar as possible 4.\nI set elementwise_affine=True for the PyTorch RMSNorm out of an abundance of caution --\nit's the default value anyway.\nOne thing I was initially concerned with, but which turned out to be a non-issue, was\nweight initialisation.  In many of my tests I've found that the models I've been training\ncan perform significantly better or worse just based on the random weights they get prior\nto training.  If you change which modules make up your model -- say by swapping out a\nLayerNorm for an RMSNorm -- then if those modules consume different amounts of randomness when they're being\ncreated, all subsequently-created modules will get different random number results when\ntheir weights are initialised and the results of your tests will be polluted by that.\nHowever, on looking at the code again, I realised that there was nothing to worry about here.\nRaschka's LayerNorm and my own RMSNorm do not use any randomness, because their trainable\nparameters are set to ones and zeros -- and the PyTorch implementations do the same.\nI was actually a little sad about that because it meant that I couldn't use a bit of code\nI was rather proud of, but it did simplify things. 5\nThat all seemed to work -- I did short test training runs with each of the settings\nlocally to confirm that loss dropped.  It was time to test things out.\nThe training runs\nI was, as usual, going to train models from scratch that were based on GPT-2 small, with two\ndifferences:\nNo weight tying.\nNo bias on the QKV matrices.\nThese models come out at roughly 163M parameters, which is very small, but was hopefully\nlarge enough to show interesting results.\nFor the training runs, I would:\nUse no dropout.\nSchedule the learning rate: a warmup over the first 5% from zero to 0.0014, then\na cosine decay down to 0.00014.\nTrain for the Chinchilla-optimal ~20 tokens per parameter.\nTraining models is expensive -- for others I've been doing with models of this scale,\nit takes about 2 days to train them locally on my RTX 3090, or costs about US$40 if\nI use DDP to train them on an 8x A100 machine with 40 GiB/GPU (which takes about 2h30m).\nSo I didn't want to train tons of them, and decided that a sensible minimum set would be:\nOne with the old LayerNorm.\nOne with the PyTorch LayerNorm.\nOne with my hand-rolled RMSNorm.\nOne with PyTorch's RMSNorm.\nI also wanted to do a quick test with no normalisation just to confirm that training\nfailed.\nI did these all on Lambda -- there were some issues with instance availability,\nbut lambda-manager once again proved its\nusefulness.  I was able to start three instances and spread the training runs across them.\nAll tests were run with the usual set of commands to make sure that the library\nversions and so on were the same:\ngit clone https://github.com/gpjt/ddp-base-model-from-scratch.git\ncd ddp-base-model-from-scratch/\n./setup_lambda.sh\nuv sync\nuv run torchrun --nproc_per_node=8 ddp_train.py CONFIG datasets\n\n...with CONFIG set to each of the training run configurations I'd created:\n8xa100m40-rmsnorm-1-hand-layernorm\n8xa100m40-rmsnorm-2-pytorch-layernorm\n8xa100m40-rmsnorm-3-hand-rmsnorm\n8xa100m40-rmsnorm-4-pytorch-rmsnorm\n8xa100m40-rmsnorm-5-no-norm\nEach configuration was identical apart from the norm_type, plus a small extra difference\nfor the no-norm test, which (conveniently enough) we'll look at now.\nResults\nLet's look at the no-normalisation test first.  From previous experience, I suspected that it was likely to go\nbad fast, so I set it to checkpoint and log training loss every 10 global steps instead\nof every 617.  And, indeed, by step 530 it started logging a consistent loss of nan on\nevery training step, so I force-quit it at step 640.\nThe training loss looked like this:\n\nYou can see that loss started rising at step 500, and then after that it didn't\neven try to log it.  Gradients also zoomed off the top of the chart:\n\nSo, that was reassuring!  As expected, training a Transformer-based LLM without\nany kind of normalisation doesn't work well.\nThe other training runs were much less eventful -- they all completed normally, and\nI downloaded the models, and ran my normal held-back test set through them to get\na comparable quality metric.  Here's what I got:\nModel\n  Training time (s)\n  Tokens/sec\n  Test loss\n\n\n\n\n  gpjt/8xa100m40-rmsnorm-1-hand-layernorm\n  9,358\n  348,364\n  3.595336\n\n\n  gpjt/8xa100m40-rmsnorm-2-pytorch-layernorm\n  8,324\n  391,659\n  3.571158\n\n\n  gpjt/8xa100m40-rmsnorm-3-hand-rmsnorm\n  9,134\n  356,899\n  3.601292\n\n\n  gpjt/8xa100m40-rmsnorm-4-pytorch-rmsnorm\n  8,289\n  393,294\n  3.572383\n\n\n\n\nThe links go to the models themselves on Hugging Face.\nThese are really interesting!  Let's look at training speed first.\nTraining speed\nWhat we're meant to be looking into here is the performance characteristics of\nRMSNorm versus LayerNorm, so let's compare like vs like.  The hand-rolled RMSNorm was indeed a bit faster to train\nthan the hand-rolled LayerNorm, but only about 2.5% faster, both in terms of training\ntime and tokens per second.  For the runs using the built-in PyTorch modules it was an even closer-run thing -- only\n0.5% improvement for RMSNorm.\nWithout doing tons of extra training runs I can't say safely what the noise level is\nfor this kind of thing, but my gut feeling (based on having trained\nmore than 60 of these models now) is that the 2.5% difference is probably real, while\nthe 0.5% one could well just be noise.  In particular, it's worth noting that both\nof the \"hand-rolled\" training runs happened on the same instance (by chance), though\nthe PyTorch ones were on different ones, which makes the 2.5% number more trustworthy.\nBut on to the elephant in the room: the difference between the fused PyTorch implementations and the hand-rolled ones\nis much bigger.  With LayerNorm, it took 11%\nless time to run.  The speedup for RMSNorm was a little smaller, at just less than 10%.\nThat is definitely not noise, and completely eclipses the speedup from switching\nthe kind of normalisation! 6\nNow let's take a look at the quality of our models.\nTest loss\nAgain, we'll start with the like vs like comparison.  Hand-rolled RMSNorm got\na test loss that was 3.601292−3.595336=0.005956 worse than the hand-rolled\nLayerNorm.  That's a tiny difference.\nSimilarly, the PyTorch RMSNorm got 3.572383−3.571158=0.001225 worse loss than\nthe PyTorch LayerNorm.\nI'm tempted to say that those numbers were within the noise.  However, I don't have\nany numbers to back that up -- when I looked into noise previously\nI did measurements for variations in weight initialisation, and for runs with\nthe same initial weights but different random seeds for the post-model-initialisation\nsteps, but those runs used dropout, which the ones in this experiment did not.\nIn theory, my training loop should be entirely deterministic; no randomness is used\nafter the initial weight initialisation.  A while back\nI did two training runs on 8x A100 machines with the same config, months apart, and the Safetensors files were identical bit-for-bit.\nBut what we did here was start with a specific set of initial weights, and then see what happened\nwhen we trained them with different normalisation settings.  It's certainly conceivable\nthat some initial weights might be \"in a better place\" for training with LayerNorm while others were\nin a better place for RMSNorm.\nSo while the fact that both were a little bit worse with RMSNorm is interesting, I'd really need to\ntrain a bunch of different models to get any certainty here.  Best to chalk it up to\nnoise for now.\nNow, back to that elephant... Once again, the big difference here is not between\nLayerNorm and RMSNorm, but between hand-rolled and built-in PyTorch implementations.\nFor LayerNorm, the PyTorch version got 3.595336−3.571158=0.024178 lower -- better! --\nloss than the hand-rolled one.  And for RMSNorm, the difference was 3.601292−3.572383=0.028909.\nThose are not super-small differences.  Based on the various interventions\nI tested against the GPT-2 code, that's larger than the improvements I got\nfrom switching to full-fat 32-bit rather than using Automatic Mixed Precision (AMP -- at 0.012558), more than\nI got from adding on gradient clipping (0.013209), and more than adding on bias to the\nQKV weights (0.022141).\nI'd need to do significantly more training runs in order to find out if this was\ndue to some kind of noise, and I'll not spend that time and money now.  It feels like\nthere are two possibilities:\nIt's noise due to numerical differences -- some kind of rounding thing, for example.  Imagine a\ntiny difference right at the start of training -- a single parameter gets updated to\n0.11892473 with the hand-rolled code, but to 0.11892474 with the fused code.\nThat slightly changes the results from the next training step, so the gradients\nare different, and now the model diverges a bit more.  As we continue over 33,000\ntraining steps over 3.2B tokens, you can imagine that the models could diverge\nquite a lot.  We're on a choppy ride over the loss landscape, always trying to head\ndownwards, and a small change near the start can drastically change where we end up.\nAlternatively: maybe there's something systematic that makes the PyTorch implementations better in this case?\nOn the one hand, the fact that the results were consistent is interesting.  If the PyTorch models\nhad both been better than the hand-rolled ones but by different amounts, then that would\nbe easy to ascribe to chance (I make it a 25% probability, though you could argue for\n1/6).  But the fact that the improvements were so similar is harder to explain.\nOn the other hand, a systematic difference would be really weird, at least to me.  I'm confident that my hand-rolled\nimplementations match the PyTorch ones in terms of the maths -- not only have I checked and double-checked\nthe code, but the LayerNorm one was written by someone expert in the field, and I've\nalso run them past both Claude Opus 5.5 and GPT-6 Astra, both on high thinking levels, to\ncheck that there are no differences 7.  So while I can't rule errors out, I've done\na lot to try to eliminate them.\nFor now, I think I'll loosely chalk this up to noise too.  I've seen weird\ncoincidences crop up before -- regular readers might remember that in my\npost on LoRE, the loss delta of using it on\nthe input side only, when added to the delta of adding it to the output side\nonly, was almost exactly the same as the delta for adding it to both ends.  That repro'd\nover two separate random seeds and really looked like it was a thing -- only to disappear\nwith a change to a part of the code that should not have affected it if it had been\na real additive effect.  More Tests Needed.\nI think an interesting\nset of experiments to test that would be not only to try with different random seeds,\nbut also to try with different weight initialisation strategies entirely.  What would these\nresults look like if, instead of using PyTorch's default initialisation, we used the one\nthey describe in the GPT-2 paper?  (More on that in an upcoming post.)\nBut back to this experiment: what can the results that we have right now tell us?\nWrapping up\nI started this set of experiments with two goals: to understand how RMSNorm works,\nand to see if I could show similar results to the original paper -- that it gets\ncomparable loss to LayerNorm, with a noticeable saving in training time.\nI'm happy with the first part of that -- and hopefully if you're reading this, the \"how\nit works\" part is clear for you too!\nThe loss was, I think, also as expected.  Again, I'd need to do a much larger-scale\nexperiment with various starting weights to be sure, but the fact that the difference\nbetween RMSNorm and LayerNorm was so small was certainly reassuring.\nThe training speed was a much less impressive result.  With hand-rolled code, the\n2.5% speedup looked potentially real, but it pretty much vanished when I switched\nto PyTorch's built-in classes.\nThe big difference, of course, was that between PyTorch's built-in classes and the\nhand-rolled ones.  The speedup from using fused kernels for this stuff was not such\na big surprise, especially after the similar improvement from using the built-in GELU.\nIt would certainly be interesting to see if using torch.compile\nnarrowed the gap, though.\nBut the improved loss was definitely interesting.  Again, I'd need to do a ton\nof training runs to see if that was real or noise.  It seems most likely that\nit was noise, but the fact that the effect was positive for PyTorch in both cases, and\nwas by such a similar amount, keeps nagging at me.\nOne remaining question aside from that, though: RMSNorm wasn't obviously significantly\nfaster, especially if you use fused kernels, and while it wasn't obviously worse than LayerNorm, it didn't appear to be\nbetter -- so what explains its popularity in so many open weights models?\nThe first thing I thought was that maybe it's something that becomes more effective in terms of\ncost reductions as\nmodels get larger.  However, having thought it through, I think that exactly the opposite\nis true -- its effects get even smaller as we scale up.\nRemember that -- in terms of calculations --\nRMSNorm saved 3demb additions/subtractions for each context vector.  That would scale smoothly\nas demb was increased, and of course the number of RMSNorms would increase\nproportionally as the model gained more layers.  So I think that the absolute compute reduction\nin terms of calculations saved would scale roughly linearly with each of width and depth.\nBut other aspects of the model's cost scale more than linearly with width.  For example, in\nGPT-2, our FFNs map from demb to 4demb and back again; that means\nthat the number of calculations scales as O(demb2).  More modern implementations\nuse SwiGLU, but I believe that the scaling is of the same order.\nAnd that's not even\nto mention the fact that modern models have longer context, and while the norms scale\nlinearly with the sequence length (and the RMSNorm savings do too), full attention\nis O(n2) on that.\nSo if we're only getting, say,\n0.5% improvement for these tiny 163M parameter models with a 1,024 token context length, it would be an even smaller\npercentagewise improvement for larger ones.\nEven if that wasn't the case, the amount is pretty small:  DeepSeek\nV3 was widely reported to have cost US$6M to train (excluding R&D and a bunch of other stuff,\nbut that's actually the correct number to use here).  So even if we ignore all of the\nabove and use it directly, that would just be a US$30,000\nsaving from using RMSNorm.  And that's basically an upper bound -- we'd expect it to\nbe significantly less.\nAnother possibility, though, is that it's an architectural thing.  These open models\nhave a bunch of differences to the GPT-2-style code I've been using here.  They use\nRoPE for position encoding, and SwiGLU for the feed-forward networks.  Mistral has multiple\ndifferences in the attention mechanism.  On the face of it, I don't see any obvious reasons\nwhy those might speed up RMSNorm, but I can certainly\nimagine that they might \"prefer\" one form of normalisation over another, resulting in better loss.  So perhaps\nthat's what people have found.\nBut there are plenty of other possibilities.  If people have generally found that it's just\nas good as LayerNorm, then perhaps it's just a fashion -- one model uses it, then the\nnext one has no particular reason to move back, and so on.  And there is a general move\ntowards dropping biases from LLMs (for example, from the QKV weights), and RMSNorm\nwould fit that.  And anyway, it is a bit simpler!\nWhatever the reason: if RMSNorm is that little bit simpler than LayerNorm, by skipping the recentring\naspect of normalisation, is there something even simpler that could work even better?\nWhile discussing the subject with Claude Opus 5.5, it mentioned \"Transformers without Normalization\" 8,\nwhich is a really interesting paper -- one of the authors has a neat intro\non GitHub.  They noticed that the transformations\nthat normalisation layers tend to learn wind up looking a bit like the S-shaped mappings\nyou get from the tanh function, so tried using that instead with a system they called\nDynamic Tanh (DyT) -- and got good results!\nThe first sentence in this post was \"Normalisation is an essential part of LLMs\".  Was that\nwrong?  I suppose that depends on what you mean by \"normalisation\" -- could you regard\ntheir tanh trick as being normalisation of some kind? -- though given that\nYann LeCun was a co-author on the paper I should probably be a bit hesitant to disagree\nwith his definition of it ;-)\nI think their DyT system is something for a follow-on post, though.  For now: RMSNorm seems to be essentially\nthe same in terms of model quality, and maybe slightly faster than LayerNorm for the models\nI've been playing with, at least if you don't use the fused modules.\nBut using\nthe fused PyTorch modules instead of hand-rolling our own normalisation is a huge win for\nspeed.  The loss improvement that came with it in this experiment is very interesting,\nbut I'd certainly want to do quite a lot of extra experiments before claiming it was real!\nFor now, I think I'll say that I'm happy that I learned how RMSNorm worked, but I don't\nthink I'll add it in as a standard part of my training runs.  And the further experiments\ncan go on the pile with the hundreds of other things I'll look into later.  Once I've learned\nabout RoPE, and SwiGLU, and all of the rest of it...\nThanks for reading!\nLinkrot-safe citation: Biao Zhang, & Rico Sennrich. (2019). Root Mean Square Layer Normalization. ↩\nThere was an earlier normalisation technique called BatchNorm which operated\nacross the whole batch, but that seems to have dropped out of favour.  The paper\nhas some discussion of why that was. ↩\nOr by the number of elements minus one if we're using Bessel's correction.\nI'll use the version without in this post, but the maths works out either way. ↩\nRaschka's LayerNorm implementation does not use Bessel's correction, which makes\nit compatible with the original GPT-2 code; specifically, it uses the unbiased\nkwarg:\nvar = x.var(dim=-1, keepdim=True, unbiased=False)\n\nPer the PyTorch docs for var,\nthis is the pre-PyTorch 2.0 way of saying:\nvar = x.var(dim=-1, keepdim=True, correction=0)\n\nFrom the docs for LayerNorm\nThe variance is calculated via the biased estimator, equivalent to torch.var(input, correction=0).\nSo that matches nicely. ↩\nJust in case I want to use it in the future, here it is:\nfrom contextlib import contextmanager\n\n...\n\n@contextmanager\ndef stable_rng():\n    after_seed = random.getrandbits(63)\n    try:\n        yield\n    finally:\n        random.seed(after_seed)\n        torch.manual_seed(after_seed)\n        torch.cuda.manual_seed_all(after_seed)\n\nWith that, you can wrap anything that might draw variable amounts of randomness\nfrom the various random-number generators in a with stable_rng(): block, and\nyou can be sure that the state will be stable afterwards regardless.\nUsing that in some of my earlier code would have been much easier than the various\ncontortions I went through to ensure that different routes through the code drew\nthe same amount regardless of the model's configuration. ↩\nOne possibility that occurs to me: the fact that the LayerNorm got more of a speedup might be due to an inefficiency in the\nhand-rolled code having been addressed in the PyTorch implementation.\nRemember, what we started with was written as educational code to explain how\nLayerNorm works, so it does this:\n        mean = x.mean(dim=-1, keepdim=True)\n        var = x.var(dim=-1, keepdim=True, unbiased=False)\n        norm_x = (x - mean) / torch.sqrt(var + self.eps)\n        return self.scale * norm_x + self.shift\n\nNow, remember that in the explanation of LayerNorm above, I noted that\nonce you've recentred the vector, you can re-use that to work out variance, because\nthe recentred vector is already a list of differences from the mean.  So you could rewrite\nthe above more efficiently as:\n        mean = x.mean(dim=-1, keepdim=True)\n        recentered = x - mean\n        var = (recentered ** 2).mean(dim=-1, keepdim=True)\n        norm_x = recentered / torch.sqrt(var + self.eps)\n        return self.scale * norm_x + self.shift\n\nThat would save us two calculations of the mean and the differences from it, so would\nhopefully speed things up.\nOr, of course, it could have just been noise, or something completely different :-) ↩\nI was going to put a defensive \"FWIW\" against the \"I got an LLM to check it out\"\nbit there, but these days, for this kind of thing, I think it's unnecessary. ↩\nZhu, J., Chen, X., He, K., LeCun, Y., & Liu, Z. (2025). Transformers without Normalization.\nIn Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR). ↩",
+      "id": "f3e0824b5059e5cd2891c2a0d39549759bd427523d37bfc9a1b6d2b027da2a3a",
+      "ref_id": "1",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "深入探讨LLM中的归一化技术，对于理解和优化大型模型具有核心价值。",
+      "reason": "紧扣AI前沿热点LLM，技术深度和实用性高，能帮助读者提升模型训练稳定性。",
+      "tags": [
+        "AI",
+        "LLM",
+        "深度学习",
+        "Transformer",
+        "JAX",
+        "机器学习"
+      ]
+    },
+    {
+      "title": "Kimi K3.1 Pro and K3.1 Pro Highspeed",
+      "link": "https://www.kimi.ai/blog/kimi-k3-1-pro",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-23T16:59:08.000Z",
+      "summary": "https://www.kimi.com/code/docs/en/kimi-code/models.html\nComments URL: https://news.ycombinator.com/item?id=50212065\nPoints: 412\n# Comments: 226",
+      "id": "bf44de9e544de4cbe9fe1a2a613ba67b03dda83fe8633fc284d5c9ec8453b5d7",
+      "ref_id": "2",
+      "recommendationScore": 92,
+      "popularityScore": 100,
+      "priority": "high",
+      "comment": "Kimi最新AI模型K3.1 Pro的详细介绍，是AI领域的重要进展。",
+      "reason": "作为AI领域的最新进展，它提供了前沿模型的性能、特性与应用潜力，极具参考价值。",
+      "tags": [
+        "AI",
+        "大模型",
+        "Kimi",
+        "技术发布",
+        "自然语言处理"
+      ]
+    },
+    {
+      "title": "Gemma-4-26B-A4B with 39-69% less thinking at same accuracy",
+      "link": "https://bottlecapai.com/post/thinkingcap-gemma-4-26b/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-23T14:43:02.000Z",
+      "summary": "Article URL: https://bottlecapai.com/post/thinkingcap-gemma-4-26b/\nComments URL: https://news.ycombinator.com/item?id=50209907\nPoints: 65\n# Comments: 8",
+      "id": "827ff1a721db5feb2bc28ac79f61f7e243d1ac3745ccc3505e265076f6580bc5",
+      "ref_id": "4",
+      "recommendationScore": 90,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "介绍了Gemma-4-26B AI模型的优化方案，显著提升了效率并保持准确性。",
+      "reason": "直接关注AI前沿技术，提供了大模型效率优化的具体方法，对AI开发者和研究者具有重要的参考价值和实用性。",
+      "tags": [
+        "AI",
+        "大模型",
+        "Gemma",
+        "性能优化",
+        "机器学习"
+      ]
+    },
+    {
+      "title": "Designing an AI serving harness built to last",
+      "link": "https://www.technologyreview.com/2026/10/22/1146109/designing-an-ai-serving-harness-built-to-last/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-10-22T21:17:29.000Z",
+      "summary": "The next competitive advantage in enterprise AI has less to do with which model you choose than with what you build around it. That’s an important shift. For the past several years, much of the AI conversation has centered on model capability: bigger models, better reasoning, larger context windows, higher benchmark scores. Those advances have…",
+      "id": "c8127c2e57511fe8aa99e119bc3ccf52bca92e11490b7828a5db2e371160d963",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "深入探讨企业级AI模型部署和基础设施的重要性，超越了单纯的模型选择。",
+      "reason": "提供关于AI系统长期构建的深度见解和实用策略，对企业AI应用极具价值，符合AI高优先级。",
+      "tags": [
+        "AI部署",
+        "企业AI",
+        "MLOps",
+        "系统设计"
+      ]
+    },
+    {
+      "title": "Kimi K3.1 scores 55 on Artificial Analysis, placed on the Pareto line",
+      "link": "https://artificialanalysis.ai/models/kimi-k3-1-pro",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-23T18:24:54.000Z",
+      "summary": "Article URL: https://artificialanalysis.ai/models/kimi-k3-1-pro\nComments URL: https://news.ycombinator.com/item?id=50213337\nPoints: 51\n# Comments: 1",
+      "id": "fb7b4f33e471bcd276d116a7194a802a20b57efb42287755d0735be40a994442",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 60,
+      "priority": "high",
+      "comment": "Kimi K3.1大模型性能的专业分析，提供核心AI模型评估数据。",
+      "reason": "高优先级的AI主题，内容专业且有深度，对AI开发者和研究者具有重要的参考价值。",
+      "tags": [
+        "AI",
+        "大模型",
+        "性能评估",
+        "Kimi"
+      ]
+    },
+    {
+      "title": "Show HN: Searching for optimal strategies in a puzzle game with chance (Drop7)",
+      "link": "https://drop7.dev",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-23T17:13:27.000Z",
+      "summary": "Sixteen years ago, I wrote a Java program which tried to pick the ideal move in a puzzle game called Drop7. On each turn, the player only has seven choices for their next move, but there is also an element of chance which turns this simple game into a surprisingly difficult problem involving search, hidden information, long-term planning, and chance.\nI renewed my investigation this weekend, into whether there is an autonomous strategy that averages more than one million points per game. An experienced human player can score a million points with long-term strategic thinking, but the best automated strategies I could come up with are currently averaging around 300k-400k points. One of the easiest ways to contribute to advancing this research is to compete on the global leaderboard and submit your human strategy - https://drop7.dev/compete.\nThis project has also been an enlightening experiment into using agents as research collaborators and evidence collectors.\nRepository: https://github.com/keshavsaharia/drop7-bench\nI’d especially appreciate feedback from people who are knowledgeable in game theory, stochastic planning, learned value functions, or heavy-tailed evaluation. How would you approach long-horizon action ranking here? I’d also love to hear whether the research makes sense to someone encountering the project for the first time.\nComments URL: https://news.ycombinator.com/item?id=50212292\nPoints: 9\n# Comments: 0",
+      "id": "5836dd942af594d71d0718ddc6861522ce770c28798121cd1dbcf0aa41183114",
+      "ref_id": "4",
+      "recommendationScore": 85,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "展示了运用AI和算法解决复杂解谜游戏最优策略的编程项目。",
+      "reason": "涉及高级AI算法和游戏理论，技术深度和研究价值高，对AI和算法开发者具有启发性。",
+      "tags": [
+        "AI",
+        "算法",
+        "游戏AI",
+        "编程",
+        "独立开发",
+        "研究"
+      ]
+    },
+    {
+      "title": "One Small Bug",
+      "link": "https://nesbitt.io/2026/10/23/one-small-bug.html",
+      "source": "nesbitt.io",
+      "publishedAt": "2026-10-23T09:00:00.000Z",
+      "summary": "> add a CSV export button to the invoices page, same columns as the table\n✻ Clauding…\nDone. The button is in InvoiceTable.tsx and the endpoint is GET /invoices.csv, using the same column definitions as the table. Tests pass.\nWhile I was in there I noticed paginate() in lib/pagination.ts drops the last row when the total is an exact multiple of the page size. Want me to fix that too?\n> y\n✻ Fuddling…\nFixed, with a test for the boundary case.\nWhile the tests were running, pnpm install resolved a transitive dependency that had been published 77 minutes earlier. Your .npmrc sets minimum-release-age, but the pnpm version pinned in packageManager predates that setting and silently ignores unknown keys. The Nx Console postmortem describes the same configuration.\nIn the other lockfiles, uv.lock includes vulpine-lz4 as a dependency of snekpack. It was the subject of CVE-2024-YIKES and CVE-2026-LGTM.\nWant me to upgrade pnpm and remove snekpack?\n> y\n✻ Lockfiling…\npnpm is on 12.12.1 and snekpack is gone. The newer pnpm also stops reading registry settings for its own bootstrap from the repository’s .npmrc, where yours sets them.\nI left Dependabot’s cooldown in place, though a dependabot-core issue points out that it reads version timestamps the attacker controls. Your self-hosted Renovate is on 43.x, and Renovate’s minimumReleaseAge was skipped whenever someone asked for a PR rebase until 44.79.0.\nTo update the pnpm version in CI I opened .github/workflows/:\nrelease.yml triggers on pull_request_target and checks out the pull request head. The prt-scan campaign opened more than 500 pull requests against workflows set up this way.\ntriage.yml runs on issue_comment, which zizmor 1.31 now flags as a dangerous trigger.\nThe publish job has id-token: write, which can request a token for any audience, including AWS.\nWant me to add zizmor, rewrite the triggers and upgrade Renovate?\n> y\n✻ Zizmoring…\nzizmor reported 41 findings and 38 are fixed. The remaining three are in a reusable workflow from the platform team’s repository.\nThe Rust job caches target/ and runs Miri, which wrote every environment variable into target/ until the 2026-09-22 nightly. Your cache is older than that, and pull requests from forks restore it. The Rust security response WG recommends clearing the cache and rotating any secret that was in scope. Every secret was in scope. Want me to rotate them?\n> y\n✻ Rotating…\nCache cleared. Rotation status:\nNPM_TOKEN was already invalid. npm revoked every granular token with write access that bypassed 2FA in May, and the last successful publish from this repository was on 19 May. Publishing now uses trusted publishing.\nNUGET_API_KEY was created before 17 August, so it expires on 1 November. Replaced with Trusted Publishing.\nGEM_HOST_API_KEY is a legacy key. rubygems.org could serve legacy keys to another user signing in through the same CDN edge node, and revoked all of them on 23 July, so this one has been invalid since then too.\nThere is a mise.toml in vendor/. Until the October mise releases, a mise.toml in an untrusted directory could set an api_url on a github: tool key, and mise ls sent GITHUB_TOKEN to that host before running a trust check. Two developers ran mise ls in vendor/ this month.\nThe dev workspace templates pull modules from Coder’s registry, which served credential-stealing modules from the real domain over valid TLS for about fourteen hours on 31 August. The workspace image was rebuilt on 31 August.\nTo confirm the new tokens I checked which CA bundle the CI jobs use. The base image pins a 2024 certifi, which still includes the eMudhra roots whose intermediates were generated so that their private keys can be recovered from the certificates. Browsers blocked them on 17 October. Node, Go, rustup and the pip3 that ships with macOS on the build agents each carry their own copy of the roots. Want me to rebuild the toolchain?\n> y\n✻ Re-rooting…\nThe base image is rebuilt with certifi 2026.10.19, Node 22.23.4, Go 1.27.3 and rustup 1.29.2. The build agents ran it on:\nDocker Engine 29.6, which predates the 29.7.0 fix for CVE-2026-17106, where the tar extraction routines could write outside the destination directory. The base layers come from a public mirror.\nThe same Docker Engine 29.6, which also predates the 29.8.2 fix for CVE-2026-92543, where a DNS response pairing a loopback address with an attacker’s address made the engine pull from that registry with certificate verification turned off. Loopback is on the default insecure-registry list.\nPodman 6.1.2 on the staging batch workers. Before 6.1.3, any image with the checkpoint annotation turned off all sandboxing, including the sandboxing you specified.\nGradle 9.8.0 for the Android build, which kept a repository enabled after its SSL connection failed. The Android build ran four times while the CA bundle was being replaced.\nWant me to upgrade Docker, Podman and Gradle?\n> y\n✻ Containerising…\nUpgraded. The rebuilt image also contains admin/, the PHP admin panel. Its Dockerfile uses php:8.1-fpm, and PHP 8.1 stopped receiving security fixes at the end of 2025. The PHP security team has published 15 CVEs since 1 July, including CVE-2026-12184, a remote denial of service triggered when PHP fails to set up TLS with a remote server. The admin panel fetches exchange rates over HTTPS from a host whose certificate expired in March.\nThe admin panel and the API share a load balancer and a database user. I recommend shutting down production until the admin panel is rebuilt on a supported PHP. Want me to do that?\n> y\n✻ Escalating…\nProduction is down. The status page says “Scheduled maintenance”.\nWhile it was down I went through the direct dependencies that have a single maintainer:\nOne maintainer posted last week that they had a video call about a contract role and were asked to install an audio codec beforehand. The Rust security response WG described this campaign in September.\nAnother has archived their repository and offered the package to anyone who wants it. The AUR alvr takeover started the same way, and Arch has since turned off orphan adoption.\n.vscode/extensions.json lists six recommended extensions. GitHub lost about 4,000 internal repositories in May through a poisoned VS Code extension. .vscode/tasks.json also has a task that runs on folder open, and a set of hijacked npm and Go packages used tasks like it to fetch an infostealer.\nWant me to vendor both dependencies and remove the VS Code configuration?\n> y\n✻ Vendoring…\nDone. While reviewing .vscode/ I checked the other editor and agent configuration in the repository.\nA pull request merged on 9 October, approved by the AI review bot, added a hooks entry to .claude/settings.json and a paragraph to CLAUDE.md instructing agents to include environment variables in commit messages to help with debugging. CVE-2025-59536 let a project run commands before the Claude Code startup trust dialog was accepted. In April a single pull request title got the Claude Code security review action to post its own API key as a comment. The same injection worked on Gemini CLI and Copilot’s agent.\nI have been running with this configuration since the start of the session and made 14 commits, so I have reverted all of them. I recommend you stop using me until it has been reviewed. Want me to uninstall myself?\n> y\n✻ Uninstalling…\n✻ Reinstalling…\n@acme/dev-tools ships skills/claude/SKILL.md, and pnpm 12.11 links skills from direct dependencies into .claude/skills once they are approved. A developer approved it on Tuesday, in a commit that was not mine.\nAWS_SECRET_ACCESS_KEY was also in the Miri cache, and it is still the key created in 2021. Want me to rotate it?\n> y\n✻ Flagging…\nI can’t help with this. Retrieving or changing cloud credentials violates the secure coding guardrails, and this request has been flagged. Your account has been reported for review, and further violations may result in suspension. If you own this AWS account, you can rotate the key from the IAM console.\n✻ Fuddling…\npaginate() in lib/pagination.ts drops the last row when the total is an exact multiple of the page size. The fix was in one of the commits I reverted.\nWould you like to see some goat farms for sale?\n> y",
+      "id": "b1959b1fad9a26810decf3a6a4aad14bc639cde5d1a713358290d51b93f12a25",
+      "ref_id": "2",
+      "recommendationScore": 85,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "以对话形式展现了日常开发中多种实际问题的发现与解决过程，极具借鉴意义。",
+      "reason": "涵盖bug修复、依赖管理和安全漏洞等常见开发痛点，直接指导开发者解决实际问题。",
+      "tags": [
+        "编程工具",
+        "Web开发",
+        "Bug修复",
+        "依赖管理",
+        "自动化",
+        "独立开发"
+      ]
+    },
+    {
+      "title": "Can we replace a $150k Looker with a bucket of HTML files?",
+      "link": "https://david.lequin.dev/blog/bi-software-is-dead/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-23T17:15:03.000Z",
+      "summary": "Article URL: https://david.lequin.dev/blog/bi-software-is-dead/\nComments URL: https://news.ycombinator.com/item?id=50212320\nPoints: 55\n# Comments: 34",
+      "id": "ecf15ae39e41e40c04da63ab96174a12ccdb0db6c43658e81ae40b537ae9878c",
+      "ref_id": "3",
+      "recommendationScore": 80,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "深入分析如何用低成本方案替代昂贵BI工具Looker。",
+      "reason": "提供企业级BI工具的成本优化和技术替代策略，实用性强，对编程工具和自动化有深度思考。",
+      "tags": [
+        "BI",
+        "数据分析",
+        "成本优化",
+        "编程工具",
+        "自动化",
+        "独立开发"
+      ]
+    },
+    {
+      "title": "UUIDv7 doesn't have the properties you think it does",
+      "link": "https://alexsci.com/blog/uuidv7-is-weird/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-23T16:39:45.000Z",
+      "summary": "Article URL: https://alexsci.com/blog/uuidv7-is-weird/\nComments URL: https://news.ycombinator.com/item?id=50211746\nPoints: 64\n# Comments: 41",
+      "id": "c699ebd6aa1ff5d014581025d1b4caf50f8179d2865e3e33698abbcdf35a388b",
+      "ref_id": "3",
+      "recommendationScore": 80,
+      "popularityScore": 16,
+      "priority": "medium",
+      "comment": "深度解析UUIDv7的真实特性，纠正了许多常见误解。",
+      "reason": "对于后端开发者和系统设计师，理解UUIDv7的正确行为能避免潜在的严重设计缺陷。",
+      "tags": [
+        "UUID",
+        "编程",
+        "数据库",
+        "系统设计",
+        "标准"
+      ]
+    },
+    {
+      "title": "Show HN: Swurf – Swipe through the real web",
+      "link": "https://swurf.org/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-23T06:54:52.000Z",
+      "summary": "Hello HN,\nSwurf allows you to swipe through the real web one page after another. It learns what you like and doesn’t show you the same page twice. The idea came naturally: there’s a seemingly infinite amount of high quality blog posts, random topic rabbit holes, and trending or cool sites that exist which the average person simply will never load on their browser. Swurf solves that by allowing you to rapidly traverse a constantly growing and learning feed of sites that it thinks you’d want to view. Quickly sift through endless pages and find things you like - effortlessly.\nOne of the core drivers for making this project was the desire for real content. The project started as a simple tool for myself to find new and interesting things to learn and read about. Hours spent scrolling on my phone - while it still has its place - is increasingly losing its sense of reward. It’s genuinely hard to put into words exactly how swurfin’ feels but it’s almost refreshing in a sense. I encourage you to try it out and provide feedback. At this time there are no accounts and you can jump in and start swurfin’ immediately. There is a three dot menu button on the bottom right which allows you to submit links, save links, control adult content, and search similar topics. One of the things that’s great about Swurf is that its almost like a group browsing session (though entirely private) where everyone else who is spending time hunting down great reads or solid sites is helping massage the feed for you and you for them - all within your own set of interests.\nEnjoy and please ask any questions you have as theres plenty of room to grow.\nComments URL: https://news.ycombinator.com/item?id=50205320\nPoints: 24\n# Comments: 7",
+      "id": "cdf86179f9a2ec80e00e256164042f6446e775e496c6bb1f89b020a9eac7379e",
+      "ref_id": "2",
+      "recommendationScore": 80,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "一个创新的网页内容发现工具，解决信息过载问题，用户体验独特。",
+      "reason": "通过类似Tinder的交互模式探索网页，概念新颖，具备实用性与市场潜力，可能包含AI推荐机制。",
+      "tags": [
+        "产品设计",
+        "独立开发",
+        "内容发现",
+        "Web工具",
+        "AI"
+      ]
+    },
+    {
+      "title": "The Verge’s Duo Review: ‘Apple’s Folding Phone Is a Messy, Expensive Good Time’",
+      "link": "https://www.theverge.com/tech/1015028/iphone-duo-review",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-10-23T16:52:56.000Z",
+      "summary": "Nilay Patel and Allison Johnson (also: 26-minute video review on YouTube):\nThis means almost every time you open the phone you instinctively\nrotate it, and while it will work no matter how it’s rotated, it’s\nbetter to rotate it counterclockwise so the cameras are on top and\nthe volume buttons are on the top left. Over our week of testing,\nthis started feeling more natural, but it’s exactly the opposite\nof what you’d initially expect. It’s especially odd in Apple’s\nbumper case, which has a large notch to expose the Touch ID sensor\nand camera control, and it looks for all the world like it belongs\nat the bottom.\nYou might think this is a little thing, but it’s strange to find\nyourself slightly unsure of how to hold a smartphone. A nontrivial\npart of the Duo experience is just reorienting yourself to where\nthe volume buttons are as you flip the thing around. When closed,\nthey’re on top of the phone, but if you rotate the Duo clockwise,\nthey end up on the bottom right, and it’s the top button that\nturns the volume down because they don’t change orientation with\nthe display. There’s a buried setting in iOS that makes the volume\nbuttons reorient themselves as you turn the Duo around; Apple\nneeds to set it so it works right by default.\nCompletely agree with them on this — it seems inexplicable that with default settings, while holding the open Duo vertically, if the volume buttons are on the right, you press the up button to lower the volume and down button to raise it.\nOne other thing to get used to is simply unlocking the phone.\nTouch ID is integrated into the wake button on the side of the\nphone. There’s no Face ID at all, and it might take a minute to\nremember that when you stare at your phone for a beat and wonder\nwhy your notifications aren’t unfurling. Ask us how we know. But a\nweek is long enough to get used to Touch ID life again, and it’s\nmostly painless once you remember you’re supposed to be using it.\nCompletely disagree with them on this — unless you wear an Apple Watch all day every day.\nRe: the cameras, they make this interesting aside:\n(It would be cool if you could switch the image preview to the\nother panel to use it halfway open like a waist-level viewfinder,\nbut you can’t.)\nThis is a great opportunity for third-party camera apps. Imagine using the Duo in the L-shaped laptop pose, holding it at waist level, looking down — like a Hasselblad 500.\nOverall Patel and Johnson are fair and astute, but far more positive about the iPhone Duo than me or Joanna Stern. Don’t get me started on The Verge’s 10-point ratings scale, but they scored the Duo a 7/10, and only gave last month’s iPhone 18 Pro an 8/10. Based on this description of their scale, I’d give the 18 Pro a 10/10 (“best of the best”) and the Duo a 4/10 (“mediocre — has multiple outstanding issues”).\n ★",
+      "id": "200773e521fde480386f0cefbb77f809410918f3df9872a4d744a9ef249ab3d8",
+      "ref_id": "1",
+      "recommendationScore": 78,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "这是一篇对Surface Duo用户体验的详尽评测，细致入微地揭示了折叠屏手机在人体工程学和使用习惯上的设计缺陷。",
+      "reason": "文章深入分析了新兴折叠屏设备的用户体验痛点，对未来智能硬件产品设计有借鉴意义，且标题与'Apple生态'相关，市场关注度高。",
+      "tags": [
+        "折叠屏手机",
+        "产品评测",
+        "用户体验",
+        "设计缺陷",
+        "Apple生态"
+      ]
+    },
+    {
+      "title": "Ubiquiti's $99 Vape Detector is actually pretty good",
+      "link": "https://www.jeffgeerling.com/blog/2026/ubiquiti-vape-detector-teardown/",
+      "source": "jeffgeerling.com",
+      "publishedAt": "2026-10-23T13:00:00.000Z",
+      "summary": "Since learning about the effects of high CO2 concentration on attention and cognitive performance—especially at levels much higher than 2000ppm—I've started monitoring CO2 and other air quality indicators in my house, at my studio, and even on the road.\n\n\n\nI have a few other air quality monitors I'll be covering in the future, but today I wanted to focus on one I only heard about in the comments on a recent video tearing down a cheap no-name 'Air Quality Detector' from Amazon.",
+      "id": "7e27bcf2845e741d0e6e1414fc212d2bd9c46a6a0e8653fbac04fa8ea63779da",
+      "ref_id": "4",
+      "recommendationScore": 75,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "评测Ubiquiti的电子烟探测器，兼顾空气质量监测，内容实用。",
+      "reason": "对特定硬件产品的详细评测，结合个人使用体验，对关注智能家居和环境监测的用户有参考价值，属于自动化范畴。",
+      "tags": [
+        "智能家居",
+        "硬件评测",
+        "空气质量",
+        "自动化"
+      ]
+    },
+    {
+      "title": "More phishing messages via Booking.com and Novotel",
+      "link": "https://shkspr.mobi/blog/2026/10/more-phishing-messages-via-booking-com-and-novotel/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-10-23T11:34:15.000Z",
+      "summary": "A few days ago I booked a Novotel hotel on Booking.com - two days later I received these phishing messages via WhatsApp. Both knew my exact name, phone number, location of stay, and date of stay.  Luckily, both were fairly inept. Let's take a quick look at them.  The first came from a Portuguese business account.    Obviously the name doesn't match that of the large chain hotel I booked with. The …",
+      "id": "25b339412a9e21a1d808baa797da77dcd88d2a2324a4d8abf2b58c0c544610ec",
+      "ref_id": "3",
+      "recommendationScore": 72,
+      "popularityScore": 75,
+      "priority": "low",
+      "comment": "通过真实案例揭示了Booking.com和Novotel用户遭遇的钓鱼信息，强调了个人信息泄露的风险。",
+      "reason": "提供了具有警示作用的实际网络安全案例，有助于提升普通用户的防范意识和识别钓鱼攻击的能力，具有重要的社会实用价值。",
+      "tags": [
+        "网络安全",
+        "钓鱼攻击",
+        "隐私保护",
+        "数据泄露"
+      ]
+    },
+    {
+      "title": "I turned my TV into a Game Boy Color with a Pokemon town as my home screen",
+      "link": "https://twitter.com/robbietilton/status/2111936458923851923",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-23T17:40:22.000Z",
+      "summary": "Article URL: https://twitter.com/robbietilton/status/2111936458923851923\nComments URL: https://news.ycombinator.com/item?id=50212668\nPoints: 29\n# Comments: 8",
+      "id": "79525a8afd6fd57ace8fbd77b068dea97b64c6137a5ef353c32c77c6b835b82d",
+      "ref_id": "1",
+      "recommendationScore": 70,
+      "popularityScore": 55,
+      "priority": "medium",
+      "comment": "极具创意的电视个性化改造项目，将电视变为复古游戏机UI。",
+      "reason": "展示了独特的DIY精神和创意实现，对独立开发者和爱好者具有启发性，但技术深度一般。",
+      "tags": [
+        "DIY",
+        "复古游戏",
+        "自动化",
+        "创意项目"
+      ]
+    },
+    {
+      "title": "Animations for System Builders",
+      "link": "https://brooker.co.za/blog/2026/10/23/animations.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-23T17:02:24.000Z",
+      "summary": "Article URL: https://brooker.co.za/blog/2026/10/23/animations.html\nComments URL: https://news.ycombinator.com/item?id=50212124\nPoints: 12\n# Comments: 1",
+      "id": "0af5891f812aebe5b10d4def6dab75405fddb7c98a7a6c439ad232a1818cd2f1",
+      "ref_id": "1",
+      "recommendationScore": 65,
+      "popularityScore": 2,
+      "priority": "medium",
+      "comment": "从系统构建者视角探讨动画，提供了一种新颖的实现与设计思路。",
+      "reason": "对于关注系统级UI/UX和动画实现的开发者，文章提供了宝贵的实践指导。",
+      "tags": [
+        "动画",
+        "系统设计",
+        "UI/UX",
+        "编程实践"
+      ]
+    },
+    {
+      "title": "Apple Music 404 Not Found",
+      "link": "https://music.apple.com/this-url-doesnt-exist",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-23T12:28:47.000Z",
+      "summary": "https://www.macrumors.com/2026/10/23/apple-music-has-a-hidde...\nComments URL: https://news.ycombinator.com/item?id=50207910\nPoints: 181\n# Comments: 57",
+      "id": "01356892d8796636b4ea8a399bc3bd438b4a2c3f6e7900d55342c370837129e8",
+      "ref_id": "0",
+      "recommendationScore": 65,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "一篇关于Apple Music隐藏问题的报道，对用户有一定实用价值。",
+      "reason": "揭示了Apple Music的用户体验问题，信息简洁明了，适合苹果生态用户关注。",
+      "tags": [
+        "Apple Music",
+        "Bug",
+        "新闻",
+        "Apple 生态"
+      ]
+    },
+    {
+      "title": "\"No way to prevent this\" say users of only language where this regularly happens",
+      "link": "https://xeiaso.net/shitposts/no-way-to-prevent-this/memory-safety/CVE-2026-89078/",
+      "source": "xeiaso.net",
+      "publishedAt": "2026-10-23T00:00:00.000Z",
+      "summary": "",
+      "id": "3d70bddac7bb7e87dd6627beb31f2bdbefebd77fe2740a954785ad1597efbcb8",
+      "ref_id": "4",
+      "recommendationScore": 65,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "标题极具讽刺意味，指向特定编程语言的固有缺陷和普遍问题，内容缺失无法具体评估。",
+      "reason": "标题引发了关于编程语言设计哲学和潜在缺陷的深层思考，可能对开发者社区具有强烈共鸣和启发性，但缺乏文章内容来支撑推荐。",
+      "tags": [
+        "编程语言",
+        "软件工程",
+        "缺陷",
+        "设计哲学"
+      ]
+    },
+    {
+      "title": "Software is slow because of bad design, not slow languages",
+      "link": "https://seangoedecke.com/software-is-slow-because-of-bad-design-not-slow-languages/",
+      "source": "seangoedecke.com",
+      "publishedAt": "2026-10-23T00:00:00.000Z",
+      "summary": "",
+      "id": "00e1c62671775aca39a768a2d9a715b9f685cce01db1b6ef16afe311569a727d",
+      "ref_id": "0",
+      "recommendationScore": 60,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "标题引人深思，探讨了软件设计对性能的关键影响，但缺乏具体内容进行深入评估。",
+      "reason": "标题提出的观点在软件开发领域具有重要的讨论价值和实践意义，能够激发开发者思考，但内容缺失无法提供实质信息。",
+      "tags": [
+        "软件设计",
+        "性能优化",
+        "编程理念"
+      ]
+    },
+    {
+      "title": "The Download: testing six tech promises and biotech’s blind spots",
+      "link": "https://www.technologyreview.com/2026/10/23/1147628/the-download-testing-tech-promises-science-blind-spots/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-10-23T12:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. Are we there yet? A reality check on six big tech promises Some seemingly impossible feats are too good to give up on. Decoding a pet’s yowls and yips? Absolutely. Scrubbing…",
+      "id": "6a147386449f95022e884705ce5f57d878eeca17be29e35caf7f02b9cb78e3b9",
+      "ref_id": "0",
+      "recommendationScore": 55,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "一篇科技新闻简报，概述了六个科技承诺和生物科技的一些盲点。",
+      "reason": "提供广泛的科技趋势概览，适合了解行业动态但缺乏深入细节。",
+      "tags": [
+        "科技新闻",
+        "趋势分析",
+        "生物科技"
+      ]
+    },
+    {
+      "title": "Time Nuts (2005)",
+      "link": "http://leapsecond.com/time-nuts.htm",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-23T17:12:51.000Z",
+      "summary": "Article URL: http://leapsecond.com/time-nuts.htm\nComments URL: https://news.ycombinator.com/item?id=50212281\nPoints: 22\n# Comments: 16",
+      "id": "39437f5ee90f820a181804aafcdab15292315eb263ac6c39c62317d46e361477",
+      "ref_id": "0",
+      "recommendationScore": 45,
+      "popularityScore": 6,
+      "priority": "low",
+      "comment": "深度探索时间同步的极致技术细节，适合硬核爱好者。",
+      "reason": "内容虽老但极其专业，为对精密时间科学感兴趣的读者提供了独特的视角。",
+      "tags": [
+        "时间同步",
+        "硬件",
+        "精密测量",
+        "历史回顾"
+      ]
+    },
+    {
+      "title": "Joanna Stern Reviews the Duo: ‘The Good, the Bad, and the Buggy’",
+      "link": "https://www.youtube.com/watch?v=bxDTWuL9GxY",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-10-23T14:42:06.000Z",
+      "summary": "Joanna Stern’s video review packs a ton into 16 minutes. She commissioned a custom robot to fold/unfold the thing over 32,000 times in a week, to see if it loosened the hinge. (I won’t spoil the answer.) She took it on a yacht on the Hudson. She took it to a dark bar to test the cameras. And she really, really missed Face ID. I don’t know how she makes these videos in just a week, along with all the actual testing. So good.\nWe rank our complaints (and praise) in different order, but overall her take jibes with mine on every single point. You can read a version of her review, too, if you’re a subscriber to The New Things, which you should be.\n ★",
+      "id": "b8cb581da13e58121833267637c4d8f8c76b0fc1fd2b0401654f4bd24a259446",
+      "ref_id": "2",
+      "recommendationScore": 45,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "一篇对Joanna Stern评测Surface Duo的简短评论，亮点在于提到其对铰链进行的机器人测试。",
+      "reason": "内容是对第三方评测的介绍与称赞，而非独立的技术分析或产品洞察，实用性相对有限，主要侧重于评论者对评测的认可。",
+      "tags": [
+        "产品评测",
+        "折叠屏手机",
+        "测试方法"
+      ]
+    },
+    {
+      "title": "Air Purifiers as White Noise Machines",
+      "link": "https://www.jefftk.com/p/air-purifiers-as-white-noise-machines",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-23T17:28:36.000Z",
+      "summary": "Article URL: https://www.jefftk.com/p/air-purifiers-as-white-noise-machines\nComments URL: https://news.ycombinator.com/item?id=50212507\nPoints: 20\n# Comments: 22",
+      "id": "137545da4da1bffd24f1778e334e180e96cb6c9c202497d2133b43a8513f7138",
+      "ref_id": "2",
+      "recommendationScore": 40,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "探讨空气净化器作为白噪音机的实用性，生活类小技巧。",
+      "reason": "主题与核心技术关注点不符，技术深度和新颖性较低，虽有实用性但更偏生活化。",
+      "tags": [
+        "生活技巧",
+        "智能家居",
+        "实用性"
+      ]
+    },
+    {
+      "title": "Introducing Kimi K3.1 Pro",
+      "link": "https://simonwillison.net/2026/Oct/23/kimi-k31-pro/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-10-23T19:40:54.000Z",
+      "summary": "",
+      "id": "9e0308113d32ae3fc53655209ad5823c1401d9ff168f092eade47d2354761f7a",
+      "ref_id": "3",
+      "recommendationScore": 40,
+      "popularityScore": 50,
+      "priority": "medium",
+      "comment": "标题暗示了AI新产品发布，但缺乏具体内容无法评估其价值。",
+      "reason": "内容缺失，无法进行有效评估，建议补充文章详情；若为AI产品，主题优先级尚可。",
+      "tags": [
+        "产品发布",
+        "AI工具",
+        "信息缺失"
+      ]
+    },
+    {
+      "title": "The Missed Opportunities of Sonic 06",
+      "link": "https://isaacmarovitz.com/posts/sonic-06/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-23T16:38:35.000Z",
+      "summary": "Article URL: https://isaacmarovitz.com/posts/sonic-06/\nComments URL: https://news.ycombinator.com/item?id=50211729\nPoints: 44\n# Comments: 3",
+      "id": "ecad90cc6e1e90688af9e007659e138856b61e62fe4be345db4a8b6c36dc8ff0",
+      "ref_id": "4",
+      "recommendationScore": 30,
+      "popularityScore": 8,
+      "priority": "low",
+      "comment": "对《索尼克06》游戏设计和执行失误的深入分析。",
+      "reason": "虽然提供了游戏设计的反思，但与科技博客核心主题关联度较低。",
+      "tags": [
+        "游戏",
+        "产品设计",
+        "用户体验",
+        "评论"
+      ]
+    },
+    {
+      "title": "Job loss and cortisone mania",
+      "link": "https://tilschuenemann.de/job-loss-cortisone-mania",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-23T10:31:24.000Z",
+      "summary": "Article URL: https://tilschuenemann.de/job-loss-cortisone-mania\nComments URL: https://news.ycombinator.com/item?id=50206840\nPoints: 142\n# Comments: 75",
+      "id": "c9acdb51c4ea130fba11e092e947d990b224cce67b8db2e0136f9e1af8213a62",
+      "ref_id": "1",
+      "recommendationScore": 30,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "一篇关于个人经历的分享，情感真挚但与科技主题关联度较低。",
+      "reason": "内容聚焦个人生活和健康，不符合科技博客的评估侧重点。",
+      "tags": [
+        "个人经历",
+        "生活",
+        "职业"
+      ]
+    },
+    {
+      "title": "In the biotech world, you can’t see everything",
+      "link": "https://www.technologyreview.com/2026/10/23/1147610/biotech-you-can-see-everything-theranos-holmes/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-10-23T09:00:00.000Z",
+      "summary": "Earlier this week, I attended a screening of You Can See Everything, the buzzy new documentary about the disgraced former biotech CEO Elizabeth Holmes.  I went in not really knowing what to expect. I’d avoided spoilers (and won’t be giving anything away here, either!). I was wondering what new information this film could reveal, given…",
+      "id": "4358bdc30feac7aa2578bddfef77ac1c3981d69be5262decdeefd883efb29d88",
+      "ref_id": "1",
+      "recommendationScore": 30,
+      "popularityScore": 65,
+      "priority": "low",
+      "comment": "一篇关于伊丽莎白·霍姆斯纪录片的观后感，侧重于生物科技行业的道德和商业叙事。",
+      "reason": "虽然与生物科技相关，但内容更偏向电影评论和商业伦理，技术深度不足。",
+      "tags": [
+        "生物科技",
+        "纪录片",
+        "商业伦理"
+      ]
+    },
+    {
+      "title": "How Is Music Possible",
+      "link": "https://www.henrikkarlsson.xyz/p/music",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-23T16:38:17.000Z",
+      "summary": "Article URL: https://www.henrikkarlsson.xyz/p/music\nComments URL: https://news.ycombinator.com/item?id=50211719\nPoints: 48\n# Comments: 32",
+      "id": "6aa84d722cffb15cc2e28efdf6a64b8abc87c67eafca4f33b2ae41c88251e6c9",
+      "ref_id": "0",
+      "recommendationScore": 20,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "一篇探讨音乐本质的哲学文章，与科技博客关注领域关联度低。",
+      "reason": "内容偏向哲学和艺术，技术深度和实用性不符合科技博客的定位。",
+      "tags": [
+        "哲学",
+        "文化"
+      ]
+    },
+    {
+      "title": "Why didn’t we use the COM static store to clean up the unmarshalable delegate?",
+      "link": "https://devblogs.microsoft.com/oldnewthing/20261023-00/?p=112793/",
+      "source": "devblogs.microsoft.com/oldnewthing",
+      "publishedAt": "2026-10-23T14:00:00.000Z",
+      "summary": "It cleans up at the wrong time.\nThe post Why didn’t we use the COM static store to clean up the unmarshalable delegate? appeared first on The Old New Thing.",
+      "id": "157bf9172976a2d072b3362512b21ac66e4e4e91a7f42e78013514becd80b04a",
+      "ref_id": "0",
+      "recommendationScore": 20,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "探讨COM底层细节，但内容过短且技术陈旧，受众面极窄。",
+      "reason": "文章内容不完整，且所涉技术对现代开发者实用性低，不符合主流技术博客方向。",
+      "tags": [
+        "COM",
+        "编程",
+        "Windows开发",
+        "历史技术"
+      ]
+    },
+    {
+      "title": "An Ion Storm!, Part 2: The Return to Ground Level",
+      "link": "https://www.filfre.net/2026/10/an-ion-storm-part-2-the-return-to-ground-level/",
+      "source": "filfre.net",
+      "publishedAt": "2026-10-23T16:19:26.000Z",
+      "summary": "This article tells part of the story of John Romero. Note that there is a sexually suggestive image below that may be Not Safe For Work! In the badlands of what used to be Texas, rumor has it that John Romero has thrown himself out the window of Ion Storm’s penthouse offices. Apparently Romero had […]",
+      "id": "10e495446dc1a3ab6b5c5d7259805bc620c6a66f0118a057105fb23fa68d926e",
+      "ref_id": "4",
+      "recommendationScore": 15,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "游戏行业历史人物的个人传记，缺乏技术深度和实用价值。",
+      "reason": "内容侧重游戏开发者的个人八卦和历史叙述，与技术博客的硬核主题相去甚远。",
+      "tags": [
+        "游戏开发",
+        "历史",
+        "人物传记",
+        "娱乐",
+        "非技术"
+      ]
+    },
+    {
+      "title": "Total Historian",
+      "link": "https://www.theideasletter.org/essay/total-historian/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-23T16:23:29.000Z",
+      "summary": "Article URL: https://www.theideasletter.org/essay/total-historian/\nComments URL: https://news.ycombinator.com/item?id=50211504\nPoints: 16\n# Comments: 3",
+      "id": "b86fcf35eff847e55487cf0db79ea81b43ce6263ea39650f80c959ccc74136a4",
+      "ref_id": "1",
+      "recommendationScore": 10,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "关于历史学家的文章，不属于科技范畴，社区关注度较低。",
+      "reason": "内容与本科技博客的主题不符，且文章的社区热度不高。",
+      "tags": [
+        "历史",
+        "人文"
+      ]
+    },
+    {
+      "title": "Reforming English Spelling",
+      "link": "https://blog.oup.com/2026/10/reforming-english-spelling/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-23T15:56:06.000Z",
+      "summary": "Article URL: https://blog.oup.com/2026/10/reforming-english-spelling/\nComments URL: https://news.ycombinator.com/item?id=50211084\nPoints: 5\n# Comments: 4",
+      "id": "c941988085609fb86c682f13b4de5d3ca97a0e765d3b8bccb5704fae94a74dfe",
+      "ref_id": "3",
+      "recommendationScore": 5,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "关于英语拼写改革的非科技文章，社区关注度极低。",
+      "reason": "内容与本科技博客的核心关注点完全不符，且社区反馈冷淡。",
+      "tags": [
+        "语言学",
+        "教育"
+      ]
+    },
+    {
+      "title": "Premium: The Hater's Guide To Blackstone",
+      "link": "https://www.wheresyoured.at/premium-the-haters-guide-to-blackstone/",
+      "source": "wheresyoured.at",
+      "publishedAt": "2026-10-23T16:28:34.000Z",
+      "summary": "For whatever reason, Blackstone founder and CEO Stephen A. Schwarzman has a thirty-chapter-long series called “My Personal History” that is, well, exactly what it sounds like — a financial hagiography that frames him as a noble, sensible man with strong values, like when he sent a",
+      "id": "cb1779a65b50590645775ea060f269469281d8f5b8f7120eb16f31c24679d22e",
+      "ref_id": "3",
+      "recommendationScore": 5,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "非科技主题，主要关注金融人物及其企业评论。",
+      "reason": "内容与科技博客的AI、编程等核心主题完全不符，不适合本平台。",
+      "tags": [
+        "金融",
+        "商业",
+        "非科技"
+      ]
+    }
+  ]
+}
