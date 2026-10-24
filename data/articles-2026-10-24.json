@@ -1,0 +1,570 @@
+{
+  "dailySummary": "今日科技速递：包管理系统遭遇系列高危漏洞与供应链攻击，多平台紧急更新。纯语音AI模型Dessa、苹果Duo设备设计引关注。",
+  "articles": [
+    {
+      "title": "Twelve years of distributed SQLite",
+      "link": "https://philipotoole.com/twelve-years-of-distributed-sqlite/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-24T01:16:58.000Z",
+      "summary": "Article URL: https://philipotoole.com/twelve-years-of-distributed-sqlite/\nComments URL: https://news.ycombinator.com/item?id=50217500\nPoints: 330\n# Comments: 49",
+      "id": "6c6bee7f14c39272d43fa87e0446986c5c247001860dfff4f4ec8e63b6ad2bcd",
+      "ref_id": "3",
+      "recommendationScore": 100,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "回顾了过去十二年使用SQLite构建分布式系统的经验与教训。",
+      "reason": "提供了宝贵的实战经验和深度技术洞察，对于分布式系统架构师和数据库开发者极具参考价值。",
+      "tags": [
+        "SQLite",
+        "分布式系统",
+        "数据库",
+        "架构",
+        "编程工具",
+        "后端开发"
+      ]
+    },
+    {
+      "title": "This Week in Package Management: 24 October 2026",
+      "link": "https://nesbitt.io/2026/10/24/this-week-in-package-management.html",
+      "source": "nesbitt.io",
+      "publishedAt": "2026-10-24T10:00:00.000Z",
+      "summary": "This week’s package management news, and what a week it’s been, gathered from the package manager OPML feed collection, my posts and boosts on Mastodon, and anything people sent me.\nThe compromised eMudhra intermediate CAs led to security releases from dozens of package managers, language runtimes and CA bundles this week.\nSecurity\neMudhra generated eight of its intermediate CA certificates in a way that lets anyone recover their private keys. Browsers blocked them through their revocation lists, and tools that bundle their own copy of the roots shipped new releases. I wrote about where those copies end up, and how many critical packages bundle a CA file, in Trust Stores Are Dependencies Too. The disclosure page keeps a table of patched software with version numbers, including ca-certificates updates for most Linux distributions and the BSDs. The package management releases with the fix:\nuv 0.13.4 updates the roots compiled into uv, and 0.13.5 updates the managed CPython builds so their pip and ensurepip carry certifi 2026.10.19\npip 26.2.2\nSeth Larson’s notice for Python users lists the minimum versions of certifi, pip, uv, sigstore, conda and pixi, and gives a hash-pinned command for upgrading pip from an affected environment\nconda 26.9.4 requires the updated certifi and ca-certificates, and the conda blog has update instructions for conda, Mamba and Pixi\npixi 0.82.1\nrustup 1.29.2\nRoot bundles that other packages vendor: certifi 2026.10.19, webpki-roots and webpki-root-certs 1.0.10, rustls-webpki 0.103.16, Elixir castore 1.0.22, Erlang certifi 2.18.0, Perl Mozilla::CA 20261020, Composer ca-bundle 1.6.0 and 1.4.16 and the curl CA bundle\nHomebrew’s ca-certificates formula\nPython 3.15.1, 3.14.9 and 3.13.17\nJava 27.0.1, 25.0.5, 21.0.13, 17.0.21, 11.0.33 and 8u511 for OpenJDK and Oracle JDK\nGo 1.27.3 and 1.26.10\nNode.js 26.12.1, 24.22.1 and 22.23.4 update the bundled root certificates to NSS 3.131.1 and fix ten CVEs, four of them rated high, including a Brotli decoder out-of-bounds write that can lead to remote code execution\nHex 2.5.4 removes three emSign roots from its bundled CA list\nComposer 2.11.0-RC1 rejects the intermediates even when the system CA store includes their roots\nDeno 2.9.8 and Bun 1.4.4\nmise 2026.10.17\npypa/gh-action-pypi-publish 1.14.3\npnpm 11.28.8 embeds Node.js 26.12.1 in the standalone @pnpm/exe builds\nVerdaccio 6.10.7 for its Docker image\nDocker Engine 29.9.2 and Docker Desktop 4.96.2\nGit for Windows 2.56.0.3\nOpenTofu 1.13.2 and 1.12.9\nTerraform 1.16.7\nFor software already installed, EasyBuild maintainers published a script that scans for and removes the untrusted roots from EasyBuild installations. An option scans every .pem and .crt file under a given path.\nMichał Górny listed the places a Python user has to upgrade:\ncertifi in every virtual environment and lockfile, with certifi excluded from dependency cooldowns\nthe certifi bundled in pip\nthe pip wheel that ships with Python for ensurepip\nRust tools such as uv that compile in their own copy of the roots\nGentoo’s certifi package uses the system certificates, its pip package uses that certifi, and its Python uses a system ensurepip wheel. Upgrading those packages updates the system install.\nPHP 8.5.12, 8.4.27, 8.3.36 and 8.2.35 (PHP Foundation) fix two remote code execution bugs in memory management and error handling. One can be triggered by an unauthenticated request on Apache with mod_php before any application code runs. The post explains that the root cause of the out-of-memory bug was first spotted during the 2024 Quarkslab audit, and the fix stalled for months while the security team weighed competing approaches. The CVE IDs leaked on 20 October, so the release moved forward a day. Chainguard broke the embargo, publishing images containing the fix more than six hours before the coordinated release. Special thanks to Volker Dusch, who leads the PHP Foundation’s Ecosystem Security Team, for his work behind the scenes on this release.\nIn the project’s second compromise this year, LiteLLM 1.107.0 (Socket) was published to PyPI and GHCR with .pth and sitecustomize.py startup files that collect cloud credentials, SSH keys and coding agent auth files on every Python startup, including programs that never import LiteLLM. The container image’s build provenance records the source repository as Berri-AI/litellm, one hyphen away from the real BerriAI/litellm, and the payload files are absent from the release tag in the real repository. LiteLLM’s maintainers told Help Net Security that the attacker used what appear to be stolen GitHub CLI OAuth tokens for three engineers’ accounts. The attacker changed the release pipeline and triggered the release from the first, approved it from the second, and deleted the workflow records from the third.\nBloom Security found that npm’s Trusted Publishing matched configurations on the owner/repo name instead of the permanent numeric IDs GitHub includes in the OIDC token. After a maintainer renamed or deleted the bound repository, anyone could register the freed name and publish new versions of the package, with a valid provenance attestation naming their own repository, an exposure Bloom counted across more than 1,500 packages. GitHub’s fix, announced on 2 October, expires any configuration that goes 48 hours without validation. According to npm’s documentation, the first publish binds a configuration to the repository’s immutable identity.\nRuby 4.0.9, 3.4.12 and 3.3.13 fix bugs in the Onigmo regular expression engine that GitLab turned into remote code execution through user-supplied patterns, such as those in CI configuration. GitLab had already patched the Ruby it ships and assigned four CVEs. The bugs affect applications that pass attacker-controlled strings to Regexp.new or interpolate them into a regexp literal, and they remain exploitable with Regexp.timeout and pattern length limits in place. The four CVEs are GitLab’s, and the Ruby core team plans to discuss whether compiling untrusted patterns is a supported use case.\nGitHub package firewall is in public preview for GitHub Enterprise Cloud. It is a proxy between the upstream registry and CI runners, coding agents or internal registries. It checks metadata requests and downloads against an enterprise policy covering cooldown periods, malware and vulnerability advisories, and attestation downgrades. It supports npm only for now, and is free during the preview.\nThe curl project will make LOW and MEDIUM severity vulnerability reports public on the GitHub issue tracker from 26 October, keeping embargoes only for HIGH and CRITICAL issues. Daniel Stenberg wrote that the project received 13 vulnerability reports on a single Saturday, more than the small security team can handle in private.\nReleases\nHex 2.6 adds Workload Identity, so a GitHub Actions job can publish a package or fetch an organisation’s private packages with its OIDC token instead of a stored key. Package builds are now reproducible, and the build_env metadata field records the Hex version needed to rebuild one and compare checksums. Policy overrides can accept a single advisory, retirement reason or the cooldown, mix hex.audit --policy applies the policy to packages already in mix.lock, and mix hex.audit can write SARIF for GitHub code scanning. Hex has dropped stored keys for organisation repositories. In CI, mix hex.organization auth ORGANIZATION --key KEY exchanges the key for a token that lasts about 25 minutes. Organisation admins can now require two-factor authentication for every member.\nComposer 2.11.0-RC1 adds a cooldown policy that withholds newly released versions for a configurable period, and a block-scope option so custom policies can also block during install. It now escapes package-controlled paths and shebangs embedded in bin proxies, and stops sending custom repository headers to dist URLs on other hosts whose names start with the repository host. It also removes the source-fallback option added in 2.10.\npnpm 12.15 adds lockfile.integrityTarget: tar, which pins the hash of each package’s uncompressed tar so the lockfile stays the same when a registry recompresses tarballs. It accepts zstd-compressed registry responses and lets pnpm-workspace.yaml load settings from other files and from config dependencies through an include field. pnpm install now fails with ERR_PNPM_REGISTRY_NAME_MISMATCH when a registry returns metadata for a different package than the one requested. Before, pnpm installed it under the name in the metadata, which bypassed allowBuilds rules for the requested name.\nmise 2026.10.13 to 2026.10.18 ignores [settings] from untrusted project configs as of 2026.10.13, so a cloned repository’s mise.toml changes settings like node.mirror_url only after mise trust. 2026.10.15 applies the default 24-hour minimum_release_age to every backend, including asdf, vfox, conda and http: tools, and 2026.10.18 adds mise lsp, a language server for mise.toml.\nvlt 1.5 adds vlt skills, which links the agent skills that installed dependencies ship into .agents/skills and .claude/skills. An allow-skills query in vlt.json selects which packages’ skills get linked, and the default :not(:malware) query also excludes packages still waiting for a Socket scan. vlt 1.6 adds --global installs and parses ^0, ^0.x and ^0.0 as ranges instead of the exact version 0.0.0.\nBun 1.4.4 migrates Yarn Berry lockfiles to bun.lock with every pinned version preserved. bun install now retries with exponential backoff, where 1.4.3 ran all five retries within 5 ms, and the release closes 133 bun install issues.\nuv 0.13.2 to 0.13.5 removes exponential work when simplifying and exporting complex dependency markers and reduces resolver memory use for large graphs. pylock.toml exports now include supported environment restrictions, and the wheel-variants preview fetches and validates PEP 825 index-level variant metadata.\npixi 0.83 adds support for virtual package detectors, which channels will be able to register for virtual packages beyond pixi’s built-in set. pixi prompts for confirmation before running a detector and lists detectors in pixi info.\nMamba 2.10 removes its TUF implementation and mamba-content-trust and completes the exclude_newer policy. It also fixes authentication tokens being dropped on package downloads since 2.9.0.\nAthens 0.20 proxies and caches Go toolchain downloads from go.dev/dl under /dl/, and serves cached @latest results in offline and fallback modes.\nTerraform 1.17 supports variables and locals in provider requirements and makes Terraform Policy generally available, with a -policies flag for plan, apply and query.\nDependabot now supports npm 12, pnpm 11 and 12, and Bun 1.4. When pnpm 12 writes pnpm-lock.yaml as two YAML documents, the dependency graph misses those dependencies for now, so Dependabot skips alerts and security updates for them and may close existing alerts. Alert responses in the REST API now include a version_requirement field with the version Dependabot recorded.\nAlso out:\nHomebrew 7.0.10\nNix 2.35.4\nNuGet 8.1.0.24\nAPT 3.3.4\nGradle 9.8.2\nsbt 2.0.11\nPDM 2.29.3\npipx 1.18.4\nPSResourceGet 1.3.0-rc1\nHarbor 2.14.6\nORAS 1.3.5\nPapers\nSign Here: Attributing a Source for a More Trustworthy Software Supply Chain (Derek Garcia et al., arXiv) tests whether building only packages that link to a buildable source repository would keep malware out. Across 47,066 known malicious npm and PyPI packages, checking for a source blocked between 87.7% and 99.9% of them depending on how strictly the source was vetted, while 47.4% of a sample of benign packages pointed to a source a user could build from.\nVibenix: Agentic Software Packaging and Maintenance with Nix (Martim Monis et al., arXiv) is an LLM agent that writes Nix packaging expressions through a build-and-repair loop. It produced buildable packages for 95.3% of 466 tasks with Claude Haiku 4.5, against 5.6% for a single-shot tool, though manual checks found only 47% of a sample worked correctly before a refinement step added 35 percentage points.\nWhat Is Under the Hood? A Cross-Ecosystem Study of Vulnerable Dependencies in Construction Software (Mahzabin Tamanna et al., arXiv) ran OSV-Scanner over 904 construction-industry GitHub repositories. OSV-Scanner could scan 54.6% of them, and 80% of those had at least one dependency with a published advisory. Two upstream package families reached about 70% of the affected repositories.\nElsewhere\nSentry gave $1,000,000 to open source maintainers (Vlad Miricioiu, Sentry) this year, up from $750,000. $495,000 went through thanks.dev and $100,000 through ecosyste.ms Funds, which I run, with the rest to foundations including the PSF, PHP Foundation, Ruby Central and Packagist. The Open Source Pledge’s 37 member companies have now paid $8,421,535 to maintainers and foundations.\nFarid Zakaria’s One store, two frontends uses $ORIGIN support in PT_INTERP, which he worked on with Christian Brauner for Linux 7.3, to make nixpkgs outputs relocatable so Bazel and buck2 remote executors can use them without Nix installed. In No quarter for gaps he writes gemlock.nix, a Nix side for Bundler lockfiles with platform-specific gems. The bundix pull request that the nixpkgs manual points to for this was opened in 2019 and closed unmerged in August. Who wrote this byte? adds rewind blame to Rewind VM, his deterministic virtual machine for recording and replaying builds. Given two runs with different outputs, rewind blame reports the process that wrote the first differing byte.\nPaul Battley has archived the repositories of all his Ruby gems and linked them to a post explaining why he has stopped working on them.\nGitRoot 0.5.0 replaces plugin download URLs with Package URLs, a breaking change for existing forge configurations.\nzizmor 1.32.0-rc1 adds experimental support for GitHub Actions workflow lockfiles, and William Woodruff is asking for testers with repositories that already use one.\nJosh Bressers talks to CyberScoop’s Safe Mode podcast about running VulnCheck’s coordinated disclosure as AI-generated reports increase. He also covers how much less effort it now takes to find vulnerabilities than to fix them.\ngit-pkgs\nI tagged 10 repos this week:\ncerts v0.1.0 (new), a Go library and CLI for listing X.509 certificates and trust stores in files and package archives\narchives v0.10.0\ncooldown v0.3.0\nenrichment v0.7.3\nmagic v0.6.0\nmarkup v0.1.2\nproxy v0.10.0\npurl v0.1.23\nregistries v0.11.0\nsbom v0.1.7\nSend links for next week to @andrewnez@mastodon.social.",
+      "id": "c1706aff9438bf995cf160af4f48b582e0e833c7b7ebc3043a46f76efe69ce5e",
+      "ref_id": "3",
+      "recommendationScore": 97,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "关于包管理安全漏洞的及时深度报道，对开发者和运维人员极具专业价值。",
+      "reason": "文章讨论编程工具领域的重大安全更新，技术深度和实用性极高，信息密度大，对目标受众具有重要指导意义。",
+      "tags": [
+        "Package Management",
+        "Security",
+        "Vulnerability",
+        "Programming Tools",
+        "DevOps",
+        "Linux"
+      ]
+    },
+    {
+      "title": "How close can pure functional programming get to C?",
+      "link": "https://rtfeldman.com/fp-vs-c",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-24T03:43:54.000Z",
+      "summary": "Article URL: https://rtfeldman.com/fp-vs-c\nComments URL: https://news.ycombinator.com/item?id=50218195\nPoints: 217\n# Comments: 61",
+      "id": "332b8a0f3c708eb7e8baac3818f0978aefb408bda579f46f34ab3285bb0f8915",
+      "ref_id": "1",
+      "recommendationScore": 96,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "深入探讨纯函数式编程与C语言在性能和底层控制上的异同。",
+      "reason": "该文对编程范式进行了深刻比较，对追求极致性能和理解语言本质的开发者有重要参考价值。",
+      "tags": [
+        "函数式编程",
+        "C语言",
+        "编程范式",
+        "性能优化",
+        "底层开发"
+      ]
+    },
+    {
+      "title": "Dessa: Conversation Model trained only on speech",
+      "link": "https://block.xyz/dessa",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-23T19:09:54.000Z",
+      "summary": "Article URL: https://block.xyz/dessa\nComments URL: https://news.ycombinator.com/item?id=50213925\nPoints: 463\n# Comments: 180",
+      "id": "b5cb20bfbe29ca467252b9888181d30061954fb596893731cbf1f457ba320a26",
+      "ref_id": "0",
+      "recommendationScore": 95,
+      "popularityScore": 92,
+      "priority": "high",
+      "comment": "探讨了仅基于语音训练的对话模型，具有很高的技术前瞻性和潜在影响力。",
+      "reason": "文章主题聚焦AI前沿技术，理论深度与新颖性兼具，对AI领域研究者和开发者极具价值。",
+      "tags": [
+        "AI",
+        "语音识别",
+        "对话模型",
+        "机器学习",
+        "自然语言处理"
+      ]
+    },
+    {
+      "title": "Apple Security Research Device",
+      "link": "https://security.apple.com/research-device/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-24T02:36:38.000Z",
+      "summary": "Article URL: https://security.apple.com/research-device/\nComments URL: https://news.ycombinator.com/item?id=50217903\nPoints: 138\n# Comments: 83",
+      "id": "c88a74ab95ab1514202a4b36b97c53e4cf4be8bee5032b6f1cd61155f7ebf0e5",
+      "ref_id": "2",
+      "recommendationScore": 94,
+      "popularityScore": 60,
+      "priority": "high",
+      "comment": "介绍Apple为安全研究员提供的专用设备，助力漏洞挖掘和安全防护。",
+      "reason": "直接服务于Apple生态的安全研究，对于维护系统安全和促进技术进步至关重要。",
+      "tags": [
+        "Apple",
+        "安全",
+        "漏洞研究",
+        "iOS",
+        "硬件",
+        "生态系统"
+      ]
+    },
+    {
+      "title": "Chan Karunamuni on the Duo’s Open/Close Translucent Transition",
+      "link": "https://x.com/chan_k/status/2113622379050246243",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-10-24T15:03:44.000Z",
+      "summary": "Chan Karunamuni, human interface designer at Apple, on X:\niPhone Duo is here! Excited to have worked on the design of our\nopen/close transition. It’s designed to make the two displays feel\nlike one seamless experience by perceptually bending the focal\nplane, not the content, so that it feels like opening a window\nonto a singular view.\nKarunamuni thanks a few engineers by name, which is always good (and for Apple employees, far too rare) to see.\nJohnnie Manzari, HI designer formerly of Apple, now at Google DeepMind, retweeting Karunamuni:\nThe second I saw that transition I thought “here’s the next\n‘change the whole industry’ design from Chan”.\nPrevious such raise-the-bar designs that Karunamuni led or played a major hand in include the Dynamic Island in 2022, the “shockwave moment” when you put two iPhones together to initiate AirDrop or NameDrop in 2023, and iOS 18’s cool-ass Flashlight beam UI in 2024. He also gave Steve Lemay this full-throated public endorsement upon his promotion to lead all of Apple HI design upon Alan Dye’s departure for Meta last December.\n ★",
+      "id": "bef702b09a0cf73f76dd43ec361124994a50564037bb1c34a5a428e1eec50df3",
+      "ref_id": "4",
+      "recommendationScore": 92,
+      "popularityScore": 88,
+      "priority": "high",
+      "comment": "深入探讨了苹果核心人机界面设计师Chan Karunamuni在UI过渡动画方面的创新理念，具有行业引领性。",
+      "reason": "文章揭示了Apple生态中顶尖产品设计和交互美学的思想，对UI/UX设计和高级前端开发有极高的参考价值。",
+      "tags": [
+        "Apple",
+        "UI/UX",
+        "产品设计",
+        "交互设计",
+        "iOS",
+        "设计理念"
+      ]
+    },
+    {
+      "title": "Node2Shell evolves to HTTP2Shell, blast radius affects many HTTP libs and apps",
+      "link": "https://www.aikido.dev/blog/python-packages-vulnerable-node2shell-brotli-cve-2026-111497",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-24T08:06:39.000Z",
+      "summary": "Article URL: https://www.aikido.dev/blog/python-packages-vulnerable-node2shell-brotli-cve-2026-111497\nComments URL: https://news.ycombinator.com/item?id=50219177\nPoints: 203\n# Comments: 94",
+      "id": "cbb045dba06decd7ef89e4af8f618b2e330d58d32c021b0efab37957ba19f081",
+      "ref_id": "4",
+      "recommendationScore": 91,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "揭示了影响广泛的HTTP安全漏洞，对开发者和运维人员至关重要。",
+      "reason": "涉及重大安全漏洞及其影响范围，对“编程工具”和“独立开发”者有直接的风险提示和应对指导，实用性极高。",
+      "tags": [
+        "网络安全",
+        "漏洞",
+        "HTTP",
+        "Python",
+        "编程工具",
+        "CVE",
+        "系统安全"
+      ]
+    },
+    {
+      "title": "Neural chip decodes interactions between brain regions",
+      "link": "https://actu.epfl.ch/news/neural-chip-decodes-interactions-between-brain-r-2/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-24T15:57:17.000Z",
+      "summary": "Article URL: https://actu.epfl.ch/news/neural-chip-decodes-interactions-between-brain-r-2/\nComments URL: https://news.ycombinator.com/item?id=50222525\nPoints: 47\n# Comments: 7",
+      "id": "fca13fff3851522a6101de6aae22f62d7c0685b7baae849625138622cd0c9e39",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 45,
+      "priority": "high",
+      "comment": "前沿神经芯片技术，揭示了AI在理解大脑交互方面的巨大潜力。",
+      "reason": "属于AI领域的高技术深度和新颖性研究，预示着未来科技发展的重大方向。",
+      "tags": [
+        "AI",
+        "神经科学",
+        "芯片",
+        "前沿研究",
+        "脑机接口",
+        "生物科技"
+      ]
+    },
+    {
+      "title": "GPU-unlock: FP/BF16 instruction issue rate on Nvidia 3000's cards",
+      "link": "https://github.com/Zagitta/gpu-unlock",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-24T09:58:27.000Z",
+      "summary": "Article URL: https://github.com/Zagitta/gpu-unlock\nComments URL: https://news.ycombinator.com/item?id=50219700\nPoints: 103\n# Comments: 42",
+      "id": "b6ee2b32304d0c0d1ac55ac471aa0a3caabe2d76a13e5889cd3a4ac5ce2bb742",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "深入探讨Nvidia GPU的AI计算性能优化，对AI开发者极具价值。",
+      "reason": "直接与AI主题强关联，提供了低级硬件层面的性能优化洞察和潜在工具，实用性极高。",
+      "tags": [
+        "GPU",
+        "Nvidia",
+        "AI",
+        "性能优化",
+        "深度学习",
+        "硬件",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "Interesting systemd features you may not know about",
+      "link": "https://martinalderson.com/posts/interesting-systemd-features/?utm_source=rss&utm_medium=rss&utm_campaign=feed",
+      "source": "martinalderson.com",
+      "publishedAt": "2026-10-24T00:00:00.000Z",
+      "summary": "Memory caps, run time limits, sleep inhibitors, better cron and path units - systemd features that turn out to be handy for running throwaway agent-written code.",
+      "id": "01e7751ce1a6241d32bfb172cbb54cd6bcb01b8abe7ae71d2daa93954945811c",
+      "ref_id": "1",
+      "recommendationScore": 90,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "深入探讨了systemd鲜为人知但极为实用的特性，对系统管理和自动化大有裨益。",
+      "reason": "技术深度和实用性俱佳，对开发者和系统管理员具有直接价值，且紧密贴合编程工具和自动化主题，信息密度高。",
+      "tags": [
+        "systemd",
+        "Linux",
+        "自动化",
+        "编程工具",
+        "系统管理",
+        "实用技巧"
+      ]
+    },
+    {
+      "title": "Oai-math-revised: a community hub for revising OpenAI's math write-ups",
+      "link": "https://terrytao.wordpress.com/2026/10/24/oai-math-revised-a-community-hub-for-revising-openais-math-write-ups/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-24T15:35:17.000Z",
+      "summary": "Article URL: https://terrytao.wordpress.com/2026/10/24/oai-math-revised-a-community-hub-for-revising-openais-math-write-ups/\nComments URL: https://news.ycombinator.com/item?id=50222283\nPoints: 10\n# Comments: 4",
+      "id": "00fa61ca1ab1c68da75587daa623484ae5661d9e8a1c48ef37e9ce9a6f305715",
+      "ref_id": "3",
+      "recommendationScore": 88,
+      "popularityScore": 20,
+      "priority": "high",
+      "comment": "著名数学家发起的OpenAI数学能力改进社区，对AI大模型发展有重要影响。",
+      "reason": "深入探讨了AI在数学推理方面的挑战与改进，技术深度高且由权威人士参与。",
+      "tags": [
+        "AI",
+        "LLM",
+        "数学",
+        "OpenAI",
+        "社区协作",
+        "大模型"
+      ]
+    },
+    {
+      "title": "List of Vim forks",
+      "link": "https://evanhahn.com/list-of-vim-forks/",
+      "source": "evanhahn.com",
+      "publishedAt": "2026-10-24T17:00:00.000Z",
+      "summary": "Here are the Vim forks I know about:\nNeovim: “a Vim-based text editor engineered for extensibility and usability, to encourage new applications and contributions.”\nVim Classic: “a stable, long-term support fork of the ubiquitous text editor, maintained without the assistance of generative AI tools.”\nEVi: “a hard-fork of Vim v9.1.0 (Jan 2024) before AI was used in the project.”\nMacVim: “a macOS version of the Vim text editor, providing a graphical user interface for Vim, while tightly integrating with macOS and providing features specific to the platform.”\nThis list doesn’t include Vim-inspired editors like Kakoune, Vim-style plugins for other editors like IdeaVim, or Vim “distributions” like LazyVim.\nContact me if you know of other forks!",
+      "id": "617f5443b2b8ceb67ad6d19030aa55662a25322ecdc00f6a81b2de702b5ebbb3",
+      "ref_id": "2",
+      "recommendationScore": 88,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "针对Vim用户的高度实用性工具列表，提及AI及macOS相关选择。",
+      "reason": "文章主题聚焦于编程工具，信息密度高，对特定开发者群体极具实用价值，并触及AI和Apple生态等高优先级主题。",
+      "tags": [
+        "Vim",
+        "Neovim",
+        "Text Editor",
+        "Programming Tools",
+        "AI",
+        "macOS"
+      ]
+    },
+    {
+      "title": "FreeDNS",
+      "link": "https://freedns.afraid.org/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-24T15:20:01.000Z",
+      "summary": "Article URL: https://freedns.afraid.org/\nComments URL: https://news.ycombinator.com/item?id=50222133\nPoints: 157\n# Comments: 37",
+      "id": "0358f37e52765a0f011e0006b44e65416fcd6a015abc1431a26eb26cedf95baa",
+      "ref_id": "4",
+      "recommendationScore": 80,
+      "popularityScore": 90,
+      "priority": "medium",
+      "comment": "免费且实用的DNS服务，对于个人项目和系统运维具有高价值。",
+      "reason": "提供了一个广受欢迎且实用性强的免费网络服务，解决了用户的实际需求。",
+      "tags": [
+        "网络",
+        "DNS",
+        "免费服务",
+        "运维",
+        "基础设施",
+        "Web服务"
+      ]
+    },
+    {
+      "title": "Apple Built a Photo-Realistic Functional Original iPod for Apple Music’s 404 Page",
+      "link": "https://music.apple.com/404",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-10-24T15:50:02.000Z",
+      "summary": "It seems like this amazing Easter egg only launched yesterday, to celebrate the original iPod’s 25th anniversary. Exquisitely well done. More like this, please.\n ★",
+      "id": "c4f68901c09f16d12ccaf3dcaab3ec4259d52db2f6c6b191f7680d2f28e60488",
+      "ref_id": "3",
+      "recommendationScore": 80,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "苹果在404页面制作了一个逼真的功能性iPod彩蛋，展示了出色的前端设计和创意。",
+      "reason": "这是一个有趣的Apple生态内创新案例，对Web开发、UI/UX和产品设计领域有良好的借鉴意义。",
+      "tags": [
+        "Apple",
+        "Web开发",
+        "UI/UX",
+        "产品设计",
+        "彩蛋",
+        "创意"
+      ]
+    },
+    {
+      "title": "Show HN: Autonomous root for Tcl Android TV via CVE-2022-22706",
+      "link": "https://gitlab.com/c4psu13/mali-pagecache-root",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-24T10:51:35.000Z",
+      "summary": "Article URL: https://gitlab.com/c4psu13/mali-pagecache-root\nComments URL: https://news.ycombinator.com/item?id=50220042\nPoints: 36\n# Comments: 10",
+      "id": "153b7aa18d6a1f9add07e6e1161fe40d6c8eb337787e29496c73f1a7e18b9f9a",
+      "ref_id": "1",
+      "recommendationScore": 78,
+      "popularityScore": 50,
+      "priority": "medium",
+      "comment": "针对Android TV的CVE漏洞利用，技术深度和新颖性兼具。",
+      "reason": "提供了特定硬件和系统上的root方案，对安全研究者和高级用户有较高实用价值，符合编程工具和自动化主题。",
+      "tags": [
+        "Android",
+        "安全漏洞",
+        "root",
+        "自动化",
+        "系统安全",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "Roku developer repositories moved from GitHub to GitLab",
+      "link": "https://blog.roku.com/developer/gitlab-move",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-24T16:06:26.000Z",
+      "summary": "Article URL: https://blog.roku.com/developer/gitlab-move\nComments URL: https://news.ycombinator.com/item?id=50222622\nPoints: 134\n# Comments: 79",
+      "id": "c852cf262baca51dc366fcd1c2efa7b82968161d0543632825f68d69c4ea60e7",
+      "ref_id": "1",
+      "recommendationScore": 75,
+      "popularityScore": 80,
+      "priority": "medium",
+      "comment": "Roku 开发者仓库迁移至 GitLab，是编程工具领域的实用新闻。",
+      "reason": "提供了关于知名公司开发工具链变动的实用信息，对开发者有参考价值。",
+      "tags": [
+        "编程工具",
+        "GitLab",
+        "GitHub",
+        "开发流程",
+        "行业动态",
+        "DevOps"
+      ]
+    },
+    {
+      "title": "OBS Studio 33",
+      "link": "https://github.com/obsproject/obs-studio/releases/tag/33.0.0",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-24T04:49:58.000Z",
+      "summary": "Article URL: https://github.com/obsproject/obs-studio/releases/tag/33.0.0\nComments URL: https://news.ycombinator.com/item?id=50218430\nPoints: 381\n# Comments: 132",
+      "id": "4906ded72c396dea871fb6c4a0821b8a75be3ee11ed92d85bf53d4a5e66654c5",
+      "ref_id": "0",
+      "recommendationScore": 71,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "OBS Studio 33更新，带来了多项功能改进和稳定性提升。",
+      "reason": "作为一款广泛使用的直播推流工具，此更新对内容创作者和自动化工作流用户具有直接实用价值。",
+      "tags": [
+        "OBS",
+        "自动化",
+        "直播",
+        "工具更新",
+        "内容创作"
+      ]
+    },
+    {
+      "title": "Around a dozen banking apps began specifically permitting GrapheneOS",
+      "link": "https://grapheneos.social/@GrapheneOS/117492375462459244",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-24T01:15:14.000Z",
+      "summary": "Article URL: https://grapheneos.social/@GrapheneOS/117492375462459244\nComments URL: https://news.ycombinator.com/item?id=50217495\nPoints: 563\n# Comments: 204",
+      "id": "93fe052dfccec831dc06bcd382b059fc8f7128e538c3991b5e828a98814714f0",
+      "ref_id": "4",
+      "recommendationScore": 69,
+      "popularityScore": 95,
+      "priority": "medium",
+      "comment": "GrapheneOS用户迎来利好消息，多家银行应用开始支持该系统。",
+      "reason": "此新闻显著提升了GrapheneOS的实用性，对注重隐私和安全的独立开发者及用户群体是重要进展。",
+      "tags": [
+        "GrapheneOS",
+        "隐私",
+        "安全",
+        "Android",
+        "独立开发",
+        "移动应用"
+      ]
+    },
+    {
+      "title": "Elon Musk Just Gave Europe a Reason to Replace American Technology",
+      "link": "https://steveblank.com/2026/10/24/europe-gets-a-wake-up-call/",
+      "source": "steveblank.com",
+      "publishedAt": "2026-10-24T13:00:33.000Z",
+      "summary": "I’ve been in London for the last month and have heard policymakers react to the wake up call Elon Musk just delivered.  The decision of the U.S. to shut off intelligence and throttle the military version of Starlink called Starshield to Ukraine may have been a blip in the news in the US, but it […]",
+      "id": "9fdda66c7434f3f8eba5c3e3190aec4065678c0506767cebbd98aa2017161a2f",
+      "ref_id": "0",
+      "recommendationScore": 65,
+      "popularityScore": 85,
+      "priority": "medium",
+      "comment": "一篇关于地缘政治与科技自主权的评论文章，分析了Starlink事件对欧洲科技战略的影响。",
+      "reason": "文章关注当前热点事件，视角独特，但技术深度和直接实用性相对较低，更偏向政策分析而非纯技术分享。",
+      "tags": [
+        "地缘政治",
+        "科技政策",
+        "Starlink",
+        "欧洲",
+        "战略分析"
+      ]
+    },
+    {
+      "title": "Reading List 10/24/26",
+      "link": "https://www.construction-physics.com/p/reading-list-102426",
+      "source": "construction-physics.com",
+      "publishedAt": "2026-10-24T12:01:24.000Z",
+      "summary": "Minimum lot sizes, Boeing’s next 737 MAX, Fervo short sellers, Figure AI’s training data, and more.",
+      "id": "3d1ee2b88a20edb4553bd7a33d13bc974ae6dd4731bf95be80dbb5eb9849e432",
+      "ref_id": "4",
+      "recommendationScore": 30,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "简短的阅读清单，提及AI主题但无具体内容阐述。",
+      "reason": "文章内容过于简短，仅为主题罗列，虽提及AI但无深度阐述，实用性低，信息密度不足。",
+      "tags": [
+        "Reading List",
+        "AI (mention)"
+      ]
+    },
+    {
+      "title": "battledrones v14: Compass Rose, a four player map",
+      "link": "https://simonwillison.net/2026/Oct/24/battledrones/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-10-24T03:59:57.000Z",
+      "summary": "",
+      "id": "d1879513a33727bd2922010517b6fd0c8b51195d0efea242f56f298bf7b2afbf",
+      "ref_id": "1",
+      "recommendationScore": 25,
+      "popularityScore": 15,
+      "priority": "low",
+      "comment": "关于特定游戏新地图的发布，内容过于小众，缺乏普遍的科技深度和实用性。",
+      "reason": "不符合本博客主要关注的AI、Apple生态等高优先级主题，且内容信息量不足以引起广泛兴趣。",
+      "tags": [
+        "游戏",
+        "更新",
+        "小众"
+      ]
+    },
+    {
+      "title": "Pluralistic: Critique and writing (23 Oct 2026)",
+      "link": "https://pluralistic.net/2026/10/23/better-to-give/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-10-23T20:44:02.000Z",
+      "summary": "Today's links Critique and writing: The most important part of a writing workshop is trying to fix other people's stories. Hey look at this: Delights to delectate. Object permanence: USPS nukes the mail; Enron Explorer; \"Scored\"; UAE's international hacker legion; NZ provides hacking tools to torturers; Truecrypt insecure; The Traitorous Eight. Upcoming appearances: Vancouver, Ottawa, Vienna, Kilkenny, Courtenay, Vancouver, Oxford, Sheffield, Virtual, Oxford, Montreal. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. Critique and writing (permalink) Through my own writing life, nothing has done more to improve my writing than diligent participation in peer-based workshops; that's where a group of writers, all at about the same stage in their artistic development, gather to read one another's work and offer feedback specifically aimed at improving each other's stories. This is a deceptively simple exercise, and the reasons it works so well are quite counter-intuitive. The most obvious benefit is the way that a workshop encourages you to write at all. When you're at the start of your writing career, you are almost totally reliant upon your own internal self-discipline to keep producing. Acquiring that self-discipline is infinitely valuable, but it's also incredibly hard. Being part of a group of writers who expect you to regularly turn in new work adds a very useful bit of external motivation that augments your still nascent self-discipline. Knowing you have to turn in a story for the group by Friday can get you in gear when you feel discouraged or blocked. Before you're getting published regularly (or at all), your critiquing circle might be the only source of validation you get for your work, so the knowledge that you're in for that validation if you get that story in on time is a great motivator. But this is where the counter-intuitive part comes in: as great as it feels to be the center of your peers' attention and to get close feedback on the work you sweated over, that's not the real value you get from a writing workshop, at least not at the start of your career. Your peers' critiques can help you fix weaknesses in your story, and even teach you a little about how to avoid those weaknesses in future work. You might get feedback that turns an unpublishable story into a published one. But the point of a writing workshop isn't merely to make your stories better – it's to make you better at writing stories. That's where critiquing other writers' stories comes in. The process of reading and re-reading someone else's imperfect work and devoting real mental energy to figuring out what's not working in it and how to fix it is how you develop the creative instincts that allow you to automatically and unconsciously avoid pitfalls and make breakthroughs in your own work. Even if none of the feedback you offer is ever incorporated into the story you're critiquing, the act of preparing and delivering that critique is the most reliable fast-track to becoming a better writer yourself. There's something very valuable in the combination of thinking critically, being exposed to other workshop members' ideas about the story under discussion, and working with source material that you can look at with more objectivity because it didn't come out of your own head. I bring all this up because I've now heard from a few beginning writers who tell me that they're finding LLMs to be good editorial feedback generators. They value the editorial suggestions they get from a chatbot after they finish their work, and use it to help them with a new draft. Without commenting on whether I think LLM feedback is editorially useful (I certainly wouldn't ever ask a chatbot for that kind of feedback), I want to point out that when it comes to improving your writing, getting editorial notes on your work is distinctly inferior to offering criticism of other writers' work. The reality is that when you're starting out as a writer, the vast majority of work you produce will be artistically unsalvageable. The much-vaunted \"million words of crap\" you write on the way to becoming a publishable writer are about learning to marry technique to artistic vision and to sharpen both. Getting editorial feedback that helps you shore up the weakest spots in a story that is ultimately never published and constitutes a learning exercise has value, but it has far less value than applying the things you've learned from making and fixing those mistakes to your next story. With vanishingly few exceptions, a commercially and artistically successful writer isn't someone who writes one great story or novel: a writing career is defined by a body of work, which means that you have to do more than rewrite. You have to write the next thing, and the next thing, and the next. Having an editor-on-demand of highly variable (and often dubious) quality might help you improve your writing, but it's no substitute for participating in a peer workshop. The idea that an LLM might be able to stand in for a workshop is grounded in the fallacy that the point of a workshop is to have people tell you how to fix your story, rather than analyzing other people's writing in order to develop your own critical skills. Look: it's a cliche to say \"every writer is different,\" but I really believe that every writer is different, and that's down to the legibility of the writing process to other writers. If you're a painter or sculptor or other visual artist, you've likely spent many hours in a studio with many other practitioners while all of you work from the same life model or still life. If you're a musician, you've almost certainly played music with other musicians. If you're a dancer, you've definitely danced with other dancers. But writers get precious little exposure to other writers' process. At best we might look at each other's drafts. A musician can listen to every note another musician produces while riffing or composing a new work or interpreting a work. Writers don't get to watch words emerge from each other's fingertips. Being observed that closely while you write would be ghastly and paralyzingly invasive. I've taught a lot of writers over the years and I've had many discussions with my peers about their writing process, and I'm here to tell you that pretty much every writer finds every other writer's process baffling. We each of us invent an idiosyncratic process for ourselves that will never fully work for anyone else. So if you value editorial feedback from a chatbot (ideally, a local one running on your computer and not one of the \"foundation models\" that are torching the planet and elevating the worst people on earth to positions of political, technical and commercial prominence), that's fine, you do you. But even if that's the case, I still want you to know that whatever you're getting out of the chatbot is fundamentally different, and (I believe) much less useful than participating in a peer workshop. That's what I wanted to say today, but I predict that an appreciable number of readers are about to email me to ask how these \"peer workshops\" work. There's a ton of variability in how these are conducted, but the basic shape of them is that in advance of each session, one or more writers submits a finished work to the other writers, who then read through the manuscript at least twice, making notes that include both minor copyedits and broader, thematic notes. They may write a brief editorial response as well, ranging from a paragraph to a couple of pages. Then the workshop convenes. Each writer briefly expresses their views about the story under consideration, focusing on those thematic and structural notes on what worked and didn't work in the story, with suggestions for improving the latter. You don't need to point out every typo – they're noted on the manuscript. Critiquers don't need to repeat one another. If another workshop member says the thing you were planning to say, you can just say \"Ditto what so-and-so said about whatever.\" If you have nothing to add when your turn comes about, it's fine to pass. Those are pretty much universal characteristics of a peer workshop. Here are some variations that I am dogmatically committed to, but which other workshoppers might disagree with: Every writer should submit regularly to the workshop. There is a serious risk that attending a workshop can become a substitute for actually writing. It is no kindness to your workshopmates to let them stay in the circle if it leads them to stop writing. The subject of each session must not speak during the critiques, except to answer direct questions that are not related to the writing itself (e.g., \"I couldn't figure out what word this was supposed to be – can you clarify?\"). The subject can speak after all the other writers have spoken. Each person in the critiquing circle speaks once, in turn, without being interrupted. No cross-talk allowed. It is useful to set a time-limit for critiques. No partial manuscripts. It's not really possible to critique a story unless you have the complete tale. Novels can be workshopped as three chapters and an outline. Stories should be distributed in advance and read in advance. Don't have writers read their work aloud for critique, as this can lead to critiquing the delivery rather than the material. Critique the story, not the writer. It's fine to be offended by something in the story, but not OK to accuse your workshopmates of being bad people for having offended you. Discourage resubmission of revised stories. Workshopping produces sharply diminishing returns. If you really want feedback on a rewrite, approach people individually and ask if they'll read the new draft. Any group of three or more writers can start a workshop. You'll need to locate writers who are at about the same stage in their artistic and professional lives as you, and find a physical place (or a videoconference service) where you can meet. Library meeting rooms are a favorite, and so is rotating between workshop members' homes. Set a regular schedule – weekly, fortnightly, monthly, possibly quarterly – and stick to it. If you write genre fiction and you are interested in attending a peer workshop that also has an instructor to guide the sessions, lecture, set exercises, etc, I can recommend the three workshops I've taught: Clarion (UC San Diego, six weeks): https://clarion.ucsd.edu/ (I'm also a 1992 Clarion grad) Clarion West (Seattle, six weeks): https://www.clarionwest.org/ Viable Paradise (Martha's Vineyard, one week): https://viableparadise.com/ Hey look at this (permalink) Terrible AI-generated Disney guidebooks on Amazon, Part 2 https://touringplans.com/blog/terrible-ai-generated-disney-guidebooks-on-amazon-part-2/ Online Privacy for Parents and Youth https://ssd.eff.org/module/online-privacy-for-parents-and-youth the mirage of Thatcherfuturism https://backofmind.substack.com/p/the-mirage-of-thatcherfuturism The New Canadian Canon https://macleans.ca/culture/the-new-canadian-canon/ Victory! Court Rules OPM Data Disclosure to DOGE Is Unlawful https://www.eff.org/deeplinks/2026/10/victory-court-rules-opms-disclosure-personal-records-doge-unlawful Object permanence (permalink) #25yrsago UK anti-terror laws could bankrupt ISPs https://web.archive.org/web/20011118143634/http://www.vnunet.com/News/1126338 #25yrsago What's an \"iPod?\" https://web.archive.org/web/20011024015856/http://www.apple.com/ipod/ #25yrsago Bible, Koran or Mein Kampf? https://web.archive.org/web/20011109123124/http://www.salon.com/people/feature/2001/10/24/book_quiz/index.html #25yrsago Tongan court jester scam costs king millions https://web.archive.org/web/20011224034152/http://pidp.eastwestcenter.org/pireport/2001/October/10-23-01.htm #25yrsago USPS irradiating the mail to fight anthrax attacks https://web.archive.org/web/20011109100316/http://www.newscientist.com/news/news.jsp?id=ns99991468 #20yrsago Enron Explorer mines Enron’s emails https://web.archive.org/web/20061106204850/http://enron.trampolinesystems.com/ #20yrsago Investigative journal: “Fair use is not applicable” https://archive.blogs.harvard.edu/shlep/2006/10/23/whaddayaknow-about-fair-use-and-copyright/ #20yrsago Warners stiffs African amputee film extras on prosthetics promise https://web.archive.org/web/20061105004400/http://www.nypost.com/seven/10232006/gossip/pagesix/pagesix.htm #20yrsago Former FCC Chairman shills against Net Neutrality https://web.archive.org/web/20061028043416/http://www.lessig.org/blog/archives/003577.shtml #15yrsago Plotting advice for fiction writers http://nielsenhayden.com/makinglight/archives/013243.html #15yrsago DARPA wants vampire satellites to harvest parts from dead sats prior to decommissioning https://web.archive.org/web/20111022223128/http://www.darpa.mil/NewsEvents/Releases/2011/10/20.aspx #15yrsago Understanding the hyperrich through the lens of tomorrow’s history http://www.antipope.org/charlie/blog-static/2011/10/a-cultural-experiment.html #15yrsago Scored: pulse-pounding/thought-provoking YA novel about surveillance https://memex.craphound.com/2011/10/24/scored-pulse-pounding-thought-provoking-ya-novel-about-surveillance/ #10yrsago UAE surveillance contractor is recruiting an army of foreign hackers to break into its citizens’ devices https://web.archive.org/web/20161024141138/https://theintercept.com/2016/10/24/darkmatter-united-arab-emirates-spies-for-hire/ #10yrsago Publicly-funded NZ company sold mass surveillance tech to torturers and GCHQ https://web.archive.org/web/20161023101410/https://theintercept.com/2016/10/23/endace-mass-surveillance-gchq-governments/ #10yrsago RIP, Tom Hayden: Yippie, radical, politician, author https://www.bbc.co.uk/news/world-us-canada-37749127 #10yrsago Audit reveals significant vulnerabilities in Truecrypt and its successors https://www.helpnetsecurity.com/2016/10/18/veracrypt-security-audit/ #5yrsago Cyber-mercenaries helped Saudis hack an NYT reporter https://pluralistic.net/2021/10/24/breaking-the-news/#kingdom #5yrsago The Traitorous Eight and the Battle of Germanium Valley https://pluralistic.net/2021/10/24/the-traitorous-eight-and-the-battle-of-germanium-valley/ #1yrago Checking in on the state of Amazon's chickenized reverse-centaurs https://pluralistic.net/2025/10/23/traveling-salesman-solution/#pee-bottles Upcoming appearances (permalink) Ottawa: Life After AI (Ottawa Writers Festival), Oct 24 https://writersfestival.org/event/life-after-ai Vienna: TED AI, Oct 28-30 https://tedai-vienna.ted.com/ Kilkenny (Kilkenomics), Nov 6-8 https://kilkenomics.com/ Courtenay: Enshittification (Sid Williams Theatre Society), Nov 10 https://www.sidwilliamstheatre.com/events/cory-doctorow-talks-enshittification/ Vancouver: BC Policy Solutions Gala, Nov 12 https://bcpolicy.ca/gala/ Oxford: Ministry of the Future, Nov 23 https://ministryforthefuture.co.uk/events.html Sheffield: Reverse Centaur at Juno Books, Nov 25 https://www.outsavvy.com/event/40274/cory-doctorow-in-conversation Virtual: Enshittification, AI, and the Future of Technology (UBC Master of Educational Technology), Nov 28 https://met.ubc.ca/2026/09/met-speaker-series-cory-doctorow-enshittification-ai-and-the-future-of-technology/ Oxford: Bennett Oxford Symposium on Open Code in Science, Dec 9 https://www.bennett.ox.ac.uk/events/2026-bennett-institute-symposium/ Montreal: World Science Fiction Convention, Sep 2-6 https://montreal2027.ca/en Recent appearances (permalink) Clint Eastwood (No Gods No Mayors) https://www.patreon.com/NoGodsNoMayors/posts/clint-eastwood-173008088 Life After AI (Brain Bar) https://www.youtube.com/watch?v=IPPa43-n0vI Terms of Service with Clare Duffy (CNN) https://www.cnn.com/audio/podcasts/terms-of-service-with-clare-duffy/episodes/458ce968-af5d-11f0-b539-13ed2afe25f8 AI, Work, and Power (Software Engineering Daily) AI, Work, and Power https://softwareengineeringdaily.com/podcasts/cory-doctorow-on-ai-work-and-power/ AI, Corporate Power, and the Fight for Worker Control (Plutopia) https://plutopia.io/cory-doctorow-ai-corporate-power-and-the-fight-for-worker-control/ Latest books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/ \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: “Once Is Enemy Action,” a science fiction novel about the origins of modern technofascism. Today's words: 550 (28730 total). \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Fourth draft completed. Submitted to editor. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "2353814513bbf46c80d73026df5f2652b807b6d070ed37a610f18a4e3c1d1b41",
+      "ref_id": "0",
+      "recommendationScore": 25,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "个人博客链接汇总，内容驳杂，科技相关性低。",
+      "reason": "文章缺乏科技深度和专业性，主要为个人日常与杂项链接，与科技博客主题关联度弱。",
+      "tags": [
+        "Link Roundup",
+        "Personal Updates",
+        "Writing"
+      ]
+    },
+    {
+      "title": "I Do Understand Relativity",
+      "link": "https://www.southampton.ac.uk/~doug/relativity/index.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-24T13:06:41.000Z",
+      "summary": "Article URL: https://www.southampton.ac.uk/~doug/relativity/index.html\nComments URL: https://news.ycombinator.com/item?id=50220891\nPoints: 15\n# Comments: 1",
+      "id": "6a1d937d3a1d2efa69dc9a7b7eb895116fb9d58592bcc619c9eb31d0e66aaf87",
+      "ref_id": "0",
+      "recommendationScore": 18,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "理论物理探讨，与主流科技博客主题关联度较低。",
+      "reason": "内容偏向理论科学，非技术应用，对一般科技读者吸引力有限，不符合主题优先级。",
+      "tags": [
+        "物理学",
+        "理论科学",
+        "科普"
+      ]
+    },
+    {
+      "title": "I Don't Understand Quantum Physics (2018)",
+      "link": "https://www.southampton.ac.uk/~doug/quantum_physics/index.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-24T09:53:26.000Z",
+      "summary": "Article URL: https://www.southampton.ac.uk/~doug/quantum_physics/index.html\nComments URL: https://news.ycombinator.com/item?id=50219666\nPoints: 219\n# Comments: 153",
+      "id": "c755b08d9cb3b23c3f6f4d2f7d107f12fe5e64eb51b8a85f3da380979f316aac",
+      "ref_id": "3",
+      "recommendationScore": 18,
+      "popularityScore": 90,
+      "priority": "low",
+      "comment": "探讨量子物理的科普性文章，尽管受欢迎但与科技博客重点不符。",
+      "reason": "内容偏向理论科学和哲学思考，而非技术应用或开发实践，不符合主题优先级，且文章发布于2018年。",
+      "tags": [
+        "物理学",
+        "量子物理",
+        "理论科学",
+        "科普"
+      ]
+    },
+    {
+      "title": "The St. Helena 5 pence coin shows Jonathan, a roughly 190 year old tortoise",
+      "link": "https://de.numista.com/9866",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-24T16:41:55.000Z",
+      "summary": "Article URL: https://de.numista.com/9866\nComments URL: https://news.ycombinator.com/item?id=50222927\nPoints: 45\n# Comments: 4",
+      "id": "0c19e05bbb06ed260c93197c6cd35f444a416fefe7b0af99ef05347472075c47",
+      "ref_id": "0",
+      "recommendationScore": 10,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "与科技主题完全无关，不适合科技博客。",
+      "reason": "文章内容偏离了科技博客的核心关注领域。",
+      "tags": [
+        "非科技",
+        "历史趣闻"
+      ]
+    },
+    {
+      "title": "Quick Study",
+      "link": "https://simonwillison.net/2026/Oct/23/quick-study-painter/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-10-23T21:35:13.000Z",
+      "summary": "",
+      "id": "1560ea04dee0e58af37b6a0a1c62e198e8778cd634ed85f83714a56352b471ce",
+      "ref_id": "2",
+      "recommendationScore": 10,
+      "popularityScore": 5,
+      "priority": "low",
+      "comment": "标题和内容均过于笼统且信息缺失，无法进行任何有意义的评估。",
+      "reason": "缺乏任何具体信息来判断其技术价值、新颖性或与本博客主题的相关性。",
+      "tags": [
+        "未知",
+        "信息缺失"
+      ]
+    },
+    {
+      "title": "Book Review: Get Ahead of Being Dead by Evie King ★★★★☆",
+      "link": "https://shkspr.mobi/blog/2026/10/book-review-get-ahead-of-being-dead-by-evie-king/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-10-24T11:34:25.000Z",
+      "summary": "After reading Evie King's previous book Ashes To Admin - Tales from the Caseload of a Council Funeral Officer I was eager to read her not-quite-a-sequel.  We know what happens after death; paperwork. Gas bills need to be cancelled, funeral wishes need to be carried out, money needs to be apportioned between warring family members. When you die, you won't be there to experience the annoyance and …",
+      "id": "09a307be72348653e55609f16bbc3a31a8e779c1ad6d3df33c6d5631b2bf6c4f",
+      "ref_id": "1",
+      "recommendationScore": 10,
+      "popularityScore": 15,
+      "priority": "low",
+      "comment": "与科技主题无关的图书评论，不适合科技博客。",
+      "reason": "内容完全偏离科技博客的核心主题，不具备任何技术价值或实用性。",
+      "tags": [
+        "Book Review",
+        "Non-Tech"
+      ]
+    }
+  ]
+}
