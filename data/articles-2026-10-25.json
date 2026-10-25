@@ -1,0 +1,632 @@
+{
+  "dailySummary": "今日科技速递：Cerebras成功部署万亿参数AI模型；旧款CNN在皮肤癌诊断上优于前沿LLM。同时，AI伦理挑战凸显，尼康摄影赛冠军因AI被取消，伯克利教授因AI放弃批改作业。此外，",
+  "articles": [
+    {
+      "title": "Cerebras Deploys Trillion-Parameter AI Models",
+      "link": "https://www.cerebras.ai/blog/how-we-deploy-trillion-parameter-frontier-models-on-cerebras",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-25T01:33:49.000Z",
+      "summary": "Article URL: https://www.cerebras.ai/blog/how-we-deploy-trillion-parameter-frontier-models-on-cerebras\nComments URL: https://news.ycombinator.com/item?id=50227356\nPoints: 316\n# Comments: 113",
+      "id": "e1545bcc45f4c70b2ebb90e8b8d9899e1127cfbe0b10b94deb75bf9d3d2df627",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "一篇关于Cerebras如何部署万亿参数AI模型的深度文章，展示了AI领域最前沿的技术突破和算力挑战。",
+      "reason": "主题高度符合AI优先级，内容涵盖了大规模AI模型部署的技术细节和挑战，对关注AI前沿的读者具有极高的参考价值。",
+      "tags": [
+        "AI",
+        "大语言模型",
+        "深度学习",
+        "AI硬件",
+        "高性能计算",
+        "部署",
+        "前沿技术"
+      ]
+    },
+    {
+      "title": "The Goose Programming Language",
+      "link": "https://aardappel.github.io/goose/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-24T19:06:55.000Z",
+      "summary": "https://twitter.com/ID_AA_Carmack/status/2113704269274636568\nComments URL: https://news.ycombinator.com/item?id=50224100\nPoints: 528\n# Comments: 328",
+      "id": "c6f7fce2eddef14cdace11600c6bda3cf1233cebdf920627dbcddb9c824176df",
+      "ref_id": "3",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "John Carmack发布的新编程语言，极具技术深度和行业影响力，引发广泛讨论。",
+      "reason": "由传奇开发者John Carmack推出的全新编程语言，在编程工具领域具有里程碑意义，技术爱好者必读。",
+      "tags": [
+        "编程语言",
+        "John Carmack",
+        "软件开发",
+        "创新技术",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "A 10-year-old CNN outperforms frontier LLMs for skin cancer diagnosis",
+      "link": "https://lynchlab.net/llm-skin-cancer",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-25T17:15:38.000Z",
+      "summary": "Article URL: https://lynchlab.net/llm-skin-cancer\nComments URL: https://news.ycombinator.com/item?id=50233779\nPoints: 113\n# Comments: 64",
+      "id": "b83204b7e9c12d9e6eae8031dc41ae67c598936afc3870c83bd71dd1f0e37cfd",
+      "ref_id": "0",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "一篇研究表明，一个十年前的CNN模型在皮肤癌诊断上优于最新的LLMs。",
+      "reason": "提供了关于AI模型选择和性能的颠覆性见解，对于医疗AI领域具有重要参考价值。",
+      "tags": [
+        "AI",
+        "深度学习",
+        "CNN",
+        "LLM",
+        "医疗AI",
+        "性能对比"
+      ]
+    },
+    {
+      "title": "Show HN: ReVault – new secure archive format",
+      "link": "https://news.ycombinator.com/item?id=50227527",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-25T02:01:21.000Z",
+      "summary": "reVault is a new, secure-by-default archive format called a lockbox, designed to be simple to use.\nI've been working on reVault for about 2 years. It was originally written in Dart, but with the improvements in AI, I decided to port it to Rust using AI.\nIt's now in beta, so I'm looking for feedback, particularly around the different language bindings.\nA lockbox is encrypted, signed and compressed by default. Each can be disabled selectively.\n  - Hybrid post-quantum or passphrase encryption, including metadata.\n  - Zstd compression.\n  - Pure Rust libraries wherever possible.\n\nThe manual is a work in progress:\nhttps://docs.revault.onepub.dev/\nreVault supports Linux, macOS and Windows, x64 and arm64, plus Wasm. The core is Rust, with bindings for C/C++, Java, Dart, Python, Ruby, JS/TypeScript, Go, C#, Kotlin, Lua, PHP and Swift.\nWithin a lockbox you can store:\n  - Files, directories, permissions and symlinks.\n  - Variables.\n  - Forms.\n\nreVault uses a portable vault (just another lockbox with structured content) to hold your keys, contacts' keys, lockbox aliases and form definitions.\nIt ties into your platform's secure store, so logging into your desktop unlocks your vault. You don't have to enter a passphrase every time you access a lockbox. You can disable this.\nThere are lots of shortcuts. Creating a lockbox stores an alias in your vault, based on its filename or a name you choose:\n  lbx create /some/path/mybox.lbox\n  lbx mybox open --duration 1h\n  lbx mybox var set KEY VALUE\n\n  lbx session default mybox\n  lbx var get KEY\n\n  lbx store.lbox mirrors project create --from ./project --to /projects/project\n  lbx store.lbox mirrors update\n\nRecovery\nUpdates are transactional, with automatic rollback for failed updates. The format is designed for recovery: content is stored in pages, allowing unaffected content to be recovered if part of a lockbox is corrupted.\nSharing\nAn encrypted lockbox is more useful if you can share it.\nreVault has an open-source keyserver for exchanging public keys, with validation through a second trusted channel. It's still experimental.\nOnePub has donated a server to run a single keyserver. If you're interested in donating resources, I'd like to bring up a second redundant server. It's pure Rust, uses under 100 MB RSS and supports rate limits.\nTo publish your default profile's public key:\n  lbx vault profiles email you@example.com\n  lbx vault profiles publish\n\n  lbx vault contacts receive \n \n\n  lbx vault profiles fingerprint\n\n  lbx access grant alice\n\nTo install the CLI and get started:\n  cargo install revault_cli\n  lbx vault init\n  lbx completion install\n\n  lbx doctor\n\nI'm looking for constructive criticism of the project on its own merits, particularly the APIs and language bindings. I'm not interested in a debate about using AI.\nComments URL: https://news.ycombinator.com/item?id=50227527\nPoints: 6\n# Comments: 2",
+      "id": "2dc04575d36af253cfdaec778cf6803f8b1b0d803508266e412d09faf910f851",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "一个创新的安全归档格式项目，利用Rust和AI技术实现，提供强大的加密、压缩和广泛的语言支持，对开发者和数据安全用户极具价值。",
+      "reason": "技术深度高，融合了多项前沿技术（如后量子加密、Rust、AI辅助开发），实用性强且解决了现实问题，是独立开发的典范。",
+      "tags": [
+        "数据安全",
+        "加密",
+        "归档",
+        "Rust",
+        "AI辅助开发",
+        "跨平台",
+        "编程工具",
+        "独立开发",
+        "后量子密码"
+      ]
+    },
+    {
+      "title": "We should be more ambitious with the software we build",
+      "link": "https://danluu.com/ambitious/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-24T21:47:31.000Z",
+      "summary": "Article URL: https://danluu.com/ambitious/\nComments URL: https://news.ycombinator.com/item?id=50225695\nPoints: 662\n# Comments: 624",
+      "id": "42532ee811b2ffa8d89a64404edb00da7a782c374019798500dca6bc8f015fe6",
+      "ref_id": "0",
+      "recommendationScore": 90,
+      "popularityScore": 95,
+      "priority": "medium",
+      "comment": "一篇激发软件开发人员思考其项目野心和潜在影响的深刻文章。",
+      "reason": "该文以其深刻的见解和对软件愿景的启发性讨论，在开发者社区引起强烈共鸣，具有普遍的指导意义。",
+      "tags": [
+        "软件开发",
+        "产品思维",
+        "独立开发",
+        "行业趋势"
+      ]
+    },
+    {
+      "title": "Show HN: I put employees inside S&P 500 market-cap bubbles",
+      "link": "https://bigwhalehunting.com/workforce/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-25T15:05:39.000Z",
+      "summary": "I was playing around with visualising the S&P 500 by market cap and decided to add employees to each company's bubble.\nWhat surprised me was how empty some of the biggest companies looked.\nNvidia is worth $5.2 trillion but employs only 42,000 people. That's around $124 million in market cap per employee. Meanwhile, Accenture employs 814,000 people and is worth $146 billion.\nEach stick figure represents 10,000 employees. You can zoom in and explore individual companies.\nI wrote a bit more about what I found here: https://bigwhalehunting.com/blog/workforce/\nWould be interested to hear what you think.\nComments URL: https://news.ycombinator.com/item?id=50232312\nPoints: 137\n# Comments: 43",
+      "id": "77c2ca05ccdeef34e29faa8d7383c78fe42ce4f7e237bc36cd6d8b86e3c1e53b",
+      "ref_id": "4",
+      "recommendationScore": 85,
+      "popularityScore": 90,
+      "priority": "medium",
+      "comment": "一个通过气泡图直观展示S&P 500公司市值与员工数量关系的数据可视化项目。",
+      "reason": "提供了一个新颖有趣的数据可视化视角，揭示了不同类型公司在市场估值与人力资源配置上的差异。",
+      "tags": [
+        "数据可视化",
+        "S&P 500",
+        "市场分析",
+        "独立开发",
+        "公司价值"
+      ]
+    },
+    {
+      "title": "Nikon photography contest winner loses title after scientists spot signs of AI",
+      "link": "https://www.techspot.com/news/114171-nikon-photography-contest-winner-loses-title-after-scientists.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-25T09:51:17.000Z",
+      "summary": "Article URL: https://www.techspot.com/news/114171-nikon-photography-contest-winner-loses-title-after-scientists.html\nComments URL: https://news.ycombinator.com/item?id=50229827\nPoints: 109\n# Comments: 44",
+      "id": "3d3a3797f36f72035e4dc64f5b65ba876449e9f9357bed0180dd7599a1974338",
+      "ref_id": "2",
+      "recommendationScore": 85,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "一篇关于AI在摄影比赛中引发争议的文章，突显了AI生成内容识别的挑战及其对创意领域的深远影响。",
+      "reason": "紧扣AI伦理和真实性这一热门话题，对AI技术发展和其社会影响具有重要的讨论价值，符合AI高优先级。",
+      "tags": [
+        "AI伦理",
+        "AI检测",
+        "内容生成",
+        "摄影",
+        "争议",
+        "创意产业"
+      ]
+    },
+    {
+      "title": "Small Programs and Languages",
+      "link": "https://ratfactor.com/cards/pl-small",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-24T21:44:23.000Z",
+      "summary": "Article URL: https://ratfactor.com/cards/pl-small\nComments URL: https://news.ycombinator.com/item?id=50225674\nPoints: 170\n# Comments: 27",
+      "id": "8763261ffc09bb097c3a9de45471ed7fbb4f1bdbab86d6400b992d8e29cdbee1",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "探讨小型程序和编程语言设计理念，对提升编程思维有益。",
+      "reason": "作为编程工具领域的重要议题，文章对理解语言设计和不同编程范式提供了有价值的视角。",
+      "tags": [
+        "编程语言",
+        "编程范式",
+        "软件设计",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "A Mathematician Reads the AI Future",
+      "link": "https://www.theatlantic.com/ideas/2026/10/ai-math-human-future/689133/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-25T16:31:21.000Z",
+      "summary": "Article URL: https://www.theatlantic.com/ideas/2026/10/ai-math-human-future/689133/\nComments URL: https://news.ycombinator.com/item?id=50233347\nPoints: 30\n# Comments: 33",
+      "id": "3c246edcd7dff3a660eb945722b144f46dc1d5e4f850f04591eb79eb6c23ebb7",
+      "ref_id": "2",
+      "recommendationScore": 80,
+      "popularityScore": 50,
+      "priority": "high",
+      "comment": "一位数学家对AI未来发展的见解和思考。",
+      "reason": "从数学视角探讨AI的未来，提供了独特且深入的分析，有助于读者理解AI的深层逻辑和潜在影响。",
+      "tags": [
+        "AI",
+        "未来",
+        "数学",
+        "哲学思考",
+        "趋势"
+      ]
+    },
+    {
+      "title": "AI use leads UC Berkeley math professor to see 'no point' in grading homework",
+      "link": "https://www.dailycal.org/news/campus/academics/ai-use-leads-uc-berkeley-math-professor-to-see-no-point-in-grading-homework/article_bdf1eae2-c08b-491f-b9f1-81a7cea177de.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-25T16:28:26.000Z",
+      "summary": "Article URL: https://www.dailycal.org/news/campus/academics/ai-use-leads-uc-berkeley-math-professor-to-see-no-point-in-grading-homework/article_bdf1eae2-c08b-491f-b9f1-81a7cea177de.html\nComments URL: https://news.ycombinator.com/item?id=50233304\nPoints: 62\n# Comments: 93",
+      "id": "857f9c868190eef56698cd6b1133140933d6d6bfb79b3d11d20104e85f134fd7",
+      "ref_id": "3",
+      "recommendationScore": 80,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "探讨了AI在教育领域的应用对传统教学模式，尤其是作业评分的影响。",
+      "reason": "揭示了AI对教育体系的现实挑战和深远影响，引发对教学方法和评估机制的思考。",
+      "tags": [
+        "AI",
+        "教育",
+        "伦理",
+        "社会影响",
+        "高校"
+      ]
+    },
+    {
+      "title": "I refuse to accept a censored Internet. Join Me at FOSDEM 27",
+      "link": "https://talkweb.eu/openweb/4558/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-25T17:30:55.000Z",
+      "summary": "Article URL: https://talkweb.eu/openweb/4558/\nComments URL: https://news.ycombinator.com/item?id=50233929\nPoints: 119\n# Comments: 37",
+      "id": "9d778a1a8d48394c4419b4efab9f2c500b62b55229195864f58f1cda4f2605d3",
+      "ref_id": "3",
+      "recommendationScore": 75,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "一篇关于反抗互联网审查、倡导开放网络的重要文章，与FOSDEM大会相关，对技术社区有强烈号召力。",
+      "reason": "深入探讨互联网自由和开放网络的核心议题，对编程工具、网络安全及技术伦理具有高度相关性和思考价值，且在社区内有较高关注度。",
+      "tags": [
+        "互联网自由",
+        "开放网络",
+        "FOSDEM",
+        "网络安全",
+        "伦理"
+      ]
+    },
+    {
+      "title": "Computing polar triangles with linear algebra",
+      "link": "https://www.johndcook.com/blog/2026/10/24/computing-polar-triangles/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-10-25T01:01:55.000Z",
+      "summary": "The previous post defined the polar triangle of a spherical triangle in terms of its sides and angles, but it doesn’t construct the triangle. It only specifies one of a family of triangles located anywhere on the sphere. How do we know that polar triangles exist? There is a geometric construction that starts with a […]\nComputing polar triangles with linear algebra first appeared on John D. Cook.",
+      "id": "100293722b6ada22858d3b1dd417248d8fbf928010be00b51172d9213e4ddf89",
+      "ref_id": "2",
+      "recommendationScore": 75,
+      "popularityScore": 49,
+      "priority": "medium",
+      "comment": "使用线性代数计算极三角形的深度数学文章，对图形或科学计算有潜在价值。",
+      "reason": "技术深度极高，对于从事图形学、数据科学或需要复杂几何计算的开发者具有参考价值，属于编程工具的理论基础。",
+      "tags": [
+        "数学",
+        "线性代数",
+        "几何",
+        "编程基础",
+        "算法"
+      ]
+    },
+    {
+      "title": "Duality in spherical trigonometry",
+      "link": "https://www.johndcook.com/blog/2026/10/24/polar-triangle/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-10-25T00:28:20.000Z",
+      "summary": "I’ve written before about the law of cosines on a sphere: cos(c) = cos(a) cos(b) + sin(a) sin(b) cos(C). But that’s just one of two laws of cosines on a sphere. The equation above is the law of cosines for sides. The law of cosines for angles is typographically very similar, just inverting the case of […]\nDuality in spherical trigonometry first appeared on John D. Cook.",
+      "id": "298ae0a162e6596426329728b022a20bf379b8904d4537b7195b971eedfe7827",
+      "ref_id": "3",
+      "recommendationScore": 75,
+      "popularityScore": 49,
+      "priority": "medium",
+      "comment": "探讨球面三角学中对偶性原理的深入探讨，涉及数学公式推导。",
+      "reason": "提供了对专业数学概念的详细解析，有助于理解复杂几何原理在导航、图形等技术中的应用，属于编程工具的理论基础。",
+      "tags": [
+        "数学",
+        "几何",
+        "三角学",
+        "理论",
+        "球面几何"
+      ]
+    },
+    {
+      "title": "iPhone Portrait Mode, 10 Years In",
+      "link": "https://x.com/johnnie/status/2114007844605612167",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-10-25T18:09:19.000Z",
+      "summary": "Speaking of Johnnie Manzari, he wrote a post yesterday marking the 10 year anniversary of Portrait Mode:\nInitially, Portrait mode was seen as a giant math problem. You’d\ndo disparity calculations on the two sensors and output a depth\nmap. The problem was this approach feels and looks digital; it\nfeels fake. In areas without texture, it’s impossible to do this\ncalculation. In areas with ultra fine detail, a lower resolution\ndepth map leads to terrible transitions and a full resolution\ndepth map takes forever to compute. One solution would be to\nreduce the amount of bokeh so the issues are not as obvious. But\nthen you lose the whole point of the feature, which was to make it\nlook like you had a large, wide-open lens.\nThe solution to this conundrum — the tradeoff between artifacts\nand the amount of blur — was quite elegant, but it took a while\nto stumble across. There’s a saying in painting that if you get\nthe eyes right, nothing else matters. Inspired by this principle\nfrom oil painting, the idea was to make sure we never got the\neyes wrong.\nMatthew Panzarino:\nI remember getting the call to test out portrait mode before its\nrelease. The marriage of history, art and computational science\nthat came together to make this possible is still incredible to me\nto this day.\n ★",
+      "id": "c37f55077c43f43fba8e7d2e5c2534d94aa22da6ff24ed4ef6e913cfd69abc1b",
+      "ref_id": "0",
+      "recommendationScore": 74,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "深入解析了iPhone人像模式十年来的技术演进和核心挑战，揭示了其背后的算法智慧。",
+      "reason": "提供了一个引人入胜且有技术深度的视角，解释了苹果如何通过算法创新克服人像模式的难题，具有较高的知识价值。",
+      "tags": [
+        "Apple",
+        "iPhone",
+        "摄影",
+        "技术解析",
+        "算法",
+        "产品设计"
+      ]
+    },
+    {
+      "title": "fheroes2: A recreation of Heroes of Might and Magic II game engine",
+      "link": "https://github.com/ihhub/fheroes2",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-25T11:09:12.000Z",
+      "summary": "Article URL: https://github.com/ihhub/fheroes2\nComments URL: https://news.ycombinator.com/item?id=50230384\nPoints: 175\n# Comments: 60",
+      "id": "9282e3edfd40c3e34e0f4c0af63f96e53dac10a00df2c7466d10762c621994c0",
+      "ref_id": "1",
+      "recommendationScore": 70,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "一个优秀的开源项目，旨在重新实现经典游戏《英雄无敌II》的引擎，对游戏开发和复古游戏爱好者很有吸引力。",
+      "reason": "展示了复杂的编程和逆向工程技能，为游戏社区提供了价值，具有较高的技术实现意义。",
+      "tags": [
+        "游戏引擎",
+        "开源",
+        "编程",
+        "复古游戏",
+        "C++",
+        "社区项目"
+      ]
+    },
+    {
+      "title": "MacOS Extensions pack for the Apple Network Server v1.0",
+      "link": "https://oldvcr.blogspot.com/2026/10/macos-extensions-pack-for-apple-network.html",
+      "source": "oldvcr.blogspot.com",
+      "publishedAt": "2026-10-25T01:21:15.939Z",
+      "summary": "Apple Network Server, Apple's Unix-through-and-through $10,000+ server that only shipped with, and only officially ran, Harpoon, its unique superset of IBM AIX. An ANS 500, the lower tier of this dorm fridge-sized computer, was the first server I ever personally owned, a nearly-new hand-me-down after Steve Jobs convinced Gil Amelio to cancel the machine and the bookstore's vendor at the University I worked for wouldn't support it anymore. There are several fascinating features present in Harpoon that were never implemented in any other Apple product. Currently I have three, that original ANS 500, this ANS 700 here which I use for testing, and a battery-bombed EVT prototype (a so-called \"Shiner ESB\" that used to be at Netscape).\n\nThe ANS was strongly based on the Power Macintosh 9500 and Apple was known to have demonstrated the ANS with Mac OS during development, but this confused potential buyers, causing the ability to boot Mac OS to be stripped from production systems. While then-CTO Ellen Hancock claimed in 1997 a ROM swap would enable the ANS to boot Mac OS again and Windows NT, these ROMs were believed to be vapourware until a former Apple employee presented a working dump of both the preproduction ROM and the later ANS Mac OS ROM. A prototype Windows NT ROM also emerged from another former employee, though there are pieces missing and booting Windows NT natively on the ANS is still a work in progress (hopefully to be the subject of a future article).\n\nIt turned out I had one of the preproduction ROMs myself and didn't realize what it was. Because the later Mac OS ROM was apparently unfinished, it doesn't properly support the L2 cache and consequently runs substantially slower, and it can't boot AIX. The preproduction ROM does boot both operating systems and does support the cache. On the other hand, it doesn't support the on-board video or the front Fast Wide SCSI-2 controller, the on-board MACE Ethernet doesn't work, and after MacOS first boots, the next restart without zapping the PRAM will come up with a black screen.\n\nThe good news is, many of the issues with the preproduction ROM in Mac OS can be fixed or worked around in software. So I've fixed or worked around many of them in software: the MACE Ethernet is fixed, the on-board video is now supported, and the ANS can restart properly back into Mac OS. Plus, because it's the preproduction ROM, you can still boot AIX, thus preserving the entire historical reason for Shiner's existence. Here's the first cut of that software and how it was developed.\n\n\n\nJoe's Computer Museum has a few in stock (not affiliated, just a satisfied occasional customer). I tested the original design of these ROM DIMMs, kindly provided by Jeff Walther. Jeff assembled and donated this particular batch to Joe Strosnider, who is selling them and donating the proceeds in turn to the maintenance of the Tinker Different forum, where this whole thing started.\n\nNow that you have the basic hardware, you'll then need to install Mac OS to an external bootable SCSI volume. For this project I use a 25-pin BlueSCSI which connects directly to the ANS' rear SCSI port and runs on termination power. Set up a blank disk image of the desired size to the device's (micro)SD card and rename it to the desired SCSI ID, which for the ANS is typically SCSI ID 2.\n\nIf you have another Mac with a SCSI port handy, it's easiest to do the MacOS installation to the external volume with that system. Make sure it installs Mac OS for any supported Mac, especially if you are using a model-specific installer CD; up to Mac OS 9.1 inclusive will boot directly on the ANS, and 9.1 is what I'm using here. 7.6 will work and late versions of System 7.5 might work, but I recommend at least 8.1 or later. If you only have the ANS and/or have no other suitable vintage Mac that can perform the installation, you can do it on the ANS itself with a bit more difficulty. For that you'll need to not only create the blank disk image but additionally include an ISO of a bootable MacOS CD (use ID 0), plus install a Power Mac-compatible PCI video card — I use a Twin Turbo 128MA but any ATI Mac-specific card of the era should also work, such as the Rage Orion.\n\nFinally, unplug the server, unlock and pull open the mainboard drawer, remove the PRAM battery, install the preproduction ROM DIMM, and leave the drawer open and the system completely depowered for at least several minutes while you enjoy the droll prose of this blog post.\n  \n\n\nINITs and CDEVs, which is to say, the extensions and control panels which extend the operating system (and in many cases constitute substantial parts of it). Adding device support to the operating system required a DRVR resource, which could be stored in the declaration ROM of a NuBus card and available at power-on, or in an INIT or CDEV and made available during the boot process, or in a regular application and loaded on demand. (Parenthetically, desk accessories were also implemented as DRVRs.) Even after the 1994 transition to PowerPC, some, if not all, of such code still had to be 68K for backwards compatibility, and thus required emulation on a Power Macintosh.\n\nSince this requirement was an obvious performance bottleneck, Apple attempted to address it in Copland, Apple's fallback attempt to modernise the Mac OS stepwise amid the slow-motion death marches of Taligent and PowerOpen-A/UX 4. Copland's tale of woe is a much longer story, to be the topic of a future article, but the part relevant to this piece was the new driver architecture it introduced. This aspect was part of how Copland's design partitioned its components ih memory to avoid the attendant pitfalls inherent in the classic Mac OS. In order to wall the old Mac OS world off but retain compatibility, everything that was 68K code lived in the so-called \"cooperative\" address space and was treated as data to be interpreted by the Power Mac 68K emulator, including 68K portions of the Toolbox. Even PowerPC-native System 7 applications ran here, since significant portions of the Toolbox were still 68K. This cooperative address space would theoretically allow most applications to run as they did before, but intentionally without privileges to the rest of the system nor access to Copland's hardware abstraction layer (HAL).\n  \nAs such, Copland drivers necessarily were fully native code, in this case implemented as regular PowerPC code fragments. These drivers hooked into the HAL and the Name Registry, an object database that tracked devices on the system and mediated loading and unloading device drivers as needed, and were collapsed into a separate global region at a lower execution level where only limited operating system functionality was available. Although such limitations restricted their ability to integrate with the operating system, it also enabled those drivers to run early in the boot process and remain protected from user code. This new class of driver was called a native driver.\n\n\nfamily expert. When the MacOS File Manager and Resource Manager are up, the Extensions folder is scanned for native drivers (stored as code fragments with a Type of ndrv, but otherwise the same general structure as their Copland antecessors) and handed to the expert of each particular service category for device classes the family expert supervises. Eligible and matching ndrvs, be they in ROM or on disk, are loaded before any other extension is ever invoked, and the family expert activates and wires them into the operating system.\n\n\nlike @joevt's, whose assistance with certain parts of this project is gratefully acknowledged), showing defined nodes on the ANS 700 booted into Mac OS 9.1 using the 1.1.20.1 pre-production ROM.\n\nThe most important thing to notice here is that even though the Name Registry was first added to PCI Power Macs, there are many more nodes here than merely PCI cards, as there would have been in Copland. Both our PCI cards indeed do appear, connected to one of the Bandit PCI controllers (the ANS has two but mapped differently than the 9500, and there is reserved address space for up to four). However, so do things like the CPU, L2 cache, Mac ROM, and devices attached to Grand Central, which acts as a bridge between PCI and traditional Mac devices like the AWACS sound chip (Crystal CS4217 codec), Grand Central's internal SWIM III floppy controller, and the AMD AM79C950KC \"Super Combo\" CURIO, containing the equivalent of an NCR 53C96 SCSI controller (for the external port), an AMD 85C30 serial chip and an AMD 79C940 Media Access Controller (MACE) for the on-board Ethernet. There are also various nodes that don't correspond to any physical device, such as the ROM software components making up the AIX booter and XCOFF executable loader.\n\n\nname property, which is its primary identifier (53c825 and 54m30 respectively), or the optional compatible property generated from the vendor and device IDs.\n\n\nINIT which patches the Ethernet configuration, and the ANS Video Enabler, an ndrv which allows the 54M30 internal video to be used in 8-bit mode; and for the Startup Items folder, the ANS Startup Fixer, a regular application which rewrites NVRAM to remove inappropriate settings placed there on every boot by the operating system.\n\nThe initial piece I put together was the video driver, which is in fact ripped directly out of the 2.0 ANS Mac OS ROM. \n\n\nHex Fiend has a rich and extensible Tcl-based template system, including the ability to parse many classic Apple binary formats like resource forks and PEF. Eric Harmon's ROM Fiend extension builds on this by allowing you to parse components of classic Mac ROMs, here a dumped ANS Mac OS ROM provided by our former Apple employee. ROM Fiend splits the ROM into the declaration component and the system ROM ...\n\n\n53m30, which was almost certainly an error.\n\n\nJoy!peffpwpc heralds a Preferred Executable Format binary (specifically these three FourCCs indicate an Apple-specific container, that the container is a PEF, and that the architecture is PowerPC) with code fragments. We clip out starting from there ...\n\n\n\nmtej (this code seems like it was based on someone's name — spill the beans in the comments if you know). The exact binary format is obscured a bit here by PEF's trivial packing method, used to reduce its footprint in ROM, but note the node name stored as a Pascal string (i.e., length byte first), and then the driver name, also stored as a Pascal string and invariably starting with a dot.\n\nImmediately before the driver name length byte is an $06. The two bits set in this byte indicate that the driver is opened as soon as it is loaded (kDriverIsOpenedUponLoad, $02), and that the family expert is responsible for doing so (kDriverIsUnderExpertControl, $04). The PCI DDK documentation states that all video drivers should set these two bits, and only these two. The family expert handling graphics drivers is hinted by the FourCCs in the next line, ndrv for a general native driver service category, and vido for the type, in this case a graphics card.\n\nYou might well ask how the production ANS works at all without such an ndrv, and the answer is that Open Firmware doesn't need this driver to display anything on the screen — that's all specifically handled by the code in the ANS ROM, and Harpoon AIX has its own drivers. The ANS was never officially supported with Mac OS, so a proper Mac OS driver was never needed.\n\n\nndrv (not INIT), and add a skeletal cfrg resource to tag the single code fragment. The other resources are not strictly speaking essential, but are desirable to give it an icon suite, a version string, and for CCI™, a plain-text description in the Extensions Manager. I created the icons from the ANS template in Hubert Chan's M.A.C. icon pack, which are far better artistic depictions than anything I could ever draw myself in ResEdit.\n\n\nwill see the screen turn on before the usual march of INITs, because ndrvs load early. (They are also unaffected by holding down SHIFT to load with extensions off, since disabling them could cause the machine to be unusable. Remember that for one of my failures later.) Since we now have two valid displays in this ANS, here is an entire screen grab of both sides simultaneously (the grey boxes is where the identify digits were). Unfortunately the 2.0 ROM driver has the same issue as the AIX driver insofar as none of the chip's 2-D acceleration features are implemented, and the driver only supports 8-bit colour depth even though the chip is capable of much more. This is because the 54M30 provides only a little-endian view into the framebuffer — Apple never wrote anything to byteswap. A project for another day.\n\n\n  \nIn our previous article in January, we learned this was because Mac OS monkeys with the ANS' NVRAM settings as if it were a real Power Mac 9500, installing an inappropriate nvramrc OpenFirmware startup script that interferes with normal operation, and then sets the input and output devices to serial port ttya, which on the back is serial port 2 (yes, two). On Open Firmware 1.0.5 systems like most beige PCI Power Macs, this does nothing more than keep Open Firmware itself on the serial port; the video and ADB keyboard remain the console. On the ANS' 1.1.x firmware, however, it actually obeys these settings so that you can install and run Harpoon AIX over a serial port, and this was also apparently how Shiner NetWare ran. In this configuration the machine comes up with no video at all, though interestingly ADB devices are still useable in Mac OS, including the keyboard.\n\n\npart of this problem. In the CDEV are three resources, OFpt, OFtb and OFtc. The latter two define mappings between the Open Firmware platform identifier and the respective NVRAM settings in OFpt, which is stored as a single long null-terminated string with embedded Mac $0d carriage returns. (The unreleased PowerExpress turns up in this table as the Power Macintosh 9700.) When loaded, the CDEV overwrites the NVRAM settings with the one selected by platform.\n\nTheoretically it should be possible to binary-patch in another mapping and then add a specific script for the ANS, which with this ROM would have a platform string of AAPL,ShinerESB. I determined this approach was unacceptable for two reasons: first, it required modifying standard OS components instead of adding to them, and second, it doesn't solve the ttya problem even if we alter the mapping so that no machines match. In fact, the very string ttya appears nowhere in Startup Disk, suggesting the input and output device settings are being munged someplace else.\n  \n\nBoot Variables, a utility originally written by Paul Mackerras (now at IBM) which allows you to directly manipulate Open Firmware variables and save them. Because the changes to NVRAM occur before the boot process reaches the Finder, once we get to the Finder we can then fix everything and remain confident it will stay unmolested until the next boot. This process works but obviously requires manual intervention, so since Boot Variables is open source under the GNU Public License, I decided I'd just hack in a hard-coded version which automatically undoes the munge when run.\n\n\nttya, it resets them back to the default kbd (ADB keyboard) and screen (onboard 54M30 video), and installs an nvramrc of its own. The critical code looks like this, using a library function I transplated to do the NVRAM patching in place:\n\n\n\n\nThe numbers are fixed indexes into NVRAM since this is just a hack, but in order are input-device, output-device, use-nvramrc? and nvramrc itself. This simple nvramrc patches up the Ethernet to work correctly with the Mac OS Apple Enet INIT. Prior Macintoshes with Ethernet, including first generation NuBus Power Macs like the Workgroup Server 9150, had a single Ethernet AAUI port, but AAUI was expensive and unpopular and as the industry moved to twisted-pair Apple offered both an 8P8C (\"RJ-45\") and AAUI port starting with the 9500 — but still using just the single MACE, so only one port was active at a time. For as yet unexplained reasons, the ANS went back to a single AAUI port with no 8P8C/\"RJ-45\" despite being an evolution of the same platform base.\n\nThis means the MACE is connected directly to the (A)AUI port in the ANS, whereas in machines like the 7300, 7500, 8600, 9500, etc., it switches between the AAUI (equivalent to AUI) or an internal MAU to provide the link over twisted-pair. The MACE embedded in CURIO has a register called PLSCC, or the Physical Layer Signaling Configuration Control, which determines which network port is active. In dual-ported machines, the PLSCC value should be 7 (which includes the $01 enable bit), which corresponds to the \"General Purpose Serial Interface\" to the circuitry where the signal is routed. In the ANS, however, this value should 1, which specifies a direct AUI connection.\n\nThe ANS Mac OS ROM internally and explicitly specifies a property PLSCCPort on /bandit/gc/mace with that value of 1. @joevt gets credit here (a) for  discovering that the Apple Enet INIT looks for and if specified uses this property as an override, relying on a platform default if not, and (b) for the magic incantation required to make this property stick when placed in the nvramrc. Since the ANS looks like a Power Mac 9500 to Mac OS, this value must be provided before Apple Enet runs, so since it's not in the 1.1.20.1 ROM we'll provide it ourselves in Open Firmware before the operating system even starts.\n\nThis scheme works and solves both the reboot-shutdown and Ethernet problems simultaneously. But what about bringing the system up from a cold start, where this property won't yet have been set? Well, we have a solution for that too!\n\n\n  \n\nThe Mac OS NameRegistryLib allows us to directly manipulate the Name Registry (which will necessarily have a copy of our Open Firmware properties), so we can also get this property installed during boot as long as we do so before the Apple Enet INIT opens. We could do this with an ndrv, but we have a simpler and more conventional way which I talked about in this blog before with ways to expand virtual Mac device support in QEMU. kanjitalk755's tablet INIT installs a handler for USB HID devices during startup which allows QEMU absolute pointer positioning to work with its synthesized virtual USB tablet.\n\nIn this INIT, a block of 68K code (remember, the normal state of the Power Macintosh nanokernel is to run 68K code in the emulator) invoked at load time displays the icon and uses the Code Fragment Manager to pull a single non-static PowerPC function from the \"PPC \" resource (yes, P P C and a trailing space), set up a Universal Procedure Pointer to it as PowerPC native code, and run it. This code fragment is what installs the HID report handler.\n\nBecause this extension is so modular in design, we can just gut it and replace the PPC  resource with our own code (yes, PowerPC code can run from resources, not just from the data fork), though I also manually patched the 68K section with a couple NOP instructions to not bother displaying the icon since we don't really need to. This is the entirety of the PowerPC code:\n\n\n\n\nNotice the device tree paths for the two devices we're interested in, Devices:device-tree:packages:aix-boot (or, as an Open Firmware path, /packages/aix-boot) and Devices:device-tree:bandit:gc:mace (/bandit/gc/mace). We don't need to know anything else about what these nodes are or how they're connected to query and modify them. The first step this function takes is to see if this is an AIX-capable ROM by checking for the AIX booter package as a Name Registry node, and if this package isn't present, such as a regular Power Mac or the ANS Mac OS ROM, then we exit. The second step is to see if the PLSCCPort property already exists; if it does, such as being set from our nvramrc, we exit also, or otherwise set the proper value of 1.\n\nSince the whole scheme can only work if our extension runs first, we give it the special file type of scri instead of INIT, which is notionally a WorldScript extension but can be used to load any sort of extension, because WorldScript extensions load before all other INITs (Apple Enet is an INIT). Failing that, the name of the extension (ANS MACE Fixer) is intentionally chosen to lexically sort above Apple Enet so that it will also run first. The upshot is that the property will be set one way or another before the Ethernet INIT runs, and with this extension installed, now the only circumstance where our Ethernet won't work would be on the very first boot after a PRAM zap with extensions off — which would obviously be an uncommon situation.\n\nIt is also important to ensure that main() is the only non-static function in the code fragment because of the way the 68K code finds, declares and calls it (see the prior article for why). CodeWarrior's project settings can be set to build this file as a resource and after doing so we manually merge everything together in ResEdit for the final extension.\n\nAs our last stop before the installation instructions, let me also talk a little bit about something not in this version of the extensions pack.\n\n\nndrv in the ANS Mac OS ROM. Indeed, it must, or else the internal SCSI wouldn't be bootable with that ROM (the production and pre-production ROMs have their own support and hand everything over to AIX after boot). It is possible to extract this ndrv and wrap it as an extension in the same way. It won't be bootable, of course, but in theory this should allow devices on the internal SCSI to be used once Mac OS has booted from the external SCSI. Go ahead and try it. It doesn't work. The machine will boot, but no devices are visible from the internal SCSI drive bays.\n\n\nLoad Driver Test) where you can test the structure of an ndrv to see if it's valid (useful for hardware builders before they spend a lot of money burning defective ROMs). This utility basically checks if the ndrv can be loaded as a code fragment, and if it can, that it has a sensible driver description block, and shows the device node it's looking for and the driver name it installs.\n\nWe can immediately see from this that the node name is wrong. In the ANS Mac OS 2.0 ROM, the 53C825 nodes in the Name Registry are named apple53C8xx, not 53c825 as they are in the pre-production ROM. Triumphantly I changed the string and length byte to make the matched name 53c825. It still didn't work.\n\n\nPCIPeek) which allows you to mess around with PCI-based devices. When we ask it for the PCI configuration space for one of the 53C825s using the node name 53c825, we can pull it up and see all 64 bytes are valid. Though the compatible name doesn't fetch, this does at least prove that the issue isn't the logic board and the node name is correct.\n\n\nndrvs, the documentation states SCSI ndrvs should only have a single bit set in that byte, in this case specifying that the family expert handles loading the driver (kDriverIsUnderExpertControl, $04).\n\nSince that didn't load nor open the driver, I tried setting various bit combinations of forcing it to load upon discovery and/or open upon load, all of which ended up hanging the ANS doing boot. Remember how I said that SHIFT doesn't stop ndrvs from loading? Each of these permutations thus ended up making the external SCSI volume unbootable until the poison ndrv was removed. I had to connect it to the WallStreet PowerBook G3 (it was handy) to get it out, though as a check I had the Wally boot from the same volume just to see what it would do — and it booted fine. The driver doesn't load on the Wally almost certainly because the device name doesn't match anything, which also implies the hang is specific to trying to bring up the device on the ANS or we'd hang on the Wally too.\n\nThis leaves us at the mercy of the family expert, so the next thing I tried was various combinations of service category and type. By default this is ndrvgenr, so I tried ndrvscsi, ndrvblok, blokgenr, blokscsi, scsigenr, scsiblok, scsiscsi, blokblok and finally an intemperate combination inappropriate for a family blog, and while none of these locked up the 700, none of them made any difference either.\n\nAfter all that I'm not sure this approach would have worked for getting the internal SCSI bus working anyway, at least not without additional code. Apple's PCI documentation says, \"The SCSI expert is simpler than some other experts\" and while it mentions the situation of a \"PCI card that wants to register a SIM with the SCSI Manager\" which necessarily covers the situation of one in ROM, it says nothing about disk-based drivers. It's possible the SCSI expert just doesn't handle this situation because a non-bootable SCSI bus is certainly less useful, and while we could write up an INIT to try loading the SIM manually, I'm still pondering how this would work and I have yet to find a working disk-based driver for a 53C825-based card that I could hack as an alternative (suggestions solicited in the comments). The PCI DDK 3.0 notably includes a \"driver\" for this chipset, but only to let you mess around with the hardware — it's intentionally not structured as a SIM, so it wouldn't be an effective foundation.\n\nBut you can still try the other pieces, so let's pick up with the install instructions now that you have the prerequisites.\n\n\non-board VGA port, not to any PCI video card, and finally power on the system. If you are using one of Jeff's current replica ROMs, you may need to hit Control-Command-Reset after powering up to get the bong (this is an electrical issue we're sorting out). From a cold start with no bootable AIX volume, the 1.1.20.1 ROM will automatically bomb into Open Firmware, showing you the prompt here. If you don't see this screen, make sure your monitor is connected to the onboard port.\n\nIf you've already prepared your external Mac OS volume and the extensions are in their proper places, just type bye at the Open Firmware ok prompt. You will see the message\n\n\n\n\nwhile the ROM component looks for your startup disk. Once it finds it, there will be a pause, then the screen will flash and drop into the Mac OS mid-boot. Remember, the Startup Fixer must run once every time Mac OS starts up, or your system will come up with a black screen on the next boot. You can manually fix this by entering Open Firmware with a serial connection to Port 2 (38400bps, 8-N-1) and enter setenv input-device kbd, setenv output-device screen, setenv use-nvramrc? false and reset all, or you can just reset the logic board.\n\nIf you are doing an install from an external Mac OS CD-ROM or CD image, move your display to the PCI video card and then blindly type bye. You will get the Mac 50% dithered grey, then a Happy Mac, then the CD should start. Install Mac OS as usual to your previously prepared blank disk image. After the installation completes, if you can, install the extensions (e.g., from a floppy disk or via AppleShare over LocalTalk) and startup item as described above before you shut down. Either way, shut down, power off and reset your logic board again, disable or remove the CD-ROM/image, move the display back to the onboard video port, and power back on to the Open Firmware prompt. If the extensions were installed, just type bye — you're good to go. If you couldn't, move the display to the PCI card again, blindly type bye, bring up Mac OS from your external volume, install the extensions, shut down, power off and reset your logic board one last time, then move the display back to the onboard video port. Now you can boot by just typing bye also.\n\n\nGet the internal SCSI bays working, which may require us to create a modified ROM and put the ndrv there with the proper node name. However, one other possibility is by installing a MacOS-bootable SCSI PCI card. The Shiner logic board has 68-pin connectors on the logic board that directly feed into the two front SCSI busses (bus 0 controls the top four trays and bus 1 controls the bottom three and the 700's rear two). These connectors were intended for the ANS PCI RAID card, but I don't see why we couldn't just connect a regular controller there as long as we change its SCSI ID to not conflict with the 53C825, which should be possible on Adaptec cards with the PowerDomain Control CDEV. I intend to do some experimentation with that, including finding an optimum card which is Mac-bootable (or flashable to same) and supports full Fast'n'Wide SCSI-2, yet is not supported by AIX so that the regular 53C825 will \"just work.\"\nOn a reboot, the ANS may go into its Long RAM Test. This is not only not fatal but is arguably intended behaviour and it will start normally afterwards, though the delay is annoying. On the other hand, even though the ANS Mac OS ROM doesn't do this, it also doesn't properly register the sticks as parity RAM even if they are. I don't know if I can fix this by tweaking Open Firmware or this requires a ROM patch, though I suspect it's the latter. In the meantime, you can manually cut it short by hitting Control-Command-Reset.\n\na future article. For now, you can get everything on the Github repo, including source code for CodeWarrior Pro 7. Note that this compiler cannot build the 68K portion of the ANS MACE Fixer, but I've included the source for that too, and you don't need to build the 68K segment anyway merely to modify the PowerPC portion. Each portion is under its own license and you should read the brief notes. No AI was used.",
+      "id": "87bb67770936ade6e9ef81132f82aecc6690fcfc78a5e6db2d7e34a858b43d50",
+      "ref_id": "4",
+      "recommendationScore": 70,
+      "popularityScore": 55,
+      "priority": "high",
+      "comment": "深入挖掘苹果罕见历史服务器及其特殊操作系统的文章，具有很高的历史研究价值。",
+      "reason": "提供了关于苹果生态系统中一个鲜为人知且被取消的产品线的独特视角和详细历史资料，对Apple历史爱好者吸引力大。",
+      "tags": [
+        "Apple",
+        "历史",
+        "服务器",
+        "Mac OS",
+        "Unix",
+        "系统"
+      ]
+    },
+    {
+      "title": "Marion Barry Meets the iPhone Duo",
+      "link": "https://www.theverge.com/tech/1017623/iphone-duo-broken-cracked-screen",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-10-24T21:10:06.000Z",
+      "summary": "Jay Peters, The Verge:\nThe iPhone Duo officially goes on sale today, but a few units\nalready have broken screens. According to posts on Reddit about\nthe affected units, the issue appears to be happening at a similar\nspot on all of them: Some kind of problem shows up on the inner\nscreen along the hinge and a strange bright line (or lines) across\nthe right side of the display.\nThis crack problem doesn’t seem to be widespread, but it’s seemingly more than a handful.\n ★",
+      "id": "78beb7d4f0fc9b713aaa987b683024e5833f4c8537090701a61037df721c3762",
+      "ref_id": "3",
+      "recommendationScore": 65,
+      "popularityScore": 85,
+      "priority": "medium",
+      "comment": "揭露了iPhone Duo上市初期部分设备出现屏幕沿铰链开裂的严重质量问题。",
+      "reason": "对潜在用户发出了关于iPhone Duo早期质量问题的明确警告，直接影响购买决策和消费者信心。",
+      "tags": [
+        "Apple",
+        "iPhone Duo",
+        "质量问题",
+        "硬件缺陷",
+        "消费者警示",
+        "召回风险"
+      ]
+    },
+    {
+      "title": "Tim Pan’s iPhone Duo Review",
+      "link": "https://www.youtube.com/watch?v=8pCccpKjjos",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-10-24T19:15:45.000Z",
+      "summary": "I hadn’t heard of Tim Pan or Mediastorm until running across his 24-minute video review of the Duo. It’s a good and fair review, but what struck me are the rather astonishing production values. Amongst other things, they stress-tested the hinge with an industrial robot by opening/closing it 10,000 times. (That’s less than one-third the folds tested by Joanna Stern’s Hingey, but still.) It’s an incredible piece of work, especially given the one-week time constraint. English is Pan’s second language, and there’s an entire alternate version of the whole review, under the Mediastorm channel, in Chinese. It’s not just a different soundtrack — it’s an entirely separate cut of the video, where all his on-camera shots are spoken in Chinese.\nAt about 7:30 in the (English) review, Pan mentions that they (he?) offer every employee in the company a new iPhone each year. This year’s choices, by employee count:\niPhone 18 Pro: 17\niPhone 18 Pro Max: 41\niPhone Duo: 140\nThe point of this in the review was to show how strong demand is for the Duo amongst Pan’s company’s Chinese employees. But what struck me is that the company has 198 employees. (Last year, he says, 150 chose the 17 Pro or Pro Max; only 1 chose the Air.)  Pan’s YouTube channel includes interviews with Christopher Nolan and Hans Zimmer. I never heard of him before but he obviously didn’t come out of nowhere. (Perhaps this is only a function of how little YouTube content I watch.)\nPan only launched his X account this week. He posted the entire review video there, too, and it’s got 187,000 likes and 6,700 comments. As a promotion to launch his X account, he’s giving away 100 iPhone 18 Pros. Even if they’re base models purchased somewhere without sales tax, that’s $120,000.\nRemarkable.\n ★",
+      "id": "46dc3151b6f642f0321fc9f035be65f6cfc1eb7faaa6fe07328a01f0233b6583",
+      "ref_id": "0",
+      "recommendationScore": 65,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "详细且制作精良的手机评测视频观察，洞察了背后的制作与用户选择。",
+      "reason": "揭示了高质量科技内容制作的幕后故事，同时涉及用户对热门苹果设备的偏好，对Apple生态感兴趣的读者有吸引力。",
+      "tags": [
+        "Apple",
+        "iPhone",
+        "评测",
+        "视频制作",
+        "手机"
+      ]
+    },
+    {
+      "title": "Nicole Nguyen’s Duo Review for the WSJ",
+      "link": "https://www.wsj.com/tech/personal-tech/iphone-duo-review-cafcbbe7?st=GaYVMf",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-10-24T22:15:00.000Z",
+      "summary": "Nicole Nguyen (also with a 5-minute video), writing for The Wall Street Journal (gift link):\nEvery time I used the Duo in phone mode, one-handed, I felt its\nheft. It’s wider and thicker than a Pro iPhone — and heavier,\neven compared with competing foldables. My hand actually hurts\nafter using the Duo nonstop, straining to grip the device securely\nwhile trying to reach the far edge of the screen.\nAn Apple spokesman pointed to the Duo’s titanium frame for\ndurability. Other folding models use a lighter aluminum. The\ncompany also moved the dock and common controls to the right to be\nmore reachable (sorry, southpaws). Still, there were plenty of\ninstances where my thumb found its limits: turning off the flash\nin the camera app, or typing the letter “A.”\nThere are people who can easily use two hands and won’t see this\nas a problem, including train commuters, frequent fliers or\nparents who wait around for kids to finish their activities. For\nme, I look forward to the day the Duo is lighter and thinner — maybe folding to the size of a deck of cards, like in the movie\n“Her.”\nInteresting that she’d prefer a smaller Duo, not a bigger one, if Apple makes a second size. I agree that one-hand-ability is a problem with the Duo, but I also think the front screen is already too squat in terms of how much content it shows. I just think it’s the nature of foldables that they’re two-handed devices, even closed.\nHer’s deck of cards foldable isn’t what I think we need to wait for. It’s Westworld’s super-thin trifolds — or even a bifold that’s more along those lines of thinness.\n ★",
+      "id": "73dce920526733c31f96fa5a081bea84bbf30e3771060a71f0084a34d102de7e",
+      "ref_id": "1",
+      "recommendationScore": 63,
+      "popularityScore": 80,
+      "priority": "medium",
+      "comment": "详细评测了Duo的物理特性和使用体验，特别是其重量和人体工学设计带来的不适。",
+      "reason": "为潜在买家提供了关于Duo设备实用性和舒适度的重要参考，直接指出了其便携性缺陷和潜在使用痛点。",
+      "tags": [
+        "Apple",
+        "Duo",
+        "产品评测",
+        "用户体验",
+        "硬件",
+        "可折叠手机"
+      ]
+    },
+    {
+      "title": "MKBHD’s Duo Review",
+      "link": "https://youtu.be/ESABTN4VtrA",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-10-24T20:47:28.000Z",
+      "summary": "Marques Brownlee thinks the lack of Face ID will be the biggest gripe. I agree. And I love his central framing for the review: that the Duo is extremely polished around the edges (figuratively, but also true literally) but rough in the middle.\nBut he spends more time griping about third-party apps that haven’t been optimized for the Duo than most other reviews, because he oddly seems to personally rely on a lot of apps from shitty iOS developers, like Discord and Google Calendar. I get it, Google Calendar is very popular. So too is Discord — it’s #6 in the App Store today for the “social networking” category. And I get it, Brownlee splits his time across iOS and Android. But Google is a notoriously terrible iOS developer. Every time there’s a major hardware display transition on iPhones that requires developer support, most of Google’s apps are late. And whatever the reasons for Discord’s popularity, it’s sure as shit not the quality of its app.\nThe best apps for the Duo are the best apps for iOS generally: ones that are exclusively for iOS. (And Brownlee sings the praises of several of them, too, like Carrot Weather.)\n ★",
+      "id": "b30f43c3d80b29229b0607a19b8179241152faeb2a86ea4def73f36cc0d2cd82",
+      "ref_id": "4",
+      "recommendationScore": 63,
+      "popularityScore": 80,
+      "priority": "medium",
+      "comment": "总结了MKBHD对Duo的评测，强调Face ID缺失和第三方应用适配不足是主要痛点，并批评了Google的iOS应用开发质量。",
+      "reason": "从知名评测人的角度分析了Duo的用户体验问题，尤其是对核心功能的缺失和应用生态的挑战，对用户购买有参考价值。",
+      "tags": [
+        "Apple",
+        "Duo",
+        "产品评测",
+        "用户体验",
+        "应用生态",
+        "MKBHD"
+      ]
+    },
+    {
+      "title": "SpeedCrunch 1.1",
+      "link": "https://www.speedcrunch.org/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-24T19:19:43.000Z",
+      "summary": "Article URL: https://www.speedcrunch.org/\nComments URL: https://news.ycombinator.com/item?id=50224210\nPoints: 207\n# Comments: 47",
+      "id": "c9d44435005d898d3b2b501f9a35767bf41cbd12fd241c35cccd504c59fa51ad",
+      "ref_id": "2",
+      "recommendationScore": 60,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "一款高效实用的计算器软件更新，带来了新功能。",
+      "reason": "尽管是实用的效率工具，但其技术深度和新颖性较低，不属于博客关注的高优先级主题。",
+      "tags": [
+        "工具软件",
+        "效率工具",
+        "生产力"
+      ]
+    },
+    {
+      "title": "Reuters and the WSJ on the Duo Launch",
+      "link": "https://www.reuters.com/business/retail-consumer/apple-bets-iphone-duo-can-remake-foldable-market-sales-begin-2026-10-22/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-10-24T22:08:17.000Z",
+      "summary": "Aditya Soni, Christine Chen, and Will Russell, reporting Friday for Reuters:\nCEO Ternus played greeter at a store in Austin, Texas, throwing\nopen the doors and high-fiving customers as they streamed in, a\nvideo ​posted on X by CBS Austin showed. A known car enthusiast,\nTernus’s Austin visit coincides with this weekend’s Formula 1 US\nGrand Prix in the city, with Apple holding exclusive US broadcast\nand streaming rights to the racing series.\nI was wondering why Ternus and retail chief Deirdre O’Brien were in Austin for the launch. Joz held down the fort and held court at the Fifth Avenue store.\nRegarding reviews:\nThey also said the folded Duo is less handy for the quick tasks\nmost users do daily and several prominent reviewers recommended\nagainst it for many Apple customers.\n“It’s been a lot of fun trying the Duo out for a week, but it\nfeels like I’ve gotten to use an extraordinarily polished\nprototype — not a finished product that I’d want to buy and\ncarry,” wrote longtime Apple commentator John Gruber.\nTech commentator Marques Brownlee said in a YouTube ​review that\nfor a regular person who mostly texts and browses, “it is probably\na no. But if the $2,000 doesn’t mean much to you, and you like the\nidea, after the learning ​curve and getting used to not having\nfacial identification, it is a really fun phone.”\nIn Berlin, YouTube content creator Patrick Wolter was impressed\nthat the Duo works as a phone and an iPad in one.\nNot sure Wolter set a high bar there.\nReporting for the WSJ (gift link), Rolfe Winkler quoted yours truly as well, with (IMO, and I feel I get to have an opinion here) a better line from my review:\n“The outer device is, by far, the worst iPhone Apple has ever\nmade. It’s a miserable fat little thing. The inner device is a\nsplendid, joyful, beautiful tablet,” wrote John Gruber, a\nwell-known Apple blogger, in his review. “The decision of whether\nyou might want to buy a Duo is not easy, because only one of its\ntwo selves is good.”\n ★",
+      "id": "8a2a0c279c0c77dbfb7b2bb3f1b778110e7c9a544f4c79168323aa829e6af524",
+      "ref_id": "2",
+      "recommendationScore": 53,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "报道了Duo的上市情况和早期评论员的普遍看法，指出其仍像一个“高度抛光的原型”。",
+      "reason": "提供了Duo发布会的概览以及市场对其“未完成”产品状态的普遍担忧，有助于了解其初期市场定位。",
+      "tags": [
+        "Apple",
+        "Duo",
+        "产品发布",
+        "市场反馈",
+        "新闻报道",
+        "原型"
+      ]
+    },
+    {
+      "title": "I made a virtual pet fruit fly that Twitch chat can interact with",
+      "link": "https://www.twitch.tv/flytwitcher",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-25T18:24:20.000Z",
+      "summary": "Article URL: https://www.twitch.tv/flytwitcher\nComments URL: https://news.ycombinator.com/item?id=50234480\nPoints: 3\n# Comments: 0",
+      "id": "19410d0ae9b30f328888780f7626bdbbaf17da62c7c530aeacbea6978a003cbd",
+      "ref_id": "0",
+      "recommendationScore": 50,
+      "popularityScore": 5,
+      "priority": "medium",
+      "comment": "一个创意独特的Twitch互动虚拟宠物项目，但缺乏具体的技术实现细节。",
+      "reason": "项目概念新颖且有趣，对独立开发者有启发，但提供内容仅为标题和链接，无法评估深层技术价值。",
+      "tags": [
+        "独立开发",
+        "Twitch",
+        "创意项目"
+      ]
+    },
+    {
+      "title": "Gadget Review: LiberNovo Omni - the USB-C powered office chair ★★★★⯪",
+      "link": "https://shkspr.mobi/blog/2026/10/gadget-review-libernovo-omni-chair/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-10-25T12:34:01.000Z",
+      "summary": "Whenever a company asks me to review their gadgets, I always ask if it is USB-C powered. If not, I'm not interested. So, welcome to the future where your chair is USC-C rechargeable!  WHAT?!    The LiberNovo Omni looks like a standard office chair - but has two secret features.  First, is that it is exceedingly comfortable. Full foam cushions, lovely headrest, and a recline which almost gets you…",
+      "id": "25a7c8e8133a3d2dab9c87dd2d0b3fef6985961339abc329cd2c309403a41ae9",
+      "ref_id": "1",
+      "recommendationScore": 45,
+      "popularityScore": 48,
+      "priority": "low",
+      "comment": "一款具备USB-C充电功能的办公椅评测，功能创新但技术深度有限。",
+      "reason": "虽然功能新颖，但与核心科技主题关联度较低，更偏向消费品和生活方式，优先级较低。",
+      "tags": [
+        "消费电子",
+        "产品设计",
+        "USB-C",
+        "生活用品",
+        "评测"
+      ]
+    },
+    {
+      "title": "Sabre Wulf Remastered",
+      "link": "https://gp-64.com/swr/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-25T17:15:16.000Z",
+      "summary": "Article URL: https://gp-64.com/swr/\nComments URL: https://news.ycombinator.com/item?id=50233775\nPoints: 33\n# Comments: 4",
+      "id": "3ea651a409c1d63d5d065049eb4e3a61e4a1b814d08fe0db5d02d30f2365be31",
+      "ref_id": "1",
+      "recommendationScore": 40,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "一篇关于经典游戏Sabre Wulf重制版的文章。",
+      "reason": "内容偏向游戏娱乐，与博客关注的AI、编程工具等主题关联度较低。",
+      "tags": [
+        "游戏",
+        "重制版",
+        "娱乐"
+      ]
+    },
+    {
+      "title": "Active incident at Dreamhost forcing password reset",
+      "link": "https://www.dreamhoststatus.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-25T13:09:16.000Z",
+      "summary": "Article URL: https://www.dreamhoststatus.com/\nComments URL: https://news.ycombinator.com/item?id=50231166\nPoints: 43\n# Comments: 17",
+      "id": "7c8a3bbcd0db0c0327349c42719e222f7fb5d5231fc7ffafd69628c66938793d",
+      "ref_id": "0",
+      "recommendationScore": 30,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "一篇关于Dreamhost安全事件的简报，对特定用户有即时提醒价值，但技术深度和普遍性有限。",
+      "reason": "信息及时，但内容局限于特定服务提供商的突发事件，缺乏广泛的技术探讨或创新点。",
+      "tags": [
+        "网络安全",
+        "服务中断",
+        "云服务",
+        "IT运维"
+      ]
+    },
+    {
+      "title": "Dolly Parton's Imagination Library",
+      "link": "https://imaginationlibrary.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-25T18:23:54.000Z",
+      "summary": "With today's news, I thought I'd share this great program:\n“When I was growing up in the hills of East Tennessee, I knew my dreams would come true. I know there are children in your community with their own dreams. They dream of becoming a doctor or an inventor or a minister. Who knows, maybe there is a little girl whose dream is to be a writer and singer.\nThe seeds of these dreams are often found in books and the seeds you help plant in your community can grow across the world.”\nComments URL: https://news.ycombinator.com/item?id=50234474\nPoints: 19\n# Comments: 2",
+      "id": "e7f7d4275c4adeb7e789c7c89b0a38809c22e38b9c440a73cf07fc60add784e1",
+      "ref_id": "1",
+      "recommendationScore": 0,
+      "popularityScore": 15,
+      "priority": "low",
+      "comment": "这是一个非常有意义的儿童阅读慈善项目，但与科技博客主题无关。",
+      "reason": "内容完全属于非技术领域，不符合科技博客的评估范围和优先级。",
+      "tags": [
+        "慈善",
+        "教育",
+        "非技术"
+      ]
+    },
+    {
+      "title": "Oregon Police Are Charging a Local News Outlet $2.5M for Records About One Cop",
+      "link": "https://theintercept.com/2026/10/01/oregon-police-misconduct-public-records-cost-fee/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-25T18:04:11.000Z",
+      "summary": "Article URL: https://theintercept.com/2026/10/01/oregon-police-misconduct-public-records-cost-fee/\nComments URL: https://news.ycombinator.com/item?id=50234232\nPoints: 71\n# Comments: 5",
+      "id": "131a09f78affaf2026c0a3ddc269659605bf866dd719cea7f2e6208f3d0fc830",
+      "ref_id": "2",
+      "recommendationScore": 0,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "聚焦俄勒冈警方对新闻机构收取巨额记录费用的社会新闻，与科技主题不相关。",
+      "reason": "内容完全属于非技术领域，主要讨论新闻自由和公共记录，不符合科技博客的评估范围和优先级。",
+      "tags": [
+        "社会议题",
+        "新闻自由",
+        "非技术"
+      ]
+    },
+    {
+      "title": "Fuck Nuance (2015)",
+      "link": "https://crookedtimber.org/2015/08/31/fuck-nuance/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-25T17:26:08.000Z",
+      "summary": "Article URL: https://crookedtimber.org/2015/08/31/fuck-nuance/\nComments URL: https://news.ycombinator.com/item?id=50233883\nPoints: 14\n# Comments: 2",
+      "id": "9015aea4c439c2028ba30e33425f59a273ad3ceca973d3ae3408e6d9d009a350",
+      "ref_id": "4",
+      "recommendationScore": 0,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "一篇讨论公共话语中缺乏细致分析的哲学/社会评论，与科技博客主题无关。",
+      "reason": "内容完全属于非技术领域，主要讨论社会哲学概念，不符合科技博客的评估范围和优先级。",
+      "tags": [
+        "社会评论",
+        "哲学",
+        "非技术"
+      ]
+    },
+    {
+      "title": "Don't anthropomorphize big tech companies",
+      "link": "https://seangoedecke.com/dont-anthropomorphize-big-tech-companies/",
+      "source": "seangoedecke.com",
+      "publishedAt": "2026-10-25T00:00:00.000Z",
+      "summary": "",
+      "id": "98f415d2c87bbda8fe0a16e1bfe6b700a3a60a018fcdc64febd61d8b09cba157",
+      "ref_id": "4",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "文章内容缺失，无法进行有效评估。",
+      "reason": "由于文章主体内容缺失，无法对其技术深度、新颖性、实用性或信息密度进行任何形式的评估。",
+      "tags": [
+        "无法评估",
+        "内容缺失"
+      ]
+    }
+  ]
+}
