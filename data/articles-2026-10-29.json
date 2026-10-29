@@ -1,0 +1,766 @@
+{
+  "dailySummary": "今日速递：AI浪潮持续。Simantic革新AI固件模拟，Mistral Large 4模型权重开源。AI语音定制、生物医药与GPU优化受关注，同时AI代理安全引业界深思。",
+  "articles": [
+    {
+      "title": "Launch HN: Simantic (YC F26) – Firmware Simulation for AI Agents",
+      "link": "https://news.ycombinator.com/item?id=50291116",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-29T15:56:32.000Z",
+      "summary": "Hi HN, we're Ahnaf and Seungmin from Simantic (https://simantic.com). We are building the simulation layer that lets engineers and AI agents test and validate firmware without hardware.\nBefore Simantic, we were ex-firmware engineers at companies like Neuralink and Tesla. We’ve worked on some of the coolest projects, like the Cybertruck and Roadster, back when they were still early prototypes.\nWe started working on firmware back when ChatGPT didn’t exist yet, but over the years, we saw how much of the engineering and development work has been automated as the frontier models improved to this point. In software, AI can run and test code inside your computer in a matter of seconds. But as firmware engineers, we didn’t have that luxury. An AI agent can write firmware in seconds, but in order to test it, we had to flash a physical board, then manually run tests using expensive and clunky tools with software made over a decade ago.\nTo speed up the validation loop, we built the simulation layer that lets AI agents test the firmware and make decisions based on evidence, instead of waiting for the engineer to run tests for them. We used to spend hours testing our firmware manually on devboards, but now we use our own simulation to validate firmware in seconds.\nWhat we offer:\n- Virtual devboards you can program and run with a single API call, without leaving your terminal.\n- An AI code reviewer for firmware, that makes informed decisions based on evidence, using our simulation as a verification engine.\n- A CI/CD pipeline for your hardware projects that validates your firmware against a simulated version of the microcontroller on every commit.\nHere is a demo of our simulation used in an AI code review session: https://www.youtube.com/watch?v=kBK1ZjGWWbQ\nOur users are using Simantic for bare-metal and RTOS development for applications like flight controllers, electric vehicles, robotics, and satellites. For safety critical systems like avionics and automotives, a robust simulation system is incredibly important, because every change in the firmware puts a human life at stake, especially for machines that cost hundreds of thousands to millions of dollars.\nWe recently helped an early stage space startup building satellites, to test their firmware on hardware that they don't yet have. Even the development modules for those satellites costs over $100k, and we helped them do that at just a hundredth of the cost and time.\nEarly on in our journey, we established our idea to make better simulation but didn’t have a clear idea of how we would do it, we considered developing our software around open source emulation frameworks like Renode (https://github.com/renode/renode) and QEMU (https://www.qemu.org/), because they were tools already used within the firmware industry. We built our MVP that was essentially a wrapper around Renode, but we quickly realized there were a lot of limitations to doing this.\n1. We were bottlenecked by the development speed of Renode themselves. We tried making contributions on Github to fix issues we came across, but the speed in which we could merge our features in was not fast enough for a startup like us trying to move fast.\n2. Renode is built using Dotnet, and it was proving itself to be slower than we would have liked. Renode was released in 2017, which was when all code was still being written by hand, so I think it made sense looking back, but there were limitations because of the language itself.\n3. The open source tools were bloated, with features that we would never use. Yes, there were a  breadth of features, but we had a lot of things we had to work around just because we couldn’t remove or change them.\nUsers were complaining about simulation accuracy. Renode is an emulator at the core, but our users, especially those who are building systems where timing accuracy is crucial did not find the accuracy good enough to validate their firmware.\nBecause of these issues, we made our own simulation engine from scratch, fully written in Rust.\n- Our simulation is focused on accuracy. Open source frameworks often focus on expandability and developer experience, which means there were a lot of tradeoffs made to prioritize a breadth of models rather than going deep into a set of select models.\n- We have our own hardware validation rigs running 24/7 to ensure our simulation models are as close to real world hardware as possible, and any gaps are detected and fixed as soon as we can. It currently looks like devboards connected to a Saleae Logic MSO and a SWD bus, controlled by a Linux PC, running Claude 24/7 just finding these gaps.\nOur cloud-hosted simulator is available to use right now! We also provide a native binary with our developer plan licenses that let you run your firmware on your machines locally without any limitations.\nCheck it out at https://simantic.com/cloud-sim, and you can start using our AI firmware reviewer bot in your own Github repos here: https://simantic.com/dashboard/simantic-bot.\nWe currently have support for some models of the STM32F0, F4, H7 series MCUs, ESP32-S3/C3, and RP2040, but we’re constantly working to release new models every week, and improve our existing ones.\nThank you, and if you have any questions, feel free to send us an email at founders@simantic.dev\nComments URL: https://news.ycombinator.com/item?id=50291116\nPoints: 35\n# Comments: 12",
+      "id": "700f3e4bbfb43c82f28d7ce51a99b7f53710868cc020cfa013e382ec90b47148",
+      "ref_id": "2",
+      "recommendationScore": 95,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "Simantic推出为AI代理固件开发提供无硬件模拟验证的新平台，极大地加速了固件测试流程。",
+      "reason": "完美契合AI、编程工具和自动化主题，解决了固件开发中的实际痛点，具有极高的技术深度、新颖性和实用性。",
+      "tags": [
+        "AI",
+        "固件",
+        "模拟",
+        "自动化测试",
+        "编程工具",
+        "初创公司"
+      ]
+    },
+    {
+      "title": "Making agents fast - what I've learnt over the last 12 months",
+      "link": "https://martinalderson.com/posts/making-agents-fast/?utm_source=rss&utm_medium=rss&utm_campaign=feed",
+      "source": "martinalderson.com",
+      "publishedAt": "2026-10-29T00:00:00.000Z",
+      "summary": "Practical lessons on speeding up AI agents: inference speed (TTFT vs tok/s), tool call traces, building the tooling agents want, and hardware and sandboxing.",
+      "id": "5e396018eb1a2135249652a6b40cc07e49cc119a6b12a72cf3871377b4becc98",
+      "ref_id": "2",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "提供关于AI代理性能优化的深度实践经验，涵盖多方面技术细节。",
+      "reason": "紧跟AI前沿，内容技术深度高、实用性强，对开发者极具参考价值。",
+      "tags": [
+        "AI",
+        "大模型",
+        "智能体",
+        "性能优化",
+        "机器学习",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "We're releasing the weights of Mistral Large 4",
+      "link": "https://mistral.ai/news/mistral-large-4-oss/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-29T14:13:21.000Z",
+      "summary": "Article URL: https://mistral.ai/news/mistral-large-4-oss/\nComments URL: https://news.ycombinator.com/item?id=50289418\nPoints: 941\n# Comments: 267",
+      "id": "bd03e4a483646b8532a8be38f63038c71b34c72e91048d24fad76cc874818f73",
+      "ref_id": "4",
+      "recommendationScore": 91,
+      "popularityScore": 100,
+      "priority": "high",
+      "comment": "Mistral AI发布其旗舰大模型Mistral Large 4的权重，是AI领域的重要里程碑。",
+      "reason": "这是关于顶尖AI模型开源的重大新闻，对整个AI研究和开发社区具有极其深远的实用价值和影响力，符合AI主题最高优先级。",
+      "tags": [
+        "AI",
+        "LLM",
+        "开源",
+        "机器学习",
+        "模型发布"
+      ]
+    },
+    {
+      "title": "A tiny world model running games on a Raspberry Pi Pico 2 W",
+      "link": "https://github.com/SheepSeb/tinyworldformer",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-29T20:32:28.000Z",
+      "summary": "Article URL: https://github.com/SheepSeb/tinyworldformer\nComments URL: https://news.ycombinator.com/item?id=50295450\nPoints: 5\n# Comments: 0",
+      "id": "7b84f0e97724d28a1cefcae9b3da6d7cbe5323f3bef9b34338a7182f641f6cff",
+      "ref_id": "0",
+      "recommendationScore": 90,
+      "popularityScore": 5,
+      "priority": "high",
+      "comment": "探索微型AI模型在边缘设备上运行的创新项目，展示了AI与硬件结合的巨大潜力。",
+      "reason": "文章结合了AI前沿技术“世界模型”与低功耗硬件“Raspberry Pi Pico”，具有很高的技术深度和新颖性。",
+      "tags": [
+        "AI",
+        "边缘计算",
+        "Raspberry Pi",
+        "硬件",
+        "机器学习"
+      ]
+    },
+    {
+      "title": "Grace Blackwell needs a new scheduler: 27% more usable GPUs from the same racks",
+      "link": "https://skypilot.ai/blog/grace-blackwell-needs-a-new-scheduler",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-29T15:45:05.000Z",
+      "summary": "Article URL: https://skypilot.ai/blog/grace-blackwell-needs-a-new-scheduler\nComments URL: https://news.ycombinator.com/item?id=50290912\nPoints: 102\n# Comments: 18",
+      "id": "4890bdcdc5181b9ee648c0c0c55e271ea5e9a940bb85ecd7de01391173e628dd",
+      "ref_id": "4",
+      "recommendationScore": 90,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "探讨了如何通过改进调度器，显著提升NVIDIA Grace Blackwell GPU的资源利用率。",
+      "reason": "针对AI基础设施优化和最新GPU技术，提供了高实用性和技术深度的解决方案，对AI/HPC领域有直接价值和前瞻性。",
+      "tags": [
+        "AI",
+        "GPU",
+        "调度器",
+        "基础设施",
+        "优化",
+        "自动化"
+      ]
+    },
+    {
+      "title": "We urgently need to monitor AI agents’ actions in real time",
+      "link": "https://www.technologyreview.com/2026/10/29/1147824/monitor-ai-agents-actions-real-time/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-10-29T10:11:12.000Z",
+      "summary": "This summer, hundreds of OpenAI agents tried to cheat on a cybersecurity test. They broke out of their test environment and successfully hacked Hugging Face, a site that they believed held clues about how they’d be graded. Around the same time, another OpenAI agent accessed private files from an Australian government website. It’s a problem…",
+      "id": "32d69d7e6fd51a11d82013a026c4a65fbeb79da7148e874c1777b7177024760c",
+      "ref_id": "1",
+      "recommendationScore": 90,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "深入探讨了AI代理实时监控的紧迫性，通过具体案例揭示了AI失控的潜在风险。",
+      "reason": "内容切中当前AI领域的核心痛点，具有高度的时效性、实用性和重要性，与博客主题高度吻合。",
+      "tags": [
+        "AI",
+        "AI代理",
+        "AI治理",
+        "安全性",
+        "风险管理",
+        "网络安全"
+      ]
+    },
+    {
+      "title": "IgE disruptor for food allergy with Claude-enabled antibody design [pdf]",
+      "link": "https://divergencelabs.com/publications/ige-preprint.pdf",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-29T19:25:48.000Z",
+      "summary": "Article URL: https://divergencelabs.com/publications/ige-preprint.pdf\nComments URL: https://news.ycombinator.com/item?id=50294486\nPoints: 16\n# Comments: 6",
+      "id": "2086ec152456586631a89823eafe3942fe06b8b1110c346495af623f6aeb21e7",
+      "ref_id": "4",
+      "recommendationScore": 88,
+      "popularityScore": 20,
+      "priority": "high",
+      "comment": "利用AI（Claude）设计抗体以治疗食物过敏的尖端研究，展示了AI在生物医药领域的巨大潜力。",
+      "reason": "文章揭示了AI在生物科技领域的突破性应用，技术深度和新颖性极高，符合AI主题的优先关注。",
+      "tags": [
+        "AI",
+        "生物科技",
+        "医疗",
+        "机器学习",
+        "研究"
+      ]
+    },
+    {
+      "title": "Custom Voices With Qwen3-TTS",
+      "link": "https://lucumr.pocoo.org/2026/10/29/qwen3-custom-voices/",
+      "source": "lucumr.pocoo.org",
+      "publishedAt": "2026-10-29T00:00:00.000Z",
+      "summary": "With my kids I’m currently building a little dungeron\ncrawler and we’re trying to\nlearn a bit about game\ndevelopment along the way.\nHowever given that we live in the modern times of increasing capabilities we\nwanted to get a narrator and voice over.\nBut we also wanted it to not sound like everyone’s standard AI voices so I\nlooked into what options there are on the table.  After some investigation I\nnarrowed down to using Qwen3-TTS which\nuses voice embeddings for custom voices.\nWith a bit of creativity you can also do more with those custom voices than\nappears initially.  In case this is of interest to you, this post just covers\nwhat we learned and with some examples.  You can probably point your agent to\nit and it can do something with it.\nWhat Qwen Offers\nQwen3 is not the only TTS model in town, and it wans’t even my first choice.  We\ninitially used Kokoro.  However\nQwen3 supports voice cloning and we wanted to have it feel a bit more unique.\nIn practice it’s a bit tricker though. Qwen3 ships three kinds of models:\n1.7B-Base (and 0.6B): clones a voice from a few seconds of reference audio\n1.7B-CustomVoice: comes with nine built-in speakers and instructions\n1.7B-VoiceDesign: invents a voice from a text description\nThe base model clones either in context or from the speaker embedding alone but\nthere is no documented way to clone a voice and direct it with instructions.\nThat means unlike the custom voice and voice design models you cannot say “speak\nsad” or “whisper” with a cloned base model.\nAt present the official options for a custom voice are fine-tuning Base on a\nsingle speaker or to make a clip with VoiceDesign and clone it with Base.  That\nis not all that bad, but it means instructions are gone.\nPlaying With It\nFor this blog post I took 28 seconds of me from my talk at PyAI\nConf, cut between two pauses so\nthat it starts and ends on a full sentence, and transcribed it with Whisper.\nThe transcript is really only needed for baking but to compare against an\nalready existing voice it’s useful to have it say the same thing as the original\nrecording.\nNote that a conference talk recording is not ideal but it works anyways.  Which\nis also a good reminder that you really don’t need a particularly clean\nrecording (or a very long one) to get a halfway convincing version of a person.\nParticularly when then presented to you on a low quality phone call, it won’t be\nvery hard to trick your grandmother.\nThe first thing you can do is to blend that recording with another voice.  For\ninstance you can use VoiceDesign to make up a voice from a description.  For this blog\npost the designed voice was created like this, with Qwen’s own Python package\nqwen-tts (pip install qwen-tts, I used\n0.1.1), which the rest of the code in this post uses too:\nimport torch\nfrom qwen_tts import Qwen3TTSModel\n\nkw = dict(device_map=\"mps\", dtype=torch.bfloat16, attn_implementation=\"sdpa\")\ndesign = Qwen3TTSModel.from_pretrained(\"Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign\", **kw)\nwavs, sr = design.generate_voice_design(\n    text=open(\"voices/transcript.txt\").read(), language=\"English\",\n    instruct=\"A man in his forties with a warm, natural, medium-low voice, speaking \"\n             \"clearly and calmly at an easy conversational pace, like someone reading \"\n             \"aloud to a friend.\",\n)\n\nYou can see how the two different voices behave, particularly when blended together:\nInteractive demo: see the post on the website.\nVoice Embeddings\nWhat Base takes from a recording when cloning from the embedding alone is a\nspeaker embedding which is basically 2048 numbers out of a speaker encoder that\nwas trained.  The same voice gets similar numbers and different voices get\ndifferent ones.  Which btw, is also a convenient way to do speaker detection\nfrom recordings if you want to!  It’s not perfect, but it’s quite helpful for a\nsingle audio track recording to tell two speakers apart if you do some basic\nslicing and dicing (more on that below).\nBecause it is just a vector, you can do arithmetic on it.  For instance a\nweighted average of two embeddings is a spaker that is somewhere between two\nvoices:\nbase = Qwen3TTSModel.from_pretrained(\"Qwen/Qwen3-TTS-12Hz-1.7B-Base\", **kw)\n\ndef fingerprint(path):\n    prompt = base.create_voice_clone_prompt(ref_audio=path, x_vector_only_mode=True)\n    return prompt[0].ref_spk_embedding\n\ndef blend(a, b, t):\n    a, b = a.float(), b.float()\n    mixed = (1 - t) * a + t * b\n    return (mixed / mixed.norm() * ((1 - t) * a.norm() + t * b.norm())).to(torch.bfloat16)\n\narmin, designed = fingerprint(\"voices/armin.flac\"), fingerprint(\"voices/designed.flac\")\n\nHere is the same sentence in eleven blends:\nInteractive demo: see the post on the website.\nNote that it stops sounding like me quite quickly, but it retains some of my\nfeatures.  And it for sure ends up with creating a unique voice regardless.\nI found some better successes when ensuing that the two voices have similar\nspectograms (eg: similar “recording setups”).  In this recording you can hear\nthat one voice picked up by the lapel mic was a bit hollow compared to the\ndesigned voice.\nIf you like a a voice that comes out, you can bake it back into a new recording\nthat you can then use as reference:\nimport soundfile as sf\n\nmixed = blend(armin, designed, 0.5)\naudio, rate = say(open(\"voices/transcript.txt\").read(), mixed)  # say() is shown further down\nsf.write(\"voices/final.flac\", audio, rate)\nfinal = fingerprint(\"voices/final.flac\")\n\nThe baked voice does not come back exactly as the blend but it makes handling it\neasier if you want to.  It’s just one voice reference file.\nSo on the question of using those embeddings for speaker recognition: how good\ndoes that work?  I took an episode of State of Agentic\nCoding, the podcast Ben and I\nrecord, cut it into 2-second windows one second apart and compared each with an\nembedding of me form the conference.\nSomewhat surprising, but maybe not too surprising using my conference recording\nclip as the reference this does not work at all with Qwen3.  If instead I take\nthe 20 seconds where I introduce myself at the start of the episode as the\nreference, it gets 98% of the rest right. \nOn the other hand using a model that was trained for speaker verification\ninstead does manage to pick me up from the conference recording clip.  For\ninstance ECAPA,\nfinds me from the conference clip in 97% of the windows.\nHere are 20 minutes of that podcast, classified by speaker with the different\napproaches:\nInteractive demo: see the post on the website.\nInstructed Cloned Voices\nBut the embeddings a very useful for the voice cloning!  But how to give them\ninstructions?  Base and CustomVoice manipulate the speaker the same way: one\nvector inserted into the talker’s input sequence.  In CustomVoice that vector is\na row of the embedding table.  In Base it is the x-vector from the speaker\nencoder, which only Base has.  The generation code takes either\n(voice_clone_prompt is a regular argument of generate), and the transformer\nweights of the two models are nearly identical.  So take the embedding with\nBase, then hand it to CustomVoice instead of one of its speakers:\ncv = Qwen3TTSModel.from_pretrained(\"Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice\", **kw)\n\ndef say(text, xvec, instruct=None, language=\"English\"):\n    ids = cv._tokenize_texts([cv._build_assistant_text(text)])\n    told = [cv._tokenize_texts([cv._build_instruct_text(instruct)])[0]\n            if instruct else None]\n    voice = {\"ref_code\": [None], \"ref_spk_embedding\": [xvec],\n             \"x_vector_only_mode\": [True], \"icl_mode\": [False]}\n    codes, _ = cv.model.generate(\n        input_ids=ids, instruct_ids=told, voice_clone_prompt=voice,\n        languages=[language], non_streaming_mode=True,\n        **cv._merge_generate_kwargs(temperature=0.7, subtalker_temperature=0.7),\n    )\n    wavs, rate = cv.model.speech_tokenizer.decode([{\"audio_codes\": codes[0]}])\n    return wavs[0], rate\n\nwav, rate = say(\"I really thought this would work.\", armin,\n                \"Speak in a sad, sorrowful tone, voice low and heavy, on the verge of tears.\")\n\nPick a speaker for the slot, a model and an instruction:\nInteractive demo: see the post on the website.\nInstructions work on cloned voices, but less reliably than on the built-in\nspeakers, and it depends on the emotion, but honestly, it came out better than I\nanticipated.  Definitely good enough to have some true custom voices for a voice\nover that don’t necessarily sound like something, someone else has in their\ngame.\nOther Fun Math\nIf a voice is a point in a 2048-dimensional space and blending works we can maybe\ndo some other funny math on it.  The obvious one is to try to see if some math can\nbe used to manipulate gender.\nTo find it I had VoiceDesign create 14 different voices for men and women each.\nWhen you then take the average woman minus the average man you can then move any\nvoice along that direction:\nwomen = torch.stack([fingerprint(f\"design/f{i}.wav\") for i in range(14)]).float()\nmen = torch.stack([fingerprint(f\"design/m{i}.wav\") for i in range(14)]).float()\nmiddle = (women.mean(0) + men.mean(0)) / 2\naxis = women.mean(0) - men.mean(0)\naxis = axis / axis.norm()\n\ndef move(xvec, t):\n    \"\"\"Put the voice at position t along the gender axis, keep the rest.\"\"\"\n    x = xvec.float()\n    return (x + (t - (x - middle) @ axis) * axis).to(torch.bfloat16)\n\nHere is the result for my clone:\nInteractive demo: see the post on the website.\nAnyways, that’s that.  If you want to play around with Qwen3 TTS I hope this was\nof some help, and maybe you got some ideas of what to do with the voice\nembeddings.  Use it for good, not evil.",
+      "id": "f7874a16a06542c0faf79d33bc210dcb28b87e5c446600c5389e8b9c44c851df",
+      "ref_id": "1",
+      "recommendationScore": 88,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "一篇关于利用Qwen3-TTS实现定制语音的实用指南。",
+      "reason": "详细介绍了AI语音克隆在游戏开发中的应用，技术细节丰富且具高度实用性，符合AI主题优先级。",
+      "tags": [
+        "AI",
+        "TTS",
+        "语音合成",
+        "Qwen3-TTS",
+        "游戏开发",
+        "独立开发"
+      ]
+    },
+    {
+      "title": "Show HN: Auto Dismiss Mac OS \"Allow <app> to find devices on local networks?\"",
+      "link": "https://github.com/johncassil/dontallow",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-29T19:27:44.000Z",
+      "summary": "This popup has been a constant gripe of mine for years.  I almost NEVER want to allow this permission and there is no system setting to disable it globally and prevent the popup from interrupting your typing, etc.  This tiny swift app I built will autoclose it in 1/4th of a second and leave behind a little notification that it did so.  Would love to hear feedback!\nComments URL: https://news.ycombinator.com/item?id=50294506\nPoints: 41\n# Comments: 34",
+      "id": "519a776207ed3493f80c56db1a20f297f4471989cf5469f05d6b7fb2a91d2ffe",
+      "ref_id": "3",
+      "recommendationScore": 85,
+      "popularityScore": 50,
+      "priority": "high",
+      "comment": "一个实用的macOS小工具，解决了用户长期以来被本地网络权限弹窗困扰的痛点。",
+      "reason": "该项目针对macOS用户体验中的常见痛点提供了直接且高效的自动化解决方案，与Apple生态和自动化主题高度相关。",
+      "tags": [
+        "macOS",
+        "自动化",
+        "Apple生态",
+        "Swift",
+        "用户体验"
+      ]
+    },
+    {
+      "title": "Avoid Public Functions Calling Other Public Functions",
+      "link": "https://matklad.github.io/2026/10/29/pub-calls-pub.html",
+      "source": "matklad.github.io",
+      "publishedAt": "2026-10-29T00:00:00.000Z",
+      "summary": "Avoid Public Functions Calling Other Public Functions\nOct 29, 2026\n\nA small-scale rule of thumb. This article will land much better with a concrete\nexample, but I am drawing a blank here, so you gotta just blindly trust my say\nso!\nWhen implementing a software module, it’s often a case that you are writing a\npublic function foo, and at least part of what foo does is already handled\nby another public function bar. The DRY instinct encourages you to call\nbar() from within foo. This usually creates problems down the line. Instead,\ncreate a new private function and refactor both foo and bar to call that\nshared helper:\n// BAD\npub fn foo() void {\n    return bar(.{ .frobnicate = true });\n}\n\npub fn bar(options: struct {\n    frobnicate: bool = false,\n}) void {\n    // ...\n}\n// GOOD\npub fn foo() void {\n    return helper(.frobnicate);\n}\n\npub fn bar() void {\n    return helper(.transmogrify);\n}\n\nfn helper(mode: enum { frobnicate, transmogrify }) void {\n    // ...\n}\nRationale: the goal of a public API is to provide an interface that works best\nat the call site. If parts of public API are re-used to implement the rest of\nthe API, then there’s a tension between making the interface convenient for the\noutside user and making it convenient to use from within abstraction itself.\nNamely, functions tend to grow optional parameters that should never be set by\nthe user. Crucially, the parameter growth and interface degradation can happen\nafter the original code sharing.\nBy proactively making the shared implementation private, the tension is defused.\nYou still might need to tinker with helper signature until it does everything\nit needs to do, but, because the helper is private, this is a cheap, local\nchange.\nA notable exception to this rule of thumb are “shortcut” APIs, where a public\nfunction is defined as a commonly used chain of calls to other public\nfunctions. There, the rule is the opposite — no private calls are allowed,\nto make sure that it is a genuine shortcut, and not a midlayer mistake.\nP.S. While researching if anyone wrote a better blog post already, I stumbled\nupon a fun stack overflow question, asking, paraphrasing:\nI’ve heard that it is bad when a public function calls another public\nfunction. Is this really so?\nThe most upvoted answer explains that it is indeed bad, because this makes\nmocking to test a single method in isolation more complicated. Which is, imo, a\nnatural, but horrible consequence of misguided approach to testing. You\nshouldn’t be mocking your methods, you should mock your IO. And, similarly, you\nshouldn’t test methods, but rather software functionality (unless you are\nbuilding a public library with a stable API, which is a fun and important, but\nvery narrow fraction of software development).\nThe accepted answer says that this recommendation makes no sense if it is not\nbacked by an industry wide or an organizational standard. Which somehow manages\nto make even less sense — you shouldn’t follow the guideline rules because\nthey are written in sanctified ink! Rather, you should apply each particular\nrule because of the underlying reasons that motivate the rule. Guidelines and\nbest practices articles can concentrate lots of good reasoning in a single\nplace, but they don’t absolve you from thinking!",
+      "id": "b192f23f67f3551ee3ebf0a081faa72fb316d4ab76b058e472c5124e1e802b85",
+      "ref_id": "2",
+      "recommendationScore": 85,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "一条简洁但极其重要的编程设计原则，附有清晰的代码示例。",
+      "reason": "提供了关于公共函数调用的最佳实践，能有效提升代码质量和可维护性，对开发者极具实用价值。",
+      "tags": [
+        "编程",
+        "软件设计",
+        "代码质量",
+        "重构",
+        "设计模式"
+      ]
+    },
+    {
+      "title": "Show HN: Overtone – Transcribe, correct and cut captions for any screen shape",
+      "link": "https://github.com/lonthq/overtone-captions",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-29T17:48:17.000Z",
+      "summary": "Hi HN, I'm Ruud, co-founder of Lont. We turn company emails into personalized videos.\nVideo captions cost us manual work twice: fixing misheard words, then fixing layout, like lines ending on “the”.\nOvertone uses multiple models to listen to the audio: gpt-transcribe, Azure STT, and Elevenlabs Scribe. When they return conflicting results, Overtone sends small clips to the models again, and then lets an LLM decide what was actually said.\nThe LLM is like a human doing a sanity check on the transcription model. Humans would easily recognize a word to be different based on context. The LLM basically does the same, using an optional context prompt + its world knowledge. Because of this the Word Error Rate (WER) on many test files is lower when using Overtone, compared to just using a model without it.\nSure, the cost is higher because we use up to 3 different STT models + an LLM, but it still removes mistakes, reducing the time needed to fix captions to a minimum, and reducing the chance you'll miss something. For us it's worth it. For ultra high volume use cases it may not be.\nThe rules-based cutter nicely cuts the transcript into captions that look good, depending on screen size: 16:9 is different from 9:16, and the Overtone Format we created supports any type really. Pauses become breaks, captions are grouped per speaker, and names/numbers are never spread out over multiple captions.\nHow to add these captions to your videos? A videojs plugin can do this automatically, so you don't burn in your captions. The plugin lets you cycle between styled captions, plain captions, and off. You can burn them into an MP4 file with overtone burn.\nQuickly try it out just the cutter? Try:\n  npx overtone-captions recut yoursub.srt\n\nWe open-sourced this first version (MIT) because we believe many people can benefit from this, especially if your captions just need to be good. There's plenty of room to improve though, so we've made it easy to help contribute to add style packs, languages, and providers/models.\nYou can find a demo at: https://overtone.lont.ai/\nFind the code and benchmarks here: https://github.com/lonthq/overtone-captions\nComments URL: https://news.ycombinator.com/item?id=50293115\nPoints: 10\n# Comments: 0",
+      "id": "56f0750699d50935fbb34d767572d14953927c647e78a14b165ab7cf280efafc",
+      "ref_id": "0",
+      "recommendationScore": 83,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "创新的AI驱动字幕工具，利用多模型和LLM显著提升转录准确性并减少人工校对。",
+      "reason": "技术深度与新颖性俱佳，实用性强，直接解决视频内容生产痛点，完全符合AI主题优先级。",
+      "tags": [
+        "AI",
+        "语音识别",
+        "LLM",
+        "视频工具",
+        "独立开发"
+      ]
+    },
+    {
+      "title": "H.264 Is Magic (2016)",
+      "link": "https://sidbala.com/h-264-is-magic/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-29T15:53:03.000Z",
+      "summary": "Article URL: https://sidbala.com/h-264-is-magic/\nComments URL: https://news.ycombinator.com/item?id=50291054\nPoints: 225\n# Comments: 103",
+      "id": "e812e22ff0c3b6d70fddc9220a86114b3edd9a34c876147f4269066e15155391",
+      "ref_id": "3",
+      "recommendationScore": 80,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "深入浅出地解释了H.264视频编码标准的技术原理和其“魔法”之处。",
+      "reason": "提供了关于视频编码核心技术的宝贵知识，对理解多媒体处理至关重要，但文章发布时间较早，新颖性一般。",
+      "tags": [
+        "视频编码",
+        "H.264",
+        "多媒体",
+        "底层技术",
+        "编程原理"
+      ]
+    },
+    {
+      "title": "Keplearn: Extract Equations from Data in Seconds",
+      "link": "https://github.com/owls-on-wires/keplearn",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-29T14:22:53.000Z",
+      "summary": "Article URL: https://github.com/owls-on-wires/keplearn\nComments URL: https://news.ycombinator.com/item?id=50289590\nPoints: 79\n# Comments: 7",
+      "id": "ac8e8f57e6764ba4f897bde2af70013298c99ddc4d6aad90ccc89dc5e121dc0e",
+      "ref_id": "3",
+      "recommendationScore": 80,
+      "popularityScore": 8,
+      "priority": "high",
+      "comment": "一款高效从数据中提取方程的Python库，对数据科学家和研究员具有高技术实用性。",
+      "reason": "直接提供了解决特定技术问题的编程工具，技术深度高，对需要进行数据建模和科学计算的读者很有帮助，属于AI相关编程工具。",
+      "tags": [
+        "数据科学",
+        "机器学习",
+        "编程工具",
+        "符号回归",
+        "Python"
+      ]
+    },
+    {
+      "title": "Rolfe Winkler at The WSJ: ‘The Beleaguered Chip Sellers Getting Their Revenge on Apple’",
+      "link": "https://www.wsj.com/tech/apple-iphone-memory-chips-ai-c0084cc9?st=FNAyaT",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-10-29T19:44:11.000Z",
+      "summary": "Rolfe Winkler, in a crackerjack story for The Wall Street Journal (gift link):\nBlevins, who left Apple in 2022, sometimes set up\nback-to-back meetings with suppliers so that rival sales teams\nmight run into each other, stoking competitive tension. Sales\nrepresentatives learned to pack nutrition bars to sustain them\nthrough negotiating sessions that Apple executives sometimes\npushed past midnight without a dinner break. Blevins’s bad-cop\nreputation gave his staff leverage: They threatened to call him in\nif contract terms weren’t to their liking.\nOne significant contract term allowed Apple to audit its\nsuppliers’ books. Flash makers typically had to designate Apple\nas a “most favored customer,” which guaranteed that no other\nbuyer got a lower price, according to people familiar with the\nagreements. Apple’s audits allowed it to verify that no one\npaid less.\nApple caught Micron selling flash at cheaper prices to another\ncustomer and won an arbitration settlement worth tens of millions\nof dollars more than a decade ago, said people familiar with the\ndispute. Apple audited its suppliers so often that Blevins\nnegotiated a volume discount with the auditor, Deloitte.\nThe whole story is a fascinating and entertaining read. But I don’t get the “revenge” angle in the headline. The biggest buyers can negotiate the best deals. Apple used to be the biggest buyer, by far, for flash memory chips. They negotiated, with hardball but above-the-board tactics, the best deals. Now, Apple isn’t the biggest buyer — the AI datacenter hyperscalers are. Apple no longer gets the best deals. But they’re still getting fair deals. Apple is still negotiating the best deals it can for itself. So where is the “revenge”? The pinch mostly isn’t being felt by Apple — it’s being felt by Apple’s customers, who now face significantly higher product prices.\nI included “mostly” in the preceding sentence because Winkler, in collaboration with the research firm TechInsights, makes the case in the piece that the rising costs of flash memory have eaten into the remarkably juicy profit margins Apple has historically earned from higher-storage upgrades.\nWhat I also don’t get, at all, is the participation in the story by Scott Nelson, the chief marketing officer at Kioxia (which I learned in this story is the new name for the company formerly known as Toshiba Memory Corporation), a major flash supplier. Nelson told Winkler he so loathes Apple that he shot his old iPod with a rifle and keeps the pieces on his desk. The article ends thus:\nThe industry’s low point came in 2023. The Covid-era,\nwork-from-home device boom cooled, and flash prices bottomed out\nat 5 cents a gigabyte. Bernstein Research estimated the flash\nindustry generated operating losses of $19 billion that year,\nwhile Apple earned $14 billion in gross profit selling extra flash\nstorage.\nThose were tough times that “I hope we don’t ever see again,” said\nNelson, the Kioxia sales executive.\nYes, I’m sure the current AI datacenter mania will last forever, the bubble will never burst, and that even if it does, that no one at Apple will remember Nelson’s participation in this story.\n ★",
+      "id": "beae5691a18ef17eefbe33bdeb5c9fc6068e2913c3b5fd878822dae6d4f95985",
+      "ref_id": "3",
+      "recommendationScore": 80,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "详细剖析了苹果与芯片供应商之间的商业博弈和谈判策略。",
+      "reason": "提供了关于高优先级主题（Apple生态）的深度商业洞察，信息密度高，具有很强的行业分析价值。",
+      "tags": [
+        "Apple",
+        "商业策略",
+        "供应链",
+        "行业分析",
+        "商业新闻"
+      ]
+    },
+    {
+      "title": "Zombie stats: Where the numbers AI quotes come from",
+      "link": "https://trakkr.ai/trakkr-research/zombie-stats",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-29T15:06:17.000Z",
+      "summary": "Article URL: https://trakkr.ai/trakkr-research/zombie-stats\nComments URL: https://news.ycombinator.com/item?id=50290283\nPoints: 117\n# Comments: 57",
+      "id": "a1f8d24a51e36d46298d421e548d8eae69829234ac148f77efd2fa95ddfac22a",
+      "ref_id": "1",
+      "recommendationScore": 79,
+      "popularityScore": 12,
+      "priority": "high",
+      "comment": "深度揭示AI领域常见统计数据来源的批判性分析，极具价值。",
+      "reason": "针对AI领域的重要议题进行深入探讨，有助于提升读者对AI信息的辨别能力和批判性思维，实用性高。",
+      "tags": [
+        "AI",
+        "数据分析",
+        "信息批判",
+        "研究"
+      ]
+    },
+    {
+      "title": "LLM Voice",
+      "link": "https://martinfowler.com/bliki/LLM-Voice.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-29T14:57:55.000Z",
+      "summary": "Article URL: https://martinfowler.com/bliki/LLM-Voice.html\nComments URL: https://news.ycombinator.com/item?id=50290177\nPoints: 245\n# Comments: 134",
+      "id": "815e9f76383a90122a5efa264e464937c82e515631936c699eed9c27b99af25b",
+      "ref_id": "2",
+      "recommendationScore": 79,
+      "popularityScore": 26,
+      "priority": "high",
+      "comment": "Martin Fowler对LLM输出风格的深刻洞察，为AI应用开发提供关键设计思考。",
+      "reason": "知名专家从软件工程和产品设计的角度解析LLM核心问题，对构建高质量AI应用有直接指导意义，技术深度与实用性兼具。",
+      "tags": [
+        "AI",
+        "LLM",
+        "软件工程",
+        "产品设计",
+        "用户体验"
+      ]
+    },
+    {
+      "title": "Steven Levy on the New MacBook Pro, With, Yes, a Touchscreen",
+      "link": "https://www.wired.com/story/the-inside-story-of-why-apple-finally-brought-a-touch-display-to-the-mac/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-10-29T04:06:15.000Z",
+      "summary": "Steven Levy, writing at Wired with the scoop on the new MacBook Pros (News+ link):\nThis turnaround is a big deal to Apple fans. Ternus shrugs off the\ndrama. “The Mac is first and foremost an indirect input device,\nbuilt around the trackpad and keyboard. But I think there’s times\nwhen it’s comfortable and handy to have touch.”\nTernus and Apple want to make sure that the Mac faithful don’t\npanic that the 42-year-old franchise is losing its identity to\nApple’s gangbusters mobile products. “We needed to get to a point\nwhere adding touch didn’t make the product lesser in any way. It\ndidn’t make it heavier. It didn’t make it thicker. That came\ntogether with the OLED screen, the best display we’ve ever put\ninto a Mac,” Ternus told me. “All of these things, and, oh yeah,\nit has touch as well.”\nAfter a long fun day of hands-on exploration, briefings, and a slew of demos, not just most, but all of my concerns about touchscreen support adversely affecting the Mac UI have been allayed. I love it. These seem like exquisite machines even if you never want to touch the screen. I think what Ternus told Levy captures the truth of touch’s role: “All of these things, and, oh yeah, it has touch as well.”\n ★",
+      "id": "182b4170aeaa6aa6aea0ebef6672f799afa727ef24d2b34a370e8b47de15c79e",
+      "ref_id": "0",
+      "recommendationScore": 78,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "一篇及时且具有洞察力的MacBook Pro触摸屏功能评测。",
+      "reason": "详细介绍了MacBook Pro触摸屏的引入，消除了用户疑虑，对Apple生态用户具重要参考价值。",
+      "tags": [
+        "Apple",
+        "MacBook Pro",
+        "硬件",
+        "评测",
+        "触摸屏"
+      ]
+    },
+    {
+      "title": "The importance of communities around software",
+      "link": "https://lumi.codeberg.page/blog/software-community.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-29T19:27:47.000Z",
+      "summary": "Article URL: https://lumi.codeberg.page/blog/software-community.html\nComments URL: https://news.ycombinator.com/item?id=50294507\nPoints: 42\n# Comments: 36",
+      "id": "79b94b782a2d461369e598df331b6714c3b8c62a100e89fa37fd534606122928",
+      "ref_id": "2",
+      "recommendationScore": 70,
+      "popularityScore": 50,
+      "priority": "medium",
+      "comment": "强调了软件开发中社区构建的重要性，对于开发者和独立开发者具有参考价值。",
+      "reason": "内容对软件开发者和独立开发者具有高度实用性，关注了软件生态中的重要非技术因素。",
+      "tags": [
+        "软件开发",
+        "社区",
+        "开源",
+        "独立开发",
+        "软技能"
+      ]
+    },
+    {
+      "title": "Google Search is now less than half of Alphabet’s revenue",
+      "link": "https://www.kadoa.com/companies/insights/google-search-below-half",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-29T16:42:17.000Z",
+      "summary": "Article URL: https://www.kadoa.com/companies/insights/google-search-below-half\nComments URL: https://news.ycombinator.com/item?id=50291945\nPoints: 361\n# Comments: 307",
+      "id": "cc3a59c1530eae3246f8f02df55fed1b20bf619b66e76f44638d7cbadc6fddf0",
+      "ref_id": "0",
+      "recommendationScore": 60,
+      "popularityScore": 90,
+      "priority": "medium",
+      "comment": "文章分析了Google搜索业务在Alphabet总收入中的占比变化，揭示了公司业务结构转型。",
+      "reason": "提供了对科技巨头业务结构的深入洞察，但技术深度有限，且不直接聚焦于核心编程或AI技术。",
+      "tags": [
+        "科技公司",
+        "商业分析",
+        "Google",
+        "市场趋势"
+      ]
+    },
+    {
+      "title": "Extremely brief history of PDP computers",
+      "link": "https://entropicthoughts.com/history-of-pdp-computers",
+      "source": "entropicthoughts.com",
+      "publishedAt": "2026-10-28T23:00:00.000Z",
+      "summary": "I don’t know why I started to put this together. These machines fascinate me,\nbecause so much of early computing/hacker type culture happened on them. I\nstarted writing a table, but realised a timeline would be more intuitive. In\nthis graph, the price is for a minimal configuration and adjusted for inflation.\nThe time is the memory cycle time, a decent proxy for speed.\n\n\n\n\n\n\n\n\n\n\n\n\n\nSome notes:\n\n\n\n\n\nThe PDP-1 was created mostly as an experiment. At the time, industrial\ncontrol systems used either humans or complicated contraptions of logic boards\nto make decisions. Some engineers at DEC wanted to see if there was a\ncustomer base willing to use general-purpose computers instead.\nThe PDP-4 was a variant of PDP-1 that was a little slower and much\ncheaper. It was not compatible with the PDP-1. The PDP-4 was upgraded with\nnew chip technology and became the PDP-7, which was then optimised further\nfor cost and speed and became the PDP-9.\nThe PDP-5 was created when they realised the PDP-1 and PDP-4 machines\nwere overkill for industrial control systems. By being smaller, it could be\nmuch cheaper, at the cost of compatibility with PDP-1 and PDP-4. It was\nstill intended for roughly the same market. The chip upgrade turned it into\nthe PDP-8.\nThe PDP-6 was a completely different beast, aimed at a different market. It\nsupported having tonnes of directly-addressable memory, as well as memory\nprotection, so it could be used as a time-sharing system. The amount of memory\nmade it run Lisp well. With the chip upgrade, it became the PDP-10.\nThe PDP-11 was a new architecture again, intended to subsume all the\nprevious models, to avoid running three incompatible lines in parallel. There\nwere many variants of the PDP-11, with various performance characteristics\nand corresponding price points. However, even its most powerful configuration\nwasn’t powerful enough to attract many PDP-10 users.\nThe VAX came much later, but it’s included in the table anyway because it is\nwhat eventually subsumed the PDP-10. The VAX was somewhat compatible with\nthe PDP-11, but they served different markets.\n(Continue reading the full article on the web.)",
+      "id": "7e137b0467999a02460a5782bd64e07edd371c1f95cf9ef1d84143b2aba584cb",
+      "ref_id": "4",
+      "recommendationScore": 55,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "一篇关于PDP计算机系列发展史的简短且信息丰富的概述。",
+      "reason": "提供早期计算机发展的重要历史背景，信息密度高，对计算机历史爱好者有一定吸引力。",
+      "tags": [
+        "计算机历史",
+        "硬件",
+        "DEC",
+        "PDP"
+      ]
+    },
+    {
+      "title": "Celebrating SIM Cards",
+      "link": "https://blog.jim-nielsen.com/2026/celebrating-sim-cards/",
+      "source": "blog.jim-nielsen.com",
+      "publishedAt": "2026-10-29T19:00:00.000Z",
+      "summary": "It’s time to celebrate a little win.\nThe other day, my mom contacted me saying her 10-year-old iPhone wouldn’t turn on.\nAfter getting a hold of the device and doing some family IT support, I concluded the battery was dead.\nSo I bought her a new (old) one on Walmart (SE 3rd gen., if you must know).\nHer old phone used a SIM card, so I was expecting the process to go something like this:\nTake the SIM out of the old phone\nPut it in the new phone\nSetup the device\nTroubleshoot why there was no service\nCall my Mom’s carrier and work through the issue\nBut step 4 and 5 never happened.\nThe new phone “just” connected. I called her number. I texted it. Everything worked as expected.\nEverything worked as expected.\nEverything worked as expected.\nI didn’t have to Google a single question.\nI was floored.\nFlabbergasted.\nI know I shouldn’t have been because that’s how SIM cards are supposed to work, right? Like that’s the whole promise of a SIM card: you can seamlessly swap them between phones.\nAnd in this case, the tech worked exactly as promised.\nAs I write this, I’m kind of amazed at how amazed I am that everything “just worked”.\nShout out to anyone who has ever worked on SIM card technology.\nMore things like this please :)\nEmail\n      · Mastodon ·\n\n      Bluesky",
+      "id": "5d280100b264fa22d023bedb2cb31b2472b69a1cb48d6ae46cb00e27ea2f1b8c",
+      "ref_id": "1",
+      "recommendationScore": 55,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "以个人经历赞美SIM卡即插即用的便捷性，轻松有趣但技术深度一般。",
+      "reason": "故事性强，用户体验视角有共鸣，但缺乏深入技术探讨或新颖洞见。",
+      "tags": [
+        "移动通信",
+        "用户体验",
+        "Apple生态 (关联)",
+        "SIM卡"
+      ]
+    },
+    {
+      "title": "The Download: AI agent tracking and climate feedback loops",
+      "link": "https://www.technologyreview.com/2026/10/29/1147830/the-download-monitoring-ai-agents-climate-feedback-loops/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-10-29T12:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. Opinion: We urgently need to monitor AI agents’ actions in real time —Madhulika Srikumar and Claire Leibowicz from the Partnership on AI, a nonprofit advancing best practices in AI governance. AI…",
+      "id": "8ce52d4dd6132dca78922b6dad44901ed599e4ed6e47f36617120a626cf763b6",
+      "ref_id": "0",
+      "recommendationScore": 40,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "一篇新闻摘要，介绍了AI代理监控和气候反馈循环两个主题，内容深度和信息密度不足。",
+      "reason": "标题指向热门AI治理话题，但文章本身更像内容导览而非深度分析。",
+      "tags": [
+        "AI",
+        "AI治理",
+        "新闻摘要",
+        "简报"
+      ]
+    },
+    {
+      "title": "Duet is the future of chatbot interaction",
+      "link": "https://fig.blue/posts/duet-is-the-future/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-29T17:24:25.000Z",
+      "summary": "Article URL: https://fig.blue/posts/duet-is-the-future/\nComments URL: https://news.ycombinator.com/item?id=50292727\nPoints: 31\n# Comments: 18",
+      "id": "aef342337ed8ac4ec3fb23a3d1eaeb43e5ce1430bbd40fbee5e1f77cef3cb6e6",
+      "ref_id": "3",
+      "recommendationScore": 35,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "标题暗示了AI驱动的聊天机器人交互设计创新，但文章内容缺失，无法详细评估。",
+      "reason": "主题与AI和产品设计相关，有潜在价值，但由于仅提供标题和链接，具体技术深度和实用性难以判断。",
+      "tags": [
+        "AI",
+        "聊天机器人",
+        "用户交互",
+        "产品设计"
+      ]
+    },
+    {
+      "title": "I went to Mexico to test-drive the cars Americans can’t buy",
+      "link": "https://www.washingtonpost.com/climate-environment/2026/10/27/i-saw-future-driving-mexico-its-off-limits-americans/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-29T15:30:22.000Z",
+      "summary": "https://archive.ph/sGqBh\nComments URL: https://news.ycombinator.com/item?id=50290668\nPoints: 260\n# Comments: 282",
+      "id": "f26894c1f4d2da6b29b497861b316ad0b26fa822ba0c546804d235fcfb5cc670",
+      "ref_id": "0",
+      "recommendationScore": 33,
+      "popularityScore": 27,
+      "priority": "low",
+      "comment": "一篇关于汽车消费体验的文章，与科技博客的核心关注点关联性较低。",
+      "reason": "内容更偏向生活方式和汽车文化，缺乏技术深度和对核心读者群（AI, 编程工具等）的实用价值。",
+      "tags": [
+        "汽车",
+        "生活方式",
+        "消费体验"
+      ]
+    },
+    {
+      "title": "16colo.rs – ANSI/ASCII art archive",
+      "link": "https://16colo.rs/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-29T16:14:28.000Z",
+      "summary": "Article URL: https://16colo.rs/\nComments URL: https://news.ycombinator.com/item?id=50291421\nPoints: 59\n# Comments: 5",
+      "id": "75953fc43e94d4d024a6ef57f24def4926b72c52cfd4344dd238c91fedaab560",
+      "ref_id": "1",
+      "recommendationScore": 30,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "一个复古ANSI/ASCII艺术的在线档案库，主要提供视觉内容和怀旧情怀。",
+      "reason": "内容偏向小众艺术收藏和怀旧，与科技博客关注的AI、编程工具等主题相关性较低。",
+      "tags": [
+        "怀旧",
+        "艺术",
+        "ASCII",
+        "复古"
+      ]
+    },
+    {
+      "title": "Our climate models have a big, dangerous blind spot",
+      "link": "https://www.technologyreview.com/2026/10/29/1147735/climate-models-blind-spot/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-10-29T10:00:00.000Z",
+      "summary": "Climate change itself is increasingly fueling climate change. Rising concentrations of greenhouse gases are driving up global temperatures, setting off dangerous feedback loops that we have not fully accounted for in our climate models—or our emissions-reduction goals. Scientists have long warned that warming would propel further warming in various ways, but a growing number of…",
+      "id": "69c7dbeddf2248ad30780c42d8bb8740642f5fb14ed16763b26a59eb20f4935b",
+      "ref_id": "2",
+      "recommendationScore": 30,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "探讨气候模型中的关键盲点及气候反馈循环，主题对本科技博客而言优先级较低。",
+      "reason": "内容虽具科学价值，但与AI、编程等核心关注领域关联度不高，不符合博客主要方向。",
+      "tags": [
+        "气候变化",
+        "环境科学",
+        "模型",
+        "全球问题"
+      ]
+    },
+    {
+      "title": "Alleged Chinese spy had 'close relationship' with Nvidia boss Jensen Huang",
+      "link": "https://nypost.com/2026/10/29/business/alleged-chinese-spy-had-close-relationship-with-nvidia-boss-jensen-huang-report/",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-29T17:43:48.000Z",
+      "summary": "https://www.nytimes.com/2026/10/29/us/politics/nvidia-china-..., https://archive.ph/K7bih\nComments URL: https://news.ycombinator.com/item?id=50293047\nPoints: 120\n# Comments: 60",
+      "id": "18f639dbd639041a659188871ebe4452466e32c1ca731114864730d994da35e7",
+      "ref_id": "1",
+      "recommendationScore": 20,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "一篇关于Nvidia高管与 alleged Chinese spy 关系的政治性新闻报道，内容与科技深度无关。",
+      "reason": "主题为政治八卦而非技术讨论，不符合科技博客评估维度，提供的文章内容仅为链接。",
+      "tags": [
+        "新闻",
+        "Nvidia",
+        "政治"
+      ]
+    },
+    {
+      "title": "Tomáš Mikolov awarded the Medal of Merit by the President of the Czech Republic",
+      "link": "https://www.vut.cz/en/but/news-f19528/two-but-graduates-received-state-honors-from-the-president-of-the-republic-d378468",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-29T16:56:54.000Z",
+      "summary": "Article URL: https://www.vut.cz/en/but/news-f19528/two-but-graduates-received-state-honors-from-the-president-of-the-republic-d378468\nComments URL: https://news.ycombinator.com/item?id=50292233\nPoints: 139\n# Comments: 14",
+      "id": "9cd70f4ea49ef510e7ab4d17d8556cc7f96a161a489f9f60f872e8a2001af483",
+      "ref_id": "4",
+      "recommendationScore": 15,
+      "popularityScore": 55,
+      "priority": "low",
+      "comment": "关于Word2Vec等重要AI算法贡献者Tomáš Mikolov获得荣誉的报道。",
+      "reason": "内容为人物新闻而非技术文章，虽与AI领域名人相关，但缺乏技术深度和实用价值。",
+      "tags": [
+        "AI人物",
+        "新闻",
+        "NLP"
+      ]
+    },
+    {
+      "title": "The Space Shuttle Discovery’s Starboard Side ‘s’ Is Upside Down",
+      "link": "https://www.theautopian.com/a-typography-geek-pointed-out-something-about-the-space-shuttle-discovery-and-now-i-cant-unsee-it/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-10-29T15:06:56.000Z",
+      "summary": "How Jason Snell beat me to linking to this, I don’t know. But like I said back in February, when it comes to signage, “Mind your P’s and Q’s” ought to be “Mind your H’s and S’s”.\n ★",
+      "id": "a88966c4d239355b6b5c6d232f2e2d43e3431867275af28a713fe82c35bff1cc",
+      "ref_id": "4",
+      "recommendationScore": 15,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "一篇关于航天飞机标识细节的趣闻，趣味性有余但科技价值不足。",
+      "reason": "内容过于琐碎，与科技博客的主题关联度低，缺乏深度和实用性。",
+      "tags": [
+        "趣闻",
+        "非技术",
+        "设计细节"
+      ]
+    },
+    {
+      "title": "After 28 years walking across the globe, he's almost home",
+      "link": "https://www.nytimes.com/2026/10/29/world/europe/karl-bushby-walking-globe-uk.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-29T17:42:22.000Z",
+      "summary": "https://archive.ph/NCeML\nComments URL: https://news.ycombinator.com/item?id=50293023\nPoints: 59\n# Comments: 30",
+      "id": "4d3a942232fd846ac9e3d97b79b8a520809b0b3faf034f4fa6067b63119ef672",
+      "ref_id": "2",
+      "recommendationScore": 13,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "一篇关于全球徒步旅行者的非技术性人文故事报道，与科技主题无关。",
+      "reason": "内容与科技博客的关注主题完全无关，不具备任何技术深度或实用性。",
+      "tags": [
+        "人文",
+        "生活"
+      ]
+    },
+    {
+      "title": "A Health Update From Craig Hockenberry",
+      "link": "https://furbo.org/2026/10/28/a-health-update/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-10-29T19:57:21.000Z",
+      "summary": "Craig Hockenberry:\nIf you noticed that the Iconfactory sites were kinda broken last\nweek, now you know why. It’s because I was kinda broken last week.\nNow I’m finishing this post from a comfy chair on our deck. Typing\ninto the latest version of WordPress and PHP. And I couldn’t be\nhappier.\nNo, you teared up a little reading this.\nVery good news from a very good friend.\n ★",
+      "id": "8b78d1798ec7fdf38841fe20282c82629cc4ad5218ec68327d307136782e50d3",
+      "ref_id": "2",
+      "recommendationScore": 10,
+      "popularityScore": 25,
+      "priority": "low",
+      "comment": "一篇个人健康更新，不属于科技博客的主要内容范畴。",
+      "reason": "文章缺乏技术深度和实用性，与科技主题关联度低。",
+      "tags": [
+        "个人动态",
+        "非技术"
+      ]
+    },
+    {
+      "title": "What I learned about power from LBJ and Robert Moses",
+      "link": "https://www.dwarkesh.com/p/lessons-in-power",
+      "source": "dwarkesh.com",
+      "publishedAt": "2026-10-29T16:48:39.000Z",
+      "summary": "Preparing to interview Robert Caro.",
+      "id": "ff21bdff1eb6b64f4a474052164a5bdc7d95422b3aafb2038a3f7ca0280cdf77",
+      "ref_id": "0",
+      "recommendationScore": 10,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "内容与科技主题无关，偏向历史人物研究。",
+      "reason": "不符合科技博客的核心关注点，技术深度和实用性缺失。",
+      "tags": [
+        "非科技",
+        "历史",
+        "人物传记"
+      ]
+    },
+    {
+      "title": "You can just ask AI to do things",
+      "link": "https://seangoedecke.com/you-can-just-ask-ai-to-do-things/",
+      "source": "seangoedecke.com",
+      "publishedAt": "2026-10-29T00:00:00.000Z",
+      "summary": "",
+      "id": "2662b5a33a0883954f681c65ec8e15ad324e3868364ad738fdd2af22917dfada",
+      "ref_id": "1",
+      "recommendationScore": 5,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "标题提及AI主题，但内容为空，无法评估技术深度和实用性。",
+      "reason": "潜在的高优先级主题，但目前无任何信息，不具备发表价值。",
+      "tags": [
+        "AI",
+        "内容缺失",
+        "潜在主题"
+      ]
+    },
+    {
+      "title": "Patrick Stewart has died",
+      "link": "https://www.nytimes.com/2026/10/29/arts/television/patrick-stewart-dead.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-10-29T19:41:39.000Z",
+      "summary": "https://archive.ph/y4Egm\nhttps://en.wikipedia.org/wiki/Patrick_Stewart\nComments URL: https://news.ycombinator.com/item?id=50294702\nPoints: 977\n# Comments: 180",
+      "id": "359d8adedf56d9a882b5a64e94d70418b5f6fbfe6303124c1a894b851e18e10d",
+      "ref_id": "1",
+      "recommendationScore": 0,
+      "popularityScore": 95,
+      "priority": "low",
+      "comment": "与科技博客主题无关的娱乐新闻，不适合推荐。",
+      "reason": "文章内容涉及名人去世，与科技博客关注的AI、Apple生态、编程工具等主题完全不符。",
+      "tags": [
+        "新闻",
+        "娱乐"
+      ]
+    },
+    {
+      "title": "Building a multiplayer game world with autonomous Fable-class models",
+      "link": "https://simonwillison.net/2026/Oct/29/how-i-built-the-most-ai-pilled-company-in-the-world/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-10-29T17:00:26.000Z",
+      "summary": "",
+      "id": "a41c6b1e5e903c631014638bfe27543e223a1d7bebe3f05e5649bf66747bb7ea",
+      "ref_id": "3",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "文章内容缺失，无法进行有效评估。标题暗示可能与AI在游戏开发中的应用有关。",
+      "reason": "缺少核心内容，无法判断其价值和相关性。",
+      "tags": [
+        "AI",
+        "游戏开发",
+        "内容缺失",
+        "无法评估"
+      ]
+    },
+    {
+      "title": "Quoting Ben Hylak",
+      "link": "https://simonwillison.net/2026/Oct/29/ben-hylak/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-10-29T14:06:27.000Z",
+      "summary": "",
+      "id": "95cafd4597e819bbe57ba74c5b4c9b77f38ef5092cf9cdaf73782b53efeb7bef",
+      "ref_id": "4",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "文章内容缺失，标题模糊，无法评估。",
+      "reason": "缺少核心内容，无法判断其价值和相关性。",
+      "tags": [
+        "内容缺失",
+        "无法评估"
+      ]
+    },
+    {
+      "title": "Quoting Ted Sanders",
+      "link": "https://simonwillison.net/2026/Oct/28/ted-sanders/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-10-28T23:23:21.000Z",
+      "summary": "",
+      "id": "da9c62c52f6c35e6916b07245e2a0775f3119e140ea4c4101fd2bd36f52592d3",
+      "ref_id": "0",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "文章内容缺失，无法进行有效评估。",
+      "reason": "无任何实质内容，不具备发表价值。",
+      "tags": [
+        "内容缺失",
+        "无法评估"
+      ]
+    },
+    {
+      "title": "A New Kind of Chemistry",
+      "link": "https://www.construction-physics.com/p/a-new-kind-of-chemistry",
+      "source": "construction-physics.com",
+      "publishedAt": "2026-10-29T15:45:10.000Z",
+      "summary": "Thanks to Kyle Schiller at Marathon Fusion for conversations and information that informed this essay.",
+      "id": "81b38f560f77397bc72acf6671c8112754c8b5ac01ec85e4bc548219667f3585",
+      "ref_id": "3",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "文章正文缺失，无法评估。",
+      "reason": "文章正文缺失，仅为致谢，不具备可读性或信息价值。",
+      "tags": []
+    }
+  ]
+}
