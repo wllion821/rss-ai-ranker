@@ -1,0 +1,706 @@
+{
+  "dailySummary": "今日科技速递：AI代理正提升软件测试与数据分析效率。大模型研究关注权重操控、对齐难题及安全风险。静默语音交互技术亦开辟人机互动新可能。",
+  "articles": [
+    {
+      "title": "Astra can read and write weights to improve Qwen",
+      "link": "https://rikiyat.github.io/blog/weight-space-programming/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-02T18:21:28.000Z",
+      "summary": "Article URL: https://rikiyat.github.io/blog/weight-space-programming/\nComments URL: https://news.ycombinator.com/item?id=50341174\nPoints: 1564\n# Comments: 508",
+      "id": "f9ecf66c18226a74f1d159fc916dfac1c7575b708ada8fac0fe91f44e9ec5f44",
+      "ref_id": "4",
+      "recommendationScore": 98,
+      "popularityScore": 100,
+      "priority": "high",
+      "comment": "介绍了一种通过直接读写模型权重来提升Qwen性能的开创性方法。",
+      "reason": "展示了LLM优化领域的最新突破，技术深度极高，实用性强，并且市场关注度极高，是AI领域的重磅文章。",
+      "tags": [
+        "AI",
+        "LLM",
+        "模型优化",
+        "深度学习",
+        "Qwen",
+        "权重编程"
+      ]
+    },
+    {
+      "title": "Reliably aligning LLMs is impossible in principle",
+      "link": "https://seangoedecke.com/alignment-is-impossible/",
+      "source": "seangoedecke.com",
+      "publishedAt": "2026-11-02T00:00:00.000Z",
+      "summary": "",
+      "id": "8f5c9968f5b6c6a6d2263073a7412617ea57a01722b813f32448da15e658bed4",
+      "ref_id": "3",
+      "recommendationScore": 95,
+      "popularityScore": 92,
+      "priority": "high",
+      "comment": "提出了大型语言模型对齐在原则上不可能实现的颠覆性理论观点。",
+      "reason": "深入探讨了AI伦理与安全的未来方向，具有极高的理论深度和潜在影响力，对AI领域具有里程碑式的意义。",
+      "tags": [
+        "AI",
+        "LLM",
+        "AI安全",
+        "AI伦理",
+        "对齐问题",
+        "理论突破",
+        "哲学"
+      ]
+    },
+    {
+      "title": "Launch HN: Momentic (YC W24) – Agents that catch bugs by using your app",
+      "link": "https://momentic.ai/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-02T17:05:25.000Z",
+      "summary": "Hey HN, we’re Wei-Wei and Jeff. We’re building Momentic, QA agents that autonomously plan, explore, and bug-bash controls and user flows in your web, iOS, Android, and (soon) desktop apps to catch bugs.\nHere’s a demo: https://youtu.be/BFsM-Se1Fh8\nWe’re both software engineers that spent our careers on dev tooling and infra across companies like Robinhood, Retool, WeWork, and Qualtrics. Testing was always a pain in the ass (esp Playwright and Selenium), so we built agents to do it for us.\nModern day software has a ton of bugs and the change failure rate is only growing faster as coding agent adoption scales. LLMs are really good at generating code, but reinforce their own assumptions, write a ton of useless tests, and are bad at visual understanding. On DeepSWE v1.1, Sonnet 5.5 hit 66.2% pass rate when banned from writing tests, versus 65.3% when allowed.\nOSS end-to-end testing frameworks like Playwright, Selenium, or Maestro force you to hardcode implementation details like XPath, text, or aria-* attributes in your tests. Even with agents, these take a nontrivial amount of time and tokens to build and maintain.\nIn 2023, we saw Nat Friedman drive a browser with GPT-3 via natbot. We were inspired to use this technology to automate the most painful and tedious parts of software engineering: testing. We started with using LLMs to generate and maintain Playwright, but quickly realized that those primitives were fundamentally misaligned with the agentic SDLC. We think the future of QA is agents testing themselves, not writing scripts.\nMo is a custom agent harness for catching bugs that builds on the past 3 years of Momentic and millions of test traces from complex, real-world applications. Mo is built for recall: it finds the most real bugs, though Codex is a bit more precise at 86% vs 84%. The tradeoff is cost: Mo costs $2.67 per bug vs $0.80 for Codex, less than Claude Code and Devin.\n- Self-organizing agent graph. Mo builds a directed acyclic graph (DAG) as it explores. Large product areas automatically fork into parallel sub-agents, each with their own browser or device for concurrent execution.\n- Specialized agents for domain specific tasks. Planner agents reason over screenshots and video while dedicated locator agents inspect page structure to resolve plain-English interaction targets. Others include image analysis, video understanding, audio generation, and more.\n- Parallel agents coordinate through cooperative resource leases. Agents can announce that they’re “using” or “modifying” overlapping resources or fixtures. Multiple “using” claims can coexist, but only a single “modifying” claim can be active on any particular one.\n- Scaled infrastructure. Mo ships with a tunnel that lets users expose private sites and local apps to our hosted agents and infra. A single bug bash can spin up 100s of concurrent browsers and devices.\nWe benchmarked Mo against coding agents on 4 popular open-source apps: Gitea (58.8k stars), Metabase, Twenty (YC), and Saleor, with 1,396 human-labeled bugs. Each agent got the same brief, a fresh E2B sandbox, and no access to source code. Codex and Claude Code used hosted Browserbase browsers, while Devin used its built-in browser. For evaluators, we implemented LLM as a judge (GPT-6.1 Sol) with a human reviewer.\nResults from a time-boxed 60-minute run:\n- Mo: 269 bugs, 19.3% recall, 84% precision, $2.67 per bug\n- Codex (GPT-6.1 Sol + Playwright MCP): 86 bugs, 6.2% recall, 86% precision, $0.80 per bug\n- Claude Code (Opus 5.5 + Playwright MCP): 59 bugs, 4.2% recall, 80% precision, $4.09 per bug\n- Devin: 27 bugs, 1.9% recall, 84% precision, $3.89 per bug\nMo finds more bugs the more time it has. From 30 to 60 minutes, it went from 177 to 269 bugs (+52%), while Codex gained only 16%.\nResults: https://momentic.ai/qa-bench\nWrite-up: https://momentic.ai/blog/qa-bench\nDataset: https://huggingface.co/datasets/momentic/qa-bench\nHarness: https://github.com/momentic-ai/qa-bench\nWe just shipped PR testing for Vercel and Cloudflare deploy previews and we’re giving every new signup $250 in Mo spend. Paid plans have higher infra capacity and included usage along with options to top up.\nWe’d love for you to try it out and give us feedback. Feel free to comment here, we’ll be around all day!\nComments URL: https://news.ycombinator.com/item?id=50339913\nPoints: 104\n# Comments: 70",
+      "id": "570f5e1efb5964ca71378f8912fd84517cb3958f6b4f348190c33995b5d684fd",
+      "ref_id": "1",
+      "recommendationScore": 92,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "AI驱动的自主测试代理，革新传统软件QA流程，大幅提升开发效率。",
+      "reason": "将AI智能代理应用于自动化测试，直击软件开发中的核心痛点，技术前沿且实用性极高，完美契合AI、编程工具和自动化主题。",
+      "tags": [
+        "AI",
+        "自动化测试",
+        "编程工具",
+        "软件开发",
+        "DevOps",
+        "初创公司"
+      ]
+    },
+    {
+      "title": "Agentic backdoors via pretraining poisoning",
+      "link": "https://arxiv.org/abs/2610.37741",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-02T18:30:58.000Z",
+      "summary": "Article URL: https://arxiv.org/abs/2610.37741\nComments URL: https://news.ycombinator.com/item?id=50341334\nPoints: 78\n# Comments: 22",
+      "id": "dc7eb9e8885fba44653ad09d64cdb266447e5bc3620595b621c7b06581ffdc3a",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 5,
+      "priority": "high",
+      "comment": "深入探讨了AI模型预训练中毒导致的Agentic后门问题，是前沿的AI安全研究。",
+      "reason": "提供了关于AI安全性和对抗性攻击前沿研究的深刻见解，对AI开发者和研究人员至关重要。",
+      "tags": [
+        "AI安全",
+        "机器学习",
+        "对抗性攻击",
+        "预训练",
+        "研究"
+      ]
+    },
+    {
+      "title": "Self-Employed? Solopreneur? NIST Has a Cybersecurity Guide Just for You",
+      "link": "https://www.nist.gov/news-events/news/2026/11/self-employed-solopreneur-nist-has-cybersecurity-guide-just-you",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-02T17:47:40.000Z",
+      "summary": "Article URL: https://www.nist.gov/news-events/news/2026/11/self-employed-solopreneur-nist-has-cybersecurity-guide-just-you\nComments URL: https://news.ycombinator.com/item?id=50340619\nPoints: 48\n# Comments: 14",
+      "id": "ea9ecc5119c8cf4ddfb858dbf65e9244cb2dcee8c43aea7601755daa7ed162cd",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 60,
+      "priority": "high",
+      "comment": "NIST为个体经营者和独立开发者提供的网络安全指南，实用性极高，是必读内容。",
+      "reason": "内容直接解决了独立开发者和个体经营者的重要安全痛点，实用价值突出，且网络安全是所有技术领域的基础。",
+      "tags": [
+        "网络安全",
+        "独立开发",
+        "NIST",
+        "实用指南"
+      ]
+    },
+    {
+      "title": "Show HN: Subvocal – Talk to your computer without making noise",
+      "link": "https://news.ycombinator.com/item?id=50340088",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-02T17:16:17.000Z",
+      "summary": "Hi HN, we're Aarush and Arnav from The Subvocal Company (YC F26) (https://subvocal.company/). We’re building smart glasses that let you talk to your computer without talking out loud. You can mouth words silently and discreetly and the glasses decode them to text at the speed of speech.\nHere's a video of Dave from YC trying it out: https://www.youtube.com/watch?v=9QdX1eObVYI\n(Edit: you don't actually have to move your lips or even open your mouth for this to work! Since the RF can see inside your mouth the system can be fine tuned on \"internal speech\". This isn't the automatic tongue movements that occur when \"thinking\" words to yourself, but more like mouthing with your lips closed. It's a bit weird to do, but with practice, we have been able to get it down pretty well.)\nArnav and I were studying CS at Georgia Tech at the beginning of the year, with no experience in silent speech or sensing. We were both AI-native builders and power users of Wispr Flow. What bugged us was not being able to use these tools in the library (or an office) or in public. At Stanford’s TreeHacks in February, we decided to build the most technically ridiculous thing we could think of. We’d read about AlterEgo, a silent speech system out of MIT’s Media Lab, and wanted to recreate it in 36 hours. We built a crude prototype, sticking EMG electrodes onto my face:\nhttps://drive.google.com/file/d/1mwhv5HZMz3UTevdrgwS5O7g2jWV...\nWe got it to kind of work at a letter level in a very janky way. It wasn’t good enough to win the hackathon, but convinced us to go all in. The first time I typed a sentence without anyone noticing, I felt the magic of the technology.\nWe quickly realized EMG (reading muscle electrical signals) wouldn’t work:\n- Signal changes due to sweat\n- Electrical interference\n- Placement variability\n- Most importantly, no one wants to stick electrodes onto their face!!\nSo we switched to RF and built the glasses you see now. They emit radio waves, similar to Bluetooth, that pass through your face. As they cross the tongue, lips and soft palate, they’re modulated by silent mouthing. We train foundation models on this data to decode these perturbations to text.\nDespite prior academic research, getting this to work was a huge engineering challenge. First we built an extremely low noise RF sensing stack. Then we had to place antennas so their fields overlapped maximally with the articulators. Our first attempt on glasses failed completely, so we reverted to old habits and taped antennas on our face:\nhttps://drive.google.com/file/d/1ks0dS0eZiTV9EqSFsyB_w5BBjpc...\nSince taping antennas consistently in the same spot and angle was hard, we created this weird but effective head rig to hold them in place:\nhttps://drive.google.com/file/d/1rhzNFpdDzr7oHk0isFY70dkoV4C...\nThis worked, but obviously wasn’t a product yet. So we worked deep in simulations to design glasses that could hold the antennas.\nThat evolved into our design now, with antennas embedded within the frames. Once we established there was a signal, the next hurdle was cross-user generalization. Everyone’s facial anatomy, and hence RF signal patterns, are vastly different. We tried algorithmic workarounds but realized the only lever was to massively scale pretraining data.\nSo that’s what we did. We set up booths in our office and paid people to read prompts wearing our glasses, to pretrain our models on. This produced a beautiful scaling curve, with errors falling quickly as we scaled our dataset and cross-user performance becoming genuinely compelling (as you see in the video above; Dave only had a short 20-sentence calibration).\nWe always heard about building things from first principles but never understood it before this. We tried tackling it top down but completely failed. Only when we broke each component (the antenna, electronics, ML) down to its fundamentals to understand and optimize it did we get it to work really well.\nOver the next few months we’re continuing R&D to turn our prototype glasses into the slick product on our website and ship in Q1 2027. We’re also scaling up our dataset to improve performance on edge cases.\nFor anyone who loves voice dictation but hates using it around people, we’ve opened preorders for our first batch of 500 units, with a $200 discount off the final price. Allocation is running out quickly, so get yours at https://subvocal.co/preorder!\nComments URL: https://news.ycombinator.com/item?id=50340088\nPoints: 464\n# Comments: 256",
+      "id": "b00f3c61979d2dea4922d18a9b712fc6f1c29b983a9b8149920f2091a4b92746",
+      "ref_id": "0",
+      "recommendationScore": 90,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "开创性AI静默语音识别技术，提供无声交互新范式。",
+      "reason": "该项目利用射频技术识别内部言语并转换为文本，技术概念极其新颖，具备高未来应用潜力，高度符合AI主题的优先级。",
+      "tags": [
+        "AI",
+        "语音识别",
+        "智能硬件",
+        "人机交互",
+        "初创公司"
+      ]
+    },
+    {
+      "title": "Stop counting tokens, start counting what ships",
+      "link": "https://www.technologyreview.com/2026/11/02/1147702/stop-counting-tokens-start-counting-what-ships/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-11-02T13:10:32.000Z",
+      "summary": "When a developer gives an AI agent a coding task, the agent does more than answer once. It plans, generates code, runs tests, and repeats the process to correct errors. A single task can use 10 to 50 times more tokens than a basic chat prompt. The more useful the agent becomes, the more calls…",
+      "id": "8d847b3ebc262e19a01af2226735b2710e46f0e744e6710af87340a4da873a6f",
+      "ref_id": "1",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "强调AI编程代理在实际任务中高昂的Token成本，并提出关注产出而非Token消耗的实用视角。",
+      "reason": "文章切中AI开发和成本优化的实际痛点，提供了对效率和价值衡量的新颖思考，对开发者和产品经理极具参考价值。",
+      "tags": [
+        "AI",
+        "Coding Agents",
+        "LLM Costs",
+        "Development Workflow",
+        "Productivity",
+        "Programming Tools"
+      ]
+    },
+    {
+      "title": "LLMs are not superhuman at reading and writing neural network weights",
+      "link": "https://seangoedecke.com/llms-are-not-superhuman-at-reading-and-writing-neural-network-weights/",
+      "source": "seangoedecke.com",
+      "publishedAt": "2026-11-03T00:00:00.000Z",
+      "summary": "",
+      "id": "3d8c696758675ee1b3baa7c0820627bf6c5d09429d30477747a7aa1cefc4f0ff",
+      "ref_id": "1",
+      "recommendationScore": 88,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "深入剖析大型语言模型在处理神经网络权重方面的固有局限性。",
+      "reason": "揭示了AI前沿技术的关键限制，对LLM研究和应用有重要指导意义，技术深度和新颖性较高。",
+      "tags": [
+        "AI",
+        "LLM",
+        "神经网络",
+        "局限性",
+        "深度学习",
+        "研究"
+      ]
+    },
+    {
+      "title": "Egoless Mathematics in the AI Era",
+      "link": "https://terrytao.wordpress.com/2026/11/02/egoless-mathematics-in-the-ai-era/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-02T18:54:44.000Z",
+      "summary": "Article URL: https://terrytao.wordpress.com/2026/11/02/egoless-mathematics-in-the-ai-era/\nComments URL: https://news.ycombinator.com/item?id=50341736\nPoints: 89\n# Comments: 68",
+      "id": "fcfbe0256d6ca2b680d1e993af56915dfa8a7f42d7ac74115598a7bf7a7853f8",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 6,
+      "priority": "high",
+      "comment": "探讨了AI时代下数学研究的深层哲学思考，由权威人士撰写。",
+      "reason": "提供了关于AI如何影响科学思维和研究方法的新颖视角，对AI研究者和思想者具有启发性。",
+      "tags": [
+        "AI",
+        "数学",
+        "哲学",
+        "研究方法",
+        "Terry Tao"
+      ]
+    },
+    {
+      "title": "Raising the quality of insights in agentic analytics",
+      "link": "https://www.technologyreview.com/2026/11/02/1147660/raising-the-quality-of-insights-in-agentic-analytics/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-11-02T17:00:00.000Z",
+      "summary": "In just a few years, generative AI has changed the face of enterprise analytics, notably by making analytics accessible to users across the organization. Agentic AI promises to do even more, by automating entire workflows and taking actions based on agent insights. But there is a problem: The quality of insights that agents currently generate…",
+      "id": "b475b7dcc2276d63203ffeb5959c5cae813a217fd0208b255df456a8d1203bb2",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "深入探讨了Agentic AI在企业分析中洞察质量的挑战，并提出潜在改进方向。",
+      "reason": "文章关注AI前沿领域的关键挑战，提供高价值的理论分析和潜在解决方案，对企业应用AI有指导意义。",
+      "tags": [
+        "AI",
+        "Agentic AI",
+        "Enterprise Analytics",
+        "Data Quality",
+        "Insight Generation"
+      ]
+    },
+    {
+      "title": "Skill to Create Product Videos",
+      "link": "https://github.com/aaitor/skill-video-studio",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-02T18:10:39.000Z",
+      "summary": "Article URL: https://github.com/aaitor/skill-video-studio\nComments URL: https://news.ycombinator.com/item?id=50340992\nPoints: 49\n# Comments: 17",
+      "id": "d752f3f7f03dcf886c3ad857d07c97499e6161e478502442ebdda28b1e05824d",
+      "ref_id": "1",
+      "recommendationScore": 80,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "提供了创建产品视频的实用技能或工具，对独立开发者和产品设计者极具价值。",
+      "reason": "直接解决了产品展示和市场推广的痛点，对目标受众有高度实用性，符合独立开发和产品设计主题。",
+      "tags": [
+        "独立开发",
+        "产品设计",
+        "视频制作",
+        "市场推广",
+        "工具"
+      ]
+    },
+    {
+      "title": "Can’t fish Ethernet? Use “invisible” fiber instead",
+      "link": "https://momandpop.network/2026/11/02/cant-fish-ethernet-use-invisible-fiber-instead/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-02T21:42:18.000Z",
+      "summary": "Article URL: https://momandpop.network/2026/11/02/cant-fish-ethernet-use-invisible-fiber-instead/\nComments URL: https://news.ycombinator.com/item?id=50344222\nPoints: 29\n# Comments: 28",
+      "id": "2506d3198fc957ada65f717cb2965077af19a6db1e7fe5d3e29e7b9fbd7ebcaf",
+      "ref_id": "3",
+      "recommendationScore": 75,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "提供了一种使用“隐形光纤”替代传统以太网布线的创新解决方案。",
+      "reason": "文章提出了解决常见网络布线问题的实用且新颖的方法，对于DIY爱好者或小型办公室用户极具参考价值。",
+      "tags": [
+        "网络",
+        "光纤",
+        "DIY",
+        "自动化",
+        "实用技巧"
+      ]
+    },
+    {
+      "title": "Ubuntu still has not released patch for Linux 0day RCE in almost 3 weeks",
+      "link": "https://freenode.net/article/ubuntu-lts-kernels-still-unfixed-for-critical-cve-2026-98432",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-02T18:39:38.000Z",
+      "summary": "Article URL: https://freenode.net/article/ubuntu-lts-kernels-still-unfixed-for-critical-cve-2026-98432\nComments URL: https://news.ycombinator.com/item?id=50341462\nPoints: 233\n# Comments: 38",
+      "id": "81a05a5d9bd4a46320e8379d565b9b2c417db4d91aeee0488f3956d850a1f469",
+      "ref_id": "2",
+      "recommendationScore": 75,
+      "popularityScore": 15,
+      "priority": "medium",
+      "comment": "警示Ubuntu用户一个严重且未修复的Linux 0day RCE漏洞。",
+      "reason": "提供了关于操作系统安全的关键信息，对系统管理员和开发者具有直接的实用价值和警示作用。",
+      "tags": [
+        "Linux",
+        "Ubuntu",
+        "安全",
+        "漏洞",
+        "运维",
+        "RCE"
+      ]
+    },
+    {
+      "title": "Polyend releases the Tracker firmware source code",
+      "link": "https://polyend.com/whats-up/tracker-the-biggest-update-yet/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-02T17:20:13.000Z",
+      "summary": "Article URL: https://polyend.com/whats-up/tracker-the-biggest-update-yet/\nComments URL: https://news.ycombinator.com/item?id=50340159\nPoints: 54\n# Comments: 9",
+      "id": "fd9e0c819d6800e8eeb40a5e97fffcb6ea1c35cfc723ad261efe6440f5472f87",
+      "ref_id": "4",
+      "recommendationScore": 75,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "Polyend发布Tracker固件源代码，是嵌入式系统和音乐技术爱好者的宝贵学习资源。",
+      "reason": "提供了深入的固件开发和硬件集成案例，对有相关背景的编程工具和自动化领域读者具有高学习价值。",
+      "tags": [
+        "开源",
+        "固件",
+        "嵌入式系统",
+        "编程工具",
+        "音乐技术"
+      ]
+    },
+    {
+      "title": "The agentic web is here",
+      "link": "https://www.technologyreview.com/2026/11/02/1147846/the-agentic-web-is-here/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-11-02T09:35:19.000Z",
+      "summary": "In 2001, a decade after he invented the World Wide Web, Tim Berners-Lee articulated a new vision. Together with two colleagues, he published an article in the magazine Scientific American in which he outlined what he called the “Semantic Web”: an internet designed to be navigated by autonomous software agents that could address our every…",
+      "id": "a09e48d0b66bcc5cf629ac4c717bfeb6b5a90139dc1cb62f1cf1169c6cde2f31",
+      "ref_id": "3",
+      "recommendationScore": 75,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "详细追溯了Tim Berners-Lee关于“语义网”的早期愿景，并将其与当前的Agentic Web发展联系起来。",
+      "reason": "为理解Agentic Web提供了重要的历史背景和理论基础，有助于读者形成对AI代理技术演进的全面认知。",
+      "tags": [
+        "AI",
+        "Agentic Web",
+        "Semantic Web",
+        "Web History",
+        "Technology Trends",
+        "Foundational Concepts"
+      ]
+    },
+    {
+      "title": "The SEC Should Block Anthropic's IPO to Protect the Public",
+      "link": "https://www.techpolicy.press/the-sec-should-block-anthropics-ipo-to-protect-the-public/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-02T22:30:47.000Z",
+      "summary": "Article URL: https://www.techpolicy.press/the-sec-should-block-anthropics-ipo-to-protect-the-public/\nComments URL: https://news.ycombinator.com/item?id=50344919\nPoints: 55\n# Comments: 15",
+      "id": "3cc79194c2806ef269a426c6fc228f672694a4f81d79125b28544b64941ad894",
+      "ref_id": "1",
+      "recommendationScore": 70,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "一篇批判性文章，探讨SEC应阻止Anthropic IPO以保护公众的理由。",
+      "reason": "文章从政策和伦理角度深入探讨AI公司的IPO问题，观点大胆且具争议性，引发对AI监管的思考。",
+      "tags": [
+        "AI",
+        "政策",
+        "监管",
+        "IPO",
+        "伦理"
+      ]
+    },
+    {
+      "title": "[Sponsor] OurCal",
+      "link": "https://ourcal.com/?utm_source=daringfireball&utm_medium=sponsorship&utm_content=rssitem",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-11-02T22:43:59.000Z",
+      "summary": "“I didn’t see you put that in the diary.”\nSound familiar?\nShared calendars solved scheduling, not communication.\nOurCal connects any calendar, new or existing, to a group chat. Changes post there automatically, so nobody misses them. Because it’s a messenger, we made everything End-to-End Encrypted, certified by France’s cybersecurity agency.\nIt’s native SwiftUI across Apple’s platforms, and the App Store just featured it in “Great apps on iPhone Duo”. We’re Apple people, but we think it’s the best shared calendar on Android too.\nFree to try, then a low monthly group subscription. No ads, no tracking.\n ★",
+      "id": "9cef0740515e434d9695724d9693058b3d33d2b236723fb7510f9d943720263e",
+      "ref_id": "4",
+      "recommendationScore": 70,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "一款强调隐私保护和Apple原生体验的共享日历与群聊结合应用推广。",
+      "reason": "详尽介绍了产品的核心功能和技术特点（如SwiftUI，E2E加密），且涉及Apple生态和效率工具方向，对目标用户有参考价值。",
+      "tags": [
+        "Apple生态",
+        "产品推广",
+        "效率工具",
+        "SwiftUI",
+        "隐私",
+        "跨平台"
+      ]
+    },
+    {
+      "title": "Apple reports fourth quarter results",
+      "link": "https://www.apple.com/newsroom/2026/11/apple-reports-fourth-quarter-results/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-02T22:13:42.000Z",
+      "summary": "Article URL: https://www.apple.com/newsroom/2026/11/apple-reports-fourth-quarter-results/\nComments URL: https://news.ycombinator.com/item?id=50344670\nPoints: 33\n# Comments: 10",
+      "id": "0c4f0cd963bcd6957b02253bbdfaa7c95cafd37fe3c99e748d18f547310e79a2",
+      "ref_id": "2",
+      "recommendationScore": 65,
+      "popularityScore": 50,
+      "priority": "high",
+      "comment": "苹果公司官方发布的第四季度财报，主要为数据性信息。",
+      "reason": "作为苹果生态的关键信息源，其财务表现对投资者和行业观察者至关重要。",
+      "tags": [
+        "Apple",
+        "财报",
+        "金融",
+        "市场动态"
+      ]
+    },
+    {
+      "title": "The Download: the agentic web arrives and the drive for safer roads",
+      "link": "https://www.technologyreview.com/2026/11/02/1147889/the-download-agentic-web-arrives-eliminating-traffic-deaths/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-11-02T13:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. The agentic web is here In 2001, a decade after inventing the World Wide Web, Tim Berners-Lee articulated a new vision: an internet navigated by autonomous software agents that address our…",
+      "id": "51ae966e44064eb6f561ead97459cb8e4161c9210c498fca2326c40cbd77eeb0",
+      "ref_id": "2",
+      "recommendationScore": 65,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "作为一份科技新闻简报，概述了Agentic Web的到来以及其他科技动态。",
+      "reason": "适合快速了解当前科技趋势，但内容较为概括，缺乏深入的技术细节或实用指导。",
+      "tags": [
+        "AI",
+        "Agentic Web",
+        "Technology News",
+        "Overview"
+      ]
+    },
+    {
+      "title": "Lorem Ipsum Dot Gov Dot UK",
+      "link": "https://shkspr.mobi/blog/2026/11/lorem-ipsum-dot-gov-dot-uk/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-11-02T12:34:00.000Z",
+      "summary": "I love testing in production. The thrill of accidentally publishing some dummy data - or taking down an entire website - is similar to skydiving without a parachute. Exquisite excitement followed by heart-stopping terror.  Before going live with a new website or service, it's sensible to test how text looks on it.  Most people don't test with readable text - it's too easy for management to start…",
+      "id": "8aef3e740ee6379c2f6eb3f176a4df164423c61fca0e76ecd49d38b9f52ca409",
+      "ref_id": "1",
+      "recommendationScore": 65,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "一篇关于网站测试文案的幽默反思，对产品设计和开发有实际借鉴意义。",
+      "reason": "以幽默的方式探讨了网站开发中测试文案的实际问题，对提升用户体验和避免管理层干扰有启发，与编程工具和产品设计主题相关。",
+      "tags": [
+        "Web开发",
+        "测试",
+        "产品设计",
+        "UI/UX",
+        "开发实践"
+      ]
+    },
+    {
+      "title": "Anthropic's growth just flattened",
+      "link": "https://www.regenerator1.com/p/anthropics-growth-just-flattened",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-02T22:33:20.000Z",
+      "summary": "Article URL: https://www.regenerator1.com/p/anthropics-growth-just-flattened\nComments URL: https://news.ycombinator.com/item?id=50344958\nPoints: 26\n# Comments: 1",
+      "id": "b760b461aff6e50cc5276c17ee21313aa27518498ed9b7a4fe6e14322ca88e37",
+      "ref_id": "0",
+      "recommendationScore": 60,
+      "popularityScore": 30,
+      "priority": "high",
+      "comment": "对AI巨头Anthropic的市场增长分析，内容偏商业观察。",
+      "reason": "文章涉及AI领域的重要公司，对关注AI产业动态的读者具有参考价值，但传播度不高。",
+      "tags": [
+        "AI",
+        "市场分析",
+        "商业观察"
+      ]
+    },
+    {
+      "title": "BYD sold more EVs last month than the US did all quarter",
+      "link": "https://electrek.co/2026/11/02/byd-sold-more-evs-last-month-than-the-us-did-all-quarter/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-02T21:38:49.000Z",
+      "summary": "Article URL: https://electrek.co/2026/11/02/byd-sold-more-evs-last-month-than-the-us-did-all-quarter/\nComments URL: https://news.ycombinator.com/item?id=50344181\nPoints: 188\n# Comments: 163",
+      "id": "082378c60bc906a638b42c98c1d2b5038457ff8d1cfa3e3934ea3c50d28560fc",
+      "ref_id": "4",
+      "recommendationScore": 60,
+      "popularityScore": 90,
+      "priority": "low",
+      "comment": "揭示了BYD电动汽车销量在短时间内超越美国总销量的市场格局。",
+      "reason": "文章数据冲击力强，引发了对全球电动车市场、中国汽车工业崛起和国际竞争格局的广泛关注和讨论。",
+      "tags": [
+        "电动车",
+        "汽车",
+        "市场趋势",
+        "商业",
+        "全球经济"
+      ]
+    },
+    {
+      "title": "If in doubt, delete the uv.lock file",
+      "link": "https://simonwillison.net/2026/Nov/1/delete-uv-lock-first/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-11-01T23:24:22.000Z",
+      "summary": "",
+      "id": "215d5e6ee0fa4f77b5ab55fe519c54e23d8ff326193e9709b8c380c95faa0af5",
+      "ref_id": "0",
+      "recommendationScore": 60,
+      "popularityScore": 50,
+      "priority": "medium",
+      "comment": "针对Python uv包管理器常见问题的快速解决提示。",
+      "reason": "提供了一个针对特定开发环境问题的实用、直接的故障排除方法，对使用uv的开发者有即时帮助。",
+      "tags": [
+        "编程工具",
+        "Python",
+        "uv",
+        "故障排除",
+        "依赖管理"
+      ]
+    },
+    {
+      "title": "Making peace with the projective plane",
+      "link": "https://www.johndcook.com/blog/2026/11/02/projective-plane/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-11-02T14:44:02.000Z",
+      "summary": "In my newsletter I give an introduction to the latest few posts and occasionally give some additional commentary. In my latest newsletter I wrote Projective space and homogeneous coordinates seemed like arbitrary abstractions when I was a student because they were presented without any motivation. Much later I came to realize that they’re natural, almost […]\nMaking peace with the projective plane first appeared on John D. Cook.",
+      "id": "46fbd430d725f742767a24434cefe35816ca3fe1ce98390ab74d31df1a111980",
+      "ref_id": "3",
+      "recommendationScore": 55,
+      "popularityScore": 50,
+      "priority": "medium",
+      "comment": "关于射影几何和齐次坐标的引子，虽然内容简短但主题有较高技术价值。",
+      "reason": "探讨了计算机图形学和AI中重要的数学基础，尽管是摘要形式，但主题本身具有较高技术深度和潜在实用性，符合AI和编程工具的优先主题。",
+      "tags": [
+        "数学",
+        "几何",
+        "计算机图形学",
+        "AI基础",
+        "编程理论"
+      ]
+    },
+    {
+      "title": "Audience capture",
+      "link": "https://seangoedecke.com/audience-capture/",
+      "source": "seangoedecke.com",
+      "publishedAt": "2026-11-03T00:00:00.000Z",
+      "summary": "",
+      "id": "662f2b1b6d21b1a792434aa31d3bbbd1e9ba7f1a32bf611db3cb74f74ce6e932",
+      "ref_id": "2",
+      "recommendationScore": 45,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "探讨了创作者在受众影响下可能失去独立性的社会现象。",
+      "reason": "内容偏向非技术性的社会观察和文化现象，与核心科技博客主题（AI、Apple生态、编程工具等）关联度较低。",
+      "tags": [
+        "社会观察",
+        "内容创作",
+        "独立开发",
+        "文化现象"
+      ]
+    },
+    {
+      "title": "Oracle files to sell $20B in new stock, bonds to finance AI buildout",
+      "link": "https://www.cnbc.com/2026/11/02/oracle-files-to-sell-20-billion-in-new-stock-bonds-to-finance-ai-buildout.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-02T19:27:37.000Z",
+      "summary": "Article URL: https://www.cnbc.com/2026/11/02/oracle-files-to-sell-20-billion-in-new-stock-bonds-to-finance-ai-buildout.html\nComments URL: https://news.ycombinator.com/item?id=50342284\nPoints: 125\n# Comments: 86",
+      "id": "1263ce4e09302da828b267c3a147018cbca5909b3443d65462b62f6b7c300ced",
+      "ref_id": "0",
+      "recommendationScore": 40,
+      "popularityScore": 8,
+      "priority": "medium",
+      "comment": "关注AI基础设施建设融资动态，对市场动向有参考价值。",
+      "reason": "提供了科技巨头在AI领域投资的宏观经济视角，但技术深度有限，更偏向商业新闻。",
+      "tags": [
+        "AI",
+        "投资",
+        "企业战略",
+        "市场动态"
+      ]
+    },
+    {
+      "title": "Making Peace with the Projective Plane",
+      "link": "https://www.johndcook.com/blog/2026/11/02/projective-plane/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-02T17:47:59.000Z",
+      "summary": "Article URL: https://www.johndcook.com/blog/2026/11/02/projective-plane/\nComments URL: https://news.ycombinator.com/item?id=50340629\nPoints: 21\n# Comments: 12",
+      "id": "46fbd430d725f742767a24434cefe35816ca3fe1ce98390ab74d31df1a111980",
+      "ref_id": "2",
+      "recommendationScore": 40,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "一篇深入探讨射影平面的数学文章，理论性强但实用性有限。",
+      "reason": "内容过于理论化，与主流科技博客的实用性和应用型主题偏差较大，受众面较窄。",
+      "tags": [
+        "数学",
+        "理论",
+        "几何"
+      ]
+    },
+    {
+      "title": "My Favourite Laptop",
+      "link": "https://blog.jsbarretto.com/post/laptop",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-02T16:59:57.000Z",
+      "summary": "Article URL: https://blog.jsbarretto.com/post/laptop\nComments URL: https://news.ycombinator.com/item?id=50339815\nPoints: 150\n# Comments: 117",
+      "id": "96a91822d91e8ba94ae00c08577fb87d13b25586fcb66409208f1e6ed9464806",
+      "ref_id": "3",
+      "recommendationScore": 40,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "一篇个人笔记本电脑使用体验分享，偏向消费电子产品评测。",
+      "reason": "文章属于个人产品评测，技术深度和新颖性相对有限，与AI、编程工具等核心科技主题的优先级不高。",
+      "tags": [
+        "产品评测",
+        "硬件",
+        "消费电子",
+        "个人体验"
+      ]
+    },
+    {
+      "title": "Pluralistic: Autodoxing (02 Nov 2026)",
+      "link": "https://pluralistic.net/2026/11/02/agony-verification/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-11-02T08:20:37.000Z",
+      "summary": "Today's links Autodoxing: The road to hell is paved with badly thought-through tech policy. Hey look at this: Delights to delectate. Object permanence: Shakespeare programming language; DeCSS is \"pure speech\"; Blue Coat sold surveillance tools to Syrian secret police; \"Extraordinary Catalog of Peculiar Inventions\"; Cable prices rose at double the rate of inflation for 20 years; Supercuts; Antivax x Trump. Upcoming appearances: Kilkenny, Courtenay, Vancouver, Folkestone, Oxford, Sheffield, Virtual, Oxford, Montreal. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. Autodoxing (permalink) After 25 years of fighting for human rights amid the wreckage of bad tech policy, I'm here to tell you that the road to hell is paved with badly thought-through tech policy. The most galling thing about this wreckage is that it was both foreseeable and foreseen. Back when Sun Microsystems CEO Scott McNealy was telling the world \"Privacy is dead, get over it,\" digital rights advocates were saying, \"Not only are digital tools pretty dang good at helping you protect your privacy, but a society-wide abolition of privacy sets us up for infinite harms long into the future\": https://pluralistic.net/2025/10/31/losing-the-crypto-wars/#surveillance-monopolism It wasn't just business leaders who hated privacy, it was also our political classes. Bill Clinton tried to put a backdoor into every microchip (no, really): https://en.wikipedia.org/wiki/Clipper_chip The NSA managed to enact a total prohibition on civilian access to working encryption, on the grounds that we're all safer if our spooks can spy on \"bad guys\" even if that means that every creep, petty crook, corporate or state-sponsored spy, and mafia can spy on us: https://pluralistic.net/2026/04/09/bernstein-2/#win-some-lose-some Even after that ban was overturned, governments encouraged the private sector to spy on us without limit, precaution or permission. Those private-sector troves of intimate, compromising data about every person alive constitute a warrantless, off-the-books surveillance system that cops, spies and government agencies can tap at will: https://pluralistic.net/2026/10/13/petards-r-us/#nobus To protect these surveillance capabilities, private firms and governments colluded to pass \"anticircumvention\" laws that make it illegal to reverse engineer our devices and apps to add privacy blockers to them, with the effect that every device we own and every app we use spies on us constantly: https://pluralistic.net/2024/03/12/market-failure/#car-wars At the same time, states either failed to pass new privacy laws (as in the USA, where federal consumer privacy law was last updated in 1988), or passed privacy laws that went unenforced (as in the EU, where \"pretending to be Irish\" allows US tech giants to flout EU privacy law): https://pluralistic.net/2023/05/15/finnegans-snooze/#dirty-old-town Our surveillance free-for-all world is objectively very bad. Over and over, companies and agencies who have been permitted to nonconsensually harvest and retain our data demonstrate that they are not capable of keeping that data safe, and no matter how badly they fuck up, nothing changes. It's been nearly a decade since Equifax doxed 148 million Americans and not only is the company still in business, they've been permitted to buy up and absorb more commercial surveillance firms. US regulators let Equifax buy Teletrack in 2021. Canadian regulators let them buy the Food Industry Credit Bureau in 2023. The same year, Brazilian regulators let Equifax buy Boa Vista Serviços. This all despite the fact that Equifax blamed its breach on shitty security practices after a string of mergers that led to it haphazardly combining databases from newly acquired surveillance companies. Data isn't the new oil. Data is the new oily rag: profitable only if you can warehouse it in vast quantities under unsafe conditions and have society pick up the bill for every conflagration: https://locusmag.com/feature/cory-doctorow-zucks-empire-of-oily-rags/ Equifax is a serial reoffender, but rather than getting the corporate death-penalty, they've been made to pay coins-down-the-back-of-the-sofa fines that amount to a fraction of a fraction of a fraction of the costs they imposed on society by amassing these vast, flaming storehouses of oily rags. Why wouldn't Equifax reoffend? Our policymakers keep demanding less privacy, not more, and their indifference to the consequences is (almost) comical. Take Malcolm Turnbull, the former Australian Prime Minister who uttered what remains, without a doubt, the single stupidest thing anyone anywhere has ever said about tech policy. Like many of his peers before, during, and since his reign, Turnbull had been trying to outlaw working encryption, insisting that every device have a Bill Clinton-esque back-door for the purpose of spying on \"bad guys.\" When told that the laws of mathematics dictated that any measure that let Australia's cops spy on \"bad guys\" would also let bad guys spy on Australians, Turnbull replied, \"The laws of mathematics are very commendable, but the only law that applies in Australia is the law of Australia\": https://www.newscientist.com/article/2140747-laws-of-mathematics-dont-apply-here-says-australian-pm/ We could laugh Turnbull off…if he was an outlier. But while Turnbull had the world's stupidest rejoinder to the scientifically irrefutable fact that banning encryption will let bad guys hack everything, he was hardly alone in wanting to ban encryption. Banning encryption is current policy in Canada: https://blog.mozilla.org/netpolicy/2026/10/08/canadas-bill-c-22-threatens-encryption-users-privacy-and-the-security-of-digital-economies/ It's also current policy in the UK: https://pluralistic.net/2023/03/05/theyre-still-trying-to-ban-cryptography/ And in the EU: https://fightchatcontrol.eu/ The difference between Malcolm Turnbull and, say, Canadian PM Mark Carney is that Turnbull was stupid enough to try to defend his ban on encryption, while Carney simply shakes his head at his critics' naivete and continues to press forward with his catastrophic proposal to welcome every cybercriminal in the world to hack every morsel of Canadian data. When it comes to bad privacy policy, our political classes aren't content to rest on their laurels: hardly a week goes by without news of a new way to encourage (or even require) the private sector to recklessly collect and retain our data, despite the dead certainty that this data will eventually end up breaching and getting plastered all over the internet. Take \"age verification\" laws. There's no such thing as \"age verification\" – there's just spying on everyone, all the time, creating (even more) records of all of our internet activities: https://pluralistic.net/2026/05/19/shes-dead-of-course/#consensus-hallucination Every promise of \"privacy preserving\" age verification is bullshit: https://pluralistic.net/2025/08/14/bellovin/#wont-someone-think-of-the-cryptographers If you think kids are experiencing internet harms today, just wait until we expose them to the harms of having even more of their data harvested, stored, breached, and weaponized against them: https://pluralistic.net/2026/06/23/destroy-the-village/#to-save-it If you want to protect kids from algorithmic manipulation and targeting by bad actors, what about banning spying on kids so no one can target them? https://made-not-found-by-danah-boyd.ghost.io/no-one-paid-me-to-disagree-with-jonathan-haidt-it-was-teenagers-who-taught-me-that-he-was-wrong/ Now, at this point, you might be thinking, \"How can we know who the kids are so we know who not to spy on?\" You can't. In order to not spy on kids, you'd just have to not spy on anyone: https://pluralistic.net/2023/04/09/how-to-make-a-child-safe-tiktok/ \"Don't spy on anyone\" is the kind of thing that has a reasonable chance of enhancing online privacy. But in the time-honored tradition of \"we've tried nothing and we're all out of ideas,\" governments keep finding ways to make digital privacy worse, for example, by procuring Flock cameras for every lamp-post: https://www.eff.org/deeplinks/2026/09/high-crime-lmao-how-cops-are-treating-mass-surveillance-joke And then there's UK Labour: after the success of a pilot program for an incredibly effective and safe privacy-preserving way of analyzing the country's health records for research processes, they commissioned the Goldacre Report to evaluate the possibility of making this permanent: https://pluralistic.net/2024/03/08/the-fire-of-orodruin/#are-we-the-baddies After that report was completed and had a chance to be metabolized by policymakers, Labour acted upon it…by throwing it out and handing all of the country's health data to Palantir, a serial mishandler of data and violator of privacy: https://www.theguardian.com/technology/2026/sep/30/legal-objections-palantir-nhs-platform-handling-data Here's the scariest thing about bad privacy policy: it has a long fuse. The harms of commercial and private-sector digital surveillance can occur years or even decades after the decision to permit it. There's a straight line from the post-9/11 decision to encourage public agencies to gather, merge and warehouse data on every person in America, and the ability of ICE ethnic cleansing squads to break down people's doors and drag them off to concentration camps; just as there's a straight line from the decision to do nothing about the breach of every Social Security Number and the later theft of all Social Security data by adolescent DOGE criminals: https://www.pcmag.com/news/is-your-ssn-in-the-national-public-data-breach-heres-how-to-find-out But despite how obvious these connections are, the fact that they're separated by a lot of time and space provides our policymakers with cover for making terrible decisions with foreseeably terrible outcomes. As a society, we lack object permanence, the ability to connect acts in the past with present-day phenomena. When the press reports on a \"Black October\" of catastrophic, AI-fueled data breaches and hack attacks, they don't mention a generation of policymakers' indifference and hostility to information security: https://pluralistic.net/2026/09/12/god-in-the-box/#llms-are-fake Policymakers benefit from politics' eternal now, in which disasters simply befall us, without any history or precedent or cause. Remember the One Big Beautiful Bill? Its architects designed it to wreak its worst harms after the midterms, with Medicaid work rules and food aid restrictions starting in December, and cuts to affordable housing and rural hospitals phasing in through the year: https://www.tumblr.com/mostlysignssomeportents/832146932089700352 Black October is going to give way to Black November, Black December, Black 2027, and the Black 2030s – a string of cybersecurity catastrophes that will befall us until policymakers decide that keeping us safe is more important than making it easy for them to attack their chosen \"bad guys.\" Here's a preview of Black November: there's a new strain of the Volta infostealer malware that uses AI tools to dox you even as it hacks you: https://www.wired.com/story/kernel-panic-volta-autodoxer-ai-infostealer-malware/ How that works: your computer gets hacked and your data gets stolen, then it gets merged with breach data from Ticketmaster, Disney, AT&T and other companies that have recklessly compiled vast troves of data on all of us, stored it insecurely, and leaked it onto the internet where it will live forever. Volta's makers prompt their LLM \"to act like an intelligence analyst and produce structured citation-backed assessment of the victim.\" This lets the criminals prioritize their victims based on the expected return from exploiting them. It augments this dossier by combing through your Gmail as well as your Doordash and Uber Eats profiles. This merged data makes it much easier for criminals to call you up or email you (or have a chatbot call you up or email you) and trick you into giving up even more data: https://pluralistic.net/2024/02/05/cyber-dunning-kruger/#swiss-cheese-security Volta seems especially interested in younger internet users, targeting \"Discord, Telegram, Steam, and Roblox sessions.\" Of course, once our \"age verification\" services breach vast, eternally persistent, detailed troves of data on young internet users, this kind of AI-supercharged malware will be able to target kids with much greater fidelity and efficacy. AI capabilities have made infostealers much worse, but the reason for that new potency lies in how AI capabilities are supercharged by breach data that is the foreseeable and foreseen consequence of generations of hostility to privacy on the part of policymakers and corporations who responded to the incentives policymakers created. We are living in the age of oily rags. For decades we fucked around with letting the private sector warehouse our data and weaken our security so that public sector agencies could plunder our data and our computers at will. Now, we keep finding out that everything is on fire. It's going to take a long time to fix this, but we can do it. We can build more secure systems. We can make it much more of a legal ball-ache for companies to gather our data in the first place, and we can legalize and promote the creation of privacy blockers for browsers, phones, computers, cars, thermostats and smart speakers. We can enact corporate death-penalties for breaches to reflect the true societal cost of warehousing our data. We can ban Flock cameras and tear down the post-9/11 \"fusion centers\" that neatly package up our data for use by DOGE fascists and ICE thugs. We can ban our spy agencies from hoarding defects in widely used software, and instead require them to divulge these bugs so vendors can fix them: https://en.wikipedia.org/wiki/NOBUS And before we do any of that, we can just stop making it worse by ending the campaigns to require companies to spy on us and deliberately introduce security defects into their products. Hey look at this (permalink) ICE wants its mask back, and hired a company to ask https://blog.flokinet.is/2026/10/29/ice-wants-its-mask-back-and-hired-a-company-to-ask/ Is There Life After AI? Cory Doctorow Thinks So. https://jacobin.com/2026/10/ai-bubble-labor-copyright-competition Online censorship is crushing indie webcomics https://xtramagazine.com/culture/online-censorship-indie-webcomics-284463 Fascists Thrive On Bad Economics https://economicpopulist.substack.com/p/fascists-thrive-on-bad-economics PrivacySafe Foundation Releases Free Security Tools to Combat Global Cyber Threats https://www.einpresswire.com/article/952907125/privacysafe-foundation-releases-free-security-tools-to-combat-global-cyber-threats Object permanence (permalink) #25yrsago NY Post blames pagans from Indianapolis for spam malware https://web.archive.org/web/20011103073038/http://www.nypost.com/news/regionalnews/33077.htm #25yrsago The Shakespeare Programming Language https://web.archive.org/web/20011207071324/http://shakespearelang.sourceforge.net/report/shakespeare/ #25yrsago Appeals court: DeCSS is \"pure speech\" https://web.archive.org/web/20011102003502/https://www.wired.com/news/business/0,1367,48075,00.html #20yrsago Apple drops Trusted Computing https://web.archive.org/web/20070106150844/https://www.osxbook.com/book/bonus/chapter10/tpm/ #20yrsago Microsoft threatens China pull-out over jailed bloggers http://news.bbc.co.uk/1/hi/technology/6102180.stm #15yrsago Righthaven copyright troll’s victims send in US marshals to seize its assets https://arstechnica.com/tech-policy/2011/11/us-marshals-turned-loose-to-collect-6372080-from-righthaven/ #15yrsago Supercuts: rapid-cut videos that collect repetition https://web.archive.org/web/20111103190737/http://www.wired.com/epicenter/2011/11/supercut/ #15yrsago Study: why parents help their underage kids pretend to be 13 in order to use Internet sites https://firstmonday.org/ojs/index.php/fm/article/view/3850/3075 #15yrsago Blue Coat “deep packet inspection” tools used by Syrian secret police and other repressive regimes https://www.eff.org/deeplinks/2011/10/blue-coat-acknowledges-syrian-government-use-its-products #15yrsago Extraordinary Catalog of Peculiar Inventions: awesomely dangerous pranks from the age of fraternal lodges https://memex.craphound.com/2011/11/01/extraordinary-catalog-of-peculiar-inventions-awesomely-dangerous-pranks-from-the-age-of-fraternal-lodges/ #10yrsago Cable prices have risen at more than double the rate of inflation for 20 years https://cordcutting.com/news/cable-prices-have-risen-faster-than-inflation-for-each-of-the-past-20-years/ #10yrsago Typical English village mystified by its cult status among Chinese tourists https://www.bbc.com/news/uk-england-oxfordshire-37820663 #10yrsago Nebraska’s billionaire governor couldn’t preserve the death penalty through the law, so now he’s buying a ballot initiative https://www.motherjones.com/politics/2016/11/ricketts-nebraska-death-penalty/ #10yrsago Anti-vaxx conspiracy leaders back Donald Trump, claim it’s mutual https://scienceblogs.com/insolence/2016/11/02/donald-trump-and-disgraced-antivaccine-scientist-andrew-wakefield-best-buds-forever #10yrsago New, fast-spreading IoT botnet hybridizes two less-effective strains to achieve quick dominance https://arstechnica.com/information-technology/2016/11/new-iot-botnet-that-borrows-from-notorious-mirai-infects-3500-devices/ #1yrago There's one thing EVERY government can do to shrink Big Tech https://pluralistic.net/2025/11/01/redistribution-vs-predistribution/#elbows-up-eurostack Upcoming appearances (permalink) Kilkenny (Kilkenomics), Nov 6-8 https://kilkenomics.com/ Courtenay: Enshittification (Sid Williams Theatre Society), Nov 10 https://www.sidwilliamstheatre.com/events/cory-doctorow-talks-enshittification/ Vancouver: BC Policy Solutions Gala, Nov 12 https://bcpolicy.ca/gala/ Folkestone Writers Festival, Nov 16 https://www.creativefolkestone.org.uk/whats-on/cory-doctorow-the-internet-is-broken-now-what/ Oxford: Ministry of the Future, Nov 23 https://ministryforthefuture.co.uk/events.html Sheffield: Reverse Centaur at Juno Books, Nov 25 https://www.outsavvy.com/event/40274/cory-doctorow-in-conversation Virtual: Enshittification, AI, and the Future of Technology (UBC Master of Educational Technology), Nov 28 https://met.ubc.ca/2026/09/met-speaker-series-cory-doctorow-enshittification-ai-and-the-future-of-technology/ Oxford: Bennett Oxford Symposium on Open Code in Science, Dec 9 https://www.bennett.ox.ac.uk/events/2026-bennett-institute-symposium/ Montreal: World Science Fiction Convention, Sep 2-6 https://montreal2027.ca/en Recent appearances (permalink) Clint Eastwood (No Gods No Mayors) https://www.patreon.com/NoGodsNoMayors/posts/clint-eastwood-173008088 Life After AI (Brain Bar) https://www.youtube.com/watch?v=IPPa43-n0vI Terms of Service with Clare Duffy (CNN) https://www.cnn.com/audio/podcasts/terms-of-service-with-clare-duffy/episodes/458ce968-af5d-11f0-b539-13ed2afe25f8 AI, Work, and Power (Software Engineering Daily) AI, Work, and Power https://softwareengineeringdaily.com/podcasts/cory-doctorow-on-ai-work-and-power/ AI, Corporate Power, and the Fight for Worker Control (Plutopia) https://plutopia.io/cory-doctorow-ai-corporate-power-and-the-fight-for-worker-control/ Latest books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/ \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: “Once Is Enemy Action,” a science fiction novel about the origins of modern technofascism. Today's words: 574 (7730 total). \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Fourth draft completed. Submitted to editor. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "f071e857244787e14c52bcec47cd13c4fd628bdc079bb0b5c8470f284122d72f",
+      "ref_id": "0",
+      "recommendationScore": 35,
+      "popularityScore": 45,
+      "priority": "low",
+      "comment": "一个科技政策评论和链接汇总，缺乏具体技术深度。",
+      "reason": "内容过于宽泛，主要为链接聚合和泛泛的政策评论，未能深入探讨任何一个技术主题，与核心优先主题关联度低。",
+      "tags": [
+        "科技政策",
+        "数字版权",
+        "链接汇总",
+        "社会评论"
+      ]
+    },
+    {
+      "title": "Sneaking into the auditorium for the Windows 2000 launch rehearsal",
+      "link": "https://devblogs.microsoft.com/oldnewthing/20261102-00/?p=112818/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-02T18:12:48.000Z",
+      "summary": "Article URL: https://devblogs.microsoft.com/oldnewthing/20261102-00/?p=112818/\nComments URL: https://news.ycombinator.com/item?id=50341028\nPoints: 84\n# Comments: 28",
+      "id": "e675677888b0d9ef2b7b71b4de2f1c0b73a9f0c9d952a8567d00cb07858794ed",
+      "ref_id": "0",
+      "recommendationScore": 30,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "一篇关于Windows 2000发布彩排的有趣历史轶事，轻松但技术相关性低。",
+      "reason": "内容具有娱乐性，但对当前科技趋势和实用技术的关注度不高，不属于核心推荐范畴。",
+      "tags": [
+        "历史",
+        "Windows",
+        "轶事"
+      ]
+    },
+    {
+      "title": "The U.S. Census Bureau and “Super Intelligence”",
+      "link": "https://simonwillison.net/2026/Nov/2/census-bureau-super-intelligence/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-11-02T13:31:26.000Z",
+      "summary": "",
+      "id": "93776c9c2a6b392fe84f2651db335868357969d9774f32a640e08a428e2a281d",
+      "ref_id": "4",
+      "recommendationScore": 10,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "文章内容缺失，无法进行有效评估。",
+      "reason": "缺少文章主体内容，无法判断其技术深度、新颖性、实用性及信息密度，不具备发布条件。",
+      "tags": [
+        "Incomplete",
+        "Missing Content",
+        "AI (Potential Topic)"
+      ]
+    },
+    {
+      "title": "Sneaking into the auditorium for the Windows 2000 launch rehearsal",
+      "link": "https://devblogs.microsoft.com/oldnewthing/20261102-00/?p=112818/",
+      "source": "devblogs.microsoft.com/oldnewthing",
+      "publishedAt": "2026-11-02T15:00:00.000Z",
+      "summary": "Wait, that's not him.\nThe post Sneaking into the auditorium for the Windows 2000 launch rehearsal appeared first on The Old New Thing.",
+      "id": "e675677888b0d9ef2b7b71b4de2f1c0b73a9f0c9d952a8567d00cb07858794ed",
+      "ref_id": "2",
+      "recommendationScore": 10,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "内容过于简短，无法进行有效评估。",
+      "reason": "文章内容仅为一个引导性短句，无法提供任何技术深度、新颖性或实用性信息。",
+      "tags": [
+        "短篇",
+        "历史趣闻",
+        "内容缺失"
+      ]
+    },
+    {
+      "title": "Bitmovin (YC S15) Is Hiring Technical Graduates in Denver (Engineering/CS Focus)",
+      "link": "https://bitmovin.com/careers/8660599002/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-02T17:00:41.000Z",
+      "summary": "Article URL: https://bitmovin.com/careers/8660599002/\nComments URL: https://news.ycombinator.com/item?id=50339827\nPoints: 0\n# Comments: 0",
+      "id": "760da671570f258316e85420d7a8a293e6e433f5605ddfa4279b0d1f4839655e",
+      "ref_id": "2",
+      "recommendationScore": 0,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "纯粹的招聘信息，不属于技术博客文章的评估范畴。",
+      "reason": "内容仅为招聘广告，缺乏技术深度和信息，不符合科技博客文章的评估标准。",
+      "tags": [
+        "招聘",
+        "公司新闻"
+      ]
+    },
+    {
+      "title": "US boy names that became girl names and vice versa",
+      "link": "https://namedaisy.com/blog/boy-names-that-became-girl-names",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-02T16:34:36.000Z",
+      "summary": "Article URL: https://namedaisy.com/blog/boy-names-that-became-girl-names\nComments URL: https://news.ycombinator.com/item?id=50339397\nPoints: 237\n# Comments: 260",
+      "id": "7e4abe26de7f0b912222b8187ea77f7f60a832900723036cab406fb7f3efc6e1",
+      "ref_id": "4",
+      "recommendationScore": 0,
+      "popularityScore": 5,
+      "priority": "low",
+      "comment": "与科技博客主题完全无关，属于文化社会学范畴。",
+      "reason": "文章内容与科技博客的核心关注点（AI、编程工具等）不符，不具备任何技术价值和相关性。",
+      "tags": [
+        "文化",
+        "社会学",
+        "非技术"
+      ]
+    }
+  ]
+}
