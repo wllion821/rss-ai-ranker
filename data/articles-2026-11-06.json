@@ -1,0 +1,669 @@
+{
+  "dailySummary": "今日科技速递：Firecracker虚拟机逃逸漏洞引关注；AI代理在乐高动画、LLM成本优化及3D推理评估中大显身手。Replit拥抱微虚拟机重构沙箱引擎。开源社区项目在AI辅助下复苏，",
+  "articles": [
+    {
+      "title": "Firecracker VM Escape: PwnEscape Part 2",
+      "link": "https://pwn.ai/blog/firecracker-escape",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-06T19:33:38.000Z",
+      "summary": "Article URL: https://pwn.ai/blog/firecracker-escape\nComments URL: https://news.ycombinator.com/item?id=50397219\nPoints: 88\n# Comments: 48",
+      "id": "19e5a3d3b856bd20631f2915f952d33dca57ea6d0337ea7ea2ea61d42199dcf5",
+      "ref_id": "1",
+      "recommendationScore": 95,
+      "popularityScore": 100,
+      "priority": "high",
+      "comment": "深度剖析Firecracker虚拟机逃逸漏洞的利用技术，展现了高超的网络安全研究水平。",
+      "reason": "技术深度极高，涉及虚拟化和网络安全前沿研究，对理解云基础设施安全具有重要指导意义，符合编程工具和自动化主题。",
+      "tags": [
+        "网络安全",
+        "虚拟化",
+        "Firecracker",
+        "漏洞利用",
+        "低级编程"
+      ]
+    },
+    {
+      "title": "Show HN: Agents infer Lego mechanisms from sources, then animate them",
+      "link": "https://github.com/anteloc/ldraw-mecha/tree/v0.5.0",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-06T19:41:20.000Z",
+      "summary": "Hi there :)\nAround a month ago, I released LDraw Nova, an agentic toolset for assembling LEGO CAD models by generating LDraw source code files.\nFor more details, here's the Show HN post:\nhttps://news.ycombinator.com/item?id=49937916\nFrom the comments, I got the impression that there was quite an interest in seeing not only AI-generated LEGO models, but also AI-animated LEGO ones.\nI took a look at results from past experiments, and found it feasible to use agentic LLMs for:\n- analyzing the LDraw source code for LEGO models\n- reverse-engineer! the mechanisms present by reading the descriptions and sequence for the parts there\n- and then, animate them via Blender!\nThis new project I'm presenting, LDraw Mecha, is the end result and proof that can be done:\n- Read specially annotated LDraw LEGO models .mpd source files\n- Infer the model structure in terms of submodels\n- Select from those the ones that are mechanisms\n- Plan animations\n- Execute them in Blender\nIn summary, from an initial .mpd source file, get a rigged and animated version for the model as a Blender (.blend) file.\nSee the results here:\n- Repo (v0.5.0): https://github.com/anteloc/ldraw-mecha/tree/v0.5.0\n- Gallery: https://github.com/anteloc/ldraw-mecha/blob/v0.5.0/GALLERY.m...\n- Process: https://github.com/anteloc/ldraw-mecha/blob/v0.5.0/PROCESS.m...\nThis project is very unusual, I'd really appreciate some feedback from the community.\nCheers!\nComments URL: https://news.ycombinator.com/item?id=50397325\nPoints: 13\n# Comments: 0",
+      "id": "e57401ecb0ea2757b0cdf673b1f59ae9c38c76516efa314351a58358b3c53a37",
+      "ref_id": "4",
+      "recommendationScore": 92,
+      "popularityScore": 60,
+      "priority": "high",
+      "comment": "利用AI代理从Lego CAD数据中推断并动画化机械结构，展示了令人惊叹的AI创新应用。",
+      "reason": "项目展示了LLM代理在复杂结构分析、逆向工程和创意自动化方面的强大潜力，具有前瞻性。",
+      "tags": [
+        "AI",
+        "LLM",
+        "Agent",
+        "自动化",
+        "3D",
+        "创意应用"
+      ]
+    },
+    {
+      "title": "A Jev that can ask Opus for help gives Opus accuracy at 4x lower cost",
+      "link": "https://hightouch.com/blog/llm-judges-identity-resolution",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-06T19:48:51.000Z",
+      "summary": "Article URL: https://hightouch.com/blog/llm-judges-identity-resolution\nComments URL: https://news.ycombinator.com/item?id=50397429\nPoints: 110\n# Comments: 34",
+      "id": "60724c835de1389a14bee876fee8bbbda6e1b2eb42037cd889c60772d29662ad",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 82,
+      "priority": "high",
+      "comment": "通过智能策略显著降低LLM使用成本同时保持高精度，极具实用价值。",
+      "reason": "为LLM应用开发者提供了直接的成本优化方案和具体实现思路，实用性极强。",
+      "tags": [
+        "AI",
+        "LLM",
+        "成本优化",
+        "应用开发",
+        "工程实践"
+      ]
+    },
+    {
+      "title": "Replit rebuilt its sandbox engine with microVMs",
+      "link": "https://frontier.replit.com/sandbox-engine-microvms-part-1/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-06T19:06:10.000Z",
+      "summary": "Article URL: https://frontier.replit.com/sandbox-engine-microvms-part-1/\nComments URL: https://news.ycombinator.com/item?id=50396834\nPoints: 16\n# Comments: 5",
+      "id": "083100755f603f5cb62d97db3e2f4f72723b90ab8f9e4ff2076e4e19cd6adf6c",
+      "ref_id": "4",
+      "recommendationScore": 90,
+      "popularityScore": 18,
+      "priority": "high",
+      "comment": "Replit团队详细介绍了如何利用微虚拟机技术重构其沙箱引擎的工程实践。",
+      "reason": "技术深度和实用性极高，详细介绍了流行编程工具的核心架构演进与优化，对系统开发者和编程工具领域有直接参考价值。",
+      "tags": [
+        "编程工具",
+        "微虚拟机",
+        "沙箱",
+        "Replit",
+        "系统架构",
+        "自动化"
+      ]
+    },
+    {
+      "title": "Rune: A native GPU-rendered Rust UI framework for macOS, Windows, Linux and web",
+      "link": "https://github.com/anomalyco/rune",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-06T16:31:32.000Z",
+      "summary": "Article URL: https://github.com/anomalyco/rune\nComments URL: https://news.ycombinator.com/item?id=50394569\nPoints: 115\n# Comments: 88",
+      "id": "b81ea0f95984f901c2eb308482799f6e8f6c959c31f57ca8733bac6e7baac858",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "一个创新的跨平台、GPU渲染的Rust UI框架，潜力巨大。",
+      "reason": "技术新颖且实用性强，对于Rust开发者而言极具吸引力，解决了跨平台UI开发的痛点。",
+      "tags": [
+        "Rust",
+        "UI框架",
+        "GPU渲染",
+        "跨平台",
+        "编程工具",
+        "前端"
+      ]
+    },
+    {
+      "title": "Writing English is Solved ",
+      "link": "https://idiallo.com/byte-size/english-is-solved",
+      "source": "idiallo.com",
+      "publishedAt": "2026-11-06T08:00:00.000Z",
+      "summary": "Maybe you still struggle to write in Pulaar, or in your rinky-dink language. But here in the AI-connected, English-speaking world, we don't need to write anymore. In fact, I don't remember the last time I wrote English. I have one master agent that I talk to and tell what I need to get done. It breaks down the tasks and serves them to spawned agents that get the work done.\nI spend $3,000 a month on tokens. I use them mostly for:\nResearch and search\nSummarization and transcription\nWriting (the big one)\nArt and music\nMy great transition this year, as a programmer, was that once I accepted that AI can merge code without needing my review, I could let go. What this meant was that when AI writes English for me, I no longer need to review it before publishing. It can write English, and it writes it well.\nOkay, let me add this here before I go too far: /s.\nI read this blog post yesterday, and I'm always baffled to hear technical people write these words:\nWriting code is solved.\nAs a software engineer who uses AI, I feel like I must be holding it wrong. I've found a correlation between the number of lines of code written and the number of bugs found. Whether a person or a model generates the code, the longer the PR, the higher the odds of finding an issue. So when someone says coding is solved, I automatically assume they were mediocre at best before using these tools.\nIf we look at it technically, we could say, in the same vein, that writing English is solved. The AI can write correct sentences, write paragraphs, or publish an entire document. If you have doubts about the content, you can have a second AI verify it and fix potential hallucinations. But of course, that's not how it works in the real world. The moment people detect AI-generated text, even if it is after reading the whole text, they reject it.\nIt feels empty, deceitful. What is an anecdote from an LLM to convey, when the experience never actually happened? Yes, code is not to be consumed like English. It is for the machine. But it is subjective in its purpose because we humans have to read it eventually. \nWriting code is not solved, just as writing English cannot be solved. Writing is subjective and has no solution because it isn't a problem. If anything, AI for writing is a testament to this saying:\n\"Je n'ai fait celle-ci plus longue que parce que je n'ai pas eu le loisir de la faire plus courte.\" — Blaise Pascal",
+      "id": "c3251d44f95818002243a1f060f7c734afd1f2d6d1d7e49261f1a507a785f330",
+      "ref_id": "1",
+      "recommendationScore": 90,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "以反讽手法深度探讨AI在写作和编程领域被过分吹嘘的局限性。",
+      "reason": "对当前AI万能论提供了有价值的批判性视角，结合了编程实践，符合AI和编程工具主题的高优先级。",
+      "tags": [
+        "AI",
+        "批判性思维",
+        "编程",
+        "写作",
+        "大语言模型"
+      ]
+    },
+    {
+      "title": "Memorilla: Latent Semantic Memory for LLMs",
+      "link": "https://arxiv.org/abs/2610.21375",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-06T18:03:33.000Z",
+      "summary": "Article URL: https://arxiv.org/abs/2610.21375\nComments URL: https://news.ycombinator.com/item?id=50395919\nPoints: 47\n# Comments: 3",
+      "id": "bc00e1abe23c7a7329aa814fe5150dfaef6f5ba5421ddaf868c92523c290ff65",
+      "ref_id": "2",
+      "recommendationScore": 89,
+      "popularityScore": 45,
+      "priority": "high",
+      "comment": "一篇关于LLM潜在语义记忆的深度研究论文，直接关注AI领域的前沿技术。",
+      "reason": "高度贴合AI主题优先级，技术深度和新颖性极高，对LLM研究和开发有重要意义。",
+      "tags": [
+        "AI",
+        "LLM",
+        "研究",
+        "内存管理"
+      ]
+    },
+    {
+      "title": "First steps in bare-metal programming using UEFI",
+      "link": "https://kevinboone.me/efitest_index.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-06T16:50:29.000Z",
+      "summary": "Article URL: https://kevinboone.me/efitest_index.html\nComments URL: https://news.ycombinator.com/item?id=50394855\nPoints: 135\n# Comments: 20",
+      "id": "1c0e2b2010398178149f2c71a941790ce4e3e312f62feca2faed00b9bfcd3ffe",
+      "ref_id": "2",
+      "recommendationScore": 88,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "一篇深入讲解使用UEFI进行裸机编程的专业技术教程。",
+      "reason": "技术深度极高，为有经验的系统开发者提供了稀有的实践指导，信息密度大，但受众相对小众。",
+      "tags": [
+        "UEFI",
+        "裸机编程",
+        "系统编程",
+        "底层开发",
+        "技术教程"
+      ]
+    },
+    {
+      "title": "Weekend at Bernie’s II",
+      "link": "https://nesbitt.io/2026/11/06/weekend-at-bernies-ii.html",
+      "source": "nesbitt.io",
+      "publishedAt": "2026-11-06T10:00:00.000Z",
+      "summary": "Six months after Weekend at Bernie’s, 421 of the critical repos that were dead, dormant or unknown in May are active again. In the 1993 sequel, Bernie is brought back by a voodoo ceremony that goes slightly wrong, and the result is a corpse that moves whenever it hears music. In nearly a quarter of the revived repos the music shows up in the commit history as a coding agent, with most of those commits made by the repo’s own top committer.\nIn the previous post I sorted the repos behind the ecosyste.ms critical packages into four buckets, and a follow-up went through the ways a project ends up dead:\nActive: regular non-bot commits to the default branch, or a release, in the past year.\nDormant: little or no development, but someone with write access has closed an issue, merged a PR or pushed a commit in the past year.\nDead: archived, or with issues and PRs filed in the past year and no response from anyone with write access.\nUnknown: no issues, PRs or activity in the past year, so responsiveness hasn’t been tested.\nIn the previous post I predicted that AI-assisted vulnerability discovery was about to test the quiet ones: “The first security report against any of them will be that test.” I re-ran the same pipeline with the same classifier at the start of November, and the headline split is within two points of May’s:\n \n      May\n      November\n      change\n    \ncritical repos\n      5,874\n      6,106\n      +232\n    \nactive\n      48.8%\n      49.9%\n      +1.1\n    \ndormant\n      20.2%\n      18.7%\n      -1.5\n    \ndead\n      12.1%\n      11.8%\n      -0.3\n    \nunknown\n      18.9%\n      19.5%\n      +0.6\n    \ndead and archived\n      322\n      361\n      +39\n    \ndead and not archived 😎\n      391\n      361\n      -30\n    \nadvisories with no patched version\n      110\n      133\n      +23\n    \nRunning May’s classifier over November’s data changes only 23 buckets, so the changes come from activity in the repos, plus older issues and releases dropping out of the one-year window. 421 repos went from dormant, dead or unknown to active, and 295 that were active, dormant or unknown in May are now dead.\nWho came back\nRegistry maintainer lists changed on the packages of only 16 of the 421 revived repos. Checked against the commit history, one of those is a renamed account, seven are staff rotating inside organisations like Docker and Google, and two added an account with no commits since, which leaves six where a new person took on the work. The registry maintainer lists were unchanged on the other 405. Abandoned-package policies at most registries are built around transferring a dead package to a new owner, one of the few ways projects change hands, and ownership changes were rare among these revivals.\nTo see what those returning maintainers were working with, I ran CHAOSS’s disclosure tool over every commit in the 416 revived repos hosted on GitHub, covering the year since last November, which is the same measurement I ran across the whole critical set in August. It matches co-author trailers, agent bot emails, agent branch names and similar signals, so the numbers are a lower bound.\nIn the six months before May, 3.3% of human-authored commits in those repos carried an AI disclosure, spread over 22 repos. In the six months since, it was 7.9% over 95 repos, 778 commits in all, and 566 of them came from each repo’s own top committer, usually with a Claude Code trailer. Every disclosed AI commit in the dead and unknown revivals dates from after May, and 10 of the 47 dead ones and 8 of the 64 unknown ones have them.\nThe heaviest agent users among the revivals include:\npython-json-patch and lz4 were both dormant in May, and have 123 and 75 agent-assisted commits.\nrack-proxy was dead. Jacek Becela, who wrote it, has made 39 agent-assisted commits since, the repo now has a CLAUDE.md and an AGENTS.md, and it shipped 1.0.0 in July as “the modernization + security-hardening release”, 2.0.0 in September with HTTP framing hardening, and 1.0.3 as a security patch for the 1.x line.\nnet-sftp was dead and has 29 agent-assisted commits, a mix of Codex and Claude Code.\nCEnum.jl, a Julia package that was dead in May, has 27.\nzip-archive, a Haskell package that was unknown in May, now has 16.\nMy read of these commit logs is that the agents made the backlog on a finished-but-neglected library small enough to clear, and the maintainers who already knew the code were the ones best placed to check what the agent produced. Running the scan also turned up two gaps in the tool’s detection, and I’ve sent fixes for both.\nFixes and advisories\nMaintainers released fixes for vulnerabilities in their own code in 43 of the revived repos since May. Where the maintainer also published a repository advisory, 19 of 20 went up within a day of the fixed release, and the wait came afterwards, while the advisory was in GitHub’s queue for review into the global Advisory Database:\ncrass, a Ruby CSS parser, had its last issue, PR or commit more than a year before May. Ryan Grove released 1.0.7 on 25 June with fixes for four denial-of-service bugs and published the four repository advisories the same day. They reached the reviewed database 116 to 125 days later, including GHSA-6wmf-3r64-vcwv on 20 October.\ndecode-uri-component had been dead since 2022. Sam Verschueren rewrote the decoder and published GHSA-vcc3-ghjq-m6fr on 29 June, and it was reviewed 63 days later. A second fix and advisory on 23 October, GHSA-qr28-fpjm-wq7f, were reviewed within a week.\nmoment shipped 2.31.0 on 15 September with a fix for a path traversal through crafted locale names, and published GHSA-4p3w-j4w9-5jqw the same day, which was reviewed two weeks later. Matt Johnson-Pint wrote 41 of the 68 commits since July.\nrubyntlm, dead in May, released 0.6.6 on 9 September to fix an authentication bypass where NTLMv2 responses were being verified against an empty password. Its repository advisory went up the same day, and two months later it is still missing from the reviewed database.\nGitHub wrote about the backlog in June. Private vulnerability reports went from about 550 a week in January to more than 3,000 a week for most of May, and “since mid-April, due to this surge, we have not consistently met our internal goals for publication.”\nAcross the 1,011 advisories since May that have both a repository advisory and a dated fix, the median gap between the fixed release and the maintainer’s advisory is zero days in every bucket. The median wait from there to the reviewed database was 11 days for repos that were active in May and 38 days for repos that were dormant, dead or unknown. Dependabot and npm audit read the reviewed database, so during that wait the users of a revived package get no alert, even though the fixed version and the maintainer’s advisory are both public.\nGitHub says it prioritises review by “project impact and severity”. The previously inactive repos waited longer in every severity band, and the ten of their advisories published in June waited 81 days on average, against 17 for advisories from active repos published the same month. That’s 20 advisories in all, five of them from crass, so it’s a pattern and not proof, and my guess is that a package with years of silence in its repo scores low on project impact.\nSix of the 43 fixes have an AI tool visible in a release note, branch name or commit:\nfribidi, dormant in May, lists “Security and robustness fixes found by an automated scan (Anthropic’s OSS Scanner)” in its 1.0.18 release, including an out-of-bounds write.\nThe maintainers of Spock and ruby-domain_name merged codex/ branches.\nopenid_connect has a Copilot Autofix commit, and ssl_verify_fun and iqlusioninc/crates have Claude-authored ones.\nUnanswered reports\nOf the 1,086 repos that were unknown in May, 189 got an outside issue or PR since then, which is the test the previous post described. In 94 of them a maintainer closed or merged something, and 17 more had maintainer commits while the outside item went unanswered. The other 78 had no maintainer activity and moved to the dead bucket. Of the 1,171 repos that were dormant in May, which I flagged in the previous post as the bigger worry, 107 are now dead and 310 are active, about three revivals for every new death.\n1,345 advisories were published against packages in the set between May and November, and 8.5% of the repos that were active in May got at least one, against about 1% of dormant and dead repos and 0.3% of unknown ones. Those rates count reports that became public, and a public advisory needs someone to receive the private report, write the fix and publish the advisory alongside the release. A private report sent to an unattended repo reaches an advisory database only if the reporter publishes it themselves, so the low rate on dead repos is a poor measure of how many reports they received.\nIn July a security engineer at Datadog opened an issue on gojsonschema, a Go library with about 30,000 dependent repos, saying they’d found what they believed were vulnerabilities and asking the maintainers to turn on GitHub’s private vulnerability reporting or share a contact address, and it has had zero comments since. Other reporters filed publicly instead: one now-dead repo has two open issues titled “[security disclosure]”, another has two titled “Security Advisory”, and all four are unanswered. Finding someone to send a report to is one of the steps I built Scrutineer to handle, because AI scanners have made finding the bugs the easy part.\nThe repos that were active, dormant or unknown in May and are now dead without being archived have 250 open pull requests from outside contributors, all opened in the same six months. I scanned the 103 I could reach on the formerly unknown repos, and 24 disclose AI use, in a trailer, a branch name, or a line like “Drafted with OpenAI Codex.” at the bottom of the description. Those 103 PRs are open against 59 repos, and the latest release on each of them predates May.\nBetween the end of August and the start of September, Oskar Eichler sent pull requests, most of them from codex/ branches, to at least 14 Ruby and JavaScript repos in the set: small fixes and hardening changes, some with a severity like [MEDIUM] in the title. The maintainers of net-sftp, which was dead in May, merged 15 of them, and the maintainers of net-scp merged 10. The ones on repos that are dead now have had no maintainer reply since they were opened.\nOn faye’s websocket-extensions-ruby, James Coglan replied within a day asking what bug the changes fixed, and said the project doesn’t accept code authored by LLMs or agents without meaningful human input. Eichler closed all seven PRs there himself, saying he couldn’t honestly provide that context. As with the AI scanner findings against curl I wrote about in May, the project had a stated policy to point to.\nReleases\nOf the 3,198 packages in the set that were dormant, dead or unknown in May, 348 have had a new version published since and 2,850 have not. Counted by repo, maintainers published a release for 322 of the 421 revived repos, and on the other 99 the commits and merged PRs since May are unreleased. Until those releases ship, the patching and forking workarounds are the remaining option, and each downstream user has to apply them separately.\nIn the previous post I counted 110 advisories with no patched version, and the same measure gives 133 now. Two more are on packages whose metadata has no repository URL, which makes 135, and most of them come from how advisories are keyed: an advisory counts as unpatched per package name, so when maintainers rename a project or adopt a new major version path, every advisory on the old name counts as unpatched even when the advisory lists the fix under the new one.\n61 have a fix recorded in the advisory itself under a different package: phpoffice/phpexcel alone has 19 that were fixed in PhpSpreadsheet, netty 3 has 9 fixed in netty 4’s modules, and github.com/docker/docker has 4 fixed in github.com/moby/moby/v2.\n17 are against end-of-life lines whose advisories omit the successor, like log4j 1.x and jackson-mapper-asl.\n15 describe behaviour that’s by design or documented, and 9 are misattributed or about code removed years ago.\n4 were rejected or disputed by NVD, and 4 are versions that were published with malware in them.\n25 advisories have no fix in any version, and 20 of those are on active repos. Debian marks 57 of the 135 as resolved in its own packages, and language registries, which work like Debian unstable, have no equivalent downstream packager.\nArchived and deleted\n44 repos in the set were archived since May, which closes the project on the record instead of leaving the issue tracker open. webpack archived six of its loaders and plugins, including css-loader and copy-webpack-plugin, several with a final commit pointing users at the equivalent now built into webpack. jsdom marked cssstyle and js-symbol-tree as unmaintained, and rust-lang archived lazy-static with a deprecation notice and cfg-if alongside it. Those ten packages have about 16 million dependent repos between them.\nFourteen repos behind critical packages have been deleted, and seven of them belonged to substack, whose GitHub account is also gone: wordwrap, text-table, commondir, archy, semver-compare and two more. Those packages still install from npm, where six of the seven list a single maintainer, nopersonsmodules, and that npm account is the only remaining place to send a report or ask for a release. The classifier reads issue data from the repo, so all fourteen are classified as unknown regardless of how many reports they receive.\nSee you in another six months. Until then, be suspicious of any dependency wearing sunglasses indoors.\n🕶️",
+      "id": "871932f01cb5c68135c36a293c659b052499db85819b12a745952e16eecae570",
+      "ref_id": "4",
+      "recommendationScore": 88,
+      "popularityScore": 85,
+      "priority": "medium",
+      "comment": "通过生动比喻探讨开源项目健康状况及自动化（AI代理）在其中作用的深度分析。",
+      "reason": "对开源生态和自动化工具在项目维护中的作用提供了独特且有洞察力的分析，主题高度相关且具新颖性。",
+      "tags": [
+        "开源",
+        "自动化",
+        "编程工具",
+        "项目管理",
+        "AI代理"
+      ]
+    },
+    {
+      "title": "SketchAgentBench – evaluate LLMs on 3D spatial reasoning",
+      "link": "https://sketchagent.dev/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-06T20:28:24.000Z",
+      "summary": "Article URL: https://sketchagent.dev/\nComments URL: https://news.ycombinator.com/item?id=50398010\nPoints: 5\n# Comments: 0",
+      "id": "2fdc29bf5084a19a3c467c9a4fa444c580a0039656744f9e51f5ba03bb509120",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 10,
+      "priority": "high",
+      "comment": "针对LLM在3D空间推理能力的创新性基准测试，技术深度和新颖性极高。",
+      "reason": "为AI研究者评估和提升LLM在复杂3D任务上的表现提供了重要工具和方法。",
+      "tags": [
+        "AI",
+        "LLM",
+        "基准测试",
+        "3D",
+        "研究"
+      ]
+    },
+    {
+      "title": "Anthropic IPO buyers see valuation as low as $1.1T",
+      "link": "https://www.bloomberg.com/news/articles/2026-11-06/anthropic-ipo-valuation-expectations-pressured-after-ai-rout",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-06T16:54:36.000Z",
+      "summary": "https://epyhia.com/anthropic-ipo-valuation-talks-drop-to-1-3...\nComments URL: https://news.ycombinator.com/item?id=50394906\nPoints: 128\n# Comments: 317",
+      "id": "0a5391d7db4b8ea1805b6cff36b817f3a80381fa2cdd0427d1fc5e999d267598",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "关注AI巨头Anthropic市场估值的最新动态，具有显著的市场影响力。",
+      "reason": "内容涉及AI行业头部公司的商业动向，具有高度市场关注度和时效性，符合AI高优先级。",
+      "tags": [
+        "AI",
+        "市场分析",
+        "IPO",
+        "Anthropic",
+        "行业趋势"
+      ]
+    },
+    {
+      "title": "I watched a humanoid robot clean my apartment. It felt like a taste of the future.",
+      "link": "https://www.technologyreview.com/2026/11/06/1148090/i-watched-a-humanoid-robot-clean-my-apartment-it-felt-like-a-taste-of-the-future/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-11-06T10:00:00.000Z",
+      "summary": "I’m not the sort of person who typically pays for a house cleaner. I’m too frugal, and I kind of enjoy putting on a podcast and going to town on my tub with a Magic Eraser. But when I saw an X post about a new humanoid-robot cleaning service in San Francisco, I immediately signed…",
+      "id": "1ca94b52e709b2f5558660d7d61ae0aa565524ff2f5f0063d6a0bfbf4a17fc9a",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "一篇引人入胜的体验分享，展望了人形机器人在家庭服务中的未来应用。",
+      "reason": "高度新颖且贴近未来的AI与自动化主题，提供了独特的视角和潜在的实用价值。",
+      "tags": [
+        "AI",
+        "Robotics",
+        "Automation",
+        "Future Tech",
+        "User Experience"
+      ]
+    },
+    {
+      "title": "Static site generators are weird",
+      "link": "https://evanhahn.com/static-site-generators-are-weird/",
+      "source": "evanhahn.com",
+      "publishedAt": "2026-11-06T17:00:00.000Z",
+      "summary": "I love static sites. Pre-rendered files are usually faster, lower maintenance, easier to secure, and more. Static site generators let you create these sites much more easily, which is fabulous.\nBut I believe most static site generators are weird.\nSSGs like Jekyll, Gatsby, and Hugo require you to learn their special way of doing things. You have to answer questions like:\nHow do you write HTML templates?\nHow do you manage CSS and JavaScript?\nHow do you deal with images and videos?\nHow do you manage routing?\nHow do you generate RSS feeds?\nHow do you do unusual things, like one-off pages or redirects?\nYou have to understand many of these in order to build a production-ready site, and every SSG is a different world.\nFor example, my blog (which you’re reading right now!) has used Jekyll, Gatsby, and Hugo. For each one, I’ve had to learn its templating system, its asset system, its RSS feed system, and much more. Each project is thoughtfully designed, but totally its own thing.\nThat’s not to mention the majority of SSGs, which are custom-made for one website. These projects tend to overflow with personality—rare programming languages, jagged feature sets, and flowery READMEs are on fine display here—and are often prime examples of the atypical. Weirdness at its best.\nThis is not a critique of any particular project or of SSGs in general. I think this a lot of this weirdness is essential complexity, which I think most SSG developers would tell you. But I still think they’re weird!\nI expect to receive some feedback on this post like, “Static site generator X isn’t weird! Everything it does is normal!” I haven’t had that experience, and I envy you.\nStatic site generators are great. And being weird is good! And I think static site generators are weird.",
+      "id": "c386630f8780ac9e2093ecd2fcf9982ce2c71cfe454e88203bcd7f258e5378df",
+      "ref_id": "3",
+      "recommendationScore": 85,
+      "popularityScore": 80,
+      "priority": "medium",
+      "comment": "深入剖析了静态站点生成器（SSG）的普遍痛点和使用复杂性。",
+      "reason": "对前端开发者和编程工具用户有很强的实用价值和共鸣，技术深度适中，符合编程工具主题。",
+      "tags": [
+        "Web开发",
+        "静态站点",
+        "SSG",
+        "编程工具",
+        "前端"
+      ]
+    },
+    {
+      "title": "We know 15k websites are infected. how do we tell them?",
+      "link": "https://scotthelme.co.uk/we-know-15-579-websites-are-infected-how-do-we-tell-them/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-06T18:13:35.000Z",
+      "summary": "Article URL: https://scotthelme.co.uk/we-know-15-579-websites-are-infected-how-do-we-tell-them/\nComments URL: https://news.ycombinator.com/item?id=50396064\nPoints: 104\n# Comments: 84",
+      "id": "83cff862ec5440889d34f11c3ce41abdff34a3bbab16c0aa972b3dfb46b8deb6",
+      "ref_id": "1",
+      "recommendationScore": 83,
+      "popularityScore": 90,
+      "priority": "medium",
+      "comment": "文章探讨了如何有效通知大量被感染网站的管理员，具有高度的实用性和社会价值。",
+      "reason": "涉及大规模网络安全问题，具有重要的行业实用性，可能包含新颖的解决策略。",
+      "tags": [
+        "网络安全",
+        "自动化",
+        "Web安全",
+        "问题解决"
+      ]
+    },
+    {
+      "title": "Apple Support: ‘About the Illuminated Apple Logo on MacBook Pro With PROLED XDR Display’",
+      "link": "https://support.apple.com/en-us/149248",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-11-06T15:03:51.000Z",
+      "summary": "Apple Support:\nTo make the Apple logo dark in all lighting conditions, you can turn off its illumination using Terminal, which is in the Utilities folder of your Applications folder. You can also use Spotlight to find and open it.\nType or paste this command in Terminal, then press Return:\nsudo defaults write com.apple.CoreBrightness LEBacklightMode -int 0\n[...]\nTo turn logo illumination on again, enter this command in Terminal:\nsudo defaults delete com.apple.CoreBrightness LEBacklightMode\nApple might make this a GUI setting, but if I were them, I’d keep it this way. Make the people without fun in their souls use the Terminal command.\n(Keeping it as a defaults setting also helps emphasize that you save no meaningful battery life by turning it off. If this gets exposed as a GUI preference, I could see it spreading as a dumb-ass “pro tip” to turn it off to save battery life, like the unshakeable utterly wrongheaded belief millions hold that they should religiously force-quit apps on iOS, when in fact doing so chews up more energy when the apps get relaunched from a cold start.)\n ★",
+      "id": "bb1c7ea8e9eebeecdb379886c4587dca70abfa38dedf62239897b129dedd87e3",
+      "ref_id": "4",
+      "recommendationScore": 80,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "为MacBook Pro用户提供了一个鲜为人知的系统级定制技巧，并澄清了相关误解。",
+      "reason": "高度实用且与高优先级的Apple生态系统主题相关，信息密度适中。",
+      "tags": [
+        "Apple",
+        "MacBook Pro",
+        "macOS",
+        "Terminal",
+        "Customization"
+      ]
+    },
+    {
+      "title": "AI is dramatically accelerating AI research",
+      "link": "https://www.planned-obsolescence.org/p/ai-is-dramatically-accelerating-ai",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-06T20:27:23.000Z",
+      "summary": "Article URL: https://www.planned-obsolescence.org/p/ai-is-dramatically-accelerating-ai\nComments URL: https://news.ycombinator.com/item?id=50397994\nPoints: 16\n# Comments: 7",
+      "id": "e0c8b4541e0b5e8be31a9bff4568011d13ec940dcb82958e18289ef296b725f4",
+      "ref_id": "2",
+      "recommendationScore": 75,
+      "popularityScore": 35,
+      "priority": "high",
+      "comment": "探讨AI如何反过来加速自身研究的元议题，揭示了AI发展的重要趋势。",
+      "reason": "提供了对AI未来发展路径的深刻洞察，对于AI研究和战略规划有指导意义。",
+      "tags": [
+        "AI",
+        "技术趋势",
+        "研究方法"
+      ]
+    },
+    {
+      "title": "Devvm.dev: One VM for every project",
+      "link": "https://devvm.dev/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-06T17:30:22.000Z",
+      "summary": "Article URL: https://devvm.dev/\nComments URL: https://news.ycombinator.com/item?id=50395450\nPoints: 51\n# Comments: 29",
+      "id": "eaee8112f6cf14217102f76e4bbc79050332178b0ea61171a3d3acf0185fb56e",
+      "ref_id": "4",
+      "recommendationScore": 75,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "提供为每个项目创建独立VM的解决方案，对开发者环境管理具有很高的实用价值。",
+      "reason": "解决了开发者普遍存在的环境配置问题，属于编程工具和自动化范畴，实用性强。",
+      "tags": [
+        "编程工具",
+        "虚拟化",
+        "开发工作流",
+        "自动化",
+        "DevOps"
+      ]
+    },
+    {
+      "title": "The Download: a humanoid cleans house and Samsung builds for the AI boom",
+      "link": "https://www.technologyreview.com/2026/11/06/1148154/the-download-humanoid-robot-cleaner-samsung-ai-chip-boom/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-11-06T13:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. I watched a humanoid robot clean my apartment. It felt like a taste of the future. —Grace Huckins When I saw an X post about a new humanoid-robot cleaning service in…",
+      "id": "4824c98720e7e767d6033de6fb4d3e9be191f44113d54758ac5c9af7ee8ec41d",
+      "ref_id": "4",
+      "recommendationScore": 75,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "一篇涵盖了人形机器人和三星AI发展等热门科技新闻的摘要。",
+      "reason": "内容结合了AI和自动化等高优先级主题，适合快速了解行业最新动态和广泛趋势。",
+      "tags": [
+        "AI",
+        "机器人",
+        "自动化",
+        "科技新闻",
+        "行业动态",
+        "简报"
+      ]
+    },
+    {
+      "title": "PyLings: Solve Exercises and Learn Python",
+      "link": "https://github.com/thesayfulla/pylings",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-06T16:59:40.000Z",
+      "summary": "Article URL: https://github.com/thesayfulla/pylings\nComments URL: https://news.ycombinator.com/item?id=50394977\nPoints: 33\n# Comments: 2",
+      "id": "4280bb93d180a01f624bc349e673ceebf55283e40bd6872b4454a57448864eba",
+      "ref_id": "0",
+      "recommendationScore": 70,
+      "popularityScore": 30,
+      "priority": "medium",
+      "comment": "一个通过练习学习Python的实用工具，适合初学者。",
+      "reason": "提供了学习Python的实践方式，具有良好的实用性和教育价值。",
+      "tags": [
+        "Python",
+        "编程工具",
+        "学习",
+        "开源"
+      ]
+    },
+    {
+      "title": "Restaurant Delivery Payment-Skimming Campaign",
+      "link": "https://www.infohawk.com/news/2026-11-05-scamwich-restaurant-skimming",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-06T19:19:27.000Z",
+      "summary": "Article URL: https://www.infohawk.com/news/2026-11-05-scamwich-restaurant-skimming\nComments URL: https://news.ycombinator.com/item?id=50397017\nPoints: 30\n# Comments: 11",
+      "id": "c1c67cc6800fc35aff8a2324581fbcf3377a02dd5ce856dbb513de80a80ab407",
+      "ref_id": "3",
+      "recommendationScore": 65,
+      "popularityScore": 34,
+      "priority": "medium",
+      "comment": "揭露了一项针对餐厅外卖支付系统的数字盗刷活动，提供了实用的网络安全警示。",
+      "reason": "提供有价值的网络安全行业案例分析，对企业和用户均有警示作用，具有一定实用性，但技术深度属于中等水平。",
+      "tags": [
+        "网络安全",
+        "支付安全",
+        "欺诈",
+        "商业安全"
+      ]
+    },
+    {
+      "title": "Deus Ex",
+      "link": "https://www.filfre.net/2026/11/deus-ex/",
+      "source": "filfre.net",
+      "publishedAt": "2026-11-06T15:34:48.000Z",
+      "summary": "This article tells part of the story of Warren Spector. A slight shift of focus, and the future could still turn out like Deus Ex after all… — Deus Ex lead writer Sheldon Pacotti, speaking in 2014 The reviews that greeted Ion Storm’s Deus Ex upon its release in June of 2000 ranged along a continuum […]",
+      "id": "93e953706007dcf499c0a5252bf389426c2f85cca4828a7ed9eb3fe698defc63",
+      "ref_id": "2",
+      "recommendationScore": 65,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "文章深入探讨了经典游戏《杀出重围》及其核心创作者，具有一定的产品设计和游戏文化价值。",
+      "reason": "内容聚焦游戏设计历史与人物，可归类于产品设计领域，对游戏爱好者和设计者有启发性。",
+      "tags": [
+        "游戏设计",
+        "游戏历史",
+        "产品设计",
+        "Deus Ex"
+      ]
+    },
+    {
+      "title": "40C3 halfnarp – Submit talk preferences to aid scheduling",
+      "link": "https://halfnarp.events.ccc.de",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-06T18:16:43.000Z",
+      "summary": "Article URL: https://halfnarp.events.ccc.de\nComments URL: https://news.ycombinator.com/item?id=50396108\nPoints: 24\n# Comments: 3",
+      "id": "8401b3f48ea6e6178b5943c6d3c2b5ae4eb67a3184d1f17a54f0cf0b8b269661",
+      "ref_id": "0",
+      "recommendationScore": 35,
+      "popularityScore": 25,
+      "priority": "low",
+      "comment": "这是一个针对特定会议的日程辅助工具，技术内容有限且应用范围窄。",
+      "reason": "内容过于小众，缺乏普适性的技术深度和实用价值。",
+      "tags": [
+        "活动管理",
+        "工具",
+        "会议"
+      ]
+    },
+    {
+      "title": "The Valley Bubble Breaks",
+      "link": "https://quirksmode.org/quirksblog/2026/1106-valley-bubble.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-06T20:42:08.000Z",
+      "summary": "Article URL: https://quirksmode.org/quirksblog/2026/1106-valley-bubble.html\nComments URL: https://news.ycombinator.com/item?id=50398212\nPoints: 8\n# Comments: 1",
+      "id": "3ed16bd21171dff90a7a6bb61a3cd2b3971b971a61f0df840decff8516a41df4",
+      "ref_id": "0",
+      "recommendationScore": 30,
+      "popularityScore": 15,
+      "priority": "low",
+      "comment": "一篇关于科技行业趋势的评论，但缺乏具体的技术深度和实用洞察。",
+      "reason": "内容更侧重宏观评论，与主要关注的技术主题关联度较低，实用性不高。",
+      "tags": [
+        "行业趋势",
+        "科技商业",
+        "评论"
+      ]
+    },
+    {
+      "title": "As the Japanese countryside empties out, wildlife is disappearing",
+      "link": "https://e360.yale.edu/digest/japan-depopulation-biodiversity",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-06T19:36:16.000Z",
+      "summary": "Article URL: https://e360.yale.edu/digest/japan-depopulation-biodiversity\nComments URL: https://news.ycombinator.com/item?id=50397264\nPoints: 48\n# Comments: 26",
+      "id": "d9801d2aea1cf90be207fcfd9e5e8385ba6a63ebdb65d26bc6a2801ef3971a8d",
+      "ref_id": "0",
+      "recommendationScore": 25,
+      "popularityScore": 55,
+      "priority": "low",
+      "comment": "一篇关于日本乡村人口流失及其对野生动物影响的社会环境观察。",
+      "reason": "内容与科技博客的核心关注点关联度较低，缺乏技术深度和实用性。",
+      "tags": [
+        "环境",
+        "社会",
+        "生物多样性"
+      ]
+    },
+    {
+      "title": "How Do Building Codes Affect the Price of Housing?",
+      "link": "https://www.construction-physics.com/p/how-do-building-codes-affect-the",
+      "source": "construction-physics.com",
+      "publishedAt": "2026-11-06T13:01:35.000Z",
+      "summary": "A great deal of effort has gone into understanding the regulatory burden on housing construction, and the extent to which it contributes to high housing prices.",
+      "id": "3e38e7e4b34f1afdecc4119b3e4c6ca2efb1256d9c3da2fa952568bdfa912beb",
+      "ref_id": "0",
+      "recommendationScore": 20,
+      "popularityScore": 25,
+      "priority": "low",
+      "comment": "文章探讨建筑法规对房价的影响，内容与科技博客的核心主题关联性低。",
+      "reason": "主题与AI、编程工具等科技优先领域不符，不适合目标读者群体。",
+      "tags": [
+        "经济",
+        "房地产",
+        "政策分析"
+      ]
+    },
+    {
+      "title": "Size-It-Up (Game)",
+      "link": "https://magnitudle.com/size-it-up",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-06T17:59:59.000Z",
+      "summary": "Article URL: https://magnitudle.com/size-it-up\nComments URL: https://news.ycombinator.com/item?id=50395869\nPoints: 44\n# Comments: 16",
+      "id": "2db937636c180a639c5df7985291ad303b5d8e4fce79e010acf3ec6cab49d6a9",
+      "ref_id": "3",
+      "recommendationScore": 15,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "一款游戏，不包含任何技术文章或评论，与科技博客主题不符。",
+      "reason": "纯娱乐性质，不提供技术深度、实用性或信息密度，不属于科技博客评审范畴。",
+      "tags": [
+        "游戏",
+        "娱乐"
+      ]
+    },
+    {
+      "title": "My first and last telegram was from Rebecca West",
+      "link": "https://thelampmagazine.com/blog/rebecca-wests-nightingale",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-06T19:30:00.000Z",
+      "summary": "Article URL: https://thelampmagazine.com/blog/rebecca-wests-nightingale\nComments URL: https://news.ycombinator.com/item?id=50397176\nPoints: 21\n# Comments: 4",
+      "id": "27ebd0cac09b03cbacb19fe485c0f5da1bce33f38576455f9e4601d736587b8c",
+      "ref_id": "2",
+      "recommendationScore": 10,
+      "popularityScore": 24,
+      "priority": "low",
+      "comment": "一篇关于作家Rebecca West的个人轶事分享，属于文学和历史范畴。",
+      "reason": "内容与科技主题完全无关，不符合科技博客的定位和评估标准。",
+      "tags": [
+        "文学",
+        "历史",
+        "人物传记"
+      ]
+    },
+    {
+      "title": "★ Touch and Glow",
+      "link": "https://daringfireball.net/2026/11/touch_and_glow",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-11-06T19:50:46.000Z",
+      "summary": "I’m not cut out for Los Angeles.\nIt’s hard not to love the place, though. The weather is absurd. The people in LA, by and large, don’t believe in bad weather. It’s like a legend to them, like hearing about the Irish Potato Famine.\nAngelenos are friendly and good looking. The food is good and varied. But you really do need to drive everywhere. Trips from any one part of the city to another invariably require time not just in a car but on a freeway. What is oft-described as LA’s sprawl, I would describe as a layout and geographic scale that is more like that of a small, densely populated nation than of a mere city. LA’s palpable vastness is incredible, in a wholly different sense than, say, Manhattan’s. I love to visit. I would never want to stay.\nThe greater San Francisco Bay Area, I don’t feel that way about. The weather there, too, is certainly nicer than back east, but it’s not implausibly nice. San Francisco is a walkable city and can punish you with its weather at certain times of the year. I’m not at all religious but I was raised in a Catholic family, and one way that’s stuck with me is that I innately believe we deserve some stretches of bad weather. That it’s good for us to suffer to some extent, like physical exercise and toiling at our jobs. That’s a stupid thing to believe, I know, but I believe it. We all believe some stupid things.\nLos Angeles is an unusual place for Apple to hold a media event. They hold two big annual events on campus at Apple Park in Cupertino each year: WWDC in June, and the iPhone (and friends) event in September. Back in the old days, they held their major keynotes in San Francisco. I liked the old events in San Francisco better, if only because I enjoyed staying a few days in vibrant, gritty San Francisco better than the somnolent, sterile South Bay. But I think the events were more interesting too. Not better per se, but just more interesting. Less polished. More unique. Every inch of the Steve Jobs Theater was designed and crafted to host events like the annual iPhone introductions. It is an architectural marvel. But its perfection is off-putting. It somehow doesn’t quite feel realistic, even when you’re right there.\nIn its San Francisco events of yore, Apple experimented. The Macworld Expo and WWDC keynotes in Moscone North had an unavoidable sameness to them. But Apple held other events in other places in the 2010s, like the small Yerba Buena Theater across the street from Moscone, and the cavernous Bill Graham Civic Auditorium, which was built in 1915 and looks, feels, and smells like it. The room Apple used for its post-keynote hands-on area at Yerba Buena was always a little claustrophobic and very dark. This photo I took after the introduction of the original iPad in 2010 captures the feel of that room during those events.\nA few years later, they held an event there in October 2013 and solved — or at least improved — the problem by knocking a hole in the wall to allow in some sunlight and fresh air. Here’s a picture from the hands-on area at that event, showing Tim Cook (Katie Cotton at his side, as ever) chatting with Ed Baig (then at USA Today, still on the beat today at AARP). You can see the open air over Cook’s shoulder.\nAfter that event wound down, I grabbed lunch nearby, and then walked back through the plaza next to the theater. I don’t remember why. Best guess is that it was simply on the path back to my hotel. Apple already had a crew taking apart the entrance they’d added to the theater. Katie Cotton was outside, supervising. I stopped to chat. This was around 2:20pm, a little over four hours after the keynote and probably only 90 minutes after they’d politely escorted the last of us from the hands-on area inside. I didn’t write notes or record the chat, which would have been weird, but as best I recall, the conversation started with my saying something like “Man, you guys don’t waste any time, do you?” Cotton told me that while Apple loved the Yerba Buena venue, they were always bothered by the hands-on area being closed off and dark. I said that yes, it was previously a dank hellhole, and she laughed. She always seemed to genuinely enjoy my sarcasm. Apple, she explained, had inquired about options for opening that wall. Yerba Buena told them, sure, they could do whatever they wanted so long as they restored it after the event, but it would cost a small fortune. But to Apple the price was negligible, and they accepted the offer immediately and commenced with plans for how to do it.1 Cotton liked how it turned out, and I told her I agreed. It made for a noticeably nicer space.\nMy column about that October 2013 event began thus:\nThere is a certain sameness to almost every Apple event. A\npattern, a formula, a structure, a rhythm and pacing. Does this\nmake them boring? In some ways, certainly, insofar as the only\nthing we don’t know is what they’re going to say, as opposed to\nhow they’re going to say it. (And even then, we often have a\npretty good idea what they’re going to announce, too.)\nAnd I went on to quote from — and then disagree with — then-NYT tech columnist Nick Bilton’s griping that Apple’s keynotes lacked “wow” and had grown stale. (Bilton is now leading failson David Ellison’s team of dipshit weasels who are sinking 60 Minutes, the crown jewel of CBS News.)\nSomehow, here we are 13 years later (alas, not all of us), and there are still complaints about the repetitive sameness of Apple’s events. Yet Apple’s events these days don’t resemble that event from 2013 at all. Change comes slowly but it always comes.\nI enjoyed last week’s “Pro and Tell” event more than any in recent memory. I enjoyed the venue — both the unique building and the city. I enjoyed the format. But most of all I loved the subject: the Mac.\nThe building is best known as CBS Columbia Square, opened in 1937 as the West Coast headquarters for CBS. The color of the event was blue — matching the default wallpaper for the new MacBook Pros with PROLED XDR displays. Blue carpet covered the sidewalk leading into the entrance. After walking up the carpet, checking in outside, and donning my press lanyard, the magnetometer dinged me, and I was pulled aside and politely but brusquely asked to put my briefcase on the (carpeted) ground, and wait for a busy police dog to take a smell at it. I presume the dog was sniffing for weapons, not drugs, but either way my bag passed muster. Inside, just past the lobby, Apple had created a rather spacious theater, with a large screen and stage. There were blue padded bench seats along the outside walls, but the primary center area of the space was for standing. From the floor to the room’s high ceiling, the walls were blue.\nBehind the theater was a large area with coffee, water, and small breakfast treats. Invited guests — primarily tech journalists and social media creators — mingled and sipped. I checked my laptop bag, and carried only my notebook and phone for the morning. Apple PR reps were, as ever, present but never overpresent. Conversation touched upon the expected but as yet unknown touch-enabled MacBook Pros. Word spread that Steven Levy, the undisputed dean of the Apple press corps, had landed an exclusive first look for Wired. (Levy, ever the pro, and a delightful raconteur, confirmed only that, yes, he had the exclusive, but he offered not a word regarding its content before his agreed-upon embargo. His wry smile, though, betrayed that he was happy with what Apple was about to unveil.) Much of the pre-event chatter, however, was dominated by discussion about the iPhone Duo. A rather remarkable number of attendees had Duos in hand — many of them still in the midst of reviewing it, but others professed to having already gone all-in on it. To each their own; there’s no accounting for taste.\nShortly before 10am, word spread that it was time to pack into the theater. I squeezed in close to the stage. Why not? Steve Jobs, I noted, never took the stage quite on time. He was seldom more than two or three minutes late, but he was always at least two or three minutes late. Rock stars don’t take the stage on time. Tim Cook, on the other hand, was never late. A minute early, sometimes; a minute late, never. You could set your watch to 10:00 by listening for his “Good morning!”\nJohn Ternus took the stage at 10:00.\nHe spoke briefly. Just a few minutes recapping Apple’s week of announcements. The new OLED iPad Mini, the new M6 MacBook Pro, the updates to Creator Studio. He spoke naturally and comfortably, and seemingly extemporaneously. He looks like he smells like Apple Park. He’s a cool guy. And he knows that Tim Cook handed him a killer lineup of new products to introduce over his first two months as CEO. Every one of Apple’s major platforms is in a good-to-great place. His on-stage remarks culminated with the introduction of the truly new MacBook Pros: “That’s why we’re here today — to mark another huge moment for MacBook Pro, and for the Mac itself.” When Ternus then announced, a moment later, “And yes, for the very first time, we are bringing touch to the Mac”, the audience erupted in gasps and cheers — a reminder that for as much as many of us know before Apple makes these announcements, a lot of the people in attendance do not even know who Mark Gurman is. A lot of the people in the room were genuinely shocked and surprised.\nApple paid a lot of money to put a fantastically bright screen behind Ternus, and they used that screen to show this two-minute “If you give a Mac an OLED” intro video. The first mention of touchscreen support, in that video, comes a full third of the way in.\nTernus teased the return of the glowing back-of-the-display Apple logo in a tweet that morning. On stage he made it official: “The logo is back.” I love the way he phrased that. Not “the glowing logo is back”. Just “the logo is back” — like it might as well not have been there in the unilluminated years since 2016. Fuck yeah.\nThe show in the theater was short and sweet. We shuttled off to the hands-on area by 10:15, if not sooner. The format of the event — or “experience”, as Apple calls these — mirrored that of the MacBook Neo experience in New York back in March. Brief welcoming remarks from Ternus, a crisp short video presented to a standing room of invited media guests, and then, boom, a scramble off to an expansive hands-on area. Apple didn’t stream Ternus’s live-on-stage remarks to the world back in March, and they chose not to again last week. They should. These aren’t live keynote events, but they are live events. I’m glad I’ve gotten to see them in person, but I wish everyone could see them online. They are good. Good things should be shown. Apple is run by people. Seeing the company’s CEO live on stage is a rare glimpse behind the aluminum and glass facade.\nOne is an anomaly. Two is a pattern. The Neo event (err, experience) back in March was like no other. This “Pro and Tell” MacBook Pro event was a lot like the Neo one. The Neo one didn’t get a punny title though — just a simple “You’re Invited” on the email invitation (although the decoration of the Apple logo hinted at the Neo’s signature citrus colorway). The Columbia Square building in Los Angeles is large, but it’s nowhere near as spacious as the empty warehouse in Chelsea where Apple held the Neo event. There seemingly were more invitees at last week’s event in LA too. In New York back in March, there was room to mingle. I snapped this fun photo of Jason Snell chatting with Phil Schiller, Greg Joswiak, and then-still-SVP-of-hardware John Ternus. Even setting aside Ternus’s subsequent promotion to CEO and levelling up in celebrity, that chat couldn’t have happened in the hands-on area of this event. There were too many people and too little space.\nIn the scramble after leaving the theater area, Apple reps were gladly informing attendees that there were two separate hands-on areas, and that “the one in the back” might be less crowded. It wasn’t. Both areas were tightly packed. They were tight tube-like hallways, with black walls, good lighting, and Apple Store-like tables upon which were arrayed the new MacBook Pros. Silver and space black; 14- and 16-inch; nano-texture and glossy. Some of the tables featured Apple’s speed-bumped M6 MacBook Pros, the enclosures for which are nearly indistinguishable from the machines everyone really wanted to see — the PROLED XDR M5 Pro and M5 Max models. I saw several attendees poking and sliding their fingers on the screens of those M6 models, to no avail, until someone gently told them “These are just the other new MacBook Pros.” \nPacked shoulder-to-shoulder in a confined space with low ceilings, jostling for hands-on time with the PROLED XDR models, the temperatures — both atmospheric and emotional — got uncomfortably warm. It also became clear that some of the attendees chose not to shower that morning. The scene brought to mind the pungent imagery of the “coach” cars in Bong Joon-ho’s Snowpiercer. \n\n  \nThe Steve Jobs Theater, this was not.\nBut that’s not a complaint. This was different and different is good. It was a unique event in a unique venue. That’s good for Apple and good for those of us with the fortune to be invited to attend these things. Events at Steve Jobs Theater are held the SJT way. Apple adjusts and tweaks them, but the space defines them. An altogether new venue, whose ground floor Apple seemingly built out from scratch for this event, requires thinking about everything. And Apple’s thoughts are revealing. What I took away from the hands-on at this event is that Apple wanted us to get close to these MacBooks. To really look at them and appreciate them. No, they’re not radically different. They’re subtly different. But subtly different in very significant ways. That’s not exciting but it’s correct. The old MacBook Pros (including the new M6 model) were, by far, the best professional laptops ever made. The new ones are just better.\nI like the hands-on scrums. There’s an energy to them you can use to gauge interest. When the products are genuinely exciting there’s a buzz that can’t be faked. People were fucking excited by these new MacBook Pros, and rightly so. These are the machines many of the people in attendance use themselves for their own work — our own work — all day, every day. The new tandem OLED displays are quite literally brilliant. You can see the difference even when they’re not side-by-side with the old mini-LEDs. When they are side-by-side, the old displays look washed. The new ones look wow.\nAnd the “hands-on” aspect came into literal play two ways. First, yes, you can tap, swipe, and pinch the displays. Some people cared about that. A lot of others in the room, including yours truly, not so much. But even those of us who were ambivalent, at best, about touch coming to the Mac had reason to rejoice upon seeing Apple’s implementation: Apple added touchscreen support to MacOS the right way. Touch is decidedly secondary on MacOS. The density of the UI doesn’t change at all when you’re using a mouse pointer, and it only changes slightly to create larger tap targets when you touch the screen. This is the way. I would have bet that Apple would do it this way, but every bet is uncertain. And though the likelihood was low the stakes were high — a completely touch-first reimagining of the MacOS user interface would have been a devastating blow to an irreplaceable platform.\nSecond, the weight reduction Apple was able to achieve with these machines is astonishing. The 14-inch models weigh a full half pound less. The 16-inch models weigh 0.7 pounds less. Almost three-quarters of a pound! I saw numerous attendees picking up the hands-on demo machines to compare them to the personal MacBook Pros they were lugging around the event in their backpacks. Eureka after eureka. These are massive reductions in weight without — claims Apple — any decrease in sustained performance or battery life.\nNext up, for some of us, were product briefings. I saw a disassembled PROLED XDR display panel. Five layers (I think?), each of them impossibly thin. A friend who was in another briefing group said the front panel cover glass shattered in the hands of one writer when it was passed around for examination. In my group — which might have been after that one — we didn’t get to touch anything.\nPutting OLED into a laptop doesn’t magically make it good. Apple had a side-by-side comparison with a Lenovo Yoga 9 Whatever with an OLED display. The colors on that display were slightly greenish when viewed head-on, and garishly green when viewed off-angle. The colors on Apple’s PROLED XDR look remarkably good from any angle. Most surprising to me was Windows 11’s bizarrely clunky support for HDR images. When you open an HDR image, it displays as SDR, then you wait like 5–10 seconds for the display to “warm up” and only then does it show it in HDR — and when it does, the colors look bad. Getting a brief taste of “modern” Windows feels like visiting Cuba or something.\nIn the not-for-attribution Q&A after the briefing, I asked about the fact that the original glowing Apple logo in MacBooks — and PowerBooks — was a byproduct of the fact that the displays were backlit. There was a bright light sealed up inside the back of those display panels, and someone at Apple had the idea that if they just cut out the Apple logo on the back and fit it with translucent plastic, it would glow. Steve Jobs loved the idea and the rest is history. Every Mac laptop from 1999 through 2016 had a logo that glowed. Photos like this one from 2007 are iconic.\nBut OLED doesn’t use a backlight. Each pixel lights up on its own, which is how OLED’s blacks are so utterly black, and how light bleed is so drastically reduced. So if there’s no backlight, does that mean the new glowing logo has a light source of its own? Yes, was the answer. Apple engineered a custom light source just to enable the logo to glow once again, without adding any additional thickness to the lid. Someone else in my briefing group asked why Apple would bother doing that. “Because it’s awesome,” was the answer, which I’m quoting exactly and fully. That was the entire answer. Because it’s awesome.\nIf you work in a dark environment where the glowing logo might prove a distraction, or if you’ve had your sense of fun surgically removed, you can disable the light. The light-up logo was a particular source of joy for Apple executives and product managers, including the fact that they managed to keep it entirely secret. One difference between this new glowing logo and the old ones from 1999–2016 is that when the light is turned off on this one, it just looks like the highly polished Apple logos from MacBooks since 2016. It doesn’t look, at all, like a light that is turned off. Thus, Apple was able to keep it from leaking by not enabling the illumination in the builds of MacOS that were used by employees who were testing preproduction models inside the company.\nPure awesomeness. Fun for the sake of fun on the back. The best laptop display in the industry — by a longshot — on the front. How utterly Mac-like.\nIn the late afternoon came the “Pro Workflow Showcase”, on the third and fourth floors of the building. (The second floor held a cafe and an outdoor terrace with a separate coffee bar. There was an entire other cafe downstairs on the first floor. The coffee, as usual, was pretty good, and the small plates tasty and fresh.) This showcase featured half a dozen demonstrations from creative professionals using the Mac in innovative ways to pursue their various crafts. Impressive demos from obviously talented artists, one and all.\nU.K. filmmaking brothers Will and Ed Reid (a.k.a. “The Reids”) showed off their “4D Gaussian splatting” workflow, which allows them to capture immersive 3D scenes using a synchronized array of nine iPhones used as cameras. Portrait photographer Jeremy Cowart, from Nashville, demonstrated his crazily customized studio workflow, which allows him to capture and process hundreds of still photos per minute, with the background behind the subject shifting with each frame. Record producer Fab Dupont, who has worked with musicians ranging from Bad Bunny to David Crosby, mixed music live in Logic Pro. (Dupont was particularly fond of the touchscreen on the new MacBook Pros, which he repeatedly stated he expected to ignore.) From the fashion world, the wife and husband duo of designers Susan Fang and Orelio de Jonghe showed off an array of intricate 3D-printed clothing, gowns, and accessories. I found a new pair of eyeglass frames that, I’m told, suit my face. (Photo credit: Austin Mann.) And then, most delightfully and surprisingly, there was a two-section demo area from Japanese experimental botanist and “haute couture” florist Azuma Makoto. Azuma was the subject of Flower Punk, a documentary short by Alison Klayman for The New Yorker back in 2020 — which, now that I’ve seen his work up close in person, is high atop my to-watch list. Azuma uses the Mac in multiple ways. First, to design elaborate, beautiful botanical sculptures. Second, to design and engineer intricate contraptions and machines — research equipment — that allow him and his team to optimize and control the blooming of picked flowers. Third, to control that equipment in operation. The machines are as beautiful as the flowers. I commented on the mechanical switches. They beg to be flipped just to feel them click. After hearing my brief question translated into Japanese, Azuma’s partner Shiinoki Shunsuke answered at length, with great enthusiasm. They’re often asked, he said, why they design their custom equipment with analog controls, rather than control them entirely through software. They feel that the physical nature of the plants inside the machines demands physical controls to manipulate their environment. It’s like touching the flowers without touching them. A beautiful description of hauntingly beautiful works at the intersection of technology, biology, and art. It’s like Doc Brown from Back to the Future meets Martha Stewart.\n\n  \nOh, and there was one other demo station. It was from a small filmmaking outfit named Industrial Light and Magic, and the primary demo was helmed by John Knoll. Knoll co-created an image editor for the Mac in 1987 with his brother Thomas, and has pushed the cutting edge of VFX across five decades at ILM. Both the image editor and the movies he’s worked on have achieved a fair degree of renown and success. When I saw him, I was nearly dumbfounded. It was all I could do not to walk up to him and say what my mind was screaming: “You’re John Fucking Knoll.” John Fucking Knoll, doing demos on the third floor. Holy shit.\nKnoll brought with him an elaborate rig from ILM. A spaceship model from Star Wars: Skeleton Crew. A real physical model. Behind the ship was a very large curved LED screen — a smaller version of the cavernous “Volume” 75-foot chamber that ILM first used for The Mandalorian in 2019. A miniature Volume for miniature models. In front of the ship was an iPhone camera with a large lens mounted on a track. In front of the track stood Knoll, controlling the whole apparatus from a MacBook Pro (with logo aglow, natch). Knoll built this motion-tracking camera control system in his garage and wrote the firmware himself. Of course. He’s John Fucking Knoll. And he showed us how they use this system to shoot a practical spaceship model flying through hyperspace that is being rendered, live, on the curved LED behind the model. It’s all just captured in camera. The secret is genlock, which syncs the video rendered on the LED in front of the camera with the video being captured on the camera — synchronized precisely not merely to the millisecond but to the microsecond.\n\n\n\nThere are two questions I can remember being obsessed with as a child, that started me on the path to what ultimately became my career. The first was, “How did they make Star Wars?”2 Now here I was, seeing, just a little at least, exactly how they make Star Wars today — in arm’s reach of an actual goddamn ILM spaceship miniature. And a big part of the answer of how they make it today is, “With the Mac.”\nBy my count Apple held four major events this year. Two of them were the inviolable tentpoles of the annual Apple calendar: WWDC in June, and the iPhone event in September — both held, as usual, at Apple Park. WWDC is the all-encompassing software event for all of Apple’s platforms. The iPhone event is the iPhone event, with Apple Watch as the opening act.\nApple’s other two major events in 2026 were the no-event-title Neo introduction in New York in March, and last week’s “Pro and Tell” introduction for the new MacBook Pros in Los Angeles — both of them big, expensive productions, both held in big, expensive cities far from Cupertino.\nNow consider Jason Snell’s Six Colors chart of Apple’s quarterly revenue by product line for the last five years, up through last week’s results for Q4 2026:\n\n  \nThe green sliver represents the Mac’s share. Snell’s original chart is interactive — you can hover over it and get the specific breakdown for each quarter. The Mac’s share is consistently in the range of 7 to 9 percent for Q2, Q3, and Q4 each year. The iPhone is consistently around 50 percent in those quarters. In Q1 — the October/November/December holiday quarter — the iPhone jumps to around 60 percent, and the Mac drops to 5 or 6 percent. Year after year.\nThe Mac accounts for the high single digits of Apple’s revenue. High single digits, yes, but single digits. Yet two out of Apple’s four major events this year were focused entirely on the Mac. If you’re a pissant grump, you could argue that both of those events were wasteful, self-indulgent preening on Apple’s part. That the first one, for the MacBook Neo, was simply to announce a MacBook that cost $500 less than the previous entry point model, the MacBook Air. And the second one, last week in Los Angeles, was simply to announce MacBook Pros that cost $400 more than the previous ones, just to add touchscreen support that PC laptops have offered at lower prices for over a decade. All of this for a platform that doesn’t even account for 10 percent of the company’s revenue, with an operating system that ought to be put out to pasture.\nWhat a miserably wrongheaded, ignorant, joyless take that would be.\nThese new MacBook Pros are worth showing off. What Mac users do and create on the platform is worth celebrating.\nWhen I began closely following Apple, the Macintosh was Apple and Apple was the Macintosh. That hasn’t been true since the iPhone began its meteoric rise. Financially, Apple today is the iPhone, Services, and “everything else”.\nBut at the true center of Steve Jobs’s metaphorical intersection of Technology and the Liberal Arts, the Mac remains the heart and soul of everything Apple does, and responsible for so much of what users create with Apple’s products. We speak of people — both inside and outside the company — bleeding six colors. But the iPhone never had a six-color logo.\nApple has continuously adapted the Mac for changing times, changing technology, and a changing world, yet — for four decades — has kept it true to its original core. The Mac today is very recognizably the Mac to any user from any time in its illustrious history. Even touchscreen support, now, has been added the Macintosh way.\nIn 2010 I wrote “The Future of the Mac in an iOS World”. That piece has held up pretty well:\nHere’s the short version of the “Mac is doomed” scenario: iOS is\nthe future, Mac OS X is the past, and Apple, unlike most major\ntech companies, is strongly inclined to abandon the past in the\nname of the future.\nYou can’t really argue with that, can you? But the premise that\nthe end is near for the Mac presupposes quite a bit about the\nnear-term future of iOS. [...]\nIt’s the heaviness of the Mac that allows iOS to remain light.\nWhen I say that iOS has no baggage, that’s not because there is no\nbaggage. It’s because the Mac is there to carry it. Long term — say, ten years out — well, all good things must come to an end.\nBut in the short term, Mac OS X has an essential role in an iOS\nworld: serving as the platform for complex, resource-intensive\ntasks. The funny thing is, the best slogan to describe the Mac’s\nrole is the same one it started with 25 years ago:\nThe computer for the rest of us.\nI was only wrong then in fretting that the Mac might — perhaps — only have a decade or so yet ahead of it. Here we are now 16 years later and the Macintosh is more popular, more essential, more successful, and further ahead of its ostensible competition than ever in its 42-year history. Change comes slowly but it always comes.\nThe logo not only glows again. It might glow forever.\nI am reminded of the delightful story of how Microsoft wound up with the rights to “Start Me Up” for the Windows 95 launch. The Rolling Stones had theretofore never licensed a song for use in a commercial. Mick Jagger had always handled such inquiries not by saying “no”, but instead by quoting astronomically high prices. Microsoft asked about “Start Me Up”, Jagger gave them a no-way-they’ll-say-yes price (supposedly $12 million) and Microsoft simply said, “Great, that’s a deal.”  ↩︎\nThe other was “How did they make Pac-Man?” ↩︎︎",
+      "id": "6140ad676514ffa91d7d2f1673d8ef072df2e26500538420e3e03a83344d5fb9",
+      "ref_id": "3",
+      "recommendationScore": 10,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "一篇关于城市生活感受的散文，与科技主题无关。",
+      "reason": "文章内容与设定的科技博客主题不符，缺乏技术深度和实用性。",
+      "tags": [
+        "Lifestyle",
+        "Opinion",
+        "Travel"
+      ]
+    },
+    {
+      "title": "The President is Coping Well",
+      "link": "https://www.wsj.com/politics/policy/trump-signs-proclamation-he-says-will-protect-oval-office-from-major-changes-93f3285b",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-11-06T15:00:22.000Z",
+      "summary": "The WSJ, “Trump Signs Proclamation He Says Will Protect Oval Office From Major Changes”:\nPresident Trump signed a proclamation Thursday that he said would\ndesignate the White House’s Oval Office and Cabinet Room as\nlandmarks to prevent future presidents from making major changes\nto them.\n“They won’t be able to be taken down, destroyed, touched or\nanything else,” Trump told reporters. “It’s called, actually, a\nnational monument. It’s a federal landmark, and when completed\nand when we get the documentation fully done, legally binding,\nit’ll make it impossible for anybody ever to destroy this\nincredible space.”\nOh, buddy, every last bit of that pyrite cack will be pried off the walls and in a dumpster by mid-morning on 20 January 2029.\nYou know that scene in Pulp Fiction where John Travolta’s Vincent Vega tells his drug dealer (Eric Stoltz) about his vintage Chevy Malibu getting keyed? “Boy I wish I could’ve caught him doing it. I’d have given anything to catch that asshole doing it. It would have been worth him doing it, just so I could’ve caught him. What’s more chickenshit than fucking with a man’s automobile?”\nI sort of feel that way about Trump and the next two years.\n ★",
+      "id": "295fdbf27b0be6b0a8dc4256ba84690d3d6081b1830dad995b5cf20a3219cc17",
+      "ref_id": "0",
+      "recommendationScore": 10,
+      "popularityScore": 15,
+      "priority": "low",
+      "comment": "一篇与科技主题无关的政治评论文章，不适合科技博客。",
+      "reason": "内容完全偏离科技博客关注的AI、编程工具等主题，不具任何技术深度和实用性。",
+      "tags": [
+        "政治",
+        "评论",
+        "无关主题"
+      ]
+    },
+    {
+      "title": "A video game which caused real world violence",
+      "link": "https://shkspr.mobi/blog/2026/11/a-video-game-which-caused-real-world-violence/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-11-06T12:34:34.000Z",
+      "summary": "There has been a dramatic fall in the amount of interpersonal violence in most countries.  I don't want to go too Freakanomics and, obviously, correlation is not causation but perhaps video games have a role to play in this? A teenager being cooped up in their room means less exposure to situations where hormonal impertinence is likely to cause a violent reaction. Shouting and screaming at people …",
+      "id": "74c0e0e17f07f9af0f4f85b112b93fad1aef059e0437fa201195f0d4521d40c1",
+      "ref_id": "2",
+      "recommendationScore": 10,
+      "popularityScore": 15,
+      "priority": "low",
+      "comment": "一篇关于视频游戏与社会暴力之间关系的不完整思考，缺乏科技深度。",
+      "reason": "内容过于简短且未完成，主题与科技博客核心关注点关联度低，缺乏技术或实用价值。",
+      "tags": [
+        "社会学",
+        "视频游戏",
+        "评论",
+        "无关主题"
+      ]
+    },
+    {
+      "title": "Premium: Fault Lines",
+      "link": "https://www.wheresyoured.at/premium-fault-lines/",
+      "source": "wheresyoured.at",
+      "publishedAt": "2026-11-06T16:44:41.000Z",
+      "summary": "I’ve generally avoided politics here and the few times that I have done so I’ve received a few pissy emails, but Tuesday night was a wonderful, abundant font of hope in what has been an unspeakably grim two years. \nWe have felt land-locked in",
+      "id": "2bf13061253c13c322fd4cd24908081fd8674b6dd2a2e5838d812eb5e39ee5d9",
+      "ref_id": "1",
+      "recommendationScore": 10,
+      "popularityScore": 15,
+      "priority": "low",
+      "comment": "一篇关于政治和个人感受的文章，与科技博客主题完全不相关。",
+      "reason": "内容完全脱离科技范畴，对科技博客读者价值极低。",
+      "tags": [
+        "政治",
+        "个人评论",
+        "社会议题"
+      ]
+    },
+    {
+      "title": "Quoting Nilay Patel",
+      "link": "https://simonwillison.net/2026/Nov/6/nilay-patel/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-11-06T17:13:12.000Z",
+      "summary": "",
+      "id": "db8aad7567ee0d78097e3d53f7edfb10de6ca41078bc2a35030bd6ef7333a267",
+      "ref_id": "1",
+      "recommendationScore": 5,
+      "popularityScore": 5,
+      "priority": "low",
+      "comment": "内容缺失，无法进行有效评估。",
+      "reason": "文章内容为空，无法判断其技术深度、新颖性、实用性及信息密度。",
+      "tags": [
+        "Uncategorized",
+        "Incomplete"
+      ]
+    },
+    {
+      "title": "A database is a store for global variables",
+      "link": "https://seangoedecke.com/a-database-is-a-store-for-global-variables/",
+      "source": "seangoedecke.com",
+      "publishedAt": "2026-11-06T00:00:00.000Z",
+      "summary": "",
+      "id": "8113b4cdd49737bba64096b75f842743372eead762da8bcb0a0018602a2ffbc7",
+      "ref_id": "2",
+      "recommendationScore": 5,
+      "popularityScore": 5,
+      "priority": "low",
+      "comment": "内容缺失，无法进行有效评估。",
+      "reason": "文章内容为空，无法判断其技术深度、新颖性、实用性及信息密度。",
+      "tags": [
+        "Uncategorized",
+        "Incomplete"
+      ]
+    }
+  ]
+}
