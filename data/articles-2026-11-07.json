@@ -1,0 +1,516 @@
+{
+  "dailySummary": "今日科技速递：AI领域持续升温，智能体记忆组件受关注，视频扩散模型实现大幅压缩；微软AI前沿部门解散。网络安全挑战凸显，新型工控蜜罐上线揭示漏洞，包管理安全堪忧。同时，应用性能优化亦是热点。",
+  "articles": [
+    {
+      "title": "The Components of Agent Memory",
+      "link": "https://www.anthropic.com/research/components-of-agent-memory",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-07T06:39:04.000Z",
+      "summary": "Article URL: https://www.anthropic.com/research/components-of-agent-memory\nComments URL: https://news.ycombinator.com/item?id=50402212\nPoints: 131\n# Comments: 67",
+      "id": "f0247d2be6d23fda27989bba50a71943168bf8e5f68168df2bbd40b50bab75f3",
+      "ref_id": "3",
+      "recommendationScore": 93,
+      "popularityScore": 45,
+      "priority": "high",
+      "comment": "Anthropic的深度研究文章，分析了AI代理（Agent）记忆的构成要素及其关键作用。",
+      "reason": "深入探讨了AI领域前沿的代理记忆机制，对AI研究人员和开发者理解下一代AI系统至关重要，技术深度和新颖性极高。",
+      "tags": [
+        "AI",
+        "Agent Systems",
+        "Memory",
+        "Anthropic",
+        "Research",
+        "Large Language Models"
+      ]
+    },
+    {
+      "title": "Show HN: Coldframe, a honeypot that poses as a supermarket fridge controller",
+      "link": "https://github.com/hedgerow-dev/coldframe",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-07T17:27:30.000Z",
+      "summary": "I built Coldframe, a honeypot that pretends to be a supermarket refrigeration controller. Inspired by the events on industrial fridge installations in the past weeks, I wanted to see what people would try against a convincing fake.\nTo learn more about this I built a honeypot that resembled perfectly the Danfoss AK-SM 800A and Dixell XWEB interfaces. Both of them are recognized on Shodan as real ones (an not as honeypots). It’s one Python file using only the standard library, and it builds on eppser/danfoss-ak-sm-decoy and public research by Synacktiv, Claroty and Ironhackers.\nThings that were fun to get right:\n- Matching real units. I used Shodan records of real devices to match header order, page titles, certificate fields and TLS versions. The Danfoss persona sends nginx headers in the same order as a real AK-SM 800A. The Dixell persona sends no Server header and pads its page to exactly 8,202 bytes.\n- Recognising exploit attempts. It recognises CVE-2025-41450, the Danfoss “code of the day” login bypass, and records whether the submitted code is correct for today. It also tags attempts targeting three other Danfoss CVEs and the XWEB vulnerabilities.\n- Letting them in. Default logins open a fake store dashboard with defrost buttons, so you see the second move, not just the first. Nothing behind it is real.\nTwo instances have been live for a day. So far they’ve only seen generic scanners and Shodan’s crawler, which is called refrigerator.census.shodan.io.\nFeedback welcome, especially from anyone who has seen these devices in the field!\nComments URL: https://news.ycombinator.com/item?id=50406292\nPoints: 102\n# Comments: 25",
+      "id": "55aa1dc18cbb251b0d3e749dd750b11709f166798b73cd6277e0ca2f63f172a5",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "展示了一个名为Coldframe的蜜罐项目，它巧妙地模拟超市冷柜控制器，用于识别和记录网络攻击。",
+      "reason": "项目技术深度极高，新颖性突出，特别是在工业控制系统（ICS）安全领域，展示了高度仿真的蜜罐构建方法，具有显著的实用价值和研究意义。",
+      "tags": [
+        "网络安全",
+        "蜜罐",
+        "ICS",
+        "Python",
+        "自动化",
+        "编程工具",
+        "物联网安全"
+      ]
+    },
+    {
+      "title": "This Week in Package Management: 7 November 2026",
+      "link": "https://nesbitt.io/2026/11/07/this-week-in-package-management.html",
+      "source": "nesbitt.io",
+      "publishedAt": "2026-11-07T10:00:00.000Z",
+      "summary": "This week’s package management news, gathered from the package manager OPML feed collection, my posts and boosts on Mastodon, and anything people sent me. Version control and forge news is in the Wednesday This Week in Source Control roundup.\nSecurity\nVox Pupuli fixed three critical vulnerabilities that a Neodyme researcher reported in OpenVox, the community fork of Puppet. OpenVox Server deserialised Ruby objects embedded in agent run reports, which allowed remote code execution. The shared Trapperkeeper authorisation library matched every plain-string rule in auth.conf as a wildcard, so a certificate for evil.target.example.com was accepted as target.example.com. The OpenVoxDB container image allowed any certificate to reach its API because its allowlist script failed on startup.\nAll known Puppet implementations are affected, and the fixes are in openvox-agent 8.32.0 and 9.3.0 and openvox-server and openvoxdb 8.18.0 and 9.2.0. Updates to open source Puppet, including security fixes, have ended, so Vox Pupuli recommends migrating to OpenVox.\nAn issue on actions/runner-images reports that GitHub’s public macOS runners still accept certificates from the compromised eMudhra intermediates covered here last week. Apple has yet to patch the system /etc/ssl/cert.pem. Homebrew has shipped patched ca-certificates, curl and git, but the runner images disable Homebrew updates, so jobs run the vulnerable preinstalled versions.\nDSA-6607-1 fixes CVE-2026-109518 in APT, found by Max Justicz. When an HTTP redirect gave two package downloads the same URI, APT could merge them. A retried download then let an attacker on the network path, including a malicious mirror or proxy, replace a package after verification and run code as root.\nThe attack needs Acquire::Retries set to 1 or higher, and the default is 3 from Debian 12 and Ubuntu 22.04. Fixed versions are 3.0.4 for trixie, 2.6.2 for bookworm and 3.3.6 in unstable.\nA Nixpkgs advisory covers two bugs in darwin.linux-builder, the Linux VM that macOS users run as a remote builder. The run-builder script added the whole keys directory to the world-readable Nix store, so any local user could log in as builder, a trusted user on the VM’s Nix daemon (GHSA-45qr-47fw-2p57).\nThe QEMU variants also forwarded the builder’s SSH port on every network interface (GHSA-w5j5-2jpq-3cv3). Fixes are on unstable and 26.05, and after updating the advisory says to delete the old key pair from the store, regenerate it and delete the builder’s disk image.\nDocker Engine 29.9.3 fixes four CVEs in the engine and SwarmKit. It also updates to BuildKit 0.34.2, which fixes a resolver cache poisoning crash when a build resolves the same Git source twice.\nReleases\nhex.pm opened Workload Identity and staged publishing to every package and organisation. A GitHub Actions job can exchange its OIDC token for a Workload Identity token that expires after 15 minutes and can publish only that package. An organisation can also use a read identity to fetch its private packages in CI with only the job’s OIDC token. Staged publishing holds releases published with a key or a workload identity until a person approves them with a fresh 2FA code.\nNew packages get staging by default and existing packages have to opt in. Staged releases expire after seven days. Hex 2.7.0 adds mix hex.publish --wait, which blocks until the release is approved and exits with an error if it is rejected or expires. A new --check-unused-ignores flag makes mix hex.audit fail on ignore entries that match nothing in mix.lock.\nPyPI’s redesigned project pages add a Security tab that shows each release’s provenance and the attestations for each file. A release counts as having full provenance only when every file has a Trusted Publisher or SLSA build attestation. Warnings flag incomplete, inconsistent, changed or lost provenance, and files uploaded more than 14 days after an older release get a late-upload marker.\nconda 26.10.0 makes conda-rattler-solver the default solver, including after upgrades where the solver setting is unset. --solver=libmamba selects the libmamba solver, and the classic pycosat solver now ships in a bundled conda-pycosat-solver plugin. The release also records when an environment was last activated and adds --disable-plugins and --enable-plugins for switching individual plugins off and on.\npnpm 12.18.0 publishes platform variants of a package to pnpr registries as one archive per target, and installs the variant that fits the host. Publishing to any other registry requires --no-variants, which publishes only the archive that targets any platform. Agent skills are now approved one skill at a time and linked under their own names. pnpr 0.1.0-alpha.18 stores hosted package metadata in SQLite or libSQL and logs release records in transparency logs.\nmise 2026.11.0 (now 2026.11.3) makes --locked require checksums, and safe mode now ignores project lockfiles. It adds opt-in Sigstore provenance verification for npm: tools, which checks only the tool’s own package and requires the embedded aube package manager. Tasks can now declare a lock so that runs sharing a database or simulator execute one at a time, even across worktrees.\npixi 0.84.0 (now 0.84.1) moves exclude-newer into the [workspace] table and supports exemptions to the cutoff. A workspace can apply the cutoff to new releases by default and exempt vetted security releases. A rattler fix for hash collisions between unequal package versions means lockfiles written by older pixi versions may require a pixi lock before pixi accepts them as locked.\npip 26.3 blocks unexpected imports during installation and warns about unsafe ones afterwards. HTTP redirects to file: URLs are now rejected, and PyPI’s restriction on direct URL dependencies now covers extras and cached wheels. -r pylock.toml now supports extras and non-default dependency groups, and accepts --no-binary. The security policy now states that installing untrusted wheels has always been unsafe, since Python’s import system can run third-party code during installation.\nGradle 9.9.0 promotes the custom dependencies block API out of incubation, including bundles and constraints from providers. When the wrapper task regenerates gradle-wrapper.properties, it now carries over existing settings such as distribution type, timeouts and retries. It still regenerates distributionUrl, which overwrites a custom host.\nzizmor 1.32.0 adds experimental support for GitHub’s new workflow lockfiles. It now collects only the inputs GitHub Actions reads, so it skips workflows in vendored directories.\nRenovate 44.210.0 to 44.222.0 adds a julia manager with a datasource for the General registry and Julia versioning, and reads transitive dependencies from uv.lock for security updates. Extracted constraints are now shared across managers. A tool version pinned in mise or rust-toolchain limits the updates other managers open.\nDependabot version updates now support Microsoft’s Agent Package Manager on github.com, following the apm ecosystem added in Dependabot Core 0.400.0. It opens pull requests for git dependencies declared in apm.yml and regenerates apm.lock.yaml when present. The support covers version updates only.\nAlso out:\nuv 0.13.7\npnpm 11.28.11\nvlt 1.6.4\nnpm 12.2.2\nRubyGems 4.0.24\nHomebrew 7.0.12\nrustup 1.29.3\nZig 0.17.1\npipx 1.18.16\nPDM 2.29.7\nAPT 3.3.7\nDNF5 5.4.7.0\nOpenTofu 1.13.9\nElm 0.19.4-beta\nDependabot Core 0.403.0\nNuGet Client 8.2.0.6\nsbt 2.1.0-RC3\nHarbor 2.16.0-rc2\nDocker Engine 29.10.0-rc.1\nArticles\nFriction in the Python Packaging Standards Process (konsti, uv) lists problems with how packaging PEPs get made. The text goes through editing passes before and after discussion and moves between reStructuredText and Markdown. Discussions on discuss.python.org have no concern tracking, and several maintainers avoid the forum. Small changes, such as removing a decade-old unimplemented feature, require a full PEP. The post points to Rust’s RFC concern tracking and final comment period as prior art.\nScrutinize our assessments (Daniel Stenberg) follows up on curl moving low and medium severity vulnerability handling into public GitHub issues. Stenberg explains the vuln:ASSESS, vuln:NONE, vuln:LOW and vuln:MEDIUM labels and asks outsiders to challenge the severity calls. CVE IDs are visible from assignment, and the full records are published on the release date.\nThe author of No, npm, “estee” is not a typo of “testem” (smoores.dev) hit npm’s typosquat check while naming a package for the Storyteller project. The registry rejected estee as too similar to espree and testem, then flagged the fallback hoid against hoek, hono, uuid and zod. npm support declined to lift the automated block. The author infers an edit-distance-of-two rule against popular names. Under that rule preact and estree would also be blocked.\nThe intensional model in disguise (Farid Zakaria) maps Nix onto Bazel and buck2. Bazel and buck2 key actions by the content of their inputs, so editing a comment in a C file stops the rebuild once the compiled output comes out the same. Nix gets that early cutoff only with content-addressed derivations, because by default it addresses outputs by their recipe. The post lines up Nix’s resolved derivations, realisations and store with Bazel’s actions, action cache and CAS.\nJosh Bressers talked to Roi Nisimi about backport gaps: security fixes merged to a project’s main branch but missing from its latest release. Nisimi’s write-up for Orca Security reports hundreds of confirmed cases from a scan of thousands of repositories. Advisories and published vulnerable ranges are often missing for these fixes, so scanners report the current release as clean.\nElsewhere\nDCFinder (Xiaoya Zhu et al., Journal of Computer Security) detects dependency confusion in Python projects that use more than one index. It builds the transitive tree from private indexes and PyPI and checks whether the resolver would select a public version. On 28 real projects it reports 88.7% precision and 83.3% recall, against zero detections from the baseline tools.\nVlad Miricioiu, director of the Software Stewardship Lab and one of my FOSDEM devroom co-organisers, talked to RedMonk about binary dependencies, maintainer burnout, funding models and the Bernies. The Stewardship Lab received $5,000 from Syntax and Sentry towards an annual survey of burnout among open source maintainers.\nSoftware Line Specialist (Lovro Bikić) is a delightful bit of satire.\ngit-pkgs\nI tagged 14 repos this week:\nmailmap v0.1.1 (new), a Go library for parsing Git .mailmap files and resolving author identities\narchives v0.10.1\nbrief v0.15.0\ncooldown v0.3.1\nhistory v0.2.0\nlanguages v0.1.0\nmanagers v0.13.0\nmanifests v0.12.4\nproxy v0.11.0\nreuse v0.2.0\nsbom v0.1.9\nsecrets v0.2.0\nsignals v0.1.0\nspdx v0.3.6\nSend links for next week to @andrewnez@mastodon.social.",
+      "id": "0cd8b97ef0cf753fd732fc2fe90f4bf68d5a12c12cb313bb004dff05c22f6796",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "高度实用的包管理与自动化工具安全漏洞分析及修复指南。",
+      "reason": "文章详细介绍了OpenVox和Puppet等重要编程工具和自动化系统安全漏洞的详细信息和修复建议，技术深度、实用性及信息密度俱佳，完美契合高优先级主题。",
+      "tags": [
+        "编程工具",
+        "自动化",
+        "安全",
+        "漏洞",
+        "Puppet"
+      ]
+    },
+    {
+      "title": "Asahi Linux Progress Linux 7.3",
+      "link": "https://asahilinux.org/2026/11/progress-report-7-3/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-07T05:20:18.000Z",
+      "summary": "Article URL: https://asahilinux.org/2026/11/progress-report-7-3/\nComments URL: https://news.ycombinator.com/item?id=50401867\nPoints: 244\n# Comments: 211",
+      "id": "7faad46bd3711d33c14de92147521b1ed7a89db2d669c97104b67b8217893391",
+      "ref_id": "4",
+      "recommendationScore": 89,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "Asahi Linux项目的最新进展报告，详细介绍了在Apple Silicon上运行Linux的挑战与成就。",
+      "reason": "对Apple Silicon用户和低层级Linux开发者提供了宝贵的进展信息，展示了在Apple生态系统上的深度技术探索。",
+      "tags": [
+        "Asahi Linux",
+        "Linux",
+        "Apple Silicon",
+        "Hardware Support",
+        "Open Source",
+        "macOS"
+      ]
+    },
+    {
+      "title": "Show HN: We compressed a 31B video+audio diffusion model to 14B, 6 steps, INT8",
+      "link": "https://github.com/Video-Rebirth/hyperflow-h3-flash",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-07T15:16:01.000Z",
+      "summary": "Article URL: https://github.com/Video-Rebirth/hyperflow-h3-flash\nComments URL: https://news.ycombinator.com/item?id=50405263\nPoints: 29\n# Comments: 9",
+      "id": "b228101c3e9d88f964f3eda06ad7024b5a192a11a1df8b06c92b675ac655f7a3",
+      "ref_id": "0",
+      "recommendationScore": 88,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "深度优化大型AI模型，显著提升了视频+音频扩散模型的效率和可用性。",
+      "reason": "文章展示了将31B模型压缩至14B并通过INT8量化，对AI模型部署和性能提升具有极高的技术价值和实用性，符合AI主题高优先级。",
+      "tags": [
+        "AI",
+        "深度学习",
+        "模型优化",
+        "视频生成",
+        "量化"
+      ]
+    },
+    {
+      "title": "Every Mac comes with an (undocumented) family member classifier",
+      "link": "https://8rank.ai/game/apple-intelligence-personal-knowledge-graph",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-07T09:46:03.000Z",
+      "summary": "Article URL: https://8rank.ai/game/apple-intelligence-personal-knowledge-graph\nComments URL: https://news.ycombinator.com/item?id=50403097\nPoints: 479\n# Comments: 279",
+      "id": "ef313c34ae184d15b23a8ec6ebbee6d9e12dae97f562e0a1d653d20460b8291c",
+      "ref_id": "0",
+      "recommendationScore": 88,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "揭示了Mac中一个未公开的家庭成员分类器，暗示了Apple Intelligence在个人知识图谱方面的应用。",
+      "reason": "内容涉及Apple生态系统未公开的AI功能，技术深度和新颖性极高，对Apple开发者和AI爱好者有重要参考价值。",
+      "tags": [
+        "Apple",
+        "Apple Intelligence",
+        "AI",
+        "Undocumented Features",
+        "Privacy",
+        "macOS"
+      ]
+    },
+    {
+      "title": "The end of Microsoft Research's AI Frontiers group",
+      "link": "https://hunch.net/?p=13764006",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-07T18:02:17.000Z",
+      "summary": "https://archive.is/AaY5O\nhttps://businessexaminer.ca/victoria-articles/item/microsoft...\nComments URL: https://news.ycombinator.com/item?id=50406563\nPoints: 133\n# Comments: 62",
+      "id": "8017ce29f6d88c8d95a2209177888f3f25a01062fdf68e0d0a30026ee2c203ba",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "报道了微软研究院AI Frontiers研究组解散的消息及其潜在影响。",
+      "reason": "作为AI领域的重要行业新闻，它提供了对AI研究格局和巨头策略变化的洞察，信息新颖且具有高关注度。",
+      "tags": [
+        "AI",
+        "微软",
+        "研究",
+        "行业动态",
+        "人工智能"
+      ]
+    },
+    {
+      "title": "MaxxBench – \"Nice DeepSWE score. But is it true?\"",
+      "link": "https://maxxbench.unlap.ai/research/why-maxxbench/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-07T17:19:00.000Z",
+      "summary": "Article URL: https://maxxbench.unlap.ai/research/why-maxxbench/\nComments URL: https://news.ycombinator.com/item?id=50406222\nPoints: 77\n# Comments: 16",
+      "id": "dff9b7a159183f5ba33eb6d63a9836cc22a1c44453356609b4525c892364f8d0",
+      "ref_id": "4",
+      "recommendationScore": 85,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "介绍MaxxBench项目及其对“DeepSWE score”等AI和软件工程基准测试的验证和质疑。",
+      "reason": "文章直接关注AI模型和软件工程评估的准确性，技术深度和信息密度高，对于确保AI研究和开发的严谨性具有重要指导意义。",
+      "tags": [
+        "AI",
+        "基准测试",
+        "软件工程",
+        "机器学习",
+        "评估方法"
+      ]
+    },
+    {
+      "title": "They don't make 'em like that any more: Borland Turbo Pascal 7",
+      "link": "https://kevinboone.me/tpwin.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-07T16:06:27.000Z",
+      "summary": "Article URL: https://kevinboone.me/tpwin.html\nComments URL: https://news.ycombinator.com/item?id=50405678\nPoints: 128\n# Comments: 78",
+      "id": "a1d3501fc41051af11641f2b882f6f2b482b58f640c33c16640c731f8c18b7f8",
+      "ref_id": "3",
+      "recommendationScore": 85,
+      "popularityScore": 100,
+      "priority": "high",
+      "comment": "深入回顾了经典的Borland Turbo Pascal 7编程环境，引发了老程序员的强烈共鸣。",
+      "reason": "文章属于编程工具范畴，对历史性开发工具的探讨具有独特的怀旧和学习价值，且社区互动热烈。",
+      "tags": [
+        "编程工具",
+        "历史回顾",
+        "Pascal",
+        "开发环境"
+      ]
+    },
+    {
+      "title": "Every Windows 11 app should kill Electron, and Discord just showed why",
+      "link": "https://www.windowslatest.com/2026/11/06/every-windows-11-app-should-kill-electron-and-discord-just-showed-why-no-starting-screen-and-70-less-ram-even-with-two-accounts-signed-in/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-07T11:11:15.000Z",
+      "summary": "Article URL: https://www.windowslatest.com/2026/11/06/every-windows-11-app-should-kill-electron-and-discord-just-showed-why-no-starting-screen-and-70-less-ram-even-with-two-accounts-signed-in/\nComments URL: https://news.ycombinator.com/item?id=50403507\nPoints: 82\n# Comments: 110",
+      "id": "53d0d0df86df47833f6fa3edf04eb15768cf9248c7e9d063c731a1b10af8d744",
+      "ref_id": "4",
+      "recommendationScore": 85,
+      "popularityScore": 90,
+      "priority": "medium",
+      "comment": "文章通过Discord案例揭示了Electron应用性能瓶颈，呼吁Windows 11应用转向原生开发以优化用户体验。",
+      "reason": "深入分析了Electron框架在性能上的局限性，并以Discord具体案例说明原生开发带来的显著优势，对应用开发者具有重要的指导意义和实用价值，引发社区热烈讨论。",
+      "tags": [
+        "编程工具",
+        "Windows",
+        "Electron",
+        "性能优化",
+        "原生应用",
+        "产品设计"
+      ]
+    },
+    {
+      "title": "The $8 Linux Computer (2022)",
+      "link": "http://thelittleengineerthatcould.blogspot.com/2022/12/the-8-linux-computer.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-07T14:00:20.000Z",
+      "summary": "Article URL: http://thelittleengineerthatcould.blogspot.com/2022/12/the-8-linux-computer.html\nComments URL: https://news.ycombinator.com/item?id=50404599\nPoints: 161\n# Comments: 66",
+      "id": "32ce43dcf46f89798175c2479810e20d414dfdc6cd62757d40eff495667cdee1",
+      "ref_id": "3",
+      "recommendationScore": 80,
+      "popularityScore": 90,
+      "priority": "medium",
+      "comment": "展示了以极低成本构建Linux计算机的详细过程，极具动手实践价值和启发性。",
+      "reason": "文章深入讲解了如何用8美元实现一台Linux电脑，对于DIY爱好者、嵌入式开发和低成本自动化场景有很强的吸引力和实用指导意义，社区关注度高。",
+      "tags": [
+        "硬件",
+        "Linux",
+        "DIY",
+        "嵌入式",
+        "自动化",
+        "低成本计算"
+      ]
+    },
+    {
+      "title": "Apple’s grey list: Words and phrases your iPhone won’t help you spell",
+      "link": "https://www.theguardian.com/technology/2026/nov/06/struggling-to-spell-male-chauvinist-pig-apple-grey-list-means-your-iphone-wont-help-you",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-07T17:06:36.000Z",
+      "summary": "Article URL: https://www.theguardian.com/technology/2026/nov/06/struggling-to-spell-male-chauvinist-pig-apple-grey-list-means-your-iphone-wont-help-you\nComments URL: https://news.ycombinator.com/item?id=50406111\nPoints: 105\n# Comments: 75",
+      "id": "840f536384a14a6f8423ebbd5c9f3e0989c18fb77ab7aed616825c238db63d18",
+      "ref_id": "0",
+      "recommendationScore": 75,
+      "popularityScore": 89,
+      "priority": "high",
+      "comment": "文章揭示了iPhone拼写检查中不为人知的“灰色列表”机制，对Apple用户有实际参考价值。",
+      "reason": "内容直接关联Apple生态，探讨了用户体验的细节，具有一定新颖性和实用性，且社区讨论度高。",
+      "tags": [
+        "Apple",
+        "iPhone",
+        "用户体验",
+        "软件行为"
+      ]
+    },
+    {
+      "title": "Running a law firm on Free software",
+      "link": "https://decoded.legal/blog/2026/11/running-a-law-firm-on-free-software-2026-edition/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-07T09:39:06.000Z",
+      "summary": "Article URL: https://decoded.legal/blog/2026/11/running-a-law-firm-on-free-software-2026-edition/\nComments URL: https://news.ycombinator.com/item?id=50403066\nPoints: 181\n# Comments: 83",
+      "id": "0f434437bcbc7e7b3a3bfb1dcf5ec955b223aa35207c9538851b9c343a76d83a",
+      "ref_id": "1",
+      "recommendationScore": 72,
+      "popularityScore": 50,
+      "priority": "medium",
+      "comment": "探讨了律师事务所如何利用自由软件进行运营，提供了实用的部署和使用经验。",
+      "reason": "为寻求成本效益和开源解决方案的企业提供了具体案例和操作指导，实用性强。",
+      "tags": [
+        "Free Software",
+        "Open Source",
+        "Business Tools",
+        "Productivity",
+        "Law Firm"
+      ]
+    },
+    {
+      "title": "What I run on my $10 USD OpenStick homelab",
+      "link": "https://blog.bosscher.ch/posts/openstick/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-07T18:12:12.000Z",
+      "summary": "Article URL: https://blog.bosscher.ch/posts/openstick/\nComments URL: https://news.ycombinator.com/item?id=50406670\nPoints: 79\n# Comments: 18",
+      "id": "579f1e45f94231f744dcf3fbf7b931a0133585d5781339a140a588b507e260d0",
+      "ref_id": "0",
+      "recommendationScore": 70,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "分享了作者如何在10美元的OpenStick上搭建个人家庭实验室，包含所运行的服务和配置。",
+      "reason": "文章提供了低成本硬件上运行个人服务的实用案例，技术实现细节清晰，对寻求自托管和自动化方案的读者有较强的参考价值。",
+      "tags": [
+        "homelab",
+        "自动化",
+        "自托管",
+        "Linux",
+        "DIY"
+      ]
+    },
+    {
+      "title": "Need for Speed Underground 2 online in the browser",
+      "link": "https://nfsu2.xyz/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-07T09:36:36.000Z",
+      "summary": "Article URL: https://nfsu2.xyz/\nComments URL: https://news.ycombinator.com/item?id=50403052\nPoints: 618\n# Comments: 180",
+      "id": "973a8c35e1bfba5a76d2724e6f50f7018b4a2c974ba015865735460269292398",
+      "ref_id": "2",
+      "recommendationScore": 70,
+      "popularityScore": 95,
+      "priority": "medium",
+      "comment": "一个令人印象深刻的技术演示，在浏览器中实现了《极品飞车：地下狂飙2》的在线版本。",
+      "reason": "展示了现代Web技术在游戏模拟和跨平台体验方面的强大能力，兼具技术创新和娱乐性。",
+      "tags": [
+        "Web Development",
+        "Emulation",
+        "Gaming",
+        "Browser Games",
+        "Nostalgia"
+      ]
+    },
+    {
+      "title": "Every processor die anyone has photographed and given away",
+      "link": "https://sheets.works/data-viz/cpu-dies",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-07T16:21:36.000Z",
+      "summary": "Article URL: https://sheets.works/data-viz/cpu-dies\nComments URL: https://news.ycombinator.com/item?id=50405782\nPoints: 35\n# Comments: 6",
+      "id": "2cb189b462fa9924d54ba7dec7ac29b644480a12c627b4ea670f761eb274c100",
+      "ref_id": "2",
+      "recommendationScore": 65,
+      "popularityScore": 18,
+      "priority": "medium",
+      "comment": "文章收集了大量处理器晶圆的高清照片，提供了深入了解芯片内部构造的独特视角。",
+      "reason": "技术深度极高，对于硬件爱好者或芯片设计领域的专业人士具有独特参考价值，但受众相对小众。",
+      "tags": [
+        "硬件",
+        "处理器",
+        "芯片设计",
+        "数据可视化"
+      ]
+    },
+    {
+      "title": "Five memorable books about programming (2008)",
+      "link": "https://prog21.dadgum.com/19.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-07T17:30:49.000Z",
+      "summary": "Article URL: https://prog21.dadgum.com/19.html\nComments URL: https://news.ycombinator.com/item?id=50406319\nPoints: 31\n# Comments: 10",
+      "id": "77d50e9f552120a850d9a3bec16ac034c7caab095e67996283d795ff4be1b60d",
+      "ref_id": "2",
+      "recommendationScore": 55,
+      "popularityScore": 40,
+      "priority": "medium",
+      "comment": "回顾并推荐了2008年发表的五本经典编程书籍。",
+      "reason": "尽管信息有一定年代感，但对于寻求编程领域经典著作或了解历史演变进程的读者来说，仍具有一定的实用性和信息密度。",
+      "tags": [
+        "编程",
+        "书籍推荐",
+        "软件开发",
+        "经典"
+      ]
+    },
+    {
+      "title": "Ask HN: How did you convince family and friends to join your XMPP/Matrix server?",
+      "link": "https://news.ycombinator.com/item?id=50405250",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-07T15:14:40.000Z",
+      "summary": "I love open-source software and open protocols, but my family and friends primarily communicate through SMS for exactly the reasons in https://xkcd.com/2365/\nWhenever XMPP or Matrix threads pop up on HN, several commenters casually mention their \"friends and family XMPP (or Matrix) server.\"\nHow did you convince friends and family to move away from SMS/WhatsApp and replace it with a niche messaging app?\nMy family and friends aren't hardcore nerdy, but they're more tech-savvy than average. Their needs in messaging are mainly pragmatic: they want ease of use, reliability, and fun features. They don't care that much about privacy, decentralization, or extensibility (though I care about those things a lot).\nI've been experimenting with self-hosting XMPP and Matrix servers and clients in the past week, and the UX is even worse than I expected. It seems like all the clients either imitate Slack, imitate Discord, or imitate hot garbage. I haven't seen any that try to be a simple, friendly replacement for SMS. I'm a software developer who uses computers all day, and I find the UX for most of the clients incredibly hard to use.\nThe only angle I could see to pitch XMPP/Matrix to people for non-philosophical reasons are that there's a more consistent experience across iOS/Android. The biggest shortcoming I think is visible to regular users is that there's feature degradation and missing information when iOS users have SMS conversations with Android users, especially in group chats.\nFor people who have successfully won family and friends to XMPP or Matrix, what was your pitch? What do you recommend others do to make XMPP or Matrix an attractive experience for a regular person?\nComments URL: https://news.ycombinator.com/item?id=50405250\nPoints: 59\n# Comments: 50",
+      "id": "3a88d89ef3dc6d0d208bd5544a4aece47ee1ac63a79f053bb6395c7e60218d27",
+      "ref_id": "1",
+      "recommendationScore": 45,
+      "popularityScore": 75,
+      "priority": "low",
+      "comment": "深入探讨了开源消息应用在用户体验和亲友推广方面的普遍挑战。",
+      "reason": "文章反映了许多技术爱好者在推广去中心化通信工具时遇到的真实困境，对于产品设计和用户采纳有启发意义，但技术深度有限且主题优先级较低。",
+      "tags": [
+        "开源",
+        "消息应用",
+        "用户体验",
+        "自托管",
+        "独立开发",
+        "隐私"
+      ]
+    },
+    {
+      "title": "How Long Can Life Wait?",
+      "link": "https://mceglowski.substack.com/p/how-long-can-life-wait",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-07T16:22:59.000Z",
+      "summary": "Article URL: https://mceglowski.substack.com/p/how-long-can-life-wait\nComments URL: https://news.ycombinator.com/item?id=50405789\nPoints: 77\n# Comments: 32",
+      "id": "f7c4b6b4979900dd8b0acc449ccb4d23b2339f7ae5c3b0992a087d74cb3f013b",
+      "ref_id": "1",
+      "recommendationScore": 30,
+      "popularityScore": 51,
+      "priority": "low",
+      "comment": "这是一篇关于人生选择的哲学性思考文章，与科技博客的主题关联度较低。",
+      "reason": "内容偏向个人成长和哲学探讨，不符合本博客对AI、Apple生态、编程工具等科技主题的关注优先级。",
+      "tags": [
+        "生活思考",
+        "哲学",
+        "个人成长"
+      ]
+    },
+    {
+      "title": "Pluralistic: JS Tan and Clarissa Redwine's \"Against Tech Oligarchy\" (07 Nov 2026)",
+      "link": "https://pluralistic.net/2026/11/07/aeiou-but-sometimes-why/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-11-07T13:03:46.000Z",
+      "summary": "Today's links JS Tan and Clarissa Redwine's \"Against Tech Oligarchy\": Inventing a new labor playbook for a unique and powerful industry. Hey look at this: Delights to delectate. Object permanence: EMI x Gnutella; ETCON photos; Piracy loss claims are \"self-serving hyperbole\"; Shareholder supremacy let Google conquer and enshittify the world; Cat causes kernel panic; HK erupts; National Guard x 1 weed plant; Enshittification of labor. Upcoming appearances: Kilkenny, Courtenay, Vancouver, Folkestone, Oxford, Sheffield, Virtual, Oxford, Santa Barbara, Montreal. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. JS Tan and Clarissa Redwine's \"Against Tech Oligarchy\" (permalink) JS Tan and Clarissa Redwine are veterans of a string of hard-fought unionization drives at tech workplaces that started with some astounding successes but ran up against ferocious resistance in the second Trump term; their book about tech labor, Against Tech Oligarchy, is a superb analysis of the challenges and potential for tech labor organizing: https://againsttecholigarchy.com/ For decades, tech workers enjoyed extraordinary power, despite the fact that virtually no tech workers were in unions. That's because tech workers were both extremely valuable to their employers (each engineer hired by a Silicon Valley firm added about $1m to the company's bottom line) and extremely scarce. This won tech workers very favorable working conditions, high compensation, and a great deal of control over their employers' products (because if a worker refused to work on a project, it was hard to find someone else to do the work). What's more, there has always been a sizable cohort of tech workers whose own lives were profoundly improved by access to digital networks and wanted more than anything to distribute those benefits to everyone else. I call these workers \"Tron-pilled,\" because they fought for the user: https://pluralistic.net/2026/04/11/obvious-terrible-ideas/#bayesian-terrorism During the era of tech worker scarcity, few tech workers saw themselves as workers at all – rather, the tech worker's self-conception was as an entrepreneur in waiting, a temporarily embarrassed founder. Tech bosses played on this perception, promoting the idea of tech workers and managers as peers and/or family members. Tech CEOs affected hoodies and jeans and hosted company-wide meetings where they allowed engineers to pepper them with impertinent questions about the company's technical and commercial direction. But scarcity-based power only lasts until supply catches up with demand. As the number of workers outstripped the number of jobs, bosses showed their true colors. That's what happened at Kickstarter, when one of the bosses forced out his co-founders and declared himself CEO and proceeded to override the decisions of the company's Trust and Safety team. This sparked one of tech's first unionization drives, and it was a bitter fight, with management pulling out every dirty tactic in the union-busting playbook: https://kickstarterunited.org/oral-history/ The labor militancy at Kickstarter United wasn't an isolated incident. Workers at much bigger companies like Google and Microsoft had a long tradition of pushing back against management through internal channels, open letters, and, starting in 2018, mass walkouts: https://en.wikipedia.org/wiki/2018_Google_walkouts But post-Trump, bosses at these companies were much less willing to countenance dissent, and waves of vicious retaliation and reprisals radicalized many workers at these companies, driving them to more traditional, organized forms of labor activism. At the same time, workers at smaller, \"mission-driven\" shops like Bandcamp were inspired by the success of Kickstarter United and they started their own drives. All this attracted the interest of the \"internationals\" – big, established unions like the Communications Workers of America – who trained union organizers at all kinds of tech shops and started laying the groundwork for traditional union drives. Most of Against Tech Oligarchy tells the story of these drives in a gripping you-are-there style (it helps that both of the authors are veterans of several of these campaigns). The stakes get much higher during the pandemic, of course, as tech comes to play a more central role in the lives of hundreds of millions of locked-down workers, and as the tech companies themselves went on uncontrolled hiring sprees, putting workers on the payroll without any duties or responsibilities, often just to ensure that a rival company couldn't hire them. The pandemic also prompted many tech bosses to express far more worker-hostile sentiments than they'd ever let slip in public before. Fully remote workforces both frustrated tech bosses and also significantly reduced the opportunities for in-person labor organizing. All of this built to a series of rising crescendos, such as Musk's Twitter takeover and mass layoffs, and Israel's tech-fueled genocide in Gaza. Confrontations between tech workers and bosses grew more bitter and direct, even as solidarity between white-collar tech workers and their blue-collar peers (notably Amazon warehouse workers) increased. If all Against Tech Oligarchy did was lay out the cut-and-thrust of these labor struggles during these momentous years, it would be worth the price of admission. But it's in the final chapters that the book really distinguishes itself, because it's here that the authors embark on a pitiless postmortem of their own failed campaigns and the failures of their peers and ask themselves what it will take to unionize tech workers. They start with the observation that most American union organizing is built around maintaining \"labor peace\" (by swiftly moving to recognition and a contract) but that tech bosses are ready to wage \"labor war\" (through illegal union-busting and retaliation). A labor peace strategy avoids costly and dangerous risks to established unions, such as decertification of locals and expensive and bruising court battles. But for tech bosses, labor war pays off, because their workforce is transient, fragmented, and skeptical of the very idea that they are workers. They have little to no experience with unions and can barely imagine how a union might improve their working lives. The traditional labor playbook calls for workers to quietly build their power, taking no overt action while conducting a series of personal, one-to-one conversations that contribute to an eventual quorum of workers that's large enough to win a unionization vote. This strategy is like building a bonfire, where the pieces of fuel are piled one atop the other, but not lit until the pile is done. But in a tech shop where workers turn over frequently and work in isolated teams, often from home, this strategy fails. Workers who have been won to the union side leave or grow demoralized in their isolation. Reaching new workers is difficult, and since the whole union drive occurs in secret, new workers don't know to reach out to organizers in their shops. For Tan and Redwine, this fact militates for a strategy that revives some of the pre-labor activism of tech workers, noisy public/private fights whenever product decisions and management conduct violates some mix of worker rights and workers' values. They see this as a way to build momentum within a shop, bringing workers off the sidelines and giving organizers chances to bring those workers into a sustained, structured labor drive. Tan and Redwine see tech worker organizing as the frontrunners of an age of new labor militancy and labor war, of the sort that pre-dated the labor peace that arose after the passage of the National Labor Relations Act. That labor peace was the result of bosses learning that hardball tactics would be met with equally hardcore responses. This is especially important for tech workers, whose strikes cannot inflict the same pain on their bosses as earlier industrial workers' strikes did. Digital systems are designed to operate themselves after their are built, so when the workers involved in those systems withdraw their labor, the systems continue to run, often for a very long time, before needing maintenance (this is also the lesson of Musk's mass layoffs at Twitter). Tech bosses have metabolized this lesson, and they are increasingly willing to wage all-out war at the first sign of labor unrest, with waves of retaliatory firings. These bosses have figured out devilish tactics for constructive dismissal, like the CEO of Mapbox, who retaliated against union supporters by targeting them with \"return to office\" mandates that forced them to report in person to offices that were in distant states. This prompted many of these workers to quit, which spared Mapbox from even paying them a severance package. Against this backdrop, strikes need to be seen not as a way to bring the business operations to a halt, but rather as a way to galvanize workers and bring them into the union drive. As New York Times Tech Guild organizer John Cruickshank put it, Action builds capacity for action. This is the ethos of the Microsoft workers who have campaigned tirelessly to halt the company's participation in the genocide in Gaza. They barricaded themselves in executives' offices, livestreaming the confrontation; they disrupted Microsoft's livecast 50th anniversary celebration; and they paddled a flotilla of protest kayaks outside of top Microsoft executives' waterfront homes. All of this paid off, with Microsoft halting sales of its tools to a particularly notorious unit of the Israeli military who had been using the company's products to conduct surveillance in Gaza and the West Bank. Tan and Redwine see these novel tactics as a rewilding of the labor movement, a return to the militant roots that led to the labor peace, but only after all-out labor war. They cite the 1934 Minneapolis truck drivers' strike, where workers invented the \"flying picket\" by swarming scab trucks far from the factory gates, defeating the trucks' police protection, which led to a general strike and a total victory for labor. This is important historical context. The genteel business of getting everyone's cards signed and having the NLRB certify your union was the compromise bosses agreed to after they learned that the alternative was far worse for them. Today, it's not just bosses who've forgotten that lesson – many workers have, too. Against Tech Oligarchy aims to rekindle those old boilers and get the unstoppable labor train running again. Hey look at this (permalink) Text Watermarking https://www.tbray.org/ongoing/When/202x/2026/08/24/Text-Watermarking Every Past and Tomorrow: The Physical Landscape of AI https://www.kickstarter.com/projects/stephenvoss/every-past-and-tomorrow-a-survey-of-virginia-data-centers Reflecting on Digital Rights Wins and Losses in Sacramento https://www.eff.org/deeplinks/2026/11/reflecting-digital-rights-wins-and-losses-sacramento Join EFF to Celebrate the Life of Aaron Swartz https://www.eff.org/deeplinks/2026/11/join-eff-celebrate-life-aaron-swartz Goodbye from Salon https://www.salon.com/2026/11/05/goodbye-from-salon/ Object permanence (permalink) #25yrsago EMI will distribute music on Gnutella #25yrsago Photos from O'Reilly P2P Con https://web.archive.org/web/20011124163254/http://www.openp2p.com/pub/a/p2p/2001/11/05/monday_photos.html #20yrsago Aussie Institute of Criminology calls piracy losses “self-serving hyperbole” https://web.archive.org/web/20061208043648/http://australianit.news.com.au/articles/0,7204,20713160^15306^^nbv^,00.html #20yrsago UK airport cop: gun-shaped shirt decoration is illegal https://memex.craphound.com/2006/11/07/uk-airport-cop-gun-shaped-shirt-decoration-is-illegal/ #15yrsago Bug report: “Simultaneous cat and external keyboard input causing kernel panic” https://web.archive.org/web/20120112020023/https://lkml.org/lkml/2011/11/3/110 #10yrsago Hong Kong erupts after Beijing refuses to allow dissident lawmakers to re-take oath https://globalvoices.org/2016/11/06/street-protests-as-beijing-preempts-hong-kong-courts-with-new-interpretation-of-basic-law/ #10yrsago “Massive scale” shut-down of polling places in districts known for suppressing Black voters https://www.commondreams.org/news/2016/11/04/voting-rights-protections-gutted-polling-places-shuttered-massive-scale #10yrsago Donald Trump’s campaign takes away his right to tweet without supervision https://www.nytimes.com/2016/11/07/us/politics/donald-trump-presidential-race.html?_r=1 #10yrsago National Guard helicopter, 7 cop cars sent to warrantlessly seize a single marijuana plant from an 81-year-old grandmother https://www.loweringthebar.net/2016/11/national-guard-one-plant.html #5yrsago Bait and Switch https://pluralistic.net/2021/11/07/bait-and-switch/ #1yrago The enshittification of labor https://pluralistic.net/2025/11/07/postwar-social-contract/#a-defense-of-social-contracts #1yrago The 40-year economic mistake that let Google conquer (and enshittify) the world https://pluralistic.net/2025/11/06/vertical-blinds/#invest-dont-acquire Upcoming appearances (permalink) Kilkenny (Kilkenomics), Nov 6-8 https://kilkenomics.com/ Courtenay: Enshittification (Sid Williams Theatre Society), Nov 10 https://www.sidwilliamstheatre.com/events/cory-doctorow-talks-enshittification/ Vancouver: BC Policy Solutions Gala, Nov 12 https://bcpolicy.ca/gala/ Folkestone Writers Festival, Nov 16 https://www.creativefolkestone.org.uk/whats-on/cory-doctorow-the-internet-is-broken-now-what/ Oxford: Ministry of the Future, Nov 23 https://ministryforthefuture.co.uk/events.html Sheffield: Reverse Centaur at Juno Books, Nov 25 https://www.outsavvy.com/event/40274/cory-doctorow-in-conversation Virtual: Enshittification, AI, and the Future of Technology (UBC Master of Educational Technology), Nov 28 https://met.ubc.ca/2026/09/met-speaker-series-cory-doctorow-enshittification-ai-and-the-future-of-technology/ Oxford: Bennett Oxford Symposium on Open Code in Science, Dec 9 https://www.bennett.ox.ac.uk/events/2026-bennett-institute-symposium/ Santa Barbara: UCSB Reads, Apr 29 https://www.library.ucsb.edu/events-exhibitions/ucsb-reads-2027-presents-author-cory-doctorow Montreal: World Science Fiction Convention, Sep 2-6 https://montreal2027.ca/en Recent appearances (permalink) Clint Eastwood (No Gods No Mayors) https://www.patreon.com/NoGodsNoMayors/posts/clint-eastwood-173008088 Life After AI (Brain Bar) https://www.youtube.com/watch?v=IPPa43-n0vI Terms of Service with Clare Duffy (CNN) https://www.cnn.com/audio/podcasts/terms-of-service-with-clare-duffy/episodes/458ce968-af5d-11f0-b539-13ed2afe25f8 AI, Work, and Power (Software Engineering Daily) AI, Work, and Power https://softwareengineeringdaily.com/podcasts/cory-doctorow-on-ai-work-and-power/ AI, Corporate Power, and the Fight for Worker Control (Plutopia) https://plutopia.io/cory-doctorow-ai-corporate-power-and-the-fight-for-worker-control/ Latest books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/ \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: “Once Is Enemy Action,” a science fiction novel about the origins of modern technofascism. Today's words: 532 (33976 total). \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Fourth draft completed. Submitted to editor. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "65375728d8516a428398c7a5f364dec0970396988f0bc4f68ccf3e5513071b7b",
+      "ref_id": "1",
+      "recommendationScore": 25,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "一篇关于科技巨头垄断和劳工问题的社会经济分析，技术深度不足。",
+      "reason": "文章主题侧重社会评论和科技伦理，而非具体技术实践，与本博客优先关注的技术领域不符。",
+      "tags": [
+        "科技伦理",
+        "社会评论",
+        "政治经济"
+      ]
+    },
+    {
+      "title": "Terry Pratchett's Study",
+      "link": "https://www.sussi.dk/terry-pratchetts-study",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-07T16:05:45.000Z",
+      "summary": "Article URL: https://www.sussi.dk/terry-pratchetts-study\nComments URL: https://news.ycombinator.com/item?id=50405674\nPoints: 21\n# Comments: 3",
+      "id": "ab4d5a6e9d882d822d5f3ff84d63428bb2488499db385fe6f0e9da020761159d",
+      "ref_id": "4",
+      "recommendationScore": 20,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "介绍了奇幻作家Terry Pratchett的书房，内容与科技领域无关。",
+      "reason": "文章主题属于文学与文化领域，与本科技博客关注的核心主题完全不符。",
+      "tags": [
+        "文学",
+        "文化",
+        "人物传记"
+      ]
+    },
+    {
+      "title": "Reading List 11/7/2026",
+      "link": "https://www.construction-physics.com/p/reading-list-1172026",
+      "source": "construction-physics.com",
+      "publishedAt": "2026-11-07T13:23:36.000Z",
+      "summary": "Florida’s property tax rollback, projected PCB shortages, the end of Tesla’s Cybertruck, the lack of progress in carbon storage, and more.",
+      "id": "c6a114db2a0406b968789752acc380ae3a0fb145cb31e1df34bf03a2c18c5d76",
+      "ref_id": "4",
+      "recommendationScore": 15,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "一个内容泛泛的阅读列表，缺乏深度科技洞察。",
+      "reason": "文章仅罗列了不同主题，不具备技术深度和特定性，不符合博客内容要求。",
+      "tags": [
+        "阅读列表",
+        "杂项"
+      ]
+    },
+    {
+      "title": "The Gordon Gekko Effect: The Role of Culture in the Financial Industry [pdf] (2016)",
+      "link": "https://www.newyorkfed.org/medialibrary/media/research/epr/2016/epr_2016_gordon-gekko-effect_lo.pdf",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-07T14:18:45.000Z",
+      "summary": "Article URL: https://www.newyorkfed.org/medialibrary/media/research/epr/2016/epr_2016_gordon-gekko-effect_lo.pdf\nComments URL: https://news.ycombinator.com/item?id=50404747\nPoints: 32\n# Comments: 20",
+      "id": "bd234d6428d072f440864196db73f7cea9bab4c0b61a52c9c65aa53ad18a1fd3",
+      "ref_id": "2",
+      "recommendationScore": 10,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "与科技主题无关的金融行业文化分析，不适合科技博客发布。",
+      "reason": "文章主题与AI、编程工具、Apple生态等核心关注领域完全不符，技术相关性极低。",
+      "tags": [
+        "非技术",
+        "金融",
+        "文化研究"
+      ]
+    },
+    {
+      "title": "Book Review: When the Dust Settles - Stories of Love, Loss and Hope from an Expert in Disaster by Lucy Easthope ★★★★★",
+      "link": "https://shkspr.mobi/blog/2026/11/book-review-when-the-dust-settles-stories-of-love-loss-and-hope-from-an-expert-in-disaster-by-lucy-easthope/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-11-07T12:34:34.000Z",
+      "summary": "This is a difficult but essential book. I was initially put off by how graphically autobiographical it is. The disaster planning I came for was frequently interrupted with the author's loves, disasters, health issues, pains, and domestic issues. As the book wore on, I realised how vital that is. Disasters - whether natural or caused by human actions - cannot be tackled in a dispassionate way.…",
+      "id": "607aeb38e8a4eef38d29fe04673fe802f8f795117f8a0f10d9295f73f323f108",
+      "ref_id": "2",
+      "recommendationScore": 10,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "非技术类书评，与本科技博客关注的核心主题无关。",
+      "reason": "文章内容为个人书评，不涉及技术深度、新颖性或实用性，与科技博客的关注点完全不符。",
+      "tags": [
+        "书评",
+        "生活感悟"
+      ]
+    },
+    {
+      "title": "Working with designers",
+      "link": "https://seangoedecke.com/working-with-designers/",
+      "source": "seangoedecke.com",
+      "publishedAt": "2026-11-07T00:00:00.000Z",
+      "summary": "",
+      "id": "aedcdd730b4c7d449b2bb312c000309c32c3341ef1ec8500ead741a626c4f2aa",
+      "ref_id": "0",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "内容缺失，无法进行有效评估。",
+      "reason": "文章内容为空，无法判断其质量、技术深度和与博客主题的相关性。",
+      "tags": [
+        "未知"
+      ]
+    }
+  ]
+}
