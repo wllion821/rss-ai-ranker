@@ -1,5 +1,5 @@
 {
-  "dailySummary": "Anthropic发布Claude Fable 5.2模型，性能再创新高。谷歌TPU与DeepX低功耗推理芯片推动AI硬件发展。Meta推出高效小模型Muse Ember。同时，",
+  "dailySummary": "今日科技速递：AI领域新模型Muse Ember发布，Claude Code优化Token成本；Blender 5.3支持Gaussian Splat渲染，.",
   "articles": [
     {
       "title": "Claude Fable 5.2 Scores 65 on Artificial Analysis, Highest So Far",
@@ -659,6 +659,1029 @@
       "id": "b0125a77b8572523364667d2ea8d580d8f141eea2c9b53f8257f705e512bfce2",
       "status": "score_failed",
       "recommendationScore": 0
+    },
+    {
+      "title": "Introducing Our Smallest, Most Efficient Model: Muse Ember",
+      "link": "https://simonwillison.net/2026/Nov/10/muse-ember/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-11-10T07:28:21.000Z",
+      "summary": "",
+      "id": "c80838f46e535c12a5f29aa5c3601ae3b4fc2fd82345c998c4ec155d874b8afc",
+      "ref_id": "3",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "文章宣布推出名为Muse Ember的最小、最高效的AI模型，预示着重要的技术突破。",
+      "reason": "涉及AI领域前沿模型发布，具有极高的新颖性和潜在实用价值，对AI研究和应用至关重要。",
+      "tags": [
+        "AI",
+        "模型",
+        "效率",
+        "机器学习",
+        "创新"
+      ]
+    },
+    {
+      "title": "Claude Code token cost explorer",
+      "link": "https://entropicthoughts.com/claude-code-token-cost-explorer",
+      "source": "entropicthoughts.com",
+      "publishedAt": "2026-11-09T23:00:00.000Z",
+      "summary": "I am experimenting with involving subagents more in my LLM coding agent\nworkflow. I discovered that subagents make it more difficult to diagnose token\nusage in Claude Code,\nbecause the regular /context command only breaks down context usage for the\nmain conversation, not for the subagents.\n\n\n\n\n\nI tried some existing tools like ccusage and claude-agent-ledger, but they\nweren’t able to give me the sort of breakdown into specifics I needed to\noptimise my usage. Thus, I shamelessly had Claude Code whip up a tool that gives\nme a better view of its token usage. This is vibecoded in the true sense of the\nword – I have barely looked at the code – but I’m okay with that becuase it is\nnot critical infrastructure and it does what I need it to.\n\n\n\n\n\nIf you want to know how to get more out of your Claude Code sessions without\npaying more for it, here’s how you can find out.\n\n\n\n\n\nFirst, open the context cost explorer in your browser. Everything happens\nlocally on your machine, so none of your transcript data leaves your computer.\nIf you’re the paranoid kind, you can verify by opening the network tab in your\nbrowser and reading in a non-sensitive session and seeing that nothing funny\nhappens. Then follow the steps below, or use your own\nanalytical ability.\n\n\n\n(Continue reading the full article on the web.)",
+      "id": "9e7cca9c9d66f48a530fd6dc47b701e3286d2f72165c70e5eb1911af654de295",
+      "ref_id": "2",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "一篇关于优化Claude Code LLM代理Token成本的实用指南，提供了自定义解决方案。",
+      "reason": "紧密围绕AI和编程工具这两个高优先级主题，解决了LLM开发者普遍面临的实际痛点，具有高度新颖性和实用性。",
+      "tags": [
+        "AI",
+        "LLM",
+        "编程工具",
+        "成本优化",
+        "Claude Code",
+        "开发工具",
+        "自动化"
+      ]
+    },
+    {
+      "title": "Blender 5.3 released with Gaussian Splat support",
+      "link": "https://www.blender.org/download/releases/5-3/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-10T16:15:43.000Z",
+      "summary": "Article URL: https://www.blender.org/download/releases/5-3/\nComments URL: https://news.ycombinator.com/item?id=50442426\nPoints: 361\n# Comments: 51",
+      "id": "e1d675fcada1f4831474bcf9d5523d2a66a29d7b341ef2421e899ba4b031353b",
+      "ref_id": "4",
+      "recommendationScore": 92,
+      "popularityScore": 80,
+      "priority": "medium",
+      "comment": "介绍了Blender 5.3版本新引入的Gaussian Splatting技术支持，这是3D图形渲染领域的重大突破。",
+      "reason": "文章展示了前沿的3D渲染技术在主流工具中的应用，对3D艺术家、图形开发者和AI内容生成领域具有重要指导意义。",
+      "tags": [
+        "3D图形",
+        "Blender",
+        "Gaussian Splatting",
+        "渲染",
+        "编程工具",
+        "产品设计"
+      ]
+    },
+    {
+      "title": "What objective is reasoning solving?",
+      "link": "https://alexwang.ai/posts/reasoning-as-pathfinding/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-10T19:25:14.000Z",
+      "summary": "Article URL: https://alexwang.ai/posts/reasoning-as-pathfinding/\nComments URL: https://news.ycombinator.com/item?id=50445013\nPoints: 55\n# Comments: 22",
+      "id": "242c2c5235cec9434be2b2140035aefdddf5bd41ba66c422c480eb6779f9a94c",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "深度探讨AI推理的本质，为理解和构建高级AI系统提供深刻理论视角。",
+      "reason": "高度契合AI主题，技术深度与新颖性俱佳，对AI研究与开发有重要启发价值。",
+      "tags": [
+        "AI",
+        "推理",
+        "认知科学",
+        "AI理论"
+      ]
+    },
+    {
+      "title": "AMD's Zen 6 Family: Feeding the Beast",
+      "link": "https://chipsandcheese.com/p/amds-zen-6-family-feeding-the-beast",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-10T17:02:32.000Z",
+      "summary": "Article URL: https://chipsandcheese.com/p/amds-zen-6-family-feeding-the-beast\nComments URL: https://news.ycombinator.com/item?id=50443090\nPoints: 130\n# Comments: 46",
+      "id": "8535a4406a16c1ee5ceeaf4390919c89974ac2405a294d84394b4835894ade47",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 55,
+      "priority": "low",
+      "comment": "深度剖析了AMD Zen 6处理器家族的最新架构细节、性能预期和市场影响。",
+      "reason": "对于关注硬件技术、芯片设计和高性能计算的读者，提供了极高的技术深度和前瞻性分析。",
+      "tags": [
+        "硬件",
+        "CPU",
+        "AMD",
+        "架构设计",
+        "性能"
+      ]
+    },
+    {
+      "title": "What's new in the .NET 11 runtime",
+      "link": "https://learn.microsoft.com/en-us/dotnet/core/whats-new/dotnet-11/runtime",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-10T12:20:07.000Z",
+      "summary": "https://devblogs.microsoft.com/dotnet/announcing-dotnet-11/\nComments URL: https://news.ycombinator.com/item?id=50439284\nPoints: 195\n# Comments: 140",
+      "id": "642b53e6747a18df338976715950c919d0421dfd1e506371153a16754084105c",
+      "ref_id": "4",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": ".NET 11运行时的新特性与更新的权威发布。",
+      "reason": "为.NET开发者提供了编程工具领域最前沿和实用的技术更新，信息密度和实用性极高。",
+      "tags": [
+        "编程工具",
+        ".NET",
+        "运行时",
+        "软件开发",
+        "微软"
+      ]
+    },
+    {
+      "title": "llm-gemini 0.36",
+      "link": "https://simonwillison.net/2026/Nov/10/llm-gemini/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-11-10T20:09:44.000Z",
+      "summary": "",
+      "id": "e5607ea9b345667894ace36b4e620db28d0071cb9cf377af8302cfcec0f9e31e",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "这篇博客很可能发布了llm-gemini工具的最新版本0.36，通常包含新特性和改进。",
+      "reason": "直接与AI开发和编程工具相关，对使用Gemini LLM的开发者具有高度实用价值。",
+      "tags": [
+        "AI",
+        "LLM",
+        "Gemini",
+        "编程工具",
+        "更新"
+      ]
+    },
+    {
+      "title": "Quoting Prompting Claude Fable 5.2",
+      "link": "https://simonwillison.net/2026/Nov/10/prompting-claude-fable-52/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-11-10T05:34:14.000Z",
+      "summary": "",
+      "id": "f932ce86887297f16c587a0230fd32498898380011abb85ac57fcfd51b944259",
+      "ref_id": "4",
+      "recommendationScore": 90,
+      "popularityScore": 88,
+      "priority": "high",
+      "comment": "文章很可能深入探讨了针对Claude Fable 5.2的特定引用提示技巧。",
+      "reason": "提供关于领先AI模型Claude的实用提示工程知识，对提升LLM交互效率和效果非常有帮助。",
+      "tags": [
+        "AI",
+        "Prompt Engineering",
+        "Claude",
+        "LLM",
+        "技巧"
+      ]
+    },
+    {
+      "title": "Show HN: Get your coding agent off ~2019 JavaScript, onto modern web primitives",
+      "link": "https://github.com/GoogleChrome/modern-web-guidance",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-10T18:01:15.000Z",
+      "summary": "Browsers natively handle a lot of what used to take 50 lines of JS (or a dependency): `CSS.highlights` for text range highlighting without s everywhere, `` and showModal() give you backdrops and ideal focus management, `field-sizing` to auto-grow textareas as the user types.. (Something yesterday's ftrain post touched on [0])\nModels know about some of these by name, but consistently won't default to using the platform-native solution and instead prefer the incumbent \n+JS based pattern.  We started an effort in Chrome to supplement coding agents with this key domain knowledge and we're shipping our 1.0 today, in collaboration with Firefox, MDN, and Edge.\n200+ guides (~1.7MB) of curated, hand-crafted implementation best-practices from web experts, updated as the web evolves.  (Open source, obv, so.. we'll welcome your bikeshedding ;) Readable versions here: [1]\nI've spent the last 9 months obsessing over how to ship this as an agent skill + (Agentic RAG) CLI without blowing up your context window. (Or cedeing activation mechanics to MCP dynamic tool search). The skill description is minmaxed for activating on relevant frontend tasks. The RAG work I'm pretty proud of… originally a 500mb native stack down to a ~7MB pure-JS package, ~10ms search on your CPU.\nWe just introduced a deterministic 'legacy-scan' (trained on 30k github repos) to identify old 'n dusted patterns that your agent can modernize. (92% avg precision on held-out repos.)\nPeople make a lot of claims about what coding agents are good/bad at. We wanted receipts, so we invested heavily in eval infra [2] to help us hill-climb, but also to identify when knowledge is common enough we can prune our guides. (Ofc, some of the things we thought AI didn't know turned out to be wrong :)  We run codex/claude/agy against 200 tasks without the skill and then with.. In total ~1,700 playwright/AST-based assertions. Agents go from 55% pass unguided to 92% guided.\nTry it out:\n    DISABLE_TELEMETRY=1 npx modern-web-guidance@latest install\n    DISABLE_TELEMETRY=1 npx modern-web-guidance@latest search \"animate dialog modal\"\n    DISABLE_TELEMETRY=1 npx modern-web-guidance@latest legacy-scan ./src\n\nLonger write-up on the 1.0:  https://developer.chrome.com/blog/modern-web-guidance-v1\n---\n0: https://news.ycombinator.com/item?id=50416456\n1: https://developer.chrome.com/docs/modern-web-guidance/guides\n2: https://googlechrome.github.io/modern-web-guidance-src/\nComments URL: https://news.ycombinator.com/item?id=50443812\nPoints: 167\n# Comments: 46",
+      "id": "a4978faa7e166cdb12b818c5397aad221fe34e5d74e2dc0c479fe886ef474c07",
+      "ref_id": "2",
+      "recommendationScore": 89,
+      "popularityScore": 60,
+      "priority": "high",
+      "comment": "介绍了一个旨在通过提供现代Web原生API知识，改善AI编码代理生成过时JavaScript代码问题的开源项目。",
+      "reason": "直接解决了AI代码生成中存在的实际痛点，显著提升了AI在Web开发领域的代码质量和效率，且符合AI和编程工具双重高优先级。",
+      "tags": [
+        "AI",
+        "编程工具",
+        "Web开发",
+        "JavaScript",
+        "CSS",
+        "Agentic RAG",
+        "开源"
+      ]
+    },
+    {
+      "title": "An Open Field Guide to Inference Engineering",
+      "link": "https://docs.modelplane.ai/guides/inference-guide",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-10T17:55:07.000Z",
+      "summary": "Article URL: https://docs.modelplane.ai/guides/inference-guide\nComments URL: https://news.ycombinator.com/item?id=50443714\nPoints: 40\n# Comments: 5",
+      "id": "64c65c510d530b1f1077a1c4904adf7270ca6999d6689c4e14b70246cdee277a",
+      "ref_id": "4",
+      "recommendationScore": 89,
+      "popularityScore": 12,
+      "priority": "high",
+      "comment": "提供了一份关于AI模型推理工程的开放式实践指南，涵盖了部署和优化AI模型的核心技术。",
+      "reason": "深入探讨了AI模型部署和优化中的关键技术和挑战，对AI工程师和MLOps专业人员具有极高的实用价值和学习意义。",
+      "tags": [
+        "AI",
+        "MLOps",
+        "推理工程",
+        "机器学习",
+        "模型部署",
+        "优化",
+        "技术指南"
+      ]
+    },
+    {
+      "title": "Life on Claude Nine",
+      "link": "https://babuschk.in/posts/2026-01-25-life-on-claude-nine.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-10T17:44:44.000Z",
+      "summary": "Article URL: https://babuschk.in/posts/2026-01-25-life-on-claude-nine.html\nComments URL: https://news.ycombinator.com/item?id=50443587\nPoints: 48\n# Comments: 9",
+      "id": "bc7799c9ed5f2531c42b5651895fe76df8a9655cb82efa96b10e12292ce108e9",
+      "ref_id": "0",
+      "recommendationScore": 88,
+      "popularityScore": 30,
+      "priority": "high",
+      "comment": "深入探讨了使用Claude AI的个人体验和独到见解，提供了AI应用的第一手观察。",
+      "reason": "作为当前热门的AI主题，该文提供了从用户角度出发的宝贵实践经验，具有高度的时效性和洞察力。",
+      "tags": [
+        "AI",
+        "大语言模型",
+        "用户体验",
+        "人工智能"
+      ]
+    },
+    {
+      "title": "Bloomberg: ‘Nvidia Intervened in U.S. Probe of Megaspeed Chip Smuggling’",
+      "link": "https://www.bloomberg.com/news/articles/2026-11-09/nvidia-intervened-in-us-probe-of-megaspeed-chip-smuggling",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-11-10T17:06:01.000Z",
+      "summary": "Mackenzie Hawkins, reporting yesterday for Bloomberg:\nDespite that stance, in the months after Teter’s initial call with\nKessler, Nvidia gave BIS an incomplete account of its business\nwith Megaspeed. After several visits to Megaspeed’s data centers — 12 facilities owned by eight companies across three countries\nin Southeast Asia — Nvidia had sent inventory checks to the\nagency and declared to Bloomberg News in mid-November 2025 that\neverything was where it should be.\nThe company also said at the time that it had asked the US\ngovernment whether it needed to cut off business with Megaspeed,\nand was told no.\nBut Nvidia’s tabulations, as relayed to the US government,\nundercounted the number of chips it had sold to Megaspeed via\nhardware partners by 50,000 units, according to trade records\nanalyzed by Bloomberg. That’s worth billions of dollars. After\nbeing pressed about the gap, Nvidia told Bloomberg in December\n2025 that it had checked additional Megaspeed warehouses that\ncontained the missing hardware, while declining to state exactly\nhow many chips it found in those facilities or provide any further\ndetails.\n ★",
+      "id": "f4624ff3586a14628cae65dfbc61a637e838b614212ee3027625c29ebaa7b460",
+      "ref_id": "4",
+      "recommendationScore": 85,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "关于英伟达AI芯片供应链调查的深度新闻报道，具有极高的时事性和行业影响力。",
+      "reason": "文章揭示了AI核心供应链中的重大行业事件，直接影响AI产业发展和地缘政治，具有极高阅读价值和话题性。",
+      "tags": [
+        "AI芯片",
+        "Nvidia",
+        "行业新闻",
+        "监管",
+        "供应链",
+        "商业伦理"
+      ]
+    },
+    {
+      "title": "Safari 27.3 Adds Support for Global Privacy Control",
+      "link": "https://pxlnv.com/linklog/safari-global-privacy-control/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-11-10T14:47:10.000Z",
+      "summary": "Nick Heer, Pixel Envy:\nThere are a whole bunch of features and fixes coming to Safari\nwith Apple’s OS 27.3 update. One that is not in the beta release\nnotes but appears nevertheless is support for Global\nPrivacy Control. This new standard is effectively a\nreplacement for Do Not Track with legal muscle that\nshould permit you to indicate your tracking preference\none time and then, theoretically, never again see a cookie\nconsent banner.\n ★",
+      "id": "1f12b245f61241dc8fb4b0c5756a2941fbb4b2474eb833e1a31a77ec6b7fb0e5",
+      "ref_id": "3",
+      "recommendationScore": 85,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "Safari新增重要的隐私控制功能，对用户体验和隐私保护有直接影响。",
+      "reason": "介绍了Safari浏览器一项重要的隐私更新，对用户隐私和网络体验有直接且积极的影响，实用性极高。",
+      "tags": [
+        "Safari",
+        "隐私保护",
+        "Web标准",
+        "苹果生态",
+        "GPC"
+      ]
+    },
+    {
+      "title": "Val Town is winding down",
+      "link": "https://blog.val.town/winding-down",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-10T17:31:14.000Z",
+      "summary": "Article URL: https://blog.val.town/winding-down\nComments URL: https://news.ycombinator.com/item?id=50443427\nPoints: 216\n# Comments: 54",
+      "id": "86eadbab0d2e1b36bae6e12e5e9dc10b7ac88f71546c377dd6f9756bdd5e51b0",
+      "ref_id": "1",
+      "recommendationScore": 82,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "详细分析了Val Town平台关闭的原因、挑战及其对独立开发者社区的启示。",
+      "reason": "为独立开发者和平台构建者提供了极其宝贵的失败案例研究，从中可学习到重要的创业和运营教训。",
+      "tags": [
+        "独立开发",
+        "编程工具",
+        "创业教训",
+        "平台运营"
+      ]
+    },
+    {
+      "title": "A comprehensive study of how fingerprintable users are",
+      "link": "https://fingerprinting.study/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-10T19:03:54.000Z",
+      "summary": "Article URL: https://fingerprinting.study/\nComments URL: https://news.ycombinator.com/item?id=50444684\nPoints: 38\n# Comments: 6",
+      "id": "57fea1eedeca906e3908804953cee0ec872adec7fb4f780a4fe6e8419ef6aef2",
+      "ref_id": "4",
+      "recommendationScore": 80,
+      "popularityScore": 50,
+      "priority": "medium",
+      "comment": "全面揭示用户指纹识别机制，对网络隐私与安全实践有重要指导意义。",
+      "reason": "技术深度和实用性强，是网络安全和隐私领域的重要话题，值得关注。",
+      "tags": [
+        "网络安全",
+        "隐私",
+        "Web技术",
+        "用户追踪"
+      ]
+    },
+    {
+      "title": "The Hardest Tarball?",
+      "link": "https://stoppels.ch/2026/11/07/the-hardest-tarball.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-10T15:00:39.000Z",
+      "summary": "Article URL: https://stoppels.ch/2026/11/07/the-hardest-tarball.html\nComments URL: https://news.ycombinator.com/item?id=50441338\nPoints: 136\n# Comments: 30",
+      "id": "07abc360420ea0ddaeb7f71a810ccee29b200b61328db0f75837248cc5906bb3",
+      "ref_id": "2",
+      "recommendationScore": 80,
+      "popularityScore": 60,
+      "priority": "high",
+      "comment": "探讨tar打包工具复杂性或极限的深度技术文章。",
+      "reason": "提供了编程工具领域稀有且具挑战性的低层技术洞察，对资深开发者学习价值高。",
+      "tags": [
+        "编程工具",
+        "系统管理",
+        "文件压缩",
+        "Linux",
+        "技术挑战"
+      ]
+    },
+    {
+      "title": "Revisiting Leander v Sweden and Big Brother Watch",
+      "link": "https://berthub.eu/articles/posts/revisiting-leander-and-big-brother/",
+      "source": "berthub.eu",
+      "publishedAt": "2026-11-10T19:10:00.000Z",
+      "summary": "Governments in Europe are gearing up to increase their bulk surveillance capabilities. One check on their ambitions is the European Convention on Human Rights. In this piece, I want to highlight recent jurisprudence from the European Court of Human Rights (ECtHR), and interpret the case law in light of current cybersecurity and AI developments. This interpretation may have relevance for future evaluations of SIGINT and other bulk data collection programs. Because what seemed reasonable a few years ago may no longer be so.",
+      "id": "254cbd933a0214cb765b4499274217ea72e57dd4180cbe742ab27afefc104791",
+      "ref_id": "0",
+      "recommendationScore": 80,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "深入探讨了AI和网络安全背景下欧洲隐私法和政府监控，具有较高的技术深度和新颖性。",
+      "reason": "文章结合前沿技术重新解读了重要法律案例，对数字权利和政策制定具有深刻启示，符合AI和网络安全这一高优先级主题。",
+      "tags": [
+        "AI",
+        "网络安全",
+        "隐私",
+        "法律科技",
+        "政府监控"
+      ]
+    },
+    {
+      "title": "Smart home devices should work without the internet",
+      "link": "https://docodethatmatters.com/home-automation-overnight-success/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-10T15:25:20.000Z",
+      "summary": "Article URL: https://docodethatmatters.com/home-automation-overnight-success/\nComments URL: https://news.ycombinator.com/item?id=50441707\nPoints: 506\n# Comments: 180",
+      "id": "ad37f01e7042126508e00f2ca634ab63170a1e9e92ea5f25758f2173a1585de3",
+      "ref_id": "0",
+      "recommendationScore": 75,
+      "popularityScore": 90,
+      "priority": "medium",
+      "comment": "一篇关于智能家居本地化控制重要性的深度讨论。",
+      "reason": "强调了智能家居系统可靠性和用户隐私的关键议题，对自动化领域有重要参考价值。",
+      "tags": [
+        "智能家居",
+        "自动化",
+        "物联网",
+        "隐私",
+        "系统设计"
+      ]
+    },
+    {
+      "title": "The Download: Pelosi’s successor targets AI and data centers face power woes",
+      "link": "https://www.technologyreview.com/2026/11/10/1148150/the-download-pelosi-successor-ai-regulation-data-center-backlash/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-11-10T13:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. Nancy Pelosi’s replacement is ready to regulate AI —Grace Huckins As a California state senator, Scott Wiener authored legislation aimed at curbing the risks of advanced AI. Now, after winning a…",
+      "id": "4c3c56a1a61aaf31d560fbc13dc4ea8a2ecc0fbaf7d50dfd4af3fc73d7f8eac7",
+      "ref_id": "0",
+      "recommendationScore": 75,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "这篇博客提供了关于AI监管和数据中心能源挑战的最新科技新闻概述。",
+      "reason": "内容及时，触及AI政策和行业热点，对关注宏观科技趋势的读者有价值。",
+      "tags": [
+        "AI",
+        "政策法规",
+        "数据中心",
+        "新闻",
+        "时事"
+      ]
+    },
+    {
+      "title": "U.S. Commerce Dept. Inquiry Into Megaspeed Was Halted After Nvidia Name-Dropped Trump Appointee",
+      "link": "https://www.nytimes.com/2026/11/09/business/economy/nvidia-megaspeed-investigation-huang.html?unlocked_article_code=1.PVE.GxBL.iBpBoc8Y4tnb",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-11-10T14:35:38.000Z",
+      "summary": "Ana Swanson and Devlin Barrett, reporting yesterday for The New York Times (gift link):\nInvestigators at the Commerce Department were deep into a\nmonthslong investigation of a Singaporean company that they\nsuspected of smuggling Nvidia’s artificial intelligence chips\ninto China when their work came to a sudden halt late last year.\nThe investigation centered on Megaspeed, a data center company\nled by an executive who U.S. officials now believe to be a\nChinese spy who had a relationship with Nvidia’s chief executive,\nJensen Huang.\nBut the case was abruptly transferred to the Justice Department\nlast year. The shift came after Commerce Department investigators\nworking on the case received an email from Nvidia’s general\ncounsel seeking information about the inquiry into Megaspeed.\nIt is not necessarily unusual for Commerce Department agents\nworking on a case to speak with a company’s representatives about\nissues involving their firm. But what was unusual was the content\nof the message. Tim Teter, Nvidia’s general counsel, said that\nJeff Kessler, a top official at the department, had given Nvidia\npermission to reach out about the case.\nThe agents were alarmed that Nvidia had invoked the name of Mr.\nKessler, their superior, who was nominated to his role by\nPresident Trump. Some viewed Mr. Kessler’s interaction with Nvidia\nas violating government procedure and potentially tainting the\ncase, according to current and former government officials and\nothers familiar with the incident.\n“Nice job you have there. Be a shame if something happened to it.”\nIf this is as abjectly corrupt as it sounds, it seems indefensible — and Congressional oversight investigations are now inevitable with both the House and Senate in Democratic hands. This isn’t just pocket-stuffing corruption — it’s a national security issue.\n ★",
+      "id": "fed6f9d3430f677859fa1550ce6a576da32a39db5c9c5707a25c989f9d591532",
+      "ref_id": "0",
+      "recommendationScore": 75,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "一篇关于英伟达AI芯片出口管制调查被叫停的深度报道，揭示了复杂的政商关系。",
+      "reason": "涉及AI核心硬件的国际政治和商业伦理，具有较高的社会和行业关注度，尤其符合AI主题优先级。",
+      "tags": [
+        "AI",
+        "Nvidia",
+        "地缘政治",
+        "商业伦理",
+        "芯片"
+      ]
+    },
+    {
+      "title": "Claude Whiteboards, Claude Sheets, and Claude Data",
+      "link": "https://claude.com/resources/articles/sheets-whiteboards-data",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-10T17:55:07.000Z",
+      "summary": "Article URL: https://claude.com/resources/articles/sheets-whiteboards-data\nComments URL: https://news.ycombinator.com/item?id=50443716\nPoints: 107\n# Comments: 83",
+      "id": "001cd33c965241bc733395330dc1002dceba1895316b2079b3357cff11fd774d",
+      "ref_id": "3",
+      "recommendationScore": 70,
+      "popularityScore": 50,
+      "priority": "high",
+      "comment": "发布了Anthropic Claude AI新增的白板、表格和数据处理功能，扩展了其多模态交互能力。",
+      "reason": "展示了领先AI模型能力的最新扩展，为用户提供了更强大的协作和数据分析工具，是AI领域的重要产品更新。",
+      "tags": [
+        "AI",
+        "Claude",
+        "Anthropic",
+        "生产力工具",
+        "数据分析",
+        "多模态"
+      ]
+    },
+    {
+      "title": "‘A Scandal at the Center of the Economy’",
+      "link": "https://www.theatlantic.com/technology/2026/11/jensen-huang-chinese-spy/689357/?gift=aQyUJR7AIw1mJWdQ6Ed6yPI8n1FlV88MR9f9IZruvFA&",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-11-10T14:36:18.000Z",
+      "summary": "Charlie Warzel, writing for The Atlantic (gift link):\nIt is curious, then, that, as news came out that the Nvidia CEO,\nJensen Huang, had had a romantic relationship with a Chinese\nbusinesswoman who was also an asset of Beijing’s Ministry of State\nSecurity, notable factions of Silicon Valley and Washington, D.C.,\nseemed nonplussed. “Even incredible humans make mistakes,” Bill\nAckman, the billionaire hedge-fund manager, posted on X\nyesterday. “We should all support him and his family. Onward.” The\nventure capitalist Shaun Maguire offered a five-point\nanalysis of Huang’s situation, noting that the CEO did something\n“incredibly dumb” and “bad for America,” but that “my guess is\nthere was no bad intention.” He then argued, “I believe Jensen is\nirreplaceable for America’s AI leadership.” Elon Musk agreed. From\nthere, the posts, written before we know all the facts of the\nscandal, got only more absurd, including\ndefending Huang’s affair on the grounds that his kids are\nadults now. [...]\nHuang’s thinking on issues such as AI doomerism (he’s anti-doom)\nand chip allocation in China (he’s for it — a position that\nwarrants examining, given this weekend’s revelations) influences\nU.S. policy. This centrality is why one tech analyst on\nCNBC this morning implied that replacing Huang was a comical\nsuggestion. Huang is a singular figure: the linchpin of the\ncompany that is arguably the linchpin of the American economy.\nFramed another way, Nvidia has much of the financial system in a\nhostage situation. Huang is too big to fail. Which may be why so\nmany people seem motivated to downplay or protect him right now.\nElbert Hubbard: “The graveyards are full of people the world could not do without.”\n ★",
+      "id": "d47a22265f925a0d1ac47985ed475a21a3cec759260a26eb97ac0c56a46b2dfa",
+      "ref_id": "4",
+      "recommendationScore": 70,
+      "popularityScore": 85,
+      "priority": "medium",
+      "comment": "探讨了英伟达CEO丑闻引发的硅谷反应和AI行业政治与伦理考量。",
+      "reason": "尽管技术深度有限，但文章聚焦AI行业领袖的伦理争议和地缘政治考量，具有极高的话题性和关注度。",
+      "tags": [
+        "AI行业",
+        "商业伦理",
+        "硅谷",
+        "英伟达",
+        "地缘政治"
+      ]
+    },
+    {
+      "title": ".name Grandfathered",
+      "link": "https://neil.fraser.name/news/2026/11/10/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-10T16:37:44.000Z",
+      "summary": "Article URL: https://neil.fraser.name/news/2026/11/10/\nComments URL: https://news.ycombinator.com/item?id=50442736\nPoints: 531\n# Comments: 107",
+      "id": "cd5db2ceb26272766f7cd4f77e5aa68def67d62ddee9a8fb0ba0d0e8bf4f41a9",
+      "ref_id": "3",
+      "recommendationScore": 68,
+      "popularityScore": 90,
+      "priority": "low",
+      "comment": "详细解释了.name域名的“祖父条款”政策及其对互联网域名管理的历史性影响。",
+      "reason": "尽管主题相对小众，但它揭示了互联网域名政策的重要历史演变和复杂性，对特定研究领域有参考价值。",
+      "tags": [
+        "域名",
+        "互联网政策",
+        "ICANN",
+        "网络管理"
+      ]
+    },
+    {
+      "title": "Six Math Essentials by Terence Tao",
+      "link": "https://teorth.github.io/tao-web/six-math-essentials.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-10T20:58:44.000Z",
+      "summary": "Article URL: https://teorth.github.io/tao-web/six-math-essentials.html\nComments URL: https://news.ycombinator.com/item?id=50446246\nPoints: 20\n# Comments: 1",
+      "id": "ab7b71ea882de237fd46c6a6a11eddd06265cad893bba7255051cb76fda46c12",
+      "ref_id": "0",
+      "recommendationScore": 65,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "数学大师陶哲轩对数学精髓的见解，内容深刻但与主流科技热点关联度较低。",
+      "reason": "适合对基础数学有高阶兴趣的读者，但普遍吸引力有限，不属于核心科技主题。",
+      "tags": [
+        "数学",
+        "基础科学",
+        "Terence Tao"
+      ]
+    },
+    {
+      "title": "Altar II Keyboard on Kickstarter",
+      "link": "https://www.kickstarter.com/projects/electronicamaterials/altar-ii/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-11-10T20:59:25.000Z",
+      "summary": "Electronic Materials Office is the brainchild of Andrew Emerson. Back in 2023 he launched the Altar I, a rather distinctive mechanical keyboard. Much thinner than most, very opinionated in its industrial design and keycap typography. I got one and I don’t regret it, but there was too much I didn’t like about it, so it’s mostly sat in a drawer.\nToday on Kickstarter Emerson/EMO has launched a campaign for the Altar II. Same cool aesthetic, but with improvements that address everything I didn’t like about the Altar I. The Altar II has all new switches. It’s so thin it resembles the profile of Apple’s Magic Keyboard from the side. The dial — now called the M-Dial — now attaches magnetically, which means it’s easy to detach for putting the keyboard into a bag. And it has new features that never even occurred to me, like NiteLite — backlighting from “a long-wavelength amber-red light that won’t affect your body’s circadian rhythm, meaning you can sleep better at night.” The sleep benefits might be voodoo but red lights are undeniably easier on your eyes at night, and it looks cool as shit. (My favorite feature of Apple Watch Ultra is “Night Mode” — a handful of watch faces that switch to all-red in the dark.)\nI love that mechanical keyboards have come back into vogue, and that the market for them is thriving. But most of them annoy me. Often because they aren’t really keyboards — they’re design-your-own-keyboard kits. Kits are fun, but I want someone else to do the hard work of making all the design decisions. Don’t make me choose between half a dozen (or more!) types of switches. You’re the goddamn keyboard designer, you pick the switches. That’s my thinking. Altar II is that type of keyboard — one that has been properly and thoroughly designed for you. You just choose the key layout — US or UK. That’s it.\nAnother thing I don’t like about most mechanical keyboards — that also makes them feel like a hobby, not a finished product — is that they’re designed for cross-platform use. If they’re customizable via software, the software tends to be confusing and poorly made. Altar II is designed for the Mac and is going to come with a native Mac app for configuration. Fuckin’-A right.\nI haven’t tried the Altar II yet because it’s only at the preproduction stage. That’s why it’s on Kickstarter. You can wait and see what I think of it next year. But if you jump on the Kickstarter now, there’s a first-48-hours early bird price that will save you $70. Retail price is going to be $350; for the remaining 40 hours or so, you can book one for just $280. After tomorrow, Kickstarter pricing goes up to $300.\n ★",
+      "id": "71b89d234f65eee7b96f28ccb2eaccc0c1657710880f4a9cfa2dfc8c3b02759c",
+      "ref_id": "3",
+      "recommendationScore": 60,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "对一款设计独特、功能创新的机械键盘进行了详细介绍，适合特定用户群。",
+      "reason": "文章提供了新硬件产品发布的详细信息，包括设计理念和改进点，具有一定的市场和产品设计参考价值。",
+      "tags": [
+        "硬件",
+        "机械键盘",
+        "产品设计",
+        "Kickstarter",
+        "独立开发"
+      ]
+    },
+    {
+      "title": "OurCal",
+      "link": "https://ourcal.com/?utm_source=daringfireball&utm_medium=sponsorship&utm_content=post-thankyou",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-11-10T15:15:17.000Z",
+      "summary": "My thanks to OurCal for sponsoring last week at DF. You ever have a discussion that starts with “I didn’t see you put that on the calendar”? Could be with your colleagues, could be with your family. But the problem is familiar: Shared calendars solved scheduling, not communication.\nOurCal connects any calendar, new or existing, to a group chat. Changes post there automatically, so nobody misses them. Because it’s a messenger, they made everything end-to-end encrypted, certified by France’s cybersecurity agency.\nOurCal is native SwiftUI across Apple’s platforms, and the App Store just featured it in “Great apps on iPhone Duo”. They’ve got an Android app too, but they’re an Apple-first company. It’s really well done. Even the app icon is chef’s kiss.\nOurCal is free to try, then a low monthly group subscription. No ads, no tracking.\n ★",
+      "id": "e1e944fc2d86837747dd234d545b5cb404864518b9abbe2f8d14d045da217211",
+      "ref_id": "2",
+      "recommendationScore": 60,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "评测了一款在苹果生态中具备实用性和良好设计的日历应用，强调隐私。",
+      "reason": "对一款利用SwiftUI开发、强调隐私和协作的苹果生态应用进行了详尽介绍，具有实用价值。",
+      "tags": [
+        "应用评测",
+        "生产力工具",
+        "协作",
+        "苹果生态",
+        "SwiftUI",
+        "隐私"
+      ]
+    },
+    {
+      "title": "Pluralistic: The EU should go big and hard over border IT failure (10 Nov 2026)",
+      "link": "https://pluralistic.net/2026/11/10/worst-of-all-worlds/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-11-10T17:34:21.000Z",
+      "summary": "Today's links The EU should go big and hard over border IT failure: Sometimes you have to execute an IT contractor to encourage the others. Hey look at this: Delights to delectate. Object permanence: Toothpick sculptures; McRib as a commodities volatility hedge; Hitler's British passport; Why we get tech wrong; France jails spying EDF execs; SF v Trump; Clinton's data-driven ground game sucked; Risk compensation sucks; \"Flexible labor\" is risk compensation. Upcoming appearances: Vancouver, Folkestone, Oxford, Sheffield, Virtual, Oxford, Santa Barbara, Montreal. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. The EU should go big and hard over border IT failure (permalink) If the EU has a future as a political project, it will have to be as a living, breathing repudiation of Ronald Reagan's maxim that \"The nine most terrifying words are 'I’m from the government and I’m here to help.'\" In other words, the EU's future depends on its ability to publicly perform competence and capacity. The EU is a technocratic project, and the one trait technocrats must show is undeniable technical competence. This is the secret of Zohran Mamdani's administration: being seen in public, constantly fixing things that are broken, and making things that work even better: https://www.nyc.gov/content/100days/pages/ This is a goal that is largely incompatible with charismatic megaprojects, and unfortunately, that's the EU's favorite kind of project: something big and splashy and worthy of the extreme effort required to squeeze anything through the Byzantine EU approvals process: https://backofmind.substack.com/p/the-planning-system-system Even more unfortunate is that the EU isn't just a technocratic project, it's a neoliberal technocratic project, so when it does embark on one of these megaprojects, it almost always does so as a \"public-private partnership\" that sees vast sums transferred to private firms to carry out public works. Since megaprojects are always over-budget and behind schedule, this creates the perfect conditions for absolute banditry, in which private companies overcharge and underdeliver, and before you know it, you're billions poorer and back in Reagan's \"most terrifying words\" territory. Here's a perfect example: Schengen is a region of (mostly) EU countries who have opened their borders to one another. Once you've crossed into any of the 29 Schengen countries, you can generally stroll into any of the other Schengen countries without showing a passport or having your bags searched: https://en.wikipedia.org/wiki/Schengen_Area This is an awfully convenient system…once you're inside of Schengen. But the Schengen agreement means that each of the member states is trusting the other states to manage a common border, a task that is made all the more urgent by the fascist international, whose far right parties have whipped millions of otherwise sensible people into a xenophobic frenzy over migration. This has led to a kind of bureaucracy-shifting exercise that removed all the complexity from inter-Schengen borders and concentrated it at the borders between each Schengen country and the rest of the world. Under this system, every Schengen country must accurately log the passage of every non-Schengen person into and out of the region. If you fly into Rome and out of Helsinki, then both the Italian and Finnish border guards must be cognizant of that fact and correctly log it. To make matters even more complex, visa-free access to Schengen is restricted to 90 days in the entire region out of any given 180-day period. For example, last month I was stranded in Frankfurt overnight thanks to a canceled flight. If I had totaled 90 days out of the previous 180 in Schengen, I would not have been allowed out of the airport's secure area until midnight, when the day ticked over and now my total would be 89 days out of 180 (thankfully, I was able to leave the airport and stay in a crummy airport hotel instead of sleeping on the floor of the airport). To manage this system, the EU commissioned several giant IT companies to build a networked, biometric border-crossing system. Under the spec, the system would track those 90-day windows for everyone who passed in and out of Schengen, using fast fingerprint/facial scans to move people swiftly through any border crossing in the 29 Schengen countries. It is a gross understatement to call this system behind schedule and overbudget. The Entry Exit System (EES) was supposed to roll out in 2022, but it didn't go live until October 2025 – whereupon it completely, catastrophically failed, despite having doubled its budget: https://www.theregister.com/security/2025/09/25/eu-to-register-fingerprints-faces-for-short-stay-visitors/1141501 It's been more than a year since EES went live and it is still an absolute disaster. Travelers arriving or leaving Schengen are frequently hit with multi-hour delays. Numerous flights have been canceled, and airlines who fly without waiting for passengers in the immobile, snaking lines must rebook those passengers and endure their wrath. At major airports, it's routine for border guards to simply suspend their use of the EES system, waving through passengers without registering them in the system: https://eesqueue.com/ EES is a disaster for aviation operations and border crossings. Any true reckoning with its costs wouldn't stop at the hundreds of millions of euros paid to private sector partners, but also the hundreds of millions more in costs borne by travelers and airlines, to say nothing of the opportunity costs paid by travelers who made it through the checkpoints through the brute-force expedient of leaving hours of extra time for a broken border formality. Which means that the disaster isn't merely a logistics crisis, it's also a credibility and legitimacy crisis. A year (and counting) of headlines about this dismal failure of an IT system have further eroded public confidence in the EU's technical capabilities. How can the EU claim to be a sound technocratic steward of the vast administrative challenges facing a 27-state transnational entity when it can't make the computers work, and when those failures produce the very visible phenomenon of gigantic queues of fuming passengers? (Not just fuming, either: when I was stuck in Frankfurt last month, there were at least half a dozen travelers who were loudly sobbing as they realized they were going to miss their flights home.) The contractors for this nonfunctional, grossly overbudget, years-late project (IBM, Atos, and Leonardo) are now being sued, but – incredibly – the EU kept the lawsuit a secret. The only reason we know that IBM, Atos, and Leonardo are facing the EU in court is that the FT spotted an inconspicuous note in the annual financial statements for eu-LISA (the European Union Agency for the Operational Management of Large-Scale IT Systems in the Area of Freedom, Security and Justice): https://www.eulisa.europa.eu/sites/default/files/documents/fy2025_eu-lisa_faa.pdf The secrecy of this lawsuit is another mark against the EU's technical competence. Any administrative system that relies on private-sector outsourcing to carry out its essential projects must have a core competency in overseeing those private partners, which includes loudly and mercilessly punishing those partners when they fail. By keeping the suit secret, the eu-LISA telegraphs that the fault lies with the EU, not with IBM, Atos, and Leonardo, who racked up hundreds of millions in fees and delivered a very broken, very late system that ruined the days (and voyages) of millions of travelers: https://www.theregister.com/public-sector/2026/11/10/eus-212m-border-it-project-lands-ibm-and-atos-in-legal-water/5308669 Anyone who's ever watched a large IT consultancy firm run one of these large projects knows that this kind of bungling and gouging is par for the course. The old adage that \"no one ever got fired for buying IBM\" does not mean that IBM can deliver a functional IT system; it means that when IBM fucks up your project, you can escape any blame because they're the gold standard for fucking up. Every time the EU lets these companies off the hook without a big, splashy public reckoning, they reinforce Reagan's \"most terrifying words\" maxim. As Voltaire wrote, \"Sometimes you must execute an admiral to encourage the others.\" The EU should be dragging these IT bandits in public, every day, naming the top executives who oversaw the project. They should do this every time there's a problem with a private contractor, but EES is especially ripe for this kind of treatment. That's because EES whacked a ton of rich, powerful people. Those are the sort of people who might otherwise run cover for giant, bungling, wildly profitable IT consulting firms, but who are also the most reliably pissy, vindictive dickheads about anything that affects them personally. These are the sorts of people you definitely want inside your tent, pissing out – but in hiding its lawsuit under a bushel, the EU has invited them to stand outside its tent and piss in. Hey look at this (permalink) You Don’t Understand Engineering Principles https://erikjlarson.substack.com/p/you-dont-understand-engineering-principles-634 Determining Location By Listening For Airplanes https://hackaday.com/2026/11/09/determining-location-by-listening-for-airplanes/ Data center buildout | PressAudit https://pressaudit.org/dashboards/datacenters?chart=datacenter-buildout&tab=buildout-map Why Fewer People Are Challenging Bad Patents https://www.eff.org/deeplinks/2026/11/why-fewer-people-are-challenging-bad-patents The Garbage Man: Bill Gates Has Earned Billions Investing in Climate-Polluting Landfills https://www.propublica.org/article/bill-gates-republic-landfill-methane-pollution Object permanence (permalink) #20yrsago Toothpick sculptures https://web.archive.org/web/20061107232205/https://landmarksofsf.com/photoindex.html #20yrsago Computer-human interaction that gives hands their due respect https://worrydream.com/ABriefRantOnTheFutureOfInteractionDesign/ #15yrsago Warner Bros admits it sends takedown notices for files it hasn’t seen and doesn’t own https://arstechnica.com/tech-policy/2011/11/warner-admits-it-issues-takedowns-for-files-it-hasnt-looked-at/ #15yrsago Understanding McDonald’s as a commodities broker with a restaurant sideline: the McRib https://www.theawl.com/2011/11/a-conspiracy-of-hogs-the-mcrib-as-arbitrage/ #15yrsago Why we get the future of tech wrong https://www.youtube.com/watch?v=yUXh-GPa5dI #15yrsago Fake British WWII passport for Hitler https://web.archive.org/web/20120608185357/https://www.nationalarchives.gov.uk/museum/item.asp?item_id=46 #15yrsago French court sends EDF execs to jail for hacking, spying on Greenpeace https://www.bbc.com/news/science-environment-15683090 #10yrsago Trump Administration: a climate denier for the EPA, a Goldman-Sachs banker for Treasury https://www.politico.com/story/2016/11/who-is-in-president-trump-cabinet-231071 #10yrsago How science fiction can help us survive Trump’s America https://www.nielsenhayden.com/makinglight/the_prospect_be/ #10yrsago Clinton’s data-driven “ground game” sucked in exactly the same way “targeted ads” suck, for the same reason https://web.archive.org/web/20161111084125/http://tomewing.tumblr.com/post/152963356681/polls-etc #10yrsago The first transgender suicide hotline: 877-565-8860 https://translifeline.org/ #5yrsago Risk compensation considered harmful https://pluralistic.net/2021/11/10/elfin-safety/#mene-mene-tekel #1yrago \"Flexible labor\" is a euphemism for \"derisking capital\" https://pluralistic.net/2025/11/10/zero-sum-zero-hours/#that-sounds-like-a-you-problem Upcoming appearances (permalink) Vancouver: BC Policy Solutions Gala, Nov 12 https://bcpolicy.ca/gala/ Folkestone Writers Festival, Nov 16 https://www.creativefolkestone.org.uk/whats-on/cory-doctorow-the-internet-is-broken-now-what/ Oxford: Ministry of the Future, Nov 23 https://ministryforthefuture.co.uk/events.html Sheffield: Reverse Centaur at Juno Books, Nov 25 https://www.outsavvy.com/event/40274/cory-doctorow-in-conversation Virtual: Enshittification, AI, and the Future of Technology (UBC Master of Educational Technology), Nov 28 https://met.ubc.ca/2026/09/met-speaker-series-cory-doctorow-enshittification-ai-and-the-future-of-technology/ Oxford: Bennett Oxford Symposium on Open Code in Science, Dec 9 https://www.bennett.ox.ac.uk/events/2026-bennett-institute-symposium/ Santa Barbara: UCSB Reads, Apr 29 https://www.library.ucsb.edu/events-exhibitions/ucsb-reads-2027-presents-author-cory-doctorow Montreal: World Science Fiction Convention, Sep 2-6 https://montreal2027.ca/en Recent appearances (permalink) Clint Eastwood (No Gods No Mayors) https://www.patreon.com/NoGodsNoMayors/posts/clint-eastwood-173008088 Life After AI (Brain Bar) https://www.youtube.com/watch?v=IPPa43-n0vI Terms of Service with Clare Duffy (CNN) https://www.cnn.com/audio/podcasts/terms-of-service-with-clare-duffy/episodes/458ce968-af5d-11f0-b539-13ed2afe25f8 AI, Work, and Power (Software Engineering Daily) AI, Work, and Power https://softwareengineeringdaily.com/podcasts/cory-doctorow-on-ai-work-and-power/ AI, Corporate Power, and the Fight for Worker Control (Plutopia) https://plutopia.io/cory-doctorow-ai-corporate-power-and-the-fight-for-worker-control/ Latest books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/ \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: “Once Is Enemy Action,” a science fiction novel about the origins of modern technofascism. Today's words: 526 (34498 total). \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Fourth draft completed. Submitted to editor. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "62b6c205aefb1a5055740313d8fc7325ca8e02e74e4a5ae6d82250a102b561d9",
+      "ref_id": "2",
+      "recommendationScore": 60,
+      "popularityScore": 65,
+      "priority": "low",
+      "comment": "Cory Doctorow对欧盟边境IT系统失败的评论，强调对承包商问责的重要性。",
+      "reason": "文章探讨了大型政府IT项目失败背后的政策和管理问题，对理解科技项目治理有借鉴意义，但直接技术深度和优先主题相关性较低。",
+      "tags": [
+        "IT治理",
+        "公共政策",
+        "欧盟",
+        "项目管理",
+        "Cory Doctorow"
+      ]
+    },
+    {
+      "title": "Synaptics patent claims stop work on DisplayLink drivers",
+      "link": "https://lwn.net/SubscriberLink/1102549/acbc92e00cee3a3f/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-10T18:02:02.000Z",
+      "summary": "Article URL: https://lwn.net/SubscriberLink/1102549/acbc92e00cee3a3f/\nComments URL: https://news.ycombinator.com/item?id=50443824\nPoints: 193\n# Comments: 83",
+      "id": "7f8b31a352216102b77bbd57d65ae553d4eaba6de04888c9d891dbe73077353d",
+      "ref_id": "1",
+      "recommendationScore": 56,
+      "popularityScore": 72,
+      "priority": "medium",
+      "comment": "报道了Synaptics专利纠纷导致DisplayLink驱动在Linux上的开发工作被叫停的事件。",
+      "reason": "对依赖DisplayLink技术的开发者和Linux用户具有重要影响，揭示了专利对开源生态的潜在威胁，触及编程工具相关议题。",
+      "tags": [
+        "驱动开发",
+        "Linux",
+        "专利",
+        "开源",
+        "编程工具",
+        "DisplayLink"
+      ]
+    },
+    {
+      "title": "Steven Levy on John Ternus",
+      "link": "https://www.wired.com/story/i-spent-30-minutes-with-apples-ceo-now-i-know-why-john-ternus-got-the-job/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-11-10T16:32:26.000Z",
+      "summary": "Steven Levy at Wired, in a terrific post-event follow-up to his exclusive early look at the new MacBook Pros (News+ link):\nI first met Ternus in 2015, when I spent a day with him at Apple’s\nInput Design Lab, a testing facility in Cupertino. He’d risen to\nVP for Mac, iPad, Ecosystem, and Audio Engineering, and he struck\nme as affable and knowledgeable. (He spent four years right out of\ncollege at a virtual reality company, but he’s been at Apple ever\nsince.) The peg to my story at the time was how this unknown\nmanager conducted a Javert-like investigation to fix the weird\nsound a redesigned mouse made when sliding on a table.\nThat attention to detail was a legacy of Jobs’ perfectionism,\nwhich Tim Cook sustained as the next CEO. In the decade when\nTernus overlapped with Jobs, he says he had only “a handful of\ninteractions” with the founder. “But I’ve always felt like sort of\na student of Steve’s teachings,” Ternus said. “And then being able\nto work very closely with Tim, I’ve been very lucky.” [...]\nThe extent to which Ternus is a deep Apple insider became clear\nwhen I probed him on his views on being a corporate leader. I\nasked him which non-Apple CEOs he admires, and he was stumped. “I\nhaven’t really thought about that,” he said. I asked whether any\nbusiness books had an impact on him. “Not really,” he said. “Of\ncourse I’ve read books, but there’s so much to be learned from the\npeople I get to work with.” Indeed, every time I tried to pin down\nTernus on what mark he wants to make at Apple, he deflected the\nquestion and told me how he will continue Apple’s commitment to\ninternal collaboration.\n ★",
+      "id": "0f4e4cf02ca0e76a204f7089b50430ddf6ef01d1ad92df604cd9f7c9bdde0188",
+      "ref_id": "1",
+      "recommendationScore": 55,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "深入了解苹果高层及其产品哲学，具有一定独家性。",
+      "reason": "提供了关于苹果公司文化和产品开发理念的独特视角，对苹果生态关注者有吸引力。",
+      "tags": [
+        "Apple",
+        "领导力",
+        "企业文化",
+        "产品设计",
+        "约翰·特纳斯"
+      ]
+    },
+    {
+      "title": "Show HN: Valencia, Spain in Sim City/Isometric View",
+      "link": "https://tinyvalencia.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-10T15:12:16.000Z",
+      "summary": "Article URL: https://tinyvalencia.com/\nComments URL: https://news.ycombinator.com/item?id=50441518\nPoints: 143\n# Comments: 35",
+      "id": "d3934e8550a651001a801d2abbefd00832b900ebb2ab88b63d638ad2d8c922e0",
+      "ref_id": "1",
+      "recommendationScore": 50,
+      "popularityScore": 65,
+      "priority": "low",
+      "comment": "一个以Sim City风格展示巴伦西亚城市的创意独立开发项目。",
+      "reason": "虽技术深度一般，但其独特的视觉呈现和独立开发的精神能提供灵感。",
+      "tags": [
+        "独立开发",
+        "数据可视化",
+        "侧项目",
+        "地图",
+        "创意"
+      ]
+    },
+    {
+      "title": "Microsoft employee price list from 1987",
+      "link": "https://devblogs.microsoft.com/oldnewthing/20261110-00/?p=112843/",
+      "source": "devblogs.microsoft.com/oldnewthing",
+      "publishedAt": "2026-11-10T15:00:00.000Z",
+      "summary": "The Microsoft product catalog.\nThe post Microsoft employee price list from 1987 appeared first on The Old New Thing.",
+      "id": "c2eda24c43e1654e8ff2a29b0a19bae812f4a036f3a03f1eba92b9b3a8f4e1ec",
+      "ref_id": "4",
+      "recommendationScore": 50,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "分享了1987年微软员工价格表，提供了历史视角。",
+      "reason": "具有一定的历史趣味性和怀旧价值，但缺乏深入的技术或行业分析，优先级较低。",
+      "tags": [
+        "微软",
+        "历史",
+        "怀旧",
+        "科技公司"
+      ]
+    },
+    {
+      "title": "Ableton Live 13",
+      "link": "https://www.ableton.com/en/live/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-10T12:58:04.000Z",
+      "summary": "Article URL: https://www.ableton.com/en/live/\nComments URL: https://news.ycombinator.com/item?id=50439695\nPoints: 229\n# Comments: 251",
+      "id": "8eed17b548317b3125e6976fe59ac86566201c3e31f0f94f9d39e536711067e6",
+      "ref_id": "3",
+      "recommendationScore": 45,
+      "popularityScore": 80,
+      "priority": "low",
+      "comment": "Ableton Live 13的产品发布信息，主要面向音乐制作人。",
+      "reason": "作为一款特定领域的软件更新，其技术深度和普适性对于通用科技博客受众较低。",
+      "tags": [
+        "音乐制作",
+        "音频软件",
+        "产品发布",
+        "DAW",
+        "产品设计"
+      ]
+    },
+    {
+      "title": "Finally, Payment by Bank Transfer Comes to Have I Been Pwned",
+      "link": "https://www.troyhunt.com/finally-payment-by-bank-transfer-comes-to-have-i-been-pwned/",
+      "source": "troyhunt.com",
+      "publishedAt": "2026-11-10T20:26:15.000Z",
+      "summary": "This is simultaneously the most boring yet exciting blog title I've written in a long time. How you pay for services isn't exactly a sexy topic, but it solves a problem that's been a massive bugbear for a long time.\nHere's a",
+      "id": "685b79678ed43d6d2f83a2470aaead2f13b94718f3f1da7bee0b7be57daad41f",
+      "ref_id": "2",
+      "recommendationScore": 45,
+      "popularityScore": 40,
+      "priority": "medium",
+      "comment": "宣布Have I Been Pwned服务新增银行转账支付方式，解决了一项实际痛点。",
+      "reason": "对现有独立服务的功能完善有一定借鉴意义，与独立开发相关，但技术深度和新颖性有限。",
+      "tags": [
+        "独立开发",
+        "支付",
+        "网络安全服务",
+        "HIBP",
+        "产品功能"
+      ]
+    },
+    {
+      "title": "[Sponsor] WorkOS: Let Agents Use Your Tools Without Giving Them Free Rein",
+      "link": "https://www.workos.com/airlock?utm_source=daringfireball&utm_medium=newsletter&utm_campaign=q42026",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-11-10T04:14:31.000Z",
+      "summary": "An agent’s job isn’t known until it runs, so a role assigned in advance is always too much or too little. Give the agent a task instead, and every call it makes gets checked against that intent, whether it’s reading a Linear issue or emailing a distribution list.\nWith WorkOS Airlock, you set the policies once. Each call is allowed, denied, or sent to a human for approval, and every verdict is logged.\nRequest early access →\n ★",
+      "id": "480b9a157ab5c8d404063652cac8d7c29141e9e7ae88589c5d08d3cd4d184a66",
+      "ref_id": "1",
+      "recommendationScore": 40,
+      "popularityScore": 50,
+      "priority": "medium",
+      "comment": "WorkOS Airlock的赞助内容，介绍其用于代理工具访问控制和策略执行的产品。",
+      "reason": "虽然是广告，但其提出的“基于任务意图的代理访问控制”概念对企业自动化和安全有一定参考价值，属于自动化和编程工具范畴。",
+      "tags": [
+        "赞助",
+        "SaaS",
+        "安全",
+        "访问控制",
+        "自动化",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "The classic console corner's CRT changeover",
+      "link": "https://oldvcr.blogspot.com/2026/11/the-classic-console-corners-crt.html",
+      "source": "oldvcr.blogspot.com",
+      "publishedAt": "2026-11-10T06:23:17.979Z",
+      "summary": "In the corner of the rear Floodgap lab sits a pile of classic game consoles. It used to look like this:\n\n\nSega Dreamcast all the consoles here only came with NTSC RF output and date from the pre-flat panel TV era. That includes multiple Atari consoles (including the inevitable VCS, here a Darth Vader 2600), several Pong machines — including two Commodore units — with various chipsets, an Intellivision (as the rebadged Tandyvision One, my first) and a Bally Astrocade with lots of upgrades. It seems wrong to use them with a flat panel, and CRTs lag less. Plus, games with a light gun (here the Dreamcast and one of the Pong consoles) often rely on the CRT's rapidly scanning beam to know where they're pointed.\n\nSo what do you do when the CRT TV goes bad?\n\n\n\nI should note that this isn't all the old school gaming fun in the house. In the commons next to the pinball machines are an Xbox 360 Slim and a PlayStation 2, and in the home theatre connected to the 3D projector is a PlayStation 3 since it has some stereoscopic titles. These might appear in future articles. But most of the rest are here. \n\nI bought this Panasonic Omnivision PV-M2035 from a friend at church in 1999 for $100 [about $200 in 2026 dollars]. He had no use for it, and the top of the plastic shell had been heat-warped by sitting in his car too long, but it worked, still had the remote, and was a suitably cheap TV for my unsuitably cheap studio apartment. I used it for local news and Friends with a set of rabbit ears, VHS movies, and speakers for playing music by connecting a CD player to the single rear input. When I moved to a less cheap 1-bedroom, it came along, and its flat top was flat enough to become a shelf for a DVD player. I got the Dreamcast from Fry's in 2001 after Sega discontinued it and managed to share the composite input between them. That apartment was my crashpad for about a decade before moving to the current orbiting HQ, whereupon I bought a passive-3D flat panel TV and moved the Omnivision to its current location in the back of the house. It shared the RF input between the Inty, and later the Atari 2600, and later still the Astrocade and various Pongs. At any one time there were at least four consoles always connected to it via switches and switchboxes, and I wired up an accessory port for more.\n\n\n\nplastic was broken and on these TVs that's pretty much the load-bearing part. When it arrived at the mailbox and I unpacked it, I could see the lower half had sandwiched right through the VCR slot, with visible PCB fragments and broken buttons; aside from the tube itself (ironically), the thing was a total loss. The seller nevertheless made good on the refund, to their credit, and I got to schlep it to the recycler.\n\nOverall, however, it had occurred to me that there were very few TVs sufficiently contemporary with the M2035 out there, which might be a hint about their general longevity. So, if I was going to be forced to buy a different Panasonic, then it might as well be a more recent one, and it should be one of the \"triple play\" units (i.e., TV, VCR, DVD) so that I could at least get rid of the external DVD player. \n\n\n\n\n\n\nMission: Impossible '88 and '89 DVD sets, where the \"in stereo\" animation was even burned into the video stream.)\n\n\nnot recording and thus impossible to watch many DVDs, for which the Sima CopyMaster was the cheapest solution: it simply blots out that portion of the vertical blank along with the pulses, which also has the side effect of sometimes stripping closed captioning (in the vertical blank as well), though DVDs with proper subtitles are of course unaffected. Later Sima devices could regenerate portions of the vertical blank for better quality, and Macrovision actually sued them over their products in 2005, but later settled.\n\nThe mixer on the right was purchased literal decades ago at Radio Shack (more specifically a \"Video Enhancer Stereo Audio Mixer\") that I think we used for a Halloween display exactly once and then forgot about. Here it was used first as a cutoff switch, and second as a way to match the audio volume from the DVD player with the audio volume from the Dreamcast, which was also directly connected to the second rear Y-cable. This TV is mono, so the stereo channels from the audio mixer and the DC get merged using their own Y-connectors (also Radio Shack) before going into the Y-cable to the single line audio input. The video function isn't used here at all; it was just a audio mixer on the shelf I wasn't otherwise using. The DVD player is under the mixer and the CopyMaster, a cheapie Sony special that will only eject discs if it's in the mood or summarily threatened with violence.\n\n\nYou already met this system when we adjusted the laser pickup and refurbished its rechargeable battery.\n\n\nyou met the Tandyvision One (otherwise identical to the Mattel Intellivision Master Component, and manufactured by them as an OEM) when we installed a composite video modification and a front power-cutoff reset. I later upgraded it with an original Mattel Intellivoice speech synthesizer (Tandy never rebadged these) and a CuttleCart.\n\nBut you haven't met the Bally on the bottom, officially introduced in 1978 as a game console and simple home computer, sold under various names such as the Bally Professional Arcade seen on early units, later the Bally Computer System badging here, and now collectively referred to under its final incarnation as the Astrocade. These machines were based around a 1.789MHz Z80 (half NTSC colourburst) combined with the same graphics hardware Dave Nutting Associates used for Midway's arcade games Gorf and Wizard of Wor, among others. Unfortunately, much of its theoretical graphics power went unrealized because it only has half the video memory of the arcade units (i.e., 4K) — and that's all the memory it has, so it has to interleave bits in the video memory to store BASIC programs, meaning only game ROMs can take full advantage. Still, that was enough to be solid competition for the likes of the Atari VCS and Fairchild Channel F, and it holds its own well against the slightly later Intellivision.\n\n\n\n\ndoes have is a doozy: the cooling vents are on the underside. These machines are very prone to overheating and can be easily damaged by it, which is why I use two foam struts to keep it off the carpet.\n\nThe yellow label is for Astrovision, a separate enterprise that had been attempting to develop their own console. The (then) Bally Professional Arcade was selling poorly, though part of this was due to a tardy launch and Bally's weak retail presence, and Bally decided to sell off the consumer products division in 1979. Astrovision, unable to get their unit to market quickly, bought it in 1981 along with a limited license to the Bally name and reintroduced it at Winter CES 1982. Astrovision units are otherwise the same except for the badging and are the most common Astrocades today, though the company became another victim of the 1983 video game crash and went bankrupt shortly afterwards. Simultaneously, an Astrocade derivative merged with Bally's unfinished ZGRASS-100 expansion chassis was reworked into the Datamax UV-1 graphics generator, sold in small numbers until around 1982.\n\n\n\nthe wall warts and power strips, and do a little spot vacuuming with the Roomba.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nout in spring.\n\n\nGremlin's Blockade; and a simple calculator and screen paint toy (\"Scribbling\"). The display is a bit noisier than the Inty/Tandyvision, probably because of the difference in shielding, but still quite good.\n\n\n\n\nVideostak Video Game Center, which allegedly could accomodate a VCS, Intellivision or ColecoVision. The front decal is somewhat worn and the woodgrain veneer doesn't match the Vader VCS nearly as well, but it's still a fun-looking setup.\n\n\n\nIntellivision System Changer which has Atari 2600 hardware in an expansion box for the Intellivision II (useable on the original Inty with modification). It might be fun to explore the reputed irregularities between what is believed to be a VTI clone TIA in the System Changer and the slightly earlier Coleco Expansion Module 1 (and the related Coleco Gemini), and see how they differ in practice.\n\nNow for the Pong machines. These attach to the \"accessory port\" on the input switcher. The current Pong menagerie are mostly MOS 7600-based, MOS' own Pong-on-a-chip: two from Commodore themselves but PAL only using the MOS 7601 (the TV Game 2000K and TV Game 3000H), plus two MOS 7600 (NTSC) systems, a Coleco Telstar Gemini, not to be confused with the Coleco Gemini or Coleco Telstar, and an Allied Leisure Name of the Game II, possibly the earliest use of the chip in NTSC regions. We'll play the Name of the Game II and Telstar Gemini below.\n  \nThese will be consoles for another day, but I also have a boxed Atari Video Pinball, an \"honorary\" Pong machine though it plays several other games, and a boxed Atari Ultra Pong Doubles, which we had before we got the Tandyvision, but I don't ever recall it working fully and it later failed to power up and got thrown away, so this is a replacement. My least favourite of the Pongs here (I really only picked it up because it was cheap) is a 1977 Magnavox Odyssey 3000. The 3000 is basically an upmarket Odyssey 2000 with proper handheld controllers, but otherwise the same me-too AY-3-8500 Pong-on-a-chip generating the same black-and-white display.\n\n\nAllied Leisure Name of the Game II is a two-player Pong based on the MOS 7600-001. This chip notionally contains three field games (a tennis game, a \"goal\" game usually billed as either soccer or hockey, and a racquetball game) and a skeet shooter, but the racquetball game can be put into a single player mode by setting it to \"four\" players and the NotG2's switch triggers this mode in place of the skeet shooter. It was noisy on the other TV and it's noisy here, possibly because it has its own internal RF switchbox, but it plays fine.\n\n\nColeco Telstar Gemini, an MOS 7600-004 system. This has two \"pinball\" variants (with flippers and moveable Pong paddles, so it's still a Pong of sorts) and two shooting gallery variants involving shooting a deformed bear sprite. The light gun connector is the same as the Coleco Telstar, so I borrowed the gun from that.\n\n\n\n\nsing along with The Offspring. But the output looks crisp through the rear jacks, the sound is proper stereo, and we now have front inputs I can use for something else without rigging a whole bunch of Y-adapters again. Plus, if the Telstar Gemini's gun works, it's all but guaranteed the Dreamcast's does.\n\n\nam likely to play some Video Pinball, and in its box that's easy to move, so that can go on top of the 2600 and the NotG and Telstar Gemini can sit next to it.\n\nThe old TV is out in the garage and as I have time I'll extract its circuit boards and go over them more thoroughly, since I had a lot of good times with that television and it would be nice to fix. If I do, I'll write it up here, since it's an actual old VCR. Meanwhile, I have some possible projects in mind for the Tandyvision and Astrocade, and maybe some mods to go in the VCS, and you can read about those in future articles too.\n\nIn the end, with the new TV all set up, the 1980s can live again in my rear office. Or, as my wife likes to point out, they never actually died there either.",
+      "id": "cafac86bc616d20deb96d0e49c5f9c125f913d06db4201f7a0d63745a060a90c",
+      "ref_id": "4",
+      "recommendationScore": 40,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "一篇关于经典游戏机搭配CRT电视的怀旧与实用指南，解决了复古游戏爱好者的需求。",
+      "reason": "主题属于小众的复古游戏领域，与博客核心优先级主题关联度不高，但内容有趣且具一定实用性。",
+      "tags": [
+        "复古游戏",
+        "游戏硬件",
+        "CRT",
+        "主机游戏",
+        "怀旧"
+      ]
+    },
+    {
+      "title": "Evolving metal extraction processes",
+      "link": "https://www.technologyreview.com/2026/11/10/1147726/evolving-metal-extraction-processes/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-11-10T13:00:00.000Z",
+      "summary": "The metals industry has experienced transformational moments before: the Bessemer process, flash smelting, electric arc furnaces, and modern continuous casting all changed what was possible. Yet, for more than a century, most extraction processes rely on techniques and pathways that would be familiar to metallurgists from generations ago. Processes have become larger and control systems…",
+      "id": "383fec097ec1fefd9cdc834a7d00778fd9923206781fc5760e59fda73418ad46",
+      "ref_id": "1",
+      "recommendationScore": 35,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "文章探讨了金属提取工艺的历史演变，但与本科技博客关注主题不符。",
+      "reason": "内容专业性强，但在AI、编程等核心主题之外，不适合优先推荐。",
+      "tags": [
+        "冶金",
+        "工业",
+        "材料科学"
+      ]
+    },
+    {
+      "title": "Balanced Incomplete Block Designs",
+      "link": "https://www.johndcook.com/blog/2026/11/10/bibd/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-11-10T14:26:21.000Z",
+      "summary": "Suppose you have n different fertilizers you want to test. The simplest experiment would be to take a big plot of land, divide it into n sections, and apply each fertilizer to a section. That’s fine if you have one big enough plot of land, and the land itself doesn’t matter. If the fertilizer supplies […]\nBalanced Incomplete Block Designs first appeared on John D. Cook.",
+      "id": "cee6cf51d7e027e8186a66c1405c600db06712cc252af738de9cac95b1ce485f",
+      "ref_id": "0",
+      "recommendationScore": 30,
+      "popularityScore": 25,
+      "priority": "low",
+      "comment": "探讨统计学中的平衡不完全区组设计，内容偏向学术理论。",
+      "reason": "主题过于专业且与主流科技趋势关联度低，受众范围较窄。",
+      "tags": [
+        "统计学",
+        "实验设计",
+        "数学理论"
+      ]
+    },
+    {
+      "title": "Starlink Mini 2",
+      "link": "https://starlink.com/mini-2",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-10T18:22:32.000Z",
+      "summary": "Article URL: https://starlink.com/mini-2\nComments URL: https://news.ycombinator.com/item?id=50444129\nPoints: 175\n# Comments: 185",
+      "id": "96e2dd8c2efc74b81343b9181be0c9a57cec6e258018939de2232c83b76f435f",
+      "ref_id": "0",
+      "recommendationScore": 28,
+      "popularityScore": 95,
+      "priority": "low",
+      "comment": "详细介绍了星链Mini 2的最新产品特性和应用场景，是一款便携式卫星互联网终端。",
+      "reason": "提供了最新的卫星互联网硬件信息，对于关注户外和偏远地区网络连接的用户有一定参考价值，但与核心关注主题优先级较低。",
+      "tags": [
+        "Starlink",
+        "硬件",
+        "卫星互联网",
+        "网络设备"
+      ]
+    },
+    {
+      "title": "Combinatorial designs",
+      "link": "https://www.johndcook.com/blog/2026/11/09/combinatorial-designs/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-11-10T01:38:48.000Z",
+      "summary": "The last several posts have been building up to this one, moving from tangible to more abstract. The posts on finite geometry gave examples of Steiner triples and more generally Steiner systems, introduced in the previous post. Combinatorial designs take this one step further. The previous post gave the following definition: A Steiner triple system, […]\nCombinatorial designs first appeared on John D. Cook.",
+      "id": "b487bef803e17f561f86a592c4ff02662eea82282f6995511adf7a8d1bd38b10",
+      "ref_id": "1",
+      "recommendationScore": 25,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "深入阐述组合设计理论，内容高度抽象，不适合大众科技博客。",
+      "reason": "纯粹的数学理论文章，缺乏与当下科技热点的结合点，实用价值低。",
+      "tags": [
+        "组合数学",
+        "数学理论",
+        "离散数学"
+      ]
+    },
+    {
+      "title": "Toyota brand Scion is back and it's going to sell a kei truck in America",
+      "link": "https://www.theautopian.com/scion-is-back-and-its-going-to-sell-a-freaking-kei-truck-in-america/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-10T19:50:46.000Z",
+      "summary": "Article URL: https://www.theautopian.com/scion-is-back-and-its-going-to-sell-a-freaking-kei-truck-in-america/\nComments URL: https://news.ycombinator.com/item?id=50445401\nPoints: 43\n# Comments: 16",
+      "id": "3cead47eb0018323c3674fadce88c0b2d0210532eeb29d55b14b5b7dd6a19173",
+      "ref_id": "2",
+      "recommendationScore": 20,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "汽车行业新闻，与科技博客主题不符。",
+      "reason": "属于汽车领域而非科技领域，不符合内容定位。",
+      "tags": [
+        "汽车",
+        "行业新闻",
+        "Scion"
+      ]
+    },
+    {
+      "title": "Regarding Graveyards and Indispensable Men",
+      "link": "https://www.youtube.com/watch?v=vydmUCGQnyI",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-11-10T17:01:06.000Z",
+      "summary": "Steve Jobs to 60 Minutes in 2003: “Great things in business are never done by one person. They’re done by a team of people.”\n(I linked to this just a few months ago, but thought it worth a re-link today.)\n ★",
+      "id": "eb1a2f2a866cd603339bea70ecd0fff03faa2b5c927aa120d9490de57a94d8f1",
+      "ref_id": "0",
+      "recommendationScore": 20,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "极短的引用，主题宽泛，缺乏深度。",
+      "reason": "内容过于简短且缺乏技术深度和实用价值，不符合科技博客的核心关注点。",
+      "tags": [
+        "商业理念",
+        "领导力",
+        "史蒂夫·乔布斯"
+      ]
+    },
+    {
+      "title": "Weekly Update 529: Kids Social Media Bans (and Everything Else)",
+      "link": "https://www.troyhunt.com/weekly-update-529/",
+      "source": "troyhunt.com",
+      "publishedAt": "2026-11-10T00:42:35.000Z",
+      "summary": "The kids-and-social-media discussion is just dumb. It's not the premise of delaying their access until 16, but the inability of those who should know better to grasp where the responsibility for enforcement lies. Here's our PM's explainer after the laws passed",
+      "id": "ae9d0259e15c4016a8e212796fdf02cf0a7b55662e26b6d31cb83592f39a8765",
+      "ref_id": "3",
+      "recommendationScore": 20,
+      "popularityScore": 55,
+      "priority": "low",
+      "comment": "对儿童社交媒体禁令的社会政策和执行责任进行了个人评论，话题热门但缺乏技术探讨。",
+      "reason": "内容侧重社会议题而非技术分析，与科技博客核心关注点偏离，虽然可能引起公众兴趣但缺乏技术价值。",
+      "tags": [
+        "社交媒体",
+        "政策",
+        "社会议题",
+        "评论"
+      ]
+    },
+    {
+      "title": "Sherman Anti-Trust Act (1890",
+      "link": "https://www.archives.gov/milestone-documents/sherman-anti-trust-act",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-10T20:56:16.000Z",
+      "summary": "Article URL: https://www.archives.gov/milestone-documents/sherman-anti-trust-act\nComments URL: https://news.ycombinator.com/item?id=50446219\nPoints: 27\n# Comments: 9",
+      "id": "0880039063e03d60bbdb4b4f44a022ae109563607ae3053b46d64501c6a6a66d",
+      "ref_id": "1",
+      "recommendationScore": 15,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "历史法律文献，与科技博客主题完全不符。",
+      "reason": "内容与科技领域关联度极低，不建议收录。",
+      "tags": [
+        "法律",
+        "历史",
+        "反垄断"
+      ]
+    },
+    {
+      "title": "I am searching for a coffee alternative",
+      "link": "https://bernsteinbear.com/blog/coffee-alternative/?utm_source=rss",
+      "source": "bernsteinbear.com",
+      "publishedAt": "2026-11-10T00:00:00.000Z",
+      "summary": "I had an in-person work team meeting last week. In the office, they had\nBevi seltzer machines. When Bevi machines first arrived at\nFacebook, where I used to work, I looked down on them. They seemed to be a cost\nreduction, a sad imitation of The Good Stuff that came in cans and bottles in\nthe fridge. Good Stuff such as LaCroix1 and Ito En tea2.\nBut this week was different. I noticed that this Bevi had a caffeine\noption3. After some experimentation, I decided that for the\nweek, I would drink unflavored, chilled, sparkling, caffeinated water instead\nof coffee. And it was great. Basically none of the coffee side effects.\nFor several days straight I thoroughly enjoyed a 100-120mg caffeine sparkling\nwater.\nBut all good things must come to an end. You cannot (yet?) buy a Bevi machine\nfor home. So I am unfortunately now searching for alternatives.\nI took a stroll through our local Star Market in search of a replacement. I\nlooked online, too, since we have a weird selection of beverages at that\nmarket. I ended up with an assortment of brightly colored cans. Time to do a\ntaste test.\nRequirements\nIn order to swap out coffee for something else, I have the following criteria:\nno (gratuitous) sugar\nnot sweet (no fake sugar either)\nno weirdo other chemicals\ndoes not taste like jet fuel\nreasonably priced\neasy to dose\nideally sparkling\nWe’ll judge based on those.\nTaste test\nUPDATE Energy Drink: Peach. 12 fl oz. Unclear how much caffeine.\nRight out of the can, there is a horrific fake sugar taste. It’s revolting. I\nguess I missed sucralose in the ingredients when I picked it up. Still\ndisgusting after the second sip and it lingers in the mouth. No thanks.\nZOA Energy Drink: Lemon Lime. 12 fl oz. 160 mg caffeine.\nEver so slightly more pleasant coming out of the can but there is still a\nchemical sweetness to it. Also missed the sucralose. Gross. No thanks.\nSPARKLING ICE CAFFEINE: Citrus Twist. 16 fl oz. 70 mg caffeine.\nThis time I checked before opening. It has sucralose. Ugh. I guess I was\nfiltering for Stevia at the store. Here goes nothing… ew, absolutely not.\nLiquid Death Sparkling Energy: Murder Mystery. 12 fl oz. 100 mg caffeine.\nDamn. Sucralose again. Ew. Cherry. Gone.\nhi ball energy: grapefruit. 16 fl oz. 160 mg caffeine.\nOkay, this is one of the ones I found on the internet first after searching\ninstead of one of the random market finds. It thankfully has no recognizable\nartificial sweeteners in the ingredient list. I tend to like grapefruit things.\nHere goes nothing.\nIt basically tastes like grapefruit LaCroix, which is a win. No sweetener\ndetected. Good news. I like this one by and away the best. Unfortunately, it is\nexpensive, coming in at $3/can.\nI intended to do the taste test over a couple of days to avoid\nover-caffeination, but that was not necessary because most of them were just\nvile.\nWrapping up and future directions\nI also came across Water Joe in my search. Seems there was a man in\nWisconsin with similar goals. I want to acquire and sample.\nShould I caffeinate my own beverages with liquid caffeine? Seems both less\nconvenient and more hazardous.\nThankfully this is all just because I like the feeling of being caffeinated and\nnot because I am dependent. I will accidentally go several days without\ndrinking something caffeinated and not really notice. I would like to stay that\nway, so I am avoiding methods that could spike my caffeine intake and\naccidentally make me dependent.\nPlease let me know if you have any recommendations…\nFor a time, I was the “LaCroix oncall”. You could page the oncall\nrotation and ask what flavor you should drink. I also deputized myself to\ninvestigate the occasional LaCroix-related shortage and post internally\nabout it. ↩\nThere was a period where I was drinking several liters of cold jasmine\ntea per day. I stopped when I learned that this could do unexpected things\nto your liver. ↩\nDid Bevi have caffeine when I worked at Facebook? Seems like\nno, they only got it in 2022, and I was Not In The Office that year before\nI left for grad school. ↩",
+      "id": "5242648ca37db6802153ac5a71636dd31fbdbff3170a28745db7221aaab00fc7",
+      "ref_id": "1",
+      "recommendationScore": 15,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "一篇关于寻找咖啡替代品的个人生活体验分享，与科技主题关联度极低。",
+      "reason": "内容缺乏技术深度和新颖性，不符合科技博客的关注重点，属于个人生活日志范畴。",
+      "tags": [
+        "生活方式",
+        "健康",
+        "咖啡替代品"
+      ]
+    },
+    {
+      "title": "Book Review: The Unfinished Harauld Hughes - Richard Ayoade ★★★⯪☆",
+      "link": "https://shkspr.mobi/blog/2026/11/book-review-the-unfinished-harauld-hughes-richard-ayoade/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-11-10T12:34:31.000Z",
+      "summary": "A decade ago, I read Ayoade's first book. In my review, I said:  It's hard to know how to assess a book like this. It's far too clever for its own good - a frustrating and humorous look at... what? It's neither autobiography nor comic novel. An anti-novel which trudges the reader through a series of comic vignettes. It reminded me of some of Woody Allen's work. If you get the joke - you'll find …",
+      "id": "ebc12b967b941fe0ac894146bc6a689fea35bb6724c9cf40ef84522fa415f3d4",
+      "ref_id": "3",
+      "recommendationScore": 10,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "对Richard Ayoade书籍的评论，探讨其独特的风格和幽默感。",
+      "reason": "与科技博客的关注主题完全无关，不适合推荐给科技受众。",
+      "tags": [
+        "书评",
+        "文学",
+        "娱乐"
+      ]
+    },
+    {
+      "title": "Jensen's Bizarre Adventure",
+      "link": "https://www.wheresyoured.at/jensens-bizarre-adventure/",
+      "source": "wheresyoured.at",
+      "publishedAt": "2026-11-10T17:43:27.000Z",
+      "summary": "If you liked this piece, you should subscribe to my premium newsletter, and you can subscribe on the following links: $70 a year, $18 a quarter, or $7 a month.\nIn return, you get a weekly premium newsletter that dives deep into the finances of the AI",
+      "id": "b1018be5a2c734ec6f052fee040a4a8ea482f44ee2705a17b1b407a62a62d278",
+      "ref_id": "3",
+      "recommendationScore": 5,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "此条目为付费订阅服务的广告，而非一篇可供评估的科技文章。",
+      "reason": "内容不属于可评估的文章范畴，缺乏实质性技术信息。",
+      "tags": [
+        "广告",
+        "订阅服务",
+        "AI财经"
+      ]
+    },
+    {
+      "title": "We need more goat sacrifices",
+      "link": "https://www.experimental-history.com/p/we-need-more-goat-sacrifices",
+      "source": "experimental-history.com",
+      "publishedAt": "2026-11-10T17:21:43.000Z",
+      "summary": "OR: OJ A-OK",
+      "id": "c1d3e00c796f8c1a23b201173336c62cca4fa9daf706245b2d0e139050136933",
+      "ref_id": "4",
+      "recommendationScore": 5,
+      "popularityScore": 5,
+      "priority": "low",
+      "comment": "文章标题和内容均荒谬且与科技主题完全无关，信息密度极低。",
+      "reason": "内容毫无技术价值和信息，不应作为科技博客文章收录。",
+      "tags": [
+        "无关",
+        "恶搞",
+        "无意义"
+      ]
+    },
+    {
+      "title": "Yonkers Rises",
+      "link": "https://simonwillison.net/2026/Nov/10/yonkers-rises/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-11-10T03:53:04.000Z",
+      "summary": "",
+      "id": "c4312adb767125dc510734b0adeda775541d5c7f8aec93f7492032acc40cdf9a",
+      "ref_id": "0",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "文章内容缺失，无法进行有效评估。",
+      "reason": "无任何内容，不具备发表价值。",
+      "tags": []
+    },
+    {
+      "title": "llm-anthropic 0.31",
+      "link": "https://simonwillison.net/2026/Nov/9/llm-anthropic/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-11-09T23:58:46.000Z",
+      "summary": "",
+      "id": "86b4ba3155e4ca0c3b2ffc222d1b305cbbb8c04d34065f7fc932df4a8e4ce2f7",
+      "ref_id": "1",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "内容缺失，但标题显示与AI/LLM高度相关，潜在价值极高。",
+      "reason": "文章无任何内容，无法提供价值，但其标题表明主题优先级极高，若有内容将值得关注。",
+      "tags": [
+        "AI",
+        "LLM",
+        "Anthropic"
+      ]
+    },
+    {
+      "title": "Locating the source of a mysterious beep with Claude",
+      "link": "https://simonwillison.net/2026/Nov/9/mysterious-beeps/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-11-09T23:57:21.000Z",
+      "summary": "",
+      "id": "ffd0277ad7cd64c27c62df16079bf175b1c8c63075bfcbe6fb1c5410a15bf529",
+      "ref_id": "2",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "内容缺失，但标题暗示AI在实际问题解决中的应用，具有较高实用性潜力。",
+      "reason": "文章无任何内容，无法提供价值，但标题预示了AI应用的高实用性，主题优先级高。",
+      "tags": [
+        "AI",
+        "Claude",
+        "问题解决",
+        "实用应用"
+      ]
     }
   ]
 }
