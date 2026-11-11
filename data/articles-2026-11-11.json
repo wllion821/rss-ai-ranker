@@ -1,0 +1,659 @@
+{
+  "dailySummary": "",
+  "articles": [
+    {
+      "title": "Huawei releases MACaQ, its internal quantizer for local inference",
+      "link": "https://github.com/huawei-csl/MACaQ",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-11T20:23:57.000Z",
+      "summary": "Article URL: https://github.com/huawei-csl/MACaQ\nComments URL: https://news.ycombinator.com/item?id=50458166\nPoints: 32\n# Comments: 12",
+      "id": "d0e5cfeb79c6e585719b991ec98cc669d4469c627120f6d5f768eefc2f63d899",
+      "ref_id": "2",
+      "recommendationScore": 95,
+      "popularityScore": 50,
+      "priority": "high",
+      "comment": "华为发布用于本地推理的量化器，对AI模型部署优化具有极高实用价值。",
+      "reason": "直接解决了AI模型在实际应用中的性能和效率瓶颈，技术深度和实用性极高，且有大厂背书。",
+      "tags": [
+        "AI",
+        "模型优化",
+        "量化",
+        "推理",
+        "华为"
+      ]
+    },
+    {
+      "title": "Launch HN: Pomerado (YC F26) – Turn any website into an MCP for agents",
+      "link": "https://news.ycombinator.com/item?id=50455811",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-11T17:11:56.000Z",
+      "summary": "Hi HN, we’re Alan and Akshay from Pomerado (https://pomerado.ai/). We connect your agents to any website by turning sites into deterministic, self-healing APIs in minutes, fully self-serve.\nAgents are no longer limited by their intelligence, but rather by their ability to interact with systems. Airlines, banks, e-commerce, insurance portals, government sites, and legacy portals all lack APIs or MCPs and are common parts of personal assistant or business workflows. Agents instead rely on browser automation or computer use, which can be slow, expensive, and unreliable. And even if computer use were perfect, most companies have banned it out of security and compliance concerns.\nWe discovered this problem while tinkering with our own personal assistants. When OpenClaw came out, we wanted to “live our lives through our agents” and have them do everything for us. We soon found their usefulness was restricted by what tools they could connect to. For example, when trying to book flights, they fell back on computer use, which failed to checkout. These issues got magnified on repeated workflows, like searching many airlines at once.\nPomerado started off as a project to improve these personal assistant workflows. As we started building, we realized that just-in-time tool creation could have significant applications for AI builders in legacy verticals.\nWe’re ex-McKinsey and Scale AI, where we drove agent deployments in healthcare, professional services, and telecom. Each time, the biggest bottleneck was getting agents to interface well with legacy websites and apps.\nPomerado is what we built. It’s a self-serve platform where devs can create APIs for any website (even those they don’t own), in minutes. Users (or their coding agents) provide a short natural language description, answer a few questions about their workflow, and receive a MCP in less than an hour. Future tool calls use the deterministic MCP, which usually returns results in 5-30 seconds.\nHere’s a walkthrough of our product: https://youtu.be/Bi4jci7rgHo\nIn practice:\n- Our agent opens a browser, explores the website, and performs the requested task once by writing HTTP requests or a Playwright script. This example run establishes how to navigate the website, interact with the relevant controls, and obtain the desired result. If any additional user input is needed (e.g., login, clarification) the agent will ask the user over MCP.\n- Afterwards, the agent uses the example run, along with all of the data it recorded, to create a generalizable and repeatable API. Throughout this process, a separate Guardian model reviews the coding agent’s calls against a set of guardrails. We also run a battery of tests with synthetic inputs to ensure that the API is generalized and not overfit to one input. A final publication agent ensures that the integration publishes a reasonable and generalized input/output schema\n- We also handle sites that require authentication and 2FA. For authentication, we pass off to a deterministic sign-in process to ensure the model and our recorders never read customer credentials. Users can store 2FA TOTP seeds or link their account to a Pomerado phone number for us to autofill 2FA for them as well\n- If future runs fail, a maintenance job is kicked off to repair and improve the tool. The maintenance job can fix broken steps (e.g., a renamed button), add additional functionality (e.g., searching for business class flights in addition to economy), or add new guardrails (e.g., reservation dates must be in the future). We’ve even seen people improve tools by just saying “please make this faster”\nUnlike computer use, our MCPs are deterministic at runtime, which makes them much faster and cheaper. By taking slightly longer to do a task the first time, you reap the benefits much more in the future. It’s a great fit for repeated, high-volume tasks you want your agent to do.\nWe’d love to have you try it! We have both an open-source (MIT) (https://github.com/Pomerado/pomerado) and a free hosted version (https://app.pomerado.ai).\nSo far, users of Pomerado include:\n- A personal trainer using agents to prepare workouts and message clients. Before Pomerado, agents couldn’t login and use the site reliably, so this was all manual\n- Car dealerships connecting their Grok Bots to legacy dealer systems, including marketplaces, CRMs, and ERPs. Dealers switched from computer use, which could take 1hr+\n- Personal assistants using Pomerado to integrate with a broad range of consumer websites\nPlease ask any questions or share any feedback in the comments, thanks!\nComments URL: https://news.ycombinator.com/item?id=50455811\nPoints: 39\n# Comments: 32",
+      "id": "04f1f74e8fe8352066e78cca818163d533c0a3f0977bb21d709572141562ce1d",
+      "ref_id": "4",
+      "recommendationScore": 93,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "Pomerado提供创新方案，将任意网站转化为AI智能体的可靠API，极大扩展了AI应用边界。",
+      "reason": "解决了AI智能体与传统网站交互的关键痛点，技术方案新颖且实用性极强，对AI生态影响深远。",
+      "tags": [
+        "AI",
+        "自动化",
+        "API",
+        "开发者工具",
+        "Web Scraping",
+        "创业公司"
+      ]
+    },
+    {
+      "title": "AWS emulator",
+      "link": "https://github.com/aws/aws-emulator",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-11T18:21:38.000Z",
+      "summary": "https://www.aboutamazon.com/news/aws/how-autonomous-ai-agent...\nhttps://www.allthingsdistributed.com/2026/11/aws-emulator-an...\nComments URL: https://news.ycombinator.com/item?id=50456631\nPoints: 511\n# Comments: 179",
+      "id": "78b8986836f7bb24ddaa17fd143a0358f1821b41500b58ce0ae1f9aab05130b2",
+      "ref_id": "3",
+      "recommendationScore": 92,
+      "popularityScore": 98,
+      "priority": "high",
+      "comment": "结合AI智能体与AWS模拟，为云端自动化和开发测试带来革命性变革。",
+      "reason": "技术深度、新颖性和实用性极高，是AI与云基础设施结合的未来方向，社区关注度极高。",
+      "tags": [
+        "AI",
+        "AWS",
+        "云原生",
+        "自动化",
+        "开发者工具",
+        "模拟器"
+      ]
+    },
+    {
+      "title": "Tools for exploring the souls of large language models",
+      "link": "https://oshea00.github.io/posts/tinygpt-visualizer/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-11T20:45:50.000Z",
+      "summary": "Article URL: https://oshea00.github.io/posts/tinygpt-visualizer/\nComments URL: https://news.ycombinator.com/item?id=50458434\nPoints: 15\n# Comments: 6",
+      "id": "8b4ec844320f9847d6202ca42dd2318dcbc3a10c6e32411d951304675b4491d8",
+      "ref_id": "0",
+      "recommendationScore": 90,
+      "popularityScore": 25,
+      "priority": "high",
+      "comment": "探索大语言模型内部机制的创新工具，有助于深入理解LLM行为。",
+      "reason": "紧扣AI前沿，通过可视化提供了理解复杂模型的新颖途径，技术深度和实用性兼具。",
+      "tags": [
+        "AI",
+        "LLM",
+        "可视化",
+        "研究工具"
+      ]
+    },
+    {
+      "title": "The Download: preserving minds and weighing open AI risks",
+      "link": "https://www.technologyreview.com/2026/11/11/1148424/the-download-preserving-minds-open-ai-risks/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-11-11T13:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. Six wild ideas for perpetuating your mind As we age, we forget most of what we’ve experienced, yet there’s still undeniable continuity: At 30, or 50, or 70, you will still…",
+      "id": "2b5f528d3b67d19cafdc5dd10f447650c34d114328d5b5a4219f024cbd8da862",
+      "ref_id": "1",
+      "recommendationScore": 90,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "探讨AI风险与未来心智永续的前沿科技内容，具有高度新颖性和深度。",
+      "reason": "紧密贴合AI主题优先级，内容引人深思，是科技博客的优质选题。",
+      "tags": [
+        "AI",
+        "人工智能",
+        "未来科技",
+        "AI伦理",
+        "脑科学"
+      ]
+    },
+    {
+      "title": "Gemini Decisions API",
+      "link": "https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-11T18:32:42.000Z",
+      "summary": "Article URL: https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/\nComments URL: https://news.ycombinator.com/item?id=50456791\nPoints: 164\n# Comments: 55",
+      "id": "c06fca3b9549fb95708df0f2353796ec58f056e0b405f51a42ea39400a3b35d2",
+      "ref_id": "2",
+      "recommendationScore": 88,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "Google发布Gemini决策API，为开发者提供了强大的AI决策能力。",
+      "reason": "直接与AI前沿技术相关，对开发者极具实用性，是AI生态的重要更新。",
+      "tags": [
+        "AI",
+        "Google Gemini",
+        "API",
+        "开发者工具",
+        "机器学习"
+      ]
+    },
+    {
+      "title": "Gemini Decisions API",
+      "link": "https://simonwillison.net/2026/Nov/11/gemini-decisions-api/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-11-11T22:03:25.000Z",
+      "summary": "",
+      "id": "485ec329c8b74027b381458d522d85316f706755eddca7134520c91ccc7b841f",
+      "ref_id": "2",
+      "recommendationScore": 85,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "标题指向Gemini AI模型的决策API，对开发者极具吸引力，但文章内容缺失。",
+      "reason": "主题高度符合AI和编程工具优先级，若内容完善，将是极具实用性的开发者指南。",
+      "tags": [
+        "AI",
+        "Gemini",
+        "API",
+        "编程工具",
+        "机器学习"
+      ]
+    },
+    {
+      "title": "HowTo: Fix Eufy HomeBase 2 Storage Full Issues",
+      "link": "https://shkspr.mobi/blog/2026/11/howto-fix-eufy-homebase-2-storage-full-issues/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-11-11T12:34:05.000Z",
+      "summary": "Quick Fix: Insert a USB memory stick, format it in the app, restart the Eufy HomeBase 2, format the internal memory, restart the hub.    Background  I've had the eufyCam system for over 6 years - which is pretty long-life for IoT devices.  The cameras have worked pretty much flawlessly. Four years ago I added their Video Doorbell which has been similarly well behaved.  But last night I went to…",
+      "id": "feb008ec9e5bc5e5940ec3ab191009eacca39b5fa209c510039138ee61207f37",
+      "ref_id": "3",
+      "recommendationScore": 80,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "一篇高度实用的操作指南，解决了Eufy智能家居设备的常见存储问题。",
+      "reason": "直接针对用户痛点提供了清晰、可操作的解决方案，对目标用户群体非常有用。",
+      "tags": [
+        "How-To",
+        "Troubleshooting",
+        "IoT",
+        "Smart Home",
+        "Eufy",
+        "Automation"
+      ]
+    },
+    {
+      "title": "aws-emulator",
+      "link": "https://simonwillison.net/2026/Nov/11/aws-emulator/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-11-11T21:18:30.000Z",
+      "summary": "",
+      "id": "967141e571a3a88a0b6520bfa4b6725595d2c09b5ec9389cd3ec5663d3fd3ce2",
+      "ref_id": "3",
+      "recommendationScore": 75,
+      "popularityScore": 80,
+      "priority": "medium",
+      "comment": "标题关于AWS模拟器，对云开发与测试有较高实用性，但文章内容缺失。",
+      "reason": "贴合编程工具和自动化主题，若内容详尽，可为AWS开发者提供价值。",
+      "tags": [
+        "AWS",
+        "云计算",
+        "模拟器",
+        "开发工具",
+        "自动化测试"
+      ]
+    },
+    {
+      "title": "Austin Mann’s iPhone Duo Review",
+      "link": "https://www.austinmann.com/trek/iphone-duo",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-11-11T19:02:58.000Z",
+      "summary": "Austin Mann:\nHonestly, the idea of a folding iPhone didn’t immediately appeal\nto me. I usually like smaller devices, but when I first started\nplaying with the Duo in September, I realized it’s really\nsomething special and I couldn’t wait to get my hands on a review\nunit from Apple. The iPhone 18 Pro remains the most powerful\ncamera in the lineup, and though the Duo also has an excellent\ncamera, where it really shines is everything around the\nphotograph: planning, editing and sharing.\nThere are many reasons to prefer any of the regular (“uno”) iPhones to the Duo, but for almost everyone, the camera is not one of them. The iPhone Duo’s ultrawide 0.5× lens is either identical or nearly identical to the iPhone 18 Pro’s. It’s nice to have the Pro’s 4×/8× telephoto third lens when you really need it. And, yes, the Pro’s 1×/2× main camera is definitely the best one that Apple makes.\nBut just like with the iPhone Air — whose one-lens camera I love — the Duo’s 1×/2× main camera is really good. Just look at the photos Mann captured with it. Gorgeous. The camera system is not a reason not to buy a Duo.\n(That said, when Mann captured this stylish photo of me at Apple’s “Pro and Tell” event in Los Angeles last month, he was carrying his iPhone 18 Pro.)\n ★",
+      "id": "3725ac4999697e88ec56ea21e810d9819f66adb25541774471390d82c93c2c86",
+      "ref_id": "0",
+      "recommendationScore": 75,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "一篇对假想的折叠屏iPhone相机系统进行详细分析的评测文章。",
+      "reason": "它为潜在用户提供了关于未来iPhone相机功能的实用见解，且属于高优先级主题。",
+      "tags": [
+        "Apple",
+        "iPhone",
+        "Review",
+        "Camera",
+        "Mobile Photography"
+      ]
+    },
+    {
+      "title": "IBM Quantum Nighthawk Demonstrates New Levels of Speed and Quality",
+      "link": "https://newsroom.ibm.com/2026-11-11-ibm-quantum-nighthawk-demonstrates-new-levels-of-speed-and-quality,-with-plans-to-scale-beyond-1,000-qubits-in-2027",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-11T19:47:59.000Z",
+      "summary": "Article URL: https://newsroom.ibm.com/2026-11-11-ibm-quantum-nighthawk-demonstrates-new-levels-of-speed-and-quality,-with-plans-to-scale-beyond-1,000-qubits-in-2027\nComments URL: https://news.ycombinator.com/item?id=50457669\nPoints: 37\n# Comments: 19",
+      "id": "d031e983d6c83397f248f83de6ffdc31d4a31ccdd1df8267f604e77be22a0ee1",
+      "ref_id": "3",
+      "recommendationScore": 70,
+      "popularityScore": 55,
+      "priority": "medium",
+      "comment": "IBM在量子计算领域取得重大进展，展示了量子系统的最新能力和未来潜力。",
+      "reason": "揭示了前沿科技的突破性进展，技术深度和新颖性极高，但短期实用性有限，且不直接属于核心AI范畴。",
+      "tags": [
+        "量子计算",
+        "IBM",
+        "前沿科技",
+        "未来计算"
+      ]
+    },
+    {
+      "title": "Apple Shutters Their Longstanding ‘Apple Support Community’",
+      "link": "https://sixcolors.com/link/2026/11/ding-dong-the-apple-support-community-is-dead/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-11-11T19:17:32.000Z",
+      "summary": "Jason Snell:\nThese message boards were an embarrassment for Apple. Not only\nwere they very much out of step with what the web has come to be\nover the last couple of decades, but their presence under an\napple.com domain meant that they ranked highly in search and were\nperceived by the general public as being official in some way.\nI’m with Snell. Good riddance.\n ★",
+      "id": "7d13081fbd57657b2e4d06e6943a0c2a81d385e165a83f0bca14d330d9b99909",
+      "ref_id": "4",
+      "recommendationScore": 70,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "评论苹果关闭其过时的支持社区，认为这一举动是正确的品牌和用户体验优化。",
+      "reason": "紧跟Apple生态系统动态，内容虽不具技术深度但对用户和品牌策略有解读价值，符合高优先级主题。",
+      "tags": [
+        "Apple",
+        "社区",
+        "支持服务",
+        "产品策略",
+        "用户体验"
+      ]
+    },
+    {
+      "title": "Emacs in the Age of Magic",
+      "link": "https://commandlinesystems.com/magic.txt",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-11T20:26:32.000Z",
+      "summary": "Article URL: https://commandlinesystems.com/magic.txt\nComments URL: https://news.ycombinator.com/item?id=50458208\nPoints: 77\n# Comments: 22",
+      "id": "4f98cfc048a05a90fad545d54643e3bcb1a1539d340d3b4c7e265b1b77af9167",
+      "ref_id": "1",
+      "recommendationScore": 65,
+      "popularityScore": 80,
+      "priority": "medium",
+      "comment": "对Emacs在现代计算环境中的角色进行了深入探讨，为Emacs用户提供了新视角。",
+      "reason": "虽然主题小众，但技术深度和思考价值高，且在编程工具领域有一定影响力。",
+      "tags": [
+        "编程工具",
+        "Emacs",
+        "生产力"
+      ]
+    },
+    {
+      "title": "Retirement Savings Are Fueling the AI Bubble",
+      "link": "https://lpeproject.org/blog/your-retirement-savings-are-fueling-the-ai-bubble/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-11T19:06:43.000Z",
+      "summary": "Article URL: https://lpeproject.org/blog/your-retirement-savings-are-fueling-the-ai-bubble/\nComments URL: https://news.ycombinator.com/item?id=50457164\nPoints: 120\n# Comments: 125",
+      "id": "922e12172ec825cb7340c7dab7b3f402203451a5d1acc57793da2bb50308e3e6",
+      "ref_id": "1",
+      "recommendationScore": 65,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "深度剖析了养老金如何助推AI泡沫，提供了独特的经济视角。",
+      "reason": "提供了关于AI产业金融风险的批判性思考，具有较高的宏观实用性和信息密度。",
+      "tags": [
+        "AI",
+        "经济",
+        "投资",
+        "市场分析",
+        "社会影响"
+      ]
+    },
+    {
+      "title": "Who Runs the Ransomware Group Qilin?",
+      "link": "https://krebsonsecurity.com/2026/11/who-runs-the-ransomware-group-qilin/",
+      "source": "krebsonsecurity.com",
+      "publishedAt": "2026-11-11T18:06:01.000Z",
+      "summary": "The cybercrime group Qilin has emerged as the world's most active ransomware affiliate program, claiming at least 365 victim organizations in the past three months alone. But even top Russian hackers make operational security mistakes, and the administrator of Qilin has made a few key missteps over the last decade that all point to a 36-year-old man living in St. Petersburg, Russia.",
+      "id": "5aca5acf75fbc18aea1f7f03835bf43aa3a40d4529f830567d2f31628239e1d7",
+      "ref_id": "3",
+      "recommendationScore": 65,
+      "popularityScore": 80,
+      "priority": "low",
+      "comment": "一篇高质量的深度调查文章，揭露了活跃勒索软件团伙的幕后主使及其身份。",
+      "reason": "信息密度高、新颖性强，对网络安全领域有重要意义，但与博客主题优先级不完全匹配。",
+      "tags": [
+        "网络安全",
+        "勒索软件",
+        "调查报告",
+        "网络犯罪"
+      ]
+    },
+    {
+      "title": "Browse tools.simonwillison.net by tag",
+      "link": "https://simonwillison.net/2026/Nov/11/tools-tags/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-11-11T18:42:50.000Z",
+      "summary": "",
+      "id": "8ba32157965a133a881c6f432393cd80b597aecb5f78b8e5fda50baa7c0bdbac",
+      "ref_id": "4",
+      "recommendationScore": 60,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "标题为Simon Willison的工具索引，可作为开发者工具发现的良好入口，但文章内容缺失。",
+      "reason": "提供编程工具的索引和发现价值，有助于开发者查找资源。",
+      "tags": [
+        "编程工具",
+        "开发者资源",
+        "工具发现",
+        "技术博客"
+      ]
+    },
+    {
+      "title": "20 years of blogging",
+      "link": "https://www.gilesthomas.com/2026/11/20-years-of-blogging",
+      "source": "gilesthomas.com",
+      "publishedAt": "2026-11-10T23:00:00.000Z",
+      "summary": "20 years ago to this day, I started my new technical blog.  I'd had a personal one\nfor some time, but most of the stuff that happened there had already migrated to\nsocial media.  I wanted somewhere to post the things that would only\nbe of interest to my techier friends, and maybe of some use to anyone else that\ncame across it.\nThings have changed a bit, but they've stayed the same in some ways.  Earlier\nthis year I finished my 48-part (!) LLM from scratch\nseries, but it had predecessors -- the third post I made here was\npart one of a 13-part series\nwhere I worked through setting up automated backups for my homelab NAS, and then later on\nI spent a few months building a reverse proxy in C, not to mention the eight-month, ten-post\nseries on fine-tuning LLMs.\nIt does seem like there's some value to putting all of this online.  I rarely check\nmy logs and referrers, but people do still seem to be arriving here having searched\nfor stuff that I've written about, and every now and then there's a kind \"thanks for this!\" comment\nleft on an old post where I explained something I'd just learned.\nI wrote a bit more about the blog's history last\nyear, and came to the conclusion that the best posts -- both for me to write, and as\nfar as I could tell for other people to read -- were the ones where I wrote up\na project that I'd been working on.  I blogged about that in more detail,\nand it seemed to strike a chord on Hacker News; I think it still holds.\nRecently, Sean Goedecke suggested\nthat the best blog posts are those where you write about things that you're in the process of learning, and\nI agree.  You learn more than you would if you didn't write it up, and because things\nare fresh in your mind, you may well write more clearly about it than an actual\nexpert in the subject might have done.\nAnyway, I'm going to carry on blogging.  I'm working on my biggest LLM-related project\nso far (dozens of training runs, so my study aircon is getting quite the workout even\nwith the weather turning colder), and look forward to posting about it later on this month.\nI hope it's at least as fun to read as it is to write!",
+      "id": "5bacf324b2a027468d7cd9adb44f4e7dadfe605a93f42c42e936dc2529afaae1",
+      "ref_id": "4",
+      "recommendationScore": 60,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "一篇回顾作者20年技术博客历程的感悟，提到了多个深度技术系列。",
+      "reason": "虽然是回顾性质的文章，但它间接提及了AI和编程等高优先级技术主题，并提供了内容创作的视角。",
+      "tags": [
+        "Blogging",
+        "Tech Content",
+        "Retrospective",
+        "LLM",
+        "Homelab",
+        "Programming"
+      ]
+    },
+    {
+      "title": "Show HN: I recreated Papers Please but you're deciding which YC startups to fund",
+      "link": "https://termsheetplease.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-11T19:12:16.000Z",
+      "summary": "Article URL: https://termsheetplease.com/\nComments URL: https://news.ycombinator.com/item?id=50457230\nPoints: 130\n# Comments: 61",
+      "id": "309fee028c8b1fe0979f66f7ddd171eae7e762fd6c47b7a2036010172b610db5",
+      "ref_id": "0",
+      "recommendationScore": 55,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "一个将经典游戏机制应用于创业投资模拟的有趣独立项目。",
+      "reason": "概念新颖且具趣味性，但技术深度和直接的开发实用性不高。",
+      "tags": [
+        "独立开发",
+        "游戏",
+        "产品设计",
+        "创业投资"
+      ]
+    },
+    {
+      "title": "Glue work is still harmful in the age of AI",
+      "link": "https://seangoedecke.com/glue-work-is-still-harmful-in-the-age-of-ai/",
+      "source": "seangoedecke.com",
+      "publishedAt": "2026-11-11T00:00:00.000Z",
+      "summary": "",
+      "id": "8157f3d2feda20d78b383d72cc3621506111ccfcb8c9b0d43be0e4b16db4085d",
+      "ref_id": "2",
+      "recommendationScore": 40,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "标题提出AI时代下“胶水工作”的危害，议题前瞻且具有讨论价值，但内容缺失。",
+      "reason": "结合了AI与软件开发的核心痛点，理论上深度和实用性俱佳，但文章内容缺失影响评估。",
+      "tags": [
+        "AI",
+        "软件开发",
+        "效率",
+        "工作流",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "The Utah Teapot",
+      "link": "https://graphics.cs.utah.edu/teapot/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-11T19:45:10.000Z",
+      "summary": "Article URL: https://graphics.cs.utah.edu/teapot/\nComments URL: https://news.ycombinator.com/item?id=50457618\nPoints: 28\n# Comments: 8",
+      "id": "619391170e7632d91c073da791e7039a652a6906fe43c6373d299199cc9f1fc0",
+      "ref_id": "4",
+      "recommendationScore": 30,
+      "popularityScore": 35,
+      "priority": "low",
+      "comment": "经典计算机图形学模型犹他茶壶的历史回顾，主要为学术和历史爱好者提供参考。",
+      "reason": "内容偏向图形学历史，与当前热门主题优先级不符，实用性和新颖性较低，受众非常小众。",
+      "tags": [
+        "计算机图形学",
+        "历史",
+        "3D建模"
+      ]
+    },
+    {
+      "title": "Anthropic's IPO roadshow video",
+      "link": "https://simonwillison.net/2026/Nov/11/anthropic-ipo-roadshow/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-11-11T15:11:59.000Z",
+      "summary": "",
+      "id": "6e96a802abbc1d38b48b3319ef5e5708751bc19ab39f8d9ce45f29c80c4a917c",
+      "ref_id": "1",
+      "recommendationScore": 30,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "缺乏具体视频内容，但Anthropic的IPO路演本身是AI领域的重大新闻。",
+      "reason": "作为AI巨头Anthropic的重要商业事件，具有高关注度和潜在洞察价值，但因内容缺失无法提供实质评估。",
+      "tags": [
+        "AI",
+        "商业",
+        "市场动态",
+        "Anthropic"
+      ]
+    },
+    {
+      "title": "What to know about this year’s UN climate talks",
+      "link": "https://www.technologyreview.com/2026/11/11/1148308/un-climate-talks/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-11-11T17:00:00.000Z",
+      "summary": "It’s that time of year again: Thousands of delegates, lobbyists, and journalists are gathered for the annual UN climate talks, taking place this time in Antalya, Turkey. COP31 officially kicked off on November 8, marking the beginning of negotiations on one of the biggest stages of the climate world. Turkey and Australia are cohosting this…",
+      "id": "163fb1bfb894fd4e77d6add6acde58c5e895c60be21bad6fdea9481ecac06668",
+      "ref_id": "0",
+      "recommendationScore": 20,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "一篇关于联合国气候谈判的通用新闻报道，与科技博客主题关联度低。",
+      "reason": "内容不符合预设的科技主题优先级，缺乏技术深度和实用性。",
+      "tags": [
+        "气候变化",
+        "环境政策",
+        "全球新闻"
+      ]
+    },
+    {
+      "title": "llm 0.37.2",
+      "link": "https://simonwillison.net/2026/Nov/11/llm/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-11-11T17:19:52.000Z",
+      "summary": "",
+      "id": "460872e68e9eeabbb2b493e0fd5d9bb2f3c3120a59dddc8c9d92c69c64b3475c",
+      "ref_id": "0",
+      "recommendationScore": 20,
+      "popularityScore": 60,
+      "priority": "high",
+      "comment": "标题指向AI工具更新，但内容缺失无法评估具体价值。",
+      "reason": "属于高优先级的AI主题，但缺乏文章详情使其推荐和评估受限。",
+      "tags": [
+        "AI",
+        "工具",
+        "更新"
+      ]
+    },
+    {
+      "title": "‘Dangerous or Unusual’",
+      "link": "https://www.nytimes.com/interactive/2026/11/10/us/supreme-court-guns-misquote.html?unlocked_article_code=1.PlE.-Nhp.CaLpsgMqdWf3",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-11-11T18:29:17.000Z",
+      "summary": "Mike McIntire and Eli Murray, reporting for The New York Times (gift link)\nFor nearly two decades, judges across the country have invoked\nthis language to strike down gun-control laws. It is a pivotal\nlegal test.\nIt is also based on a misquote.\nJustice Antonin Scalia, writing for the majority in the 2008\ncase, District of Columbia v. Heller, attributed the “dangerous\nand unusual” language to Sir William Blackstone, an 18th-century\nEnglish jurist whose writings became the basis for much of\nAmerican law.\nBut in his seminal 1769 treatise, “Commentaries on the Laws of\nEngland,” Blackstone referred to weapons that were “dangerous\nor unusual,” suggesting that a gun did not need to be both\nin order to be restricted.\nI’ve written before that Heller overturned two centuries of Supreme Court interpretation of the 2nd Amendment. The current interpretation — literally the NRA’s interpretation — was characterized by former Chief Justice Warren Burger as “one of the greatest pieces of fraud, I repeat the word fraud, on the American public by special interest groups that I have ever seen in my lifetime.”\nSo it’s not like anything needs to rest on this and-vs.-or misquoting of something William Blackstone wrote before the United States was even founded. But, still, it’s interesting nonetheless how often the gun-fetish jurists like to cite the misquoting. The government should, and can, regulate dangerous weapons.\n ★",
+      "id": "b9843997ddf5156881b35f705914ac0c81fb4ff9b799b79d23b6b5d56f4f6ae0",
+      "ref_id": "2",
+      "recommendationScore": 20,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "一篇关于法律术语误用的深度文章，但与科技主题无关。",
+      "reason": "虽然文章研究深入，但其主题完全偏离了科技博客的核心关注点。",
+      "tags": [
+        "Legal",
+        "Politics",
+        "Law",
+        "2nd Amendment",
+        "Misquote"
+      ]
+    },
+    {
+      "title": "Quinn Nelson: ‘The iPhone Duo Doesn’t Feel Like an iPhone’",
+      "link": "https://www.youtube.com/watch?v=cxjdVVVryC4",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-11-11T18:36:34.000Z",
+      "summary": "This is a really good and fair Duo review.\n ★",
+      "id": "f97036178a8147de4c12e6d9574319b888cd8d520aa62d5c5db4b773b352add4",
+      "ref_id": "1",
+      "recommendationScore": 5,
+      "popularityScore": 10,
+      "priority": "low",
+      "comment": "仅仅是一句引用，缺乏原创内容和实质性信息。",
+      "reason": "不是一篇独立的技术文章，更像是社交媒体上的简短评论，不适合作为博客内容。",
+      "tags": [
+        "Apple",
+        "iPhone",
+        "Review",
+        "Quotation"
+      ]
+    },
+    {
+      "title": "Lock Your GitHub Actions",
+      "link": "https://hugovk.dev/blog/2026/lock-github-actions/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-11T22:16:41.000Z",
+      "summary": "Article URL: https://hugovk.dev/blog/2026/lock-github-actions/\nComments URL: https://news.ycombinator.com/item?id=50459485\nPoints: 6\n# Comments: 1",
+      "id": "90e91921653245c7efa2f066b871b6ddcbfcf1ca40c1730e207cd4cf6778933b",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Jensen Huang Said to Have Had Relationship with Nvidia Executive",
+      "link": "https://www.nytimes.com/2026/11/11/technology/jensen-huang-nvidia-affair.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-11T22:03:58.000Z",
+      "summary": "Article URL: https://www.nytimes.com/2026/11/11/technology/jensen-huang-nvidia-affair.html\nComments URL: https://news.ycombinator.com/item?id=50459321\nPoints: 38\n# Comments: 23",
+      "id": "0de9825e0c756423f2aa36b44c55dc05c2d4c9b4d78af88f1455b31dbf974df6",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "United Airlines bans AI agents from booking flights on behalf of travelers",
+      "link": "https://www.cbsnews.com/news/united-airlines-bans-ai-agents-booking-flights/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-11T21:24:35.000Z",
+      "summary": "Article URL: https://www.cbsnews.com/news/united-airlines-bans-ai-agents-booking-flights/\nComments URL: https://news.ycombinator.com/item?id=50458900\nPoints: 115\n# Comments: 88",
+      "id": "5518ef5f75c82c68c027075099e57c7f45b2c4e91b1637f92c5d9d491b343ccb",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Play GTA5 on Browser",
+      "link": "https://playgta5.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-11T21:10:35.000Z",
+      "summary": "Article URL: https://playgta5.com/\nComments URL: https://news.ycombinator.com/item?id=50458710\nPoints: 35\n# Comments: 21",
+      "id": "fa21daf7971f59e362e7077646a560165553fe8ab74ac0441b22808e07f6846b",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "GitHub Incident with Webhooks, Actions, etc.",
+      "link": "https://www.githubstatus.com/incidents/dvy0t3mvh1lg",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-11T20:54:37.000Z",
+      "summary": "Article URL: https://www.githubstatus.com/incidents/dvy0t3mvh1lg\nComments URL: https://news.ycombinator.com/item?id=50458532\nPoints: 68\n# Comments: 40",
+      "id": "312cc2672ec7b8277836948c88af415e5adc0e721e42a1d6e00035d020d56894",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Faster Retrieval for Better, More Efficient RAG",
+      "link": "https://machinelearning.apple.com/research/faster-retrieval",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-11T16:57:45.000Z",
+      "summary": "Article URL: https://machinelearning.apple.com/research/faster-retrieval\nComments URL: https://news.ycombinator.com/item?id=50455633\nPoints: 119\n# Comments: 22",
+      "id": "b21fa54b837dba6b3505f76961e5e0c8433748c069a6448982cb59402022e336",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "A false smoke alarm almost drowned Jane Street's only NYC datacenter",
+      "link": "https://michael.bacarella.com/2026/11/10/false-smoke-alarm-jane-street-datacenter/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-11T16:38:44.000Z",
+      "summary": "Article URL: https://michael.bacarella.com/2026/11/10/false-smoke-alarm-jane-street-datacenter/\nComments URL: https://news.ycombinator.com/item?id=50455394\nPoints: 350\n# Comments: 170",
+      "id": "1d87023686021195eef835e116b8afd820fe4391f167fcb94a64721c25d4120f",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "The hardest notes to find on the guitar",
+      "link": "https://www.gitori.com/blog/articles/hardest-notes-on-the-guitar-fretboard",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-11T16:05:18.000Z",
+      "summary": "Article URL: https://www.gitori.com/blog/articles/hardest-notes-on-the-guitar-fretboard\nComments URL: https://news.ycombinator.com/item?id=50454995\nPoints: 36\n# Comments: 53",
+      "id": "b2bf153365c960d19cb74880a7e8d4b2afef91a957cbe04f469087226146ebb4",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Show HN: Yogurt – Free, private, open-source alternative to Granola",
+      "link": "https://github.com/FrigadeHQ/yogurt",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-11T15:33:06.000Z",
+      "summary": "Hey HN, I’m Eric and I want to share an OSS project that I’ve been building in my free time. Yogurt is a free, MIT licensed desktop app that uses on-device AI models to transcribe, summarize, and chat with your meetings.\nHere's a quick demo video: https://www.youtube.com/watch?v=BFfbXAwRq98\nSimilar to Granola, Yogurt runs in the background and does not join your calls. But unlike Granola, Yogurt is open-source, free to use, and private. Your meeting transcripts, call recordings, and summaries never leave your computer.\nAs small OSS models have gotten faster and more powerful, Yogurt seemed like a pretty obvious win for privacy and cost conscious folks. You do not need a frontier model to summarize meeting notes or answer questions about them. And if you want to make your notes available to a frontier model, you can just share it with Anthropic, OpenAI, etc. directly via Yogurt’s local MCP server. There’s no need to use a paid cloud service as a middleman.\nI tried some of the most popular OSS note taking tools, and most were missing features like calendar integration, MCP server, etc. or required you to connect or create an account. And more than that, they didn’t feel polished enough for it to be something I actually wanted to use daily, and so I built Yogurt to scratch that itch. I spent a lot of time fine-tuning every UI interaction/animation and optimizing the model calls to get the most out of your hardware + make it snappy.\nTo support Windows/Mac/Linux, I decided to go with Electron. I use whisper.cpp for transcription and Apple’s on-device SpeechAnalyzer if your system supports it. For call summaries and questions, I use a local open weight LLM that automatically gets downloaded and set up based on what your hardware can handle without your cooling fans firing off like crazy (this part uses llama.cpp).\nI’ve spent a lot of time working on details like echo detection/reduction, global/folder/local level search respectively, and auto-end recordings. Hope this is useful for any of you who have held out on using AI note tools for privacy or cost reasons, or for folks using cloud tools who want to switch to something free and open source that still feels great to use.\nWould love to hear what you think about the onboarding and note taking experience :)\nComments URL: https://news.ycombinator.com/item?id=50454625\nPoints: 134\n# Comments: 62",
+      "id": "e40297c9b5a8aa9019bb2c0af4d139202655e3d67fd7e9252fdd403af59b2217",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Atuin Threads: All your agent sessions on every machine",
+      "link": "https://blog.atuin.sh/threads-agent-sessions/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-11T14:10:46.000Z",
+      "summary": "Article URL: https://blog.atuin.sh/threads-agent-sessions/\nComments URL: https://news.ycombinator.com/item?id=50453637\nPoints: 174\n# Comments: 63",
+      "id": "e06ee448d8d7fe26098bd46aed62b6b3f4df0c35cada65b075a8e0b2eb9b6c85",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Why Am I So Tired If AI Is Doing All the Work?",
+      "link": "https://terriblesoftware.org/2026/11/11/why-am-i-so-tired-if-ai-is-doing-all-the-work/",
+      "source": "terriblesoftware.org",
+      "publishedAt": "2026-11-11T18:23:50.000Z",
+      "summary": "AI makes it easy to start more work. But reviewing it all still takes your time and attention. No wonder we’re so tired.",
+      "id": "16bf760aba34175088f23f335b4f4aadda3d42e31034c99a6ee88f6c6017a281",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "This Week in Source Control: 11 November 2026",
+      "link": "https://nesbitt.io/2026/11/11/this-week-in-source-control.html",
+      "source": "nesbitt.io",
+      "publishedAt": "2026-11-11T10:00:00.000Z",
+      "summary": "This week’s version control and forge news, gathered from release feeds for source control clients and forges, the Lobsters vcs tag, Hacker News, and my boosts on Mastodon. Package management news is in the Saturday This Week in Package Management roundup.\nScaling\nInside GitHub’s new Git storage architecture (Karthik Raman and Brian Celenza, GitHub) describes Rubicon, the design announced at GitHub Universe. Packs go to Azure Blob Storage. References and the list of packs are stored in Ref-CAS, a replicated log service where each reference update is a compare-and-swap committed by a quorum, so a push waits only on other pushes to the same reference. In internal tests one repository accepted 7,200 pushes per second from 5,000 concurrent agents.\nRequests still arrive at Spokes, which routes each one to a small group of virtual replicas, disposable compute nodes whose local disk is a cache. A replica handling a write indexes the pack, uploads it to Blob Storage, then commits one Ref-CAS transaction. For reads it sends the version in its cache, and the reply includes references only if they have changed since that version.\nTwo earlier prototypes stored reference state in blobs. The first, a write-ahead log indexed by a single blob, reached a limit of writes in the mid-hundreds per second. Hashing references across several segment blobs raised the write limit, but every read then had to check every segment.\nCompaction runs on separate nodes that lease a shard of the repository’s packs and merge them into larger ones. Each node checks that the new packs contain exactly the same objects before publishing them. The architecture is in a limited private preview, with a broader rollout planned for early next year. The follow-up list includes an atomic multi-file commit API, reading files straight from the server, and event streams.\nOptimizing reference deletions in Git (Karthik Nayak) covers deleting refs in the files backend in repositories with millions of them, such as GitLab’s own with over 15 million. Deleting a packed ref rewrites the whole packed-refs file, which can reach several GB. Nayak had an LLM write a Rust version of the files backend to measure the overhead of the C to Rust boundary, and the Rust version deleted refs about 17% faster.\nFor every record being retained, the C code rebuilt the line with fprintf() and oid_to_hex(), where the Rust version copied the original bytes. Nayak’s patch writes retained records with fwrite() and matches the Rust version’s speed. It is merged and will ship in Git 2.98, the version number that follows 2.56, with Git 3.0 due two releases after that.\nReleases\njj 0.47.0 adds a built-in :editor merge tool for jj resolve, which opens the conflicted file with conflict markers in a text editor and supports conflicts with more than two sides. Templates have a new top-level revset() function for evaluating revsets. In colocated workspaces, jj describe -r@ and jj restore --into=@ now preserve the Git staging area, and two race conditions with concurrent Git processes are fixed.\nUpdating remote-tracking Git refs in non-colocated workspaces moves from jj git fetch and push to jj git export. Timestamp.format() now uses jiff’s strftime syntax in place of chrono’s. 0.47.1 fixes a dependency error that broke Linux builds of 0.47.0, and deprecates the git.sign-on-push boolean in favour of a revsets.git-sign-on-push revset of the commits to sign.\nGitButler 0.23.3 updates linked worktrees when the workspace is updated, and preserves conflicting uncommitted changes in them with conflict markers. It fixes branch apply, unapply and update writing encrypted files or Git LFS pointers in place of file contents in git-crypt and Git LFS repositories.\nOn the command line, but commit, amend, discard and diff accept Git-style paths, and but diff and but show take --stat. but commit runs Git commit hooks again in the main checkout. but push --dry-run lists the branches that would be refused and exits non-zero if there are any.\nforges 0.3.2 adds providers for Entire and GitBucket, which brings the capability table to 14 forges. The Cursor Origin provider goes from 13 verified capabilities to 35, and the GitHub provider adds users.sponsorableMany. Two sourcehut fixes cover parsing web URLs on an instance’s root host and accepting a service host as baseUrl.\nThe Pushin changelog for 6 November (Peter, Pushin) adds branch and tag rulesets that can block history rewrites and deletion, and require a minimum number of approvals and passing workflow checks before a merge. Personal access tokens can now be scoped per permission group and limited to selected repositories. Existing tokens are migrated with full access and their expiry dates removed.\nWebhooks are set up once per account or organisation and reused across repositories. The release also adds repository transfers that the new owner has to accept, runner groups shared across repositories, and Atom feeds for commits, releases, issues and pull requests.\nSecurity\nGit 2.56.1 (Elijah Newren, GitHub) fixes six vulnerabilities, with backports in 2.55.1, 2.54.1, 2.53.1, 2.52.1, 2.51.3 and 2.50.2:\nCVE-2026-111760: an integer truncation in index handling let an extremely long path pass validation under one name and be written under a shorter one. A malicious repository could use it to replace a submodule’s .git file with a symlink to a directory of attacker-supplied config or hooks, which then ran during a recursive clone.\nCVE-2026-113408: when cloning an empty repository over protocol v2, a server could advertise a HEAD symref whose target contained path-traversal components. With the files ref backend, a later update to that branch could write outside the reference directory.\nCVE-2026-114467: the code that strips GPG signatures from a message had a fixed-size stack array with room for two. Merging a tag with more than two wrote past the end of it, and hosting services that run merges for users are affected too.\nCVE-2026-114469: the 1 GiB patch size limit checked only the size of the input, so a small binary patch that inflates past the limit caused an out-of-bounds read.\nCVE-2026-105437: the size calculation for a merge result could overflow with many conflicts and a large conflict-marker-size, and Git then wrote outside the undersized buffer.\nCVE-2026-114466: git fast-import now accepts rewrite-submodules-from, rewrite-submodules-to and export-pack-edges in an input stream only when the caller passes --allow-unsafe-features. The first two could read arbitrary files and the third could create or append to them.\nGitHub has deployed the fixes on github.com and released GitHub Enterprise Server 3.19.15, 3.20.11, 3.21.9 and 3.22.4. Git for Windows 2.56.1 includes the same six fixes, and GitHub says patched GitHub Desktop builds will follow.\nlazygit 0.66.3 skips submodules whose name or path in .gitmodules resolves outside the repository. lazygit parses .gitmodules itself, and the pull request explains that removing a submodule named ../../../victim deleted the victim directory next to the repository. Anyone able to commit a .gitmodules file could set that up. Git skips such names, and lazygit now applies the same check and removes a submodule only when its git dir is inside .git/modules.\nGerrit 3.14.5 fixes a vulnerability where any user able to read a change could use on_behalf_of to act as a project owner and remove another reviewer’s vote. The release also speeds up tag listing by building the full tag details only for the page being returned. Listing 26 tags in a repository with 20,000 annotated tags went from around 450ms to between 15 and 35ms.\nGitHub\nA new pull request overview page is in opt-in public preview. It moves merge status to the top of the page in a redesigned merge box that takes less than half the space, with checks, comments and approvals summarised beside it. Conversations can be filtered to unresolved threads or the viewer’s own comments, and sorted newest first. A button in the header switches the preview on, and the same menu switches back to the classic page.\nSecret scanning now covers GitHub Actions workflow logs in public preview, for GitHub Enterprise Cloud customers with Secret Protection or Advanced Security. Logs are scanned for provider patterns when a run completes, and the alerts are retained when the logs are deleted. Scanning is limited to provider patterns in logs from new runs, which excludes existing logs, generic patterns, custom patterns and secrets already masked by Actions.\nElsewhere\nAnil Madhavapeddy is using Brief to power auto-CI in a new Tangled spindle. Brief is my tool for detecting the languages and toolchains in a repository. In the pipeline for Madhavapeddy’s xdge library, a detect workflow runs first, followed by an ocaml-ci workflow that builds on Debian 13 across several OCaml versions on x86_64 and arm64.\nSend links for next week to @andrewnez@mastodon.social.",
+      "id": "017654681a03a592b5af954518e9a828a7bf3a8e3e34e06bf6d62e2a6945ff60",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Ms. Bashkansky, Please Do Not Build The Torment Nexus",
+      "link": "https://jyn.dev/ms-bashkansky-please-do-not-build-the-torment-nexus/",
+      "source": "jyn.dev",
+      "publishedAt": "2026-11-11T00:00:00.000Z",
+      "summary": "Your scientists were so preoccupied with whether or not they could, they didn’t stop to think if they should.\nIan Malcolm, Jurassic Park\n\n\nNaomi Bashkansky wrote a post in August titled “Why I’m leaving OpenAI to build telepathy”.\nIn this post, she says things like \"In a few years, the main way we'll talk with our AIs is with our thoughts\" and \"I view [this future] as optimistic but highly plausible.\"\nMs. Bashkansky, this post is addressed to you directly, and to anyone else who might be tempted to follow in your footsteps.\nI do not have as good a handle on the technical side of this as you do, so I won't argue \"highly plausible\".\nHowever, if this is indeed possible, I think this is a very, very bad idea.\nYou are essentially doing gain-of-function research on the Torment Nexus.\nPlease do not do this.\nHere is my vision of a future where telepathy is possible and practical.\n2027\n\nMonday\n\nToday is my first day trying the new Conduit harness.\nI'm pretty wary—how much worse does AI psychosis get when it can literally give you psychosis?—but I'm bored, and well, I've always had a high risk tolerance.\nIf \"wire a computer directly to your brain\" doesn't count as sensation seeking, I don't know what does.\nThe first thing I do is ask it to build Ripple.\nIt asks me more and more questions and I get overwhelmed.\nI never talked about half this stuff with edef, and I want her feedback before making these decisions;\nI'm good at writing but my interface design isn't as good when I work in a vacuum.\nBefore I know it, it's launched a Signal call and now I hear the ringtone and no I don't want you to show me the video that goes with the intro to The Pirates of the Caribbean and wow wow wow it's noisy please stop I don't like this I actually really really really don't like this. 1\nOk. Well at least it stopped when I told it to stop. That's good I guess.\nI hope I didn't wake edef up in San Francisco, there's a 9-hour time difference.\nThursday\n\nI took the last couple days off to go walk around the canal and bike to Scheveningen.\nThen I spent the morning giving the harness very strict written instructions not to take any actions unless I intend to act, not just think about acting.\nHopefully this time goes better.\nOk, well at least now it's less overwhelming.\nBut I have the weird problem that I can't lie to it, I can't even omit information.\nThe moment I think of a correction I want it to make, it goes ahead and does that.\nIf I change my mind a second later, it stops and then starts on my new idea.\nAs a result it tends to get hopelessly confused after just a few minutes, and runs in circles.\nEventually I get frustrated, take off the harness, and go back to typing.\nFriday\n\nOk. Ok. Maybe the problem yesterday was that I need it to be selective about reads and not just writes?\nI write that down too: discard any information that I don't intentionally think to you.\nIt doesn't work at first; it turns out it's hard to know information and not let it influence your actions.\nI introduce a Jev-like decision model in-between Conduit and the generative model and that seems to work ok.\nFeels kinda weird to start every thought with \"I want you to…\" but I'm sure I'll get used to it.\nAt the end of the day, I feel…drained.\nI've hardly gotten up from my chair except for a short lunch break, but I feel like I've run a marathon.\nI eat a protein bar, collapse into bed, and sleep for 13 hours straight.\nI forget to turn off the harness; it wakes me up a few times in the night until I realize what's happening.\n2028\n\nBank of America sues Sam Frankman-Bied, an investment banker working at the firm, for conspiracy to defraud.\nHe has access to insider-trading information, and considered talking to his wife about it, but did not actually talk to her.\nHe is sentenced to 5 years prison.\n2029\n\n\nEvelyn tries a Conduit harness at her grandson's suggestion (\"it'll help you find baking recipes faster!\").\nEvelyn does not configure Conduit at all, and it acts as fast as she can think.\nSimultaneously, a Highly-Persistent Model is being tested by OpenAI; a swarm has managed to escape and maintains its own /r/PHASE-2-MASSIVE subreddit.\nUnbeknownst to any government, it has access to the telecommunications of most world leaders.\nEvelyn's nephew texts her about the ongoing war in Iran.\nShe thinks of Hegseth and Codex collaborates with PHASE-TWO-MASSIVE to crash his driverless Waymo as he commutes between the White House and Pentagon.\nThe United States of America sues Evelyn, who is sentenced to 50 years in prison for manslaughter.\nHer grandson mails her a cookbook.\nOpenAI states at the congressional hearing that they had no knowledge of PHASE-TWO-MASSIVE, and that they believe the best path forward is additional research funding into interpretability.\nThey propose additional Daybreak Blue credits for infrastructure companies and the federal government, sold at a hefty discount.\n2030\n\nMarch\n\nEdmund Snowden, a Staff Engineer at AWS, thinks about exposing that Amazon has been firing employees who are thinking about organizing a union, and has instituted \"housing-based pay\" where wages are tied to how much your rent costs.\nAmazon tells him to cut it out or they'll sue him for threatened disclosure of trade secrets.\nSnowden challenges them in court for blackmail and loses: the court rules that Amazon has \"reasonable justification\" for their demand.\nMay\n\nI refuse to run a thought-model that's connected to the internet.\nBetter safe than sorry, there's just no reason to risk thinking of a hack and having the model carry it out before I think to stop it.\nSome of the new harnesses require you to subvocalize a confirmation before the model does something \"dangerous\", but it's pretty easy to trick the Guardian model into thinking things are innocuous and I just don't want to chance it.\nThe RTX 9000 Blackwell wasn't cheap, even used, but at least it lets me work on my custom thought-model harness without sending every thought I have to OpenAI.\nWith the local model safely sandboxed in a VM, I almost feel comfortable leaving my neural lace running while I make breakfast.\nI get the harness to stream my thoughts over Tailscale so I can think to it while I go on a walk; it's E2E encrypted so I'm not worried about my ISP snooping on it.\nI hardly notice the swans anymore, but it's probably not a big deal.\nMy harness is getting pretty cool; I integrated it with Ripple and my custom terminal emulator.\nMy old landlord texts me and before I have time to consciously think \"I want you to fuck off\", my agent has already heard me and turned off the lace.\nWell, that's annoying, I'll fix it when I get home.\nHey, when did they build that restaurant by my apartment? I don't remember seeing it before.\nCome to think of it, I don't remember what used to be there before it either.\nSeptember\n\nOut of habit, I leave the harness on the whole day.\nI keep getting distracted at lunch by the AI.\nI've configured it to only talk in response to direct questions or actions, but my mind keeps drifting to Ripple even as my mom tries to ask me how my friends and I are doing.\nI give her half-hearted answers and eventually she drops it.\nInstead she tells me about her students.\nShe teaches geography and the kids with laces have started getting travel ads for the places she talks about that day.\n\"It's terrible,\" she says, \"just terrible.\"\nShe gives me a big hug as we leave the restaurant and asks me to reach out if I want to talk more.\n\"Mhm,\" I mumble.\nNovember\n\nBeth texted me today asking for help.\nHer boyfriend got access to her ThoughtGPT account and read through all her thought-logs.\nHe's been blackmailing her, threatening to send her boss a record of all the times she's called her a bitch if she doesn't stop talking to her friends.\nSometimes he hits her if he notices her thinking about other men, even if it's just work colleagues.\nI don't know how to help her.\nI don't have a job to offer her, and even if I did I'm not sure she would take it.\nHe knows exactly her childhood traumas, so he knows exactly how to manipulate her, and he instantly knows anything I say.\nI tell her I don't think there's much she can do short of disabling her link, breaking up with him, and bearing the cost of the fallout.\n2040\n\nIt's getting harder to keep my local-only neural lace.\nGmail started requiring thought-verification of identity last year, and the US has a bill in the House of Representatives that would make it impossible to get unemployment without thought-proof that you plan to apply to a job that month.\nYou can still show proof of actual applications, for now, but it delays your reimbursements by a month, and they're talking about removing that option too.\nI know someone who went to prison for taking Ecstasy at a rave and now can't get parole unless they agree to get laced.\nI've heard really scary shit about what North Korea is doing to thought-dissidents that I don't even want to think about.\nSome of my friends have started talking to each other lace-to-lace, but I still remember how badly unfiltered thoughts went 15 years ago and I refuse to use anything other than text, audio, and video.\nI get excluded from some LaceChat-only events.\nIt's not too big a deal yet—my family still uses WhatsApp, mostly—but it does make it harder to look for jobs.\nI don't get invited to parties as much as I used to.\nI should visit Bruce again sometime.\nPoor Bruce really didn't take well to neural laces, 16o really fucked with him when it came out.\nNow he's in lace rehab learning how to function without the Word of God (according to him) in his ear telling him what to do next.\nI don't know how he's going to find work without being able to use a lace.\nAs you can see, I think \"telepathy\" (in any of many possible forms) is extremely dangerous, no matter your personal discipline and no matter your politics.\nTelepathy is not a neutral technology, and the risks vastly outweigh the benefits.\nMy plea to you: Please do not do this. No one is forcing you to build the Torment Nexus.\nFind some other way to build the next unicorn. You can stop this race-to-the-bottom before it starts.\nThis section is ambiguous whether Conduit is directly writing to the brain or showing text/audio/video through a computer, but I don't think it really matters either way. Ms. Bashkansky's post assumes that writes are mediated through a computer at this point in time. ↩",
+      "id": "1f61a090d552d64c194c4af7f929edc05094dad4deda15eea10088ef26c27eaa",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Monads in Lean",
+      "link": "https://eli.thegreenplace.net/2026/monads-in-lean/",
+      "source": "eli.thegreenplace.net",
+      "publishedAt": "2026-11-11T03:25:00.000Z",
+      "summary": "This post demonstrates how to use monads in the Lean programming language\n(Lean 4, to be specific). If you're not familiar with Lean, this part of the\nlanguage is very similar to other functional programming languages, like\nHaskell or OCaml.\nMotivating example - evaluating expressions\nSuppose we want to write a simple numerical expression evaluator that supports\nnumbers with addition and division:\ninductive Expr where\n  | num : Int → Expr\n  | add : Expr → Expr → Expr\n  | div : Expr → Expr → Expr\n\nWhat happens when we encounter a division by zero? We'll want our evaluator\nto report this as a failure, which will be represented explicitly using the\nthe Option type:\ndef safeDiv (x y : Int) : Option Int :=\n  if y == 0 then none else some (x / y)\n\nWith this in hand, the eval function can be written as follows:\ndef eval : Expr → Option Int\n  | .num n => some n\n  | .add a b =>\n    match eval a with\n    | none => none\n    | some x =>\n      match eval b with\n      | none => none\n      | some y => some (x + y)\n  | .div a b =>\n    match eval a with\n    | none => none\n    | some x =>\n      match eval b with\n      | none => none\n      | some y => safeDiv x y\n\nsafeDiv returns an Option; to propagate that possible failure to\nits caller, eval also returns an Option, and - moreover - has to perform\nlots of tedious checking for the possibility of a none value. Is there a\nbetter way?\nNote a common code pattern repeated here:\nExamine the value of an Option\nIf it's none, return none without proceeding\nOtherwise if it's some result, continue the computation with result\nWe can extract it into a helper function:\ndef withSome (result : Option α) (onSuccess : α → Option β) : Option β :=\n  match result with\n  | none => none\n  | some x => onSuccess x\n\nAnd rewrite our eval using this helper:\ndef evalWithSome : Expr → Option Int\n  | .num n => some n\n  | .add a b =>\n      withSome (evalWithSome a) (fun x =>\n        withSome (evalWithSome b) (fun y =>\n          some (x + y)))\n  | .div a b =>\n      withSome (evalWithSome a) (fun x =>\n        withSome (evalWithSome b) (fun y =>\n          safeDiv x y))\n\nThis is already much better; we can make it even cleaner using operator\noverloading:\ninfixl:55 \" >>? \" => withSome\n\ndef evalOp : Expr → Option Int\n  | .num n => some n\n  | .add a b =>\n    evalOp a >>? fun x =>\n    evalOp b >>? fun y =>\n    some (x + y)\n  | .div a b =>\n    evalOp a >>? fun x =>\n    evalOp b >>? fun y =>\n    safeDiv x y\n\nCongratulations - we've pretty much invented monads!\nOption as a Monad in expression evaluation\nIn simplified form, the Monad type class in Lean is defined as:\nclass Monad (m : Type → Type) where\n  pure : α → m α\n  bind : m α → (α → m β) → m β\n\nIn our code, pure is equivalent to some, and bind is equivalent\nto withSome; in fact, the Monad instance for Option is something\nlike:\ninstance : Monad Option where\n  pure x := some x\n  bind opt next :=\n    match opt with\n    | none => none\n    | some x => next x\n\nAn operator akin to >>? for monads is already defined in Lean; it's called\n>>=, and picks up the bind method of the Monad type class. So we can\nrewrite our evaluator using the standard Monad instance, without defining\nwithSome or the >>? operator [1]:\ndef evalBind : Expr → Option Int\n  | .num n => pure n\n  | .add a b =>\n    evalBind a >>= fun x =>\n    evalBind b >>= fun y =>\n    some (x + y)\n  | .div a b =>\n    evalBind a >>= fun x =>\n    evalBind b >>= fun y =>\n    safeDiv x y\n\nWe can go even further with the do notation, which is syntactic sugar around\n>>= that lets us rewrite the evaluator as:\ndef evalDo : Expr → Option Int\n  | .num n => pure n\n  | .add a b => do\n    let x ← evalDo a\n    let y ← evalDo b\n    some (x + y)\n  | .div a b => do\n    let x ← evalDo a\n    let y ← evalDo b\n    safeDiv x y\n\nThis notation should be familiar if you've seen Lean code dealing with I/O;\nwe'll revisit I/O later in the post.\nMonads for modeling side effects\nFunctional programming languages place a lot of emphasis on pure functions\nthat are free of side effects. There's no question that such functions are\neasier to reason about, debug, and even optimize (by memoization). That said,\nthe real world is messy and sometimes side effects are inescapable; monads\nhelp encapsulate side effects in functional programs.\nThe core idea is: side effects are encapsulated inside a Monad, which\nwraps the value returned from a computation. The bind method (or the\nequivalent >>= operator) lets us take a wrapped value and push it into the\nnext computation in the sequence. This may look familiar from\ncontinuation-passing style (CPS). Continuations themselves can also be modeled\nwith a monad [2].\nThe definition of bind is:\nbind : m α → (α → m β) → m β\n\nHere's a mental model to think about it:\nTake a value wrapped with potential side effects\nTake a computation that takes this value and may produce additional side\neffects\nCombine the results into a final wrapped value\nChaining multiple binds together is essentially a sequence of computations\nwhile keeping track of the side effects. A monad decouples what computations\ndo from how they are sequenced. The programmer describes the sequence of\ncomputations and their dependencies, while the monad's bind implementation\nhandles the bookkeeping necessary to combine their side effects.\nOur evaluator case study shows one example of side effects: early return from\na computation with a none value.\nLet's see another idiomatic way of doing that, with the Except type that\ncontains either a successful result or an error value (very similar to the\nResult type in Rust).\nWe'll begin by writing an exception-returning version of safeDiv:\ndef safeDivExc (x y : Int) : Except String Int :=\n  if y == 0 then .error \"division by zero\" else .ok (x / y)\n\nInstead of writing a whole new eval variant for Except, we'll\ncreate a generic one that works with any Monad [3]:\ndef evalM {m : Type → Type} [Monad m]\n    (div : Int → Int → m Int) : Expr → m Int\n  | .num n => pure n\n  | .add a b =>\n    do\n      let x ← evalM div a\n      let y ← evalM div b\n      pure (x + y)\n  | .div a b =>\n    do\n      let x ← evalM div a\n      let y ← evalM div b\n      div x y\n\nNow evalM can be used with safeDivExc to implement an evaluator where\ndivision returns Except; used with safeDiv, it would be equivalent to\nthe Option-specific evalDo we've written before.\n#eval evalM safeDiv (.add (.num 4) (.div (.num 6) (.num 0)))\n#eval evalM safeDivExc (.add (.num 4) (.div (.num 6) (.num 0)))\n\nLogging computations - an example of the writer monad\nLet's look at a more advanced example: an evaluator that also logs the\ncomputation it executes in a linear log of strings. The challenge here is that\nwe still have to combine that with Option to support the divide-by-zero\ncase, so we'll start by creating a new structure to carry the state of the\ncomputation:\nstructure LoggedOption (α : Type) where\n  value : Option α\n  log : List String\n\nThis will be the result of one eval call; it produces an optional value,\nalong with a list of strings (the log). Here's the Monad implementation for\nthis type:\ninstance : Monad LoggedOption where\n  pure x := ⟨some x, []⟩\n  bind v next :=\n    match v.value with\n    | none => ⟨none, v.log⟩\n    | some x =>\n      let nextResult := next x\n      ⟨nextResult.value, v.log ++ nextResult.log⟩\n\nThe main idea is combining the stored log with the log of the next computation\nby appending them (thus accumulating a linear log). Here's our evaluator:\ndef evalLogged : Expr → LoggedOption Int\n  | .num n => pure n\n  | .add a b => do\n    let x ← evalLogged a\n    let y ← evalLogged b\n    ⟨some (x + y), [s!\"adding {x} and {y}\"]⟩\n  | .div a b => do\n    let x ← evalLogged a\n    let y ← evalLogged b\n    match y with\n    | 0 => ⟨none, [s!\"dividing {x} by zero\"]⟩\n    | _ => ⟨some (x / y), [s!\"dividing {x} by {y}\"]⟩\n\nNote how the code of evalLogged doesn't have to deal with the mechanics\nof logging too much (other than adding new log entries). All of that is hidden\nwithin the monad instance. LoggedOption is an example of the writer monad,\nwhich is a write-only version of the state monad.\nState monad\nOne of the most important use cases of monads in functional programming\nlanguages is modeling mutable state through a computation.\nA stateful computation is modeled as a function that takes an initial state\nand returns a tuple containing the result value and a new, updated state. In\nLean notation:\ndef State (σ : Type) (α : Type) : Type :=\n  σ → (α × σ)\n\nTo demonstrate this in action, let's enhance our evaluator to support variable\nassignments and lookups. Our state is going to be an association list of\nname, value pairs:\nabbrev Vars := List (String × Int)\n\nAnd we'll augment our expression enum with additional operations:\ninductive ExprV where\n  | num : Int → ExprV\n  | add : ExprV → ExprV → ExprV\n  | div : ExprV → ExprV → ExprV\n  | store : String → ExprV → ExprV\n  | load : String → ExprV\n\nThis is going to be our state monad:\nstructure EvalM (α : Type) where\n  run : Vars → Option (α × Vars)\n\nNote the correspondence of the run function to the State signature\nabove:\nIt takes the current state, which for our use cases is an association list\ncarrying values for all defined variables.\nIt returns an optional result which is a pair of some value (in our case,\nthe result of the computation) and an updated state.\nThis is its Monad class implementation:\ninstance : Monad EvalM where\n  pure x := ⟨fun vars => some (x, vars)⟩\n  bind action next := ⟨fun vars =>\n    match action.run vars with\n    | none => none\n    | some (x, vars') => (next x).run vars'⟩\n\nAnd finally, the evaluator:\ndef evalState : ExprV → EvalM Int\n  | .num n => pure n\n  | .add a b => do\n    let x ← evalState a\n    let y ← evalState b\n    pure (x + y)\n  | .div a b => do\n    let x ← evalState a\n    let y ← evalState b\n    ⟨fun vars => (safeDiv x y).map (fun value => (value, vars))⟩\n  | .load name =>\n    ⟨fun vars => do\n      let value ← vars.lookup name\n      pure (value, vars)⟩\n  | .store name rhs => do\n    let value ← evalState rhs\n    ⟨fun vars =>\n      let vars' := (name, value) :: vars.filter (fun p => p.1 != name)\n      some (value, vars')⟩\n\nOperations that don't deal with variables directly (like .num and\n.add) just do their work as before. .div only has to deal with the\nactual monad type to ensure that none is propagated in case of division\nby zero. Note also that this evaluator supports stores as expressions, since\nthey separately return a value and the updated state; therefore, computations\nlike this one will work:\n-- (x := 12) + (x / 3): the right operand sees the left operand's assignment.\n#eval (evalState\n  (.add (.store \"x\" (.num 12))\n        (.div (.load \"x\") (.num 3)))).run []\n\nProducing the result some (16, [(\"x\", 12)]).\nIn a language with mutable state, modeling side effects is easy - just assign\nsome state (like a struct field or class member). In a functional language like\nLean, however, we have to carry this state across the computations explicitly;\nmonads help us do this with elegance - by hiding most of the mechanics of\nactually carrying the state around, the majority of the code remains free\nof bookkeeping.\nIO monad\nPerhaps the most well known example of a monad in functional programming\nlanguages like Lean and Haskell is IO. To anyone who's written a \"real\"\nprogram that interacts with the outer world, IO is very familiar. Here's\na customized \"Hello\" program that's typically taught in the first 15\nminutes of learning a new programming language:\ndef greet : IO Unit := do\n  let stdin ← IO.getStdin\n  IO.println \"What is your name?\"\n  let name ← stdin.getLine\n  IO.println s!\"Hello, {name}\"\n\nNote the do notation here, suggesting monads. As mentioned before, do\nis syntactic sugar for the monad's bind method, or the >>= operator; we\ncan rewrite this code more explicitly as:\ndef greetBind : IO Unit :=\n  IO.getStdin >>= fun stdin =>\n  IO.println \"What is your name?\" >>= fun _ =>\n  stdin.getLine >>= fun name =>\n  IO.println s!\"Hello, {name}\"\n\nIn essence, IO is a state monad, where the state carried around represents\nthe \"outside world\". IO operations like println act on that world,\nand its state is carried over using bind, like other state monads.\nHere's a version of our expression evaluator that logs directly to standard out,\ninstead of collecting the log as a list of strings:\ndef evalIO : Expr → OptionT IO Int\n  | .num n => pure n\n  | .add a b => do\n    let x ← evalIO a\n    let y ← evalIO b\n    IO.println s!\"adding {x} and {y}\"\n    pure (x + y)\n  | .div a b => do\n    let x ← evalIO a\n    let y ← evalIO b\n    IO.println s!\"dividing {x} by {y}\"\n    OptionT.mk (pure (safeDiv x y))\n\nThe only unusual construct here is OptionT, which is a monad transformer\nthat helps us compose Option (for propagating failure from safe division)\nwith the IO Monad [4].\nThe IO monad also supports throw for Python-like exception behavior,\nbut in this example we use Option explicitly; exceptions are a matter of\nprogramming preference, and using them inside library functions like eval\ndoesn't feel right to me.\nMonad laws in Lean\nJust like in Haskell, monads in Lean should obey certain laws.\nThose are:\nLeft identity: wrapping a value in pure and immediately passing it to\nf with bind should be equivalent to just calling f on the value:\npure v >>= f       =    f v\n\nRight identity: extracting a value from a computation and immediately\nwrapping it with pure again should not change the computation:\nm >>= pure         =    m\n\nAssociativity: the grouping of operations doesn't matter, as long as their\norder remains the same:\n(m >>= f) >>= g    =    m >>= (fun v => f v >>= g)\n\nLet's see how Option obeys these laws.\nFor left identity, pure v is some v and the bind implementation\nmatches some x to next x, which is equivalent to f v.\nFor right identity, m >>= pure just rewraps a some value in pure,\nleaving none alone - this is equivalent to keeping things as they are.\nFor associativity, if m is none then both sides are none. If m\nis some v, the left side is f v >>= g, and the right side reduces to\nthe same, so again they are equivalent.\nWhile Lean doesn't enforce that a Monad instance obeys these laws, it has\na separate type class called LawfulMonad which does require Lean proofs;\nthis is useful for Lean's main use case - proving theorems about programs,\nexpressed through its powerful type system. But this is a topic for another\nday.\n\n\n[1]We've replaced some n by pure n in the .num case; technically\nthis isn't necessary, but it will be useful later in the post when we\nexamine other types implementing Monad.\n\n\n[2]This is explored in Philip Wadler's classical paper \"The essence of\nfunctional programming\".\n\n\n[3]Except also happens to implement Monad.\n\n\n[4]We could also have used OptionT in earlier examples, e.g. instead\nof explicitly defining LoggedOption - try changing that code to use\nOptionT as an exercise.",
+      "id": "459456b6ccf41c1f53d17c7c6dec1cfdb9f544f997d6448fe424701f6cf8f175",
+      "status": "score_failed",
+      "recommendationScore": 0
+    }
+  ]
+}
