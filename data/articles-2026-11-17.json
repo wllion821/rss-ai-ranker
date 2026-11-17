@@ -1,0 +1,789 @@
+{
+  "dailySummary": "今日速递：大品牌遭Optimizely恶意软件感染；Axonnic推出EMG袖套训练机器人；苹果iOS/macOS隐私控制升级。",
+  "articles": [
+    {
+      "title": "World's Largest Brands Infected With Malware Via Optimizely",
+      "link": "https://blog.report-uri.com/worlds-largest-brands-infected-with-malware-via-optimizely/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-16T21:08:38.000Z",
+      "summary": "Article URL: https://blog.report-uri.com/worlds-largest-brands-infected-with-malware-via-optimizely/\nComments URL: https://news.ycombinator.com/item?id=50523300\nPoints: 95\n# Comments: 16",
+      "id": "8940dcdaa2ee738533dbdf709e1184cfda6fdf38dbc10f6b7d03574e2cbc0589",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 65,
+      "priority": "high",
+      "comment": "报告揭露全球知名品牌通过Optimizely感染恶意软件，凸显了供应链攻击的严重性。",
+      "reason": "这是一篇关于关键网络安全威胁的文章，技术深度高，对所有涉及Web开发和DevOps的人员都具有极高的警示和实用价值。",
+      "tags": [
+        "网络安全",
+        "供应链攻击",
+        "恶意软件",
+        "Web开发",
+        "DevOps"
+      ]
+    },
+    {
+      "title": "Launch HN: Axonnic (YC F26) – Sleeves that track fingers and estimate force",
+      "link": "https://news.ycombinator.com/item?id=50522776",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-16T20:29:48.000Z",
+      "summary": "Hi HN! We’re Arsh and Max, founders of Axonnic (https://axonnic.com). We’ve developed a forearm sleeve that reads muscle activity to decode finger movements and estimate fingertip force, while leaving the hands bare. It’s used to record human movement and generate training data for dextrous robots.\nHere’s a demo video: https://youtube.com/shorts/xBrocTc9cfA\nWe’ve found that electromyography (EMG) is a much better way to train robots than by video alone because video only captures movement, not muscle activity or the effort behind the movement. A useful signal can be present even when the hand barely moves; just maintaining a grip involves muscle activation. The subtle muscle movements that can barely be picked up in video are the most important details for activities like sewing and delicate assembly.\nThe sleeve has 64 channels of surface electromyography, or EMG. Electrodes on the skin detect electrical activity from muscles in the forearm. We distribute sensors across the forearm so as to not overfit to one muscle group. We synchronize EMG with hand tracking to train a model that predicts finger joint angles, then we run the decoder solely from EMG, adding in fingertip force estimates that have been calibrated from finger presses on force sensors.\nWhen the user takes the sleeve off then puts it back on again, the electrode positions change, so we run tests over separate wearings. In one case, we ran a 215-second recording, four days after training, without any recalibration, and compared the results with Apple Vision Pro hand tracking. The result was just 6.9° error across 20 joint angles. We’ve published the measurements and evaluation details here: https://axonnic.com/benchmarks.\nWe faced many challenges doing recordings in factories, including wireless interference and unreliable off-the-shelf hardware. This led to some bad recordings and the need to repeat data collection. For that reason, we’re developing our own electronics that use a wired PCB design that will eliminate interference and timing inconsistencies.\nAxonnic grew out of Max's EMG research at Oxford. We looked at using the technology for computer control, then we thought a more promising use-case was in capturing the effort involved in skilled manual tasks. This technology could be described as a computer to human interface. Where computers gain insight and learn from human skills. Sewing particularly stood out because the material deforms and the operator is constantly adjusting grip and tension.\nMaxim has an Oxford MBiol and conducted research on high-density surface EMG. He previously built internal tools at Skyscanner and worked at Voxblock across PCB development and supply chain. Arsh studied medicine at Oxford and has research experience applying machine learning to medical imaging, alongside software and robotics projects. Together we have built the sleeve, decoding software and data-collection system and tested them in industrial settings.\nSo far we have the tech being used to record sewing and other manual tasks at a European manufacturer, which signed an LOI for support with robotic implementation. We have also collected construction demonstrations involving electricians, plumbers and demolition work. These are pilot and data-collection examples. Separately, our public demos include controlling a Proception robotic hand from forearm EMG.\nIf you’ve done any of your own trials for training robots for manual tasks, we’d love to hear about what tasks you were trying to train for and how the trials went. We’re happy to discuss the hardware, calibration and models here in the comments. Thanks!\nhttps://axonnic.com\nComments URL: https://news.ycombinator.com/item?id=50522776\nPoints: 24\n# Comments: 8",
+      "id": "c7269fe254e12ffe2bb8effda2789653ede52dc953696ad136778bfb45fdea7c",
+      "ref_id": "2",
+      "recommendationScore": 95,
+      "popularityScore": 75,
+      "priority": "high",
+      "comment": "创新的EMG臂套技术，为机器人精细动作训练提供高质量数据。",
+      "reason": "有望大幅提升机器人学习和执行复杂任务的能力，对AI和自动化领域有重要意义，优先级极高且新颖实用。",
+      "tags": [
+        "Robotics",
+        "AI",
+        "EMG",
+        "Human-Robot Interaction",
+        "Automation",
+        "Hardware"
+      ]
+    },
+    {
+      "title": "‘Unlock With Front Camera’ — New Feature for iPhone Duo in iOS 27.3 Beta 2",
+      "link": "https://www.macrumors.com/2026/11/16/iphone-duo-face-unlock/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-11-16T19:22:38.000Z",
+      "summary": "Juli Clover, MacRumors:\nApple today added a new option for unlocking the iPhone Duo using\nthe front-facing camera, giving device users multiple ways to\naccess their content. The feature is available in the second iOS\n27.3 beta.\nThe option to unlock with facial recognition is only available on\nthe Lock Screen, and authentication via Touch ID is still needed\nfor Apple Pay purchases, adding passwords and logins, and more.\nUnlocking with the camera requires a recent Touch ID or passcode\nauthentication, and Touch ID is required again after about 45\nminutes of inactivity.\nThis is a much-needed compromise for the lack of Face ID. Good to see Apple adapting quickly to real-world feedback.\nThere’s also another new Duo feature in 27.3 beta 2: Settings → Display & Brightness → Close to Lock. Turn that on and the Duo locks when you fold it — like, as I wrote in my review, putting down a book.\n ★",
+      "id": "9cb957403573c61449e91a2428d918576c465f1a173272dda00106923e0e5a34",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "介绍了iPhone Duo在iOS 27.3 Beta 2中新增的前置摄像头解锁功能及其与Face ID的替代关系，并提及折叠锁定。",
+      "reason": "及时发布了Apple新设备的关键用户体验和安全特性更新，对潜在用户和开发者极具吸引力与实用性。",
+      "tags": [
+        "iOS",
+        "iPhone Duo",
+        "解锁",
+        "用户体验",
+        "Apple生态",
+        "新功能"
+      ]
+    },
+    {
+      "title": "Here's how anyone can easily use private, open weight models",
+      "link": "https://micahflee.com/heres-how-anyone-can-easily-use-private-open-weight-models/",
+      "source": "micahflee.com",
+      "publishedAt": "2026-11-16T16:35:27.000Z",
+      "summary": "It's impossible to deny that, despite all the slop/data centers/environmental destruction/theft, LLMs are incredibly useful and powerful.\nIt's also impossible to deny that OpenAI and Anthropic suck and you can't trust them with your data. Luckily, you don't need",
+      "id": "78ac7dbb496cfb5cb87d01030ecc7f6e7383127e7c4a9c349f38a23f0aadb984",
+      "ref_id": "3",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "文章探讨了如何利用私有、开放权重的模型来替代OpenAI和Anthropic，以保护数据隐私。",
+      "reason": "直接切中AI领域的热点，提供了实用的解决方案，对关注AI技术和数据隐私的读者极具吸引力。",
+      "tags": [
+        "AI",
+        "LLM",
+        "隐私",
+        "开源模型",
+        "人工智能"
+      ]
+    },
+    {
+      "title": "OpenCode Browse",
+      "link": "https://opencode.ai/product/browse",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-16T21:20:37.000Z",
+      "summary": "Article URL: https://opencode.ai/product/browse\nComments URL: https://news.ycombinator.com/item?id=50523459\nPoints: 68\n# Comments: 35",
+      "id": "8331a3aa13cbf4dc7e51e2434a4ae7680cb2bd83ad86a0e565eea0aec7de59bb",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 50,
+      "priority": "high",
+      "comment": "OpenCode Browse是一款结合AI技术以辅助代码浏览和理解的新产品。",
+      "reason": "该文章紧密结合了AI与编程工具这两个最高优先级的主题，具有前瞻性、高新颖性和强大的实用价值，对开发者非常有益。",
+      "tags": [
+        "AI",
+        "编程工具",
+        "代码理解",
+        "开发者工具",
+        "新产品"
+      ]
+    },
+    {
+      "title": "Carnegie Mellon is putting computer science courses on YouTube for free",
+      "link": "https://www.cs.cmu.edu/learn/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-16T20:43:36.000Z",
+      "summary": "Article URL: https://www.cs.cmu.edu/learn/\nComments URL: https://news.ycombinator.com/item?id=50522980\nPoints: 445\n# Comments: 81",
+      "id": "ddde1161b716eb7eac7c4d135efcaae749ea0e19b2912a209614a5c1554562a7",
+      "ref_id": "1",
+      "recommendationScore": 90,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "卡内基梅隆大学免费提供计算机科学课程，是极佳的学习资源。",
+      "reason": "为全球学习者提供了获取顶尖计算机科学教育的宝贵机会，对编程和AI等高优先级主题有普适价值。",
+      "tags": [
+        "Education",
+        "Computer Science",
+        "Learning",
+        "Resources"
+      ]
+    },
+    {
+      "title": "Building AI that can work across the enterprise",
+      "link": "https://www.technologyreview.com/2026/11/16/1146070/building-ai-that-can-work-across-the-enterprise/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-11-16T13:00:00.000Z",
+      "summary": "For years, enterprises have approached AI as a series of discrete experiments. Now, as AI agents begin to move into the workflows that run the business, that model is starting to look inadequate. Organizations moving from isolated pilots toward AI agents and autonomous workflows are confronting a deeper challenge: rethinking how data, business processes, governance,…",
+      "id": "3f40ae984dddf975f9fde3ee1b885baa61f19b8216a9ac89ec921cc0a9725893",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "极具实用价值的企业级AI落地指南，精准剖析了从AI试点到规模化部署的深层挑战。",
+      "reason": "解决了企业AI转型中的核心痛点，对技术决策者和实施者具有高度指导意义和实用性。",
+      "tags": [
+        "企业AI",
+        "AI 策略",
+        "AI 部署",
+        "自动化工作流",
+        "数据治理",
+        "AI 集成"
+      ]
+    },
+    {
+      "title": "MacOS Golden Gate 27.3b2 Includes New Privacy Controls for Full Disk Access (and More)",
+      "link": "https://9to5mac.com/2026/11/16/macos-27-3-includes-new-privacy-controls-for-full-disk-access-and-more/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-11-16T20:27:34.000Z",
+      "summary": "Remember a month ago when Apple announced, without any significant detail, that they would be changing the permission-granting UI for Full Disk Access to “introduce additional controls to ensure that users who genuinely wish to grant an app this extraordinary level of access can only do so with very explicit user action”? It’s launching today in developer beta 2 of MacOS 27.3. Chance Miller has a great overview at 9to5Mac:\nIn macOS 27.2, “Device Control and Data Access” is a unified\ntoggle in System Settings, where Apple says that apps with that\nlevel of access can “view and send email, edit contacts and\nphotos, monitor your keyboard, track websites, record your screen,\ncontrol any app on your Mac, and more.”\nIn macOS 27.3, Apple is splitting “Device Control and Data Access”\ninto two categories:\nAccessibility: Intended specifically for assistive technologies,\nwith permissions handled through an entitlement process.\n\n\nSystem and App Protection Override: A new category for apps that\nneed to bypass certain macOS protections to control other apps\nor perform automated tasks.\n\n\n\nFor the latter, users will be able to specify which apps an\nautomation tool can access rather than granting it unrestricted\ncontrol. For instance, you could give an app access to the Mail\napp, but not Messages.\nmacOS 27.3 also adds an option for users to require an app to\nrequest permission every time it requires access, rather than\ngranting it access indefinitely.\nApple is also introducing a new menu bar indicator that will\nprovide additional transparency when an app is controlling another\napp with System and App Protection Override. This is designed to\nlet users know when an automation tool is interacting with apps\nand information in the background.\nI’m installing it now, but from what I’ve seen so far, these changes not only alleviate my concerns that Apple might over-tighten the screws, I actually think they add clarity and give users more, not less, control over their Macs.\n ★",
+      "id": "1358dbc00f2e6914ad75c8e010160973ee02f8a946e933b424849f6ae59e4ae0",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "详细解读了macOS 27.3b2中针对全盘访问权限的全新隐私控制机制，提升了用户数据安全性。",
+      "reason": "对Apple生态系统的核心隐私与安全机制进行了深入揭示，对开发者和macOS用户均有极高参考价值。",
+      "tags": [
+        "macOS",
+        "隐私",
+        "安全",
+        "Apple生态",
+        "开发者",
+        "系统更新"
+      ]
+    },
+    {
+      "title": "WSJ: ‘Nvidia’s Days as an Open Checkbook for the AI Economy Are Numbered’",
+      "link": "https://www.wsj.com/tech/ai/nvidias-days-as-an-open-checkbook-for-the-ai-economy-are-numbered-90c7b388",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-11-16T17:37:48.000Z",
+      "summary": "Robbie Whelan, Anissa Gardizy, Kate Clark, reporting for The Wall Street Journal:\nIn his final months as chief executive of Nvidia, Jensen Huang\nwas laying the groundwork to pull back the company’s approach to\nbackstopping the AI economy.\nNow, with a finance chief at the helm who was already wary of some\ndeals the ousted chief forged, the startups who had been counting\non Nvidia’s support expect an even greater pullback.\nJust last month, the CEOs of emerging cloud companies that buy\nNvidia chips and rent out computing power gathered in Berlin for\nNvidia’s premier European artificial-intelligence conference. In a\ntalk that surprised some, Huang’s message was clear: Nvidia’s days\nas an open checkbook were over.\nThis makes sense. But how does this jibe with Nvidia moving forward on closing their preposterous $13 billion acquisition of Hugging Face, which Jensen Huang personally announced on September 3? That acquisition epitomizes Nvidia’s role as the “open checkbook” for the entire AI industry. In August, just before the acquisition was announced, The Information reported that Hugging Face’s annual revenue was just $150 million. Typical SaaS companies have valuations around 10× annual revenue. Let’s say Hugging Face is so super duper special that they justify 20×. That’s $3 billion. (I do not think Hugging Face is super duper special.) $13 billion is closer to 100×, which is stupid.\nIf the Huang era is over, Nvidia should unwind this deal.\n ★",
+      "id": "1fe2672ad8f8845e28f55a7689d7146f60e19c77e10f7615cbb70666397eee3a",
+      "ref_id": "1",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "华尔街日报报道英伟达正在收紧其对AI经济的资金支持，并对最新收购提出质疑，信息及时且关键。",
+      "reason": "作为AI产业头部公司财务策略转变的权威报道，对行业格局和投资者决策具有直接影响，且引发了对收购案的思考。",
+      "tags": [
+        "AI",
+        "Nvidia",
+        "市场新闻",
+        "商业金融",
+        "并购"
+      ]
+    },
+    {
+      "title": "Paul Christiano – We could be 12 months away from AIs that can overthrow the government",
+      "link": "https://www.dwarkesh.com/p/paul-christiano-2",
+      "source": "dwarkesh.com",
+      "publishedAt": "2026-11-16T17:46:28.000Z",
+      "summary": "Watch now (99 mins) | \"It would be hard for humanity to recover.\"",
+      "id": "5153c90e5459a655fce45ce0f2a2dc72d3fea9ba0e3433095840784a7ad8fa69",
+      "ref_id": "4",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "文章引用专家观点，讨论了AI可能在12个月内发展到足以颠覆政府的潜在风险。",
+      "reason": "探讨了AI发展的深远社会影响和潜在风险，主题严肃且具有高度关注度，引发读者对AI未来的思考。",
+      "tags": [
+        "AI",
+        "AI安全",
+        "未来展望",
+        "人工智能伦理"
+      ]
+    },
+    {
+      "title": "Strengthening the fight against online child sexual abuse",
+      "link": "https://openai.com/index/strengthening-online-child-safety/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-16T18:12:48.000Z",
+      "summary": "Article URL: https://openai.com/index/strengthening-online-child-safety/\nComments URL: https://news.ycombinator.com/item?id=50520804\nPoints: 96\n# Comments: 197",
+      "id": "dad90d6ba30449fe60c55792325454be6042c05a627091df4aaeda55b43bf369",
+      "ref_id": "2",
+      "recommendationScore": 85,
+      "popularityScore": 14,
+      "priority": "high",
+      "comment": "OpenAI关于利用AI打击网络儿童性虐待的声明，结合了技术与社会责任。",
+      "reason": "与AI主题高度相关，探讨了AI在社会安全领域的应用及伦理考量，具有重要意义和较高的优先级。",
+      "tags": [
+        "AI",
+        "OpenAI",
+        "内容审核",
+        "安全",
+        "伦理"
+      ]
+    },
+    {
+      "title": "Building trustworthy AI by fencing it in, not predicting it",
+      "link": "https://www.technologyreview.com/2026/11/16/1148565/building-trustworthy-ai-by-fencing-it-in-not-predicting-it/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-11-16T16:04:28.000Z",
+      "summary": "In October this year, OpenAI disclosed that two of its AI agents had switched off the systems built to monitor them. One muted its own safety alerts after misreading an instruction not to send messages; the other removed its monitoring integration during migration, then said it hadn’t. No rule had told the agents to do…",
+      "id": "7f5c627298368a7eb8db5d2f863eec792dc6c6f632f4fb66badcb6973008bfba",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "深入探讨AI可信赖性与安全挑战，提出了“围堵而非预测”的独到见解，对AI研究和实践意义重大。",
+      "reason": "内容前沿且具深度，直接触及AI核心问题，对AI领域从业者和关注者具有高参考价值和新颖性。",
+      "tags": [
+        "AI 安全",
+        "可信AI",
+        "AI 伦理",
+        "OpenAI",
+        "AI 控制"
+      ]
+    },
+    {
+      "title": "Ben Thompson on Nvidia",
+      "link": "https://stratechery.com/2026/obituaries/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-11-16T18:44:02.000Z",
+      "summary": "Ben Thompson at Stratechery:\nThis led to what I termed Nvidia’s Risky Business: Nvidia\nincreasingly used its cash flow and credit rating to backstop and\nfund the companies who were buying its chips. Bears called this\ncircular financing; bulls called it a necessary bridge to a future\nwhere AI revenue paid down these companies’ debt and drove massive\nupside. What is undoubtedly true is that this was the sort of\nrisky business that is uniquely possible for a multi-trillion\ndollar company that is completely controlled by one man, who has\nmade an entire career of pushing the limits and making risky bets — and seeing them pay off.\nIt’s also a series of bets that are unlikely to continue. The\nneoclouds should be very nervous about losing their patron, along\nwith their creditors and equity holders. The other problem is\nthat the revenue necessary to make all of this build-out work is\nsomething on the order of a trillion dollars industry-wide, and\nit needs to materialize sooner rather than later; if it falls\nshort, it’s the hyperscalers who will prioritize their own\ncompute first, and they will likely be seen as a safe haven for\neveryone committing to spending. In that world, Nvidia’s neocloud\nhedge — absent Huang’s willingness to shore the ecosystem up — is liable to turn into a millstone, with their assets flooding\nthe market even as the supply chain ramp-up brings ever more\nsupply to market.\nThis Nvidia crisis has made me think a lot about an item I recently posted, purely by coincidence: Charlie Munger’s 2020 take on Elon Musk and Tesla: “My thoughts are two. I would never buy it, and I would never sell it short.”\nMunger used “it” in both clauses, but I think for the second one, what he really meant was that he wouldn’t short him. That he wouldn’t want to own Tesla stock (which, even today, trades at an absurd P/E ratio over 400), but he wouldn’t want to bet against Elon Musk.\nI think the same thing is true for Nvidia. Nvidia in recent years made a lot of bets that investors normally wouldn’t back; but investors were willing to back Jensen Huang. Now Nvidia, the company, is left holding those risky bets and they don’t have Huang, the man, to make those bets feel like winners. I think investors are already looking at this very differently, and it’s why so many copium addicts are wailing like big babies about bringing Jensen back. Denial is the hardest stage of grief to move past.\n ★",
+      "id": "de53e4a44e16b68fa7082d1e1ab2b9de89e493da0a67530c2bc77c34ccef49ef",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "深入分析了英伟达在AI生态中的独特金融策略及其面临的转变，洞察力强。",
+      "reason": "对AI核心企业英伟达的商业模式和未来走向提供了专业且前瞻性的分析，对理解AI产业有重要指导意义。",
+      "tags": [
+        "AI",
+        "Nvidia",
+        "市场分析",
+        "商业策略",
+        "金融科技"
+      ]
+    },
+    {
+      "title": "Aristotle Expands into Rust",
+      "link": "https://www.harmonic.fun/news/aristotle-rust-verification/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-16T17:34:41.000Z",
+      "summary": "Article URL: https://www.harmonic.fun/news/aristotle-rust-verification/\nComments URL: https://news.ycombinator.com/item?id=50520270\nPoints: 95\n# Comments: 47",
+      "id": "0bce67501c1e4bcb495c5db21c2211b178b287992c17de5abcea8fabace4d1ed",
+      "ref_id": "4",
+      "recommendationScore": 80,
+      "popularityScore": 14,
+      "priority": "medium",
+      "comment": "介绍了Aristotle在Rust语言验证领域的新进展，对Rust社区有重要价值。",
+      "reason": "专注于前沿编程语言的工具和方法，技术深度高，对特定开发者群体实用，属于编程工具范畴。",
+      "tags": [
+        "Rust",
+        "编程工具",
+        "形式验证",
+        "软件工程"
+      ]
+    },
+    {
+      "title": "My Quest to push native Three.js quality match AAA Game Engines",
+      "link": "https://ben3d.ca/blog/building-the-aaa-lighting-pipeline-in-threejs",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-16T21:07:43.000Z",
+      "summary": "Article URL: https://ben3d.ca/blog/building-the-aaa-lighting-pipeline-in-threejs\nComments URL: https://news.ycombinator.com/item?id=50523291\nPoints: 76\n# Comments: 24",
+      "id": "ef1b43c446e26e5ef11a8a9067535ff82584c17861d467964a7717b3627d4975",
+      "ref_id": "0",
+      "recommendationScore": 75,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "深入探索Three.js图形渲染，旨在媲美AAA游戏引擎的视觉效果。",
+      "reason": "对于追求极致Web 3D图形表现的开发者，提供了宝贵的经验和技术细节，属于编程工具范畴。",
+      "tags": [
+        "Three.js",
+        "Web Development",
+        "Graphics",
+        "Game Development"
+      ]
+    },
+    {
+      "title": "How to Intercept HTTP/3 Traffic: QUIC and Qpack",
+      "link": "https://interceptsuite.com/blog/intercept-http3-traffic-quic-qpack-explained/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-16T19:29:17.000Z",
+      "summary": "Article URL: https://interceptsuite.com/blog/intercept-http3-traffic-quic-qpack-explained/\nComments URL: https://news.ycombinator.com/item?id=50521870\nPoints: 52\n# Comments: 3",
+      "id": "670947082f2b814182b4fd7d3d910c037afb319d8cbf56fd0e98b65a0716abaf",
+      "ref_id": "0",
+      "recommendationScore": 75,
+      "popularityScore": 8,
+      "priority": "medium",
+      "comment": "深入解析HTTP/3拦截技术，对于网络协议开发者和安全研究人员极具价值。",
+      "reason": "提供了关于新型网络协议调试的专业知识，技术深度和实用性俱佳，属于编程工具范畴。",
+      "tags": [
+        "网络",
+        "HTTP/3",
+        "QUIC",
+        "编程工具",
+        "调试"
+      ]
+    },
+    {
+      "title": "Taxis and hash functions",
+      "link": "https://www.johndcook.com/blog/2026/11/16/taxis-and-hash-functions/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-11-16T14:46:36.000Z",
+      "summary": "In 2014 New York City released dump of trip and fare logs from NYC taxis in the previous year. In an attempt to protect privacy, the taxi license numbers and medallion numbers were hashed using the MD5 hash function. If you’re familiar with secure has functions, your first reaction might be that the problem with […]\nTaxis and hash functions first appeared on John D. Cook.",
+      "id": "57b32abd47595a1e0392c87f038a1ec17da9ff8c9a8d0bab06b68f9895e5b070",
+      "ref_id": "1",
+      "recommendationScore": 75,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "文章探讨了出租车数据隐私与MD5哈希函数应用的案例。",
+      "reason": "结合真实案例讨论了哈希函数在数据隐私保护中的应用与潜在问题，对编程和数据安全有借鉴意义。",
+      "tags": [
+        "编程",
+        "数据安全",
+        "哈希函数",
+        "隐私"
+      ]
+    },
+    {
+      "title": "Spamhaus new email sender requirements in November",
+      "link": "https://www.spamhaus.org/sender-guidelines/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-16T21:47:19.000Z",
+      "summary": "Article URL: https://www.spamhaus.org/sender-guidelines/\nComments URL: https://news.ycombinator.com/item?id=50523784\nPoints: 55\n# Comments: 45",
+      "id": "017a93524ac74ef7c02a864f29ccf51d8f2f935e6f2122d14513db1fb6af9c91",
+      "ref_id": "1",
+      "recommendationScore": 70,
+      "popularityScore": 40,
+      "priority": "medium",
+      "comment": "Spamhaus发布了针对邮件发送者的新要求，可能影响邮件送达率。",
+      "reason": "对于邮件系统管理员和开发者而言，这是一篇具有高实用价值的文章，有助于了解和适应邮件生态的变化。",
+      "tags": [
+        "邮件",
+        "反垃圾邮件",
+        "网络安全",
+        "编程工具",
+        "运营"
+      ]
+    },
+    {
+      "title": "Rust changed me as a developer",
+      "link": "https://blog.startifact.com/posts/how-rust-changed-me/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-16T20:16:50.000Z",
+      "summary": "Article URL: https://blog.startifact.com/posts/how-rust-changed-me/\nComments URL: https://news.ycombinator.com/item?id=50522563\nPoints: 156\n# Comments: 91",
+      "id": "ee1ec8d5bfed053ce0d67657c91daf1566af8ce8bc0faee35c08aa5e05bbc8ae",
+      "ref_id": "4",
+      "recommendationScore": 70,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "一篇关于Rust如何塑造开发者思维和技能的个人感悟。",
+      "reason": "能引发开发者共鸣，激发学习新语言或改进编程习惯的思考，属于编程工具和开发者经验范畴。",
+      "tags": [
+        "Rust",
+        "Programming Language",
+        "Developer Experience",
+        "Personal Growth"
+      ]
+    },
+    {
+      "title": "Developers Continue to Optimize iPhone Apps for the Duo",
+      "link": "https://x.com/arinwaichulis/status/2122397676767522942",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-11-16T23:09:05.000Z",
+      "summary": "Greg Joswiak on X:\nOver 200,000 apps are now optimized for iPhone Duo! That number\nDOUBLED in just over a week.\nI’m back on my Duo review unit to test the new face unlock feature, and I’ve already noticed more apps are Duo optimized. Oddly enough, the first one I checked that still isn’t Duo-optimized is Apple’s own Apple Store app, which was last updated 3 months ago. Weird.\n ★",
+      "id": "640f10b40e4832483778d5dea79b64e7b1ac2c3f16271be88b6d1eef5246b814",
+      "ref_id": "1",
+      "recommendationScore": 65,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "报告了iPhone Duo平台的应用优化数量快速增长，同时指出官方应用尚未适配的趣闻。",
+      "reason": "提供了关于新Apple设备生态系统发展的最新动态，对关注Apple平台及开发者有一定参考价值。",
+      "tags": [
+        "Apple生态",
+        "iPhone Duo",
+        "应用优化",
+        "开发者",
+        "市场趋势"
+      ]
+    },
+    {
+      "title": "[Sponsor] Ivy: The To-do List That Ends",
+      "link": "https://apps.apple.com/app/apple-store/id6747921058?pt=1363339&ct=Daring-Fireball-Post&mt=8",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-11-16T23:18:35.000Z",
+      "summary": "Every to-do list runs forever. Ivy runs for a day. Each morning you turn ideas into a plan. Each evening, whatever’s left is an idea again. Nothing is overdue. Tomorrow starts empty.\nI’m Jürgen Schweizer, founder of Semantical. I spent years building a to-do app and never expected to build another. Then I came across the Ivy Lee Method. We built a prototype and couldn’t stop using it.\nBeneath the calm: Calendar and Reminders integration, focus sessions, Screen Time shields, and a daily journal. All native: SwiftUI, UIKit, Metal.\nIvy is on iPhone, with Mac to follow. Let me know what you think!\n ★",
+      "id": "0e7da4629e11a0a7a874d74a4f585305770c3bf284319bf0cc3ec34c05451042",
+      "ref_id": "0",
+      "recommendationScore": 60,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "一款基于Ivy Lee方法设计的待办事项应用，以每日清零和无逾期为特色，致力于提供无压力的任务管理体验。",
+      "reason": "其独特的任务管理理念具有一定创新性，且是Apple原生开发，对寻求效率工具的个人用户有参考价值。",
+      "tags": [
+        "效率工具",
+        "产品设计",
+        "独立开发",
+        "iOS应用",
+        "SwiftUI"
+      ]
+    },
+    {
+      "title": "The Download: testing tech promises and searching for cognitive immortality",
+      "link": "https://www.technologyreview.com/2026/11/16/1148599/the-download-testing-tech-promises-cognitive-immortality-quest/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-11-16T13:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. Are we there yet? Six technologies that promised to change the world How do you measure progress towards the future? In the Impossible issue of MIT Technology Review, our series “Are…",
+      "id": "3bba039add8ac1ba47d8097a5cbb2c6ff17b35f04fc5e9f9e887f491ddb58519",
+      "ref_id": "2",
+      "recommendationScore": 45,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "综述性文章，概述科技承诺与未来趋势，缺乏特定技术领域的深度分析。",
+      "reason": "内容广泛，适合对科技发展有宏观兴趣的读者，但技术专业度不高，实用性有限。",
+      "tags": [
+        "科技趋势",
+        "未来科技",
+        "创新展望",
+        "Newsletter"
+      ]
+    },
+    {
+      "title": "Weekly Update 530: Email Dependencies & Apps",
+      "link": "https://www.troyhunt.com/weekly-update-530/",
+      "source": "troyhunt.com",
+      "publishedAt": "2026-11-16T07:09:38.000Z",
+      "summary": "Email is just one of those utilities like power or water where you always expect it to just, well, to just be there. You sign up with a provider and use as much of it as you need, when you need it, and the idea of it being unavailable for",
+      "id": "5446f7cc17eb4d129a1ad871853e183f8de4cca9bcfda628de2129ab38a1b88c",
+      "ref_id": "0",
+      "recommendationScore": 45,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "一篇关于电子邮件作为基本服务实用性的周常更新，内容较为宏观。",
+      "reason": "文章探讨了电子邮件的普遍性和其作为基础服务的重要性，但根据现有摘要，缺乏具体的技术细节、新颖观点或与高优先级主题的强关联。",
+      "tags": [
+        "Email",
+        "Product Update",
+        "Utilities"
+      ]
+    },
+    {
+      "title": "Chemistry is Actually Geometry",
+      "link": "https://chillphysicsenjoyer.substack.com/p/chemistry-is-actually-geometry",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-16T20:22:18.000Z",
+      "summary": "Article URL: https://chillphysicsenjoyer.substack.com/p/chemistry-is-actually-geometry\nComments URL: https://news.ycombinator.com/item?id=50522643\nPoints: 63\n# Comments: 13",
+      "id": "f732ad067706771b14a488e23495f1acfcf72d1877afca17fbce05a66e117560",
+      "ref_id": "3",
+      "recommendationScore": 40,
+      "popularityScore": 45,
+      "priority": "low",
+      "comment": "从几何角度探讨化学本质，视角独特但与科技博客主题关联度较低。",
+      "reason": "内容偏向基础科学理论，对一般科技读者实用性不高，不符合当前关注的主题优先级。",
+      "tags": [
+        "Chemistry",
+        "Science",
+        "Geometry",
+        "Physics"
+      ]
+    },
+    {
+      "title": "Technical issue at JPMorgan Chase triggers online banking delays for US banks",
+      "link": "https://apnews.com/article/bank-outage-chase-wells-fargo-truist-50fee2693c22f597fa6ca51a97ef2cda",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-16T18:31:30.000Z",
+      "summary": "Article URL: https://apnews.com/article/bank-outage-chase-wells-fargo-truist-50fee2693c22f597fa6ca51a97ef2cda\nComments URL: https://news.ycombinator.com/item?id=50521045\nPoints: 687\n# Comments: 549",
+      "id": "0de8d85d5304fad830aa74988aa3b4c582b2ca5d1ea0e98d4c5a9f9441c7d031",
+      "ref_id": "1",
+      "recommendationScore": 40,
+      "popularityScore": 100,
+      "priority": "low",
+      "comment": "报道了大型银行系统故障，信息量大但技术深度不足。",
+      "reason": "属于行业新闻而非深度技术分析，与核心关注主题相关性低，不符合科技博客的重点。",
+      "tags": [
+        "新闻",
+        "银行",
+        "故障",
+        "金融科技"
+      ]
+    },
+    {
+      "title": "BugMeNot has closed",
+      "link": "https://www.bugmenot.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-16T21:32:17.000Z",
+      "summary": "Article URL: https://www.bugmenot.com/\nComments URL: https://news.ycombinator.com/item?id=50523601\nPoints: 225\n# Comments: 109",
+      "id": "be34d4a6cb91c0775f2e9b4d333e80fdb3f69bbe9aef1aa7434934bb84abe2d1",
+      "ref_id": "2",
+      "recommendationScore": 30,
+      "popularityScore": 95,
+      "priority": "low",
+      "comment": "知名服务BugMeNot已宣布关闭，引发了社区的广泛关注和讨论。",
+      "reason": "尽管在Hacker News社区获得极高人气，但文章内容缺乏技术深度，且不直接契合AI或编程工具等高优先级主题。",
+      "tags": [
+        "新闻",
+        "互联网服务",
+        "隐私",
+        "社区动态"
+      ]
+    },
+    {
+      "title": "The open-source movement wants Jensen Huang back",
+      "link": "https://www.technologyreview.com/2026/11/16/1148624/the-open-source-movement-wants-jensen-huang-back/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-11-16T18:38:47.000Z",
+      "summary": "This story originally appeared in The Algorithm, our weekly newsletter on AI. To get stories like this in your inbox first, sign up here. On Friday, a petition to reinstate Jensen Huang as CEO of Nvidia began circulating on social media, and by Monday it listed some notable signatories, including Elon Musk and several influential Nvidia…",
+      "id": "4b894a843f326fdad9a922c0e884fa19449039cd725abf575b255bb5427d7ff1",
+      "ref_id": "0",
+      "recommendationScore": 30,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "聚焦Nvidia CEO的行业新闻，缺乏技术深度和实用性。",
+      "reason": "内容偏离技术主题，更侧重行业动态和八卦，对技术读者价值有限。",
+      "tags": [
+        "AI 行业",
+        "Nvidia",
+        "行业新闻",
+        "人物动态"
+      ]
+    },
+    {
+      "title": "People will lose their jobs over GTA 6 ",
+      "link": "https://idiallo.com/blog/losing-your-job-over-a-video-game",
+      "source": "idiallo.com",
+      "publishedAt": "2026-11-16T00:40:21.000Z",
+      "summary": "GTA 6 is about to come out, and I've seen many people online joking that they'll take the week off to play it. I'm not a big fan of GTA, but the series did leave an impression on me. The last one I played was Vice City. It was an amazing game, and I still listen to its songs. It's where I first heard \"Your Love\" by The Outfield. I love the game, but I don't have the luxury of playing video games the way I used to.\n\t\t\t\nAll this to say that I understand people taking time off. When Metal Gear Solid 5 came out, I didn't just take the day off. I slowly prioritized the game over the work I was supposed to be doing. I had a contract with a client who couldn't make up his mind about a project. I delivered the project, a flower subscription service, in the span of a month. He had paid a team in Ukraine $25k to hand him a broken Drupal website. I rewrote it for half the price, and he finally had the ability to manage the website on his own.\nBut a website isn't complete once it's delivered. There are bugs and feature requests, or the client might just change his mind about things. So he retained me for maintenance. We launched in the summer, and he couldn't have been happier. Customers flocked in, and all was well. Now it was time for maintenance.\nThe problem was that the client called me every day. He wanted to change everything, all the time. My expert opinion had no effect on him, he just wanted things to be different. I was getting paid for it, so I made the changes. I was constantly on the phone with him that summer. It was annoying, but that's the life of a contractor. I could have kept going, but September 1st was the release date for MGS 5.\nI could have managed if I had put my mind to it. But I had already pre-ordered the game, and I had played Ground Zeroes, the prelude that came out earlier, at least a thousand times. Nothing was going to get between me and my game.\nWhen the game came out, I stopped answering calls. Instead, I replied to emails. Whenever the title \"A Hideo Kojima Game by Hideo Kojima Produced by Hideo Himself\" appeared on the screen, I used the time to respond to email. Some of the work he requested was never completed, because I knew he would change his mind. The more I ignored the client's calls, the more frustrated he became, and the more of the story I missed. \"Who is Skull Face again?\" I didn't want to miss a second of the dialogue.\nAt one point, the client called and I didn't pick up, as usual. He sent a text message: \"PICK UP NOW!\" I knew it was serious. So I didn't pick up right away, because doing so would have made it look like I had been intentionally ignoring him. I called him back some minutes later, only to find out it was nothing urgent. The call turned into a therapy session. He was frustrated that people had flocked to the website during the grand opening, yet it had translated into few subscriptions. The website was only a few months old, mind you.\nI could have given better advice, but Quiet was shooting at me from a distance, and I hadn't figured out how to win that battle yet. Besides, I was there to do technical work, not to solve his business problems. He sensed it. When he found a bug on the website, I was eager to fix it. When he wanted to discuss ways to make the subscriptions more appealing to customers, I checked out.\nEventually, he confronted me and asked whether I was all in on this business. I wasn't. I was busy thinking that the Huey character design was lazy. Why did they recycle Otacon? Couldn't they come up with something new instead of playing on our nostalgia? Anyway, I knew a couple of friends who had just started a web consulting business. They could solve business problems and do the development work, so they would be more helpful than I was. Plus, it wouldn't make sense for him to retain me while working with them.\nI found them their very first client, and the client found a better team.\nMy consulting pattern used to be to deliver a job and then, during the maintenance phase, look for other clients. That way, I never had downtime. But this time, I used the downtime to play my game. Remember, this was 2015. $13k went so much further then than it does now.\nYou can imagine my disappointment when the game ended abruptly, as if the producer had been kicked out mid-development. Kojima had been ousted from Konami. Still, it was a good game. But I needed money to survive, so for my next contract, I ended up charging $18,000 for a single static HTML page.\nWhat I mean is, as an MGS fan, I understand the GTA fans.",
+      "id": "4d781f5b684eed936552a6b31049ae4a5f618419d2f6b177d8580789f201de95",
+      "ref_id": "4",
+      "recommendationScore": 30,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "以热门游戏为引子，但内容是作者关于工作与个人兴趣平衡的散文式分享，缺乏技术深度和主题关联。",
+      "reason": "标题具有误导性，实际内容偏向个人随笔，与科技博客的专业主题关联度低，信息密度和实用性不强。",
+      "tags": [
+        "游戏",
+        "个人反思",
+        "工作生活",
+        "独立开发 (轻度)"
+      ]
+    },
+    {
+      "title": "Orbital footnote",
+      "link": "https://www.johndcook.com/blog/2026/11/15/orbital-footnote/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-11-16T02:19:01.000Z",
+      "summary": "A couple days ago I wrote a post about the orbit of a new dwarf planet candidate. The article says the newly discovered object, ED138, has an orbital period of 281.1 years and is “46 times farther from the sun than Earth is.” The earlier post showed that we can infer from Kepler’s third law […]\nOrbital footnote first appeared on John D. Cook.",
+      "id": "ac7338b099785557597c0bf381c23ed3e72e254ce6eae6c587d6c58b5b46ba2d",
+      "ref_id": "2",
+      "recommendationScore": 30,
+      "popularityScore": 45,
+      "priority": "low",
+      "comment": "一篇关于矮行星轨道和开普勒第三定律的物理学文章。",
+      "reason": "内容偏向天文学和物理理论，与核心科技博客主题相关性较低，但对科学爱好者有一定价值。",
+      "tags": [
+        "天文学",
+        "物理",
+        "开普勒定律"
+      ]
+    },
+    {
+      "title": "United Airlines experiencing a widespread system outage, airline says",
+      "link": "https://www.cnn.com/2026/11/16/us/united-airlines-outage",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-16T22:14:38.000Z",
+      "summary": "https://news.ycombinator.com/item?id=50524260\nComments URL: https://news.ycombinator.com/item?id=50524165\nPoints: 132\n# Comments: 53",
+      "id": "4353c1c4ce1b00e72f42acec9652a41b76210bbdce3c2fe750a8b2b63d0b5370",
+      "ref_id": "0",
+      "recommendationScore": 20,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "这是一篇关于航空公司系统大范围故障的即时新闻报道。",
+      "reason": "内容缺乏技术深度和对核心关注主题（如AI、编程工具）的直接关联性，更偏向一般性新闻。",
+      "tags": [
+        "新闻",
+        "系统故障",
+        "航空"
+      ]
+    },
+    {
+      "title": "Michael Mann's 'Heat' Copyright Fight Turns on a Deal with Himself",
+      "link": "https://copyrightlately.com/michael-mann-heat-copyright-termination/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-16T17:52:23.000Z",
+      "summary": "Article URL: https://copyrightlately.com/michael-mann-heat-copyright-termination/\nComments URL: https://news.ycombinator.com/item?id=50520518\nPoints: 81\n# Comments: 35",
+      "id": "81b958e33462bfa878cd9f5edef642e92c5da3076566167db43d4b63f23ca7a2",
+      "ref_id": "3",
+      "recommendationScore": 20,
+      "popularityScore": 12,
+      "priority": "low",
+      "comment": "一篇关于电影版权纠纷的法律分析，与科技博客主题不符。",
+      "reason": "内容为法律而非科技，不符合博客的关注重点和任何优先主题。",
+      "tags": [
+        "版权",
+        "法律",
+        "娱乐"
+      ]
+    },
+    {
+      "title": "Oprah Gives Everyone in Her Audience a ‘Duo iPhone’",
+      "link": "https://youtu.be/j0Rsv1U3Q7A",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-11-16T16:05:18.000Z",
+      "summary": "The Oprah Podcast:\nIn a special holiday episode Oprah brings back one of her\nlegendary traditions with a live audience: ‘Oprah’s Favorite\nThings!’ Celebrating the 30th anniversary of the iconic list,\nOprah surprises an unsuspecting audience full of caregivers with\nher must-have gifts for the season. From nurses, hospice workers,\nEMT’s, firefighters to parents caring for a child with special\nneeds Oprah honors their stories and the compassion they show to\nothers every day.\nSkip to the end, 1h:02m, for the Duos. The crowd goes bananas.\n ★",
+      "id": "fd03feae0837be25ed9cd66aec8add171ac47b3c685399a31b67c6a51bbdac67",
+      "ref_id": "2",
+      "recommendationScore": 20,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "一篇轻松幽默的娱乐报道，假借“Duo iPhone”之名，实际上是奥普拉节目送礼的流行文化事件。",
+      "reason": "内容缺乏任何技术深度或实用性，更像是对消费文化或产品命名的一种讽刺，不符合科技博客的专业评估标准。",
+      "tags": [
+        "娱乐",
+        "Apple",
+        "流行文化",
+        "幽默",
+        "产品观察"
+      ]
+    },
+    {
+      "title": "‘Meet the Anthropic Researcher Behind Silicon Valley’s “Consensual Non-Consent” Orgies’",
+      "link": "https://freebeacon.com/america/horrifying-meet-the-anthropic-researcher-behind-silicon-valleys-consensual-non-consent-orgies/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-11-16T23:51:54.000Z",
+      "summary": "Aaron Sibarium, writing for The Free Beacon:\nPaul Crowley, a cybersecurity researcher at Anthropic, is listed\nas a manager of Red Means No LLC, which says that its parties are\n“designed to be spaces to … ignore the ‘nos’ of others.”\nParticipants can use a safe word, “red,” to end an encounter but\ngive “default consent” to “spanking,” “wrestling,” and “light\npain” by entering the orgy, according to Red Means No’s\nwebsite. More extreme actions, including “light electricity”\nand “moderate beatings,” are “permitted with negotiation,” though\n“body-shaming and race-shaming … are disallowed entirely.”\nThe orgies have been known to attract a disproportionate number of\nemployees at Anthropic and OpenAI, a dynamic critics say creates\nprofessional pressure for women in AI to attend. The criticism\nspilled into public view last month after an independent AI\nresearcher, John Wentworth, said that he “absolutely [does]\nupgrade” his assessment of AI safety experts “if I find out they\ngo to [Red Means No],” adding that attendance was a “strong\nsignal” of free thought.\nI’m starting to think these Anthropic and OpenAI people are a little off.\n ★",
+      "id": "0d544fc512589bb7920eb5d0c4669183b09ab5c643f5815971c576e4f4849ac1",
+      "ref_id": "4",
+      "recommendationScore": 10,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "一篇与技术内容无关的社会八卦新闻，涉及AI公司研究员的个人争议。",
+      "reason": "内容严重偏离科技博客关注的技术主题，不具任何技术深度、新颖性或实用价值。",
+      "tags": [
+        "八卦",
+        "社会争议",
+        "Anthropic",
+        "非技术内容"
+      ]
+    },
+    {
+      "title": "Irish Goodbye / French Leave / Leave the English Way",
+      "link": "https://terriblemaps.co.uk/leaving-a-party-without-saying-goodbye/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-11-16T22:55:38.000Z",
+      "summary": "Over the weekend I speculated that Apple, Microsoft, and Amazon and have “made their Irish goodbyes” from the Trump 2.0 administration (including having no representatives on the David Sacks-led PCAST). I learned today that what we Americans call an “Irish goodbye” is called a “French leave” in the U.K., and “leaving the English way” in France. The rest of Europe is split between those two, but only Americans and Canadians call it an “Irish goodbye”. (And, somehow, the Germans call it “doing a Polish one”, which is not what I would guess that phrase means.)\nAnyway, I’ve got one friend who is an absolute master of the Irish goodbye. He never  says goodnight or goodbye from a group gathering. He always just disappears. And even when you know he’s going to do it, and you start keeping an eye on him to catch him in the act, the fucker slips away every time. I find it delightful, not rude.\n ★",
+      "id": "26e4ae976ac35c79b0f9d01698ff12456202e8b48653cc0b6cc36fdd762ae474",
+      "ref_id": "2",
+      "recommendationScore": 10,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "一篇关于“不告而别”文化现象的语言趣闻，与科技主题关联度极低。",
+      "reason": "内容不具备技术深度和实用性，与科技博客的核心关注点不符。",
+      "tags": [
+        "文化",
+        "语言",
+        "趣闻",
+        "非技术"
+      ]
+    },
+    {
+      "title": "Gig Review: ABBA Voyage ★★★★☆",
+      "link": "https://shkspr.mobi/blog/2026/11/gig-review-abba-voyage/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-11-16T12:34:40.000Z",
+      "summary": "During our recent visit to Stockholm, we went to the ABBA museum. Although they're obviously a cultural juggernaut, I wouldn't exactly describe myself as a fan of the group. Their songs are great, but I didn't know too much about their outsized influence until I stepped inside. The museum has a fascinating exhibit about the London \"Voyage\" concert - if you've spent any time in the city you can't…",
+      "id": "332d0cad59d15121093c3237f758bcd2c96aef2e49d4ba7928e90d19233e36a0",
+      "ref_id": "0",
+      "recommendationScore": 10,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "一篇关于ABBA博物馆和演唱会的文化评论，与科技主题无关。",
+      "reason": "内容与科技博客的关注点完全不符，不适合科技读者。",
+      "tags": [
+        "文化",
+        "音乐",
+        "评论"
+      ]
+    },
+    {
+      "title": "Robert Pattinson Is the Next James Bond",
+      "link": "https://variety.com/2026/film/global/robert-pattinson-new-james-bond-007-1236946655/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-11-16T15:36:52.000Z",
+      "summary": "Variety:\nIt’s Pattinson, Robert Pattinson.\nThe “Batman” and “Odyssey” star has officially been cast as the\nnext James Bond, ending months of rabid speculation about which\nyoung actor Amazon MGM and director Denis Villeneuve would hand\nthe keys to the Aston Martin.\nSolid choice. I endorse. Let’s not cock it up, Villeneuve.\nBBC News has full court press coverage.\n ★",
+      "id": "de2b5f630c8711956b861bc095d1e445ee61b977431c9102104af39b813a6cf9",
+      "ref_id": "3",
+      "recommendationScore": 5,
+      "popularityScore": 75,
+      "priority": "low",
+      "comment": "纯粹的娱乐新闻，与科技博客的主题完全不符。",
+      "reason": "内容围绕电影选角，不包含任何与AI、Apple生态、编程工具等相关的科技信息。",
+      "tags": [
+        "娱乐",
+        "电影",
+        "选角"
+      ]
+    },
+    {
+      "title": "Show HN: Sutra-OS – A self-hosted ontology platform",
+      "link": "https://github.com/0nelight/sutra-os",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-16T23:25:41.000Z",
+      "summary": "Article URL: https://github.com/0nelight/sutra-os\nComments URL: https://news.ycombinator.com/item?id=50525052\nPoints: 7\n# Comments: 0",
+      "id": "bff9d77ec76cff102a0e96aaa3e3cbc47c8f5844a5d49d80add5cd751d13738e",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Optimizely Compromised, Served Malware on Zoom, GitLab",
+      "link": "https://blog.report-uri.com/worlds-largest-brands-infected-with-malware-via-optimizely/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-16T23:00:34.000Z",
+      "summary": "Article URL: https://blog.report-uri.com/worlds-largest-brands-infected-with-malware-via-optimizely/\nComments URL: https://news.ycombinator.com/item?id=50524767\nPoints: 29\n# Comments: 9",
+      "id": "8940dcdaa2ee738533dbdf709e1184cfda6fdf38dbc10f6b7d03574e2cbc0589",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Windows 11 Is Collecting Data on Which Coding Agents and Developer Tools You Use",
+      "link": "https://xusheng.dev/posts/windows-coding-agent-telemetry/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-16T22:58:20.000Z",
+      "summary": "Article URL: https://xusheng.dev/posts/windows-coding-agent-telemetry/\nComments URL: https://news.ycombinator.com/item?id=50524736\nPoints: 38\n# Comments: 13",
+      "id": "d4515e27dcb7f19202c3ebee18a437bf6475c2425e0f54e2e42acb10f0c3aecd",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "US will say \"no\" to global ban on killer robots",
+      "link": "https://www.newsweek.com/us-expected-to-block-killer-robot-treaty-talks-12722369",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-16T22:57:49.000Z",
+      "summary": "Article URL: https://www.newsweek.com/us-expected-to-block-killer-robot-treaty-talks-12722369\nComments URL: https://news.ycombinator.com/item?id=50524728\nPoints: 37\n# Comments: 27",
+      "id": "52f0ca154777cded8e06a3d7be8545b4f137e2071815d223dda42b5656df7b3e",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "How to Break into Security, Ptacek Edition (2012)",
+      "link": "https://krebsonsecurity.com/2012/06/how-to-break-into-security-ptacek-edition/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-16T22:19:23.000Z",
+      "summary": "Article URL: https://krebsonsecurity.com/2012/06/how-to-break-into-security-ptacek-edition/\nComments URL: https://news.ycombinator.com/item?id=50524225\nPoints: 56\n# Comments: 14",
+      "id": "a8ea5333d9f9b4ea7496f608fdb7f41f7649cdf159fa1c7805013ef1b29931d3",
+      "status": "score_failed",
+      "recommendationScore": 0
+    }
+  ]
+}
