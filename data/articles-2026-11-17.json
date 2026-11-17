@@ -2,25 +2,14 @@
   "dailySummary": "今日速递：大品牌遭Optimizely恶意软件感染；Axonnic推出EMG袖套训练机器人；苹果iOS/macOS隐私控制升级。",
   "articles": [
     {
-      "title": "World's Largest Brands Infected With Malware Via Optimizely",
+      "title": "Optimizely Compromised, Served Malware on Zoom, GitLab",
       "link": "https://blog.report-uri.com/worlds-largest-brands-infected-with-malware-via-optimizely/",
       "source": "Hacker News",
-      "publishedAt": "2026-11-16T21:08:38.000Z",
-      "summary": "Article URL: https://blog.report-uri.com/worlds-largest-brands-infected-with-malware-via-optimizely/\nComments URL: https://news.ycombinator.com/item?id=50523300\nPoints: 95\n# Comments: 16",
+      "publishedAt": "2026-11-16T23:00:34.000Z",
+      "summary": "Article URL: https://blog.report-uri.com/worlds-largest-brands-infected-with-malware-via-optimizely/\nComments URL: https://news.ycombinator.com/item?id=50524767\nPoints: 29\n# Comments: 9",
       "id": "8940dcdaa2ee738533dbdf709e1184cfda6fdf38dbc10f6b7d03574e2cbc0589",
-      "ref_id": "4",
-      "recommendationScore": 95,
-      "popularityScore": 65,
-      "priority": "high",
-      "comment": "报告揭露全球知名品牌通过Optimizely感染恶意软件，凸显了供应链攻击的严重性。",
-      "reason": "这是一篇关于关键网络安全威胁的文章，技术深度高，对所有涉及Web开发和DevOps的人员都具有极高的警示和实用价值。",
-      "tags": [
-        "网络安全",
-        "供应链攻击",
-        "恶意软件",
-        "Web开发",
-        "DevOps"
-      ]
+      "status": "score_failed",
+      "recommendationScore": 0
     },
     {
       "title": "Launch HN: Axonnic (YC F26) – Sleeves that track fingers and estimate force",
@@ -746,16 +735,6 @@
       "recommendationScore": 0
     },
     {
-      "title": "Optimizely Compromised, Served Malware on Zoom, GitLab",
-      "link": "https://blog.report-uri.com/worlds-largest-brands-infected-with-malware-via-optimizely/",
-      "source": "Hacker News",
-      "publishedAt": "2026-11-16T23:00:34.000Z",
-      "summary": "Article URL: https://blog.report-uri.com/worlds-largest-brands-infected-with-malware-via-optimizely/\nComments URL: https://news.ycombinator.com/item?id=50524767\nPoints: 29\n# Comments: 9",
-      "id": "8940dcdaa2ee738533dbdf709e1184cfda6fdf38dbc10f6b7d03574e2cbc0589",
-      "status": "score_failed",
-      "recommendationScore": 0
-    },
-    {
       "title": "Windows 11 Is Collecting Data on Which Coding Agents and Developer Tools You Use",
       "link": "https://xusheng.dev/posts/windows-coding-agent-telemetry/",
       "source": "Hacker News",
@@ -782,6 +761,663 @@
       "publishedAt": "2026-11-16T22:19:23.000Z",
       "summary": "Article URL: https://krebsonsecurity.com/2012/06/how-to-break-into-security-ptacek-edition/\nComments URL: https://news.ycombinator.com/item?id=50524225\nPoints: 56\n# Comments: 14",
       "id": "a8ea5333d9f9b4ea7496f608fdb7f41f7649cdf159fa1c7805013ef1b29931d3",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Java4Shell: RCE in OpenJDK when processing Base64",
+      "link": "https://calif.io/java4shell/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-17T21:11:28.000Z",
+      "summary": "Article URL: https://calif.io/java4shell/\nComments URL: https://news.ycombinator.com/item?id=50538240\nPoints: 312\n# Comments: 79",
+      "id": "1887f66f9a10a465207cb091536cf1605206f293068c6e881053522a82a66074",
+      "ref_id": "3",
+      "recommendationScore": 98,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "揭露OpenJDK在处理Base64时的高危RCE漏洞，对Java应用构成严重威胁。",
+      "reason": "涉及重大编程工具安全漏洞，技术深度、新颖性与实用性极高，对所有Java开发者和系统管理员都具有紧急的参考价值。",
+      "tags": [
+        "Java",
+        "OpenJDK",
+        "安全漏洞",
+        "RCE",
+        "编程工具",
+        "Base64"
+      ]
+    },
+    {
+      "title": "Launch HN: StarSling (YC P25) – Self-improving CI for agent-volume repos",
+      "link": "https://starsling.dev",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-17T19:01:43.000Z",
+      "summary": "We’re Yonas and Daniel and we’re building StarSling (https://starsling.dev), fast GitHub Actions runners with AI agents that ship PRs to continuously improve your tests and workflows.\nEvery CI job gets its own ephemeral sandbox on the fastest Zen 5 machines and NVMe Disk with unlimited concurrency so a burst of agent PRs all run at once. We’re different from other runners because ours come with agents that cut down your CI bill over time. PRs are generated through our CI harness, which runs an agent loop that’s tuned to improve your CI speed and reduce cost.\nMastra now merges over 1,800 PRs a month and we got their slowest workflow from 29m 56s on GitHub-hosted runners down to 5m 06s (5.87x) on StarSling. We realized the true value of having an agent loop running on top of fast runners when our agents found an 11-month-old performance bottleneck in better-auth. The fix made one of their test jobs 5.4x faster: https://github.com/better-auth/better-auth/pull/10762.\nI previously founded StackShare, which grew to over 1.5M developers. Daniel helped build Netflix's internal developer portal. Last year we started building AI agents for DevOps because shipping code to prod fell way behind agentic coding. We hit the CI bottleneck ourselves as we were building agents. Our own agents shipped so many PRs that at peak our job queues were backed up for hours and our CI bill got close to our inference bill.\nWe now support per-second billing, and just shipped StarSling Disks - persistent disks that give you a 4.9x speedup in dependencies ready over actions/cache. You can see a quick demo of disks in action here : https://www.youtube.com/watch?v=2JrrpRm9Mww.\nOur CI harness runs a loop that has agents:\n- Analyze your workflows, run logs, and machine telemetry\n- Propose an optimization\n- Test your unchanged workflow side by side the proposed change\n- Deterministically judge that the difference is statistically significant\n- Ship the winner to you as a PR with benchmarks evidence\nWe benchmarked open source repos on our runners and average 10x speedup in wall clock time with 70% less runner time:\n- https://github.com/starsling-demo-org/benchmark-gogs (12.8x)\n- https://github.com/starsling-demo-org/benchmark-shellcheck (5.5x)\n- https://github.com/starsling-demo-org/benchmark-chatwoot (3.9x)\n- https://github.com/starsling-demo-org/benchmark-transfer.sh (11.7x)\n- https://github.com/starsling-demo-org/benchmark-mirotalksfu (36.4x)\nYes, you can do these optimizations yourself with prompts so we’ve released skills for this: https://github.com/starslingdev/skills. The benefit of using our agents is that you don’t need to spend tokens and CI compute finding optimizations yourself.\nWe started building our runners on AWS at the beginning of the year and realized that was too expensive. But at that time there weren’t any cloud providers that could give us the same machines we were getting on AWS, billed per minute (microVMs). So we convinced a handful of sandbox providers to get Zen 5s and started benchmarking them publicly (https://github.com/starslingdev/hpc-sandbox-benchmarks).\nWe’ve learned that fast infrastructure is table stakes for CI, but it’s not sufficient on its own. To get fast and cost effective CI you need a process that continues making improvements. We turned CI optimizations from OpenAI, Anthropic, Linear and others into playbooks for your agent: https://starsling.dev/ci-playbooks.\nTo try it, give your agent this URL: https://docs.starsling.dev/start. You get 2,000 free minutes. Our agents start opening PRs once you've hit about 10,000 minutes.\nToday we announced our CI Challenge: if StarSling can't save you at least 10% on your next CI bill, we'll literally give you $1,000. Eligibility and rules here: https://starsling.dev/blog/ci-challenge.\nWe’d love your feedback on the headless experience and what you’d like to see improved in your own CI setup!\nComments URL: https://news.ycombinator.com/item?id=50536468\nPoints: 41\n# Comments: 20",
+      "id": "7bd4069e0ff535c07b41df1b31d22a8a1515b3bf753990e4fa227fb33ba93adf",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "AI驱动的自优化CI/CD解决方案，极具创新性和实用价值。",
+      "reason": "结合AI技术解决CI/CD效率和成本痛点，高度契合AI和自动化主题优先级，对开发者和团队具有显著吸引力。",
+      "tags": [
+        "AI",
+        "CI/CD",
+        "自动化",
+        "DevOps",
+        "编程工具",
+        "初创公司"
+      ]
+    },
+    {
+      "title": "GPT‑6.2 Astra and Sol",
+      "link": "https://openai.com/index/introducing-gpt-6-2-astra-sol/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-17T17:46:43.000Z",
+      "summary": "Article URL: https://openai.com/index/introducing-gpt-6-2-astra-sol/\nComments URL: https://news.ycombinator.com/item?id=50535230\nPoints: 999\n# Comments: 615",
+      "id": "0fb76b8d23388056a4408c126c8fa3b0c8f3679b08ad4a8e9dfbc09dba312944",
+      "ref_id": "1",
+      "recommendationScore": 95,
+      "popularityScore": 100,
+      "priority": "high",
+      "comment": "重磅级AI模型发布，技术突破与应用前景广阔，是AI领域的里程碑事件。",
+      "reason": "介绍了OpenAI最新GPT模型，信息深度、新颖性和实用性极高，对AI社区和产业发展具有重大意义，是必读内容。",
+      "tags": [
+        "AI",
+        "大模型",
+        "OpenAI",
+        "GPT",
+        "新产品",
+        "技术突破"
+      ]
+    },
+    {
+      "title": "MAI Code 2 and Code 2 Flash",
+      "link": "https://microsoft.ai/news/introducing-mai-code-2-and-mai-code-2-flash/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-17T18:25:13.000Z",
+      "summary": "Article URL: https://microsoft.ai/news/introducing-mai-code-2-and-mai-code-2-flash/\nComments URL: https://news.ycombinator.com/item?id=50535885\nPoints: 244\n# Comments: 112",
+      "id": "5fb2adb0a1f12f7b3992786899c7bab6edc732a7d24584fc6f8bc5d7985f2ed4",
+      "ref_id": "3",
+      "recommendationScore": 92,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "微软发布新的AI代码模型MAI Code 2系列，大幅提升代码生成与理解能力。",
+      "reason": "直接推动AI在编程领域的实际应用，对开发者和AI研究者都具有极高的实用性和前瞻性。",
+      "tags": [
+        "AI",
+        "代码生成",
+        "编程工具",
+        "大模型",
+        "Microsoft"
+      ]
+    },
+    {
+      "title": "Harvard researchers find AI coding agents shifted the bottleneck to code review",
+      "link": "https://complexdiscovery.com/harvard-researchers-find-ai-coding-agents-shifted-the-bottleneck-to-code-review/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-17T21:16:12.000Z",
+      "summary": "Article URL: https://complexdiscovery.com/harvard-researchers-find-ai-coding-agents-shifted-the-bottleneck-to-code-review/\nComments URL: https://news.ycombinator.com/item?id=50538303\nPoints: 14\n# Comments: 9",
+      "id": "1ed525b777a52b12b89e104750e4fc3a315188fefe7ccb95fbd7298d6a85927a",
+      "ref_id": "2",
+      "recommendationScore": 90,
+      "popularityScore": 50,
+      "priority": "high",
+      "comment": "揭示AI编程助手引入的新挑战：代码审查成为开发瓶颈。",
+      "reason": "高度契合AI和编程工具优先级，提供了对AI影响软件开发流程的深刻洞察和实用警示。",
+      "tags": [
+        "AI",
+        "编程工具",
+        "软件开发",
+        "代码审查",
+        "效率"
+      ]
+    },
+    {
+      "title": "Advancing computer-use agents for healthcare teams",
+      "link": "https://openai.com/index/advancing-computer-use-for-healthcare-teams/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-17T18:26:05.000Z",
+      "summary": "Article URL: https://openai.com/index/advancing-computer-use-for-healthcare-teams/\nComments URL: https://news.ycombinator.com/item?id=50535898\nPoints: 32\n# Comments: 23",
+      "id": "09ba549edd61d160775a91f0a826be6f9c502a46df3614e2c8cfe4e5629424a5",
+      "ref_id": "2",
+      "recommendationScore": 88,
+      "popularityScore": 45,
+      "priority": "high",
+      "comment": "OpenAI探索AI智能体在医疗团队中的应用，展示计算机辅助医疗的未来愿景。",
+      "reason": "紧密结合AI前沿研究与社会关键应用，对AI领域和垂直行业创新均有重要参考价值。",
+      "tags": [
+        "AI",
+        "人工智能",
+        "医疗",
+        "Agent",
+        "应用"
+      ]
+    },
+    {
+      "title": "Web Browser Engineering (2021)",
+      "link": "https://browser.engineering/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-17T20:01:35.000Z",
+      "summary": "Article URL: https://browser.engineering/\nComments URL: https://news.ycombinator.com/item?id=50537290\nPoints: 105\n# Comments: 17",
+      "id": "30af260ff61249203bf4f95fe892098a79f7b2b05088970dcd84c7bade1cabcf",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "深入浅出地讲解了浏览器工程的复杂原理，对系统级开发者有极高价值。",
+      "reason": "提供了构建浏览器的全面指南，技术深度极高，对理解Web技术栈核心原理有巨大帮助。",
+      "tags": [
+        "Web开发",
+        "系统设计",
+        "浏览器",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "Not Everything Needs an LLM",
+      "link": "https://newsletter.posthog.com/p/decision-models",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-17T18:16:18.000Z",
+      "summary": "Article URL: https://newsletter.posthog.com/p/decision-models\nComments URL: https://news.ycombinator.com/item?id=50535740\nPoints: 59\n# Comments: 19",
+      "id": "233f4988e8c3601e84ee2f063f23a5f6c6d7f30234984fe40b8586cc6da1de86",
+      "ref_id": "4",
+      "recommendationScore": 85,
+      "popularityScore": 55,
+      "priority": "high",
+      "comment": "文章理性探讨并非所有问题都需要LLM解决，倡导根据实际场景选择合适的决策模型。",
+      "reason": "提供对当前LLM热潮的批判性思考和实用建议，指导技术选型和产品设计，避免盲目追风。",
+      "tags": [
+        "AI",
+        "大模型",
+        "决策模型",
+        "技术选型",
+        "产品设计"
+      ]
+    },
+    {
+      "title": "HomeAssistant - shrink a HAOS qcow2 filesystem",
+      "link": "https://shkspr.mobi/blog/2026/11/homeassistant-shrink-a-haos-qcow2-filesystem/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-11-17T12:34:37.000Z",
+      "summary": "Mostly notes to myself, I hope they're helpful to you too!  My HomeAssistant OS (HAOS) was originally thinly provisioned with a 30GB virtual disk stored in a qcow2 file. In theory, the file should only take up as much space as the virtual filesystem. In reality, it grows to accommodate the maximum size allowed.  My HAOS was showing only 10GB used:    But running ls -lh showed 32GB was allocated.…",
+      "id": "c0b90f4191eac5b9e9dd1025500d8a37dec670ec0cef78fc27e027ab6a7d14fe",
+      "ref_id": "3",
+      "recommendationScore": 80,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "提供了HomeAssistant OS虚拟磁盘空间优化的实用技术指南。",
+      "reason": "针对HomeAssistant用户在使用qcow2虚拟磁盘时遇到的实际问题提供了清晰、直接的技术解决方案，实用性强。",
+      "tags": [
+        "HomeAssistant",
+        "自动化",
+        "虚拟化",
+        "Linux",
+        "qcow2",
+        "系统管理"
+      ]
+    },
+    {
+      "title": "Tencent Hy4 Flash",
+      "link": "https://hy.tencent.ai/research/hy4-flash",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-17T21:06:08.000Z",
+      "summary": "Article URL: https://hy.tencent.ai/research/hy4-flash\nComments URL: https://news.ycombinator.com/item?id=50538184\nPoints: 12\n# Comments: 1",
+      "id": "85e628cc5ceac4060ad87cb5b93a62e99e4b4655ad7a28bbf07a397664c5862f",
+      "ref_id": "4",
+      "recommendationScore": 78,
+      "popularityScore": 10,
+      "priority": "high",
+      "comment": "腾讯AI实验室发布的“Hy4 Flash”研究项目，可能预示AI新进展。",
+      "reason": "属于AI领域前沿研究，由知名机构发布，对AI领域内的专业读者具有潜在吸引力，值得深入探究。",
+      "tags": [
+        "AI",
+        "腾讯",
+        "研究",
+        "深度学习"
+      ]
+    },
+    {
+      "title": "Latent Lattice Language Models",
+      "link": "https://shivamduggal4.github.io/latent-lattice-language-models/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-17T22:17:18.000Z",
+      "summary": "Article URL: https://shivamduggal4.github.io/latent-lattice-language-models/\nComments URL: https://news.ycombinator.com/item?id=50539039\nPoints: 5\n# Comments: 0",
+      "id": "80ed49a62e49aefb994f1a210ae511ed1cea1feca505361d1a9de55f2a48e8fe",
+      "ref_id": "0",
+      "recommendationScore": 75,
+      "popularityScore": 5,
+      "priority": "high",
+      "comment": "深入探讨新型语言模型架构，对AI研究者有较高参考价值。",
+      "reason": "主题属于AI前沿研究，技术深度和新颖性突出，尽管社区热度不高，但对专业读者意义重大。",
+      "tags": [
+        "AI",
+        "大语言模型",
+        "LLM",
+        "研究"
+      ]
+    },
+    {
+      "title": "Solid 2.0",
+      "link": "https://www.solidjs.com/blog/solid-2-0-the-long-hold/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-17T18:56:17.000Z",
+      "summary": "Article URL: https://www.solidjs.com/blog/solid-2-0-the-long-hold/\nComments URL: https://news.ycombinator.com/item?id=50536387\nPoints: 182\n# Comments: 49",
+      "id": "a62f1fc93705d60817a1c50d85eebe3399d9eb39955c6f95b128feed4e5562b3",
+      "ref_id": "0",
+      "recommendationScore": 75,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "深入探讨SolidJS框架的最新版本，为前端开发者带来重要更新和性能提升。",
+      "reason": "对前端框架生态和现代Web开发具有直接影响，值得关注其技术演进和新特性。",
+      "tags": [
+        "前端",
+        "JavaScript",
+        "UI框架",
+        "SolidJS",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "Apple Support Document on the New ‘Full Disk Access’ and ‘System & App Protection Override’ Settings in MacOS 27.3 Beta 2",
+      "link": "https://support.apple.com/en-us/149699",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-11-17T02:00:11.000Z",
+      "summary": "I’m seeing some people object to these settings as being scarier “scare sheets”, and while I disagree, I think that’s a reasonable debate. But I think it’s indisputable that Apple put a lot of thought into these new settings and permissions. Again, you might disagree with their intentions and assumptions here, but given their stated intentions and assumptions — to wit: that many Mac users were granting Full Disk Access permissions to too many apps without realizing just how much access that entails — I think this is a very considered design. The previous settings for these permissions seem slapdash in comparison — like a lot of the “new” Mac System Settings panels.\nEven this new support document seems very considered. A lot of times Apple doesn’t have support documents ready to go while the software is still in beta — here they have a good support document for the first beta with the new stuff.\nSee Also: This Apple Developer News article, which states:\nDevelopers should be prepared to adjust how they onboard users\nand make sure their apps can gracefully handle having access to\nonly a limited set of folders or apps when utilizing these APIs.\nUsers will see these updates when approving new app permission\nrequests. All app permissions previously granted by users will\nremain in effect.\nSo if you’ve already OK’d an app in MacOS 27.2 or earlier, you shouldn’t be prompted again after upgrading to 27.3.\n ★",
+      "id": "f2170c97b1876c5d047d11a2d8cedf6fbd51f5fd3986ab23155f01869fcc8976",
+      "ref_id": "1",
+      "recommendationScore": 75,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "深入解读了macOS Beta中新的磁盘访问和应用保护设置，分析了Apple的设计理念。",
+      "reason": "针对macOS新版本的重要隐私与安全设置提供了详尽分析，对开发者和Mac高级用户理解系统行为非常有帮助。",
+      "tags": [
+        "Apple",
+        "macOS",
+        "隐私",
+        "安全",
+        "Beta",
+        "Full Disk Access"
+      ]
+    },
+    {
+      "title": "Quad9's withdrawal from France: A canary in the coal mine",
+      "link": "https://blog.cloudflare.com/quad9-withdrawal-from-france/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-17T22:13:34.000Z",
+      "summary": "Article URL: https://blog.cloudflare.com/quad9-withdrawal-from-france/\nComments URL: https://news.ycombinator.com/item?id=50538994\nPoints: 111\n# Comments: 9",
+      "id": "9fd23e018da5cf4fc36c284e8c019ea545faab2ce07949176612b85056405af6",
+      "ref_id": "1",
+      "recommendationScore": 70,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "分析Quad9退出法国事件，警示互联网审查和政策对服务的深远影响。",
+      "reason": "内容具有较强的时事性和社会意义，能引发读者对互联网自由和隐私的思考，值得关注。",
+      "tags": [
+        "互联网",
+        "隐私",
+        "审查",
+        "DNS",
+        "政策"
+      ]
+    },
+    {
+      "title": "Beyond Linux: A Journey Through the Open Source Ecosystem",
+      "link": "https://it-notes.dragas.net/2026/11/17/beyond-linux-a-journey-through-the-open-source-ecosystem/",
+      "source": "it-notes.dragas.net",
+      "publishedAt": "2026-11-17T08:30:00.000Z",
+      "summary": "What follows is the text of the talk I gave at Linux Day 2026 in Modena, lightly adapted for the blog. The talk was in Italian, in front of a Linux audience - which explains a few of the jokes.\nLinux is one of the best-known players in the open source world, but it's not the only possible path. A journey through the BSDs, illumos and other alternative operating systems, to reflect on Open Source as an idea, a philosophy and a practice of sharing knowledge.\nMy name is Stefano Marinelli. I'm a sysadmin and consultant, and I run my own small company specialised in open source services and solutions. I like to call myself the \"Barista\" of the BSD Cafe and the illumos Cafe, online communities of people passionate about technology, open source and sharing. Today I'm not here just to talk about operating systems, but about freedom, sharing and knowledge. From free software to open source.\nMy first contact with the Free Software world was in 1996, when I wasn't even 17 yet. I saw a box set advertised in a magazine: \"a whole operating system, for free\", at a very low price. Something like 30,000 lire. Shortly before, I'd paid roughly ten times as much for the Windows 95 upgrade edition. Dismissive and without a shred of trust, I decided to order it and give it a go. I mean: who would ever write something like that... and release the source code? But six CDs for 30,000 lire... let's try. Worst case, it'll be an experience.\n\nIt was love at first shell. That terminal opened up a whole universe, and to what I already knew (commercial licences, freeware, shareware) I added the concept of Free Software. But I didn't have enough hardware to run two operating systems, so I reinstalled Windows and put it all off. Still, I started thinking. Reflecting. Studying. In 1997 I got a new PC and started using Linux - or, as I was careful to say, GNU/Linux - for everything. Except games. For those, a small Windows partition survived, though not for long.\nIn 1998 I enrolled in Computer Science at the University of Bologna. Even back then, it was a faculty strongly oriented towards free software. Linux in the labs. I was one of the few who, in the first year, already knew what Free Software was (not free as in price, but...freedom!) and how to use the Linux workstations. That gave me a big advantage, especially from the second year onwards. Renzo Davoli was already pushing hard in that direction. I decided that would be my path. And so it was, and I started pushing too. Windows wasn't the \"enemy\" to me. The imposition was. Personally, I respect rules, but not impositions. Some people followed me, others watched from a distance. I didn't care. I was widening my horizons. \nIn the early 2000s I also discovered the BSDs. And I convinced my parents that I needed a laser printer for \"university material\". In reality, I wanted to print the excellent BSD documentation. Maybe not university material, but the printed FreeBSD Handbook probably served me better than half of the theory exams I took back then. Thanks, mom and dad!\nBut let's get back to the beginning.\nFree Software was born out of a change. In those days, code circulated freely among people. Depending on their needs, they exchanged source code, modified it and shared it again. But at some point this began to change. There's an anecdote that, while not exhaustive, gives the idea: the printer Richard Stallman was using kept jamming, and nobody got notified. He wanted to modify the software so that he'd get a notification, as he'd done with the previous printer. Back then it was common practice, but this time he was refused. \"I can't share the source code. It's under NDA.\" In other words, he had lost control over what he was using. He even wanted to improve the program, and instead he got a refusal.\nThe rest is history. At least until a few years ago.\nBecause thirty years ago we fought for Free Software to be taken seriously. When I started working, I was almost laughed at. \"That's toy stuff you use at university. The real world uses something else.\" \"Why don't you just use Windows? Everything's easier.\" And yet, the toys often worked better than the expensive proprietary solutions. Or at least just as well, at a fraction of the cost. \"Let's try. Don't pay me until you're satisfied.\" They smiled, incredulous. Then they paid, happily. We could prove there was an alternative. Free, with no artificial locks. Something that anyone - even the broke but eager student - could study and set up. Technology, that kind of \"enterprise\" technology, was truly within everyone's reach. There was no need to buy expensive products, or recurring certifications just to have the \"right\" to work on them. You study, you apply yourself, nobody can stop you. I attended Linux Days. I spoke at Linux Days. For example, here I am, in Linux Day 2004.\n\nWe won that battle. We won that war. Linux - chaotic Linux, built by countless external contributors, made of different and varied distributions - has reached everywhere. Open Source is everywhere. But something happened - something beautiful, but terrible: precisely because it reached everywhere, something changed in the spirit. \"Too big to fail\". And so the big players arrived. Today, Linux development is driven by corporate money: companies like Microsoft (the same Microsoft that once considered Linux its sworn enemy - or Red Hat itself) and other big tech players. In itself, this has been a good thing. In practice, though, it means that they steer its development, even if indirectly. Year after year, it has started to take the shape of a different kind of product. Is the user still at the centre, or is it more code to make Azure run better? Sure, it's Open Source, it's free. But it's increasingly close to the needs of the big companies funding its development and, at times, further from the ordinary user. That's not necessarily bad: many of these investments have given us extraordinary technologies. \nBut I wonder whether, in the process, we're losing something. Not so much in the code as in the mindset. If not in the kernel, then in the community around it. \nBack then, precisely because we were frustrated by \"It only works on Windows\", we were careful to write portable software. I'll say one word, without going into too much detail: POSIX. Once a mantra: POSIX compliant. A set of standards defining common interfaces between operating systems, so you can write programs that, with few or even no changes, run on different Unix and Unix-like systems. Today, in the communities around Linux, you hear more and more often that POSIX is \"outdated\". When I send a patch to make a specific tool work on FreeBSD, for example, I often read comments like: \"Why don't you just use Linux?\". And that déjà vu sends a shiver down my spine: is the community I loved so much turning into a copy, albeit a better one, of its worst enemy?\nBut careful: I'm not here to speak ill of Linux. That would be absurd. I mean: coming to Linux Day to trash Linux? It's an extraordinary operating system, and I owe it a great deal.\nI'm here to remind you that Linux isn't the only way to understand free software. And that a project being less well known doesn't make it less interesting, less valid or less worthy of attention. Because if freedom of choice is truly a value, we must be ready to defend it even when someone chooses something different from what we choose.\nSo let's see what lies beyond Linux. Because monoculture is a problem, in Open Source too.\nBecause free software is...free. And we must be free too. Free to choose, to consider alternatives. To contribute, if we want to. To understand which solution best fits our problem. We don't have to pick a single solution \"because everyone does\". We don't have to turn one monopoly into another. Linux is great. It helps put bread on my table, so I'm a fan. But there are alternatives, other solutions, that can have their advantages. And that's why I want to talk to you about the BSDs and illumos.\nThe BSDs\nBSD stands for Berkeley Software Distribution. And the first curious thing is that its story begins before Linux even existed. We're in the late Seventies. At the University of California, Berkeley, some researchers are working on UNIX, the operating system developed at AT&T's Bell Labs. They don't just use it. They modify it, improve it, write new programs and share that work with other universities.\nRemind you of something? We've just been talking about Stallman and the culture of sharing.\nBSD was born in exactly that world. So it was born on solid, stable, reliable foundations. Studied by experts, not as a game. BSD was an operating system directly related to Unix. It was a complete and stable system, but it wasn't yet available for \"home\" systems, the i386 family. Born well before Linux. A curiosity: Linus Torvalds himself, in a 1993 interview, said: \"If 386BSD had been available when I started on Linux, Linux would probably never had happened.\". Yes, you heard that right. Linus Torvalds said it. And we're at a Linux Day!\nThen something happened: BSD arrived on the i386, and Unix System Laboratories, controlled by AT&T, started a rather insidious legal dispute: there's our code in BSD and you have no right to use, modify or share it. The University of California was dragged into it too. This was a real blocker for many. Companies were afraid to adopt an operating system with a lawsuit like that in progress. The matter dragged on until 1994, when a settlement was reached and 4.4BSD-Lite was released, with a freely redistributable and legally cleared base.\nMeanwhile, Linux was growing, attracting developers, winning users. It didn't have that particular legal uncertainty. I'm not saying Linux succeeded only because of this. That would be unfair to Torvalds and to the thousands of people who contributed to its development.\nBut it's interesting to think that the history of computing as we know it could have taken a different path. And it's also interesting that, despite these difficulties, BSD didn't disappear. Quite the opposite.\nFrom that story came some of the operating systems I want to talk about today. Systems that took different paths and that are still developed, used and improved. Different operating systems - careful, not distributions of the same operating system! - each unique in its own way. Let's start with FreeBSD.\nFreeBSD\nFreeBSD is probably the most general-purpose BSD. It's a complete operating system, designed to offer stability, performance and a certain consistency in administration. And here's a first difference from Linux I'd like to highlight. In the BSDs, the kernel and the userland, the base tools of the operating system, are developed and maintained within the same project. That doesn't mean Linux works worse. It means the development model is different.\nAnd there's a philosophy I really appreciate: evolution, not revolution. It doesn't mean standing still. It means trying to improve without necessarily turning upside down what already works.\nLet's talk about some technologies. ZFS, for example. An advanced filesystem, with snapshots, data integrity, replication and many other features. FreeBSD integrates it directly into the system and also lets you use Boot Environments: I can upgrade the system and, if something goes wrong, go back to the previous environment.\nThen we have jails. FreeBSD has had a technology for isolating processes, resources and application environments since 2000. Long before Docker arrived. Jails aren't Docker, and I'm not saying they're the same thing. But they let you isolate applications and services simply, with low overhead, using the operating system's own features directly. A bit like LXC on Linux.\nFor virtualisation we have bhyve, which lets you run virtual machines, including other operating systems. And bhyve is lighter and, often, faster than KVM on Linux. [LINK: my bhyve articles]\nBut FreeBSD isn't just a system for enthusiasts. Netflix uses it to deliver video content. PlayStation consoles have a FreeBSD-derived base. macOS and iOS also include code from the BSD world. OPNsense and pfSense, two well-known firewall solutions, are based on FreeBSD. In short, we're not talking about a university toy. Remind you of something?\nPersonally, I've been using FreeBSD for many years, in production too. And it has often let me solve problems simply, while staying in control of what's happening. I've seen cases where, on the same hardware and with the same workload, FreeBSD handled I/O pressure better, with even very significant reductions in execution time. If you're curious, there are several articles about it here on IT Notes. That doesn't mean FreeBSD is always faster than Linux. That would be nonsense. It means there are situations where it can be the better choice.\nAnd for me, this is the point: I solve problems. I don't have to defend an operating system. I have to pick the right tool.\nOpenBSD\nThen there's OpenBSD. OpenBSD was born in 1995 as a fork of NetBSD and is probably one of the most interesting systems when we talk about security and code correctness.\nIts philosophy is fairly simple: less complexity, fewer chances for mistakes. The code is continuously reviewed, cleaned up, simplified. Features aren't added just because they might be interesting. Every choice has to make sense within the project. Because the more complex code becomes, the harder it is to maintain, audit and verify.\nOpenBSD has also developed some very interesting security mechanisms, like pledge() and unveil(), which let you restrict the operations a program can perform and the parts of the filesystem it can access.\nAnd then there's OpenSSH. Yes, the very OpenSSH you probably use every day to manage your servers. It was born, and is developed, within the OpenBSD project.\nBut there's another feature I love: the documentation. In the OpenBSD world, insufficient or wrong documentation is considered a bug. The man pages are often enough to understand how to use and configure the system, without hunting for guides of dubious quality scattered across the Internet. And believe me, when you manage dozens or hundreds of systems, knowing where to find correct and consistent information is a huge advantage.\nOpenBSD doesn't try to please everyone. The developers follow their own priorities, even when that means giving up something other systems offer. Can it be frustrating? Certainly. But it also offers a great advantage: consistency, predictability and a clear design direction.\nFor firewalls, routers and systems where security is particularly important, it's an alternative always worth considering.\nNetBSD\nNetBSD, on the other hand, has a wonderful motto. \"Of course it runs NetBSD!\" And that already says a lot about its philosophy.\nNetBSD puts a huge emphasis on portability, correctness of implementation and the ability to run on very different hardware architectures. Not just modern x86 or ARM computers. We're also talking about machines decades old, architectures many consider long forgotten. And careful: it's not just a matter of computing nostalgia.\nKeeping an operating system working on such different platforms forces you to write code with great attention to portability, avoiding needless dependencies on a specific architecture.\nRemember when, a moment ago, I was talking about POSIX and portability as a value? Well, NetBSD is one of the best examples of that philosophy. Because a system that can run on very different hardware must necessarily care about how correct, clean and portable its code is. And that has positive consequences on the more common platforms too.\nThere's another aspect I appreciate: continuity. We don't always need the latest novelty, the latest feature, the latest framework. Some devices and applications simply need to keep working, maybe for many years. Think of embedded systems, small computers, hardware that isn't replaced every two years. In these contexts, knowing there's a project that considers portability and support for different architectures a fundamental part of its identity is reassuring.\nIt's a different philosophy from FreeBSD's and from OpenBSD's. And that's absolutely fine.\nNetBSD has also taken a clear stance on AI-generated code: it can't be committed without prior written approval, because it's considered potentially \"tainted\" - both in form and in licence. And in today's extremely polarised world, that's a sigh of relief for anyone who wants to use and develop an operating system without the pressure of always having to do more, add more features and more code.\nThe BSD Family\nThere's also DragonFlyBSD, born in 2003 as a fork of FreeBSD, which followed other design choices, especially regarding the kernel and system management. We don't have time to go into everything, but I want to stress one thing. These systems have common origins and share part of their history, but they don't necessarily have the same goals.\nFreeBSD is a general-purpose system, also oriented towards performance and production environments. It's stable and secure. On the desktop it might not support all the hardware Linux does, although they're working on it. But on servers it could be one of the best alternatives to Linux.\nOpenBSD favours security, simplicity and code correctness. NetBSD focuses heavily on portability and on supporting different hardware. DragonFlyBSD has experimented with other architectural solutions. And yet, they all belong to the big BSD family.\nThere's no need for one to win over the others. It's not a battle. There's nothing to sell here. It's freedom. It's diversity. And that diversity is a strength.\nIf there's one thing I've learnt over all these years, it's exactly this: an operating system shouldn't be a religion. In my daily life, I solve problems. And to solve them, I need to be able to evaluate the alternatives.\nBecause stability, for example, isn't just a system's ability not to crash. It's also being able to update it without surprises, to understand how it works, to know what happens when something goes wrong. Observability is fundamental, and being able to have it without weaving together fifty Docker containers can sometimes make the difference between ten minutes of work and two hours.\nWe don't always need to reinvent everything. What's new isn't always better. And the solution chosen by the majority isn't always the best fit for our problem. Often, it's exactly the opposite.\nBut our journey doesn't end with the BSDs.\nillumos\nThere's another family of operating systems that descends from a different UNIX history. A history that runs through Sun Microsystems, Solaris and OpenSolaris. And that leads us to illumos.\nNow someone might ask: weren't you talking about the BSDs? Yes, but the talk is called Beyond Linux, not Only BSD!\nillumos isn't a BSD. It descends from another branch of the big UNIX family. The Solaris one, developed by Sun Microsystems. Sun. Anyone remember it? SPARC workstations, servers, Solaris, Java. In the Nineties and the 2000s it was one of the biggest names in professional computing.\nAnd Solaris was a very interesting operating system. Designed for serious machines, serious workloads, situations where a problem could cost a lot. In Bologna, when I was a student, there were some Solaris machines in the UnderLab. I looked at them sideways. To me they were \"non-Linux\". So I didn't like them.\nIn 2005 Sun did something significant: it started publishing the Solaris source code through the OpenSolaris project. Imagine: a commercial UNIX system, with years of development behind it, advanced technologies and long experience in enterprise environments, opening up to the community. It wasn't the first free software to be used in companies, of course. But it was another way of doing things. Another model.\nAnd then, in 2010, Oracle acquired Sun. And here things changed. Oracle decided to stop the open development of OpenSolaris and stopped publishing new code updates.\nEnd of the story?\nNo.\nBecause the code that had already been released under an open source licence remained available. Oracle could decide not to publish its developments any more, but it couldn't take back the freedoms already granted on that code. And that's how illumos was born. A group of developers decided to carry on the work, starting from the open OpenSolaris base.\nThink about it for a moment. A company acquires another company, changes strategy and stops the public development of an operating system. But that system doesn't die. Because the code exists, the skills exist, and there are people willing to keep working on it.\nRemind you of something? We began this talk with Stallman and a printer whose code couldn't be shared. Thirty years later, the very possibility of sharing and modifying code allows a whole family of operating systems to keep existing.\nThis, for me, is one of the most beautiful aspects of free software.\nBut let's get back to the technology. Because illumos isn't just a nice story.\nThe technologies and distributions of illumos\nFrom Solaris, illumos inherited some extremely interesting technologies. You already know one: ZFS. ZFS was born at Sun. It's a filesystem, but also a volume manager. It lets you manage storage, snapshots, data replication, integrity checks and much more.\nI use ZFS practically everywhere I can. On FreeBSD, on illumos, on NetBSD and on Linux too. And that's already an example of how a good technology can cross different operating systems.\nThen we have DTrace. DTrace lets you observe what's happening inside a system, even while it's running. We can analyse kernel calls, processes, performance, behaviours that would otherwise be hard to understand. For a sysadmin, it's an extraordinary tool. Because when a client tells you \"the server is slow\", the problem isn't knowing it's slow. They already know that. The problem is understanding why.\nThen there are Zones. An isolation system that lets you run separate environments sharing the same kernel. Remember FreeBSD's jails? Well, zones were inspired by FreeBSD's jails. The concept is similar, although the implementations and some features differ.\nAnd then Crossbow, for network virtualisation. SMF, for managing services and their dependencies. In short, we're talking about a system with important technologies, born to tackle concrete problems. Not an experiment cobbled together in someone's spare time. And careful, I'm not saying these technologies are necessarily better than those available on Linux or the BSDs. I'm saying they're different, they have their own history and, in certain contexts, they can be particularly useful.\nLike Linux, illumos is the base of several distributions, each with different features and goals.\nSmartOS, for example, is focused on virtualisation. It has an interesting peculiarity: the operating system is loaded into RAM, from USB or from the network (or even from the local disk, but then it runs read-only), leaving the disks to the virtual machines and the data, managed with ZFS. It supports native Zones, LX zones to run Linux applications, and virtual machines via KVM and bhyve. Yes, the very bhyve we've already met talking about FreeBSD! Personally, I'm using and experimenting with it a lot. It's not all roses, but I really like some of its solutions. And bhyve on illumos even has a few gems that haven't been brought back to FreeBSD. Open Source and collaboration between projects, at their best!\nOmniOS takes a more traditional road. It's an operating system designed mainly for servers, with particular attention to stability, updates and long-term continuity. It offers stable releases and long-term support versions. You install it, configure your services and use it. Without necessarily having to reinvent everything at every update.\nOpenIndiana is perhaps the closest to the classic idea of a general-purpose UNIX distribution. It can be used on servers, but also as a desktop system, with a full graphical environment. For anyone who'd like to try a Solaris-derived system on their own computer, it could be an interesting starting point.\nAnd then there's Tribblix, a rather special project. Created by Peter Tribble, it combines an almost nostalgic, traditional UNIX feel with modern components. It has its own package management system and a modular approach through overlays, which let you install groups of software. A small, independent system with a very precise personality.\nFour distributions sharing a technological base, but interpreting it in different ways. Remind you of something? Linux... And that's exactly the point. There's no single way to build an operating system. There's no single development philosophy.\nAnd none of them needs to prevail over the others. What matters is that they keep existing, evolving and offering alternatives. Because, in the end, freedom of choice only has value if we really have something to choose from.\nSo, why illumos if we already have Linux and the BSDs?\nBecause there's a whole UNIX tradition that isn't Linux and isn't BSD. Because some technologies now considered fundamental in modern computing were born right there. And, still today, they're stable and reliable. They're refined and polished without being \"rewritten\" or replaced every five years because there's a new fashion. Because we can use systems that followed different paths, with different architectures and design choices.\nBut above all, because illumos is also a practical demonstration of the value of free software. Sun opened the code. Oracle decided to stop that open development. The community was able to carry on.\nIt wasn't easy, and it doesn't mean every open source project can automatically survive the disappearance of whoever was funding it. You need developers, resources, skills. You need someone willing to take care of it. Available code is a necessary condition, but on its own it isn't enough.\nAnd this brings us to a point that, for me, is fundamental. Free software isn't just code. It's also the people who choose to develop it, maintain it, document it and share it.\nThat's why, alongside the BSD Cafe, I also wanted to create the illumos Cafe. To offer a space to meet, discuss and share experiences about technologies that maybe don't make the front pages of tech sites every day.\nBecause we don't all have to use the same operating system. We don't even all have to agree. But we can learn something from each other. And maybe discover a solution to a problem we didn't even know we could tackle differently.\nCareful, though. I'm not saying the BSD or illumos communities are better than the Linux ones. In our world too there's fundamentalism, prejudice, and people who consider their own choice the only possible one. And that's a problem too. Because it makes no sense to defend software freedom and then look down on someone who decides to use a system different from ours.\nWe don't all have to agree. In fact, it would be terribly boring. We must be able to disagree, compare ideas, learn something and keep respecting each other - even in disagreement - while building something constructive. What matters, in the end, is being able to choose. And that's true freedom.\nMore than twenty years ago, at Linux Days, I talked about how Linux could replace Windows in many areas, both on the desktop and on servers. That it was a valid alternative. Today I'm here to tell you not to let yourselves be chained by habit. Linux/Docker/Kubernetes is an exceptional combination, but not the only one. It would be serious if it were, because we'd have lost our freedom. The freedom to publish an Open Source project as a tarball of source code instead of putting it \"on GitHub\" or similar.\nOpen source is not about doing things the approved way. It is about giving people the freedom to do things another way.\nOpen Source and Closed Minds never get along.\nStay free. Always.",
+      "id": "c0b32b4b52db422142184820484e9b66480de20fea5dca082a0feb1a85b156b3",
+      "ref_id": "1",
+      "recommendationScore": 70,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "这篇文章深入探讨了Linux之外的开源生态系统，包括BSD和illumos，并结合了作者对开源理念的个人见解和历史回顾。",
+      "reason": "文章提供了对非主流开源操作系统（如BSD、illumos）的介绍，并从哲学层面探讨了开源精神，具有较好的技术深度和新颖性，对系统管理员和对开源有兴趣的读者有启发意义。",
+      "tags": [
+        "开源",
+        "操作系统",
+        "Linux",
+        "BSD",
+        "illumos",
+        "技术哲学",
+        "系统管理"
+      ]
+    },
+    {
+      "title": "Phrack 73 Released",
+      "link": "https://phrack.org/issues/73/introduction_md",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-17T18:31:25.000Z",
+      "summary": "Article URL: https://phrack.org/issues/73/introduction_md\nComments URL: https://news.ycombinator.com/item?id=50535992\nPoints: 224\n# Comments: 20",
+      "id": "85ee66f2022f4d22da01e0ed02de6e928e9c849b19e9cb6a64bf417e0093ba65",
+      "ref_id": "1",
+      "recommendationScore": 68,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "知名黑客杂志Phrack发布第73期，聚焦前沿安全技术和深度漏洞分析。",
+      "reason": "提供高技术深度的网络安全和低级技术研究内容，对特定安全领域专家具有重要参考价值。",
+      "tags": [
+        "网络安全",
+        "Hacking",
+        "低级技术",
+        "Phrack",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "jQuery 4.1.0",
+      "link": "https://github.com/jquery/jquery/releases/tag/4.1.0",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-17T19:50:40.000Z",
+      "summary": "Article URL: https://github.com/jquery/jquery/releases/tag/4.1.0\nComments URL: https://news.ycombinator.com/item?id=50537156\nPoints: 212\n# Comments: 109",
+      "id": "3a4d3301c790ce8ec05c7649a187927a9a71a0f57d5a2961dd425736edb8bed6",
+      "ref_id": "1",
+      "recommendationScore": 65,
+      "popularityScore": 80,
+      "priority": "medium",
+      "comment": "jQuery库的最新版本发布，对现有项目维护者有较高价值。",
+      "reason": "作为广泛使用的JavaScript库，其更新对大量依赖jQuery的项目来说是重要的维护信息。",
+      "tags": [
+        "JavaScript",
+        "前端",
+        "编程工具",
+        "库更新"
+      ]
+    },
+    {
+      "title": "Nvidia stopped disclosing Singapore sales as revenues hit $104B",
+      "link": "https://www.ft.com/content/dbde7a30-548c-4f9d-a4be-7898a0c24dcf",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-17T17:12:06.000Z",
+      "summary": "Article URL: https://www.ft.com/content/dbde7a30-548c-4f9d-a4be-7898a0c24dcf\nComments URL: https://news.ycombinator.com/item?id=50534631\nPoints: 305\n# Comments: 160",
+      "id": "ca337b2b3ceee43a251063ff09a5d602ce7b4c70fac2811196dd2921d68e1e13",
+      "ref_id": "3",
+      "recommendationScore": 65,
+      "popularityScore": 28,
+      "priority": "medium",
+      "comment": "Nvidia财报动向，反映了其在AI时代的重要性和市场策略调整。",
+      "reason": "作为AI领域核心硬件供应商，Nvidia的商业策略和财务表现对理解AI产业格局具有参考价值，但文章本身技术深度有限。",
+      "tags": [
+        "Nvidia",
+        "AI产业",
+        "商业",
+        "财报",
+        "市场分析"
+      ]
+    },
+    {
+      "title": "Who Builds the Machines That Build the Machines?",
+      "link": "https://read.corematter.com/p/section-232-us-machine-tools",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-17T17:45:39.000Z",
+      "summary": "Article URL: https://read.corematter.com/p/section-232-us-machine-tools\nComments URL: https://news.ycombinator.com/item?id=50535208\nPoints: 74\n# Comments: 24",
+      "id": "9f655c22742dace6edb0cc487240192f3e992f7c5dc41c77f43e4bdc10aea1ee",
+      "ref_id": "2",
+      "recommendationScore": 60,
+      "popularityScore": 6,
+      "priority": "low",
+      "comment": "探讨了工业基础的核心机床产业，视角独特，但与主流科技热点关联度较低。",
+      "reason": "文章可能深入分析了机床产业的战略意义，具备一定的技术深度和信息密度，但其主题对于大多数科技博客读者而言相对小众。",
+      "tags": [
+        "工业",
+        "制造业",
+        "自动化",
+        "政策分析",
+        "深度报道"
+      ]
+    },
+    {
+      "title": "Apple’s Cloud Services Are Having a Bad Day, Including Their Status Page",
+      "link": "https://www.macrumors.com/2026/11/17/apple-accounts-experiencing-issues/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-11-17T18:21:23.000Z",
+      "summary": "Juli Clover, MacRumors:\nApple Accounts and iCloud sign-ins appear to be experiencing\nissues, according to multiple social media reports and Apple’s\nSystem Status page.\nI’ve been seeing weird problems in multiple apps (Photos, Notes, and System Settings) on one of my Macs, on which I’m trying to install the 27.3 beta. Photos was reporting that it had just completed syncing, but it was missing a bunch of recent photos (but not in chronological order). Notes was missing changes from other devices. And System Settings wasn’t showing me the choice to install beta OS updates. It just wasn’t there, and tricks like this didn’t fix it. I worried the whole machine had gone bad, because when I checked Apple’s online Status page, everything was green across the board. Turns out the Status page wasn’t working either. It is now, and shows outages for App Store, Apple Music, AppleCare on Device, and iCloud Account & Sign In.\nUpdate: Siri AI is down for me too.\nUpdate 2: Seems like most/all services are back up, but during the day, even Apple Retail went down. People were in stores just waiting around.\n ★",
+      "id": "e3502e78fdc762d4db1a87e0bf07393f9cf9ce179d2791fd56b0fdb4ed0be1c0",
+      "ref_id": "0",
+      "recommendationScore": 55,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "及时报告了Apple云服务故障，并指出状态页本身也存在问题。",
+      "reason": "作为突发事件报道，能迅速向受影响的Apple用户传递信息，具有时效性。",
+      "tags": [
+        "Apple",
+        "iCloud",
+        "云服务",
+        "故障",
+        "Mac"
+      ]
+    },
+    {
+      "title": "Apple Services Down",
+      "link": "https://developer.apple.com/system-status/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-17T17:47:14.000Z",
+      "summary": "Article URL: https://developer.apple.com/system-status/\nComments URL: https://news.ycombinator.com/item?id=50535238\nPoints: 588\n# Comments: 317",
+      "id": "66904ef5c49bc7dec8791535061f623e081e74235e2d7b4b5f96f57fc6ff66d5",
+      "ref_id": "0",
+      "recommendationScore": 50,
+      "popularityScore": 55,
+      "priority": "medium",
+      "comment": "及时但缺乏深度，是一份重要的Apple服务状态报告而非技术分析文章。",
+      "reason": "作为新闻，它报告了Apple服务中断的关键信息，但内容本身的技术深度和新颖性不高，长期阅读价值有限。",
+      "tags": [
+        "Apple",
+        "服务状态",
+        "新闻",
+        "事件报告"
+      ]
+    },
+    {
+      "title": "YC wrote software to run our internship expo – and an 8-bit SIM to show it off",
+      "link": "https://news.ycombinator.com/item?id=50534429",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-17T17:00:24.000Z",
+      "summary": "Comments URL: https://news.ycombinator.com/item?id=50534429\nPoints: 0\n# Comments: 0",
+      "id": "262cbb41f07a11d497326ee1d2be2a320dc407d07b787dc6f0713eeaa060c69c",
+      "ref_id": "4",
+      "recommendationScore": 30,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "YC内部工具开发案例，但缺乏文章链接和社区反馈，无法进行有效评估。",
+      "reason": "标题涉及编程工具和独立开发，潜在有趣，但因缺少文章内容且社区关注度极低，其价值和可读性无法判断。",
+      "tags": [
+        "编程工具",
+        "独立开发",
+        "内部工具",
+        "Y Combinator"
+      ]
+    },
+    {
+      "title": "350 years ago, Ole Rømer discovered that light has a finite speed",
+      "link": "https://www.sciencenorway.no/culture-history-history-of-science/350-years-ago-this-man-discovered-that-light-has-a-finite-speed/2737969",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-17T19:25:27.000Z",
+      "summary": "Article URL: https://www.sciencenorway.no/culture-history-history-of-science/350-years-ago-this-man-discovered-that-light-has-a-finite-speed/2737969\nComments URL: https://news.ycombinator.com/item?id=50536813\nPoints: 208\n# Comments: 63",
+      "id": "8e5c0d9d0faa3272be2b130bc49b6663799b7120edd996019544c1ec3df3d8c7",
+      "ref_id": "3",
+      "recommendationScore": 15,
+      "popularityScore": 65,
+      "priority": "low",
+      "comment": "一篇有趣的历史科学文章，但与本科技博客主题不符。",
+      "reason": "内容属于科学史范畴，与AI、编程工具等核心主题关联度极低。",
+      "tags": [
+        "非技术",
+        "科学史",
+        "历史"
+      ]
+    },
+    {
+      "title": "Effects of a Nuclear Detonation in Low Earth Orbit",
+      "link": "https://arxiv.org/abs/2611.09827",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-17T19:46:57.000Z",
+      "summary": "Article URL: https://arxiv.org/abs/2611.09827\nComments URL: https://news.ycombinator.com/item?id=50537120\nPoints: 63\n# Comments: 27",
+      "id": "06fd8a8d71ebb3340f3a0554cb45ddc43a3677578020799b9ac9650f0e9dc1ff",
+      "ref_id": "2",
+      "recommendationScore": 10,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "与科技博客主题相关性低，不适合本站发布。",
+      "reason": "内容属于物理/国防领域，与AI、编程工具等本站核心主题无关。",
+      "tags": [
+        "非技术",
+        "科学",
+        "物理"
+      ]
+    },
+    {
+      "title": "Pluralistic: Remembrance of proteins past (17 Nov 2026)",
+      "link": "https://pluralistic.net/2026/11/17/mississippi-gosh-darn/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-11-17T13:01:56.000Z",
+      "summary": "Today's links Remembrance of proteins past: People like what they like. Hey look at this: Delights to delectate. Object permanence: BBC's bullshit DRM story; Radical hotel-room coffee independence; Foreclosure map predicts Trump vote; Pinkest pink v Anish Kapoor; Bruce Sterling on the Trump election; Keep the hope machine running; \"Messy\"; Jam To-Day; Billy Bragg x file-sharing; Second Life v copying; Best Buy claims copyright over prices; All cab conversations in Oxford must be recorded; The end of \"software objectivity\"; \"Pirate Utopia\"; Mamdani's photocopier-kicker; Biden does(n't) like SOPA; \"The Freedom Maze\"; Obama's weapons in Trump's hands; Gilmore/Barlow audio; MPAA v video iPods; RIP SF's neon Yahoo sign; NYC deputy mayor says no filming cops; Bannon wants to deport Indian CEOs; Academic economists charge $1k/h to defend giga-mergers; Iphones secretly spy on your calls; Office Depot fakes malware infections; Live Nation murdered at Astroworld; Games industry's self-induced brain injury. Upcoming appearances: Folkestone, Oxford, Sheffield, Virtual, Oxford, Santa Barbara, Montreal. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. Remembrance of proteins past (permalink) Without a doubt, the best piece of media from the 2026 midterms was Scott Colom's \"Pick another senator instead\" ad from his triumphant Mississippi senate campaign against GOP incumbent Cindy Hyde-Smith: https://youtu.be/zpUnm09lTUk?si=3ApbHida5_VpQCLB&t=2219 Some background: Colom is the first Black Mississippi senator elected since Reconstruction gave way to Jim Crow. He's also the first Democratic Mississippi senator since 1982. Colom's campaign shifted the statewide vote leftward by 19 points, and he won a quarter of the state's white votes. Colom ran a great campaign and promoted great policies, but also: he ran one of the great political ads of all time. That ad skewered Hyde-Smith's \"let them eat whey powder\" remark to WLOX Biloxi host Hugh Keeton, who asked her about the cost of living crisis and the high price of beef, to which she replied that people \"have so many proteins to choose from\": https://www.mississippifreepress.org/americans-who-cant-afford-beef-have-so-many-proteins-to-choose-from-says-us-sen-cindy-hyde-smith/ Colom's ad plays a montage of Mississippians expressing disgust with Hyde-Smith's response, saying \"I'd rather choose another senator instead.\" Colom was quick to credit content creator Ryan Sayles, who joined the campaign after doing some freelance work for them, as the ad's mastermind: https://www.politico.com/news/2026/11/12/ryan-sayles-scott-colom-viral-protein-ad-01163508 Much has been said about the ad's style, especially the viral \"s-h-e-e-e-i-t\" voiced by US Army vet Russ Hudson, who stepped in to do the ad when his father declined to curse on camera: https://edition.cnn.com/2026/11/15/politics/scott-colom-viral-protein-ad-mississippi-senate But the most important analysis on the ad is of its substance, specifically how it repudiates one of the key doctrines of neoliberal, austerity economics, as David Dayen writes for The American Prospect: https://prospect.org/2026/11/16/how-the-mississippi-senate-win-exposed-austerity-logic/ Neoliberalism is the signature achievement of the \"law and economics\" movement that came out of the University of Chicago. The central conceit of law and econ is that economics is a \"hard science\" (not a social science) and that its domain is a deterministic, quantifiable physics of human behavior. Economists went so far as to create a fake \"Nobel Prize\" in economics in a bid to elevate their work out of the social sciences: https://pluralistic.net/2024/09/18/falsifiability/#figleaves-not-rubrics This \"science\" claims it can replace squishy, qualitative questions with mathematical models that can output the objectively correct answer to every thorny political question, thereby substituting an obscure form of mathematics for political deliberation: https://pluralistic.net/2023/04/03/all-models-are-wrong/#some-are-useful This is a remarkably cheap and transparent stunt. To produce this \"mathematics of human behavior,\" you must first quantize all the qualitative questions so that they can be plugged into variables in econ equations. But here's the problem: assigning a numeric value to a qualitative factor is a qualitative exercise! When an economist decides that the pain you'll experience as a result of their policy prescriptions is worth \"7\" while the benefit is worth \"8,\" they are not doing objective work, they're just declaring their own judgments (and biases) to be empirical observations, while demoting your judgments to mere \"feelings\" (and biases): https://pluralistic.net/2024/09/18/falsifiability/#figleaves-not-rubrics Economism doesn't just eliminate qualitative questions from policymaking: it incinerates all of those qualitative factors so that economists can perform mathematics on whatever dubious quantitative residue remains in the crucible: https://locusmag.com/feature/cory-doctorow-qualia/ This is where Scott Colom's brilliant campaign ad comes in. As Dayen points out, when Hyde-Smith made her \"many other proteins to choose from,\" gaffe, she was referencing a key piece of economic theory that has been thoroughly weaponized by the neoliberals: \"substitution.\" On its face, substitution is just the commonsense proposition that when prices for one good or service go up, some consumers will substitute another. When gas prices go up, more people ride the bus. When Instagram increases its ad-load, more people switch to Mastodon or Bluesky. When your ISP jacks up your price, you might switch to another carrier. So far, so good. Indeed, one of the best things about digital products and services is how low digital \"switching costs\" (the cost you bear when switching from one service to another) can be. The lower the switching costs are, the easier it is to substitute one thing for another. This means that, in a state of nature, tech bosses have to be careful about enshittifying their products, lest their users defect to a rival. This is why tech bosses have spent decades doing everything they can to jack up those \"switching costs.\" They want to convert all their users into hostages: https://www.eff.org/deeplinks/2021/08/facebooks-secret-war-switching-costs Substitution is real and it makes sense. The problem comes when neoliberal economists use this idea in policy. In the early 2010s, Barack Obama proposed applying substitution to the American welfare system through something called \"Chained CPI.\" \"CPI\" stands for the \"Consumer Price Index\": this is a measurement of the cost of a \"basket of goods\" (a bunch of supposedly representative household items) that is used to make inflationary adjustments to a variety of payments. When the CPI goes up, so do social security, welfare and disability payments. Otherwise, inflation would continually reduce the living standards of everyone who receives these entitlements. \"Chained CPI\" takes the CPI and applies substitution to it. Rather than asking whether hamburger just got more expensive, the economists who calculate CPI ask whether the cheapest protein at the grocery store got more expensive (because hamburger can be swapped out for another protein). Chained CPI's intent and effect is to reduce payments to retirees, disabled people, and poor people. Chained CPI is always going to be lower than CPI, because chained CPI only rises when the cheapest \"substitute\" for one of the items in CPI's \"basket of goods\" gets more expensive. In effect, the \"basket of goods\" becomes a transdimensional basket, one that contains every substitute good that might have gone into the basket in all possible parallel universes. Economists get to universe-shop for the dimension where that basket has the lowest cost, and then we all have to live in their chosen universe. Obama tried to adopt it 2013 as part of a \"grand bargain\" to reduce the deficit, but was thwarted by the Tea Party Caucus, who refused the grand bargain on the grounds that it contained an infinitesimal tax rise for the richest Americans: https://abcnews.com/blogs/politics/2013/04/obamas-chained-cpi-throws-off-pols-and-heres-how-it-works/ But chained CPI is one of the most cherished ideas of neoliberal thinktanks, so it came back in 2017 for Trump's tax giveaway to the super-rich, whose costs were partially offset by using chained CPI to calculate tax brackets, the standard deduction, and the Earned Income Tax Credit: https://newrepublic.com/article/145688/biggest-trojan-horse-republican-tax-plan As Dayen writes, \"[This created] a regressive tax increase by eroding deductions and credits and pushing people into higher tax brackets. The wealthy were unaffected by this since they were already in the highest tax bracket and itemized rather than using the standard deduction.\" Which brings me back to Cindy Hyde-Smith's foot-in-mouth remarks about \"so many proteins.\" Whether or not Hyde-Smith knew it, she was referencing this substitution/chained CPI doctrine when she told people that beef inflation didn't matter because other proteins were available. In doing so, she was performing economism's cheapest trick: pretending that her opinions are objective facts, while other people's opinions are just feelings. As Dayen writes, \"[W]ho decides whether the cheaper product they switch to is 'similar' to the one that’s become so expensive that the consumer must give it up?…The logic is, approximately: You're not doing as badly as you think, so pick another protein and quit your whining.\" People do substitute one thing for another as a matter of economic necessity. But the idea that a \"substitute\" is an \"equivalent\" can only be accepted if you first buy into the economist's conceit that all qualitative matters can be safely incinerated, leaving the expert to do math on the quantitative ash. In this conceit, if you can't afford hamburgers and end up substituting chicken or fish, then you've found a new protein and have lost no \"welfare.\" If you think otherwise, then you are expressing an irrational preference (unlike economists, whose preference for having a Nobel prize of their own is so empirically correct that it could be detected by a Martian peering at Earth through a telescope). It's not only Cindy Hyde-Smith who unconsciously metabolized the idea of substitution as \"rationality\"; it's the voters, too, who recognized in Hyde-Smith's remarks the arrogance of policy elites who've spent decades discounting their views as \"feelings\" while declaring their own views to be experimental validated facts. Not only do voters recognize this move: they hate it. They know that elites are perfectly capable of expressing strong views about qualitative matters and moving heaven and Earth to achieve a life that fits with their aesthetics. They know that the same Ivy League economists who dismiss their preferences as \"irrational\" will revel for 4,000 pages' worth of Marcel Proust expounding on the spiritual, intangible reasons for choosing his favorite baked goods. Economics is the study of why people do things, but somewhere along the way it became a club used to force people to do the things that powerful people prefer. The (alleged) \"rationalism\" of economism has worn out its welcome. You don't need an economics degree to understand why that \"rationalism\" is a cheap trick: after 50 years of neoliberalism, a Martian with a telescope could spot it. Hey look at this (permalink) NYC Council passes ban on 'surveillance pricing' that relies on personal data https://gothamist.com/news/nyc-council-passes-ban-on-surveillance-pricing-that-relies-on-personal-data The Top 3 “Essentially Progressive” Palantir Products https://www.necessaryfictions.blog/p/the-top-3-essentially-progressive Introducing the Atmosphere Community Cooperative https://atmosphere.coop/updates/introducing-the-atmosphere-community-cooperative Tech Companies Are Trying to Shift the Entire Concept of Privacy (Again) https://www.eff.org/deeplinks/2026/11/tech-companies-are-trying-shift-entire-concept-privacy-again Twenty Minutes Into the Future: On Launching “Terminal Values” https://www.oblomovka.com/wp/2026/11/14/twenty-minutes-into-the-future-on-launching-terminal-values/ Object permanence (permalink) #20yrsago Billy Bragg and manager: The Internet is for sharing files http://news.bbc.co.uk/2/hi/entertainment/6148654.stm #20yrsago Second Life struggles with copying https://web.archive.org/web/20061209112340/http://nwn.blogs.com/nwn/2006/11/second_life_clo.html #20yrsago BestBuy: our prices are copyrighted https://web.archive.org/web/20061114201037/https://arstechnica.com/news.ars/post/20061114-8218.html #20yrsago Audio from Gilmore/Barlow talk at USC https://web.archive.org/web/20070202190231/http://centeronpublicdiplomacy.com/podcasts/061113_gilmore_barlow.mp3 #20yrsago Paramount/MPAA: it’s illegal to put DVDs on iPods https://web.archive.org/web/20061119111822/https://www.eff.org/deeplinks/archives/005010.php #15yrsago OWS library is rebuilding after being trashed by NYPD, needs your donated books https://peopleslibrary.wordpress.com/contribute/ #15yrsago San Francisco’s iconic neon Yahoo! sign is coming down https://web.archive.org/web/20111118012241/https://www.thesfegotist.com/editorial/2011/november/16/end-era-yahoo-billboard-comes-down/ #15yrsago New Zealand Prime Minister sends police to raid major news outlets over covert recording of negotiations with far-right party https://www.rnz.co.nz/news/politics/91307/john-key-defends-resources-used-on-tape-investigation #15yrsago NY Deputy Mayor: press don’t have the right to report in vicinity of NYPD ops https://web.archive.org/web/20111119001027/https://ny1.com/content/news_beats/inside_city_hall/150926/ny1-online–deputy-mayors-defend-zuccotti-park-raid #15yrsago Sustainable Materials: indispensable, impartial popular engineering book on the future of our built and made world https://memex.craphound.com/2011/11/17/sustainable-materials-indispensable-impartial-popular-engineering-book-on-the-future-of-our-built-and-made-world/ #15yrsago Oxford city council: every cab must have a CCTV to record riders’ conversations https://www.bbc.com/news/uk-england-oxfordshire-15720998 #15yrsago Walmart smears worker-based chat app with lies and scare tactics https://web.archive.org/web/20161115190524/https://consumerist.com/2016/11/15/walmart-warns-workers-dont-download-chat-app-from-labor-organization/ #15yrsago Stolen government of Malaysia certificate used to sign malicious fake Adobe software update https://web.archive.org/web/20111116182552/https://www.f-secure.com/weblog/archives/00002269.html #15yrsago Secret documents reveal the flimsy case for Ofcom to give into BBC’s public TV DRM demands https://web.archive.org/web/20140212005011/https://www.theguardian.com/technology/2011/nov/14/bbc-hd-drm #15yrsago HOWTO attain radical hotel-room coffee independence https://memex.craphound.com/2011/11/14/howto-attain-radical-hotel-room-coffee-independence/ #15yrsago Chapel Hill sends SWAT team to arrest Occupy “anarchists” https://web.archive.org/web/20111114130328/https://www.newsobserver.com/2011/11/13/1641362/activists-take-over-vacant-franklin.html #15yrsago Real cost of patent trolling https://web.archive.org/web/20111115134326/https://feld.com/wp/archives/2011/11/the-real-cost-of-patent-trolls.html #15yrsago Joe Biden: SOPA is Un-American – but not when America does it https://www.techdirt.com/2011/11/15/vp-joe-biden-explains-why-sopa-protect-ip-are-anti-american-bad-idea/ #15yrsago OWS: NYPD occupy Zucotti Park, but what are their demands? http://occupywallst.org/article/nypd-occupying-liberty-square-demands-unclear/ #15yrsago The Freedom Maze: a different sort of slavery-time alternate history https://memex.craphound.com/2011/11/16/the-freedom-maze-a-different-sort-of-slavery-time-alternate-history/ #15yrsago Bundled, Buried & Behind Closed Doors: documentary on the net’s hidden physical infrastructure https://vimeo.com/30642376 #10yrsago Facebookers defy Zuckerberg, form fake news “task force” https://www.buzzfeednews.com/article/sheerafrenkel/renegade-facebook-employees-form-task-force-to-battle-fake-n#.jrDKxryP #10yrsago Embarrassed New Yorkers force Trump Place to change name https://web.archive.org/web/20161115214232/https://www.bloomberg.com/news/articles/2016-11-15/manhattan-s-trump-place-to-change-name-use-street-addresses #10yrsago Here are the devastating capabilities of the weapons Obama will leave behind for Trump https://www.nytimes.com/2016/11/14/us/politics/harsher-security-tactics-obama-left-door-ajar-and-donald-trump-is-knocking.html #10yrsago US foreclosure map predicts US battleground states map https://mathbabe.org/2016/11/14/guest-post-the-foreclosure-vote/ #10yrsago Anish Kapoor banned from using world’s pinkest pink in retaliation for hoarding the blackest black https://web.archive.org/web/20161112235050/https://thecreatorsproject.vice.com/blog/the-worlds-pinkest-paint #10yrsago Remember when they told us Hillary, not Bernie, would beat Trump? https://fair.org/home/polls-showed-sanders-had-a-better-shot-of-beating-trump-but-pundits-told-you-to-ignore-them/ #10yrsago Bruce Sterling on the US election: the net is great at tearing down, terrible at building https://www.textezurkunst.de/en/articles/bruce-sterling-us-election/ #10yrsago Canadian tech firms will have their pick of overseas talent thanks to Trump’s anti-immigrant policies https://web.archive.org/web/20161119143446/https://motherboard.vice.com/read/trump-election-science-tech #10yrsago Keep hoping machine running: Woody Guthrie’s New Years resolutions, 1943 https://www.openculture.com/2026/01/woody-guthrie-creates-a-doodle-filled-list-of-33-new-years-resolutions-1943.html #10yrsago Messy: a celebration of improvisation and disorder as the keys to creativity, play, and work https://memex.craphound.com/2016/11/14/messy-a-celebration-of-improvisation-and-disorder-as-the-keys-to-creativity-play-and-work/ #10yrsago The free-speech activist duty of journalists during the coming Trump years https://dangillmor.com/2016/11/13/trump-free-speech-and-why-journalists-must-be-activists/ #10yrsago John Oliver: how to resist the normalization of Trump https://www.youtube.com/watch?v=-rSDUsMwakI #10yrsago Superstar academic economists charge $1000+/hr to defend disastrous corporate megamergers https://www.propublica.org/article/these-professors-make-more-than-thousand-bucks-hour-peddling-mega-mergers #10yrsago Steve Bannon wants to deport Asian-born tech CEOs to preserve “civil society” https://www.theverge.com/2016/11/16/13653490/steve-bannon-trump-presidency-chief-strategist-breitbart-tech-visa #10yrsago Iphones secretly send your call history to Apple’s cloud, even after you tell them not to https://web.archive.org/web/20161117135915/https://theintercept.com/2016/11/17/iphones-secretly-send-call-history-to-apple-security-firm-says/ #10yrsago Office Depot techs accused of faking malware infections to meet sales targets https://web.archive.org/web/20161117150900/https://consumerist.com/2016/11/16/office-depot-allegedly-diagnosing-computers-with-nonexistent-viruses-to-meet-sales-goals/ #5yrsago Live Nation is to blame for the Astroworld deaths https://pluralistic.net/2021/11/17/do-well-do-good-do-nothing/#crushing #5yrsago Aspiration's comprehensively deceptive greenwashing https://pluralistic.net/2021/11/17/do-well-do-good-do-nothing/#greenwashing #1yrago The games industry's self-induced traumatic brain injury https://pluralistic.net/2025/11/17/stop-killing-games-again/#object-transience Upcoming appearances (permalink) Folkestone Writers Festival, Nov 16 https://www.creativefolkestone.org.uk/whats-on/cory-doctorow-the-internet-is-broken-now-what/ Oxford: Ministry of the Future, Nov 23 https://ministryforthefuture.co.uk/events.html Sheffield: Reverse Centaur at Juno Books, Nov 25 https://www.outsavvy.com/event/40274/cory-doctorow-in-conversation Virtual: Enshittification, AI, and the Future of Technology (UBC Master of Educational Technology), Nov 28 https://met.ubc.ca/2026/09/met-speaker-series-cory-doctorow-enshittification-ai-and-the-future-of-technology/ Oxford: Bennett Oxford Symposium on Open Code in Science, Dec 9 https://www.bennett.ox.ac.uk/events/2026-bennett-institute-symposium/ Santa Barbara: UCSB Reads, Apr 29 https://www.library.ucsb.edu/events-exhibitions/ucsb-reads-2027-presents-author-cory-doctorow Montreal: World Science Fiction Convention, Sep 2-6 https://montreal2027.ca/en Recent appearances (permalink) Clint Eastwood (No Gods No Mayors) https://www.patreon.com/NoGodsNoMayors/posts/clint-eastwood-173008088 Life After AI (Brain Bar) https://www.youtube.com/watch?v=IPPa43-n0vI Terms of Service with Clare Duffy (CNN) https://www.cnn.com/audio/podcasts/terms-of-service-with-clare-duffy/episodes/458ce968-af5d-11f0-b539-13ed2afe25f8 AI, Work, and Power (Software Engineering Daily) AI, Work, and Power https://softwareengineeringdaily.com/podcasts/cory-doctorow-on-ai-work-and-power/ AI, Corporate Power, and the Fight for Worker Control (Plutopia) https://plutopia.io/cory-doctorow-ai-corporate-power-and-the-fight-for-worker-control/ Latest books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/ \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: “Once Is Enemy Action,” a science fiction novel about the origins of modern technofascism. Today's words: 514 (37130 total). \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Fourth draft completed. Submitted to editor. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "c5e5692e95be6c35f200c87f9bd5dd52a592098f4898243128dd00c650a3c7cf",
+      "ref_id": "2",
+      "recommendationScore": 10,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "内容为一系列杂乱无章的链接集合，缺乏统一主题和深度分析。",
+      "reason": "文章过于碎片化，信息密度低，且不专注于任何一个核心科技主题，实用价值不高。",
+      "tags": [
+        "杂项",
+        "链接集",
+        "文化评论"
+      ]
+    },
+    {
+      "title": "How can I ask a second program to show a dialog box as if it were shown by my first program?",
+      "link": "https://devblogs.microsoft.com/oldnewthing/20261116-01/?p=112863/",
+      "source": "devblogs.microsoft.com/oldnewthing",
+      "publishedAt": "2026-11-17T05:54:01.000Z",
+      "summary": "You have to explicitly coordinate the window management.\nThe post How can I ask a second program to show a dialog box as if it were shown by my first program? appeared first on The Old New Thing.",
+      "id": "abf110bc13dc78340df461d66d4581159f766ecbf2bade454cafe33810b4696d",
+      "ref_id": "4",
+      "recommendationScore": 10,
+      "popularityScore": 15,
+      "priority": "low",
+      "comment": "文章内容极短，仅提供了一个含糊的建议，缺乏具体的技术细节和指导。",
+      "reason": "虽然标题指向编程相关主题，但实际内容过于简略，没有提供任何有价值的信息或解决方案。",
+      "tags": [
+        "编程",
+        "Windows编程",
+        "用户界面"
+      ]
+    },
+    {
+      "title": "The NVIDIA Bubble",
+      "link": "https://www.wheresyoured.at/the-nvidia-bubble/",
+      "source": "wheresyoured.at",
+      "publishedAt": "2026-11-17T15:43:58.000Z",
+      "summary": "If you liked this piece, you should subscribe to my premium newsletter, and you can subscribe on the following links: $70 a year, $18 a quarter, or $7 a month. \nIn return, you get a weekly premium newsletter that dives deep into the finances of the AI",
+      "id": "2071a434439b80d8af0d0e0a5bd49232258c182a31106512d9711f4d76ab3e25",
+      "ref_id": "0",
+      "recommendationScore": 5,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "这篇“文章”实际上是一个订阅推广，没有提供任何实质性的内容或技术见解。",
+      "reason": "文章内容仅为付费订阅服务的宣传，缺乏作为独立博客文章的价值和信息量，因此无法进行有效评估。",
+      "tags": [
+        "订阅推广",
+        "AI金融 (潜在话题)"
+      ]
+    },
+    {
+      "title": "Roundtables: Inside the Quest for Cognitive Immortality",
+      "link": "https://www.technologyreview.com/2026/11/17/1148049/roundtables-inside-the-quest-for-cognitive-immortality/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-11-17T18:46:47.000Z",
+      "summary": "Listen to the session or watch below In an effort to reach an elusive continuity of the self, some far-thinking technologists are working on ways to keep your brain going—even beyond death. Science editor Mary Beth Griggs and senior editor for biomedicine Antonio Regalado explore possible paths to keep your mind going, including gradual brain…",
+      "id": "665d8227159904d75c3893256129e3e48c6c12a215700949e24c0889eac71220",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Hydropower hit record lows in the US Southwest this summer",
+      "link": "https://www.technologyreview.com/2026/11/17/1148742/hydropower-drought-colorado-river/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-11-17T17:52:10.000Z",
+      "summary": "The US Southwest generated 28% less electricity via hydropower between April and August than the 10-year average, according to new data from the US Energy Information Administration. Most hydropower plants in the US rely on dams to hold back water, creating reservoirs. The water can be released through turbines, generating electricity on demand. But an…",
+      "id": "11e12ce775565920ccb2672e0c21e9c3fa185cdc62d470240f9fb2757050cb4a",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Research Reports",
+      "link": "https://www.technologyreview.com/2026/11/17/1148203/research-reports/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-11-17T14:39:46.000Z",
+      "summary": "To access a report, click on the corresponding image below.",
+      "id": "a598c269f36b65423ddaf3f1b3ebc3f711ebf3285e43fa258754e6ebfaab8c3f",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "The Download: Jensen Huang’s open-source dilemma and cognitive immortality",
+      "link": "https://www.technologyreview.com/2026/11/17/1148679/the-download-jensen-huang-open-source-ai-cognitive-immortality/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-11-17T13:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. The open-source movement wants Jensen Huang back A petition to reinstate Jensen Huang as Nvidia CEO has attracted more than 115,000 signatures, including Elon Musk, but comb through the names, and…",
+      "id": "b8dbef498ec857d05a0657cac6c801fe244c2e0fe4aeb32be43fef13d9c97984",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "External sandboxes for coding agents",
+      "link": "https://simonwillison.net/2026/Nov/17/external-sandboxes-for-coding-agents/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-11-17T22:52:29.000Z",
+      "summary": "",
+      "id": "b4439a7527ca175b45e558714e0c076936f57c7b83f7c3dca55c2d93f6736ea5",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "GPT‑6.2 Astra and GPT‑6.2 Sol",
+      "link": "https://simonwillison.net/2026/Nov/17/gpt62-astra-and-sol/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-11-17T22:38:52.000Z",
+      "summary": "",
+      "id": "0b5f35342ecc69a52f0353df7edbc19350b7c388e984c1fcb9d6ef7dfecf0e49",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Running the full server-side Datasette Python app in the browser with service workers and Pyodide",
+      "link": "https://simonwillison.net/2026/Nov/17/datasette-lite/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-11-17T16:48:33.000Z",
+      "summary": "",
+      "id": "9e24bec0316d82cc334b61d9ba3ce770ed7a3f2b0a6d7125047c875c29e4838e",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "Quoting Go Proverbs",
+      "link": "https://simonwillison.net/2026/Nov/17/go-proverbs/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-11-17T06:16:26.000Z",
+      "summary": "",
+      "id": "38f599c774ee5c8eb26da5260009b3dd2c4986fb6838f9ec7e67f66bcf0c288e",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "llm 0.37.3",
+      "link": "https://simonwillison.net/2026/Nov/16/llm/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-11-16T23:57:26.000Z",
+      "summary": "",
+      "id": "a50437ccc021c623712f2923fc5b1ac5fbdee7de50378f8f6091763c03c8a298",
+      "status": "score_failed",
+      "recommendationScore": 0
+    },
+    {
+      "title": "SetShot 1.0 (and a Personal Tale of Defaults System Spelunking)",
+      "link": "https://tidbits.com/2026/11/13/setshot-1-0-tracks-even-more-macos-settings/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-11-17T18:41:12.000Z",
+      "summary": "Adam Engst, writing at TidBITS:\nThis past August, I did something I had never done before:\nreleased a full-fledged Mac app. Prompted by tech ghost stories\nabout settings mysteriously changing during operating system\nupdates, I spent months working with Claude Code to create a\nutility called SetShot that would reveal what settings change\nduring macOS updates (see “SetShot Tracks macOS Settings\nChanges,” 19 August 2026). So far, I haven’t caught Apple\nred-handed, although I still hear chatter about configuration\nchanges after users install updates.\nPractically speaking, SetShot offers something never previously\navailable to Mac users: the capability to identify and log\nsettings changes over time, whether made by you, macOS, or some\napp. To that end, it takes and compares snapshots of numerous\nsettings deep within macOS, reporting on what changed between\nthem. It never changes any settings, so the worst it can do is\ntell you something you didn’t want to know.\nSetShot is a very cool app, and so very Adam Engst-flavored. Free of charge and open source to boot.\nThere’s an anecdote involving me in Engst’s post, and while SetShot couldn’t fix my problem directly, it was very helpful in showing me where to look to fix it myself. The backstory: I set a custom “Text highlight color” in System Preferences: Appearances many years ago — I mean like maybe 20 years ago — and had not changed it in years. It’s just the perfect shade of blue. But one night two months ago I went screwing around to see what the modern default text highlight colors are, and, son of a bitch, when I tried to change my color back to the custom one I’d been using for decades, I couldn’t. The way the color picker stores color values from the modern Appearance settings panel must have changed. It still honors the old value I had if it’s in the defaults system that way, but it writes a different style of value if you change it in the Appearance panel in System Settings.\nHere’s a short version of how I got my old color back. Using System Settings, I changed the custom color to the exact RGB values 0.2 / 0.4 / 0.6. Then I read them from the command line:\n❯ defaults read -g AppleHighlightColor\n0.200000 0.400000 0.600000 Other\n\nThat’s not the color I wanted; I just wanted to prove that that’s the global key for a custom text highlight color. When I read those same values from a backup version of my ~/Library/Preferences/.GlobalPreferences.plist file (always have backups, kids), with my beloved custom color, it looked liked this:\n❯ defaults read /path/to/.GlobalPreferences.plist AppleHighlightColor\n0.698039 0.760784 0.835294\n\nSo the old value was a string with three floating point RGB values. The new value was a string with those three values plus the word “Other”. This command, writing back my custom RGB values without the word “Other”:\n❯ defaults write -g AppleHighlightColor \"0.698039 0.760784 0.835294\"\n\nrestored the color I’ve been using since George W. Bush was still president. It’s a really good color, trust me.\n ★",
+      "id": "e7a0bec0b99580097272fbad9f26a655e8b561ad8736134b6add6eaac861d6f8",
       "status": "score_failed",
       "recommendationScore": 0
     }
