@@ -1,0 +1,826 @@
+{
+  "dailySummary": "今日科技速递：AI领域多点突破。NariQ实现Qwen3.8模型3位量化，兼顾性能与效率。同时，开源AI模型监管争议持续发酵。OpenAI与思科合作推出Shirudo，强化Linux安全。",
+  "articles": [
+    {
+      "title": "NariQ: BF16-level Qwen3.8-27B in a 10 GB file",
+      "link": "https://huggingface.co/nari-labs/Qwen3.8-27B-NariQ-GGUF",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-23T13:42:38.000Z",
+      "summary": "We built NariQ: 3-bit-or-lower quantizations of Qwen3.8-27B that retain near-BF16 quality across agentic tasks, math, multilingual reasoning, and image understanding.\nTo our knowledge, this is the first 3-bit-or-lower quantization that retains BF16 lvl performance on long-horizon agentic tasks.\nBenchmarks (BF16 / 3-bit / 2.5-bit / 2-bit):\n- DeepSWE: 39.8 / 41.0 / 41.9 / 28.6\n- Terminal-Bench 2.1: 62.6 / 63.8 / 60.2 / 52.4\n- AIME 25+26: 97.7 / 98.3 / 96.5 / 86.0\n- MSGM: 94.0 / 93.1 / 91.8 / 90.6\n- RealWorldQA: 82.4 / 82.4 / 81.3 / 80.9\nDecode speed is comparable to other quants on an RTX PRO 6000. Context-length results below\n(3-bit / 2.5-bit / 2-bit / Unsloth UD-IQ3_XXS):\n- 4K: 88.9 / 99.2 / 111.7 / 94.7\n- 16K: 84.5 / 93.8 / 105.1 / 89.8\n- 64K: 70.7 / 77.5 / 85.0 / 74.8\nRunning these currently require our llama.cpp fork:\n(https://github.com/nari-labs/nari-llama.cpp)\nFeedback and questions welcome. We'd love to hear how these perform on your workloads.\nComments URL: https://news.ycombinator.com/item?id=50611402\nPoints: 130\n# Comments: 29",
+      "id": "9f183e9f9f75c876517d366d7fb45051ec4e567c991541f72de64b752f6f9794",
+      "ref_id": "2",
+      "recommendationScore": 98,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "NariQ提供了对大型AI模型Qwen3.8-27B的突破性3比特量化方案，实现了接近BF16的性能，极大降低了部署门槛。",
+      "reason": "这项技术在AI模型压缩和高效部署方面具有极高的技术深度、创新性和实用价值，是当前AI领域的热点和痛点，完全符合AI主题优先级的要求。",
+      "tags": [
+        "AI",
+        "LLM",
+        "模型量化",
+        "Qwen",
+        "机器学习",
+        "高效部署",
+        "llama.cpp"
+      ]
+    },
+    {
+      "title": "\"Dario is hyping the dangers so OSS models are illegal and he stays in control\"",
+      "link": "https://twitter.com/ylecun/status/2124550037912920090",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-23T17:07:26.000Z",
+      "summary": "Article URL: https://twitter.com/ylecun/status/2124550037912920090\nComments URL: https://news.ycombinator.com/item?id=50615308\nPoints: 1229\n# Comments: 683",
+      "id": "53510b5370cd80960ab8250e123b312345841468a3b22814514e01aea5809d70",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "Yann LeCun对AI开源模型监管和安全性的尖锐评论引发行业深思。",
+      "reason": "直接涉及AI领域核心争议，对理解AI发展趋势、伦理和开源模型未来走向至关重要。",
+      "tags": [
+        "AI",
+        "开源AI",
+        "AI伦理",
+        "政策",
+        "LeCun",
+        "AI安全"
+      ]
+    },
+    {
+      "title": "GLM-5.4: Toward Generalized Coding with Our First Loop Transformer",
+      "link": "https://simonwillison.net/2026/Nov/23/glm-54/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-11-23T23:40:49.000Z",
+      "summary": "",
+      "id": "2f3ef0ead000ffc6df4c17bddb4bbd69aa6f10770ae15b80b7c292d6bae401e2",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "标题暗示了一篇关于AI辅助编程的开创性工作，但文章内容缺失无法进行详细评估。",
+      "reason": "选题高度符合AI和编程工具优先级，若内容翔实，将是对AI编程工具领域的重大贡献，潜力巨大。",
+      "tags": [
+        "AI",
+        "编程工具",
+        "代码生成",
+        "Transformer",
+        "模型"
+      ]
+    },
+    {
+      "title": "Here's Why Data Breach Disclosure is so Hard: Lessons from Hundreds of Emails with Hacked Companies",
+      "link": "https://www.troyhunt.com/heres-why-data-breach-disclosure-is-so-hard-lessons-from-hundreds-of-emails-with-hacked-companies/",
+      "source": "troyhunt.com",
+      "publishedAt": "2026-11-23T07:58:47.000Z",
+      "summary": "When I asked Claude to write the blog post below, I already knew what was in the messages it would read. Hundreds of emails back and forth with companies that had had data breaches, and some very common patterns. I knew the emails contained standoffish behaviour, deliberate delays, heavy involvement",
+      "id": "518c7440f89942ded7251d3a066e9f46bd2c6524f7056fbd75d2d384c6b30faf",
+      "ref_id": "4",
+      "recommendationScore": 90,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "深入分析数据泄露披露的难点，并提及使用AI工具辅助写作，兼具实用性和新颖性。",
+      "reason": "内容切合当下热门的AI应用和网络安全实践，提供了基于实际经验的洞察，实用价值高，符合高优先级主题。",
+      "tags": [
+        "AI",
+        "网络安全",
+        "数据泄露",
+        "产品管理",
+        "风险管理"
+      ]
+    },
+    {
+      "title": "Latent Introspection: LLMs Can Detect Prior Concept Injections",
+      "link": "https://arxiv.org/abs/2602.20031",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-23T22:29:48.000Z",
+      "summary": "Article URL: https://arxiv.org/abs/2602.20031\nComments URL: https://news.ycombinator.com/item?id=50620328\nPoints: 28\n# Comments: 1",
+      "id": "80a050ce3ae348312bb7abfbf71ddea31de7234d1f406c474b8221198e2fb0ba",
+      "ref_id": "1",
+      "recommendationScore": 86,
+      "popularityScore": 28,
+      "priority": "high",
+      "comment": "深入探讨LLM自我检测能力的前沿AI研究论文。",
+      "reason": "作为AI主题下的高技术深度和高新颖性研究，对理解LLM内部机制和提升其鲁棒性有重要价值。",
+      "tags": [
+        "LLM",
+        "AI研究",
+        "机器学习",
+        "自然语言处理",
+        "模型解释性"
+      ]
+    },
+    {
+      "title": "Ladybird is now in alpha",
+      "link": "https://ladybird.org/posts/alpha/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-23T16:13:12.000Z",
+      "summary": "Article URL: https://ladybird.org/posts/alpha/\nComments URL: https://news.ycombinator.com/item?id=50614249\nPoints: 1487\n# Comments: 341",
+      "id": "8d83fbfc47ac58f7eccfca6f539cc49f37f41500c0e84f90568f6915ff29d995",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 90,
+      "priority": "medium",
+      "comment": "Ladybird浏览器进入alpha阶段，代表着一个从零开始构建的新颖开源浏览器引擎项目的重要里程碑。",
+      "reason": "这是一个雄心勃勃的开源项目，对于关注浏览器技术和操作系统开发的技术人员具有很高的研究价值和讨论空间。",
+      "tags": [
+        "浏览器",
+        "开源",
+        "编程工具",
+        "Web开发",
+        "SerenityOS"
+      ]
+    },
+    {
+      "title": "Shirudo: OpenAI and Cisco's open-source runtime for shielding unpatched Linux",
+      "link": "https://openai.com/index/introducing-shirudo/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-23T21:30:41.000Z",
+      "summary": "Article URL: https://openai.com/index/introducing-shirudo/\nComments URL: https://news.ycombinator.com/item?id=50619630\nPoints: 31\n# Comments: 5",
+      "id": "83b9621afef40ae2c113f2658cee6d6b456cc7e87fad0dd3f817f03d3874e7a5",
+      "ref_id": "3",
+      "recommendationScore": 84,
+      "popularityScore": 31,
+      "priority": "high",
+      "comment": "OpenAI和Cisco合作推出的Linux运行时安全工具，解决未打补丁系统的防护难题。",
+      "reason": "针对企业普遍存在的未打补丁Linux系统提供了关键的开源安全解决方案，实用性极强，且具备较高技术深度和编程工具属性。",
+      "tags": [
+        "Linux安全",
+        "开源",
+        "网络安全",
+        "运行时防护",
+        "自动化",
+        "编程工具",
+        "OpenAI"
+      ]
+    },
+    {
+      "title": "The Power of GraphQL, Without GraphQL",
+      "link": "https://cobalt27.dev/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-24T00:03:59.000Z",
+      "summary": "Article URL: https://cobalt27.dev/\nComments URL: https://news.ycombinator.com/item?id=50621466\nPoints: 7\n# Comments: 10",
+      "id": "24a58ae8ba67fd26bad1d02d9080611a2df98994c8ae78636c169cb1ab5f3cfa",
+      "ref_id": "1",
+      "recommendationScore": 80,
+      "popularityScore": 10,
+      "priority": "medium",
+      "comment": "探讨了如何在不直接使用 GraphQL 的情况下实现其优势的编程技术文章。",
+      "reason": "属于编程工具范畴，对开发者具有很强的实用性和启发性，技术深度适中。",
+      "tags": [
+        "编程工具",
+        "API",
+        "GraphQL",
+        "后端开发"
+      ]
+    },
+    {
+      "title": "Kagi Mail (public beta)",
+      "link": "https://blog.kagi.com/kagi-mail-public-beta",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-23T17:17:01.000Z",
+      "summary": "Article URL: https://blog.kagi.com/kagi-mail-public-beta\nComments URL: https://news.ycombinator.com/item?id=50615481\nPoints: 366\n# Comments: 277",
+      "id": "5d4fbf8ddc9ca1d0bc5dc31109d0e60dce01650734c3f276fd8c93ad5492fb97",
+      "ref_id": "2",
+      "recommendationScore": 80,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "Kagi发布其注重隐私的邮件服务公开测试版，拓展其独立生态系统。",
+      "reason": "对于关注隐私、产品设计和独立开发者生态的读者具有较高实用性和参考价值。",
+      "tags": [
+        "Kagi",
+        "隐私",
+        "邮件服务",
+        "产品发布",
+        "独立开发"
+      ]
+    },
+    {
+      "title": "The Download: AI’s judgment problem and carbon removal’s crop threat",
+      "link": "https://www.technologyreview.com/2026/11/23/1149548/the-download-ai-judgment-problem-carbon-removal-crop-threat/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-11-23T13:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. The most misunderstood graph in AI just got a major update A new report from the AI evaluation nonprofit METR finds that some capabilities are improving exponentially—but models aren’t as good…",
+      "id": "74abad025fa947f70baf4f97fb843506470612ab8b85dbed76ff5da823c12b87",
+      "ref_id": "1",
+      "recommendationScore": 80,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "聚焦于AI评估的新报告，揭示了AI能力提升与实际表现之间的认知偏差。",
+      "reason": "提供了关于AI模型真实能力和当前评估方法的最新洞察，对理解AI发展至关重要，是AI主题下的重要发现。",
+      "tags": [
+        "AI",
+        "评估",
+        "性能",
+        "METR",
+        "趋势"
+      ]
+    },
+    {
+      "title": "Nospeaker ─ Make your MacBook's trackpad talk using its haptic motor",
+      "link": "https://github.com/os6/nospeaker",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-23T11:31:54.000Z",
+      "summary": "https://x.com/codycollier/status/2124505859883716918\nComments URL: https://news.ycombinator.com/item?id=50610318\nPoints: 283\n# Comments: 163",
+      "id": "20d4c8c8afcf099b6cbba736d08af61c9dde489c5dc7719b9af374339b13fcd7",
+      "ref_id": "4",
+      "recommendationScore": 78,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "Nospeaker利用MacBook触控板的触觉引擎发出声音，提供了一种创新的无声反馈方式。",
+      "reason": "这项技术巧妙地利用了现有硬件，为Apple用户提供了新颖的交互体验，对产品设计和辅助功能有启发，符合Apple生态和产品设计主题。",
+      "tags": [
+        "Apple",
+        "MacBook",
+        "触觉反馈",
+        "无障碍",
+        "产品设计",
+        "交互设计"
+      ]
+    },
+    {
+      "title": "Stalwart is now a drop-in replacement for Microsoft Exchange",
+      "link": "https://stalw.art/blog/microsoft-exchange-replacement/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-23T22:32:29.000Z",
+      "summary": "Article URL: https://stalw.art/blog/microsoft-exchange-replacement/\nComments URL: https://news.ycombinator.com/item?id=50620349\nPoints: 229\n# Comments: 124",
+      "id": "4b96978daecc4817be0b200fa4955d43f7256feea937efc70d3ce6c25f77772b",
+      "ref_id": "0",
+      "recommendationScore": 76,
+      "popularityScore": 229,
+      "priority": "medium",
+      "comment": "强大的开源Exchange替代方案，为企业级邮件和协作提供新选择。",
+      "reason": "解决了企业用户对私有化部署和成本控制的需求，具有较高的实用性和信息密度。",
+      "tags": [
+        "邮件服务器",
+        "开源",
+        "企业IT",
+        "自动化",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "Freeing the iPod Nano 5G",
+      "link": "https://viktorkrapivin.com/blog/nano5g-priv-prvd",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-23T23:03:13.000Z",
+      "summary": "Article URL: https://viktorkrapivin.com/blog/nano5g-priv-prvd\nComments URL: https://news.ycombinator.com/item?id=50620721\nPoints: 48\n# Comments: 7",
+      "id": "5cb5c1c4a293c9e90ed02578e6b91044550a4a0ce3bbe1b90284be38fad77827",
+      "ref_id": "4",
+      "recommendationScore": 75,
+      "popularityScore": 25,
+      "priority": "medium",
+      "comment": "一篇关于如何对iPod Nano 5G进行逆向工程和“解放”的硬件极客文章。",
+      "reason": "属于Apple生态圈的深度技术探索，对复古硬件爱好者具有吸引力。",
+      "tags": [
+        "Apple",
+        "硬件",
+        "逆向工程",
+        "复古科技"
+      ]
+    },
+    {
+      "title": "VP ≠ VNP over Every Field",
+      "link": "https://github.com/anthropics/formal-math/tree/main/vp-vnp",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-23T22:09:10.000Z",
+      "summary": "Paper: https://github.com/anthropics/formal-math/blob/11b6c7e3c927d...\nComments URL: https://news.ycombinator.com/item?id=50620102\nPoints: 251\n# Comments: 220",
+      "id": "e68c6b8d3ebd450015cc8fe76acdec0389349d1c19e10ee5faadad5103052d77",
+      "ref_id": "2",
+      "recommendationScore": 75,
+      "popularityScore": 251,
+      "priority": "low",
+      "comment": "一篇关于代数复杂性理论的突破性数学论文，极具学术深度。",
+      "reason": "虽然在理论计算机科学领域意义重大且新颖性高，但对普通科技博客读者的直接实用性较低，与主题优先级关联度不高。",
+      "tags": [
+        "理论计算机科学",
+        "复杂性理论",
+        "数学",
+        "学术论文"
+      ]
+    },
+    {
+      "title": "Win4wine – Run Windows Shell as the Linux Desktop on Wine",
+      "link": "https://github.com/mikuta0407/win4wine",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-23T12:28:11.000Z",
+      "summary": "Article URL: https://github.com/mikuta0407/win4wine\nComments URL: https://news.ycombinator.com/item?id=50610743\nPoints: 219\n# Comments: 115",
+      "id": "d497cc342864454896e0f41bf4a735d38b6c0a14fa96707c5b3b956b0127bc27",
+      "ref_id": "3",
+      "recommendationScore": 75,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "Win4wine项目探索了在Linux上通过Wine运行Windows Shell作为桌面环境的可能性，为特定用户提供了独特的跨平台体验。",
+      "reason": "该项目展示了有趣的系统集成技术，对需要融合Windows桌面体验的Linux用户或开发者具有参考价值，兼具编程工具和自动化属性。",
+      "tags": [
+        "Linux",
+        "Wine",
+        "Windows",
+        "桌面环境",
+        "跨平台",
+        "编程工具",
+        "自动化"
+      ]
+    },
+    {
+      "title": "A legendary philosopher isn’t buying Anthropic’s consciousness argument",
+      "link": "https://www.technologyreview.com/2026/11/23/1149569/a-legendary-philosopher-isnt-buying-anthropics-consciousness-argument/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-11-23T17:36:08.000Z",
+      "summary": "This story originally appeared in The Algorithm, our weekly newsletter on AI. To get stories like this in your inbox first, sign up here. Before going public last week, Anthropic named the possibility that AI could be conscious or sentient as a risk factor for anyone investing. Given “the way we approach model sentience and moral…",
+      "id": "7c1b7fa479f1c733775525e1e7541cf08f3d91a50b19a5c5f1ad97d1d59ac9ff",
+      "ref_id": "0",
+      "recommendationScore": 75,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "这篇文章深入探讨了Anthropic对AI意识的观点以及一位著名哲学家对此的批判性看法。",
+      "reason": "内容前沿且引人深思，是当前AI伦理和哲学辩论的重要组成部分，符合AI主题的高优先级。",
+      "tags": [
+        "AI",
+        "哲学",
+        "伦理",
+        "Anthropic",
+        "意识"
+      ]
+    },
+    {
+      "title": "Ladybird's first alpha release",
+      "link": "https://simonwillison.net/2026/Nov/23/ladybird/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-11-23T21:46:35.000Z",
+      "summary": "",
+      "id": "e59fe8be067f4ab68ffc304fcc9e3126445ea0ff6b1f69457810bc8055f9cdc0",
+      "ref_id": "4",
+      "recommendationScore": 75,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "介绍了Ladybird项目的首次alpha发布，内容缺失无法评估具体细节。",
+      "reason": "作为一个新的编程工具或开源项目，它对关注前沿开发工具的读者具有吸引力，符合编程工具的优先级。",
+      "tags": [
+        "编程工具",
+        "开源",
+        "浏览器",
+        "发布",
+        "开发"
+      ]
+    },
+    {
+      "title": "[Sponsor] Finalist Daily Planner Meets iPhone Duo",
+      "link": "https://www.finalist.works/iphone-duo-planner/?utm_source=df-nov-2026",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-11-24T00:03:56.000Z",
+      "summary": "Finalist has always been a paper planner in software, and now iPhone Duo is the perfect iPhone for it. Customize each Duo pose:\nClosed: agenda with outstanding habits. \nOpened: timeline on the left and the tasks on the right, drag across to pencil in your day. \nPropped like a laptop: keep an eye on time left before your next task, with agenda below.\nIt’s as flexible as your iPhone Duo, with Markdown notes that work in Obsidian, planner swimlanes, Journal, Pencil sketches, Reminders, and Lists.\nApple picked it for Apps that shine on iPhone Duo. And it works great on iPhone, iPad, Mac and Watch.\n ★",
+      "id": "7fd8f88e502fa60fb49535262eccbae6c254de8585b8a2f6b5a3a2aa885bae26",
+      "ref_id": "0",
+      "recommendationScore": 75,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "一篇关于为想象中（或未来）Apple设备设计的多功能日程规划应用的赞助文章，展示了对新交互形态的适应性。",
+      "reason": "尽管是赞助内容且涉及假设设备，但它详细探讨了应用在新型Apple生态设备上的设计与交互，对关注Apple产品和未来应用形态的读者有参考价值。",
+      "tags": [
+        "Apple生态",
+        "应用设计",
+        "生产力工具",
+        "日程管理",
+        "未来科技",
+        "Sponsor"
+      ]
+    },
+    {
+      "title": "Gadget Review: Cheap Zigbee Environmental Sensors ★★★☆☆",
+      "link": "https://shkspr.mobi/blog/2026/11/gadget-review-cheap-zigbee-environmental-sensors/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-11-23T12:34:29.000Z",
+      "summary": "I recently read a great blog post which tested a bunch of Zigbee Temperature / Humidity sensors. As the Internet of Things is getting cheaper by the hour, I thought I'd treat myself to some Sonoff AirGuard TH Lite sensors - they received an honourable mention in the post and were the cheapest I could find in the UK  They are reasonably small:    Barely bigger than the two (included) AAA batteries …",
+      "id": "468f7cd3ff90b5fe36671058fd56acda896d5e26e3d895c98ff567ffd4994dd1",
+      "ref_id": "2",
+      "recommendationScore": 75,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "一篇关于廉价Zigbee环境传感器的实用产品评测，详细具体，对智能家居爱好者很有参考价值。",
+      "reason": "提供了具体的产品信息和使用体验，对自动化领域（特别是智能家居）有直接的实用指导价值。",
+      "tags": [
+        "智能家居",
+        "物联网",
+        "Zigbee",
+        "传感器",
+        "产品评测",
+        "自动化"
+      ]
+    },
+    {
+      "title": "Huang's Return Is the Biggest National Security Scandal in U.S. History",
+      "link": "https://foreignpolicy.com/2026/11/23/jensen-huang-nvidia-return-ceo-national-security-scandal/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-23T23:11:38.000Z",
+      "summary": "Article URL: https://foreignpolicy.com/2026/11/23/jensen-huang-nvidia-return-ceo-national-security-scandal/\nComments URL: https://news.ycombinator.com/item?id=50620822\nPoints: 215\n# Comments: 162",
+      "id": "74e7b92db671ea226b3a218d3b599045493138de96fe18989181612a92d6bded",
+      "ref_id": "3",
+      "recommendationScore": 70,
+      "popularityScore": 100,
+      "priority": "medium",
+      "comment": "一篇评论黄仁勋回归及Nvidia对美国国家安全影响的政治经济分析文章。",
+      "reason": "文章围绕AI行业领袖Nvidia CEO展开，虽非纯技术，但其高热度和话题性值得关注。",
+      "tags": [
+        "AI",
+        "Nvidia",
+        "地缘政治",
+        "商业",
+        "国家安全"
+      ]
+    },
+    {
+      "title": "GPUI is getting its own repository",
+      "link": "https://github.com/zed-industries/gpui",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-23T20:52:54.000Z",
+      "summary": "Article URL: https://github.com/zed-industries/gpui\nComments URL: https://news.ycombinator.com/item?id=50619103\nPoints: 140\n# Comments: 44",
+      "id": "0386d86e596acc2db46fb3a22a761ea0dcb9c2c91580e41a1abb5f9d061e040c",
+      "ref_id": "0",
+      "recommendationScore": 70,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "关于一个新的高性能GUI框架GPUI的开源进展，值得开发者关注。",
+      "reason": "属于编程工具范畴，对高性能GUI应用开发有兴趣的读者具有参考价值。",
+      "tags": [
+        "编程工具",
+        "GUI",
+        "开源",
+        "开发"
+      ]
+    },
+    {
+      "title": "Why using rocks for carbon removal could eventually reduce crop growth",
+      "link": "https://www.technologyreview.com/2026/11/23/1149392/why-using-rocks-for-carbon-removal-could-eventually-reduce-crop-growth/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-11-23T11:00:00.000Z",
+      "summary": "Tech companies are investing a lot of hope and money in rocks. Google, Microsoft, and others have committed hundreds of millions of dollars to get startups to spread crushed basalt, olivine, or other alkaline materials across farms, in an effort to capture carbon from the air and lock it away. A number of influential models…",
+      "id": "82cbb51768979670393b2a333dc43ab9820192c96483f01b552da1f170a4e1db",
+      "ref_id": "2",
+      "recommendationScore": 65,
+      "popularityScore": 70,
+      "priority": "low",
+      "comment": "文章探讨了利用岩石进行碳去除技术可能对作物生长造成的潜在负面影响。",
+      "reason": "揭示了一种热门环保技术鲜为人知的弊端，对关注可持续发展和环境科技的读者有参考价值，但与核心主题优先级不符。",
+      "tags": [
+        "环保",
+        "碳去除",
+        "农业",
+        "可持续性",
+        "地质工程"
+      ]
+    },
+    {
+      "title": "Nvidia Reinstates Jensen Huang as CEO",
+      "link": "https://www.cnbc.com/2026/11/23/nvidia-jensen-huang-ceo.html",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-23T14:00:18.000Z",
+      "summary": "https://nvidianews.nvidia.com/news/nvidia-board-reinstates-j...\nhttps://www.cnbc.com/2026/11/23/nvidia-jensen-huang-congress...\nComments URL: https://news.ycombinator.com/item?id=50611576\nPoints: 2175\n# Comments: 3193",
+      "id": "cf5164636ad3b77e7fd65f0e948233582fa4e068271bbf544228a58c6f1deb43",
+      "ref_id": "1",
+      "recommendationScore": 60,
+      "popularityScore": 95,
+      "priority": "low",
+      "comment": "Nvidia CEO黄仁勋复职的新闻，是半导体行业的重要动态，但技术深度不高。",
+      "reason": "尽管Nvidia在AI领域举足轻重，但这篇报道主要关注公司管理层变动和商业新闻，而非技术创新本身。",
+      "tags": [
+        "Nvidia",
+        "AI产业",
+        "商业新闻",
+        "半导体",
+        "领导层"
+      ]
+    },
+    {
+      "title": "Nvidia Board Reinstates Jensen Huang",
+      "link": "https://nvidianews.nvidia.com/news/nvidia-board-reinstates-jensen-huang-as-president-ceo-and-board-director",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-11-23T14:43:27.000Z",
+      "summary": "Nvidia Newsroom:\nNvidia today announced that effective immediately, Jensen Huang\nhas been reinstated as President and Chief Executive Officer and\nas a member of the Board. The Board of Directors voted unanimously\nto reinstate Mr. Huang following a series of discussions and\nmeetings with Mr. Huang, after which the Board was satisfied with\nrespect to Mr. Huang’s candor and ability to lead Nvidia. In the\nprocess of reaching its decision, the Board received input from\nsenior levels of the United States government, and based on that\ninput, the Board is confident that Mr. Huang’s reinstatement poses\nno national security risk.\nWell, the tech side was right and the political side (including me) was wrong. Perhaps because the AI/VC cadre had a better read on the Trump administration’s remaining political capital and their willingness to use it on this. President Trump, on his blog:\nOn a personal note, I have gotten to know Jensen, and he is a\nGreat Patriot and National Treasure. Separately, NVIDIA should\ncontinue its thorough internal investigation of the Company’s\ncompliance with U.S. export controls in order to ensure that it is\nfulfilling its legal obligations and Patriotic Duty to protect\nU.S. National Security.\nI’m sure, under Huang’s chairmanship, they’ll get right on that.\nThis, after The New York Times reported over the weekend that Alice Huang, was, in fact, in regular contact with an official of China’s MSS for over a year, up through this fall.\n ★",
+      "id": "3b38f7127b86a94d21615b502548591ed8ebcc2f5ad8905de0f99c7b40776984",
+      "ref_id": "0",
+      "recommendationScore": 60,
+      "popularityScore": 80,
+      "priority": "high",
+      "comment": "Nvidia CEO黄仁勋复职的重要行业新闻，夹杂政治背景，信息价值高。",
+      "reason": "文章涉及AI领域核心企业Nvidia的领导层变动，对行业走向具有一定影响，是值得关注的行业动态。",
+      "tags": [
+        "Nvidia",
+        "AI",
+        "行业新闻",
+        "领导力"
+      ]
+    },
+    {
+      "title": "Per Arm's request, this site will be discontinued on 4 December 2026 :(",
+      "link": "https://arm.jonpalmisc.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-23T19:17:55.000Z",
+      "summary": "Article URL: https://arm.jonpalmisc.com/\nComments URL: https://news.ycombinator.com/item?id=50617499\nPoints: 870\n# Comments: 201",
+      "id": "d059f193e627ed60e8ce8c5301dba7633ad73f08e92067762f5d2a9dea0881d2",
+      "ref_id": "1",
+      "recommendationScore": 55,
+      "popularityScore": 85,
+      "priority": "low",
+      "comment": "一则关于某个Arm相关重要网站因Arm要求即将关闭的新闻。",
+      "reason": "虽然是热门新闻，但内容更侧重公告而非技术深度，与博客核心主题关联度不高。",
+      "tags": [
+        "Arm",
+        "技术新闻",
+        "版权",
+        "网站关闭"
+      ]
+    },
+    {
+      "title": "Jensen Huang Returns to Work",
+      "link": "https://www.businessinsider.com/jensen-huang-returns-to-nvidia-hq-im-terribly-sorry-2026-11",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-11-23T23:53:25.000Z",
+      "summary": "Geoff Weiss, reporting for Business Insider:\nNvidia employees gathered at headquarters to mark the moment,\nchanting “Jensen! Jensen!” as he arrived back at the office,\naccording to a person familiar with the scene. The crowd was so\npacked that employees jostled for a glimpse. Rather than his\nsignature black leather jacket, the source said he appeared to be\nwearing a navy cotton coat.\nHuang put his hand on his heart several times and said, “This is\nmy first day at work,” according to a video of the scene. “I’m\nterribly sorry for putting all of you through all of this.”\n“I’m gonna be a better CEO the second time around,” he said,\naccording to another person in attendance.\nGavin Baker, on X, has video and photos of Huang addressing hundreds of cheering employees.\nHuang went on to promise that he’ll now engage in sexual affairs with only one supplier or employee at a time.\n ★",
+      "id": "862264eb6838c269dadf88f42d050f00038aa15c14cf45ee267cb3582b230c45",
+      "ref_id": "1",
+      "recommendationScore": 30,
+      "popularityScore": 60,
+      "priority": "low",
+      "comment": "一篇以戏谑口吻描绘Nvidia CEO Jensen Huang回归的虚构报道，带有明显讽刺和幽默色彩。",
+      "reason": "内容纯属娱乐性政治讽刺，与科技深度和实用性无关，不适合作为严肃科技博客内容。",
+      "tags": [
+        "讽刺",
+        "科技人物",
+        "Nvidia",
+        "幽默",
+        "虚构"
+      ]
+    },
+    {
+      "title": "Elon Musk Claims to Be Unfamiliar With MAGA",
+      "link": "https://www.usatoday.com/story/opinion/columnist/2026/11/19/musk-maga-trump-republicans-billionaires/92855121007/",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-11-23T15:16:35.000Z",
+      "summary": "Rex Huppke, writing at USA Today:\nAs the latest rich schmuck trying to pivot away from President\nDonald Trump and the electorally walloped GOP, Musk said:\n“I’m not sure what MAGA means, but if that means sort of blind\nadherence to a set of policies by the Republican Party, then I\ncertainly don’t have that.”\nWhat are you talking about, you strange man? My dude paraded\naround in a MAGA hat, spoke at Trump rallies and in 2024\ndeclared, “I’m not just MAGA, I’m dark MAGA.” (That apparently\ncounts as “cool” among the “lonely rich men who desperately want\npeople to think they’re clever” crowd.)\nBBC News:\nElon Musk said on Wednesday that he felt “pretty foolish” about\nthe record sum he spent on the US midterm elections, following\nsweeping Republican defeats. The Tesla and SpaceX chief executive\nwas the election’s top individual donor, giving $446m (£339m) to\nsupport President Donald Trump’s party, particularly in Texas\nwhere many of Musk’s firms are based.\nThis is what I mean about typical executives tending not to stray more than a few steps from the political 50-yard line. Musk’s all the way down in the end zone.\n ★",
+      "id": "92fd78a16a639b5f36acedbe7ceda6185d5766f465e5671648948d52c93db2e6",
+      "ref_id": "4",
+      "recommendationScore": 30,
+      "popularityScore": 65,
+      "priority": "low",
+      "comment": "一篇讽刺埃隆·马斯克政治立场的文章，指出其在MAGA问题上的前后矛盾。",
+      "reason": "内容聚焦于政治八卦和人物评价，与科技主题无关，对读者无实际技术信息价值。",
+      "tags": [
+        "政治讽刺",
+        "Elon Musk",
+        "科技人物",
+        "媒体评论"
+      ]
+    },
+    {
+      "title": "Breaking: Jensen is back. And the market is way up. But things will never be the same.",
+      "link": "https://garymarcus.substack.com/p/breaking-jensen-is-back-and-the-market",
+      "source": "garymarcus.substack.com",
+      "publishedAt": "2026-11-23T16:38:04.000Z",
+      "summary": "In lieu of writing about the stunning news, here’s a 5 minute guest appearance that I just did on CNN International.",
+      "id": "f75766fe480a89b65994bacd10d2bc6f8db15e07239ae80b6d5197d403fa7d84",
+      "ref_id": "0",
+      "recommendationScore": 30,
+      "popularityScore": 65,
+      "priority": "low",
+      "comment": "这是一篇新闻公告，而非实质性文章，仅指向外部采访链接。",
+      "reason": "内容缺乏技术深度和信息密度，不提供具体技术洞察或实用信息。",
+      "tags": [
+        "新闻",
+        "市场动态",
+        "商业"
+      ]
+    },
+    {
+      "title": "Semafor: ‘Hours Before Huang’s Reinstatement, Trump Called Nvidia’s Board to Argue for His Return’",
+      "link": "https://www.semafor.com/article/11/23/2026/jensen-huang-reinstated-as-nvidia-ceo",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-11-23T16:00:29.000Z",
+      "summary": "Rohan Goswami and Shelby Talcott, reporting for Semafor this morning:\nUS President Donald Trump had dialed into Nvidia’s board meeting\nto argue for Jensen Huang’s return, hours before the company\nreinstated the ousted CEO, according to people familiar with the\nmatter. [...]\n“President Trump was totally involved and this is a great decision\nby the NVIDIA board. We have to protect our geniuses,” White House\ncommunications director Steven Cheung said.\nI remember when Republicans were the party that thought the government should stay out of business matters. If you wouldn’t support (say) President Gavin Newsom or Jon Ossoff calling into a Sunday night emergency board meeting to put his thumb on the scale of a hiring decision, you can only support Trump doing it if you’re an avowed hypocrite. (Which, admittedly, is part of the admission requirements for MAGA.)\n“The Board believes Jensen is the right person to lead Nvidia, and\nthat his reinstatement is in the best interests of our\nstockholders, employees, partners and customers,” Harvey Jones,\nwho was elevated at the time of Huang’s Nov. 12 ouster to board\nchairman, said in a statement.\nHarvey Jones, six days ago, on Nvidia’s earnings call:\n“The Nvidia board unanimously accepted his resignation and does\nnot intend to reinstate Jensen as CEO.”\nSomebody help Harvey Jones find his pants.\n ★",
+      "id": "46967948423cedbc10a7ef49b447e093bfc52c44e228eaca0a1cec1ab7cd4649",
+      "ref_id": "3",
+      "recommendationScore": 25,
+      "popularityScore": 50,
+      "priority": "low",
+      "comment": "一篇虚构Semafor报道，详细编造了政治人物干预Nvidia高层人事变动的场景，并附带强烈的个人政治评论。",
+      "reason": "该文章虚构了新闻事实，并包含煽动性的政治评论，严重不符合科技博客的客观、技术导向。",
+      "tags": [
+        "政治讽刺",
+        "Nvidia",
+        "科技人物",
+        "虚构新闻",
+        "评论"
+      ]
+    },
+    {
+      "title": "Gravity on an oblate planet",
+      "link": "https://www.johndcook.com/blog/2026/11/23/oblate-spheroid-gravity/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-11-23T10:17:22.000Z",
+      "summary": "A spherical planet is not a point mass, but the gravity on the surface is the same as if the mass were concentrated at a point in the center. If a planet is not spherical but rather an oblate spheroid, the point-mass approximation doesn’t work. Suppose a planet has equatorial radius a and polar radius b, with a […]\nGravity on an oblate planet first appeared on John D. Cook.",
+      "id": "b96467cf0f7b4e6cace44be957412a309c4889510457cb352c06becce84ddd80",
+      "ref_id": "3",
+      "recommendationScore": 25,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "物理学问题，探讨扁球体行星上的引力，与科技博客关注点偏差较大。",
+      "reason": "内容为理论物理学，与主要关注的科技主题关联度低，实用性不强。",
+      "tags": [
+        "物理",
+        "天文",
+        "理论"
+      ]
+    },
+    {
+      "title": "Alcohol use reduces efficacy of immunotherapy by disrupting antitumor immunity",
+      "link": "https://www.science.org/doi/10.1126/scisignal.aef1375",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-24T00:53:46.000Z",
+      "summary": "Article URL: https://www.science.org/doi/10.1126/scisignal.aef1375\nComments URL: https://news.ycombinator.com/item?id=50621977\nPoints: 44\n# Comments: 17",
+      "id": "e62c47927c4eca8c6b96cfdccded49fe19f5bf1b66b9a8f3d61a0b748746ce6f",
+      "ref_id": "0",
+      "recommendationScore": 20,
+      "popularityScore": 25,
+      "priority": "low",
+      "comment": "一篇关于酒精摄入影响免疫疗法效果的医学研究摘要，非科技主题。",
+      "reason": "内容属于医学科学范畴，与科技博客的核心关注主题不符。",
+      "tags": [
+        "医学",
+        "科学研究",
+        "健康"
+      ]
+    },
+    {
+      "title": "Donald Trump on Jensen Huang’s Reinstatement at Nvidia",
+      "link": "https://truthsocial.com/@realDonaldTrump/posts/117666713950631493",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-11-23T17:22:03.000Z",
+      "summary": "The President of the United States, on his blog, at 11:30am today:\n\nHe posted this after spending 50 minutes on a phone interview with CNBC in which he took credit for “the deal” to reinstate Huang.\nI must say, it does capture the moment.\n ★",
+      "id": "e85934373f236f863aa57909976bc00b9a1b1a38de3beb1c10231434b91e729b",
+      "ref_id": "2",
+      "recommendationScore": 20,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "一篇虚构的总统言论报道，将Jensen Huang的复职与政治介入挂钩，旨在讽刺。",
+      "reason": "内容纯粹为政治讽刺，缺乏任何技术相关性或实际信息，严重偏离科技博客主题。",
+      "tags": [
+        "政治讽刺",
+        "Nvidia",
+        "科技人物",
+        "虚构新闻"
+      ]
+    },
+    {
+      "title": "Pluralistic: The Debt Trap (23 Nov 2026)",
+      "link": "https://pluralistic.net/2026/11/23/grasshoppers-v-ants/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-11-23T13:18:44.000Z",
+      "summary": "Today's links The Debt Trap: Obscure causality is the downfall of us all. Hey look at this: Delights to delectate. Object permanence: They Fight Crime; Cantenna wifi TV for Mali; Kakistocracy; Inflation or price-gouging; The long game; Fox v bloggers; Hollywood laundered money for Berlusoni; Katamari earmuffs; EMI v parody cricket songs; \"Roller Girl\"; Trump U was worse than you thought; London v Dieselgate; Bunnie at USC; Facebook gaslights the web; Apple bans ebooks that mention Apple; Private ambulances v babies in burning buildings; Boss preppers. Upcoming appearances: Oxford, Sheffield, Virtual, Oxford, Santa Barbara, Montreal. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. The Debt Trap (permalink) Smoking is very stupid. I was a smoker for 17 years, from ages 13-30. I was very stupid to start smoking. That stupidity only came into sharper focus a few years ago, when I got a cancer diagnosis (don't worry, I am now cancer-free): https://pluralistic.net/2024/11/05/carcinoma-angels/#squeaky-nail In my defense, I'll point out that I was just a kid when I started, but also, smoking belongs to a class of pernicious problems whose insidiousness is rooted in the distance between their causes and effects: https://pluralistic.net/2021/06/03/i-quit/ I've often said that if a little tumor had sprouted immediately after I took my first puff, I never would have taken a second one. Now that I've actually had the experience of being told that I have a tumor, I can say definitively that I would not have taken that second puff. An economist would tell you that I was engaged in \"hyperbolic discounting\": underpricing a future cost and overvaluing a present pleasure: https://en.wikipedia.org/wiki/Hyperbolic_discounting But I don't think that tells the whole story. Sure, I was engaged in hyperbolic discounting, but why was I doing that? What was it about smoking (as opposed to, say, French-kissing light-sockets) that led me to apply a hyperbolic discount to the costs of smoking? I say it was the attenuated relationship between cause and effect. It's not just that we undervalue the price of smoking: it's that we struggle to arrive at a correct price for smoking in the moment, because the intellectual knowledge of cancer statistics is in no way comparable to the visceral experience of a cancer diagnosis. Estimating the \"cost\" (emotional, physiological, monetary) of a cancer diagnosis is hard, especially if you're young and have had the good fortune of a life untouched by close contact with agonizing illness and death. The point I'm making is that the discount isn't just hyperbolic, it's hyperbolic because it relies so much upon guesswork, without comparable experiences to anchor your estimate. What's more, it's this same attenuated causality (in which cause is separated from effect by so much time and space) that allowed the tobacco industry to sow so much profitable doubt about the connection between smoking and cancer. Sure, some of the policymakers who let Big Tobacco off the hook were doubtlessly in their pocket, reliant on campaign contributions or beholden to a party that was in some queasy, cozy relationship with these death merchants. But the reason Big Tobacco was able (is able) to get away with killing us for so many decades is that you don't get a tumor with each puff. I believe that most of the policymakers who reasoned their way into doubting the connection between smoking and cancer were ensnared by this attenuated causality. They might have had low morals and low intellect, but the factor that made them such easy marks for Big Tobacco's death-hustlers was this wide, long gap between cause and effect. This cuts both ways: if you're a policymaker of low intellect and morals, you can rig your policies to put their consequences a long way off in the future, which might give you time to escape to a lucrative private-sector career with the industrial interests who benefited from your chicanery. Or (if you're a Mitch McConnell-adjacent flesh-eating ghoul who plans to die only after centuries in office, chin red and slick with the heartblood of the innocent), you can put so much time and space between your fuckery and the ruin it brings that the voting public fails to connect your actions with the consequences. After all, no one ever lost money betting against the American public's object permanence. For example, Trump's Big Bill was designed to make its deepest cuts – to Medicaid, rural hospitals, the increased tax-load on workers to advantage their bosses – after the midterm elections. The cynical reasoning isn't hard to follow: We'll just tell voters that all the bad things they've been told about the coming cuts are Fake News, and then, after the cuts arrive, blame their post-midterm misery on Biden, communists, trans people, immigrants, and the phases of the moon. This cheap trick may be deplorable, but you should also save some anger for politicians who enact good policies but refuse to take account of this principle. Take Biden's 2021 plan to lower prescription drug prices. This started off as a rule that would end the longstanding, outrageous policy that bans Medicare/Medicaid from negotiating with pharma companies. Yes, you read that right: when Uncle Sucker buys drugs from Big Pharma, the government just asks the pharma companies how much public money they'd like, and then the USA writes the companies a check for whatever sum they name, no questions asked. That's why the US pays 300% more than any other advanced nation for its drugs. Thus Biden's initial proposal: let Medicare/Medicaid negotiate drug prices the same way every private insurer and every public health system does. But then, Biden's team allowed that policy to be diluted so that it would only apply to ten drugs, and only if those drugs had been on the market for at least 13 years. Finally, the piece de resistance: the plan wasn't design to kick in until 2025, after the 2024 election, which turned out to be a referendum on the cost of living (including drug prices) that saw the Dems getting their asses kicked by the stupidest, most obviously corrupt fascists in American electoral history: https://pluralistic.net/2021/11/18/bipartisan-consensus/#corruption Whether you're ignoring attenuated causality or weaponizing it, it's critical to any analysis of how we get into as much trouble as we do. It is the ruin of individuals and firms, and of political and economic systems. Take vaccinations: herd immunity requires a lot of compliance: nearly all of us have to get vaccinated before the real benefits kick in. Securing this compliance takes a lot of effort, because the system has to get people to invest their faith in the prospect that eventually we'll get to herd immunity and an end to infection. But once herd immunity is in place, noncompliance is a much smaller deal. The very fact of herd immunity means that people can opt out here or there without getting sick (because we're all up-to-date on our vaccinations). Worse, the very fact of herd immunity means that after a while, no one can really remember what the sickness was like: we think of measles as something the Little Rascals pretended to have so they could play hooky, not as a terrifyingly infectious disease that can leave you blind or brain damaged. Asking someone who's never lived through a measles epidemic to estimate the cost of measles is like asking a 13 year old to estimate what a cancer diagnosis will feel like. The same applies to antitrust enforcement. An economy of small and medium sized firms who compete with one another is an economy where workers have more bargaining leverage and regulators don't have to worry about being outspent and outlasted with decade-plus appeals when they crack down on corrupt businesses: https://www.nytimes.com/1981/02/15/business/us-vsibm.html It's also an economy where companies must compete rather than collude. Look at what happened to the ad-tech industry, which is dominated by a duopoly that controls 80% of display advertising, and that duopoly has an illegal, collusive arrangement to rig the market to pay publishers less and charge advertisers more: https://en.wikipedia.org/wiki/Jedi_Blue In the post-war era, antitrust enforcers did their jobs: they blocked mergers, punished predatory pricing, and aggressively investigated sweetheart deals between retail incumbents and their suppliers that were designed to freeze out new businesses: https://pluralistic.net/2024/08/14/the-price-is-wright/#enforcement-priorities This produced an economy where companies had lower profits, because workers and consumers could force them to disgorge more of their surpluses, and because they had to invest more in improving their offerings to keep up with competitors. It was an economy where prosperity was more broadly shared and where it was easier to impose democratic accountability on the private sector. Then, starting with Jimmy Carter, America turned its back on antitrust. Year after year, presidency after presidency, enforcers waved through larger and more anticompetitive mergers and ignored more egregious predatory practices. For 50 years, the neoclassical economists who promoted this laissez-faire doctrine have smugly pointed out that even though the economy grew more consolidated thanks to their policy, we still had an economy, one that was often booming, where politicians could (sometimes) be seen to be intervening to address corporate cheating. The public, meanwhile, has historically struggled to connect the problems of oligarchy with these pro-oligarch policies. They can feel the regulatory capture, they know that labor grows weaker every year, they are furious at their sellout politicians and the system's naked corruption. But because the policy is separated from its outcomes by so much time and space, there's lots of room for the policy's architects and beneficiaries to do the economic version of denying the link between smoking and cancer; that is, denying the link between pro-monopoly policies and monopolies. Attenuated causality lets bad-faith actors sell us anti-vax, pro-monopoly, cancer denial…and, of course, climate denial. NASA's James Hansen warned Congress about climate change in 1988. It's not like the oil companies didn't know about this. As far back as the 1970s, Exxon's own scientists had warned the company about global warming, and the company took actions based on those warnings: https://insideclimatenews.org/project/exxon-the-road-not-taken/ Mobil, meanwhile, started secretly raising its drilling platforms to account for rising seas, even as it was taking out full-page ads in national daily newspapers that stated that \"The science of climate change is too uncertain to mandate a plan of action\": https://web.archive.org/web/20160101024248/http://graphics.latimes.com/oil-operations/ Attenuated causality was and is at the core of climate denial. If every climate-shredding gas turbine that the self-described environmental hero Elon Musk fired up at one of his AI data-centers immediately caused a flood or a wildfire or a heat-wave, we'd scrape all those data-centers down to their foundation slabs and then we'd display Musk in stocks and pelt him with rotten fruit. Musk really knows how to turn attenuated causality to his advantage. Remember when he performatively borrowed a security guard's pocket knife and started slicing through the Ethernet cables connecting Twitter's servers? https://english.elpais.com/science-tech/2023-09-14/when-elon-musk-unplugged-the-twitter-servers-with-a-pocket-knife-theres-still-shit-thats-broken-because-of-it.html Or when he started shutting down whole data-centers and mass-firing Twitter's technical staff? https://www.nytimes.com/2022/12/29/technology/twitter-elon-musk.html The point of this performance was to let Musk claim that Twitter's management had let itself be gulled by featherbedding engineers who grossly overbuilt Twitter's infrastructure in order to guarantee themselves perpetual employment at the expense of Twitter's shareholders. But all that spare server capacity wasn't excess: it was the cushion, the headroom, the insurance policy. Those were the servers that would pick up the slack when another server lost its power-supply or caught a bad stick of RAM. They were the servers that could shoulder the load during the next 9/11 or Arab Spring. They were the engineering staff that could execute new projects or perform emergency maintenance – and the engineering staff that could plan the next build-out in advance so that future growth wouldn't stall out when Twitter ran out of hardware. Musk's actions didn't occur in a vacuum. During the decades in which attenuated causality set the scene for an endless, incestuous orgy of mergers and acquisitions, it became normal for business leaders to hack away at their own firms' resiliency. University administrators fired tenured professors and replaced them with casualized, proletarianized adjuncts. The pedagogy – and the universities' reputations – persisted after the cuts, ebbing away slowly as the institutional memory and standards eroded bit by bit. But eventually, the universities found themselves in crisis. Campuses erupted in student revolt and spectacular scenes of violent repression: https://jayrosen.tumblr.com/post/13174138991/excerpt-from-uc-davis-2010-2012-general-catalog Universities' reputations cratered and they found themselves easy pickings for demagogues who awarded themselves a veto over faculty, curriculum and admissions: https://www.chronicle.com/article/columbia-capitulated-but-so-did-the-rest-of-higher-ed That's the thing about attenuated causality: it lets people and institutions and systems play a high-stakes game of Jenga in which every non-load-bearing block is removed and added to the top of the teetering stack. No one block causes the system to collapse…until one block does, and the whole thing falls over. It's like an avalanche. Drop one snowflake after another on the mountainside. Expose it to the midday sun and the frigid night. Sure, it creaks. Watch closely and you'll see it make minute shifts. Every now and again, a light scree of snow slides off the surface and skitters downhill, but the great mass of snow is stable. Until it isn't. Until one last snowflake alights on the mountainside and sets the whole thing rumbling and tumbling in an inexorable, unstoppable wall of snow that only halts when it can go no lower. The run-up to an avalanche is a long, long series of linear phenomena. A snowflake is minute. Add it to the pile and it will produce a minute effect. A little bit of heat causes a little bit of expansion. A little bit of wind blows a little of the loose cover around. But each one of these little strains on the system makes it less stable overall. The snowpack's stability is invisible. A snowpack that is about to cut loose is indistinguishable from one that will stay put for weeks or months. But once the snow's systemic resiliency has been exhausted, the next linear perturbation produces a wild, catastrophic, nonlinear collapse. Attenuated causality lets us build up a mountain of debt: health debt, technology debt, policy debt, credibility debt. It's impossible to know when the system's homeostatic mechanisms have been fatally weakened, such that the next compromise it is asked to bear causes it to rupture, or implode, or crumble. We can raise the level of CO2 and methane in the Earth's atmosphere year after year and see long-attenuated, linear effects: fires here, floods there, some extinctions. But one day: we overwhelm some invisible homeostatic mechanism and we lose the Gulf Stream: https://www.bbc.com/climate/impact/gulf_stream.shtml Same goes for the world's IT: we can fire IT workers, starve maintenance teams of budget and personnel, substitute indemnity for software quality, allow our \"security\" agencies to hoard and weaponize vulnerabilities, and on average, it will all work…until it stops: https://pluralistic.net/2026/09/12/god-in-the-box/#llms-are-fake IT might just be the most dangerously attenuated aspect of all our administrative functions. A software engineer writes a piece of code and it keeps running, even if you fire that engineer. This is one of the reasons it's so hard to unionize tech workers: when they go on strike, their scab software crosses the picket line and keeps working: https://pluralistic.net/2026/11/07/aeiou-but-sometimes-why/#unrecognizable-playbook But software isn't an asset, it's a liability. Code runs in a system, with upstream processes that produce its inputs and downstream processes that operate on its outputs. There's adjacent processes, too: other software that also gets fed by those upstream processes and also feeds those downstream processes. Even if the code never changes, the system the code is part of changes constantly, which means that the more code you have, the more code you have to maintain. So what happens when you fire technical workers is nothing…at first. And then, bit by bit, things start to break. And break. And break. Only the people who wrote the software – and the people they trained through working alongside of them – know exactly how it works, with that deep knowledge, that Fingerspitzengefühl, that informs their intuition so they can figure out why things broke and how to fix them: https://pluralistic.net/2025/09/08/process-knowledge/#dance-monkey-dance Break that chain of knowledge and you lobotomize your institution. Reduce the full complement of experienced engineers with the wherewithal to demand higher wages and better conditions, leave behind a precarious skeleton crew of juniors you terrorize with layoff threats and AI ghost-stories, and you destroy not just your ability to spot problems before they occur, but also your capability to salvage your way out of the wreckage. And that's what Musk's Doge did to the American state: undermined its capacity to absorb shocks, to anticipate shocks and brace for them – or even to detect the shocks when they're underway. There's a reason so much variation is preserved in our genomes and species: these are the reserves of variety that can rise to meet the changing world. Eliminate the variety, and you strip out the ability to cope with surprise, and what happens next shouldn't surprise any of us. Hey look at this (permalink) Mathematics and the Art of M.C. Escher https://shop.momath.org/mathematics-and-the-art-of-mc-escher.html What If We Designed Cities Around the Wind? https://commonedge.org/what-if-we-designed-cities-around-the-wind/ IDF’s Bogus Rationale for Murdering Journalists Gets Respectful Hearing From NYT https://fair.org/home/idfs-bogus-rationale-for-murdering-journalists-gets-respectful-hearing-from-nyt/ One Less Lonely Winter https://lesslonely.to/ Getting Into Last Year’s Trump Memecoin Dinner Took $55,000. This Weekend’s Costs Just $518 https://gizmodo.com/getting-into-last-years-trump-memecoin-dinner-took-55000-this-weekends-costs-just-518-2000842414 Object permanence (permalink) #25yrsago They Fight Crime https://web.archive.org/web/20011204174257/http://www.rain-street.org/fightcrime.htm #20yrsago GeekCorps builds cantenna WiFi TV network in Mali https://web.archive.org/web/20061213100911/http://www.geekcorps.org/2006/11/the-geekcorps-cantv/ #20yrsago Newsweek on the anti-DRM movement https://web.archive.org/web/20061123162740/http://www.msnbc.msn.com/id/15818852/site/newsweek/ #20yrsago Fox affiliate’s ridiculous blogging “agreement” https://web.archive.org/web/20070108101833/http://www.andycarvin.com/archives/2006/11/bloggers_give_it_up_for_fox.html #20yrago Berlusconi used Hollywood studios for money laundering http://news.bbc.co.uk/1/hi/uk_politics/6166076.stm #20yrsago High-def and science fiction don’t mix https://www.locusmag.com/2006/Issues/11DoctorowCommentary.html #20yrsago Katamari Damacy earmuffs https://web.archive.org/web/20070621123931/http://thriftyknitter.com/?p=84 #20yrsago EMI threatens cricket fans over parody songs https://web.archive.org/web/20070609201918/http://www.abc.net.au/sport/content/200611/s1791806.htm #20yrsago Audio from Bunnie Huang's USC talk https://web.archive.org/web/20061204012200/http://centeronpublicdiplomacy.com/podcasts/061121_huang.mp3 #20yrsago Net Neutrality and online gaming https://web.archive.org/web/20061205231108/http://www.ramprate.com/marketcommentary/neutrality.html #15yrsago Honeybees can smell TB https://web.archive.org/web/20120201143306/http://www.3news.co.nz/Bees-help-in-the-battle-against-tuberculosis/tabid/1160/articleID/230861/Default.aspx #15yrsago RIP, Anne McCaffrey https://reactormag.com/anne-mccaffrey-in-remembrance/ #15yrsago Evidence-based copyright: UK online movie marketplace is expensive, broken, patchy https://web.archive.org/web/20140212004731/http://www.theguardian.com/technology/2011/nov/22/movie-fans-piracy-online #15yrsago Anil Dash: Facebook attacks the open Web, becomes a badware site https://web.archive.org/web/20111121195933/http://dashes.com/anil/2011/11/facebook-is-gaslighting-the-web.html #15yrsago Cedar-Sinai takes cancer sufferer off transplant list for taking the medical marijuana its doctor prescribed http://www.allgov.com/news/controversies/la-hospital-denies-liver-transplant-to-medical-marijuana-user-despite-prescription-from-its-own-doctor #15yrsago News of the World shredded hard-drives, laptops https://web.archive.org/web/20111120081542/http://www.independent.ie/world-news/europe/phonetap-tabloids-computers-destroyed-court-told-2939797.html #15yrsago danah boyd on a nuanced understanding of privacy in the networked age https://www.zephoria.org/thoughts/archives/2011/11/20/debating-privacy-in-a-networked-world-for-the-wsj.html #15yrsago Swedish Pirate Party MEP Amelia Andersdotter, on taking office at long last https://torrentfreak.com/pirate-to-join-european-parliament-as-youngest-member-111120/ #15yrsago Britain’s Occupy movement picks up steam https://web.archive.org/web/20131001063502/https://www.theguardian.com/uk/2011/nov/19/occupy-london-protesters-ideas-bank #10yrsago Word of the day: Kakistocracy http://jury.me/blog/2016/11/19/kakistocracy #10yrsago Trump’s DHS plan leaked by Kris Kobach, who thinks more about Sharia law than folders https://www.salon.com/2016/11/21/kris-kobach-accidentally-leaked-homeland-security-plans-during-a-photo-op/ #10yrsago Roller Girl: Newberry-honored coming of age graphic novel about roller derby and difficult tween friendships https://memex.craphound.com/2016/11/21/roller-girl-newberry-honored-coming-of-age-graphic-novel-about-roller-derby-and-difficult-tween-friendships/ #10yrsago A hard-sell con that cleaned out its desperate victims: behind the $25,000,000 Trump University settlement https://web.archive.org/web/20161125072035/https://www.newyorker.com/news/john-cassidy/trump-university-its-worse-than-you-think #10yrsago London Mayor sends VW a £2.5m bill for Dieselgate cheaters’ Congestion Charges https://web.archive.org/web/20190821082218/https://citiesofthefuture.eu/sadiq-khan-asks-volkswagen-to-pay-2-5m-in-lost-congestion-charge/ #10yrsago Listening to users is the first step in making them secure http://opentranscripts.org/transcript/network-of-sorrows/ #10yrsago Trump’s anti-net-neutrality FCC: filling the swamp with his own alligators https://www.theverge.com/2016/11/22/13713318/trump-fcc-advisers-net-neutrality-eisenach-jamison #10yrsago Donald Trump’s 100 day plan: the good, the bad, and the terrifying https://www.nakedcapitalism.com/2016/11/donald-trump-my-100-day-action-plan.html #10yrsago Apple’s ebook store bans books that use Apple trademarks in unapproved (but legal and accurate) ways https://www.perzanow.ski/blog/2016/11/18/why-you-cant-buy-our-book-from-apple #10yrsago Even if you’ve ripped out your laptop’s mic, hackers can listen in through your headphones https://www.wired.com/2016/11/great-now-even-headphones-can-spy/ #5yrsago Private ambulances want a ban on firefighters rescuing babies https://pluralistic.net/2021/11/22/amr-vs-babies/#unauthorized-ambulance #5yrsago Apple’s Right-to-Repair U-Turn https://pluralistic.net/2021/11/21/apples-right-to-repair-u-turn/ #5yrsago Inflation or price-gouging? https://pluralistic.net/2021/11/20/quiet-part-out-loud/#profiteering #1yrago The long game https://pluralistic.net/2025/11/20/if-you-wanted-to-get-there/#i-wouldnt-start-from-here #1yrago Boss preppers https://pluralistic.net/2025/11/22/eschatology-watch/#guillotine-watch Upcoming appearances (permalink) Oxford: Ministry of the Future, Nov 23 https://ministryforthefuture.co.uk/events.html Sheffield: Reverse Centaur at Juno Books, Nov 25 https://www.outsavvy.com/event/40274/cory-doctorow-in-conversation Virtual: Enshittification, AI, and the Future of Technology (UBC Master of Educational Technology), Nov 28 https://met.ubc.ca/2026/09/met-speaker-series-cory-doctorow-enshittification-ai-and-the-future-of-technology/ Oxford: Bennett Oxford Symposium on Open Code in Science, Dec 9 https://www.bennett.ox.ac.uk/events/2026-bennett-institute-symposium/ Santa Barbara: UCSB Reads, Apr 29 https://www.library.ucsb.edu/events-exhibitions/ucsb-reads-2027-presents-author-cory-doctorow Montreal: World Science Fiction Convention, Sep 2-6 https://montreal2027.ca/en Recent appearances (permalink) Beyond the robot apocalypse – who really wins in a world of AI? (ABC Conversations) https://www.abc.net.au/listen/programs/conversations/cory-doctorow-artificial-intelligence/107388236 How AI is Breaking the Internet (and Everything Else) (Blood in the Machine) https://www.youtube.com/watch?v=mXRaPjFRyT0 Clint Eastwood (No Gods No Mayors) https://www.patreon.com/NoGodsNoMayors/posts/clint-eastwood-173008088 Life After AI (Brain Bar) https://www.youtube.com/watch?v=IPPa43-n0vI Terms of Service with Clare Duffy (CNN) https://www.cnn.com/audio/podcasts/terms-of-service-with-clare-duffy/episodes/458ce968-af5d-11f0-b539-13ed2afe25f8 Latest books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/ \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: “Once Is Enemy Action,” a science fiction novel about the origins of modern technofascism. Today's words: 562 (38766 total). \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Fourth draft completed. Submitted to editor. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "73db4390133548b2ad0da8f89480adc053dadb4f52902b4767729590cfcf9d23",
+      "ref_id": "1",
+      "recommendationScore": 20,
+      "popularityScore": 30,
+      "priority": "low",
+      "comment": "这是一篇包含大量链接和观点集合的文章，内容发散且技术深度不足，多为社会经济议题。",
+      "reason": "内容主题过于广泛和零散，缺乏核心技术主题，与科技博客的关注点契合度不高。",
+      "tags": [
+        "链接聚合",
+        "社会评论",
+        "混合主题",
+        "低技术含量"
+      ]
+    },
+    {
+      "title": "Finite Projective Spaces",
+      "link": "https://www.johndcook.com/blog/2026/11/23/finite-projective-spaces/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-11-23T23:49:05.000Z",
+      "summary": "Just as there are finite projective planes, there are also finite projective spaces of higher dimension. The axioms of a projective space are Any two distinct points lie on exactly one line. If A, B, C, and D are distinct points and the lines AB and CD meet, then the lines AC and BD also meet. […]\nFinite Projective Spaces first appeared on John D. Cook.",
+      "id": "76869e8a6e2a41fa71810b8bce19b351b5afb7ddc442bd581c6be3cb5644d4f9",
+      "ref_id": "1",
+      "recommendationScore": 20,
+      "popularityScore": 15,
+      "priority": "low",
+      "comment": "纯数学理论探讨，关于有限射影空间，技术深度高但与主流科技话题关联度低。",
+      "reason": "内容过于学术和理论化，不符合博客关注主题的实用性或热门度。",
+      "tags": [
+        "数学",
+        "理论",
+        "几何"
+      ]
+    },
+    {
+      "title": "Two generators suffice",
+      "link": "https://www.johndcook.com/blog/2026/11/23/two-generators-suffice/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-11-23T17:28:34.000Z",
+      "summary": "Every finite simple group is generated by at most two elements. This is a consequence of the classification of finite simple groups (CFSG). Not only that, with high probability any two elements chosen at random will work. For non-Abelian finite simple groups G, the probability that two randomly chosen elements will generate G approaches 1 […]\nTwo generators suffice first appeared on John D. Cook.",
+      "id": "b5a6111909e0384aff5efdf405ed632a310c2890eb43baaa0a1391de8b6f676d",
+      "ref_id": "2",
+      "recommendationScore": 20,
+      "popularityScore": 15,
+      "priority": "low",
+      "comment": "探讨抽象代数中的群论问题，学术性强，与主流科技话题关联度低。",
+      "reason": "内容过于学术和理论化，不符合博客关注主题的实用性或热门度。",
+      "tags": [
+        "数学",
+        "理论",
+        "群论"
+      ]
+    },
+    {
+      "title": "The search for a top dark matter candidate",
+      "link": "https://www.smithsonianmag.com/science-nature/the-search-for-a-top-dark-matter-candidate-was-losing-hope-then-came-a-potential-signal-will-it-be-enough-to-energize-the-struggling-field-180989923/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-23T23:12:40.000Z",
+      "summary": "Article URL: https://www.smithsonianmag.com/science-nature/the-search-for-a-top-dark-matter-candidate-was-losing-hope-then-came-a-potential-signal-will-it-be-enough-to-energize-the-struggling-field-180989923/\nComments URL: https://news.ycombinator.com/item?id=50620831\nPoints: 9\n# Comments: 0",
+      "id": "71edbcb14510fefd4412d5e51168b00b909bbf781491293d1896d35b12d43653",
+      "ref_id": "2",
+      "recommendationScore": 15,
+      "popularityScore": 5,
+      "priority": "low",
+      "comment": "一篇关于暗物质候选者探索的科普文章，报道了潜在的新信号。",
+      "reason": "内容属于理论物理范畴，与科技博客的核心关注点关联度低。",
+      "tags": [
+        "物理学",
+        "宇宙学",
+        "科学探索"
+      ]
+    },
+    {
+      "title": "Could Jensengate take down the President?",
+      "link": "https://garymarcus.substack.com/p/could-jensengate-take-down-the-president",
+      "source": "garymarcus.substack.com",
+      "publishedAt": "2026-11-23T18:46:14.000Z",
+      "summary": "Some cynical speculations have already been confirmed, and you can bet your last dollar the incoming Congress is going to take an interest",
+      "id": "c58fe1cf05cbf055980d78e8162cb604a780ce2553a734605d9d665081dec414",
+      "ref_id": "4",
+      "recommendationScore": 15,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "围绕Jensen Huang事件展开的政治猜测，与技术内容本身关联度低。",
+      "reason": "文章核心是政治分析和推测，而非技术深度探讨，偏离了科技博客的关注重点。",
+      "tags": [
+        "政治",
+        "猜测",
+        "行业新闻（间接）",
+        "低技术含量"
+      ]
+    },
+    {
+      "title": "Bored.com: Fun, interesting and cool websites to explore when bored",
+      "link": "https://www.bored.com/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-23T21:01:16.000Z",
+      "summary": "Article URL: https://www.bored.com/\nComments URL: https://news.ycombinator.com/item?id=50619207\nPoints: 123\n# Comments: 29",
+      "id": "d1f862679a7f04dfe54bae543ad067e360692bc20c3a3f7d28e7f5c4b8f6bb45",
+      "ref_id": "4",
+      "recommendationScore": 12,
+      "popularityScore": 123,
+      "priority": "low",
+      "comment": "娱乐性网站集合，适合消遣，但无科技深度。",
+      "reason": "内容与科技博客核心关注主题不符，缺乏技术深度、新颖性和实用性，不具备评审价值。",
+      "tags": [
+        "娱乐",
+        "网站推荐",
+        "生活方式"
+      ]
+    },
+    {
+      "title": "EasyPost (YC S13) Is Hiring",
+      "link": "https://www.easypost.com/careers/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-23T17:00:05.000Z",
+      "summary": "Article URL: https://www.easypost.com/careers/\nComments URL: https://news.ycombinator.com/item?id=50615161\nPoints: 0\n# Comments: 0",
+      "id": "15a068344f26eb17f56e74b18bd8bc3193191d499cfbbd2add7b16b941e7be02",
+      "ref_id": "4",
+      "recommendationScore": 10,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "一个公司招聘信息，不适合作为技术博客文章评估。",
+      "reason": "该内容为招聘广告，缺乏技术分析或观点，不符合博客文章的评估标准。",
+      "tags": [
+        "招聘",
+        "不适用",
+        "非技术内容"
+      ]
+    },
+    {
+      "title": "Tranquility",
+      "link": "https://blog.coredump.cx/p/tranquility",
+      "source": "lcamtuf.substack.com",
+      "publishedAt": "2026-11-23T03:39:30.000Z",
+      "summary": "The Oval Office.",
+      "id": "2c85c4f3322ed31076b6cfc236672f857664c5684870913c7162a35055ebc1d0",
+      "ref_id": "3",
+      "recommendationScore": 0,
+      "popularityScore": 5,
+      "priority": "low",
+      "comment": "极短且无实质内容的文章，不属于科技博客的范畴。",
+      "reason": "文章内容过于简短且不包含任何技术信息，无法进行有效评估。",
+      "tags": [
+        "无关内容",
+        "非技术"
+      ]
+    }
+  ]
+}
