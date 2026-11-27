@@ -1,0 +1,593 @@
+{
+  "dailySummary": "AI驱动创新：Llama.cpp获AMD优化，提升自托管体验。开发工具：SimDrop简化iOS模拟器管理，Rust发布完整VoIP栈。硬件突破：新一代仿生手实现触感反馈。",
+  "articles": [
+    {
+      "title": "Show HN: SimDrop – Running iOS simulators in the macOS Finder sidebar",
+      "link": "https://github.com/rxliuli/sim-drop",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-26T16:51:38.000Z",
+      "summary": "Hi HN, I made a small macOS utility for my own iOS simulator workflow.\nI kept running into two annoyances: getting config files in and out of a simulator is clunky (digging into CoreSimulator UUID folders or running simctl), and on the iPhone Duo simulator I couldn't even drag and drop images onto the window at all.\nSimDrop puts every running iOS simulator in Finder's sidebar (under Locations) with two folders:\n- Downloads/ (Files app > On My iPhone > Downloads)\n- Photos and Videos/ (the simulator's Photos library)\nSimulators appear when they boot and disappear when they shut down. Everything is also reachable from the terminal under ~/Library/CloudStorage/SimDrop-SimDrop/.\nA couple of caveats up front:\n- Dragging moves files by default (same as iCloud Drive, because it uses File Provider on the startup volume)—hold Option to copy.\n- macOS 15+ and iOS simulators only (not physical devices).\nIt's free, open source (GPL-3.0), signed and notarized, and installable via Homebrew:\n  brew install --cask rxliuli/tap/sim-drop\n\nComments URL: https://news.ycombinator.com/item?id=50657070\nPoints: 36\n# Comments: 8",
+      "id": "b9a922b9838e4c7daa3f0ce03068a42acffbf63cc1a55a510ad080ee3e3edeae",
+      "ref_id": "2",
+      "recommendationScore": 98,
+      "popularityScore": 70,
+      "priority": "high",
+      "comment": "一款巧妙地将iOS模拟器文件系统集成到macOS Finder的工具，极大优化了iOS开发者的工作流。",
+      "reason": "精准解决了Apple生态下iOS开发者的痛点，技术实现优雅且高度实用，是编程工具类中的优秀创新。",
+      "tags": [
+        "Apple Ecosystem",
+        "iOS Development",
+        "macOS",
+        "Developer Tool",
+        "Utility",
+        "Open Source"
+      ]
+    },
+    {
+      "title": "AMD-specific fork of llama.cpp",
+      "link": "https://devnull.land/amd-specific-llama-cpp",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-26T17:11:29.000Z",
+      "summary": "Article URL: https://devnull.land/amd-specific-llama-cpp\nComments URL: https://news.ycombinator.com/item?id=50657265\nPoints: 267\n# Comments: 64",
+      "id": "40cb249974695259a7456e7fbad6842657a3b0bec1251f250664e723299ae301",
+      "ref_id": "1",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "针对AMD GPU优化的llama.cpp分支，显著提升了本地AI模型运行性能。",
+      "reason": "直接回应了AI领域对特定硬件优化的迫切需求，技术深度高，实用性极强，且符合最高优先级主题。",
+      "tags": [
+        "AI",
+        "LLM",
+        "AMD",
+        "Optimization",
+        "Programming Tool",
+        "Machine Learning"
+      ]
+    },
+    {
+      "title": "The Download: Better bionic hands and AI’s natural-gas boom",
+      "link": "https://www.technologyreview.com/2026/11/26/1149934/the-download-better-bionic-hands-ai-natural-gas-boom/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-11-26T13:10:00.000Z",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. The next generation of bionic hands is here—and they can feel Avi Davidson lost his left hand as a teenager. Since then, he’s cycled through a few prosthetics. But his latest…",
+      "id": "feeb9fd3109e665aabdcbf69eb31aaa3e85aaf641389e74e97cf4820f42a04c5",
+      "ref_id": "4",
+      "recommendationScore": 95,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "深度聚焦AI与仿生技术前沿，内容兼具深度与未来感。",
+      "reason": "完美契合AI这一最高优先级主题，探讨了AI在能源和仿生领域的最新应用，具有极高的新颖性和信息密度。",
+      "tags": [
+        "AI",
+        "仿生学",
+        "机器人",
+        "能源",
+        "前沿科技"
+      ]
+    },
+    {
+      "title": "AI made self-hosting fun again",
+      "link": "https://janlukas.blog/posts/ai-self-hosting",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-26T21:47:45.000Z",
+      "summary": "Article URL: https://janlukas.blog/posts/ai-self-hosting\nComments URL: https://news.ycombinator.com/item?id=50660180\nPoints: 192\n# Comments: 109",
+      "id": "aebfbe56731bd98a52c5ac3451e735c2673dc7f68b56294a13dd3318c1042dc1",
+      "ref_id": "1",
+      "recommendationScore": 90,
+      "popularityScore": 95,
+      "priority": "high",
+      "comment": "探讨了AI如何赋能个人自托管服务器，使其变得更加有趣和便捷。",
+      "reason": "文章结合热门的AI技术与经典的自托管实践，提供了具体的应用场景和提升用户体验的思路。",
+      "tags": [
+        "AI",
+        "Self-hosting",
+        "Automation",
+        "DevOps"
+      ]
+    },
+    {
+      "title": "Las Vegas, Monte Carlo, and Integer Factorization",
+      "link": "https://www.johndcook.com/blog/2026/11/26/las-vegas-monte-carlo/",
+      "source": "johndcook.com",
+      "publishedAt": "2026-11-26T13:14:07.000Z",
+      "summary": "Monte Carlo algorithms typically have a fixed runtime but a variable error rate. Las Vegas algorithms have a variable runtime but a fixed (i.e. zero) error rate. Stanisław Ulam came up with the idea of Monte Carlo methods in 1946 and Nicholas Metropolis coined the term “Monte Carlo” the next year. László Babai coined the […]\nLas Vegas, Monte Carlo, and Integer Factorization first appeared on John D. Cook.",
+      "id": "a871db9fdc6d486a3f9db8a972a58cd0986c39871558f1efa70ffe691a027866",
+      "ref_id": "3",
+      "recommendationScore": 90,
+      "popularityScore": 70,
+      "priority": "medium",
+      "comment": "清晰地解释了蒙特卡洛和拉斯维加斯算法的区别，并将其与整数分解问题联系起来。",
+      "reason": "提供了扎实的计算机科学基础知识，对理解算法原理和计算复杂性有重要的教育意义。",
+      "tags": [
+        "算法",
+        "计算机科学",
+        "编程工具",
+        "数学",
+        "密码学"
+      ]
+    },
+    {
+      "title": "Rvoip 0.5 the complete VoIP stack in Rust",
+      "link": "https://github.com/eisenzopf/rvoip",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-26T19:18:09.000Z",
+      "summary": "Article URL: https://github.com/eisenzopf/rvoip\nComments URL: https://news.ycombinator.com/item?id=50658632\nPoints: 64\n# Comments: 14",
+      "id": "8027b82605caa4a8e9ce44e735d9e8e2af552d958b492d5ed1dd7312d610a186",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 60,
+      "priority": "medium",
+      "comment": "一个基于Rust实现的完整VoIP协议栈，技术深度高。",
+      "reason": "该项目展示了Rust在构建复杂网络通信系统中的强大潜力，对Rust开发者和网络工程师具有很高的实用价值和学习意义。",
+      "tags": [
+        "Rust",
+        "VoIP",
+        "编程工具",
+        "网络通信",
+        "开源"
+      ]
+    },
+    {
+      "title": "Show HN: Three Linux VMs in a browser tab, each running a different browser",
+      "link": "https://michidk.github.io/sidebyside/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-26T15:00:06.000Z",
+      "summary": "Article URL: https://michidk.github.io/sidebyside/\nComments URL: https://news.ycombinator.com/item?id=50656036\nPoints: 110\n# Comments: 26",
+      "id": "81bc8d124fc6611d2e4ae2ea772c26cf4497c3dc69f06c871c1c23735766c5f8",
+      "ref_id": "3",
+      "recommendationScore": 85,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "在浏览器中运行多个带不同浏览器的Linux虚拟机，展示了惊人的Web技术能力。",
+      "reason": "技术实现非常前沿且复杂，为沙盒环境和跨浏览器测试提供了强大而新颖的解决方案。",
+      "tags": [
+        "Virtualization",
+        "WebAssembly",
+        "Browser",
+        "Testing Tool",
+        "Linux",
+        "Programming Tool"
+      ]
+    },
+    {
+      "title": "Intel One Mono font (2023)",
+      "link": "https://github.com/intel/intel-one-mono",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-26T10:11:01.000Z",
+      "summary": "Article URL: https://github.com/intel/intel-one-mono\nComments URL: https://news.ycombinator.com/item?id=50653667\nPoints: 448\n# Comments: 234",
+      "id": "6bfee4b6633aba4486ebffcad8b371764fcd6365004bae4ba4725b08f2369889",
+      "ref_id": "3",
+      "recommendationScore": 85,
+      "popularityScore": 90,
+      "priority": "medium",
+      "comment": "Intel推出的面向开发者的全新等宽字体，极大地提升编程可读性。",
+      "reason": "专为编程工作者设计，直接改善开发者体验，符合编程工具主题且社区关注度高。",
+      "tags": [
+        "编程工具",
+        "字体",
+        "开发者",
+        "UI/UX"
+      ]
+    },
+    {
+      "title": "The next generation of bionic hands is here—and they can feel",
+      "link": "https://www.technologyreview.com/2026/11/26/1149923/the-next-generation-of-bionic-hands-is-here-and-they-can-feel/",
+      "source": "MIT Technology Review",
+      "publishedAt": "2026-11-26T09:59:00.000Z",
+      "summary": "Avi Davidson lost his left hand as a teenager. Since then, he’s cycled through a few prosthetics. But his latest is different—it’s wired up to nerves in the upper part of his forearm and allows him to feel pressure. For the first time in years, he can use his left limb to handle delicate objects…",
+      "id": "6404fe4f3137aa0f8345bec9d01f286680cff636acf6b5fd6a7a630792a90c86",
+      "ref_id": "0",
+      "recommendationScore": 85,
+      "popularityScore": 90,
+      "priority": "high",
+      "comment": "这篇报道介绍了能够提供触觉反馈的新一代仿生手，技术含量高。",
+      "reason": "文章主题聚焦于前沿的生物医疗与机器人技术，具有高度的新颖性、实用性及巨大的社会影响力。",
+      "tags": [
+        "仿生学",
+        "机器人",
+        "医疗科技",
+        "新兴科技"
+      ]
+    },
+    {
+      "title": "OGP Image Format Support on Major Sites and Apps",
+      "link": "https://shkspr.mobi/blog/2026/11/ogp-image-format-support-on-major-sites-and-apps/",
+      "source": "shkspr.mobi",
+      "publishedAt": "2026-11-26T12:34:04.000Z",
+      "summary": "I've built a quick tool to see which image formats are supported on sites that allow Open Graph Protocol link previews.  As I've whinged about before, Facebook have all-but abandoned their efforts to standardise OGP. Which leads to a situation where a bunch of sites all have conflicting requirements on what they'll show. There's no easy way to find out which sites support which image formats, so…",
+      "id": "5a58d6c89d87cba5bd23c85b6a89ad39c2cf53b15d4b50ba5d3f96a8d78fc210",
+      "ref_id": "1",
+      "recommendationScore": 85,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "文章探讨了Open Graph Protocol图像格式在不同平台上的兼容性问题，并暗示了一个实用工具。",
+      "reason": "提供了网页开发中常见痛点的实用解决方案和洞察，对开发者和内容创作者有价值。",
+      "tags": [
+        "Web开发",
+        "Open Graph Protocol",
+        "编程工具",
+        "前端"
+      ]
+    },
+    {
+      "title": "Show HN: I wrote an entire Vim manual over 4 years",
+      "link": "http://themouseless.dev/vim/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-26T14:44:22.000Z",
+      "summary": "I'm glad to announce that I'm releasing my new book, Learning to Play Vim.\nWhen I started using Vim more than a decade ago, I wished there was a manual out there teaching how to use this fantastic editor step by step, beginning with the foundations up to more advanced features. Of course at the time I did the vimtutor, but it was too dense for me to remember much from it. I also read the entire Vim manual (`:help manual`), but I didn't like it: it was too detailed in places (for example `02.8 Finding help` completely lost me for a while), and other features didn't get the treatment they deserved.\nSo I decided to write my own Vim manual. It took me more than 4 years and 2987 focused pomodoros (1244 hours) of work to finally get it done!\nThe result:\n- 21 chapters showing the most important Vim features step by step.\n- 170 exercises with solutions.\n- Many real-life examples to show how Vim can be used and configured for your own needs.\n- The related Vim's help pages to dig further into each feature.\nMost configs are both written in Vimscript and Lua for Neovim users. This book explores the common features between Vim and Neovim, so don't expect anything about Neovim-specific features (like treesitter or LSP for example).\n- The landing page: https://themouseless.dev/vim/\n- A sample of the book with the entire table of contents and the first three chapters covering most of the basics: https://themouseless.dev/content/learning_to_play_vim_sample....\nI wrote this with my bare hands, no LLM involved to spoil the fun.\nComments URL: https://news.ycombinator.com/item?id=50655868\nPoints: 32\n# Comments: 12",
+      "id": "80d29bbc46f18f1594cad7d46439572ebf5ece2a0005979f727b7ae87a08d449",
+      "ref_id": "4",
+      "recommendationScore": 83,
+      "popularityScore": 65,
+      "priority": "medium",
+      "comment": "一位开发者耗时四年，精心编写了一本系统且富有实践性的Vim学习手册。",
+      "reason": "以巨大的投入填补了Vim学习资源的空白，提供了高质量、有体系的教程，对开发者社区具有长期价值。",
+      "tags": [
+        "Vim",
+        "Text Editor",
+        "Programming Tool",
+        "Learning",
+        "Book",
+        "Independent Project"
+      ]
+    },
+    {
+      "title": "Novita, StreamLake, etc. are ByteDance Ark wrappers",
+      "link": "https://kendell.dev/blog/arkwrapper/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-26T21:59:19.000Z",
+      "summary": "Article URL: https://kendell.dev/blog/arkwrapper/\nComments URL: https://news.ycombinator.com/item?id=50660273\nPoints: 19\n# Comments: 3",
+      "id": "c74df66d31bcb6720b4020dab5b7f136e52381fb2e2ef5f063acdf6cd38ce0d0",
+      "ref_id": "0",
+      "recommendationScore": 80,
+      "popularityScore": 45,
+      "priority": "high",
+      "comment": "揭露了知名AI公司的产品可能基于同一底层平台，提供了行业洞察。",
+      "reason": "文章深入分析了AI行业的业务模式和平台复用现象，对理解市场竞争格局有价值。",
+      "tags": [
+        "AI",
+        "ByteDance",
+        "Tech Business",
+        "Platform Analysis"
+      ]
+    },
+    {
+      "title": "Company Culture = Slack Emoji ÷ √Headcount",
+      "link": "https://lia.mg/posts/measuring-company-culture-with-slack-emoji/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-26T20:49:49.000Z",
+      "summary": "Article URL: https://lia.mg/posts/measuring-company-culture-with-slack-emoji/\nComments URL: https://news.ycombinator.com/item?id=50659640\nPoints: 68\n# Comments: 11",
+      "id": "ce1216521d8786e02dc5b1a5dae7a0a1c328c85788f1884654e58929f6cb0408",
+      "ref_id": "4",
+      "recommendationScore": 75,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "提出了一种利用Slack表情符号量化公司文化的创新方法，具有一定的趣味性和洞察力。",
+      "reason": "文章以独特视角分析了企业文化，对产品设计、组织行为和数据分析感兴趣的读者有参考价值。",
+      "tags": [
+        "Company Culture",
+        "Product Design",
+        "Data Analysis",
+        "Workplace Tech"
+      ]
+    },
+    {
+      "title": "Nextcloud Office Desktop app",
+      "link": "https://nextcloud.com/blog/euro-office-comes-to-your-desktop-with-the-nextcloud-office-desktop-app/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-26T11:50:49.000Z",
+      "summary": "Article URL: https://nextcloud.com/blog/euro-office-comes-to-your-desktop-with-the-nextcloud-office-desktop-app/\nComments URL: https://news.ycombinator.com/item?id=50654289\nPoints: 393\n# Comments: 201",
+      "id": "4299a3ba81334a440e04b32db784641a73b03f24d2a014e39ab81feb17168864",
+      "ref_id": "2",
+      "recommendationScore": 75,
+      "popularityScore": 85,
+      "priority": "medium",
+      "comment": "Nextcloud桌面办公应用发布，对开源办公和数据主权用户有显著实用价值。",
+      "reason": "介绍了重要的生产力工具更新，涉及编程工具和自动化主题，受众广泛。",
+      "tags": [
+        "Nextcloud",
+        "办公软件",
+        "开源",
+        "生产力工具"
+      ]
+    },
+    {
+      "title": "Top-cited AI scientists at four US companies compared",
+      "link": "https://topcitedscientists.com/figures/ai-at-four-us-companies/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-26T19:44:31.000Z",
+      "summary": "Article URL: https://topcitedscientists.com/figures/ai-at-four-us-companies/\nComments URL: https://news.ycombinator.com/item?id=50658910\nPoints: 25\n# Comments: 11",
+      "id": "2eac8052b2ee17bbd5bf9505fc2033b21869ebeea56d44aa44293f0baaa34b8b",
+      "ref_id": "0",
+      "recommendationScore": 70,
+      "popularityScore": 30,
+      "priority": "high",
+      "comment": "分析了美国顶尖公司AI科学家的引用情况，提供行业视角。",
+      "reason": "作为AI主题下的行业观察，它提供了有价值的AI人才和研究影响力数据，具有参考意义。",
+      "tags": [
+        "AI",
+        "行业分析",
+        "人才研究",
+        "学术影响力"
+      ]
+    },
+    {
+      "title": "YouTube Ad Punisher – Auto-reloads YouTube pages when an ad plays",
+      "link": "https://github.com/antonpictures/youtube-punisher",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-26T17:36:47.000Z",
+      "summary": "Article URL: https://github.com/antonpictures/youtube-punisher\nComments URL: https://news.ycombinator.com/item?id=50657530\nPoints: 226\n# Comments: 306",
+      "id": "a0439c16159af772d6b3f2ab49e1648ee0828a1e5ddac3c2b474712adc36d0d0",
+      "ref_id": "0",
+      "recommendationScore": 70,
+      "popularityScore": 85,
+      "priority": "medium",
+      "comment": "一个巧妙但略显激进的浏览器工具，通过自动刷新来规避YouTube广告。",
+      "reason": "解决了大量用户的痛点，虽然技术上不复杂，但创意和实用性结合社区高度关注。",
+      "tags": [
+        "Automation",
+        "Browser Extension",
+        "Utility",
+        "Life Hack"
+      ]
+    },
+    {
+      "title": "★ Obvious Affordances Are Due for a Comeback",
+      "link": "https://daringfireball.net/2026/11/obvious_affordances_are_due_for_a_comeback",
+      "source": "daringfireball.net",
+      "publishedAt": "2026-11-26T15:11:46.000Z",
+      "summary": "Speaking of Marcin Wichary, like me, he’s a big user of Apple Notes. Unlike me, he’s such a big user of Notes that he (somehow) uses Notes as the CMS for the whole Unsung blog. In a post this week, he wrote about how Notes — like file systems and most other notes apps — keeps two dates for each note: created and modified. You can sort your list of notes in Notes by either date; the default is by modification date, which Notes calls “edited”. Conveniently, Notes will remember your sorting preference on a per-folder basis. So if you have a folder of notes that you use as a journal, you can sort that folder by date created, without affecting the sort order for your other folders. (Notes only remembers each folder’s sort-by order per device, so if you use multiple devices, you’ll need to change the sort-by setting for a given folder on each device.)\nIn the editing view for a single note, however, Notes only shows one date, the modified/edited date, like so:\nNovember 26, 2026 at 1:00 pm\nWichary writes:\nThis can feel frustrating. You know the data is there, you see it\nin the left pane, part of the software recognizes and supports it,\nbut there seems to be no way to summon it in a place you want. I\nlooked through the context (right click) menus, and through the\nmain menu. I couldn’t find anything, and I assumed that\npossibility just wasn’t there.\nThen recently, years on, I accidentally clicked on the timestamp,\nand this happened:\n[Screen capture movie omitted.]\nThat click was what I needed all along. Clicking alternates\nbetween “created” and “edited” timestamps. It even puts a little\nprefix not just before the other date, but before both.\nYet… there is really no way to know this functionality is there.\nClicking the timestamp to toggle between the edited and created dates is a cool hidden feature. But as Wichary notes, why is it hidden?\nI don’t necessarily mean that Notes had to do something like what\nFinder or Bear do, and expose that data all the time — that kind\nof stuff can feel heavy. But I think it’s important to make sure\nall actions have their entry points somewhere where you can\ndiscover them. Maybe it’s the main menu, maybe it’s the\nright-click menu. I’m a fan of command palettes in part\nbecause that’s where more esoteric options can go without\noverloading other surfaces.\nOn the Mac, there probably ought to be an item in the View menu for this. But that wouldn’t help on iOS, which has no menu bar. The basic problem is that the timestamp at the top of every note is clickable, but it doesn’t look clickable. If clicking on something does something, that thing should look clickable. Just what “looking clickable” means is open for debate, but ought to be part of the standard visual language for the platform. It could look like a raised button. It could look like a recessed well. You could keep it flat and just draw a faint button shape behind the text. You could design something exuberantly fun, like making it look and animate like a train station split-flap display. You could be lazy and just underline the text — underlining, although gross, would at least be something. Things that are inert should look inert; things that are clickable should look clickable.1\nThis gets to the heart of the problem with Apple’s too-minimal UI language — and the rest of the industry mindlessly following Apple’s lead. There’s a wonderful rule of thumb oft attributed to Albert Einstein: Everything should be made as simple as possible, but not simpler. \nWhen clickable UI elements do not look clickable, they’ve been made too simple.\nOne More Thing\nI long ago noticed, somehow, that the timestamps atop notes in Notes2 are clickable, to toggle between edited and created dates. But Wichary’s post brought to my attention a detail that I consider a violation of good design. When you first display a note, the timestamp at the top looks like this:\nNovember 26, 2026 at 1:00 pm\nThat’s the edited date (which I really want to call “modified”) — but it doesn’t say so. It just shows the date. When you click it, it changes to:\nCreated: October 31, 2026 at 4:30 pm\nClick again and you get:\nEdited: November 26, 2026 at 1:00 pm\nIf you continue clicking, it keeps toggling between the timestamps with the “Created:” and “Edited:” prefix labels. The design violation I’m flagging is that the initial state doesn’t have a label, and there’s no way to get back to the initial unlabeled timestamp. If repeatedly clicking something cycles through multiple states, you should wind up exactly where you started. With these timestamps in Notes, the only way to get back to where you started — a timestamp with no label — is to close the note and reopen it. That’s clearly wrong.\nThis is a foul, not a bug. It’s a deliberate design decision. And I think we can presume how Apple arrived at this design. The solution I’d like to see is for the date to always be labeled — “Edited:” or “Created:”. Then clicking would just toggle between the two states. With two clicks, you’d be right back where you started. I think always showing these labels would also offer a gentle hint that you can click to change which date is shown. That’s not enough to fully suggest clickability, but it’d be better than nothing, which is what we have now. I’m guessing that the “simpler than possible” minimalist cohort at Apple complained that showing the “Edited:” label from the start is ugly clutter. So, we wound up with this unsatisfying compromise: no label at the start, but toggling between “Created:” and “Edited:” after you click on the timestamp.\nNeedless clutter ought to be omitted. Some elements are reasonably made optional. But when an item in an app has two timestamps associated with it, labeling which date is which isn’t clutter. Clarity is good. Eliminating ambiguity is good. Liking the way something looks should never come at the expense of conveying an understanding of how it works, or making it harder to use. If you’re not excited by the challenge of designing a presentation for the Notes timestamp that both looks good and suggests that it’s a clickable toggle, you are not a UI designer. You’re a graphic designer.\nDan Wineman wrote a good post on visual affordances back in 2013, just days after Apple unveiled iOS 7’s great flattening, which I’ll quote from again:\nThat’s what affordances do. They operate on the boundary between\nsight and touch. You see a thing, often from a distance, and its\naffordances give you enough information to simulate, in your mind,\nthe sensation of manipulating it. Unconsciously, you configure\nyour fine motor system in advance, so that by the time you get to\nthe door handle, your hand is already forming the right shape to\ngrasp it and pull the door open. [...]\nAffordances are the baby to skeuomorphism’s bathwater. When they\nengage our instincts just right, they create an emotional bond,\nand the unfamiliar becomes inviting. Without them, it’s just\npictures under glass. It makes no difference how flat, how deep,\nhow minimal, or how ornate the look-and-feel is if it can’t show\nus, when we look, how to feel.\nThis is the way back to the future. We don’t need to invent these designs. We just need to embrace again what we already know.\nAnd things that could be clickable, but are disabled because of the current state of one or more conditions, should look clickable-but-disabled. Temporarily disabled is different from permanently inert, and that difference can and should be conveyed visually. ↩︎︎\nI also noticed, long ago, that when the app is named Notes it’s often awkward to talk about notes in the app. Same for Reminders’ reminders, Files’ files, and, most ungainly of all, Shortcuts’ shortcuts. It’s like Abbott and Costello’s “Who’s on First” bit but less funny. What do you use for notes? Notes. That’s what I’m asking, where do you write them? Notes. Do you even keep notes? Absolutely. Where? Notes. Not what, where? Notes. I’ll kill you.\nThat said, my original idea for the name of what became Vesper was “What”, with slogans like, “You use What for your notes? Yes.” I still have the domain whatapp.net (which points nowhere). I had the idea before WhatsApp existed; by the time we started working on Vesper at the end of 2012, though, WhatsApp did exist, so the name What was out the door. That was probably for the best. ↩︎",
+      "id": "3b47280789f03ebce26c3dce33f6cd1e7d6215d408661bc9ea33543bf7598123",
+      "ref_id": "4",
+      "recommendationScore": 70,
+      "popularityScore": 75,
+      "priority": "medium",
+      "comment": "文章详细探讨了Apple Notes的日期排序和文件夹管理功能，并隐含了产品设计理念。",
+      "reason": "对Apple生态用户具有较强的实用性，通过对日常工具的细致观察，为产品设计提供了启发，信息密度适中。",
+      "tags": [
+        "Apple生态",
+        "Apple Notes",
+        "产品设计",
+        "UI/UX",
+        "效率工具"
+      ]
+    },
+    {
+      "title": "What happens when you put a non-agile object in the CoreApplication Properties?",
+      "link": "https://devblogs.microsoft.com/oldnewthing/20261126-00/?p=112899/",
+      "source": "devblogs.microsoft.com/oldnewthing",
+      "publishedAt": "2026-11-26T15:00:00.000Z",
+      "summary": "The reference expires, but the entry remains.\nThe post What happens when you put a non-agile object in the CoreApplication Properties? appeared first on The Old New Thing.",
+      "id": "82957b23e46f1fc0c75b509eea2330475bd4be0276bf48986fb2b64c567784ff",
+      "ref_id": "2",
+      "recommendationScore": 70,
+      "popularityScore": 50,
+      "priority": "medium",
+      "comment": "一篇极其简短的博文，涉及Windows CoreApplication中非敏捷对象的特定技术细节。",
+      "reason": "虽然内容非常简洁，但涉及Windows系统编程的深度技术问题，对特定开发者有参考价值。",
+      "tags": [
+        "Windows开发",
+        "编程工具",
+        "系统内部",
+        "UWP"
+      ]
+    },
+    {
+      "title": "Largest 2D Chart library in the world using BUI: BlenderUI",
+      "link": "https://bui.preetham.top/charts/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-26T18:37:24.000Z",
+      "summary": "Article URL: https://bui.preetham.top/charts/\nComments URL: https://news.ycombinator.com/item?id=50658193\nPoints: 40\n# Comments: 4",
+      "id": "bbac3107fda6ec0a96318926cfd6bd4907a9865f19c4a49d8da5e9b2b38fadf7",
+      "ref_id": "2",
+      "recommendationScore": 65,
+      "popularityScore": 20,
+      "priority": "medium",
+      "comment": "介绍了利用BlenderUI构建的2D图表库，提供了独特的绘图方案。",
+      "reason": "该项目探索了Blender在数据可视化领域的应用，对寻求非传统图表解决方案或Blender用户群可能具有吸引力。",
+      "tags": [
+        "Blender",
+        "数据可视化",
+        "图表库",
+        "UI",
+        "编程工具"
+      ]
+    },
+    {
+      "title": "The New York Times warns photographers not to update Photoshop over AI features",
+      "link": "https://simonwillison.net/2026/Nov/26/hn-50651685/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-11-26T05:08:46.000Z",
+      "summary": "",
+      "id": "e7f1c23cf7eb37255791b5bd3e9fe8c977008999f04a5944ab93df8cd9e0ce46",
+      "ref_id": "3",
+      "recommendationScore": 60,
+      "popularityScore": 85,
+      "priority": "high",
+      "comment": "标题揭示了纽约时报对Photoshop中AI功能发出的警告，但文章内容缺失。",
+      "reason": "主题高度契合AI优先关注点，涉及AI在创意领域的伦理和实际影响，尽管内容缺失但标题本身已具备高讨论价值。",
+      "tags": [
+        "AI",
+        "Photoshop",
+        "伦理",
+        "内容缺失",
+        "产业影响"
+      ]
+    },
+    {
+      "title": "IBM gives H-1B, green card holders 3 weeks to relocate from US or leave company",
+      "link": "https://economictimes.indiatimes.com/nri/work/ibm-gives-h-1b-green-card-holders-3-weeks-to-relocate-from-us-or-leave-company-december-31-deadline-set/articleshow/136180168.cms?from=mdr",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-26T18:35:37.000Z",
+      "summary": "Article URL: https://economictimes.indiatimes.com/nri/work/ibm-gives-h-1b-green-card-holders-3-weeks-to-relocate-from-us-or-leave-company-december-31-deadline-set/articleshow/136180168.cms?from=mdr\nComments URL: https://news.ycombinator.com/item?id=50658170\nPoints: 118\n# Comments: 81",
+      "id": "b83fa3f4d3480aa3696732296c1e4724e960e1db3a9541c063c410bb27c8e747",
+      "ref_id": "3",
+      "recommendationScore": 50,
+      "popularityScore": 100,
+      "priority": "low",
+      "comment": "报道了IBM针对H-1B和绿卡持有者的争议性公司政策。",
+      "reason": "虽然是热门的行业新闻，但其内容主要关注企业政策和移民问题，与科技博客评审更侧重的技术深度和实用性不符。",
+      "tags": [
+        "IBM",
+        "公司政策",
+        "H-1B",
+        "绿卡",
+        "行业新闻",
+        "美国就业"
+      ]
+    },
+    {
+      "title": "Denver man traps Waymo robotaxis with cones, eggs them at least 30 times",
+      "link": "https://electrek.co/2026/11/26/denver-man-cones-eggs-waymo-robotaxis/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-26T21:16:41.000Z",
+      "summary": "Article URL: https://electrek.co/2026/11/26/denver-man-cones-eggs-waymo-robotaxis/\nComments URL: https://news.ycombinator.com/item?id=50659918\nPoints: 32\n# Comments: 15",
+      "id": "4f91351f629371e2bad75c8a3f108acd0fe99400d34e450c73e51c85b956b7ca",
+      "ref_id": "2",
+      "recommendationScore": 30,
+      "popularityScore": 65,
+      "priority": "low",
+      "comment": "一篇关于自动驾驶汽车在社会接受度上面临挑战的趣味新闻报道。",
+      "reason": "内容更偏向社会新闻而非技术探讨，对关注AI技术本身的读者价值有限。",
+      "tags": [
+        "AI Impact",
+        "Self-driving Cars",
+        "Social Commentary",
+        "News"
+      ]
+    },
+    {
+      "title": "George Whitesides, 1939-2026",
+      "link": "https://www.science.org/content/blog-post/george-whitesides-1939-2026",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-26T18:13:07.000Z",
+      "summary": "Article URL: https://www.science.org/content/blog-post/george-whitesides-1939-2026\nComments URL: https://news.ycombinator.com/item?id=50657936\nPoints: 51\n# Comments: 6",
+      "id": "27a7250f17853237b3d6064af8bee645413bb692314e9e8dc9b9ba51237c27ec",
+      "ref_id": "4",
+      "recommendationScore": 30,
+      "popularityScore": 40,
+      "priority": "low",
+      "comment": "一篇纪念著名科学家George Whitesides生平与贡献的讣告。",
+      "reason": "内容属于人物纪念与科学史，而非技术探讨或应用，与科技博客评审的核心关注点不匹配。",
+      "tags": [
+        "人物",
+        "科学",
+        "讣告",
+        "历史"
+      ]
+    },
+    {
+      "title": "sqlite3_rsync: Database Remote-Copy Tool For SQLite",
+      "link": "https://simonwillison.net/2026/Nov/26/sqlite3-rsync/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-11-26T06:08:25.000Z",
+      "summary": "",
+      "id": "7de39f044da3622e099c177c574552c01c97c561295b87556dd28d5b356fba88",
+      "ref_id": "2",
+      "recommendationScore": 30,
+      "popularityScore": 40,
+      "priority": "medium",
+      "comment": "标题指明这是一个针对SQLite的数据库远程复制工具，但文章内容缺失。",
+      "reason": "标题涉及编程工具，符合关注主题，但无实际内容无法深入评估其技术深度和实用性。",
+      "tags": [
+        "SQLite",
+        "数据库",
+        "编程工具",
+        "内容缺失"
+      ]
+    },
+    {
+      "title": "Tell HN: Happy Thanksgiving",
+      "link": "https://news.ycombinator.com/item?id=50655664",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-26T14:26:54.000Z",
+      "summary": "Hopefully it’s a great day spent with your friends and family. And if it’s not, make it a great day anyway!\nComments URL: https://news.ycombinator.com/item?id=50655664\nPoints: 564\n# Comments: 133",
+      "id": "84a8485377b7e2c912f7c96f7822e97183203b0ed2eb0b308c410a5ef4af1c03",
+      "ref_id": "0",
+      "recommendationScore": 10,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "社区节日分享，与科技博客主题关联度极低。",
+      "reason": "不提供任何技术信息或洞察，不适合作为科技博客文章。",
+      "tags": [
+        "社区",
+        "生活"
+      ]
+    },
+    {
+      "title": "Pluralistic: Charles Koch is a cult leader (26 Nov 2026)",
+      "link": "https://pluralistic.net/2026/11/26/science-of-liberty/",
+      "source": "pluralistic.net",
+      "publishedAt": "2026-11-26T12:31:19.000Z",
+      "summary": "Today's links Charles Koch is a cult leader: The \"science of liberty\" is no more scientific that Scientology. Hey look at this: Delights to delectate. Object permanence: Zune sucks; \"Paintwork\"; Wells Fargo claims forged signatures mean real binding arbitration; Corporate tax-breaks go to investors, not consumers; Anti-Lula conspirators eat each other; McKinsey created Big Pharma's price-gouging; Unions v two-tier contracts. Upcoming appearances: Virtual, Oxford, Santa Barbara, Montreal. Recent appearances: Where I've been. Latest books: You keep readin' em, I'll keep writin' 'em. Upcoming books: Like I said, I'll keep writin' 'em. Colophon: All the rest. Charles Koch is a cult leader (permalink) I've never met Charles Koch, but I sometimes feel like I know him, because he's such a type, instantly recognizable from his philosophy, actions, and pronouncements. Koch is clearly very smart, in the specific sense of sometimes being able to spot and act on true things that other people either can't see or can't bring themselves to pursue. When he inherited his father's fossil fuel empire, he made a series of investments in innovative processes that would substantially improve the efficiency of the operations, but would also take a very long time to pay off. These kinds of long-term capital investments are seriously out of fashion in big business, to the extent that the telecom giant Frontier walked away from a billion dollar ROI on fiber rollouts, because the payoff was a decade in the future, and influential market analysts were hostile to any company that made investments that took more than five years to pay off. Frontier executives' compensation was primarily stock-based, which means that those analysts could instantly make any executive who behaved in ways they disapproved of significantly poorer. So instead of pursuing long-term, substantial growth, Frontier chose short-term enshittification, for example by raising prices and cutting maintenance for over 1m customers who had no other ISPs to choose from. As a result, the company was forced to declare bankruptcy: https://pluralistic.net/2020/05/01/icann-can-and-did/#fiber-now This kind of story is why Koch is so openly hostile to the public markets, heaping scorn on founders who take their companies public. Koch was empirically right about how to run his father's business: a decade after he made those long-term investments the public markets wouldn't have tolerated, Koch Industries' profits had increased by 1,000%. Koch credits his extreme wealth and power to his superior intellect and temperament, boasting of his capacity for delayed gratification. This worship of patience and long-term consideration is a common theme among business leaders and people who venerate them as our civilization's natural and deserving autocrats. The veneration of a long-term outlook is at the heart of market fundamentalists' self-mythologizing as the keepers of \"reason\" and \"rationalism.\" Anyone who sits below them on the social and economic hierarchy must be in thrall to their emotions, while those at the top of the system must have conquered their feelings (which facts famously don't care about!) so now they can see the world as it truly is. There's a whole body of pseudoscience, junk science, and debunked science they promote in support of this proposition. For example, these people love the \"marshmallow test,\" in which children were left alone with a marshmallow and the promise of two marshmallows if they abstained from eating it. Long-term followups found a significant correlation between the children who abstained and long-term economic and professional success. But the marshmallow test is bunk. The kids who ate the marshmallow were overwhelmingly from poor and marginalized backgrounds and had long experience of adults promising them rewards that never materialized. They'd come to the entirely rational conclusion that if there's a chance to get a treat now, you should take it, rather than waiting for inconstant and unreliable authority figures to make good on their promises of jam tomorrow. Because those kids were poor and marginalized, they were more likely to face systemic discrimination and barriers in life, barriers that the wealthier, more privileged kids who held out for two marshmallows rarely encountered. Those wealthier kids were born on third base, so they scored more runs than the one-marshmallow kids who rarely got called out of the dugout. Far from proving that reason, self-denial and self-control are correlated with success, the experiment proved that rich people pass on their privilege to their offspring, who have an easier time in life no matter how defective their judgment and how error-prone their actions. Which is not to claim that there's no value in a long-term outlook. Charles Koch's long-range planning made Koch Industries far more profitable than its short-termist competitors. But Charles Koch is hardly a paragon of reason: perhaps more than anyone else in the world, he embodies Upton Sinclair's maxim that \"It is difficult to get a man to understand something when his salary depends on his not understanding it.\" That's because Charles Koch, for all of his self-aggrandized long-termism, is one of the world's most ardent and important climate change deniers. Koch's intellectual contributions to climate denial are significant, but they're nothing compared to his financial contributions. There is no climate crackpot so unhinged, no junk science so flimsy, no conspiracy so absurd that Koch will not respond with showers of cash, buying their way into our discourse. This is motivated reasoning. After all, Koch owes his fortune, his power and his influence to burning fossil fuels. Moreover, he attributes that power and privilege to the market's infallible ability to elevate the wise and worthy. That's how he claims to be a champion of \"personal liberty,\" despite his ability to decide how so many millions of the rest of us must live our lives. For Koch, the purpose of \"liberty\" is to allow each of us to audition in front of the market's self-regulating selection mechanism, so that the best among us (coolly rational and long-term in outlook) can be put in charge of the rest, in order to save them from their flawed emotionality and impulsivity. For Koch to acknowledge the obvious and worsening climate emergency would require him to shutter his coal plants: no one who believes in climate science could claim a \"long-term\" outlook while pumping gigatons of CO2 into the atmosphere. But even worse: acknowledging climate science means repudiating market orthodoxy. There is no greater indictment of the idea that allowing markets to self-regulate will lead to our collective prosperity than the climate emergency and the existential threat it represents to human civilization. Likewise, there is no greater indictment of markets' ability to select the wisest among us to rule over us than the fact that the market's chosen champions have committed themselves to driving our civilization, our species and the habitability of our planet over a cliff. Koch is a long-termist, but only when a long-term view serves his personal prejudices and privilege. The rest of the time, Koch breaks all speed records when he gobbles down that marshmallow. And because \"the market\" has given Koch so much power, he's eating all our marshmallows: https://locusmag.com/feature/cory-doctorow-marshmallow-longtermism/ Koch is no rationalist. There is nothing more irrational than committing your fortune to destroying the civilization that it depends on. No one can lay claim to cool reason while they are busily sawing through the branch they're sitting on. I'm not claiming that any of the rest of us are any better. We are, all of us, inconstant in our rationality; we are all capable of self-deception and motivated reasoning. But most of us know it. We may not like being in a situation where other people can call us on our bullshit, but in our hearts of hearts, we know that we're better off for it: https://pluralistic.net/2026/10/09/impunitism/#rats-eating-my-face Koch is an engineer who exalts reason, but he can't distinguish between his beliefs and \"science.\" When actual scientists perform careful experiments and analysis demonstrating that Koch needs to shut down his coal empire, his answers are, \"Well that's your opinion\" and \"if you're so smart, why aren't you rich?\" This inability to distinguish between your cherished delusions and objective reality is the most dangerous of all forms of emotion-driven self-sabotage. No one is more prone to this folly than the ultra-rich who have insulated themselves from consequences or even disagreement: https://pluralistic.net/2026/03/09/autocrats-of-trade-2/#witness-the-firepower-of-this-fully-armed-and-operational-battle-station Koch declares whatever he believes in to be \"science.\" Take Koch's management philosophy, \"Market Process Analysis,\" which he has declared to be a \"science of liberty.\" Workers in Koch's empires are required to devote hours every week to studying this \"science\" and its precepts, despite the fact that his firms routinely ignore many of those tenets (such as \"respect,\" the \"ninth guiding principle\" of Market Process Analysis). Writing for Jacobin, the labor historian Henry Snow breaks down the four unproven, self-serving ideological follies that make up this \"science\": https://jacobin.com/2026/11/koch-economics-workplace-tyranny-markets First: that \"society\" does not exist, and can only be understood as a collection of individuals. This \"methodological individualism\" is extremely convenient for the wealthy and powerful because their fortunes allow them to unilaterally wield enormous power over lots of other people. Meanwhile, the rest of us can only resist the demands that the rich make of us by wielding collective power, through unions, movements and democratic institutions. Koch's embrace of Thatcher's cheap quip about there being \"no such thing as society\" is great news for Koch, in other words, and (like so many of Thatcher's maxims) it is a demand dressed up as a truth. When Koch says \"there is no such thing as society, only individuals,\" he means \"you must not ever successfully resist my control by banding together – you must confine your resistance to acting as individuals, because that way you are doomed to fail.\" Koch's second principle is that individuals are only motivated by their self-interest (\"psychological egoism\"). This is likewise very convenient for someone whose power can only endure for so long as the rest of us can't work together to depose them. If Koch can convince you that your comrades and friends are actually only using you to better their own lot, then he can prevent you from making any kind of solidaristic sacrifice to help them (which guarantees that they'll never do the same for you). The third principle is a form of market fundamentalism: the belief that at a societal level, plans can't ever work, that the only way to steer society is through \"self-correcting\" markets. Here's another self-serving, convenient rationalization: if the market leaves Koch rich and you poor; if it leaves him comfortable and you struggling; that's just how it is. If you were to band together to create democratic institutions that tried to build a fairer, better society, you would be doomed to fail, because your planning system could never \"incorporate as much information\" as the market, which is the world's greatest computer and integrator of \"signals\" that lead to the most efficient allocation and production possible. The fourth principle is more market fundamentalism: the belief that \"everything is – and should be – a market.\" In a world of individuals who can only behave selfishly, where all grand plans are doomed to fail, the only way to improve the world and our lot in it is to \"create incentives\" and \"design mechanisms\" that let the market make its magic. As Snow writes, people who espouse these beliefs follow Koch's lead in describing them as \"scientific truths,\" while downgrading every disagreement to mere \"ideology.\" They claim to be moved by facts, while their fuzzy-headed opponents are moved by feelings. These people are part of a long lineage of \"scientific managers\" who have come up with doctrines and methods that are sold as ways to improve production and make us all better off, but always turn out to be ways for bosses to atomize, demoralize and control their workers: https://pluralistic.net/2021/02/24/gwb-rumsfeld-monsters/#bossware Inevitably, these \"scientists\" claim to have discovered a freestanding and objective \"human nature.\" But scholars who subject the idea of \"human nature\" to scientific and historical scrutiny have repeatedly and reliably discovered a wide spectrum of human natures, which are not fixed from birth, but are rather determined by a mix of temperament, societal norms and material reality: https://pluralistic.net/2022/03/08/three-freedoms/#anti-fatalism Koch isn't describing the world as it is, he's describing the world as he wishes it was, because that way his wealth and power would be both justified and eternal. Like I say, this is an extremely recognizable type of guy, the kind of person who insists that their preferences are scientific truths. It's a powerful move, which is why it's the basis of so many cults. Scientology founder L Ron Hubbard's daffy stfnal nonsense owes its decades of success to both its high-pressure control tactics and Hubbard's claims to having discovered an immortal science to sweep aside superstition and folly. But as bonkers as Scientology is, it's no less \"scientific\" than Market Process Analysis, Charles Koch's \"science of liberty.\" Market Process Analysis is delivered in the manner of cult doctrine, with Koch's employees forced to spend hours every week studying it. When they are discreetly polled on their experience with the doctrine, they sound like any unhappy cult member, describing it as \"brainwashing\" and comparing their workplaces to \"Nineteen Eighty-Four.\" They describe how managers exercise unilateral and total authority over their working lives: \"managers are GOD…they can play with anyone's life.\" Also very Scientology-like are the unsuccessful attempts of workers to better their situations by citing the tenets of Market Process Analysis in a bid to get their managers to treat them better. These workers quickly discover that the cult's doctrine is something they are expected to live by, but not hold their bosses to. Koch himself insists that Market Process Analysis isn't just a way to organize a workplace, but rather, it is the key to how we should relate to our friends and family. Koch was essentially abandoned by his (Nazi sympathizing) parents, who turned him over to a (Nazi-sympathizing) nanny who required him to shit on command (literally), until she left the family's employ to live in Vichy France and help advance the fascist project there: https://www.theguardian.com/us-news/2016/jan/17/dark-money-review-nazi-oil-the-koch-brothers-and-a-rightwing-revolution This terrible and abusive childhood didn't instill any sense of the importance of love and tolerance in Koch. Far from it: he and his brothers David and William conspired to excommunicate and isolate their oldest brother Frederick as punishment for his open homosexuality: https://web.archive.org/web/20150208024948/https://www.vanityfair.com/style/society/2014/05/frederick-koch-brothers My claim here isn't that Koch's flaws are less explainable or more wrong than yours or mine; rather, it's that Koch's inability to acknowledge the possibility that he might be wrong has turned him into an existential threat to the human race and a brutal cult leader. If he wasn't so powerful, he would be hilarious, a self-described \"lover of freedom\" whose \"science of liberty\" has to be shoved down the throats of his captive workforce. Hey look at this (permalink) 🎩 Tech Monopolies Make Outages Worse | EFFector 38.21 https://www.eff.org/deeplinks/2026/11/tech-monopolies-make-outages-worse-effector-3820 Trump’s Incoherent Tariffs https://prospect.org/2026/11/25/trump-incoherent-tariffs-china-policy-jamieson-greer/ The Week the Oligarchs Declared War on America https://www.thebignewsletter.com/p/the-week-the-oligarchs-declared-war UK Home Office waved through border system without a working fix for bad data https://www.theregister.com/security/2026/11/26/uk-home-office-waved-through-border-system-without-a-working-fix-for-bad-data/5312162 Object permanence (permalink) #25yrsago Mechanic threatens poster, BBS owner over complaining message https://web.archive.org/web/20011124163856/http://www.theregister.co.uk/content/6/22973.html #20yrsago Chicago Sun-Times: Zune is a failure https://web.archive.org/web/20061204135112/http://www.suntimes.com/technology/ihnatko/147048,CST-FIN-Andy23.article #20yrsago CableCard PCs will only stream to Xboxes https://web.archive.org/web/20061125221943/http://www.ehomeupgrade.com/entry/3285/mce_cablecard_limitation #20yrsago HOWTO break Zune’s WiFi DRM https://web.archive.org/web/20061206005539/http://www.gizmodo.com/gadgets/portable-media/how-to-bypass-the-zunes-wifi-sharing-drm-217042.php #15yrsago Paintwork: cyberpunk++ stories of killer augmented reality mechas and QR code graffiti writers https://memex.craphound.com/2011/11/25/paintwork-cyberpunk-stories-of-killer-augmented-reality-mechas-and-qr-code-graffiti-writers/ #15yrsago Wells Fargo says that its customers gave up right to sue by having their signatures forged https://www.reuters.com/article/us-wellsfargo-accounts-lawsuit-idUSKBN13J1WX/ #10yrsago Giving companies more money (loans, tax-breaks) only increases investor payouts, not expansion https://thenewinquiry.com/disgorge-the-cash/ #10yrsago If blue-collar workers want better jobs, they need unions, not Trump https://web.archive.org/web/20161119110421/https://www.thenation.com/article/workers-dont-need-trump-to-give-them-a-voice-they-need-unions/ #10yrsago The neoliberal politicians who impeached Brazil’s president and took over are imploding in spectacular corruption scandals https://www.bbc.co.uk/news/world-latin-america-38108265 #10yrsago The only person to go to prison for a string of corporate pollution scandals was a crusading scientist who exposed them https://web.archive.org/web/20161125232332/https://theintercept.com/2016/11/25/did-the-epa-prosecute-and-jail-a-mississippi-lab-owner-because-of-her-activism/ #5yrsago McKinsey taught Big Pharma how to price-gouge https://pluralistic.net/2021/11/25/strikesgiving/#cool-story-pharma-bro #5yrsago Unions are finally fighting two-tier contracts https://pluralistic.net/2021/11/25/strikesgiving/#shed-a-tier #1yrago Google steers Americans looking for health care into \"junk insurance\" https://pluralistic.net/2025/11/25/open-season/#open-enrollment Upcoming appearances (permalink) Virtual: Enshittification, AI, and the Future of Technology (UBC Master of Educational Technology), Nov 28 https://met.ubc.ca/2026/09/met-speaker-series-cory-doctorow-enshittification-ai-and-the-future-of-technology/ Oxford: Bennett Oxford Symposium on Open Code in Science, Dec 8 https://www.bennett.ox.ac.uk/events/2026-bennett-institute-symposium/ Santa Barbara: UCSB Reads, Apr 29 https://www.library.ucsb.edu/events-exhibitions/ucsb-reads-2027-presents-author-cory-doctorow Montreal: World Science Fiction Convention, Sep 2-6 https://montreal2027.ca/en Recent appearances (permalink) Beyond the robot apocalypse – who really wins in a world of AI? (ABC Conversations) https://www.abc.net.au/listen/programs/conversations/cory-doctorow-artificial-intelligence/107388236 How AI is Breaking the Internet (and Everything Else) (Blood in the Machine) https://www.youtube.com/watch?v=mXRaPjFRyT0 Clint Eastwood (No Gods No Mayors) https://www.patreon.com/NoGodsNoMayors/posts/clint-eastwood-173008088 Life After AI (Brain Bar) https://www.youtube.com/watch?v=IPPa43-n0vI Terms of Service with Clare Duffy (CNN) https://www.cnn.com/audio/podcasts/terms-of-service-with-clare-duffy/episodes/458ce968-af5d-11f0-b539-13ed2afe25f8 Latest books (permalink) \"The Reverse-Centaur's Guide to AI,\" a short book about being a better AI critic, Farrar, Straus and Giroux, June 2026 https://us.macmillan.com/books/9780374621568/thereversecentaursguidetolifeafterai/ \"Canny Valley\": A limited edition collection of the collages I create for Pluralistic, self-published, September 2025 https://pluralistic.net/2025/09/04/illustrious/#chairman-bruce \"Enshittification: Why Everything Suddenly Got Worse and What to Do About It,\" Farrar, Straus, Giroux, October 7 2025 https://us.macmillan.com/books/9780374619329/enshittification/ \"Picks and Shovels\": a sequel to \"Red Team Blues,\" about the heroic era of the PC, Tor Books (US), Head of Zeus (UK), February 2025 (https://us.macmillan.com/books/9781250865908/picksandshovels). \"The Bezzle\": a sequel to \"Red Team Blues,\" about prison-tech and other grifts, Tor Books (US), Head of Zeus (UK), February 2024 (thebezzle.org). \"The Lost Cause:\" a solarpunk novel of hope in the climate emergency, Tor Books (US), Head of Zeus (UK), November 2023 (http://lost-cause.org). \"The Internet Con\": A nonfiction book about interoperability and Big Tech (Verso) September 2023 (http://seizethemeansofcomputation.org). Signed copies at Book Soup (https://www.booksoup.com/book/9781804291245). \"Red Team Blues\": \"A grabby, compulsive thriller that will leave you knowing more about how the world works than you did before.\" Tor Books http://redteamblues.com. \"Chokepoint Capitalism: How to Beat Big Tech, Tame Big Content, and Get Artists Paid, with Rebecca Giblin\", on how to unrig the markets for creative labor, Beacon Press/Scribe 2022 https://chokepointcapitalism.com Upcoming books (permalink) \"The Post-American Internet,\" a geopolitical sequel of sorts to Enshittification, Farrar, Straus and Giroux, 2027 \"Unauthorized Bread\": a middle-grades graphic novel adapted from my novella about refugees, toasters and DRM, FirstSecond, April 20, 2027 \"Enshittification, Why Everything Suddenly Got Worse and What to Do About It\" (the graphic novel), Firstsecond, 2027 \"The Memex Method,\" Farrar, Straus, Giroux, 2027 Colophon (permalink) Today's top sources: Currently writing: “Once Is Enemy Action,” a science fiction novel about the origins of modern technofascism. Today's words: 574 (7730 total). \"The Post-American Internet,\" a sequel to \"Enshittification,\" about the better world the rest of us get to have now that Trump has torched America. Fourth draft completed. Submitted to editor. A Little Brother short story about DIY insulin PLANNING This work – excluding any serialized fiction – is licensed under a Creative Commons Attribution 4.0 license. That means you can use it any way you like, including commercially, provided that you attribute it to me, Cory Doctorow, and include a link to pluralistic.net. https://creativecommons.org/licenses/by/4.0/ Quotations and images are not included in this license; they are included either under a limitation or exception to copyright, or on the basis of a separate license. Please exercise caution. How to get Pluralistic: Blog (no ads, tracking, or data-collection): Pluralistic.net Newsletter (no ads, tracking, or data-collection): https://pluralistic.net/plura-list Mastodon (no ads, tracking, or data-collection): https://mamot.fr/@pluralistic Bluesky (no ads, possible tracking and data-collection): https://bsky.app/profile/doctorow.pluralistic.net Medium (no ads, paywalled): https://doctorow.medium.com/ Tumblr (mass-scale, unrestricted, third-party surveillance and advertising): https://mostlysignssomeportents.tumblr.com/tagged/pluralistic \"When life gives you SARS, you make sarsaparilla\" -Joey \"Accordion Guy\" DeVilla READ CAREFULLY: By reading this, you agree, on behalf of your employer, to release me from all obligations and waivers arising from any and all NON-NEGOTIATED agreements, licenses, terms-of-service, shrinkwrap, clickwrap, browsewrap, confidentiality, non-disclosure, non-compete and acceptable use policies (\"BOGUS AGREEMENTS\") that I have entered into with your employer, its partners, licensors, agents and assigns, in perpetuity, without prejudice to my ongoing rights and privileges. You further represent that you have the authority to release me from any BOGUS AGREEMENTS on behalf of your employer. ISSN: 3066-764X",
+      "id": "a49a96de2e47c01034bf3068a4bd6de79e8f93f19b97ef663121880639e2de4d",
+      "ref_id": "0",
+      "recommendationScore": 10,
+      "popularityScore": 20,
+      "priority": "low",
+      "comment": "这是一篇关于政治和企业行为的评论，与科技博客的主题无关。",
+      "reason": "内容完全偏离了科技博客的关注领域，缺乏技术深度和实用性。",
+      "tags": [
+        "政治",
+        "社会评论",
+        "非技术"
+      ]
+    },
+    {
+      "title": "Kamil Khan Mumtaz: Pakistani architect, admired at home, almost invisible abroad",
+      "link": "https://worksinprogress.co/issue/the-greatest-architect-youve-never-heard-of-is-in-pakistan/",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-26T21:08:05.000Z",
+      "summary": "Article URL: https://worksinprogress.co/issue/the-greatest-architect-youve-never-heard-of-is-in-pakistan/\nComments URL: https://news.ycombinator.com/item?id=50659841\nPoints: 196\n# Comments: 34",
+      "id": "5a9cc3a0f53057a074843d1a922f80262460a1594209c52ac4e9cedeb300f641",
+      "ref_id": "3",
+      "recommendationScore": 5,
+      "popularityScore": 90,
+      "priority": "low",
+      "comment": "一篇关于巴基斯坦建筑师的文化和历史类文章，与科技主题无关。",
+      "reason": "文章内容完全不属于科技范畴，不适合科技博客的受众。",
+      "tags": [
+        "Architecture",
+        "Culture",
+        "Biography"
+      ]
+    },
+    {
+      "title": "Head of Software Engineering – NOX Metals",
+      "link": "https://news.ycombinator.com/item?id=50654353",
+      "source": "Hacker News",
+      "publishedAt": "2026-11-26T12:00:00.000Z",
+      "summary": "Comments URL: https://news.ycombinator.com/item?id=50654353\nPoints: 0\n# Comments: 0",
+      "id": "e36f5aced82b9ff4cca63eedbb4458905cd64fe75284d13c3053d558c7b0a427",
+      "ref_id": "1",
+      "recommendationScore": 5,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "纯粹的招聘信息，缺乏作为文章的内容价值。",
+      "reason": "内容过于简短且非技术文章，不符合博客发布标准。",
+      "tags": [
+        "招聘",
+        "职业发展"
+      ]
+    },
+    {
+      "title": "Quoting Jack Despain Zhou",
+      "link": "https://simonwillison.net/2026/Nov/26/jack-despain-zhou/",
+      "source": "simonwillison.net",
+      "publishedAt": "2026-11-26T15:09:31.000Z",
+      "summary": "",
+      "id": "fcbb41954277a0a1d4ec84755196f69282448a167b12743191e432b96804474a",
+      "ref_id": "1",
+      "recommendationScore": 0,
+      "popularityScore": 0,
+      "priority": "low",
+      "comment": "文章内容缺失，无法进行任何评估。",
+      "reason": "由于没有具体内容，无法判断其技术深度、新颖性或实用价值。",
+      "tags": [
+        "无法评估",
+        "内容缺失"
+      ]
+    }
+  ]
+}
